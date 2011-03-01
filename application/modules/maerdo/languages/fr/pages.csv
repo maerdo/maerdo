@@ -1,0 +1,52 @@
+Edit Page;Edit Page
+Page was not be updated.;Page was not be updated.
+Page has been updated.;Page has been updated.
+Page;Page
+You need to set a name to validate form.;You need to set a name to validate form.
+You need to set an URL to validate form.;You need to set an URL to validate form.
+You need to set a description to validate form.;You need to set a description to validate form.
+You need to select a controller to validate form.;You need to select a controller to validate form.
+You need to select an action to validate form.;You need to select an action to validate form.
+A page with this URL already exist.;A page with this URL already exist.
+A page with this name already exist.;A page with this name already exist.
+Module;Module
+Controller;Controller
+Action;Action
+Page name;Page name
+Page URL;Page URL
+Page description;Page description
+Title;Title
+Titles has been updated.;Titles has been updated.
+An error has occured when try to update titles.;An error has occured when try to update titles.
+Add title for this language;Add title for this language
+Meta Tag;Meta Tag
+Meta-tag has been updated.;Meta-tag has been updated.
+An error has occured when try to update meta-tag.;An error has occured when try to update meta-tag.
+Include this javascript files;Include this javascript files
+Javascript inclusions has been updated.;Javascript inclusions has been updated.
+An error has occured when try to update >Javascript inclusions.;An error has occured when try to update >Javascript inclusions.
+Add a file;Add a file
+Include this css files;Include this css files
+Css inclusions has been updated.;Css inclusions has been updated.
+An error has occured when try to update Css inclusions.;An error has occured when try to update Css inclusions.
+ACL;ACL
+ACL informations has been updated.;ACL informations has been updated.
+An error has occured when try to update ACL informations.;An error has occured when try to update ACL informations.
+Navigation;Navigation
+Navigation informations has been updated.;Navigation informations has been updated.
+An error has occured when try to update Navigation informations.;An error has occured when try to update Navigation informations.
+Parent;Parent
+Label;Label
+Pages list;Pages list
+An error has occured when trying to delete the page.;An error has occured when trying to delete the page.
+An error has occured when trying to add the page.;An error has occured when trying to add the page.
+Page has been deleted.;Page has been deleted.
+Page has been added.;Page has been added.
+Add a page;Add a page
+Modules;Modules
+Filter;Filter
+URL;URL
+Description;Description
+Create a page;Create a page
+You need to select a module to validate form.;You need to select a module to validate form.
+Add;Add

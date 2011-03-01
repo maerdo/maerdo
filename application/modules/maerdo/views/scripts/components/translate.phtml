@@ -1,0 +1,88 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Translate')?></h1>
+</div>
+
+<?php echo $this->translate('Select a module')?> :
+<select name='module' class="px200" id='selectModule'>
+	<option value="null">-- <?php echo $this->translate('Select a module')?> -- </option>
+	<?php $selected="";if($this->module_id=="-1") $selected='selected="selected"';?>
+	<option <?=$selected?> value="-1"><?php echo $this->translate('Application settings')?> </option>
+	<option value="null">----- </option>
+	<?php 
+	foreach($this->modules as $module):
+		$selected="";if($module->id==$this->module_id) $selected='selected="selected"';
+		echo "<option $selected value='".$module->id."'>".$module->name."</option>";
+	endforeach;
+	?>
+</select>
+<?php if($this->module_id!=null):?>
+	<br /><br /><br />
+
+	<div class='notification_error px700 hidden' id='form_translate_error'>	
+		<br />
+		<div id='form_error_translate_field' class="hidden">
+			<?php echo $this->translate('You need to set a value in all input box to valid form.');?>
+		</div>
+		<div id='form_error_translate_default' class="hidden">
+			<?php echo $this->translate('You need to select a default language.');?>
+		</div>			
+	</div>
+	<br />
+	
+	<?php if($this->notification_error!=NULL):?>
+	<div class='notification_error px700'>
+		<?php if($this->notification_error=='update_translate_error'):?>
+		<div><?php echo $this->translate('An error has occured when trying to update the translatation configuration.');?><br /></div>
+		<?php endif;?>
+	</div>
+	<br />
+	<?php endif;?>
+	
+	
+	<?php if($this->notification_success!=NULL):?>
+	<div class='notification_success px700'>
+		<?php if($this->notification_success=='update_translate_success'):?>
+		<div><?php echo $this->translate('Translation configuration has been updated.');?><br /></div>
+		<?php endif;?>				
+	</div>
+	<br />
+	<?php endif;?>
+	
+	<h2><?php echo $this->translate('Translation configuration')?></h2>
+	<form id="form_translate_update" action="/maerdo/component/translate" method="post">
+	<input type="hidden" name="form_action" value="translate_update" />
+	<input type="hidden" name="module_id" value="<?=$this->module_id?>" />
+	<a href='#table' onclick='addTranslation()'><img class='pr t3 mr5' src='/images/icons/add.png' alt='Add' /><?php echo $this->translate('Add a language')?></a>
+	<br /><br />	
+	<a name="table"></a>
+	<table id='table_language' class="px400">
+		<tr class="bggrey bold">
+			<td class="px50"><?php echo $this->translate('ID')?></td>
+			<td class="px50"><?php echo $this->translate('Locale')?></td>
+			<td><?php echo $this->translate('Language name')?></td>
+			<td><?php echo $this->translate('Default')?></td>
+			<td><?php echo $this->translate('Action')?></td>
+		</tr>		
+		<?php
+		$key=0;
+		foreach($this->moduleConfiguration as $key=>$value):
+			if($key%2==0) {
+				$class="bggreylight";
+			} else {
+				$class="";
+			}	
+		?>
+			<tr id='table_translate_row_<?=$key?>' class="<?=$class?>">
+				<td class="px50"><input type="text" class="field px50" value="<?=$value['identifiant']?>" name="translate[<?=$key?>][identifiant]" /></td>
+				<td class="px50"><input type="text" class="field px50" value="<?=$value['locale']?>" name="translate[<?=$key?>][locale]" /></td>
+				<td><input type="text" class="field" value="<?=$value['language_name']?>" name="translate[<?=$key?>][language_name]" /></td>
+				<td><input type="radio" name="translate[default]" value="<?=$key?>" <?if($value['default']==1) echo "checked='checked'"?>></td>
+				<td><a href='#' onclick='deleteLanguage(<?=$key?>)'><img src='/images/icons/delete.gif' /></a></tr>																																																				
+			</tr>
+		<?php endforeach;?>
+	</table>
+	</form>
+	<input type="hidden" id='translate_row_id' value='<?=$key?>' />
+	<br /><br />
+	<img id='img_submit_form' class="ml165" src='/tools/button/white/Update translation configuration/000000/arial/10/edit.gif/0/0' />			
+<?php endif;?>

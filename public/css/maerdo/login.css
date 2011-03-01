@@ -1,0 +1,19 @@
+/* Login Page */
+#login-wrapper {
+	margin:0 auto;
+	width:400px;
+	margin-top:150px;
+}
+div#login-wrapper div.notification {
+	padding:15px 15px 15px 50px;
+}
+.box-header.login {
+	font-size:19px;
+	padding:10px 15px;
+}
+form.login label {
+	width:145px;
+}
+form.login input {
+	width:200px;
+}

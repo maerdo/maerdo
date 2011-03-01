@@ -1,0 +1,433 @@
+
+<div id="page-header">
+	<h1><?php echo $this->translate('Edit Page')?> "<?=$this->page->name?>"</h1>
+</div>
+<?php if($this->notification_error!=NULL):?>
+<div class='notification_error px900'>
+	<?php if($this->notification_error=='update_page_error'):?>
+	<div><?php echo $this->translate('Page was not be updated.');?><br /></div>
+	<?php endif;?>	
+</div>
+<br />
+<?php endif;?>
+
+
+<?php if($this->notification_success!=NULL):?>
+<div class='notification_success px900'>
+	<?php if($this->notification_success=='page_has_been_updated'):?>
+	<div><?php echo $this->translate('Page has been updated.');?><br /></div>
+	<?php endif;?>				
+</div>
+<br />
+<?php endif;?>
+<div id="pageContent">
+	<div id="tabsheads">
+	    <ul>		
+	        <li><a href="#tabs-1">Page</a></li>
+	        <li><a href="#tabs-2">Header</a></li>
+	        <li><a href="#tabs-3">ACL</a></li>
+	        <li><a href="#tabs-4">Navigation</a></li>
+	    </ul>
+	    <div id="tabs-1">
+	    	 <h2><?php echo $this->translate('Page');?> :</h2>
+	         
+			 <div id='form_page_error' class="hidden">
+				<br />
+				<div class='notification_error px300'>
+					<div id='form_error_page_name' class='hidden'><?php echo $this->translate('You need to set a name to validate form.');?></div>		
+					<div id='form_error_page_url' class='hidden'><?php echo $this->translate('You need to set an URL to validate form.');?></div>		
+					<div id='form_error_page_description' class='hidden'><?php echo $this->translate('You need to set a description to validate form.');?></div>		
+					<div id='form_error_page_controller_id' class='hidden'><?php echo $this->translate('You need to select a controller to validate form.');?></div>		
+					<div id='form_error_page_action_id' class='hidden'><?php echo $this->translate('You need to select an action to validate form.');?></div>
+					<div id='form_error_page_url_alreadyexist' class='hidden'><?php echo $this->translate('A page with this URL already exist.');?></div>
+					<div id='form_error_page_name_alreadyexist' class='hidden'><?php echo $this->translate('A page with this name already exist.');?></div>			
+				</div>
+				<br />
+			 </div>
+			 	         
+	         <form id='form_page_update' action='/maerdo/pages/edit/<?=$this->page->id?>' method='post'>
+	         	<input type='hidden' name='form_action' value='updatePage' />
+	         	<input value="<?=$this->page->id?>" type="hidden" id="page_id" name="page_id" />
+	         	<table >
+			 		<tr>
+			 			<td><?php echo $this->translate('Module');?> :</td>
+						<td>
+							<select id="page_module_id" name="page_module_id" class="px150">
+								<?php foreach($this->modules as $module):?>
+									<?php $selected="";if($this->page->module_id==$module->id) $selected="selected='selected'";?>
+									<option <?=$selected?> value="<?=$module->id?>"><?=$module->name?></option>
+								<?php endforeach;?>	
+							</select>
+						</td>
+					</tr>
+					<tr>		
+						<td><?php echo $this->translate('Controller');?> :</td>
+						<td>
+							<select id="page_controller_id" name="page_controller_id" class="px150">
+								<?php foreach($this->controllers as $controller):?>
+									<?php $selected="";if($this->page->controller_id==$controller['id']) $selected="selected='selected'";?>
+									<option <?=$selected?> value="<?=$controller['id']?>"><?=$controller['name']?></option>
+								<?php endforeach;?>		
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $this->translate('Action');?> :</td>
+						<td>
+							<select id="page_action_id" name="page_action_id" class="px150">
+								<?php foreach($this->actions as $action):?>
+									<?php $selected="";if($this->page->action_id==$action['id']) $selected="selected='selected'";?>
+									<option <?=$selected?> value="<?=$action['id']?>"><?=$action['name']?></option>
+								<?php endforeach;?>		
+							</select>
+						</td>
+					</tr>				
+			 		<tr>
+			 			<td><?php echo $this->translate('Page name');?> :</td>
+						<td>
+							<input type='hidden' id='page_db_name' name='page_db_name' value='<?=$this->page->name?>' />
+							<input value="<?=$this->page->name?>" type="text" id="page_name" name="page_name" />
+						</td>
+					</tr>	
+			 		<tr>
+			 			<td><?php echo $this->translate('Page URL');?> :</td>
+			 			<td>
+			 				<input type='hidden' id='page_db_url' name='page_db_url' value='<?=$this->page->url?>' />
+			 				<input value="<?=$this->page->url?>" type="text" class="px250" id="page_url" name="page_url" />
+			 			</td>
+			 		</tr>
+			 		<tr>
+			 			<td><?php echo $this->translate('Page description');?> :</td>
+						<td>
+							<input value="<?=$this->page->description?>" type="text" id="page_description" class="px250" name="page_description" />								
+						</td>
+					</tr>		
+					<tr>
+						<td></td>
+						<td>
+							<br />
+							<img onclick='updatePage()' class="fright pointer" alt='Update Page' src='/tools/button/white/Update page/000000/arial/10/edit.gif/0/0' /> 						
+							<div class="cleaner"></div>
+						</td>
+					</tr>		
+				</table>				
+			 </form>
+	    </div>
+	    <div id="tabs-2">
+	    	
+	    	<div id="tabsmeta">
+			    <ul>		
+			        <li><a href="#tabsmeta-1">Title</a></li>
+			        <li><a href="#tabsmeta-2">Meta-tag</a></li>
+			        <li><a href="#tabsmeta-3">Javascript</a></li>
+			        <li><a href="#tabsmeta-4">Css</a></li>
+			    </ul>
+			    
+			    
+			    
+			    
+			    
+			    
+			    
+			    
+			    <div id="tabsmeta-1">
+					<iframe name="page_update_title_iframe" id='page_update_title_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
+					<form target='page_update_title_iframe' id='form_page_update_title' action='/maerdo/pages/update/title' method='post'>
+			         	<h2><?php echo $this->translate('Title');?> :</h2>
+
+						
+						<div id='page_heads_title_notification_success' class='notification_success hidden px700'>							
+							<div class=""><?php echo $this->translate('Titles has been updated.');?><br /></div>																	
+						</div>
+						
+						<div id='page_heads_title_notification_error' class='notification_error hidden px700'>							
+							<div class=""><?php echo $this->translate('An error has occured when try to update titles.');?><br /></div>																	
+						</div>						
+			         	
+						<?php echo $this->translate('Add title for this language');?> :
+						<select id="page_heads_title_locale" name="locale" class="px150">
+							<?php 
+							foreach($this->titlesfreelocales as $key=>$locale):?>
+							<option value="<?=$key?>"><?=$locale?></option>
+							<?php endforeach;?>
+						</select>				
+						<img class="pr t8" id='img_add_title' alt='Add' src='/tools/button/white/Add/000000/arial/10/add.png/0/0' /> 													
+			         	<input class="px400"  value="<?=$this->page->id?>" type="hidden" name="page_id" />
+			         	<br /><br />
+			         	<table  id='table_title'>
+							<tr class="bggrey bold">
+								<td class="px150">
+									Language
+								</td>
+								<td class="px400">
+									Title
+								</td>
+								<td class="px50">
+									Action
+								</td>								
+							</tr>	
+							<?php $key="0"?>		         	
+			         		<?php foreach($this->titles as $key=>$title):?>
+						 		<tr id='table_title_row_<?=$key?>'>
+									<td class="px150">
+										<input value="<?=$title['locale']?>" type="hidden" id="title_<?=$key?>_locale" name="title[<?=$key?>][locale]" />
+										<?=$title['language_name']?>
+									</td>
+									<td class="px150">
+										<input class="px400" value="<?=$title['value']?>" type="text" name="title[<?=$key?>][title]" />
+									</td>
+									<td class="px50">
+										<img onclick="deleteTitle(<?=$key?>)" class="pr t3" src='/images/icons/delete.gif' alt='Delete' />
+									</td>								
+								</tr>
+							<?php endforeach;?>					
+						</table>
+						<input type="hidden" id="page_title_row_id" value="<?=$key?>" />
+						<br /><br />
+						<img onclick="updateTitle()" class="pointer pr t8 fright" alt='Update title' src='/tools/button/white/Update titles/000000/arial/10' />
+						<div class='cleaner'></div>
+					</form>	
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div id="tabsmeta-2">
+					<iframe name="page_update_meta_iframe" id='page_update_meta_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>								
+					<form target='page_update_meta_iframe' id='form_page_update_meta' action='/maerdo/pages/update/meta' method='post'>
+			        
+						<h2><?php echo $this->translate('Meta Tag');?> :</h2>
+												
+						<div id='page_heads_meta_notification_success' class='notification_success hidden px700'>							
+							<div class=""><?php echo $this->translate('Meta-tag has been updated.');?><br /></div>																	
+						</div>
+						
+						<div id='page_heads_meta_notification_error' class='notification_error hidden px700'>							
+							<div class=""><?php echo $this->translate('An error has occured when try to update meta-tag.');?><br /></div>																	
+						</div>						
+			         							
+						
+						<select id="page_heads_metattag_locale"  name="page_heads_metattag_locale" class="px150">
+								<?php
+								foreach($this->metafreelocales as $key=>$locale):?>
+								<option value="<?=$key?>"><?=$locale?></option>
+								<?php endforeach;?>
+						</select>
+						<select id="page_heads_metatag_tag" name="page_heads_metatag_tag" class="px150">
+							<option value="keywords">Keywords</option>
+							<option value="description">Description</option>
+							<option value="charset">Charset</option>
+							<option value="robots">Robots</option>
+						</select>
+						<img id='img_add_meta' class="pr t8" alt='Add' src='/tools/button/white/Add/000000/arial/10/add.png/0/0' />
+						<br /><br />
+						<table id="table_meta">
+					 		<tr class="bggrey bold">
+								<td class="px150">Locale</td>
+								<td class="px150">Meta-Tag</td>
+								<td class="px250">Value</td>
+								<td class="px50">Action</td>
+							</tr>
+							<?php foreach($this->metas as $key=>$meta):?>				
+					 		<tr id="table_meta_row_<?=$key?>">
+								<td class="vtop">
+									<?=$meta['language_name']?>
+									<input id="meta_<?=$key?>_locale" type="hidden" name="meta[<?=$key?>][locale]" value="<?=$meta['locale']?>" />
+								</td>
+								<td class="vtop">
+									<?=ucfirst($meta['meta'])?>
+									<input value="<?=$meta['meta']?>" id='meta_<?=$key?>_metatag' type="hidden" name="meta[<?=$key?>][meta]" />
+								</td>
+								<td class="vtop">
+									<textarea rows='4' class="px250" type="text" name="meta[<?=$key?>][value]" /><?=$meta['value']?></textarea>
+								</td>
+								<td class="vtop">
+									<img onclick="deleteMeta(<?=$key?>)" class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+								</td>							
+							</tr>
+							<?php endforeach;?>
+					 				
+						</table>
+						<input type="hidden" id="page_meta_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />
+						<br />
+						<img onclick="updateMeta()" id='img_update_meta' class="fright" alt='Update' src='/tools/button/white/Update META-TAG/000000/arial/10/' />
+						<br /><br />
+					</form>	
+				</div>
+
+				
+				
+				
+				
+				
+				
+				
+				
+				<div id="tabsmeta-3">
+					<iframe name="page_update_javascript_iframe" id='page_update_javascript_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
+					<form target='page_update_javascript_iframe' id='form_page_update_javascript' action='/maerdo/pages/update/javascript' method='post'>
+			         	<h2><?php echo $this->translate('Include this javascript files');?> :</h2>
+						
+						<div id='page_heads_javascript_notification_success' class='notification_success hidden px750'>							
+							<div class=""><?php echo $this->translate('Javascript inclusions has been updated.');?><br /></div>																	
+						</div>
+						
+						<div id='page_heads_javascript_notification_error' class='notification_error hidden px750'>							
+							<div class=""><?php echo $this->translate('An error has occured when try to update >Javascript inclusions.');?><br /></div>																	
+						</div>					
+			         	
+			         	<a href='#table_javascript' onclick='addJavascript()'><img class='pr t3' src='/images/icons/add.png' alt='add' /> <?php echo $this->translate('Add a file');?></a><br />
+			         	<br />
+			         	<a name='table_javascript' ></a>
+			         	<table id='table_javascript'>
+					 		<tr class="bggrey bold">
+								<td class="px150">Identifiant</td>
+								<td class="px600">File</td>
+								<td class="px50">Action</td>
+							</tr>	         	
+							<?php 							
+							if(count($this->jsfiles)>0) {
+								foreach($this->jsfiles as $key=>$js):?>	       	
+						 		<tr id='table_javascript_row_<?=$key?>'>
+									<td>
+										<input class="px150 maskalpha" value="<?=$js->identifiant?>" type="text" name="javascript[<?=$key?>][identifiant]" />
+									</td>
+									<td>
+										<input class="px600" value="<?=$js->file?>" type="text" name="javascript[<?=$key?>][file]" />
+									</td>
+									<td>
+										<img onclick='deleteJavascript(<?=$key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+									</td>									
+								</tr>
+								<?php endforeach;
+							}
+							?>				 						
+						</table>
+						<input type="hidden" id="page_javascript_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />						
+						<br />
+						<img  id='img_update_javascript' class="fright pointer" alt='Update' src='/tools/button/white/Update Javascript/000000/arial/10/' />
+						<div class="cleaner"></div>		
+					</form>					
+				</div>		
+				
+				
+				
+				
+										
+				<div id="tabsmeta-4">		
+					<iframe name="page_update_css_iframe" id='page_update_css_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
+					<form target='page_update_css_iframe' id='form_page_update_css' action='/maerdo/pages/update/css' method='post'>
+			         	<h2><?php echo $this->translate('Include this css files');?> :</h2>
+						
+						<div id='page_heads_css_notification_success' class='notification_success hidden px750'>							
+							<div class=""><?php echo $this->translate('Css inclusions has been updated.');?><br /></div>																	
+						</div>
+						
+						<div id='page_heads_css_notification_error' class='notification_error hidden px750'>							
+							<div class=""><?php echo $this->translate('An error has occured when try to update Css inclusions.');?><br /></div>																	
+						</div>		
+			         	<a href='#table_css' onclick='addCss()'><img class="pr t3" src='/images/icons/add.png' alt='add' /> <?php echo $this->translate('Add a file');?></a><br />
+			         	<br />
+			         	<a name='table_css'></a>
+			         	<table id='table_css'>
+					 		<tr class="bggrey bold">
+								<td class="px150">Identifiant</td>
+								<td class="px600">File</td>
+								<td class="px50">Action</td>
+							</tr>
+							<?php 
+							
+							if(count($this->cssfiles)>0) {
+								foreach($this->cssfiles as $key=>$css):?>	         	
+						 		<tr id='table_css_row_<?=$key?>'>
+									<td>
+										<input class="px150 maskalpha" value="<?=$css->identifiant?>" type="text" name="css[<?=$key?>][identifiant]" />
+									</td>
+									<td>
+										<input class="px600" value="<?=$css->file?>" type="text" name="css[<?=$key?>][file]" />
+									</td>
+									<td>
+										<img onclick='deleteCss(<?=$key?>)' class='pr t3' src='/images/icons/delete.gif' alt='Delete' />
+									</td>
+								</tr>
+								<?php endforeach;
+							}?>
+						</table>	
+						<input type="hidden" id="page_css_row_id" value="<? if(is_int($key)==true)  { echo $key; } else { echo '0'; }?>"/>
+						<input type="hidden" name="page_id" value="<?=$this->page->id?>" />						
+						<br />
+						<img  id='img_update_css' class=" pointer fright" alt='Update' src='/tools/button/white/Update css/000000/arial/10/' />
+						<div class="cleaner"></div>	
+					</form>											
+				</div>
+				
+			</div>								
+			<div class="cleaner"></div>	        
+	    </div>
+	    
+	    
+	    
+	    <div id="tabs-3">
+			<iframe name="page_update_acl_iframe" id='page_update_acl_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
+			<form target='page_update_acl_iframe' id='form_page_update_acl' action='/maerdo/pages/update/acl' method='post'>
+	         	<input type="hidden" name="page_id" value="<?=$this->page->id?>" />	
+	         	<h2><?php echo $this->translate('ACL');?></h2>
+				
+				<div id='page_heads_acl_notification_success' class='notification_success hidden px750'>							
+					<div class=""><?php echo $this->translate('ACL informations has been updated.');?><br /></div>																	
+				</div>
+				
+				<div id='page_heads_acl_notification_error' class='notification_error hidden px750'>							
+					<div class=""><?php echo $this->translate('An error has occured when try to update ACL informations.');?><br /></div>																	
+				</div>			    	       	
+		       	Who can access this page :<br />
+		       	<br />
+		       	<?php foreach($this->roles as $role):?>		      
+			       	<?php 					       					   
+			       	$checked=""; if(in_array($role->role,$this->pageroles)==true) $checked='checked="checked"';				       		       	
+			       	?>
+			       	<input type="checkbox" <?=$checked?> name='role[<?=$role->role?>]' value="<?=$role->id?>" /> <?=ucfirst($role->role)?><br/>
+			       					
+				<?php endforeach;?>
+				<img class="pr t8" onclick='updateACL();' alt='Update ACL' src='/tools/button/white/Update ACL/000000/arial/10' />
+			</form>		       	
+	    </div>
+	    
+	    
+	    
+	    <div id="tabs-4">
+			<iframe name="page_update_navigation_iframe" id='page_update_navigation_iframe' src='/maerdo/empty' class='hidden hoverflow' width='1' height='1'></iframe>
+			<form target='page_update_navigation_iframe' id='form_page_update_navigation' action='/maerdo/pages/update/navigation' method='post'>
+	         	<input type="hidden" name="page_id" value="<?=$this->page->id?>" />	
+	         	<h2><?php echo $this->translate('Navigation');?></h2>
+				
+				<div id='page_heads_navigation_notification_success' class='notification_success hidden px750'>							
+					<div class=""><?php echo $this->translate('Navigation informations has been updated.');?><br /></div>																	
+				</div>
+				
+				<div id='page_heads_navigation_notification_error' class='notification_error hidden px750'>							
+					<div class=""><?php echo $this->translate('An error has occured when try to update Navigation informations.');?><br /></div>																	
+				</div>		    
+				<br />
+				<div class="px150 fleft"><?php echo $this->translate('Parent');?> :</div>
+				<select class="px400 fleft" name="navigation[parent]">
+					<?php foreach($this->pages as $page) :?>
+					<option value="<?=$page->id?>"><?=$page->name?> - <?=$page->description?></option>
+					<?php endforeach;?>
+				</select>
+				<div class="cleaner"></div>
+				<br /><br />	
+				<div class="px150 fleft"><?php echo $this->translate('Label');?> :</div>
+				<input class="fleft px200" type="text" name="navigation[label]" value="" />
+				<div class="cleaner"></div>
+				<br />
+				<img onclick='updateNavigation()' class="ml300 pointer"  alt='Update Page' src='/tools/button/white/Update navigation/000000/arial/10' />				
+			</form>				
+	    </div>		
+	 </div>
+</div>

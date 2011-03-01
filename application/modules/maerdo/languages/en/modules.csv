@@ -1,0 +1,32 @@
+Edit module;Edit module
+A controller with this name already exist.;A controller with this name already exist.
+An error has occured when trying to add controller.;An error has occured when trying to add controller.
+An action with this name already exist.;An action with this name already exist.
+An error has occured when trying to add the action.;An error has occured when trying to add the action.
+An error has occured when trying to delete the controller.;An error has occured when trying to delete the controller.
+An error has occured when trying to delete the action.;An error has occured when trying to delete the action.
+Controller has been added.;Controller has been added.
+Action has been added.;Action has been added.
+Controller has been deleted.;Controller has been deleted.
+Action has been deleted.;Action has been deleted.
+Name;Name
+Description;Description
+Action;Action
+Add a controller;Add a controller
+You need to set a controller name to validate form.;You need to set a controller name to validate form.
+Controller name;Controller name
+Add;Add
+Add an action;Add an action
+You need to set an action name to validate form.;You need to set an action name to validate form.
+Controller;Controller
+Action name;Action name
+Module list;Module list
+An error has occured when trying to add the module.;An error has occured when trying to add the module.
+An error has occured when trying to delete the module.;An error has occured when trying to delete the module.
+Module has been added.;Module has been added.
+Module has been deleted.;Module has been deleted.
+Module;Module
+Create a module;Create a module
+You need to set a module name to validate form.;You need to set a module name to validate form.
+Module name;Module name
+Module description;Module description

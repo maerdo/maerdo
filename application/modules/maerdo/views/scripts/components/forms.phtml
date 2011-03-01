@@ -1,0 +1,27 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Forms')?></h1>
+</div>
+
+
+<a href='#' onclick='$("#form_add").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a form')?></a>
+<br /><br />
+<div id='form_add' class='hidden'>
+	<table>
+		<tr>
+			<td><?php echo $this->translate('Form name')?> :</td>
+			<td><input type="text" name="form_name" class="px200" /></td>
+		</tr>	
+	</table>
+	<br /><br />
+</div>
+<table class="px400">
+	<tr class="bggrey bold">
+		<td><?php echo $this->translate('Form name')?></td>
+		<td class="px50"><?php echo $this->translate('Actions')?></td>
+	</tr>
+	<?php foreach($this->forms as $form):?>
+	<tr>
+		<td></td>
+	</tr>
+	<?php endforeach;?>
+</table>		

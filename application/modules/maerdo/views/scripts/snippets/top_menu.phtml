@@ -1,0 +1,43 @@
+<?php $this->placeholder('top_menu')->captureStart() ?>				
+				<ul id="nav" class="fr">
+                    <li class="aide">
+                        <a class="aide" href="#"><?php echo $this->translate('Help');?></a>
+                        <ul>
+                            <li><a href="#"><?php echo $this->translate('Documentation');?></a></li>
+                            <li><a href="#"><?php echo $this->translate('Forums');?></a></li>
+                        </ul>
+
+                    </li>
+                    <li class="parametres">
+                        <a class="parametres" href="#"><?php echo $this->translate('Parameters');?></a>
+                        <ul>
+                            <li><a href="#"><?php echo $this->translate('Configuration');?></a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="composants">
+                        <a class="composants" href="#"><?php echo $this->translate('Components');?></a>
+                        <ul>
+                            <li><a href="/maerdo/component/database/"><?php echo $this->translate('Database');?></a></li>                            
+                            <li><a href="/maerdo/component/translate/"><?php echo $this->translate('Translate');?></a></li>                            
+                            <li><a href="/maerdo/component/plugins/"><?php echo $this->translate('Plugins');?></a></li>
+                            <li><a href="/maerdo/component/auth/"><?php echo $this->translate('Auth');?></a></li>
+                            <li><a href="/maerdo/component/acl/"><?php echo $this->translate('Acl');?></a></li>
+                            <!-- <li><a href="/maerdo/component/cache/"><?php echo $this->translate('Cache');?></a></li>  -->                                                                                                         
+                        </ul>
+                    </li>
+                    
+                    <li class="framework">
+                        <a class="framework" href="#"><?php echo $this->translate('Framework');?></a>
+                        <ul>
+                            <li>
+                                <a href="/maerdo/pages"><?php echo $this->translate('Pages');?></a>
+                            </li>
+                            <li>
+                                <a href="/maerdo/modules"><?php echo $this->translate('Module');?></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="accueil"><a class="accueil" href="#"><?php echo $this->translate('Home');?></a></li>
+                </ul>
+<?php $this->placeholder('top_menu')->captureEnd() ?>                

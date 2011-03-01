@@ -1,0 +1,63 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Acl')?></h1>
+</div>
+
+<?php if($this->notification_error!=NULL):?>
+<div class='notification_error px700'>
+	<?php if($this->notification_error=='add_aclrole_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to add the Role.');?><br /></div>
+	<?php endif;?>
+	<?php if($this->notification_error=='delete_aclrole_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to delete the Role.');?><br /></div>
+	<?php endif;?>	
+</div>
+<?php endif;?>
+
+
+<?php if($this->notification_success!=NULL):?>
+<div class='notification_success px700'>
+	<?php if($this->notification_success=='add_aclrole_success'):?>
+	<div><?php echo $this->translate('The Role has been created.');?><br /></div>
+	<?php endif;?>
+	<?php if($this->notification_success=='delete_aclrole_success'):?>
+	<div><?php echo $this->translate('The Role has been deleted.');?><br /></div>
+	<?php endif;?>	
+</div>	
+<?php endif;?>
+
+<br /><br />
+<form action="/maerdo/component/acl" method="post">
+	<input type="hidden" name="form_action" value="add_role" />
+	<select class="px200" name="parent">
+		<option value="">-- Select parent --</option>
+		<option value="">None</option>
+		<?php foreach($this->aclRoles as $role):?>
+		<option value='<?=$role->role?>'><?=$role->role?></option>
+		<?php endforeach;?>
+	</select>
+	<input type="text" name="role" />
+	<input type="submit" value="<?echo $this->translate('Add this role')?>" />
+</form>
+<br /><br />
+
+<table class="px450">
+	<tr class="bggrey bold">
+		<td class="px200">Role</td>
+		<td class="px200">Parent</td>
+		<td class="px50">Action</td>
+	</tr>
+	<?php 
+	$class="bggreylight";
+	foreach($this->aclRoles as $role):
+		if($class=="")
+			$class="bggreylight";
+		else
+			$class="";	
+		?>
+		<tr class="<?=$class?>">		
+			<td><?=$role->role?></td>
+			<td><?=$role->parent?></td>
+			<td><a href='/maerdo/component/acl?form_action=delete&id=<?=$role->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a></td>
+		</tr>
+	<?php endforeach;?>
+</table>		

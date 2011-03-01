@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class My_Class_Maerdo_Action</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class My_Class_Maerdo_Action</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This class is used to work with actions.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Nicolas Blaudez &lt;<a href="mailto:nblaudez@maerdo.com">nblaudez@maerdo.com</a>&gt;</li>
+				<li><span class="field">version:</span> 0.1</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Action.php.html">/Action.php</a> (line <span class="field">9</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					static 						<span class="method-result">mixed</span>
+										<a href="#add" title="details" class="method-name">add</a>
+											(<span class="var-type">$controller_id</span>&nbsp;<span class="var-name">$controller_id</span>, <span class="var-type">$name</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">$description</span>&nbsp;<span class="var-name">$description</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">int</span>
+										<a href="#countAll" title="details" class="method-name">countAll</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">boolean</span>
+										<a href="#delete" title="details" class="method-name">delete</a>
+											(<span class="var-type">$action_id</span>&nbsp;<span class="var-name">$action_id</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">array</span>
+										<a href="#getList" title="details" class="method-name">getList</a>
+											([<span class="var-type">$controller_id</span>&nbsp;<span class="var-name">$controller_id</span> = <span class="var-default">NULL</span>])
+									</div>
+								
+																																				</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodadd" id="add"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method add</span> (line <span class="line-number">46</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add an action.</p>
+<p class="description"><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$result</span>=<span class="src-id"><a href="../Maerdo/My_Class_Maerdo_Action.html">My_Class_Maerdo_Action</a></span><span class="src-sym">::</span><a href="../Maerdo/My_Class_Maerdo_Action.html#methodadd">add</a><span class="src-sym">(</span><span class="src-str">'1'</span><span class="src-sym">,</span><span class="src-str">'viewall'</span><span class="src-sym">,</span><span class="src-str">'View&nbsp;All&nbsp;item'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> (-1 action already exist or true if action was added)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			add
+		</span>
+					(<span class="var-type">$controller_id</span>&nbsp;<span class="var-name">$controller_id</span>, <span class="var-type">$name</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">$description</span>&nbsp;<span class="var-name">$description</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$controller_id</span>
+				<span class="var-name">$controller_id</span><span class="var-description">: Maerdo database controller id</span>			</li>
+					<li>
+				<span class="var-type">$name</span>
+				<span class="var-name">$name</span><span class="var-description">: name of action used in ZF controller</span>			</li>
+					<li>
+				<span class="var-type">$description</span>
+				<span class="var-name">$description</span><span class="var-description">: Maerdo description of action</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcountAll" id="countAll"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method countAll</span> (line <span class="line-number">86</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Count all actions.</p>
+<p class="description"><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$result</span>=<span class="src-id"><a href="../Maerdo/My_Class_Maerdo_Action.html">My_Class_Maerdo_Action</a></span><span class="src-sym">::</span><a href="../Maerdo/My_Class_Maerdo_Action.html#methodcountAll">countAll</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">int</span>
+		<span class="method-name">
+			countAll
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddelete" id="delete"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method delete</span> (line <span class="line-number">72</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Delete an action.</p>
+<p class="description"><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$result</span>=<span class="src-id"><a href="../Maerdo/My_Class_Maerdo_Action.html">My_Class_Maerdo_Action</a></span><span class="src-sym">::</span><a href="../Maerdo/My_Class_Maerdo_Action.html#methoddelete">delete</a><span class="src-sym">(</span><span class="src-str">'1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			delete
+		</span>
+					(<span class="var-type">$action_id</span>&nbsp;<span class="var-name">$action_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$action_id</span>
+				<span class="var-name">$action_id</span><span class="var-description">: Maerdo database action id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetList" id="getList"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method getList</span> (line <span class="line-number">21</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retourn list of action.</p>
+<p class="description"><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$allActions</span>=<span class="src-id"><a href="../Maerdo/My_Class_Maerdo_Action.html">My_Class_Maerdo_Action</a></span><span class="src-sym">::</span><a href="../Maerdo/My_Class_Maerdo_Action.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$controllerAction</span>=<span class="src-id"><a href="../Maerdo/My_Class_Maerdo_Action.html">My_Class_Maerdo_Action</a></span><span class="src-sym">::</span><a href="../Maerdo/My_Class_Maerdo_Action.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-var">$maerd_controller_id</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array with action fields</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getList
+		</span>
+					([<span class="var-type">$controller_id</span>&nbsp;<span class="var-name">$controller_id</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$controller_id</span>
+				<span class="var-name">$controller_id</span><span class="var-description">: Maerdo database controller id, can be null to fetch all actions</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 08 Feb 2011 23:05:13 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/base.css" />
+<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/login.css" />
+<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/styles.css" />  
+
+
+<title>Maerdo - Login</title>
+</head>
+<body style='background-color:black'>
+<br />
+<img src='/images/logo.png' alt='logo' />
+<div id="login-wrapper">
+<div class="box-header login">
+<span class="fr"><a href="#">You lose your password ?</a></span>
+Login
+</div>
+<div class="box">
+
+<form method="post" action="/maerdo/login" class="login">
+  <div class="row">
+    <?php echo $this->form->username->renderLabel();?>
+    <?php echo $this->form->username->renderViewHelper();?>
+    <?php if($this->form->username->renderErrors()!=""):?>
+    	<div class="fright mb10"><?php echo $this->form->username->renderErrors()?></div>
+    <?php endif;?>	
+ </div>
+
+  <div class="row">
+    <?php echo $this->form->password->renderLabel();?>
+    <?php echo $this->form->password->renderViewHelper();?>
+    <?php if($this->form->username->renderErrors()!=""):?>
+    	<div class="fright mb10"><?php echo $this->form->password->renderErrors()?></div>
+    <?php endif;?>	    
+ </div>
+   <div class="row tr">
+   		<input type="submit" value="Identification" class="button" style="width:90px!important;" />
+   </div>
+ </form>
+
+</div>
+</div>
+
+
+</body>
+</html>

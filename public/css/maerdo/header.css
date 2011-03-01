@@ -1,0 +1,78 @@
+
+/* Main Elements */
+#logo {
+	padding:15px 0 0 0;
+}
+#header {
+	color:#fff;
+}
+#header a {
+	color:#fff;
+	text-decoration:underline;
+}
+#header a:hover {
+	color:#fff;
+	text-decoration:none;
+}
+.header-top {
+	background:#2c2c2c;
+	padding:6px 25px 2px;
+}
+.header-middle {
+	background:#404040 url('/images/header-middle.gif') repeat-x bottom;
+	border-top:1px solid #606060;
+	border-bottom:1px solid #050505;
+	padding:0 25px;
+	height:62px;
+min-width:1000px;
+}
+.header-bottom {
+	background:#313131 url('/images/header-bottom.gif') repeat-x bottom;
+	border-top:1px solid #545454;
+	border-bottom:1px solid #545454;
+	padding:7px 25px;
+}
+#header p {
+	margin:0 0 5px 0;
+}
+#header span {
+	color:#6e7d87;
+}
+
+/* breadcrumbs */
+#breadcrumbs {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+#breadcrumbs li {
+	display:inline;
+	font-size:12px;
+	line-height: normal;
+	float: none;
+	font-size:14px;
+}
+#breadcrumbs li a {
+	float: none;
+	display: inline;
+	font-weight: bold;
+	padding: 0;
+	text-decoration:none;
+	font-size:12px;
+}
+#breadcrumbs li.bold a {
+	font-weight:bold;
+}
+#breadcrumbs li:HOVER {
+	background: none;
+	padding: 0;
+}
+#breadcrumbs li:HOVER A {
+	text-decoration:underline;
+	padding: 0;
+}
+.breadcrumbs li a:HOVER {
+	text-decoration:underline;
+	background: none;
+	padding: 0;
+}

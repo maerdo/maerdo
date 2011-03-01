@@ -1,0 +1,107 @@
+<div id="page-header">
+	<h1><?php echo ($this->translate('Create a form'));?></h1>
+</div>
+
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+</script>
+
+
+
+<div class="demo">
+	<div id="tabs">
+		<ul>		
+			<li><a href="#tabs-1"><?php echo $this->translate('Field & parameters');?></a></li>
+			<li><a href="#tabs-2"><?php echo $this->translate('Validators');?></a></li>
+			<li><a href="#tabs-3"><?php echo $this->translate('Filters');?></a></li>
+			<li><a href="#tabs-4"><?php echo $this->translate('Decorators');?></a></li>
+		</ul>
+		<div id="tabs-1">
+			<h2><?php echo $this->translate('Form parameters');?></h2>
+			<form id='form_forms_add' action='/maerdo/forms/add' method='post'>
+				<div class="px500">
+					<div id='form_error' class="hidden">
+						<br />
+						<div class='notification_error px500'>
+							<div id='form_error_name'><?php echo $this->translate('You need to set a name to validate form.');?><br /></div>
+							<div id='form_error_controller'><?php echo $this->translate('You need to select a controller to validate form.');?><br /></div>
+							<div id='form_error_description'><?php echo $this->translate('You need to set a description to validate form.');?><br /></div>
+						</div>
+						<br />
+					</div>
+					
+					<table>
+						<tr>			
+							<td><?php echo $this->translate('Module');?> :</td>
+							<td>
+								<select  id='form_module' class="px200"  name="form[module]">
+								<?php foreach($this->modules as $module):?>
+									<option value='<?php echo $module->id?>'><?php echo $module->name?></option>
+								<?php endforeach;?> 
+								</select>
+								 
+							</td>
+						</tr>
+						<tr>			
+							<td><?php echo $this->translate('Controller');?> :</td>
+							<td>
+								<select id='form_controller' class="px200"  name="form[controller]">
+								<?php foreach($this->controllers as $controller):?>
+									<option value='<?php echo $controller->id?>'><?php echo $controller->name?></option>
+								<?php endforeach;?>						 
+								</select>
+							</td>
+						</tr>							
+						<tr>
+							<td><?php echo $this->translate('Form name');?> :</td>
+							<td><input id='form_name' type="text" class="px200" name="form[name]" /></td>
+						</tr>	
+						<tr>
+							<td><?php echo $this->translate('Form description');?> :</td>
+							<td><input id='form_description' type="text" class="px400 " name="form[description]" /></td>
+						</tr>					
+					
+						<tr>			
+							<td><?php echo $this->translate('Method');?> :</td>
+							<td>
+								<select name="form[method]">
+									<option value='get'>GET</option>
+									<option value='post'>POST</option>
+								 </select>
+							</td>
+						</tr>
+					</table>	
+					<br />	
+					<img id='formSaveStep1' class="fright pointer" src='/tools/button/white/Save   /000000/arial' alt='Save' />
+					<div class="cleaner"></div>
+				</div>	
+			</form>
+			<br />
+			<div id="form_field" class="hidden">
+				<h2><?php echo $this->translate('Fields');?></h2>
+				<img class="pr t3" src='/images/icons/add.png' /><a href='#'><?php echo $this->translate('Add a field');?></a>
+				<br /><br />		
+				<table class="px700">
+					<tr>
+						<td class="px100"><?php echo $this->translate('Field name');?></td>
+						<td class="px100"><?php echo $this->translate('Label');?></td>
+						<td class="px200"><?php echo $this->translate('Description');?></td>
+						<td class="px100"><?php echo $this->translate('Field type');?></td>
+						<td class="px200"><?php echo $this->translate('Options');?></td>
+					</tr>
+				</table>	
+			</div>		
+		</div>
+		<div id="tabs-2">
+			<?php echo $this->translate('You need to save "Fields & parameters" data to access to this section');?>
+		</div>
+		<div id="tabs-3">
+			<?php echo $this->translate('You need to save "Fields & parameters" data to access to this section');?>
+		</div>
+		<div id="tabs-4">	
+			<?php echo $this->translate('You need to save "Fields & parameters" data to access to this section');?>		
+		</div>		
+	</div>
+</div>

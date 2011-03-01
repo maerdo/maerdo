@@ -1,0 +1,87 @@
+Acl;Acl
+An error has occured when trying to add the Role.;An error has occured when trying to add the Role.
+An error has occured when trying to delete the Role.;An error has occured when trying to delete the Role.
+The Role has been created.;The Role has been created.
+The Role has been deleted.;The Role has been deleted.
+Add this role;Add this role
+Authentification;Authentification
+An error has occured when trying to update auth configuration or item was not modified.;An error has occured when trying to update auth configuration or item was not modified.
+The authentification configuration has been update.;The authentification configuration has been update.
+Database configuration;Database configuration
+Database;Database
+Table;Table
+Username field;Username field
+Password field;Password field
+Role field;Role field
+Redirection URL after authentification;Redirection URL after authentification
+Cache;Cache
+An error has occured when trying to add the cache.;An error has occured when trying to add the cache.
+An error has occured when trying to delete the cache.;An error has occured when trying to delete the cache.
+The cache has been created.;The cache has been created.
+The cache has been deleted.;The cache has been deleted.
+Name;Name
+Frontend Type;Frontend Type
+Backend support;Backend support
+Actions;Actions
+Backend;Backend
+Cache dir;Cache dir
+File locking;File locking
+Read control;Read control
+read_control_type;read_control_type
+Hash directory level;Hash directory level
+Hash directory umask;Hash directory umask
+Metatadatas array max size;Metatadatas array max size
+Cache db complete path;Cache db complete path
+Automatic vacuum factor;Automatic vacuum factor
+Frontend;Frontend
+Writecontroler;Writecontroler
+Caching;Caching
+Cache id prefix;Cache id prefix
+Automatic serialization;Automatic serialization
+Automatic cleaning factor;Automatic cleaning factor
+Lifetime;Lifetime
+Logging;Logging
+Logger;Logger
+Database management;Database management
+An error has occured when trying to add the database.;An error has occured when trying to add the database.
+An error has occured when trying to delete the database.;An error has occured when trying to delete the database.
+An error has occured when trying to delete the default database.;An error has occured when trying to delete the default database.
+An error has occured when trying to set the default database.;An error has occured when trying to set the default database.
+The database has been created.;The database has been created.
+The database has been deleted.;The database has been deleted.
+The default database has been deleted.;The default database has been deleted.
+The default database has been setted.;The default database has been setted.
+You must set a name to validate form.;You must set a name to validate form.
+You must set a hostname to validate form.;You must set a hostname to validate form.
+You must set a database name to validate form.;You must set a database name to validate form.
+You must set a username to validate form.;You must set a username to validate form.
+You must set a password to validate form.;You must set a password to validate form.
+Add a database;Add a database
+Adapter;Adapter
+Host;Host
+User;User
+Password;Password
+Action;Action
+Hostname;Hostname
+Username;Username
+Select a  default database connection for a module;Select a  default database connection for a module
+Set to default adapter;Set to default adapter
+Module;Module
+Forms;Forms
+Add a form;Add a form
+Form name;Form name
+Plugins;Plugins
+Select a plugin to enable;Select a plugin to enable
+Translate;Translate
+Select a module;Select a module
+Application settings;Application settings
+You need to set a value in all input box to valid form.;You need to set a value in all input box to valid form.
+You need to select a default language.;You need to select a default language.
+An error has occured when trying to update the translatation configuration.;An error has occured when trying to update the translatation configuration.
+Translation configuration has been updated.;Translation configuration has been updated.
+Translation configuration;Translation configuration
+Add a language;Add a language
+ID;ID
+Locale;Locale
+Language name;Language name
+Default;Default

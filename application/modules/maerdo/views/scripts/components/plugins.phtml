@@ -1,0 +1,54 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Plugins')?></h1>
+</div>
+<div class="fleft px300">
+	<?php echo $this->translate('Select a plugin to enable')?> :<br />
+	<select class="px300" size='20' id='selectbox_plugin'>
+		<?php foreach($this->freeplugins as $file=>$plugins):?>
+			<option value='<?=$plugins?>'><?=$plugins?></option>
+		<?php endforeach;?>	
+	</select>	
+</div>
+<div class="px150 fleft ml50">
+	<br />
+	<input type="button" onclick='addPlugin()' value="enable this plugin >>" style='height:30px;width:150px' />
+</div>
+<div class="fleft px300 ml50">
+	<br />
+	<table class="px300" id='table_plugins'>
+		<tr class="bggrey bold">
+			<td>Plugin</td>
+			<td>Stackindex</td>
+			<td>Action</td>						
+		</tr>	
+		<?php 
+		$i=0;
+		foreach($this->selectedplugins as $selectedPlugin):?>	
+		<tr id='table_plugin_row_<?=$i?>'>
+			<td>
+			<input type='hidden' id='plugin_name_<?=$i?>' name='plugins[<?=$i?>][plugin_name]' value='<?=$selectedPlugin['name']?>' />
+			<?=$selectedPlugin['name']?>
+			</td>
+			<td>
+				<select onchange='updateStackIndex("<?=$selectedPlugin['name']?>",this.value)' name='stackindex'>
+					<?php foreach($this->freestackindex as $key=>$stackindex):	
+					 
+					if($stackindex<$selectedPlugin['stackindex'] && $selectedPlugin['stackindex']<$this->freestackindex[$key+1]) {
+						echo "<option  selected='selected' value='".$selectedPlugin['stackindex']."'>".$selectedPlugin['stackindex']."</option>";
+					} else {
+						echo "<option  value='".$stackindex."'>".$stackindex."</option>";
+					}
+					?>
+					<?php endforeach;?>
+				</select>
+			</td>
+			<td><a href='#' onclick='deletePlugin(<?=$i?>)'><img src='/images/icons/delete.gif' alt='icons' /></a></td>						
+		</tr>	
+		<?php 
+		$i++;
+		endforeach;?>
+	</table>
+	<input type='hidden' id='plugins_row_id' value='<?=$i?>' />
+	<br /><br /><br />	
+</div>
+<div class="cleaner"></div>

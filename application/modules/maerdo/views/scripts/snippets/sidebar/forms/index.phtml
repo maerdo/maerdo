@@ -1,0 +1,17 @@
+<?php $this->placeholder('sidebar')->captureStart() ?>
+                    
+                    <span class="ul-header"><a id="toggle-formsnav" href="#" name="toggle-formsnav"><?php echo $this->translate('Forms')?></a></span>
+                    <ul id="formsnav">
+                        <li><a class="icn_add_pages" href="/maerdo/forms/add"><?php echo $this->translate('Create a form')?></a></li>
+                        <li><a class="icn_manage_pages" href="/maerdo/forms/"><?php echo $this->translate('Forms list')?></a></li>
+                    </ul>
+                    
+                    <span class="ul-header">Statistics</span>
+                    <ul>
+						<li>Pages: <?=$this->sidebarCountPage?> </li>
+                        <li>Modules: <?=$this->sidebarCountModule?> </li>
+                        <li>Controller: <?=$this->sidebarCountController?> </li>
+                        <li>Action: <?=$this->sidebarCountAction?> </li>                       
+                    </ul>
+                    
+<?php $this->placeholder('sidebar')->captureEnd() ?>                     

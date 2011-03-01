@@ -1,0 +1,29 @@
+
+
+Usage: Maerdo.php update [options]=<section>
+
+<section> is equal to 'all' if is empty
+
+	Options :
+		translate=<section>  Update Translate Data
+        	Sections :
+		              conf: create language configs files
+		              buildcsvfiles : Build langue cvs file
+		              all : Build all langue data\n
+		              
+		page=<section>  Update pages Data
+		    Sections :
+		              module : create new modules
+		              controller : create new controllers
+		              action : create new actions
+		              route : update routes
+		              acl : update ACL
+		              header : create header						
+		              all : Build all page data\n
+		              
+		database=<section>  Update model Data
+		    Sections :
+		              buildmodels : Build DB models
+		              conf : create module database configs files
+		              all : Build all model data				
+		

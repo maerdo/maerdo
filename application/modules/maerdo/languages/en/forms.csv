@@ -1,0 +1,23 @@
+Create a form;Create a form
+Field & parameters;Field & parameters
+Validators;Validators
+Filters;Filters
+Decorators;Decorators
+Form parameters;Form parameters
+You need to set a name to validate form.;You need to set a name to validate form.
+You need to select a controller to validate form.;You need to select a controller to validate form.
+You need to set a description to validate form.;You need to set a description to validate form.
+Module;Module
+Controller;Controller
+Form name;Form name
+Form description;Form description
+Method;Method
+Fields;Fields
+Add a field;Add a field
+Field name;Field name
+Label;Label
+Description;Description
+Field type;Field type
+Options;Options
+You need to save "Fields & parameters" data to access to this section;You need to save "Fields & parameters" data to access to this section
+Forms list;Forms list

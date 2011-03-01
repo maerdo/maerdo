@@ -1,0 +1,22 @@
+[production]
+auth.enable="true"
+auth.db="maerdo_db"
+
+auth.field.username="username"
+auth.field.password="password"
+auth.field.role="role"
+
+auth.redirect.member="/"
+auth.redirect.admin="/maerdo/"
+auth.redirect.error="/maerdo/login/error"
+
+auth.admin.username="admin"
+auth.admin.password="nico"
+
+auth.table="users"
+
+[staging : production]
+
+[testing : production]
+
+[development : production]
