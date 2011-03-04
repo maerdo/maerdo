@@ -112,9 +112,9 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
      *
      * @param string $id
      */
-    public function find($id) {
+    public function find($id) {    	
             $table = $this->getDbTable();
-            $row = $table->find($id);
+            $row = $table->find($id);            
    			foreach ($row as $data) {
            		$model=new Maerdo_Model_Componentcache();
             	$model->setId($data['id'])

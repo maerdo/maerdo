@@ -17,8 +17,10 @@ Redirection URL after authentification;Redirection URL after authentification
 Cache;Cache
 An error has occured when trying to add the cache.;An error has occured when trying to add the cache.
 An error has occured when trying to delete the cache.;An error has occured when trying to delete the cache.
+An error has occured when trying to update the cache.;An error has occured when trying to update the cache.
 The cache has been created.;The cache has been created.
 The cache has been deleted.;The cache has been deleted.
+The cache has been updated.;The cache has been updated.
 Name;Name
 Frontend Type;Frontend Type
 Backend support;Backend support

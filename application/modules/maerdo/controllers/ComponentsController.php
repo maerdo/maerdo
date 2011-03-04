@@ -190,6 +190,29 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     				break;
     		}
     	}     
+    	if($this->_getParam('form_action')=="update_cache") {
+    		
+    		if(My_Class_Maerdo_Component_Cache::delete($this->_getParam('cc_id'))!=0) {; 
+    			$result=(int) My_Class_Maerdo_Component_Cache::add($this->_getParam('cache'));
+    		} else {
+    			$result=0;
+    		}	   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='update_cache_error';
+    				break;
+    			default:
+    				$this->view->notification_success='update_cache_success';
+    				break;
+    		}
+    	}       	
+    	if($this->_getParam('form_action')=="update_form") {
+    		$cacheConfig=My_Class_Maerdo_Component_Cache::getConfiguration($this->_getParam('id'));
+
+			$this->view->cc_id=$this->_getParam('id');
+    		$this->view->cacheConfig=$cacheConfig;
+    		$this->view->update_form=true;
+    	}         	
     		
     	
     	$caches=My_Class_Maerdo_Component_Cache::getList();

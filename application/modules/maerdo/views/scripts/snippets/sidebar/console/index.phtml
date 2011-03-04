@@ -1,0 +1,19 @@
+<?php $this->placeholder('sidebar')->captureStart() ?>
+
+                    <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><?php echo $this->translate('Acl')?></a></span>
+                    <ul id="pagesnav">
+						<li><a  class="icn_manage_pages" href='/maerdo/console/console?commande=update pages' target='iframe'><?php echo $this->translate('Update Pages')?></a></li>
+						<li><a  class="icn_database" href='/maerdo/console/console?commande=update database' target='iframe'><?php echo $this->translate('Update Database')?></a></li>
+						<li><a  class="icn_edit_comments" href='/maerdo/console/console?commande=update translate' target='iframe'><?php echo $this->translate('Update Translation')?></a></li>                        
+                    </ul>
+
+                    <span class="ul-header">Statistics</span>
+                    <ul>
+						<li>Pages: <?=$this->sidebarCountPage?> </li>
+                        <li>Modules: <?=$this->sidebarCountModule?> </li>
+                        <li>Controller: <?=$this->sidebarCountController?> </li>
+                        <li>Action: <?=$this->sidebarCountAction?> </li>                       
+                    </ul>
+
+            
+<?php $this->placeholder('sidebar')->captureEnd() ?>

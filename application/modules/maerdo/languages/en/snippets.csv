@@ -5,6 +5,9 @@ Database;Database
 Forms;Forms
 Plugins;Plugins
 Translate;Translate
+Update Pages;Update Pages
+Update Database;Update Database
+Update Translation;Update Translation
 Create a form;Create a form
 Forms list;Forms list
 Module;Module
@@ -19,5 +22,6 @@ Forums;Forums
 Parameters;Parameters
 Components;Components
 Cache;Cache
+Console;Console
 Framework;Framework
 Home;Home

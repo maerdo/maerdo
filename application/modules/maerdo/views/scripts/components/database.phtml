@@ -65,22 +65,24 @@
 	</tr>	
 <?php 
 $class="bggrey";
-foreach($this->databases as $database):
-	if($class=="bggrey")
-		$class="";
-	else
-		$class="bggrey";	
-?>
-	<tr class="<?=$class?>">
-		<td><?=$database['name']?></td>
-		<td><?=$database['adapter']?></td>
-		<td><?=$database['hostname']?></td>
-		<td><?=$database['database']?></td>
-		<td><?=$database['username']?></td>
-		<td><?=$database['password']?></td>
-		<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
-	</tr>
-<?php endforeach;?>
+if(is_array($this->databases)):
+	foreach($this->databases as $database):
+		if($class=="bggrey")
+			$class="";
+		else
+			$class="bggrey";	
+	?>
+		<tr class="<?=$class?>">
+			<td><?=$database['name']?></td>
+			<td><?=$database['adapter']?></td>
+			<td><?=$database['hostname']?></td>
+			<td><?=$database['database']?></td>
+			<td><?=$database['username']?></td>
+			<td><?=$database['password']?></td>
+			<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		</tr>
+	<?php endforeach;
+endif;?>
 </table>
 <br /><br /><br />
 <form id='form_database_update' action='/maerdo/component/database' method='post'>
@@ -119,7 +121,7 @@ foreach($this->databases as $database):
 	</tr>	
 	<tr>
 		<td class="px200"><?php echo $this->translate('Password')?> :</td>
-		<td><input id='database_password' value="" type="text" class="px200" name="database[password]"></td>
+		<td><input id='database_password' value="" type="password" class="px200" name="database[password]"></td>
 	</tr>	
 	<tr>
 		<td colspan="2">
@@ -155,16 +157,18 @@ foreach($this->databases as $database):
 	</tr>	
 <?php 
 $class="bggrey";
-foreach($this->modulesDatabases as $moduleDatabase):
-	if($class=="bggrey")
-		$class="";
-	else
-		$class="bggrey";	
-?>
-	<tr class="<?=$class?>">
-		<td><?=$moduleDatabase['module_name']?></td>
-		<td><?=$moduleDatabase['database_name']?></td>
-		<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?=$moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
-	</tr>
-<?php endforeach;?>	
+if(is_array($this->modulesDatabases)):
+	foreach($this->modulesDatabases as $moduleDatabase):
+		if($class=="bggrey")
+			$class="";
+		else
+			$class="bggrey";	
+	?>
+		<tr class="<?=$class?>">
+			<td><?=$moduleDatabase['module_name']?></td>
+			<td><?=$moduleDatabase['database_name']?></td>
+			<td><a href='/maerdo/component/database?form_action=deleteDefaultadApter&id=<?=$moduleDatabase['da_id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		</tr>
+	<?php endforeach;
+endif;?>	
 </table>		

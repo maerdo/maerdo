@@ -6,6 +6,7 @@
 <select name='module' class="px200" id='selectModule'>
 	<option value="null">-- <?php echo $this->translate('Select a module')?> -- </option>
 	<?php $selected="";if($this->module_id=="-1") $selected='selected="selected"';?>
+	<option value="null">----- </option>
 	<option <?=$selected?> value="-1"><?php echo $this->translate('Application settings')?> </option>
 	<option value="null">----- </option>
 	<?php 

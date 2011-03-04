@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">	
+	<head>
+		<title>Maerdo - Login</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/base.css" />
+		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/install.css" />
+		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/styles.css" />  
+
+        <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+        
+		
+	</head>
+	<body style='background-color:black;color:white'>
+		<div id='console' style='padding-left:10px;padding-bottom:5px;overflow:auto;width:900px;height:500px;'>
+			<pre>			
+			<?php 
+				system('php '.APPLICATION_PATH.'/../Maerdo.php'.' '.$this->commande);
+			?>
+			</pre>
+		</div>	
+		<script type="text/javascript">		
+			$('#console').scrollTop($('#console')[0].scrollHeight);
+		</script>
+	</body>
+</html>		

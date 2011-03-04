@@ -137,4 +137,19 @@ class Maerdo_Model_Mappers_Componenttranslate extends Maerdo_Model_Mappers_Abstr
     public function deleteByPrimarykey($value) {
         return $this->getDbTable()->delete('id = '.$value);
     }    
+    
+    public function getLocales() {
+    	
+		$table = $this->getDbTable();
+		$select = $table->select();
+		
+		$select->from('component__translate')
+			   ->group('locale');
+		
+		$stmt=$select->query();		
+		$rows=$stmt->fetchAll();
+        
+		return($rows);	 
+    
+    }
 }
