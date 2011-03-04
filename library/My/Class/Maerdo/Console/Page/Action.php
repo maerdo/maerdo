@@ -35,7 +35,7 @@ class My_Class_Maerdo_Console_Page_Action {
 					$data=file_get_contents("application/modules/$module/controllers/".ucfirst($controller)."Controller.php");
 					if(!preg_match("#".$action."Action()#",$data)) {				
 						My_Class_Maerdo_Console::display("3","Create '$action' action in ".ucfirst($module)." ".ucfirst($controller)." controller");
-						system("zf create action $action ".ucfirst($controller)." 1 $module");
+						exec("zf create action $action ".ucfirst($controller)." 1 $module");
 					}					
 				}
 			}

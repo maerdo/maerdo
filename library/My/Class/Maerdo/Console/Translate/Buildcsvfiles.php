@@ -3,21 +3,21 @@
 class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 
 	public $tree;
-	protected $_application_path="application/";
+
 	
 	public function update() {
 		My_Class_Maerdo_Console::display("2","Building csv files from views scripts");
-		$this->_parse($this->_application_path.'/modules/');
+		$this->_parse(APPLICATION_PATH.'/modules/');
 	}
 	
 	/*
 	 * Build File Tree
 	 */
 	protected function _parse($dir) {
-		$this->_modules=$this->_scanmodules($dir);
+		$this->_modules=$this->_scanmodules($dir);		
 		foreach($this->_modules as $module) {
-			$this->tree[$module]=$this->_getDirectoryTree($this->_application_path.'/modules/'.$module.'/views/scripts/');
-		}
+			$this->tree[$module]=$this->_getDirectoryTree(APPLICATION_PATH.'/modules/'.$module.'/views/scripts/');
+		}		
 		$this->_parseTree();
 		$this->_writeFiles();
 	}
@@ -58,9 +58,9 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 			foreach($controllers as $controller=>$entries) {
 				foreach($entries as $entrie_name=>$entrie) {					
 					if(is_array($entrie)) {
-						$this->_parseEntrie($this->_application_path.'modules/'.$module.'/views/scripts/'.$controller.'/'.$entrie_name);
+						$this->_parseEntrie(APPLICATION_PATH.'/modules/'.$module.'/views/scripts/'.$controller.'/'.$entrie_name);
 					} else {
-						$this->_parseFile($this->_application_path.'modules/'.$module.'/views/scripts/'.$controller.'/'.$entrie,$module,$controller);
+						$this->_parseFile(APPLICATION_PATH.'/modules/'.$module.'/views/scripts/'.$controller.'/'.$entrie,$module,$controller);
 					}
 				}	
 			}
@@ -85,9 +85,14 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 	protected function _parseFile($file) {
 		$fileContent=file_get_contents($file);
 		preg_match_all('#translate\(\'(.*)\'\)#',$fileContent,$result);
-		$array=explode('/',$file);
-		$module=$array[2];
-		$controller=$array[5];				
+		$array=explode('/',$file);				
+		if($array[6]=="modules") {
+			$module=$array[7];
+			$controller=$array[10];
+		} else {
+			$module=$array[6];
+			$controller=$array[9];
+		}						
 		foreach($result[1] as $entrie) {
 			$this->_entrie[$module][$controller][$entrie]=$entrie;
 		}
@@ -97,17 +102,20 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 	/*
 	 * Write CSV file
 	 */
-	protected function _writeFiles() {
-		foreach($this->_entrie as $module=>$moduleData) {			
-			$config_ini = $this->_application_path . '/configs/translate.ini';
+	protected function _writeFiles() {		
+		foreach($this->_entrie as $module=>$moduleData) {					
+			$config_ini = APPLICATION_PATH . '/configs/translate.ini';
 			$config=new Zend_Config_Ini($config_ini);
 			$languages=$config->translate->locale;
 			foreach ($languages as $dir=>$locale) {
-				foreach($moduleData as $controller=>$sentences) {	
-					if(!is_dir($this->_application_path.'/modules/'.$module.'/languages/'.$dir))
-						mkdir($this->_application_path.'/modules/'.$module.'/languages/'.$dir);				
-					if(is_file($this->_application_path.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv')) {
-						$fileData=file($this->_application_path.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv');
+				foreach($moduleData as $controller=>$sentences) {						
+					if(!is_dir(APPLICATION_PATH.'/modules/'.$module.'/languages/'))  {						
+						mkdir(APPLICATION_PATH.'/modules/'.$module.'/languages');		
+					}				
+					if(!is_dir(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir))
+						mkdir(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir);				
+					if(is_file(APPLICATION_PATH.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv')) {
+						$fileData=file(APPLICATION_PATH.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv');
 						$fileContent=array();
 						foreach($fileData as $line) {
 							$data=explode(';',$line);
@@ -132,8 +140,8 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 						$csvContent.="$key;$sentence\n";
 					}
 					
-					file_put_contents($this->_application_path."modules/".$module."/languages/".$dir."/".$controller.".csv",$csvContent);
-					My_Class_Maerdo_Console::display("3","Write ".$this->_application_path."modules/".$module."/languages/".$dir."/".$controller.".csv");
+					file_put_contents(APPLICATION_PATH."/modules/".$module."/languages/".$dir."/".$controller.".csv",$csvContent);
+					My_Class_Maerdo_Console::display("3","Write ".APPLICATION_PATH."/modules/".$module."/languages/".$dir."/".$controller.".csv");
 					My_Class_Maerdo_Console::display("3",count($fileContent)." sentences");
 								
 				}

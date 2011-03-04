@@ -2,20 +2,19 @@
 
 class My_Class_Maerdo_Console_Database_Buildmodels {
 
-	public $_modules;
-	protected $_application_path="application/";
+	public $_databases;	
 	
 	public function update() {		
 		My_Class_Maerdo_Console::display("2","Building models from DB");
-		$this->_getModulesConfig();			
-		foreach($this->_modules as $module) {
-			foreach($module['tables'] as $table=>$fields) {
-				$this->_writeDbTable($module,$table);	
-				$this->_writeMapper($module,$table,$fields);
-				$this->_writeModel($module,$table,$fields);	
+		$this->_getDatabaseConfig();			
+		foreach($this->_databases as $database) {
+			foreach($database['tables'] as $table=>$fields) {
+				$this->_writeDbTable($database,$table);	
+				$this->_writeMapper($database,$table,$fields);
+				$this->_writeModel($database,$table,$fields);	
 			}
-			$this->_writeModelAbstract($module);
-			$this->_writeMapperAbstract($module,$table,$fields);	
+			$this->_writeModelAbstract($database);
+			$this->_writeMapperAbstract($database);	
 			My_Class_Maerdo_Console::newline();
 		}
 	}
@@ -23,46 +22,44 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 	/*
 	 * Get Module List
 	 */
-	public function _getModulesConfig() {		
-		$modulesList=array_diff( scandir( APPLICATION_PATH.'/modules/' ), Array( ".", ".." ) );
-		foreach($modulesList as $module) {		
-			if(file_exists(APPLICATION_PATH . '/modules/'.$module.'/configs/database.ini'))	{		
-				$config_ini = APPLICATION_PATH . '/modules/'.$module.'/configs/database.ini';
-				$config=new Zend_Config_Ini($config_ini);
+	public function _getDatabaseConfig() {		
+		$config_ini = APPLICATION_PATH . '/configs/database.ini';
+		$config=new Zend_Config_Ini($config_ini);
+		foreach($config->db as $db) {		
 				
-				$this->_modules[$module]['moduleName']=strtolower($module);
-				$this->_modules[$module]['db']=$config->db->toArray();
-				
-				switch($config->db->adapter) {
-					case "pdo_mysql":
-							$dsn='mysql:dbname='.$config->db->database.';host='.$config->db->host;
-				}
-				
-				$this->_modules[$module]['dbh']=new PDO($dsn,$config->db->login,$config->db->password);
-				
-				//My_Class_Maerdo_Console::display("3","Add '".$config->db->database."' DB for module $module");			
-				
-				$this->_modules[$module]['tables']=$this->_retrieveTables($config->db->database,$this->_modules[$module]);			
-				foreach($this->_modules[$module]['tables'] as $table=>$tableData) {
-					$this->_modules[$module]['tables'][$table]['foreignkeys']=$this->_retrievesForeignkeys($table,$this->_modules[$module]);
-					$this->_modules[$module]['tables'][$table]['fields']=$this->_retrieveFields($table,$this->_modules[$module]);
-				}
+			$this->_databases[$db->storage_name]['storage_name']=strtolower($db->storage_name);
+			$this->_databases[$db->storage_name]['db']=$db->toArray();
+			
+			switch($db->adapter) {
+				case "pdo_mysql":
+					$dsn='mysql:dbname='.$db->database.';host='.$db->host;					
+					break;
+			}						
+			$this->_databases[$db->storage_name]['dbh']=new PDO($dsn,$db->login,$db->password);
+		
+			My_Class_Maerdo_Console::display("3","Add '".$db->storage_name."' DB");			
+			
+			$this->_databases[$db->storage_name]['tables']=$this->_retrieveTables($db->database,$this->_databases[$db->storage_name]);			
+			foreach($this->_databases[$db->storage_name]['tables'] as $table=>$tableData) {
+				$this->_databases[$db->storage_name]['tables'][$table]['foreignkeys']=$this->_retrievesForeignkeys($table,$this->_databases[$db->storage_name]);
+				$this->_databases[$db->storage_name]['tables'][$table]['fields']=$this->_retrieveFields($table,$this->_databases[$db->storage_name]);
 			}
+			
 		}				
 		return(true);		
 	}	
 	
-	protected function _retrieveTables($name,$module) {
+	protected function _retrieveTables($name,$database) {
 		$sql =  'SHOW TABLES';
-    	foreach  ($module['dbh']->query($sql) as $row)  {
+    	foreach  ($database['dbh']->query($sql) as $row)  {
         	$tables[$row[0]]=array();
 		}
 		//My_Class_Maerdo_Console::display("3","Retrieve ".count($tables)." tables in '$name'");
 		return($tables);
 	}
 	
-	public function _retrievesForeignkeys($table,$module) {
-		$qry=$module['dbh']->query("show create table $table");
+	public function _retrievesForeignkeys($table,$database) {
+		$qry=$database['dbh']->query("show create table $table");
 		$res=$qry->fetchAll();
 		$query=$res[0]['Create Table'];
         $lines=split("\n",$query);
@@ -83,12 +80,12 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
         return($keys);		
 	}
 	
-	protected function _retrieveFields($table,$module) {
+	protected function _retrieveFields($table,$database) {
 		$sql =  "DESC $table";
-    	foreach ($module['dbh']->query($sql) as $row)  {
+    	foreach ($database['dbh']->query($sql) as $row)  {
 
     		if(isset($row['Key']) && $row['Key']=="PRI") {
-    			$this->setPrimaryKey($module['moduleName'],$table,$row['Field']);  			
+    			$this->setPrimaryKey($database['storage_name'],$table,$row['Field']);  			
     		}
         	$fields[]=$row['Field'];
 		}		
@@ -97,24 +94,25 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		
 	}
 	
-	public function setPrimarykey($module,$table,$field) {
-		$this->_modules[$module]['tables'][$table]['primarykey']=$field;
+	public function setPrimarykey($database,$table,$field) {
+		$this->_databases[$database]['tables'][$table]['primarykey']=$field;
+
 	}
 	
 	public function getTemplateContent($file,$params) {
             ob_start();            	
-                require('utils/Models/templates/'.DIRECTORY_SEPARATOR.$file);
+                require(APPLICATION_PATH.'/../utils/Models/templates/'.DIRECTORY_SEPARATOR.$file);
                 $data=ob_get_contents();
             ob_end_clean();                        
             return $data;		
 	}
 	
-	public function _writeDbTable($module,$table) {	
+	public function _writeDbTable($database,$table) {	
 		$filename=ucfirst(preg_replace('/_/','',$table));
-		My_Class_Maerdo_Console::display("3","Writing ".$table." Dbtable of  ".$module['moduleName']." module");
+		My_Class_Maerdo_Console::display("4","Writing ".$table." Dbtable of  ".$database['storage_name']." database");
 
 		$referenceMap="";
-		foreach ($module['tables'][$table]['foreignkeys'] as $info) {
+		foreach ($database['tables'][$table]['foreignkeys'] as $info) {
                 $refTableClass=ucfirst($info['foreign_tbl_name']);
                 $key=ucfirst($info['key_name']);
                 $references[]="
@@ -128,48 +126,53 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
                     join(',',$references). "          \n                );";
                 }
                 
-            }
-            
-		$params=array('module'=>ucfirst($module['moduleName']),'table'=>ucfirst($table),'primarykey'=>$module['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
+            }            
+		$params=array('module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
 		$data=$this->getTemplateContent('dbtable.tpl',$params);
-		if(!is_dir('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Dbtable')) {
-			mkdir('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Dbtable',0777,true);						
-		}
-		file_put_contents('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Dbtable'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
+		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable')) {			
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable',0777,true);						
+		}		
+		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
 	}
 
-	public function _writeMapper($module,$table,$fields) {
+	public function _writeMapper($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
-		My_Class_Maerdo_Console::display("3","Writing ".$table." Mapper  of ".$module['moduleName']." module");	
-		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($module['moduleName']),'table'=>ucfirst($table),'primarykey'=>$module['tables'][$table]['primarykey'],'filename'=>$filename);
+		My_Class_Maerdo_Console::display("4","Writing ".$table." Mapper  of ".$database['storage_name']." module");	
+		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('mapper.tpl',$params);
-		if(!is_dir('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Mappers')) {
-			mkdir('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
+		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers')) {
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
 		}
-		file_put_contents('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
+		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
 	}
 
 	
-	public function _writeModel($module,$table,$fields) {
+	public function _writeModel($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
-		My_Class_Maerdo_Console::display("3","Writing ".$table." Model  of ".$module['moduleName']." module");	
-		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($module['moduleName']),'table'=>ucfirst($table),'primarykey'=>$module['tables'][$table]['primarykey'],'filename'=>$filename);
+		My_Class_Maerdo_Console::display("4","Writing ".$table." Model  of ".$database['storage_name']." database");	
+		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('model.tpl',$params);
-		file_put_contents('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);		
+		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']))
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']);		
+		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);		
 	}
 	
-	public function _writeModelAbstract($module) {
-		My_Class_Maerdo_Console::display("3","Writing ".$module['moduleName']." Abstract Model");	
-		$params=array('module'=>ucfirst($module['moduleName']));
+	public function _writeModelAbstract($database) {
+		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Model");	
+		$params=array('module'=>ucfirst($database['storage_name']));
 		$data=$this->getTemplateContent('model_abstract.tpl',$params);
-		file_put_contents('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR."Abstract.php",$data);		
+		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']))
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']);
+		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Abstract.php",$data);		
 	}
 
-	public function _writeMapperAbstract($module,$table,$fields) {
-		My_Class_Maerdo_Console::display("3","Writing ".$module['moduleName']." Abstract Mapper ");	
-		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($module['moduleName']),'table'=>ucfirst($table),'primarykey'=>$module['tables'][$table]['primarykey']);
+	public function _writeMapperAbstract($database) {
+		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Mapper ");	
+		$params=array('module'=>ucfirst($database['storage_name']));
 		$data=$this->getTemplateContent('mapper_abstract.tpl',$params);
-		file_put_contents('generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$module['moduleName'].DIRECTORY_SEPARATOR."Mappers".DIRECTORY_SEPARATOR."Abstract.php",$data);		
+		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers"))
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers");
+		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers".DIRECTORY_SEPARATOR."Abstract.php",$data);		
 	}	
 				
 }

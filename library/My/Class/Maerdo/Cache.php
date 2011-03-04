@@ -1,4 +1,11 @@
 <?php 
+/**
+ * This class is used to work with cache.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Core
+ * @version 0.1
+ */
 class My_Class_Maerdo_Cache {
 	
 	private static $_cache = null;

@@ -44,22 +44,22 @@ class My_Class_Maerdo_Framework_Title {
 	 * @return array array with free locales 
 	 */
 	static public function getFreeLocales($page_id) {
-		$mLocale=new Maerdo_Model_Locale();
-		$locales=$mLocale->fetchAll();
+		$mTranslate=new Maerdo_Model_Componenttranslate();		
+		$locales=$mTranslate->getLocales();
 		foreach($locales as $key=>$locale) {
-			$aLocale[$locale->locale]=$locale->language_name;
+			$aLocale[$locale['locale']]=$locale['language_name'];
 		}
 		
 		$mtitle=new Maerdo_Model_Pagetitle();
 		$titles=$mtitle->findByField('page_id',$page_id,$mtitle);
 
 		$titleLocales=array();
-		foreach($titles as $key=>$title) {			
+		foreach($titles as $key=>$title) {
 			$titleLocales[$title->locale]=$aLocale[$title->locale];
-		}				
+		}
 		
-		$result=array();		
-		$result=array_diff($aLocale,$titleLocales);		
+		$result=array();
+		$result=array_diff($aLocale,$titleLocales);
 		return($result);
 	}
 		

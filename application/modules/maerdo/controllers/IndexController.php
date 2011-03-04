@@ -37,5 +37,10 @@ class Maerdo_IndexController extends Zend_Controller_Action
     public function emptyAction() {
     	$this->_helper->layout()->disableLayout();
     }
+    
+    public function testAction() { 	
+    	die;
+    }
+   
 }
 

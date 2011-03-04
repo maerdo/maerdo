@@ -37,23 +37,51 @@ class My_Class_Maerdo_Component_Cache {
 	
 	static public function getConfiguration($id) {
 		$mCache=new Maerdo_Model_Componentcache();
-		$cache=$mCache->find($id)->toArray();
+		$cacheConfig=$mCache->find($id)->toArray();
 		
-		$mCacheBackend=new Maerdo_Model_Componentcachebackendoption();
-		$backendOptions=$mCacheBackend->findByField('cc_id',$id,$mCacheBackend);
-		foreach($backendOptions as $key=>$value) {
-			$value=$value->toArray();					
-			$cache['backend'][$value['option']]=$value['value'];
+		if($cacheConfig['backend_type']=="file") {	
+			$mComponentcachebackendoption=new Maerdo_Model_Componentcachebackendfileoption();
+			$backendOptions=$mComponentcachebackendoption->findByField('cc_id',$id,$mComponentcachebackendoption);
+			
+			foreach($backendOptions as $key=>$value) {				
+				$value=$value->toArray();									
+				$cacheConfig['backend']=$value;
+			}
+			
+			// Set other support option to null			
+			$cacheConfig['backend']['automatic_vacuum_factor']="";
+			$cacheConfig['backend']['cache_db_complete_path']="";
+			
+		} elseif($cacheConfig['backend_type']=="sqlite") {
+			$mComponentcachebackendoption=new Maerdo_Model_Componentcachebackendsqliteoption();
+			$backendOptions=$mComponentcachebackendoption->findByField('cc_id',$id,$mComponentcachebackendoption);
+			
+			foreach($backendOptions as $key=>$value) {				
+				$value=$value->toArray();									
+				$cacheConfig['backend']=$value;
+			} 	 	
+			// Set other support option to null 	 	 	 	
+			$cacheConfig['backend']['cache_dir']="";
+			$cacheConfig['backend']['file_locking']="";
+			$cacheConfig['backend']['read_control']="";
+			$cacheConfig['backend']['read_control_type']="";
+			$cacheConfig['backend']['hashed_directory_level']="";
+			$cacheConfig['backend']['hashed_directory_umask']="";
+			$cacheConfig['backend']['metatadatas_array_max_size']="";	
+							
+		} else {	
+			$cacheConfig['backend']=array();	
 		}
 		
 		$mCacheFrontend=new Maerdo_Model_Componentcachefrontendoption();
 		$frontendOptions=$mCacheFrontend->findByField('cc_id',$id,$mCacheFrontend);
 		foreach($frontendOptions as $key=>$value) {	
 			$value=$value->toArray();					
-			$cache['frontend'][$value['option']]=$value['value'];
+			$cacheConfig['frontend'][$value['option']]=$value['value'];
 		}		
 
-		return($cache);
+		//var_dump($cacheConfig);die;
+		return($cacheConfig);
 	}
 	
 	/**
@@ -105,10 +133,12 @@ class My_Class_Maerdo_Component_Cache {
 	 */				
 	static public function addBackendOption($configuration,$cc_id) {	
 		if($configuration['backend_type']!="apc") {	
-			foreach($configuration['backend'][$configuration['backend_type']] as $field=>$value) {
-				$mComponentcachebackendoption=new Maerdo_Model_Componentcachebackendoption();
-				$mComponentcachebackendoption->insert(array('cc_id'=>$cc_id,'option'=>$field,'value'=>$value));
+			eval('$mComponentcachebackendoption=new Maerdo_Model_Componentcachebackend'.$configuration['backend_type'].'option();');
+			foreach($configuration['backend'][$configuration['backend_type']] as $field=>$value) {				
+				$mComponentcachebackendoption->$field=$value;			
 			}
+			$mComponentcachebackendoption->cc_id=$cc_id;
+			$mComponentcachebackendoption->save();
 		}			
 		return true;
 	}	
@@ -146,9 +176,10 @@ class My_Class_Maerdo_Component_Cache {
 	
 	static public function delete($cc_id) {
 		$mCache=new Maerdo_Model_Componentcache();
+		$cacheData=$mCache->find($cc_id);		
 		$mCache->delete("id='$cc_id'");		
 
-		$mCacheBackend=new Maerdo_Model_Componentcachebackendoption();
+		eval('$mCacheBackend=new Maerdo_Model_Componentcachebackend'.$cacheData->backend_type.'option();');
 		$mCacheBackend->delete("cc_id='$cc_id'");
 
 		$mCachefrontend=new Maerdo_Model_Componentcachefrontendoption();

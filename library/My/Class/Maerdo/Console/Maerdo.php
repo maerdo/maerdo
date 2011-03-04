@@ -1,4 +1,4 @@
-<?php 
+<?php 		
 class My_Class_Maerdo_Console_Maerdo {
 
 	protected $_observers;
@@ -10,9 +10,10 @@ class My_Class_Maerdo_Console_Maerdo {
 	
 	public function __construct() {
 		$this->_observers = new SplObjectStorage();
-		echo "######################################################################################\n";
-		echo "#                                    MAERDO   v0.1                                   #\n";
-		echo "######################################################################################\n";
+		// Define path to application directory
+
+		echo "\n##  MAERDO   v0.1 ##";
+	
 	}
 	
 	public function usage() {

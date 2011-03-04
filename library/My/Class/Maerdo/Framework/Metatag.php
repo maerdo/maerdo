@@ -77,11 +77,12 @@ class My_Class_Maerdo_Framework_Metatag {
 	 * @param $page_id  Maerdo database page id
 	 * @return array array with free locales 
 	 */
-	static public function getFreeLocales($page_id,$metatag) {
-		$mLocale=new Maerdo_Model_Locale();
-		$locales=$mLocale->fetchAll();
+	static public function getFreeLocales($page_id,$metatag) {		
+		$mTranslate=new Maerdo_Model_Componenttranslate();		
+		$locales=$mTranslate->getLocales();
+
 		foreach($locales as $key=>$locale) {
-			$aLocale[$locale->locale]=$locale->language_name;
+			$aLocale[$locale['locale']]=$locale['language_name'];
 		}
 		
 		$mMetatag=new Maerdo_Model_Pagemeta();

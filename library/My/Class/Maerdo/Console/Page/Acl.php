@@ -76,7 +76,7 @@ class My_Class_Maerdo_Console_Page_Acl {
 			$data.=$acl_resources[$module];
 			$data.=$acl_rights[$module];
 			My_Class_Maerdo_Console::display("3","Write application/modules/$module/configs/acl.ini");
-			file_put_contents('application/modules/'.$module.'/configs/acl.ini',$data);
+			file_put_contents(APPLICATION_PATH.'/modules/'.$module.'/configs/acl.ini',$data);
 		}		
 	}
 }

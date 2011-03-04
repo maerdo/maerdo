@@ -51,6 +51,9 @@
 #nav li a.accueil {
 	background: url('/images/icons/nav/accueil.png') no-repeat 0 -38px;
 }
+#nav li a.console {
+	background: url('/images/icons/nav/console.png') no-repeat 0 -38px;
+}
 #nav li:hover > a {
 	background-position: 0 16px;
 }

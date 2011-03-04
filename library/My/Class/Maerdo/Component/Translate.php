@@ -84,6 +84,7 @@ class My_Class_Maerdo_Component_Translate {
 										   'locale'=>$locale,
 										   'language_name'=>$language_name,
 										   'default'=>$default)));
+		
 	}
 }
 ?> 

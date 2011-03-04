@@ -1,4 +1,6 @@
 <?php
+/* Cache compiled files of your application with APC */
+
 class MyFilterIterator extends FilterIterator {
 	public function accept() {
 		return (substr($this->current(), - 3) == 'php');

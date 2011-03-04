@@ -1,4 +1,11 @@
 <?php 
+/**
+ * This class is used to work with authentification.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Core
+ * @version 0.1
+ */
 class My_Class_Maerdo_Auth {
 	
 	

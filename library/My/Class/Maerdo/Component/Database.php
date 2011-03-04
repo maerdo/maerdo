@@ -20,7 +20,8 @@ class My_Class_Maerdo_Component_Database {
 	 */		
 	static public function getList() {
 		$mComponentdatabase=new Maerdo_Model_Componentdatabase();
-		$database=$mComponentdatabase->fetchAll();		
+		$database=$mComponentdatabase->fetchAll();
+		$result=array();		
 		foreach($database as $database)
 			$result[]=$database->toArray();
 		return($result);

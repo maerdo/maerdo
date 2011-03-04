@@ -43,7 +43,7 @@ class My_Plugins_Acl extends Zend_Controller_Plugin_Abstract {
 		$resource = $module.'_'.$controller ;  
  
 		//echo ("<b>### Plugins_Acl::preDispatch :</b>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; Role: $role&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Ressource : $resource&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Action :$action<br/>");
-		
+	
 		// control if ressource exist  
 		if (!$this->_acl->has($resource)) {  
 			$resource = null; 

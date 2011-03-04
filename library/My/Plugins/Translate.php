@@ -25,11 +25,16 @@ class My_Plugins_Translate extends Zend_Controller_Plugin_Abstract {
 			$session->locale=$locale;
 			
 			$zl=new Zend_Locale($locale);		
-			Zend_Registry::set('locale',$locale);		
-			$translate=new Zend_Translate('csv',APPLICATION_PATH . '/modules/'.$request->getModuleName().'/languages/',
-																	$session->language,
-																	array('scan' => Zend_Translate::LOCALE_DIRECTORY));	
-			Zend_Registry::set('Zend_Translate',$translate);	
+			Zend_Registry::set('locale',$locale);
+			
+			if($request->getModuleName()!="default") {		
+				$translate=new Zend_Translate('csv',APPLICATION_PATH . '/modules/'.$request->getModuleName().'/languages/',
+																		$session->language,
+																		array('scan' => Zend_Translate::LOCALE_DIRECTORY));	
+				Zend_Registry::set('Zend_Translate',$translate);	
+			}
+			
+			
 		
 	}
 }	
