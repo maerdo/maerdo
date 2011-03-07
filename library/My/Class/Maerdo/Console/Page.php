@@ -61,15 +61,7 @@ class My_Class_Maerdo_Console_Page {
 		}		
 	}
 
-    public function attach($obs) {
-        $this->_observers->attach($obs);
-        return $this;
-    }
-
-    public function detach($obs) {
-        $this->_observers->detach($obs);
-        return $this;
-    }	
+ 
     
 	public function update() {
 		My_Class_Maerdo_Console::newline();

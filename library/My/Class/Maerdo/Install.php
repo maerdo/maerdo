@@ -94,12 +94,17 @@ class My_Class_Maerdo_Install {
 			case "mysql":
 				$data_content="db.1.adapter = 'pdo_mysql'\n";
 				break;
-		}			
-		$data_content.="db.1.host='".$this->_databaseConf['host']."'\n";
-		$data_content.="db.1.login='".$this->_databaseConf['login']."'\n";
-		$data_content.="db.1.password='".$this->_databaseConf['password']."'\n";
-		$data_content.="db.1.database='".$this->_databaseConf['database']."'\n";
-		$data_content.="db.1.storage_name='maerdo_db'";
+		}	
+		$data_content.="db.console.host='".$this->_databaseConf['host']."'\n";
+		$data_content.="db.console.login='".$this->_databaseConf['login']."'\n";
+		$data_content.="db.console.password='".$this->_databaseConf['password']."'\n";
+		$data_content.="db.console.database='".$this->_databaseConf['database']."'\n\n";
+						
+		$data_content.="db.0.host='".$this->_databaseConf['host']."'\n";
+		$data_content.="db.0.login='".$this->_databaseConf['login']."'\n";
+		$data_content.="db.0.password='".$this->_databaseConf['password']."'\n";
+		$data_content.="db.0.database='".$this->_databaseConf['database']."'\n";
+		$data_content.="db.0.storage_name='maerdo_db'";
 		
 		if(file_put_contents(APPLICATION_PATH.'/configs/database.ini',$data_content)==false)
 			$error="1";

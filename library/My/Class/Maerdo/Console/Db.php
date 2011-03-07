@@ -3,14 +3,14 @@
 class My_Class_Maerdo_Console_Db {
 
 	static public function getDbInstance() {
-		   $config_ini = APPLICATION_PATH . '/configs/application.ini';
-   		   $config=new Zend_Config_Ini($config_ini,'production');
-   		   switch($config->console->database->adapter) {
-   		   		case "mysql":
-   		   			$dsn="mysql:host=".$config->console->database->host.";dbname=".$config->console->database->database;
+		   $config_ini = APPLICATION_PATH . '/configs/database.ini';
+   		   $config=new Zend_Config_Ini($config_ini);   		   
+   		   switch($config->db->console->adapter) {   		   		
+   		   		case "pdo_mysql";
+   		   			$dsn="mysql:host=".$config->db->console->host.";dbname=".$config->db->console->database;
    		   			break;
    		   }
-   		   $db=new PDO($dsn,$config->console->database->username,$config->console->database->password);
+   		   $db=new PDO($dsn,$config->db->console->login,$config->db->console->password);
    		   return($db);
 	}
 		

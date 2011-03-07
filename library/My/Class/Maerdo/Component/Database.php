@@ -71,6 +71,7 @@ class My_Class_Maerdo_Component_Database {
 		$mComponentdatabase=new Maerdo_Model_Componentdatabase();		
 		return($mComponentdatabase->insert(array('name'=>$configuration['name'],
 										  'adapter'=>$configuration['adapter'],
+										  'database'=>$configuration['database'],
 										  'hostname'=>$configuration['hostname'],
 										  'username'=>$configuration['username'],
 										  'password'=>$configuration['password'])));

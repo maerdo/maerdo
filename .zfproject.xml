@@ -137,7 +137,9 @@
               <actionMethod actionName="index"/>
               <actionMethod actionName="index"/>
               <actionMethod actionName="index"/>
+              <actionMethod actionName="index"/>
             </controllerFile>
+            <controllerFile controllerName="Test"/>
             <controllerFile controllerName="Test"/>
             <controllerFile controllerName="Test"/>
             <controllerFile controllerName="Test"/>
@@ -157,6 +159,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Test">
                 <viewScriptFile forActionName="test"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Test">
+                <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Test">
                 <viewScriptFile forActionName="index"/>
@@ -237,6 +242,7 @@
           <testApplicationControllerFile filesystemName="InboxControllerTest.php"/>
           <testApplicationControllerFile filesystemName="PaypalControllerTest.php"/>
           <testApplicationControllerFile filesystemName="ContactControllerTest.php"/>
+          <testApplicationControllerFile filesystemName="TestControllerTest.php"/>
           <testApplicationControllerFile filesystemName="TestControllerTest.php"/>
           <testApplicationControllerFile filesystemName="TestControllerTest.php"/>
           <testApplicationControllerFile filesystemName="TestControllerTest.php"/>

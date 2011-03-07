@@ -21,9 +21,13 @@ Usage: Maerdo.php update [options]=<section>
 		              header : create header						
 		              all : Build all page data\n
 		              
-		database=<section>  Update model Data
+		database=<section>  Update database Data
 		    Sections :
 		              buildmodels : Build DB models
-		              conf : create module database configs files
-		              all : Build all model data				
+		              conf : create  databases configs files
+		              all : Build all database data	
+		              
+		cache=<section>  Update cache
+		    Sections :
+		              conf : create cache config file			              			
 		

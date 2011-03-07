@@ -1,6 +1,6 @@
 <?php 
 
-class My_Class_Maerdo_Console_Page_Acl {
+class My_Class_Maerdo_Console_Database_Conf {
 
 	public $tree;
 	protected $_db;
@@ -13,18 +13,41 @@ class My_Class_Maerdo_Console_Page_Acl {
 	
 	public function main() {
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
-		$acl=$this->getList();
-		$this->updateACL($acl);
+		$databases=$this->getList();
+		$this->updateConf($databases);
 	}
 	
 	public function getList() {		
 		$databases=$this->_db->query("SELECT * FROM component__database");		
-		return($databases);
-			
+		return($databases);			
 	}
 	
-	public function updateConfiguration($databases) {		
+	public function updateConf($databases) {			
+		$content="";
+		foreach($databases as $key=>$database) {
+			switch($database['adapter']) {
+				case "mysql":
+					$adapter="pdo_mysql";
+					break;
+			}
+			if($database['name']=="maerdo_db") {
+				$content.="db.console.adapter = '".$adapter."'\n";
+				$content.="db.console.host='".$database['hostname']."'\n";
+				$content.="db.console.login='".$database['username']."'\n";
+				$content.="db.console.password='".$database['password']."'\n";
+				$content.="db.console.database='".$database['database']."'\n";
+				$content.="db.console.storage_name='".$database['name']."'\n\n";
+			}
+			
+			$content.="db.db".$key.".adapter = '".$adapter."'\n";
+			$content.="db.db".$key.".host='".$database['hostname']."'\n";
+			$content.="db.db".$key.".login='".$database['username']."'\n";
+			$content.="db.db".$key.".password='".$database['password']."'\n";
+			$content.="db.db".$key.".database='".$database['database']."'\n";
+			$content.="db.db".$key.".storage_name='".$database['name']."'\n\n";
+		}
 		
+		file_put_contents(APPLICATION_PATH.'/configs/database.ini',$content);
 	}
 }
 

@@ -8,7 +8,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		My_Class_Maerdo_Console::display("2","Building models from DB");
 		$this->_getDatabaseConfig();			
 		foreach($this->_databases as $database) {
-			foreach($database['tables'] as $table=>$fields) {
+			foreach($database['tables'] as $table=>$fields) {				
 				$this->_writeDbTable($database,$table);	
 				$this->_writeMapper($database,$table,$fields);
 				$this->_writeModel($database,$table,$fields);	
@@ -26,8 +26,10 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		$config_ini = APPLICATION_PATH . '/configs/database.ini';
 		$config=new Zend_Config_Ini($config_ini);
 		foreach($config->db as $db) {		
-				
+			$default_module=ucfirst($this->_getDefaultModule($db->storage_name));
+			
 			$this->_databases[$db->storage_name]['storage_name']=strtolower($db->storage_name);
+			$this->_databases[$db->storage_name]['default_module']=$default_module;
 			$this->_databases[$db->storage_name]['db']=$db->toArray();
 			
 			switch($db->adapter) {
@@ -36,7 +38,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 					break;
 			}						
 			$this->_databases[$db->storage_name]['dbh']=new PDO($dsn,$db->login,$db->password);
-		
+			
 			My_Class_Maerdo_Console::display("3","Add '".$db->storage_name."' DB");			
 			
 			$this->_databases[$db->storage_name]['tables']=$this->_retrieveTables($db->database,$this->_databases[$db->storage_name]);			
@@ -94,7 +96,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		
 	}
 	
-	public function setPrimarykey($database,$table,$field) {
+	public function setPrimarykey($database,$table,$field) {		
 		$this->_databases[$database]['tables'][$table]['primarykey']=$field;
 
 	}
@@ -127,12 +129,13 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
                 }
                 
             }            
-		$params=array('module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
+		$params=array('module'=>ucfirst($database['default_module']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
 		$data=$this->getTemplateContent('dbtable.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable')) {			
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable',0777,true);						
 		}		
 		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
+		die;
 	}
 
 	public function _writeMapper($database,$table,$fields) {
@@ -174,6 +177,20 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers");
 		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers".DIRECTORY_SEPARATOR."Abstract.php",$data);		
 	}	
-				
+
+	public function _getDefaultModule($storage_name) {
+		$db=My_Class_Maerdo_Console_Db::getDbInstance();
+		$query="SELECT m.name as module_name FROM component__databasemodule as cdm,component__database as cd,module as m WHERE cd.name='$storage_name' AND cd.id=cdm.database_id";		
+		$result=$db->query($query)->fetchAll();
+		if(isset($result[0])) {
+			if($result[0]['module_name']!=NULL) {
+				return ($result[0]['module_name']);
+			} else { 
+				return ("Default");
+			}
+		} else { 
+			return ("Default");
+		}		
+	}
 }
 

@@ -34,7 +34,7 @@ class My_Class_Maerdo_Console_Maerdo {
 								$translate=new My_Class_Maerdo_Console_Translate($params[1]);
 								$this->_observers->attach($translate);
 						}
-						if(preg_match('#database#',strtolower($params[0]))) {
+						if(preg_match('#database#',strtolower($params[0]))) {							
 								$page=new My_Class_Maerdo_Console_Database($params[1]);
 								$this->_observers->attach($page);
 						}
@@ -47,6 +47,11 @@ class My_Class_Maerdo_Console_Maerdo {
 								$this->_observers->attach($page);
 								break;	
 						}
+						if(preg_match('#cache#',strtolower($params[0]))) {
+								$page=new My_Class_Maerdo_Console_Cache($params[1]);
+								$this->_observers->attach($page);
+								break;	
+						}						
 					}
 					break;
 				default:
@@ -59,20 +64,12 @@ class My_Class_Maerdo_Console_Maerdo {
 		}
 	}	
 	
-    public function attach($obs) {
-        $this->_observers->attach($obs);
-        return $this;
-    }
 
-    public function detach($obs) {
-        $this->_observers->detach($obs);
-        return $this;
-    }	
-    
 	protected function notifyObservers() {
-        // $this est intercepté par l'itérateur
+        // $this est intercepté par l'itérateur        
         foreach ($this->_observers as $observer) {
             try{
+            	
                 $observer->update($this);
             }catch(\Exception $e){
                 die("\nErreur :\n\n".$e->getMessage());
