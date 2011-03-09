@@ -1,4 +1,11 @@
 <?php 
+/**
+ * This class is used to work with authentification.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Translate {
 
 	protected $_observers;
@@ -26,7 +33,7 @@ class My_Class_Maerdo_Console_Translate {
 	public function update() {
 		My_Class_Maerdo_Console::newline();
 		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::TRANSLATE");			
-        // $this est intercepté par l'itérateur
+
         foreach ($this->_observers as $observer) {
             try{
                 $observer->update($this);
