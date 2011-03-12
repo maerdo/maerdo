@@ -18,13 +18,17 @@ Cache;Cache
 An error has occured when trying to add the cache.;An error has occured when trying to add the cache.
 An error has occured when trying to delete the cache.;An error has occured when trying to delete the cache.
 An error has occured when trying to update the cache.;An error has occured when trying to update the cache.
+An error has occured when trying to set the default cache.;An error has occured when trying to set the default cache.
 The cache has been created.;The cache has been created.
 The cache has been deleted.;The cache has been deleted.
 The cache has been updated.;The cache has been updated.
+The cache has been setted as default.;The cache has been setted as default.
 Name;Name
 Frontend Type;Frontend Type
 Backend support;Backend support
+Default;Default
 Actions;Actions
+Set as default;Set as default
 Backend;Backend
 Cache dir;Cache dir
 File locking;File locking
@@ -86,4 +90,3 @@ Add a language;Add a language
 ID;ID
 Locale;Locale
 Language name;Language name
-Default;Default

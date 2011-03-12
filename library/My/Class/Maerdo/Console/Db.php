@@ -7,7 +7,11 @@
  * @version 0.1
  */
 class My_Class_Maerdo_Console_Db {
-
+	/**
+	 * Return a DB instance with installation parameters.
+	 * 	
+	 * @return boolean
+	 */	
 	static public function getDbInstance() {
 		   $config_ini = APPLICATION_PATH . '/configs/database.ini';
    		   $config=new Zend_Config_Ini($config_ini);   		   

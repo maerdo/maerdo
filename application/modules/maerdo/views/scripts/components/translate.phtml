@@ -4,17 +4,7 @@
 
 <?php echo $this->translate('Select a module')?> :
 <select name='module' class="px200" id='selectModule'>
-	<option value="null">-- <?php echo $this->translate('Select a module')?> -- </option>
-	<?php $selected="";if($this->module_id=="-1") $selected='selected="selected"';?>
-	<option value="null">----- </option>
-	<option <?=$selected?> value="-1"><?php echo $this->translate('Application settings')?> </option>
-	<option value="null">----- </option>
-	<?php 
-	foreach($this->modules as $module):
-		$selected="";if($module->id==$this->module_id) $selected='selected="selected"';
-		echo "<option $selected value='".$module->id."'>".$module->name."</option>";
-	endforeach;
-	?>
+	<option value="-1"><?php echo $this->translate('Application settings')?> </option>
 </select>
 <?php if($this->module_id!=null):?>
 	<br /><br /><br />
@@ -66,21 +56,23 @@
 		</tr>		
 		<?php
 		$key=0;
-		foreach($this->moduleConfiguration as $key=>$value):
-			if($key%2==0) {
-				$class="bggreylight";
-			} else {
-				$class="";
-			}	
-		?>
-			<tr id='table_translate_row_<?=$key?>' class="<?=$class?>">
-				<td class="px50"><input type="text" class="field px50" value="<?=$value['identifiant']?>" name="translate[<?=$key?>][identifiant]" /></td>
-				<td class="px50"><input type="text" class="field px50" value="<?=$value['locale']?>" name="translate[<?=$key?>][locale]" /></td>
-				<td><input type="text" class="field" value="<?=$value['language_name']?>" name="translate[<?=$key?>][language_name]" /></td>
-				<td><input type="radio" name="translate[default]" value="<?=$key?>" <?if($value['default']==1) echo "checked='checked'"?>></td>
-				<td><a href='#' onclick='deleteLanguage(<?=$key?>)'><img src='/images/icons/delete.gif' /></a></tr>																																																				
-			</tr>
-		<?php endforeach;?>
+		if(is_array($this->moduleConfiguration)) {
+			foreach($this->moduleConfiguration as $key=>$value):
+				if($key%2==0) {
+					$class="bggreylight";
+				} else {
+					$class="";
+				}	
+			?>
+				<tr id='table_translate_row_<?=$key?>' class="<?=$class?>">
+					<td class="px50"><input type="text" class="field px50" value="<?=$value['identifiant']?>" name="translate[<?=$key?>][identifiant]" /></td>
+					<td class="px50"><input type="text" class="field px50" value="<?=$value['locale']?>" name="translate[<?=$key?>][locale]" /></td>
+					<td><input type="text" class="field" value="<?=$value['language_name']?>" name="translate[<?=$key?>][language_name]" /></td>
+					<td><input type="radio" name="translate[default]" value="<?=$key?>" <?if($value['default']==1) echo "checked='checked'"?>></td>
+					<td><a href='#' onclick='deleteLanguage(<?=$key?>)'><img src='/images/icons/delete.gif' /></a></tr>																																																				
+				</tr>
+			<?php endforeach;?>
+		<?php  }?>
 	</table>
 	</form>
 	<input type="hidden" id='translate_row_id' value='<?=$key?>' />

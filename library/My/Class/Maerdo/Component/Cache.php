@@ -178,9 +178,11 @@ class My_Class_Maerdo_Component_Cache {
 		$mCache=new Maerdo_Model_Componentcache();
 		$cacheData=$mCache->find($cc_id);		
 		$mCache->delete("id='$cc_id'");		
-
-		eval('$mCacheBackend=new Maerdo_Model_Componentcachebackend'.$cacheData->backend_type.'option();');
-		$mCacheBackend->delete("cc_id='$cc_id'");
+		
+		if($cacheData->backend_type!="apc") {	
+			eval('$mCacheBackend=new Maerdo_Model_Componentcachebackend'.$cacheData->backend_type.'option();');
+			$mCacheBackend->delete("cc_id='$cc_id'");
+		}
 
 		$mCachefrontend=new Maerdo_Model_Componentcachefrontendoption();
 		$mCachefrontend->delete("cc_id='$cc_id'");
@@ -188,5 +190,19 @@ class My_Class_Maerdo_Component_Cache {
 		return true;
 	}		
 	
+	/**
+	 * Set default cache adapter
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Cache::setDefault($cc_id);
+	 * </code>
+	 * 	 
+	 * @param $cc_id component__cache entrie id
+	 * @return true
+	 */			
+	static public function setDefault($adapter_id) {		
+		$mCache=new Maerdo_Model_Componentcache();		
+		return $mCache->setDefaultCache($adapter_id);		
+	}
 }
 ?> 

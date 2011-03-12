@@ -12,12 +12,16 @@ this.Maerdo_Components_Translate=function() {
 			}
 		
 		})
-		
-		validDefault=false;
-		$('input[name="translate[default]"]').each(function(index,value) {		
+				
+		if($('#table_language tr').length>1) {
+			validDefault=false;
+		} else {
+			validDefault=true;
+		}
+		$('input[name="translate[default]"]').each(function(index,value) {					
 			if($(value).attr('checked')==true) {
 				validDefault=true;	
-			}
+			}			
 		});
 		
 		if(validDefault==false) {

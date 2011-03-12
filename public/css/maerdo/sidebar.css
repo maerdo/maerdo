@@ -18,6 +18,9 @@
 #sidebar ul li a.icn_database {
 	background: url('/images/icons/small/database.png') no-repeat left;
 }
+#sidebar ul li a.icn_cache {
+	background: url('/images/icons/small/image_manage.png') no-repeat left;
+}
 #sidebar ul li a.icn_delete_image {
 	background: url('/images/icons/small/image_delete.png') no-repeat left;
 }

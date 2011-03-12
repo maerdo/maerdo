@@ -45,7 +45,7 @@ class My_Class_Maerdo_Console_Page_Route {
 					$data.="\n";
 				}
 				My_Class_Maerdo_Console::display("3","Write ".count($routes)." routes in /application/modules/".$module."/configs/routes/".$controller.".ini");				
-				file_put_contents(APPLICATION_PATH.'/../application/modules/'.$module.'/configs/routes/'.$route['controller'].'.ini',$data);				
+				file_put_contents(APPLICATION_PATH.'/modules/'.$module.'/configs/routes/'.$route['controller'].'.ini',$data);				
 			}	
 		}
 		

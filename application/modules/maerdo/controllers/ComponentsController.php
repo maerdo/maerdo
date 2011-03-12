@@ -82,12 +82,12 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     		}
     	}
     	
-    	if($this->_getParam('module_id')!=null) {
-			$moduleConfiguration=My_Class_Maerdo_Component_Translate::getConfiguration($this->_getParam('module_id'));
-    		
-			$this->view->moduleConfiguration=$moduleConfiguration;
-    		$this->view->module_id=$this->_getParam('module_id');
-    	}
+    	// Translation configuration for application (module_id='-1')
+		$moduleConfiguration=My_Class_Maerdo_Component_Translate::getConfiguration("-1");
+    	
+		$this->view->moduleConfiguration=$moduleConfiguration;
+    	$this->view->module_id="-1";
+    	// end application translation configuration
 
     	
 		$modules=My_Class_Maerdo_Framework_Module::getList();    	
@@ -123,12 +123,12 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     	$databases=My_Class_Maerdo_Component_Database::getList();
     	$aclRoles=My_Class_Maerdo_Framework_Acl::getRoleList();
     	    	
-        if($this->_getParam('module_id')!=null) {
-			$authConfiguration=My_Class_Maerdo_Component_Auth::getConfiguration($this->_getParam('module_id'));
+        // Auth configuration for application (module_id='-1')
+		$authConfiguration=My_Class_Maerdo_Component_Auth::getConfiguration("-1");
 
-    		$this->view->module_id=$this->_getParam('module_id');
-    		$this->view->authconfiguration=$authConfiguration;
-    	}   	
+    	$this->view->module_id="-1";
+    	$this->view->authconfiguration=$authConfiguration;
+    	// End auth configuration 	
     	
     	$this->view->aclRoles=$aclRoles;
     	
@@ -213,7 +213,17 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     		$this->view->cacheConfig=$cacheConfig;
     		$this->view->update_form=true;
     	}         	
-    		
+    	if($this->_getParam('form_action')=="set_default") {
+    		$result=(int) My_Class_Maerdo_Component_Cache::setDefault($this->_getParam('default'));    		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='setdefault_cache_error';
+    				break;
+    			default:
+    				$this->view->notification_success='setdefault_cache_success';
+    				break;
+    		}
+    	} 
     	
     	$caches=My_Class_Maerdo_Component_Cache::getList();
     	

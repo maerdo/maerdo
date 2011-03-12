@@ -23,13 +23,8 @@
 
 <?php echo $this->translate("Select a module")?> :
 <select id='select_module' class="px200">
-	<option value="null">-- Select a module --</option>
-	<?php 
-	foreach($this->modules as $module):
-		$selected="";if($module->id==$this->module_id) $selected='selected="selected"';
-		echo "<option $selected value='".$module->id."'>".$module->name."</option>";
-	endforeach;
-	?>
+	<option  value='-1'>-- Application --</option>
+
 </select>
 <br /><br />
 <?php if($this->module_id!=null): ?>
@@ -45,7 +40,8 @@
 		<td class='px200'>
 			<select class='px200' name='auth[database_name]'>	
 				<?php foreach($this->databases as $database):?>
-					<option value="<?=$database['name']?>"><?=$database['name']?></option>
+					<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
+					<option "$selected" value="<?=$database['name']?>"><?=$database['name']?></option>
 				<?php endforeach;?>		
 			</select>
 		</td>
@@ -53,25 +49,25 @@
 	<tr>
 		<td class='px200'><?echo $this->translate('Table')?> :</td>
 		<td class='px200'>
-			<input id='auth_table' type="text" value="<?=$this->authconfiguration['table']?>" class="px200" name="auth[table]" />
+			<input id='auth_table' type="text" value="<?if(@$this->authconfiguration['table']) echo $this->authconfiguration['table']?>" class="px200" name="auth[table]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Username field')?> :</td>
 		<td class='px200'>
-			<input id='auth_username_field' type="text" value="<?=$this->authconfiguration['username_field']?>" class="px200" name="auth[username_field]" />
+			<input id='auth_username_field' type="text" value="<?if(@$this->authconfiguration['username_field']) echo $this->authconfiguration['username_field']?>" class="px200" name="auth[username_field]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Password field')?> :</td>
 		<td class='px200'>
-			<input id='auth_password_field' type="text" value="<?=$this->authconfiguration['password_field']?>" class="px200" name="auth[password_field]" />
+			<input id='auth_password_field' type="text" value="<?if(@$this->authconfiguration['password_field']) echo $this->authconfiguration['password_field']?>" class="px200" name="auth[password_field]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Role field')?> :</td>
 		<td class='px200'>
-			<input id='auth_role_field' type="text" value="<?=$this->authconfiguration['role_field']?>" class="px200" name="auth[role_field]" />
+			<input id='auth_role_field' type="text" value="<?if(@$this->authconfiguration['role_field']) echo $this->authconfiguration['role_field']?>" class="px200" name="auth[role_field]" />
 		</td>
 	</tr>	
 	
@@ -82,7 +78,7 @@
 	<tr>
 		<td class='px200'><?echo $role->role?> :</td>
 		<td class='px200'>
-			<input type="text" value="<?=$this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
+			<input type="text" value="<?if(@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
 		</td>
 	</tr>		
 	<?php endforeach;?>		

@@ -1,6 +1,6 @@
 <?php 
 /**
- * This class is used to work with authentification.
+ * This class is used to work with form in console mode.
  * 
  * @author Nicolas Blaudez <nblaudez@maerdo.com>
  * @package Console
@@ -11,7 +11,4 @@ class My_Class_Maerdo_Console_Translate {
 	protected $_observers;
 	
 
-	public function __construction($sections) {
-		$this->_observers = new SplObjectStorage();
-	}
 }

@@ -129,7 +129,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
                 }
                 
             }            
-		$params=array('module'=>ucfirst($database['default_module']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
+		$params=array('module'=>ucfirst($database['default_module']),'table'=>ucfirst($table),'primarykey'=>@$database['tables'][$table]['primarykey'],'referencemap'=>$referenceMap,'filename'=>$filename);
 		$data=$this->getTemplateContent('dbtable.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable')) {			
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable',0777,true);						
@@ -140,7 +140,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 	public function _writeMapper($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
 		My_Class_Maerdo_Console::display("4","Writing ".$table." Mapper  of ".$database['storage_name']." module");	
-		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'filename'=>$filename);
+		$params=array('fields'=>$fields['fields'],'module'=>$database['default_module'],'table'=>ucfirst($table),'primarykey'=>@$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('mapper.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers')) {
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
@@ -152,7 +152,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 	public function _writeModel($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
 		My_Class_Maerdo_Console::display("4","Writing ".$table." Model  of ".$database['storage_name']." database");	
-		$params=array('fields'=>$fields['fields'],'module'=>ucfirst($database['storage_name']),'table'=>ucfirst($table),'primarykey'=>$database['tables'][$table]['primarykey'],'filename'=>$filename);
+		$params=array('fields'=>$fields['fields'],'module'=>$database['default_module'],'table'=>ucfirst($table),'primarykey'=>@$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('model.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']))
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']);		
@@ -179,7 +179,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 
 	public function _getDefaultModule($storage_name) {
 		$db=My_Class_Maerdo_Console_Db::getDbInstance();
-		$query="SELECT m.name as module_name FROM component__databasemodule as cdm,component__database as cd,module as m WHERE cd.name='$storage_name' AND cd.id=cdm.database_id";		
+		$query="SELECT m.name as module_name FROM component__database as cd INNER JOIN component__databasemodule as cdm ON cd.id=cdm.database_id INNER JOIN module as m ON m.id=cdm.module_id  WHERE cd.name='$storage_name'";				
 		$result=$db->query($query)->fetchAll();
 		if(isset($result[0])) {
 			if($result[0]['module_name']!=NULL) {

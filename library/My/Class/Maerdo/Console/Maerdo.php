@@ -18,7 +18,6 @@ class My_Class_Maerdo_Console_Maerdo {
 	public function __construct() {
 		$this->_observers = new SplObjectStorage();
 		// Define path to application directory
-
 		echo "\n##  MAERDO   v0.1 ##";
 	
 	}

@@ -167,7 +167,7 @@ address {
 	background:#fccac3 url('/images/icons/notifications/error.png') no-repeat 10px 10px;
 	border-color:#ea5338;
 	min-height:50px;	
-	padding:20px;
+	padding-top:5px;
 	padding-left:50px;	
 	color:red;
 	display:table-cell;

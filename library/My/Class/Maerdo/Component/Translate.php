@@ -46,25 +46,27 @@ class My_Class_Maerdo_Component_Translate {
 		$error=0;
 		$mComponenttranslate=new Maerdo_Model_Componenttranslate();
 		$mComponenttranslate->delete("module_id='$module_id'");
-		foreach($configuration as $key=>$language) {
-			//FIX: $key==0 was added because first condition exclue key 0 of configuration array.....
-			if($key!="default" || $key=="0") {
-				if($configuration['default']==$key) {
-					$default="1";
-				} else {
-					$default="0";
-				}							
-				if(self::add($module_id,$language['identifiant'],$language['locale'],$language['language_name'],$default)==0) {
-					$error='1';
+		if(is_array($configuration)) {
+			foreach($configuration as $key=>$language) {
+				//FIX: $key==0 was added because first condition exclue key 0 of configuration array.....
+				if($key!="default" || $key=="0") {
+					if($configuration['default']==$key) {
+						$default="1";
+					} else {
+						$default="0";
+					}							
+					if(self::add($module_id,$language['identifiant'],$language['locale'],$language['language_name'],$default)==0) {
+						$error='1';
+					}	
 				}	
+			}
+			if($error=='1') {
+				return(false);
+			} else {
+				return(true);
 			}	
 		}
-		if($error=='1') {
-			return(false);
-		} else {
-			return(true);
-		}	
-			
+		return true;	
 	}
 	/**
 	 * Add language for a module.

@@ -7,6 +7,7 @@ class Maerdo_Model_Componentcache extends Maerdo_Model_Abstract {
     protected $_Name;
     protected $_Type;
     protected $_Backend_type;
+    protected $_Default;
 
 	protected $_modelInstance;
     protected $_mapper;
@@ -70,6 +71,19 @@ class Maerdo_Model_Componentcache extends Maerdo_Model_Abstract {
     public function getBackend_type()
     {
         return $this->_Backend_type;
+    }
+    
+
+    public function setDefault($data)
+    {
+        $this->_Default=$data;
+        return $this;
+    }
+
+     
+    public function getDefault()
+    {
+        return $this->_Default;
     }
     
   

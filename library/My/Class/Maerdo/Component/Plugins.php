@@ -46,6 +46,7 @@ class My_Class_Maerdo_Component_Plugins {
 	static public function getSelectedplugin() {
 		$mComponentplugin=new Maerdo_Model_Componentplugin();
 		$selectedplugin=$mComponentplugin->fetchAll();
+		$result=array();
 		foreach($selectedplugin as $plugin) {
 			$result[]=$plugin->toArray();
 		}
@@ -63,7 +64,8 @@ class My_Class_Maerdo_Component_Plugins {
 	 */		
 	static public function getFreePlugins() {
 		$plugins=self::retrieveList();
-		$selectedplugins=self::getSelectedplugin();		
+		$selectedplugins=self::getSelectedplugin();	
+		$selected=array();	
 		foreach($selectedplugins as $plugin) {
 			$selected[]=$plugin['name'];
 		}

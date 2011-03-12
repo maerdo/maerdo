@@ -23,6 +23,7 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
                   ->setName($row->name)
                   ->setType($row->type)
                   ->setBackend_type($row->backend_type)
+                  ->setDefault($row->default)
                               ->setMapper($this);
             $entries[] = $entry;
         }
@@ -78,6 +79,7 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
             'name' => $model->getName(),
             'type' => $model->getType(),
             'backend_type' => $model->getBackend_type(),
+            'default' => $model->getDefault(),
                     
         );
         return $result;
@@ -102,7 +104,8 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
                     $model->setId($row->id)
 						  ->setName($row->name)
 						  ->setType($row->type)
-						  ->setBackend_type($row->backend_type);
+						  ->setBackend_type($row->backend_type)
+						  ->setDefault($row->default);
             }
             return $result;
     }    
@@ -112,15 +115,16 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
      *
      * @param string $id
      */
-    public function find($id) {    	
+    public function find($id) {
             $table = $this->getDbTable();
-            $row = $table->find($id);            
+            $row = $table->find($id);
    			foreach ($row as $data) {
            		$model=new Maerdo_Model_Componentcache();
             	$model->setId($data['id'])
 					  ->setName($data['name'])
 					  ->setType($data['type'])
-					  ->setBackend_type($data['backend_type']);
+					  ->setBackend_type($data['backend_type'])
+					  ->setDefault($data['default']);
 			}
             return ($model);
     } 
@@ -128,5 +132,19 @@ class Maerdo_Model_Mappers_Componentcache extends Maerdo_Model_Mappers_Abstract 
     
     public function deleteByPrimarykey($value) {
         return $this->getDbTable()->delete('id = '.$value);
-    }    
+    }
+
+    public function setDefaultCache($id) {      
+    	try {  	
+	    	$this->getDbTable()->update(array('default'=>'no'),array());  
+	    			
+    		if($this->getDbTable()->update(array('default'=>'yes'),array('id=?'=>$id))!=0) {   
+    			return(true);
+    		} else {
+    			return(false);
+    		}
+    	} catch(Exception $e) {
+    		return(false);
+    	}
+    }
 }

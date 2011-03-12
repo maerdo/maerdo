@@ -19,7 +19,14 @@ class My_Class_Maerdo_Console_Page_Acl {
 	
 	public function getList() {		
 		$roles=$this->_db->query("SELECT * FROM acl__role");
-		$resources=$this->_db->query("SELECT ar.role as role,a.name as action_name,c.name as controller_name,m.name as module_name FROM acl__resource as are,acl__role as ar,page as p,action as a,controller as c, module as m WHERE p.id=are.page_id AND a.id=p.action_id AND c.id=p.controller_id AND m.id=p.module_id");			
+		$resources=$this->_db->query("SELECT ar.role as role,a.name as action_name,c.name as controller_name,m.name as module_name 
+																FROM acl__resource as are
+																INNER JOIN acl__role as ar ON ar.id=are.acl__role_id
+																INNER JOIN page as p ON p.id=are.page_id 
+																INNER JOIN action as a ON a.id=p.action_id 
+																INNER JOIN controller as c ON  c.id=p.controller_id 
+																INNER JOIN module as m ON m.id=p.module_id");			
+
 		$acl=array();
 		foreach($resources as $row) {
 			$acl['resources'][strtolower($row['module_name'])][strtolower($row['module_name'])."_".strtolower($row['controller_name'])]=strtolower($row['module_name'])."_".strtolower($row['controller_name']);
@@ -28,7 +35,7 @@ class My_Class_Maerdo_Console_Page_Acl {
 		foreach($roles as $role) {
 			$acl['roles'][]=array('parent'=>strtolower($role['parent']),'role'=>strtolower($role['role']));
 		}
-		//var_dump($acl);die;	
+
 		return($acl);
 			
 	}
@@ -53,9 +60,10 @@ class My_Class_Maerdo_Console_Page_Acl {
 			}
 		} 	
 		
-		foreach($acl['rights'] as $module=>$roles) {			
+		foreach($acl['rights'] as $module=>$roles) {	
+			$acl_rights[$module]="";	
 			foreach($roles as $role=>$rights) {
-				$acl_rights[$module]="\n[$role]\n\n";
+				$acl_rights[$module].="\n[$role]\n\n";
 				foreach($rights as $module_controller=>$actions) {
 					$acl_rights[$module].="allow.$module_controller\t = ";
 					$i=0;

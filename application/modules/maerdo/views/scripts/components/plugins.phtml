@@ -23,30 +23,32 @@
 		</tr>	
 		<?php 
 		$i=0;
-		foreach($this->selectedplugins as $selectedPlugin):?>	
-		<tr id='table_plugin_row_<?=$i?>'>
-			<td>
-			<input type='hidden' id='plugin_name_<?=$i?>' name='plugins[<?=$i?>][plugin_name]' value='<?=$selectedPlugin['name']?>' />
-			<?=$selectedPlugin['name']?>
-			</td>
-			<td>
-				<select onchange='updateStackIndex("<?=$selectedPlugin['name']?>",this.value)' name='stackindex'>
-					<?php foreach($this->freestackindex as $key=>$stackindex):	
-					 
-					if($stackindex<$selectedPlugin['stackindex'] && $selectedPlugin['stackindex']<$this->freestackindex[$key+1]) {
-						echo "<option  selected='selected' value='".$selectedPlugin['stackindex']."'>".$selectedPlugin['stackindex']."</option>";
-					} else {
-						echo "<option  value='".$stackindex."'>".$stackindex."</option>";
-					}
-					?>
-					<?php endforeach;?>
-				</select>
-			</td>
-			<td><a href='#' onclick='deletePlugin(<?=$i?>)'><img src='/images/icons/delete.gif' alt='icons' /></a></td>						
-		</tr>	
-		<?php 
-		$i++;
-		endforeach;?>
+		if(is_array($this->selectedplugins)):
+			foreach($this->selectedplugins as $selectedPlugin):?>	
+			<tr id='table_plugin_row_<?=$i?>'>
+				<td>
+				<input type='hidden' id='plugin_name_<?=$i?>' name='plugins[<?=$i?>][plugin_name]' value='<?=$selectedPlugin['name']?>' />
+				<?=$selectedPlugin['name']?>
+				</td>
+				<td>
+					<select onchange='updateStackIndex("<?=$selectedPlugin['name']?>",this.value)' name='stackindex'>
+						<?php foreach($this->freestackindex as $key=>$stackindex):	
+						 
+						if($stackindex<$selectedPlugin['stackindex'] && $selectedPlugin['stackindex']<$this->freestackindex[$key+1]) {
+							echo "<option  selected='selected' value='".$selectedPlugin['stackindex']."'>".$selectedPlugin['stackindex']."</option>";
+						} else {
+							echo "<option  value='".$stackindex."'>".$stackindex."</option>";
+						}
+						?>
+						<?php endforeach;?>
+					</select>
+				</td>
+				<td><a href='#' onclick='deletePlugin(<?=$i?>)'><img src='/images/icons/delete.gif' alt='icons' /></a></td>						
+			</tr>	
+			<?php 
+			$i++;
+			endforeach;
+		endif;?>
 	</table>
 	<input type='hidden' id='plugins_row_id' value='<?=$i?>' />
 	<br /><br /><br />	

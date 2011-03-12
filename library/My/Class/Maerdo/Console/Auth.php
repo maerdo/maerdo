@@ -1,17 +1,17 @@
 <?php 
 /**
- * This class is used to work with database in console mode.
+ * This class is used to work with authentification configuration in console mode.
  * 
  * @author Nicolas Blaudez <nblaudez@maerdo.com>
  * @package Console
  * @version 0.1
  */
-class My_Class_Maerdo_Console_Database {
+class My_Class_Maerdo_Console_Auth {
 
 	protected $_observers;
 	
 	/**
-	 * Attach selected database console observers to $_observers var.
+	 * Attach selected cache console observers to $_observers var.
 	 * 	
 	 * @return boolean
 	 */	
@@ -21,34 +21,26 @@ class My_Class_Maerdo_Console_Database {
 		foreach($sections as $section) {
 			switch($section) {
 				case "all":
-					$obs=new My_Class_Maerdo_Console_Database_Conf();
-					$this->_observers->attach($obs);
-										
-					$obs=new My_Class_Maerdo_Console_Database_Buildmodels();
-					$this->_observers->attach($obs);
-					break;
-				case "buildmodels":
-					$obs=new My_Class_Maerdo_Console_Database_Buildmodels();
-					$this->_observers->attach($obs);
+					$obs=new My_Class_Maerdo_Console_Auth_Conf();
+					$this->_observers->attach($obs);										
 					break;					
 				case "conf" :									
-					$obs=new My_Class_Maerdo_Console_Database_Conf();
+					$obs=new My_Class_Maerdo_Console_Auth_Conf();
 					$this->_observers->attach($obs);
 					break;				
 			}
 		}
-		return true;
 		
 	}
+
  	/**
-	 * Call update function of Translate Database attached observers
+	 * Call update function of cache console attached observers
 	 * 	 
 	 * @return boolean
 	 */	   
 	public function update() {		
 		My_Class_Maerdo_Console::newline();
-		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::DATABASE");		
-
+		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::Auth");		
         foreach ($this->_observers as $observer) {
             try{
                 $observer->update($this);
@@ -56,6 +48,5 @@ class My_Class_Maerdo_Console_Database {
                 die("\nErreur :\n\n".$e->getMessage());
             }
         }
-        return true;
     }  	
 }

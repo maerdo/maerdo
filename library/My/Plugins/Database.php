@@ -23,8 +23,10 @@ class My_Plugins_Database extends Zend_Controller_Plugin_Abstract {
        if(file_exists(APPLICATION_PATH.'/modules/'.$request->getModuleName().'/configs/database.ini')) {
        		$config_ini = APPLICATION_PATH.'/modules/'.$request->getModuleName().'/configs/database.ini';
 		    $config=new Zend_Config_Ini($config_ini);
-            $db=Zend_Registry::get($config->db->default);
-		    Zend_Db_Table::setDefaultAdapter($db); 	   	
+            if($config->db->default) {
+			    $db=Zend_Registry::get($config->db->default);
+			    Zend_Db_Table::setDefaultAdapter($db); 
+            }	   	
        }     
 	} 
 }	
