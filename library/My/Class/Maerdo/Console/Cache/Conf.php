@@ -42,7 +42,7 @@ class My_Class_Maerdo_Console_Cache_Conf {
 			
 			$content.="\n\n";
 		}
-		
+		My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/configs/cache.ini');
 		file_put_contents(APPLICATION_PATH.'/configs/cache.ini',$content);
 	}
 

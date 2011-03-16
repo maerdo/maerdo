@@ -1,10 +1,10 @@
 <?php
 
-class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
+class Front_Model_Mappers_Livre extends Front_Model_Mappers_Abstract {
 
     public function getDbTable()  {
        if (null === $this->_dbTable) {
-            $this->setDbTable('Maerdo_Model_Dbtable_Form');
+            $this->setDbTable('Front_Model_Dbtable_Livre');
        }
        return $this->_dbTable;
     }
@@ -18,12 +18,11 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
         $resultSet = $this->getDbTable()->fetchAll();
         $entries   = array();
         foreach ($resultSet as $row) {
-            $entry = new Maerdo_Model_Form();
+            $entry = new Front_Model_Livre();
             $entry->setId($row->id)
-                  ->setTemplate($row->template)
-                  ->setAction($row->action)
-                  ->setMethod($row->method)
-                  ->setName($row->name)
+                  ->setId_auteur($row->id_auteur)
+                  ->setNom($row->nom)
+                  ->setDate($row->date)
                               ->setMapper($this);
             $entries[] = $entry;
         }
@@ -34,11 +33,11 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
 	/**
      * saves current row
      *
-     * @param Maerdo_Model_Form $model
+     * @param Front_Model_Livre $model
      *
      */
      
-    public function save(Maerdo_Model_Form $model,$ignoreEmptyValuesOnUpdate=true) {
+    public function save(Front_Model_Livre $model,$ignoreEmptyValuesOnUpdate=true) {
         if ($ignoreEmptyValuesOnUpdate) {
             $data = $model->toArray();
             foreach ($data as $key=>$value) {
@@ -68,7 +67,7 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
     /**
      * returns an array, keys are the field names.
      *
-     * @param new Maerdo_Model_Form $model
+     * @param new Front_Model_Livre $model
      * @return array
      *
      */
@@ -76,10 +75,9 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
         $result = array(
 
             'id' => $model->getId(),
-            'template' => $model->getTemplate(),
-            'action' => $model->getAction(),
-            'method' => $model->getMethod(),
-            'name' => $model->getName(),
+            'id_auteur' => $model->getId_auteur(),
+            'nom' => $model->getNom(),
+            'date' => $model->getDate(),
                     
         );
         return $result;
@@ -90,7 +88,7 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
      *
      * @param string $field
      * @param mixed $value
-     * @param Maerdo_Model_Form $model
+     * @param Front_Model_Livre $model
      * @return array
      */
     public function findByField($field, $value, $model)  {            
@@ -99,13 +97,12 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
 
             $rows = $this->getDbTable()->fetchAll($select->where("{$field} = ?", $value));
             foreach ($rows as $row) {
-                    $model=new Maerdo_Model_Form();
+                    $model=new Front_Model_Livre();
                     $result[]=$model;
                     $model->setId($row->id)
-						  ->setTemplate($row->template)
-						  ->setAction($row->action)
-						  ->setMethod($row->method)
-						  ->setName($row->name);
+						  ->setId_auteur($row->id_auteur)
+						  ->setNom($row->nom)
+						  ->setDate($row->date);
             }
             return $result;
     }    
@@ -119,12 +116,11 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
             $table = $this->getDbTable();
             $row = $table->find($id);
    			foreach ($row as $data) {
-           		$model=new Maerdo_Model_Form();
+           		$model=new Front_Model_Livre();
             	$model->setId($data['id'])
-					  ->setTemplate($data['template'])
-					  ->setAction($data['action'])
-					  ->setMethod($data['method'])
-					  ->setName($data['name']);
+					  ->setId_auteur($data['id_auteur'])
+					  ->setNom($data['nom'])
+					  ->setDate($data['date']);
 			}
             return ($model);
     } 
@@ -133,4 +129,14 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
     public function deleteByPrimarykey($value) {
         return $this->getDbTable()->delete('id = '.$value);
     }    
+    
+    public function getAllLivres() {
+    	$select=$this->getDbTable()->select();
+    	
+    	$select->from('livre');
+    	
+    	$result=My_Class_Maerdo_Cache::getQueryResult($select,'60','default');
+    	return($result);
+    
+    }
 }

@@ -100,13 +100,13 @@ class My_Class_Maerdo_Install {
 		$data_content.="db.console.password='".$this->_databaseConf['password']."'\n";
 		$data_content.="db.console.database='".$this->_databaseConf['database']."'\n\n";
 						
-		$data_content.="db.0.host='".$this->_databaseConf['host']."'\n";
-		$data_content.="db.0.login='".$this->_databaseConf['login']."'\n";
-		$data_content.="db.0.password='".$this->_databaseConf['password']."'\n";
-		$data_content.="db.0.database='".$this->_databaseConf['database']."'\n";
-		$data_content.="db.0.storage_name='maerdo_db'";
+		$data_content.="db.maerdo_db.host='".$this->_databaseConf['host']."'\n";
+		$data_content.="db.maerdo_db.login='".$this->_databaseConf['login']."'\n";
+		$data_content.="db.maerdo_db.password='".$this->_databaseConf['password']."'\n";
+		$data_content.="db.maerdo_db.database='".$this->_databaseConf['database']."'\n";
+		$data_content.="db.maerdo_db.storage_name='maerdo_db'";
 		
-		if(file_put_contents(APPLICATION_PATH.'/configs/database.ini',$data_content)==false)
+		if(file_put_contents(APPLICATION_PATH.'/configs/maerdo.ini',$data_content)==false)
 			$error="1";
 					
 		$data_content="db.default='maerdo_db'";

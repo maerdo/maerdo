@@ -2,16 +2,66 @@
 	<h1><?php echo $this->translate('Forms')?></h1>
 </div>
 
-
-<a href='#' onclick='$("#form_add").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a form')?></a>
+<?php if($this->notification_error!=NULL):?>
+<div class='notification_error px700'>
+	<?php if($this->notification_error=='add_form_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to add form.');?><br /></div>
+	<?php endif;?>
+</div>
 <br /><br />
-<div id='form_add' class='hidden'>
-	<table>
-		<tr>
-			<td><?php echo $this->translate('Form name')?> :</td>
-			<td><input type="text" name="form_name" class="px200" /></td>
-		</tr>	
-	</table>
+<?php endif;?>
+
+
+<?php if($this->notification_success!=NULL):?>
+<div class='notification_success px700'>
+	<?php if($this->notification_success=='add_form_success'):?>
+	<div><?php echo $this->translate('The form has been added.');?><br /></div>
+	<?php endif;?>
+</div>	
+<br /><br />
+<?php endif;?>
+
+<a href='#' onclick='$("#form_add_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a form')?></a>
+<br /><br />
+<div id='form_add_div' class='hidden'>
+	<form id='form_add' action='/maerdo/component/forms/' method='post'>
+		<input type="hidden" name="form_action" value="add_form" />
+		<table>
+			<tr>
+				<td><?php echo $this->translate('Form name')?> :</td>
+				<td><input type="text" name="form[name]" class="px200" /></td>
+			</tr>
+			<tr>
+				<td><?php echo $this->translate('Template')?> :</td>
+				<td>
+					<select name="form[template]" class="px200">
+						<?php 
+						if(is_array($this->templates)) {
+							foreach($this->templates as $file):
+								echo "<option value='$file'>$file</option>";
+							endforeach;			
+						}
+						?>
+					</select>
+				</td>
+			</tr>					
+			<tr>
+				<td><?php echo $this->translate('Action URL')?> :</td>
+				<td><input type="text" name="form[action_url]" class="px200" /></td>
+			</tr>	
+			<tr>
+				<td><?php echo $this->translate('Method')?> :</td>
+				<td>
+					<select name="form[method]" class="px200">
+						<option value="post">POST</option>
+						<option value="get">GET</option>
+					</select>
+				</td>
+			</tr>							
+		</table>
+		<br />
+		<img id='img_add_submit_form' class="ml185" src='/tools/button/white/Add form/000000/arial/10/edit.gif/0/0' />	
+	</form>
 	<br /><br />
 </div>
 <table class="px400">
@@ -19,9 +69,19 @@
 		<td><?php echo $this->translate('Form name')?></td>
 		<td class="px50"><?php echo $this->translate('Actions')?></td>
 	</tr>
-	<?php foreach($this->forms as $form):?>
-	<tr>
-		<td></td>
+	<?php foreach($this->forms as $key=>$form):
+	if($key%2==0) {
+		$class="";
+	} else {
+		$class="bggreylight";
+	}
+	?>
+	<tr class="<?=$class?>">
+		<td><?=$form->name?></td>
+		<td>
+			<a href='/maerdo/component/forms/edit/<?=$form->id?>'><img src='/images/icons/edit.gif'></a>
+			<a href='/maerdo/component/forms/delete/<?=$form->id?>'><img src='/images/icons/delete.gif'></a>
+		</td>
 	</tr>
 	<?php endforeach;?>
 </table>		

@@ -1,10 +1,10 @@
 <?php
 
-class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
+class Front_Model_Mappers_Livreliste extends Front_Model_Mappers_Abstract {
 
     public function getDbTable()  {
        if (null === $this->_dbTable) {
-            $this->setDbTable('Maerdo_Model_Dbtable_Form');
+            $this->setDbTable('Front_Model_Dbtable_Livreliste');
        }
        return $this->_dbTable;
     }
@@ -18,12 +18,10 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
         $resultSet = $this->getDbTable()->fetchAll();
         $entries   = array();
         foreach ($resultSet as $row) {
-            $entry = new Maerdo_Model_Form();
-            $entry->setId($row->id)
-                  ->setTemplate($row->template)
-                  ->setAction($row->action)
-                  ->setMethod($row->method)
-                  ->setName($row->name)
+            $entry = new Front_Model_Livreliste();
+            $entry->setNom($row->nom)
+                  ->setPrenom($row->prenom)
+                  ->setTitre($row->titre)
                               ->setMapper($this);
             $entries[] = $entry;
         }
@@ -34,11 +32,11 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
 	/**
      * saves current row
      *
-     * @param Maerdo_Model_Form $model
+     * @param Front_Model_Livre_liste $model
      *
      */
      
-    public function save(Maerdo_Model_Form $model,$ignoreEmptyValuesOnUpdate=true) {
+    public function save(Front_Model_Livreliste $model,$ignoreEmptyValuesOnUpdate=true) {
         if ($ignoreEmptyValuesOnUpdate) {
             $data = $model->toArray();
             foreach ($data as $key=>$value) {
@@ -47,10 +45,10 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
             }
         }
 
-        if (null === ($id = $model->getId())) {
-            unset($data['id']);
+        if (null === ($id = $model->get())) {
+            unset($data['']);
             $id=$this->getDbTable()->insert($data);
-            $model->setId($id);
+            $model->set($id);
             return($id);
         } else {
             if ($ignoreEmptyValuesOnUpdate) {
@@ -61,25 +59,23 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
                 }
             }
 
-            return($this->getDbTable()->update($data, array('id = ?' => $id)));
+            return($this->getDbTable()->update($data, array(' = ?' => $id)));
         }
     }
    
     /**
      * returns an array, keys are the field names.
      *
-     * @param new Maerdo_Model_Form $model
+     * @param new Front_Model_Livre_liste $model
      * @return array
      *
      */
     public function toArray($model) {
         $result = array(
 
-            'id' => $model->getId(),
-            'template' => $model->getTemplate(),
-            'action' => $model->getAction(),
-            'method' => $model->getMethod(),
-            'name' => $model->getName(),
+            'nom' => $model->getNom(),
+            'prenom' => $model->getPrenom(),
+            'titre' => $model->getTitre(),
                     
         );
         return $result;
@@ -90,7 +86,7 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
      *
      * @param string $field
      * @param mixed $value
-     * @param Maerdo_Model_Form $model
+     * @param Front_Model_Livreliste $model
      * @return array
      */
     public function findByField($field, $value, $model)  {            
@@ -99,13 +95,11 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
 
             $rows = $this->getDbTable()->fetchAll($select->where("{$field} = ?", $value));
             foreach ($rows as $row) {
-                    $model=new Maerdo_Model_Form();
+                    $model=new Front_Model_Livreliste();
                     $result[]=$model;
-                    $model->setId($row->id)
-						  ->setTemplate($row->template)
-						  ->setAction($row->action)
-						  ->setMethod($row->method)
-						  ->setName($row->name);
+                    $model->setNom($row->nom)
+						  ->setPrenom($row->prenom)
+						  ->setTitre($row->titre);
             }
             return $result;
     }    
@@ -119,18 +113,16 @@ class Maerdo_Model_Mappers_Form extends Maerdo_Model_Mappers_Abstract {
             $table = $this->getDbTable();
             $row = $table->find($id);
    			foreach ($row as $data) {
-           		$model=new Maerdo_Model_Form();
-            	$model->setId($data['id'])
-					  ->setTemplate($data['template'])
-					  ->setAction($data['action'])
-					  ->setMethod($data['method'])
-					  ->setName($data['name']);
+           		$model=new Front_Model_Livreliste();
+            	$model->setNom($data['nom'])
+					  ->setPrenom($data['prenom'])
+					  ->setTitre($data['titre']);
 			}
             return ($model);
     } 
     
     
     public function deleteByPrimarykey($value) {
-        return $this->getDbTable()->delete('id = '.$value);
+        return $this->getDbTable()->delete(' = '.$value);
     }    
 }

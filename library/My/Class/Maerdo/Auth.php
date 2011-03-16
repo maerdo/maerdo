@@ -23,7 +23,7 @@ class My_Class_Maerdo_Auth {
 		$config_ini = APPLICATION_PATH . '/modules/'.$request->getModuleName().'/configs/auth.ini';
 		
 		if (file_exists ( $config_ini ) && is_readable ( $config_ini )) {			
-			$config = new Zend_Config_Ini ( $config_ini, APPLICATION_ENV );	
+			$config = new Zend_Config_Ini ( $config_ini);	
 		}
 		
 		Zend_Loader::loadClass('Zend_Auth_Adapter_DbTable');
@@ -60,7 +60,7 @@ class My_Class_Maerdo_Auth {
 					return($url);
 				}
 			}
-			die('Editer votre fichier auth.ini - Aucune url de redirection pour ce role');						
+			die('User loggued but no redirection for this role - Edit your application/configs/auth.ini');						
 		} else {
 			// failure: clear database row from session
 			return ($config->auth->redirect->error);

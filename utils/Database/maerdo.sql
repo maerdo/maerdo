@@ -16,6 +16,10 @@ CREATE TABLE IF NOT EXISTS `acl__role` (
   UNIQUE KEY `role` (`role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
+INSERT INTO `acl__role` (`id`, `parent`, `role`) VALUES
+(1, '', 'guest');
+
 CREATE TABLE IF NOT EXISTS `action` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `controller_id` int(11) NOT NULL,
@@ -23,6 +27,10 @@ CREATE TABLE IF NOT EXISTS `action` (
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `action` (`id`, `controller_id`, `name`, `description`) VALUES
+(1, 1, 'permission', ''),
+(2, 1, 'login', '');
 
 CREATE TABLE IF NOT EXISTS `component__auth` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -135,6 +143,8 @@ CREATE TABLE IF NOT EXISTS `controller` (
   KEY `module_id` (`module_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO `controller` (`id`, `module_id`, `name`, `description`) VALUES
+(1, 1, 'index', 'Front - IndexController');
 
 CREATE TABLE IF NOT EXISTS `form` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -162,6 +172,8 @@ CREATE TABLE IF NOT EXISTS `module` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO `module` (`id`, `name`, `description`) VALUES
+(1, 'front', 'Front');
 
 CREATE TABLE IF NOT EXISTS `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

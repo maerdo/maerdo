@@ -52,6 +52,12 @@ function Maerdo() {
 					this.components.plugin=new Maerdo_Components_Plugin();
 				}	
 				var obj=this.components.plugin					
+			break;
+			case "Components/Forms":
+				if(this.components.forms==null){
+					this.components.forms=new Maerdo_Components_Forms();
+				}	
+				var obj=this.components.forms				
 			break;					
 		}	
 		return(obj)

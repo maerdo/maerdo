@@ -231,8 +231,34 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     }
     
     public function formsAction() {
+     	if($this->_getParam('form_action')=="add_form") {
+    		$result=(int) My_Class_Maerdo_Component_Form::add($this->_getParam('form'));    		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='add_form_error';
+    				break;
+    			default:
+    				$this->view->notification_success='add_form_error';
+    				break;
+    		}
+    	}
+    	
+    	$forms=My_Class_Maerdo_Component_Form::getList();
+    	$templates=My_Class_Maerdo_Component_Form::getTemplates();
+
+		
+    	$this->view->forms=$forms;
+    	$this->view->templates=$templates;
+    	
+    }
     
-    	$this->view->forms=array();
+    public function formeditAction() {
+    	$this->_helper->viewRenderer->setScriptAction('forms/edit');
+    	
+		$fieldTypes=My_Class_Maerdo_Component_Form::getFieldTypeList();
+    			
+		$this->view->fieldTypes=$fieldTypes;
+		    	
     }
 
 }

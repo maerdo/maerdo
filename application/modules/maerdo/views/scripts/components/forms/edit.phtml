@@ -1,0 +1,107 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Edit a form')?></h1>
+</div>
+
+<h2 ><?php echo $this->translate('Parameters');?></h2>
+<div id="parameters">
+	<form id='form_add' action='/maerdo/component/forms/' method='post'>
+		<input type="hidden" name="form_action" value="add_form" />
+		<table>
+			<tr>
+				<td><?php echo $this->translate('Form name')?> :</td>
+				<td><input type="text" name="form[name]" class="px200" /></td>
+			</tr>
+			<tr>
+				<td><?php echo $this->translate('Template')?> :</td>
+				<td>
+					<select name="form[template]" class="px200">
+						<?php 
+						if(is_array($this->templates)) {
+							foreach($this->templates as $file):
+								echo "<option value='$file'>$file</option>";
+							endforeach;			
+						}
+						?>
+					</select>
+				</td>
+			</tr>					
+			<tr>
+				<td><?php echo $this->translate('Action URL')?> :</td>
+				<td><input type="text" name="form[action_url]" class="px200" /></td>
+			</tr>	
+			<tr>
+				<td><?php echo $this->translate('Method')?> :</td>
+				<td>
+					<select name="form[method]" class="px200">
+						<option value="post">POST</option>
+						<option value="get">GET</option>
+					</select>
+				</td>
+			</tr>							
+		</table>
+		<br />
+		<img id='img_add_submit_form' class="ml185" src='/tools/button/white/Add form/000000/arial/10/edit.gif/0/0' />	
+	</form>
+</div>
+
+<h2><?php echo $this->translate('Fields');?></h2>
+<a href='#' onclick='$("#form_add_field_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a field')?></a>
+<div id='form_add_field_div' class='hidden'>
+	<table>
+		<tr>
+			<td><?php echo $this->translate('Field type')?> :</td>
+			<td>
+				<select name="field[type]" class="px200">
+					<?php 
+					if(is_array($this->fieldTypes)):
+						foreach($this->fieldTypes as $type):?>
+							<option value='<?=$type->type?>'><?=$type->type?></option>						
+					<?php 
+						endforeach;
+					endif;
+					?>	
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><?php echo $this->translate('Field name')?> :</td>
+			<td><input type="text" name="field[name]" class="px200" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<img id='img_add_submit_form' class="ml185" src='/tools/button/white/Add field/000000/arial/10/edit.gif/0/0' />
+			</td>
+		</tr>					
+	</table>
+</div>		
+<br /><br />
+<table class="px400">
+	<tr class="bggrey">
+		<td>Type</td>
+		<td>Name</td>
+		<td>Action</td>
+	</tr>
+				<tr>
+					<td>Text</td>
+					<td>blakopolosrastouya</td>
+					<td>
+						<img src='/images/icons/edit.gif' alt='Edit' />
+						<img src='/images/icons/delete.gif' alt='delete' />
+					</td>
+				</tr>			
+	<?php 
+		if(is_array($this->fields)):
+			foreach($this->fields as $field):?>
+				<tr>
+					<td><?=$field['type']?></td>
+					<td><?=$field['name']?></td>
+					<td>
+						<img src='/images/icons/edit.gif' alt='Edit' />
+						<img src='/images/icons/delete.gif' alt='delete' />
+					</td>
+				</tr>					
+		<?php 
+			endforeach;
+		endif;
+		?>		
+</table>					

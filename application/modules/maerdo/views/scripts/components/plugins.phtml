@@ -32,11 +32,9 @@
 				</td>
 				<td>
 					<select onchange='updateStackIndex("<?=$selectedPlugin['name']?>",this.value)' name='stackindex'>
-						<?php foreach($this->freestackindex as $key=>$stackindex):	
-						 
-						if($stackindex<$selectedPlugin['stackindex'] && $selectedPlugin['stackindex']<$this->freestackindex[$key+1]) {
-							echo "<option  selected='selected' value='".$selectedPlugin['stackindex']."'>".$selectedPlugin['stackindex']."</option>";
-						} else {
+						<option selected='selected' value='<?=$selectedPlugin['stackindex']?>'><?=$selectedPlugin['stackindex']?></option>";		
+						<?php foreach($this->freestackindex as $key=>$stackindex):
+						if($stackindex==$selectedPlugin['stackindex']) {
 							echo "<option  value='".$stackindex."'>".$stackindex."</option>";
 						}
 						?>

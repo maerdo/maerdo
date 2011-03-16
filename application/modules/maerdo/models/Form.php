@@ -4,10 +4,9 @@
 class Maerdo_Model_Form extends Maerdo_Model_Abstract {
 
     protected $_Id;
-    protected $_Module_id;
-    protected $_Controller_id;
+    protected $_Template;
     protected $_Action;
-    protected $_Type;
+    protected $_Method;
     protected $_Name;
 
 	protected $_modelInstance;
@@ -36,29 +35,16 @@ class Maerdo_Model_Form extends Maerdo_Model_Abstract {
     }
     
 
-    public function setModule_id($data)
+    public function setTemplate($data)
     {
-        $this->_Module_id=$data;
+        $this->_Template=$data;
         return $this;
     }
 
      
-    public function getModule_id()
+    public function getTemplate()
     {
-        return $this->_Module_id;
-    }
-    
-
-    public function setController_id($data)
-    {
-        $this->_Controller_id=$data;
-        return $this;
-    }
-
-     
-    public function getController_id()
-    {
-        return $this->_Controller_id;
+        return $this->_Template;
     }
     
 
@@ -75,16 +61,16 @@ class Maerdo_Model_Form extends Maerdo_Model_Abstract {
     }
     
 
-    public function setType($data)
+    public function setMethod($data)
     {
-        $this->_Type=$data;
+        $this->_Method=$data;
         return $this;
     }
 
      
-    public function getType()
+    public function getMethod()
     {
-        return $this->_Type;
+        return $this->_Method;
     }
     
 

@@ -26,7 +26,7 @@ class My_Class_Maerdo_Console_Database_Conf {
 		$content="";
 		foreach($databases as $key=>$database) {
 			switch($database['adapter']) {
-				case "mysql":
+				case "pdo_mysql":
 					$adapter="pdo_mysql";
 					break;
 			}
@@ -47,7 +47,9 @@ class My_Class_Maerdo_Console_Database_Conf {
 			$content.="db.db".$key.".storage_name='".$database['name']."'\n\n";
 		}
 		
+		My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/configs/database.ini');
 		file_put_contents(APPLICATION_PATH.'/configs/database.ini',$content);
+		
 	}
 }
 

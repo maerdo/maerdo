@@ -29,5 +29,8 @@ Usage: Maerdo.php update [options]=<section>
 		              
 		cache=<section>  Update cache
 		    Sections :
-		              conf : create cache config file			              			
+		              conf : create cache config file	
+		auth=<section>  Update cache
+		    Sections :
+		              conf : create authentification config file			              		              			
 		

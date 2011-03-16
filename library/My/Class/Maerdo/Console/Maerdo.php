@@ -57,7 +57,12 @@ class My_Class_Maerdo_Console_Maerdo {
 								$page=new My_Class_Maerdo_Console_Cache($params[1]);
 								$this->_observers->attach($page);
 								break;	
-						}						
+						}	
+						if(preg_match('#auth#',strtolower($params[0]))) {
+								$page=new My_Class_Maerdo_Console_Auth($params[1]);
+								$this->_observers->attach($page);
+								break;	
+						}											
 					}
 					break;
 				default:
