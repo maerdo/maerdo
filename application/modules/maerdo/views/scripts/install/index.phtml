@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">	
 	<head>
-		<title>Maerdo - Login</title>
+		<title>Maerdo - Install</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/base.css" />
 		<link type="text/css" rel="stylesheet" media="all" href="/css/maerdo/install.css" />
@@ -18,7 +18,10 @@
 		<?php echo $this->translate('Installation')?>
 		</div>
 		<div class="box">
-		<?php if($this->install_result=="0"):?>
+		<?php if($this->confdir_iswritable=="false"):?>
+			<span class="red bold "><?php echo $this->translate('The directory "application/configs" must be writable')?></span><br /><br />
+		<?php endif;?>	
+		<?php if($this->install_result=="0"):?>	
 			<?php if($this->fields_error==1):?>
 			<span class="red bold fs20"><?php echo $this->translate('All fields must be setted')?></span>
 			<?php endif;?>
@@ -77,12 +80,14 @@
 						<input type="password" name="admin[password2]" class="px150" />
 					</td>
 				</tr>	
+				<?php if($this->confdir_iswritable!="false"):?>		
 				<tr>
 					<td colspan="2">
 						<br />
 						<img onclick="$('#install_form').submit();" class="pointer fright" src='/images/buttons/install.png' alt='Install' />
 					</td>
-				</tr>		
+				</tr>	
+				<?php endif;?>	
 			</table>
 			</form>
 		<?php elseif($this->install_result!="1"):?>						
@@ -121,8 +126,9 @@
 			<div class='notification_success px400'>			
 				<?php echo $this->translate('Installation successfull')?><br />		
 			</div>	
-			<br />					
-			<a href='/maerdo/login' class='fright'><?php echo $this->translate('Login form');?></a>
+			<br />
+						
+			<a href='/maerdo/login' class='fright'><?php echo $this->translate('Login form');?></a>	
 			<br />			
 		<?php endif;?>
 				

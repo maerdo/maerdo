@@ -299,7 +299,7 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     		}
     	}
 
-    	$options=My_Class_Maerdo_Component_Form
+    	//$options=My_Class_Maerdo_Component_Form::get();
     	
     	$this->view->field_id=$this->_getParam('field_id');    	
     	

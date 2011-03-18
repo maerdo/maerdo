@@ -12,6 +12,11 @@ class Maerdo_InstallController extends Zend_Controller_Action
     	$install_result="0";
     	$install_msg="null";
     	
+    	
+    	if(!is_writable(APPLICATION_PATH."/configs")) {
+    		$this->view->confdir_iswritable="false";
+    	}
+    	
     	if($this->getRequest()->isPost()) {
     		$fields_error="0";
     		    		

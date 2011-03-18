@@ -92,14 +92,16 @@ class My_Class_Maerdo_Install {
 		
 		switch($this->_databaseConf['type']) {
 			case "mysql":
-				$data_content="db.1.adapter = 'pdo_mysql'\n";
+				$adapter='pdo_mysql';
 				break;
 		}	
+		$data_content.="db.console.adapter='".$adapter."'\n";
 		$data_content.="db.console.host='".$this->_databaseConf['host']."'\n";
 		$data_content.="db.console.login='".$this->_databaseConf['login']."'\n";
 		$data_content.="db.console.password='".$this->_databaseConf['password']."'\n";
 		$data_content.="db.console.database='".$this->_databaseConf['database']."'\n\n";
-						
+
+		$data_content.="db.maerdo_db.adapter='".$adapter."'\n";
 		$data_content.="db.maerdo_db.host='".$this->_databaseConf['host']."'\n";
 		$data_content.="db.maerdo_db.login='".$this->_databaseConf['login']."'\n";
 		$data_content.="db.maerdo_db.password='".$this->_databaseConf['password']."'\n";
