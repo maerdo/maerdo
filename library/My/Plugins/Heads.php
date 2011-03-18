@@ -15,13 +15,14 @@ class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 			
 			if(is_file(APPLICATION_PATH . '/modules/'.$module.'/configs/heads/'.$controller.'/'.$action.'.ini')) {			
 				$config_ini = APPLICATION_PATH . '/modules/'.$module.'/configs/heads/'.$controller.'/'.$action.'.ini';
-				$config=new Zend_Config_Ini($config_ini);
+				$config=new Zend_Config_Ini($config_ini);				
 				
 				if(isset($config->javascript)) {
 					foreach($config->javascript as $file) {
 						$view->headScript()->appendFile($file);
 					}
 				}
+				
 				if(isset($config->css)) {
 					foreach($config->css as $file) {
 						$view->headLink()->appendStylesheet($file);

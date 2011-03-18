@@ -72,6 +72,96 @@ class My_Class_Maerdo_Component_Form {
 		return($mFormFieldType->fetchAll());
 	}
 		
+	/**
+	 * Get form fields
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFieldTypeList();
+	 * </code>
+	 * 	 
+	 * @param $id Form id
+	 * @return array with type
+	 */		
+	public function getFormFields($id) {
+		$mFormFields=new Maerdo_Model_Formfield();		
+		return($mFormFields->findByField('form_id',$id,$mFormFields));
+	}	
 	
+	/**
+	 * Delete a form field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::deleteField($field_id);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return array with type
+	 */		
+	public function deleteField($field_id) {
+		$mFormFields=new Maerdo_Model_Formfield();		
+		return($mFormFields->delete("id ='$field_id'"));
+	}	
+
+	/**
+	 * Add a form field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::deleteField($field_id);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return array with type
+	 */		
+	public function addField($form_id,$field_type,$field_name) {
+		$mFormFields=new Maerdo_Model_Formfield();		
+		return($mFormFields->insert(array('form_id'=>$form_id,'type'=>$field_type,'name'=>$field_name)));
+	}	
+
+	/**
+	 * Update field options
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::updateOptions($field_id,$options;$multioptions,$attributs);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return array with type
+	 */		
+	public function updateOptions($field_id,$options,$multioptions,$attributs) {
+		$mFormFieldOption=new Maerdo_Model_Formfieldoptions();
+		$mFormFieldOption->delete("form__field_id='$field_id'");
+		
+		$mFormFieldAttribs=new Maerdo_Model_Formfieldattribs();
+		$mFormFieldAttribs->delete("form__field_id='$field_id'");	
+
+		$mFormFieldMultioptions=new Maerdo_Model_Formfieldmultioptions();
+		$mFormFieldMultioptions->delete("form__field_id='$field_id'");
+
+		foreach($options as $option=>$value) {
+			if($option=="required") {
+				if($value=="on") {
+					$value="true";
+				}	
+			}
+			$mFormFieldOption->insert(array('form__field_id'=>$field_id,'name'=>$option,'value'=>$value));	
+		}
+		
+		return(true);
+	}
+
+	/**
+	 * Retrieve options for a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::updateOptions($field_id,$options;$multioptions,$attributs);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return array with type
+	 */		
+	public function getOptions($field_id) {
+		$mFormFieldOption=new Maerdo_Model_Formfieldoptions();
+		$mFormFieldOption->findByField("form__field_id='$field_id'");	
+	}
 }
 ?> 

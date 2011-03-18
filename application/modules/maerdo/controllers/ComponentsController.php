@@ -252,13 +252,58 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     	
     }
     
-    public function formeditAction() {
-    	$this->_helper->viewRenderer->setScriptAction('forms/edit');
-    	
+    public function formeditAction() {    	
+    	if($this->_getParam('form_action')=="delete_field") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::deleteField($this->_getParam('field_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='delete_field_error';
+    				break;
+    			default:
+    				$this->view->notification_success='delete_field_success';
+    				break;
+    		}
+    	}
+        if($this->_getParam('form_action')=="add_field") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::addField($this->_getParam('form_id'),$this->_getParam('field_type'),$this->_getParam('field_name'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='add_field_error';
+    				break;
+    			default:
+    				$this->view->notification_success='add_field_success';
+    				break;
+    		}
+    	}    	
 		$fieldTypes=My_Class_Maerdo_Component_Form::getFieldTypeList();
-    			
+		$fields=My_Class_Maerdo_Component_Form::getFormFields($this->_getParam('form_id'));
+		
+		$this->view->form_id=$this->_getParam('form_id');
 		$this->view->fieldTypes=$fieldTypes;
-		    	
+		$this->view->fields=$fields;
+		
+		$this->_helper->viewRenderer->setScriptAction('forms/edit');
+    	    	
+    }
+    
+    public function formeditfieldAction() {
+        if($this->_getParam('form_action')=="update_options") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::updateOptions($this->_getParam('field_id'),$this->_getParam('options'),$this->_getParam('multioptions'),$this->_getParam('attributs'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='updateOptions_error';
+    				break;
+    			default:
+    				$this->view->notification_success='updateOptions_success';
+    				break;
+    		}
+    	}
+
+    	$options=My_Class_Maerdo_Component_Form
+    	
+    	$this->view->field_id=$this->_getParam('field_id');    	
+    	
+    	$this->_helper->viewRenderer->setScriptAction('forms/editfield');    	    	
     }
 
 }

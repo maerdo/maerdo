@@ -5,14 +5,14 @@
  * 
  */
 
-class Maerdo_Model_DbTable_Formfieldtype extends Zend_Db_Table_Abstract
+class Maerdo_Model_DbTable_Formfieldattribs extends Zend_Db_Table_Abstract
 {
         /**
          * $_name - name of database table
          *
          * @var string
          */
-	protected $_name='form__field_type';
+	protected $_name='form__field_attribs';
 
         /**
          * $_id - this is the primary key name

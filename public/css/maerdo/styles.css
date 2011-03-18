@@ -168,7 +168,9 @@ address {
 	border-color:#ea5338;
 	min-height:50px;	
 	padding-top:5px;
-	padding-left:50px;	
+	padding-left:50px;
+	padding-top:20px;
+	padding-bottom:20px;
 	color:red;
 	display:table-cell;
 	vertical-align:middle;
@@ -256,6 +258,7 @@ input{border:1px solid #969191;background-color:#fff;}
 input[type=submit]{cursor:pointer;}
 select{border:1px solid #969191;background-color:#fff;}
 
+.ml5{margin-left:5px;}
 .ml20{margin-left:20px;}
 .ml150{margin-left:150px;}
 .ml160{margin-left:160px;}

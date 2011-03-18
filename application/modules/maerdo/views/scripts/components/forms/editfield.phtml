@@ -1,0 +1,74 @@
+<div id="page-header">
+	<h1><?php echo $this->translate('Edit a field')?></h1>
+</div>
+
+<?php if($this->notification_error!=NULL):?>
+<div class='notification_error px900'>
+	<?php if($this->notification_error=='updateOptions_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to update options form.');?><br /></div>
+	<?php endif;?>
+</div>
+<br /><br />
+<?php endif;?>
+
+
+<?php if($this->notification_success!=NULL):?>
+<div class='notification_success px900'>
+	<?php if($this->notification_success=='updateOptions_success'):?>
+	<div><?php echo $this->translate('The field options has been updated.');?><br /></div>
+	<?php endif;?>
+</div>	
+<br /><br />
+<?php endif;?>
+
+<div id="tabs" class="px900">
+    <ul class="px900">		
+        <li><a href="#tabs-1"><?php echo $this->translate('Options')?></a></li>
+        <li><a href="#tabs-2"><?php echo $this->translate('Validators')?></a></li>
+        <li><a href="#tabs-3"><?php echo $this->translate('Filters')?></a></li>
+    </ul>
+    <div id="tabs-1">
+        <h3>Options</h3>
+		<form id='options_form' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>' method='post'>
+			<input type='hidden' name='form_action' value='update_options' />
+			<table>
+		    <tr><td>Label :</td><td> <input type="text" name="options[label]" value="<?=$this->options['label']?>"/></td></tr>
+	        <tr><td>Required :</td><td><input class="pr t3" type="checkbox" name="options[required]"> </td></tr>      
+	        <tr><td>Order :</td><td><input type="text" name="options[order]" <?=$this->options['order']?> size="2"/></td></tr>
+	        <tr><td>Value :</td><td> <input type="text" name="options[value]" <?=$this->options['value']?> /></td></tr>
+			</table>
+			
+	        <br />
+	        <h3>Multi-options</h3>
+	        <img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo $this->translate('Add an option')?><br /><br />
+			<table class="px300">
+		    	<tr class="bold bggrey">
+		    		<td>Name</td>
+		    		<td>Value</td>
+		    	</tr>        	
+			</table>        
+			<br />        
+	        <h3>Attributs</h3>
+	        <img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo $this->translate('Add an attribute')?><br /><br />
+			<table class="px300">
+		    	<tr class="bold bggrey">
+		    		<td>Name</td>
+		    		<td>Value</td>
+		    	</tr>        	
+			</table>
+			<img id='img_options_submit_form' class="fright" src='/tools/button/white/Update field/000000/arial/10/edit.gif/0/0' />
+			<div class="cleaner"></div>
+		</form>           
+    </div>
+    <div id="tabs-2">
+       
+    </div>
+    <div id="tabs-3">
+       
+    </div>
+    <div id="tabs-4">
+        
+    </div>		
+ </div> 
+ <br />
+ 	

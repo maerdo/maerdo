@@ -6,3 +6,8 @@
 <?php echo $this->translate('Another test sentence');?>
 <br />
 <br /><br /><br /><br />
+<?php 
+$config = new Zend_Config_Ini(APPLICATION_PATH.'/modules/front/forms/test.ini');
+$form = new Zend_Form($config);	
+echo $form
+?>

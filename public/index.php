@@ -22,7 +22,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 define('DEBUG',false);
 
 
-if(!is_file(APPLICATION_PATH.'/configs/database.ini') && $_SERVER['REQUEST_URI']!="/install/") {
+if(!is_file(APPLICATION_PATH.'/configs/maerdo.ini') && $_SERVER['REQUEST_URI']!="/install/") {
 	Header('location: /install/');
 } else {
 	/** Zend_Application */

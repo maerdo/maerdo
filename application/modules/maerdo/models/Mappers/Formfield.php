@@ -1,10 +1,10 @@
 <?php
 
-class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
+class Maerdo_Model_Mappers_Formfield extends Maerdo_Model_Mappers_Abstract {
 
     public function getDbTable()  {
        if (null === $this->_dbTable) {
-            $this->setDbTable('Maerdo_Model_Dbtable_Formfieldtype');
+            $this->setDbTable('Maerdo_Model_Dbtable_Formfield');
        }
        return $this->_dbTable;
     }
@@ -18,9 +18,11 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
         $resultSet = $this->getDbTable()->fetchAll();
         $entries   = array();
         foreach ($resultSet as $row) {
-            $entry = new Maerdo_Model_Formfieldtype();
+            $entry = new Maerdo_Model_Formfield();
             $entry->setId($row->id)
+                  ->setForm_id($row->form_id)
                   ->setType($row->type)
+                  ->setName($row->name)
                               ->setMapper($this);
             $entries[] = $entry;
         }
@@ -31,11 +33,11 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
 	/**
      * saves current row
      *
-     * @param Maerdo_Model_Form__field_type $model
+     * @param Maerdo_Model_Form__field $model
      *
      */
      
-    public function save(Maerdo_Model_Formfieldtype $model,$ignoreEmptyValuesOnUpdate=true) {
+    public function save(Maerdo_Model_Formfield $model,$ignoreEmptyValuesOnUpdate=true) {
         if ($ignoreEmptyValuesOnUpdate) {
             $data = $model->toArray();
             foreach ($data as $key=>$value) {
@@ -65,7 +67,7 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
     /**
      * returns an array, keys are the field names.
      *
-     * @param new Maerdo_Model_Form__field_type $model
+     * @param new Maerdo_Model_Form__field $model
      * @return array
      *
      */
@@ -73,7 +75,9 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
         $result = array(
 
             'id' => $model->getId(),
+            'form_id' => $model->getForm_id(),
             'type' => $model->getType(),
+            'name' => $model->getName(),
                     
         );
         return $result;
@@ -84,7 +88,7 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
      *
      * @param string $field
      * @param mixed $value
-     * @param Maerdo_Model_Formfieldtype $model
+     * @param Maerdo_Model_Formfield $model
      * @return array
      */
     public function findByField($field, $value, $model)  {            
@@ -93,10 +97,12 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
 
             $rows = $this->getDbTable()->fetchAll($select->where("{$field} = ?", $value));
             foreach ($rows as $row) {
-                    $model=new Maerdo_Model_Formfieldtype();
+                    $model=new Maerdo_Model_Formfield();
                     $result[]=$model;
                     $model->setId($row->id)
-						  ->setType($row->type);
+						  ->setForm_id($row->form_id)
+						  ->setType($row->type)
+						  ->setName($row->name);
             }
             return $result;
     }    
@@ -110,9 +116,11 @@ class Maerdo_Model_Mappers_Formfieldtype extends Maerdo_Model_Mappers_Abstract {
             $table = $this->getDbTable();
             $row = $table->find($id);
    			foreach ($row as $data) {
-           		$model=new Maerdo_Model_Formfieldtype();
+           		$model=new Maerdo_Model_Formfield();
             	$model->setId($data['id'])
-					  ->setType($data['type']);
+					  ->setForm_id($data['form_id'])
+					  ->setType($data['type'])
+					  ->setName($data['name']);
 			}
             return ($model);
     } 
