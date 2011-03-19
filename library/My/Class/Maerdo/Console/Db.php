@@ -15,9 +15,9 @@ class My_Class_Maerdo_Console_Db {
 	static public function getDbInstance() {
 		   $config_ini = APPLICATION_PATH . '/configs/maerdo.ini';
    		   $config=new Zend_Config_Ini($config_ini); 
-	   
-   		   switch($config->db->console->adapter) {   		   		
-   		   		case "pdo_mysql";
+	      		   
+   		   switch($config->db->console->adapter) {  
+   		   	 	case "pdo_mysql":
    		   			$dsn="mysql:host=".$config->db->console->host.";dbname=".$config->db->console->database;
    		   			break;
    		   }

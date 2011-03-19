@@ -24,9 +24,10 @@ class My_Class_Maerdo_Console_Database_Conf {
 	
 	public function updateConf($databases) {			
 		$content="";
-		foreach($databases as $key=>$database) {
+		foreach($databases as $key=>$database) {			
 			switch($database['adapter']) {
 				case "pdo_mysql":
+				case "mysql":
 					$adapter="pdo_mysql";
 					break;
 			}
