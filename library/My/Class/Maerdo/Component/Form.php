@@ -121,13 +121,13 @@ class My_Class_Maerdo_Component_Form {
 	 * Update field options
 	 * 
 	 * <code>
-	 * $result=My_Class_Maerdo_Component_Form::updateOptions($field_id,$options;$multioptions,$attributs);
+	 * $result=My_Class_Maerdo_Component_Form::update($field_id,$options;$multioptions,$attributs);
 	 * </code>
 	 * 	 
 	 * @param $field_id Field id
 	 * @return array with type
 	 */		
-	public function updateOptions($field_id,$options,$multioptions,$attributs) {
+	public function update($field_id,$options,$multioptions,$attributs) {
 		$mFormFieldOption=new Maerdo_Model_Formfieldoptions();
 		$mFormFieldOption->delete("form__field_id='$field_id'");
 		
@@ -145,7 +145,18 @@ class My_Class_Maerdo_Component_Form {
 			}
 			$mFormFieldOption->insert(array('form__field_id'=>$field_id,'name'=>$option,'value'=>$value));	
 		}
+
+		if(count($multioptions)>1) {		
+			foreach($multioptions as $value) {
+				$mFormFieldMultioptions->insert(array('form__field_id'=>$field_id,'name'=>$value['name'],'value'=>$value['value']));	
+			}
+		}		
 		
+		if(count($attributs)>1) {
+			foreach($attributs as $value) {
+				$mFormFieldAttribs->insert(array('form__field_id'=>$field_id,'name'=>$value['name'],'value'=>$value['value']));	
+			}		
+		}
 		return(true);
 	}
 
@@ -160,8 +171,94 @@ class My_Class_Maerdo_Component_Form {
 	 * @return array with type
 	 */		
 	public function getOptions($field_id) {
+		$result['options']=array();
 		$mFormFieldOption=new Maerdo_Model_Formfieldoptions();
-		$mFormFieldOption->findByField("form__field_id='$field_id'");	
+		$options=$mFormFieldOption->findByField("form__field_id",$field_id,$mFormFieldOption);
+		foreach($options as $key=>$value) {
+			$result['options'][$value->name]=$value->value;
+		}
+		
+		$result['multioptions']=array();
+		$mFormFieldMultioptions=new Maerdo_Model_Formfieldmultioptions();
+		$multioptions=$mFormFieldMultioptions->findByField("form__field_id",$field_id,$mFormFieldMultioptions);
+		foreach($multioptions as $key=>$value) {
+			$result['multioptions'][$key]=array('value'=>$value->value,'name'=>$value->name,'id'=>$value->id);
+		}		
+		
+
+		$result['attributs']=array();
+		$mFormFieldattributs=new Maerdo_Model_Formfieldattribs();
+		$attributs=$mFormFieldattributs->findByField("form__field_id",$field_id,$mFormFieldattributs);
+		foreach($attributs as $key=>$value) {
+			$result['attributs'][$key]=array('value'=>$value->value,'name'=>$value->name,'id'=>$value->id);
+		}		
+		return($result);		
+	}
+	
+	/**
+	 * Delete all multioptions for a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::deletemultioption($field_id);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return boolean
+	 */		
+	public function deletemultioption($field_id) {
+		$mFormFieldMultioptions=new Maerdo_Model_Formfieldmultioptions();
+		return($mFormFieldMultioptions->delete("id='$field_id'"));
+	}
+	/**
+	 * Delete all attributs for a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::deleteattribut($field_id);
+	 * </code>
+	 * 	 
+	 * @param $field_id Field id
+	 * @return boolean
+	 */		
+	public function deleteattribut($field_id) {
+		$mFormFieldattributs=new Maerdo_Model_Formfieldattribs();
+		return($mFormFieldattributs->delete("id='$field_id'"));
+	}
+	/**
+	 * Get list of all avaiable validator
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getValidatorList();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */		
+	public function getValidatorList() {
+		$validators=array('alnum','alpha','barcode','Callback','Ccnum','CreditDard',
+						 'Date','Db_Abstract','Db_NoRecordExists','Db_RecordExists',
+						 'Digits','EmailAddress','Exception','File_Count','File_Crc32','File_ExcludeExtension',
+						 'File_ExcludeMimeType','File_Exists','File_Extension','File_Hash','File_ImageSize','File_isCompressed',
+						 'File_IsImage','File_Md5','File_MimeType','File_NoExists','File_SHA1','File_Size','File_Upload','File_WordCount',
+						 'Float','GreaterThan','Hex','Hostname','Iban','Identical','InArray','Int','Ip','Isbn','LessThan','NotEmpty',
+						 'PostCode','Regex','StringLength');
+		
+		$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Validators'),array('.','..'));
+		foreach($files as $key=>$value) {
+			$validators[]=str_replace('.php','',$value);
+		}
+		return($validators);
+		
+	}
+	/**
+	 * Get list of validators for a form field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getValidator($field_id);
+	 * </code>
+	 * 	 
+	 * @return array
+	 */		
+	public function getValidator($field_id) {
+		return(array());
 	}
 }
 ?> 

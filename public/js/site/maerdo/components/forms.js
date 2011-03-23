@@ -13,4 +13,5 @@ $(document).ready(function() {
 	$('#img_add_field_submit_form').click(function() {
 		$('#form_add_field').submit();
 	});
+
 });	

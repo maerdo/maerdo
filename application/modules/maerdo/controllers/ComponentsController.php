@@ -288,7 +288,7 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     
     public function formeditfieldAction() {
         if($this->_getParam('form_action')=="update_options") {    		
-    		$result=(int) My_Class_Maerdo_Component_Form::updateOptions($this->_getParam('field_id'),$this->_getParam('options'),$this->_getParam('multioptions'),$this->_getParam('attributs'));    			   		
+    		$result=(int) My_Class_Maerdo_Component_Form::update($this->_getParam('field_id'),$this->_getParam('options'),$this->_getParam('multioptions'),$this->_getParam('attributs'));    			   		
     		switch($result) {
     			case "0":
     				$this->view->notification_error='updateOptions_error';
@@ -298,10 +298,39 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     				break;
     		}
     	}
-
-    	//$options=My_Class_Maerdo_Component_Form::get();
     	
-    	$this->view->field_id=$this->_getParam('field_id');    	
+        if($this->_getParam('form_action')=="delete_multioption") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::deletemultioption($this->_getParam('mo_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='delete_multioption_error';
+    				break;
+    			default:
+    				$this->view->notification_success='delete_multioption_success';
+    				break;
+    		}
+    	}    
+    		
+        if($this->_getParam('form_action')=="delete_attribut") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::deleteattribut($this->_getParam('mo_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='delete_attribut_error';
+    				break;
+    			default:
+    				$this->view->notification_success='delete_attribut_success';
+    				break;
+    		}
+    	}        	
+
+    	$options=My_Class_Maerdo_Component_Form::getOptions($this->_getParam('field_id'));
+		$validatorlist=My_Class_Maerdo_Component_Form::getValidatorList();
+		$validators=My_Class_Maerdo_Component_Form::getValidator($this->_getParam('field_id'));
+		
+    	$this->view->field_id=$this->_getParam('field_id');
+    	$this->view->options=$options;
+		$this->view->validators=$validators;
+    	$this->view->validatorlist=$validatorlist;      	
     	
     	$this->_helper->viewRenderer->setScriptAction('forms/editfield');    	    	
     }
