@@ -6,7 +6,9 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     public function init() {
     	$this->view->notification_error=NULL;
     	$this->view->notification_success=NULL;
-    	
+    	$this->view->sub_notification_error=NULL;
+    	$this->view->sub_notification_success=NULL;
+    	    	
     	$this->view->sidebarCountPage=My_Class_Maerdo_Framework_Page::countAll();
     	$this->view->sidebarCountModule=My_Class_Maerdo_Framework_Module::countAll();
     	$this->view->sidebarCountController=My_Class_Maerdo_Framework_Controller::countAll();
@@ -321,18 +323,71 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     				$this->view->notification_success='delete_attribut_success';
     				break;
     		}
-    	}        	
+    	}  
+        if($this->_getParam('form_action')=="add_validator") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::addValidator($this->_getParam('field_id'),$this->_getParam('validator'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->sub_notification_error='add_validator_error';
+    				break;
+    			default:
+    				$this->view->sub_notification_success='add_validator_success';
+    				break;
+    		}
+    		$this->view->view="validator";
+    	}    
+        if($this->_getParam('form_action')=="delete_validator") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::deleteValidator($this->_getParam('validator_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->sub_notification_error='delete_validator_error';
+    				break;
+    			default:
+    				$this->view->sub_notification_success='delete_validator_success';
+    				break;
+    		}
+    		$this->view->view="validator";
+    	}        		      	
 
     	$options=My_Class_Maerdo_Component_Form::getOptions($this->_getParam('field_id'));
 		$validatorlist=My_Class_Maerdo_Component_Form::getValidatorList();
-		$validators=My_Class_Maerdo_Component_Form::getValidator($this->_getParam('field_id'));
+		$validators=My_Class_Maerdo_Component_Form::getValidator($this->_getParam('field_id'));		
+
+
 		
     	$this->view->field_id=$this->_getParam('field_id');
     	$this->view->options=$options;
 		$this->view->validators=$validators;
-    	$this->view->validatorlist=$validatorlist;      	
+    	$this->view->validatorlist=$validatorlist;    	     	
     	
     	$this->_helper->viewRenderer->setScriptAction('forms/editfield');    	    	
+    }
+    
+    public function formeditvalidatorAction() {
+    	//var_dump($this->_getParam('option'));die;
+        if($this->_getParam('form_action')=="update_validatoroptions") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::updateValidatorOptions($this->_getParam('option'),$this->_getParam('validator_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='updateOptions_error';
+    				break;
+    			default:
+    				$this->view->notification_success='updateOptions_success';
+    				break;
+    		}
+    		$this->view->view="validator";
+    	}  
+    	        	
+    	$this->_helper->viewRenderer->setScriptAction('forms/editvalidator');
+    	
+    	$validator_options_list=My_Class_Maerdo_Component_Form::getValidatorOptionsList($this->_getParam('validator_id'));
+		$validator_options = My_Class_Maerdo_Component_Form::getValidatorOptions($this->_getParam('validator_id'));
+		$messages=My_Class_Maerdo_Component_Form::getMessagesList($this->_getParam('validator_id'));
+		
+		$this->view->validator_options=$validator_options;
+    	$this->view->validator_options_list=$validator_options_list;    	
+    	$this->view->field_id=$this->_getParam('field_id');
+    	$this->view->validator_id=$this->_getParam('validator_id');
     }
 
 }

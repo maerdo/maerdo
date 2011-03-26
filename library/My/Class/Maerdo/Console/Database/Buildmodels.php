@@ -1,4 +1,6 @@
 <?php 
+// rewriting from http://code.google.com/p/zend-db-model-generator/
+
 
 class My_Class_Maerdo_Console_Database_Buildmodels {
 

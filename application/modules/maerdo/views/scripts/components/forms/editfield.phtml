@@ -7,7 +7,7 @@
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
 	<?php if($this->notification_error=='updateOptions_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to update options form.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update form option.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='delete_multioption_error'):?>
@@ -104,8 +104,32 @@
 		</form>           
     </div>
     <div id="tabs-2">
+	    
+		<?php if($this->sub_notification_success!=NULL):?>
+		<div class='notification_success px900'>
+			<?php if($this->sub_notification_success=='add_validator_success'):?>
+			<div><?php echo $this->translate('The validator has been added.');?><br /></div>
+			<?php endif;?>
+			<?php if($this->sub_notification_success=='delete_validator_success'):?>
+			<div><?php echo $this->translate('The validator has been deleted.');?><br /></div>
+			<?php endif;?>			
+		</div>
+		<?php endif;?>	
+		<?php if($this->sub_notification_error!=NULL):?>
+		<div class='notification_error px900'>
+			<?php if($this->sub_notification_error=='add_validator_error'):?>
+			<div><?php echo $this->translate('An error has occured when trying to add the validator.');?><br /></div>
+			<?php endif;?>
+			<?php if($this->sub_notification_error=='delete_validator_error'):?>
+			<div><?php echo $this->translate('An error has occured when trying to delete the validator.');?><br /></div>
+			<?php endif;?>			
+		</div>
+		<?php endif;?>	
+		<br /><br />		
+		
        <form action='/maerdo/component/forms/edit/field/<?=$this->field_id?>' method='post' id='validator_form'>
-       		<?php echo $this->translate('Add this validator')?> :</a>
+       		<input type="hidden" name="form_action" value="add_validator">
+		    	<?php echo $this->translate('Add this validator')?> :</a>
        		<select name='validator'>
        			<?php foreach($this->validatorlist as $validator) :?>
        				<option value='<?=$validator?>'><?=$validator?></option>
@@ -119,8 +143,11 @@
        				</tr>
        				<?php foreach($this->validators as $validator) :?>
        				<tr>
-       					<td><?=$validator?></td>
-       					<td>Action</td>       					
+       					<td><?=$validator->validator?></td>
+       					<td>
+						<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/validator/<?=$validator->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
+       					<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>?form_action=delete_validator&validator_id=<?=$validator->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+       					</td>       					
        				</tr>
        				<?php endforeach;?>       				
        			</table>		
@@ -135,8 +162,8 @@
     </div>		
  </div> 
  <br />
- <?php if($this->view="validator"):?>
+ <?php if($this->view=="validator"):?>
 <script type="text/javascript">
-	setTimeout("$( '#tabs' ).tabs('select',1);",1000);	
+	setTimeout("$( '#tabs' ).tabs('select',1);",500);	
 </script>
 <?php endif;?>
