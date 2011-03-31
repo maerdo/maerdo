@@ -7,7 +7,10 @@
 	<?php if($this->notification_error=='updateOptions_error'):?>
 	<div><?php echo $this->translate('An error has occured when trying to update validator options.');?><br /></div>
 	<?php endif;?>
-			
+	
+	<?php if($this->notification_error=='updateMessages_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to update validator errors messages.');?><br /></div>
+	<?php endif;?>			
 </div>
 <br /><br />
 <?php endif;?>
@@ -18,10 +21,14 @@
 	<?php if($this->notification_success=='updateOptions_success'):?>
 	<div><?php echo $this->translate('The validator options has been updated.');?><br /></div>
 	<?php endif;?>
+	<?php if($this->notification_success=='updateMessages_success'):?>
+	<div><?php echo $this->translate('The validator errors messages has been updated.');?><br /></div>
+	<?php endif;?>
 </div>
 <br /><br />
 <?php endif;?>	
-	
+
+<input id="validator_id" type="hidden" name="validator_id" value="<?=$this->validator_id?>" />	
 <a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/'>> <?php echo $this->translate('Return to field form')?></a><br />
 <br /><br />
 <div id="tabs" class="px900">
@@ -66,9 +73,54 @@
 		 		endforeach;?>       	
          </table>
          <br /><br />
-         <img id='img_validator_submit_form' class="ml300" src='/tools/button/white/Update validators/000000/arial/10/edit.gif/0/0' />		 
+         <img id='img_validator_submit_form' class="pointer ml300" src='/tools/button/white/Update validator options/000000/arial/10/edit.gif/0/0' />
+         </form>		 
     </div>
     <div id="tabs-2">
+        <form id='form_validators_messages' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>/validator/<?=$this->validator_id?>' method='post'>
+    	<input type="hidden" name="form_action" value="update_messages" />
+    	<table class="maxsize">
+    		<tr class="bggrey bold">
+    			<td><?php echo $this->translate('Type');?></td>
+    			<td><?php echo $this->translate('Error code');?></td>
+    			<td><?php echo $this->translate('Message');?></td>
+    		</tr>	
+		<?php 				
+		
+		$i=0;
+		foreach($this->messages as $key=>$message):			
 
+			if($i%2==0) {
+				$class="";
+			} else {
+				$class="bggreylight";
+			}
+		?>
+			<tr class="<?=$class?>">
+				<td><input <?php if(!isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?=$key?>][type]' value='default' /><?=$this->translate('Default')?></td>
+    			<td><?php echo $message['errorcode'];?></td>
+    			<td><?php echo $message['message'];?></td>
+    		</tr>
+			<tr class="<?=$class?>">
+				<td><input <?php if(isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?=$key?>][type]' value='personal' /><?=$this->translate('Personal')?></td>
+    			<td><?php echo $message['errorcode'];?></td>
+    			<td><input value="<?php if(isset($this->personalMessages[$key])) echo $this->personalMessages[$key]['message']?>" name="messages[<?=$key?>][message]" type="text" class="maxsize" /></td>
+    		</tr>    	
+    		<tr>
+    			<td colspan="3"><br /></td>
+    		</tr>		
+		<?php 
+		$i++;
+		endforeach;
+		?>
+		</table>
+		</form>
+		<img id='img_validator_message_submit_form' class="fright pointer" src='/tools/button/white/Update validator messages/000000/arial/10/edit.gif/0/0' />
+		<div class="cleaner"></div>		 
     </div>
 </div>    
+ <?php if($this->view=="messages"):?>
+<script type="text/javascript">
+	setTimeout("$( '#tabs' ).tabs('select',1);",500);	
+</script>
+<?php endif;?>

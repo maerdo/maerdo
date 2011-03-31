@@ -364,7 +364,7 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     }
     
     public function formeditvalidatorAction() {
-    	//var_dump($this->_getParam('option'));die;
+    	//var_dump($this->_getParam('message'));die;
         if($this->_getParam('form_action')=="update_validatoroptions") {    		
     		$result=(int) My_Class_Maerdo_Component_Form::updateValidatorOptions($this->_getParam('option'),$this->_getParam('validator_id'));    			   		
     		switch($result) {
@@ -374,9 +374,20 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     			default:
     				$this->view->notification_success='updateOptions_success';
     				break;
+    		}    		
+    	}
+        if($this->_getParam('form_action')=="update_messages") {    		
+    		$result=(int) My_Class_Maerdo_Component_Form::updateMessages($this->_getParam('messages'),$this->_getParam('validator_id'));    			   		
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='updateMessages_error';
+    				break;
+    			default:
+    				$this->view->notification_success='updateMessages_success';
+    				break;
     		}
-    		$this->view->view="validator";
-    	}  
+    		$this->view->view="messages";
+    	}    	
     	        	
     	$this->_helper->viewRenderer->setScriptAction('forms/editvalidator');
     	
@@ -388,6 +399,9 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     	$this->view->validator_options_list=$validator_options_list;    	
     	$this->view->field_id=$this->_getParam('field_id');
     	$this->view->validator_id=$this->_getParam('validator_id');
+    	
+    	$this->view->messages=$messages[1];
+    	$this->view->personalMessages=$messages[0];
     }
 
 }

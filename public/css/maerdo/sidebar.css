@@ -60,6 +60,9 @@
 #sidebar ul li a.icn_delete_comments {
 	background: url('/images/icons/small/comment_delete.png') no-repeat left;
 }
+#sidebar ul li a.icn_forms {
+	background: url('/images/icons/formulaire.png') no-repeat left;
+}
 
 /* Live Search (Sidebar) */
 .searchform {

@@ -313,14 +313,18 @@ class My_Class_Maerdo_Component_Form {
 		$result=array();
 		
 		$alreadyUsed=self::getValidatorOptions($validator_id);
-		if(count($alreadyUsed)>0)
-		foreach($options as $option) {	
-			foreach($alreadyUsed as $au) {
-				if(!in_array($au->option,$options)) {				
-					$result[$au->option]=$au->option;
-				}	
-			}		
-			
+		foreach($alreadyUsed as $option) {
+			$alreadyUsedArray[$option->option]=$option->option;
+		}
+				
+		if(count($alreadyUsed)>0)  {
+			foreach($options as $option) {	
+				foreach($alreadyUsedArray as $au) {
+					if(!in_array($option,$alreadyUsedArray)) {				
+						$result[$option]=$option;
+					}	
+				}		
+			}
 		} else {
 			$result=$options;
 		}	
@@ -367,6 +371,16 @@ class My_Class_Maerdo_Component_Form {
 		return $result;
 	} 	
 	
+	/**
+	 * Get error message list for a validator
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getMessagesList($validator_id);
+	 * </code>
+	 * 	 
+	 * @params $validator_id Maerdo database validator id
+	 * @return array
+	 */				
 	static public function getMessagesList($validator_id) {
 		$config=new Zend_Config_Ini(APPLICATION_PATH.'/modules/maerdo/configs/validator.ini');
 		
@@ -375,8 +389,63 @@ class My_Class_Maerdo_Component_Form {
 		
 		$validator=strtolower($validator->Validator);
 		$messages=$config->messages->{$validator}->toArray();
+						
+		$mValidator=new Maerdo_Model_Formfieldvalidatorsmessage();
+		$validatormessages=$mValidator->findByField('form__field_validators_id ',$validator_id,$mValidator);		
+			
+		$i=0;
+		$result=array(0=>array(),1=>array());
+		foreach($validatormessages as $dbmessage) {
+				$result[0][$dbmessage->key]['type']='personal';
+				$result[0][$dbmessage->key]['errorcode']=$dbmessage->key;
+				$result[0][$dbmessage->key]['message']=$dbmessage->message;
+		}
+		foreach($messages as $key=>$message) {
+				$result[1][$key]['type']='default';
+				$result[1][$key]['errorcode']=$key;
+				$result[1][$key]['message']=$message;				
+		}
 		
-		return($messages);		
+		return($result);		
+	}
+	
+	/**
+	 * Check if an option exist for a validator
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::checkIfValidatorOptionExist($validator_id,$option);
+	 * </code>
+	 * 	 
+	 * @params $validator_id Maerdo database validator id
+	 * @params $option Name of validator option
+	 * @return bool
+	 */				
+	static public function checkIfValidatorOptionExist($validator_id,$option) {
+		$config=new Zend_Config_Ini(APPLICATION_PATH.'/modules/maerdo/configs/validator.ini');
+		
+		$mValidator=new Maerdo_Model_Formfieldvalidators();
+		$validator=$mValidator->find($validator_id);
+		
+		$validator=strtolower($validator->Validator);
+		$options=$config->options->{$validator}->toArray();
+			
+		if(in_array($option,$options))
+			return true;
+		else
+			return false;
+	}
+	
+	static public function updateMessages($messages,$validator_id) {
+		$mFormValidatorMessages=new Maerdo_Model_Formfieldvalidatorsmessage();
+		$mFormValidatorMessages->delete('form__field_validators_id="'.$validator_id.'"');
+		foreach($messages as $key=>$value) {
+			if($value['type']=="personal") {
+				if($mFormValidatorMessages->insert(array('form__field_validators_id'=>$validator_id,'key'=>$key,'message'=>$value['message']))==0) {
+					return false;
+				}
+			}			
+		}	
+		return true;
 	}
 }
 ?> 

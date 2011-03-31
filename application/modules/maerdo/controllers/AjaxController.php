@@ -95,6 +95,14 @@ class Maerdo_AjaxController extends Zend_Controller_Action
     			$result=My_Class_Maerdo_Component_Plugins::updatestackindex($this->_params['plugin_name'],$this->_params['stackindex']);
 				$this->view->ajaxData=$result;
     	}	         	
-    }			    
+    }
+
+    public function formsAction() {    	
+    	switch($this->_getParam('service')) {
+			case "validatoroptionexist":
+    			$this->view->ajaxData=(int) My_Class_Maerdo_Component_Form::checkIfValidatorOptionExist($this->_params['validator_id'],$this->_params['option']);				
+    			break;	    		
+    	}	         	
+    }	    
 }
 
