@@ -114,8 +114,8 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 					}				
 					if(!is_dir(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir))
 						mkdir(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir);				
-					if(is_file(APPLICATION_PATH.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv')) {
-						$fileData=file(APPLICATION_PATH.'modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv');
+					if(is_file(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv')) {
+						$fileData=file(APPLICATION_PATH.'/modules/'.$module.'/languages/'.$dir.'/'.$controller.'.csv');
 						$fileContent=array();
 						foreach($fileData as $line) {
 							$data=explode(';',$line);
@@ -129,11 +129,12 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 					
 					if(is_array($sentences)) {
 						foreach($sentences as $id=>$sentence) {
-							if(!array_key_exists($id,$fileContent)) {
+							if(!array_key_exists($id,$fileContent)) {															
 								$fileContent[$id]=$sentence;
 							}
 						}
 					}
+					
 					$csvContent="";
 					foreach($fileContent as $key=>$sentence) {
 						$sentence=str_replace("\n",'',$sentence);
