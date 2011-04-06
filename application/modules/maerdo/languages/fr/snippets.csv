@@ -5,25 +5,24 @@ Database;Database
 Forms;Forms
 Plugins;Plugins
 Translate;Translate
+Console;Console
 Update Pages;Update Pages
 Update Database;Update Database
 Update Translation;Update Translation
 Update Cache;Update Cache
 Update Auth;Update Auth
-Create a form;Create a form
-Forms list;Forms list
+Update Forms;Update Forms
 Module;Module
 Modules list;Modules list
 Create a module;Create a module
 Pages;Pages
 Pages list;Pages list
 Add a page;Add a page
+Parameters;Parameters
 Help;Help
 Documentation;Documentation
 Forums;Forums
-Parameters;Parameters
 Components;Components
 Cache;Cache
-Console;Console
 Framework;Framework
 Home;Home

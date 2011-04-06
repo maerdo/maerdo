@@ -1,4 +1,5 @@
 Installation;Installation
+The directory "application/configs" must be writable;The directory "application/configs" must be writable
 All fields must be setted;All fields must be setted
 Admin\'s password are not equal;Admin\'s password are not equal
 Error during installation;Error during installation

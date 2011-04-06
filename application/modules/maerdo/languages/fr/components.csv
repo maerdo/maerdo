@@ -73,9 +73,71 @@ Username;Username
 Select a  default database connection for a module;Select a  default database connection for a module
 Set to default adapter;Set to default adapter
 Module;Module
-Forms;Forms
-Add a form;Add a form
+Edit a form;Edit a form
+An error has occured when trying to delete the field.;An error has occured when trying to delete the field.
+An error has occured when trying to add the field.;An error has occured when trying to add the field.
+The field has been deleted.;The field has been deleted.
+The field has been added.;The field has been added.
+Parameters;Parameters
 Form name;Form name
+Template;Template
+Action URL;Action URL
+Method;Method
+Fields;Fields
+Add a field;Add a field
+Field type;Field type
+Field name;Field name
+Edit a field;Edit a field
+An error has occured when trying to update form option.;An error has occured when trying to update form option.
+An error has occured when trying to delete the multioptions.;An error has occured when trying to delete the multioptions.
+An error has occured when trying to delete the attribut.;An error has occured when trying to delete the attribut.
+The field options has been updated.;The field options has been updated.
+The multioption has been deleted.;The multioption has been deleted.
+The attribut has been deleted.;The attribut has been deleted.
+Return to form edition;Return to form edition
+Options;Options
+Validators;Validators
+Filters;Filters
+Add an option;Add an option
+Add an attribute;Add an attribute
+The validator has been added.;The validator has been added.
+The validator has been deleted.;The validator has been deleted.
+An error has occured when trying to add the validator.;An error has occured when trying to add the validator.
+An error has occured when trying to delete the validator.;An error has occured when trying to delete the validator.
+Add this validator;Add this validator
+Add;Add
+The Filter has been added.;The Filter has been added.
+The filter has been deleted.;The filter has been deleted.
+An error has occured when trying to add the filter.;An error has occured when trying to add the filter.
+An error has occured when trying to delete the filter.;An error has occured when trying to delete the filter.
+Add this filter;Add this filter
+Edit a filter configuration;Edit a filter configuration
+An error has occured when trying to update filter options.;An error has occured when trying to update filter options.
+An error has occured when trying to update filter errors messages.;An error has occured when trying to update filter errors messages.
+The filter options has been updated.;The filter options has been updated.
+The filter errors messages has been updated.;The filter errors messages has been updated.
+Return to field edition;Return to field edition
+Add this option;Add this option
+Other;Other
+Option;Option
+Value;Value
+Delete;Delete
+Edit a validator configuration;Edit a validator configuration
+An error has occured when trying to update validator options.;An error has occured when trying to update validator options.
+An error has occured when trying to update validator errors messages.;An error has occured when trying to update validator errors messages.
+The validator options has been updated.;The validator options has been updated.
+The validator errors messages has been updated.;The validator errors messages has been updated.
+Messages;Messages
+Type;Type
+Error code;Error code
+Message;Message
+Personal;Personal
+Forms;Forms
+An error has occured when trying to add form.;An error has occured when trying to add form.
+An error has occured when trying to delete form.;An error has occured when trying to delete form.
+The form has been added.;The form has been added.
+The form has been deleted.;The form has been deleted.
+Add a form;Add a form
 Plugins;Plugins
 Select a plugin to enable;Select a plugin to enable
 Translate;Translate

@@ -28,7 +28,7 @@ class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 						$view->headLink()->appendStylesheet($file);
 					}
 				}
-				if($config->title) {
+				if($config->title) {					
 					if($config->title->{$locale}) {				
 						$view->HeadTitle($config->title->{$locale});
 					}

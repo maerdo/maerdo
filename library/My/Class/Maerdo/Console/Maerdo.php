@@ -39,30 +39,28 @@ class My_Class_Maerdo_Console_Maerdo {
 						if(preg_match('#translate#',strtolower($params[0]))) {		
 								$translate=new My_Class_Maerdo_Console_Translate($params[1]);
 								$this->_observers->attach($translate);
-						}
-						if(preg_match('#database#',strtolower($params[0]))) {							
+						} elseif(preg_match('#database#',strtolower($params[0]))) {							
 								$page=new My_Class_Maerdo_Console_Database($params[1]);
 								$this->_observers->attach($page);
-						}
-						if(preg_match('#form#',strtolower($params[0]))) {														
-								$form=new My_Class_Maerdo_Console_Form($params[1]);
-								$this->_observers->attach($page);
-						}
-						if(preg_match('#page#',strtolower($params[0]))) {
+						} elseif(preg_match('#forms#',strtolower($params[0]))) {														
+								$form=new My_Class_Maerdo_Console_Forms($params[1]);
+								$this->_observers->attach($form);
+						} elseif(preg_match('#page#',strtolower($params[0]))) {
 								$page=new My_Class_Maerdo_Console_Page($params[1]);
 								$this->_observers->attach($page);
 								break;	
-						}
-						if(preg_match('#cache#',strtolower($params[0]))) {
+						} elseif(preg_match('#cache#',strtolower($params[0]))) {
 								$page=new My_Class_Maerdo_Console_Cache($params[1]);
 								$this->_observers->attach($page);
 								break;	
-						}	
-						if(preg_match('#auth#',strtolower($params[0]))) {
+						} elseif(preg_match('#auth#',strtolower($params[0]))) {
 								$page=new My_Class_Maerdo_Console_Auth($params[1]);
 								$this->_observers->attach($page);
 								break;	
-						}											
+						}else {
+							$this->usage();		
+						}		
+													
 					}
 					break;
 				default:

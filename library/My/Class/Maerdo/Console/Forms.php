@@ -1,17 +1,17 @@
 <?php 
 /**
- * This class is used to work with database in console mode.
+ * This class is used to work with forms in console mode.
  * 
  * @author Nicolas Blaudez <nblaudez@maerdo.com>
  * @package Console
  * @version 0.1
  */
-class My_Class_Maerdo_Console_Database {
+class My_Class_Maerdo_Console_Forms {
 
 	protected $_observers;
 	
 	/**
-	 * Attach selected database console observers to $_observers var.
+	 * Attach selected forms console observers to $_observers var.
 	 * 	
 	 * @return boolean
 	 */	
@@ -21,18 +21,11 @@ class My_Class_Maerdo_Console_Database {
 		foreach($sections as $section) {
 			switch($section) {
 				case "all":
-					$obs=new My_Class_Maerdo_Console_Database_Conf();
-					$this->_observers->attach($obs);
-										
-					$obs=new My_Class_Maerdo_Console_Database_Buildmodels();
+					$obs=new My_Class_Maerdo_Console_Forms_Inifiles();
 					$this->_observers->attach($obs);
 					break;
-				case "buildmodels":
-					$obs=new My_Class_Maerdo_Console_Database_Buildmodels();
-					$this->_observers->attach($obs);
-					break;					
-				case "conf" :									
-					$obs=new My_Class_Maerdo_Console_Database_Conf();
+				case "ini_file":
+					$obs=new My_Class_Maerdo_Console_Forms_Inifiles();
 					$this->_observers->attach($obs);
 					break;				
 			}
@@ -41,13 +34,13 @@ class My_Class_Maerdo_Console_Database {
 		
 	}
  	/**
-	 * Call update function of  database attached observers
+	 * Call update function of forms attached observers
 	 * 	 
 	 * @return boolean
 	 */	   
 	public function update() {		
 		My_Class_Maerdo_Console::newline();
-		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::DATABASE");		
+		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::FORMS");		
 
         foreach ($this->_observers as $observer) {
             try{

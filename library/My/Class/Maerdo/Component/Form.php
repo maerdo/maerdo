@@ -9,7 +9,7 @@
 class My_Class_Maerdo_Component_Form {
 	
 	/**
-	 * Add form.
+	 * Add a form.
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Form::add($configuration);
@@ -25,6 +25,58 @@ class My_Class_Maerdo_Component_Form {
 							 'name'=>$configuration['name'],
 							 'template'=>$configuration['template']));
 	}
+	
+	/**
+	 * Delete a form with his field, validator and filter.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::delete($form_id);
+	 * </code>
+	 * 	 
+	 * @param $form_id Database id of form
+	 * @return array
+	 */		
+	static  public function delete($form_id) {
+		try {
+			$mForm=new Maerdo_Model_Form();
+			$mForm->delete('id="'.$form_id.'"');
+			
+			$mFormfield=new Maerdo_Model_Formfield();
+			$fields=$mFormfield->findByField('form_id',$form_id,$mFormfield);
+
+			$mFormfieldattribs=new Maerdo_Model_Formfieldattribs();
+			$mFormfieldoptions=new Maerdo_Model_Formfieldoptions();
+			$mFormfieldmultioptions=new Maerdo_Model_Formfieldmultioptions();
+			$mFormfieldvalidators=new Maerdo_Model_Formfieldvalidators();
+			$mFormfieldvalidatorsoptions=new Maerdo_Model_Formfieldvalidatorsoptions();
+			$mFormfieldvalidatormessage=new Maerdo_Model_Formfieldvalidatorsmessage();
+			$mFormfieldfilters=new Maerdo_Model_Formfieldfilters();
+			$mFormfieldfiltersoptions=new Maerdo_Model_Formfieldfiltersoptions();
+			
+			
+			foreach($fields as $field) {			
+				$mFormfieldattribs->delete('form__field_id='.$field->id);
+				$mFormfieldoptions->delete('form__field_id='.$field->id);
+				$mFormfieldmultioptions->delete('form__field_id='.$field->id);	
+	
+				$validators=$mFormfieldvalidators->findByField('form__field_id',$field->id,$mFormfieldvalidators);
+				foreach($validators as $validator) {
+					$mFormfieldvalidatorsoptions->delete('form__field_validators_id='.$validator->id);
+					$mFormfieldvalidatormessage->delete('form__field_validators_id='.$validator->id);	
+				}
+				$filters=$mFormfieldfilters->findByField('form__field_id',$field->id,$mFormfieldvalidators);
+				foreach($filters as $filter) {
+					$mFormfieldfiltersoptions->delete('form__field_filters_id='.$validator->id);					
+				}	
+				$mFormfield->delete('id='.$field->id);		
+			}
+		} catch(Exception $e) {
+			var_dump($e->getMessage());die;
+			return false;
+		}
+		
+		return true;
+	}	
 	
 	
 	/**
@@ -224,7 +276,7 @@ class My_Class_Maerdo_Component_Form {
 		return($mFormFieldattributs->delete("id='$field_id'"));
 	}
 	/**
-	 * Get list of all avaiable validator
+	 * Get list of all available validator
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Form::getValidatorList();
@@ -249,7 +301,31 @@ class My_Class_Maerdo_Component_Form {
 		
 	}
 	/**
-	 * Get list of validators for a form field
+	 * Get list of all available filter
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFilterList();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */		
+	public  static function getFilterList() {
+		$filters=array('alnum','alpha','basename','boolean','callback','compress','compress_bz2','compress_gz','compress_lzf','compress_rar','compress_tar',
+						  'compress_zip','decompress','decrypt','digits','dir',
+						  'encrypt','encrypt_mcrypt','encrypt_openssl','exception','file_decrypt','file_encrypt','file_lowercase','file_rename','file_uppercase',
+						  'htmlentities','inflector','input','int','interface','localizetonormalized',
+						  'normalizedtolocalized','null','pregreplace','realpath','stringtolower','stringtoupper','stringtrim',
+						  'stripnewlines','striptags');
+		
+		$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Filters'),array('.','..'));
+		foreach($files as $key=>$value) {
+			$filters[]=str_replace('.php','',$value);
+		}
+		return($filters);
+		
+	}	
+	/**
+	 * Get list of validator for a form field
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Form::getValidator($field_id);
@@ -262,6 +338,20 @@ class My_Class_Maerdo_Component_Form {
 		return($mFormfieldValidators->findByField('form__field_id',$field_id,$mFormfieldValidators));
 	}
 	
+	/**
+	 * Get list of filter for a form field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFilter($field_id);
+	 * </code>
+	 * 	 
+	 * @return array
+	 */		
+	public static function getFilter($field_id) {
+		$mFormfieldFilters=new Maerdo_Model_Formfieldfilters();
+		return($mFormfieldFilters->findByField('form__field_id',$field_id,$mFormfieldFilters));
+	}
+		
 	/**
 	 * add a validator to a field
 	 * 
@@ -292,7 +382,36 @@ class My_Class_Maerdo_Component_Form {
 	}
 	
 	/**
-	 * Get free validation options list
+	 * add a filter to a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::addFilter($field_id,$filter_name);
+	 * </code>
+	 * 	 
+	 * @return bool
+	 */			
+	public static  function addFilter($field_id,$filter) {
+		$mFormfieldfilters=new Maerdo_Model_Formfieldfilters();
+		return($mFormfieldfilters->insert(array('form__field_id'=>$field_id,'filter'=>$filter)));
+	}
+	
+	/**
+	 * delete a field filter
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::deleteFilter($Filter_id);
+	 * </code>
+	 * 	 
+	 * @params validator_id  Database id of filter
+	 * @return bool
+	 */			
+	public static function deleteFilter($filter_id) {
+		$mFormfieldfilters=new Maerdo_Model_Formfieldfilters();
+		return($mFormfieldfilters->delete('id="'.$filter_id.'"'));	
+	}	
+	
+	/**
+	 * Get  validator free options list
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Form::getValidatorOptionsList($validator_id);
@@ -308,7 +427,10 @@ class My_Class_Maerdo_Component_Form {
 		$validator=$mValidator->find($validator_id);
 		
 		$validator=strtolower($validator->Validator);
-		$options=$config->options->{$validator}->toArray();
+		if($config->options->{$validator})
+			$options=$config->options->{$validator}->toArray();
+		else
+			$options=array();	
 		
 		$result=array();
 		
@@ -333,6 +455,52 @@ class My_Class_Maerdo_Component_Form {
 		return($result);
 		
 	}	
+	
+	/**
+	 * Get  filter free options list
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFilterOptionsList($filter_id);
+	 * </code>
+	 * 	 
+	 * @params Database filter id
+	 * @return array
+	 */			
+	public static function getFilterOptionsList($filter_id) {
+		$config=new Zend_Config_Ini(APPLICATION_PATH.'/modules/maerdo/configs/filter.ini');
+		
+		$mFilter=new Maerdo_Model_Formfieldfilters();
+		$filter=$mFilter->find($filter_id);
+		
+		$filter=strtolower($filter->filter);
+		if($config->options->{$filter})
+			$options=$config->options->{$filter}->toArray();
+		else
+			$options=array();	
+		
+		$result=array();
+		
+		$alreadyUsed=self::getFilterOptions($filter_id);
+		foreach($alreadyUsed as $option) {
+			$alreadyUsedArray[$option->option]=$option->option;
+		}
+				
+		if(count($alreadyUsed)>0)  {
+			foreach($options as $option) {	
+				foreach($alreadyUsedArray as $au) {
+					if(!in_array($option,$alreadyUsedArray)) {				
+						$result[$option]=$option;
+					}	
+				}		
+			}
+		} else {
+			$result=$options;
+		}	
+		
+		
+		return($result);
+		
+	}		
 	/**
 	 * Update validator options
 	 * 
@@ -356,10 +524,32 @@ class My_Class_Maerdo_Component_Form {
 	} 
 	
 	/**
-	 * Get validator option for a field
+	 * Update filter options
 	 * 
 	 * <code>
-	 * $result=My_Class_Maerdo_Component_Form::updateValidatoroptions($options,$validator_id);
+	 * $result=My_Class_Maerdo_Component_Form::updateFilterOptions($options,$filter_id);
+	 * </code>
+	 * 	 
+	 * @params $options Array with filter options
+	 * @return array
+	 */				
+	public static function updateFilterOptions($options,$filter_id) {
+		$mFilteroptions=new Maerdo_Model_Formfieldfiltersoptions();
+		$mFilteroptions->delete("form__field_filters_id='".$filter_id."'");		
+		if(is_array($options)) {
+			foreach($options as $option) {
+				if($mFilteroptions->insert(array('option'=>$option['option'],'value'=>$option['value'],'form__field_filters_id'=>$filter_id))==0)
+					return false;
+			}
+		}
+		return true;
+	} 	
+	
+	/**
+	 * Get validator options for a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getValidatorOptions($validator_id);
 	 * </code>
 	 * 	 
 	 * @params $options Array with validator options
@@ -370,6 +560,22 @@ class My_Class_Maerdo_Component_Form {
 		$result=$mValidatoroptions->findByField("form__field_validators_id",$validator_id,$mValidatoroptions);				
 		return $result;
 	} 	
+	
+	/**
+	 * Get filter options for a field
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFilterOptions($filter_id);
+	 * </code>
+	 * 	 
+	 * @params $options Array with validator options
+	 * @return array
+	 */				
+	public static function getFilterOptions($filter_id) {
+		$mFilteroptions=new Maerdo_Model_Formfieldfiltersoptions();
+		$result=$mFilteroptions->findByField("form__field_filters_id",$filter_id,$mFilteroptions);				
+		return $result;
+	} 		
 	
 	/**
 	 * Get error message list for a validator
@@ -434,7 +640,42 @@ class My_Class_Maerdo_Component_Form {
 		else
 			return false;
 	}
-	
+	/**
+	 * Check if an option exist for a Filter
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::checkIfFilterOptionExist($filter_id,$option);
+	 * </code>
+	 * 	 
+	 * @params $filter_id Maerdo database filter id
+	 * @params $option Name of filter option
+	 * @return bool
+	 */				
+	static public function checkIfFilterOptionExist($filter_id,$option) {
+		$config=new Zend_Config_Ini(APPLICATION_PATH.'/modules/maerdo/configs/filter.ini');
+		
+		$mFilter=new Maerdo_Model_Formfieldfilters();
+		$filter=$mFilter->find($filter_id);
+		
+		$filter=strtolower($filter->filter);
+		$options=$config->options->{$filter}->toArray();
+			
+		if(in_array($option,$options))
+			return true;
+		else
+			return false;
+	}	
+	/**
+	 * Update form validator errors messages
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::updateMessages($messages,$validator_id);
+	 * </code>
+	 * 	 
+	 * @params $messages Array with messages data
+	 * @params $validator_id Maerdo database validator id
+	 * @return bool
+	 */			
 	static public function updateMessages($messages,$validator_id) {
 		$mFormValidatorMessages=new Maerdo_Model_Formfieldvalidatorsmessage();
 		$mFormValidatorMessages->delete('form__field_validators_id="'.$validator_id.'"');
@@ -446,6 +687,38 @@ class My_Class_Maerdo_Component_Form {
 			}			
 		}	
 		return true;
+	}
+	
+	/**
+	 * Return form id
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFormIdFromFieldId($field_id);
+	 * </code>
+	 * 	 
+	 * @params $field_id 
+	 * @return int
+	 */			
+	static public function getFormIdFromFieldId($field_id) {
+		$mFormField=new Maerdo_Model_Formfield();
+		$result=$mFormField->find($field_id);
+		return $result->form_id;
+	}
+	
+	/**
+	 * Return form informations
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Form::getFormInfo($form_id);
+	 * </code>
+	 * 	 
+	 * @params $form_id 
+	 * @return object
+	 */	
+	public static function getFormInfo($form_id) {
+		$mForm=new Maerdo_Model_Form();
+		$result=$mForm->find($form_id);
+		return $result;
 	}
 }
 ?> 

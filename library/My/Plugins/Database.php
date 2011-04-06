@@ -31,8 +31,8 @@ class My_Plugins_Database extends Zend_Controller_Plugin_Abstract {
 				Zend_Registry::set($dbconf->storage_name,$db);
 		   }   		
        }        
-       
-       if(file_exists(APPLICATION_PATH.'/modules/'.$request->getModuleName().'/configs/database.ini') && ($request->getActionName()!="index" && $request->getControllerName()!="install")) {       		
+
+       if(file_exists(APPLICATION_PATH.'/modules/'.$request->getModuleName().'/configs/database.ini')) {
        		if($request->getControllerName()!="install") {
 	       		$config_ini = APPLICATION_PATH.'/modules/'.$request->getModuleName().'/configs/database.ini';
 			    $config=new Zend_Config_Ini($config_ini);
@@ -40,7 +40,7 @@ class My_Plugins_Database extends Zend_Controller_Plugin_Abstract {
 				    $db=Zend_Registry::get($config->db->default);
 				    Zend_Db_Table::setDefaultAdapter($db); 
 	            }	 
-       		}  		
+       		}  		       		
        }     
 	} 
 }	

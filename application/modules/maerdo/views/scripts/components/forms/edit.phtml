@@ -24,6 +24,9 @@
 </div>
 <?php endif;?>	
 <br /><br />
+<a href='/maerdo/component/forms/'>- Return to forms list</a>
+<br />
+<br />
 <h2 ><?php echo $this->translate('Parameters');?></h2>
 <div id="parameters">
 	<form id='form_add' action='/maerdo/component/forms/' method='post'>
@@ -31,7 +34,7 @@
 		<table>
 			<tr>
 				<td><?php echo $this->translate('Form name')?> :</td>
-				<td><input type="text" name="form[name]" class="px200" /></td>
+				<td><input type="text" value="<?=$this->form_info->name?>" name="form[name]" class="px200" /></td>
 			</tr>
 			<tr>
 				<td><?php echo $this->translate('Template')?> :</td>
@@ -40,7 +43,8 @@
 						<?php 
 						if(is_array($this->templates)) {
 							foreach($this->templates as $file):
-								echo "<option value='$file'>$file</option>";
+								$selected="";if($this->form_info->template==$file)  $selected='selected="selected"';							
+								echo "<option $selected value='$file'>$file</option>";
 							endforeach;			
 						}
 						?>
@@ -49,14 +53,15 @@
 			</tr>					
 			<tr>
 				<td><?php echo $this->translate('Action URL')?> :</td>
-				<td><input type="text" name="form[action_url]" class="px200" /></td>
+				<td><input type="text" value="<?=$this->form_info->action?>" name="form[action_url]" class="px200" /></td>
 			</tr>	
 			<tr>
 				<td><?php echo $this->translate('Method')?> :</td>
 				<td>
 					<select name="form[method]" class="px200">
-						<option value="post">POST</option>
-						<option value="get">GET</option>
+						
+						<option <?php if($this->form_info->method=="post") echo "selected='selected'"?> value="post">POST</option>
+						<option <?php if($this->form_info->method=="get") echo "selected='selected'"?>value="get">GET</option>
 					</select>
 				</td>
 			</tr>							
@@ -67,8 +72,8 @@
 </div>
 
 <h2><?php echo $this->translate('Fields');?></h2>
-<a href='#' onclick='$("#form_add_field_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a field')?></a>
-<div id='form_add_field_div' class='hidden'>
+<?php echo $this->translate('Add a field')?>
+<div id='form_add_field_div'>
 	<form id='form_add_field' action='/maerdo/component/forms/edit/<?=$this->form_id?>' method='post'>
 	<input type="hidden" name="form_action" value="add_field" />
 	<table>
@@ -89,7 +94,7 @@
 		</tr>
 		<tr>
 			<td><?php echo $this->translate('Field name')?> :</td>
-			<td><input type="text" name="field_name" class="px200" /></td>
+			<td><input type="text" name="field_name" value="" class="px200" /></td>
 		</tr>
 		<tr>
 			<td colspan="2">

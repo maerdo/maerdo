@@ -1,0 +1,13 @@
+Parameters;Parameters
+An error has occured when trying to update admin password.;An error has occured when trying to update admin password.
+Password and confirmation password mismatch.;Password and confirmation password mismatch.
+Old password is wrong.;Old password is wrong.
+An error has occured when trying to update the default language.;An error has occured when trying to update the default language.
+The admin password  has been updated.;The admin password  has been updated.
+The default language has been updated.;The default language has been updated.
+Language;Language
+Select application language;Select application language
+Password;Password
+Old password;Old password
+New password;New password
+Confirm password;Confirm password

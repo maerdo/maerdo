@@ -7,6 +7,9 @@
 	<?php if($this->notification_error=='add_form_error'):?>
 	<div><?php echo $this->translate('An error has occured when trying to add form.');?><br /></div>
 	<?php endif;?>
+	<?php if($this->notification_error=='delete_form_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to delete form.');?><br /></div>
+	<?php endif;?>	
 </div>
 <br /><br />
 <?php endif;?>
@@ -17,6 +20,9 @@
 	<?php if($this->notification_success=='add_form_success'):?>
 	<div><?php echo $this->translate('The form has been added.');?><br /></div>
 	<?php endif;?>
+	<?php if($this->notification_success=='delete_form_success'):?>
+	<div><?php echo $this->translate('The form has been deleted.');?><br /></div>
+	<?php endif;?>	
 </div>	
 <br /><br />
 <?php endif;?>

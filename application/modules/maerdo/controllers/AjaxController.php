@@ -102,7 +102,12 @@ class Maerdo_AjaxController extends Zend_Controller_Action
 			case "validatoroptionexist":
     			$this->view->ajaxData=(int) My_Class_Maerdo_Component_Form::checkIfValidatorOptionExist($this->_params['validator_id'],$this->_params['option']);				
     			break;	    		
-    	}	         	
+    	}
+    	switch($this->_getParam('service')) {
+			case "filteroptionexist":
+    			$this->view->ajaxData=(int) My_Class_Maerdo_Component_Form::checkIfFilterOptionExist($this->_params['filter_id'],$this->_params['option']);				
+    			break;	    		
+    	}	    		         	
     }	    
 }
 

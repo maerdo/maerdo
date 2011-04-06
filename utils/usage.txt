@@ -32,5 +32,9 @@ Usage: Maerdo.php update [options]=<section>
 		              conf : create cache config file	
 		auth=<section>  Update cache
 		    Sections :
-		              conf : create authentification config file			              		              			
+		              conf : create authentification config file	
+		              
+	    forms=<section> Create forms config file
+	    	Sections :
+	    			  ini_file : Create forms config file		              		              			
 		
