@@ -1,0 +1,15 @@
+<?php $this->placeholder('sidebar')->captureStart() ?>
+
+                    <span class="ul-header"><a id="toggle-pagesnav" href="#" name="toggle-pagesnav"><? echo $this->translate('Parameters');?></a></span>
+                    <ul id="pagesnav">
+                        <li><a class="icn_add_pages" href="/maerdo/parameters">Configuration</a></li>
+                    </ul>
+                    
+                    <span class="ul-header">Statistics</span>
+                    <ul>
+						<li>Pages: <?=$this->sidebarCountPage?> </li>
+                        <li>Modules: <?=$this->sidebarCountModule?> </li>
+                        <li>Controller: <?=$this->sidebarCountController?> </li>
+                        <li>Action: <?=$this->sidebarCountAction?> </li>                       
+                    </ul>
+<?php $this->placeholder('sidebar')->captureEnd() ?>                     

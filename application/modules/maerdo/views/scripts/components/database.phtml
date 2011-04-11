@@ -134,14 +134,22 @@ endif;?>
 </form>
 
 <h2><?php echo $this->translate('Select a  default database connection for a module');?></h2>
-<form action='/maerdo/component/database' method='post'>
+
+
+
+<div id='form_module_error' class='h50 hidden notification_error px400'>	
+	<div><?php echo $this->translate('You need to select a database and a module.');?></div>	
+</div>	
+<br />
+
+<form action='/maerdo/component/database' method='post' onsubmit='return checkmoduleform()'>
 <input type="hidden" name="form_action" value="addDefaultAdapter">
-<select name='module_id' class="px200">
+<select id='form_module_id' name='module_id' class="px200">
 	<?php foreach($this->modules as $module):?>
 		<option value='<?php echo $module['id']?>'><?php echo $module['name']?></option>
 	<?php endforeach;?>
 </select>	
-<select name='database_id' class="px200">	
+<select id='form_database_id' name='database_id' class="px200">	
 	<?php foreach($this->databases as $database):?>
 		<option value='<?php echo $database['id']?>'><?php echo $database['name']?></option>
 	<?php endforeach;?>

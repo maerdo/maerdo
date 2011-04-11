@@ -6,7 +6,8 @@ this.Maerdo_Components_Translate=function() {
 		$('.field').each(function(index,value) {
 			if($(value).val()=="") {
 				valid=false;
-				$('#form_error_translate_field').show();
+				$('#form_error_translate_field').removeClass('hidden');
+				$('#form_error_translate_field').addClass('dtablecell');							
 			} else {
 				$('#form_error_translate_field').hide();
 			}
@@ -26,8 +27,10 @@ this.Maerdo_Components_Translate=function() {
 		
 		if(validDefault==false) {
 			valid=false;
-			$('#form_translate_error').show();
-			$('#form_error_translate_default').show();
+			$('#form_translate_error').removeClass('hidden');
+			$('#form_translate_error').addClass('dtablecell');
+			$('#form_error_translate_default').removeClass('hidden');
+			$('#form_error_translate_default').addClass('dblock');			
 		} else {	
 			$('#form_error_translate_default').hide();		
 		}
@@ -36,7 +39,8 @@ this.Maerdo_Components_Translate=function() {
 			$('#form_translate_error').fadeOut();
 			$('#form_translate_update').submit();
 		} else {
-			$('#form_translate_error').show();
+			$('#form_translate_error').removeClass('hidden');
+			$('#form_translate_error').addClass('dtablecell');
 		}			
 	}
 	

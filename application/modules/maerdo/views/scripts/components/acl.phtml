@@ -26,7 +26,7 @@
 <?php endif;?>
 
 <br /><br />
-<form action="/maerdo/component/acl" method="post">
+<form action="/maerdo/component/acl" method="post" onsubmit="return checkForm()">
 	<input type="hidden" name="form_action" value="add_role" />
 	<select class="px200" name="parent">
 		<option value="">-- Select parent --</option>
@@ -35,7 +35,7 @@
 		<option value='<?=$role->role?>'><?=$role->role?></option>
 		<?php endforeach;?>
 	</select>
-	<input type="text" name="role" />
+	<input type="text" id="role" name="role" />
 	<input type="submit" value="<?echo $this->translate('Add this role')?>" />
 </form>
 <br /><br />

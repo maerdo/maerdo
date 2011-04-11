@@ -43,7 +43,6 @@
 <?php if($this->update_form!=true):?>
 
 	<a href='#' onclick="$('#cache_form').toggle()"><img class='pr t3 mr5' src='/images/icons/add.png'></>Add a cache</a>
-
 	<br /><br />
 	<form action='/maerdo/component/cache' method='post'>
 	<input type="hidden" name="form_action" value="set_default">
@@ -81,7 +80,7 @@
 			<tr>
 				<td class="px200">Name :</td>
 				<td>
-					<input type="text" name="cache[name]" />
+					<input id="cache_name" type="text" name="cache[name]" />
 				</td>
 			</tr>	
 			<tr>

@@ -77,25 +77,6 @@ class Maerdo_AjaxController extends Zend_Controller_Action
        	}    	
     }    
 
-    public function pluginsAction() {    	
-    	switch($this->_getParam('service')) {
-			case "addplugin":
-    			My_Class_Maerdo_Component_Plugins::add($this->_params['plugin_name']);
-				$this->view->ajaxData=true;
-    			break;	
-    		case "deleteplugin":
-    			$result=My_Class_Maerdo_Component_Plugins::delete($this->_params['plugin_name']);
-				$this->view->ajaxData=$result;
-    			break;    			
-    		case "printstackindexlist":
-    			$result=My_Class_Maerdo_Component_Plugins::retrieveStackIndex();    			
-				$this->view->ajaxData=Zend_Json::encode($result);
-    			break;
-    		case "updatestackindex":
-    			$result=My_Class_Maerdo_Component_Plugins::updatestackindex($this->_params['plugin_name'],$this->_params['stackindex']);
-				$this->view->ajaxData=$result;
-    	}	         	
-    }
 
     public function formsAction() {    	
     	switch($this->_getParam('service')) {

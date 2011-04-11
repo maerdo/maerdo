@@ -1,11 +1,26 @@
 <?php 
-// rewriting from http://code.google.com/p/zend-db-model-generator/
-
-
+/**
+ * This class is used to generate auth configuration file.
+ * 
+ * rewriting from http://code.google.com/p/zend-db-model-generator/
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Database_Buildmodels {
 
 	public $_databases;	
 	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */				
 	public function update() {		
 		My_Class_Maerdo_Console::display("2","Building models from DB");
 		$this->_getDatabaseConfig();	
@@ -23,11 +38,18 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		} else {
 			My_Class_Maerdo_Console::display("3","No database configured");
 		}
+		return true;
 	}
 	
-	/*
-	 * Get Module List
-	 */
+	/**
+	 * Get databases configurations (fields, foreigns keys ...) .
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_getDatabaseConfig();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */		
 	public function _getDatabaseConfig() {		
 		$config_ini = APPLICATION_PATH . '/configs/database.ini';
 		$config=new Zend_Config_Ini($config_ini);
@@ -59,6 +81,18 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		return(true);		
 	}	
 	
+	/**
+	 * Retrieve tables for a database .
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_retrieveTables($name,$database);
+	 * </code>
+	 * 	 
+	 * @param $name Database name
+	 * @param $database database informations
+	 * 
+	 * @return array
+	 */			
 	protected function _retrieveTables($name,$database) {
 		$sql =  'SHOW TABLES';
     	foreach  ($database['dbh']->query($sql) as $row)  {
@@ -68,6 +102,18 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		return($tables);
 	}
 	
+	/**
+	 * Retrieve Foreigns keys for a table.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_retrievesForeignkeys($table,$database);
+	 * </code>
+	 * 	 
+	 * @param $table Table
+	 * @param $database database informations
+	 * 
+	 * @return array
+	 */			
 	public function _retrievesForeignkeys($table,$database) {
 		$qry=$database['dbh']->query("show create table $table");
 		$res=$qry->fetchAll();
@@ -90,6 +136,18 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
         return($keys);		
 	}
 	
+	/**
+	 * Retrieve table fields informations.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_retrieveFields($table,$database);
+	 * </code>
+	 * 	 
+	 * @param $table Table
+	 * @param $database database informations
+	 * 
+	 * @return array
+	 */		
 	protected function _retrieveFields($table,$database) {
 		$sql =  "DESC $table";
     	foreach ($database['dbh']->query($sql) as $row)  {
@@ -104,11 +162,35 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		
 	}
 	
+	/**
+	 * Update classes variables to indicate which field is a primary key.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::setPrimarykey($database,$table,$field);
+	 * </code>
+	 * 	 
+	 * @param $database Database name
+	 * @param $table Table name
+	 * @param $field Field name
+	 * 
+	 * @return array
+	 */		
 	public function setPrimarykey($database,$table,$field) {		
 		$this->_databases[$database]['tables'][$table]['primarykey']=$field;
 
 	}
 	
+	/**
+	 * Get template content an pass variables.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::getTemplateContent($file,$params);
+	 * </code>
+	 * 	 
+	 * @param $file path of template
+	 * @param $params params to pass to template
+	 * @return string
+	 */		
 	public function getTemplateContent($file,$params) {
             ob_start();            	
                 require(APPLICATION_PATH.'/../utils/Models/templates/'.DIRECTORY_SEPARATOR.$file);
@@ -117,6 +199,17 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
             return $data;		
 	}
 	
+	/**
+	 * Write DBTable file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_writeDbTable($database,$table);
+	 * </code>
+	 * 	 
+	 * @param $database Database informations
+	 * @param $table Table name
+	 * @return boolean
+	 */			
 	public function _writeDbTable($database,$table) {	
 		$filename=ucfirst(preg_replace('/_/','',$table));
 		My_Class_Maerdo_Console::display("4","Writing ".$table." Dbtable of  ".$database['storage_name']." database");
@@ -142,21 +235,44 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable')) {			
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable',0777,true);						
 		}		
-		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);		
+		return(file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Dbtable'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data));		
 	}
 
+	/**
+	 * Write Mapper file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_writeMapper($database,$table,$fields);
+	 * </code>
+	 * 	 
+	 * @param $database Database informations
+	 * @param $table Table name
+	 * @param $fields List of fields
+	 * @return boolean
+	 */		
 	public function _writeMapper($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
 		My_Class_Maerdo_Console::display("4","Writing ".$table." Mapper  of ".$database['storage_name']." module");	
 		$params=array('fields'=>$fields['fields'],'module'=>$database['default_module'],'table'=>ucfirst($table),'primarykey'=>@$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('mapper.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers')) {
-			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['st)orage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
 		}
-		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);
+		return(file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data));
 	}
 
-	
+	/**
+	 * Write Model file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_writeModel($database,$table,$fields);
+	 * </code>
+	 * 	 
+	 * @param $database Database informations
+	 * @param $table Table name
+	 * @param $fields List of fields
+	 * @return boolean
+	 */			
 	public function _writeModel($database,$table,$fields) {
 		$filename=ucfirst(preg_replace('/_/','',$table));
 		My_Class_Maerdo_Console::display("4","Writing ".$table." Model  of ".$database['storage_name']." database");	
@@ -167,6 +283,16 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data);		
 	}
 	
+	/**
+	 * Write Model Abstract file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_writeModel($database);
+	 * </code>
+	 * 	 
+	 * @param $database Database informations
+	 * @return boolean
+	 */		
 	public function _writeModelAbstract($database) {
 		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Model");	
 		$params=array('module'=>ucfirst($database['storage_name']));
@@ -176,6 +302,16 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Abstract.php",$data);		
 	}
 
+	/**
+	 * Write Mapper Abstract file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_writeMapperAbstract($database);
+	 * </code>
+	 * 	 
+	 * @param $database Database informations
+	 * @return boolean
+	 */			
 	public function _writeMapperAbstract($database) {
 		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Mapper ");	
 		$params=array('module'=>ucfirst($database['storage_name']));
@@ -185,6 +321,16 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers".DIRECTORY_SEPARATOR."Abstract.php",$data);		
 	}	
 
+	/**
+	 * Get default module for a database.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Buildmodels::_getDefaultModule($storage_name);
+	 * </code>
+	 * 	 
+	 * @param $storage_name storage name in maerdo Db of database
+	 * @return string
+	 */		
 	public function _getDefaultModule($storage_name) {
 		$db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$query="SELECT m.name as module_name FROM component__database as cd INNER JOIN component__databasemodule as cdm ON cd.id=cdm.database_id INNER JOIN module as m ON m.id=cdm.module_id  WHERE cd.name='$storage_name'";				

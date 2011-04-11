@@ -16,4 +16,8 @@ $(document).ready(function() {
 	$('#img_submit_form').click(function() {
 		maerdo.components.database.checkForm();
 	});
+	
+	this.checkmoduleform=function() {
+		return maerdo.components.database.checkmoduleform();
+	}
 });	

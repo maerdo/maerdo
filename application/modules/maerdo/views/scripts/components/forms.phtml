@@ -14,7 +14,10 @@
 <br /><br />
 <?php endif;?>
 
-
+<div id='form_error' class='notification_error hidden px700'>
+	<div><?php echo $this->translate('All field must be setted to valid form.');?><br /></div>
+</div>
+<br />
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='add_form_success'):?>
@@ -30,17 +33,17 @@
 <a href='#' onclick='$("#form_add_div").toggle()'><img src='/images/icons/add.png' class='pr t3 mr5' alt='Add' /><?php echo $this->translate('Add a form')?></a>
 <br /><br />
 <div id='form_add_div' class='hidden'>
-	<form id='form_add' action='/maerdo/component/forms/' method='post'>
+	<form id='form' action='/maerdo/component/forms/' method='post'>
 		<input type="hidden" name="form_action" value="add_form" />
 		<table>
 			<tr>
 				<td><?php echo $this->translate('Form name')?> :</td>
-				<td><input type="text" name="form[name]" class="px200" /></td>
+				<td><input type="text" id='form_name' name="form[name]" class="px200" /></td>
 			</tr>
 			<tr>
 				<td><?php echo $this->translate('Template')?> :</td>
 				<td>
-					<select name="form[template]" class="px200">
+					<select id="form_template" name="form[template]" class="px200">
 						<?php 
 						if(is_array($this->templates)) {
 							foreach($this->templates as $file):
@@ -53,7 +56,7 @@
 			</tr>					
 			<tr>
 				<td><?php echo $this->translate('Action URL')?> :</td>
-				<td><input type="text" name="form[action_url]" class="px200" /></td>
+				<td><input type="text" id="form_actionurl" name="form[action_url]" class="px200" /></td>
 			</tr>	
 			<tr>
 				<td><?php echo $this->translate('Method')?> :</td>

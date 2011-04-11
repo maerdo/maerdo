@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 	maerdo.Load('Utils');
+	maerdo.Load('Components/Auth');
 	
 	maerdo.Utils.setInputMask("#auth_table",/^[a-z0-9]{1,}$/);
 	maerdo.Utils.setInputMask("#auth_username_field",/^[a-z0-9]{1,}$/);
@@ -14,6 +15,9 @@ $(document).ready(function() {
 	});
 	
 	$('#img_submit_form').click(function() {
-		$('#form_auth').submit();
+		if(maerdo.components.auth.checkForm()==true) {
+			$('#form_auth').submit();
+		}	
 	});	
+		
 });	

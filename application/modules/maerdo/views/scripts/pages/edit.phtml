@@ -416,6 +416,7 @@
 				<br />
 				<div class="px150 fleft"><?php echo $this->translate('Parent');?> :</div>
 				<select class="px400 fleft" name="navigation[parent]">
+					<option value="0">Root</option>
 					<?php foreach($this->pages as $page) :?>
 					<option value="<?=$page->id?>"><?=$page->name?> - <?=$page->description?></option>
 					<?php endforeach;?>

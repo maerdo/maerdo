@@ -33,12 +33,15 @@
 <input type="hidden" name="module_id" value="<?=$this->module_id?>" />
 <input type="hidden" name="form_action" value="update_auth" />
 
-
+<div id='form_error' class='hidden notification_error px700'>
+	<div><?php echo $this->translate('All field must be setted to valid form.');?></div>
+</div>
+<br />
 <table>
 	<tr>
 		<td class='px200'><?echo $this->translate('Database')?></td>
 		<td class='px200'>
-			<select class='px200' name='auth[database_name]'>	
+			<select class='px200' id='auth_database_name' name='auth[database_name]'>	
 				<?php foreach($this->databases as $database):?>
 					<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
 					<option "$selected" value="<?=$database['name']?>"><?=$database['name']?></option>
@@ -78,7 +81,7 @@
 	<tr>
 		<td class='px200'><?echo $role->role?> :</td>
 		<td class='px200'>
-			<input type="text" value="<?if(@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
+			<input class="redirection_url" type="text" value="<?if(@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
 		</td>
 	</tr>		
 	<?php endforeach;?>		

@@ -16,6 +16,10 @@ $(document).ready(function() {
 	});
 	
 	$('#img_add_submit').click(function() {
-		$("#form_cache").submit();
+		if($('#cache_name').val()=="") {
+			return false;
+		} else {
+			$("#form_cache").submit();
+		}	
 	});
 });	

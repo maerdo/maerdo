@@ -46,6 +46,7 @@ class My_Class_Maerdo_Framework_Title {
 	static public function getFreeLocales($page_id) {
 		$mTranslate=new Maerdo_Model_Componenttranslate();		
 		$locales=$mTranslate->getLocales();
+		$aLocale=array();
 		foreach($locales as $key=>$locale) {
 			$aLocale[$locale['locale']]=$locale['language_name'];
 		}

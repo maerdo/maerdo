@@ -1,33 +1,74 @@
 <?php 
-
+/**
+ * This class is used to generate acl configuration file.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Page_Action {
 
-	public $tree;
-	protected $_application_path="application/";
-	
 	protected $_db;
 
-	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Console_Action::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */				
 	public function update() {
 		My_Class_Maerdo_Console::display("2","Creating actions");	
 		$this->main();
+		return true;
 	}
 	
+	/*
+	 * Main function : call  function to retrieve informations and call generation function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Action::main();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function main() {
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$actions=$this->getList();
 		$this->createAction($actions);
+		return true;
 	}
 	
+	/**
+	 * Retrieve action list.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Action::getList();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */			
 	public function getList() {		
 		$result=$this->_db->query("SELECT m.name as module_name,c.name as controller_name,a.name as action_name FROM action as a,controller as c,module as m WHERE m.id=c.module_id AND c.id=controller_id");			
 		foreach($result as $row) {
 			$actions[strtolower($row['module_name'])][strtolower($row['controller_name'])][]=strtolower($row['action_name']);
 		}				
-		return($actions);
-			
+		return($actions);			
 	}
 	
+	/**
+	 * Create each action with zf-tools.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Acl::createAction();
+	 * </code>
+	 * 	 
+	 * @param $actions list of actions
+	 * 
+	 * @return true
+	 */			
 	public function createAction($actions) {		
 		foreach($actions as $module=>$controllers) {
 			foreach($controllers as $controller=>$actions) {				

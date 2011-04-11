@@ -23,17 +23,19 @@ class My_Plugins_Cache extends Zend_Controller_Plugin_Abstract {
 		   
 		   $manager = new Zend_Cache_Manager;
 		   
-		   foreach($config->cache as $cacheconf) {
-
-		   	 //var_dump($cacheconf->frontend->toArray());die;
-		   	
-			 $cache = Zend_Cache::factory($cacheconf->type, $cacheconf->backendtype,
-                                  $cacheconf->frontend->toArray(), $cacheconf->backend->toArray());
-             $manager->setCache($cacheconf->name,$cache);
-             if($cacheconf->default=="yes")
-             	$databaseCache = $manager->setCache('default',$cache);
-             
-		   }   
+		   if($config->cache) {
+			   foreach($config->cache as $cacheconf) {
+	
+			   	 //var_dump($cacheconf->frontend->toArray());die;
+			   	
+				 $cache = Zend_Cache::factory($cacheconf->type, $cacheconf->backendtype,
+	                                  $cacheconf->frontend->toArray(), $cacheconf->backend->toArray());
+	             $manager->setCache($cacheconf->name,$cache);
+	             if($cacheconf->default=="yes")
+	             	$databaseCache = $manager->setCache('default',$cache);
+	             
+			   }
+		  }   
        }              
 	} 
 }	

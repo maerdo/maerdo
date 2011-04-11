@@ -1,22 +1,40 @@
 <?php 
-
+/**
+ * This class is used to generate acl configuration file.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Page_Module {
-
-	public $tree;
-	protected $_application_path="application/";
 	
 	protected $_db;
 	protected $_modules;
 	
-	public function __construct() {
-		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
-	}
-	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Module::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function update() {
-		My_Class_Maerdo_Console::display("2","Creating modules");			
+		My_Class_Maerdo_Console::display("2","Creating modules");	
+		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();		
 		$this->main();
 	}
 		
+	/**
+	 * Main function : call  function to retrieve informations and call generation function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Module::main();
+	 * </code>
+	 *
+	 * @return true
+	 */
 	public function main() {
 		$modules=$this->getList();
 		foreach($this->_modules as $module) {
@@ -26,6 +44,15 @@ class My_Class_Maerdo_Console_Page_Module {
 		}
 	}
 	
+	/**
+	 * Retrieve module List.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Module::getList();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function getList() {		
 		$result=$this->_db->query("SELECT * FROM module");
 		foreach($result as $module) {
@@ -34,6 +61,17 @@ class My_Class_Maerdo_Console_Page_Module {
 		return($this->_modules);
 	}
 	
+	/**
+	 * Create each module with zf-tools.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Module::createModule();
+	 * </code>
+	 * 	 
+	 * @param $actions list of actions
+	 * 
+	 * @return true
+	 */			
 	public function createModule($name) {
 		$name=strtolower($name);
 		My_Class_Maerdo_Console::display("3","Creating module $name");

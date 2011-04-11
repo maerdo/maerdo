@@ -43,6 +43,8 @@ class My_Class_Maerdo_Component_Auth {
 	 * $result=My_Class_Maerdo_Component_Auth::update($module_id,$auth);
 	 * </code>
 	 * 	 
+	 * @param $module_id Maerdo database module id
+	 * @param $authconfiguration Configuration data for auth
 	 * @return array
 	 */		
 	
@@ -67,10 +69,12 @@ class My_Class_Maerdo_Component_Auth {
 		$mComponentAuthrole=new Maerdo_Model_Componentauthrole();
 		$mComponentAuthrole->delete("ca_id='$configuration->id'");
 		
-		foreach($authconfiguration['redirection'] as $role=>$redirection) {			
-			if($mComponentAuthrole->insert(array('ca_id'=>$configuration->id,'role'=>$role,'url'=>$redirection))==false) {
-				$result="false";
-			}	
+		if(array_key_exists('redirection',$authconfiguration)) {
+			foreach($authconfiguration['redirection'] as $role=>$redirection) {			
+				if($mComponentAuthrole->insert(array('ca_id'=>$configuration->id,'role'=>$role,'url'=>$redirection))==false) {
+					$result="false";
+				}	
+			}
 		}
 
 		return($result);

@@ -89,7 +89,7 @@ class My_Class_Maerdo_Install {
 	}
 	public function createDatabaseConfFile() {
 		$error="0";
-		
+		$data_content="";
 		switch($this->_databaseConf['type']) {
 			case "mysql":
 				$adapter='pdo_mysql';

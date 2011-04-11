@@ -51,7 +51,21 @@ this.Maerdo_Components_Database=function() {
 		}			
 	}
 	
-	this.show=function() {
-		alert("okok");
+	this.checkmoduleform=function() {
+		$('#form_module_error').addClass('hidden');
+		if($('#form_module_id').val()!=undefined && $('#form_module_id').val()!=null && $('#form_module_id').val()!="" && $('#form_module_id').val()!="null") {
+			if($('#form_database_id').val()!=undefined && $('#form_database_id').val()!=null && $('#form_database_id').val()!="" && $('#form_database_id').val()!="null") {
+				return true;
+			} else {
+				$('#form_module_error').removeClass('hidden');
+				$('#form_module_error').addClass('dtablecell');
+				return false;
+			}
+		} else {
+			$('#form_module_error').removeClass('hidden');
+			$('#form_module_error').attr('dtablecell');
+			return false;
+		}
+		
 	}
 }

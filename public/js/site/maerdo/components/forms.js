@@ -7,13 +7,16 @@ $(document).ready(function() {
 	});
 	
 	$('#img_add_submit_form').click(function() {
-		$('#form_add').submit();
+		if(maerdo.components.forms.checkForm()==true) {
+			$('#form').submit();
+		}
 	});
 	
 	$('#img_add_field_submit_form').click(function() {
-		$('#form_add_field').submit();
+		if(maerdo.components.forms.checkFieldForm()==true) {
+			$('#form_add_field').submit();
+		} 
 	});
 	
-
 
 });	

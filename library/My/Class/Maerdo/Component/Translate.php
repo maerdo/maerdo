@@ -9,13 +9,13 @@
 class My_Class_Maerdo_Component_Translate {
 	
 	/**
-	 * Retrieve database configuration for a module.
+	 * Retrieve configuration for a module.
 	 * 
 	 * <code>
-	 * $result=My_Class_Maerdo_Component_Database::getConfiguration('1');
+	 * $result=My_Class_Maerdo_Component_TRanslate::getConfiguration('1');
 	 * </code>
 	 * 
-	 * @param $module_id  Maerdo database module_id
+	 * @param $module_id  Maerdo database module id
 	 * @return array
 	 */	
 	static public function getConfiguration($module_id) {
@@ -38,8 +38,8 @@ class My_Class_Maerdo_Component_Translate {
 	 * $result=My_Class_Maerdo_Component_Translate::update('1',$configuration);
 	 * </code>
 	 * 
-	 * @param $module_id  Maerdo database module_id
-	 * @param $configuration Array with configuration parameters
+	 * @param $module_id  Maerdo database module id
+	 * @param $configuration configuration parameters
 	 * @return boolean
 	 */		
 	static public function update($module_id,$configuration) {		
@@ -76,7 +76,10 @@ class My_Class_Maerdo_Component_Translate {
 	 * </code>
 	 * 
 	 * @param $module_id  Maerdo database module_id
-	 * @param $configuration Array with configuration parameters
+	 * @param $identifiant Identifiant of language
+	 * @param $locale Locale of language
+	 * @param $language_name Name of language
+	 * @param default is default language (0/1)
 	 * @return boolean
 	 */			
 	static public function add($module_id,$identifiant,$locale,$language_name,$default) {

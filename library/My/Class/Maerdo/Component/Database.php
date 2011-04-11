@@ -28,7 +28,7 @@ class My_Class_Maerdo_Component_Database {
 	}
 	
 	/**
-	 * Retrieve default database per module list.
+	 * Retrieve default database per module.
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Database::getModuleDatabaseList();
@@ -49,6 +49,7 @@ class My_Class_Maerdo_Component_Database {
 	 * $result=My_Class_Maerdo_Component_Database::deleteDefaultAdapter($id);
 	 * </code>
 	 * 	 
+	 * @param $id Id of adapter
 	 * @return array
 	 */		
 	static public function deleteDefaultAdapter($id) {		
@@ -103,7 +104,7 @@ class My_Class_Maerdo_Component_Database {
 	 * $result=My_Class_Maerdo_Component_Database::getFreeModule();
 	 * </code>
 	 * 
-	 * @return Array with disponible module
+	 * @return Array with available module
 	 */		
 	static public function getFreeModule() {
 		$mComponentdatabasemodule=new Maerdo_Model_Componentdatabasemodule();
@@ -117,7 +118,7 @@ class My_Class_Maerdo_Component_Database {
 	 * $result=My_Class_Maerdo_Component_Database::delete($id);
 	 * </code>
 	 * 
-	 * @param $id Identifiant of database
+	 * @param $id Id of database
 	 * @return boolean
 	 */		
 	static public function delete($id) {		

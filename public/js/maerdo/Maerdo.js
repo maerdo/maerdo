@@ -58,6 +58,12 @@ function Maerdo() {
 					this.components.forms=new Maerdo_Components_Forms();
 				}	
 				var obj=this.components.forms				
+			break;	
+			case "Components/Auth":
+				if(this.components.auth==null){
+					this.components.auth=new Maerdo_Components_Auth();
+				}	
+				var obj=this.components.auth				
 			break;					
 		}	
 		return(obj)

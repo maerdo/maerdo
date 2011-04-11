@@ -25,7 +25,7 @@ class My_Class_Maerdo_Component_Cache {
 	}	
 	
 	/**
-	 * Get configuration for an entrie.
+	 * Get configuration for a cache entrie.
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Auth::getConfiguration($cache_id);
@@ -144,7 +144,7 @@ class My_Class_Maerdo_Component_Cache {
 	}	
 	
 	/**
-	 * add entries in component__cachebackend table with cache frontend options
+	 * add entries in component__cachefrontend table with cache frontend options
 	 * 
 	 * <code>
 	 * $result=My_Class_Maerdo_Component_Cache::addFrontendOption($configuration,$cc_id);

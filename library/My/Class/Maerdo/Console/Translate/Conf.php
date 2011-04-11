@@ -1,27 +1,70 @@
 <?php 
-
+/**
+ * This class is used to generate translation configuration file.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Translate_Conf {
 
-	public $tree;
 	protected $_db;
 
-	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Conf::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function update() {
 		My_Class_Maerdo_Console::display("2","Updating translation configuration");	
 		$this->main();
 	}
 	
+	/**
+	 * Main function : call list function and call the write function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Conf::main();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */		
 	public function main() {
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$languages=$this->getList();
 		$this->updateConf($languages);
+		return true;
 	}
 	
+	/**
+	 * Retrieve translation list.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Conf::getList();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */			
 	public function getList() {		
 		$languages=$this->_db->query("SELECT * FROM component__translate");		
 		return($languages);			
 	}
 	
+	/**
+	 * Write configuration file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Conf::updateConf($configuration);
+	 * </code>
+	 * 	 
+	 * @param $configuration Array with translation data
+	 * 
+	 * @return boolean
+	 */				
 	public function updateConf($languages) {			
 		$content="";
 		foreach($languages as $key=>$language) {
@@ -43,7 +86,7 @@ class My_Class_Maerdo_Console_Translate_Conf {
 					
 			}
 		}	
-		file_put_contents(APPLICATION_PATH.'/configs/translate.ini',$content);
+		return(file_put_contents(APPLICATION_PATH.'/configs/translate.ini',$content));
 	}
 }
 

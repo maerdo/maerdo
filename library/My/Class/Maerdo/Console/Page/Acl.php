@@ -1,22 +1,56 @@
 <?php 
+/**
+ * This class is used to generate acl configuration file.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 
 class My_Class_Maerdo_Console_Page_Acl {
 
-	public $tree;
+
 	protected $_db;
 
-	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Acl::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */				
 	public function update() {
 		My_Class_Maerdo_Console::display("2","Updating ACL");	
 		$this->main();
+		return true;
 	}
-	
+	/*
+	 * Main function : call  function to retrieve informations and call the write function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Acl::main();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function main() {
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$acl=$this->getList();
 		$this->updateACL($acl);
+		return true;
 	}
 	
+	/**
+	 * Retrieve acl data list.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Acl::getList();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */			
 	public function getList() {		
 		$roles=$this->_db->query("SELECT * FROM acl__role");
 		$resources=$this->_db->query("SELECT ar.role as role,a.name as action_name,c.name as controller_name,m.name as module_name 
@@ -40,6 +74,17 @@ class My_Class_Maerdo_Console_Page_Acl {
 			
 	}
 	
+	/**
+	 * Write acl files.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Page_Acl::updateACL();
+	 * </code>
+	 * 
+	 * @param $acl ACL data
+	 * 
+	 * @return true
+	 */
 	public function updateACL($acl) {		
 		$acl_roles="[roles]\n\n ";
 		foreach($acl['roles'] as $role) {
@@ -86,6 +131,7 @@ class My_Class_Maerdo_Console_Page_Acl {
 			My_Class_Maerdo_Console::display("3","Write application/modules/$module/configs/acl.ini");
 			file_put_contents(APPLICATION_PATH.'/modules/'.$module.'/configs/acl.ini',$data);
 		}		
+		return true;
 	}
 }
 

@@ -10,6 +10,9 @@
 	<?php if($this->notification_error=='add_field_error'):?>
 	<div><?php echo $this->translate('An error has occured when trying to add the field.');?><br /></div>
 	<?php endif;?>	
+	<?php if($this->notification_error=='update_form_error'):?>
+	<div><?php echo $this->translate('An error has occured when trying to update the form.');?><br /></div>
+	<?php endif;?>		
 </div>
 <?php endif;?>	
 
@@ -21,6 +24,9 @@
 	<?php if($this->notification_success=='add_field_success'):?>
 	<div><?php echo $this->translate('The field has been added.');?><br /></div>
 	<?php endif;?>	
+	<?php if($this->notification_success=='update_form_success'):?>
+	<div><?php echo $this->translate('The form has been updated.');?><br /></div>
+	<?php endif;?>	
 </div>
 <?php endif;?>	
 <br /><br />
@@ -29,17 +35,22 @@
 <br />
 <h2 ><?php echo $this->translate('Parameters');?></h2>
 <div id="parameters">
-	<form id='form_add' action='/maerdo/component/forms/' method='post'>
-		<input type="hidden" name="form_action" value="add_form" />
+
+	<div id='form_error' class='notification_error hidden px700'>
+		<div><?php echo $this->translate('All field must be setted to valid form.');?><br /></div>
+	</div>
+	<br />
+	<form id='form' action='/maerdo/component/forms/edit/<?php echo $this->form_id?>' method='post'>
+		<input type="hidden" name="form_action" value="update_form" />
 		<table>
 			<tr>
 				<td><?php echo $this->translate('Form name')?> :</td>
-				<td><input type="text" value="<?=$this->form_info->name?>" name="form[name]" class="px200" /></td>
+				<td><input id="form_name" type="text" value="<?=$this->form_info->name?>" name="form[name]" class="px200" /></td>
 			</tr>
 			<tr>
 				<td><?php echo $this->translate('Template')?> :</td>
 				<td>
-					<select name="form[template]" class="px200">
+					<select id="form_template" name="form[template]" class="px200">
 						<?php 
 						if(is_array($this->templates)) {
 							foreach($this->templates as $file):
@@ -53,7 +64,7 @@
 			</tr>					
 			<tr>
 				<td><?php echo $this->translate('Action URL')?> :</td>
-				<td><input type="text" value="<?=$this->form_info->action?>" name="form[action_url]" class="px200" /></td>
+				<td><input id="form_actionurl" type="text" value="<?=$this->form_info->action?>" name="form[action_url]" class="px200" /></td>
 			</tr>	
 			<tr>
 				<td><?php echo $this->translate('Method')?> :</td>
@@ -72,15 +83,19 @@
 </div>
 
 <h2><?php echo $this->translate('Fields');?></h2>
-<?php echo $this->translate('Add a field')?>
+<h3><?php echo $this->translate('Add a field')?></h3>
 <div id='form_add_field_div'>
-	<form id='form_add_field' action='/maerdo/component/forms/edit/<?=$this->form_id?>' method='post'>
+	<form  id='form_add_field' action='/maerdo/component/forms/edit/<?=$this->form_id?>' method='post'>
 	<input type="hidden" name="form_action" value="add_field" />
+	<div id='form_field_error' class='notification_error hidden px700'>
+		<div><?php echo $this->translate('All field must be setted to valid form.');?><br /></div>
+	</div>	
+	<br />
 	<table>
 		<tr>
 			<td><?php echo $this->translate('Field type')?> :</td>
 			<td>
-				<select name="field_type" class="px200">
+				<select id='field_type' name="field_type" class="px200">
 					<?php 
 					if(is_array($this->fieldTypes)):
 						foreach($this->fieldTypes as $type):?>
@@ -94,7 +109,7 @@
 		</tr>
 		<tr>
 			<td><?php echo $this->translate('Field name')?> :</td>
-			<td><input type="text" name="field_name" value="" class="px200" /></td>
+			<td><input id="field_name" type="text" name="field_name" value="" class="px200" /></td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -105,6 +120,7 @@
 	</form>
 </div>		
 <br /><br />
+<h3><?php echo $this->translate('Fields list')?></h3>
 <table class="px400">
 	<tr class="bggrey">
 		<td>Name</td>

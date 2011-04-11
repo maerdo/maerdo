@@ -1,5 +1,49 @@
 this.Maerdo_Components_Forms=function() {
 	
+	this.checkFieldForm = function() {
+		var error="0";
+		
+		if($('#field_type').val()=="" || $('#field_type').val()==undefined || $('#field_type').val()==null) {
+			error="1";
+		}		
+
+		if($('#field_name').val()=="") {
+			error="1";
+		}	
+
+		if(error=="1") {
+			$('#form_field_error').removeClass('hidden');
+			$('#form_field_error').addClass('dtablecell');
+			return false;
+		} else {
+			return true;
+		}			
+	}
+	
+	this.checkForm = function() {
+		var error="0";
+		
+		if($('#form_name').val()=="") {
+			error="1";
+		}
+
+		if($('#form_template').val()=="" || $('#form_template').val()==undefined || $('#form_template').val()==null) {
+			error="1";
+		}		
+
+		if($('#form_actionurl').val()=="") {
+			error="1";
+		}				
+				
+		if(error=="1") {
+			$('#form_error').removeClass('hidden');
+			$('#form_error').addClass('dtablecell');
+			return false;
+		} else {
+			return true;
+		}	
+	}
+	
 	this.addMultiOptions = function() {
 		
 		var row_id=$('#multioptions tr').length;

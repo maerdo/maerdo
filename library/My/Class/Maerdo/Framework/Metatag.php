@@ -80,7 +80,7 @@ class My_Class_Maerdo_Framework_Metatag {
 	static public function getFreeLocales($page_id,$metatag) {		
 		$mTranslate=new Maerdo_Model_Componenttranslate();		
 		$locales=$mTranslate->getLocales();
-
+		$aLocale=array();
 		foreach($locales as $key=>$locale) {
 			$aLocale[$locale['locale']]=$locale['language_name'];
 		}

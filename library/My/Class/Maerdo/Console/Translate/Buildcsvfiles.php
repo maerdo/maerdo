@@ -1,17 +1,37 @@
 <?php 
-
+/**
+ * This class is used to generate translate configuration file.
+ * 
+ * @author Nicolas Blaudez <nblaudez@maerdo.com>
+ * @package Console
+ * @version 0.1
+ */
 class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 
-	public $tree;
 
-	
+	/**
+	 * Observer entrie method.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::update();
+	 * </code>
+	 * 	 
+	 * @return true
+	 */			
 	public function update() {
 		My_Class_Maerdo_Console::display("2","Building csv files from views scripts");
 		$this->_parse(APPLICATION_PATH.'/modules/');
+		return true;
 	}
 	
-	/*
-	 * Build File Tree
+	/**
+	 * Build file tree.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_parse();
+	 * </code>
+	 *
+	 * @return true
 	 */
 	protected function _parse($dir) {
 		$this->_modules=$this->_scanmodules($dir);		
@@ -20,10 +40,17 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 		}		
 		$this->_parseTree();
 		$this->_writeFiles();
+		return true;
 	}
 	
-	/*
-	 * Get Module List
+	/**
+	 * Get module list.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_scanmodules();
+	 * </code>
+	 *
+	 * @return array
 	 */
 	public function _scanmodules($dir) {
 		$modules=array_diff( scandir( $dir ), Array( ".", ".." ) );
@@ -34,8 +61,14 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 		return($result);		
 	}	
 	
-	/*
-	 * Scanning tree function
+	/**
+	 * Scan tree function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_getDirectoryTree();
+	 * </code>
+	 *
+	 * @return array
 	 */
 	protected function _getDirectoryTree( $outerDir){
 	    $dirs = array_diff( scandir( $outerDir ), Array( ".", ".." ) );
@@ -50,8 +83,14 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 	    return $dir_array;
 	} 
 	
-	/*
-	 * Send to parse all Tree File
+	/**
+	 * Send all entrie in tree to parse function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_parseTree();
+	 * </code>
+	 *
+	 * @return true
 	 */
 	protected function _parseTree() {
 		foreach($this->tree as $module=>$controllers) {
@@ -65,9 +104,18 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 				}	
 			}
 		}
+		
+		return true;
 	}
-	/*
-	 * Send to parse recursive function
+
+	/**
+	 * Send all entrie in tree to parse recursive function.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_parseEntrie();
+	 * </code>
+	 *
+	 * @return true
 	 */
 	protected function _parseEntrie($path) {
 		$files=$this->_getDirectoryTree($path);
@@ -78,6 +126,7 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 				$this->_parseFile($path.'/'.$file);
 			}
 		}
+		return true;
 	}
 	/*
 	 * Get All translated message in a file
@@ -99,8 +148,14 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 		
 	}
 	
-	/*
-	 * Write CSV file
+	/**
+	 * Write translation file.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Translate_Buildcsvfiles::_writeFiles();
+	 * </code>
+	 *
+	 * @return true
 	 */
 	protected function _writeFiles() {		
 		foreach($this->_entrie as $module=>$moduleData) {					
@@ -148,14 +203,8 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 				}
 			}
 		}
-		
+		return true;
 	}
-	
-	/*
-	 * List all messages to translate
-	 */
-	public function showEntrie() {
-		var_dump($this->_entrie);
-	}
+
 }
 

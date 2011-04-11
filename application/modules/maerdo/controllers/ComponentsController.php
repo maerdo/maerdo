@@ -97,16 +97,6 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     	$this->view->languages=array();
     }
 
-    public function pluginsAction() { 		
-		$freeplugins=My_Class_Maerdo_Component_Plugins::getFreePlugins();
- 		$selectedplugins=My_Class_Maerdo_Component_Plugins::getSelectedplugin();
- 		$freestackindex=My_Class_Maerdo_Component_Plugins::retrieveStackIndex();
- 		
- 		$this->view->freestackindex=$freestackindex;
- 		$this->view->selectedplugins=$selectedplugins;
- 		$this->view->freeplugins=$freeplugins; 		
- 		
-    }
     
     public function authAction() {
         if($this->_getParam('form_action')=="update_auth") {
@@ -233,13 +223,13 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     
     public function formsAction() {
      	if($this->_getParam('form_action')=="add_form") {
-    		$result=(int) My_Class_Maerdo_Component_Form::add($this->_getParam('form'));    		
+    		$result=(int) My_Class_Maerdo_Component_Form::add($this->_getParam('form'));        			
     		switch($result) {
     			case "0":
     				$this->view->notification_error='add_form_error';
     				break;
     			default:
-    				$this->view->notification_success='add_form_error';
+    				$this->view->notification_success='add_form_success';
     				break;
     		}
     	}
@@ -263,7 +253,18 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     	
     }
     
-    public function formeditAction() {    	
+    public function formeditAction() {   
+         	if($this->_getParam('form_action')=="update_form") {
+    		$result=(int) My_Class_Maerdo_Component_Form::updateForm($this->_getParam('form_id'),$this->_getParam('form'));        			
+    		switch($result) {
+    			case "0":
+    				$this->view->notification_error='update_form_error';
+    				break;
+    			default:
+    				$this->view->notification_success='update_form_success';
+    				break;
+    		}
+    	}    	 	
     	if($this->_getParam('form_action')=="delete_field") {    		
     		$result=(int) My_Class_Maerdo_Component_Form::deleteField($this->_getParam('field_id'));    			   		
     		switch($result) {
