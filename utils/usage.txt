@@ -34,7 +34,7 @@ Usage: Maerdo.php update [options]=<section>
 		    Sections :
 		              conf : create authentification config file	
 		              
-	    forms=<section> Create forms config file
-	    	Sections :
-	    			  ini_file : Create forms config file		              		              			
+	        forms=<section> Create forms config file
+	      	    Sections :
+	    	  	      ini_file : Create forms config file		              		              			
 		

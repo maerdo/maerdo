@@ -77,6 +77,12 @@
 	<tr>
 		<td colspan='2'><h2><?echo $this->translate('Redirection URL after authentification')?> :</h2></td>	
 	</tr>	
+	<tr>
+		<td class='px200'><?php echo $this->translate('Error')?> :</td>
+		<td class='px200'>
+			<input type="text" value="<?if(@$this->authconfiguration['redirection_role']['error']) echo $this->authconfiguration['redirection_role']['error']?>" class="auth_url px200" name="auth[redirection][error]" />
+		</td>
+	</tr>		
 	<?php foreach($this->aclRoles as $role):?>
 	<tr>
 		<td class='px200'><?echo $role->role?> :</td>

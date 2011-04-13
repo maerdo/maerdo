@@ -97,40 +97,45 @@ class My_Class_Maerdo_Console_Page_Acl {
 			$acl_roles.=$role['role']."\t= $parent\n";
 		}
 		
+		if(isset($acl['resources']) && count($acl['resources']>0)) {
+			foreach($acl['resources'] as $module=>$controllers) {
+				$acl_resources[$module]="\n[resources]\n\n";
+				foreach($controllers as $controller) {
+					$acl_resources[$module].=$controller."\t = null\n";
+				}
+			} 	
+		}
 		
-		foreach($acl['resources'] as $module=>$controllers) {
-			$acl_resources[$module]="\n[resources]\n\n";
-			foreach($controllers as $controller) {
-				$acl_resources[$module].=$controller."\t = null\n";
-			}
-		} 	
-		
-		foreach($acl['rights'] as $module=>$roles) {	
-			$acl_rights[$module]="";	
-			foreach($roles as $role=>$rights) {
-				$acl_rights[$module].="\n[$role]\n\n";
-				foreach($rights as $module_controller=>$actions) {
-					$acl_rights[$module].="allow.$module_controller\t = ";
-					$i=0;
-					foreach($actions as $action) {
-						if($i==count($actions)-1) {
-							$acl_rights[$module].="$action";							
-						} else {
-							$acl_rights[$module].="$action,";
+		if(isset($acl['rights']) && count($acl['rights']>0)) {
+			foreach($acl['rights'] as $module=>$roles) {	
+				$acl_rights[$module]="";	
+				foreach($roles as $role=>$rights) {
+					$acl_rights[$module].="\n[$role]\n\n";
+					foreach($rights as $module_controller=>$actions) {
+						$acl_rights[$module].="allow.$module_controller\t = ";
+						$i=0;
+						foreach($actions as $action) {
+							if($i==count($actions)-1) {
+								$acl_rights[$module].="$action";							
+							} else {
+								$acl_rights[$module].="$action,";
+							}
+							$i++;
 						}
-						$i++;
+						$acl_rights[$module].="\n";
 					}
-					$acl_rights[$module].="\n";
 				}
 			}
 		}
-		foreach($acl['rights'] as $module=>$roles) {
-			$data=$acl_roles;
-			$data.=$acl_resources[$module];
-			$data.=$acl_rights[$module];
-			My_Class_Maerdo_Console::display("3","Write application/modules/$module/configs/acl.ini");
-			file_put_contents(APPLICATION_PATH.'/modules/'.$module.'/configs/acl.ini',$data);
-		}		
+		if(isset($acl['rights']) && count($acl['rights']>0)) {
+			foreach($acl['rights'] as $module=>$roles) {
+				$data=$acl_roles;
+				$data.=$acl_resources[$module];
+				$data.=$acl_rights[$module];
+				My_Class_Maerdo_Console::display("3","Write application/modules/$module/configs/acl.ini");
+				file_put_contents(APPLICATION_PATH.'/modules/'.$module.'/configs/acl.ini',$data);
+			}		
+		}
 		return true;
 	}
 }
