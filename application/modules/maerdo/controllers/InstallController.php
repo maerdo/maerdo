@@ -13,7 +13,7 @@ class Maerdo_InstallController extends Zend_Controller_Action
     	$install_msg="null";
     	
     	
-    	if(!is_writable(APPLICATION_PATH."/configs")) {
+    	if(!is_writable(APPLICATION_PATH."/configs") || !is_writable(APPLICATION_PATH.'/modules/maerdo/configs')) {
     		$this->view->confdir_iswritable="false";
     	}
     	
