@@ -356,9 +356,3 @@ INSERT INTO `module` (`id`, `name`, `description`) VALUES
 (1, 'front', 'Front');
 
 
-INSERT INTO `component__plugin` (`id`, `stackindex`, `name`) VALUES
-(1, 1, 'Database'),
-(2, 2, 'Translate'),
-(3, 3, 'Maerdolayout'),
-(4, 4, 'Acl'),
-(3, 3, 'Layout');
