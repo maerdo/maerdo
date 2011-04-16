@@ -109,13 +109,6 @@ CREATE TABLE IF NOT EXISTS `component__databasemodule` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE TABLE IF NOT EXISTS `component__plugin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `stackindex` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
 
 CREATE TABLE IF NOT EXISTS `component__translate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
