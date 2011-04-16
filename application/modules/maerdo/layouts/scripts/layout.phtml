@@ -31,7 +31,7 @@
 
             <div class="header-middle">
                 <!-- Start Nav -->
-                <?php echo $this->placeholder('top_menu');?>                                
+                <?php echo $this->render('snippets/top_menu.phtml');?>                                
                 <!-- End Nav -->
                 <img id="logo" src="/images/logo.png" alt="Admin Theme" />
                 <br class="cl" />
@@ -47,7 +47,7 @@
             <div class="page">
                 <!-- Start Sidebar -->
                 <div id="sidebar">
-                   <?php echo $this->placeholder('sidebar');?>       
+                   <?php echo $this->render($this->layout()->sidebar_file);?>           
                 </div>
                 <!-- End Sidebar  -->
                 

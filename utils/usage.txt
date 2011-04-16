@@ -36,5 +36,5 @@ Usage: Maerdo.php update [options]=<section>
 		              
 	        forms=<section> Create forms config file
 	      	    Sections :
-	    	  	      ini_file : Create forms config file		              		              			
+	    	  	      inifiles : Create forms config file		              		              			
 		

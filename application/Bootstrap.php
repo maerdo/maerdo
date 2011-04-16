@@ -2,11 +2,6 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-	protected function _initAutoload() {
-		$autoloader = Zend_Loader_Autoloader::getInstance();	
-		$autoloader->registerNamespace('My_');		
-	}
-
 	
 	public function _initModules() {
 		$this->bootstrap ( 'frontController' );
@@ -39,17 +34,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		    'controller' => 'error',
 		    'action'     => 'error'
 		)));
-		$this->_front=Zend_Controller_Front::getInstance();
-		$plugins_ini = APPLICATION_PATH . '/configs/plugins.ini';
-		$plugins = new Zend_Config_Ini ( $plugins_ini, APPLICATION_ENV );
-
-		if($plugins->plugins) {			
-			foreach($plugins->plugins as $name=>$data) {				
-				$plugin_name="My_Plugins_".$data->name;
-				$this->_front->registerPlugin(new $plugin_name(),$data->stackindex);				
-			}
-		}		
-	
 	}
 	
 	public function _initView() {		

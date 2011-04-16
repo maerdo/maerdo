@@ -74,20 +74,20 @@ class My_Class_Maerdo_Console_Database_Conf {
 					break;
 			}
 			if($database['name']=="maerdo_db") {
-				$content.="db.console.adapter = '".$adapter."'\n";
-				$content.="db.console.host='".$database['hostname']."'\n";
-				$content.="db.console.login='".$database['username']."'\n";
-				$content.="db.console.password='".$database['password']."'\n";
-				$content.="db.console.database='".$database['database']."'\n";
-				$content.="db.console.storage_name='".$database['name']."'\n\n";
+				$content.="db.console.adapter = \"".$adapter."\"\n";
+				$content.="db.console.host=\"".$database['hostname']."\"\n";
+				$content.="db.console.login=\"".$database['username']."\"\n";
+				$content.="db.console.password=\"".$database['password']."\"\n";
+				$content.="db.console.database=\"".$database['database']."\"\n";
+				$content.="db.console.storage_name=\"".$database['name']."\"\n\n";
 			}
 			
-			$content.="db.db".$key.".adapter = '".$adapter."'\n";
-			$content.="db.db".$key.".host='".$database['hostname']."'\n";
-			$content.="db.db".$key.".login='".$database['username']."'\n";
-			$content.="db.db".$key.".password='".$database['password']."'\n";
-			$content.="db.db".$key.".database='".$database['database']."'\n";
-			$content.="db.db".$key.".storage_name='".$database['name']."'\n\n";
+			$content.="db.db".$key.".adapter = \"".$adapter."\"\n";
+			$content.="db.db".$key.".host=\"".$database['hostname']."\"\n";
+			$content.="db.db".$key.".login=\"".$database['username']."\"\n";
+			$content.="db.db".$key.".password=\"".$database['password']."\"\n";
+			$content.="db.db".$key.".database=\"".$database['database']."\"\n";
+			$content.="db.db".$key.".storage_name=\"".$database['name']."\"\n\n";
 		}
 		
 		My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/configs/database.ini');

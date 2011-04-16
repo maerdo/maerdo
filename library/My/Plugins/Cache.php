@@ -27,9 +27,14 @@ class My_Plugins_Cache extends Zend_Controller_Plugin_Abstract {
 			   foreach($config->cache as $cacheconf) {
 	
 			   	 //var_dump($cacheconf->frontend->toArray());die;
-			   	
+			   	 
+			   	 if(count($cacheconf->backend)>0) {
+			   	 	$backendoptions=$cacheconf->backend->toArray();			   	 	
+			   	 } else {
+			   	 	$backendoptions=array();
+			   	 }
 				 $cache = Zend_Cache::factory($cacheconf->type, $cacheconf->backendtype,
-	                                  $cacheconf->frontend->toArray(), $cacheconf->backend->toArray());
+	                                  $cacheconf->frontend->toArray(), $backendoptions);
 	             $manager->setCache($cacheconf->name,$cache);
 	             if($cacheconf->default=="yes")
 	             	$databaseCache = $manager->setCache('default',$cache);

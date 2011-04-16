@@ -6,17 +6,26 @@ class My_Plugins_Layout extends Zend_Controller_Plugin_Abstract {
 	public function postDispatch(Zend_Controller_Request_Abstract $request) {		
 		$this->view = Zend_Layout::getMvcInstance()->getView();
 
-		if($request->getModuleName()!="maerdo") {
-			$this->_layout($request);
-		}	
-
+		$this->_layout($request);
 	}
 	
 	protected function _layout(Zend_Controller_Request_Abstract $request) {
-		// Set layout path
+		
+		if($request->getModuleName()=="maerdo") {
+			// Set layout path
+			$this->_setLayoutPath($request);
+			// Rendering Sidebar
+			$layout=Zend_Layout::getMvcInstance();
+			
+			$layout->sidebar_file=My_Class_Maerdo_Layout::renderingMaerdoSidebar($request,$this->view);
+			
+			// Rendering navigation menu
+			$this->view->render('snippets/top_menu.phtml');
+		}
 		$this->_setLayoutPath($request);	
 	}
-	
+
+		
 
     public function _setLayoutPath(Zend_Controller_Request_Abstract $request) {
         // Insert current module layout dir to to overide any default layouts

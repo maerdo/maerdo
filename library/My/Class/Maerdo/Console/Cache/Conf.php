@@ -36,7 +36,7 @@ class My_Class_Maerdo_Console_Cache_Conf {
 	 * @return true
 	 */		
 	public function main() {
-		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
+		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();		
 		$caches=$this->getList();
 		$this->updateConf($caches);
 	}
@@ -51,7 +51,7 @@ class My_Class_Maerdo_Console_Cache_Conf {
 	 * @return array
 	 */			
 	public function getList() {		
-		$caches=$this->_db->query("SELECT * FROM component__cache");		
+		$caches=$this->_db->query("SELECT * FROM component__cache");	
 		return($caches);			
 	}
 	
@@ -70,20 +70,20 @@ class My_Class_Maerdo_Console_Cache_Conf {
 	public function updateConf($caches) {			
 		$content="";
 		foreach($caches as $key=>$value) {						
-			$content.="cache.cache$key.name=".$value['name']."\n";
-			$content.="cache.cache$key.type=".$value['type']."\n";
-			$content.="cache.cache$key.backendtype=".$value['backend_type']."\n";			
+			$content.="cache.cache$key.name=\"".$value['name']."\"\n";
+			$content.="cache.cache$key.type=\"".$value['type']."\"\n";
+			$content.="cache.cache$key.backendtype=\"".$value['backend_type']."\"\n";			
 
 			$configuration=$this->_getConfiguration($value['id'],$value['backend_type']);
 						
 			foreach($configuration['backend'] as $bkey=>$bvalue) {
-				$content.="cache.cache$key.backend.$bkey=$bvalue\n";	
+				$content.="cache.cache$key.backend.$bkey=\"$bvalue\"\n";	
 			}
 			foreach($configuration['frontend'] as $bkey=>$bvalue) {
-				$content.="cache.cache$key.frontend.$bkey=$bvalue\n";	
+				$content.="cache.cache$key.frontend.$bkey=\"$bvalue\"\n";	
 			}
 			
-			$content.="cache.cache$key.default=".$value['default']."\n";
+			$content.="cache.cache$key.default=\"".$value['default']."\"\n";
 			
 			$content.="\n\n";
 		}
