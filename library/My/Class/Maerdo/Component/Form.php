@@ -318,9 +318,11 @@ class My_Class_Maerdo_Component_Form {
 						 'Float','GreaterThan','Hex','Hostname','Iban','Identical','InArray','Int','Ip','Isbn','LessThan','NotEmpty',
 						 'PostCode','Regex','StringLength');
 		
-		$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Validators'),array('.','..'));
-		foreach($files as $key=>$value) {
-			$validators[]=str_replace('.php','',$value);
+		if(is_dir(APPLICATION_PATH.'/../library/My/Validators')) {
+			$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Validators'),array('.','..'));
+			foreach($files as $key=>$value) {
+				$validators[]=str_replace('.php','',$value);
+			}
 		}
 		return($validators);
 		
@@ -342,9 +344,11 @@ class My_Class_Maerdo_Component_Form {
 						  'normalizedtolocalized','null','pregreplace','realpath','stringtolower','stringtoupper','stringtrim',
 						  'stripnewlines','striptags');
 		
-		$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Filters'),array('.','..'));
-		foreach($files as $key=>$value) {
-			$filters[]=str_replace('.php','',$value);
+		if(is_dir(APPLICATION_PATH.'/../library/My/Filters')) {
+			$files=array_diff(scandir(APPLICATION_PATH.'/../library/My/Filters'),array('.','..'));
+			foreach($files as $key=>$value) {
+				$filters[]=str_replace('.php','',$value);
+			}
 		}
 		return($filters);
 		
