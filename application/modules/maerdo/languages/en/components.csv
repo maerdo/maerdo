@@ -152,3 +152,9 @@ Add a language;Add a language
 ID;ID
 Locale;Locale
 Language name;Language name
+All field must be setted to valid form.;All field must be setted to valid form.
+Error;Error
+You need to select a database and a module.;You need to select a database and a module.
+An error has occured when trying to update the form.;An error has occured when trying to update the form.
+The form has been updated.;The form has been updated.
+Fields list;Fields list

@@ -57,6 +57,23 @@ class My_Class_Maerdo_Component_Database {
 		$result=$mComponentmoduledatabase->delete("id='$id.'");
 		return($result);		
 	}
+	
+	/**
+	 * Delete default Adapter for a module from database_id.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Component_Database::deleteDefaultAdapter($id);
+	 * </code>
+	 * 	 
+	 * @param $id Id of adapter
+	 * @return array
+	 */		
+	static public function deleteDefaultAdapterFromDBId($dbid) {		
+		$mComponentmoduledatabase=new Maerdo_Model_Componentdatabasemodule();
+		$result=$mComponentmoduledatabase->delete("database_id='$dbid.'");
+		return($result);		
+	}	
+		
 
 	/**
 	 * add database configuration .
@@ -123,7 +140,13 @@ class My_Class_Maerdo_Component_Database {
 	 */		
 	static public function delete($id) {		
 		$mComponentdatabase=new Maerdo_Model_Componentdatabase();
-		return($mComponentdatabase->delete('id="'.$id.'"'));	
+		$database=$mComponentdatabase->find($id);
+		$result=$mComponentdatabase->delete('id="'.$id.'"');
+		if($result==1) {
+			return(self::deleteDefaultAdapterFromDBId($database->id));
+		} else {
+			return 0;
+		}
 	}
 }
 ?> 

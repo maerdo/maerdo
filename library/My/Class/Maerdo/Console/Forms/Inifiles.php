@@ -36,7 +36,7 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 	 */			
 	public function main() {
 		if(!is_dir(APPLICATION_PATH.'/../generated/forms/'))
-			mkdir(APPLICATION_PATH.'/../generated/forms/');
+			mkdir(APPLICATION_PATH.'/../generated/forms/',0777,true);
 						
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$formsData=$this->getForms();
@@ -271,8 +271,7 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 		
 		
 		$form_content.=file_get_contents(APPLICATION_PATH.'/../utils/Forms/'.$formData['template']);
-		$form_content.="\n\n";
-		var_dump($formData['fields']);
+		$form_content.="\n\n";		
 		foreach($formData['fields'] as $field=>$fieldData) {
 			$form_content.="elements.".$field.".type=\"".$fieldData['type']."\"\n";
 			foreach($fieldData['options'] as $key=>$value) {				
@@ -312,7 +311,6 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 			}
 			$form_content.="\n\n";
 			
-
 			return(file_put_contents(APPLICATION_PATH.'/../generated/forms/'.$form_name.'.ini',$form_content));
 		}
 		

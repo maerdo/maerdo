@@ -12,3 +12,4 @@ Impossible to write database config file;Impossible to write database config fil
 Return to the install form;Return to the install form
 Installation successfull;Installation successfull
 Login form;Login form
+The directorys  "application/configs" and "application/modules/maerdo/configs/" and theirs files must be writables;The directorys  "application/configs" and "application/modules/maerdo/configs/" and theirs files must be writables

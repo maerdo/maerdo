@@ -24,7 +24,14 @@
     </head>
 
     <body>
-        <div id="header">
+        	<?php if($this->layout()->reportMessage==true):?>
+            <div style='font-weight:bold;width:100%;background-color:#dedede;text-align:center;'>
+            	<br />
+            	<?php echo $this->translate('<a href="http://bugstracker.maerdo.com">You use a beta version. Report your bugs on http://bugstracker.maerdo.com. Thanks</a>')?>
+            	<br /><br />
+            </div>	
+            <?php endif;?> 
+        <div id="header">   
             <div class="header-top tr">
                 <a href="/maerdo/logout">Logout</a></p>
             </div>
