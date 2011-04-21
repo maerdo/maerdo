@@ -86,7 +86,12 @@ class My_Class_Maerdo_Console_Translate_Conf {
 					
 			}
 		}	
-		return(file_put_contents(APPLICATION_PATH.'/configs/translate.ini',$content));
+		if($content!="") {
+			return(file_put_contents(APPLICATION_PATH.'/configs/translate.ini',$content));
+		} else { 
+			My_Class_Maerdo_Console::display("3","No configuration to write");	
+			return true;
+		}	
 	}
 }
 
