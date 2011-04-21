@@ -77,13 +77,12 @@ class My_Class_Maerdo_Console_Auth_Conf {
 			
 			$content.="auth.field.username=\"".$fields['username_field']."\"\n";
 			$content.="auth.field.password=\"".$fields['password_field']."\"\n";
-			$content.="auth.field.role='\"".$fields['role_field']."\"\n";
+			$content.="auth.field.role=\"".$fields['role_field']."\"\n";
 			
 			$rolesUrls=$this->_getRoleUrl($fields['id']);
 			foreach($rolesUrls as $rolesUrls) {
 				$content.="auth.redirect.".$rolesUrls['role']."=\"".$rolesUrls['url']."\"\n";
 			}
-			$content.="auth.redirect.error='\"/maerdo/login/error\"\n";
 			
 		}
 		

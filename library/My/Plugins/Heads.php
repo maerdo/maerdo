@@ -28,37 +28,39 @@ class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 						$view->headLink()->appendStylesheet($file);
 					}
 				}
-				if($config->title->{$locale}) {					
-					/*
-					 * For next release
-					 *					 
-					 try {
-					 	$translator=Zend_Registry::get('Zend_Translate');
-					 } catch(Exception $e) {
-					 	$translator=null;
-					 } 
-
-					if($translator!=null)
-						$view->HeadTitle()->setTranslator(Zend_Registry::get('Zend_Translate'));
-						
-					try {
-						$titleVars=Zend_Registry::get('titleVars');	
-					} catch(Exception $e) {
-						$titleVars=null;
-					}
-					if($titleVars != null ) {
-						foreach($titleVars as $key=>$value) {
-							$vars[]=$key;
-							$values[]=$value;
+				if($config->title) {
+					if($config->title->{$locale}) {					
+						/*
+						 * For next release
+						 *					 
+						 try {
+						 	$translator=Zend_Registry::get('Zend_Translate');
+						 } catch(Exception $e) {
+						 	$translator=null;
+						 } 
+	
+						if($translator!=null)
+							$view->HeadTitle()->setTranslator(Zend_Registry::get('Zend_Translate'));
+							
+						try {
+							$titleVars=Zend_Registry::get('titleVars');	
+						} catch(Exception $e) {
+							$titleVars=null;
 						}
-						$title=str_replace($vars,$values,$config->title->{$locale});	
-					} else {
-						$title=$config->title->{$locale};
-					}	
-					*/									
-					$view->HeadTitle($config->title->{$locale});
-										
-				}		
+						if($titleVars != null ) {
+							foreach($titleVars as $key=>$value) {
+								$vars[]=$key;
+								$values[]=$value;
+							}
+							$title=str_replace($vars,$values,$config->title->{$locale});	
+						} else {
+							$title=$config->title->{$locale};
+						}	
+						*/									
+						$view->HeadTitle($config->title->{$locale});
+											
+					}		
+				}
 			}
 		}	else {
 			throw new Exception('You need Translate plugin to use Heads plugin.');

@@ -265,25 +265,32 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 	 * @return boolean
 	 */			
 	public function writeFile($form_name,$formData) {
-		$form_content="name='".$form_name."'\n";
+		$form_content=file_get_contents(APPLICATION_PATH.'/../utils/Forms/'.$formData['template']);
+		
+		$form_content.="\n\nname='".$form_name."'\n";
 		$form_content.="action='".$formData['action']."'\n";
 		$form_content.="method='".$formData['method']."'\n";
 		
-		
-		$form_content.=file_get_contents(APPLICATION_PATH.'/../utils/Forms/'.$formData['template']);
-		$form_content.="\n\n";		
+		$form_content.="\n\n";	
+	
 		foreach($formData['fields'] as $field=>$fieldData) {
 			$form_content.="elements.".$field.".type=\"".$fieldData['type']."\"\n";
 			foreach($fieldData['options'] as $key=>$value) {				
 				switch($key) {
 					case "order":
-					case "value":	
 						if($value!="") {
 							$form_content.="elements.".$field.".options.".$key."=\"".$value."\"\n";
 						}
 						break;
+					case "value":	
+						if($value!="") {
+							$form_content.="elements.".$field.".".$key."=\"".$value."\"\n";
+						}
+						break;
 					default:	
-						$form_content.="elements.".$field.".options.".$key."=\"".$value."\"\n";
+						if($value!="") {
+							$form_content.="elements.".$field.".options.".$key."=\"".$value."\"\n";
+						}
 						break;
 				}
 							
@@ -297,7 +304,7 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 			foreach($fieldData['validators'] as $name=>$data) {
 				$form_content.="elements.".$field.".options.validators.".strtolower($name).".validator=\"".$name."\"\n";
 				foreach($data['options'] as $key=>$value) {
-					$form_content.="elements.".$field.".options.validators.".strtolower($name).".options.".$key."=\"".$value."\"\n";
+							$form_content.="elements.".$field.".options.validators.".strtolower($name).".options.".$key."=\"".$value."\"\n";												
 				}
 				foreach($data['messages'] as $key=>$value) {
 					$form_content.="elements.".$field.".options.validators.".strtolower($name).".options.messages.".$key."=\"".stripslashes($value)."\"\n";
@@ -311,9 +318,9 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 			}
 			$form_content.="\n\n";
 			
-			return(file_put_contents(APPLICATION_PATH.'/../generated/forms/'.$form_name.'.ini',$form_content));
+			
 		}
-		
+		return(file_put_contents(APPLICATION_PATH.'/../generated/forms/'.$form_name.'.ini',$form_content));
 	}
 	
 }

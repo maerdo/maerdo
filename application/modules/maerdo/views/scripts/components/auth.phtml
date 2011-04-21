@@ -37,6 +37,7 @@
 	<div><?php echo $this->translate('All field must be setted to valid form.');?></div>
 </div>
 <br />
+
 <table>
 	<tr>
 		<td class='px200'><?echo $this->translate('Database')?></td>
@@ -44,7 +45,7 @@
 			<select class='px200' id='auth_database_name' name='auth[database_name]'>	
 				<?php foreach($this->databases as $database):?>
 					<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
-					<option "$selected" value="<?=$database['name']?>"><?=$database['name']?></option>
+					<option <?php echo $selected?>  value="<?=$database['name']?>"><?=$database['name']?></option>
 				<?php endforeach;?>		
 			</select>
 		</td>

@@ -20,7 +20,11 @@ class My_Class_Maerdo_Auth {
 	
 	static protected function  _auth($username,$password,$request) {
 		
-		$config_ini = APPLICATION_PATH . '/modules/'.$request->getModuleName().'/configs/auth.ini';
+		if($request->getModuleName()=="maerdo") {
+			$config_ini = APPLICATION_PATH . '/modules/maerdo/configs/auth.ini';
+		} else {
+				$config_ini = APPLICATION_PATH . '/configs/auth.ini';
+		}
 		
 		if (file_exists ( $config_ini ) && is_readable ( $config_ini )) {			
 			$config = new Zend_Config_Ini ( $config_ini);	
