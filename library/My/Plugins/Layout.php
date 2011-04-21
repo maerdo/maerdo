@@ -3,7 +3,8 @@ class My_Plugins_Layout extends Zend_Controller_Plugin_Abstract {
 	
 	protected $view;
 	
-	public function postDispatch(Zend_Controller_Request_Abstract $request) {		
+	public function postDispatch(Zend_Controller_Request_Abstract $request) {
+	
 		$this->view = Zend_Layout::getMvcInstance()->getView();
 
 		$this->_layout($request);

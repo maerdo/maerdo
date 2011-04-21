@@ -27,11 +27,6 @@ if(!is_file(APPLICATION_PATH.'/configs/maerdo.ini') && $_SERVER['REQUEST_URI']!=
 } else {
 	/** Zend_Application */
 	require_once 'Zend/Application.php';
-	require_once 'Zend/Loader/Autoloader.php';
-	
-	$autoloader = Zend_Loader_Autoloader::getInstance();	
-	$autoloader->registerNamespace('My_');	
-		
 	
 	// Create application, bootstrap, and run
 	$application = new Zend_Application(

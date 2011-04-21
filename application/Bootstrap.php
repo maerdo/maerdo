@@ -6,7 +6,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	public function _initModules() {
 		$this->bootstrap ( 'frontController' );
 		$this->_front = $this->getResource ( 'frontController' );
-
 		$router = $this->_front->getRouter ();
 		
 		$modules=scandir(APPLICATION_PATH . '/modules');

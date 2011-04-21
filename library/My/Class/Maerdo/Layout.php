@@ -22,4 +22,12 @@ class My_Class_Maerdo_Layout {
 		}	
 		return($sidebar_file);										
 	}
+	
+	/* For Next release
+	 * 
+     *	My_Class_Maerdo_Layout::setTitleVar(array('%value%'=>'haricots'));
+	 * */
+	static public function setTitleVar(array $vars) {
+		Zend_Registry::set('titleVars',$vars);
+	}
 }

@@ -36,7 +36,9 @@ class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 	protected function _parse($dir) {
 		$this->_modules=$this->_scanmodules($dir);		
 		foreach($this->_modules as $module) {
-			$this->tree[$module]=$this->_getDirectoryTree(APPLICATION_PATH.'/modules/'.$module.'/views/scripts/');
+			if($module!="maerdo") {
+				$this->tree[$module]=$this->_getDirectoryTree(APPLICATION_PATH.'/modules/'.$module.'/views/scripts/');
+			}
 		}		
 		$this->_parseTree();
 		$this->_writeFiles();

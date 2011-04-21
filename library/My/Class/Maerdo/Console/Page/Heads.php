@@ -50,6 +50,7 @@ class My_Class_Maerdo_Console_Page_Heads {
 	 */				
 	public function getList() {		
 		$pages=$this->_db->query("SELECT p.id as id,p.name as name,a.name as action,c.name as controller,m.name as module FROM page as p,module as m,action as a,controller as c WHERE m.id=p.module_id AND c.id=p.controller_id AND a.id=p.action_id");
+		$heads=array();
 		foreach($pages as $page) {
 			$heads[$page['name']]['title']=$this->_db->query("SELECT * FROM page__title WHERE page_id='".$page['id']."'");
 			$heads[$page['name']]['meta']=$this->_db->query("SELECT * FROM page__meta WHERE page_id='".$page['id']."'");
@@ -74,7 +75,7 @@ class My_Class_Maerdo_Console_Page_Heads {
 	public function createHeads($heads) {
 		foreach($heads as $head) {		
 			if(!is_dir(APPLICATION_PATH.'/modules/'.strtolower($head['info']['module']).'/configs/heads/'.strtolower($head['info']['controller'])))
-				mkdir(APPLICATION_PATH.'/modules/'.strtolower($head['info']['module']).'/configs/heads/'.strtolower($head['info']['controller']));
+				mkdir(APPLICATION_PATH.'/modules/'.strtolower($head['info']['module']).'/configs/heads/'.strtolower($head['info']['controller']),0777,true);
 			
 			$file=APPLICATION_PATH.'/modules/'.strtolower($head['info']['module']).'/configs/heads/'.strtolower($head['info']['controller']).'/'.strtolower($head['info']['action']).'.ini';
 						

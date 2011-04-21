@@ -54,28 +54,29 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		$config_ini = APPLICATION_PATH . '/configs/database.ini';
 		$config=new Zend_Config_Ini($config_ini);
 		if($config->db) {
-			foreach($config->db as $db) {		
-				$default_module=ucfirst($this->_getDefaultModule($db->storage_name));
-				
-				$this->_databases[$db->storage_name]['storage_name']=strtolower($db->storage_name);
-				$this->_databases[$db->storage_name]['default_module']=$default_module;
-				$this->_databases[$db->storage_name]['db']=$db->toArray();
-				
-				switch($db->adapter) {
-					case "pdo_mysql":
-						$dsn='mysql:dbname='.$db->database.';host='.$db->host;					
-						break;
-				}						
-				$this->_databases[$db->storage_name]['dbh']=new PDO($dsn,$db->login,$db->password);
-				
-				My_Class_Maerdo_Console::display("3","Add '".$db->storage_name."' DB");			
-				
-				$this->_databases[$db->storage_name]['tables']=$this->_retrieveTables($db->database,$this->_databases[$db->storage_name]);			
-				foreach($this->_databases[$db->storage_name]['tables'] as $table=>$tableData) {
-					$this->_databases[$db->storage_name]['tables'][$table]['foreignkeys']=$this->_retrievesForeignkeys($table,$this->_databases[$db->storage_name]);
-					$this->_databases[$db->storage_name]['tables'][$table]['fields']=$this->_retrieveFields($table,$this->_databases[$db->storage_name]);
-				}
-				
+			foreach($config->db as $db) {
+				if($db->storage_name!="maerdo_db") {		
+					$default_module=ucfirst($this->_getDefaultModule($db->storage_name));
+					
+					$this->_databases[$db->storage_name]['storage_name']=strtolower($db->storage_name);
+					$this->_databases[$db->storage_name]['default_module']=$default_module;
+					$this->_databases[$db->storage_name]['db']=$db->toArray();
+					
+					switch($db->adapter) {
+						case "pdo_mysql":
+							$dsn='mysql:dbname='.$db->database.';host='.$db->host;					
+							break;
+					}						
+					$this->_databases[$db->storage_name]['dbh']=new PDO($dsn,$db->login,$db->password);
+					
+					My_Class_Maerdo_Console::display("3","Add '".$db->storage_name."' DB");			
+					
+					$this->_databases[$db->storage_name]['tables']=$this->_retrieveTables($db->database,$this->_databases[$db->storage_name]);			
+					foreach($this->_databases[$db->storage_name]['tables'] as $table=>$tableData) {
+						$this->_databases[$db->storage_name]['tables'][$table]['foreignkeys']=$this->_retrievesForeignkeys($table,$this->_databases[$db->storage_name]);
+						$this->_databases[$db->storage_name]['tables'][$table]['fields']=$this->_retrieveFields($table,$this->_databases[$db->storage_name]);
+					}
+				}	
 			}
 		}				
 		return(true);		

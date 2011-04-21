@@ -21,8 +21,7 @@ class My_Class_Maerdo_Console_Page_Module {
 	 * @return true
 	 */			
 	public function update() {
-		My_Class_Maerdo_Console::display("2","Creating modules");	
-		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();		
+		My_Class_Maerdo_Console::display("2","Creating modules");					
 		$this->main();
 	}
 		
@@ -53,12 +52,15 @@ class My_Class_Maerdo_Console_Page_Module {
 	 * 	 
 	 * @return true
 	 */			
-	public function getList() {		
+	public function getList() {	
+		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();		
 		$result=$this->_db->query("SELECT * FROM module");
-		foreach($result as $module) {
-			$this->_modules[$module['id']]=$module['name'];
+		if($result!="false") {	
+			foreach($result as $module) {
+				$this->_modules[$module['id']]=$module['name'];
+			}
+			return($this->_modules);
 		}
-		return($this->_modules);
 	}
 	
 	/**
@@ -83,11 +85,7 @@ class My_Class_Maerdo_Console_Page_Module {
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/forms');
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/languages');
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/layouts');
-		mkdir(APPLICATION_PATH.'/modules/'.$name.'/library');		
-		
-		copy('utils/Module/configs/auth.ini.disable',APPLICATION_PATH.'/modules/'.$name.'/configs/auth.ini.disable');
-		copy('utils/Module/configs/translate.ini.disable',APPLICATION_PATH.'/modules/'.$name.'/configs/translate.ini.disable');
-		copy('utils/Module/configs/database.ini.disable',APPLICATION_PATH.'/modules/'.$name.'/configs/database.ini.disable');		
+		mkdir(APPLICATION_PATH.'/modules/'.$name.'/library');				
 	}
 }
 

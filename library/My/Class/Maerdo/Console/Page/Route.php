@@ -52,6 +52,7 @@ class My_Class_Maerdo_Console_Page_Route {
 	 */			
 	public function getList() {		
 		$result=$this->_db->query("SELECT p.description as page_description,p.name as page_name,m.name as module_name,c.name as controller_name,a.name as action_name, p.url as page_url  FROM page as p,module as m,controller as c, action as a where m.id=p.module_id and a.id=p.action_id and c.id=p.controller_id");			
+		$routes=array();
 		foreach($result as $row) {
 			$routes[strtolower($row['module_name'])][strtolower($row['controller_name'])][]=array('url'=>$row['page_url'],
 																									    'name'=>strtolower($row['page_name']),

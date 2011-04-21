@@ -222,14 +222,15 @@ class My_Class_Maerdo_Component_Form {
 			}
 			$mFormFieldOption->insert(array('form__field_id'=>$field_id,'name'=>$option,'value'=>$value));	
 		}
-
-		if(count($multioptions)>1) {		
+		
+		
+		if(count($multioptions)>0) {		
 			foreach($multioptions as $value) {
 				$mFormFieldMultioptions->insert(array('form__field_id'=>$field_id,'name'=>$value['name'],'value'=>$value['value']));	
 			}
 		}		
 		
-		if(count($attributs)>1) {
+		if(count($attributs)>0) {
 			foreach($attributs as $value) {
 				$mFormFieldAttribs->insert(array('form__field_id'=>$field_id,'name'=>$value['name'],'value'=>$value['value']));	
 			}		

@@ -1,7 +1,7 @@
 <?
 class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 	
-	public function preDispatch(Zend_Controller_Request_Abstract $request)  {  
+	public function postDispatch(Zend_Controller_Request_Abstract $request)  {  
 				
 		if(Zend_Registry::get('locale')!=null) {
 			$layout = Zend_Layout::getMvcInstance();
@@ -28,10 +28,36 @@ class My_Plugins_Heads extends Zend_Controller_Plugin_Abstract {
 						$view->headLink()->appendStylesheet($file);
 					}
 				}
-				if($config->title) {					
-					if($config->title->{$locale}) {				
-						$view->HeadTitle($config->title->{$locale});
+				if($config->title->{$locale}) {					
+					/*
+					 * For next release
+					 *					 
+					 try {
+					 	$translator=Zend_Registry::get('Zend_Translate');
+					 } catch(Exception $e) {
+					 	$translator=null;
+					 } 
+
+					if($translator!=null)
+						$view->HeadTitle()->setTranslator(Zend_Registry::get('Zend_Translate'));
+						
+					try {
+						$titleVars=Zend_Registry::get('titleVars');	
+					} catch(Exception $e) {
+						$titleVars=null;
 					}
+					if($titleVars != null ) {
+						foreach($titleVars as $key=>$value) {
+							$vars[]=$key;
+							$values[]=$value;
+						}
+						$title=str_replace($vars,$values,$config->title->{$locale});	
+					} else {
+						$title=$config->title->{$locale};
+					}	
+					*/									
+					$view->HeadTitle($config->title->{$locale});
+										
 				}		
 			}
 		}	else {
