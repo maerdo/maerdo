@@ -67,20 +67,24 @@
 $class="bggrey";
 if(is_array($this->databases)):
 	foreach($this->databases as $database):
-		if($class=="bggrey")
-			$class="";
-		else
-			$class="bggrey";	
-	?>
-		<tr class="<?=$class?>">
-			<td><?=$database['name']?></td>
-			<td><?=$database['adapter']?></td>
-			<td><?=$database['hostname']?></td>
-			<td><?=$database['database']?></td>
-			<td><?=$database['username']?></td>
-			<td><?=$database['password']?></td>
-			<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
-		</tr>
+		if($database['name']!="maerdo_db") :
+			if($class=="bggrey")
+				$class="";
+			else
+				$class="bggrey";	
+				
+				
+?>
+			<tr class="<?=$class?>">
+				<td><?=$database['name']?></td>
+				<td><?=$database['adapter']?></td>
+				<td><?=$database['hostname']?></td>
+				<td><?=$database['database']?></td>
+				<td><?=$database['username']?></td>
+				<td><?=$database['password']?></td>
+				<td><a href='/maerdo/component/database?form_action=delete&id=<?=$database['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+			</tr>
+	<?php endif;?>	
 	<?php endforeach;
 endif;?>
 </table>
@@ -151,7 +155,9 @@ endif;?>
 </select>	
 <select id='form_database_id' name='database_id' class="px200">	
 	<?php foreach($this->databases as $database):?>
+		<?php if($database['name']!="maerdo_db") :?>
 		<option value='<?php echo $database['id']?>'><?php echo $database['name']?></option>
+		<?php endif;?>
 	<?php endforeach;?>
 </select>
 <input type="submit" value="<?php echo $this->translate('Set to default adapter');?>" class="px150"/>

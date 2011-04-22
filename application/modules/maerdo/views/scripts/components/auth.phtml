@@ -44,8 +44,10 @@
 		<td class='px200'>
 			<select class='px200' id='auth_database_name' name='auth[database_name]'>	
 				<?php foreach($this->databases as $database):?>
-					<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
-					<option <?php echo $selected?>  value="<?=$database['name']?>"><?=$database['name']?></option>
+					<?php if($database['name']!="maerdo_db") :?>
+						<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
+						<option <?php echo $selected?>  value="<?=$database['name']?>"><?=$database['name']?></option>
+					<?php endif;?>	
 				<?php endforeach;?>		
 			</select>
 		</td>

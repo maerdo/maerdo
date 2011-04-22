@@ -18,8 +18,10 @@ class Front_IndexController extends Zend_Controller_Action
 	}
 	
 	public function loginAction() {
-		
-		$config = new Zend_Config_Ini(APPLICATION_PATH.'/modules/front/forms/Login.ini', 'form');
+		if($this->_getParam('error')!="") {
+			$this->view->error=1;
+		}
+		$config = new Zend_Config_Ini(APPLICATION_PATH.'/modules/front/forms/login.ini', 'form');
 		$form = new Zend_Form($config);	
 		if ($this->_request->isPost()) {
 			if ($form->isValid($_POST)) {
@@ -33,7 +35,7 @@ class Front_IndexController extends Zend_Controller_Action
 		
 	}
 	
-	public logoutAction() {
+	public function logoutAction() {
 		Zend_Auth::getInstance()->clearIdentity();
     	$this->_redirect('/');
 	}
