@@ -18,8 +18,8 @@ class Front_IndexController extends Zend_Controller_Action
 	}
 	
 	public function loginAction() {
-		/*		
-		$config = new Zend_Config_Ini(APPLICATION_PATH.'/modules/maerdo/forms/Core/Login.ini', 'form');
+		
+		$config = new Zend_Config_Ini(APPLICATION_PATH.'/modules/front/forms/Login.ini', 'form');
 		$form = new Zend_Form($config);	
 		if ($this->_request->isPost()) {
 			if ($form->isValid($_POST)) {
@@ -30,7 +30,7 @@ class Front_IndexController extends Zend_Controller_Action
 			}
 		} 	
 		$this->view->form=$form;
-		*/
+		
 	}
 	
 	public logoutAction() {

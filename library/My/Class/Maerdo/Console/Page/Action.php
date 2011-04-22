@@ -73,11 +73,13 @@ class My_Class_Maerdo_Console_Page_Action {
 		foreach($actions as $module=>$controllers) {
 			foreach($controllers as $controller=>$actions) {				
 				foreach($actions as $action) {	
-					$data=file_get_contents("application/modules/$module/controllers/".ucfirst($controller)."Controller.php");
+					$data=file_get_contents(APPLICATION_PATH."/modules/$module/controllers/".ucfirst($controller)."Controller.php");
 					if(!preg_match("#".$action."Action()#",$data)) {				
 						My_Class_Maerdo_Console::display("3","Create '$action' action in ".ucfirst($module)." ".ucfirst($controller)." controller");
 						exec("zf create action $action ".ucfirst($controller)." 1 $module");
-					}					
+					}	else {
+						My_Class_Maerdo_Console::display("3","'$action' action in ".ucfirst($module)." ".ucfirst($controller)." controller already exists");	
+					}				
 				}
 			}
 		}		

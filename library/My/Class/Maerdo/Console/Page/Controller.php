@@ -79,10 +79,12 @@ class My_Class_Maerdo_Console_Page_Controller {
 	public function createController($controllers) {
 		foreach($controllers as $module=>$controllers) {
 			foreach($controllers as $key=>$controller) {
-				if(!file_exists("applications/modules/$module/controllers/".ucfirst($controller)."Controller.php")) {
+				if(!file_exists(APPLICATION_PATH."/modules/$module/controllers/".ucfirst($controller)."Controller.php")) {
 					My_Class_Maerdo_Console::display("3","Create '".ucfirst($controller)."' controller in $module");				
 					exec("zf create controller $controller  index-action-included=0 $module");					
-				}	
+				}	else {
+					My_Class_Maerdo_Console::display("3",ucfirst($controller)."' controller in $module already exists");	
+				}
 			}	
 		}
 	}

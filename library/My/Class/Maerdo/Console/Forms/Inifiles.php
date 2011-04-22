@@ -320,6 +320,8 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 			
 			
 		}
+		My_Class_Maerdo_Console::display("3","Writing /generated/forms/".$form_name.".ini");	
+		
 		return(file_put_contents(APPLICATION_PATH.'/../generated/forms/'.$form_name.'.ini',$form_content));
 	}
 	
