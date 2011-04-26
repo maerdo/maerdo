@@ -8,6 +8,10 @@
  */
 class My_Class_Maerdo_Console_Translate_Buildcsvfiles {
 
+	/*
+	 * Files and sentences lists
+	 */
+	public $_entrie=array();
 
 	/**
 	 * Observer entrie method.

@@ -84,7 +84,8 @@ class My_Class_Maerdo_Console_Page_Module {
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/configs/routes');
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/forms');
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/languages');
-		mkdir(APPLICATION_PATH.'/modules/'.$name.'/layouts');
+		mkdir(APPLICATION_PATH.'/modules/'.$name.'/layouts/scripts',0777,true);
+		copy(APPLICATION_PATH.'/../utils/Module/layout.phtml',APPLICATION_PATH.'/modules/'.$name.'/layouts/scripts/layout.phtml');
 		mkdir(APPLICATION_PATH.'/modules/'.$name.'/library');				
 	}
 }
