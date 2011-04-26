@@ -36,7 +36,8 @@ class My_Class_Maerdo_Console_Database_Conf {
 	public function main() {
 		$this->_db=My_Class_Maerdo_Console_Db::getDbInstance();
 		$databases=$this->getList();
-		$this->updateConf($databases);
+		$defaultAdapters=$this->getDefaultAdapters();
+		$this->updateConf($databases,$defaultAdapters);
 	}
 	
 	/**
@@ -52,19 +53,34 @@ class My_Class_Maerdo_Console_Database_Conf {
 		$databases=$this->_db->query("SELECT * FROM component__database");		
 		return($databases);			
 	}
-	
+
+	/**
+	 * Retrieve defaults adapters for modules.
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Console_Database_Conf::getDefaultAdapters();
+	 * </code>
+	 * 	 
+	 * @return array
+	 */			
+	public function getDefaultAdapters() {		
+		$adapters=$this->_db->query("SELECT m.name as module,d.name as db FROM component__databasemodule as cd, component__database as d, module as m WHERE cd.module_id=m.id AND cd.database_id=d.id");		
+		return($adapters);			
+	}
+		
 	/**
 	 * Write configuration.
 	 * 
 	 * <code>
-	 * $result=My_Class_Maerdo_Console_Database_Conf::updateConf($configuration);
+	 * $result=My_Class_Maerdo_Console_Database_Conf::updateConf($configuration,$defaultAdapters);
 	 * </code>
 	 * 	 
 	 * @param $configuration Array with database data
+	 * @param $defaultAdapters Array with default database for a module
 	 * 
 	 * @return boolean
 	 */			
-	public function updateConf($databases) {			
+	public function updateConf($databases,$defaultAdapters) {			
 		$content="";
 		foreach($databases as $key=>$database) {			
 			switch($database['adapter']) {
@@ -91,8 +107,14 @@ class My_Class_Maerdo_Console_Database_Conf {
 		}
 		
 		My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/configs/database.ini');
-		return(file_put_contents(APPLICATION_PATH.'/configs/database.ini',$content));
+						
+		$result1=file_put_contents(APPLICATION_PATH.'/configs/database.ini',$content);
 		
+		foreach($defaultAdapters as $adapter) {
+			$content="db.default=\"".$adapter['db']."\"";
+			My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/modules/front/configs/database.ini');
+			file_put_contents(APPLICATION_PATH.'/modules/front/configs/database.ini',$content);			
+		} 		
 	}
 }
 

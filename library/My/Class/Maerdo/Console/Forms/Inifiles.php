@@ -267,9 +267,9 @@ class My_Class_Maerdo_Console_Forms_Inifiles {
 	public function writeFile($form_name,$formData) {
 		$form_content=file_get_contents(APPLICATION_PATH.'/../utils/Forms/'.$formData['template']);
 		
-		$form_content.="\n\nname='".$form_name."'\n";
-		$form_content.="action='".$formData['action']."'\n";
-		$form_content.="method='".$formData['method']."'\n";
+		$form_content.="\n\nname=\"".$form_name."\"\n";
+		$form_content.="action=\"".$formData['action']."\"\n";
+		$form_content.="method=\"".$formData['method']."\"\n";
 		
 		$form_content.="\n\n";	
 	

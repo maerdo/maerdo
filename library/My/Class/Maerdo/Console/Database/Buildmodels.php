@@ -257,7 +257,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 		$params=array('fields'=>$fields['fields'],'module'=>$database['default_module'],'table'=>ucfirst($table),'primarykey'=>@$database['tables'][$table]['primarykey'],'filename'=>$filename);
 		$data=$this->getTemplateContent('mapper.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers')) {
-			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['st)orage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
+			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers',0777,true);						
 		}
 		return(file_put_contents(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR.'Mappers'.DIRECTORY_SEPARATOR.ucfirst($filename).".php",$data));
 	}
@@ -296,7 +296,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 	 */		
 	public function _writeModelAbstract($database) {
 		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Model");	
-		$params=array('module'=>ucfirst($database['storage_name']));
+		$params=array('module'=>ucfirst($database['default_module']));
 		$data=$this->getTemplateContent('model_abstract.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']))
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name']);
@@ -315,7 +315,7 @@ class My_Class_Maerdo_Console_Database_Buildmodels {
 	 */			
 	public function _writeMapperAbstract($database) {
 		My_Class_Maerdo_Console::display("3","Writing ".$database['storage_name']." Abstract Mapper ");	
-		$params=array('module'=>ucfirst($database['storage_name']));
+		$params=array('module'=>ucfirst($database['default_module']));
 		$data=$this->getTemplateContent('mapper_abstract.tpl',$params);
 		if(!is_dir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers"))
 			mkdir(APPLICATION_PATH.'/../generated'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.$database['storage_name'].DIRECTORY_SEPARATOR."Mappers");

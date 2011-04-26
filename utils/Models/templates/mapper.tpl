@@ -15,7 +15,13 @@ class <?=$params['module']?>_Model_Mappers_<?=$params['filename']?> extends <?=$
      * @return array
      */
     public function fetchAll()  {
-        $resultSet = $this->getDbTable()->fetchAll();
+    	if(My_Class_Maerdo_Cache::test('DB_<?=$params['module']?>_<?=$params['filename']?>_fetchAll')) {
+    		$resultSet=My_Class_Maerdo_Cache::get('DB_<?=$params['module']?>_<?=$params['filename']?>_fetchAll');
+    	} else {
+        	$resultSet = $this->getDbTable()->fetchAll();
+        	My_Class_Maerdo_Cache::set('DB_<?=$params['module']?>_<?=$params['filename']?>_fetchAll',$resultSet,0,array('sqlSelect'));
+        }	
+        
         $entries   = array();
         foreach ($resultSet as $row) {
             $entry = new <?=$params['module']?>_Model_<?=$params['filename']?>();
@@ -89,9 +95,11 @@ class <?=$params['module']?>_Model_Mappers_<?=$params['filename']?> extends <?=$
      */
     public function findByField($field, $value, $model)  {            
             $select = $this->getDbTable()->select();
-            $result = array();
-
-            $rows = $this->getDbTable()->fetchAll($select->where("{$field} = ?", $value));
+            $select->where("{$field} = ?", $value);
+           
+			$rows=My_Class_Maerdo_Cache::getQueryResult($select);
+			
+			$result = array();           
             foreach ($rows as $row) {
                     $model=new <?=$params['module']?>_Model_<?=$params['filename']?>();
                     $result[]=$model;
@@ -107,7 +115,14 @@ class <?=$params['module']?>_Model_Mappers_<?=$params['filename']?> extends <?=$
      */
     public function find($id) {
             $table = $this->getDbTable();
-            $row = $table->find($id);
+            
+	    	if(My_Class_Maerdo_Cache::test('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id)) {
+	    		$row=My_Class_Maerdo_Cache::get('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id);
+	    	} else {
+	        	$row = $table->find($id);
+	        	My_Class_Maerdo_Cache::set('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id,$resultSet,0,array('sqlSelect'));
+	        }	
+                    
    			foreach ($row as $data) {
            		$model=new <?=$params['module']?>_Model_<?=$params['filename']?>();
             	$model<?$count=count($params['fields']); foreach ($params['fields'] as $column): $count--?>->set<?=ucfirst($column)?>($data['<?=$column?>'])<?if ($count> 0) echo "\n\t\t\t\t\t  "; endforeach;?>;
