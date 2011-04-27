@@ -44,54 +44,56 @@ class My_Plugins_Acl extends Zend_Controller_Plugin_Abstract {
  
 		//echo ("<b>### Plugins_Acl::preDispatch :</b>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; Role: $role&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Ressource : $resource&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Action :$action<br/>");
 	
-		// control if ressource exist  
-		if (!$this->_acl->has($resource)) {  
-			$resource = null; 
-			// Create a 404 redirection catched by errorHandler 
-		    $module       = "404";			   
-		    $controller   = "404" ;  
-		    $action       = "404" ; 	
+		// control if ressource exist
+		if($this->_acl instanceof Zend_Acl) {  
+			if (!$this->_acl->has($resource)) {  
+				$resource = null; 
+				// Create a 404 redirection catched by errorHandler 
+			    $module       = "404";			   
+			    $controller   = "404" ;  
+			    $action       = "404" ; 	
+			
+			} else {												
+				try {
+					// Control if user can acces this page
+					if (!$this->_acl->isAllowed($role, $resource, $action)) {  
 		
-		} else {												
-			try {
-				// Control if user can acces this page
-				if (!$this->_acl->isAllowed($role, $resource, $action)) {  
-	
-					// User can acces this page, we redirect request
-					if (!$this->_auth->hasIdentity()) {  
-					   // User is not identified 
-						if($module=="maerdo") {
-							$module  = "maerdo";
-						} else {
-							$module="front";
-						}				   
-					   $controller   = "index" ;  
-					   $action       = "login" ;
-					} else {  
-					   // User is identified but don't got privileges  
-						if($module=="maerdo") {
-							$module  = "maerdo";
-						} else {
-							$module="front";
-						}		   
-					   $controller   = "index" ;  
-					   $action       = "permission" ;  
+						// User can acces this page, we redirect request
+						if (!$this->_auth->hasIdentity()) {  
+						   // User is not identified 
+							if($module=="maerdo") {
+								$module  = "maerdo";
+							} else {
+								$module="front";
+							}				   
+						   $controller   = "index" ;  
+						   $action       = "login" ;
+						} else {  
+						   // User is identified but don't got privileges  
+							if($module=="maerdo") {
+								$module  = "maerdo";
+							} else {
+								$module="front";
+							}		   
+						   $controller   = "index" ;  
+						   $action       = "permission" ;  
+						}  
 					}  
-				}  
-			} catch(Exception $e) {
-				// User is identified but don't got privileges 
-				if($module=="maerdo") {
-					$module  = "maerdo";
-				} else {
-					$module="front";
-				}				   
-				$controller   = "index" ;  
-				$action       = "permission" ; 			
+				} catch(Exception $e) {
+					// User is identified but don't got privileges 
+					if($module=="maerdo") {
+						$module  = "maerdo";
+					} else {
+						$module="front";
+					}				   
+					$controller   = "index" ;  
+					$action       = "permission" ; 			
+				}
+		
+				$request->setModuleName($module);  
+				$request->setControllerName($controller);  
+				$request->setActionName($action);  
 			}
-	
-			$request->setModuleName($module);  
-			$request->setControllerName($controller);  
-			$request->setActionName($action);  
 		}
 	}
 	

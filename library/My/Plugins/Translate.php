@@ -13,7 +13,7 @@ class My_Plugins_Translate extends Zend_Controller_Plugin_Abstract {
 				}						
 			}
 			
-			if($config) {						
+			if(isset($config)) {						
 				if($request->getParam('language')!=null) {
 					$session = new Zend_Session_Namespace('language');
 					$session->language=$request->getParam('language');	
@@ -34,9 +34,7 @@ class My_Plugins_Translate extends Zend_Controller_Plugin_Abstract {
 					$locale=$config->translate->locale->{$session->language};
 					$session->locale=$locale;
 					
-					
-					
-					$zl=new Zend_Locale($locale);		
+																	
 					Zend_Registry::set('locale',$locale);
 					
 					if($request->getModuleName()!="default") {		
@@ -46,6 +44,9 @@ class My_Plugins_Translate extends Zend_Controller_Plugin_Abstract {
 						Zend_Registry::set('Zend_Translate',$translate);	
 					}
 				}	
-			}							
+			}	else {
+				$locale="en_US";
+				Zend_Registry::set('locale',$locale);
+			}						
 	}
 }	
