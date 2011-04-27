@@ -36,7 +36,7 @@ class My_Class_Maerdo_Framework_Controller {
 	 * Return name of a controller finded by his id
 	 * 
 	 * <code>
-	 * $result=My_Class_Maerdo_Controller::getNameById($meta,'1');
+	 * $result=My_Class_Maerdo_Controller::getNameById('1');
 	 * </code>
 	 * 
 	 * @param $id  Maerdo database controller id

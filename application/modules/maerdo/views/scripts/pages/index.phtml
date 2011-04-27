@@ -61,6 +61,7 @@
 		<td class="px300"><?php echo $this->translate('URL');?></td>
 		<td class="px100"><?php echo $this->translate('Module');?></td>
 		<td class="px100"><?php echo $this->translate('Controller');?></td>
+		<td class="px100"><?php echo $this->translate('Action');?></td>
 		<td class="px300"><?php echo $this->translate('Description');?></td>
 		<td class="px50"><?php echo $this->translate('Action');?></td>
 	</tr>	
@@ -78,6 +79,7 @@
 				<td class="px200"><?=$page->url?></td>
 				<td class="px100"><?=My_Class_Maerdo_Framework_Module::getNameById($page->module_id);?></td>
 				<td class="px100"><?=My_Class_Maerdo_Framework_Controller::getNameById($page->controller_id);?></td>
+				<td class="px100"><?=My_Class_Maerdo_Framework_Action::getNameById($page->action_id);?></td>				
 				<td class="px400"><?=$page->description?></td>
 				<td class="px50">
 					<a href='/maerdo/pages/edit/<?=$page->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>

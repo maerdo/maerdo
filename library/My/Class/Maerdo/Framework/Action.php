@@ -87,5 +87,21 @@ class My_Class_Maerdo_Framework_Action {
 		$mAction=new Maerdo_Model_Action();
 		return(count($mAction->fetchAll()));
 	}	
+	
+	/**
+	 * Return name of a action finded by his id
+	 * 
+	 * <code>
+	 * $result=My_Class_Maerdo_Action::getNameById('1');
+	 * </code>
+	 * 
+	 * @param $id  Maerdo database controller id
+	 * @return string Name of controller
+	 */		
+	static public function getNameById($id) {
+		$mAction=new Maerdo_Model_Action();
+		$result=$mAction->find($id);
+		return($result->name);
+	}	
 }
 ?> 
