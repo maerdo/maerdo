@@ -347,7 +347,8 @@ INSERT INTO `acl__role` (`id`, `parent`, `role`) VALUES
 INSERT INTO `action` (`id`, `controller_id`, `name`, `description`) VALUES
 (1, 1, 'permission', ''),
 (2, 1, 'login', ''),
-(3, 1, 'logout', '');
+(3, 1, 'logout', '')
+(4, 1, 'index','');
 
 INSERT INTO `controller` (`id`, `module_id`, `name`, `description`) VALUES
 (1, 1, 'index', 'Front - IndexController');
