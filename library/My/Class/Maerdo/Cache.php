@@ -1,52 +1,68 @@
 <?php 
 /**
- * This class is used to work with cache update in console mode.
+ * This class is used to work with cache.
  * 
  * @author Nicolas Blaudez <nblaudez@maerdo.com>
  * @package Console
  * @version 0.1
  */
-class My_Class_Maerdo_Console_Cache {
 
-	protected $_observers;
+
+class My_Class_Maerdo_Cache {
 	
-	/**
-	 * Attach selected cache console observers to $_observers var.
-	 * 	
-	 * @return boolean
-	 */	
-	public function __construct($params) {
-		$this->_observers = new SplObjectStorage();
-		$sections=explode(',',$params);		
-		foreach($sections as $section) {
-			switch($section) {
-				case "all":
-					$obs=new My_Class_Maerdo_Console_Cache_Conf();
-					$this->_observers->attach($obs);										
-					break;					
-				case "conf" :									
-					$obs=new My_Class_Maerdo_Console_Cache_Conf();
-					$this->_observers->attach($obs);
-					break;				
+	static protected $_cache;	
+	
+	static public function init($cache_name) {
+		$manager = new Zend_Cache_Manager;
+		if($manager->hasCache($cache_name)) {
+			self::$_cache=$manager->getCache($cache_name);
+			return true;
+		} elseif($manager->getCache('default')) {
+			self::$_cache=$manager->getCache('default');
+			return true;
+		} else {
+			return false;
+		}
+	}
+ 	
+	static public function getQueryResult($selectObj,$ttl=60,$cache="default") {		
+		if(self::init($cache)!=false) {
+			if(self::$_cache->test(md5($selectObj->__toString()))!=false) {			
+				return(self::$_cache->load(md5($selectObj->__toString())));
+			} else {			
+				$stmt=$selectObj->query();
+				$result=$stmt->fetchAll();			
+				self::set(md5($selectObj->__toString()),$result,$ttl,$cache,array('sqlSelect'));
+				return($result);
 			}
 		}
 		
 	}
+	
+	static public function set($data, $key,$ttl=false,$tag=array(),$cache="default") {
+		if(self::init($cache)!=false) {	
+			return self::$_cache->save($key,$data ,$tag,$ttl);
+		}	
+	}
+	
+	static public function get($key,$cache="default") {
+		if(self::init($cache)!=false) {
+			return self::$_cache->load($key);
+		}
+	}
+	static public function test($key,$cache="default") {
+		if(self::init($cache)!=false) {
+			return self::$_cache->test($key);
+		}
+	}	
 
- 	/**
-	 * Call update function of cache console attached observers
-	 * 	 
-	 * @return boolean
-	 */	   
-	public function update() {		
-		My_Class_Maerdo_Console::newline();
-		My_Class_Maerdo_Console::display("1","MAERDO::CONSOLE::CACHE");		
-        foreach ($this->_observers as $observer) {
-            try{
-                $observer->update($this);
-            }catch(\Exception $e){
-                die("\nErreur :\n\n".$e->getMessage());
-            }
-        }
-    }  	
+	static public function clean($key = null,$cache="default") {
+		if(self::init($cache)!=false) {
+			if ($key === null) {
+				return self::$_cache->clean();
+			}
+			return self::$_cache->remove($key);
+		}
+	}
+
 }
