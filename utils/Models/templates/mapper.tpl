@@ -103,7 +103,7 @@ class <?=$params['module']?>_Model_Mappers_<?=$params['filename']?> extends <?=$
             foreach ($rows as $row) {
                     $model=new <?=$params['module']?>_Model_<?=$params['filename']?>();
                     $result[]=$model;
-                    $model<?$count=count($params['fields']); foreach ($params['fields'] as $column): $count--?>->set<?=ucfirst($column)?>($row-><?=$column?>)<?if ($count> 0) echo "\n\t\t\t\t\t\t  "; endforeach;?>;
+                    $model<?$count=count($params['fields']); foreach ($params['fields'] as $column): $count--?>->set<?=ucfirst($column)?>($row['<?=$column?>'])<?if ($count> 0) echo "\n\t\t\t\t\t\t  "; endforeach;?>;
             }
             return $result;
     }    

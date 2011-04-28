@@ -39,9 +39,9 @@ class My_Class_Maerdo_Cache {
 		
 	}
 	
-	static public function set($data, $key,$ttl=false,$tag=array(),$cache="default") {
+	static public function set($key,$data,$ttl=false,$tag=array(),$cache="default") {
 		if(self::init($cache)!=false) {	
-			return self::$_cache->save($key,$data ,$tag,$ttl);
+			return self::$_cache->save($data,$key ,$tag,$ttl);
 		}	
 	}
 	
