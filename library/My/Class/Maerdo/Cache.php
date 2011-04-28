@@ -32,7 +32,7 @@ class My_Class_Maerdo_Cache {
 			} else {			
 				$stmt=$selectObj->query();
 				$result=$stmt->fetchAll();			
-				self::set(md5($selectObj->__toString()),$result,$ttl,$cache,array('sqlSelect'));
+				self::set(md5($selectObj->__toString()),$result,$ttl,array('sqlSelect'),$cache);
 				return($result);
 			}
 		}
