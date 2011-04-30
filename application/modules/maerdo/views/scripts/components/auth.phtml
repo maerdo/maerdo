@@ -87,12 +87,14 @@
 		</td>
 	</tr>		
 	<?php foreach($this->aclRoles as $role):?>
+	<?php if($role->role!="guest"):?>
 	<tr>
 		<td class='px200'><?echo $role->role?> :</td>
 		<td class='px200'>
 			<input class="redirection_url" type="text" value="<?if(@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
 		</td>
 	</tr>		
+	<?php endif;?>
 	<?php endforeach;?>		
 	<tr>
 		<td colspan='2'>
