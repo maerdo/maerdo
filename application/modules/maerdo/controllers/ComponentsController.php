@@ -101,14 +101,7 @@ class Maerdo_ComponentsController extends Zend_Controller_Action
     public function authAction() {
         if($this->_getParam('form_action')=="update_auth") {
     		$result=My_Class_Maerdo_Component_Auth::update($this->_getParam('module_id'),$this->_getParam('auth'));
-    		switch($result) {
-    			case "false":
-    				$this->view->notification_error='update_auth_error';
-    				break;
-    			default:
-    				$this->view->notification_success='update_auth_success';
-    				break;
-    		}
+			$this->view->notification_success='update_auth_success';    				
     	}
     	$modules=My_Class_Maerdo_Framework_Module::getList();
     	$databases=My_Class_Maerdo_Component_Database::getList();
