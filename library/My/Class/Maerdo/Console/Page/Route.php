@@ -76,8 +76,7 @@ class My_Class_Maerdo_Console_Page_Route {
 	 * 
 	 * @return true
 	 */				
-	public function createRoute($data) {			
-		var_dump($data);				
+	public function createRoute($data) {						
 		foreach($data as $module=>$controllers) {			
 			foreach($controllers as $controller=>$routes) {
 				$data="[development]\n\n";
