@@ -38,7 +38,7 @@ class My_Class_Maerdo_Locale {
 	 * @return string Name of locale
 	 */	
 	static public function getNameFromLocale($locale) {
-		$mLocale=new Maerdo_Model_Locale();		
+		$mLocale=new Maerdo_Model_Componenttranslate();		
 		$result=$mLocale->findByField('locale',$locale,$mLocale);		
 		return($result[0]->language_name);
 	}	
