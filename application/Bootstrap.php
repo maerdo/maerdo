@@ -33,6 +33,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		    'controller' => 'error',
 		    'action'     => 'error'
 		)));
+		$this->_front->registerPlugin(new My_Plugins_Database());
+		$this->_front->registerPlugin(new My_Plugins_Translate());
+		$this->_front->registerPlugin(new My_Plugins_Layout());
+		$this->_front->registerPlugin(new My_Plugins_Heads());
+		$this->_front->registerPlugin(new My_Plugins_Acl());		
 	}
 	
 	public function _initView() {		
