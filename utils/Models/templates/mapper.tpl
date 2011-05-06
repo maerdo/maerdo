@@ -120,7 +120,7 @@ class <?=$params['module']?>_Model_Mappers_<?=$params['filename']?> extends <?=$
 	    		$row=My_Class_Maerdo_Cache::get('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id);
 	    	} else {
 	        	$row = $table->find($id);
-	        	//My_Class_Maerdo_Cache::set('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id,$row,0,array('sqlSelect'));
+	        	//My_Class_Maerdo_Cache::set('DB_<?=$params['module']?>_<?=$params['filename']?>_find_'.$id,$row,1,array('sqlSelect'));
 	        }	
                     
    			foreach ($row as $data) {
