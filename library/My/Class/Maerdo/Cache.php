@@ -25,7 +25,7 @@ class My_Class_Maerdo_Cache {
 		}
 	}
  	
-	static public function getQueryResult($selectObj,$ttl=60,$cache="default") {		
+	static public function getQueryResult($selectObj,$ttl=1,$cache="default") {		
 		if(self::init($cache)!=false) {
 			if(self::$_cache->test(md5($selectObj->__toString()))!=false) {			
 				return(self::$_cache->load(md5($selectObj->__toString())));

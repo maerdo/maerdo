@@ -19,10 +19,7 @@ class My_Plugins_Layout extends Zend_Controller_Plugin_Abstract {
 			// Rendering Sidebar
 			$layout=Zend_Layout::getMvcInstance();
 			
-			$a=rand(1,10);
-			if($a%2==0) {
-				$layout->reportMessage=true;
-			}
+
 			$layout->sidebar_file=My_Class_Maerdo_Layout::renderingMaerdoSidebar($request,$this->view);
 			
 			// Rendering navigation menu
