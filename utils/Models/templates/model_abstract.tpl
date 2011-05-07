@@ -31,7 +31,7 @@ abstract class <?=$params['module']?>_Model_Abstract {
     	return(call_user_func_array(array($this->_mapper,$method),$arguments));    	
     }
 
-    public function setData(array $options){
+    public function setOptions(array $options){
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
             $method = 'set' . ucfirst(strtolower($key));
