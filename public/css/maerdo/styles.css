@@ -88,10 +88,10 @@ address {
 #page-wrapper {
 	border-top:1px solid #060606;
 	border-bottom:1px solid #000000;
-	background:#f4f4f4 url('/images/page-bg.gif') repeat-x top;
+	background:#f4f4f4 url('/images/maerdo/page-bg.gif') repeat-x top;
 }
 .page {
-	background: url('/images/sidebar-bg.png') repeat-y left;
+	background: url('/images/maerdo/sidebar-bg.png') repeat-y left;
 }
 #page-content {
 	float:left;

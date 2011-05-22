@@ -19,7 +19,7 @@
 	padding:6px 25px 2px;
 }
 .header-middle {
-	background:#404040 url('/images/header-middle.gif') repeat-x bottom;
+	background:#404040 url('/images/maerdo/header-middle.gif') repeat-x bottom;
 	border-top:1px solid #606060;
 	border-bottom:1px solid #050505;
 	padding:0 25px;
@@ -27,7 +27,7 @@
 min-width:1000px;
 }
 .header-bottom {
-	background:#313131 url('/images/header-bottom.gif') repeat-x bottom;
+	background:#313131 url('/images/maerdo/header-bottom.gif') repeat-x bottom;
 	border-top:1px solid #545454;
 	border-bottom:1px solid #545454;
 	padding:7px 25px;

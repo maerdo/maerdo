@@ -110,10 +110,10 @@ class My_Class_Maerdo_Console_Database_Conf {
 						
 		$result1=file_put_contents(APPLICATION_PATH.'/configs/database.ini',$content);
 		
-		foreach($defaultAdapters as $adapter) {
+		foreach($defaultAdapters as $adapter) {			
 			$content="db.default=\"".$adapter['db']."\"";
-			My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/modules/front/configs/database.ini');
-			file_put_contents(APPLICATION_PATH.'/modules/front/configs/database.ini',$content);			
+			My_Class_Maerdo_Console::display("3","Writing ".APPLICATION_PATH.'/modules/'.$adapter['module'].'/configs/database.ini');
+			file_put_contents(APPLICATION_PATH.'/modules/'.$adapter['module'].'/configs/database.ini',$content);			
 		} 		
 	}
 }
