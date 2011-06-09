@@ -1,11 +1,11 @@
 <div id="page-header">
-	<h1><?php echo $this->translate('Authentification')?></h1>
+	<h1><?php echo  $this->translate('Authentification')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='update_auth_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to update auth configuration or item was not modified.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to update auth configuration or item was not modified.');?><br /></div>
 	<?php endif;?>
 </div>
 <br /><br />
@@ -15,13 +15,13 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='update_auth_success'):?>
-	<div><?php echo $this->translate('The authentification configuration has been update.');?><br /></div>
+	<div><?php echo  $this->translate('The authentification configuration has been update.');?><br /></div>
 	<?php endif;?>
 </div>	
 <br /><br />
 <?php endif;?>
 
-<?php echo $this->translate("Select a module")?> :
+<?php echo  $this->translate("Select a module")?> :
 <select id='select_module' class="px200">
 	<option  value='-1'>-- Application --</option>
 
@@ -30,11 +30,11 @@
 <?php if($this->module_id!=null): ?>
 <form id="form_auth" action='/maerdo/component/auth' method='post'>
 <h2><?echo $this->translate('Database configuration');?></h2>
-<input type="hidden" name="module_id" value="<?=$this->module_id?>" />
+<input type="hidden" name="module_id" value="<?php echo $this->module_id?>" />
 <input type="hidden" name="form_action" value="update_auth" />
 
 <div id='form_error' class='hidden notification_error px700'>
-	<div><?php echo $this->translate('All field must be setted to valid form.');?></div>
+	<div><?php echo  $this->translate('All field must be setted to valid form.');?></div>
 </div>
 <br />
 
@@ -46,7 +46,7 @@
 				<?php foreach($this->databases as $database):?>
 					<?php if($database['name']!="maerdo_db") :?>
 						<?php (isset($this->authconfiguration['database_name']) && $this->authconfiguration['database_name']==$database['name']) ? $selected='selected="selected"' : $selected=''?>
-						<option <?php echo $selected?>  value="<?=$database['name']?>"><?=$database['name']?></option>
+						<option <?php echo  $selected?>  value="<?php echo $database['name']?>"><?php echo $database['name']?></option>
 					<?php endif;?>	
 				<?php endforeach;?>		
 			</select>
@@ -55,25 +55,25 @@
 	<tr>
 		<td class='px200'><?echo $this->translate('Table')?> :</td>
 		<td class='px200'>
-			<input id='auth_table' type="text" value="<?if(@$this->authconfiguration['table']) echo $this->authconfiguration['table']?>" class="px200" name="auth[table]" />
+			<input id='auth_table' type="text" value="<?php if (@$this->authconfiguration['table']) echo $this->authconfiguration['table']?>" class="px200" name="auth[table]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Username field')?> :</td>
 		<td class='px200'>
-			<input id='auth_username_field' type="text" value="<?if(@$this->authconfiguration['username_field']) echo $this->authconfiguration['username_field']?>" class="px200" name="auth[username_field]" />
+			<input id='auth_username_field' type="text" value="<?php if (@$this->authconfiguration['username_field']) echo $this->authconfiguration['username_field']?>" class="px200" name="auth[username_field]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Password field')?> :</td>
 		<td class='px200'>
-			<input id='auth_password_field' type="text" value="<?if(@$this->authconfiguration['password_field']) echo $this->authconfiguration['password_field']?>" class="px200" name="auth[password_field]" />
+			<input id='auth_password_field' type="text" value="<?php if (@$this->authconfiguration['password_field']) echo $this->authconfiguration['password_field']?>" class="px200" name="auth[password_field]" />
 		</td>
 	</tr>
 	<tr>
 		<td class='px200'><?echo $this->translate('Role field')?> :</td>
 		<td class='px200'>
-			<input id='auth_role_field' type="text" value="<?if(@$this->authconfiguration['role_field']) echo $this->authconfiguration['role_field']?>" class="px200" name="auth[role_field]" />
+			<input id='auth_role_field' type="text" value="<?php if (@$this->authconfiguration['role_field']) echo $this->authconfiguration['role_field']?>" class="px200" name="auth[role_field]" />
 		</td>
 	</tr>	
 	
@@ -81,9 +81,9 @@
 		<td colspan='2'><h2><?echo $this->translate('Redirection URL after authentification')?> :</h2></td>	
 	</tr>	
 	<tr>
-		<td class='px200'><?php echo $this->translate('Error')?> :</td>
+		<td class='px200'><?php echo  $this->translate('Error')?> :</td>
 		<td class='px200'>
-			<input type="text" value="<?if(@$this->authconfiguration['redirection_role']['error']) echo $this->authconfiguration['redirection_role']['error']?>" class="auth_url px200" name="auth[redirection][error]" />
+			<input type="text" value="<?php if (@$this->authconfiguration['redirection_role']['error']) echo $this->authconfiguration['redirection_role']['error']?>" class="auth_url px200" name="auth[redirection][error]" />
 		</td>
 	</tr>		
 	<?php foreach($this->aclRoles as $role):?>
@@ -91,7 +91,7 @@
 	<tr>
 		<td class='px200'><?echo $role->role?> :</td>
 		<td class='px200'>
-			<input class="redirection_url" type="text" value="<?if(@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
+			<input class="redirection_url" type="text" value="<?php if (@$this->authconfiguration['redirection_role'][$role->role]) echo $this->authconfiguration['redirection_role'][$role->role]?>" class="auth_url px200" name="auth[redirection][<?echo $role->role?>]" />
 		</td>
 	</tr>		
 	<?php endif;?>

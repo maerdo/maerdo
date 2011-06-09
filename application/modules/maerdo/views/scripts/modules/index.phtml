@@ -1,15 +1,15 @@
 <div id="page-header">
-	<h1><?php echo ($this->translate('Module list'));?></h1>
+	<h1><?php echo  ($this->translate('Module list'));?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='add_module_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to add the module.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to add the module.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='delete_module_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to delete the module.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to delete the module.');?><br /></div>
 	<?php endif;?>	
 </div>
 <br />
@@ -19,11 +19,11 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='module_has_been_added'):?>
-	<div><?php echo $this->translate('Module has been added.');?><br /></div>
+	<div><?php echo  $this->translate('Module has been added.');?><br /></div>
 	<?php endif;?>		
 	
 	<?php if($this->notification_success=='module_has_been_deleted'):?>
-	<div><?php echo $this->translate('Module has been deleted.');?><br /></div>
+	<div><?php echo  $this->translate('Module has been deleted.');?><br /></div>
 	<?php endif;?>		
 </div>
 <br />
@@ -31,9 +31,9 @@
 
 <table>
 	<tr class="bggrey">
-		<td class="bold px200"><?php echo$this->translate('Module')?></td>
-		<td class="bold px400"><?php echo $this->translate('Description')?></td>
-		<td class="bold"><?php echo $this->translate('Action')?></td>
+		<td class="bold px200"><?php echo $this->translate('Module')?></td>
+		<td class="bold px400"><?php echo  $this->translate('Description')?></td>
+		<td class="bold"><?php echo  $this->translate('Action')?></td>
 	</tr>
 <?php foreach($this->modules as $i=>$module):
 	if($i%2=="0")
@@ -41,12 +41,12 @@
 	else 
 		$class="";	
 ?>
-	<tr class='<?=$class?>'>	
-		<td class="px200"><?=$module->name?></td>
-		<td class="px400"><?=$module->description?></td>
+	<tr class='<?php echo $class?>'>	
+		<td class="px200"><?php echo $module->name?></td>
+		<td class="px400"><?php echo $module->description?></td>
 		<td class="">
-			<a href='/maerdo/modules/edit/<?=$module->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
-			<a href='/maerdo/modules?form_action=delete_module&module_id=<?=$module->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+			<a href='/maerdo/modules/edit/<?php echo $module->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
+			<a href='/maerdo/modules?form_action=delete_module&module_id=<?php echo $module->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
 		</td>
 	</tr>	
 <?php endforeach;?>
@@ -54,25 +54,25 @@
 
 
 
-<div class="hidden" id='dialog-addModule' title='<?php echo $this->translate('Create a module');?>'>
+<div class="hidden" id='dialog-addModule' title='<?php echo  $this->translate('Create a module');?>'>
  <div id='form_module_error' class="hidden">
 	<br />
 	<div class='notification_error px300'>
-		<div id='form_error_module_name' class='hidden'><?php echo $this->translate('You need to set a module name to validate form.');?></div>		
+		<div id='form_error_module_name' class='hidden'><?php echo  $this->translate('You need to set a module name to validate form.');?></div>		
 	</div>
 	<br />
  </div>
  <form id='form_module_add' action='/maerdo/modules' method='post'>
  	<br />
-	<?php echo $this->translate('Module name');?> :
+	<?php echo  $this->translate('Module name');?> :
 	<br />
 	<input type="text" id="module_name" name="module_name" />
  	<br />
-	<?php echo $this->translate('Module description');?> :
+	<?php echo  $this->translate('Module description');?> :
 	<br />
 	<input type="text" id="module_description" class="px250" name="module_description" />	
 	<input type='hidden' name='form_action' value='add_module' />
-	<input  type='button' onclick='addModule()' value='<?php echo $this->translate('Add');?>' class="px50 fright"/>
+	<input  type='button' onclick='addModule()' value='<?php echo  $this->translate('Add');?>' class="px50 fright"/>
 	<div class="cleaner"></div>
 	<br /><br />
  </form>

@@ -1,15 +1,15 @@
 <div id="page-header">
-	<h1><?php echo $this->translate('Edit a validator configuration')?></h1>
+	<h1><?php echo  $this->translate('Edit a validator configuration')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
 	<?php if($this->notification_error=='updateOptions_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to update validator options.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to update validator options.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='updateMessages_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to update validator errors messages.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to update validator errors messages.');?><br /></div>
 	<?php endif;?>			
 </div>
 <br /><br />
@@ -19,54 +19,54 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px900'>
 	<?php if($this->notification_success=='updateOptions_success'):?>
-	<div><?php echo $this->translate('The validator options has been updated.');?><br /></div>
+	<div><?php echo  $this->translate('The validator options has been updated.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='updateMessages_success'):?>
-	<div><?php echo $this->translate('The validator errors messages has been updated.');?><br /></div>
+	<div><?php echo  $this->translate('The validator errors messages has been updated.');?><br /></div>
 	<?php endif;?>
 </div>
 <br /><br />
 <?php endif;?>	
 
-<input id="validator_id" type="hidden" name="validator_id" value="<?=$this->validator_id?>" />	
-<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/'>> <?php echo $this->translate('Return to field edition')?></a><br />
+<input id="validator_id" type="hidden" name="validator_id" value="<?php echo $this->validator_id?>" />	
+<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/'>> <?php echo  $this->translate('Return to field edition')?></a><br />
 <br /><br />
 <div id="tabs" class="px900">
     <ul class="px900">		
-        <li><a href="#tabs-1"><?php echo $this->translate('Options')?></a></li>
-        <li><a href="#tabs-2"><?php echo $this->translate('Messages')?></a></li>
+        <li><a href="#tabs-1"><?php echo  $this->translate('Options')?></a></li>
+        <li><a href="#tabs-2"><?php echo  $this->translate('Messages')?></a></li>
     </ul>
     <div id="tabs-1">
          <h1>Options</h1>
-         <form id='form_validators' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>/validator/<?=$this->validator_id?>' method='post'>
+         <form id='form_validators' action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/validator/<?php echo $this->validator_id?>' method='post'>
          <input type="hidden" name="form_action" value="update_validatoroptions" />
-		<?php echo $this->translate('Add this option')?> :
+		<?php echo  $this->translate('Add this option')?> :
          <select  id='validator_option' name="select_option">
          	<?php foreach($this->validator_options_list as $option):?>
-         		<option value='<?=$option?>'><?=$option?></option>
+         		<option value='<?php echo $option?>'><?php echo $option?></option>
          	<?php endforeach;?>
-         	<option value='other'><?php echo $this->translate('Other');?></option>
+         	<option value='other'><?php echo  $this->translate('Other');?></option>
          </select>	
-         <input onclick="addOption()" type="button"  value="<?php echo $this->translate('Add')?>" /> 
+         <input onclick="addOption()" type="button"  value="<?php echo  $this->translate('Add')?>" /> 
          <br /><br />
          <br />
          <table name="table_option" class="px450" id='table_option'>
          	<tr class="bggrey bold">
-         		<td class="px200"><?php echo $this->translate('Option')?></td>
-         		<td class="px300"><?php echo $this->translate('Value')?></td>
-         		<td><?php echo $this->translate('Delete')?></td>
+         		<td class="px200"><?php echo  $this->translate('Option')?></td>
+         		<td class="px300"><?php echo  $this->translate('Value')?></td>
+         		<td><?php echo  $this->translate('Delete')?></td>
          	</tr>  
          	<?php 
          		$i=0;
          		foreach($this->validator_options as $option):?>
-				<tr id='table_option_<?=$i?>'>
+				<tr id='table_option_<?php echo $i?>'>
 					<?php if($option->option=="other") :?>
-						<td class='px200'><input type='text' name='option[<?=$i?>][option]' value='' /></td>
+						<td class='px200'><input type='text' name='option[<?php echo $i?>][option]' value='' /></td>
 					<?php else: ?> 
-						<td class='px200'><input type='hidden' id='option_<?=$i?>' name='option[<?=$i?>][option]' value='<?=$option->option?>' /><?=$option->option?></td>
+						<td class='px200'><input type='hidden' id='option_<?php echo $i?>' name='option[<?php echo $i?>][option]' value='<?php echo $option->option?>' /><?php echo $option->option?></td>
 					<?php endif;?>
-					<td class='px300'><input type='text' class='px300' name='option[<?=$i?>][value]' value='<?=$option->value?>' /></td>
-					<td><a href='#table_option' onclick='deleteOption("<?=$i?>")'><img class='pr t3' src='/images/icons/delete.gif' /></a></td>
+					<td class='px300'><input type='text' class='px300' name='option[<?php echo $i?>][value]' value='<?php echo $option->value?>' /></td>
+					<td><a href='#table_option' onclick='deleteOption("<?php echo $i?>")'><img class='pr t3' src='/images/icons/delete.gif' /></a></td>
 				</tr>
 		 		<?php 
 		 		$i++;
@@ -77,13 +77,13 @@
          </form>		 
     </div>
     <div id="tabs-2">
-        <form id='form_validators_messages' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>/validator/<?=$this->validator_id?>' method='post'>
+        <form id='form_validators_messages' action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/validator/<?php echo $this->validator_id?>' method='post'>
     	<input type="hidden" name="form_action" value="update_messages" />
     	<table class="maxsize">
     		<tr class="bggrey bold">
-    			<td><?php echo $this->translate('Type');?></td>
-    			<td><?php echo $this->translate('Error code');?></td>
-    			<td><?php echo $this->translate('Message');?></td>
+    			<td><?php echo  $this->translate('Type');?></td>
+    			<td><?php echo  $this->translate('Error code');?></td>
+    			<td><?php echo  $this->translate('Message');?></td>
     		</tr>	
 		<?php 				
 		
@@ -96,15 +96,15 @@
 				$class="bggreylight";
 			}
 		?>
-			<tr class="<?=$class?>">
-				<td><input <?php if(!isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?=$key?>][type]' value='default' /><?=$this->translate('Default')?></td>
-    			<td><?php echo $message['errorcode'];?></td>
-    			<td><?php echo $message['message'];?></td>
+			<tr class="<?php echo $class?>">
+				<td><input <?php if(!isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?php echo $key?>][type]' value='default' /><?php echo $this->translate('Default')?></td>
+    			<td><?php echo  $message['errorcode'];?></td>
+    			<td><?php echo  $message['message'];?></td>
     		</tr>
-			<tr class="<?=$class?>">
-				<td><input <?php if(isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?=$key?>][type]' value='personal' /><?=$this->translate('Personal')?></td>
-    			<td><?php echo $message['errorcode'];?></td>
-    			<td><input value="<?php if(isset($this->personalMessages[$key])) echo $this->personalMessages[$key]['message']?>" name="messages[<?=$key?>][message]" type="text" class="maxsize" /></td>
+			<tr class="<?php echo $class?>">
+				<td><input <?php if(isset($this->personalMessages[$key])) echo 'checked="checked"'?> type='radio' name='messages[<?php echo $key?>][type]' value='personal' /><?php echo $this->translate('Personal')?></td>
+    			<td><?php echo  $message['errorcode'];?></td>
+    			<td><input value="<?php if(isset($this->personalMessages[$key])) echo $this->personalMessages[$key]['message']?>" name="messages[<?php echo $key?>][message]" type="text" class="maxsize" /></td>
     		</tr>    	
     		<tr>
     			<td colspan="3"><br /></td>

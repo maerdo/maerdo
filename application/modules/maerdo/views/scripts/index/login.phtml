@@ -14,24 +14,24 @@
 <img src='/images/maerdo/logo.png' alt='logo' />
 <div id="login-wrapper">
 <div class="box-header login">
-<?php echo $this->translate('Login');?>
+<?php echo  $this->translate('Login');?>
 </div>
 <div class="box">
 
 <form method="post" action="/maerdo/login" class="login">
   <div class="row">
-    <?php echo $this->form->username->renderLabel();?>
-    <?php echo $this->form->username->renderViewHelper();?>
+    <?php echo  $this->form->username->renderLabel();?>
+    <?php echo  $this->form->username->renderViewHelper();?>
     <?php if($this->form->username->renderErrors()!=""):?>
-    	<div class="fright mb10"><?php echo $this->form->username->renderErrors()?></div>
+    	<div class="fright mb10"><?php echo  $this->form->username->renderErrors()?></div>
     <?php endif;?>	
  </div>
 
   <div class="row">
-    <?php echo $this->form->password->renderLabel();?>
-    <?php echo $this->form->password->renderViewHelper();?>
+    <?php echo  $this->form->password->renderLabel();?>
+    <?php echo  $this->form->password->renderViewHelper();?>
     <?php if($this->form->username->renderErrors()!=""):?>
-    	<div class="fright mb10"><?php echo $this->form->password->renderErrors()?></div>
+    	<div class="fright mb10"><?php echo  $this->form->password->renderErrors()?></div>
     <?php endif;?>	    
  </div>
    <div class="row tr">

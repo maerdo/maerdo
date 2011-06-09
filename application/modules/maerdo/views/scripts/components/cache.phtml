@@ -1,20 +1,20 @@
 <div id="page-header">
-	<h1><?php echo $this->translate('Cache')?></h1>
+	<h1><?php echo  $this->translate('Cache')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px700'>
 	<?php if($this->notification_error=='add_cache_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to add the cache.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to add the cache.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='delete_cache_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to delete the cache.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to delete the cache.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_error=='update_cache_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to update the cache.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to update the cache.');?><br /></div>
 	<?php endif;?>	
 	<?php if($this->notification_error=='setdefault_cache_error'):?>
-	<div><?php echo $this->translate('An error has occured when trying to set the default cache.');?><br /></div>
+	<div><?php echo  $this->translate('An error has occured when trying to set the default cache.');?><br /></div>
 	<?php endif;?>		
 		
 </div>
@@ -23,16 +23,16 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px700'>
 	<?php if($this->notification_success=='add_cache_success'):?>
-	<div><?php echo $this->translate('The cache has been created.');?><br /></div>
+	<div><?php echo  $this->translate('The cache has been created.');?><br /></div>
 	<?php endif;?>	
 	<?php if($this->notification_success=='delete_cache_success'):?>
-	<div><?php echo $this->translate('The cache has been deleted.');?><br /></div>
+	<div><?php echo  $this->translate('The cache has been deleted.');?><br /></div>
 	<?php endif;?>
 	<?php if($this->notification_success=='update_cache_success'):?>
-	<div><?php echo $this->translate('The cache has been updated.');?><br /></div>
+	<div><?php echo  $this->translate('The cache has been updated.');?><br /></div>
 	<?php endif;?>		
 	<?php if($this->notification_success=='setdefault_cache_success'):?>
-	<div><?php echo $this->translate('The cache has been setted as default.');?><br /></div>
+	<div><?php echo  $this->translate('The cache has been setted as default.');?><br /></div>
 	<?php endif;?>		
 </div>
 <br />
@@ -48,28 +48,28 @@
 	<input type="hidden" name="form_action" value="set_default">
 	<table class="px400">
 		<tr class="bggrey bold">
-			<td><?php echo $this->translate('Name')?></td>
-			<td><?php echo $this->translate('Frontend Type')?></td>
-			<td><?php echo $this->translate('Backend support')?></td>
-			<td><?php echo $this->translate('Default')?></td>
-			<td><?php echo $this->translate('Actions')?></td>
+			<td><?php echo  $this->translate('Name')?></td>
+			<td><?php echo  $this->translate('Frontend Type')?></td>
+			<td><?php echo  $this->translate('Backend support')?></td>
+			<td><?php echo  $this->translate('Default')?></td>
+			<td><?php echo  $this->translate('Actions')?></td>
 		</tr>
 		<?php foreach($this->caches as $cache):?>
 		<tr>
-			<td><?=$cache->name?></td>
-			<td><?=$cache->type?></td>
-			<td><?=$cache->backend_type?></td>
-			<td><input <?if($cache->default=="yes") { echo "checked='checked'";}?> type="radio" name="default" value="<?=$cache->id?>" /></td>
+			<td><?php echo $cache->name?></td>
+			<td><?php echo $cache->type?></td>
+			<td><?php echo $cache->backend_type?></td>
+			<td><input <?php if ($cache->default=="yes") { echo "checked='checked'";}?> type="radio" name="default" value="<?php echo $cache->id?>" /></td>
 			<td>
-				<a href='/maerdo/component/cache/?form_action=update_form&id=<?=$cache->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
-				<a href='/maerdo/component/cache/?form_action=delete&id=<?=$cache->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a>			
+				<a href='/maerdo/component/cache/?form_action=update_form&id=<?php echo $cache->id?>'><img src='/images/icons/edit.gif' alt='edit' /></a>
+				<a href='/maerdo/component/cache/?form_action=delete&id=<?php echo $cache->id?>'><img src='/images/icons/delete.gif' alt='delete' /></a>			
 			</td>
 		</tr>	
 		<?php endforeach;?>
 	</table>
 	<br />
 	<div class="px400">
-		<input class="fright" type="submit"  value="<?=$this->translate('Set as default');?>" />
+		<input class="fright" type="submit"  value="<?php echo $this->translate('Set as default');?>" />
 	</div>
 	</form>
 	<div id='cache_form' class='hidden'>
@@ -97,7 +97,7 @@
 			</tr>
 		</table>		
 		<br /><br />	
-		<h2><?php echo $this->translate('Backend')?> :</h2>
+		<h2><?php echo  $this->translate('Backend')?> :</h2>
 		<table class="px400">
 			<tr>
 				<td class="px200">Support :</td>
@@ -110,13 +110,13 @@
 				</td>
 			</tr>
 			<tr class="hidden backend_file backend_type">
-				<td><?php echo $this->translate('Cache dir')?> :</td>
+				<td><?php echo  $this->translate('Cache dir')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][file][cache_dir]" />
 				</td>
 			</tr>	
 			<tr class="hidden backend_file backend_type">
-				<td> <?php echo $this->translate('File locking')?>:</td>
+				<td> <?php echo  $this->translate('File locking')?>:</td>
 				<td>
 					<select name="cache[backend][file][file_locking]" class="px200">
 						<option value="true">True</option>
@@ -126,7 +126,7 @@
 			</tr>
 	
 			<tr class="hidden backend_file backend_type">
-				<td><?php echo $this->translate('Read control')?> :</td>
+				<td><?php echo  $this->translate('Read control')?> :</td>
 				<td>
 					<select name="cache[backend][file][read_control]" class="px200">
 						<option value="md5">md5</option>
@@ -137,7 +137,7 @@
 				</td>
 			</tr>		
 			<tr class="hidden backend_file backend_type">
-				<td> <?php echo $this->translate('read_control_type')?>:</td>
+				<td> <?php echo  $this->translate('read_control_type')?>:</td>
 				<td>
 					<select name="cache[backend][file][read_control_type]" class="px200">
 						<option value="true">True</option>
@@ -146,19 +146,19 @@
 				</td>
 			</tr>		
 			<tr class="hidden backend_file backend_type">
-				<td><?php echo $this->translate('Hash directory level')?> :</td>
+				<td><?php echo  $this->translate('Hash directory level')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][file][hashed_directory_level]" />
 				</td>
 			</tr>		
 			<tr class="hidden backend_file backend_type">
-				<td><?php echo $this->translate('Hash directory umask')?> :</td>
+				<td><?php echo  $this->translate('Hash directory umask')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][file][hashed_directory_umask]" />
 				</td>
 			</tr>		
 			<tr class="hidden backend_file backend_type">
-				<td><?php echo $this->translate('Metatadatas array max size')?> :</td>
+				<td><?php echo  $this->translate('Metatadatas array max size')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][file][metatadatas_array_max_size]" />
 				</td>
@@ -167,13 +167,13 @@
 			
 				
 			<tr class="hidden backend_sqlite backend_type">
-				<td><?php echo $this->translate('Cache db complete path')?> :</td>
+				<td><?php echo  $this->translate('Cache db complete path')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][sqlite][cache_db_complete_path]" />
 				</td>
 			</tr>	
 			<tr class="hidden backend_sqlite backend_type">
-				<td><?php echo $this->translate('Automatic vacuum factor')?> :</td>
+				<td><?php echo  $this->translate('Automatic vacuum factor')?> :</td>
 				<td>
 					<input type="text" name="cache[backend][sqlite][automatic_vacuum_factor]" />
 				</td>
@@ -181,10 +181,10 @@
 			
 		</table>	
 		<br /><br />	
-		<h2><?php echo $this->translate('Frontend')?> :</h2>
+		<h2><?php echo  $this->translate('Frontend')?> :</h2>
 		<table class="px400">
 			<tr>
-				<td class="px200"><?php echo $this->translate('Writecontroler')?> :</td>
+				<td class="px200"><?php echo  $this->translate('Writecontroler')?> :</td>
 				<td>
 					<select name="cache[frontend][writecontrol]">
 						<option value="false">False</option>
@@ -193,7 +193,7 @@
 				</td>
 			</tr>	
 			<tr>
-				<td><?php echo $this->translate('Caching')?> :</td>
+				<td><?php echo  $this->translate('Caching')?> :</td>
 				<td>
 					<select name="cache[frontend][caching]">
 						<option value="false">False</option>		
@@ -202,13 +202,13 @@
 				</td>
 			</tr>			
 			<tr>
-				<td><?php echo $this->translate('Cache id prefix')?> :</td>
+				<td><?php echo  $this->translate('Cache id prefix')?> :</td>
 				<td>
 					<input type="text" name="cache[frontend][cache_id_prefix]" value="" />
 				</td>
 			</tr>				
 			<tr>
-				<td><?php echo $this->translate('Automatic serialization')?> :</td>
+				<td><?php echo  $this->translate('Automatic serialization')?> :</td>
 				<td>
 					<select name="cache[frontend][automatic_serialisation]">
 						<option value="false">False</option>	
@@ -217,7 +217,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><?php echo $this->translate('Automatic cleaning factor')?> :</td>
+				<td><?php echo  $this->translate('Automatic cleaning factor')?> :</td>
 				<td>
 					<select name="cache[frontend][automatic_cleaning_factor]">
 						<option value="false">False</option>	
@@ -227,14 +227,14 @@
 			</tr>		
 			
 			<tr>
-				<td><?php echo $this->translate('Lifetime')?> :</td>
+				<td><?php echo  $this->translate('Lifetime')?> :</td>
 				<td>
 					<input type="text" name="cache[frontend][lifetime]" value="3600" />
 				</td>
 			</tr>	
 		
 			<tr>
-				<td><?php echo $this->translate('Logging')?> :</td>
+				<td><?php echo  $this->translate('Logging')?> :</td>
 				<td>
 					<select name="cache[frontend][logging]">
 						<option value="false">False</option>
@@ -244,7 +244,7 @@
 			</tr>	
 			
 			<tr>
-				<td><?php echo $this->translate('Logger')?> :</td>
+				<td><?php echo  $this->translate('Logger')?> :</td>
 				<td>
 					<input type="text" name="cache[frontend][logger]" />
 				</td>
@@ -272,17 +272,17 @@ if($this->cacheConfig['backend_type']=="file") {
 	$hiddensqlite="";	
 }
 ?>
-	<h2><?php echo $this->translate("Update cache entrie");?></h2>
+	<h2><?php echo  $this->translate("Update cache entrie");?></h2>
 	
 <form id="form_cache" action='/maerdo/component/cache/' method="post">
 		<input type="hidden" name="form_action" value="update_cache" />
-		<input type="hidden" name="cc_id" value="<?=$this->cc_id?>" />
+		<input type="hidden" name="cc_id" value="<?php echo $this->cc_id?>" />
 		<br /><br /><br />
 		<table class="px400">
 			<tr>
 				<td class="px200">Name :</td>
 				<td>
-					<input type="text" name="cache[name]" value="<?=$this->cacheConfig['name']?>"/>
+					<input type="text" name="cache[name]" value="<?php echo $this->cacheConfig['name']?>"/>
 				</td>
 			</tr>	
 			<tr>
@@ -290,191 +290,191 @@ if($this->cacheConfig['backend_type']=="file") {
 				<td>
 					<select name="cache[frontend_type]" class="px200">
 						<?php $selected="";if($this->cacheConfig['type']=="Core") $selected="selected='selected'";?>
-						<option <?=$selected?> value="Core">Core</option>
+						<option <?php echo $selected?> value="Core">Core</option>
 						<?php $selected="";if($this->cacheConfig['type']=="File") $selected="selected='selected'";?>
-						<option <?=$selected?> value="File">File</option>
+						<option <?php echo $selected?> value="File">File</option>
 						<?php $selected="";if($this->cacheConfig['type']=="Class") $selected="selected='selected'";?>
-						<option <?=$selected?> value="Class">Class</option>
+						<option <?php echo $selected?> value="Class">Class</option>
 						<?php $selected="";if($this->cacheConfig['type']=="Function") $selected="selected='selected'";?>
-						<option <?=$selected?> value="Function">Function</option>
+						<option <?php echo $selected?> value="Function">Function</option>
 						<?php $selected="";if($this->cacheConfig['type']=="Page") $selected="selected='selected'";?>
-						<option <?=$selected?> value="Page">Page</option>
+						<option <?php echo $selected?> value="Page">Page</option>
 					</select>
 				</td>
 			</tr>
 		</table>		
 		<br /><br />	
-		<h2><?php echo $this->translate('Backend')?> :</h2>
+		<h2><?php echo  $this->translate('Backend')?> :</h2>
 		<table class="px400">
 			<tr>
 				<td class="px200">Support :</td>
 				<td>
 					<select class="px200" name="cache[backend_type]" id='cache_backend_type'>
 						<?php $selected="";if($this->cacheConfig['backend_type']=="apc") $selected="selected='selected'";?>
-						<option <?=$selected?> value="apc">APC</option>						
+						<option <?php echo $selected?> value="apc">APC</option>						
 						<?php $selected="";if($this->cacheConfig['backend_type']=="file") $selected="selected='selected'";?>
-						<option <?=$selected?> value="file">File</option>
+						<option <?php echo $selected?> value="file">File</option>
 						<?php $selected="";if($this->cacheConfig['backend_type']=="sqlite") $selected="selected='selected'";?>
-						<option <?=$selected?> value="sqlite">Sqlite</option>						
+						<option <?php echo $selected?> value="sqlite">Sqlite</option>						
 					</select>
 				</td>
 			</tr>
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td><?php echo $this->translate('Cache dir')?> :</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td><?php echo  $this->translate('Cache dir')?> :</td>
 				<td>
-					<input type="text" name="cache[backend][file][cache_dir]" value="<?=$this->cacheConfig['backend']['cache_dir']?>"/>
+					<input type="text" name="cache[backend][file][cache_dir]" value="<?php echo $this->cacheConfig['backend']['cache_dir']?>"/>
 				</td>
 			</tr>	
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td> <?php echo $this->translate('File locking')?>:</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td> <?php echo  $this->translate('File locking')?>:</td>
 				<td>
 					<select name="cache[backend][file][file_locking]" class="px200">
 						<?php $selected="";if($this->cacheConfig['backend']['file_locking']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?> value="true">True</option>
+						<option <?php echo $selected?> value="true">True</option>
 						<?php $selected="";if($this->cacheConfig['backend']['file_locking']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>
+						<option <?php echo $selected?> value="false">False</option>
 					</select>
 				</td>
 			</tr>
 	
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td><?php echo $this->translate('Read control')?> :</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td><?php echo  $this->translate('Read control')?> :</td>
 				<td>
 					<select name="cache[backend][file][read_control]" class="px200">
 					<?php $selected="";if($this->cacheConfig['backend']['read_control']=="md5") $selected="selected='selected'";?>
-						<option <?=$selected?> value="md5">md5</option>
+						<option <?php echo $selected?> value="md5">md5</option>
 						<?php $selected="";if($this->cacheConfig['backend']['read_control']=="crc32") $selected="selected='selected'";?>
-						<option <?=$selected?>  value="crc32">crc32</option>
+						<option <?php echo $selected?>  value="crc32">crc32</option>
 						<?php $selected="";if($this->cacheConfig['backend']['read_control']=="adler32") $selected="selected='selected'";?>
-						<option <?=$selected?>  value="adler32">adler32</option>
+						<option <?php echo $selected?>  value="adler32">adler32</option>
 						<?php $selected="";if($this->cacheConfig['backend']['read_control']=="strlen") $selected="selected='selected'";?>
-						<option <?=$selected?>  value="strlen">strlen</option>
+						<option <?php echo $selected?>  value="strlen">strlen</option>
 					</select>
 				</td>
 			</tr>		
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td> <?php echo $this->translate('read_control_type')?>:</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td> <?php echo  $this->translate('read_control_type')?>:</td>
 				<td>
 					<select name="cache[backend][file][read_control_type]" class="px200">
 						<?php $selected="";if($this->cacheConfig['backend']['read_control_type']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?>  value="true">True</option>
+						<option <?php echo $selected?>  value="true">True</option>
 						<?php $selected="";if($this->cacheConfig['backend']['read_control_type']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>
+						<option <?php echo $selected?> value="false">False</option>
 					</select>
 				</td>
 			</tr>		
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td><?php echo $this->translate('Hash directory level')?> :</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td><?php echo  $this->translate('Hash directory level')?> :</td>
 				<td>
-					<input type="text" name="cache[backend][file][hashed_directory_level]" value="<?=$this->cacheConfig['backend']['hashed_directory_level']?>"/>
+					<input type="text" name="cache[backend][file][hashed_directory_level]" value="<?php echo $this->cacheConfig['backend']['hashed_directory_level']?>"/>
 				</td>
 			</tr>		
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td><?php echo $this->translate('Hash directory umask')?> :</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td><?php echo  $this->translate('Hash directory umask')?> :</td>
 				<td>
-					<input type="text" name="cache[backend][file][hashed_directory_umask]" value="<?=$this->cacheConfig['backend']['hashed_directory_umask']?>"/>
+					<input type="text" name="cache[backend][file][hashed_directory_umask]" value="<?php echo $this->cacheConfig['backend']['hashed_directory_umask']?>"/>
 				</td>
 			</tr>		
-			<tr class="<?=$hiddenfile?> backend_file backend_type">
-				<td><?php echo $this->translate('Metatadatas array max size')?> :</td>
+			<tr class="<?php echo $hiddenfile?> backend_file backend_type">
+				<td><?php echo  $this->translate('Metatadatas array max size')?> :</td>
 				<td>
-					<input type="text" name="cache[backend][file][metatadatas_array_max_size]" value="<?=$this->cacheConfig['backend']['metatadatas_array_max_size']?>"/>
+					<input type="text" name="cache[backend][file][metatadatas_array_max_size]" value="<?php echo $this->cacheConfig['backend']['metatadatas_array_max_size']?>"/>
 				</td>
 			</tr>		
 			
 			
 				
-			<tr class="<?=$hiddensqlite?> backend_sqlite backend_type">
-				<td><?php echo $this->translate('Cache db complete path')?> :</td>
+			<tr class="<?php echo $hiddensqlite?> backend_sqlite backend_type">
+				<td><?php echo  $this->translate('Cache db complete path')?> :</td>
 				<td>
-					<input type="cache[backend][sqlite][cache_db_complete_path]" value="<?=$this->cacheConfig['backend']['cache_db_complete_path']?>"/>
+					<input type="cache[backend][sqlite][cache_db_complete_path]" value="<?php echo $this->cacheConfig['backend']['cache_db_complete_path']?>"/>
 				</td>
 			</tr>	
-			<tr class="<?=$hiddensqlite?> backend_sqlite backend_type">
-				<td><?php echo $this->translate('Automatic vacuum factor')?> :</td>
+			<tr class="<?php echo $hiddensqlite?> backend_sqlite backend_type">
+				<td><?php echo  $this->translate('Automatic vacuum factor')?> :</td>
 				<td>
-					<input type="cache[backend][sqlite][automatic_vacuum_factor]" value="<?=$this->cacheConfig['backend']['automatic_vacuum_factor']?>"/>
+					<input type="cache[backend][sqlite][automatic_vacuum_factor]" value="<?php echo $this->cacheConfig['backend']['automatic_vacuum_factor']?>"/>
 				</td>
 			</tr>		
 			
 		</table>	
 		<br /><br />	
-		<h2><?php echo $this->translate('Frontend')?> :</h2>
+		<h2><?php echo  $this->translate('Frontend')?> :</h2>
 		<table class="px400">
 			<tr>
-				<td class="px200"><?php echo $this->translate('Writecontroler')?> :</td>
+				<td class="px200"><?php echo  $this->translate('Writecontroler')?> :</td>
 				<td>
 					<select name="cache[frontend][writecontrol]">
 						<?php $selected="";if($this->cacheConfig['frontend']['writecontrol']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>
+						<option <?php echo $selected?> value="false">False</option>
 						<?php $selected="";if($this->cacheConfig['frontend']['writecontrol']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?> value="true">True</option>				
+						<option <?php echo $selected?> value="true">True</option>				
 					</select>
 				</td>
 			</tr>	
 			<tr>
-				<td><?php echo $this->translate('Caching')?> :</td>
+				<td><?php echo  $this->translate('Caching')?> :</td>
 				<td>
 					<select name="cache[frontend][caching]">
 						<?php $selected="";if($this->cacheConfig['frontend']['caching']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>		
+						<option <?php echo $selected?> value="false">False</option>		
 						<?php $selected="";if($this->cacheConfig['frontend']['caching']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?> value="true">True</option>			
+						<option <?php echo $selected?> value="true">True</option>			
 					</select>
 				</td>
 			</tr>			
 			<tr>
-				<td><?php echo $this->translate('Cache id prefix')?> :</td>
+				<td><?php echo  $this->translate('Cache id prefix')?> :</td>
 				<td>
-					<input type="text" name="cache[frontend][cache_id_prefix]" value="<?=$this->cacheConfig['frontend']['cache_id_prefix']?>" />
+					<input type="text" name="cache[frontend][cache_id_prefix]" value="<?php echo $this->cacheConfig['frontend']['cache_id_prefix']?>" />
 				</td>
 			</tr>				
 			<tr>
-				<td><?php echo $this->translate('Automatic serialization')?> :</td>
+				<td><?php echo  $this->translate('Automatic serialization')?> :</td>
 				<td>
 					<select name="cache[frontend][automatic_serialisation]">					
 						<?php $selected="";if($this->cacheConfig['frontend']['automatic_serialisation']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>
+						<option <?php echo $selected?> value="false">False</option>
 						<?php $selected="";if($this->cacheConfig['frontend']['automatic_serialisation']=="true") $selected="selected='selected'";?>	
-						<option <?=$selected?> value="true">True</option>							
+						<option <?php echo $selected?> value="true">True</option>							
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td><?php echo $this->translate('Automatic cleaning factor')?> :</td>
+				<td><?php echo  $this->translate('Automatic cleaning factor')?> :</td>
 				<td>
 					<select name="cache[frontend][automatic_cleaning_factor]">
 						<?php $selected="";if($this->cacheConfig['frontend']['automatic_cleaning_factor']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>	
+						<option <?php echo $selected?> value="false">False</option>	
 						<?php $selected="";if($this->cacheConfig['frontend']['automatic_cleaning_factor']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?> value="true">True</option>						
+						<option <?php echo $selected?> value="true">True</option>						
 					</select>
 				</td>
 			</tr>		
 			
 			<tr>
-				<td><?php echo $this->translate('Lifetime')?> :</td>
+				<td><?php echo  $this->translate('Lifetime')?> :</td>
 				<td>
-					<input type="text" name="cache[frontend][lifetime]" value="<?=$this->cacheConfig['frontend']['lifetime']?>" />
+					<input type="text" name="cache[frontend][lifetime]" value="<?php echo $this->cacheConfig['frontend']['lifetime']?>" />
 				</td>
 			</tr>	
 		
 			<tr>
-				<td><?php echo $this->translate('Logging')?> :</td>
+				<td><?php echo  $this->translate('Logging')?> :</td>
 				<td>
 					<select name="cache[frontend][logging]">
 					<?php $selected="";if($this->cacheConfig['frontend']['logging']=="false") $selected="selected='selected'";?>
-						<option <?=$selected?> value="false">False</option>
+						<option <?php echo $selected?> value="false">False</option>
 						<?php $selected="";if($this->cacheConfig['frontend']['logging']=="true") $selected="selected='selected'";?>
-						<option <?=$selected?> value="true">True</option>								
+						<option <?php echo $selected?> value="true">True</option>								
 					</select>
 				</td>
 			</tr>	
 			
 			<tr>
-				<td><?php echo $this->translate('Logger')?> :</td>
+				<td><?php echo  $this->translate('Logger')?> :</td>
 				<td>
-					<input type="text" name="cache[frontend][logger]" value="<?=$this->cacheConfig['frontend']['logger']?>"/>
+					<input type="text" name="cache[frontend][logger]" value="<?php echo $this->cacheConfig['frontend']['logger']?>"/>
 				</td>
 			</tr>				
 		

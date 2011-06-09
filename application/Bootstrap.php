@@ -17,7 +17,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 					if($file!=".svn" && $file!="." && $file !=".." && !preg_match('#backup#',$file)) {
 						$site_routes_ini = APPLICATION_PATH . '/modules/'.$module.'/configs/routes/'.$file;						
 						$site_routes = new Zend_Config_Ini ( $site_routes_ini, APPLICATION_ENV );
-						$router->addConfig ( $site_routes, 'routes' );	
+						$router->addConfig ( $site_routes, 'routes' );
 					}
 				}
 				// Update include_path

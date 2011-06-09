@@ -15,26 +15,26 @@
 		<img src='/images/logo.png' alt='logo' />
 		<div id="install-wrapper">
 		<div class="box-header">
-		<?php echo $this->translate('Installation')?>
+		<?php echo  $this->translate('Installation')?>
 		</div>
 		<div class="box">
 		<?php if($this->confdir_iswritable=="false"):?>
-			<span class="red bold "><?php echo $this->translate('The directorys  "application/configs" , "application/modules/maerdo/configs/" , "application/modules/front/" and theirs files must be writables')?></span><br /><br />
+			<span class="red bold "><?php echo  $this->translate('The directorys  "application/configs" , "application/modules/maerdo/configs/" , "application/modules/front/" and theirs files must be writables')?></span><br /><br />
 		<?php endif;?>	
 		<?php if($this->install_result=="0"):?>	
 			<?php if($this->fields_error==1):?>
-			<span class="red bold fs20"><?php echo $this->translate('All fields must be setted')?></span>
+			<span class="red bold fs20"><?php echo  $this->translate('All fields must be setted')?></span>
 			<?php endif;?>
 			<?php if($this->password_mismatch==1):?>
-			<span class="red bold fs20"><?php echo $this->translate('Admin\'s password are not equal')?></span>
+			<span class="red bold fs20"><?php echo  $this->translate('Admin\'s password are not equal')?></span>
 			<?php endif;?>			
 			<form id='install_form' method="post" action="/install/">
 			<table>
 				<tr>
-					<td colspan="2"><h3><?php echo $this->translate("Enter your database informations")?> :</h3></td>
+					<td colspan="2"><h3><?php echo  $this->translate("Enter your database informations")?> :</h3></td>
 				</tr>
 				<tr>
-					<td><?php echo $this->translate("Database type")?> :</td>
+					<td><?php echo  $this->translate("Database type")?> :</td>
 					<td>
 						<select name="database[type]" class="px150">
 							<option value="mysql">MySQL</option>
@@ -42,40 +42,40 @@
 					</td>
 				</tr>	
 				<tr>
-					<td><?php echo $this->translate("Database host")?> :</td>
+					<td><?php echo  $this->translate("Database host")?> :</td>
 					<td>
 						<input type="text" name="database[host]" class="px150"/>
 					</td>
 				</tr>
 				<tr>
-					<td><?php echo $this->translate("Database database")?> :</td>
+					<td><?php echo  $this->translate("Database database")?> :</td>
 					<td>
 						<input type="text" name="database[database]" class="px150" />
 					</td>
 				</tr>					
 				<tr>
-					<td><?php echo $this->translate("Database Login")?> :</td>
+					<td><?php echo  $this->translate("Database Login")?> :</td>
 					<td>
 						<input type="text" name="database[login]" class="px150"/>
 					</td>
 				</tr>	
 				<tr>
-					<td><?php echo $this->translate("Database Password")?> :</td>
+					<td><?php echo  $this->translate("Database Password")?> :</td>
 					<td>
 						<input type="password" name="database[password]" class="px150"/>
 					</td>
 				</tr>		
 				<tr>
-					<td colspan="2"><h3><?php echo $this->translate("Set your admin password")?> :</h3></td>
+					<td colspan="2"><h3><?php echo  $this->translate("Set your admin password")?> :</h3></td>
 				</tr>
 				<tr>
-					<td><?php echo $this->translate("Password")?> :</td>
+					<td><?php echo  $this->translate("Password")?> :</td>
 					<td>
 						<input type="password" name="admin[password1]" class="px150"/>
 					</td>
 				</tr>	
 				<tr>
-					<td><?php echo $this->translate("Re-type your password")?> :</td>
+					<td><?php echo  $this->translate("Re-type your password")?> :</td>
 					<td>
 						<input type="password" name="admin[password2]" class="px150" />
 					</td>
@@ -92,43 +92,43 @@
 			</form>
 		<?php elseif($this->install_result!="1"):?>						
 			<div class='notification_error px400'>			
-				<?php echo $this->translate('Error during installation')?><br />		
+				<?php echo  $this->translate('Error during installation')?><br />		
 			</div>			
 			<br />
-			<span class="bold underline"><?php echo $this->translate('Error message')?>:</span><br />
+			<span class="bold underline"><?php echo  $this->translate('Error message')?>:</span><br />
 			
 			<?php if($this->install_result=="-1"):?>
-				<div><?php echo $this->translate('Impossible to connecte to the database');?><br /></div>
+				<div><?php echo  $this->translate('Impossible to connecte to the database');?><br /></div>
 			<?php endif;?>
 
 			<?php if($this->install_result=="-2"):?>
-				<div><?php echo $this->translate('Impossible to create tables');?><br /></div>
+				<div><?php echo  $this->translate('Impossible to create tables');?><br /></div>
 			<?php endif;?>
 			
 			<?php if($this->install_result=="-3"):?>
-				<div><?php echo $this->translate('Impossible to add admin account');?><br /></div>
+				<div><?php echo  $this->translate('Impossible to add admin account');?><br /></div>
 			<?php endif;?>
 	
 			<?php if($this->install_result=="-5"):?>
-				<div><?php echo $this->translate('Impossible to add Maerdo database entrie in maerdo DB');?><br /></div>
+				<div><?php echo  $this->translate('Impossible to add Maerdo database entrie in maerdo DB');?><br /></div>
 			<?php endif;?>	
 			
 			<?php if($this->install_result=="-5"):?>
-				<div><?php echo $this->translate('Impossible to write database config file');?><br /></div>
+				<div><?php echo  $this->translate('Impossible to write database config file');?><br /></div>
 			<?php endif;?>
 			
 			<br />
 			<?php if($this->install_msg!="null") echo $this->install_msg?>
 			<br />
-			<a href='/install/' class='fright'><?php echo $this->translate('Return to the install form');?></a>
+			<a href='/install/' class='fright'><?php echo  $this->translate('Return to the install form');?></a>
 			<br />
 		<?php elseif($this->install_result=="1"):?>						
 			<div class='notification_success px400'>			
-				<?php echo $this->translate('Installation successfull')?><br />		
+				<?php echo  $this->translate('Installation successfull')?><br />		
 			</div>	
 			<br />
 						
-			<a href='/maerdo/login' class='fright'><?php echo $this->translate('Login form');?></a>	
+			<a href='/maerdo/login' class='fright'><?php echo  $this->translate('Login form');?></a>	
 			<br />			
 		<?php endif;?>
 				
