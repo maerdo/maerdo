@@ -1,84 +1,84 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php GrayScalephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: GrayScale.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Numeric.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Colorphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Colorphp.phpphp'php;
+/** Zend_Pdf_Color */
+require_once 'Zend/Pdf/Color.php';
 
-php/php*php*
-php php*php GrayScalephp colorphp implementation
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Colorphp_GrayScalephp extendsphp Zendphp_Pdfphp_Color
-php{
-php php php php php/php*php*
-php php php php php php*php GrayLevelphp.
-php php php php php php*php php0php.php0php php(blackphp)php php-php php1php.php0php php(whitephp)
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_Elementphp_Numeric
-php php php php php php*php/
-php php php php privatephp php$php_grayLevelphp;
+/**
+ * GrayScale color implementation
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Color_GrayScale extends Zend_Pdf_Color
+{
+    /**
+     * GrayLevel.
+     * 0.0 (black) - 1.0 (white)
+     *
+     * @var Zend_Pdf_Element_Numeric
+     */
+    private $_grayLevel;
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$grayLevel
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$grayLevelphp)
-php php php php php{
-php php php php php php php php ifphp php(php$grayLevelphp <php php0php)php php{php php$grayLevelphp php=php php0php;php php}
-php php php php php php php php ifphp php(php$grayLevelphp php>php php1php)php php{php php$grayLevelphp php=php php1php;php php}
+    /**
+     * Object constructor
+     *
+     * @param float $grayLevel
+     */
+    public function __construct($grayLevel)
+    {
+        if ($grayLevel < 0) { $grayLevel = 0; }
+        if ($grayLevel > 1) { $grayLevel = 1; }
 
-php php php php php php php php php$thisphp-php>php_grayLevelphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$grayLevelphp)php;
-php php php php php}
+        $this->_grayLevel = new Zend_Pdf_Element_Numeric($grayLevel);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Instructionsphp,php whichphp canphp bephp directlyphp insertedphp intophp contentphp stream
-php php php php php php*php tophp switchphp colorphp.
-php php php php php php*php Colorphp setphp instructionsphp differphp forphp strokingphp andphp nonstrokingphp operationsphp.
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$stroking
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp instructionsphp(php$strokingphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_grayLevelphp-php>toStringphp(php)php php.php php(php$strokingphp?php php"php Gphp\nphp"php php:php php"php gphp\nphp"php)php;
-php php php php php}
+    /**
+     * Instructions, which can be directly inserted into content stream
+     * to switch color.
+     * Color set instructions differ for stroking and nonstroking operations.
+     *
+     * @param boolean $stroking
+     * @return string
+     */
+    public function instructions($stroking)
+    {
+        return $this->_grayLevel->toString() . ($stroking? " G\n" : " g\n");
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp colorphp componentsphp php(colorphp spacephp dependentphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getComponentsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php$thisphp-php>php_grayLevelphp-php>valuephp)php;
-php php php php php}
-php}
+    /**
+     * Get color components (color space dependent)
+     *
+     * @return array
+     */
+    public function getComponents()
+    {
+        return array($this->_grayLevel->value);
+    }
+}
 

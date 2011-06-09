@@ -1,623 +1,623 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php7php3php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"lophp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"aaphp"php>phpອphpາphpຟphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"abphp"php>phpແphpອphpບphpຄphpາphpເphpຊphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"afphp"php>phpອphpັphpຟphpຣphpິphpກphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>phpອphpຳphpຫphpາphpຣphpິphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>phpອphpາphpຣphpັphpບ<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>phpອphpັphpສphpສphpຳ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ayphp"php>phpໄphpອphpມphpາphpລphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>phpອphpາphpແphpຊphpກphpບphpາphpຍphpຊphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"baphp"php>phpບphpາphpສphpສphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>phpເphpບphpລphpາphpລphpຸphpດphpຊphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>phpບphpຸphpນphpກphpາphpຣphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>phpບphpີphpຮphpາphpຣphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"biphp"php>phpບphpິphpສphpລphpາphpມphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>phpເphpບphpັphpງphpກphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bophp"php>phpທphpິphpເphpບphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>phpບphpເphpຣphpີphpຕphpົphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>phpບphpອphpສphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>phpກphpາphpຕphpາphpລphpັphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"cophp"php>phpຄphpໍphpຊphpິphpກphp້phpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>phpເphpຊphpັphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>phpແphpວphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>phpເphpດphpັphpນphpມphpາphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>phpເphpຍphpຍphpລphpະphpມphpັphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"dzphp"php>phpພphpູphpຖphpາphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>phpກphpເphpຣphpັphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>phpອphpັphpງphpກphpິphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>phpເphpອphpສphpເphpປphpຣphpັphpງphpໂphpຕ<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>phpແphpອphpສphpປphpາphpໂphpຍphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>phpເphpອphpສphpໂphpຕphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>phpບphpັphpສphpເphpກphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>phpເphpປphpີphpເphpຊphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>phpແphpຟphpງphpລphpັphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>phpຕphpາphpກphpາphpລphp໊phpອphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"fjphp"php>phpຟphpິphpຈphpິ<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>phpຟphpາphpໂphpຣ<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>phpຝphpຣphpັphp່phpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>phpຟphpຣphpີphpຊphpຽphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>phpໄphpອphpແphpລphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>phpສphpະphpກphpັphpອphpດphp phpແphpກphpລphpິphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>phpກphpາphpລphpິphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>phpກphpົphpວphpຣphpາphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>phpກphpູphpຊphpາphpຣphpາphpຕphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"haphp"php>phpໂphpອphpຊphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>phpຍphpິphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>phpຮphpິphpນphpດphpູ<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>phpໂphpກphpຣphpອphpາphpຊphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>phpຮphpັphpງphpກphpາphpຣphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>phpອphpາphpກphpເphpມphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>phpອphpິphpນphpເphpຕphpີphpລphpິphpງphpກphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>phpອphpິphpນphpໂphpດphpເphpນphpເphpຊphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>phpອphpິphpນphpເphpຕphpີphpລphpິphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ikphp"php>phpໄphpອphpນphpູphpປphpຽphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>phpອphpິphpສphpລphpັphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>phpອphpີphpຕphpາphpລphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"iuphp"php>phpໄphpອphpນphpຸphpກphpຕphpິphpຕphpັphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>phpຍphpີphp່phpປphpຸphp່phpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>phpຊphpວphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>phpຊphpອphpກphpຊphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kkphp"php>phpຄphpາphpຊphpັphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"klphp"php>phpກphpຼphpີphpນphpແphpລphpນphpດphpິphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>phpກphpຳphpປphpູphpເphpຈphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>phpກphpັphpນphpນphpາphpດphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>phpເphpກphpົphpາphpຫphpຼphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ksphp"php>phpຄphpັphpດphpຊphpະphpມphpີphpລphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>phpເphpຄphpີphpດphpິphpສ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>phpເphpກphpຍphpກphpິphpສ<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>phpລphpາphpແphpຕphpັphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>phpລphpິphpງphpກphpາphpລphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>phpລphpາphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>phpລphpີphpທphpົphpວphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>phpລphpັphpດphpເphpວphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mgphp"php>phpມphpາphpລphpາphpກphpາphpຊphpິ<php/languagephp>
-php	php	php	php<languagephp typephp=php"miphp"php>phpເphpມphpົphpາphpລphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>phpມphpາphpເphpຊphpໂphpດphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>phpມphpາphpລphpາphpຢphpາphpລphpຳ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>phpມphpົphpງphpໂphpກphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mophp"php>phpໂphpມphpຄphpາphpເphpວphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>phpມphpາphpຣphpາphpທphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>phpມphpາphpເphpລ<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>phpມphpາphpນphpຕphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"myphp"php>phpພphpະphpມphp່phpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"naphp"php>phpນphpໍphpລphpູ<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>phpເphpນphpປphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>phpໂphpຮphpນphpລphpັphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>phpນphpອphpກphpແphpວphp php(phpນphpີphpນphpອphpກphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>phpນphpອphpກphpແphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>phpອphpົphpກphpຊphpີphpຕphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"omphp"php>phpໂphpອphpໂphpລphpໂphpມphp(phpອphpາphpຟphpາphpນphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>phpໂphpອphpຣphpີphpຢphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>phpປphpັphpນphpຈphpາphpບ<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>phpໂphpປphpໂphpລphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>phpປphpາphpສphpໂphpຕ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>phpປphpອphpກphpຕphpຸphpຍphpກphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpປphpອphpກphpຕphpຸphpຍphpກphpາphpນphp php(phpບphpຣphpາphpຊphpີphpນphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>phpປphpອphpກphpຕphpຸphpຍphpກphpາphpນphp php(phpປphpອphpກphpຕphpຸphpຍphpກphpາphpນphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"quphp"php>phpຄphpິphpວphpຊphpົphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"rmphp"php>phpເphpລphpໂphpຕphp-phpໂphpລphpແphpມphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"rnphp"php>phpຄphpິphpລphpັphpນphpສphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>phpໂphpຣphpມphpາphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>phpລphpັphpດphpເphpຊphpຍ<php/languagephp>
-php	php	php	php<languagephp typephp=php"rwphp"php>phpຄphpິphpນphpຍphpາphpວphpັphpນphpດphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>phpສphpັphpນphpສphpະphpກphpິphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>phpສphpິphpນphpທphpິ<php/languagephp>
-php	php	php	php<languagephp typephp=php"sgphp"php>phpສphpັphpນphpໂphpຄ<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>phpແphpຊphpັphpກphpໂphpບphp-phpໂphpກphpຣphpແphpອphpັphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>phpສphpິphpງphpຫphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>phpສphpະphpໂphpລphpວphpັphpກphpກphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>phpສphpະphpໂphpລphpວphpາphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"smphp"php>phpຊphpາphpມphpົphpວ<php/languagephp>
-php	php	php	php<languagephp typephp=php"snphp"php>phpໂphpຊphpນphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>phpໂphpຊphpມphpາphpລphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>phpອphpາphpນphpບphpາphpນphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>phpແphpຊphpກphpບphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ssphp"php>phpຊphpິphpສphpວphpາphpຕphpິ<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>phpເphpຊphpໂphpຊphpໂphpທ<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>phpຊphpັphpນphpດphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>phpຊphpູphpແphpອphpັphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>phpຊphpວphpາphpຮphpີphpລphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>phpທphpະphpມphpິphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>phpເphpຕphpລphpູphpກphpູ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tgphp"php>phpທphpາphpຈphpິphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>phpໄphpທ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>phpຕphpີphpກphpຣphpິphpນphpຢphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>phpຕphpວphpຽphpກphpເphpມphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlphp"php>phpຕphpາphpກphpາphpລphpັphpອphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>phpກphpລphpິphpງphpກphpອphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tnphp"php>phpເphpຊphpຕphpະphpສphpະphpວphpາphpນphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tophp"php>phpທphpອphpງphpກphp້phpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>phpຕphpວphpກphpກphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tsphp"php>phpຊphpອphpງphpກphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ttphp"php>phpຕphpາphpດ<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>phpຕphpວphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>phpອphpຸphpຍphpເphpຄphpີ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>phpອphpູphpແphpກphpຣphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>phpອphpູphpຣphpະphpດphpູ<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>phpອphpຸphpດphpຊphpະphpເphpບphpັphpກphpກphpິphpດphpສphpະphpຖphpາphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>phpຫphpວphpຽphpດphpນphpາphpມ<php/languagephp>
-php	php	php	php<languagephp typephp=php"vophp"php>phpໂphpວphpລphpາphpພphpຸphpກ<php/languagephp>
-php	php	php	php<languagephp typephp=php"wophp"php>phpວphpູphpບ<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>phpໂphpຊphpຊphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>phpຢphpິphpດphpດphpິphpສ<php/languagephp>
-php	php	php	php<languagephp typephp=php"yophp"php>phpໂphpຢphpລphpູphpບphpາ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zaphp"php>phpຈphpວphpງ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>phpຈphpີphpນ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>phpຊphpູphpລphpູ<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>phpອphpັphpນphpດphpໍphpລphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>phpສphpະphpຫphpະphpລphpັphpດphpອphpາphpຫphpລphpັphpບphpເphpອphpມphpິphpເphpລphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>phpອphpັphpຟphpກphpາphpນphpິphpດphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>phpອphpັphpນphpກphpິphpລphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>phpແphpອphpລphpເphpບphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>phpອphpາphpມphpິphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ANphp"php>phpເphpນphpເphpທphpີphpແphpລphpນphpແphpອphpນphpເphpທphpິphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>phpອphpັphpນphpໂphpກphpລphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>phpອphpາphpເphpຈphpນphpຕphpິphpນphpາphp່<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>phpອphpົphpອphpດphpສphpະphpເphpຕphpຼphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>phpອphpົphpອphpດphpສphpະphpຕphpາphpລphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AWphp"php>phpອphpາphpລphpູphpບphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>phpອphpາphpເphpຊphpີphpໄphpບphpຈphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>phpບphpັphpອphpດphpສphpເphpນphpຍphp phpແphpລphpະphp phpເphpຮphpີphpດphpໂphpກphpວphpິphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>phpບphpາphpບphpາphpຄphpັphpອphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>phpບphpັphpງphpກphpະphpລphpາphpເphpທphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>phpເphpບphpວphpຢphpຽphpມ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>phpເphpບphpີphpກphpິphpນphpາphpຟphpາphpໂphpຊ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>phpບphpັphpງphpກphpາphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>phpບphpາphpເphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>phpບphpູphpລphpັphpນphpຕphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>phpເphpບphpນphpິphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BMphp"php>phpເphpບphpີphpມphpິphpວphpດphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BNphp"php>phpບphpູphpຮphpໄphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>phpໂphpບphpລphpິphpເphpວphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>phpບphpຼphpາphpຊphpິphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>phpບphpາphpຮphpາphpມphpາphpສ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>phpພphpູphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>phpບphpອphpັphpດphpສphpະphpວphpາphpນphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>phpເphpບphpນphpລphpາphpຮphpັphpສ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>phpເphpບphpລphpິphpຊ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>phpກphpາphpນphpາphpດphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>phpສphpາphpທphpາphpລphpະphpນphpະphpລphpັphpດphpອphpັphpບphpຟphpຼphpິphpກphpກphpາphpກphpາphpງ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>phpຄphpອphpງphpໂphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>phpສphpະphpວphpິphpດphpເphpຊphpີphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CIphp"php>phpຝphpັphp່phpງphpທphpະphpເphpລphpໄphpອphpວphpໍphpລphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>phpຊphpິphpສphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>phpຄphpາphpເphpມphpລphpູphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>phpຈphpີphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>phpໂphpຄphpລphpຳphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CRphp"php>phpຄphpອphpສphpຕphpາphpລphpິphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CSphp"php>phpເphpຊphpີphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>phpຄphpິphpວphpບphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CVphp"php>phpເphpຄphpບphpວphpອphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>phpໄphpຊphpປphpັphpຼphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>phpສphpາphpທphpາphpລphpະphpນphpະphpລphpັphpດphpເphpຊphpັphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>phpເphpຢphpຍphpລphpະphpມphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>phpຄphpິphpໂphpບphpຕphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>phpເphpດphpນphpມphpາphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>phpໂphpດphpເphpມphpນphpິphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DOphp"php>phpສphpາphpທphpາphpລphpະphpນphpະphpລphpັphpດphpໂphpດphpມphpິphpນphpິphpກphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>phpແphpອphpລphpຈphpິphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>phpເphpອphpກphpວphpາphpດphpໍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>phpເphpອphpສphpໂphpຕphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>phpອphpີphpຢphpິphpບ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>phpຊphpາphpຮphpາphpລphpາphpຕphpະphpເphpວphpັphpນphpຕphpົphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>phpອphpິphpນphpຊphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>phpສphpະphpເphpປphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>phpເphpອphpທphpິphpໂphpອphpເphpປphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>phpຟphpິphpນphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>phpຟphpິphpຈphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>phpໄphpມphpໂphpຄphpນphpິphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>phpຝphpລphpັphp່phpງ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>phpກphpາphpບphpອphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>phpສphpະphpຫphpະphpລphpາphpດphpຊphpະphpອphpາphpນphpາphpຈphpັphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>phpຈphpໍphpເphpຈphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>phpເphpຟphpັphpນphpສphpກphpິphpວphpນphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>phpກphpາphpນphp່phpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>phpແphpກphpມphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>phpກphpິphpວphpນphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GPphp"php>phpກphpົphpວphpເphpດphpີphpລphpູphpບ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>phpເphpອphpຄphpົphpວphpໂphpທphpເphpລphpຍphpລphpະphpກphpິphpນphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>phpກphpິphpຼphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GTphp"php>phpກphpົphpວphpເphpຕphpມphpາphpລphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>phpກphpິphpວphpນphpີphp-phpບphpິphpສphpໂphpຊ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>phpກphpູphpຢphpາphpນphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>phpຮphp່phpອphpງphpກphpົphpງ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>phpອphpວphpນphpຄphpູphpຣphpັphpສ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>phpໂphpຄphpເphpອphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>phpໄphpອphpທphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>phpຮphpົphpງphpກphpາphpຣphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>phpອphpິphpນphpໂphpດphpເphpນphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>phpໄphpອphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>phpອphpິphpສphpລphpະphpເphpອphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>phpອphpິphpນphpເphpດphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>phpອphpີphpລphpັphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>phpອphpີphpລphp່phpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>phpໄphpອphpສphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>phpອphpິphpຕphpາphpລphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>phpຈphpາphpໄphpມphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>phpຈphpໍphpແphpດphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>phpຍphpີphp່phpປphpຸphp່phpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>phpເphpຄphpນphpຢphp່phpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>phpເphpດphpີphpກphpິphpດphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>phpກphpຳphpປphpູphpເphpຈphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>phpຄphpີphpລphpິphpບphpາphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>phpໂphpຄphpໂphpມphpຣphpອphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>phpເphpກphpົphpາphpຫphpລphpີphpເphpໜphpືphpອ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>phpເphpກphpົphpາphpຫphpລphpີphpໃphpຕphp້<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>phpຄphpູphpເphpວphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>phpຄphpາphpຊphpັphpດphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>phpລphpາphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>phpເphpລphpບphpາphpນphpອphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>phpໄphpລphpເphpທphpນphpສphpະphpໄphpຕ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>phpສphpີphpລphpັphpງphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>phpລphpິphpເphpບphpີphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>phpເphpລphpໂphpຊphpໂphpທ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>phpລphpິphpເphpທphpີphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>phpລphpຸphpກphpແphpຊphpມphpເphpບphpີphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>phpລphpຼphpາphpດphpເphpວphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>phpລphpິphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>phpໂphpມphpລphpັphpອphpກphpໂphpຄ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>phpໂphpມphpນphpາphpໂphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>phpໂphpມphpນphpໂphpຄphpວphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>phpມphpາphpຄphpາphpກphpັphpສphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>phpແphpມphpຊphpິphpໂphpຄphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>phpມphpາphpລphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>phpສphpະphpຫphpະphpພphpາphpບphpພphpະphpມphp້phpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>phpມphpົphpງphpໂphpກphpລphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>phpມphpາphpເphpກphpົphp້phpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MQphp"php>phpມphpາphpຕphpິphpນphpິphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>phpມphpໍphpລphpິphpກphpທphpາphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>phpມphpອphpນphpເphpຊphpີphpລphpາphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>phpມphpັphpນphpຕphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>phpມphpໍphpຣphpິphpຕphpຽphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>phpແphpມphpັphpກphpຊphpິphpໂphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>phpມphpາphpເphpລphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>phpໂphpມphpແphpຊphpມphpບphpິphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>phpນphpາphpມphpິphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>phpນphpິphpວphpຄphpາphpລphpິphpໂphpຄphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>phpໄphpນphpເphpຈphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>phpໄphpນphpຈphpີphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>phpນphpິphpຄphpາphpລphpາphpກphpົphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>phpເphpນphpເphpທphpີphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>phpນphpໍphpເphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>phpເphpນphpປphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>phpນphpີphpຢphpູ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>phpນphpິphpວphpຊphpີphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>phpໂphpອphpມphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>phpປphpາphpນphpາphpມphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>phpເphpປphpລphpູ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>phpເphpຟphpັphpນphpຣphpໂphpພphpລphpິphpນphpີphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>phpປphpາphpປphpົphpວphpນphpິphpວphpກphpີphpນphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>phpຟphpິphpລphpິphpປphpິphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>phpປphpາphpກphpິphpສphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>phpໂphpປphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PRphp"php>phpເphpປphpີphpໂphpຕphpລphpິphpໂphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>phpໂphpປphpຕphpຸphpກphpກphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>phpປphpາphpລphpາphpກphpວphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>phpກphpາphpຕphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>phpລphpູphpເphpມphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>phpລphpັphpດphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>phpລphpາphpວphpັphpນphpດphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>phpຊphpາphpອphpຸphpດphpິphpອphpາphpລphpະphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>phpເphpຊphpແphpຊphpວ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>phpຊphpູphpດphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>phpສphpະphpວphpິphpເphpດphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>phpສphpິphpງphpກphpະphpໂphpປ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>phpສphpະphpໂphpລphpເphpວphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>phpສphpະphpໂphpລphpວphpາphpເphpກphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>phpເphpຊphpຍphpລphpາphpສphpິphpອphpອphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>phpຊphpິphpນphpີphpກphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>phpໂphpຊphpມphpາphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>phpຊphpູphpລphpິphpນphpາphpມphpິ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SVphp"php>phpເphpອphpຊphpາphpວphpາphpດphpໍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>phpຊphpິphpເphpລphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>phpສphpະphpວphpາphpຊphpິphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>phpຊphpາphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>phpອphpາphpນphpາphpເphpຂphpດphpທphpາphpງphpໃphpຕphp້phpຂphpອphpງphpຝphpລphpັphp່phpງphpເphpສphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>phpໂphpຕphpໂphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>phpປphpະphpເphpທphpດphpໄphpທ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>phpທphpາphpຈphpິphpກphpິphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>phpໂphpທphpກphpິphpໂphpລ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>phpຕphpິphpມphpໍphpຕphpາphpເphpວphpັphpນphpອphpອphpກ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>phpເphpຕphpຣphpີphpກphpເphpມphpນphpິphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>phpຕphpູphpນphpິphpເphpຊphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>phpຕphpອphpງphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>phpຕphpຸphpນphpກphpີ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>phpທphpິphpນphpິphpແphpດphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>phpໄphpຕphp້phpຫphpວphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>phpທphpາphpນphpຊphpາphpເphpນphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>phpຢphpູphpເphpຄphpຼphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>phpອphpູphpກphpາphpນphpດphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>phpສphpະphpຫphpະphpລphpັphpດphpອphpາphpເphpມphpລphpິphpກphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>phpລphpູphpກphpວphpຍphpອphpຸphpຣ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>phpອphpຸphpດphpເphpບphpກphpິphpສphpະphpຖphpາphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>phpວphpາphpຕphpິphpກphpັphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>phpເphpວphpເphpນphpຊphpູphpເphpອphpລphpາ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>phpບphpຣphpິphpທphpິphpດphpເphpວphpີphpຈphpິphpນphpໄphpອphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>phpຢphpູphpເphpອphpສphpເphpວphpີphpຈphpິphpນphpໄphpອphpແphpລphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>phpຫphpວphpຽphpດphpນphpາphpມ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>phpວphpາphpນphpົphpວphpຕphpູ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>phpເphpຢphpເphpມphpນ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YTphp"php>phpມphpາphpຢphpອphpດ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>phpອphpາphpຟphpະphpລphpິphpກphpາphpໃphpຕphp້<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>phpແphpຊphpມphpເphpບphpຍ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>phpຊphpິphpມphpບphpັphpບphpເphpວ<php/territoryphp>
-php	php	<php/territoriesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[php່php-phpໍphp phpໆphp phpກphp phpຂphp phpຄphp phpງphp phpຈphp phpຊphp phpຍphp phpດphp-phpທphp phpນphp-phpຟphp phpມphp-phpຣphp phpລphp phpວphp phpສphp phpຫphp phpໜphp phpໝphp phpອphp-phpູphp phpົphp-phpຽphp phpເphp-phpໄphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php\uphp2php0php0Bphp php໐php-php໙php]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php'<php/quotationStartphp>
-php	php	php<quotationEndphp>php'<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php&quotphp;<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php&quotphp;<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"buddhistphp"php>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpພphp.phpສphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphpທphpີphp່php dphp MMMMphp Gphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp/Mphp/yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<defaultphp choicephp=php"mediumphp"php/php>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpມphp.phpກphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpກphp.phpພphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpມphpີphp.phpນphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpມphp.phpສphp.php.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpພphp.phpພphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpມphpິphp.phpຖphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpກphp.phpລphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpສphp.phpຫphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpກphp.phpຍphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpຕphp.phpລphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpພphp.phpຈphp.<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpທphp.phpວphp.<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpມphpັphpງphpກphpອphpນ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpກphpຸphpມphpພphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpມphpີphpນphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpເphpມphpສphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpພphpຶphpດphpສphpະphpພphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpມphpິphpຖphpຸphpນphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpກphpໍphpລphpະphpກphpົphpດ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpສphpິphpງphpຫphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpກphpັphpນphpຍphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpຕphpຸphpລphpາ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpພphpະphpຈphpິphpກ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpທphpັphpນphpວphpາ<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpອphpາphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpຈphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpອphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpພphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpພphpຫphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpສphpກphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpສphp.<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpວphpັphpນphpອphpາphpທphpິphpດ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpວphpັphpນphpຈphpັphpນ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpວphpັphpນphpອphpັphpງphpຄphpາphpນ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpວphpັphpນphpພphpຸphpດ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpວphpັphpນphpພphpະphpຫphpັphpດ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpວphpັphpນphpສphpຸphpກ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpວphpັphpນphpເphpສphpົphpາ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>php1<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>php2<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>php3<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>php4<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>php5<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>php6<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>php7<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>phpກphp່phpອphpນphpທphp່phpຽphpງ<php/amphp>
-php	php	php	php	php<pmphp>phpຫphpລphpັphpງphpທphp່phpຽphpງ<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpປphpີphpກphp່phpອphpນphpຄphpິphpດphpສphpະphpກphpາphpນphpທphpີphp່<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpຄphp.phpສphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphpທphpີphp dphp MMMMphp Gphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp/Mphp/yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphpໂphpມphpງphp mphpນphpາphpທphpີphp ssphp phpວphpິphpນphpາphpທphpີzzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp phpໂphpມphpງphp mphpນphpາphpທphpີssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<dateTimeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateTimeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>php{php1php}php,php php{php0php}<php/patternphp>
-php	php	php	php	php	php	<php/dateTimeFormatphp>
-php	php	php	php	php	<php/dateTimeFormatLengthphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>dphp/M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"mmssphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMphp"php>Mphp/yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0php;php¤php-php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"LAKphp"php>
-php	php	php	php	php<displayNamephp>phpກphpີphpບ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.73 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="lo"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="aa">ອາຟາ</language>
+			<language type="ab">ແອບຄາເຊຍ</language>
+			<language type="af">ອັຟຣິກາ</language>
+			<language type="am">ອຳຫາຣິກ</language>
+			<language type="ar">ອາຣັບ</language>
+			<language type="as">ອັສສຳ</language>
+			<language type="ay">ໄອມາລາ</language>
+			<language type="az">ອາແຊກບາຍຊານ</language>
+			<language type="ba">ບາສສີ</language>
+			<language type="be">ເບລາລຸດຊີ</language>
+			<language type="bg">ບຸນກາຣີ</language>
+			<language type="bh">ບີຮາຣີ</language>
+			<language type="bi">ບິສລາມາ</language>
+			<language type="bn">ເບັງການ</language>
+			<language type="bo">ທິເບດ</language>
+			<language type="br">ບເຣີຕົງ</language>
+			<language type="bs">ບອສນີ</language>
+			<language type="ca">ກາຕາລັງ</language>
+			<language type="co">ຄໍຊິກ້າ</language>
+			<language type="cs">ເຊັກ</language>
+			<language type="cy">ແວວ</language>
+			<language type="da">ເດັນມາກ</language>
+			<language type="de">ເຍຍລະມັນ</language>
+			<language type="dz">ພູຖານີ</language>
+			<language type="el">ກເຣັກ</language>
+			<language type="en">ອັງກິດ</language>
+			<language type="eo">ເອສເປຣັງໂຕ</language>
+			<language type="es">ແອສປາໂຍນ</language>
+			<language type="et">ເອສໂຕນີ</language>
+			<language type="eu">ບັສເກີ</language>
+			<language type="fa">ເປີເຊຍ</language>
+			<language type="fi">ແຟງລັງ</language>
+			<language type="fil">ຕາກາລ໊ອກ</language>
+			<language type="fj">ຟິຈິ</language>
+			<language type="fo">ຟາໂຣ</language>
+			<language type="fr">ຝຣັ່ງ</language>
+			<language type="fy">ຟຣີຊຽນ</language>
+			<language type="ga">ໄອແລນ</language>
+			<language type="gd">ສະກັອດ ແກລິກ</language>
+			<language type="gl">ກາລິດ</language>
+			<language type="gn">ກົວຣານີ</language>
+			<language type="gu">ກູຊາຣາຕີ</language>
+			<language type="ha">ໂອຊາ</language>
+			<language type="he">ຍິວ</language>
+			<language type="hi">ຮິນດູ</language>
+			<language type="hr">ໂກຣອາຊີ</language>
+			<language type="hu">ຮັງກາຣີ</language>
+			<language type="hy">ອາກເມນີ</language>
+			<language type="ia">ອິນເຕີລິງກາ</language>
+			<language type="id">ອິນໂດເນເຊຍ</language>
+			<language type="ie">ອິນເຕີລິງ</language>
+			<language type="ik">ໄອນູປຽກ</language>
+			<language type="is">ອິສລັງ</language>
+			<language type="it">ອີຕາລີ</language>
+			<language type="iu">ໄອນຸກຕິຕັກ</language>
+			<language type="ja">ຍີ່ປຸ່ນ</language>
+			<language type="jv">ຊວາ</language>
+			<language type="ka">ຊອກຊີ</language>
+			<language type="kk">ຄາຊັກ</language>
+			<language type="kl">ກຼີນແລນດິດ</language>
+			<language type="km">ກຳປູເຈຍ</language>
+			<language type="kn">ກັນນາດາ</language>
+			<language type="ko">ເກົາຫຼີ</language>
+			<language type="ks">ຄັດຊະມີລີ</language>
+			<language type="ku">ເຄີດິສ</language>
+			<language type="ky">ເກຍກິສ</language>
+			<language type="la">ລາແຕັງ</language>
+			<language type="ln">ລິງກາລາ</language>
+			<language type="lo">ລາວ</language>
+			<language type="lt">ລີທົວນີ</language>
+			<language type="lv">ລັດເວຍ</language>
+			<language type="mg">ມາລາກາຊິ</language>
+			<language type="mi">ເມົາລີ</language>
+			<language type="mk">ມາເຊໂດນີ</language>
+			<language type="ml">ມາລາຢາລຳ</language>
+			<language type="mn">ມົງໂກນ</language>
+			<language type="mo">ໂມຄາເວຍ</language>
+			<language type="mr">ມາຣາທີ</language>
+			<language type="ms">ມາເລ</language>
+			<language type="mt">ມານຕາ</language>
+			<language type="my">ພະມ່າ</language>
+			<language type="na">ນໍລູ</language>
+			<language type="ne">ເນປານ</language>
+			<language type="nl">ໂຮນລັງ</language>
+			<language type="nn">ນອກແວ (ນີນອກ)</language>
+			<language type="no">ນອກແວ</language>
+			<language type="oc">ອົກຊີຕານ</language>
+			<language type="om">ໂອໂລໂມ(ອາຟານ)</language>
+			<language type="or">ໂອຣີຢາ</language>
+			<language type="pa">ປັນຈາບ</language>
+			<language type="pl">ໂປໂລຍ</language>
+			<language type="ps">ປາສໂຕ</language>
+			<language type="pt">ປອກຕຸຍການ</language>
+			<language type="pt_BR">ປອກຕຸຍການ (ບຣາຊີນ)</language>
+			<language type="pt_PT">ປອກຕຸຍການ (ປອກຕຸຍການ)</language>
+			<language type="qu">ຄິວຊົວ</language>
+			<language type="rm">ເລໂຕ-ໂລແມນ</language>
+			<language type="rn">ຄິລັນສີ</language>
+			<language type="ro">ໂຣມານີ</language>
+			<language type="ru">ລັດເຊຍ</language>
+			<language type="rw">ຄິນຍາວັນດາ</language>
+			<language type="sa">ສັນສະກິດ</language>
+			<language type="sd">ສິນທິ</language>
+			<language type="sg">ສັນໂຄ</language>
+			<language type="sh">ແຊັກໂບ-ໂກຣແອັດ</language>
+			<language type="si">ສິງຫານ</language>
+			<language type="sk">ສະໂລວັກກີ</language>
+			<language type="sl">ສະໂລວານີ</language>
+			<language type="sm">ຊາມົວ</language>
+			<language type="sn">ໂຊນາ</language>
+			<language type="so">ໂຊມາລີ</language>
+			<language type="sq">ອານບານີ</language>
+			<language type="sr">ແຊກບີ</language>
+			<language type="ss">ຊິສວາຕິ</language>
+			<language type="st">ເຊໂຊໂທ</language>
+			<language type="su">ຊັນດານ</language>
+			<language type="sv">ຊູແອັດ</language>
+			<language type="sw">ຊວາຮີລີ</language>
+			<language type="ta">ທະມິນ</language>
+			<language type="te">ເຕລູກູ</language>
+			<language type="tg">ທາຈິດ</language>
+			<language type="th">ໄທ</language>
+			<language type="ti">ຕີກຣິນຢາ</language>
+			<language type="tk">ຕວຽກເມນ</language>
+			<language type="tl">ຕາກາລັອກ</language>
+			<language type="tlh">ກລິງກອງ</language>
+			<language type="tn">ເຊຕະສະວານາ</language>
+			<language type="to">ທອງກ້າ</language>
+			<language type="tr">ຕວກກີ</language>
+			<language type="ts">ຊອງກາ</language>
+			<language type="tt">ຕາດ</language>
+			<language type="tw">ຕວີ</language>
+			<language type="ug">ອຸຍເຄີ</language>
+			<language type="uk">ອູແກຣນ</language>
+			<language type="ur">ອູຣະດູ</language>
+			<language type="uz">ອຸດຊະເບັກກິດສະຖານ</language>
+			<language type="vi">ຫວຽດນາມ</language>
+			<language type="vo">ໂວລາພຸກ</language>
+			<language type="wo">ວູບ</language>
+			<language type="xh">ໂຊຊາ</language>
+			<language type="yi">ຢິດດິສ</language>
+			<language type="yo">ໂຢລູບາ</language>
+			<language type="za">ຈວງ</language>
+			<language type="zh">ຈີນ</language>
+			<language type="zu">ຊູລູ</language>
+		</languages>
+		<territories>
+			<territory type="AD">ອັນດໍລາ</territory>
+			<territory type="AE">ສະຫະລັດອາຫລັບເອມິເລດ</territory>
+			<territory type="AF">ອັຟການິດສະຖານ</territory>
+			<territory type="AI">ອັນກິລາ</territory>
+			<territory type="AL">ແອລເບເນຍ</territory>
+			<territory type="AM">ອາມິເນຍ</territory>
+			<territory type="AN">ເນເທີແລນແອນເທິນ</territory>
+			<territory type="AO">ອັນໂກລາ</territory>
+			<territory type="AR">ອາເຈນຕິນາ່</territory>
+			<territory type="AT">ອົອດສະເຕຼຍ</territory>
+			<territory type="AU">ອົອດສະຕາລີ</territory>
+			<territory type="AW">ອາລູບາ</territory>
+			<territory type="AZ">ອາເຊີໄບຈັນ</territory>
+			<territory type="BA">ບັອດສເນຍ ແລະ ເຮີດໂກວິເນຍ</territory>
+			<territory type="BB">ບາບາຄັອດ</territory>
+			<territory type="BD">ບັງກະລາເທດ</territory>
+			<territory type="BE">ເບວຢຽມ</territory>
+			<territory type="BF">ເບີກິນາຟາໂຊ</territory>
+			<territory type="BG">ບັງກາເລຍ</territory>
+			<territory type="BH">ບາເລນ</territory>
+			<territory type="BI">ບູລັນຕິ</territory>
+			<territory type="BJ">ເບນິນ</territory>
+			<territory type="BM">ເບີມິວດາ</territory>
+			<territory type="BN">ບູຮໄນ</territory>
+			<territory type="BO">ໂບລິເວຍ</territory>
+			<territory type="BR">ບຼາຊິວ</territory>
+			<territory type="BS">ບາຮາມາສ</territory>
+			<territory type="BT">ພູຖານ</territory>
+			<territory type="BW">ບອັດສະວານາ</territory>
+			<territory type="BY">ເບນລາຮັສ</territory>
+			<territory type="BZ">ເບລິຊ</territory>
+			<territory type="CA">ການາດາ</territory>
+			<territory type="CF">ສາທາລະນະລັດອັບຟຼິກກາກາງ</territory>
+			<territory type="CG">ຄອງໂກ</territory>
+			<territory type="CH">ສະວິດເຊີແລນ</territory>
+			<territory type="CI">ຝັ່ງທະເລໄອວໍລິ</territory>
+			<territory type="CL">ຊິສິ</territory>
+			<territory type="CM">ຄາເມລູນ</territory>
+			<territory type="CN">ຈີນ</territory>
+			<territory type="CO">ໂຄລຳເບຍ</territory>
+			<territory type="CR">ຄອສຕາລິກາ</territory>
+			<territory type="CS">ເຊີເບຍ</territory>
+			<territory type="CU">ຄິວບາ</territory>
+			<territory type="CV">ເຄບວອດ</territory>
+			<territory type="CY">ໄຊປັຼດ</territory>
+			<territory type="CZ">ສາທາລະນະລັດເຊັກ</territory>
+			<territory type="DE">ເຢຍລະມັນ</territory>
+			<territory type="DJ">ຄິໂບຕິ</territory>
+			<territory type="DK">ເດນມາກ</territory>
+			<territory type="DM">ໂດເມນິກາ</territory>
+			<territory type="DO">ສາທາລະນະລັດໂດມິນິກັນ</territory>
+			<territory type="DZ">ແອລຈິເລຍ</territory>
+			<territory type="EC">ເອກວາດໍ</territory>
+			<territory type="EE">ເອສໂຕເນຍ</territory>
+			<territory type="EG">ອີຢິບ</territory>
+			<territory type="EH">ຊາຮາລາຕະເວັນຕົກ</territory>
+			<territory type="ER">ອິນຊີ</territory>
+			<territory type="ES">ສະເປນ</territory>
+			<territory type="ET">ເອທິໂອເປຍ</territory>
+			<territory type="FI">ຟິນແລນ</territory>
+			<territory type="FJ">ຟິຈິ</territory>
+			<territory type="FM">ໄມໂຄນິເຊຍ</territory>
+			<territory type="FR">ຝລັ່ງ</territory>
+			<territory type="GA">ກາບອນ</territory>
+			<territory type="GB">ສະຫະລາດຊະອານາຈັກ</territory>
+			<territory type="GE">ຈໍເຈຍ</territory>
+			<territory type="GF">ເຟັນສກິວນາ</territory>
+			<territory type="GH">ການ່າ</territory>
+			<territory type="GM">ແກມເບຍ</territory>
+			<territory type="GN">ກິວນີ</territory>
+			<territory type="GP">ກົວເດີລູບ</territory>
+			<territory type="GQ">ເອຄົວໂທເລຍລະກິນີ</territory>
+			<territory type="GR">ກິຼກ</territory>
+			<territory type="GT">ກົວເຕມາລາ</territory>
+			<territory type="GW">ກິວນີ-ບິສໂຊ</territory>
+			<territory type="GY">ກູຢານາ</territory>
+			<territory type="HK">ຮ່ອງກົງ</territory>
+			<territory type="HN">ອວນຄູຣັສ</territory>
+			<territory type="HR">ໂຄເອເຊຍ</territory>
+			<territory type="HT">ໄອທີ</territory>
+			<territory type="HU">ຮົງກາຣີ</territory>
+			<territory type="ID">ອິນໂດເນເຊຍ</territory>
+			<territory type="IE">ໄອແລນ</territory>
+			<territory type="IL">ອິສລະເອວ</territory>
+			<territory type="IN">ອິນເດຍ</territory>
+			<territory type="IQ">ອີລັກ</territory>
+			<territory type="IR">ອີລ່ານ</territory>
+			<territory type="IS">ໄອສແລນ</territory>
+			<territory type="IT">ອິຕາລີ</territory>
+			<territory type="JM">ຈາໄມກາ</territory>
+			<territory type="JO">ຈໍແດນ</territory>
+			<territory type="JP">ຍີ່ປຸ່ນ</territory>
+			<territory type="KE">ເຄນຢ່າ</territory>
+			<territory type="KG">ເດີກິດສະຖານ</territory>
+			<territory type="KH">ກຳປູເຈຍ</territory>
+			<territory type="KI">ຄີລິບາດ</territory>
+			<territory type="KM">ໂຄໂມຣອດ</territory>
+			<territory type="KP">ເກົາຫລີເໜືອ</territory>
+			<territory type="KR">ເກົາຫລີໃຕ້</territory>
+			<territory type="KW">ຄູເວດ</territory>
+			<territory type="KZ">ຄາຊັດສະຖານ</territory>
+			<territory type="LA">ລາວ</territory>
+			<territory type="LB">ເລບານອນ</territory>
+			<territory type="LI">ໄລເທນສະໄຕ</territory>
+			<territory type="LK">ສີລັງກາ</territory>
+			<territory type="LR">ລິເບີເລຍ</territory>
+			<territory type="LS">ເລໂຊໂທ</territory>
+			<territory type="LT">ລິເທີເນຍ</territory>
+			<territory type="LU">ລຸກແຊມເບີກ</territory>
+			<territory type="LV">ລຼາດເວຍ</territory>
+			<territory type="LY">ລິເບຍ</territory>
+			<territory type="MA">ໂມລັອກໂຄ</territory>
+			<territory type="MC">ໂມນາໂກ</territory>
+			<territory type="MD">ໂມນໂຄວາ</territory>
+			<territory type="MG">ມາຄາກັສກາ</territory>
+			<territory type="MK">ແມຊິໂຄເນຍ</territory>
+			<territory type="ML">ມາລິ</territory>
+			<territory type="MM">ສະຫະພາບພະມ້າ</territory>
+			<territory type="MN">ມົງໂກລີ</territory>
+			<territory type="MO">ມາເກົ້າ</territory>
+			<territory type="MQ">ມາຕິນິກ</territory>
+			<territory type="MR">ມໍລິກທາເນຍ</territory>
+			<territory type="MS">ມອນເຊີລາດ</territory>
+			<territory type="MT">ມັນຕາ</territory>
+			<territory type="MU">ມໍຣິຕຽດ</territory>
+			<territory type="MX">ແມັກຊິໂກ</territory>
+			<territory type="MY">ມາເລເຊຍ</territory>
+			<territory type="MZ">ໂມແຊມບິກ</territory>
+			<territory type="NA">ນາມິເບຍ</territory>
+			<territory type="NC">ນິວຄາລິໂຄເນຍ</territory>
+			<territory type="NE">ໄນເຈີ</territory>
+			<territory type="NG">ໄນຈີເລຍ</territory>
+			<territory type="NI">ນິຄາລາກົວ</territory>
+			<territory type="NL">ເນເທີແລນ</territory>
+			<territory type="NO">ນໍເວ</territory>
+			<territory type="NP">ເນປານ</territory>
+			<territory type="NU">ນີຢູ</territory>
+			<territory type="NZ">ນິວຊີແລນ</territory>
+			<territory type="OM">ໂອມານ</territory>
+			<territory type="PA">ປານາມາ</territory>
+			<territory type="PE">ເປລູ</territory>
+			<territory type="PF">ເຟັນຣໂພລິນີເຊຍ</territory>
+			<territory type="PG">ປາປົວນິວກີນີ</territory>
+			<territory type="PH">ຟິລິປິນ</territory>
+			<territory type="PK">ປາກິສຖານ</territory>
+			<territory type="PL">ໂປແລນ</territory>
+			<territory type="PR">ເປີໂຕລິໂກ</territory>
+			<territory type="PT">ໂປຕຸກກັນ</territory>
+			<territory type="PY">ປາລາກວຍ</territory>
+			<territory type="QA">ກາຕາ</territory>
+			<territory type="RO">ລູເມເນຍ</territory>
+			<territory type="RU">ລັດເຊຍ</territory>
+			<territory type="RW">ລາວັນດາ</territory>
+			<territory type="SA">ຊາອຸດິອາລະເບຍ</territory>
+			<territory type="SC">ເຊແຊວ</territory>
+			<territory type="SD">ຊູດານ</territory>
+			<territory type="SE">ສະວິເດັນ</territory>
+			<territory type="SG">ສິງກະໂປ</territory>
+			<territory type="SI">ສະໂລເວເນຍ</territory>
+			<territory type="SK">ສະໂລວາເກຍ</territory>
+			<territory type="SL">ເຊຍລາສິອອນ</territory>
+			<territory type="SN">ຊິນີກັນ</territory>
+			<territory type="SO">ໂຊມາເລຍ</territory>
+			<territory type="SR">ຊູລິນາມິ</territory>
+			<territory type="SV">ເອຊາວາດໍ</territory>
+			<territory type="SY">ຊິເລຍ</territory>
+			<territory type="SZ">ສະວາຊິແລນ</territory>
+			<territory type="TD">ຊາດ</territory>
+			<territory type="TF">ອານາເຂດທາງໃຕ້ຂອງຝລັ່ງເສດ</territory>
+			<territory type="TG">ໂຕໂກ</territory>
+			<territory type="TH">ປະເທດໄທ</territory>
+			<territory type="TJ">ທາຈິກິສະຖານ</territory>
+			<territory type="TK">ໂທກິໂລ</territory>
+			<territory type="TL">ຕິມໍຕາເວັນອອກ</territory>
+			<territory type="TM">ເຕຣີກເມນິສະຖານ</territory>
+			<territory type="TN">ຕູນິເຊຍ</territory>
+			<territory type="TO">ຕອງກາ</territory>
+			<territory type="TR">ຕຸນກີ</territory>
+			<territory type="TT">ທິນິແດດ</territory>
+			<territory type="TW">ໄຕ້ຫວັນ</territory>
+			<territory type="TZ">ທານຊາເນຍ</territory>
+			<territory type="UA">ຢູເຄຼນ</territory>
+			<territory type="UG">ອູການດາ</territory>
+			<territory type="US">ສະຫະລັດອາເມລິກາ</territory>
+			<territory type="UY">ລູກວຍອຸຣ</territory>
+			<territory type="UZ">ອຸດເບກິສະຖານ</territory>
+			<territory type="VA">ວາຕິກັນ</territory>
+			<territory type="VE">ເວເນຊູເອລາ</territory>
+			<territory type="VG">ບຣິທິດເວີຈິນໄອແລນ</territory>
+			<territory type="VI">ຢູເອສເວີຈິນໄອແລນ</territory>
+			<territory type="VN">ຫວຽດນາມ</territory>
+			<territory type="VU">ວານົວຕູ</territory>
+			<territory type="YE">ເຢເມນ</territory>
+			<territory type="YT">ມາຢອດ</territory>
+			<territory type="ZA">ອາຟະລິກາໃຕ້</territory>
+			<territory type="ZM">ແຊມເບຍ</territory>
+			<territory type="ZW">ຊິມບັບເວ</territory>
+		</territories>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[່-ໍ ໆ ກ ຂ ຄ ງ ຈ ຊ ຍ ດ-ທ ນ-ຟ ມ-ຣ ລ ວ ສ ຫ ໜ ໝ ອ-ູ ົ-ຽ ເ-ໄ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u200B ໐-໙]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>'</quotationStart>
+		<quotationEnd>'</quotationEnd>
+		<alternateQuotationStart>&quot;</alternateQuotationStart>
+		<alternateQuotationEnd>&quot;</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="buddhist">
+				<eras>
+					<eraAbbr>
+						<era type="0">ພ.ສ.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEEທີ່ d MMMM G y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>d/M/yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<dateTimeFormats>
+					<default choice="medium"/>
+					<dateTimeFormatLength type="full">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="long">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="medium">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="short">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+				</dateTimeFormats>
+			</calendar>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">ມ.ກ.</month>
+							<month type="2">ກ.ພ.</month>
+							<month type="3">ມີ.ນ.</month>
+							<month type="4">ມ.ສ..</month>
+							<month type="5">ພ.ພ.</month>
+							<month type="6">ມິ.ຖ.</month>
+							<month type="7">ກ.ລ.</month>
+							<month type="8">ສ.ຫ.</month>
+							<month type="9">ກ.ຍ.</month>
+							<month type="10">ຕ.ລ.</month>
+							<month type="11">ພ.ຈ.</month>
+							<month type="12">ທ.ວ.</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">ມັງກອນ</month>
+							<month type="2">ກຸມພາ</month>
+							<month type="3">ມີນາ</month>
+							<month type="4">ເມສາ</month>
+							<month type="5">ພຶດສະພາ</month>
+							<month type="6">ມິຖຸນາ</month>
+							<month type="7">ກໍລະກົດ</month>
+							<month type="8">ສິງຫາ</month>
+							<month type="9">ກັນຍາ</month>
+							<month type="10">ຕຸລາ</month>
+							<month type="11">ພະຈິກ</month>
+							<month type="12">ທັນວາ</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">1</month>
+							<month type="2">2</month>
+							<month type="3">3</month>
+							<month type="4">4</month>
+							<month type="5">5</month>
+							<month type="6">6</month>
+							<month type="7">7</month>
+							<month type="8">8</month>
+							<month type="9">9</month>
+							<month type="10">10</month>
+							<month type="11">11</month>
+							<month type="12">12</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">ອາ.</day>
+							<day type="mon">ຈ.</day>
+							<day type="tue">ອ.</day>
+							<day type="wed">ພ.</day>
+							<day type="thu">ພຫ.</day>
+							<day type="fri">ສກ.</day>
+							<day type="sat">ສ.</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">ວັນອາທິດ</day>
+							<day type="mon">ວັນຈັນ</day>
+							<day type="tue">ວັນອັງຄານ</day>
+							<day type="wed">ວັນພຸດ</day>
+							<day type="thu">ວັນພະຫັດ</day>
+							<day type="fri">ວັນສຸກ</day>
+							<day type="sat">ວັນເສົາ</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">1</day>
+							<day type="mon">2</day>
+							<day type="tue">3</day>
+							<day type="wed">4</day>
+							<day type="thu">5</day>
+							<day type="fri">6</day>
+							<day type="sat">7</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>ກ່ອນທ່ຽງ</am>
+				<pm>ຫລັງທ່ຽງ</pm>
+				<eras>
+					<eraAbbr>
+						<era type="0">ປີກ່ອນຄິດສະການທີ່</era>
+						<era type="1">ຄ.ສ.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEEທີ d MMMM G y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>d/M/yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>Hໂມງ mນາທີ ss ວິນາທີzzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>H ໂມງ mນາທີss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>H:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>H:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<dateTimeFormatLength type="full">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="long">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="medium">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<dateTimeFormatLength type="short">
+						<dateTimeFormat>
+							<pattern>{1}, {0}</pattern>
+						</dateTimeFormat>
+					</dateTimeFormatLength>
+					<availableFormats>
+						<dateFormatItem id="Md">d/M</dateFormatItem>
+						<dateFormatItem id="MMMMd">d MMMM</dateFormatItem>
+						<dateFormatItem id="mmss">mm:ss</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+						<dateFormatItem id="yyyyM">M/yyyy</dateFormatItem>
+						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#,##0.00;¤-#,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="LAK">
+				<displayName>ກີບ</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+</ldml>
 

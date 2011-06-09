@@ -1,65 +1,65 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Rsaphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Rsa.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*php Zendphp_Oauthphp_Signaturephp_SignatureAbstractphp php*php/
-requirephp_oncephp php'Zendphp/Oauthphp/Signaturephp/SignatureAbstractphp.phpphp'php;
+/** Zend_Oauth_Signature_SignatureAbstract */
+require_once 'Zend/Oauth/Signature/SignatureAbstract.php';
 
-php/php*php*php Zendphp_Cryptphp_Rsaphp php*php/
-requirephp_oncephp php'Zendphp/Cryptphp/Rsaphp.phpphp'php;
+/** Zend_Crypt_Rsa */
+require_once 'Zend/Crypt/Rsa.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Oauthphp_Signaturephp_Rsaphp extendsphp Zendphp_Oauthphp_Signaturephp_SignatureAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php Signphp aphp request
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@paramphp php nullphp|stringphp php$method
-php php php php php php*php php@paramphp php nullphp|stringphp php$url
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp signphp(arrayphp php$paramsphp,php php$methodphp php=php nullphp,php php$urlphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$rsaphp php=php newphp Zendphp_Cryptphp_Rsaphp;
-php php php php php php php php php$rsaphp-php>setHashAlgorithmphp(php$thisphp-php>php_hashAlgorithmphp)php;
-php php php php php php php php php$signphp php=php php$rsaphp-php>signphp(
-php php php php php php php php php php php php php$thisphp-php>php_getBaseSignatureStringphp(php$paramsphp,php php$methodphp,php php$urlphp)php,
-php php php php php php php php php php php php php$thisphp-php>php_keyphp,
-php php php php php php php php php php php php Zendphp_Cryptphp_Rsaphp:php:BASEphp6php4
-php php php php php php php php php)php;
-php php php php php php php php returnphp php$signphp;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Oauth_Signature_Rsa extends Zend_Oauth_Signature_SignatureAbstract
+{
+    /**
+     * Sign a request
+     *
+     * @param  array $params
+     * @param  null|string $method
+     * @param  null|string $url
+     * @return string
+     */
+    public function sign(array $params, $method = null, $url = null)
+    {
+        $rsa = new Zend_Crypt_Rsa;
+        $rsa->setHashAlgorithm($this->_hashAlgorithm);
+        $sign = $rsa->sign(
+            $this->_getBaseSignatureString($params, $method, $url),
+            $this->_key,
+            Zend_Crypt_Rsa::BASE64
+        );
+        return $sign;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Assemblephp encryptionphp key
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_assembleKeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_consumerSecretphp;
-php php php php php}
-php}
+    /**
+     * Assemble encryption key
+     *
+     * @return string
+     */
+    protected function _assembleKey()
+    {
+        return $this->_consumerSecret;
+    }
+}

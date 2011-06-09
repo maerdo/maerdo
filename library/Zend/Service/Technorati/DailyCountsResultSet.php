@@ -1,125 +1,125 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Technorati
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php DailyCountsResultSetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Technorati
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: DailyCountsResultSet.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Date
-php php*php/
-requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
+/**
+ * @see Zend_Date
+ */
+require_once 'Zend/Date.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Technoratiphp_ResultSet
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/ResultSetphp.phpphp'php;
+/**
+ * @see Zend_Service_Technorati_ResultSet
+ */
+require_once 'Zend/Service/Technorati/ResultSet.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Technoratiphp_Utils
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/Utilsphp.phpphp'php;
-
-
-php/php*php*
-php php*php Representsphp aphp Technoratiphp Tagphp queryphp resultphp setphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Technorati
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Technoratiphp_DailyCountsResultSetphp extendsphp Zendphp_Servicephp_Technoratiphp_ResultSet
-php{
-php php php php php/php*php*
-php php php php php php*php Technoratiphp searchphp URLphp forphp givenphp queryphp.
-php php php php php php*
-php php php php php php*php php@varphp php php php php Zendphp_Uriphp_Http
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_searchUrlphp;
-
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp daysphp forphp whichphp countsphp providedphp.
-php php php php php php*
-php php php php php php*php php@varphp php php php php Zendphp_Servicephp_Technoratiphp_Weblog
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_daysphp;
-
-php php php php php/php*php*
-php php php php php php*php Parsesphp thephp searchphp responsephp andphp retrievephp thephp resultsphp forphp iterationphp.
-php php php php php php*
-php php php php php php*php php@paramphp php php DomDocumentphp php$domphp php php php thephp ReSTphp fragmentphp forphp thisphp object
-php php php php php php*php php@paramphp php php arrayphp php$optionsphp php php php php php queryphp optionsphp asphp associativephp array
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DomDocumentphp php$domphp,php php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$domphp,php php$optionsphp)php;
-
-php php php php php php php php php/php/php defaultphp localephp preventphp Zendphp_Datephp tophp fail
-php php php php php php php php php/php/php whenphp scriptphp isphp executedphp viaphp shell
-php php php php php php php php php/php/php Zendphp_Localephp:php:setDefaultphp(php'enphp'php)php;
-
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/daysphp/textphp(php)php'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php$thisphp-php>php_daysphp php=php php(intphp)php php$resultphp-php>itemphp(php0php)php-php>dataphp;
-
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/searchurlphp/textphp(php)php'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_searchUrlphp php=php Zendphp_Servicephp_Technoratiphp_Utilsphp:php:normalizeUriHttpphp(php$resultphp-php>itemphp(php0php)php-php>dataphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_totalResultsReturnedphp php php=php php(intphp)php php$thisphp-php>php_xpathphp-php>evaluatephp(php"countphp(php/tapiphp/documentphp/itemsphp/itemphp)php"php)php;
-php php php php php php php php php$thisphp-php>php_totalResultsAvailablephp php=php php(intphp)php php$thisphp-php>getDaysphp(php)php;
-php php php php php}
+/**
+ * @see Zend_Service_Technorati_Utils
+ */
+require_once 'Zend/Service/Technorati/Utils.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp searchphp URLphp forphp givenphp queryphp.
-php php php php php php*
-php php php php php php*php php@returnphp php Zendphp_Uriphp_Http
-php php php php php php*php/
-php php php php publicphp functionphp getSearchUrlphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_searchUrlphp;
-php php php php php}
+/**
+ * Represents a Technorati Tag query result set.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Technorati
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Technorati_DailyCountsResultSet extends Zend_Service_Technorati_ResultSet
+{
+    /**
+     * Technorati search URL for given query.
+     *
+     * @var     Zend_Uri_Http
+     * @access  protected
+     */
+    protected $_searchUrl;
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp daysphp forphp whichphp countsphp providedphp.
-php php php php php php*
-php php php php php php*php php@returnphp php int
-php php php php php php*php/
-php php php php publicphp functionphp getDaysphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_daysphp;
-php php php php php}
+    /**
+     * Number of days for which counts provided.
+     *
+     * @var     Zend_Service_Technorati_Weblog
+     * @access  protected
+     */
+    protected $_days;
 
-php php php php php/php*php*
-php php php php php php*php Implementsphp Zendphp_Servicephp_Technoratiphp_ResultSetphp:php:currentphp(php)php.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_Technoratiphp_DailyCountsResultphp currentphp result
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Technoratiphp_DailyCountsResult
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/DailyCountsResultphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Technoratiphp_DailyCountsResultphp(php$thisphp-php>php_resultsphp-php>itemphp(php$thisphp-php>php_currentIndexphp)php)php;
-php php php php php}
-php}
+    /**
+     * Parses the search response and retrieve the results for iteration.
+     *
+     * @param   DomDocument $dom    the ReST fragment for this object
+     * @param   array $options      query options as associative array
+     */
+    public function __construct(DomDocument $dom, $options = array())
+    {
+        parent::__construct($dom, $options);
+
+        // default locale prevent Zend_Date to fail
+        // when script is executed via shell
+        // Zend_Locale::setDefault('en');
+
+        $result = $this->_xpath->query('/tapi/document/result/days/text()');
+        if ($result->length == 1) $this->_days = (int) $result->item(0)->data;
+
+        $result = $this->_xpath->query('/tapi/document/result/searchurl/text()');
+        if ($result->length == 1) {
+            $this->_searchUrl = Zend_Service_Technorati_Utils::normalizeUriHttp($result->item(0)->data);
+        }
+
+        $this->_totalResultsReturned  = (int) $this->_xpath->evaluate("count(/tapi/document/items/item)");
+        $this->_totalResultsAvailable = (int) $this->getDays();
+    }
+
+
+    /**
+     * Returns the search URL for given query.
+     *
+     * @return  Zend_Uri_Http
+     */
+    public function getSearchUrl() {
+        return $this->_searchUrl;
+    }
+
+    /**
+     * Returns the number of days for which counts provided.
+     *
+     * @return  int
+     */
+    public function getDays() {
+        return $this->_days;
+    }
+
+    /**
+     * Implements Zend_Service_Technorati_ResultSet::current().
+     *
+     * @return Zend_Service_Technorati_DailyCountsResult current result
+     */
+    public function current()
+    {
+        /**
+         * @see Zend_Service_Technorati_DailyCountsResult
+         */
+        require_once 'Zend/Service/Technorati/DailyCountsResult.php';
+        return new Zend_Service_Technorati_DailyCountsResult($this->_results->item($this->_currentIndex));
+    }
+}

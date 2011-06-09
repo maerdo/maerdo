@@ -1,536 +1,536 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php SearchParametersphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: SearchParameters.php 22662 2010-07-24 17:37:36Z mabe $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php{
-php php php php php/php*php*
-php php php php php php*php possiblephp searchphp parametersphp,php inclphp.php defaultphp values
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_parametersphp php=php arrayphp(
-php php php php php php php php php'whatphp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'dymwhatphp'php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'dymrelatedphp'php php php php php php php php=php>php nullphp,
-php php php php php php php php php'hitsphp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'collapsephp'php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'wherephp'php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'dywherephp'php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'radiusphp'php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'lxphp'php php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'lyphp'php php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'rxphp'php php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'ryphp'php php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'transformgeocodephp'php php=php>php nullphp,
-php php php php php php php php php'sortphp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'spatialphp'php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'sepcommphp'php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'filterphp'php php php php php php php php php php php php=php>php nullphp,php php/php/php canphp bephp ONLINERphp orphp OFFLINER
-php php php php php php php php php'openingtimephp'php php php php php php php=php>php nullphp,php php/php/php canphp bephp nowphp orphp HHphp:php:MM
-php php php php php php php php php'kategoriephp'php php php php php php php php php=php>php nullphp,php php/php/php php@seephp httpphp:php/php/wwwphp.suchenphp.dephp/kategoriephp-katalog
-php php php php php php php php php'sitephp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'typphp'php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'namephp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'pagephp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'cityphp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'plzphp'php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'strassephp'php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'bundeslandphp'php php php php php php php php=php>php nullphp,
-php php php php php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+{
+    /**
+     * possible search parameters, incl. default values
+     *
+     * @var array
+     */
+    private $_parameters = array(
+        'what'             => null,
+        'dymwhat'          => null,
+        'dymrelated'       => null,
+        'hits'             => null,
+        'collapse'         => null,
+        'where'            => null,
+        'dywhere'          => null,
+        'radius'           => null,
+        'lx'               => null,
+        'ly'               => null,
+        'rx'               => null,
+        'ry'               => null,
+        'transformgeocode' => null,
+        'sort'             => null,
+        'spatial'          => null,
+        'sepcomm'          => null,
+        'filter'           => null, // can be ONLINER or OFFLINER
+        'openingtime'      => null, // can be now or HH::MM
+        'kategorie'        => null, // @see http://www.suchen.de/kategorie-katalog
+        'site'             => null,
+        'typ'              => null,
+        'name'             => null,
+        'page'             => null,
+        'city'             => null,
+        'plz'              => null,
+        'strasse'          => null,
+        'bundesland'       => null,
+    );
 
-php php php php php/php*php*
-php php php php php php*php possiblephp collapsephp values
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_possibleCollapseValuesphp php=php arrayphp(
-php php php php php php php php truephp,
-php php php php php php php php falsephp,
-php php php php php php php php php'ADDRESSphp_COMPANYphp'php,
-php php php php php php php php php'DOMAINphp'
-php php php php php)php;
+    /**
+     * possible collapse values
+     *
+     * @var array
+     */
+    private $_possibleCollapseValues = array(
+        true,
+        false,
+        'ADDRESS_COMPANY',
+        'DOMAIN'
+    );
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp newphp searchphp word
-php php php php php php*php aliasphp forphp setWhat
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$searchValue
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setSearchValuephp(php$searchValuephp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setWhatphp(php$searchValuephp)php;
-php php php php php}
+    /**
+     * sets a new search word
+     * alias for setWhat
+     *
+     * @param string $searchValue
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setSearchValue($searchValue)
+    {
+        return $this->setWhat($searchValue);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp newphp searchphp word
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$searchValue
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setWhatphp(php$searchValuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'whatphp'php]php php=php php$searchValuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a new search word
+     *
+     * @param string $searchValue
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setWhat($searchValue)
+    {
+        $this->_parameters['what'] = $searchValue;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php enablephp thephp didphp youphp meanphp whatphp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp enableDidYouMeanWhatphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymwhatphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * enable the did you mean what feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function enableDidYouMeanWhat()
+    {
+        $this->_parameters['dymwhat'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php disablephp thephp didphp youphp meanphp whatphp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disableDidYouMeanWhatphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymwhatphp'php]php php=php php'falsephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * disable the did you mean what feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disableDidYouMeanWhat()
+    {
+        $this->_parameters['dymwhat'] = 'false';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php enablephp thephp didphp youphp meanphp wherephp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp enableDidYouMeanWherephp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymwherephp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * enable the did you mean where feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function enableDidYouMeanWhere()
+    {
+        $this->_parameters['dymwhere'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php disablephp thephp didphp youphp meanphp wherephp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disableDidYouMeanWherephp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymwherephp'php]php php=php php'falsephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * disable the did you mean where feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disableDidYouMeanWhere()
+    {
+        $this->_parameters['dymwhere'] = 'false';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php enablephp didphp youphp meanphp relatedphp,php ifphp truephp Kihnophp willphp bephp correctedphp tophp Kino
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp enableDidYouMeanRelatedphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymrelatedphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * enable did you mean related, if true Kihno will be corrected to Kino
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function enableDidYouMeanRelated()
+    {
+        $this->_parameters['dymrelated'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php diablephp didphp youphp meanphp relatedphp,php ifphp falsephp Kihnophp willphp notphp bephp correctedphp tophp Kino
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disableDidYouMeanRelatedphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'dymrelatedphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * diable did you mean related, if false Kihno will not be corrected to Kino
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disableDidYouMeanRelated()
+    {
+        $this->_parameters['dymrelated'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp thephp maxphp resultphp hitsphp forphp thisphp search
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$hits
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setHitsphp(php$hitsphp php=php php1php0php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Betweenphp.phpphp'php;
-php php php php php php php php php$validatorphp php=php newphp Zendphp_Validatephp_Betweenphp(php0php,php php1php0php0php0php)php;
-php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$hitsphp)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$validatorphp-php>getMessagesphp(php)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/LocalSearchphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_Exceptionphp(currentphp(php$messagephp)php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parametersphp[php'hitsphp'php]php php=php php$hitsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * set the max result hits for this search
+     *
+     * @param integer $hits
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setHits($hits = 10)
+    {
+        require_once 'Zend/Validate/Between.php';
+        $validator = new Zend_Validate_Between(0, 1000);
+        if (!$validator->isValid($hits)) {
+            $message = $validator->getMessages();
+            require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+        }
+        $this->_parameters['hits'] = $hits;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Ifphp truephp,php addressesphp willphp bephp collapsedphp forphp aphp singlephp domainphp,php commonphp values
-php php php php php php*php arephp:
-php php php php php php*php ADDRESSphp_COMPANYphp php–php tophp collapsephp byphp address
-php php php php php php*php DOMAINphp php–php tophp collapsephp byphp domainphp php(samephp likephp collapsephp=truephp)
-php php php php php php*php false
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setCollapsephp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$valuephp,php php$thisphp-php>php_possibleCollapseValuesphp,php truephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/LocalSearchphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_Exceptionphp(php'Notphp aphp validphp valuephp providedphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parametersphp[php'collapsephp'php]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * If true, addresses will be collapsed for a single domain, common values
+     * are:
+     * ADDRESS_COMPANY – to collapse by address
+     * DOMAIN – to collapse by domain (same like collapse=true)
+     * false
+     *
+     * @param mixed $value
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setCollapse($value)
+    {
+        if (!in_array($value, $this->_possibleCollapseValues, true)) {
+            require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception('Not a valid value provided.');
+        }
+        $this->_parameters['collapse'] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp aphp specificphp searchphp location
-php php php php php php*php examplesphp:
-php php php php php php*php php+php4php7php°php5php4php’php5php3php.php1php0php”php,php php1php1php°php php1php0php’php php5php6php.php7php6php”
-php php php php php php*php php4php7php°php5php4php’php5php3php.php1php0php;php1php1php°php1php0php’php5php6php.php7php6php”
-php php php php php php*php php4php7php.php9php1php4php7php5php0php,php1php1php.php1php8php2php5php3php3
-php php php php php php*php php+php4php7php.php9php1php4php7php5php0php php;php php+php1php1php.php1php8php2php4
-php php php php php php*php Darmstadt
-php php php php php php*php Berlin
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$where
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setWherephp(php$wherephp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/NotEmptyphp.phpphp'php;
+    /**
+     * set a specific search location
+     * examples:
+     * +47°54’53.10”, 11° 10’ 56.76”
+     * 47°54’53.10;11°10’56.76”
+     * 47.914750,11.182533
+     * +47.914750 ; +11.1824
+     * Darmstadt
+     * Berlin
+     *
+     * @param string $where
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setWhere($where)
+    {
+        require_once 'Zend/Validate/NotEmpty.php';
 
-php php php php php php php php php$validatorphp php=php newphp Zendphp_Validatephp_NotEmptyphp(php)php;
-php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$wherephp)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$validatorphp-php>getMessagesphp(php)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/LocalSearchphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_Exceptionphp(currentphp(php$messagephp)php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parametersphp[php'wherephp'php]php php=php php$wherephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $validator = new Zend_Validate_NotEmpty();
+        if (!$validator->isValid($where)) {
+            $message = $validator->getMessages();
+            require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+        }
+        $this->_parameters['where'] = $where;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp definedphp searchphp locationphp php(iephp cityphp,php countryphp)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getWherephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_parametersphp[php'wherephp'php]php;
-php php php php php}
+    /**
+     * returns the defined search location (ie city, country)
+     *
+     * @return string
+     */
+    public function getWhere()
+    {
+        return $this->_parameters['where'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php enablephp thephp spatialphp searchphp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp enableSpatialphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'spatialphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * enable the spatial search feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function enableSpatial()
+    {
+        $this->_parameters['spatial'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php disablephp thephp spatialphp searchphp feature
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disableSpatialphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'spatialphp'php]php php=php php'falsephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * disable the spatial search feature
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disableSpatial()
+    {
+        $this->_parameters['spatial'] = 'false';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp spatialphp andphp thephp givenphp radiusphp forphp aphp circlephp search
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$radius
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setRadiusphp(php$radiusphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Intphp.phpphp'php;
+    /**
+     * sets spatial and the given radius for a circle search
+     *
+     * @param integer $radius
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setRadius($radius)
+    {
+        require_once 'Zend/Validate/Int.php';
 
-php php php php php php php php php$validatorphp php=php newphp Zendphp_Validatephp_Intphp(php)php;
-php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$radiusphp)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$validatorphp-php>getMessagesphp(php)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/LocalSearchphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_Exceptionphp(currentphp(php$messagephp)php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parametersphp[php'radiusphp'php]php php=php php$radiusphp;
-php php php php php php php php php$thisphp-php>php_parametersphp[php'transformgeocodephp'php]php php=php php'falsephp'php;
+        $validator = new Zend_Validate_Int();
+        if (!$validator->isValid($radius)) {
+            $message = $validator->getMessages();
+            require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+        }
+        $this->_parameters['radius'] = $radius;
+        $this->_parameters['transformgeocode'] = 'false';
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp thephp valuesphp forphp aphp rectanglephp search
-php php php php php php*php lxphp php=php longitudephp leftphp top
-php php php php php php*php lyphp php=php latitudephp leftphp top
-php php php php php php*php rxphp php=php longitudephp rightphp bottom
-php php php php php php*php ryphp php=php latitudephp rightphp bottom
-php php php php php php*
-php php php php php php*php php@paramphp php$lx
-php php php php php php*php php@paramphp php$ly
-php php php php php php*php php@paramphp php$rx
-php php php php php php*php php@paramphp php$ry
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setRectanglephp(php$lxphp,php php$lyphp,php php$rxphp,php php$ryphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'lxphp'php]php php=php php$lxphp;
-php php php php php php php php php$thisphp-php>php_parametersphp[php'lyphp'php]php php=php php$lyphp;
-php php php php php php php php php$thisphp-php>php_parametersphp[php'rxphp'php]php php=php php$rxphp;
-php php php php php php php php php$thisphp-php>php_parametersphp[php'ryphp'php]php php=php php$ryphp;
+    /**
+     * sets the values for a rectangle search
+     * lx = longitude left top
+     * ly = latitude left top
+     * rx = longitude right bottom
+     * ry = latitude right bottom
+     *
+     * @param $lx
+     * @param $ly
+     * @param $rx
+     * @param $ry
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setRectangle($lx, $ly, $rx, $ry)
+    {
+        $this->_parameters['lx'] = $lx;
+        $this->_parameters['ly'] = $ly;
+        $this->_parameters['rx'] = $rx;
+        $this->_parameters['ry'] = $ry;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php ifphp setphp,php thephp servicephp returnsphp thephp zipcodephp forphp thephp result
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setTransformGeoCodephp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'transformgeocodephp'php]php php=php php'truephp'php;
-php php php php php php php php php$thisphp-php>php_parametersphp[php'radiusphp'php]php php php php php php php php php php php php=php nullphp;
+    /**
+     * if set, the service returns the zipcode for the result
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setTransformGeoCode()
+    {
+        $this->_parameters['transformgeocode'] = 'true';
+        $this->_parameters['radius']           = null;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp thephp sortphp value
-php php php php php php*php possiblephp valuesphp arephp:php php'relevancephp'php andphp php'distancephp'php php(onlyphp withphp spatialphp enabledphp)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$sort
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setSortphp(php$sortphp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$sortphp,php arrayphp(php'relevancephp'php,php php'distancephp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/LocalSearchphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_Exceptionphp(php'Notphp aphp validphp sortphp valuephp providedphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * sets the sort value
+     * possible values are: 'relevance' and 'distance' (only with spatial enabled)
+     *
+     * @param string $sort
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setSort($sort)
+    {
+        if (!in_array($sort, array('relevance', 'distance'))) {
+            require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception('Not a valid sort value provided.');
+        }
 
-php php php php php php php php php$thisphp-php>php_parametersphp[php'sortphp'php]php php=php php$sortphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_parameters['sort'] = $sort;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php enablephp thephp separationphp ofphp phonephp numbers
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp enablePhoneSeparationphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'sepcommphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * enable the separation of phone numbers
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function enablePhoneSeparation()
+    {
+        $this->_parameters['sepcomm'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php disablephp thephp separationphp ofphp phonephp numbers
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disablePhoneSeparationphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'sepcommphp'php]php php=php php'truephp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * disable the separation of phone numbers
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disablePhoneSeparation()
+    {
+        $this->_parameters['sepcomm'] = 'true';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php ifphp thisphp filterphp isphp setphp,php onlyphp resultsphp withphp aphp websitephp arephp returned
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setFilterOnlinerphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'filterphp'php]php php=php php'ONLINERphp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * if this filter is set, only results with a website are returned
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setFilterOnliner()
+    {
+        $this->_parameters['filter'] = 'ONLINER';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php ifphp thisphp filterphp isphp setphp,php onlyphp resultsphp withoutphp aphp websitephp arephp returned
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setFilterOfflinerphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'filterphp'php]php php=php php'OFFLINERphp'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * if this filter is set, only results without a website are returned
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setFilterOffliner()
+    {
+        $this->_parameters['filter'] = 'OFFLINER';
+        return $this;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php removesphp thephp filterphp value
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp disableFilterphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'filterphp'php]php php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * removes the filter value
+     *
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function disableFilter()
+    {
+        $this->_parameters['filter'] = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp aphp filterphp tophp getphp justphp resultsphp whophp arephp openphp atphp thephp givenphp time
-php php php php php php*php possiblephp valuesphp:
-php php php php php php*php nowphp php=php openphp rightphp now
-php php php php php php*php HHphp:MMphp php=php atphp thephp givenphp timephp php(iephp php2php0php:php0php0php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$time
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setOpeningTimephp(php$timephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'openingtimephp'php]php php=php php$timephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * set a filter to get just results who are open at the given time
+     * possible values:
+     * now = open right now
+     * HH:MM = at the given time (ie 20:00)
+     *
+     * @param string $time
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setOpeningTime($time = null)
+    {
+        $this->_parameters['openingtime'] = $time;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp categoryphp filter
-php php php php php php*
-php php php php php php*php php@seephp httpphp:php/php/wwwphp.suchenphp.dephp/kategoriephp-katalog
-php php php php php php*php php@paramphp php$category
-php php php php php php*php php@returnphp unknownphp_type
-php php php php php php*php/
-php php php php publicphp functionphp setCategoryphp(php$categoryphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'kategoriephp'php]php php=php php$categoryphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a category filter
+     *
+     * @see http://www.suchen.de/kategorie-katalog
+     * @param $category
+     * @return unknown_type
+     */
+    public function setCategory($category = null)
+    {
+        $this->_parameters['kategorie'] = $category;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp thephp sitephp filter
-php php php php php php*php iephp:php wwwphp.developergardenphp.com
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$site
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setSitephp(php$sitephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'sitephp'php]php php=php php$sitephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets the site filter
+     * ie: www.developergarden.com
+     *
+     * @param string $site
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setSite($site)
+    {
+        $this->_parameters['site'] = $site;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp filterphp tophp thephp givenphp documentphp type
-php php php php php php*php iephp:php pdfphp,php html
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setDocumentTypephp(php$typephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'typphp'php]php php=php php$typephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a filter to the given document type
+     * ie: pdf, html
+     *
+     * @param string $type
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setDocumentType($type)
+    {
+        $this->_parameters['typ'] = $type;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp filterphp forphp thephp companyphp name
-php php php php php php*php iephp:php Deutschephp Telekom
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'namephp'php]php php=php php$namephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a filter for the company name
+     * ie: Deutsche Telekom
+     *
+     * @param string $name
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setName($name)
+    {
+        $this->_parameters['name'] = $name;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp filterphp forphp thephp zipphp code
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$zip
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setZipCodephp(php$zipphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'plzphp'php]php php=php php$zipphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a filter for the zip code
+     *
+     * @param string $zip
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setZipCode($zip)
+    {
+        $this->_parameters['plz'] = $zip;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp filterphp forphp thephp street
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$street
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setStreetphp(php$streetphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'strassephp'php]php php=php php$streetphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a filter for the street
+     *
+     * @param string $street
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setStreet($street)
+    {
+        $this->_parameters['strasse'] = $street;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp filterphp forphp thephp county
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$county
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setCountyphp(php$countyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php'bundeslandphp'php]php php=php php$countyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a filter for the county
+     *
+     * @param string $county
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function setCounty($county)
+    {
+        $this->_parameters['bundesland'] = $county;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp rawphp parameterphp withphp thephp value
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp unknownphp_type
-php php php php php php*php/
-php php php php publicphp functionphp setRawParameterphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a raw parameter with the value
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return unknown_type
+     */
+    public function setRawParameter($key, $value)
+    {
+        $this->_parameters[$key] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp parametersphp asphp anphp array
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getSearchParametersphp(php)
-php php php php php{
-php php php php php php php php php$retValphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_parametersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$paramphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'parameterphp'php php=php>php php$keyphp,
-php php php php php php php php php php php php php php php php php'valuephp'php php=php>php php$value
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$retValphp[php]php php=php php$paramphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$retValphp;
-php php php php php}
-php}
+    /**
+     * returns the parameters as an array
+     *
+     * @return array
+     */
+    public function getSearchParameters()
+    {
+        $retVal = array();
+        foreach ($this->_parameters as $key => $value) {
+            if ($value === null) {
+                continue;
+            }
+            $param = array(
+                'parameter' => $key,
+                'value' => $value
+            );
+            $retVal[] = $param;
+        }
+        return $retVal;
+    }
+}

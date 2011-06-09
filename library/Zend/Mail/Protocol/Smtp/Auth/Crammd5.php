@@ -1,108 +1,108 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Protocol
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Crammdphp5php.phpphp php2php2php6php5php3php php2php0php1php0php-php0php7php-php2php2php php1php8php:php4php1php:php3php9Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Protocol
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Crammd5.php 22653 2010-07-22 18:41:39Z mabe $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Protocolphp_Smtp
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Protocolphp/Smtpphp.phpphp'php;
+/**
+ * @see Zend_Mail_Protocol_Smtp
+ */
+require_once 'Zend/Mail/Protocol/Smtp.php';
 
 
-php/php*php*
-php php*php Performsphp CRAMphp-MDphp5php authentication
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Protocol
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Mailphp_Protocolphp_Smtpphp_Authphp_Crammdphp5php extendsphp Zendphp_Mailphp_Protocolphp_Smtp
-php{
-php php php php php/php*php*
-php php php php php php*php Constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hostphp php php php(Defaultphp:php php1php2php7php.php0php.php0php.php1php)
-php php php php php php*php php@paramphp php intphp php php php php$portphp php php php(Defaultphp:php nullphp)
-php php php php php php*php php@paramphp php arrayphp php php$configphp Authphp-specificphp parameters
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$hostphp php=php php'php1php2php7php.php0php.php0php.php1php'php,php php$portphp php=php nullphp,php php$configphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$configphp[php'usernamephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_usernamephp php=php php$configphp[php'usernamephp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$configphp[php'passwordphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_passwordphp php=php php$configphp[php'passwordphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+/**
+ * Performs CRAM-MD5 authentication
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Protocol
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Mail_Protocol_Smtp_Auth_Crammd5 extends Zend_Mail_Protocol_Smtp
+{
+    /**
+     * Constructor.
+     *
+     * @param  string $host   (Default: 127.0.0.1)
+     * @param  int    $port   (Default: null)
+     * @param  array  $config Auth-specific parameters
+     * @return void
+     */
+    public function __construct($host = '127.0.0.1', $port = null, $config = null)
+    {
+        if (is_array($config)) {
+            if (isset($config['username'])) {
+                $this->_username = $config['username'];
+            }
+            if (isset($config['password'])) {
+                $this->_password = $config['password'];
+            }
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$hostphp,php php$portphp,php php$configphp)php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php php@todophp Performphp CRAMphp-MDphp5php authenticationphp withphp suppliedphp credentials
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp authphp(php)
-php php php php php{
-php php php php php php php php php/php/php Ensurephp AUTHphp hasphp notphp alreadyphp beenphp initiatedphp.
-php php php php php php php php parentphp:php:authphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_sendphp(php'AUTHphp CRAMphp-MDphp5php'php)php;
-php php php php php php php php php$challengephp php=php php$thisphp-php>php_expectphp(php3php3php4php)php;
-php php php php php php php php php$challengephp php=php basephp6php4php_decodephp(php$challengephp)php;
-php php php php php php php php php$digestphp php=php php$thisphp-php>php_hmacMdphp5php(php$thisphp-php>php_passwordphp,php php$challengephp)php;
-php php php php php php php php php$thisphp-php>php_sendphp(basephp6php4php_encodephp(php$thisphp-php>php_usernamephp php.php php'php php'php php.php php$digestphp)php)php;
-php php php php php php php php php$thisphp-php>php_expectphp(php2php3php5php)php;
-php php php php php php php php php$thisphp-php>php_authphp php=php truephp;
-php php php php php}
+        parent::__construct($host, $port, $config);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Preparephp CRAMphp-MDphp5php responsephp tophp serverphp'sphp ticket
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$keyphp php php Challengephp keyphp php(usuallyphp passwordphp)
-php php php php php php*php php@paramphp php stringphp php$dataphp php Challengephp data
-php php php php php php*php php@paramphp php stringphp php$blockphp Lengthphp ofphp blocks
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_hmacMdphp5php(php$keyphp,php php$dataphp,php php$blockphp php=php php6php4php)
-php php php php php{
-php php php php php php php php ifphp php(strlenphp(php$keyphp)php php>php php6php4php)php php{
-php php php php php php php php php php php php php$keyphp php=php packphp(php'Hphp3php2php'php,php mdphp5php(php$keyphp)php)php;
-php php php php php php php php php}php elseifphp php(strlenphp(php$keyphp)php <php php6php4php)php php{
-php php php php php php php php php php php php php$keyphp php=php strphp_padphp(php$keyphp,php php$blockphp,php php"php\php0php"php)php;
-php php php php php php php php php}
+    /**
+     * @todo Perform CRAM-MD5 authentication with supplied credentials
+     *
+     * @return void
+     */
+    public function auth()
+    {
+        // Ensure AUTH has not already been initiated.
+        parent::auth();
 
-php php php php php php php php php$kphp_ipadphp php=php substrphp(php$keyphp,php php0php,php php6php4php)php php^php strphp_repeatphp(chrphp(php0xphp3php6php)php,php php6php4php)php;
-php php php php php php php php php$kphp_opadphp php=php substrphp(php$keyphp,php php0php,php php6php4php)php php^php strphp_repeatphp(chrphp(php0xphp5Cphp)php,php php6php4php)php;
+        $this->_send('AUTH CRAM-MD5');
+        $challenge = $this->_expect(334);
+        $challenge = base64_decode($challenge);
+        $digest = $this->_hmacMd5($this->_password, $challenge);
+        $this->_send(base64_encode($this->_username . ' ' . $digest));
+        $this->_expect(235);
+        $this->_auth = true;
+    }
 
-php php php php php php php php php$innerphp php=php packphp(php'Hphp3php2php'php,php mdphp5php(php$kphp_ipadphp php.php php$dataphp)php)php;
-php php php php php php php php php$digestphp php=php mdphp5php(php$kphp_opadphp php.php php$innerphp)php;
 
-php php php php php php php php returnphp php$digestphp;
-php php php php php}
-php}
+    /**
+     * Prepare CRAM-MD5 response to server's ticket
+     *
+     * @param  string $key   Challenge key (usually password)
+     * @param  string $data  Challenge data
+     * @param  string $block Length of blocks
+     * @return string
+     */
+    protected function _hmacMd5($key, $data, $block = 64)
+    {
+        if (strlen($key) > 64) {
+            $key = pack('H32', md5($key));
+        } elseif (strlen($key) < 64) {
+            $key = str_pad($key, $block, "\0");
+        }
+
+        $k_ipad = substr($key, 0, 64) ^ str_repeat(chr(0x36), 64);
+        $k_opad = substr($key, 0, 64) ^ str_repeat(chr(0x5C), 64);
+
+        $inner = pack('H32', md5($k_ipad . $data));
+        $digest = md5($k_opad . $inner);
+
+        return $digest;
+    }
+}

@@ -1,433 +1,433 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Simpy
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Simpyphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Simpy
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Simpy.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
+/**
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Simpy
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@linkphp php php php php php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/
-php php*php/
-classphp Zendphp_Servicephp_Simpy
-php{
-php php php php php/php*php*
-php php php php php php*php Basephp URIphp tophp whichphp APIphp methodsphp andphp parametersphp willphp bephp appended
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_baseUriphp php=php php'httpphp:php/php/simpyphp.comphp/simpyphp/apiphp/restphp/php'php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Simpy
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @link       http://www.simpy.com/doc/api/rest/
+ */
+class Zend_Service_Simpy
+{
+    /**
+     * Base URI to which API methods and parameters will be appended
+     *
+     * @var string
+     */
+    protected $_baseUri = 'http://simpy.com/simpy/api/rest/';
 
-php php php php php/php*php*
-php php php php php php*php HTTPphp clientphp forphp usephp inphp makingphp webphp servicephp calls
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp php$php_httpphp;
+    /**
+     * HTTP client for use in making web service calls
+     *
+     * @var Zend_Http_Client
+     */
+    protected $_http;
 
-php php php php php/php*php*
-php php php php php php*php Constructsphp aphp newphp Simpyphp php(freephp)php RESTphp APIphp Client
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$usernamephp Usernamephp forphp thephp Simpyphp userphp account
-php php php php php php*php php@paramphp php stringphp php$passwordphp Passwordphp forphp thephp Simpyphp userphp account
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$usernamephp,php php$passwordphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_httpphp php=php newphp Zendphp_Httpphp_Clientphp;
-php php php php php php php php php$thisphp-php>php_httpphp-php>setAuthphp(php$usernamephp,php php$passwordphp)php;
-php php php php php}
+    /**
+     * Constructs a new Simpy (free) REST API Client
+     *
+     * @param  string $username Username for the Simpy user account
+     * @param  string $password Password for the Simpy user account
+     * @return void
+     */
+    public function __construct($username, $password)
+    {
+        $this->_http = new Zend_Http_Client;
+        $this->_http->setAuth($username, $password);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp HTTPphp clientphp currentlyphp inphp usephp byphp thisphp classphp forphp RESTphp API
-php php php php php php*php callsphp,php intendedphp mainlyphp forphp testingphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp getHttpClientphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_httpphp;
-php php php php php}
+    /**
+     * Returns the HTTP client currently in use by this class for REST API
+     * calls, intended mainly for testing.
+     *
+     * @return Zend_Http_Client
+     */
+    public function getHttpClient()
+    {
+        return $this->_http;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Sendsphp aphp requestphp tophp thephp RESTphp APIphp servicephp andphp doesphp initialphp processing
-php php php php php php*php onphp thephp responsephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$opphp php php php Namephp ofphp thephp operationphp forphp thephp request
-php php php php php php*php php@paramphp php arrayphp php php$queryphp Queryphp dataphp forphp thephp requestphp php(optionalphp)
-php php php php php php*php php@throwsphp Zendphp_Servicephp_Exception
-php php php php php php*php php@returnphp DOMDocumentphp Parsedphp XMLphp response
-php php php php php php*php/
-php php php php protectedphp functionphp php_makeRequestphp(php$opphp,php php$queryphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$queryphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$queryphp php=php arrayphp_diffphp(php$queryphp,php arrayphp_filterphp(php$queryphp,php php'isphp_nullphp'php)php)php;
-php php php php php php php php php php php php php$queryphp php=php php'php?php'php php.php httpphp_buildphp_queryphp(php$queryphp)php;
-php php php php php php php php php}
+    /**
+     * Sends a request to the REST API service and does initial processing
+     * on the response.
+     *
+     * @param  string $op    Name of the operation for the request
+     * @param  array  $query Query data for the request (optional)
+     * @throws Zend_Service_Exception
+     * @return DOMDocument Parsed XML response
+     */
+    protected function _makeRequest($op, $query = null)
+    {
+        if ($query != null) {
+            $query = array_diff($query, array_filter($query, 'is_null'));
+            $query = '?' . http_build_query($query);
+        }
 
-php php php php php php php php php$thisphp-php>php_httpphp-php>setUriphp(php$thisphp-php>php_baseUriphp php.php php$opphp php.php php'php.dophp'php php.php php$queryphp)php;
-php php php php php php php php php$responsephp php=php php$thisphp-php>php_httpphp-php>requestphp(php'GETphp'php)php;
+        $this->_http->setUri($this->_baseUri . $op . '.do' . $query);
+        $response = $this->_http->request('GET');
 
-php php php php php php php php ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php php php php php php php php php php php php php$docphp php=php newphp DOMDocumentphp(php)php;
-php php php php php php php php php php php php php$docphp-php>loadXMLphp(php$responsephp-php>getBodyphp(php)php)php;
-php php php php php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$docphp)php;
-php php php php php php php php php php php php php$listphp php=php php$xpathphp-php>queryphp(php'php/statusphp/codephp'php)php;
+        if ($response->isSuccessful()) {
+            $doc = new DOMDocument();
+            $doc->loadXML($response->getBody());
+            $xpath = new DOMXPath($doc);
+            $list = $xpath->query('/status/code');
 
-php php php php php php php php php php php php ifphp php(php$listphp-php>lengthphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php$codephp php=php php$listphp-php>itemphp(php0php)php-php>nodeValuephp;
+            if ($list->length > 0) {
+                $code = $list->item(0)->nodeValue;
 
-php php php php php php php php php php php php php php php php ifphp php(php$codephp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$listphp php=php php$xpathphp-php>queryphp(php'php/statusphp/messagephp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$messagephp php=php php$listphp-php>itemphp(php0php)php-php>nodeValuephp;
-php php php php php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Exception
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Exceptionphp(php$messagephp,php php$codephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+                if ($code != 0) {
+                    $list = $xpath->query('/status/message');
+                    $message = $list->item(0)->nodeValue;
+                    /**
+                     * @see Zend_Service_Exception
+                     */
+                    require_once 'Zend/Service/Exception.php';
+                    throw new Zend_Service_Exception($message, $code);
+                }
+            }
 
-php php php php php php php php php php php php returnphp php$docphp;
-php php php php php php php php php}
+            return $doc;
+        }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Exception
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Servicephp_Exceptionphp(php$responsephp-php>getMessagephp(php)php,php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Exception
+         */
+        require_once 'Zend/Service/Exception.php';
+        throw new Zend_Service_Exception($response->getMessage(), $response->getStatus());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp listphp ofphp allphp tagsphp andphp theirphp countsphp,php orderedphp byphp countphp in
-php php php php php php*php decreasingphp order
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$limitphp Limitsphp thephp numberphp ofphp tagsphp returnedphp php(optionalphp)
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/GetTags
-php php php php php php*php php@throwsphp Zendphp_Servicephp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_TagSet
-php php php php php php*php/
-php php php php publicphp functionphp getTagsphp(php$limitphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'limitphp'php php=php>php php$limit
-php php php php php php php php php)php;
+    /**
+     * Returns a list of all tags and their counts, ordered by count in
+     * decreasing order
+     *
+     * @param  int $limit Limits the number of tags returned (optional)
+     * @link   http://www.simpy.com/doc/api/rest/GetTags
+     * @throws Zend_Service_Exception
+     * @return Zend_Service_Simpy_TagSet
+     */
+    public function getTags($limit = null)
+    {
+        $query = array(
+            'limit' => $limit
+        );
 
-php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetTagsphp'php,php php$queryphp)php;
+        $doc = $this->_makeRequest('GetTags', $query);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Simpyphp_TagSet
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/TagSetphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Simpyphp_TagSetphp(php$docphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Simpy_TagSet
+         */
+        require_once 'Zend/Service/Simpy/TagSet.php';
+        return new Zend_Service_Simpy_TagSet($doc);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removesphp aphp tagphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$tagphp Tagphp tophp bephp removed
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/RemoveTag
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp removeTagphp(php$tagphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'tagphp'php php=php>php php$tag
-php php php php php php php php php)php;
+    /**
+     * Removes a tag.
+     *
+     * @param  string $tag Tag to be removed
+     * @link   http://www.simpy.com/doc/api/rest/RemoveTag
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function removeTag($tag)
+    {
+        $query = array(
+            'tag' => $tag
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'RemoveTagphp'php,php php$queryphp)php;
+        $this->_makeRequest('RemoveTag', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renamesphp aphp tagphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$fromTagphp Tagphp tophp bephp renamed
-php php php php php php*php php@paramphp php stringphp php$toTagphp php php Newphp tagphp name
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/RenameTag
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp renameTagphp(php$fromTagphp,php php$toTagphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'fromTagphp'php php=php>php php$fromTagphp,
-php php php php php php php php php php php php php'toTagphp'php php=php>php php$toTag
-php php php php php php php php php)php;
+    /**
+     * Renames a tag.
+     *
+     * @param  string $fromTag Tag to be renamed
+     * @param  string $toTag   New tag name
+     * @link   http://www.simpy.com/doc/api/rest/RenameTag
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function renameTag($fromTag, $toTag)
+    {
+        $query = array(
+            'fromTag' => $fromTag,
+            'toTag' => $toTag
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'RenameTagphp'php,php php$queryphp)php;
+        $this->_makeRequest('RenameTag', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mergesphp twophp tagsphp intophp aphp newphp tagphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$fromTagphp1php Firstphp tagphp tophp mergephp.
-php php php php php php*php php@paramphp php stringphp php$fromTagphp2php Secondphp tagphp tophp mergephp.
-php php php php php php*php php@paramphp php stringphp php$toTagphp php php php Tagphp tophp mergephp thephp twophp tagsphp intophp.
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/MergeTags
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp mergeTagsphp(php$fromTagphp1php,php php$fromTagphp2php,php php$toTagphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'fromTagphp1php'php php=php>php php$fromTagphp1php,
-php php php php php php php php php php php php php'fromTagphp2php'php php=php>php php$fromTagphp2php,
-php php php php php php php php php php php php php'toTagphp'php php=php>php php$toTag
-php php php php php php php php php)php;
+    /**
+     * Merges two tags into a new tag.
+     *
+     * @param  string $fromTag1 First tag to merge.
+     * @param  string $fromTag2 Second tag to merge.
+     * @param  string $toTag    Tag to merge the two tags into.
+     * @link   http://www.simpy.com/doc/api/rest/MergeTags
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function mergeTags($fromTag1, $fromTag2, $toTag)
+    {
+        $query = array(
+            'fromTag1' => $fromTag1,
+            'fromTag2' => $fromTag2,
+            'toTag' => $toTag
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'MergeTagsphp'php,php php$queryphp)php;
+        $this->_makeRequest('MergeTags', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Splitsphp aphp singlephp tagphp intophp twophp separatephp tagsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$tagphp php php php Tagphp tophp split
-php php php php php php*php php@paramphp php stringphp php$toTagphp1php Firstphp tagphp tophp splitphp into
-php php php php php php*php php@paramphp php stringphp php$toTagphp2php Secondphp tagphp tophp splitphp into
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/SplitTag
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp splitTagphp(php$tagphp,php php$toTagphp1php,php php$toTagphp2php)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'tagphp'php php=php>php php$tagphp,
-php php php php php php php php php php php php php'toTagphp1php'php php=php>php php$toTagphp1php,
-php php php php php php php php php php php php php'toTagphp2php'php php=php>php php$toTagphp2
-php php php php php php php php php)php;
+    /**
+     * Splits a single tag into two separate tags.
+     *
+     * @param  string $tag    Tag to split
+     * @param  string $toTag1 First tag to split into
+     * @param  string $toTag2 Second tag to split into
+     * @link   http://www.simpy.com/doc/api/rest/SplitTag
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function splitTag($tag, $toTag1, $toTag2)
+    {
+        $query = array(
+            'tag' => $tag,
+            'toTag1' => $toTag1,
+            'toTag2' => $toTag2
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'SplitTagphp'php,php php$queryphp)php;
+        $this->_makeRequest('SplitTag', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Performsphp aphp queryphp onphp existingphp linksphp andphp returnsphp thephp resultsphp orphp returnsphp all
-php php php php php php*php linksphp ifphp nophp particularphp queryphp isphp specifiedphp php(whichphp shouldphp bephp usedphp sparingly
-php php php php php php*php tophp preventphp overloadingphp Simpyphp serversphp)
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Servicephp_Simpyphp_LinkQueryphp php$qphp Queryphp objectphp tophp usephp php(optionalphp)
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_LinkSet
-php php php php php php*php/
-php php php php publicphp functionphp getLinksphp(Zendphp_Servicephp_Simpyphp_LinkQueryphp php$qphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$qphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'qphp'php php php php php php php php php php php=php>php php$qphp-php>getQueryStringphp(php)php,
-php php php php php php php php php php php php php php php php php'limitphp'php php php php php php php=php>php php$qphp-php>getLimitphp(php)php,
-php php php php php php php php php php php php php php php php php'datephp'php php php php php php php php=php>php php$qphp-php>getDatephp(php)php,
-php php php php php php php php php php php php php php php php php'afterDatephp'php php php=php>php php$qphp-php>getAfterDatephp(php)php,
-php php php php php php php php php php php php php php php php php'beforeDatephp'php php=php>php php$qphp-php>getBeforeDatephp(php)
-php php php php php php php php php php php php php)php;
+    /**
+     * Performs a query on existing links and returns the results or returns all
+     * links if no particular query is specified (which should be used sparingly
+     * to prevent overloading Simpy servers)
+     *
+     * @param  Zend_Service_Simpy_LinkQuery $q Query object to use (optional)
+     * @return Zend_Service_Simpy_LinkSet
+     */
+    public function getLinks(Zend_Service_Simpy_LinkQuery $q = null)
+    {
+        if ($q != null) {
+            $query = array(
+                'q'          => $q->getQueryString(),
+                'limit'      => $q->getLimit(),
+                'date'       => $q->getDate(),
+                'afterDate'  => $q->getAfterDate(),
+                'beforeDate' => $q->getBeforeDate()
+            );
 
-php php php php php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetLinksphp'php,php php$queryphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetLinksphp'php)php;
-php php php php php php php php php}
+            $doc = $this->_makeRequest('GetLinks', $query);
+        } else {
+            $doc = $this->_makeRequest('GetLinks');
+        }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Simpyphp_LinkSet
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/LinkSetphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Simpyphp_LinkSetphp(php$docphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Simpy_LinkSet
+         */
+        require_once 'Zend/Service/Simpy/LinkSet.php';
+        return new Zend_Service_Simpy_LinkSet($doc);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Savesphp aphp givenphp linkphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$titlephp php php php php php php Titlephp ofphp thephp pagephp tophp save
-php php php php php php*php php@paramphp php stringphp php$hrefphp php php php php php php php URLphp ofphp thephp pagephp tophp save
-php php php php php php*php php@paramphp php intphp php php php php$accessTypephp php ACCESSTYPEphp_PUBLICphp orphp ACCESSTYPEphp_PRIVATE
-php php php php php php*php php@paramphp php mixedphp php php$tagsphp php php php php php php php Stringphp containingphp aphp commaphp-separatedphp listphp of
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php tagsphp orphp arrayphp ofphp stringsphp containingphp tags
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(optionalphp)
-php php php php php php*php php@paramphp php stringphp php$urlNicknamephp Alternativephp customphp titlephp php(optionalphp)
-php php php php php php*php php@paramphp php stringphp php$notephp php php php php php php php Freephp textphp notephp php(optionalphp)
-php php php php php php*php php@linkphp php php Zendphp_Servicephp_Simpyphp:php:ACCESSTYPEphp_PUBLIC
-php php php php php php*php php@linkphp php php Zendphp_Servicephp_Simpyphp:php:ACCESSTYPEphp_PRIVATE
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/SaveLink
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp saveLinkphp(php$titlephp,php php$hrefphp,php php$accessTypephp,php php$tagsphp php=php nullphp,php php$urlNicknamephp php=php nullphp,php php$notephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$tagsphp)php)php php{
-php php php php php php php php php php php php php$tagsphp php=php implodephp(php'php,php'php,php php$tagsphp)php;
-php php php php php php php php php}
+    /**
+     * Saves a given link.
+     *
+     * @param  string $title       Title of the page to save
+     * @param  string $href        URL of the page to save
+     * @param  int    $accessType  ACCESSTYPE_PUBLIC or ACCESSTYPE_PRIVATE
+     * @param  mixed  $tags        String containing a comma-separated list of
+     *                             tags or array of strings containing tags
+     *                             (optional)
+     * @param  string $urlNickname Alternative custom title (optional)
+     * @param  string $note        Free text note (optional)
+     * @link   Zend_Service_Simpy::ACCESSTYPE_PUBLIC
+     * @link   Zend_Service_Simpy::ACCESSTYPE_PRIVATE
+     * @link   http://www.simpy.com/doc/api/rest/SaveLink
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function saveLink($title, $href, $accessType, $tags = null, $urlNickname = null, $note = null)
+    {
+        if (is_array($tags)) {
+            $tags = implode(',', $tags);
+        }
 
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'titlephp'php php php php php php php php=php>php php$titlephp,
-php php php php php php php php php php php php php'hrefphp'php php php php php php php php php=php>php php$hrefphp,
-php php php php php php php php php php php php php'accessTypephp'php php php=php>php php$accessTypephp,
-php php php php php php php php php php php php php'tagsphp'php php php php php php php php php=php>php php$tagsphp,
-php php php php php php php php php php php php php'urlNicknamephp'php php=php>php php$urlNicknamephp,
-php php php php php php php php php php php php php'notephp'php php php php php php php php php=php>php php$note
-php php php php php php php php php)php;
+        $query = array(
+            'title'       => $title,
+            'href'        => $href,
+            'accessType'  => $accessType,
+            'tags'        => $tags,
+            'urlNickname' => $urlNickname,
+            'note'        => $note
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'SaveLinkphp'php,php php$queryphp)php;
+        $this->_makeRequest('SaveLink', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletesphp aphp givenphp linkphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hrefphp URLphp ofphp thephp bookmarkphp tophp delete
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/DeleteLink
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp deleteLinkphp(php$hrefphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'hrefphp'php php=php>php php$href
-php php php php php php php php php)php;
+    /**
+     * Deletes a given link.
+     *
+     * @param  string $href URL of the bookmark to delete
+     * @link   http://www.simpy.com/doc/api/rest/DeleteLink
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function deleteLink($href)
+    {
+        $query = array(
+            'href' => $href
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'DeleteLinkphp'php,php php$queryphp)php;
+        $this->_makeRequest('DeleteLink', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp listphp ofphp watchlistsphp andphp theirphp metaphp-dataphp,php includingphp thephp number
-php php php php php php*php ofphp newphp linksphp addedphp tophp eachphp watchlistphp sincephp lastphp loginphp.
-php php php php php php*
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/GetWatchlists
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_WatchlistSet
-php php php php php php*php/
-php php php php publicphp functionphp getWatchlistsphp(php)
-php php php php php{
-php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetWatchlistsphp'php)php;
+    /**
+     * Return a list of watchlists and their meta-data, including the number
+     * of new links added to each watchlist since last login.
+     *
+     * @link   http://www.simpy.com/doc/api/rest/GetWatchlists
+     * @return Zend_Service_Simpy_WatchlistSet
+     */
+    public function getWatchlists()
+    {
+        $doc = $this->_makeRequest('GetWatchlists');
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Simpyphp_WatchlistSet
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/WatchlistSetphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Simpyphp_WatchlistSetphp(php$docphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Simpy_WatchlistSet
+         */
+        require_once 'Zend/Service/Simpy/WatchlistSet.php';
+        return new Zend_Service_Simpy_WatchlistSet($doc);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp metaphp-dataphp forphp aphp givenphp watchlistphp.
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$watchlistIdphp IDphp ofphp thephp watchlistphp tophp retrieve
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/GetWatchlist
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_Watchlist
-php php php php php php*php/
-php php php php publicphp functionphp getWatchlistphp(php$watchlistIdphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'watchlistIdphp'php php=php>php php$watchlistId
-php php php php php php php php php)php;
+    /**
+     * Returns the meta-data for a given watchlist.
+     *
+     * @param  int $watchlistId ID of the watchlist to retrieve
+     * @link   http://www.simpy.com/doc/api/rest/GetWatchlist
+     * @return Zend_Service_Simpy_Watchlist
+     */
+    public function getWatchlist($watchlistId)
+    {
+        $query = array(
+            'watchlistId' => $watchlistId
+        );
 
-php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetWatchlistphp'php,php php$queryphp)php;
+        $doc = $this->_makeRequest('GetWatchlist', $query);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Simpyphp_Watchlist
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/Watchlistphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Simpyphp_Watchlistphp(php$docphp-php>documentElementphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Simpy_Watchlist
+         */
+        require_once 'Zend/Service/Simpy/Watchlist.php';
+        return new Zend_Service_Simpy_Watchlist($doc->documentElement);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp allphp notesphp inphp reversephp chronologicalphp orderphp byphp addphp datephp orphp by
-php php php php php php*php rankphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$qphp php php php php Queryphp stringphp formattedphp usingphp Simpyphp searchphp syntax
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php andphp searchphp fieldsphp php(optionalphp)
-php php php php php php*php php@paramphp php intphp php php php php$limitphp Limitsphp thephp numberphp notesphp returnedphp php(optionalphp)
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/GetNotes
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/simpyphp/FAQphp.dophp#searchSyntax
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/simpyphp/FAQphp.dophp#searchFieldsLinks
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_NoteSet
-php php php php php php*php/
-php php php php publicphp functionphp getNotesphp(php$qphp php=php nullphp,php php$limitphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'qphp'php php php php php php=php>php php$qphp,
-php php php php php php php php php php php php php'limitphp'php php=php>php php$limit
-php php php php php php php php php)php;
+    /**
+     * Returns all notes in reverse chronological order by add date or by
+     * rank.
+     *
+     * @param  string $q     Query string formatted using Simpy search syntax
+     *                       and search fields (optional)
+     * @param  int    $limit Limits the number notes returned (optional)
+     * @link   http://www.simpy.com/doc/api/rest/GetNotes
+     * @link   http://www.simpy.com/simpy/FAQ.do#searchSyntax
+     * @link   http://www.simpy.com/simpy/FAQ.do#searchFieldsLinks
+     * @return Zend_Service_Simpy_NoteSet
+     */
+    public function getNotes($q = null, $limit = null)
+    {
+        $query = array(
+            'q'     => $q,
+            'limit' => $limit
+        );
 
-php php php php php php php php php$docphp php=php php$thisphp-php>php_makeRequestphp(php'GetNotesphp'php,php php$queryphp)php;
+        $doc = $this->_makeRequest('GetNotes', $query);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Simpyphp_NoteSet
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/NoteSetphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Simpyphp_NoteSetphp(php$docphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Simpy_NoteSet
+         */
+        require_once 'Zend/Service/Simpy/NoteSet.php';
+        return new Zend_Service_Simpy_NoteSet($doc);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Savesphp aphp notephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$titlephp php php php php php php Titlephp ofphp thephp note
-php php php php php php*php php@paramphp php mixedphp php php$tagsphp php php php php php php php Stringphp containingphp aphp commaphp-separatedphp listphp of
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php tagsphp orphp arrayphp ofphp stringsphp containingphp tags
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(optionalphp)
-php php php php php php*php php@paramphp php stringphp php$descriptionphp Freephp-textphp notephp php(optionalphp)
-php php php php php php*php php@paramphp php intphp php php php php$noteIdphp php php php php php Uniquephp identifierphp forphp anphp existingphp notephp to
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php updatephp php(optionalphp)
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/SaveNote
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp saveNotephp(php$titlephp,php php$tagsphp php=php nullphp,php php$descriptionphp php=php nullphp,php php$noteIdphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$tagsphp)php)php php{
-php php php php php php php php php php php php php$tagsphp php=php implodephp(php'php,php'php,php php$tagsphp)php;
-php php php php php php php php php}
+    /**
+     * Saves a note.
+     *
+     * @param  string $title       Title of the note
+     * @param  mixed  $tags        String containing a comma-separated list of
+     *                             tags or array of strings containing tags
+     *                             (optional)
+     * @param  string $description Free-text note (optional)
+     * @param  int    $noteId      Unique identifier for an existing note to
+     *                             update (optional)
+     * @link   http://www.simpy.com/doc/api/rest/SaveNote
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function saveNote($title, $tags = null, $description = null, $noteId = null)
+    {
+        if (is_array($tags)) {
+            $tags = implode(',', $tags);
+        }
 
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'titlephp'php php php php php php php php=php>php php$titlephp,
-php php php php php php php php php php php php php'tagsphp'php php php php php php php php php=php>php php$tagsphp,
-php php php php php php php php php php php php php'descriptionphp'php php=php>php php$descriptionphp,
-php php php php php php php php php php php php php'noteIdphp'php php php php php php php=php>php php$noteId
-php php php php php php php php php)php;
+        $query = array(
+            'title'       => $title,
+            'tags'        => $tags,
+            'description' => $description,
+            'noteId'      => $noteId
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'SaveNotephp'php,php php$queryphp)php;
+        $this->_makeRequest('SaveNote', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletesphp aphp givenphp notephp.
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$noteIdphp IDphp ofphp thephp notephp tophp delete
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.simpyphp.comphp/docphp/apiphp/restphp/DeleteNote
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp deleteNotephp(php$noteIdphp)
-php php php php php{
-php php php php php php php php php$queryphp php=php arrayphp(
-php php php php php php php php php php php php php'noteIdphp'php php=php>php php$noteId
-php php php php php php php php php)php;
+    /**
+     * Deletes a given note.
+     *
+     * @param  int $noteId ID of the note to delete
+     * @link   http://www.simpy.com/doc/api/rest/DeleteNote
+     * @return Zend_Service_Simpy Provides a fluent interface
+     */
+    public function deleteNote($noteId)
+    {
+        $query = array(
+            'noteId' => $noteId
+        );
 
-php php php php php php php php php$thisphp-php>php_makeRequestphp(php'DeleteNotephp'php,php php$queryphp)php;
+        $this->_makeRequest('DeleteNote', $query);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php}
+        return $this;
+    }
+}

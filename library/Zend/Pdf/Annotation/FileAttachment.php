@@ -1,101 +1,101 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Annotation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php FileAttachmentphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Annotation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: FileAttachment.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp.phpphp'php;
-
-
-php/php*php*php Zendphp_Pdfphp_Annotationphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Annotationphp.phpphp'php;
-
-php/php*php*
-php php*php Aphp filephp attachmentphp annotationphp containsphp aphp referencephp tophp aphp filephp,
-php php*php whichphp typicallyphp isphp embeddedphp inphp thephp PDFphp filephp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Annotation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Annotationphp_FileAttachmentphp extendsphp Zendphp_Pdfphp_Annotation
-php{
-php php php php php/php*php*
-php php php php php php*php Annotationphp objectphp constructor
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_Elementphp php$annotationDictionaryphp)
-php php php php php{
-php php php php php php php php ifphp php(php$annotationDictionaryphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Annotationphp dictionaryphp resourcephp hasphp tophp bephp aphp dictionaryphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$annotationDictionaryphp-php>Subtypephp php=php=php=php nullphp php php|php|
-php php php php php php php php php php php php php$annotationDictionaryphp-php>Subtypephp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_NAMEphp php php|php|
-php php php php php php php php php php php php php$annotationDictionaryphp-php>Subtypephp-php>valuephp php!php=php php'FileAttachmentphp'php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Subtypephp php=php>php FileAttachmentphp entryphp isphp requiresphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php parentphp:php:php_php_constructphp(php$annotationDictionaryphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Createphp linkphp annotationphp object
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$xphp1
-php php php php php php*php php@paramphp floatphp php$yphp1
-php php php php php php*php php@paramphp floatphp php$xphp2
-php php php php php php*php php@paramphp floatphp php$yphp2
-php php php php php php*php php@paramphp stringphp php$fileSpecification
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Annotationphp_FileAttachment
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createphp(php$xphp1php,php php$yphp1php,php php$xphp2php,php php$yphp2php,php php$fileSpecificationphp)
-php php php php php{
-php php php php php php php php php$annotationDictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-
-php php php php php php php php php$annotationDictionaryphp-php>Typephp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Annotphp'php)php;
-php php php php php php php php php$annotationDictionaryphp-php>Subtypephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FileAttachmentphp'php)php;
-
-php php php php php php php php php$rectanglephp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$xphp1php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$yphp1php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$xphp2php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$yphp2php)php;
-php php php php php php php php php$annotationDictionaryphp-php>Rectphp php=php php$rectanglephp;
-
-php php php php php php php php php$fsDictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php$fsDictionaryphp-php>Typephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Filespecphp'php)php;
-php php php php php php php php php$fsDictionaryphp-php>Fphp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php$fileSpecificationphp)php;
-
-php php php php php php php php php$annotationDictionaryphp-php>FSphp php=php php$fsDictionaryphp;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element.php';
+require_once 'Zend/Pdf/Element/Array.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
+require_once 'Zend/Pdf/Element/String.php';
 
 
-php php php php php php php php returnphp newphp Zendphp_Pdfphp_Annotationphp_FileAttachmentphp(php$annotationDictionaryphp)php;
-php php php php php}
-php}
+/** Zend_Pdf_Annotation */
+require_once 'Zend/Pdf/Annotation.php';
+
+/**
+ * A file attachment annotation contains a reference to a file,
+ * which typically is embedded in the PDF file.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Annotation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Annotation_FileAttachment extends Zend_Pdf_Annotation
+{
+    /**
+     * Annotation object constructor
+     *
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct(Zend_Pdf_Element $annotationDictionary)
+    {
+        if ($annotationDictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Annotation dictionary resource has to be a dictionary.');
+        }
+
+        if ($annotationDictionary->Subtype === null  ||
+            $annotationDictionary->Subtype->getType() != Zend_Pdf_Element::TYPE_NAME  ||
+            $annotationDictionary->Subtype->value != 'FileAttachment') {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Subtype => FileAttachment entry is requires');
+        }
+
+        parent::__construct($annotationDictionary);
+    }
+
+    /**
+     * Create link annotation object
+     *
+     * @param float $x1
+     * @param float $y1
+     * @param float $x2
+     * @param float $y2
+     * @param string $fileSpecification
+     * @return Zend_Pdf_Annotation_FileAttachment
+     */
+    public static function create($x1, $y1, $x2, $y2, $fileSpecification)
+    {
+        $annotationDictionary = new Zend_Pdf_Element_Dictionary();
+
+        $annotationDictionary->Type    = new Zend_Pdf_Element_Name('Annot');
+        $annotationDictionary->Subtype = new Zend_Pdf_Element_Name('FileAttachment');
+
+        $rectangle = new Zend_Pdf_Element_Array();
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($x1);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($y1);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($x2);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($y2);
+        $annotationDictionary->Rect = $rectangle;
+
+        $fsDictionary = new Zend_Pdf_Element_Dictionary();
+        $fsDictionary->Type = new Zend_Pdf_Element_Name('Filespec');
+        $fsDictionary->F    = new Zend_Pdf_Element_String($fileSpecification);
+
+        $annotationDictionary->FS = $fsDictionary;
+
+
+        return new Zend_Pdf_Annotation_FileAttachment($annotationDictionary);
+    }
+}

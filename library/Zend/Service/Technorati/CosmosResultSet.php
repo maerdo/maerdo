@@ -1,176 +1,176 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Technorati
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CosmosResultSetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Technorati
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CosmosResultSet.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Technoratiphp_ResultSet
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/ResultSetphp.phpphp'php;
+/**
+ * @see Zend_Service_Technorati_ResultSet
+ */
+require_once 'Zend/Service/Technorati/ResultSet.php';
 
 
-php/php*php*
-php php*php Representsphp aphp Technoratiphp Cosmosphp queryphp resultphp setphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Technorati
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Technoratiphp_CosmosResultSetphp extendsphp Zendphp_Servicephp_Technoratiphp_ResultSet
-php{
-php php php php php/php*php*
-php php php php php php*php Technoratiphp weblogphp urlphp,php ifphp queriedphp URLphp isphp aphp validphp weblogphp.
-php php php php php php*
-php php php php php php*php php@varphp php php php php Zendphp_Uriphp_Http
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_urlphp;
+/**
+ * Represents a Technorati Cosmos query result set.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Technorati
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Technorati_CosmosResultSet extends Zend_Service_Technorati_ResultSet
+{
+    /**
+     * Technorati weblog url, if queried URL is a valid weblog.
+     *
+     * @var     Zend_Uri_Http
+     * @access  protected
+     */
+    protected $_url;
 
-php php php php php/php*php*
-php php php php php php*php Technoratiphp weblogphp,php ifphp queriedphp URLphp isphp aphp validphp weblogphp.
-php php php php php php*
-php php php php php php*php php@varphp php php php php Zendphp_Servicephp_Technoratiphp_Weblog
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_weblogphp;
+    /**
+     * Technorati weblog, if queried URL is a valid weblog.
+     *
+     * @var     Zend_Service_Technorati_Weblog
+     * @access  protected
+     */
+    protected $_weblog;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp uniquephp blogsphp linkingphp thisphp blog
-php php php php php php*
-php php php php php php*php php@varphp php php php php integer
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_inboundBlogsphp;
+    /**
+     * Number of unique blogs linking this blog
+     *
+     * @var     integer
+     * @access  protected
+     */
+    protected $_inboundBlogs;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp incomingphp linksphp tophp thisphp blog
-php php php php php php*
-php php php php php php*php php@varphp php php php php integer
-php php php php php php*php php@accessphp php protected
-php php php php php php*php/
-php php php php protectedphp php$php_inboundLinksphp;
+    /**
+     * Number of incoming links to this blog
+     *
+     * @var     integer
+     * @access  protected
+     */
+    protected $_inboundLinks;
 
-php php php php php/php*php*
-php php php php php php*php Parsesphp thephp searchphp responsephp andphp retrievephp thephp resultsphp forphp iterationphp.
-php php php php php php*
-php php php php php php*php php@paramphp php php DomDocumentphp php$domphp php php php thephp ReSTphp fragmentphp forphp thisphp object
-php php php php php php*php php@paramphp php php arrayphp php$optionsphp php php php php php queryphp optionsphp asphp associativephp array
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DomDocumentphp php$domphp,php php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$domphp,php php$optionsphp)php;
+    /**
+     * Parses the search response and retrieve the results for iteration.
+     *
+     * @param   DomDocument $dom    the ReST fragment for this object
+     * @param   array $options      query options as associative array
+     */
+    public function __construct(DomDocument $dom, $options = array())
+    {
+        parent::__construct($dom, $options);
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/inboundlinksphp/textphp(php)php'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php$thisphp-php>php_inboundLinksphp php=php php(intphp)php php$resultphp-php>itemphp(php0php)php-php>dataphp;
+        $result = $this->_xpath->query('/tapi/document/result/inboundlinks/text()');
+        if ($result->length == 1) $this->_inboundLinks = (int) $result->item(0)->data;
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/inboundblogsphp/textphp(php)php'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php$thisphp-php>php_inboundBlogsphp php=php php(intphp)php php$resultphp-php>itemphp(php0php)php-php>dataphp;
+        $result = $this->_xpath->query('/tapi/document/result/inboundblogs/text()');
+        if ($result->length == 1) $this->_inboundBlogs = (int) $result->item(0)->data;
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/weblogphp'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Technoratiphp_Weblog
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/Weblogphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_weblogphp php=php newphp Zendphp_Servicephp_Technoratiphp_Weblogphp(php$resultphp-php>itemphp(php0php)php)php;
-php php php php php php php php php}
+        $result = $this->_xpath->query('/tapi/document/result/weblog');
+        if ($result->length == 1) {
+            /**
+             * @see Zend_Service_Technorati_Weblog
+             */
+            require_once 'Zend/Service/Technorati/Weblog.php';
+            $this->_weblog = new Zend_Service_Technorati_Weblog($result->item(0));
+        }
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_xpathphp-php>queryphp(php'php/tapiphp/documentphp/resultphp/urlphp/textphp(php)php'php)php;
-php php php php php php php php ifphp php(php$resultphp-php>lengthphp php=php=php php1php)php php{
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php/php/php fetchedphp URLphp oftenphp doensphp'tphp includephp schema
-php php php php php php php php php php php php php php php php php/php/php andphp thisphp issuephp causesphp thephp followingphp linephp tophp fail
-php php php php php php php php php php php php php php php php php$thisphp-php>php_urlphp php=php Zendphp_Servicephp_Technoratiphp_Utilsphp:php:normalizeUriHttpphp(php$resultphp-php>itemphp(php0php)php-php>dataphp)php;
-php php php php php php php php php php php php php}php catchphp(Zendphp_Servicephp_Technoratiphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>getWeblogphp(php)php instanceofphp Zendphp_Servicephp_Technoratiphp_Weblogphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_urlphp php=php php$thisphp-php>getWeblogphp(php)php-php>getUrlphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $result = $this->_xpath->query('/tapi/document/result/url/text()');
+        if ($result->length == 1) {
+            try {
+                // fetched URL often doens't include schema
+                // and this issue causes the following line to fail
+                $this->_url = Zend_Service_Technorati_Utils::normalizeUriHttp($result->item(0)->data);
+            } catch(Zend_Service_Technorati_Exception $e) {
+                if ($this->getWeblog() instanceof Zend_Service_Technorati_Weblog) {
+                    $this->_url = $this->getWeblog()->getUrl();
+                }
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_totalResultsReturnedphp php php=php php(intphp)php php$thisphp-php>php_xpathphp-php>evaluatephp(php"countphp(php/tapiphp/documentphp/itemphp)php"php)php;
+        $this->_totalResultsReturned  = (int) $this->_xpath->evaluate("count(/tapi/document/item)");
 
-php php php php php php php php php/php/php totalphp numberphp ofphp resultsphp dependsphp onphp queryphp type
-php php php php php php php php php/php/php forphp nowphp checkphp onlyphp getInboundLinksphp(php)php andphp getInboundBlogsphp(php)php value
-php php php php php php php php ifphp php(php(intphp)php php$thisphp-php>getInboundLinksphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_totalResultsAvailablephp php=php php$thisphp-php>getInboundLinksphp(php)php;
-php php php php php php php php php}php elseifphp php(php(intphp)php php$thisphp-php>getInboundBlogsphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_totalResultsAvailablephp php=php php$thisphp-php>getInboundBlogsphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_totalResultsAvailablephp php=php php0php;
-php php php php php php php php php}
-php php php php php}
+        // total number of results depends on query type
+        // for now check only getInboundLinks() and getInboundBlogs() value
+        if ((int) $this->getInboundLinks() > 0) {
+            $this->_totalResultsAvailable = $this->getInboundLinks();
+        } elseif ((int) $this->getInboundBlogs() > 0) {
+            $this->_totalResultsAvailable = $this->getInboundBlogs();
+        } else {
+            $this->_totalResultsAvailable = 0;
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp weblogphp URLphp.
-php php php php php php*
-php php php php php php*php php@returnphp php Zendphp_Uriphp_Http
-php php php php php php*php/
-php php php php publicphp functionphp getUrlphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_urlphp;
-php php php php php}
+    /**
+     * Returns the weblog URL.
+     *
+     * @return  Zend_Uri_Http
+     */
+    public function getUrl() {
+        return $this->_url;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp weblogphp.
-php php php php php php*
-php php php php php php*php php@returnphp php Zendphp_Servicephp_Technoratiphp_Weblog
-php php php php php php*php/
-php php php php publicphp functionphp getWeblogphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_weblogphp;
-php php php php php}
+    /**
+     * Returns the weblog.
+     *
+     * @return  Zend_Service_Technorati_Weblog
+     */
+    public function getWeblog() {
+        return $this->_weblog;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp numberphp ofphp uniquephp blogsphp linkingphp thisphp blogphp.
-php php php php php php*
-php php php php php php*php php@returnphp php integerphp thephp numberphp ofphp inboundphp blogs
-php php php php php php*php/
-php php php php publicphp functionphp getInboundBlogsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_inboundBlogsphp;
-php php php php php}
+    /**
+     * Returns number of unique blogs linking this blog.
+     *
+     * @return  integer the number of inbound blogs
+     */
+    public function getInboundBlogs()
+    {
+        return $this->_inboundBlogs;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp numberphp ofphp incomingphp linksphp tophp thisphp blogphp.
-php php php php php php*
-php php php php php php*php php@returnphp php integerphp thephp numberphp ofphp inboundphp links
-php php php php php php*php/
-php php php php publicphp functionphp getInboundLinksphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_inboundLinksphp;
-php php php php php}
+    /**
+     * Returns number of incoming links to this blog.
+     *
+     * @return  integer the number of inbound links
+     */
+    public function getInboundLinks()
+    {
+        return $this->_inboundLinks;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Implementsphp Zendphp_Servicephp_Technoratiphp_ResultSetphp:php:currentphp(php)php.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_Technoratiphp_CosmosResultphp currentphp result
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Technoratiphp_CosmosResult
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Technoratiphp/CosmosResultphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Servicephp_Technoratiphp_CosmosResultphp(php$thisphp-php>php_resultsphp-php>itemphp(php$thisphp-php>php_currentIndexphp)php)php;
-php php php php php}
-php}
+    /**
+     * Implements Zend_Service_Technorati_ResultSet::current().
+     *
+     * @return Zend_Service_Technorati_CosmosResult current result
+     */
+    public function current()
+    {
+        /**
+         * @see Zend_Service_Technorati_CosmosResult
+         */
+        require_once 'Zend/Service/Technorati/CosmosResult.php';
+        return new Zend_Service_Technorati_CosmosResult($this->_results->item($this->_currentIndex));
+    }
+}

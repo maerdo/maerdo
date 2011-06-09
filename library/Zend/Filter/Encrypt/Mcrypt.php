@@ -1,364 +1,364 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Mcryptphp.phpphp php2php1php2php1php2php php2php0php1php0php-php0php2php-php2php7php php1php7php:php3php3php:php2php7Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Mcrypt.php 21212 2010-02-27 17:33:27Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Encryptphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Encryptphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Encrypt_Interface
+ */
+require_once 'Zend/Filter/Encrypt/Interface.php';
 
-php/php*php*
-php php*php Encryptionphp adapterphp forphp mcrypt
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Encryptphp_Mcryptphp implementsphp Zendphp_Filterphp_Encryptphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Definitionsphp forphp encryption
-php php php php php php*php arrayphp(
-php php php php php php*php php php php php php'keyphp'php php=php>php encryptionphp keyphp string
-php php php php php php*php php php php php php'algorithmphp'php php=php>php algorithmphp tophp use
-php php php php php php*php php php php php php'algorithmphp_directoryphp'php php=php>php directoryphp wherephp tophp findphp thephp algorithm
-php php php php php php*php php php php php php'modephp'php php=php>php encryptionphp modephp tophp use
-php php php php php php*php php php php php php'modedirectoryphp'php php=php>php directoryphp wherephp tophp findphp thephp mode
-php php php php php php*php php)
-php php php php php php*php/
-php php php php protectedphp php$php_encryptionphp php=php arrayphp(
-php php php php php php php php php'keyphp'php php php php php php php php php php php php php php php php php php=php>php php'ZendFrameworkphp'php,
-php php php php php php php php php'algorithmphp'php php php php php php php php php php php php=php>php php'blowfishphp'php,
-php php php php php php php php php'algorithmphp_directoryphp'php php=php>php php'php'php,
-php php php php php php php php php'modephp'php php php php php php php php php php php php php php php php php=php>php php'cbcphp'php,
-php php php php php php php php php'modephp_directoryphp'php php php php php php php=php>php php'php'php,
-php php php php php php php php php'vectorphp'php php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'saltphp'php php php php php php php php php php php php php php php php php=php>php false
-php php php php php)php;
+/**
+ * Encryption adapter for mcrypt
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
+{
+    /**
+     * Definitions for encryption
+     * array(
+     *     'key' => encryption key string
+     *     'algorithm' => algorithm to use
+     *     'algorithm_directory' => directory where to find the algorithm
+     *     'mode' => encryption mode to use
+     *     'modedirectory' => directory where to find the mode
+     * )
+     */
+    protected $_encryption = array(
+        'key'                 => 'ZendFramework',
+        'algorithm'           => 'blowfish',
+        'algorithm_directory' => '',
+        'mode'                => 'cbc',
+        'mode_directory'      => '',
+        'vector'              => null,
+        'salt'                => false
+    );
 
-php php php php php/php*php*
-php php php php php php*php Internalphp compression
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_compressionphp;
+    /**
+     * Internal compression
+     *
+     * @var array
+     */
+    protected $_compression;
 
-php php php php protectedphp staticphp php$php_srandCalledphp php=php falsephp;
+    protected static $_srandCalled = false;
 
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Configphp php$optionsphp Cryptionphp Options
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'mcryptphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thisphp filterphp needsphp thephp mcryptphp extensionphp'php)php;
-php php php php php php php php php}
+    /**
+     * Class constructor
+     *
+     * @param string|array|Zend_Config $options Cryption Options
+     */
+    public function __construct($options)
+    {
+        if (!extension_loaded('mcrypt')) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('This filter needs the mcrypt extension');
+        }
 
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elseifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'keyphp'php php=php>php php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Invalidphp optionsphp argumentphp providedphp tophp filterphp'php)php;
-php php php php php php php php php}
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } elseif (is_string($options)) {
+            $options = array('key' => $options);
+        } elseif (!is_array($options)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Invalid options argument provided to filter');
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'compressionphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setCompressionphp(php$optionsphp[php'compressionphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'compressphp'php]php)php;
-php php php php php php php php php}
+        if (array_key_exists('compression', $options)) {
+            $this->setCompression($options['compression']);
+            unset($options['compress']);
+        }
 
-php php php php php php php php php$thisphp-php>setEncryptionphp(php$optionsphp)php;
-php php php php php}
+        $this->setEncryption($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp encryptionphp options
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getEncryptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_encryptionphp;
-php php php php php}
+    /**
+     * Returns the set encryption options
+     *
+     * @return array
+     */
+    public function getEncryption()
+    {
+        return $this->_encryption;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp newphp encryptionphp options
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Encryptionphp options
-php php php php php php*php php@returnphp Zendphp_Filterphp_Filephp_Encryption
-php php php php php php*php/
-php php php php publicphp functionphp setEncryptionphp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'keyphp'php php=php>php php$optionsphp)php;
-php php php php php php php php php}
+    /**
+     * Sets new encryption options
+     *
+     * @param  string|array $options Encryption options
+     * @return Zend_Filter_File_Encryption
+     */
+    public function setEncryption($options)
+    {
+        if (is_string($options)) {
+            $options = array('key' => $options);
+        }
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Invalidphp optionsphp argumentphp providedphp tophp filterphp'php)php;
-php php php php php php php php php}
+        if (!is_array($options)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Invalid options argument provided to filter');
+        }
 
-php php php php php php php php php$optionsphp php=php php$optionsphp php+php php$thisphp-php>getEncryptionphp(php)php;
-php php php php php php php php php$algorithmsphp php=php mcryptphp_listphp_algorithmsphp(php$optionsphp[php'algorithmphp_directoryphp'php]php)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$optionsphp[php'algorithmphp'php]php,php php$algorithmsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Thephp algorithmphp php'php{php$optionsphp[php'algorithmphp'php]php}php'php isphp notphp supportedphp"php)php;
-php php php php php php php php php}
+        $options = $options + $this->getEncryption();
+        $algorithms = mcrypt_list_algorithms($options['algorithm_directory']);
+        if (!in_array($options['algorithm'], $algorithms)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception("The algorithm '{$options['algorithm']}' is not supported");
+        }
 
-php php php php php php php php php$modesphp php=php mcryptphp_listphp_modesphp(php$optionsphp[php'modephp_directoryphp'php]php)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$optionsphp[php'modephp'php]php,php php$modesphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Thephp modephp php'php{php$optionsphp[php'modephp'php]php}php'php isphp notphp supportedphp"php)php;
-php php php php php php php php php}
+        $modes = mcrypt_list_modes($options['mode_directory']);
+        if (!in_array($options['mode'], $modes)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception("The mode '{$options['mode']}' is not supported");
+        }
 
-php php php php php php php php ifphp php(php!mcryptphp_modulephp_selfphp_testphp(php$optionsphp[php'algorithmphp'php]php,php php$optionsphp[php'algorithmphp_directoryphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thephp givenphp algorithmphp canphp notphp bephp usedphp duephp anphp internalphp mcryptphp problemphp'php)php;
-php php php php php php php php php}
+        if (!mcrypt_module_self_test($options['algorithm'], $options['algorithm_directory'])) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('The given algorithm can not be used due an internal mcrypt problem');
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'vectorphp'php]php)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'vectorphp'php]php php=php nullphp;
-php php php php php php php php php}
+        if (!isset($options['vector'])) {
+            $options['vector'] = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_encryptionphp php=php php$optionsphp;
-php php php php php php php php php$thisphp-php>setVectorphp(php$optionsphp[php'vectorphp'php]php)php;
+        $this->_encryption = $options;
+        $this->setVector($options['vector']);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp vector
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getVectorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_encryptionphp[php'vectorphp'php]php;
-php php php php php}
+    /**
+     * Returns the set vector
+     *
+     * @return string
+     */
+    public function getVector()
+    {
+        return $this->_encryption['vector'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp initializationphp vector
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$vectorphp php(Optionalphp)php Vectorphp tophp set
-php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Mcrypt
-php php php php php php*php/
-php php php php publicphp functionphp setVectorphp(php$vectorphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$cipherphp php=php php$thisphp-php>php_openCipherphp(php)php;
-php php php php php php php php php$sizephp php php php=php mcryptphp_encphp_getphp_ivphp_sizephp(php$cipherphp)php;
-php php php php php php php php ifphp php(emptyphp(php$vectorphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_srandphp(php)php;
-php php php php php php php php php php php php ifphp php(strtoupperphp(substrphp(PHPphp_OSphp,php php0php,php php3php)php)php php=php=php=php php'WINphp'php php&php&php versionphp_comparephp(PHPphp_VERSIONphp,php php'php5php.php3php.php0php'php,php php'<php'php)php)php php{
-php php php php php php php php php php php php php php php php php$methodphp php=php MCRYPTphp_RANDphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php ifphp php(filephp_existsphp(php'php/devphp/urandomphp'php)php php|php|php php(strtoupperphp(substrphp(PHPphp_OSphp,php php0php,php php3php)php)php php=php=php=php php'WINphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$methodphp php=php MCRYPTphp_DEVphp_URANDOMphp;
-php php php php php php php php php php php php php php php php php}php elseifphp php(filephp_existsphp(php'php/devphp/randomphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$methodphp php=php MCRYPTphp_DEVphp_RANDOMphp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$methodphp php=php MCRYPTphp_RANDphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$vectorphp php=php mcryptphp_createphp_ivphp(php$sizephp,php php$methodphp)php;
-php php php php php php php php php}php elsephp ifphp php(strlenphp(php$vectorphp)php php!php=php php$sizephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thephp givenphp vectorphp hasphp aphp wrongphp sizephp forphp thephp setphp algorithmphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets the initialization vector
+     *
+     * @param string $vector (Optional) Vector to set
+     * @return Zend_Filter_Encrypt_Mcrypt
+     */
+    public function setVector($vector = null)
+    {
+        $cipher = $this->_openCipher();
+        $size   = mcrypt_enc_get_iv_size($cipher);
+        if (empty($vector)) {
+            $this->_srand();
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' && version_compare(PHP_VERSION, '5.3.0', '<')) {
+                $method = MCRYPT_RAND;
+            } else {
+                if (file_exists('/dev/urandom') || (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')) {
+                    $method = MCRYPT_DEV_URANDOM;
+                } elseif (file_exists('/dev/random')) {
+                    $method = MCRYPT_DEV_RANDOM;
+                } else {
+                    $method = MCRYPT_RAND;
+                }
+            }
+            $vector = mcrypt_create_iv($size, $method);
+        } else if (strlen($vector) != $size) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('The given vector has a wrong size for the set algorithm');
+        }
 
-php php php php php php php php php$thisphp-php>php_encryptionphp[php'vectorphp'php]php php=php php$vectorphp;
-php php php php php php php php php$thisphp-php>php_closeCipherphp(php$cipherphp)php;
+        $this->_encryption['vector'] = $vector;
+        $this->_closeCipher($cipher);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp compression
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getCompressionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_compressionphp;
-php php php php php}
+    /**
+     * Returns the compression
+     *
+     * @return array
+     */
+    public function getCompression()
+    {
+        return $this->_compression;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp aphp internalphp compressionphp forphp valuesphp tophp encrypt
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$compression
-php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Mcrypt
-php php php php php php*php/
-php php php php publicphp functionphp setCompressionphp(php$compressionphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$thisphp-php>php_compressionphp)php)php php{
-php php php php php php php php php php php php php$compressionphp php=php arrayphp(php'adapterphp'php php=php>php php$compressionphp)php;
-php php php php php php php php php}
+    /**
+     * Sets a internal compression for values to encrypt
+     *
+     * @param string|array $compression
+     * @return Zend_Filter_Encrypt_Mcrypt
+     */
+    public function setCompression($compression)
+    {
+        if (is_string($this->_compression)) {
+            $compression = array('adapter' => $compression);
+        }
 
-php php php php php php php php php$thisphp-php>php_compressionphp php=php php$compressionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_compression = $compression;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Encryptsphp php$valuephp withphp thephp definedphp settings
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$valuephp Thephp contentphp tophp encrypt
-php php php php php php*php php@returnphp stringphp Thephp encryptedphp content
-php php php php php php*php/
-php php php php publicphp functionphp encryptphp(php$valuephp)
-php php php php php{
-php php php php php php php php php/php/php compressphp priorphp tophp encryption
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_compressionphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Compressphp.phpphp'php;
-php php php php php php php php php php php php php$compressphp php=php newphp Zendphp_Filterphp_Compressphp(php$thisphp-php>php_compressionphp)php;
-php php php php php php php php php php php php php$valuephp php php php php=php php$compressphp-php>filterphp(php$valuephp)php;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Encrypts $value with the defined settings
+     *
+     * @param  string $value The content to encrypt
+     * @return string The encrypted content
+     */
+    public function encrypt($value)
+    {
+        // compress prior to encryption
+        if (!empty($this->_compression)) {
+            require_once 'Zend/Filter/Compress.php';
+            $compress = new Zend_Filter_Compress($this->_compression);
+            $value    = $compress->filter($value);
+        }
 
-php php php php php php php php php$cipherphp php php=php php$thisphp-php>php_openCipherphp(php)php;
-php php php php php php php php php$thisphp-php>php_initCipherphp(php$cipherphp)php;
-php php php php php php php php php$encryptedphp php=php mcryptphp_genericphp(php$cipherphp,php php$valuephp)php;
-php php php php php php php php mcryptphp_genericphp_deinitphp(php$cipherphp)php;
-php php php php php php php php php$thisphp-php>php_closeCipherphp(php$cipherphp)php;
+        $cipher  = $this->_openCipher();
+        $this->_initCipher($cipher);
+        $encrypted = mcrypt_generic($cipher, $value);
+        mcrypt_generic_deinit($cipher);
+        $this->_closeCipher($cipher);
 
-php php php php php php php php returnphp php$encryptedphp;
-php php php php php}
+        return $encrypted;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Decryptsphp php$valuephp withphp thephp definedphp settings
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$valuephp Contentphp tophp decrypt
-php php php php php php*php php@returnphp stringphp Thephp decryptedphp content
-php php php php php php*php/
-php php php php publicphp functionphp decryptphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$cipherphp php=php php$thisphp-php>php_openCipherphp(php)php;
-php php php php php php php php php$thisphp-php>php_initCipherphp(php$cipherphp)php;
-php php php php php php php php php$decryptedphp php=php mdecryptphp_genericphp(php$cipherphp,php php$valuephp)php;
-php php php php php php php php mcryptphp_genericphp_deinitphp(php$cipherphp)php;
-php php php php php php php php php$thisphp-php>php_closeCipherphp(php$cipherphp)php;
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Decrypts $value with the defined settings
+     *
+     * @param  string $value Content to decrypt
+     * @return string The decrypted content
+     */
+    public function decrypt($value)
+    {
+        $cipher = $this->_openCipher();
+        $this->_initCipher($cipher);
+        $decrypted = mdecrypt_generic($cipher, $value);
+        mcrypt_generic_deinit($cipher);
+        $this->_closeCipher($cipher);
 
-php php php php php php php php php/php/php decompressphp afterphp decryption
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_compressionphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Decompressphp.phpphp'php;
-php php php php php php php php php php php php php$decompressphp php=php newphp Zendphp_Filterphp_Decompressphp(php$thisphp-php>php_compressionphp)php;
-php php php php php php php php php php php php php$decryptedphp php php=php php$decompressphp-php>filterphp(php$decryptedphp)php;
-php php php php php php php php php}
+        // decompress after decryption
+        if (!empty($this->_compression)) {
+            require_once 'Zend/Filter/Decompress.php';
+            $decompress = new Zend_Filter_Decompress($this->_compression);
+            $decrypted  = $decompress->filter($decrypted);
+        }
 
-php php php php php php php php returnphp php$decryptedphp;
-php php php php php}
+        return $decrypted;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp adapterphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php'Mcryptphp'php;
-php php php php php}
+    /**
+     * Returns the adapter name
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return 'Mcrypt';
+    }
 
-php php php php php/php*php*
-php php php php php php*php Openphp aphp cipher
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Filterphp_Exceptionphp Whenphp thephp cipherphp canphp notphp bephp opened
-php php php php php php*php php@returnphp resourcephp Returnsphp thephp openedphp cipher
-php php php php php php*php/
-php php php php protectedphp functionphp php_openCipherphp(php)
-php php php php php{
-php php php php php php php php php$cipherphp php=php mcryptphp_modulephp_openphp(
-php php php php php php php php php php php php php$thisphp-php>php_encryptionphp[php'algorithmphp'php]php,
-php php php php php php php php php php php php php$thisphp-php>php_encryptionphp[php'algorithmphp_directoryphp'php]php,
-php php php php php php php php php php php php php$thisphp-php>php_encryptionphp[php'modephp'php]php,
-php php php php php php php php php php php php php$thisphp-php>php_encryptionphp[php'modephp_directoryphp'php]php)php;
+    /**
+     * Open a cipher
+     *
+     * @throws Zend_Filter_Exception When the cipher can not be opened
+     * @return resource Returns the opened cipher
+     */
+    protected function _openCipher()
+    {
+        $cipher = mcrypt_module_open(
+            $this->_encryption['algorithm'],
+            $this->_encryption['algorithm_directory'],
+            $this->_encryption['mode'],
+            $this->_encryption['mode_directory']);
 
-php php php php php php php php ifphp php(php$cipherphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Mcryptphp canphp notphp bephp openedphp withphp yourphp settingsphp'php)php;
-php php php php php php php php php}
+        if ($cipher === false) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Mcrypt can not be opened with your settings');
+        }
 
-php php php php php php php php returnphp php$cipherphp;
-php php php php php}
+        return $cipher;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closephp aphp cipher
-php php php php php php*
-php php php php php php*php php@paramphp php resourcephp php$cipherphp Cipherphp tophp close
-php php php php php php*php php@returnphp Zendphp_Filterphp_Encryptphp_Mcrypt
-php php php php php php*php/
-php php php php protectedphp functionphp php_closeCipherphp(php$cipherphp)
-php php php php php{
-php php php php php php php php mcryptphp_modulephp_closephp(php$cipherphp)php;
+    /**
+     * Close a cipher
+     *
+     * @param  resource $cipher Cipher to close
+     * @return Zend_Filter_Encrypt_Mcrypt
+     */
+    protected function _closeCipher($cipher)
+    {
+        mcrypt_module_close($cipher);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initialisesphp thephp cipherphp withphp thephp setphp key
-php php php php php php*
-php php php php php php*php php@paramphp php resourcephp php$cipher
-php php php php php php*php php@throws
-php php php php php php*php php@returnphp resource
-php php php php php php*php/
-php php php php protectedphp functionphp php_initCipherphp(php$cipherphp)
-php php php php php{
-php php php php php php php php php$keyphp php=php php$thisphp-php>php_encryptionphp[php'keyphp'php]php;
+    /**
+     * Initialises the cipher with the set key
+     *
+     * @param  resource $cipher
+     * @throws
+     * @return resource
+     */
+    protected function _initCipher($cipher)
+    {
+        $key = $this->_encryption['key'];
 
-php php php php php php php php php$keysizesphp php=php mcryptphp_encphp_getphp_supportedphp_keyphp_sizesphp(php$cipherphp)php;
-php php php php php php php php ifphp php(emptyphp(php$keysizesphp)php php|php|php php(php$thisphp-php>php_encryptionphp[php'saltphp'php]php php=php=php truephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_srandphp(php)php;
-php php php php php php php php php php php php php$keysizephp php=php mcryptphp_encphp_getphp_keyphp_sizephp(php$cipherphp)php;
-php php php php php php php php php php php php php$keyphp php php php php php=php substrphp(mdphp5php(php$keyphp)php,php php0php,php php$keysizephp)php;
-php php php php php php php php php}php elsephp ifphp php(php!inphp_arrayphp(strlenphp(php$keyphp)php,php php$keysizesphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Thephp givenphp keyphp hasphp aphp wrongphp sizephp forphp thephp setphp algorithmphp'php)php;
-php php php php php php php php php}
+        $keysizes = mcrypt_enc_get_supported_key_sizes($cipher);
+        if (empty($keysizes) || ($this->_encryption['salt'] == true)) {
+            $this->_srand();
+            $keysize = mcrypt_enc_get_key_size($cipher);
+            $key     = substr(md5($key), 0, $keysize);
+        } else if (!in_array(strlen($key), $keysizes)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('The given key has a wrong size for the set algorithm');
+        }
 
-php php php php php php php php php$resultphp php=php mcryptphp_genericphp_initphp(php$cipherphp,php php$keyphp,php php$thisphp-php>php_encryptionphp[php'vectorphp'php]php)php;
-php php php php php php php php ifphp php(php$resultphp <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Mcryptphp couldphp notphp bephp initializephp withphp thephp givenphp settingphp'php)php;
-php php php php php php php php php}
+        $result = mcrypt_generic_init($cipher, $key, $this->_encryption['vector']);
+        if ($result < 0) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Mcrypt could not be initialize with the given setting');
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_srandphp(php)php interception
-php php php php php php*
-php php php php php php*php php@seephp ZFphp-php8php7php4php2
-php php php php php php*php/
-php php php php protectedphp functionphp php_srandphp(php)
-php php php php php{
-php php php php php php php php ifphp php(versionphp_comparephp(PHPphp_VERSIONphp,php php'php5php.php3php.php0php'php,php php'php>php=php'php)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * _srand() interception
+     *
+     * @see ZF-8742
+     */
+    protected function _srand()
+    {
+        if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
+            return;
+        }
 
-php php php php php php php php ifphp php(php!selfphp:php:php$php_srandCalledphp)php php{
-php php php php php php php php php php php php srandphp(php(doublephp)php microtimephp(php)php php*php php1php0php0php0php0php0php0php)php;
-php php php php php php php php php php php php selfphp:php:php$php_srandCalledphp php=php truephp;
-php php php php php php php php php}
-php php php php php}
-php}
+        if (!self::$_srandCalled) {
+            srand((double) microtime() * 1000000);
+            self::$_srandCalled = true;
+        }
+    }
+}

@@ -1,300 +1,300 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Delicious
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php PostListphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Delicious
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: PostList.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Listphp ofphp postsphp retrivedphp fromphp thephp delphp.iciophp.usphp webphp service
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Delicious
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Deliciousphp_PostListphp implementsphp Countablephp,php Iteratorphp,php ArrayAccess
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp arrayphp Arrayphp ofphp Zendphp_Servicephp_Deliciousphp_Post
-php php php php php php*php/
-php php php php protectedphp php$php_postsphp php=php arrayphp(php)php;
+/**
+ * List of posts retrived from the del.icio.us web service
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Delicious
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAccess
+{
+    /**
+     * @var array Array of Zend_Service_Delicious_Post
+     */
+    protected $_posts = array();
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Deliciousphp Servicephp thatphp hasphp downloadedphp thephp postphp list
-php php php php php php*php/
-php php php php protectedphp php$php_servicephp;
+    /**
+     * @var Zend_Service_Delicious Service that has downloaded the post list
+     */
+    protected $_service;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp intphp Iteratorphp key
-php php php php php php*php/
-php php php php protectedphp php$php_iteratorKeyphp php=php php0php;
+    /**
+     * @var int Iterator key
+     */
+    protected $_iteratorKey = 0;
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp php Zendphp_Servicephp_Deliciousphp php$servicephp Servicephp thatphp hasphp downloadedphp thephp post
-php php php php php php*php php@paramphp php DOMNodeListphp|arrayphp php php php php php php$posts
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Servicephp_Deliciousphp php$servicephp,php php$postsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_servicephp php=php php$servicephp;
-php php php php php php php php ifphp php(php$postsphp instanceofphp DOMNodeListphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_constructFromNodeListphp(php$postsphp)php;
-php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$postsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_constructFromArrayphp(php$postsphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * @param  Zend_Service_Delicious $service Service that has downloaded the post
+     * @param  DOMNodeList|array      $posts
+     * @return void
+     */
+    public function __construct(Zend_Service_Delicious $service, $posts = null)
+    {
+        $this->_service = $service;
+        if ($posts instanceof DOMNodeList) {
+            $this->_constructFromNodeList($posts);
+        } else if (is_array($posts)) {
+            $this->_constructFromArray($posts);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Transformsphp DOMNodeListphp tophp arrayphp ofphp posts
-php php php php php php*
-php php php php php php*php php@paramphp php DOMNodeListphp php$nodeList
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_constructFromNodeListphp(DOMNodeListphp php$nodeListphp)
-php php php php php{
-php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$nodeListphp-php>lengthphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php php php$curentNodephp php=php php$nodeListphp-php>itemphp(php$iphp)php;
-php php php php php php php php php php php php ifphp(php$curentNodephp-php>nodeNamephp php=php=php php'postphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_addPostphp(newphp Zendphp_Servicephp_Deliciousphp_Postphp(php$thisphp-php>php_servicephp,php php$curentNodephp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Transforms DOMNodeList to array of posts
+     *
+     * @param  DOMNodeList $nodeList
+     * @return void
+     */
+    private function _constructFromNodeList(DOMNodeList $nodeList)
+    {
+        for ($i = 0; $i < $nodeList->length; $i++) {
+            $curentNode = $nodeList->item($i);
+            if($curentNode->nodeName == 'post') {
+                $this->_addPost(new Zend_Service_Delicious_Post($this->_service, $curentNode));
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Transformsphp thephp Arrayphp tophp arrayphp ofphp posts
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$postList
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_constructFromArrayphp(arrayphp php$postListphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$postListphp asphp php$fphp_postphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_addPostphp(newphp Zendphp_Servicephp_Deliciousphp_SimplePostphp(php$fphp_postphp)php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Transforms the Array to array of posts
+     *
+     * @param  array $postList
+     * @return void
+     */
+    private function _constructFromArray(array $postList)
+    {
+        foreach ($postList as $f_post) {
+            $this->_addPost(new Zend_Service_Delicious_SimplePost($f_post));
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp post
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Servicephp_Deliciousphp_SimplePostphp php$post
-php php php php php php*php php@returnphp Zendphp_Servicephp_Deliciousphp_PostList
-php php php php php php*php/
-php php php php protectedphp functionphp php_addPostphp(Zendphp_Servicephp_Deliciousphp_SimplePostphp php$postphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_postsphp[php]php php=php php$postphp;
+    /**
+     * Add a post
+     *
+     * @param  Zend_Service_Delicious_SimplePost $post
+     * @return Zend_Service_Delicious_PostList
+     */
+    protected function _addPost(Zend_Service_Delicious_SimplePost $post)
+    {
+        $this->_posts[] = $post;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Filterphp listphp byphp listphp ofphp tags
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$tags
-php php php php php php*php php@returnphp Zendphp_Servicephp_Deliciousphp_PostList
-php php php php php php*php/
-php php php php publicphp functionphp withTagsphp(arrayphp php$tagsphp)
-php php php php php{
-php php php php php php php php php$postListphp php=php newphp selfphp(php$thisphp-php>php_servicephp)php;
+    /**
+     * Filter list by list of tags
+     *
+     * @param  array $tags
+     * @return Zend_Service_Delicious_PostList
+     */
+    public function withTags(array $tags)
+    {
+        $postList = new self($this->_service);
 
-php php php php php php php php foreachphp php(php$thisphp-php>php_postsphp asphp php$postphp)php php{
-php php php php php php php php php php php php ifphp php(countphp(arrayphp_diffphp(php$tagsphp,php php$postphp-php>getTagsphp(php)php)php)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$postListphp-php>php_addPostphp(php$postphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($this->_posts as $post) {
+            if (count(array_diff($tags, $post->getTags())) == 0) {
+                $postList->_addPost($post);
+            }
+        }
 
-php php php php php php php php returnphp php$postListphp;
-php php php php php}
+        return $postList;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Filterphp listphp byphp tag
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$tag
-php php php php php php*php php@returnphp Zendphp_Servicephp_Deliciousphp_PostList
-php php php php php php*php/
-php php php php publicphp functionphp withTagphp(php$tagphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>withTagsphp(funcphp_getphp_argsphp(php)php)php;
-php php php php php}
+    /**
+     * Filter list by tag
+     *
+     * @param  string $tag
+     * @return Zend_Service_Delicious_PostList
+     */
+    public function withTag($tag)
+    {
+        return $this->withTags(func_get_args());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Filterphp listphp byphp urlsphp matchingphp aphp regularphp expression
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$regexp
-php php php php php php*php php@returnphp Zendphp_Servicephp_Deliciousphp_PostList
-php php php php php php*php/
-php php php php publicphp functionphp withUrlphp(php$regexpphp)
-php php php php php{
-php php php php php php php php php$postListphp php=php newphp selfphp(php$thisphp-php>php_servicephp)php;
+    /**
+     * Filter list by urls matching a regular expression
+     *
+     * @param  string $regexp
+     * @return Zend_Service_Delicious_PostList
+     */
+    public function withUrl($regexp)
+    {
+        $postList = new self($this->_service);
 
-php php php php php php php php foreachphp php(php$thisphp-php>php_postsphp asphp php$postphp)php php{
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php$regexpphp,php php$postphp-php>getUrlphp(php)php)php)php php{
-php php php php php php php php php php php php php php php php php$postListphp-php>php_addPostphp(php$postphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($this->_posts as $post) {
+            if (preg_match($regexp, $post->getUrl())) {
+                $postList->_addPost($post);
+            }
+        }
 
-php php php php php php php php returnphp php$postListphp;
-php php php php php}
+        return $postList;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp numberphp ofphp posts
-php php php php php php*
-php php php php php php*php Implementphp Countablephp:php:countphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_postsphp)php;
-php php php php php}
+    /**
+     * Return number of posts
+     *
+     * Implement Countable::count()
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_posts);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp element
-php php php php php php*
-php php php php php php*php Implementphp Iteratorphp:php:currentphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_Deliciousphp_SimplePost
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_postsphp[php$thisphp-php>php_iteratorKeyphp]php;
-php php php php php}
+    /**
+     * Return the current element
+     *
+     * Implement Iterator::current()
+     *
+     * @return Zend_Service_Delicious_SimplePost
+     */
+    public function current()
+    {
+        return $this->_posts[$this->_iteratorKey];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp keyphp ofphp thephp currentphp element
-php php php php php php*
-php php php php php php*php Implementphp Iteratorphp:php:keyphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_iteratorKeyphp;
-php php php php php}
+    /**
+     * Return the key of the current element
+     *
+     * Implement Iterator::key()
+     *
+     * @return int
+     */
+    public function key()
+    {
+        return $this->_iteratorKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movephp forwardphp tophp nextphp element
-php php php php php php*
-php php php php php php*php Implementphp Iteratorphp:php:nextphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_iteratorKeyphp php+php=php php1php;
-php php php php php}
+    /**
+     * Move forward to next element
+     *
+     * Implement Iterator::next()
+     *
+     * @return void
+     */
+    public function next()
+    {
+        $this->_iteratorKey += 1;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp element
-php php php php php php*
-php php php php php php*php Implementphp Iteratorphp:php:rewindphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_iteratorKeyphp php=php php0php;
-php php php php php}
+    /**
+     * Rewind the Iterator to the first element
+     *
+     * Implement Iterator::rewind()
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        $this->_iteratorKey = 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp elementphp afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)
-php php php php php php*
-php php php php php php*php Implementphp Iteratorphp:php:validphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php php$numItemsphp php=php php$thisphp-php>countphp(php)php;
+    /**
+     * Check if there is a current element after calls to rewind() or next()
+     *
+     * Implement Iterator::valid()
+     *
+     * @return bool
+     */
+    public function valid()
+    {
+        $numItems = $this->count();
 
-php php php php php php php php ifphp php(php$numItemsphp php>php php0php php&php&php php$thisphp-php>php_iteratorKeyphp <php php$numItemsphp)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php}
+        if ($numItems > 0 && $this->_iteratorKey < $numItems) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp thephp offsetphp exists
-php php php php php php*
-php php php php php php*php Implementphp ArrayAccessphp:php:offsetExistsphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php php intphp php php php php php$offset
-php php php php php php*php php@returnphp php bool
-php php php php php php*php/
-php php php php publicphp functionphp offsetExistsphp(php$offsetphp)
-php php php php php{
-php php php php php php php php returnphp php(php$offsetphp <php php$thisphp-php>countphp(php)php)php;
-php php php php php}
+    /**
+     * Whether the offset exists
+     *
+     * Implement ArrayAccess::offsetExists()
+     *
+     * @param   int     $offset
+     * @return  bool
+     */
+    public function offsetExists($offset)
+    {
+        return ($offset < $this->count());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp valuephp atphp givenphp offset
-php php php php php php*
-php php php php php php*php Implementphp ArrayAccessphp:php:offsetGetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php php intphp php php php php php$offset
-php php php php php php*php php@throwsphp php OutOfBoundsException
-php php php php php php*php php@returnphp php Zendphp_Servicephp_Deliciousphp_SimplePost
-php php php php php php*php/
-php php php php publicphp functionphp offsetGetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>offsetExistsphp(php$offsetphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_postsphp[php$offsetphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php throwphp newphp OutOfBoundsExceptionphp(php'Illegalphp indexphp'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return value at given offset
+     *
+     * Implement ArrayAccess::offsetGet()
+     *
+     * @param   int     $offset
+     * @throws  OutOfBoundsException
+     * @return  Zend_Service_Delicious_SimplePost
+     */
+    public function offsetGet($offset)
+    {
+        if ($this->offsetExists($offset)) {
+            return $this->_posts[$offset];
+        } else {
+            throw new OutOfBoundsException('Illegal index');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Throwsphp exceptionphp becausephp allphp valuesphp arephp readphp-only
-php php php php php php*
-php php php php php php*php Implementphp ArrayAccessphp:php:offsetSetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php php intphp php php php php php$offset
-php php php php php php*php php@paramphp php php stringphp php php$value
-php php php php php php*php php@throwsphp php Zendphp_Servicephp_Deliciousphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp offsetSetphp(php$offsetphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Deliciousphp_Exception
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Deliciousphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Servicephp_Deliciousphp_Exceptionphp(php'Youphp arephp tryingphp tophp setphp readphp-onlyphp propertyphp'php)php;
-php php php php php}
+    /**
+     * Throws exception because all values are read-only
+     *
+     * Implement ArrayAccess::offsetSet()
+     *
+     * @param   int     $offset
+     * @param   string  $value
+     * @throws  Zend_Service_Delicious_Exception
+     */
+    public function offsetSet($offset, $value)
+    {
+        /**
+         * @see Zend_Service_Delicious_Exception
+         */
+        require_once 'Zend/Service/Delicious/Exception.php';
+        throw new Zend_Service_Delicious_Exception('You are trying to set read-only property');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Throwsphp exceptionphp becausephp allphp valuesphp arephp readphp-only
-php php php php php php*
-php php php php php php*php Implementphp ArrayAccessphp:php:offsetUnsetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php php intphp php php php php php$offset
-php php php php php php*php php@throwsphp php Zendphp_Servicephp_Deliciousphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp offsetUnsetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Deliciousphp_Exception
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Deliciousphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Servicephp_Deliciousphp_Exceptionphp(php'Youphp arephp tryingphp tophp unsetphp readphp-onlyphp propertyphp'php)php;
-php php php php php}
-php}
+    /**
+     * Throws exception because all values are read-only
+     *
+     * Implement ArrayAccess::offsetUnset()
+     *
+     * @param   int     $offset
+     * @throws  Zend_Service_Delicious_Exception
+     */
+    public function offsetUnset($offset)
+    {
+        /**
+         * @see Zend_Service_Delicious_Exception
+         */
+        require_once 'Zend/Service/Delicious/Exception.php';
+        throw new Zend_Service_Delicious_Exception('You are trying to unset read-only property');
+    }
+}

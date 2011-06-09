@@ -1,250 +1,250 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Json
-php php*php php@subpackagephp Server
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Responsephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Json
+ * @subpackage Server
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Response.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Json
-php php*php php@subpackagephp Server
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Jsonphp_Serverphp_Response
-php{
-php php php php php/php*php*
-php php php php php php*php Responsephp error
-php php php php php php*php php@varphp nullphp|Zendphp_Jsonphp_Serverphp_Error
-php php php php php php*php/
-php php php php protectedphp php$php_errorphp;
+/**
+ * @category   Zend
+ * @package    Zend_Json
+ * @subpackage Server
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Json_Server_Response
+{
+    /**
+     * Response error
+     * @var null|Zend_Json_Server_Error
+     */
+    protected $_error;
 
-php php php php php/php*php*
-php php php php php php*php Requestphp ID
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_idphp;
+    /**
+     * Request ID
+     * @var mixed
+     */
+    protected $_id;
 
-php php php php php/php*php*
-php php php php php php*php Result
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_resultphp;
+    /**
+     * Result
+     * @var mixed
+     */
+    protected $_result;
 
-php php php php php/php*php*
-php php php php php php*php Servicephp map
-php php php php php php*php php@varphp Zendphp_Jsonphp_Serverphp_Smd
-php php php php php php*php/
-php php php php protectedphp php$php_serviceMapphp;
+    /**
+     * Service map
+     * @var Zend_Json_Server_Smd
+     */
+    protected $_serviceMap;
 
-php php php php php/php*php*
-php php php php php php*php JSONphp-RPCphp version
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_versionphp;
+    /**
+     * JSON-RPC version
+     * @var string
+     */
+    protected $_version;
 
-php php php php php/php*php*
-php php php php php php*php Setphp result
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setResultphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_resultphp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set result
+     *
+     * @param  mixed $value
+     * @return Zend_Json_Server_Response
+     */
+    public function setResult($value)
+    {
+        $this->_result = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp result
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getResultphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_resultphp;
-php php php php php}
+    /**
+     * Get result
+     *
+     * @return mixed
+     */
+    public function getResult()
+    {
+        return $this->_result;
+    }
 
-php php php php php/php/php RPCphp errorphp,php ifphp responsephp resultsphp inphp fault
-php php php php php/php*php*
-php php php php php php*php Setphp resultphp error
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Jsonphp_Serverphp_Errorphp php$error
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setErrorphp(Zendphp_Jsonphp_Serverphp_Errorphp php$errorphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_errorphp php=php php$errorphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    // RPC error, if response results in fault
+    /**
+     * Set result error
+     *
+     * @param  Zend_Json_Server_Error $error
+     * @return Zend_Json_Server_Response
+     */
+    public function setError(Zend_Json_Server_Error $error)
+    {
+        $this->_error = $error;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp responsephp error
-php php php php php php*
-php php php php php php*php php@returnphp nullphp|Zendphp_Jsonphp_Serverphp_Error
-php php php php php php*php/
-php php php php publicphp functionphp getErrorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_errorphp;
-php php php php php}
+    /**
+     * Get response error
+     *
+     * @return null|Zend_Json_Server_Error
+     */
+    public function getError()
+    {
+        return $this->_error;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp thephp responsephp anphp errorphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isErrorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getErrorphp(php)php instanceofphp Zendphp_Jsonphp_Serverphp_Errorphp;
-php php php php php}
+    /**
+     * Is the response an error?
+     *
+     * @return bool
+     */
+    public function isError()
+    {
+        return $this->getError() instanceof Zend_Json_Server_Error;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp requestphp ID
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$name
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setIdphp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_idphp php=php php$namephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set request ID
+     *
+     * @param  mixed $name
+     * @return Zend_Json_Server_Response
+     */
+    public function setId($name)
+    {
+        $this->_id = $name;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp requestphp ID
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_idphp;
-php php php php php}
+    /**
+     * Get request ID
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp JSONphp-RPCphp version
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$version
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setVersionphp(php$versionphp)
-php php php php php{
-php php php php php php php php php$versionphp php=php php(stringphp)php php$versionphp;
-php php php php php php php php ifphp php(php'php2php.php0php'php php=php=php php$versionphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_versionphp php=php php'php2php.php0php'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_versionphp php=php nullphp;
-php php php php php php php php php}
+    /**
+     * Set JSON-RPC version
+     *
+     * @param  string $version
+     * @return Zend_Json_Server_Response
+     */
+    public function setVersion($version)
+    {
+        $version = (string) $version;
+        if ('2.0' == $version) {
+            $this->_version = '2.0';
+        } else {
+            $this->_version = null;
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp JSONphp-RPCphp version
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_versionphp;
-php php php php php}
+    /**
+     * Retrieve JSON-RPC version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_version;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Castphp tophp JSON
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toJsonphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>isErrorphp(php)php)php php{
-php php php php php php php php php php php php php$responsephp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'resultphp'php php=php>php nullphp,
-php php php php php php php php php php php php php php php php php'errorphp'php php php=php>php php$thisphp-php>getErrorphp(php)php-php>toArrayphp(php)php,
-php php php php php php php php php php php php php php php php php'idphp'php php php php php php=php>php php$thisphp-php>getIdphp(php)php,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$responsephp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'resultphp'php php=php>php php$thisphp-php>getResultphp(php)php,
-php php php php php php php php php php php php php php php php php'idphp'php php php php php php=php>php php$thisphp-php>getIdphp(php)php,
-php php php php php php php php php php php php php php php php php'errorphp'php php php=php>php nullphp,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * Cast to JSON
+     *
+     * @return string
+     */
+    public function toJson()
+    {
+        if ($this->isError()) {
+            $response = array(
+                'result' => null,
+                'error'  => $this->getError()->toArray(),
+                'id'     => $this->getId(),
+            );
+        } else {
+            $response = array(
+                'result' => $this->getResult(),
+                'id'     => $this->getId(),
+                'error'  => null,
+            );
+        }
 
-php php php php php php php php ifphp php(nullphp php!php=php=php php(php$versionphp php=php php$thisphp-php>getVersionphp(php)php)php)php php{
-php php php php php php php php php php php php php$responsephp[php'jsonrpcphp'php]php php=php php$versionphp;
-php php php php php php php php php}
+        if (null !== ($version = $this->getVersion())) {
+            $response['jsonrpc'] = $version;
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(php$responsephp)php;
-php php php php php}
+        require_once 'Zend/Json.php';
+        return Zend_Json::encode($response);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp args
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getArgsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_argsphp;
-php php php php php}
+    /**
+     * Retrieve args
+     *
+     * @return mixed
+     */
+    public function getArgs()
+    {
+        return $this->_args;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp args
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$args
-php php php php php php*php php@returnphp self
-php php php php php php*php/
-php php php php publicphp functionphp setArgsphp(php$argsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_argsphp php=php php$argsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set args
+     *
+     * @param mixed $args
+     * @return self
+     */
+    public function setArgs($args)
+    {
+        $this->_args = $args;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp servicephp mapphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Jsonphp_Serverphp_Smdphp php$serviceMap
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setServiceMapphp(php$serviceMapphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_serviceMapphp php=php php$serviceMapphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set service map object
+     *
+     * @param  Zend_Json_Server_Smd $serviceMap
+     * @return Zend_Json_Server_Response
+     */
+    public function setServiceMap($serviceMap)
+    {
+        $this->_serviceMap = $serviceMap;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp servicephp map
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Jsonphp_Serverphp_Smdphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getServiceMapphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_serviceMapphp;
-php php php php php}
+    /**
+     * Retrieve service map
+     *
+     * @return Zend_Json_Server_Smd|null
+     */
+    public function getServiceMap()
+    {
+        return $this->_serviceMap;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Castphp tophp stringphp php(JSONphp)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>toJsonphp(php)php;
-php php php php php}
-php}
+    /**
+     * Cast to string (JSON)
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toJson();
+    }
+}
 

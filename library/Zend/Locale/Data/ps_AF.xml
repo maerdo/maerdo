@@ -1,9 +1,9 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php7php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php9php php$php"php/php>
-php	php	php<languagephp typephp=php"psphp"php/php>
-php	php	php<territoryphp typephp=php"AFphp"php/php>
-php	<php/identityphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.47 $"/>
+		<generation date="$Date: 2009/05/05 23:06:39 $"/>
+		<language type="ps"/>
+		<territory type="AF"/>
+	</identity>
+</ldml>

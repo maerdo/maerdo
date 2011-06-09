@@ -1,279 +1,279 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profile
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile
+ */
+require_once 'Zend/Tool/Project/Profile.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Providerphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Provider_Abstract
+ */
+require_once 'Zend/Tool/Framework/Provider/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Repository
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Repositoryphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Context_Repository
+ */
+require_once 'Zend/Tool/Project/Context/Repository.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xml
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/FileParserphp/Xmlphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_FileParser_Xml
+ */
+require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Registry
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Registry
+ */
+require_once 'Zend/Tool/Framework/Registry.php';
 
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Initializablephp.phpphp'php;
+require_once 'Zend/Tool/Framework/Provider/Initializable.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php php php extendsphp Zendphp_Toolphp_Frameworkphp_Providerphp_Abstract
-php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Providerphp_Initializable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Tool_Project_Provider_Abstract
+    extends Zend_Tool_Framework_Provider_Abstract
+    implements Zend_Tool_Framework_Provider_Initializable
+{
 
-php php php php constphp NOphp_PROFILEphp_THROWphp_EXCEPTIONphp php=php truephp;
-php php php php constphp NOphp_PROFILEphp_RETURNphp_FALSEphp php php php php=php falsephp;
+    const NO_PROFILE_THROW_EXCEPTION = true;
+    const NO_PROFILE_RETURN_FALSE    = false;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_isInitializedphp php=php falsephp;
+    /**
+     * @var bool
+     */
+    protected static $_isInitialized = false;
 
-php php php php protectedphp php$php_projectPathphp php=php nullphp;
+    protected $_projectPath = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Toolphp_Projectphp_Profile
-php php php php php php*php/
-php php php php protectedphp php$php_loadedProfilephp php=php nullphp;
+    /**
+     * @var Zend_Tool_Project_Profile
+     */
+    protected $_loadedProfile = null;
 
-php php php php publicphp functionphp initializephp(php)
-php php php php php{
-php php php php php php php php php/php/php initializephp thephp ZFphp Contextsphp php(onlyphp oncephp perphp phpphp requestphp)
-php php php php php php php php ifphp php(php!selfphp:php:php$php_isInitializedphp)php php{
+    public function initialize()
+    {
+        // initialize the ZF Contexts (only once per php request)
+        if (!self::$_isInitialized) {
 
-php php php php php php php php php php php php php/php/php loadphp allphp basephp contextsphp ONCE
-php php php php php php php php php php php php php$contextRegistryphp php=php Zendphp_Toolphp_Projectphp_Contextphp_Repositoryphp:php:getInstancephp(php)php;
-php php php php php php php php php php php php php$contextRegistryphp-php>addContextsFromDirectoryphp(
-php php php php php php php php php php php php php php php php dirnamephp(dirnamephp(php_php_FILEphp_php_php)php)php php.php php'php/Contextphp/Zfphp/php'php,php php'Zendphp_Toolphp_Projectphp_Contextphp_Zfphp_php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$contextRegistryphp-php>addContextsFromDirectoryphp(
-php php php php php php php php php php php php php php php php dirnamephp(dirnamephp(php_php_FILEphp_php_php)php)php php.php php'php/Contextphp/Filesystemphp/php'php,php php'Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_php'
-php php php php php php php php php php php php php)php;
+            // load all base contexts ONCE
+            $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
+            $contextRegistry->addContextsFromDirectory(
+                dirname(dirname(__FILE__)) . '/Context/Zf/', 'Zend_Tool_Project_Context_Zf_'
+            );
+            $contextRegistry->addContextsFromDirectory(
+                dirname(dirname(__FILE__)) . '/Context/Filesystem/', 'Zend_Tool_Project_Context_Filesystem_'
+            );
 
-php php php php php php php php php php php php php/php/php determinephp ifphp therephp arephp projectphp specficphp providersphp ONCE
-php php php php php php php php php php php php php$profilePathphp php=php php$thisphp-php>php_findProfileDirectoryphp(php)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_hasProjectProviderDirectoryphp(php$profilePathphp php.php DIRECTORYphp_SEPARATORphp php.php php'php.zfprojectphp.xmlphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$profilephp php=php php$thisphp-php>php_loadProfilephp(php)php;
-php php php php php php php php php php php php php php php php php/php/php projectphp providersphp directoryphp resource
-php php php php php php php php php php php php php php php php php$ppdphp php=php php$profilephp-php>searchphp(php'ProjectProvidersDirectoryphp'php)php;
-php php php php php php php php php php php php php php php php php$ppdphp-php>loadProvidersphp(php$thisphp-php>php_registryphp)php;
-php php php php php php php php php php php php php}
+            // determine if there are project specfic providers ONCE
+            $profilePath = $this->_findProfileDirectory();
+            if ($this->_hasProjectProviderDirectory($profilePath . DIRECTORY_SEPARATOR . '.zfproject.xml')) {
+                $profile = $this->_loadProfile();
+                // project providers directory resource
+                $ppd = $profile->search('ProjectProvidersDirectory');
+                $ppd->loadProviders($this->_registry);
+            }
 
-php php php php php php php php php php php php selfphp:php:php$php_isInitializedphp php=php truephp;
-php php php php php php php php php}
+            self::$_isInitialized = true;
+        }
 
-php php php php php php php php php/php/php loadphp upphp thephp extendingphp providersphp requiredphp contextphp classes
-php php php php php php php php ifphp php(php$contextClassesphp php=php php$thisphp-php>getContextClassesphp(php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadContextClassesIntoRegistryphp(php$contextClassesphp)php;
-php php php php php php php php php}
+        // load up the extending providers required context classes
+        if ($contextClasses = $this->getContextClasses()) {
+            $this->_loadContextClassesIntoRegistry($contextClasses);
+        }
 
-php php php php php}
+    }
 
-php php php php publicphp functionphp getContextClassesphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    public function getContextClasses()
+    {
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_getProjectphp isphp designedphp tophp findphp ifphp therephp isphp projectphp filephp inphp thephp contextphp ofphp where
-php php php php php php*php thephp clientphp hasphp beenphp calledphp fromphp.php.php php php Thephp searchphp orderphp isphp asphp followsphp.php.
-php php php php php php*php php php php php-php traversingphp downwardsphp fromphp php(PWDphp)php php-php currentphp workingphp directory
-php php php php php php*php php php php php-php ifphp anphp enpointphp variablephp hasphp beenphp registeredphp inphp tehphp clientphp registryphp php-php keyphp=workingDirectory
-php php php php php php*php php php php php-php ifphp anphp ENVphp variablephp withphp thephp keyphp ZFPROJECTphp_PATHphp isphp found
-php php php php php php*
-php php php php php php*php php@paramphp php$loadProfileFlagphp boolphp Whetherphp orphp notphp tophp throwphp anphp exceptionphp whenphp nophp profilephp isphp found
-php php php php php php*php php@paramphp php$projectDirectoryphp stringphp Thephp projectphp directoryphp tophp usephp tophp search
-php php php php php php*php php@paramphp php$searchParentDirectoriesphp boolphp Whetherphp orphp notphp tophp searchphp upperphp levelphp direcotries
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profile
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadProfilephp(php$loadProfileFlagphp php=php selfphp:php:NOphp_PROFILEphp_THROWphp_EXCEPTIONphp,php php$projectDirectoryphp php=php nullphp,php php$searchParentDirectoriesphp php=php truephp)
-php php php php php{
-php php php php php php php php php$foundPathphp php=php php$thisphp-php>php_findProfileDirectoryphp(php$projectDirectoryphp,php php$searchParentDirectoriesphp)php;
+    /**
+     * _getProject is designed to find if there is project file in the context of where
+     * the client has been called from..   The search order is as follows..
+     *    - traversing downwards from (PWD) - current working directory
+     *    - if an enpoint variable has been registered in teh client registry - key=workingDirectory
+     *    - if an ENV variable with the key ZFPROJECT_PATH is found
+     *
+     * @param $loadProfileFlag bool Whether or not to throw an exception when no profile is found
+     * @param $projectDirectory string The project directory to use to search
+     * @param $searchParentDirectories bool Whether or not to search upper level direcotries
+     * @return Zend_Tool_Project_Profile
+     */
+    protected function _loadProfile($loadProfileFlag = self::NO_PROFILE_THROW_EXCEPTION, $projectDirectory = null, $searchParentDirectories = true)
+    {
+        $foundPath = $this->_findProfileDirectory($projectDirectory, $searchParentDirectories);
 
-php php php php php php php php ifphp php(php$foundPathphp php=php=php falsephp)php php{
-php php php php php php php php php php php php ifphp php(php$loadProfileFlagphp php=php=php selfphp:php:NOphp_PROFILEphp_THROWphp_EXCEPTIONphp)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Aphp projectphp profilephp wasphp notphp foundphp.php'php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($foundPath == false) {
+            if ($loadProfileFlag == self::NO_PROFILE_THROW_EXCEPTION) {
+                throw new Zend_Tool_Project_Provider_Exception('A project profile was not found.');
+            } else {
+                return false;
+            }
+        }
 
-php php php php php php php php php$profilephp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp(php)php;
-php php php php php php php php php$profilephp-php>setAttributephp(php'projectDirectoryphp'php,php php$foundPathphp)php;
-php php php php php php php php php$profilephp-php>loadFromFilephp(php)php;
-php php php php php php php php php$thisphp-php>php_loadedProfilephp php=php php$profilephp;
-php php php php php php php php returnphp php$profilephp;
-php php php php php}
+        $profile = new Zend_Tool_Project_Profile();
+        $profile->setAttribute('projectDirectory', $foundPath);
+        $profile->loadFromFile();
+        $this->_loadedProfile = $profile;
+        return $profile;
+    }
 
-php php php php protectedphp functionphp php_findProfileDirectoryphp(php$projectDirectoryphp php=php nullphp,php php$searchParentDirectoriesphp php=php truephp)
-php php php php php{
-php php php php php php php php php/php/php usephp thephp cwdphp ifphp nophp directoryphp wasphp provided
-php php php php php php php php ifphp php(php$projectDirectoryphp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$projectDirectoryphp php=php getcwdphp(php)php;
-php php php php php php php php php}php elseifphp php(realpathphp(php$projectDirectoryphp)php php=php=php falsephp)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Thephp php$projectDirectoryphp suppliedphp doesphp notphp existphp.php'php)php;
-php php php php php php php php php}
+    protected function _findProfileDirectory($projectDirectory = null, $searchParentDirectories = true)
+    {
+        // use the cwd if no directory was provided
+        if ($projectDirectory == null) {
+            $projectDirectory = getcwd();
+        } elseif (realpath($projectDirectory) == false) {
+            throw new Zend_Tool_Project_Provider_Exception('The $projectDirectory supplied does not exist.');
+        }
 
-php php php php php php php php php$profilephp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp(php)php;
+        $profile = new Zend_Tool_Project_Profile();
 
-php php php php php php php php php$parentDirectoriesArrayphp php=php explodephp(DIRECTORYphp_SEPARATORphp,php ltrimphp(php$projectDirectoryphp,php DIRECTORYphp_SEPARATORphp)php)php;
-php php php php php php php php whilephp php(php$parentDirectoriesArrayphp)php php{
-php php php php php php php php php php php php php$projectDirectoryAssembledphp php=php implodephp(DIRECTORYphp_SEPARATORphp,php php$parentDirectoriesArrayphp)php;
+        $parentDirectoriesArray = explode(DIRECTORY_SEPARATOR, ltrim($projectDirectory, DIRECTORY_SEPARATOR));
+        while ($parentDirectoriesArray) {
+            $projectDirectoryAssembled = implode(DIRECTORY_SEPARATOR, $parentDirectoriesArray);
 
-php php php php php php php php php php php php ifphp php(DIRECTORYphp_SEPARATORphp php!php=php=php php"php\php\php"php)php php{
-php php php php php php php php php php php php php php php php php$projectDirectoryAssembledphp php=php DIRECTORYphp_SEPARATORphp php.php php$projectDirectoryAssembledphp;
-php php php php php php php php php php php php php}
+            if (DIRECTORY_SEPARATOR !== "\\") {
+                $projectDirectoryAssembled = DIRECTORY_SEPARATOR . $projectDirectoryAssembled;
+            }
 
-php php php php php php php php php php php php php$profilephp-php>setAttributephp(php'projectDirectoryphp'php,php php$projectDirectoryAssembledphp)php;
-php php php php php php php php php php php php ifphp php(php$profilephp-php>isLoadableFromFilephp(php)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$profilephp)php;
-php php php php php php php php php php php php php php php php returnphp php$projectDirectoryAssembledphp;
-php php php php php php php php php php php php php}
+            $profile->setAttribute('projectDirectory', $projectDirectoryAssembled);
+            if ($profile->isLoadableFromFile()) {
+                unset($profile);
+                return $projectDirectoryAssembled;
+            }
 
-php php php php php php php php php php php php php/php/php breakphp afterphp firstphp runphp ifphp wephp arephp notphp tophp checkphp upperphp directories
-php php php php php php php php php php php php ifphp php(php$searchParentDirectoriesphp php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
+            // break after first run if we are not to check upper directories
+            if ($searchParentDirectories == false) {
+                break;
+            }
 
-php php php php php php php php php php php php arrayphp_popphp(php$parentDirectoriesArrayphp)php;
-php php php php php php php php php}
+            array_pop($parentDirectoriesArray);
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp thephp projectphp profilephp fromphp thephp currentphp workingphp directoryphp,php ifphp notphp throwphp exception
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profile
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadProfileRequiredphp(php)
-php php php php php{
-php php php php php php php php php$profilephp php=php php$thisphp-php>php_loadProfilephp(php)php;
-php php php php php php php php ifphp php(php$profilephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Aphp projectphp profilephp wasphp notphp foundphp inphp thephp currentphp workingphp directoryphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$profilephp;
-php php php php php}
+    /**
+     * Load the project profile from the current working directory, if not throw exception
+     *
+     * @return Zend_Tool_Project_Profile
+     */
+    protected function _loadProfileRequired()
+    {
+        $profile = $this->_loadProfile();
+        if ($profile === false) {
+            require_once 'Zend/Tool/Project/Provider/Exception.php';
+            throw new Zend_Tool_Project_Provider_Exception('A project profile was not found in the current working directory.');
+        }
+        return $profile;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentlyphp loadedphp profile
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profile
-php php php php php php*php/
-php php php php protectedphp functionphp php_getProfilephp(php$loadProfileFlagphp php=php selfphp:php:NOphp_PROFILEphp_THROWphp_EXCEPTIONphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_loadedProfilephp)php php{
-php php php php php php php php php php php php ifphp php(php(php$thisphp-php>php_loadProfilephp(php$loadProfileFlagphp)php php=php=php=php falsephp)php php&php&php php(php$loadProfileFlagphp php=php=php=php selfphp:php:NOphp_PROFILEphp_RETURNphp_FALSEphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Return the currently loaded profile
+     *
+     * @return Zend_Tool_Project_Profile
+     */
+    protected function _getProfile($loadProfileFlag = self::NO_PROFILE_THROW_EXCEPTION)
+    {
+        if (!$this->_loadedProfile) {
+            if (($this->_loadProfile($loadProfileFlag) === false) && ($loadProfileFlag === self::NO_PROFILE_RETURN_FALSE)) {
+                return false;
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_loadedProfilephp;
-php php php php php}
+        return $this->_loadedProfile;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_storeProfilephp(php)
-php php php php php php*
-php php php php php php*php Thisphp methodphp willphp storephp thephp profilephp intophp itsphp properphp location
-php php php php php php*
-php php php php php php*php/
-php php php php protectedphp functionphp php_storeProfilephp(php)
-php php php php php{
-php php php php php php php php php$projectProfileFilephp php=php php$thisphp-php>php_loadedProfilephp-php>searchphp(php'ProjectProfileFilephp'php)php;
+    /**
+     * _storeProfile()
+     *
+     * This method will store the profile into its proper location
+     *
+     */
+    protected function _storeProfile()
+    {
+        $projectProfileFile = $this->_loadedProfile->search('ProjectProfileFile');
 
-php php php php php php php php php$namephp php=php php$projectProfileFilephp-php>getContextphp(php)php-php>getPathphp(php)php;
+        $name = $projectProfileFile->getContext()->getPath();
 
-php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Updatingphp projectphp profilephp php\php'php'php php.php php$namephp php.php php'php\php'php'php)php;
+        $this->_registry->getResponse()->appendContent('Updating project profile \'' . $name . '\'');
 
-php php php php php php php php php$projectProfileFilephp-php>getContextphp(php)php-php>savephp(php)php;
-php php php php php}
+        $projectProfileFile->getContext()->save();
+    }
 
-php php php php protectedphp functionphp php_getContentForContextphp(Zendphp_Toolphp_Projectphp_Contextphp_Interfacephp php$contextphp,php php$methodNamephp,php php$parametersphp)
-php php php php php{
-php php php php php php php php php$storagephp php=php php$thisphp-php>php_registryphp-php>getStoragephp(php)php;
-php php php php php php php php ifphp php(php!php$storagephp-php>isEnabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    protected function _getContentForContext(Zend_Tool_Project_Context_Interface $context, $methodName, $parameters)
+    {
+        $storage = $this->_registry->getStorage();
+        if (!$storage->isEnabled()) {
+            return false;
+        }
 
-php php php php php php php php ifphp php(php!classphp_existsphp(php'Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Contentphp/Enginephp.phpphp'php;
-php php php php php php php php php}
+        if (!class_exists('Zend_Tool_Project_Context_Content_Engine')) {
+            require_once 'Zend/Tool/Project/Context/Content/Engine.php';
+        }
 
-php php php php php php php php php$enginephp php=php newphp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp(php$storagephp)php;
-php php php php php php php php returnphp php$enginephp-php>getContentphp(php$contextphp,php php$methodNamephp,php php$parametersphp)php;
-php php php php php}
+        $engine = new Zend_Tool_Project_Context_Content_Engine($storage);
+        return $engine->getContent($context, $methodName, $parameters);
+    }
 
-php php php php protectedphp functionphp php_hasProjectProviderDirectoryphp(php$pathToProfileFilephp)
-php php php php php{
-php php php php php php php php php/php/php dophp somephp staticphp analysisphp ofphp thephp filephp sophp thatphp wephp canphp determinphp whetherphp orphp notphp tophp incure
-php php php php php php php php php/php/php thephp costphp ofphp loadingphp thephp profilephp beforephp thephp systemphp isphp fullyphp bootstrapped
-php php php php php php php php ifphp php(php!filephp_existsphp(php$pathToProfileFilephp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    protected function _hasProjectProviderDirectory($pathToProfileFile)
+    {
+        // do some static analysis of the file so that we can determin whether or not to incure
+        // the cost of loading the profile before the system is fully bootstrapped
+        if (!file_exists($pathToProfileFile)) {
+            return false;
+        }
 
-php php php php php php php php php$contentsphp php=php filephp_getphp_contentsphp(php$pathToProfileFilephp)php;
-php php php php php php php php ifphp php(strstrphp(php$contentsphp,php php'php<projectProvidersDirectoryphp'php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        $contents = file_get_contents($pathToProfileFile);
+        if (strstr($contents, '<projectProvidersDirectory') === false) {
+            return false;
+        }
 
-php php php php php php php php ifphp php(strstrphp(php$contentsphp,php php'php<projectProvidersDirectoryphp enabledphp=php"falsephp"php'php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (strstr($contents, '<projectProvidersDirectory enabled="false"')) {
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_loadContextClassesIntoRegistryphp(php)php php-php Thisphp isphp calledphp byphp thephp constructor
-php php php php php php*php sophp thatphp childphp providersphp canphp providephp aphp listphp ofphp contextsphp tophp loadphp intophp the
-php php php php php php*php contextphp repository
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$contextClasses
-php php php php php php*php/
-php php php php privatephp functionphp php_loadContextClassesIntoRegistryphp(php$contextClassesphp)
-php php php php php{
-php php php php php php php php php$registryphp php=php Zendphp_Toolphp_Projectphp_Contextphp_Repositoryphp:php:getInstancephp(php)php;
+    /**
+     * _loadContextClassesIntoRegistry() - This is called by the constructor
+     * so that child providers can provide a list of contexts to load into the
+     * context repository
+     *
+     * @param array $contextClasses
+     */
+    private function _loadContextClassesIntoRegistry($contextClasses)
+    {
+        $registry = Zend_Tool_Project_Context_Repository::getInstance();
 
-php php php php php php php php foreachphp php(php$contextClassesphp asphp php$contextClassphp)php php{
-php php php php php php php php php php php php php$registryphp-php>addContextClassphp(php$contextClassphp)php;
-php php php php php php php php php}
-php php php php php}
-php}
+        foreach ($contextClasses as $contextClass) {
+            $registry->addContextClass($contextClass);
+        }
+    }
+}

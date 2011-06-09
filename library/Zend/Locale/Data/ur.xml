@@ -1,1020 +1,1020 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php6php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php4php:php1php5php:php3php3php php$php"php/php>
-php	php	php<languagephp typephp=php"urphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"afphp"php>phpاphpيphpفphpرphpيphpکphpاphpنphpز<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>phpاphpمphpہphpاphpرphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>phpعphpرphpبphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>phpآphpسphpاphpمphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>phpآphpزphpرphpبphpاphpئphpیphpجphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>phpبphpيphpلphpاphpرphpوphpسphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>phpبphpلphpغphpاphpرphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>phpبphpِphpہphpاphpرphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>phpبphpنphpگphpاphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>phpبphpرphpِphpیphpٹphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>phpبphpوphpسphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>phpکphpاphpٹphpاphpلphpاphpنphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>phpچphpيphpک<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>phpوphpيphpلphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>phpڈphpيphpنphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>phpجphpرphpمphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>phpيphpوphpنphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>phpاphpنphpگphpرphpيphpزphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_GBphp"php>phpبphpرphpطphpاphpنphpوphpیphp phpاphpنphpگphpرphpیphpزphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_USphp"php>phpاphpمphpرphpیphpکphpہphp phpکphpیphp phpاphpنphpگphpرphpیphpزphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>phpاphpيphpسphpپphpرphpاphpنphpٹphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>phpہphpسphpپphpاphpنphpوphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>phpاphpسphpٹphpوphpنphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>phpبphpاphpسphpکphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>phpفphpاphpرphpسphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>phpفphpنphpّphpنphpِphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>phpٹphpيphpگphpاphpلphpاphpگphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>phpفphpیphpرphpوphpئphpیphpز<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>phpفphpرphpاphpنphpسphpيphpسphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>phpفphpرphpيphpژphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>phpآphpئphpيphpرphpِphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>phpسphpکphpاphpٹphp phpگphpيphpلphpِphpک<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>phpگphpاphpلphpيphpشphpيphpاphpئphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>phpگphpُphpاphpرphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>phpگphpجphpرphpاphpتphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>phpعphpبphpرphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>phpہphpنphpدphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>phpکphpرphpاphpتphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>phpہphpنphpگphpیphpرphpیphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>phpاphpرphpمphpیphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>phpاphpنphpٹphpرphpلphpنphpگphpوphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>phpاphpنphpڈphpوphpنphpيphpثphpيphpاphpئphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>phpبphpرphpفphpسphpتphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>phpاphpطphpاphpلphpوphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>phpجphpاphpپphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>phpجphpاphpوphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>phpجphpاphpرphpجphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>phpکphpمphpبphpوphpڈphpیphpَphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>phpکphpنphpّphpاphpڈphpا<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>phpکphpوphpرphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>phpكphpرphpدphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>phpکphpرphpغphpیphpزphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>phpلphpاphpطphpيphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>phpلphpِphpنphpگphpَphpلphpا<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>phpلphpاphpؤphpشphpِphpیphpَphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>phpلphpتphpھphpُphpوphpاphpیphpنphpیphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>phpلphpيphpٹphpوphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>phpمphpقphpدphpوphpنphpيphpاphpئphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>phpمphpاphpلphpاphpيphpاphpلphpم<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>phpمphpنphpگphpؤphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>phpمphpرphpاphpٹphpهphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>phpمphpاphpلphpاphpئphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>phpمphpاphpلphpٹphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>phpنphpيphpپphpاphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>phpڈphpچ<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>phpنphpوphpرphpوphpیphpجphpیphpنphpیphp php(phpنphpیphpنphpوphpرphpسphpکphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>phpنphpاphpرphpوphpيphpجphpيphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>phpآphpکphpيphpٹphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>phpاphpوphpرphpِphpیphpا<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>phpپphpنphpجphpاphpبphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>phpپphpوphpلphpسphpتphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>phpپphpشphpتphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>phpپphpُphpرphpتphpگphpاphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpپphpرphpتphpگphpاphpلphpیphp php(phpﺑphpﺮphpﺍphpﺯphpﻳphpﻞphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>phpپphpرphpتphpگphpاphpلphpیphp php(phpپphpرphpتphpگphpاphpلphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>phpرphpوphpمphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>phpرphpوphpسphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>phpسphpَphpنphpسphpکphpرphpِphpت<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>phpسphpنphpدphpھphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>phpسphpرphpبphpوphp-phpکphpرphpوphpئphpیphpشphpیphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>phpسphpنphpہphpاphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>phpسphpلphpاphpوphpاphpکphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>phpسphpلphpوphpيphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>phpسphpوphpمphpاphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>phpاphpلphpبphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>phpصphpرphpبphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>phpسphpیphpسphpوphpتphpھphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>phpسphpُphpوphpڈphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>phpسphpوphpيphpڈphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>phpسphpوphpاphpہphpیphpلphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>phpتphpاphpمphpِphpل<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>phpتphpيphpلphpوphpگphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>phpتphpهphpاphpئphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>phpتphpگphpرphpیphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>phpتphpرphpکphpمphpاphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlphp"php>phpٹphpیphpگphpاphp phpلphpوphpگ<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>phpکphpلphpنphpگphpاphpن<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>phpتphpرphpکphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>phpتphpوphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>phpاphpُphpئphpِphpیphpگphpُphpوphpر<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>phpيphpُphpوphpکphpرphpيphpنphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>phpاphpرphpدphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>phpاphpزphpبphpک<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>phpوphpيphpتphpنphpاphpمphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>phpخphpوphpسphpہ<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>phpيphpاphpدphpش<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>phpچphpیphpنphpیphp php(phpآphpسphpاphpنphp phpکphpرphpدphpہphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>phpچphpیphpنphpیphp php(phpرphpوphpاphpیphpتphpیphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>phpزphpُphpوphpلphpُphpو<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>phpاphpلphpعphpرphpبphpيphpة<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>Zxxx<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>Zzzz<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>phpمphpتphpحphpدphpہphp phpعphpرphpبphp phpاphpمphpاphpرphpاphpت<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>phpاphpفphpغphpاphpنphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>phpاphpنphpٹphpیphpگphpوphpاphp phpاphpوphpرphp phpبphpاphpرphpبphpوphpدphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>phpاphpلphpبphpاphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>phpآphpرphp phpمphpیphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ANphp"php>phpنphpیphpدphpرphpلphpیphpنphpڈphpزphp phpاphpنphpٹphpیphpلphpیphpز<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>phpاphpنphpگphpوphpلphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>phpاphpنphpٹphpاphpرphp phpٹphpکphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>phpاphpرphpجphpنphpٹphpیphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>phpاphpمphpرphpیphpکphpیphp phpسphpاphpمphpوphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>phpآphpسphpٹphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>phpآphpسphpٹphpرphpیphpلphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>phpآphpذphpرphp phpبphpاphpئphpجphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>phpبphpوphpسphpنphpیphpاphp phpہphpرphpزphpگphpوphpیphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>phpبphpنphpگphpلphpاphp phpدphpیphpش<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>phpبphpیphpلphpجphpئphpیphpم<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>phpبphpرphpکphpیphpنphpاphp phpفphpاphpسphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>phpبphpلphpغphpاphpرphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>phpبphpرphpنphpڈphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>phpبphpیphpنphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>phpبphpوphpلphpیphpوphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>phpبphpرphpاphpزphpیphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>phpبphpاphpھphpاphp phpمphpاphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>phpبphpھphpوphpٹphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>phpجphpزphpیphpرphpہphp phpبphpوphpوphpٹ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>phpبphpوphpٹphpسphpوphpاphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>phpبphpیphpلphpاphp phpرphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>phpکphpیphpنphpیphpڈphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CCphp"php>phpجphpزphpاphpئphpرphp phpکphpوphpکphpوphpز<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>phpکphpاphpنphpگphpوphp،php phpجphpمphpہphpوphpرphpیphp phpرphpیphpاphpسphpت<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>phpجphpمphpہphpوphpرphpیphpہphp phpوphpسphpطphpیphp phpاphpفphpرphpیphpقphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>phpکphpاphpنphpگphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>phpسphpوphpئphpزphpرphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>phpجphpزphpاphpئphpرphp phpکphpُphpک<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>phpچphpلphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>phpکphpیphpمphpرphpوphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>phpچphpیphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>phpکphpوphpلphpمphpبphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CSphp"php>phpسphpرphpبphpیphpاphp phpاphpوphpرphp phpمphpاphpنphpٹphpیphpنphpیphpگphpرphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>phpکphpیphpوphpبphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CXphp"php>phpجphpزphpیphpرphpہphp phpکphpرphpسphpمphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>phpقphpبphpرphpص<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>phpجphpمphpہphpوphpرphpیphpہphp phpچphpیphpک<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>phpجphpرphpمphpنphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>phpڈphpنphpمphpاphpرphpک<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DOphp"php>phpڈphpوphpمphpیphpنphpیphpکphpنphp phpرphpیphpپphpبphpلphpک<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>phpاphpلphpجphpیphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>phpاphpیphpکphpوphpاphpڈphpوphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>phpاphpیphpسphpٹphpوphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>phpمphpصphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>phpمphpغphpرphpبphpیphp phpصphpحphpاphpرphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>phpاphpرphpیphpٹphpیphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>phpسphpپphpیphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>phpاphpیphpتphpھphpوphpپphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>phpفphpنphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FKphp"php>phpجphpزphpاphpئphpرphp phpفphpاphpکphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>phpمphpاphpئphpکphpرphpوphpنphpیphpزphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FOphp"php>phpجphpزphpاphpئphpرphpفphpاphpرphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>phpفphpرphpاphpنphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>phpغphpیphpبphpوphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>phpبphpرphpطphpاphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>phpجphpاphpرphpجphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>phpفphpرphpاphpنphpسphpیphpسphpیphp phpگphpیphp phpآphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GGphp"php>phpگphpرphpنphpزphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>phpگphpھphpاphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GLphp"php>phpگphpرphpیphpنphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>phpگphpیphpمphpبphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>phpگphpنphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>phpاphpسphpتphpوphpاphpئphpیphp phpگphpنphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>phpیphpوphpنphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>phpجphpنphpوphpبphpیphp phpجphpاphpرphpجphpیphpاphp phpاphpوphpرphp phpجphpزphpاphpئphpرphp phpجphpنphpوphpبphpیphp phpسphpیphpنphpڈphpوphpچ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>phpگphpنphpیphp phpبphpسphpاphpئphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>phpجphpزphpیphpرphpہphp phpہphpرphpڈphp phpاphpوphpرphp phpجphpزphpاphpئphpرphp phpمphpکphpڈphpوphpنphpلphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>phpہphpوphpنphpڈphpوphpرphpاphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>phpکphpرphpوphpشphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>phpہphpاphpئphpٹphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>phpہphpنphpگphpرphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>phpاphpنphpڈphpوphpنphpیphpشphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>phpآphpئphpرphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>phpاphpسphpرphpاphpئphpیphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>phpبphpھphpاphpرphpت<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>phpبphpحphpرphpھphpنphpدphp phpکphpاphp phpبphpرphpٹphpشphp phpعphpلphpاphpقphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>phpعphpرphpاphpق<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>phpاphpیphpرphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>phpآphpئphpسphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>phpاphpٹphpلphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JEphp"php>phpجphpرphpسphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>phpاphpرphpدphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>phpجphpاphpپphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>phpکphpیphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>phpکphpرphpغphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>phpکphpمphpبphpوphpڈphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>phpکphpِphpرphpبphpاphpتphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>phpکphpوphpمphpوphpرphpوphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KNphp"php>phpسphpیphpنphpٹphp phpکphpٹphpسphp phpاphpوphpرphp phpنphpیphpوphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>phpشphpمphpاphpلphpیphp phpکphpوphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>phpجphpنphpوphpبphpیphp phpکphpوphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KYphp"php>phpجphpزphpاphpئphpرphp phpکphpیphpمphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>phpقphpزphpاphpقphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>phpلphpاphpؤphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>phpلphpبphpنphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LCphp"php>phpسphpیphpنphpٹphp phpلphpوphpسphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>phpلphpکphpٹphpنphpسphpٹphpاphpئphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>phpسphpرphpیphp phpلphpنphpکphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>phpلphpاphpئphpبphpیphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>phpلphpیphpسphpوphpتphpھphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>phpلphpتphpھphpوphpاphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>phpلphpٹphpوphpِphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>phpلphpیphpبphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>phpمphpرphpاphpکphpش<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>phpمphpاphpلphpدphpوphpوphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>phpمphpڈphpغphpاphpسphpکphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>phpجphpزphpاphpئphpرphp phpمphpاphpرphpشphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>phpمphpقphpدphpوphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>phpمphpاphpلphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>phpمphpیphpاphpنphpمphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>phpمphpنphpگphpوphpلphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>phpمphpاphpکphpاphpؤ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>phpشphpمphpاphpلphpیphp phpمphpاphpرphpیphpاphpنphpاphpجphpزphpاphpئphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>phpمphpوphpرphpیphpطphpاphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>phpمphpلphpاphpوphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>phpمphpیphpکphpسphpیphpکphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>phpمphpلphpاphpئphpیphpشphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>phpمphpوphpزphpنphpبphpیphpق<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>phpنphpمphpیphpبphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>phpنphpیphpوphp phpکphpیphpلphpیphpڈphpوphpنphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>phpنphpاphpئphpیphpجphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>phpجphpزphpیphpرphpہphp phpنphpاphpرphpفphpوphpلphpک<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>phpنphpاphpئphpیphpجphpیphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>phpنphpکphpاphpرphpاphpگphpوphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>phpنphpیphpدphpرphpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>phpنphpاphpرphpوphpے<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>phpنphpیphpپphpاphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>phpنphpیphpوphpزphpیphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>phpعphpمphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>phpپphpیphpرphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>phpفphpرphpاphpنphpسphpیphpسphpیphp phpپphpوphpلphpیphpنphpیphpسphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>phpپphpاphpپphpوphpاphp phpنphpیphpوphp phpگphpنphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>phpفphpلphpپphpاphpئphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>phpپphpاphpکphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>phpپphpوphpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PMphp"php>phpسphpیphpنphpٹphp phpپphpاphpئphpرphpےphp phpاphpوphpرphp phpمphpیphpکphpوphpیphpلphpوphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PSphp"php>phpفphpلphpسphpطphpیphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>phpپphpرphpتphpگphpاphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>phpپphpیphpرphpاphpگphpوphpئphpے<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>phpرphpوphpمphpاphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>phpرphpوphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>phpرphpوphpاphpنphpڈphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>phpسphpعphpوphpدphpیphp phpعphpرphpب<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>phpجphpزphpاphpئphpرphpسphpوphpلphpمphpوphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>phpسphpےphp phpشphpلphpز<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>phpسphpوphpڈphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>phpسphpوphpیphpڈphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>phpسphpیphpنphpٹphp phpھphpیphpلphpیphpنphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>phpسphpلphpوphpاphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>phpسphpلphpوphpوphpاphpکphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>phpسphpیphpرphpاphpلphpیphpوphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>phpسphpاphpنphp phpمphpیphpرphpیphpنphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>phpسphpیphpنphpیphpگphpاphpل<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>phpصphpوphpپphpاphpلphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>phpسphpوphpرphpیphpنphpاphpم<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>phpسphpیphpرphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>phpسphpوphpاphpزphpیphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TCphp"php>phpجphpزphpاphpئphpرphp phpکphpیphpکphpسphp phpاphpوphpرphp phpتphpرphpکphpیphpّphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>phpچphpاphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>phpجphpنphpوphpبphpیphp phpفphpرphpاphpنphpسphpیphpسphpیphp phpعphpلphpاphpقphpہphp phpجphpاphpت<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>phpٹphpوphpگphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>phpتphpھphpاphpئphpیphp phpلphpیphpنphpڈ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>phpتphpاphpجphpکphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>phpٹphpوphpکphpیphpلphpاphpؤ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>phpمphpشphpرphpقphpیphp phpتphpیphpمphpوphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>phpتphpرphpکphpمphpاphpنphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>phpتphpیphpوphpنphpس<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>phpتphpوphpنphpگphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>phpتphpرphpکphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>phpٹphpرphpیphpنphpیphpڈphpاphpڈphp phpاphpوphpرphp phpٹphpوphpبphpاphpگphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>phpٹphpوphpاphpلphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>phpتphpاphpئphpیphpوphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>phpتphpنphpزphpاphpنphpیphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>phpیphpوphpکphpرphpاphpئphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>phpیphpوphpگphpنphpڈphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UMphp"php>phpرphpیphpاphpسphpتphp phpہphpاphpئphpےphp phpمphpتphpحphpدphpہphp phpاphpوphpرphp phpبphpیphpرphpوphpنphpیphp phpجphpزphpاphpئphpر<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>phpرphpیphpاphpسphpتphp phpہphpاphpئphpےphp phpمphpتphpحphpدphpہphp phpاphpمphpرphpیphpکphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>phpہphpوphpرphpاphpگphpوphpئphpے<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>phpاphpزphpبphpکphpسphpتphpاphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>phpوphpیphpٹphpیphpکphpنphp phpسphpٹphpی<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VCphp"php>phpسphpیphpنphpٹphp phpکphpیphpرphpنphp phpاphpوphpرphp phpگphpرphpیphpنphpاphpڈphpاphpئphpنphpز<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>phpوphpیphpنphpزphpوphpلphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>phpجphpزphpاphpئphpرphp phpوphpرphpجphpنphp،php phpبphpرphpٹphpش<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>phpجphpزphpاphpئphpرphp phpوphpرphpجphpنphp،php phpاphpمphpرphpیphpکphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>phpوphpیphpتphp phpنphpاphpم<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>phpوphpاphpنphpوphpاphpٹphpو<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>phpوphpاphpلphpسphp phpاphpوphpرphp phpفphpتphpوphpنphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>phpسphpاphpمphpوphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>phpیphpمphpن<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>phpجphpنphpوphpبphpیphp phpاphpفphpرphpیphpقphpہ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>phpزphpیphpمphpبphpیphpا<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>phpزphpمphpبphpاphpبphpوphpے<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Unknownphp orphp Invalidphp Region<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>phpکphpیphpلphpنphpڈphpر<php/keyphp>
-php	php	php	php<keyphp typephp=php"collationphp"php>phpمphpوphpاphpزphpنphpہ<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>phpکphpرphpنphpسphpی<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>phpرphpوphpاphpیphpتphpیphp phpچphpیphpنphpیphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpبphp-Bigphp5<php/typephp>
-php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>phpبphpدphpھphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>phpرphpوphpاphpیphpتphpیphp phpچphpیphpنphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>phpبphpلphpاphpوphpاphpسphpطphpہphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpب<php/typephp>
-php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>phpسphpاphpدphpہphp phpچphpیphpنphpیphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpبphp-GBphp2php3php1php2<php/typephp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>phpگphpرphpیphpگphpوphpرphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>phpعphpبphpرphpاphpنphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"indianphp"php keyphp=php"calendarphp"php>phpہphpنphpدphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>phpاphpسphpلphpاphpمphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>phpہphpجphpرphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>phpجphpاphpپphpاphpنphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>phpفphpوphpنphp phpنphpاphpمphpہphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpب<php/typephp>
-php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>phpپphpنphp phpیphpنphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpب<php/typephp>
-php	php	php	php<typephp typephp=php"rocphp"php keyphp=php"calendarphp"php>phpسphpاphpدphpہphp phpچphpیphpنphpیphp phpکphpیphpلphpنphpڈphpر<php/typephp>
-php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>phpلphpکphpیphpرphpیphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpب<php/typephp>
-php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>phpرphpوphpاphpیphpتphpیphp phpچphpھphpاphpنphpٹphp phpتphpرphpتphpیphpب<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>phpاphpعphpشphpاphpرphpی<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>phpاphpمphpرphpیphpکphpی<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	php	php<codePatternsphp>
-php	php	php	php<codePatternphp typephp=php"languagephp"php>phpزphpبphpاphpنphp:php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"scriptphp"php>phpرphpسphpمphp phpاphpلphpخphpطphp:php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"territoryphp"php>phpخphpطphpہphp:php{php0php}<php/codePatternphp>
-php	php	<php/codePatternsphp>
-php	<php/localeDisplayNamesphp>
-php	php<layoutphp>
-php	php	php<orientationphp charactersphp=php"rightphp-tophp-leftphp"php/php>
-php	<php/layoutphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[phpأphp phpؤphp phpاphp phpآphp phpبphp phpپphp phpتphp phpٹphp phpثphp phpجphp phpچphp phpحphp-phpدphp phpڈphp phpذphp phpرphp phpڑphp phpزphp phpژphp phpسphp-phpغphp phpفphp phpقphp phpکphp phpگphp phpلphp-phpنphp phpںphp phpوphp phpہphp phpیphp phpءphp phpئphp phpےphp phpٻphp phpةphp phpٺphp phpټphp phpٽphp phpهphp phpھphp phpيphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php\uphp0php6php1php0php php\uphp0php6php1php1php php\uphp0php6php1php3php php\uphp0php6php1php4php php\uphp0php6php4Ephp php\uphp0php6php5php0php php\uphp0php6php4Fphp php\uphp0php6php7php0php php\uphp0php6php4Bphp php\uphp0php6php5php1php]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpجphpنphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpفphpرphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpمphpاphpرphp phpچ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpاphpپphpرphpيphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpمphpئ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpجphpوphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpجphpوphpلphpاphpئ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpاphpگphpسphpت<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpسphpتphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpاphpکphpتphpوphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpنphpوphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpدphpسphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpج<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpف<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpم<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpا<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpم<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpج<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpج<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpا<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpس<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpا<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpد<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpا<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpپ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpم<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpب<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpج<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpج<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpہ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpاphpتphpوphpاphpر<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpپphpيphpر<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpمphpنphpگphpل<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpبphpدphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpجphpمphpعphpرphpاphpت<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpجphpمphpعphpہ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpہphpفphpتphpہ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>phpپphpہphpلphpیphp phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>phpدphpوphpسphpرphpیphp phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>phpتphpيphpسphpرphpیphp phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>phpچphpوphpتphpهphpیphp phpسphpہphp phpمphpاphpہphpی<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>phpقphpبphpلphp phpدphpوphpپphpہphpر<php/amphp>
-php	php	php	php	php<pmphp>phpبphpعphpدphp phpدphpوphpپphpہphpر<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpقphpبphpلphp phpمphpسphpيphpح<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpعphpيphpسphpوphpیphp phpسphpن<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpقphp phpم<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpعphpيphpسphpوphpیphp phpسphpن<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php dphp,php MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp,php MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp,php MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp/Mphp/yy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp a<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp a<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"dphp"php>phpد<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmphp"php>HHphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mphp"php>LL<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>Mphp-d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MEdphp"php>Ephp,php Mphp-d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMphp"php>LLL<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMdphp"php>MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMEdphp"php>Ephp MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>MMMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMEdphp"php>Ephp MMMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"msphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yphp"php>y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMphp"php>yyyyphp-M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMEdphp"php>EEEphp,php yyyyphp-dphp-M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMphp"php>yphp MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMEdphp"php>EEEphp,php yphp MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMMphp"php>yphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQphp"php>Qphp yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQQQphp"php>yphp QQQ<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>yyphp Q<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	php	php<intervalFormatsphp>
-php	php	php	php	php	php	php<intervalFormatFallbackphp>php{php0php}php php–php php{php1php}<php/intervalFormatFallbackphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"dphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp-d<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp aphp phpتphpاphp hphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp–hphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp:mmphp aphp phpتphpاphp hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp:mmphp phpتphpاphp hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>hphp:mmphp phpتphpاphp hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp:mmphp aphp php–php hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp:mmphp phpتphpاphp hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>hphp:mmphp phpتphpاphp hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp aphp php–php hphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp phpتphpاphp hphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp phpتphpاphp M<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Mphp/dphp phpتphpاphp d<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp-ddphp phpتphpاphp MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php MMMphp ddphp php–php Ephp,php MMMphp dd<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php MMphp-ddphp phpتphpاphp Ephp,php MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>LLLphp-LLL<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>MMMphp dphp phpتphpاphp d<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp dphp phpتphpاphp MMMphp d<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php MMMphp dphp php–php Ephp,php MMMphp d<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php MMMphp dphp php–php Ephp,php MMMphp d<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>LLLLphp-LLLL<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp phpتphpاphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyyyphp-MMphp phpتphpاphp MM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyyyphp-MMphp phpتphpاphp yyyyphp-MM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>yyyyphp-MMphp-ddphp phpتphpاphp dd<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyyyphp-MMphp-ddphp phpتphpاphp MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp-ddphp-yyyyphp phpتphpاphp MMphp-ddphp-yyyy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php yyyyphp-MMphp-ddphp phpتphpاphp Ephp,php yyyyphp-MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php yyyyphp-MMphp-ddphp php–php Ephp,php yyyyphp-MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php yyyyphp-MMphp-ddphp php–php Ephp,php yyyyphp-MMphp-dd<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp–MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMMphp–MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>MMMphp dphp–dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp dphp phpتphpاphp MMMphp dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMMphp dphp,php yphp phpتphpاphp MMMphp dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php MMMphp dphp php–php Ephp,php MMMphp dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php MMMphp dphp php–php Ephp,php MMMphp dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php MMMphp dphp,php yphp phpتphpاphp Ephp,php MMMphp dphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>yyyyphp-MMphp phpتphpاphp MM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yyyyphp-MMphp phpتphpاphp yyyyphp-MM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	<php/intervalFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpدphpوphpر<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpسphpاphpل<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpمphpہphpیphpنphpہ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpہphpفphpتphpہ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpدphpن<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php3php"php>phpتphpرphpسphpوphpں<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>phpپphpرphpسphpوphpں<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>phpکphpل<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>phpآphpج<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>phpکphpل<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>phpپphpرphpسphpوphpں<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php3php"php>phpتphpرphpسphpوphpں<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpہphpفphpتphpےphp phpکphpاphp phpدphpن<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpرphpاphpتphp/phpصphpبphpح<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpگphpھphpنphpٹphpہ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpمphpنphpٹ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpسphpیphpکphpنphpڈ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpزphpوphpن<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	php	php<calendarphp typephp=php"islamicphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpمphpحphpرphpم<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpصphpفphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpرphp phpبphpيphpعphp phpاphpلphpاphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpرphp phpبphpيphpعphp phpاphpلphpثphpاphpنphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpجphpمphpاphpدphpیphp phpاphpلphpاphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpجphpمphpاphpدphpیphp phpاphpلphpثphpاphpنphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpرphpجphpب<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpشphpعphpبphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpرphpمphpضphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpشphpوphpاphpل<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpعphpيphpسphpوphpیphp phpسphpن<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpقphp phpم<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>CE<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Unknown<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Andorraphp"php>
-php	php	php	php	php<exemplarCityphp>phpاphpنphpڈphpوphpرphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Anguillaphp"php>
-php	php	php	php	php<exemplarCityphp>phpاphpنphpگphpوphpیphpلphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Arubaphp"php>
-php	php	php	php	php<exemplarCityphp>phpاphpرphpوphpبphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Barbadosphp"php>
-php	php	php	php	php<exemplarCityphp>phpبphpاphpرphp phpبphpاphpڈphpوphpس<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Bahrainphp"php>
-php	php	php	php	php<exemplarCityphp>phpبphpحphpرphpیphpن<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Bermudaphp"php>
-php	php	php	php	php<exemplarCityphp>phpبphpرphpمphpوphpدphpہ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Bruneiphp"php>
-php	php	php	php	php<exemplarCityphp>phpبphpرphpوphpنphpاphpئphpی<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Belizephp"php>
-php	php	php	php	php<exemplarCityphp>phpبphpیphpلphpیphpز<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Costaphp_Ricaphp"php>
-php	php	php	php	php<exemplarCityphp>phpکphpوphpسphpٹphpاphp phpرphpیphpکphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Capephp_Verdephp"php>
-php	php	php	php	php<exemplarCityphp>phpکphpیphpپphp phpوphpرphpڈ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Africaphp/Djiboutiphp"php>
-php	php	php	php	php<exemplarCityphp>phpجphpبphpوphpتphpی<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Dominicaphp"php>
-php	php	php	php	php<exemplarCityphp>phpڈphpوphpمphpیphpنphpیphpکphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Fijiphp"php>
-php	php	php	php	php<exemplarCityphp>phpفphpجphpی<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Grenadaphp"php>
-php	php	php	php	php<exemplarCityphp>phpغphpرphpنphpاphpطphpہ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Gibraltarphp"php>
-php	php	php	php	php<exemplarCityphp>phpجphpبphpرphpاphpلphpٹphpر<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Guadeloupephp"php>
-php	php	php	php	php<exemplarCityphp>phpگphpوphpاphpڈphpیphpلphpوphpپ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Guatemalaphp"php>
-php	php	php	php	php<exemplarCityphp>phpگphpوphpئphpٹphpےphp phpمphpاphpلphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Guamphp"php>
-php	php	php	php	php<exemplarCityphp>phpگphpوphpاphpم<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Guyanaphp"php>
-php	php	php	php	php<exemplarCityphp>phpگphpیphpاphpنphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Hongphp_Kongphp"php>
-php	php	php	php	php<exemplarCityphp>phpہphpاphpنphpگphp phpکphpاphpنphpگ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Jamaicaphp"php>
-php	php	php	php	php<exemplarCityphp>phpجphpمphpاphpئphpیphpکphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Kuwaitphp"php>
-php	php	php	php	php<exemplarCityphp>phpکphpوphpیphpت<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Luxembourgphp"php>
-php	php	php	php	php<exemplarCityphp>phpلphpیphpگphpزphpمphpبphpرphpگ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Monacophp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpوphpنphpاphpکphpو<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Macauphp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpکphpاphpئphpو<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Martiniquephp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpاphpرphpٹphpنphpیphpک<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Montserratphp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpوphpنphpٹphp phpسphpرphpاphpٹ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Maltaphp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpاphpلphpٹphpا<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Mauritiusphp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpاphpرphpیphpشphpس<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Maldivesphp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpاphpلphpدphpیphpپ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Nauruphp"php>
-php	php	php	php	php<exemplarCityphp>phpنphpوphpرphpو<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Niuephp"php>
-php	php	php	php	php<exemplarCityphp>phpنphpیphpوphpئphpے<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Panamaphp"php>
-php	php	php	php	php<exemplarCityphp>phpپphpاphpنphpاphpمphpہ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Pitcairnphp"php>
-php	php	php	php	php<exemplarCityphp>phpپphpٹphp phpکphpیphpرphpن<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Puertophp_Ricophp"php>
-php	php	php	php	php<exemplarCityphp>phpپphpوphpرphpٹphpوphp phpرphpیphpکphpو<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Palauphp"php>
-php	php	php	php	php<exemplarCityphp>phpپphpاphpلphpاphpئphpو<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Qatarphp"php>
-php	php	php	php	php<exemplarCityphp>phpقphpطphpر<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Reunionphp"php>
-php	php	php	php	php<exemplarCityphp>phpرphpیphp phpیphpوphpنphpیphpن<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Singaporephp"php>
-php	php	php	php	php<exemplarCityphp>phpسphpنphpگphpاphpپphpوphpر<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Elphp_Salvadorphp"php>
-php	php	php	php	php<exemplarCityphp>phpاphpیphpلphpسphpلphpوphpاphpڈphpوphpر<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Mayottephp"php>
-php	php	php	php	php<exemplarCityphp>phpمphpاphpیphpوphpٹ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	php	php<listphp>php;<php/listphp>
-php	php	php	php<percentSignphp>php%<php/percentSignphp>
-php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
-php	php	php	php<patternDigitphp>php#<php/patternDigitphp>
-php	php	php	php<plusSignphp>php+<php/plusSignphp>
-php	php	php	php<minusSignphp>php-<php/minusSignphp>
-php	php	php	php<exponentialphp>E<php/exponentialphp>
-php	php	php	php<perMillephp>php‰<php/perMillephp>
-php	php	php	php<infinityphp>php∞<php/infinityphp>
-php	php	php	php<nanphp>NaN<php/nanphp>
-php	php	<php/symbolsphp>
-php	php	php<decimalFormatsphp>
-php	php	php	php<decimalFormatLengthphp>
-php	php	php	php	php<decimalFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
-php	php	php	php	<php/decimalFormatphp>
-php	php	php	<php/decimalFormatLengthphp>
-php	php	<php/decimalFormatsphp>
-php	php	php<scientificFormatsphp>
-php	php	php	php<scientificFormatLengthphp>
-php	php	php	php	php<scientificFormatphp>
-php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
-php	php	php	php	<php/scientificFormatphp>
-php	php	php	<php/scientificFormatLengthphp>
-php	php	<php/scientificFormatsphp>
-php	php	php<percentFormatsphp>
-php	php	php	php<percentFormatLengthphp>
-php	php	php	php	php<percentFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php%<php/patternphp>
-php	php	php	php	<php/percentFormatphp>
-php	php	php	<php/percentFormatLengthphp>
-php	php	<php/percentFormatsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php‏php{php0php}php php{php1php}php php‏<php/unitPatternphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"AEDphp"php>
-php	php	php	php	php<displayNamephp>phpمphpتphpحphpدphpہphp phpعphpرphpبphp phpاphpمphpاphpرphpاphpتphpیphp phpدphpرphpہphpم<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARSphp"php>
-php	php	php	php	php<displayNamephp>phpاphpرphpجphpنphpٹphpاphpئphpنphp phpپphpیphpسphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AUDphp"php>
-php	php	php	php	php<displayNamephp>phpآphpسphpٹphpرphpیphpلphpیphpنphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BGNphp"php>
-php	php	php	php	php<displayNamephp>phpبphpلphpغphpاphpرphpیphpنphp phpلphpیphpو<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOBphp"php>
-php	php	php	php	php<displayNamephp>phpبphpوphpلphpیphpوphpیphpنphp phpبphpوphpلphpیphpوphpیphpاphpنphpو<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRLphp"php>
-php	php	php	php	php<displayNamephp>phpبphpرphpاphpزphpیphpلphpیphp phpرphpیphpئphpل<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CADphp"php>
-php	php	php	php	php<displayNamephp>phpکphpنphpیphpڈphpیphpنphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CHFphp"php>
-php	php	php	php	php<displayNamephp>phpسphpوphpئphpسphp phpفphpرphpاphpنphpکphpس<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CLPphp"php>
-php	php	php	php	php<displayNamephp>phpچphpلphpّphpیphpنphp phpپphpیphpسphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CNYphp"php>
-php	php	php	php	php<displayNamephp>phpیphpوphpآphpنphp phpرphpیphpنphpمphpنphpبphpی<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"COPphp"php>
-php	php	php	php	php<displayNamephp>phpکphpوphpلphpمphpبphpیphpنphp phpپphpیphpسphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CZKphp"php>
-php	php	php	php	php<displayNamephp>phpچphpیphpکphp phpکphpرphpوphpنphpا<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DEMphp"php>
-php	php	php	php	php<displayNamephp>phpڈphpچphp phpمphpاphpرphpکphpس<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DKKphp"php>
-php	php	php	php	php<displayNamephp>phpڈphpنphpمphpاphpرphpکphp phpکphpرphpوphpنphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EEKphp"php>
-php	php	php	php	php<displayNamephp>phpاphpیphpسphpٹphpوphpنphpیphpنphp phpکphpرphpوphpن<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EGPphp"php>
-php	php	php	php	php<displayNamephp>phpمphpصphpرphpیphp phpپphpاphpئphpوphpنphpڈ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>phpیphpوphpرphpو<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FRFphp"php>
-php	php	php	php	php<displayNamephp>phpفphpرphpاphpنphpسphpیphpسphpیphp phpفphpرphpاphpنphpک<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GBPphp"php>
-php	php	php	php	php<displayNamephp>phpاphpنphpگphpلphpسphpتphpاphpنphpیphp phpپphpاphpوphpنphpڈphp phpسphpٹphpرphpلphpنphpگ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HKDphp"php>
-php	php	php	php	php<displayNamephp>phpھphpاphpنphpگphp phpکphpاphpنphpگphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HRKphp"php>
-php	php	php	php	php<displayNamephp>phpکphpرphpوphpشphpیphpنphp phpکphpوphpنphpا<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HUFphp"php>
-php	php	php	php	php<displayNamephp>phpہphpنphpگphpرphpیphpنphp phpفphpوphpرphpنphpٹ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IDRphp"php>
-php	php	php	php	php<displayNamephp>phpاphpنphpڈphpوphpنphpیphpشphpیphpنphp phpرphpوphpپphpیphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ILSphp"php>
-php	php	php	php	php<displayNamephp>phpاphpسphpرphpاphpئphpیphpلphpیphp phpشphpیphpکphpل<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>phpاphpنphpڈphpیphpنphp phpرphpوphpپphpیphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JPYphp"php>
-php	php	php	php	php<displayNamephp>phpجphpاphpپphpاphpنphpیphp phpیphpن<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KRWphp"php>
-php	php	php	php	php<displayNamephp>phpجphpنphpوphpبphpیphp phpکphpوphpرphpیphpاphpئphpیphp phpجphpیphpتphpاphp۔<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LTLphp"php>
-php	php	php	php	php<displayNamephp>phpلphpیphpتphpھphpوphpاphpنphpیphp phpلphpیphpٹphpاphpس<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MADphp"php>
-php	php	php	php	php<displayNamephp>phpمphpرphpاphpکphpشphpیphp phpدphpرphpہphpم<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXNphp"php>
-php	php	php	php	php<displayNamephp>phpمphpیphpکphpسphpیphpکphpیphp phpپphpیphpسphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MYRphp"php>
-php	php	php	php	php<displayNamephp>phpمphpلphpاphpئphpیphpشphpیphpنphp phpرphpنphpگphpٹ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NOKphp"php>
-php	php	php	php	php<displayNamephp>phpنphpاphpرphpوphpےphp phpکphpرphpوphpنphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NZDphp"php>
-php	php	php	php	php<displayNamephp>phpنphpیphpوphpزphpیphp phpلphpیphpنphpڈphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PENphp"php>
-php	php	php	php	php<displayNamephp>phpپphpیphpرphpوphpیphpنphp phpنphpیphpوphpوphpسphpوphpل<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PHPphp"php>
-php	php	php	php	php<displayNamephp>phpفphpلphpپphpاphpئphpیphpنphpیphp phpپphpیphpسphpہ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PKRphp"php>
-php	php	php	php	php<displayNamephp>phpپphpاphpکphpسphpتphpاphpنphpیphp phpرphpوphpپphpیphpہ<php/displayNamephp>
-php	php	php	php	php<symbolphp>phpرphpوphpپphpے<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PLNphp"php>
-php	php	php	php	php<displayNamephp>phpپphpوphpلphpشphp phpنphpیphpوphp phpزphpلphpوphpٹphpی<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RONphp"php>
-php	php	php	php	php<displayNamephp>phpنphpیphpاphp phpرphpوphpمphpاphpنphpیphpاphpئphpیphp phpلphpیphpو<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RSDphp"php>
-php	php	php	php	php<displayNamephp>phpسphpرphpبphpیphpنphp phpدphpیphpنphpاphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RUBphp"php>
-php	php	php	php	php<displayNamephp>phpرphpوphpسphpیphp phpرphpوphpبphpل<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SARphp"php>
-php	php	php	php	php<displayNamephp>phpسphpعphpوphpدphpیphp phpرphpیphpاphpل<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SEKphp"php>
-php	php	php	php	php<displayNamephp>phpسphpوphpیphpڈphpنphp phpکphpرphpوphpنphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SGDphp"php>
-php	php	php	php	php<displayNamephp>phpسphpنphpگphpاphp phpپphpوphpرphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SITphp"php>
-php	php	php	php	php<displayNamephp>phpسphpلphpوphpاphpنphpیphpنphp phpٹphpوphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SKKphp"php>
-php	php	php	php	php<displayNamephp>phpسphpلphpوphpوphpکphp phpکphpرphpوphpنphpا<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"THBphp"php>
-php	php	php	php	php<displayNamephp>phpتphpھphpاphpئphpیphp phpبphpاphpہphpت<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TRLphp"php>
-php	php	php	php	php<displayNamephp>phpتphpرphpکphpیphp phpلphpیphpرphpا<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TRYphp"php>
-php	php	php	php	php<displayNamephp>phpنphpیphpاphp phpتphpرphpکphpیphp phpلphpیphpرphpا<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TWDphp"php>
-php	php	php	php	php<displayNamephp>phpنphpیphpوphp phpتphpاphpئphpیphpوphpاphpنphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USDphp"php>
-php	php	php	php	php<displayNamephp>phpاphpمphpرphpیphpکphpیphp phpڈphpاphpلphpر<php/displayNamephp>
-php	php	php	php	php<symbolphp>phpڈphpاphpلphpر<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VEBphp"php>
-php	php	php	php	php<displayNamephp>phpوphpیphpنphpزphpوphpیphpلphpاphp phpبphpوphpلphpیphpوphpر<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZARphp"php>
-php	php	php	php	php<displayNamephp>phpجphpنphpوphpبphpیphp phpاphpفphpرphpیphpقphpیphp phpرphpاphpنphpڈ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>yesphp:y<php/yesstrphp>
-php	php	php	php<nostrphp>nophp:n<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.66 $"/>
+		<generation date="$Date: 2009/06/15 04:15:33 $"/>
+		<language type="ur"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="af">ايفريکانز</language>
+			<language type="am">امہاری</language>
+			<language type="ar">عربی</language>
+			<language type="as">آسامی</language>
+			<language type="az">آزربائیجانی</language>
+			<language type="be">بيلاروسی</language>
+			<language type="bg">بلغاری</language>
+			<language type="bh">بِہاری</language>
+			<language type="bn">بنگالی</language>
+			<language type="br">برِیٹن</language>
+			<language type="bs">بوسنی</language>
+			<language type="ca">کاٹالانين</language>
+			<language type="cs">چيک</language>
+			<language type="cy">ويلش</language>
+			<language type="da">ڈينش</language>
+			<language type="de">جرمن</language>
+			<language type="el">يونانی</language>
+			<language type="en">انگريزی</language>
+			<language type="en_GB">برطانوی انگریزی</language>
+			<language type="en_US">امریکہ کی انگریزی</language>
+			<language type="eo">ايسپرانٹو</language>
+			<language type="es">ہسپانوی</language>
+			<language type="et">اسٹونين</language>
+			<language type="eu">باسکی</language>
+			<language type="fa">فارسی</language>
+			<language type="fi">فنّنِش</language>
+			<language type="fil">ٹيگالاگی</language>
+			<language type="fo">فیروئیز</language>
+			<language type="fr">فرانسيسی</language>
+			<language type="fy">فريژين</language>
+			<language type="ga">آئيرِش</language>
+			<language type="gd">سکاٹ گيلِک</language>
+			<language type="gl">گاليشيائی</language>
+			<language type="gn">گُارانی</language>
+			<language type="gu">گجراتی</language>
+			<language type="he">عبرانی</language>
+			<language type="hi">ہندی</language>
+			<language type="hr">کراتی</language>
+			<language type="hu">ہنگیرین</language>
+			<language type="hy">ارمینی</language>
+			<language type="ia">انٹرلنگوی</language>
+			<language type="id">انڈونيثيائی</language>
+			<language type="is">برفستانی</language>
+			<language type="it">اطالوی</language>
+			<language type="ja">جاپانی</language>
+			<language type="jv">جاوی</language>
+			<language type="ka">جارجی</language>
+			<language type="km">کمبوڈیَن</language>
+			<language type="kn">کنّاڈا</language>
+			<language type="ko">کورين</language>
+			<language type="ku">كردش</language>
+			<language type="ky">کرغیزی</language>
+			<language type="la">لاطينی</language>
+			<language type="ln">لِنگَلا</language>
+			<language type="lo">لاؤشِیَن</language>
+			<language type="lt">لتھُواینین</language>
+			<language type="lv">ليٹوين</language>
+			<language type="mk">مقدونيائی</language>
+			<language type="ml">مالايالم</language>
+			<language type="mn">منگؤلی</language>
+			<language type="mr">مراٹهی</language>
+			<language type="ms">مالائی</language>
+			<language type="mt">مالٹی</language>
+			<language type="ne">نيپالی</language>
+			<language type="nl">ڈچ</language>
+			<language type="nn">نورویجینی (نینورسک)</language>
+			<language type="no">نارويجين</language>
+			<language type="oc">آکيٹانی</language>
+			<language type="or">اورِیا</language>
+			<language type="pa">پنجابی</language>
+			<language type="pl">پولستانی</language>
+			<language type="ps">پشتو</language>
+			<language type="pt">پُرتگالی</language>
+			<language type="pt_BR">پرتگالی (ﺑﺮﺍﺯﻳﻞ)</language>
+			<language type="pt_PT">پرتگالی (پرتگال)</language>
+			<language type="ro">رومنی</language>
+			<language type="ru">روسی</language>
+			<language type="sa">سَنسکرِت</language>
+			<language type="sd">سندھی</language>
+			<language type="sh">سربو-کروئیشین</language>
+			<language type="si">سنہالی</language>
+			<language type="sk">سلاواکی</language>
+			<language type="sl">سلوينی</language>
+			<language type="so">سومالی</language>
+			<language type="sq">البانی</language>
+			<language type="sr">صربی</language>
+			<language type="st">سیسوتھو</language>
+			<language type="su">سُوڈانی</language>
+			<language type="sv">سويڈش</language>
+			<language type="sw">سواہیلی</language>
+			<language type="ta">تامِل</language>
+			<language type="te">تيلوگو</language>
+			<language type="th">تهائی</language>
+			<language type="ti">تگرینی</language>
+			<language type="tk">ترکمانی</language>
+			<language type="tl">ٹیگا لوگ</language>
+			<language type="tlh">کلنگان</language>
+			<language type="tr">ترکی</language>
+			<language type="tw">توی</language>
+			<language type="ug">اُئِیگُور</language>
+			<language type="uk">يُوکرينی</language>
+			<language type="ur">اردو</language>
+			<language type="uz">ازبک</language>
+			<language type="vi">ويتنامی</language>
+			<language type="xh">خوسہ</language>
+			<language type="yi">يادش</language>
+			<language type="zh_Hans">چینی (آسان کردہ)</language>
+			<language type="zh_Hant">چینی (روایتی)</language>
+			<language type="zu">زُولُو</language>
+		</languages>
+		<scripts>
+			<script type="Arab">العربية</script>
+			<script type="Zxxx">Zxxx</script>
+			<script type="Zzzz">Zzzz</script>
+		</scripts>
+		<territories>
+			<territory type="AE">متحدہ عرب امارات</territory>
+			<territory type="AF">افغانستان</territory>
+			<territory type="AG">انٹیگوا اور باربودا</territory>
+			<territory type="AL">البانیا</territory>
+			<territory type="AM">آر مینیا</territory>
+			<territory type="AN">نیدرلینڈز انٹیلیز</territory>
+			<territory type="AO">انگولا</territory>
+			<territory type="AQ">انٹار ٹکا</territory>
+			<territory type="AR">ارجنٹینا</territory>
+			<territory type="AS">امریکی ساموا</territory>
+			<territory type="AT">آسٹریا</territory>
+			<territory type="AU">آسٹریلیا</territory>
+			<territory type="AZ">آذر بائجان</territory>
+			<territory type="BA">بوسنیا ہرزگوینا</territory>
+			<territory type="BD">بنگلا دیش</territory>
+			<territory type="BE">بیلجئیم</territory>
+			<territory type="BF">برکینا فاسو</territory>
+			<territory type="BG">بلغاریہ</territory>
+			<territory type="BI">برنڈی</territory>
+			<territory type="BJ">بینن</territory>
+			<territory type="BO">بولیویا</territory>
+			<territory type="BR">برازیل</territory>
+			<territory type="BS">باھا ماس</territory>
+			<territory type="BT">بھوٹان</territory>
+			<territory type="BV">جزیرہ بووٹ</territory>
+			<territory type="BW">بوٹسوانا</territory>
+			<territory type="BY">بیلا رس</territory>
+			<territory type="CA">کینیڈا</territory>
+			<territory type="CC">جزائر کوکوز</territory>
+			<territory type="CD">کانگو، جمہوری ریاست</territory>
+			<territory type="CF">جمہوریہ وسطی افریقہ</territory>
+			<territory type="CG">کانگو</territory>
+			<territory type="CH">سوئزر لینڈ</territory>
+			<territory type="CK">جزائر کُک</territory>
+			<territory type="CL">چلی</territory>
+			<territory type="CM">کیمرون</territory>
+			<territory type="CN">چین</territory>
+			<territory type="CO">کولمبیا</territory>
+			<territory type="CS">سربیا اور مانٹینیگرو</territory>
+			<territory type="CU">کیوبا</territory>
+			<territory type="CX">جزیرہ کرسمس</territory>
+			<territory type="CY">قبرص</territory>
+			<territory type="CZ">جمہوریہ چیک</territory>
+			<territory type="DE">جرمنی</territory>
+			<territory type="DK">ڈنمارک</territory>
+			<territory type="DO">ڈومینیکن ریپبلک</territory>
+			<territory type="DZ">الجیریا</territory>
+			<territory type="EC">ایکواڈور</territory>
+			<territory type="EE">ایسٹونیا</territory>
+			<territory type="EG">مصر</territory>
+			<territory type="EH">مغربی صحارا</territory>
+			<territory type="ER">اریٹیریا</territory>
+			<territory type="ES">سپین</territory>
+			<territory type="ET">ایتھوپیا</territory>
+			<territory type="FI">فن لینڈ</territory>
+			<territory type="FK">جزائر فاک لینڈ</territory>
+			<territory type="FM">مائکرونیزیا</territory>
+			<territory type="FO">جزائرفارو</territory>
+			<territory type="FR">فرانس</territory>
+			<territory type="GA">غیبون</territory>
+			<territory type="GB">برطانیہ</territory>
+			<territory type="GE">جارجیا</territory>
+			<territory type="GF">فرانسیسی گی آنا</territory>
+			<territory type="GG">گرنزی</territory>
+			<territory type="GH">گھانا</territory>
+			<territory type="GL">گرین لینڈ</territory>
+			<territory type="GM">گیمبیا</territory>
+			<territory type="GN">گنی</territory>
+			<territory type="GQ">استوائی گنی</territory>
+			<territory type="GR">یونان</territory>
+			<territory type="GS">جنوبی جارجیا اور جزائر جنوبی سینڈوچ</territory>
+			<territory type="GW">گنی بسائو</territory>
+			<territory type="HM">جزیرہ ہرڈ اور جزائر مکڈونلڈ</territory>
+			<territory type="HN">ہونڈوراس</territory>
+			<territory type="HR">کروشیا</territory>
+			<territory type="HT">ہائٹی</territory>
+			<territory type="HU">ہنگری</territory>
+			<territory type="ID">انڈونیشیا</territory>
+			<territory type="IE">آئر لینڈ</territory>
+			<territory type="IL">اسرائیل</territory>
+			<territory type="IN">بھارت</territory>
+			<territory type="IO">بحرھند کا برٹش علاقہ</territory>
+			<territory type="IQ">عراق</territory>
+			<territory type="IR">ایران</territory>
+			<territory type="IS">آئس لینڈ</territory>
+			<territory type="IT">اٹلی</territory>
+			<territory type="JE">جرسی</territory>
+			<territory type="JO">اردن</territory>
+			<territory type="JP">جاپان</territory>
+			<territory type="KE">کینیا</territory>
+			<territory type="KG">کرغستان</territory>
+			<territory type="KH">کمبوڈیا</territory>
+			<territory type="KI">کِرباتی</territory>
+			<territory type="KM">کوموروس</territory>
+			<territory type="KN">سینٹ کٹس اور نیوس</territory>
+			<territory type="KP">شمالی کوریا</territory>
+			<territory type="KR">جنوبی کوریا</territory>
+			<territory type="KY">جزائر کیمن</territory>
+			<territory type="KZ">قزاقستان</territory>
+			<territory type="LA">لاؤس</territory>
+			<territory type="LB">لبنان</territory>
+			<territory type="LC">سینٹ لوسیا</territory>
+			<territory type="LI">لکٹنسٹائن</territory>
+			<territory type="LK">سری لنکا</territory>
+			<territory type="LR">لائبیریا</territory>
+			<territory type="LS">لیسوتھو</territory>
+			<territory type="LT">لتھوانیا</territory>
+			<territory type="LV">لٹوِیا</territory>
+			<territory type="LY">لیبیا</territory>
+			<territory type="MA">مراکش</territory>
+			<territory type="MD">مالدووا</territory>
+			<territory type="MG">مڈغاسکر</territory>
+			<territory type="MH">جزائر مارشل</territory>
+			<territory type="MK">مقدونیہ</territory>
+			<territory type="ML">مالی</territory>
+			<territory type="MM">میانمر</territory>
+			<territory type="MN">منگولیا</territory>
+			<territory type="MO">ماکاؤ</territory>
+			<territory type="MP">شمالی ماریاناجزائر</territory>
+			<territory type="MR">موریطانیہ</territory>
+			<territory type="MW">ملاوی</territory>
+			<territory type="MX">میکسیکو</territory>
+			<territory type="MY">ملائیشیا</territory>
+			<territory type="MZ">موزنبیق</territory>
+			<territory type="NA">نمیبیا</territory>
+			<territory type="NC">نیو کیلیڈونیا</territory>
+			<territory type="NE">نائیجر</territory>
+			<territory type="NF">جزیرہ نارفولک</territory>
+			<territory type="NG">نائیجیریا</territory>
+			<territory type="NI">نکاراگوا</territory>
+			<territory type="NL">نیدرلینڈ</territory>
+			<territory type="NO">ناروے</territory>
+			<territory type="NP">نیپال</territory>
+			<territory type="NZ">نیوزی لینڈ</territory>
+			<territory type="OM">عمان</territory>
+			<territory type="PE">پیرو</territory>
+			<territory type="PF">فرانسیسی پولینیسیا</territory>
+			<territory type="PG">پاپوا نیو گنی</territory>
+			<territory type="PH">فلپائن</territory>
+			<territory type="PK">پاکستان</territory>
+			<territory type="PL">پولینڈ</territory>
+			<territory type="PM">سینٹ پائرے اور میکویلون</territory>
+			<territory type="PS">فلسطین</territory>
+			<territory type="PT">پرتگال</territory>
+			<territory type="PY">پیراگوئے</territory>
+			<territory type="RO">رومانیہ</territory>
+			<territory type="RU">روس</territory>
+			<territory type="RW">روانڈا</territory>
+			<territory type="SA">سعودی عرب</territory>
+			<territory type="SB">جزائرسولمون</territory>
+			<territory type="SC">سے شلز</territory>
+			<territory type="SD">سوڈان</territory>
+			<territory type="SE">سویڈن</territory>
+			<territory type="SH">سینٹ ھیلینا</territory>
+			<territory type="SI">سلوانیہ</territory>
+			<territory type="SK">سلوواکیہ</territory>
+			<territory type="SL">سیرالیون</territory>
+			<territory type="SM">سان میرینو</territory>
+			<territory type="SN">سینیگال</territory>
+			<territory type="SO">صوپالیہ</territory>
+			<territory type="SR">سورینام</territory>
+			<territory type="SY">سیریا</territory>
+			<territory type="SZ">سوازی لینڈ</territory>
+			<territory type="TC">جزائر کیکس اور ترکیّہ</territory>
+			<territory type="TD">چاڈ</territory>
+			<territory type="TF">جنوبی فرانسیسی علاقہ جات</territory>
+			<territory type="TG">ٹوگو</territory>
+			<territory type="TH">تھائی لینڈ</territory>
+			<territory type="TJ">تاجکستان</territory>
+			<territory type="TK">ٹوکیلاؤ</territory>
+			<territory type="TL">مشرقی تیمور</territory>
+			<territory type="TM">ترکمانستان</territory>
+			<territory type="TN">تیونس</territory>
+			<territory type="TO">تونگا</territory>
+			<territory type="TR">ترکی</territory>
+			<territory type="TT">ٹرینیڈاڈ اور ٹوباگو</territory>
+			<territory type="TV">ٹوالو</territory>
+			<territory type="TW">تائیوان</territory>
+			<territory type="TZ">تنزانیہ</territory>
+			<territory type="UA">یوکرائن</territory>
+			<territory type="UG">یوگنڈا</territory>
+			<territory type="UM">ریاست ہائے متحدہ اور بیرونی جزائر</territory>
+			<territory type="US">ریاست ہائے متحدہ امریکا</territory>
+			<territory type="UY">ہوراگوئے</territory>
+			<territory type="UZ">ازبکستان</territory>
+			<territory type="VA">ویٹیکن سٹی</territory>
+			<territory type="VC">سینٹ کیرن اور گریناڈائنز</territory>
+			<territory type="VE">وینزولا</territory>
+			<territory type="VG">جزائر ورجن، برٹش</territory>
+			<territory type="VI">جزائر ورجن، امریکہ</territory>
+			<territory type="VN">ویت نام</territory>
+			<territory type="VU">وانواٹو</territory>
+			<territory type="WF">والس اور فتونہ</territory>
+			<territory type="WS">ساموا</territory>
+			<territory type="YE">یمن</territory>
+			<territory type="ZA">جنوبی افریقہ</territory>
+			<territory type="ZM">زیمبیا</territory>
+			<territory type="ZW">زمبابوے</territory>
+			<territory type="ZZ">Unknown or Invalid Region</territory>
+		</territories>
+		<keys>
+			<key type="calendar">کیلنڈر</key>
+			<key type="collation">موازنہ</key>
+			<key type="currency">کرنسی</key>
+		</keys>
+		<types>
+			<type type="big5han" key="collation">روایتی چینی چھانٹ ترتیب-Big5</type>
+			<type type="buddhist" key="calendar">بدھ کیلنڈر</type>
+			<type type="chinese" key="calendar">روایتی چینی کیلنڈر</type>
+			<type type="direct" key="collation">بلاواسطہ چھانٹ ترتیب</type>
+			<type type="gb2312han" key="collation">سادہ چینی چھانٹ ترتیب-GB2312</type>
+			<type type="gregorian" key="calendar">گریگوری کیلنڈر</type>
+			<type type="hebrew" key="calendar">عبرانی کیلنڈر</type>
+			<type type="indian" key="calendar">ہندی کیلنڈر</type>
+			<type type="islamic" key="calendar">اسلامی کیلنڈر</type>
+			<type type="islamic-civil" key="calendar">ہجری کیلنڈر</type>
+			<type type="japanese" key="calendar">جاپانی کیلنڈر</type>
+			<type type="phonebook" key="collation">فون نامہ چھانٹ ترتیب</type>
+			<type type="pinyin" key="collation">پن ین چھانٹ ترتیب</type>
+			<type type="roc" key="calendar">سادہ چینی کیلنڈر</type>
+			<type type="stroke" key="collation">لکیری چھانٹ ترتیب</type>
+			<type type="traditional" key="collation">روایتی چھانٹ ترتیب</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">اعشاری</measurementSystemName>
+			<measurementSystemName type="US">امریکی</measurementSystemName>
+		</measurementSystemNames>
+		<codePatterns>
+			<codePattern type="language">زبان:{0}</codePattern>
+			<codePattern type="script">رسم الخط:{0}</codePattern>
+			<codePattern type="territory">خطہ:{0}</codePattern>
+		</codePatterns>
+	</localeDisplayNames>
+	<layout>
+		<orientation characters="right-to-left"/>
+	</layout>
+	<characters>
+		<exemplarCharacters>[أ ؤ ا آ ب پ ت ٹ ث ج چ ح-د ڈ ذ ر ڑ ز ژ س-غ ف ق ک گ ل-ن ں و ہ ی ء ئ ے ٻ ة ٺ ټ ٽ ه ھ ي]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u0610 \u0611 \u0613 \u0614 \u064E \u0650 \u064F \u0670 \u064B \u0651]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="wide">
+							<month type="1">جنوری</month>
+							<month type="2">فروری</month>
+							<month type="3">مار چ</month>
+							<month type="4">اپريل</month>
+							<month type="5">مئ</month>
+							<month type="6">جون</month>
+							<month type="7">جولائ</month>
+							<month type="8">اگست</month>
+							<month type="9">ستمبر</month>
+							<month type="10">اکتوبر</month>
+							<month type="11">نومبر</month>
+							<month type="12">دسمبر</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">ج</month>
+							<month type="2">ف</month>
+							<month type="3">م</month>
+							<month type="4">ا</month>
+							<month type="5">م</month>
+							<month type="6">ج</month>
+							<month type="7">ج</month>
+							<month type="8">ا</month>
+							<month type="9">س</month>
+							<month type="10">ا</month>
+							<month type="11">ن</month>
+							<month type="12">د</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="narrow">
+							<day type="sun">ا</day>
+							<day type="mon">پ</day>
+							<day type="tue">م</day>
+							<day type="wed">ب</day>
+							<day type="thu">ج</day>
+							<day type="fri">ج</day>
+							<day type="sat">ہ</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">اتوار</day>
+							<day type="mon">پير</day>
+							<day type="tue">منگل</day>
+							<day type="wed">بده</day>
+							<day type="thu">جمعرات</day>
+							<day type="fri">جمعہ</day>
+							<day type="sat">ہفتہ</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">1سہ ماہی</quarter>
+							<quarter type="2">2سہ ماہی</quarter>
+							<quarter type="3">3سہ ماہی</quarter>
+							<quarter type="4">4سہ ماہی</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">پہلی سہ ماہی</quarter>
+							<quarter type="2">دوسری سہ ماہی</quarter>
+							<quarter type="3">تيسری سہ ماہی</quarter>
+							<quarter type="4">چوتهی سہ ماہی</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>قبل دوپہر</am>
+				<pm>بعد دوپہر</pm>
+				<eras>
+					<eraNames>
+						<era type="0">قبل مسيح</era>
+						<era type="1">عيسوی سن</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">ق م</era>
+						<era type="1">عيسوی سن</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, d, MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d, MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d, MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>d/M/yy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>h:mm:ss a zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>h:mm:ss a z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>h:mm:ss a</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>h:mm a</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="d">د</dateFormatItem>
+						<dateFormatItem id="Hm">HH:mm</dateFormatItem>
+						<dateFormatItem id="M">LL</dateFormatItem>
+						<dateFormatItem id="Md">M-d</dateFormatItem>
+						<dateFormatItem id="MEd">E, M-d</dateFormatItem>
+						<dateFormatItem id="MMM">LLL</dateFormatItem>
+						<dateFormatItem id="MMMd">MMM d</dateFormatItem>
+						<dateFormatItem id="MMMEd">E MMM d</dateFormatItem>
+						<dateFormatItem id="MMMMd">MMMM d</dateFormatItem>
+						<dateFormatItem id="MMMMEd">E MMMM d</dateFormatItem>
+						<dateFormatItem id="ms">mm:ss</dateFormatItem>
+						<dateFormatItem id="y">y</dateFormatItem>
+						<dateFormatItem id="yM">yyyy-M</dateFormatItem>
+						<dateFormatItem id="yMEd">EEE, yyyy-d-M</dateFormatItem>
+						<dateFormatItem id="yMMM">y MMM</dateFormatItem>
+						<dateFormatItem id="yMMMEd">EEE, y MMM d</dateFormatItem>
+						<dateFormatItem id="yMMMM">y MMMM</dateFormatItem>
+						<dateFormatItem id="yQ">Q yyyy</dateFormatItem>
+						<dateFormatItem id="yQQQ">y QQQ</dateFormatItem>
+						<dateFormatItem id="yyQ">yy Q</dateFormatItem>
+					</availableFormats>
+					<intervalFormats>
+						<intervalFormatFallback>{0} – {1}</intervalFormatFallback>
+						<intervalFormatItem id="d">
+							<greatestDifference id="d">d-d</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="h">
+							<greatestDifference id="a">h a تا h a</greatestDifference>
+							<greatestDifference id="h">h–h a</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hm">
+							<greatestDifference id="a">h:mm a تا h:mm a</greatestDifference>
+							<greatestDifference id="h">h:mm تا h:mm a</greatestDifference>
+							<greatestDifference id="m">h:mm تا h:mm a</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hmv">
+							<greatestDifference id="a">h:mm a – h:mm a v</greatestDifference>
+							<greatestDifference id="h">h:mm تا h:mm a v</greatestDifference>
+							<greatestDifference id="m">h:mm تا h:mm a v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hv">
+							<greatestDifference id="a">h a – h a v</greatestDifference>
+							<greatestDifference id="h">h تا h a v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="M">
+							<greatestDifference id="M">M تا M</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="Md">
+							<greatestDifference id="d">M/d تا d</greatestDifference>
+							<greatestDifference id="M">MM-dd تا MM-dd</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MEd">
+							<greatestDifference id="d">E, MMM dd – E, MMM dd</greatestDifference>
+							<greatestDifference id="M">E, MM-dd تا E, MM-dd</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMM">
+							<greatestDifference id="M">LLL-LLL</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMd">
+							<greatestDifference id="d">MMM d تا d</greatestDifference>
+							<greatestDifference id="M">MMM d تا MMM d</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMEd">
+							<greatestDifference id="d">E, MMM d – E, MMM d</greatestDifference>
+							<greatestDifference id="M">E, MMM d – E, MMM d</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMM">
+							<greatestDifference id="M">LLLL-LLLL</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="y">
+							<greatestDifference id="y">y تا y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yM">
+							<greatestDifference id="M">yyyy-MM تا MM</greatestDifference>
+							<greatestDifference id="y">yyyy-MM تا yyyy-MM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMd">
+							<greatestDifference id="d">yyyy-MM-dd تا dd</greatestDifference>
+							<greatestDifference id="M">yyyy-MM-dd تا MM-dd</greatestDifference>
+							<greatestDifference id="y">MM-dd-yyyy تا MM-dd-yyyy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMEd">
+							<greatestDifference id="d">E, yyyy-MM-dd تا E, yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yyyy-MM-dd – E, yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yyyy-MM-dd – E, yyyy-MM-dd</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMM">
+							<greatestDifference id="M">MMM–MMM y</greatestDifference>
+							<greatestDifference id="y">MMM–MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMd">
+							<greatestDifference id="d">MMM d–d, y</greatestDifference>
+							<greatestDifference id="M">MMM d تا MMM d, y</greatestDifference>
+							<greatestDifference id="y">MMM d, y تا MMM d, y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMEd">
+							<greatestDifference id="d">E, MMM d – E, MMM d, y</greatestDifference>
+							<greatestDifference id="M">E, MMM d – E, MMM d, y</greatestDifference>
+							<greatestDifference id="y">E, MMM d, y تا E, MMM d, y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMM">
+							<greatestDifference id="M">yyyy-MM تا MM</greatestDifference>
+							<greatestDifference id="y">yyyy-MM تا yyyy-MM</greatestDifference>
+						</intervalFormatItem>
+					</intervalFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>دور</displayName>
+					</field>
+					<field type="year">
+						<displayName>سال</displayName>
+					</field>
+					<field type="month">
+						<displayName>مہینہ</displayName>
+					</field>
+					<field type="week">
+						<displayName>ہفتہ</displayName>
+					</field>
+					<field type="day">
+						<displayName>دن</displayName>
+						<relative type="-3">ترسوں</relative>
+						<relative type="-2">پرسوں</relative>
+						<relative type="-1">کل</relative>
+						<relative type="0">آج</relative>
+						<relative type="1">کل</relative>
+						<relative type="2">پرسوں</relative>
+						<relative type="3">ترسوں</relative>
+					</field>
+					<field type="weekday">
+						<displayName>ہفتے کا دن</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>رات/صبح</displayName>
+					</field>
+					<field type="hour">
+						<displayName>گھنٹہ</displayName>
+					</field>
+					<field type="minute">
+						<displayName>منٹ</displayName>
+					</field>
+					<field type="second">
+						<displayName>سیکنڈ</displayName>
+					</field>
+					<field type="zone">
+						<displayName>زون</displayName>
+					</field>
+				</fields>
+			</calendar>
+			<calendar type="islamic">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="wide">
+							<month type="1">محرم</month>
+							<month type="2">صفر</month>
+							<month type="3">ر بيع الاول</month>
+							<month type="4">ر بيع الثانی</month>
+							<month type="5">جمادی الاول</month>
+							<month type="6">جمادی الثانی</month>
+							<month type="7">رجب</month>
+							<month type="8">شعبان</month>
+							<month type="9">رمضان</month>
+							<month type="10">شوال</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<eras>
+					<eraNames>
+						<era type="1">عيسوی سن</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">ق م</era>
+						<era type="1">CE</era>
+					</eraAbbr>
+				</eras>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Unknown</exemplarCity>
+			</zone>
+			<zone type="Europe/Andorra">
+				<exemplarCity>انڈورا</exemplarCity>
+			</zone>
+			<zone type="America/Anguilla">
+				<exemplarCity>انگویلا</exemplarCity>
+			</zone>
+			<zone type="America/Aruba">
+				<exemplarCity>اروبا</exemplarCity>
+			</zone>
+			<zone type="America/Barbados">
+				<exemplarCity>بار باڈوس</exemplarCity>
+			</zone>
+			<zone type="Asia/Bahrain">
+				<exemplarCity>بحرین</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Bermuda">
+				<exemplarCity>برمودہ</exemplarCity>
+			</zone>
+			<zone type="Asia/Brunei">
+				<exemplarCity>برونائی</exemplarCity>
+			</zone>
+			<zone type="America/Belize">
+				<exemplarCity>بیلیز</exemplarCity>
+			</zone>
+			<zone type="America/Costa_Rica">
+				<exemplarCity>کوسٹا ریکا</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Cape_Verde">
+				<exemplarCity>کیپ ورڈ</exemplarCity>
+			</zone>
+			<zone type="Africa/Djibouti">
+				<exemplarCity>جبوتی</exemplarCity>
+			</zone>
+			<zone type="America/Dominica">
+				<exemplarCity>ڈومینیکا</exemplarCity>
+			</zone>
+			<zone type="Pacific/Fiji">
+				<exemplarCity>فجی</exemplarCity>
+			</zone>
+			<zone type="America/Grenada">
+				<exemplarCity>غرناطہ</exemplarCity>
+			</zone>
+			<zone type="Europe/Gibraltar">
+				<exemplarCity>جبرالٹر</exemplarCity>
+			</zone>
+			<zone type="America/Guadeloupe">
+				<exemplarCity>گواڈیلوپ</exemplarCity>
+			</zone>
+			<zone type="America/Guatemala">
+				<exemplarCity>گوئٹے مالا</exemplarCity>
+			</zone>
+			<zone type="Pacific/Guam">
+				<exemplarCity>گوام</exemplarCity>
+			</zone>
+			<zone type="America/Guyana">
+				<exemplarCity>گیانا</exemplarCity>
+			</zone>
+			<zone type="Asia/Hong_Kong">
+				<exemplarCity>ہانگ کانگ</exemplarCity>
+			</zone>
+			<zone type="America/Jamaica">
+				<exemplarCity>جمائیکا</exemplarCity>
+			</zone>
+			<zone type="Asia/Kuwait">
+				<exemplarCity>کویت</exemplarCity>
+			</zone>
+			<zone type="Europe/Luxembourg">
+				<exemplarCity>لیگزمبرگ</exemplarCity>
+			</zone>
+			<zone type="Europe/Monaco">
+				<exemplarCity>موناکو</exemplarCity>
+			</zone>
+			<zone type="Asia/Macau">
+				<exemplarCity>مکائو</exemplarCity>
+			</zone>
+			<zone type="America/Martinique">
+				<exemplarCity>مارٹنیک</exemplarCity>
+			</zone>
+			<zone type="America/Montserrat">
+				<exemplarCity>مونٹ سراٹ</exemplarCity>
+			</zone>
+			<zone type="Europe/Malta">
+				<exemplarCity>مالٹا</exemplarCity>
+			</zone>
+			<zone type="Indian/Mauritius">
+				<exemplarCity>ماریشس</exemplarCity>
+			</zone>
+			<zone type="Indian/Maldives">
+				<exemplarCity>مالدیپ</exemplarCity>
+			</zone>
+			<zone type="Pacific/Nauru">
+				<exemplarCity>نورو</exemplarCity>
+			</zone>
+			<zone type="Pacific/Niue">
+				<exemplarCity>نیوئے</exemplarCity>
+			</zone>
+			<zone type="America/Panama">
+				<exemplarCity>پانامہ</exemplarCity>
+			</zone>
+			<zone type="Pacific/Pitcairn">
+				<exemplarCity>پٹ کیرن</exemplarCity>
+			</zone>
+			<zone type="America/Puerto_Rico">
+				<exemplarCity>پورٹو ریکو</exemplarCity>
+			</zone>
+			<zone type="Pacific/Palau">
+				<exemplarCity>پالائو</exemplarCity>
+			</zone>
+			<zone type="Asia/Qatar">
+				<exemplarCity>قطر</exemplarCity>
+			</zone>
+			<zone type="Indian/Reunion">
+				<exemplarCity>ری یونین</exemplarCity>
+			</zone>
+			<zone type="Asia/Singapore">
+				<exemplarCity>سنگاپور</exemplarCity>
+			</zone>
+			<zone type="America/El_Salvador">
+				<exemplarCity>ایلسلواڈور</exemplarCity>
+			</zone>
+			<zone type="Indian/Mayotte">
+				<exemplarCity>مایوٹ</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+			<list>;</list>
+			<percentSign>%</percentSign>
+			<nativeZeroDigit>0</nativeZeroDigit>
+			<patternDigit>#</patternDigit>
+			<plusSign>+</plusSign>
+			<minusSign>-</minusSign>
+			<exponential>E</exponential>
+			<perMille>‰</perMille>
+			<infinity>∞</infinity>
+			<nan>NaN</nan>
+		</symbols>
+		<decimalFormats>
+			<decimalFormatLength>
+				<decimalFormat>
+					<pattern>#,##0.###</pattern>
+				</decimalFormat>
+			</decimalFormatLength>
+		</decimalFormats>
+		<scientificFormats>
+			<scientificFormatLength>
+				<scientificFormat>
+					<pattern>#E0</pattern>
+				</scientificFormat>
+			</scientificFormatLength>
+		</scientificFormats>
+		<percentFormats>
+			<percentFormatLength>
+				<percentFormat>
+					<pattern>#,##0%</pattern>
+				</percentFormat>
+			</percentFormatLength>
+		</percentFormats>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+			<unitPattern count="one">‏{0} {1} ‏</unitPattern>
+		</currencyFormats>
+		<currencies>
+			<currency type="AED">
+				<displayName>متحدہ عرب اماراتی درہم</displayName>
+			</currency>
+			<currency type="ARS">
+				<displayName>ارجنٹائن پیسہ</displayName>
+			</currency>
+			<currency type="AUD">
+				<displayName>آسٹریلین ڈالر</displayName>
+			</currency>
+			<currency type="BGN">
+				<displayName>بلغارین لیو</displayName>
+			</currency>
+			<currency type="BOB">
+				<displayName>بولیوین بولیویانو</displayName>
+			</currency>
+			<currency type="BRL">
+				<displayName>برازیلی ریئل</displayName>
+			</currency>
+			<currency type="CAD">
+				<displayName>کنیڈین ڈالر</displayName>
+			</currency>
+			<currency type="CHF">
+				<displayName>سوئس فرانکس</displayName>
+			</currency>
+			<currency type="CLP">
+				<displayName>چلّین پیسہ</displayName>
+			</currency>
+			<currency type="CNY">
+				<displayName>یوآن رینمنبی</displayName>
+			</currency>
+			<currency type="COP">
+				<displayName>کولمبین پیسہ</displayName>
+			</currency>
+			<currency type="CZK">
+				<displayName>چیک کرونا</displayName>
+			</currency>
+			<currency type="DEM">
+				<displayName>ڈچ مارکس</displayName>
+			</currency>
+			<currency type="DKK">
+				<displayName>ڈنمارک کرونر</displayName>
+			</currency>
+			<currency type="EEK">
+				<displayName>ایسٹونین کرون</displayName>
+			</currency>
+			<currency type="EGP">
+				<displayName>مصری پائونڈ</displayName>
+			</currency>
+			<currency type="EUR">
+				<displayName>یورو</displayName>
+			</currency>
+			<currency type="FRF">
+				<displayName>فرانسیسی فرانک</displayName>
+			</currency>
+			<currency type="GBP">
+				<displayName>انگلستانی پاونڈ سٹرلنگ</displayName>
+			</currency>
+			<currency type="HKD">
+				<displayName>ھانگ کانگ ڈالر</displayName>
+			</currency>
+			<currency type="HRK">
+				<displayName>کروشین کونا</displayName>
+			</currency>
+			<currency type="HUF">
+				<displayName>ہنگرین فورنٹ</displayName>
+			</currency>
+			<currency type="IDR">
+				<displayName>انڈونیشین روپیہ</displayName>
+			</currency>
+			<currency type="ILS">
+				<displayName>اسرائیلی شیکل</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>انڈین روپیہ</displayName>
+			</currency>
+			<currency type="JPY">
+				<displayName>جاپانی ین</displayName>
+			</currency>
+			<currency type="KRW">
+				<displayName>جنوبی کوریائی جیتا۔</displayName>
+			</currency>
+			<currency type="LTL">
+				<displayName>لیتھوانی لیٹاس</displayName>
+			</currency>
+			<currency type="MAD">
+				<displayName>مراکشی درہم</displayName>
+			</currency>
+			<currency type="MXN">
+				<displayName>میکسیکی پیسہ</displayName>
+			</currency>
+			<currency type="MYR">
+				<displayName>ملائیشین رنگٹ</displayName>
+			</currency>
+			<currency type="NOK">
+				<displayName>ناروے کرونر</displayName>
+			</currency>
+			<currency type="NZD">
+				<displayName>نیوزی لینڈ ڈالر</displayName>
+			</currency>
+			<currency type="PEN">
+				<displayName>پیروین نیووسول</displayName>
+			</currency>
+			<currency type="PHP">
+				<displayName>فلپائینی پیسہ</displayName>
+			</currency>
+			<currency type="PKR">
+				<displayName>پاکستانی روپیہ</displayName>
+				<symbol>روپے</symbol>
+			</currency>
+			<currency type="PLN">
+				<displayName>پولش نیو زلوٹی</displayName>
+			</currency>
+			<currency type="RON">
+				<displayName>نیا رومانیائی لیو</displayName>
+			</currency>
+			<currency type="RSD">
+				<displayName>سربین دینار</displayName>
+			</currency>
+			<currency type="RUB">
+				<displayName>روسی روبل</displayName>
+			</currency>
+			<currency type="SAR">
+				<displayName>سعودی ریال</displayName>
+			</currency>
+			<currency type="SEK">
+				<displayName>سویڈن کرونر</displayName>
+			</currency>
+			<currency type="SGD">
+				<displayName>سنگا پور ڈالر</displayName>
+			</currency>
+			<currency type="SIT">
+				<displayName>سلوانین ٹولر</displayName>
+			</currency>
+			<currency type="SKK">
+				<displayName>سلووک کرونا</displayName>
+			</currency>
+			<currency type="THB">
+				<displayName>تھائی باہت</displayName>
+			</currency>
+			<currency type="TRL">
+				<displayName>ترکی لیرا</displayName>
+			</currency>
+			<currency type="TRY">
+				<displayName>نیا ترکی لیرا</displayName>
+			</currency>
+			<currency type="TWD">
+				<displayName>نیو تائیوان ڈالر</displayName>
+			</currency>
+			<currency type="USD">
+				<displayName>امریکی ڈالر</displayName>
+				<symbol>ڈالر</symbol>
+			</currency>
+			<currency type="VEB">
+				<displayName>وینزویلا بولیور</displayName>
+			</currency>
+			<currency type="ZAR">
+				<displayName>جنوبی افریقی رانڈ</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>yes:y</yesstr>
+			<nostr>no:n</nostr>
+		</messages>
+	</posix>
+</ldml>
 

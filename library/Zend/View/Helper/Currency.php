@@ -1,119 +1,119 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Currencyphp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Currency.php 20785 2010-01-31 09:43:03Z mikaelkael $
+ */
 
-php/php*php*php Zendphp_Viewphp_Helperphp_Abstractphp.phpphp php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Abstractphp.phpphp'php;
+/** Zend_View_Helper_Abstract.php */
+require_once 'Zend/View/Helper/Abstract.php';
 
-php/php*php*
-php php*php Currencyphp viewphp helper
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_View
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Viewphp_Helperphp_Currencyphp extendsphp Zendphp_Viewphp_Helperphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Currencyphp object
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Currency
-php php php php php php*php/
-php php php php protectedphp php$php_currencyphp;
+/**
+ * Currency view helper
+ *
+ * @category  Zend
+ * @package   Zend_View
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
+{
+    /**
+     * Currency object
+     *
+     * @var Zend_Currency
+     */
+    protected $_currency;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp forphp manuallyphp handling
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Currencyphp php$currencyphp Instancephp ofphp Zendphp_Currency
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$currencyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$currencyphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php'Zendphp_Currencyphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$currencyphp php=php Zendphp_Registryphp:php:getphp(php'Zendphp_Currencyphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Constructor for manually handling
+     *
+     * @param  Zend_Currency $currency Instance of Zend_Currency
+     * @return void
+     */
+    public function __construct($currency = null)
+    {
+        if ($currency === null) {
+            require_once 'Zend/Registry.php';
+            if (Zend_Registry::isRegistered('Zend_Currency')) {
+                $currency = Zend_Registry::get('Zend_Currency');
+            }
+        }
 
-php php php php php php php php php$thisphp-php>setCurrencyphp(php$currencyphp)php;
-php php php php php}
+        $this->setCurrency($currency);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Outputphp aphp formattedphp currency
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp|floatphp php php php php php php php php php php php php php php php php php php php php$valuephp php php php Currencyphp valuephp tophp output
-php php php php php php*php php@paramphp php stringphp|Zendphp_Localephp|Zendphp_Currencyphp php$currencyphp OPTIONALphp Currencyphp tophp usephp forphp thisphp call
-php php php php php php*php php@returnphp stringphp Formattedphp currency
-php php php php php php*php/
-php php php php publicphp functionphp currencyphp(php$valuephp php=php nullphp,php php$currencyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+    /**
+     * Output a formatted currency
+     *
+     * @param  integer|float                    $value    Currency value to output
+     * @param  string|Zend_Locale|Zend_Currency $currency OPTIONAL Currency to use for this call
+     * @return string Formatted currency
+     */
+    public function currency($value = null, $currency = null)
+    {
+        if ($value === null) {
+            return $this;
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$currencyphp)php php|php|php php(php$currencyphp instanceofphp Zendphp_Localephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
-php php php php php php php php php php php php ifphp php(Zendphp_Localephp:php:isLocalephp(php$currencyphp)php)php php{
-php php php php php php php php php php php php php php php php php$currencyphp php=php arrayphp(php'localephp'php php=php>php php$currencyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (is_string($currency) || ($currency instanceof Zend_Locale)) {
+            require_once 'Zend/Locale.php';
+            if (Zend_Locale::isLocale($currency)) {
+                $currency = array('locale' => $currency);
+            }
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$currencyphp)php)php php{
-php php php php php php php php php php php php php$currencyphp php=php arrayphp(php'currencyphp'php php=php>php php$currencyphp)php;
-php php php php php php php php php}
+        if (is_string($currency)) {
+            $currency = array('currency' => $currency);
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$currencyphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_currencyphp-php>toCurrencyphp(php$valuephp,php php$currencyphp)php;
-php php php php php php php php php}
+        if (is_array($currency)) {
+            return $this->_currency->toCurrency($value, $currency);
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_currencyphp-php>toCurrencyphp(php$valuephp)php;
-php php php php php}
+        return $this->_currency->toCurrency($value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp aphp currencyphp tophp use
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Currencyphp|Stringphp|Zendphp_Localephp php$currencyphp Currencyphp tophp use
-php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp Whenphp nophp orphp aphp falsephp currencyphp wasphp set
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Currency
-php php php php php php*php/
-php php php php publicphp functionphp setCurrencyphp(php$currencyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$currencyphp instanceofphp Zendphp_Currencyphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Currencyphp.phpphp'php;
-php php php php php php php php php php php php php$currencyphp php=php newphp Zendphp_Currencyphp(php$currencyphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_currencyphp php=php php$currencyphp;
+    /**
+     * Sets a currency to use
+     *
+     * @param  Zend_Currency|String|Zend_Locale $currency Currency to use
+     * @throws Zend_View_Exception When no or a false currency was set
+     * @return Zend_View_Helper_Currency
+     */
+    public function setCurrency($currency = null)
+    {
+        if (!$currency instanceof Zend_Currency) {
+            require_once 'Zend/Currency.php';
+            $currency = new Zend_Currency($currency);
+        }
+        $this->_currency = $currency;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp currencyphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Currencyphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getCurrencyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_currencyphp;
-php php php php php}
-php}
+    /**
+     * Retrieve currency object
+     *
+     * @return Zend_Currency|null
+     */
+    public function getCurrency()
+    {
+        return $this->_currency;
+    }
+}

@@ -1,259 +1,259 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Formphp_Elementphp_Xhtmlphp php*php/
-requirephp_oncephp php'Zendphp/Formphp/Elementphp/Xhtmlphp.phpphp'php;
+/** Zend_Form_Element_Xhtml */
+require_once 'Zend/Form/Element/Xhtml.php';
 
-php/php*php*
-php php*php CSRFphp formphp protection
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Hashphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Formphp_Elementphp_Hashphp extendsphp Zendphp_Formphp_Elementphp_Xhtml
-php{
-php php php php php/php*php*
-php php php php php php*php Usephp formHiddenphp viewphp helperphp byphp default
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$helperphp php=php php'formHiddenphp'php;
+/**
+ * CSRF form protection
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Hash.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
+{
+    /**
+     * Use formHidden view helper by default
+     * @var string
+     */
+    public $helper = 'formHidden';
 
-php php php php php/php*php*
-php php php php php php*php Actualphp hashphp usedphp.
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_hashphp;
+    /**
+     * Actual hash used.
+     *
+     * @var mixed
+     */
+    protected $_hash;
 
-php php php php php/php*php*
-php php php php php php*php Saltphp forphp CSRFphp token
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_saltphp php=php php'saltphp'php;
+    /**
+     * Salt for CSRF token
+     * @var string
+     */
+    protected $_salt = 'salt';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Sessionphp_Namespace
-php php php php php php*php/
-php php php php protectedphp php$php_sessionphp;
+    /**
+     * @var Zend_Session_Namespace
+     */
+    protected $_session;
 
-php php php php php/php*php*
-php php php php php php*php TTLphp forphp CSRFphp token
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_timeoutphp php=php php3php0php0php;
+    /**
+     * TTL for CSRF token
+     * @var int
+     */
+    protected $_timeout = 300;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Createsphp sessionphp namespacephp forphp CSRFphp tokenphp,php andphp addsphp validatorphp forphp CSRF
-php php php php php php*php tokenphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$spec
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$specphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$specphp,php php$optionsphp)php;
+    /**
+     * Constructor
+     *
+     * Creates session namespace for CSRF token, and adds validator for CSRF
+     * token.
+     *
+     * @param  string|array|Zend_Config $spec
+     * @param  array|Zend_Config $options
+     * @return void
+     */
+    public function __construct($spec, $options = null)
+    {
+        parent::__construct($spec, $options);
 
-php php php php php php php php php$thisphp-php>setAllowEmptyphp(falsephp)
-php php php php php php php php php php php php php php-php>setRequiredphp(truephp)
-php php php php php php php php php php php php php php-php>initCsrfValidatorphp(php)php;
-php php php php php}
+        $this->setAllowEmpty(false)
+             ->setRequired(true)
+             ->initCsrfValidator();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp sessionphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Sessionphp_Namespacephp php$session
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Hash
-php php php php php php*php/
-php php php php publicphp functionphp setSessionphp(php$sessionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sessionphp php=php php$sessionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set session object
+     *
+     * @param  Zend_Session_Namespace $session
+     * @return Zend_Form_Element_Hash
+     */
+    public function setSession($session)
+    {
+        $this->_session = $session;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp sessionphp object
-php php php php php php*
-php php php php php php*php Instantiatephp sessionphp objectphp ifphp nonephp currentlyphp exists
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Sessionphp_Namespace
-php php php php php php*php/
-php php php php publicphp functionphp getSessionphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_sessionphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Namespacephp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_sessionphp php=php newphp Zendphp_Sessionphp_Namespacephp(php$thisphp-php>getSessionNamephp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_sessionphp;
-php php php php php}
+    /**
+     * Get session object
+     *
+     * Instantiate session object if none currently exists
+     *
+     * @return Zend_Session_Namespace
+     */
+    public function getSession()
+    {
+        if (null === $this->_session) {
+            require_once 'Zend/Session/Namespace.php';
+            $this->_session = new Zend_Session_Namespace($this->getSessionName());
+        }
+        return $this->_session;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp CSRFphp validator
-php php php php php php*
-php php php php php php*php Createsphp Sessionphp namespacephp,php andphp initializesphp CSRFphp tokenphp inphp sessionphp.
-php php php php php php*php Additionallyphp,php addsphp validatorphp forphp validatingphp CSRFphp tokenphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Hash
-php php php php php php*php/
-php php php php publicphp functionphp initCsrfValidatorphp(php)
-php php php php php{
-php php php php php php php php php$sessionphp php=php php$thisphp-php>getSessionphp(php)php;
-php php php php php php php php ifphp php(issetphp(php$sessionphp-php>hashphp)php)php php{
-php php php php php php php php php php php php php$rightHashphp php=php php$sessionphp-php>hashphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$rightHashphp php=php nullphp;
-php php php php php php php php php}
+    /**
+     * Initialize CSRF validator
+     *
+     * Creates Session namespace, and initializes CSRF token in session.
+     * Additionally, adds validator for validating CSRF token.
+     *
+     * @return Zend_Form_Element_Hash
+     */
+    public function initCsrfValidator()
+    {
+        $session = $this->getSession();
+        if (isset($session->hash)) {
+            $rightHash = $session->hash;
+        } else {
+            $rightHash = null;
+        }
 
-php php php php php php php php php$thisphp-php>addValidatorphp(php'Identicalphp'php,php truephp,php arrayphp(php$rightHashphp)php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->addValidator('Identical', true, array($rightHash));
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Saltphp forphp CSRFphp token
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$salt
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Hash
-php php php php php php*php/
-php php php php publicphp functionphp setSaltphp(php$saltphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_saltphp php=php php(stringphp)php php$saltphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Salt for CSRF token
+     *
+     * @param  string $salt
+     * @return Zend_Form_Element_Hash
+     */
+    public function setSalt($salt)
+    {
+        $this->_salt = (string) $salt;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp saltphp forphp CSRFphp token
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSaltphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_saltphp;
-php php php php php}
+    /**
+     * Retrieve salt for CSRF token
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->_salt;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp CSRFphp token
-php php php php php php*
-php php php php php php*php Ifphp nophp CSRFphp tokenphp currentlyphp existsphp,php generatesphp onephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHashphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_hashphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_generateHashphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_hashphp;
-php php php php php}
+    /**
+     * Retrieve CSRF token
+     *
+     * If no CSRF token currently exists, generates one.
+     *
+     * @return string
+     */
+    public function getHash()
+    {
+        if (null === $this->_hash) {
+            $this->_generateHash();
+        }
+        return $this->_hash;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp sessionphp namespacephp forphp CSRFphp token
-php php php php php php*
-php php php php php php*php Generatesphp aphp sessionphp namespacephp basedphp onphp saltphp,php elementphp namephp,php andphp classphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSessionNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php_php_CLASSphp_php_php php.php php'php_php'php php.php php$thisphp-php>getSaltphp(php)php php.php php'php_php'php php.php php$thisphp-php>getNamephp(php)php;
-php php php php php}
+    /**
+     * Get session namespace for CSRF token
+     *
+     * Generates a session namespace based on salt, element name, and class.
+     *
+     * @return string
+     */
+    public function getSessionName()
+    {
+        return __CLASS__ . '_' . $this->getSalt() . '_' . $this->getName();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp timeoutphp forphp CSRFphp sessionphp token
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$ttl
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Hash
-php php php php php php*php/
-php php php php publicphp functionphp setTimeoutphp(php$ttlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_timeoutphp php=php php(intphp)php php$ttlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set timeout for CSRF session token
+     *
+     * @param  int $ttl
+     * @return Zend_Form_Element_Hash
+     */
+    public function setTimeout($ttl)
+    {
+        $this->_timeout = (int) $ttl;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp CSRFphp sessionphp tokenphp timeout
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getTimeoutphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_timeoutphp;
-php php php php php}
+    /**
+     * Get CSRF session token timeout
+     *
+     * @return int
+     */
+    public function getTimeout()
+    {
+        return $this->_timeout;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp getLabelphp(php)php tophp alwaysphp bephp empty
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php/
-php php php php publicphp functionphp getLabelphp(php)
-php php php php php{
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Override getLabel() to always be empty
+     *
+     * @return null
+     */
+    public function getLabel()
+    {
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp CSRFphp tokenphp inphp session
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp initCsrfTokenphp(php)
-php php php php php{
-php php php php php php php php php$sessionphp php=php php$thisphp-php>getSessionphp(php)php;
-php php php php php php php php php$sessionphp-php>setExpirationHopsphp(php1php,php nullphp,php truephp)php;
-php php php php php php php php php$sessionphp-php>setExpirationSecondsphp(php$thisphp-php>getTimeoutphp(php)php)php;
-php php php php php php php php php$sessionphp-php>hashphp php=php php$thisphp-php>getHashphp(php)php;
-php php php php php}
+    /**
+     * Initialize CSRF token in session
+     *
+     * @return void
+     */
+    public function initCsrfToken()
+    {
+        $session = $this->getSession();
+        $session->setExpirationHops(1, null, true);
+        $session->setExpirationSeconds($this->getTimeout());
+        $session->hash = $this->getHash();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp CSRFphp tokenphp inphp form
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>initCsrfTokenphp(php)php;
-php php php php php php php php returnphp parentphp:php:renderphp(php$viewphp)php;
-php php php php php}
+    /**
+     * Render CSRF token in form
+     *
+     * @param  Zend_View_Interface $view
+     * @return string
+     */
+    public function render(Zend_View_Interface $view = null)
+    {
+        $this->initCsrfToken();
+        return parent::render($view);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp CSRFphp token
-php php php php php php*
-php php php php php php*php Generatesphp CSRFphp tokenphp andphp storesphp bothphp inphp php{php@linkphp php$php_hashphp}php andphp element
-php php php php php php*php valuephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_generateHashphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_hashphp php=php mdphp5php(
-php php php php php php php php php php php php mtphp_randphp(php1php,php1php0php0php0php0php0php0php)
-php php php php php php php php php php php php php.php php php$thisphp-php>getSaltphp(php)
-php php php php php php php php php php php php php.php php php$thisphp-php>getNamephp(php)
-php php php php php php php php php php php php php.php php mtphp_randphp(php1php,php1php0php0php0php0php0php0php)
-php php php php php php php php php)php;
-php php php php php php php php php$thisphp-php>setValuephp(php$thisphp-php>php_hashphp)php;
-php php php php php}
-php}
+    /**
+     * Generate CSRF token
+     *
+     * Generates CSRF token and stores both in {@link $_hash} and element
+     * value.
+     *
+     * @return void
+     */
+    protected function _generateHash()
+    {
+        $this->_hash = md5(
+            mt_rand(1,1000000)
+            .  $this->getSalt()
+            .  $this->getName()
+            .  mt_rand(1,1000000)
+        );
+        $this->setValue($this->_hash);
+    }
+}

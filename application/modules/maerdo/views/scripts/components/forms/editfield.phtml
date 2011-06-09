@@ -1,21 +1,21 @@
 
 
 <div id="page-header">
-	<h1><?php echo  $this->translate('Edit a field')?></h1>
+	<h1><?php echo $this->translate('Edit a field')?></h1>
 </div>
 
 <?php if($this->notification_error!=NULL):?>
 <div class='notification_error px900'>
 	<?php if($this->notification_error=='updateOptions_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to update form option.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to update form option.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='delete_multioption_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the multioptions.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the multioptions.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_error=='delete_attribut_error'):?>
-	<div><?php echo  $this->translate('An error has occured when trying to delete the attribut.');?><br /></div>
+	<div><?php echo $this->translate('An error has occured when trying to delete the attribut.');?><br /></div>
 	<?php endif;?>			
 </div>
 <br /><br />
@@ -25,46 +25,44 @@
 <?php if($this->notification_success!=NULL):?>
 <div class='notification_success px900'>
 	<?php if($this->notification_success=='updateOptions_success'):?>
-	<div><?php echo  $this->translate('The field options has been updated.');?><br /></div>
+	<div><?php echo $this->translate('The field options has been updated.');?><br /></div>
 	<?php endif;?>
 
 	<?php if($this->notification_success=='delete_multioption_success'):?>
-	<div><?php echo  $this->translate('The multioption has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The multioption has been deleted.');?><br /></div>
 	<?php endif;?>
 	
 	<?php if($this->notification_success=='delete_attribut_success'):?>
-	<div><?php echo  $this->translate('The attribut has been deleted.');?><br /></div>
+	<div><?php echo $this->translate('The attribut has been deleted.');?><br /></div>
 	<?php endif;?>
 </div>	
 <br /><br />
 <?php endif;?>
 
 <br />
-
-<a href='/maerdo/component/forms/edit/<?php echo $this->form_id?>'>> <?php  echo $this->translate('Return to form edition')?></a><!--  -->
-
+<a href='/maerdo/component/forms/edit/<?=$this->form_id?>'>> <? echo $this->translate('Return to form edition')?></a><!--  -->
 <br /><br /><br />
 
 <div id="tabs" class="px900">
     <ul class="px900">		
-        <li><a href="#tabs-1"><?php echo  $this->translate('Options')?></a></li>
-        <li><a href="#tabs-2"><?php echo  $this->translate('Validators')?></a></li>
-        <li><a href="#tabs-3"><?php echo  $this->translate('Filters')?></a></li>
+        <li><a href="#tabs-1"><?php echo $this->translate('Options')?></a></li>
+        <li><a href="#tabs-2"><?php echo $this->translate('Validators')?></a></li>
+        <li><a href="#tabs-3"><?php echo $this->translate('Filters')?></a></li>
     </ul>
     <div id="tabs-1">
         <h3>Options</h3>
-		<form id='options_form' action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>' method='post'>
+		<form id='options_form' action='/maerdo/component/forms/edit/field/<?=$this->field_id?>' method='post'>
 			<input type='hidden' name='form_action' value='update_options' />
 			<table>
-		    <tr><td>Label :</td><td> <input type="text" name="options[label]" value="<?php if (isset($this->options['options']['label'])) echo $this->options['options']['label']?>"/></td></tr>
-	        <tr><td>Description :</td><td> <input type="text" name="options[description]" value="<?php if (isset($this->options['options']['description'])) echo $this->options['options']['description']?>" class="px400"/></td></tr>
-	        <tr><td>Required :</td><td><input class="pr t3" type="checkbox" <?php if (isset($this->options['options']['required']) && $this->options['options']['required']=="true") echo "checked='checked'";?>name="options[required]"> </td></tr>      
-	        <tr><td>Order :</td><td><input type="text" name="options[order]" value="<?php if (isset($this->options['options']['order'])) echo $this->options['options']['order']?>" size="2"/></td></tr>
+		    <tr><td>Label :</td><td> <input type="text" name="options[label]" value="<?if(isset($this->options['options']['label'])) echo $this->options['options']['label']?>"/></td></tr>
+	        <tr><td>Description :</td><td> <input type="text" name="options[description]" value="<?if(isset($this->options['options']['description'])) echo $this->options['options']['description']?>" class="px400"/></td></tr>
+	        <tr><td>Required :</td><td><input class="pr t3" type="checkbox" <?if(isset($this->options['options']['required']) && $this->options['options']['required']=="true") echo "checked='checked'";?>name="options[required]"> </td></tr>      
+	        <tr><td>Order :</td><td><input type="text" name="options[order]" value="<?if(isset($this->options['options']['order'])) echo $this->options['options']['order']?>" size="2"/></td></tr>
 			</table>
 			
 	        <br />
 	        <h3>Multi-options</h3>
-	        <a href='#' onclick='addMultiOptions()'><img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo  $this->translate('Add an option')?></a><br /><br />
+	        <a href='#' onclick='addMultiOptions()'><img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo $this->translate('Add an option')?></a><br /><br />
 			<table id='multioptions' class="px300">
 		    	<tr class="bold bggrey">
 		    		<td>Value</td>
@@ -75,9 +73,9 @@
 		    	$i=0;
 		    	foreach($this->options['multioptions'] as $value):?>
 			    	<tr>
-		    			<td><input type="text" name="multioptions[<?php echo $i?>][name]" value="<?php echo $value['name']?>"/></td>
-		    			<td><input type="text" name="multioptions[<?php echo $i?>][value]" value="<?php echo $value['value']?>"/></td>
-		    			<td><a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>?form_action=delete_multioption&mo_id=<?php echo $value['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		    			<td><input type="text" name="multioptions[<?=$i?>][name]" value="<?=$value['name']?>"/></td>
+		    			<td><input type="text" name="multioptions[<?=$i?>][value]" value="<?=$value['value']?>"/></td>
+		    			<td><a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>?form_action=delete_multioption&mo_id=<?=$value['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 		    		</tr>    	    	
 		    	<?php 
 		    	$i++;
@@ -85,7 +83,7 @@
 			</table>        
 			<br />        
 	        <h3>Attributs</h3>
-	        <a href='#' onclick='addAttributs()'><img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo  $this->translate('Add an attribute')?></a><br /><br />
+	        <a href='#' onclick='addAttributs()'><img src='/images/icons/add.png' class='pr t3 mr5' /><?php echo $this->translate('Add an attribute')?><br /><br />
 			<table id='attributs' class="px300">
 		    	<tr class="bold bggrey">
 		    		<td>Name</td>
@@ -96,9 +94,9 @@
 		    	$i=0;
 		    	foreach($this->options['attributs'] as $value):?>
 			    	<tr>
-		    			<td><input type="text" name="attributs[<?php echo $i?>][name]" value="<?php echo $value['name']?>"/></td>
-		    			<td><input type="text" name="attributs[<?php echo $i?>][value]" value="<?php echo $value['value']?>"/></td>
-		    			<td><a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>?form_action=delete_attribut&mo_id=<?php echo $value['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
+		    			<td><input type="text" name="attributs[<?=$i?>][name]" value="<?=$value['name']?>"/></td>
+		    			<td><input type="text" name="attributs[<?=$i?>][value]" value="<?=$value['value']?>"/></td>
+		    			<td><a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>?form_action=delete_attribut&mo_id=<?=$value['id']?>'><img src='/images/icons/delete.gif' alt='Delete' /></a></td>
 		    		</tr>    	    	
 		    	<?php 
 		    	$i++;
@@ -113,34 +111,34 @@
 		<?php if($this->validator_notification_success!=NULL):?>
 		<div class='notification_success px900'>
 			<?php if($this->validator_notification_success=='add_validator_success'):?>
-			<div><?php echo  $this->translate('The validator has been added.');?><br /></div>
+			<div><?php echo $this->translate('The validator has been added.');?><br /></div>
 			<?php endif;?>
 			<?php if($this->validator_notification_success=='delete_validator_success'):?>
-			<div><?php echo  $this->translate('The validator has been deleted.');?><br /></div>
+			<div><?php echo $this->translate('The validator has been deleted.');?><br /></div>
 			<?php endif;?>			
 		</div>
 		<?php endif;?>	
 		<?php if($this->validator_notification_error!=NULL):?>
 		<div class='notification_error px900'>
 			<?php if($this->validator_notification_error=='add_validator_error'):?>
-			<div><?php echo  $this->translate('An error has occured when trying to add the validator.');?><br /></div>
+			<div><?php echo $this->translate('An error has occured when trying to add the validator.');?><br /></div>
 			<?php endif;?>
 			<?php if($this->validator_notification_error=='delete_validator_error'):?>
-			<div><?php echo  $this->translate('An error has occured when trying to delete the validator.');?><br /></div>
+			<div><?php echo $this->translate('An error has occured when trying to delete the validator.');?><br /></div>
 			<?php endif;?>			
 		</div>
 		<?php endif;?>	
 		<br /><br />		
 		
-       <form action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>' method='post' id='validator_form'>
+       <form action='/maerdo/component/forms/edit/field/<?=$this->field_id?>' method='post' id='validator_form'>
        		<input type="hidden" name="form_action" value="add_validator">
-		    	<?php echo  $this->translate('Add this validator')?> :</a>
+		    	<?php echo $this->translate('Add this validator')?> :</a>
        			<select name='validator'>
        			<?php foreach($this->validatorlist as $validator) :?>
-       				<option value='<?php echo $validator?>'><?php echo $validator?></option>
+       				<option value='<?=$validator?>'><?=$validator?></option>
        			<?php endforeach;?>
        			</select>
-       			<input class="ml5" type="submit" value="<?php  echo $this->translate('Add')?>" />
+       			<input class="ml5" type="submit" value="<? echo $this->translate('Add')?>" />
        			<br /><br />
        			<table class="px400">
        				<tr class="bggrey bold">
@@ -149,10 +147,10 @@
        				</tr>
        				<?php foreach($this->validators as $validator) :?>
        				<tr>
-       					<td><?php echo $validator->validator?></td>
+       					<td><?=$validator->validator?></td>
        					<td>
-						<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/validator/<?php echo $validator->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
-       					<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>?form_action=delete_validator&validator_id=<?php echo $validator->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+						<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/validator/<?=$validator->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
+       					<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>?form_action=delete_validator&validator_id=<?=$validator->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
        					</td>       					
        				</tr>
        				<?php endforeach;?>       				
@@ -165,35 +163,35 @@
 		<?php if($this->filter_notification_success!=NULL):?>
 		<div class='notification_success px900'>
 			<?php if($this->filter_notification_success=='add_filter_success'):?>
-			<div><?php echo  $this->translate('The Filter has been added.');?><br /></div>
+			<div><?php echo $this->translate('The Filter has been added.');?><br /></div>
 			<?php endif;?>
 			<?php if($this->filter_notification_success=='delete_filter_success'):?>
-			<div><?php echo  $this->translate('The filter has been deleted.');?><br /></div>
+			<div><?php echo $this->translate('The filter has been deleted.');?><br /></div>
 			<?php endif;?>			
 		</div>
 		<?php endif;?>	
 		<?php if($this->filter_notification_error!=NULL):?>
 		<div class='notification_error px900'>
 			<?php if($this->filer_notification_error=='add_filter_error'):?>
-			<div><?php echo  $this->translate('An error has occured when trying to add the filter.');?><br /></div>
+			<div><?php echo $this->translate('An error has occured when trying to add the filter.');?><br /></div>
 			<?php endif;?>
 			<?php if($this->filter_notification_error=='delete_filter_error'):?>
-			<div><?php echo  $this->translate('An error has occured when trying to delete the filter.');?><br /></div>
+			<div><?php echo $this->translate('An error has occured when trying to delete the filter.');?><br /></div>
 			<?php endif;?>			
 		</div>
 		<?php endif;?>	
 		<br /><br />	   
-		<form action='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>' method='post' id='validator_form'> 
+		<form action='/maerdo/component/forms/edit/field/<?=$this->field_id?>' method='post' id='validator_form'> 
         <input type="hidden" name="form_action" value="add_filter">
        
-		    	<?php echo  $this->translate('Add this filter')?> :</a>
+		    	<?php echo $this->translate('Add this filter')?> :</a>
        			<select name='filter'>
        			<?php foreach($this->filterslist as $filter) :?>
-       				<option value='<?php echo $filter?>'><?php echo $filter?></option>
+       				<option value='<?=$filter?>'><?=$filter?></option>
        			<?php endforeach;?>
        			</select>
        			
-       			<input class="ml5" type="submit" value="<?php  echo $this->translate('Add')?>" />
+       			<input class="ml5" type="submit" value="<? echo $this->translate('Add')?>" />
        			<br /><br />
        			<table class="px400">
        				<tr class="bggrey bold">
@@ -202,10 +200,10 @@
        				</tr>
        				<?php foreach($this->filters as $filter) :?>
        				<tr>
-       					<td><?php echo $filter->filter?></td>
+       					<td><?=$filter->filter?></td>
        					<td>
-						<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>/filter/<?php echo $filter->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
-       					<a href='/maerdo/component/forms/edit/field/<?php echo $this->field_id?>?form_action=delete_filter&filter_id=<?php echo $filter->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
+						<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>/filter/<?=$filter->id?>'><img src='/images/icons/edit.gif' alt='Edit' /></a>
+       					<a href='/maerdo/component/forms/edit/field/<?=$this->field_id?>?form_action=delete_filter&filter_id=<?=$filter->id?>'><img src='/images/icons/delete.gif' alt='Delete' /></a>
        					</td>       					
        				</tr>
        				<?php endforeach;?>       				
@@ -215,7 +213,7 @@
     <div id="tabs-4">
         
     </div>		
- </div>  
+ </div> 
  <br />
  <?php if($this->view):?>
 <script type="text/javascript">

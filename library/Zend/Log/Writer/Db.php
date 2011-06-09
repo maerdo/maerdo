@@ -1,145 +1,145 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dbphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Db.php 23576 2010-12-23 23:25:44Z ramon $
+ */
 
-php/php*php*php Zendphp_Logphp_Writerphp_Abstractphp php*php/
-requirephp_oncephp php'Zendphp/Logphp/Writerphp/Abstractphp.phpphp'php;
+/** Zend_Log_Writer_Abstract */
+require_once 'Zend/Log/Writer/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dbphp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
-classphp Zendphp_Logphp_Writerphp_Dbphp extendsphp Zendphp_Logphp_Writerphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Databasephp adapterphp instance
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Dbphp_Adapter
-php php php php php php*php/
-php php php php privatephp php$php_dbphp;
+/**
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Db.php 23576 2010-12-23 23:25:44Z ramon $
+ */
+class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
+{
+    /**
+     * Database adapter instance
+     *
+     * @var Zend_Db_Adapter
+     */
+    private $_db;
 
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp logphp tablephp inphp thephp database
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php privatephp php$php_tablephp;
+    /**
+     * Name of the log table in the database
+     *
+     * @var string
+     */
+    private $_table;
 
-php php php php php/php*php*
-php php php php php php*php Relatesphp databasephp columnsphp namesphp tophp logphp dataphp fieldphp keysphp.
-php php php php php php*
-php php php php php php*php php@varphp nullphp|array
-php php php php php php*php/
-php php php php privatephp php$php_columnMapphp;
+    /**
+     * Relates database columns names to log data field keys.
+     *
+     * @var null|array
+     */
+    private $_columnMap;
 
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Dbphp_Adapterphp php$dbphp php php Databasephp adapterphp instance
-php php php php php php*php php@paramphp stringphp php$tablephp php php php php php php php php Logphp tablephp inphp database
-php php php php php php*php php@paramphp arrayphp php$columnMap
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$dbphp,php php$tablephp,php php$columnMapphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dbphp php php php php=php php$dbphp;
-php php php php php php php php php$thisphp-php>php_tablephp php=php php$tablephp;
-php php php php php php php php php$thisphp-php>php_columnMapphp php=php php$columnMapphp;
-php php php php php}
+    /**
+     * Class constructor
+     *
+     * @param Zend_Db_Adapter $db   Database adapter instance
+     * @param string $table         Log table in database
+     * @param array $columnMap
+     * @return void
+     */
+    public function __construct($db, $table, $columnMap = null)
+    {
+        $this->_db    = $db;
+        $this->_table = $table;
+        $this->_columnMap = $columnMap;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Writerphp_Db
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Logphp_Writerphp_Db
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php staticphp publicphp functionphp factoryphp(php$configphp)
-php php php php php{
-php php php php php php php php php$configphp php=php selfphp:php:php_parseConfigphp(php$configphp)php;
-php php php php php php php php php$configphp php=php arrayphp_mergephp(arrayphp(
-php php php php php php php php php php php php php'dbphp'php php php php php php php php php=php>php nullphp,
-php php php php php php php php php php php php php'tablephp'php php php php php php=php>php nullphp,
-php php php php php php php php php php php php php'columnMapphp'php php=php>php nullphp,
-php php php php php php php php php)php,php php$configphp)php;
+    /**
+     * Create a new instance of Zend_Log_Writer_Db
+     *
+     * @param  array|Zend_Config $config
+     * @return Zend_Log_Writer_Db
+     * @throws Zend_Log_Exception
+     */
+    static public function factory($config)
+    {
+        $config = self::_parseConfig($config);
+        $config = array_merge(array(
+            'db'        => null,
+            'table'     => null,
+            'columnMap' => null,
+        ), $config);
 
-php php php php php php php php ifphp php(issetphp(php$configphp[php'columnmapphp'php]php)php)php php{
-php php php php php php php php php php php php php$configphp[php'columnMapphp'php]php php=php php$configphp[php'columnmapphp'php]php;
-php php php php php php php php php}
+        if (isset($config['columnmap'])) {
+            $config['columnMap'] = $config['columnmap'];
+        }
 
-php php php php php php php php returnphp newphp selfphp(
-php php php php php php php php php php php php php$configphp[php'dbphp'php]php,
-php php php php php php php php php php php php php$configphp[php'tablephp'php]php,
-php php php php php php php php php php php php php$configphp[php'columnMapphp'php]
-php php php php php php php php php)php;
-php php php php php}
+        return new self(
+            $config['db'],
+            $config['table'],
+            $config['columnMap']
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Formattingphp isphp notphp possiblephp onphp thisphp writer
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setFormatterphp(Zendphp_Logphp_Formatterphp_Interfacephp php$formatterphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(getphp_classphp(php$thisphp)php php.php php'php doesphp notphp supportphp formattingphp'php)php;
-php php php php php}
+    /**
+     * Formatting is not possible on this writer
+     *
+     * @return void
+     * @throws Zend_Log_Exception
+     */
+    public function setFormatter(Zend_Log_Formatter_Interface $formatter)
+    {
+        require_once 'Zend/Log/Exception.php';
+        throw new Zend_Log_Exception(get_class($this) . ' does not support formatting');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp referencephp tophp databasephp adapter
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp shutdownphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dbphp php=php nullphp;
-php php php php php}
+    /**
+     * Remove reference to database adapter
+     *
+     * @return void
+     */
+    public function shutdown()
+    {
+        $this->_db = null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Writephp aphp messagephp tophp thephp logphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php$eventphp php eventphp data
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_writephp(php$eventphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_dbphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Databasephp adapterphp isphp nullphp'php)php;
-php php php php php php php php php}
+    /**
+     * Write a message to the log.
+     *
+     * @param  array  $event  event data
+     * @return void
+     */
+    protected function _write($event)
+    {
+        if ($this->_db === null) {
+            require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception('Database adapter is null');
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_columnMapphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$dataToInsertphp php=php php$eventphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$dataToInsertphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_columnMapphp asphp php$columnNamephp php=php>php php$fieldKeyphp)php php{
-php php php php php php php php php php php php php php php php php$dataToInsertphp[php$columnNamephp]php php=php php$eventphp[php$fieldKeyphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($this->_columnMap === null) {
+            $dataToInsert = $event;
+        } else {
+            $dataToInsert = array();
+            foreach ($this->_columnMap as $columnName => $fieldKey) {
+                $dataToInsert[$columnName] = $event[$fieldKey];
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_dbphp-php>insertphp(php$thisphp-php>php_tablephp,php php$dataToInsertphp)php;
-php php php php php}
-php}
+        $this->_db->insert($this->_table, $dataToInsert);
+    }
+}

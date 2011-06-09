@@ -1,36 +1,36 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php1php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php1php php$php"php/php>
-php	php	php<languagephp typephp=php"wophp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"daphp"php>Danwaa<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>Almaa<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>Angale<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>Españool<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>Finlaande<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>Fraañse<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>Itaaliee<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>Jappone<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>Olaande<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>Norweejiee<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>Portugees<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>Suweedwaa<php/languagephp>
-php	php	<php/languagesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp àphp bphp-ephp éphp ëphp fphp gphp iphp-nphp ñphp ŋphp ophp óphp pphp-uphp wphp-yphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[ãphp hphp vphp zphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp-zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.31 $"/>
+		<generation date="$Date: 2009/05/05 23:06:41 $"/>
+		<language type="wo"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="da">Danwaa</language>
+			<language type="de">Almaa</language>
+			<language type="en">Angale</language>
+			<language type="es">Españool</language>
+			<language type="fi">Finlaande</language>
+			<language type="fr">Fraañse</language>
+			<language type="it">Itaaliee</language>
+			<language type="ja">Jappone</language>
+			<language type="nl">Olaande</language>
+			<language type="no">Norweejiee</language>
+			<language type="pt">Portugees</language>
+			<language type="sv">Suweedwaa</language>
+		</languages>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a à b-e é ë f g i-n ñ ŋ o ó p-u w-y]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ã h v z]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
+	</characters>
+	<dates>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+		</timeZoneNames>
+	</dates>
+</ldml>

@@ -1,343 +1,343 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Core
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Exceptionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-php/php*php*php Zendphp_Exceptionphp php*php/
-requirephp_oncephp php'Zendphp/Exceptionphp.phpphp'php;
-
-
-php/php*php*
-php php*php Exceptionphp classphp forphp Zendphp_Pdfphp.
-php php*
-php php*php Ifphp youphp expectphp aphp certainphp typephp ofphp exceptionphp tophp bephp caughtphp andphp handledphp byphp the
-php php*php callerphp,php createphp aphp constantphp forphp itphp herephp andphp includephp itphp inphp thephp objectphp being
-php php*php thrownphp.php Examplephp:
-php php*
-php php*php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'foophp(php)php isphp notphp yetphp implementedphp'php,
-php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:NOTphp_IMPLEMENTEDphp)php;
-php php*
-php php*php Thisphp allowsphp thephp callerphp tophp determinephp thephp specificphp typephp ofphp exceptionphp thatphp was
-php php*php thrownphp withoutphp resortingphp tophp parsingphp thephp descriptivephp textphp.
-php php*
-php php*php IMPORTANTphp:php Dophp notphp relyphp onphp numericphp valuesphp ofphp thephp constantsphp!php Theyphp arephp grouped
-php php*php sequentiallyphp belowphp forphp organizationalphp purposesphp onlyphp.php Thephp numbersphp mayphp comephp to
-php php*php meanphp somethingphp inphp thephp futurephp,php butphp theyphp arephp subjectphp tophp renumberingphp atphp any
-php php*php timephp.php ALWAYSphp usephp thephp symbolicphp constantphp namesphp,php whichphp arephp guaranteedphp neverphp to
-php php*php changephp,php inphp logicalphp checksphp!php Youphp havephp beenphp warnedphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Core
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Exceptionphp extendsphp Zendphp_Exception
-php{
-php php php/php*php*php*php*php Classphp Constantsphp php*php*php*php*php/
-
-
-php php php/php*php Genericphp Exceptionsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Thephp featurephp orphp optionphp isphp plannedphp butphp hasphp notphp yetphp beenphp implementedphp.php It
-php php php php php php*php shouldphp bephp availablephp inphp aphp futurephp revisionphp ofphp thephp frameworkphp.
-php php php php php php*php/
-php php php php constphp NOTphp_IMPLEMENTEDphp php=php php0xphp0php0php0php1php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp featurephp orphp optionphp hasphp beenphp deprecatedphp andphp willphp bephp removedphp inphp aphp future
-php php php php php php*php revisionphp ofphp thephp frameworkphp.php Thephp descriptivephp textphp accompanyingphp this
-php php php php php php*php exceptionphp shouldphp explainphp howphp tophp usephp thephp replacementphp featuresphp orphp optionsphp.
-php php php php php php*php/
-php php php php constphp DEPRECATEDphp php=php php0xphp0php0php0php2php;
-
-php php php php php/php*php*
-php php php php php php*php Notphp enoughphp paramatersphp werephp suppliedphp tophp thephp methodphp.
-php php php php php php*php/
-php php php php constphp TOOphp_FEWphp_PARAMETERSphp php=php php0xphp0php0php0php3php;
-
-php php php php php/php*php*
-php php php php php php*php Aphp parameterphp wasphp ofphp thephp wrongphp dataphp typephp.
-php php php php php php*php/
-php php php php constphp BADphp_PARAMETERphp_TYPEphp php=php php0xphp0php0php0php4php;
-
-php php php php php/php*php*
-php php php php php php*php Aphp parameterphp containedphp anphp unusablephp valuephp.
-php php php php php php*php/
-php php php php constphp BADphp_PARAMETERphp_VALUEphp php=php php0xphp0php0php0php5php;
-
-php php php php php/php*php*
-php php php php php php*php Aphp parameterphp valuephp wasphp notphp withinphp thephp expectedphp rangephp.
-php php php php php php*php/
-php php php php constphp PARAMETERphp_VALUEphp_OUTphp_OFphp_RANGEphp php=php php0xphp0php0php0php6php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp methodphp thatphp hasphp multiplephp signaturesphp couldphp notphp understandphp the
-php php php php php php*php numberphp andphp/orphp typesphp ofphp parametersphp.
-php php php php php php*php/
-php php php php constphp BADphp_METHODphp_SIGNATUREphp php=php php0xphp0php0php0php7php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp orphp stringphp indexphp wasphp outphp ofphp rangephp.
-php php php php php php*php/
-php php php php constphp INDEXphp_OUTphp_OFphp_RANGEphp php=php php0xphp0php0php0php8php;
-
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Core
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Exception.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+
+/** Zend_Exception */
+require_once 'Zend/Exception.php';
+
+
+/**
+ * Exception class for Zend_Pdf.
+ *
+ * If you expect a certain type of exception to be caught and handled by the
+ * caller, create a constant for it here and include it in the object being
+ * thrown. Example:
+ *
+ *   throw new Zend_Pdf_Exception('foo() is not yet implemented',
+ *                                Zend_Pdf_Exception::NOT_IMPLEMENTED);
+ *
+ * This allows the caller to determine the specific type of exception that was
+ * thrown without resorting to parsing the descriptive text.
+ *
+ * IMPORTANT: Do not rely on numeric values of the constants! They are grouped
+ * sequentially below for organizational purposes only. The numbers may come to
+ * mean something in the future, but they are subject to renumbering at any
+ * time. ALWAYS use the symbolic constant names, which are guaranteed never to
+ * change, in logical checks! You have been warned.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Core
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Exception extends Zend_Exception
+{
+  /**** Class Constants ****/
+
+
+  /* Generic Exceptions */
+
+    /**
+     * The feature or option is planned but has not yet been implemented. It
+     * should be available in a future revision of the framework.
+     */
+    const NOT_IMPLEMENTED = 0x0001;
+
+    /**
+     * The feature or option has been deprecated and will be removed in a future
+     * revision of the framework. The descriptive text accompanying this
+     * exception should explain how to use the replacement features or options.
+     */
+    const DEPRECATED = 0x0002;
+
+    /**
+     * Not enough paramaters were supplied to the method.
+     */
+    const TOO_FEW_PARAMETERS = 0x0003;
+
+    /**
+     * A parameter was of the wrong data type.
+     */
+    const BAD_PARAMETER_TYPE = 0x0004;
+
+    /**
+     * A parameter contained an unusable value.
+     */
+    const BAD_PARAMETER_VALUE = 0x0005;
+
+    /**
+     * A parameter value was not within the expected range.
+     */
+    const PARAMETER_VALUE_OUT_OF_RANGE = 0x0006;
+
+    /**
+     * The method that has multiple signatures could not understand the
+     * number and/or types of parameters.
+     */
+    const BAD_METHOD_SIGNATURE = 0x0007;
+
+    /**
+     * An array or string index was out of range.
+     */
+    const INDEX_OUT_OF_RANGE = 0x0008;
+
 
 
-php php php/php*php Filesystemphp Iphp/Ophp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Thephp filephp pathphp wasphp unusablephp orphp invalidphp.
-php php php php php php*php/
-php php php php constphp BADphp_FILEphp_PATHphp php=php php0xphp0php1php0php1php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp filephp isphp notphp readablephp byphp thephp currentphp userphp.
-php php php php php php*php/
-php php php php constphp NOTphp_READABLEphp php=php php0xphp0php1php0php2php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp filephp isphp notphp writeablephp byphp thephp currentphp userphp.
-php php php php php php*php/
-php php php php constphp NOTphp_WRITEABLEphp php=php php0xphp0php1php0php3php;
+  /* Filesystem I/O */
+
+    /**
+     * The file path was unusable or invalid.
+     */
+    const BAD_FILE_PATH = 0x0101;
+
+    /**
+     * The file is not readable by the current user.
+     */
+    const NOT_READABLE = 0x0102;
+
+    /**
+     * The file is not writeable by the current user.
+     */
+    const NOT_WRITEABLE = 0x0103;
 
-php php php php php/php*php*
-php php php php php php*php Thephp filephp resourcephp hasphp beenphp closedphp unexpectedlyphp.
-php php php php php php*php/
-php php php php constphp FILEphp_NOTphp_OPENphp php=php php0xphp0php1php0php4php;
+    /**
+     * The file resource has been closed unexpectedly.
+     */
+    const FILE_NOT_OPEN = 0x0104;
 
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp openphp thephp filephp.
-php php php php php php*php/
-php php php php constphp CANTphp_OPENphp_FILEphp php=php php0xphp0php1php0php5php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp obtainphp thephp currentphp file
-php php php php php php*php positionphp.
-php php php php php php*php/
-php php php php constphp CANTphp_GETphp_FILEphp_POSITIONphp php=php php0xphp0php1php0php6php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp setphp aphp newphp filephp positionphp.
-php php php php php php*php/
-php php php php constphp CANTphp_SETphp_FILEphp_POSITIONphp php=php php0xphp0php1php0php7php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp attemptphp wasphp madephp tophp movephp thephp currentphp filephp positionphp beforephp thephp start
-php php php php php php*php ofphp thephp filephp.
-php php php php php php*php/
-php php php php constphp MOVEphp_BEFOREphp_STARTphp_OFphp_FILEphp php=php php0xphp0php1php0php8php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp attemptphp wasphp madephp tophp movephp thephp currentphp filephp positionphp beyondphp thephp endphp of
-php php php php php php*php thephp filephp.
-php php php php php php*php/
-php php php php constphp MOVEphp_BEYONDphp_ENDphp_OFphp_FILEphp php=php php0xphp0php1php0php9php;
+    /**
+     * An error was encountered while attempting to open the file.
+     */
+    const CANT_OPEN_FILE = 0x0105;
+
+    /**
+     * An error was encountered while attempting to obtain the current file
+     * position.
+     */
+    const CANT_GET_FILE_POSITION = 0x0106;
+
+    /**
+     * An error was encountered while attempting to set a new file position.
+     */
+    const CANT_SET_FILE_POSITION = 0x0107;
+
+    /**
+     * An attempt was made to move the current file position before the start
+     * of the file.
+     */
+    const MOVE_BEFORE_START_OF_FILE = 0x0108;
+
+    /**
+     * An attempt was made to move the current file position beyond the end of
+     * the file.
+     */
+    const MOVE_BEYOND_END_OF_FILE = 0x0109;
 
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp obtainphp thephp filephp sizephp.
-php php php php php php*php/
-php php php php constphp CANTphp_GETphp_FILEphp_SIZEphp php=php php0xphp0php1php0aphp;
+    /**
+     * An error was encountered while attempting to obtain the file size.
+     */
+    const CANT_GET_FILE_SIZE = 0x010a;
 
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp readphp dataphp fromphp thephp filephp.
-php php php php php php*php/
-php php php php constphp ERRORphp_DURINGphp_READphp php=php php0xphp0php1php0bphp;
+    /**
+     * An error was encountered while attempting to read data from the file.
+     */
+    const ERROR_DURING_READ = 0x010b;
 
-php php php php php/php*php*
-php php php php php php*php Anphp errorphp wasphp encounteredphp whilephp attemptingphp tophp writephp dataphp tophp thephp filephp.
-php php php php php php*php/
-php php php php constphp ERRORphp_DURINGphp_WRITEphp php=php php0xphp0php1php0cphp;
+    /**
+     * An error was encountered while attempting to write data to the file.
+     */
+    const ERROR_DURING_WRITE = 0x010c;
 
-php php php php php/php*php*
-php php php php php php*php Anphp incompatiblephp pagephp sizephp wasphp specifiedphp forphp aphp bufferedphp readphp operationphp.
-php php php php php php*php/
-php php php php constphp INVALIDphp_PAGEphp_SIZEphp php=php php0xphp0php1php0dphp;
+    /**
+     * An incompatible page size was specified for a buffered read operation.
+     */
+    const INVALID_PAGE_SIZE = 0x010d;
 
-php php php php php/php*php*
-php php php php php php*php Therephp isphp insufficientphp dataphp tophp fulfillphp thephp readphp requestphp.
-php php php php php php*php/
-php php php php constphp INSUFFICIENTphp_DATAphp php=php php0xphp0php1php0ephp;
-
-
-
-php php php/php*php Zendphp_Pdfphp_FileParserphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Thephp filephp parserphp dataphp sourcephp objectphp wasphp invalidphp orphp improperlyphp initializedphp.
-php php php php php php*php/
-php php php php constphp BADphp_DATAphp_SOURCEphp php=php php0xphp0php2php0php1php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp unknownphp bytephp orderphp wasphp specifiedphp.
-php php php php php php*php/
-php php php php constphp INVALIDphp_BYTEphp_ORDERphp php=php php0xphp0php2php0php2php;
-
-php php php php php/php*php*
-php php php php php php*php Anphp invalidphp integerphp sizephp wasphp specifiedphp.
-php php php php php php*php/
-php php php php constphp INVALIDphp_INTEGERphp_SIZEphp php=php php0xphp0php2php0php3php;
+    /**
+     * There is insufficient data to fulfill the read request.
+     */
+    const INSUFFICIENT_DATA = 0x010e;
+
+
+
+  /* Zend_Pdf_FileParser */
+
+    /**
+     * The file parser data source object was invalid or improperly initialized.
+     */
+    const BAD_DATA_SOURCE = 0x0201;
+
+    /**
+     * An unknown byte order was specified.
+     */
+    const INVALID_BYTE_ORDER = 0x0202;
+
+    /**
+     * An invalid integer size was specified.
+     */
+    const INVALID_INTEGER_SIZE = 0x0203;
 
-php php php php php/php*php*
-php php php php php php*php Anphp invalidphp fixedphp-pointphp numberphp sizephp wasphp specifiedphp.
-php php php php php php*php/
-php php php php constphp BADphp_FIXEDphp_POINTphp_SIZEphp php=php php0xphp0php2php0php4php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp stringphp cannotphp bephp readphp.
-php php php php php php*php/
-php php php php constphp CANTphp_READphp_STRINGphp php=php php0xphp0php2php0php5php;
-
-php php php php php/php*php*
-php php php php php php*php Thisphp filephp typephp mustphp bephp parsedphp inphp aphp specificphp orderphp andphp aphp parsingphp method
-php php php php php php*php wasphp calledphp outphp-ofphp-turnphp.
-php php php php php php*php/
-php php php php constphp PARSEDphp_OUTphp_OFphp_ORDERphp php=php php0xphp0php2php0php6php;
+    /**
+     * An invalid fixed-point number size was specified.
+     */
+    const BAD_FIXED_POINT_SIZE = 0x0204;
+
+    /**
+     * The string cannot be read.
+     */
+    const CANT_READ_STRING = 0x0205;
+
+    /**
+     * This file type must be parsed in a specific order and a parsing method
+     * was called out-of-turn.
+     */
+    const PARSED_OUT_OF_ORDER = 0x0206;
 
 
 
-php php php/php*php Zendphp_Pdfphp_FileParserphp_Fontphp andphp Subclassesphp php*php/
+  /* Zend_Pdf_FileParser_Font and Subclasses */
 
-php php php php php/php*php*
-php php php php php php*php Thephp fontphp filephp typephp isphp incorrectphp.
-php php php php php php*php/
-php php php php constphp WRONGphp_FONTphp_TYPEphp php=php php0xphp0php3php0php1php;
+    /**
+     * The font file type is incorrect.
+     */
+    const WRONG_FONT_TYPE = 0x0301;
 
-php php php php php/php*php*
-php php php php php php*php Thephp numberphp ofphp tablesphp containedphp inphp thephp fontphp isphp outsidephp thephp expectedphp rangephp.
-php php php php php php*php/
-php php php php constphp BADphp_TABLEphp_COUNTphp php=php php0xphp0php3php0php2php;
+    /**
+     * The number of tables contained in the font is outside the expected range.
+     */
+    const BAD_TABLE_COUNT = 0x0302;
 
-php php php php php/php*php*
-php php php php php php*php Aphp requiredphp tablephp wasphp notphp presentphp inphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp REQUIREDphp_TABLEphp_NOTphp_FOUNDphp php=php php0xphp0php3php0php3php;
+    /**
+     * A required table was not present in the font.
+     */
+    const REQUIRED_TABLE_NOT_FOUND = 0x0303;
 
-php php php php php/php*php*
-php php php php php php*php Thephp parserphp doesphp notphp understandphp thisphp versionphp ofphp thisphp tablephp inphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp DONTphp_UNDERSTANDphp_TABLEphp_VERSIONphp php=php php0xphp0php3php0php3php;
+    /**
+     * The parser does not understand this version of this table in the font.
+     */
+    const DONT_UNDERSTAND_TABLE_VERSION = 0x0303;
 
-php php php php php/php*php*
-php php php php php php*php Thephp magicphp numberphp inphp thephp fontphp filephp isphp incorrectphp.
-php php php php php php*php/
-php php php php constphp BADphp_MAGICphp_NUMBERphp php=php php0xphp0php3php0php4php;
+    /**
+     * The magic number in the font file is incorrect.
+     */
+    const BAD_MAGIC_NUMBER = 0x0304;
 
-php php php php php/php*php*
-php php php php php php*php Couldphp notphp locatephp aphp usablephp characterphp mapphp forphp thisphp fontphp.
-php php php php php php*php/
-php php php php constphp CANTphp_FINDphp_GOODphp_CMAPphp php=php php0xphp0php3php0php5php;
+    /**
+     * Could not locate a usable character map for this font.
+     */
+    const CANT_FIND_GOOD_CMAP = 0x0305;
 
 
 
-php php php/php*php Zendphp_Pdfphp_Cmapphp andphp Subclassesphp php*php/
+  /* Zend_Pdf_Cmap and Subclasses */
 
-php php php php php/php*php*
-php php php php php php*php Thephp characterphp mapphp typephp isphp currentlyphp unsupportedphp.
-php php php php php php*php/
-php php php php constphp CMAPphp_TYPEphp_UNSUPPORTEDphp php=php php0xphp0php4php0php1php;
+    /**
+     * The character map type is currently unsupported.
+     */
+    const CMAP_TYPE_UNSUPPORTED = 0x0401;
 
-php php php php php/php*php*
-php php php php php php*php Thephp typephp ofphp thephp characterphp mapphp isphp notphp understoodphp.
-php php php php php php*php/
-php php php php constphp CMAPphp_UNKNOWNphp_TYPEphp php=php php0xphp0php4php0php2php;
+    /**
+     * The type of the character map is not understood.
+     */
+    const CMAP_UNKNOWN_TYPE = 0x0402;
 
-php php php php php/php*php*
-php php php php php php*php Thephp characterphp mapphp tablephp dataphp isphp toophp smallphp.
-php php php php php php*php/
-php php php php constphp CMAPphp_TABLEphp_DATAphp_TOOphp_SMALLphp php=php php0xphp0php4php0php3php;
+    /**
+     * The character map table data is too small.
+     */
+    const CMAP_TABLE_DATA_TOO_SMALL = 0x0403;
 
-php php php php php/php*php*
-php php php php php php*php Thephp characterphp mapphp tablephp dataphp isphp forphp aphp differentphp typephp ofphp tablephp.
-php php php php php php*php/
-php php php php constphp CMAPphp_WRONGphp_TABLEphp_TYPEphp php=php php0xphp0php4php0php4php;
+    /**
+     * The character map table data is for a different type of table.
+     */
+    const CMAP_WRONG_TABLE_TYPE = 0x0404;
 
-php php php php php/php*php*
-php php php php php php*php Thephp characterphp mapphp tablephp dataphp containsphp inphp incorrectphp lengthphp.
-php php php php php php*php/
-php php php php constphp CMAPphp_WRONGphp_TABLEphp_LENGTHphp php=php php0xphp0php4php0php5php;
+    /**
+     * The character map table data contains in incorrect length.
+     */
+    const CMAP_WRONG_TABLE_LENGTH = 0x0405;
 
-php php php php php/php*php*
-php php php php php php*php Thisphp characterphp mapphp tablephp isphp languagephp-dependentphp.php Characterphp mapsphp mustphp be
-php php php php php php*php languagephp-independentphp.
-php php php php php php*php/
-php php php php constphp CMAPphp_NOTphp_LANGUAGEphp_INDEPENDENTphp php=php php0xphp0php4php0php6php;
+    /**
+     * This character map table is language-dependent. Character maps must be
+     * language-independent.
+     */
+    const CMAP_NOT_LANGUAGE_INDEPENDENT = 0x0406;
 
-php php php php php/php*php*
-php php php php php php*php Thephp finalphp bytephp offsetphp whenphp readingphp thephp characterphp mapphp tablephp dataphp doesphp not
-php php php php php php*php matchphp thephp reportedphp lengthphp ofphp thephp tablephp.
-php php php php php php*php/
-php php php php constphp CMAPphp_FINALphp_OFFSETphp_NOTphp_LENGTHphp php=php php0xphp0php4php0php7php;
+    /**
+     * The final byte offset when reading the character map table data does not
+     * match the reported length of the table.
+     */
+    const CMAP_FINAL_OFFSET_NOT_LENGTH = 0x0407;
 
-php php php php php/php*php*
-php php php php php php*php Thephp characterphp mapphp subtablephp entryphp countphp doesphp notphp matchphp thephp expectedphp valuephp.
-php php php php php php*php/
-php php php php constphp CMAPphp_WRONGphp_ENTRYphp_COUNTphp php=php php0xphp0php4php0php8php;
+    /**
+     * The character map subtable entry count does not match the expected value.
+     */
+    const CMAP_WRONG_ENTRY_COUNT = 0x0408;
 
 
 
-php php php/php*php Zendphp_Pdfphp_Resourcephp_Fontphp andphp Subclassesphp php*php/
+  /* Zend_Pdf_Resource_Font and Subclasses */
 
-php php php php php/php*php*
-php php php php php php*php Thephp specifiedphp glyphphp numberphp isphp outphp ofphp rangephp forphp thisphp fontphp.
-php php php php php php*php/
-php php php php constphp GLYPHphp_OUTphp_OFphp_RANGEphp php=php php0xphp0php5php0php1php;
+    /**
+     * The specified glyph number is out of range for this font.
+     */
+    const GLYPH_OUT_OF_RANGE = 0x0501;
 
-php php php php php/php*php*
-php php php php php php*php Thisphp fontphp programphp hasphp copyrightphp bitsphp setphp whichphp preventphp itphp fromphp being
-php php php php php php*php embeddedphp inphp thephp PDFphp filephp.php Youphp mustphp specifyphp thephp nophp-embedphp optionphp tophp use
-php php php php php php*php thisphp fontphp.
-php php php php php php*php/
-php php php php constphp FONTphp_CANTphp_BEphp_EMBEDDEDphp php=php php0xphp0php5php0php2php;
+    /**
+     * This font program has copyright bits set which prevent it from being
+     * embedded in the PDF file. You must specify the no-embed option to use
+     * this font.
+     */
+    const FONT_CANT_BE_EMBEDDED = 0x0502;
 
 
 
-php php php/php*php Zendphp_Pdfphp_Fontphp php*php/
+  /* Zend_Pdf_Font */
 
-php php php php php/php*php*
-php php php php php php*php Thephp fontphp namephp didphp notphp matchphp anyphp previouslyphp instantiatedphp fontphp andphp isphp not
-php php php php php php*php onephp ofphp thephp standardphp php1php4php PDFphp fontsphp.
-php php php php php php*php/
-php php php php constphp BADphp_FONTphp_NAMEphp php=php php0xphp0php6php0php1php;
+    /**
+     * The font name did not match any previously instantiated font and is not
+     * one of the standard 14 PDF fonts.
+     */
+    const BAD_FONT_NAME = 0x0601;
 
-php php php php php/php*php*
-php php php php php php*php Thephp factoryphp methodphp couldphp notphp determinephp thephp typephp ofphp thephp fontphp filephp.
-php php php php php php*php/
-php php php php constphp CANTphp_DETERMINEphp_FONTphp_TYPEphp php=php php0xphp0php6php0php2php;
+    /**
+     * The factory method could not determine the type of the font file.
+     */
+    const CANT_DETERMINE_FONT_TYPE = 0x0602;
 
 
-php php php/php*php Textphp Layoutphp Systemphp php*php/
+  /* Text Layout System */
 
-php php php php php/php*php*
-php php php php php php*php Thephp specifiedphp attributephp valuephp forphp thephp textphp objectphp cannotphp bephp usedphp.
-php php php php php php*php/
-php php php php constphp BADphp_ATTRIBUTEphp_VALUEphp php=php php0xphp0php7php0php1php;
+    /**
+     * The specified attribute value for the text object cannot be used.
+     */
+    const BAD_ATTRIBUTE_VALUE = 0x0701;
 
 
-php php php/php*php Zendphp_Pdfphp_Imagephp andphp Subclassesphp php*php/
+  /* Zend_Pdf_Image and Subclasses */
 
-php php php php constphp CANTphp_DETERMINEphp_IMAGEphp_TYPEphp php=php php0xphp0php8php0php1php;
-php php php php constphp WRONGphp_IMAGEphp_TYPEphp php=php php0xphp0php8php0php2php;
-php php php php constphp UNSUPPORTEDphp_IMAGEphp_ENCODINGphp_OPTIONSphp php=php php0xphp0php8php0php3php;
-php php php php constphp IMAGEphp_FILEphp_CORRUPTphp php=php php0xphp0php8php0php4php;
+    const CANT_DETERMINE_IMAGE_TYPE = 0x0801;
+    const WRONG_IMAGE_TYPE = 0x0802;
+    const UNSUPPORTED_IMAGE_ENCODING_OPTIONS = 0x0803;
+    const IMAGE_FILE_CORRUPT = 0x0804;
 
 
-php}
+}
 

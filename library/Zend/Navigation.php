@@ -1,54 +1,54 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Navigation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Navigationphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Navigation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Navigation.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Navigationphp_Container
-php php*php/
-requirephp_oncephp php'Zendphp/Navigationphp/Containerphp.phpphp'php;
+/**
+ * @see Zend_Navigation_Container
+ */
+require_once 'Zend/Navigation/Container.php';
 
-php/php*php*
-php php*php Aphp simplephp containerphp classphp forphp php{php@linkphp Zendphp_Navigationphp_Pagephp}php pages
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Navigation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Navigationphp extendsphp Zendphp_Navigationphp_Container
-php{
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp newphp navigationphp container
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$pagesphp php php php php[optionalphp]php pagesphp tophp add
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp php$pagesphp isphp invalid
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$pagesphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$pagesphp)php php|php|php php$pagesphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addPagesphp(php$pagesphp)php;
-php php php php php php php php php}php elseifphp php(nullphp php!php=php=php php$pagesphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$pagesphp mustphp bephp anphp arrayphp,php anphp php'php php.
-php php php php php php php php php php php php php php php php php php php php php'instancephp ofphp Zendphp_Configphp,php orphp nullphp'php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+/**
+ * A simple container class for {@link Zend_Navigation_Page} pages
+ *
+ * @category  Zend
+ * @package   Zend_Navigation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Navigation extends Zend_Navigation_Container
+{
+    /**
+     * Creates a new navigation container
+     *
+     * @param array|Zend_Config $pages    [optional] pages to add
+     * @throws Zend_Navigation_Exception  if $pages is invalid
+     */
+    public function __construct($pages = null)
+    {
+        if (is_array($pages) || $pages instanceof Zend_Config) {
+            $this->addPages($pages);
+        } elseif (null !== $pages) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $pages must be an array, an ' .
+                    'instance of Zend_Config, or null');
+        }
+    }
+}

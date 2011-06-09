@@ -1,266 +1,266 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php php@seephp Zendphp_Captchaphp_Basephp php*php/
-requirephp_oncephp php'Zendphp/Captchaphp/Basephp.phpphp'php;
+/** @see Zend_Captcha_Base */
+require_once 'Zend/Captcha/Base.php';
 
-php/php*php*php php@seephp Zendphp_Servicephp_ReCaptchaphp php*php/
-requirephp_oncephp php'Zendphp/Servicephp/ReCaptchaphp.phpphp'php;
+/** @see Zend_Service_ReCaptcha */
+require_once 'Zend/Service/ReCaptcha.php';
 
-php/php*php*
-php php*php ReCaptchaphp adapter
-php php*
-php php*php Allowsphp tophp insertphp captchasphp drivenphp byphp ReCaptchaphp service
-php php*
-php php*php php@seephp httpphp:php/php/recaptchaphp.netphp/apidocsphp/captchaphp/
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ReCaptchaphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Captchaphp_ReCaptchaphp extendsphp Zendphp_Captchaphp_Base
-php{
-php php php php php/php*php*php@php+
-php php php php php php*php ReCaptchaphp Fieldphp names
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_CHALLENGEphp php=php php'recaptchaphp_challengephp_fieldphp'php;
-php php php php protectedphp php$php_RESPONSEphp php php=php php'recaptchaphp_responsephp_fieldphp'php;
-php php php php php/php*php*php@php-php*php/
+/**
+ * ReCaptcha adapter
+ *
+ * Allows to insert captchas driven by ReCaptcha service
+ *
+ * @see http://recaptcha.net/apidocs/captcha/
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ReCaptcha.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
+{
+    /**@+
+     * ReCaptcha Field names
+     * @var string
+     */
+    protected $_CHALLENGE = 'recaptcha_challenge_field';
+    protected $_RESPONSE  = 'recaptcha_response_field';
+    /**@-*/
 
-php php php php php/php*php*
-php php php php php php*php Recaptchaphp servicephp object
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Recaptcha
-php php php php php php*php/
-php php php php protectedphp php$php_servicephp;
+    /**
+     * Recaptcha service object
+     *
+     * @var Zend_Service_Recaptcha
+     */
+    protected $_service;
 
-php php php php php/php*php*
-php php php php php php*php Parametersphp definedphp byphp thephp service
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_serviceParamsphp php=php arrayphp(php)php;
+    /**
+     * Parameters defined by the service
+     *
+     * @var array
+     */
+    protected $_serviceParams = array();
 
-php php php php php/php*php*
-php php php php php php*php Optionsphp definedphp byphp thephp service
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_serviceOptionsphp php=php arrayphp(php)php;
+    /**
+     * Options defined by the service
+     *
+     * @var array
+     */
+    protected $_serviceOptions = array();
 
-php php php php php/php*php*php#php@php+
-php php php php php php*php Errorphp codes
-php php php php php php*php/
-php php php php constphp MISSINGphp_VALUEphp php=php php'missingValuephp'php;
-php php php php constphp ERRphp_CAPTCHAphp php php php=php php'errCaptchaphp'php;
-php php php php constphp BADphp_CAPTCHAphp php php php=php php'badCaptchaphp'php;
-php php php php php/php*php*php#php@php-php*php/
+    /**#@+
+     * Error codes
+     */
+    const MISSING_VALUE = 'missingValue';
+    const ERR_CAPTCHA   = 'errCaptcha';
+    const BAD_CAPTCHA   = 'badCaptcha';
+    /**#@-*/
 
-php php php php php/php*php*
-php php php php php php*php Errorphp messages
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
-php php php php php php php php selfphp:php:MISSINGphp_VALUEphp php=php>php php'Missingphp captchaphp fieldsphp'php,
-php php php php php php php php selfphp:php:ERRphp_CAPTCHAphp php php php=php>php php'Failedphp tophp validatephp captchaphp'php,
-php php php php php php php php selfphp:php:BADphp_CAPTCHAphp php php php=php>php php'Captchaphp valuephp isphp wrongphp:php php%valuephp%php'php,
-php php php php php)php;
+    /**
+     * Error messages
+     * @var array
+     */
+    protected $_messageTemplates = array(
+        self::MISSING_VALUE => 'Missing captcha fields',
+        self::ERR_CAPTCHA   => 'Failed to validate captcha',
+        self::BAD_CAPTCHA   => 'Captcha value is wrong: %value%',
+    );
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp ReCaptchaphp Privatephp key
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPrivkeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getServicephp(php)php-php>getPrivateKeyphp(php)php;
-php php php php php}
+    /**
+     * Retrieve ReCaptcha Private key
+     *
+     * @return string
+     */
+    public function getPrivkey()
+    {
+        return $this->getService()->getPrivateKey();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp ReCaptchaphp Publicphp key
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPubkeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getServicephp(php)php-php>getPublicKeyphp(php)php;
-php php php php php}
+    /**
+     * Retrieve ReCaptcha Public key
+     *
+     * @return string
+     */
+    public function getPubkey()
+    {
+        return $this->getService()->getPublicKey();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp ReCaptchaphp Privatephp key
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$privkey
-php php php php php php*php php@returnphp Zendphp_Captchaphp_ReCaptcha
-php php php php php php*php/
-php php php php publicphp functionphp setPrivkeyphp(php$privkeyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getServicephp(php)php-php>setPrivateKeyphp(php$privkeyphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set ReCaptcha Private key
+     *
+     * @param string $privkey
+     * @return Zend_Captcha_ReCaptcha
+     */
+    public function setPrivkey($privkey)
+    {
+        $this->getService()->setPrivateKey($privkey);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp ReCaptchaphp publicphp key
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$pubkey
-php php php php php php*php php@returnphp Zendphp_Captchaphp_ReCaptcha
-php php php php php php*php/
-php php php php publicphp functionphp setPubkeyphp(php$pubkeyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getServicephp(php)php-php>setPublicKeyphp(php$pubkeyphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set ReCaptcha public key
+     *
+     * @param string $pubkey
+     * @return Zend_Captcha_ReCaptcha
+     */
+    public function setPubkey($pubkey)
+    {
+        $this->getService()->setPublicKey($pubkey);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setServicephp(newphp Zendphp_Servicephp_ReCaptchaphp(php)php)php;
-php php php php php php php php php$thisphp-php>php_serviceParamsphp php=php php$thisphp-php>getServicephp(php)php-php>getParamsphp(php)php;
-php php php php php php php php php$thisphp-php>php_serviceOptionsphp php=php php$thisphp-php>getServicephp(php)php-php>getOptionsphp(php)php;
+    /**
+     * Constructor
+     *
+     * @param  array|Zend_Config $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        $this->setService(new Zend_Service_ReCaptcha());
+        $this->_serviceParams = $this->getService()->getParams();
+        $this->_serviceOptions = $this->getService()->getOptions();
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
+        parent::__construct($options);
 
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
+        if (!empty($options)) {
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp servicephp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Servicephp_ReCaptchaphp php$service
-php php php php php php*php php@returnphp Zendphp_Captchaphp_ReCaptcha
-php php php php php php*php/
-php php php php publicphp functionphp setServicephp(Zendphp_Servicephp_ReCaptchaphp php$servicephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_servicephp php=php php$servicephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set service object
+     *
+     * @param  Zend_Service_ReCaptcha $service
+     * @return Zend_Captcha_ReCaptcha
+     */
+    public function setService(Zend_Service_ReCaptcha $service)
+    {
+        $this->_service = $service;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp ReCaptchaphp servicephp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_ReCaptcha
-php php php php php php*php/
-php php php php publicphp functionphp getServicephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_servicephp;
-php php php php php}
+    /**
+     * Retrieve ReCaptcha service object
+     *
+     * @return Zend_Service_ReCaptcha
+     */
+    public function getService()
+    {
+        return $this->_service;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp option
-php php php php php php*
-php php php php php php*php Ifphp optionphp isphp aphp servicephp parameterphp,php proxiesphp tophp thephp servicephp.php Thephp same
-php php php php php php*php goesphp forphp anyphp servicephp optionsphp php(distinctphp fromphp servicephp paramsphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Captchaphp_ReCaptcha
-php php php php php php*php/
-php php php php publicphp functionphp setOptionphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$servicephp php=php php$thisphp-php>getServicephp(php)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_serviceParamsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php$servicephp-php>setParamphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_serviceOptionsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php$servicephp-php>setOptionphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php returnphp parentphp:php:setOptionphp(php$keyphp,php php$valuephp)php;
-php php php php php}
+    /**
+     * Set option
+     *
+     * If option is a service parameter, proxies to the service. The same
+     * goes for any service options (distinct from service params)
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @return Zend_Captcha_ReCaptcha
+     */
+    public function setOption($key, $value)
+    {
+        $service = $this->getService();
+        if (isset($this->_serviceParams[$key])) {
+            $service->setParam($key, $value);
+            return $this;
+        }
+        if (isset($this->_serviceOptions[$key])) {
+            $service->setOption($key, $value);
+            return $this;
+        }
+        return parent::setOption($key, $value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp captcha
-php php php php php php*
-php php php php php php*php php@seephp Zendphp_Formphp_Captchaphp_Adapterphp:php:generatephp(php)
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp generatephp(php)
-php php php php php{
-php php php php php php php php returnphp php"php"php;
-php php php php php}
+    /**
+     * Generate captcha
+     *
+     * @see Zend_Form_Captcha_Adapter::generate()
+     * @return string
+     */
+    public function generate()
+    {
+        return "";
+    }
 
-php php php php php/php*php*
-php php php php php php*php Validatephp captcha
-php php php php php php*
-php php php php php php*php php@seephp php php php Zendphp_Validatephp_Interfacephp:php:isValidphp(php)
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp,php php$contextphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php php&php&php php!isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:MISSINGphp_VALUEphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Validate captcha
+     *
+     * @see    Zend_Validate_Interface::isValid()
+     * @param  mixed $value
+     * @return boolean
+     */
+    public function isValid($value, $context = null)
+    {
+        if (!is_array($value) && !is_array($context)) {
+            $this->_error(self::MISSING_VALUE);
+            return false;
+        }
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php php&php&php isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$valuephp php=php php$contextphp;
-php php php php php php php php php}
+        if (!is_array($value) && is_array($context)) {
+            $value = $context;
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$valuephp[php$thisphp-php>php_CHALLENGEphp]php)php php|php|php emptyphp(php$valuephp[php$thisphp-php>php_RESPONSEphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:MISSINGphp_VALUEphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (empty($value[$this->_CHALLENGE]) || empty($value[$this->_RESPONSE])) {
+            $this->_error(self::MISSING_VALUE);
+            return false;
+        }
 
-php php php php php php php php php$servicephp php=php php$thisphp-php>getServicephp(php)php;
+        $service = $this->getService();
 
-php php php php php php php php php$resphp php=php php$servicephp-php>verifyphp(php$valuephp[php$thisphp-php>php_CHALLENGEphp]php,php php$valuephp[php$thisphp-php>php_RESPONSEphp]php)php;
+        $res = $service->verify($value[$this->_CHALLENGE], $value[$this->_RESPONSE]);
 
-php php php php php php php php ifphp php(php!php$resphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:ERRphp_CAPTCHAphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (!$res) {
+            $this->_error(self::ERR_CAPTCHA);
+            return false;
+        }
 
-php php php php php php php php ifphp php(php!php$resphp-php>isValidphp(php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:BADphp_CAPTCHAphp,php php$resphp-php>getErrorCodephp(php)php)php;
-php php php php php php php php php php php php php$servicephp-php>setParamphp(php'errorphp'php,php php$resphp-php>getErrorCodephp(php)php)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (!$res->isValid()) {
+            $this->_error(self::BAD_CAPTCHA, $res->getErrorCode());
+            $service->setParam('error', $res->getErrorCode());
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp captcha
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@paramphp php mixedphp php$element
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp,php php$elementphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getServicephp(php)php-php>getHTMLphp(php)php;
-php php php php php}
-php}
+    /**
+     * Render captcha
+     *
+     * @param  Zend_View_Interface $view
+     * @param  mixed $element
+     * @return string
+     */
+    public function render(Zend_View_Interface $view = null, $element = null)
+    {
+        return $this->getService()->getHTML();
+    }
+}

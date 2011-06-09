@@ -1,86 +1,86 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Formatter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Simplephp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Formatter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Simple.php 23576 2010-12-23 23:25:44Z ramon $
+ */
 
-php/php*php*php Zendphp_Logphp_Formatterphp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Logphp/Formatterphp/Interfacephp.phpphp'php;
+/** Zend_Log_Formatter_Interface */
+require_once 'Zend/Log/Formatter/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Formatter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Simplephp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
-classphp Zendphp_Logphp_Formatterphp_Simplephp implementsphp Zendphp_Logphp_Formatterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_formatphp;
+/**
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Formatter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Simple.php 23576 2010-12-23 23:25:44Z ramon $
+ */
+class Zend_Log_Formatter_Simple implements Zend_Log_Formatter_Interface
+{
+    /**
+     * @var string
+     */
+    protected $_format;
 
-php php php php constphp DEFAULTphp_FORMATphp php=php php'php%timestampphp%php php%priorityNamephp%php php(php%priorityphp%php)php:php php%messagephp%php'php;
+    const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
 
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp php php$formatphp php Formatphp specifierphp forphp logphp messages
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$formatphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$formatphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$formatphp php=php selfphp:php:DEFAULTphp_FORMATphp php.php PHPphp_EOLphp;
-php php php php php php php php php}
+    /**
+     * Class constructor
+     *
+     * @param  null|string  $format  Format specifier for log messages
+     * @return void
+     * @throws Zend_Log_Exception
+     */
+    public function __construct($format = null)
+    {
+        if ($format === null) {
+            $format = self::DEFAULT_FORMAT . PHP_EOL;
+        }
 
-php php php php php php php php ifphp php(php!php isphp_stringphp(php$formatphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Formatphp mustphp bephp aphp stringphp'php)php;
-php php php php php php php php php}
+        if (! is_string($format)) {
+            require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception('Format must be a string');
+        }
 
-php php php php php php php php php$thisphp-php>php_formatphp php=php php$formatphp;
-php php php php php}
+        $this->_format = $format;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Formatsphp dataphp intophp aphp singlephp linephp tophp bephp writtenphp byphp thephp writerphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php php php$eventphp php php php eventphp data
-php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php formattedphp linephp tophp writephp tophp thephp log
-php php php php php php*php/
-php php php php publicphp functionphp formatphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$outputphp php=php php$thisphp-php>php_formatphp;
-php php php php php php php php foreachphp php(php$eventphp asphp php$namephp php=php>php php$valuephp)php php{
+    /**
+     * Formats data into a single line to be written by the writer.
+     *
+     * @param  array    $event    event data
+     * @return string             formatted line to write to the log
+     */
+    public function format($event)
+    {
+        $output = $this->_format;
+        foreach ($event as $name => $value) {
 
-php php php php php php php php php php php php ifphp php(php(isphp_objectphp(php$valuephp)php php&php&php php!methodphp_existsphp(php$valuephp,php'php_php_toStringphp'php)php)
-php php php php php php php php php php php php php php php php php|php|php isphp_arrayphp(php$valuephp)php)php php{
+            if ((is_object($value) && !method_exists($value,'__toString'))
+                || is_array($value)) {
 
-php php php php php php php php php php php php php php php php php$valuephp php=php gettypephp(php$valuephp)php;
-php php php php php php php php php php php php php}
+                $value = gettype($value);
+            }
 
-php php php php php php php php php php php php php$outputphp php=php strphp_replacephp(php"php%php$namephp%php"php,php php$valuephp,php php$outputphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$outputphp;
-php php php php php}
+            $output = str_replace("%$name%", $value, $output);
+        }
+        return $output;
+    }
 
-php}
+}

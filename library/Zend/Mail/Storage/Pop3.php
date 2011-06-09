@@ -1,328 +1,328 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Popphp3php.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Pop3.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Storagephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Mail_Storage_Abstract
+ */
+require_once 'Zend/Mail/Storage/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Protocolphp_Popphp3
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Protocolphp/Popphp3php.phpphp'php;
+/**
+ * @see Zend_Mail_Protocol_Pop3
+ */
+require_once 'Zend/Mail/Protocol/Pop3.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Message
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Messagephp.phpphp'php;
-
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Mailphp_Storagephp_Popphp3php extendsphp Zendphp_Mailphp_Storagephp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php protocolphp handler
-php php php php php php*php php@varphp nullphp|Zendphp_Mailphp_Protocolphp_Popphp3
-php php php php php php*php/
-php php php php protectedphp php$php_protocolphp;
+/**
+ * @see Zend_Mail_Message
+ */
+require_once 'Zend/Mail/Message.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Countphp messagesphp allphp messagesphp inphp currentphp box
-php php php php php php*
-php php php php php php*php php@returnphp intphp numberphp ofphp messages
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp countMessagesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_protocolphp-php>statusphp(php$countphp,php php$nullphp)php;
-php php php php php php php php returnphp php(intphp)php$countphp;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
+{
+    /**
+     * protocol handler
+     * @var null|Zend_Mail_Protocol_Pop3
+     */
+    protected $_protocol;
 
-php php php php php/php*php*
-php php php php php php*php getphp aphp listphp ofphp messagesphp withphp numberphp andphp size
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$idphp numberphp ofphp message
-php php php php php php*php php@returnphp intphp|arrayphp sizephp ofphp givenphp messagephp ofphp listphp withphp allphp messagesphp asphp arrayphp(numphp php=php>php sizephp)
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getSizephp(php$idphp php=php php0php)
-php php php php php{
-php php php php php php php php php$idphp php=php php$idphp php?php php$idphp php:php nullphp;
-php php php php php php php php returnphp php$thisphp-php>php_protocolphp-php>getListphp(php$idphp)php;
-php php php php php}
 
-php php php php php/php*php*
-php php php php php php*php Fetchphp aphp message
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$idphp numberphp ofphp message
-php php php php php php*php php@returnphp Zendphp_Mailphp_Message
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getMessagephp(php$idphp)
-php php php php php{
-php php php php php php php php php$bodyLinesphp php=php php0php;
-php php php php php php php php php$messagephp php=php php$thisphp-php>php_protocolphp-php>topphp(php$idphp,php php$bodyLinesphp,php truephp)php;
+    /**
+     * Count messages all messages in current box
+     *
+     * @return int number of messages
+     * @throws Zend_Mail_Storage_Exception
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function countMessages()
+    {
+        $this->_protocol->status($count, $null);
+        return (int)$count;
+    }
 
-php php php php php php php php returnphp newphp php$thisphp-php>php_messageClassphp(arrayphp(php'handlerphp'php php=php>php php$thisphp,php php'idphp'php php=php>php php$idphp,php php'headersphp'php php=php>php php$messagephp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'noToplinesphp'php php=php>php php$bodyLinesphp <php php1php)php)php;
-php php php php php}
+    /**
+     * get a list of messages with number and size
+     *
+     * @param int $id number of message
+     * @return int|array size of given message of list with all messages as array(num => size)
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function getSize($id = 0)
+    {
+        $id = $id ? $id : null;
+        return $this->_protocol->getList($id);
+    }
 
-php php php php php/php*
-php php php php php php*php Getphp rawphp headerphp ofphp messagephp orphp part
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php php php php php numberphp ofphp message
-php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp php php php php pathphp tophp partphp orphp nullphp forphp messsagephp header
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$topLinesphp includephp thisphp manyphp linesphp withphp headerphp php(afterphp anphp emptyphp linephp)
-php php php php php php*php php@returnphp stringphp rawphp header
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getRawHeaderphp(php$idphp,php php$partphp php=php nullphp,php php$topLinesphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php TODOphp:php implement
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Fetch a message
+     *
+     * @param int $id number of message
+     * @return Zend_Mail_Message
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function getMessage($id)
+    {
+        $bodyLines = 0;
+        $message = $this->_protocol->top($id, $bodyLines, true);
 
-php php php php php php php php returnphp php$thisphp-php>php_protocolphp-php>topphp(php$idphp,php php0php,php truephp)php;
-php php php php php}
+        return new $this->_messageClass(array('handler' => $this, 'id' => $id, 'headers' => $message,
+                                              'noToplines' => $bodyLines < 1));
+    }
 
-php php php php php/php*
-php php php php php php*php Getphp rawphp contentphp ofphp messagephp orphp part
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php numberphp ofphp message
-php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp pathphp tophp partphp orphp nullphp forphp messsagephp content
-php php php php php php*php php@returnphp stringphp rawphp content
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getRawContentphp(php$idphp,php php$partphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php TODOphp:php implement
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
-php php php php php php php php php}
+    /*
+     * Get raw header of message or part
+     *
+     * @param  int               $id       number of message
+     * @param  null|array|string $part     path to part or null for messsage header
+     * @param  int               $topLines include this many lines with header (after an empty line)
+     * @return string raw header
+     * @throws Zend_Mail_Protocol_Exception
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getRawHeader($id, $part = null, $topLines = 0)
+    {
+        if ($part !== null) {
+            // TODO: implement
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('not implemented');
+        }
 
-php php php php php php php php php$contentphp php=php php$thisphp-php>php_protocolphp-php>retrievephp(php$idphp)php;
-php php php php php php php php php/php/php TODOphp:php findphp aphp wayphp tophp avoidphp decodingphp thephp headers
-php php php php php php php php Zendphp_Mimephp_Decodephp:php:splitMessagephp(php$contentphp,php php$nullphp,php php$bodyphp)php;
-php php php php php php php php returnphp php$bodyphp;
-php php php php php}
+        return $this->_protocol->top($id, 0, true);
+    }
 
-php php php php php/php*php*
-php php php php php php*php createphp instancephp withphp parameters
-php php php php php php*php Supportedphp paramtersphp are
-php php php php php php*php php php php-php hostphp hostnamephp orphp ipphp addressphp ofphp POPphp3php server
-php php php php php php*php php php php-php userphp username
-php php php php php php*php php php php-php passwordphp passwordphp forphp userphp php'usernamephp'php php[optionalphp,php defaultphp php=php php'php'php]
-php php php php php php*php php php php-php portphp portphp forphp POPphp3php serverphp php[optionalphp,php defaultphp php=php php1php1php0php]
-php php php php php php*php php php php-php sslphp php'SSLphp'php orphp php'TLSphp'php forphp securephp sockets
-php php php php php php*
-php php php php php php*php php@paramphp php php$paramsphp arrayphp php mailphp readerphp specificphp parameters
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$paramsphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$paramsphp)php)php php{
-php php php php php php php php php php php php php$paramsphp php=php php(objectphp)php$paramsphp;
-php php php php php php php php php}
+    /*
+     * Get raw content of message or part
+     *
+     * @param  int               $id   number of message
+     * @param  null|array|string $part path to part or null for messsage content
+     * @return string raw content
+     * @throws Zend_Mail_Protocol_Exception
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getRawContent($id, $part = null)
+    {
+        if ($part !== null) {
+            // TODO: implement
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('not implemented');
+        }
 
-php php php php php php php php php$thisphp-php>php_hasphp[php'fetchPartphp'php]php php=php falsephp;
-php php php php php php php php php$thisphp-php>php_hasphp[php'topphp'php]php php php php php php php php=php nullphp;
-php php php php php php php php php$thisphp-php>php_hasphp[php'uniqueidphp'php]php php php=php nullphp;
+        $content = $this->_protocol->retrieve($id);
+        // TODO: find a way to avoid decoding the headers
+        Zend_Mime_Decode::splitMessage($content, $null, $body);
+        return $body;
+    }
 
-php php php php php php php php ifphp php(php$paramsphp instanceofphp Zendphp_Mailphp_Protocolphp_Popphp3php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_protocolphp php=php php$paramsphp;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * create instance with parameters
+     * Supported paramters are
+     *   - host hostname or ip address of POP3 server
+     *   - user username
+     *   - password password for user 'username' [optional, default = '']
+     *   - port port for POP3 server [optional, default = 110]
+     *   - ssl 'SSL' or 'TLS' for secure sockets
+     *
+     * @param  $params array  mail reader specific parameters
+     * @throws Zend_Mail_Storage_Exception
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function __construct($params)
+    {
+        if (is_array($params)) {
+            $params = (object)$params;
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$paramsphp-php>userphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'needphp atphp leastphp userphp inphp paramsphp'php)php;
-php php php php php php php php php}
+        $this->_has['fetchPart'] = false;
+        $this->_has['top']       = null;
+        $this->_has['uniqueid']  = null;
 
-php php php php php php php php php$hostphp php php php php php=php issetphp(php$paramsphp-php>hostphp)php php php php php php?php php$paramsphp-php>hostphp php php php php php:php php'localhostphp'php;
-php php php php php php php php php$passwordphp php=php issetphp(php$paramsphp-php>passwordphp)php php?php php$paramsphp-php>passwordphp php:php php'php'php;
-php php php php php php php php php$portphp php php php php php=php issetphp(php$paramsphp-php>portphp)php php php php php php?php php$paramsphp-php>portphp php php php php php:php nullphp;
-php php php php php php php php php$sslphp php php php php php php=php issetphp(php$paramsphp-php>sslphp)php php php php php php php?php php$paramsphp-php>sslphp php php php php php php:php falsephp;
+        if ($params instanceof Zend_Mail_Protocol_Pop3) {
+            $this->_protocol = $params;
+            return;
+        }
 
-php php php php php php php php php$thisphp-php>php_protocolphp php=php newphp Zendphp_Mailphp_Protocolphp_Popphp3php(php)php;
-php php php php php php php php php$thisphp-php>php_protocolphp-php>connectphp(php$hostphp,php php$portphp,php php$sslphp)php;
-php php php php php php php php php$thisphp-php>php_protocolphp-php>loginphp(php$paramsphp-php>userphp,php php$passwordphp)php;
-php php php php php}
+        if (!isset($params->user)) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('need at least user in params');
+        }
 
-php php php php php/php*php*
-php php php php php php*php Closephp resourcephp forphp mailphp libphp.php Ifphp youphp needphp tophp controlphp,php whenphp thephp resource
-php php php php php php*php isphp closedphp.php Otherwisephp thephp destructorphp wouldphp callphp thisphp.
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_protocolphp-php>logoutphp(php)php;
-php php php php php}
+        $host     = isset($params->host)     ? $params->host     : 'localhost';
+        $password = isset($params->password) ? $params->password : '';
+        $port     = isset($params->port)     ? $params->port     : null;
+        $ssl      = isset($params->ssl)      ? $params->ssl      : false;
 
-php php php php php/php*php*
-php php php php php php*php Keepphp thephp serverphp busyphp.
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp noopphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_protocolphp-php>noopphp(php)php;
-php php php php php}
+        $this->_protocol = new Zend_Mail_Protocol_Pop3();
+        $this->_protocol->connect($host, $port, $ssl);
+        $this->_protocol->login($params->user, $password);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp messagephp fromphp serverphp.php Ifphp youphp'rephp doingphp thatphp fromphp aphp webphp enviroment
-php php php php php php*php youphp shouldphp bephp carefulphp andphp usephp aphp uniqueidphp asphp parameterphp ifphp possiblephp to
-php php php php php php*php identifyphp thephp messagephp.
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$idphp numberphp ofphp message
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp removeMessagephp(php$idphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_protocolphp-php>deletephp(php$idphp)php;
-php php php php php}
+    /**
+     * Close resource for mail lib. If you need to control, when the resource
+     * is closed. Otherwise the destructor would call this.
+     *
+     * @return null
+     */
+    public function close()
+    {
+        $this->_protocol->logout();
+    }
 
-php php php php php/php*php*
-php php php php php php*php getphp uniquephp idphp forphp onephp orphp allphp messages
-php php php php php php*
-php php php php php php*php ifphp storagephp doesphp notphp supportphp uniquephp idsphp itphp'sphp thephp samephp asphp thephp messagephp number
-php php php php php php*
-php php php php php php*php php@paramphp intphp|nullphp php$idphp messagephp number
-php php php php php php*php php@returnphp arrayphp|stringphp messagephp numberphp forphp givenphp messagephp orphp allphp messagesphp asphp array
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getUniqueIdphp(php$idphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasUniqueidphp)php php{
-php php php php php php php php php php php php ifphp php(php$idphp)php php{
-php php php php php php php php php php php php php php php php returnphp php$idphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$countphp php=php php$thisphp-php>countMessagesphp(php)php;
-php php php php php php php php php php php php ifphp php(php$countphp <php php1php)php php{
-php php php php php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$rangephp php=php rangephp(php1php,php php$countphp)php;
-php php php php php php php php php php php php returnphp arrayphp_combinephp(php$rangephp,php php$rangephp)php;
-php php php php php php php php php}
+    /**
+     * Keep the server busy.
+     *
+     * @return null
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function noop()
+    {
+        return $this->_protocol->noop();
+    }
 
-php php php php php php php php returnphp php$thisphp-php>php_protocolphp-php>uniqueidphp(php$idphp)php;
-php php php php php}
+    /**
+     * Remove a message from server. If you're doing that from a web enviroment
+     * you should be careful and use a uniqueid as parameter if possible to
+     * identify the message.
+     *
+     * @param  int $id number of message
+     * @return null
+     * @throws Zend_Mail_Protocol_Exception
+     */
+    public function removeMessage($id)
+    {
+        $this->_protocol->delete($id);
+    }
 
-php php php php php/php*php*
-php php php php php php*php getphp aphp messagephp numberphp fromphp aphp uniquephp id
-php php php php php php*
-php php php php php php*php Iphp.ephp.php ifphp youphp havephp aphp webmailerphp thatphp supportsphp deletingphp messagesphp youphp shouldphp usephp uniquephp ids
-php php php php php php*php asphp parameterphp andphp usephp thisphp methodphp tophp translatephp itphp tophp messagephp numberphp rightphp beforephp callingphp removeMessagephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp uniquephp id
-php php php php php php*php php@returnphp intphp messagephp number
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getNumberByUniqueIdphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasUniqueidphp)php php{
-php php php php php php php php php php php php returnphp php$idphp;
-php php php php php php php php php}
+    /**
+     * get unique id for one or all messages
+     *
+     * if storage does not support unique ids it's the same as the message number
+     *
+     * @param int|null $id message number
+     * @return array|string message number for given message or all messages as array
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getUniqueId($id = null)
+    {
+        if (!$this->hasUniqueid) {
+            if ($id) {
+                return $id;
+            }
+            $count = $this->countMessages();
+            if ($count < 1) {
+                return array();
+            }
+            $range = range(1, $count);
+            return array_combine($range, $range);
+        }
 
-php php php php php php php php php$idsphp php=php php$thisphp-php>getUniqueIdphp(php)php;
-php php php php php php php php foreachphp php(php$idsphp asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php ifphp php(php$vphp php=php=php php$idphp)php php{
-php php php php php php php php php php php php php php php php returnphp php$kphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        return $this->_protocol->uniqueid($id);
+    }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'uniquephp idphp notphp foundphp'php)php;
-php php php php php}
+    /**
+     * get a message number from a unique id
+     *
+     * I.e. if you have a webmailer that supports deleting messages you should use unique ids
+     * as parameter and use this method to translate it to message number right before calling removeMessage()
+     *
+     * @param string $id unique id
+     * @return int message number
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getNumberByUniqueId($id)
+    {
+        if (!$this->hasUniqueid) {
+            return $id;
+        }
 
-php php php php php/php*php*
-php php php php php php*php Specialphp handlingphp forphp hasTopphp andphp hasUniqueidphp.php Thephp headersphp ofphp thephp firstphp messagephp is
-php php php php php php*php retrievedphp ifphp Topphp wasnphp'tphp neededphp/triedphp yetphp.
-php php php php php php*
-php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Abstractphp:php_php_getphp(php)
-php php php php php php*php php@paramphp php stringphp php$var
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$varphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php parentphp:php:php_php_getphp(php$varphp)php;
-php php php php php php php php ifphp php(php$resultphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php$resultphp;
-php php php php php php php php php}
+        $ids = $this->getUniqueId();
+        foreach ($ids as $k => $v) {
+            if ($v == $id) {
+                return $k;
+            }
+        }
 
-php php php php php php php php ifphp php(strtolowerphp(php$varphp)php php=php=php php'hastopphp'php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_protocolphp-php>hasTopphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php/php/php needphp tophp makephp aphp realphp callphp,php becausephp notphp allphp serverphp arephp honestphp inphp theirphp capas
-php php php php php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_protocolphp-php>topphp(php1php,php php0php,php falsephp)php;
-php php php php php php php php php php php php php php php php php}php catchphp(Zendphp_Mailphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php ignoringphp error
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_hasphp[php'topphp'php]php php=php php$thisphp-php>php_protocolphp-php>hasTopphp;
-php php php php php php php php php php php php returnphp php$thisphp-php>php_protocolphp-php>hasTopphp;
-php php php php php php php php php}
+        /**
+         * @see Zend_Mail_Storage_Exception
+         */
+        require_once 'Zend/Mail/Storage/Exception.php';
+        throw new Zend_Mail_Storage_Exception('unique id not found');
+    }
 
-php php php php php php php php ifphp php(strtolowerphp(php$varphp)php php=php=php php'hasuniqueidphp'php)php php{
-php php php php php php php php php php php php php$idphp php=php nullphp;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_protocolphp-php>uniqueidphp(php1php)php;
-php php php php php php php php php php php php php}php catchphp(Zendphp_Mailphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php php/php/php ignoringphp error
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_hasphp[php'uniqueidphp'php]php php=php php$idphp php?php truephp php:php falsephp;
-php php php php php php php php php php php php returnphp php$thisphp-php>php_hasphp[php'uniqueidphp'php]php;
-php php php php php php php php php}
+    /**
+     * Special handling for hasTop and hasUniqueid. The headers of the first message is
+     * retrieved if Top wasn't needed/tried yet.
+     *
+     * @see Zend_Mail_Storage_Abstract:__get()
+     * @param  string $var
+     * @return string
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function __get($var)
+    {
+        $result = parent::__get($var);
+        if ($result !== null) {
+            return $result;
+        }
 
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-php}
+        if (strtolower($var) == 'hastop') {
+            if ($this->_protocol->hasTop === null) {
+                // need to make a real call, because not all server are honest in their capas
+                try {
+                    $this->_protocol->top(1, 0, false);
+                } catch(Zend_Mail_Exception $e) {
+                    // ignoring error
+                }
+            }
+            $this->_has['top'] = $this->_protocol->hasTop;
+            return $this->_protocol->hasTop;
+        }
+
+        if (strtolower($var) == 'hasuniqueid') {
+            $id = null;
+            try {
+                $id = $this->_protocol->uniqueid(1);
+            } catch(Zend_Mail_Exception $e) {
+                // ignoring error
+            }
+            $this->_has['uniqueid'] = $id ? true : false;
+            return $this->_has['uniqueid'];
+        }
+
+        return $result;
+    }
+}

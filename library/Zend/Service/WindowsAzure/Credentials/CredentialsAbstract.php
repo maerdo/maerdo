@@ -1,244 +1,244 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CredentialsAbstractphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CredentialsAbstract.php 23584 2010-12-28 19:51:49Z matthew $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
+/**
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_Exception
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/Exceptionphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Credentials_Exception
+ */
+require_once 'Zend/Service/WindowsAzure/Credentials/Exception.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php Developmentphp storagephp accountphp andphp key
-php php php php php php*php/
-php php php php constphp DEVSTOREphp_ACCOUNTphp php php php php php php php=php php"devstoreaccountphp1php"php;
-php php php php constphp DEVSTOREphp_KEYphp php php php php php php php php php php php=php php"Ebyphp8vdMphp0php2xNOcqFlqUwJPLlmEtlCDXJphp1OUzFTphp5php0uSRZphp6IFsuFqphp2UVErCzphp4Iphp6tqphp/Kphp1SZFPTOtrphp/KBHBeksoGMGwphp=php=php"php;
-php php php php 
-php php php php php/php*php*
-php php php php php php*php HTTPphp headerphp prefixes
-php php php php php php*php/
-php php php php constphp PREFIXphp_PROPERTIESphp php php php php php php=php php"xphp-msphp-propphp-php"php;
-php php php php constphp PREFIXphp_METADATAphp php php php php php php php php=php php"xphp-msphp-metaphp-php"php;
-php php php php constphp PREFIXphp_STORAGEphp_HEADERphp php php=php php"xphp-msphp-php"php;
-php php php php 
-php php php php php/php*php*
-php php php php php php*php Permissions
-php php php php php php*php/
-php php php php constphp PERMISSIONphp_READphp php php php php php php php php=php php"rphp"php;
-php php php php constphp PERMISSIONphp_WRITEphp php php php php php php php=php php"wphp"php;
-php php php php constphp PERMISSIONphp_DELETEphp php php php php php php=php php"dphp"php;
-php php php php constphp PERMISSIONphp_LISTphp php php php php php php php php=php php"lphp"php;
+/**
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+{
+    /**
+     * Development storage account and key
+     */
+    const DEVSTORE_ACCOUNT       = "devstoreaccount1";
+    const DEVSTORE_KEY           = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==";
+    
+    /**
+     * HTTP header prefixes
+     */
+    const PREFIX_PROPERTIES      = "x-ms-prop-";
+    const PREFIX_METADATA        = "x-ms-meta-";
+    const PREFIX_STORAGE_HEADER  = "x-ms-";
+    
+    /**
+     * Permissions
+     */
+    const PERMISSION_READ        = "r";
+    const PERMISSION_WRITE       = "w";
+    const PERMISSION_DELETE      = "d";
+    const PERMISSION_LIST        = "l";
 
-php	php/php*php*
-php	php php*php Accountphp namephp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_accountNamephp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Accountphp keyphp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_accountKeyphp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Usephp pathphp-stylephp URIphp's
-php	php php*
-php	php php*php php@varphp boolean
-php	php php*php/
-php	protectedphp php$php_usePathStyleUriphp php=php falsephp;
-php	
-php	php/php*php*
-php	php php*php Createsphp aphp newphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp instance
-php	php php*
-php	php php*php php@paramphp stringphp php$accountNamephp Accountphp namephp forphp Windowsphp Azure
-php	php php*php php@paramphp stringphp php$accountKeyphp Accountphp keyphp forphp Windowsphp Azure
-php	php php*php php@paramphp booleanphp php$usePathStyleUriphp Usephp pathphp-stylephp URIphp's
-php	php php*php/
-php	publicphp functionphp php_php_constructphp(
-php	php	php$accountNamephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_ACCOUNTphp,
-php	php	php$accountKeyphp php php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_KEYphp,
-php	php	php$usePathStyleUriphp php=php false
-php	php)php php{
-php	php	php$thisphp-php>php_accountNamephp php=php php$accountNamephp;
-php	php	php$thisphp-php>php_accountKeyphp php=php basephp6php4php_decodephp(php$accountKeyphp)php;
-php	php	php$thisphp-php>php_usePathStyleUriphp php=php php$usePathStyleUriphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp accountphp namephp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@paramphp php stringphp php$value
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php	php php*php/
-php	publicphp functionphp setAccountNamephp(php$valuephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_ACCOUNTphp)
-php	php{
-php	php	php$thisphp-php>php_accountNamephp php=php php$valuephp;
-php	php	returnphp php$thisphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp accountphp keyphp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@paramphp php stringphp php$value
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php	php php*php/
-php	publicphp functionphp setAccountkeyphp(php$valuephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_KEYphp)
-php	php{
-php	php	php$thisphp-php>php_accountKeyphp php=php basephp6php4php_decodephp(php$valuephp)php;
-php	php	returnphp php$thisphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp usephp pathphp-stylephp URIphp's
-php	php php*
-php	php php*php php@paramphp php booleanphp php$value
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php	php php*php/
-php	publicphp functionphp setUsePathStyleUriphp(php$valuephp php=php falsephp)
-php	php{
-php	php	php$thisphp-php>php_usePathStyleUriphp php=php php$valuephp;
-php	php	returnphp php$thisphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Signphp requestphp URLphp withphp credentials
-php	php php*
-php	php php*php php@paramphp stringphp php$requestUrlphp Requestphp URL
-php	php php*php php@paramphp stringphp php$resourceTypephp Resourcephp type
-php	php php*php php@paramphp stringphp php$requiredPermissionphp Requiredphp permission
-php	php php*php php@returnphp stringphp Signedphp requestphp URL
-php	php php*php/
-php	abstractphp publicphp functionphp signRequestUrlphp(
-php	php	php$requestUrlphp php=php php'php'php,
-php	php	php$resourceTypephp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_UNKNOWNphp,
-php	php	php$requiredPermissionphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READ
-php	php)php;
-php	
-php	php/php*php*
-php	php php*php Signphp requestphp headersphp withphp credentials
-php	php php*
-php	php php*php php@paramphp stringphp php$httpVerbphp HTTPphp verbphp thephp requestphp willphp use
-php	php php*php php@paramphp stringphp php$pathphp Pathphp forphp thephp request
-php	php php*php php@paramphp stringphp php$queryStringphp Queryphp stringphp forphp thephp request
-php	php php*php php@paramphp arrayphp php$headersphp xphp-msphp headersphp tophp add
-php	php php*php php@paramphp booleanphp php$forTableStoragephp Isphp thephp requestphp forphp tablephp storagephp?
-php	php php*php php@paramphp stringphp php$resourceTypephp Resourcephp type
-php	php php*php php@paramphp stringphp php$requiredPermissionphp Requiredphp permission
-php	php php*php php@paramphp mixedphp php php$rawDataphp Rawphp postphp data
-php	php php*php php@returnphp arrayphp Arrayphp ofphp headers
-php	php php*php/
-php	abstractphp publicphp functionphp signRequestHeadersphp(
-php	php	php$httpVerbphp php=php Zendphp_Httpphp_Clientphp:php:GETphp,
-php	php	php$pathphp php=php php'php/php'php,
-php	php	php$queryStringphp php=php php'php'php,
-php	php	php$headersphp php=php nullphp,
-php	php	php$forTableStoragephp php=php falsephp,
-php	php	php$resourceTypephp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_UNKNOWNphp,
-php	php	php$requiredPermissionphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp,
-php	php	php$rawDataphp php=php null
-php	php)php;
-php	
-php	
-php	php/php*php*
-php	php php*php Preparephp queryphp stringphp forphp signing
-php	php php*
-php	php php*php php@paramphp php stringphp php$valuephp Originalphp queryphp string
-php	php php*php php@returnphp stringphp php php php php php php php Queryphp stringphp forphp signing
-php	php php*php/
-php	protectedphp functionphp php_prepareQueryStringForSigningphp(php$valuephp)
-php	php{
-php	php php php php php/php/php Returnphp value
-php	php php php php php$returnValuephp php=php arrayphp(php)php;
-php	
-php	php php php php php/php/php Preparephp queryphp string
-php	php php php php php$queryPartsphp php=php php$thisphp-php>php_makeArrayOfQueryStringphp(php$valuephp)php;
-php	php php php php foreachphp php(php$queryPartsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php php php php php	php$returnValuephp[php]php php=php php$keyphp php.php php'php=php'php php.php php$valuephp;
-php	php php php php php}
-php	
-php	php php php php php/php/php Return
-php	php php php php ifphp php(countphp(php$returnValuephp)php php>php php0php)php php{
-php	php php php php php	returnphp php'php?php'php php.php implodephp(php'php&php'php,php php$returnValuephp)php;
-php	php php php php php}php elsephp php{
-php	php php php php php	returnphp php'php'php;
-php	php php php php php}
-php	php}
-php	
-php	php/php*php*
-php	php php*php Makephp arrayphp ofphp queryphp string
-php	php php*
-php	php php*php php@paramphp php stringphp php$valuephp Queryphp string
-php	php php*php php@returnphp arrayphp php php php php php php php php Arrayphp ofphp keyphp/valuephp pairs
-php	php php*php/
-php	protectedphp functionphp php_makeArrayOfQueryStringphp(php$valuephp)
-php	php{
-php	php	php/php/php Returnvalue
-php	php	php$returnValuephp php=php arrayphp(php)php;
-php	php	
-php	php php php php php/php/php Removephp frontphp php?
-php php php php	php	ifphp php(strlenphp(php$valuephp)php php>php php0php php&php&php strposphp(php$valuephp,php php'php?php'php)php php=php=php=php php0php)php php{
-php php php php php	php	php$valuephp php=php substrphp(php$valuephp,php php1php)php;
-php php php php php	php}
-php php php php php	php	
-php php php php php	php/php/php Splitphp parts
-php php php php php	php$queryPartsphp php=php explodephp(php'php&php'php,php php$valuephp)php;
-php php php php php	foreachphp php(php$queryPartsphp asphp php$queryPartphp)php php{
-php php php php php	php	php$queryPartphp php=php explodephp(php'php=php'php,php php$queryPartphp,php php2php)php;
-php php php php php	php	
-php php php php php	php	ifphp php(php$queryPartphp[php0php]php php!php=php php'php'php)php php{
-php php php php php	php	php	php$returnValuephp[php php$queryPartphp[php0php]php php]php php=php issetphp(php$queryPartphp[php1php]php)php php?php php$queryPartphp[php1php]php php:php php'php'php;
-php php php php php	php	php}
-php php php php php	php}
-php php php php php	
-php php php php php	php/php/php Sort
-php php php php php	ksortphp(php$returnValuephp)php;
+	/**
+	 * Account name for Windows Azure
+	 *
+	 * @var string
+	 */
+	protected $_accountName = '';
+	
+	/**
+	 * Account key for Windows Azure
+	 *
+	 * @var string
+	 */
+	protected $_accountKey = '';
+	
+	/**
+	 * Use path-style URI's
+	 *
+	 * @var boolean
+	 */
+	protected $_usePathStyleUri = false;
+	
+	/**
+	 * Creates a new Zend_Service_WindowsAzure_Credentials_CredentialsAbstract instance
+	 *
+	 * @param string $accountName Account name for Windows Azure
+	 * @param string $accountKey Account key for Windows Azure
+	 * @param boolean $usePathStyleUri Use path-style URI's
+	 */
+	public function __construct(
+		$accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT,
+		$accountKey  = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY,
+		$usePathStyleUri = false
+	) {
+		$this->_accountName = $accountName;
+		$this->_accountKey = base64_decode($accountKey);
+		$this->_usePathStyleUri = $usePathStyleUri;
+	}
+	
+	/**
+	 * Set account name for Windows Azure
+	 *
+	 * @param  string $value
+	 * @return Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+	 */
+	public function setAccountName($value = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT)
+	{
+		$this->_accountName = $value;
+		return $this;
+	}
+	
+	/**
+	 * Set account key for Windows Azure
+	 *
+	 * @param  string $value
+	 * @return Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+	 */
+	public function setAccountkey($value = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY)
+	{
+		$this->_accountKey = base64_decode($value);
+		return $this;
+	}
+	
+	/**
+	 * Set use path-style URI's
+	 *
+	 * @param  boolean $value
+	 * @return Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+	 */
+	public function setUsePathStyleUri($value = false)
+	{
+		$this->_usePathStyleUri = $value;
+		return $this;
+	}
+	
+	/**
+	 * Sign request URL with credentials
+	 *
+	 * @param string $requestUrl Request URL
+	 * @param string $resourceType Resource type
+	 * @param string $requiredPermission Required permission
+	 * @return string Signed request URL
+	 */
+	abstract public function signRequestUrl(
+		$requestUrl = '',
+		$resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN,
+		$requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ
+	);
+	
+	/**
+	 * Sign request headers with credentials
+	 *
+	 * @param string $httpVerb HTTP verb the request will use
+	 * @param string $path Path for the request
+	 * @param string $queryString Query string for the request
+	 * @param array $headers x-ms headers to add
+	 * @param boolean $forTableStorage Is the request for table storage?
+	 * @param string $resourceType Resource type
+	 * @param string $requiredPermission Required permission
+	 * @param mixed  $rawData Raw post data
+	 * @return array Array of headers
+	 */
+	abstract public function signRequestHeaders(
+		$httpVerb = Zend_Http_Client::GET,
+		$path = '/',
+		$queryString = '',
+		$headers = null,
+		$forTableStorage = false,
+		$resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN,
+		$requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ,
+		$rawData = null
+	);
+	
+	
+	/**
+	 * Prepare query string for signing
+	 *
+	 * @param  string $value Original query string
+	 * @return string        Query string for signing
+	 */
+	protected function _prepareQueryStringForSigning($value)
+	{
+	    // Return value
+	    $returnValue = array();
+	
+	    // Prepare query string
+	    $queryParts = $this->_makeArrayOfQueryString($value);
+	    foreach ($queryParts as $key => $value) {
+	    	$returnValue[] = $key . '=' . $value;
+	    }
+	
+	    // Return
+	    if (count($returnValue) > 0) {
+	    	return '?' . implode('&', $returnValue);
+	    } else {
+	    	return '';
+	    }
+	}
+	
+	/**
+	 * Make array of query string
+	 *
+	 * @param  string $value Query string
+	 * @return array         Array of key/value pairs
+	 */
+	protected function _makeArrayOfQueryString($value)
+	{
+		// Returnvalue
+		$returnValue = array();
+		
+	    // Remove front ?
+   		if (strlen($value) > 0 && strpos($value, '?') === 0) {
+    		$value = substr($value, 1);
+    	}
+    		
+    	// Split parts
+    	$queryParts = explode('&', $value);
+    	foreach ($queryParts as $queryPart) {
+    		$queryPart = explode('=', $queryPart, 2);
+    		
+    		if ($queryPart[0] != '') {
+    			$returnValue[ $queryPart[0] ] = isset($queryPart[1]) ? $queryPart[1] : '';
+    		}
+    	}
+    	
+    	// Sort
+    	ksort($returnValue);
 
-php php php php php	php/php/php Return
-php	php	returnphp php$returnValuephp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Returnsphp anphp arrayphp valuephp ifphp thephp keyphp isphp setphp,php otherwidephp returnsphp php$valueIfNotSet
-php	php php*
-php	php php*php php@paramphp arrayphp php$array
-php	php php*php php@paramphp mixedphp php$key
-php	php php*php php@paramphp mixedphp php$valueIfNotSet
-php	php php*php php@returnphp mixed
-php	php php*php/
-php	protectedphp functionphp php_issetOrphp(php$arrayphp,php php$keyphp,php php$valueIfNotSetphp)
-php	php{
-php	php	returnphp issetphp(php$arrayphp[php$keyphp]php)php php?php php$arrayphp[php$keyphp]php php:php php$valueIfNotSetphp;
-php	php}
-php}
+    	// Return
+		return $returnValue;
+	}
+	
+	/**
+	 * Returns an array value if the key is set, otherwide returns $valueIfNotSet
+	 *
+	 * @param array $array
+	 * @param mixed $key
+	 * @param mixed $valueIfNotSet
+	 * @return mixed
+	 */
+	protected function _issetOr($array, $key, $valueIfNotSet)
+	{
+		return isset($array[$key]) ? $array[$key] : $valueIfNotSet;
+	}
+}

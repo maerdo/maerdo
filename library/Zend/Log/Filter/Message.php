@@ -1,85 +1,85 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Messagephp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Message.php 23576 2010-12-23 23:25:44Z ramon $
+ */
 
-php/php*php*php Zendphp_Logphp_Filterphp_Abstractphp php*php/
-requirephp_oncephp php'Zendphp/Logphp/Filterphp/Abstractphp.phpphp'php;
+/** Zend_Log_Filter_Abstract */
+require_once 'Zend/Log/Filter/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Messagephp.phpphp php2php3php5php7php6php php2php0php1php0php-php1php2php-php2php3php php2php3php:php2php5php:php4php4Zphp ramonphp php$
-php php*php/
-classphp Zendphp_Logphp_Filterphp_Messagephp extendsphp Zendphp_Logphp_Filterphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_regexpphp;
+/**
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Message.php 23576 2010-12-23 23:25:44Z ramon $
+ */
+class Zend_Log_Filter_Message extends Zend_Log_Filter_Abstract
+{
+    /**
+     * @var string
+     */
+    protected $_regexp;
 
-php php php php php/php*php*
-php php php php php php*php Filterphp outphp anyphp logphp messagesphp notphp matchingphp php$regexpphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$regexpphp php php php php Regularphp expressionphp tophp testphp thephp logphp message
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$regexpphp)
-php php php php php{
-php php php php php php php php ifphp php(php@pregphp_matchphp(php$regexpphp,php php'php'php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php"Invalidphp regularphp expressionphp php'php$regexpphp'php"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_regexpphp php=php php$regexpphp;
-php php php php php}
+    /**
+     * Filter out any log messages not matching $regexp.
+     *
+     * @param  string  $regexp     Regular expression to test the log message
+     * @return void
+     * @throws Zend_Log_Exception
+     */
+    public function __construct($regexp)
+    {
+        if (@preg_match($regexp, '') === false) {
+            require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception("Invalid regular expression '$regexp'");
+        }
+        $this->_regexp = $regexp;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Filterphp_Message
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Logphp_Filterphp_Message
-php php php php php php*php/
-php php php php staticphp publicphp functionphp factoryphp(php$configphp)
-php php php php php{
-php php php php php php php php php$configphp php=php selfphp:php:php_parseConfigphp(php$configphp)php;
-php php php php php php php php php$configphp php=php arrayphp_mergephp(arrayphp(
-php php php php php php php php php php php php php'regexpphp'php php=php>php null
-php php php php php php php php php)php,php php$configphp)php;
+    /**
+     * Create a new instance of Zend_Log_Filter_Message
+     *
+     * @param  array|Zend_Config $config
+     * @return Zend_Log_Filter_Message
+     */
+    static public function factory($config)
+    {
+        $config = self::_parseConfig($config);
+        $config = array_merge(array(
+            'regexp' => null
+        ), $config);
 
-php php php php php php php php returnphp newphp selfphp(
-php php php php php php php php php php php php php$configphp[php'regexpphp'php]
-php php php php php php php php php)php;
-php php php php php}
+        return new self(
+            $config['regexp']
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp TRUEphp tophp acceptphp thephp messagephp,php FALSEphp tophp blockphp itphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php php php$eventphp php php php eventphp data
-php php php php php php*php php@returnphp booleanphp php php php php php php php php php php php acceptedphp?
-php php php php php php*php/
-php php php php publicphp functionphp acceptphp(php$eventphp)
-php php php php php{
-php php php php php php php php returnphp pregphp_matchphp(php$thisphp-php>php_regexpphp,php php$eventphp[php'messagephp'php]php)php php>php php0php;
-php php php php php}
-php}
+    /**
+     * Returns TRUE to accept the message, FALSE to block it.
+     *
+     * @param  array    $event    event data
+     * @return boolean            accepted?
+     */
+    public function accept($event)
+    {
+        return preg_match($this->_regexp, $event['message']) > 0;
+    }
+}

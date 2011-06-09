@@ -1,212 +1,212 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Helperphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Helper.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Interfacephp forphp navigationalphp helpers
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Viewphp_Helperphp_Navigationphp_Helper
-php{
-php php php php php/php*php*
-php php php php php php*php Setsphp navigationphp containerphp thephp helperphp shouldphp operatephp onphp byphp default
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php operatephp onphp.php Defaultphp is
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php nullphp,php whichphp indicatesphp that
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php thephp containerphp shouldphp be
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php resetphp.
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php php php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setContainerphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)php;
+/**
+ * Interface for navigational helpers
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_View_Helper_Navigation_Helper
+{
+    /**
+     * Sets navigation container the helper should operate on by default
+     *
+     * @param  Zend_Navigation_Container $container  [optional] container to
+     *                                               operate on. Default is
+     *                                               null, which indicates that
+     *                                               the container should be
+     *                                               reset.
+     * @return Zend_View_Helper_Navigation_Helper    fluent interface, returns
+     *                                               self
+     */
+    public function setContainer(Zend_Navigation_Container $container = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp navigationphp containerphp thephp helperphp operatesphp onphp byphp default
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php navigationphp container
-php php php php php php*php/
-php php php php publicphp functionphp getContainerphp(php)php;
+    /**
+     * Returns the navigation container the helper operates on by default
+     *
+     * @return Zend_Navigation_Container  navigation container
+     */
+    public function getContainer();
 
-php php php php php/php*php*
-php php php php php php*php Setsphp translatorphp tophp usephp inphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$translatorphp php php php php php php php php php php php php php php php php php php php[optionalphp]php translatorphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Expectsphp anphp objectphp ofphp type
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php{php@linkphp Zendphp_Translatephp_Adapterphp}
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php orphp php{php@linkphp Zendphp_Translatephp}php,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php orphp nullphp.php Defaultphp isphp nullphp.
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setTranslatorphp(php$translatorphp php=php nullphp)php;
+    /**
+     * Sets translator to use in helper
+     *
+     * @param  mixed $translator                   [optional] translator.
+     *                                             Expects an object of type
+     *                                             {@link Zend_Translate_Adapter}
+     *                                             or {@link Zend_Translate},
+     *                                             or null. Default is null.
+     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     *                                             self
+     */
+    public function setTranslator($translator = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp translatorphp usedphp inphp helper
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Translatephp_Adapterphp|nullphp php translatorphp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp getTranslatorphp(php)php;
+    /**
+     * Returns translator used in helper
+     *
+     * @return Zend_Translate_Adapter|null  translator or null
+     */
+    public function getTranslator();
 
-php php php php php/php*php*
-php php php php php php*php Setsphp ACLphp tophp usephp whenphp iteratingphp pages
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Aclphp php$aclphp php php php php php php php php php php php php php php php php php php php php php php php[optionalphp]php ACLphp instance
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setAclphp(Zendphp_Aclphp php$aclphp php=php nullphp)php;
+    /**
+     * Sets ACL to use when iterating pages
+     *
+     * @param  Zend_Acl $acl                       [optional] ACL instance
+     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     *                                             self
+     */
+    public function setAcl(Zend_Acl $acl = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp ACLphp orphp nullphp ifphp itphp isnphp'tphp setphp usingphp php{php@linkphp setAclphp(php)php}php or
-php php php php php php*php php{php@linkphp setDefaultAclphp(php)php}
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Aclphp|nullphp php ACLphp objectphp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp getAclphp(php)php;
+    /**
+     * Returns ACL or null if it isn't set using {@link setAcl()} or
+     * {@link setDefaultAcl()}
+     *
+     * @return Zend_Acl|null  ACL object or null
+     */
+    public function getAcl();
 
-php php php php php/php*php*
-php php php php php php*php Setsphp ACLphp rolephp tophp usephp whenphp iteratingphp pages
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$rolephp php php php php php php php php php php php php php php php php php php php php php php php php php[optionalphp]php rolephp tophp setphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Expectsphp aphp stringphp,php an
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php instancephp ofphp type
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php{php@linkphp Zendphp_Aclphp_Rolephp_Interfacephp}php,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php orphp nullphp.php Defaultphp isphp nullphp.
-php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp php php php php php php php php php php php php php php php php ifphp php$rolephp isphp invalid
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setRolephp(php$rolephp php=php nullphp)php;
+    /**
+     * Sets ACL role to use when iterating pages
+     *
+     * @param  mixed $role                         [optional] role to set.
+     *                                             Expects a string, an
+     *                                             instance of type
+     *                                             {@link Zend_Acl_Role_Interface},
+     *                                             or null. Default is null.
+     * @throws Zend_View_Exception                 if $role is invalid
+     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     *                                             self
+     */
+    public function setRole($role = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp ACLphp rolephp tophp usephp whenphp iteratingphp pagesphp,php orphp nullphp ifphp itphp isnphp'tphp set
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|Zendphp_Aclphp_Rolephp_Interfacephp|nullphp php rolephp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp getRolephp(php)php;
+    /**
+     * Returns ACL role to use when iterating pages, or null if it isn't set
+     *
+     * @return string|Zend_Acl_Role_Interface|null  role or null
+     */
+    public function getRole();
 
-php php php php php/php*php*
-php php php php php php*php Setsphp whetherphp ACLphp shouldphp bephp used
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$useAclphp php php php php php php php php php php php php php php php php php php php php php php php php[optionalphp]php whetherphp ACL
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php shouldphp bephp usedphp.php Defaultphp is
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp.
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setUseAclphp(php$useAclphp php=php truephp)php;
+    /**
+     * Sets whether ACL should be used
+     *
+     * @param  bool $useAcl                        [optional] whether ACL
+     *                                             should be used. Default is
+     *                                             true.
+     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     *                                             self
+     */
+    public function setUseAcl($useAcl = true);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp whetherphp ACLphp shouldphp bephp used
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp ACLphp shouldphp bephp used
-php php php php php php*php/
-php php php php publicphp functionphp getUseAclphp(php)php;
+    /**
+     * Returns whether ACL should be used
+     *
+     * @return bool  whether ACL should be used
+     */
+    public function getUseAcl();
 
-php php php php php/php*php*
-php php php php php php*php Returnphp renderInvisiblephp flag
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp getRenderInvisiblephp(php)php;
+    /**
+     * Return renderInvisible flag
+     *
+     * @return bool
+     */
+    public function getRenderInvisible();
 
-php php php php php/php*php*
-php php php php php php*php Renderphp invisiblephp itemsphp?
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$renderInvisiblephp php php php php php php php php php php php php php php php php php php php php php php php[optionalphp]php booleanphp flag
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_HelperAbstractphp php fluentphp interface
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnsphp self
-php php php php php php*php/
-php php php php publicphp functionphp setRenderInvisiblephp(php$renderInvisiblephp php=php truephp)php;
+    /**
+     * Render invisible items?
+     *
+     * @param  bool $renderInvisible                       [optional] boolean flag
+     * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface
+     *                                                     returns self
+     */
+    public function setRenderInvisible($renderInvisible = true);
 
-php php php php php/php*php*
-php php php php php php*php Setsphp whetherphp translatorphp shouldphp bephp used
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$useTranslatorphp php php php php php php php php php php php php php php php php php[optionalphp]php whether
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php translatorphp shouldphp bephp usedphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Defaultphp isphp truephp.
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Navigationphp_Helperphp php fluentphp interfacephp,php returns
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php self
-php php php php php php*php/
-php php php php publicphp functionphp setUseTranslatorphp(php$useTranslatorphp php=php truephp)php;
+    /**
+     * Sets whether translator should be used
+     *
+     * @param  bool $useTranslator                 [optional] whether
+     *                                             translator should be used.
+     *                                             Default is true.
+     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     *                                             self
+     */
+    public function setUseTranslator($useTranslator = true);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp whetherphp translatorphp shouldphp bephp used
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp translatorphp shouldphp bephp used
-php php php php php php*php/
-php php php php publicphp functionphp getUseTranslatorphp(php)php;
+    /**
+     * Returns whether translator should be used
+     *
+     * @return bool  whether translator should be used
+     */
+    public function getUseTranslator();
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp thephp helperphp hasphp aphp container
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp thephp helperphp hasphp aphp containerphp orphp not
-php php php php php php*php/
-php php php php publicphp functionphp hasContainerphp(php)php;
+    /**
+     * Checks if the helper has a container
+     *
+     * @return bool  whether the helper has a container or not
+     */
+    public function hasContainer();
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp thephp helperphp hasphp anphp ACLphp instance
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp thephp helperphp hasphp aphp anphp ACLphp instancephp orphp not
-php php php php php php*php/
-php php php php publicphp functionphp hasAclphp(php)php;
+    /**
+     * Checks if the helper has an ACL instance
+     *
+     * @return bool  whether the helper has a an ACL instance or not
+     */
+    public function hasAcl();
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp thephp helperphp hasphp anphp ACLphp role
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp thephp helperphp hasphp aphp anphp ACLphp rolephp orphp not
-php php php php php php*php/
-php php php php publicphp functionphp hasRolephp(php)php;
+    /**
+     * Checks if the helper has an ACL role
+     *
+     * @return bool  whether the helper has a an ACL role or not
+     */
+    public function hasRole();
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp thephp helperphp hasphp aphp translator
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp thephp helperphp hasphp aphp translatorphp orphp not
-php php php php php php*php/
-php php php php publicphp functionphp hasTranslatorphp(php)php;
+    /**
+     * Checks if the helper has a translator
+     *
+     * @return bool  whether the helper has a translator or not
+     */
+    public function hasTranslator();
 
-php php php php php/php*php*
-php php php php php php*php Magicphp overloadphp:php Shouldphp proxyphp tophp php{php@linkphp renderphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)php;
+    /**
+     * Magic overload: Should proxy to {@link render()}.
+     *
+     * @return string
+     */
+    public function __toString();
 
-php php php php php/php*php*
-php php php php php php*php Rendersphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Navigationphp_Containerphp php$containerphp php php[optionalphp]php containerphp to
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php renderphp.php Defaultphp isphp nullphp,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php whichphp indicatesphp thatphp the
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php helperphp shouldphp renderphp the
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php containerphp returnedphp by
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php{php@linkphp getContainerphp(php)php}php.
-php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php helperphp output
-php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp php php php php php php php php php php php php php php php php php php ifphp unablephp tophp render
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Navigationphp_Containerphp php$containerphp php=php nullphp)php;
-php}
+    /**
+     * Renders helper
+     *
+     * @param  Zend_Navigation_Container $container  [optional] container to
+     *                                               render. Default is null,
+     *                                               which indicates that the
+     *                                               helper should render the
+     *                                               container returned by
+     *                                               {@link getContainer()}.
+     * @return string                                helper output
+     * @throws Zend_View_Exception                   if unable to render
+     */
+    public function render(Zend_Navigation_Container $container = null);
+}

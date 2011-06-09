@@ -1,222 +1,222 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_CodeGenerator
-php php*php php@subpackagephp PHP
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_CodeGenerator
+ * @subpackage PHP
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_CodeGenerator_Php_Abstract
+ */
+require_once 'Zend/CodeGenerator/Php/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Docblockphp.phpphp'php;
+/**
+ * @see Zend_CodeGenerator_Php_Abstract
+ */
+require_once 'Zend/CodeGenerator/Php/Docblock.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_CodeGenerator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstractphp extendsphp Zendphp_CodeGeneratorphp_Phpphp_Abstract
-php{
+/**
+ * @category   Zend
+ * @package    Zend_CodeGenerator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator_Php_Abstract
+{
 
-php php php php php/php*php*php#php@php+
-php php php php php php*php php@paramphp constphp string
-php php php php php php*php/
-php php php php constphp VISIBILITYphp_PUBLICphp php php php php=php php'publicphp'php;
-php php php php constphp VISIBILITYphp_PROTECTEDphp php=php php'protectedphp'php;
-php php php php constphp VISIBILITYphp_PRIVATEphp php php php=php php'privatephp'php;
-php php php php php/php*php*php#php@php-php*php/
+    /**#@+
+     * @param const string
+     */
+    const VISIBILITY_PUBLIC    = 'public';
+    const VISIBILITY_PROTECTED = 'protected';
+    const VISIBILITY_PRIVATE   = 'private';
+    /**#@-*/
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_CodeGeneratorphp_Phpphp_Docblock
-php php php php php php*php/
-php php php php protectedphp php$php_docblockphp php php php=php nullphp;
+    /**
+     * @var Zend_CodeGenerator_Php_Docblock
+     */
+    protected $_docblock   = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_isAbstractphp php=php falsephp;
+    /**
+     * @var bool
+     */
+    protected $_isAbstract = false;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_isFinalphp php php php php=php falsephp;
+    /**
+     * @var bool
+     */
+    protected $_isFinal    = false;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_isStaticphp php php php=php falsephp;
+    /**
+     * @var bool
+     */
+    protected $_isStatic   = false;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp const
-php php php php php php*php/
-php php php php protectedphp php$php_visibilityphp php=php selfphp:php:VISIBILITYphp_PUBLICphp;
+    /**
+     * @var const
+     */
+    protected $_visibility = self::VISIBILITY_PUBLIC;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_namephp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_name = null;
 
-php php php php php/php*php*
-php php php php php php*php setDocblockphp(php)php Setphp thephp docblock
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp|arrayphp|stringphp php$docblock
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_File
-php php php php php php*php/
-php php php php publicphp functionphp setDocblockphp(php$docblockphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$docblockphp)php)php php{
-php php php php php php php php php php php php php$docblockphp php=php arrayphp(php'shortDescriptionphp'php php=php>php php$docblockphp)php;
-php php php php php php php php php}
+    /**
+     * setDocblock() Set the docblock
+     *
+     * @param Zend_CodeGenerator_Php_Docblock|array|string $docblock
+     * @return Zend_CodeGenerator_Php_File
+     */
+    public function setDocblock($docblock)
+    {
+        if (is_string($docblock)) {
+            $docblock = array('shortDescription' => $docblock);
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$docblockphp)php)php php{
-php php php php php php php php php php php php php$docblockphp php=php newphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp(php$docblockphp)php;
-php php php php php php php php php}php elseifphp php(php!php$docblockphp instanceofphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_CodeGeneratorphp_Phpphp_Exceptionphp(php'setDocblockphp(php)php isphp expectingphp eitherphp aphp stringphp,php arrayphp orphp anphp instancephp ofphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp'php)php;
-php php php php php php php php php}
+        if (is_array($docblock)) {
+            $docblock = new Zend_CodeGenerator_Php_Docblock($docblock);
+        } elseif (!$docblock instanceof Zend_CodeGenerator_Php_Docblock) {
+            require_once 'Zend/CodeGenerator/Php/Exception.php';
+            throw new Zend_CodeGenerator_Php_Exception('setDocblock() is expecting either a string, array or an instance of Zend_CodeGenerator_Php_Docblock');
+        }
 
-php php php php php php php php php$thisphp-php>php_docblockphp php=php php$docblockphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_docblock = $docblock;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getDocblockphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblock
-php php php php php php*php/
-php php php php publicphp functionphp getDocblockphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_docblockphp;
-php php php php php}
+    /**
+     * getDocblock()
+     *
+     * @return Zend_CodeGenerator_Php_Docblock
+     */
+    public function getDocblock()
+    {
+        return $this->_docblock;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setAbstractphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$isAbstract
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp setAbstractphp(php$isAbstractphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_isAbstractphp php=php php(php$isAbstractphp)php php?php truephp php:php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setAbstract()
+     *
+     * @param bool $isAbstract
+     * @return Zend_CodeGenerator_Php_Member_Abstract
+     */
+    public function setAbstract($isAbstract)
+    {
+        $this->_isAbstract = ($isAbstract) ? true : false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php isAbstractphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isAbstractphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_isAbstractphp;
-php php php php php}
+    /**
+     * isAbstract()
+     *
+     * @return bool
+     */
+    public function isAbstract()
+    {
+        return $this->_isAbstract;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setFinalphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$isFinal
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp setFinalphp(php$isFinalphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_isFinalphp php=php php(php$isFinalphp)php php?php truephp php:php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setFinal()
+     *
+     * @param bool $isFinal
+     * @return Zend_CodeGenerator_Php_Member_Abstract
+     */
+    public function setFinal($isFinal)
+    {
+        $this->_isFinal = ($isFinal) ? true : false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php isFinalphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isFinalphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_isFinalphp;
-php php php php php}
+    /**
+     * isFinal()
+     *
+     * @return bool
+     */
+    public function isFinal()
+    {
+        return $this->_isFinal;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setStaticphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$isStatic
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp setStaticphp(php$isStaticphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_isStaticphp php=php php(php$isStaticphp)php php?php truephp php:php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setStatic()
+     *
+     * @param bool $isStatic
+     * @return Zend_CodeGenerator_Php_Member_Abstract
+     */
+    public function setStatic($isStatic)
+    {
+        $this->_isStatic = ($isStatic) ? true : false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php isStaticphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isStaticphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_isStaticphp;
-php php php php php}
+    /**
+     * isStatic()
+     *
+     * @return bool
+     */
+    public function isStatic()
+    {
+        return $this->_isStatic;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setVisitibilityphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp constphp php$visibility
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp setVisibilityphp(php$visibilityphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_visibilityphp php=php php$visibilityphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setVisitibility()
+     *
+     * @param const $visibility
+     * @return Zend_CodeGenerator_Php_Member_Abstract
+     */
+    public function setVisibility($visibility)
+    {
+        $this->_visibility = $visibility;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getVisibilityphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp const
-php php php php php php*php/
-php php php php publicphp functionphp getVisibilityphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_visibilityphp;
-php php php php php}
+    /**
+     * getVisibility()
+     *
+     * @return const
+     */
+    public function getVisibility()
+    {
+        return $this->_visibility;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setNamephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Memberphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp setNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_namephp php=php php$namephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setName()
+     *
+     * @param string $name
+     * @return Zend_CodeGenerator_Php_Member_Abstract
+     */
+    public function setName($name)
+    {
+        $this->_name = $name;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getNamephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_namephp;
-php php php php php}
-php}
+    /**
+     * getName()
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_name;
+    }
+}

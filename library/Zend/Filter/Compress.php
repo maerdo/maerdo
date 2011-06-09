@@ -1,197 +1,197 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Compressphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Compress.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
 
-php/php*php*
-php php*php Compressesphp aphp givenphp string
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Compressphp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Compressionphp adapter
-php php php php php php*php/
-php php php php protectedphp php$php_adapterphp php=php php'Gzphp'php;
+/**
+ * Compresses a given string
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_Compress implements Zend_Filter_Interface
+{
+    /**
+     * Compression adapter
+     */
+    protected $_adapter = 'Gz';
 
-php php php php php/php*php*
-php php php php php php*php Compressionphp adapterphp constructorphp options
-php php php php php php*php/
-php php php php protectedphp php$php_adapterOptionsphp php=php arrayphp(php)php;
+    /**
+     * Compression adapter constructor options
+     */
+    protected $_adapterOptions = array();
 
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp php(Optionalphp)php Optionsphp tophp set
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setAdapterphp(php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Filterphp_Compressphp_CompressInterfacephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setAdapterphp(php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Class constructor
+     *
+     * @param string|array $options (Optional) Options to set
+     */
+    public function __construct($options = null)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
+        if (is_string($options)) {
+            $this->setAdapter($options);
+        } elseif ($options instanceof Zend_Filter_Compress_CompressInterface) {
+            $this->setAdapter($options);
+        } elseif (is_array($options)) {
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp filterphp setate
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Filterphp_Compress
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php'optionsphp'php)php php{
-php php php php php php php php php php php php php php php php php$keyphp php=php php'adapterOptionsphp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php ucfirstphp(php$keyphp)php;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set filter setate
+     *
+     * @param  array $options
+     * @return Zend_Filter_Compress
+     */
+    public function setOptions(array $options)
+    {
+        foreach ($options as $key => $value) {
+            if ($key == 'options') {
+                $key = 'adapterOptions';
+            }
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp currentphp adapterphp,php instantiatingphp itphp ifphp necessary
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getAdapterphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_adapterphp instanceofphp Zendphp_Filterphp_Compressphp_CompressInterfacephp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
-php php php php php php php php php}
+    /**
+     * Returns the current adapter, instantiating it if necessary
+     *
+     * @return string
+     */
+    public function getAdapter()
+    {
+        if ($this->_adapter instanceof Zend_Filter_Compress_CompressInterface) {
+            return $this->_adapter;
+        }
 
-php php php php php php php php php$adapterphp php=php php$thisphp-php>php_adapterphp;
-php php php php php php php php php$optionsphp php=php php$thisphp-php>getAdapterOptionsphp(php)php;
-php php php php php php php php ifphp php(php!classphp_existsphp(php$adapterphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(Zendphp_Loaderphp:php:isReadablephp(php'Zendphp/Filterphp/Compressphp/php'php php.php ucfirstphp(php$adapterphp)php php.php php'php.phpphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$adapterphp php=php php'Zendphp_Filterphp_Compressphp_php'php php.php ucfirstphp(php$adapterphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$adapterphp)php;
-php php php php php php php php php}
+        $adapter = $this->_adapter;
+        $options = $this->getAdapterOptions();
+        if (!class_exists($adapter)) {
+            require_once 'Zend/Loader.php';
+            if (Zend_Loader::isReadable('Zend/Filter/Compress/' . ucfirst($adapter) . '.php')) {
+                $adapter = 'Zend_Filter_Compress_' . ucfirst($adapter);
+            }
+            Zend_Loader::loadClass($adapter);
+        }
 
-php php php php php php php php php$thisphp-php>php_adapterphp php=php newphp php$adapterphp(php$optionsphp)php;
-php php php php php php php php ifphp php(php!php$thisphp-php>php_adapterphp instanceofphp Zendphp_Filterphp_Compressphp_CompressInterfacephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Compressionphp adapterphp php'php"php php.php php$adapterphp php.php php"php'php doesphp notphp implementphp Zendphp_Filterphp_Compressphp_CompressInterfacephp"php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
-php php php php php}
+        $this->_adapter = new $adapter($options);
+        if (!$this->_adapter instanceof Zend_Filter_Compress_CompressInterface) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception("Compression adapter '" . $adapter . "' does not implement Zend_Filter_Compress_CompressInterface");
+        }
+        return $this->_adapter;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp adapterphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getAdapterNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getAdapterphp(php)php-php>toStringphp(php)php;
-php php php php php}
+    /**
+     * Retrieve adapter name
+     *
+     * @return string
+     */
+    public function getAdapterName()
+    {
+        return $this->getAdapter()->toString();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp compressionphp adapter
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|Zendphp_Filterphp_Compressphp_CompressInterfacephp php$adapterphp Adapterphp tophp use
-php php php php php php*php php@returnphp Zendphp_Filterphp_Compress
-php php php php php php*php/
-php php php php publicphp functionphp setAdapterphp(php$adapterphp)
-php php php php php{
-php php php php php php php php ifphp php(php$adapterphp instanceofphp Zendphp_Filterphp_Compressphp_CompressInterfacephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!isphp_stringphp(php$adapterphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Invalidphp adapterphp providedphp;php mustphp bephp stringphp orphp instancephp ofphp Zendphp_Filterphp_Compressphp_CompressInterfacephp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
+    /**
+     * Sets compression adapter
+     *
+     * @param  string|Zend_Filter_Compress_CompressInterface $adapter Adapter to use
+     * @return Zend_Filter_Compress
+     */
+    public function setAdapter($adapter)
+    {
+        if ($adapter instanceof Zend_Filter_Compress_CompressInterface) {
+            $this->_adapter = $adapter;
+            return $this;
+        }
+        if (!is_string($adapter)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Invalid adapter provided; must be string or instance of Zend_Filter_Compress_CompressInterface');
+        }
+        $this->_adapter = $adapter;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp adapterphp options
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAdapterOptionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_adapterOptionsphp;
-php php php php php}
+    /**
+     * Retrieve adapter options
+     *
+     * @return array
+     */
+    public function getAdapterOptions()
+    {
+        return $this->_adapterOptions;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp adapterphp options
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setAdapterOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_adapterOptionsphp php=php php$optionsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set adapter options
+     *
+     * @param  array $options
+     * @return void
+     */
+    public function setAdapterOptions(array $options)
+    {
+        $this->_adapterOptions = $options;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Callsphp adapterphp methods
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php php php php php$methodphp php Methodphp tophp call
-php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp Optionsphp forphp thisphp method
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$optionsphp)
-php php php php php{
-php php php php php php php php php$adapterphp php=php php$thisphp-php>getAdapterphp(php)php;
-php php php php php php php php ifphp php(php!methodphp_existsphp(php$adapterphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Unknownphp methodphp php'php{php$methodphp}php'php"php)php;
-php php php php php php php php php}
+    /**
+     * Calls adapter methods
+     *
+     * @param string       $method  Method to call
+     * @param string|array $options Options for this method
+     */
+    public function __call($method, $options)
+    {
+        $adapter = $this->getAdapter();
+        if (!method_exists($adapter, $method)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception("Unknown method '{$method}'");
+        }
 
-php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$adapterphp,php php$methodphp)php,php php$optionsphp)php;
-php php php php php}
+        return call_user_func_array(array($adapter, $method), $options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Compressesphp thephp contentphp php$valuephp withphp thephp definedphp settings
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$valuephp Contentphp tophp compress
-php php php php php php*php php@returnphp stringphp Thephp compressedphp content
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getAdapterphp(php)php-php>compressphp(php$valuephp)php;
-php php php php php}
-php}
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Compresses the content $value with the defined settings
+     *
+     * @param  string $value Content to compress
+     * @return string The compressed content
+     */
+    public function filter($value)
+    {
+        return $this->getAdapter()->compress($value);
+    }
+}

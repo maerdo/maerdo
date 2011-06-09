@@ -1,223 +1,223 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Responsephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Response.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp callbackphp|null
-php php php php php php*php/
-php php php php protectedphp php$php_callbackphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Framework_Client_Response
+{
+    /**
+     * @var callback|null
+     */
+    protected $_callback = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_contentphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_content = array();
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Exception
-php php php php php php*php/
-php php php php protectedphp php$php_exceptionphp php=php nullphp;
+    /**
+     * @var Zend_Tool_Framework_Exception
+     */
+    protected $_exception = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_decoratorsphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_decorators = array();
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_defaultDecoratorOptionsphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_defaultDecoratorOptions = array();
 
-php php php php php/php*php*
-php php php php php php*php setContentCallbackphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp callbackphp php$callback
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setContentCallbackphp(php$callbackphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Thephp callbackphp providedphp isphp notphp callablephp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_callbackphp php=php php$callbackphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setContentCallback()
+     *
+     * @param callback $callback
+     * @return Zend_Tool_Framework_Client_Response
+     */
+    public function setContentCallback($callback)
+    {
+        if (!is_callable($callback)) {
+            require_once 'Zend/Tool/Framework/Client/Exception.php';
+            throw new Zend_Tool_Framework_Client_Exception('The callback provided is not callable');
+        }
+        $this->_callback = $callback;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setContentphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$content
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setContentphp(php$contentphp,php Arrayphp php$decoratorOptionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_applyDecoratorsphp(php$contentphp,php php$decoratorOptionsphp)php;
+    /**
+     * setContent()
+     *
+     * @param string $content
+     * @return Zend_Tool_Framework_Client_Response
+     */
+    public function setContent($content, Array $decoratorOptions = array())
+    {
+        $this->_applyDecorators($content, $decoratorOptions);
 
-php php php php php php php php php$thisphp-php>php_contentphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>appendContentphp(php$contentphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_content = array();
+        $this->appendContent($content);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php appendCallback
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$content
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp appendContentphp(php$contentphp,php Arrayphp php$decoratorOptionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$contentphp php=php php$thisphp-php>php_applyDecoratorsphp(php$contentphp,php php$decoratorOptionsphp)php;
+    /**
+     * appendCallback
+     *
+     * @param string $content
+     * @return Zend_Tool_Framework_Client_Response
+     */
+    public function appendContent($content, Array $decoratorOptions = array())
+    {
+        $content = $this->_applyDecorators($content, $decoratorOptions);
 
-php php php php php php php php ifphp php(php$thisphp-php>php_callbackphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php callphp_userphp_funcphp(php$thisphp-php>php_callbackphp,php php$contentphp)php;
-php php php php php php php php php}
+        if ($this->_callback !== null) {
+            call_user_func($this->_callback, $content);
+        }
 
-php php php php php php php php php$thisphp-php>php_contentphp[php]php php=php php$contentphp;
+        $this->_content[] = $content;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setDefaultDecoratorOptionsphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$decoratorOptions
-php php php php php php*php php@paramphp boolphp php$mergeIntoExisting
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultDecoratorOptionsphp(Arrayphp php$decoratorOptionsphp,php php$mergeIntoExistingphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$mergeIntoExistingphp php=php=php falsephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_defaultDecoratorOptionsphp php=php arrayphp(php)php;
-php php php php php php php php php}
+    /**
+     * setDefaultDecoratorOptions()
+     *
+     * @param array $decoratorOptions
+     * @param bool $mergeIntoExisting
+     * @return Zend_Tool_Framework_Client_Response
+     */
+    public function setDefaultDecoratorOptions(Array $decoratorOptions, $mergeIntoExisting = false)
+    {
+        if ($mergeIntoExisting == false) {
+            $this->_defaultDecoratorOptions = array();
+        }
 
-php php php php php php php php php$thisphp-php>php_defaultDecoratorOptionsphp php=php arrayphp_mergephp(php$thisphp-php>php_defaultDecoratorOptionsphp,php php$decoratorOptionsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_defaultDecoratorOptions = array_merge($this->_defaultDecoratorOptions, $decoratorOptions);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getContentphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getContentphp(php)
-php php php php php{
-php php php php php php php php returnphp implodephp(php'php'php,php php$thisphp-php>php_contentphp)php;
-php php php php php}
+    /**
+     * getContent()
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return implode('', $this->_content);
+    }
 
-php php php php php/php*php*
-php php php php php php*php isExceptionphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isExceptionphp(php)
-php php php php php{
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_exceptionphp)php;
-php php php php php}
+    /**
+     * isException()
+     *
+     * @return bool
+     */
+    public function isException()
+    {
+        return isset($this->_exception);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setExceptionphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Exceptionphp php$exception
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp setExceptionphp(Exceptionphp php$exceptionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_exceptionphp php=php php$exceptionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setException()
+     *
+     * @param Exception $exception
+     * @return Zend_Tool_Framework_Client_Response
+     */
+    public function setException(Exception $exception)
+    {
+        $this->_exception = $exception;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getExceptionphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp Exception
-php php php php php php*php/
-php php php php publicphp functionphp getExceptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_exceptionphp;
-php php php php php}
+    /**
+     * getException()
+     *
+     * @return Exception
+     */
+    public function getException()
+    {
+        return $this->_exception;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp Contentphp Decorator
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Interfacephp php$contentDecorator
-php php php php php php*php php@returnphp unknown
-php php php php php php*php/
-php php php php publicphp functionphp addContentDecoratorphp(Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Interfacephp php$contentDecoratorphp)
-php php php php php{
-php php php php php php php php php$decoratorNamephp php=php strtolowerphp(php$contentDecoratorphp-php>getNamephp(php)php)php;
-php php php php php php php php php$thisphp-php>php_decoratorsphp[php$decoratorNamephp]php php=php php$contentDecoratorphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add Content Decorator
+     *
+     * @param Zend_Tool_Framework_Client_Response_ContentDecorator_Interface $contentDecorator
+     * @return unknown
+     */
+    public function addContentDecorator(Zend_Tool_Framework_Client_Response_ContentDecorator_Interface $contentDecorator)
+    {
+        $decoratorName = strtolower($contentDecorator->getName());
+        $this->_decorators[$decoratorName] = $contentDecorator;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getContentDecoratorsphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getContentDecoratorsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_decoratorsphp;
-php php php php php}
+    /**
+     * getContentDecorators()
+     *
+     * @return array
+     */
+    public function getContentDecorators()
+    {
+        return $this->_decorators;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_toStringphp(php)php tophp castphp tophp aphp string
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php(stringphp)php implodephp(php'php'php,php php$thisphp-php>php_contentphp)php;
-php php php php php}
+    /**
+     * __toString() to cast to a string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) implode('', $this->_content);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_applyDecoratorsphp(php)php applyphp aphp groupphp ofphp decorators
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$content
-php php php php php php*php php@paramphp arrayphp php$decoratorOptions
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_applyDecoratorsphp(php$contentphp,php Arrayphp php$decoratorOptionsphp)
-php php php php php{
-php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$thisphp-php>php_defaultDecoratorOptionsphp,php php$decoratorOptionsphp)php;
+    /**
+     * _applyDecorators() apply a group of decorators
+     *
+     * @param string $content
+     * @param array $decoratorOptions
+     * @return string
+     */
+    protected function _applyDecorators($content, Array $decoratorOptions)
+    {
+        $options = array_merge($this->_defaultDecoratorOptions, $decoratorOptions);
 
-php php php php php php php php php$optionsphp php=php arrayphp_changephp_keyphp_casephp(php$optionsphp,php CASEphp_LOWERphp)php;
+        $options = array_change_key_case($options, CASE_LOWER);
 
-php php php php php php php php ifphp php(php$optionsphp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_decoratorsphp asphp php$decoratorNamephp php=php>php php$decoratorphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$decoratorNamephp,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$contentphp php=php php$decoratorphp-php>decoratephp(php$contentphp,php php$optionsphp[php$decoratorNamephp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($options) {
+            foreach ($this->_decorators as $decoratorName => $decorator) {
+                if (array_key_exists($decoratorName, $options)) {
+                    $content = $decorator->decorate($content, $options[$decoratorName]);
+                }
+            }
+        }
 
-php php php php php php php php returnphp php$contentphp;
+        return $content;
 
-php php php php php}
+    }
 
-php}
+}

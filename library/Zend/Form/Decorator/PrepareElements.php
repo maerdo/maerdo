@@ -1,90 +1,90 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Decorator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Decorator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Formphp_Decoratorphp_FormElementsphp php*php/
-requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/FormElementsphp.phpphp'php;
+/** Zend_Form_Decorator_FormElements */
+require_once 'Zend/Form/Decorator/FormElements.php';
 
-php/php*php*
-php php*php Zendphp_Formphp_Decoratorphp_PrepareElements
-php php*
-php php*php Renderphp allphp formphp elementsphp registeredphp withphp currentphp form
-php php*
-php php*php Acceptsphp followingphp optionsphp:
-php php*php php-php separatorphp:php Separatorphp tophp usephp betweenphp elements
-php php*
-php php*php Anyphp otherphp optionsphp passedphp willphp bephp usedphp asphp HTMLphp attributesphp ofphp thephp formphp tagphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Decorator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php PrepareElementsphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Formphp_Decoratorphp_PrepareElementsphp extendsphp Zendphp_Formphp_Decoratorphp_FormElements
-php{
-php php php php php/php*php*
-php php php php php php*php Renderphp formphp elements
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$content
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php$contentphp)
-php php php php php{
-php php php php php php php php php$formphp php=php php$thisphp-php>getElementphp(php)php;
-php php php php php php php php ifphp php(php(php!php$formphp instanceofphp Zendphp_Formphp)php php&php&php php(php!php$formphp instanceofphp Zendphp_Formphp_DisplayGroupphp)php)php php{
-php php php php php php php php php php php php returnphp php$contentphp;
-php php php php php php php php php}
+/**
+ * Zend_Form_Decorator_PrepareElements
+ *
+ * Render all form elements registered with current form
+ *
+ * Accepts following options:
+ * - separator: Separator to use between elements
+ *
+ * Any other options passed will be used as HTML attributes of the form tag.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Decorator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: PrepareElements.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Form_Decorator_PrepareElements extends Zend_Form_Decorator_FormElements
+{
+    /**
+     * Render form elements
+     *
+     * @param  string $content
+     * @return string
+     */
+    public function render($content)
+    {
+        $form = $this->getElement();
+        if ((!$form instanceof Zend_Form) && (!$form instanceof Zend_Form_DisplayGroup)) {
+            return $content;
+        }
 
-php php php php php php php php php$thisphp-php>php_recursivelyPrepareFormphp(php$formphp)php;
+        $this->_recursivelyPrepareForm($form);
 
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
+        return $content;
+    }
 
-php php php php protectedphp functionphp php_recursivelyPrepareFormphp(Zendphp_Formphp php$formphp)
-php php php php php{
-php php php php php php php php php$belongsTophp php php php php php php=php php(php$formphp instanceofphp Zendphp_Formphp)php php?php php$formphp-php>getElementsBelongTophp(php)php php:php nullphp;
-php php php php php php php php php$elementContentphp php=php php'php'php;
-php php php php php php php php php$separatorphp php php php php php php=php php$thisphp-php>getSeparatorphp(php)php;
-php php php php php php php php php$translatorphp php php php php php=php php$formphp-php>getTranslatorphp(php)php;
-php php php php php php php php php$viewphp php php php php php php php php php php php=php php$formphp-php>getViewphp(php)php;
+    protected function _recursivelyPrepareForm(Zend_Form $form)
+    {
+        $belongsTo      = ($form instanceof Zend_Form) ? $form->getElementsBelongTo() : null;
+        $elementContent = '';
+        $separator      = $this->getSeparator();
+        $translator     = $form->getTranslator();
+        $view           = $form->getView();
 
-php php php php php php php php foreachphp php(php$formphp asphp php$itemphp)php php{
-php php php php php php php php php php php php php$itemphp-php>setViewphp(php$viewphp)
-php php php php php php php php php php php php php php php php php php-php>setTranslatorphp(php$translatorphp)php;
-php php php php php php php php php php php php ifphp php(php$itemphp instanceofphp Zendphp_Formphp_Elementphp)php php{
-php php php php php php php php php php php php php php php php php$itemphp-php>setBelongsTophp(php$belongsTophp)php;
-php php php php php php php php php php php php php}php elseifphp php(php!emptyphp(php$belongsTophp)php php&php&php php(php$itemphp instanceofphp Zendphp_Formphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$itemphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$thisphp-php>mergeBelongsTophp(php$belongsTophp,php php$itemphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php php php php php php php php php php php php php$itemphp-php>setElementsBelongTophp(php$namephp,php truephp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$itemphp-php>setElementsBelongTophp(php$belongsTophp,php truephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_recursivelyPrepareFormphp(php$itemphp)php;
-php php php php php php php php php php php php php}php elseifphp php(php!emptyphp(php$belongsTophp)php php&php&php php(php$itemphp instanceofphp Zendphp_Formphp_DisplayGroupphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$itemphp asphp php$elementphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$elementphp-php>setBelongsTophp(php$belongsTophp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-php}
+        foreach ($form as $item) {
+            $item->setView($view)
+                 ->setTranslator($translator);
+            if ($item instanceof Zend_Form_Element) {
+                $item->setBelongsTo($belongsTo);
+            } elseif (!empty($belongsTo) && ($item instanceof Zend_Form)) {
+                if ($item->isArray()) {
+                    $name = $this->mergeBelongsTo($belongsTo, $item->getElementsBelongTo());
+                    $item->setElementsBelongTo($name, true);
+                } else {
+                    $item->setElementsBelongTo($belongsTo, true);
+                }
+                $this->_recursivelyPrepareForm($item);
+            } elseif (!empty($belongsTo) && ($item instanceof Zend_Form_DisplayGroup)) {
+                foreach ($item as $element) {
+                    $element->setBelongsTo($belongsTo);
+                }
+            }
+        }
+    }
+}

@@ -1,310 +1,310 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Defaultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Default.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp isphp thephp defaultphp collectionphp iteratorphp implementation
-php php*php usingphp extphp/ldap
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp implementsphp Iteratorphp,php Countable
-php{
-php php php php constphp ATTRIBUTEphp_TOphp_LOWERphp php php=php php1php;
-php php php php constphp ATTRIBUTEphp_TOphp_UPPERphp php php=php php2php;
-php php php php constphp ATTRIBUTEphp_NATIVEphp php php php php=php php3php;
+/**
+ * Zend_Ldap_Collection_Iterator_Default is the default collection iterator implementation
+ * using ext/ldap
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
+{
+    const ATTRIBUTE_TO_LOWER  = 1;
+    const ATTRIBUTE_TO_UPPER  = 2;
+    const ATTRIBUTE_NATIVE    = 3;
 
-php php php php php/php*php*
-php php php php php php*php LDAPphp Connection
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Ldap
-php php php php php php*php/
-php php php php protectedphp php$php_ldapphp php=php nullphp;
+    /**
+     * LDAP Connection
+     *
+     * @var Zend_Ldap
+     */
+    protected $_ldap = null;
 
-php php php php php/php*php*
-php php php php php php*php Resultphp identifierphp resource
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_resultIdphp php=php nullphp;
+    /**
+     * Result identifier resource
+     *
+     * @var resource
+     */
+    protected $_resultId = null;
 
-php php php php php/php*php*
-php php php php php php*php Currentphp resultphp entryphp identifier
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_currentphp php=php nullphp;
+    /**
+     * Current result entry identifier
+     *
+     * @var resource
+     */
+    protected $_current = null;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp itemsphp inphp queryphp result
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_itemCountphp php=php php-php1php;
+    /**
+     * Number of items in query result
+     *
+     * @var integer
+     */
+    protected $_itemCount = -1;
 
-php php php php php/php*php*
-php php php php php php*php Thephp methodphp thatphp willphp bephp appliedphp tophp thephp attributephp'sphp namesphp.
-php php php php php php*
-php php php php php php*php php@varphp php integerphp|callback
-php php php php php php*php/
-php php php php protectedphp php$php_attributeNameTreatmentphp php=php selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp;
+    /**
+     * The method that will be applied to the attribute's names.
+     *
+     * @var  integer|callback
+     */
+    protected $_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Ldapphp php$ldap
-php php php php php php*php php@paramphp php resourcephp php php$resultId
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Ldapphp php$ldapphp,php php$resultIdphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_ldapphp php=php php$ldapphp;
-php php php php php php php php php$thisphp-php>php_resultIdphp php=php php$resultIdphp;
-php php php php php php php php php$thisphp-php>php_itemCountphp php=php php@ldapphp_countphp_entriesphp(php$ldapphp-php>getResourcephp(php)php,php php$resultIdphp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_itemCountphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(php$thisphp-php>php_ldapphp,php php'countingphp entriesphp'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor.
+     *
+     * @param  Zend_Ldap $ldap
+     * @param  resource  $resultId
+     * @return void
+     */
+    public function __construct(Zend_Ldap $ldap, $resultId)
+    {
+        $this->_ldap = $ldap;
+        $this->_resultId = $resultId;
+        $this->_itemCount = @ldap_count_entries($ldap->getResource(), $resultId);
+        if ($this->_itemCount === false) {
+            /**
+             * @see Zend_Ldap_Exception
+             */
+            require_once 'Zend/Ldap/Exception.php';
+            throw new Zend_Ldap_Exception($this->_ldap, 'counting entries');
+        }
+    }
 
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php}
+    public function __destruct()
+    {
+        $this->close();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closesphp thephp currentphp resultphp set
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php php$isClosedphp php=php falsephp;
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_resultIdphp)php)php php{
-php php php php php php php php php php php php php php$isClosedphp php=php php@ldapphp_freephp_resultphp(php$thisphp-php>php_resultIdphp)php;
-php php php php php php php php php php php php php php$thisphp-php>php_resultIdphp php=php nullphp;
-php php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php nullphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$isClosedphp;
-php php php php php}
+    /**
+     * Closes the current result set
+     *
+     * @return bool
+     */
+    public function close()
+    {
+        $isClosed = false;
+        if (is_resource($this->_resultId)) {
+             $isClosed = @ldap_free_result($this->_resultId);
+             $this->_resultId = null;
+             $this->_current = null;
+        }
+        return $isClosed;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp currentphp LDAPphp connectionphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Ldap
-php php php php php php*php/
-php php php php publicphp functionphp getLdapphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_ldapphp;
-php php php php php}
+    /**
+     * Gets the current LDAP connection.
+     *
+     * @return Zend_Ldap
+     */
+    public function getLdap()
+    {
+        return $this->_ldap;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp attributephp namephp treatmentphp.
-php php php php php php*
-php php php php php php*php Canphp eitherphp bephp onephp ofphp thephp followingphp constants
-php php php php php php*php php-php Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp:php:ATTRIBUTEphp_TOphp_LOWER
-php php php php php php*php php-php Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp:php:ATTRIBUTEphp_TOphp_UPPER
-php php php php php php*php php-php Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp:php:ATTRIBUTEphp_NATIVE
-php php php php php php*php orphp aphp validphp callbackphp acceptingphp thephp attributephp'sphp namephp asphp itphp'sphp only
-php php php php php php*php argumentphp andphp returningphp thephp newphp attributephp'sphp namephp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp|callbackphp php$attributeNameTreatment
-php php php php php php*php php@returnphp Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setAttributeNameTreatmentphp(php$attributeNameTreatmentphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_callablephp(php$attributeNameTreatmentphp)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$attributeNameTreatmentphp)php php&php&php php!functionphp_existsphp(php$attributeNameTreatmentphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_attributeNameTreatmentphp php=php selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp;
-php php php php php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$attributeNameTreatmentphp)php php&php&
-php php php php php php php php php php php php php php php php php php php php php!methodphp_existsphp(php$attributeNameTreatmentphp[php0php]php,php php$attributeNameTreatmentphp[php1php]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_attributeNameTreatmentphp php=php selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_attributeNameTreatmentphp php=php php$attributeNameTreatmentphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$attributeNameTreatmentphp php=php php(intphp)php$attributeNameTreatmentphp;
-php php php php php php php php php php php php switchphp php(php$attributeNameTreatmentphp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_TOphp_UPPERphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_NATIVEphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_attributeNameTreatmentphp php=php php$attributeNameTreatmentphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_attributeNameTreatmentphp php=php selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the attribute name treatment.
+     *
+     * Can either be one of the following constants
+     * - Zend_Ldap_Collection_Iterator_Default::ATTRIBUTE_TO_LOWER
+     * - Zend_Ldap_Collection_Iterator_Default::ATTRIBUTE_TO_UPPER
+     * - Zend_Ldap_Collection_Iterator_Default::ATTRIBUTE_NATIVE
+     * or a valid callback accepting the attribute's name as it's only
+     * argument and returning the new attribute's name.
+     *
+     * @param  integer|callback $attributeNameTreatment
+     * @return Zend_Ldap_Collection_Iterator_Default Provides a fluent interface
+     */
+    public function setAttributeNameTreatment($attributeNameTreatment)
+    {
+        if (is_callable($attributeNameTreatment)) {
+            if (is_string($attributeNameTreatment) && !function_exists($attributeNameTreatment)) {
+                $this->_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
+            } else if (is_array($attributeNameTreatment) &&
+                    !method_exists($attributeNameTreatment[0], $attributeNameTreatment[1])) {
+                $this->_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
+            } else {
+                $this->_attributeNameTreatment = $attributeNameTreatment;
+            }
+        } else {
+            $attributeNameTreatment = (int)$attributeNameTreatment;
+            switch ($attributeNameTreatment) {
+                case self::ATTRIBUTE_TO_LOWER:
+                case self::ATTRIBUTE_TO_UPPER:
+                case self::ATTRIBUTE_NATIVE:
+                    $this->_attributeNameTreatment = $attributeNameTreatment;
+                    break;
+                default:
+                    $this->_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
+                    break;
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp currentlyphp setphp attributephp namephp treatment
-php php php php php php*
-php php php php php php*php php@returnphp integerphp|callback
-php php php php php php*php/
-php php php php publicphp functionphp getAttributeNameTreatmentphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_attributeNameTreatmentphp;
-php php php php php}
+    /**
+     * Returns the currently set attribute name treatment
+     *
+     * @return integer|callback
+     */
+    public function getAttributeNameTreatment()
+    {
+        return $this->_attributeNameTreatment;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp itemsphp inphp currentphp result
-php php php php php php*php Implementsphp Countable
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_itemCountphp;
-php php php php php}
+    /**
+     * Returns the number of items in current result
+     * Implements Countable
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->_itemCount;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp|null
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_resourcephp(php$thisphp-php>php_currentphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!isphp_resourcephp(php$thisphp-php>php_currentphp)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
+    /**
+     * Return the current result item
+     * Implements Iterator
+     *
+     * @return array|null
+     * @throws Zend_Ldap_Exception
+     */
+    public function current()
+    {
+        if (!is_resource($this->_current)) {
+            $this->rewind();
+        }
+        if (!is_resource($this->_current)) {
+            return null;
+        }
 
-php php php php php php php php php$entryphp php=php arrayphp(php'dnphp'php php=php>php php$thisphp-php>keyphp(php)php)php;
-php php php php php php php php php$berphp_identifierphp php=php nullphp;
-php php php php php php php php php$namephp php=php php@ldapphp_firstphp_attributephp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_currentphp,
-php php php php php php php php php php php php php$berphp_identifierphp)php;
-php php php php php php php php whilephp php(php$namephp)php php{
-php php php php php php php php php php php php php$dataphp php=php php@ldapphp_getphp_valuesphp_lenphp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_currentphp,php php$namephp)php;
-php php php php php php php php php php php php unsetphp(php$dataphp[php'countphp'php]php)php;
+        $entry = array('dn' => $this->key());
+        $ber_identifier = null;
+        $name = @ldap_first_attribute($this->_ldap->getResource(), $this->_current,
+            $ber_identifier);
+        while ($name) {
+            $data = @ldap_get_values_len($this->_ldap->getResource(), $this->_current, $name);
+            unset($data['count']);
 
-php php php php php php php php php php php php switchphp(php$thisphp-php>php_attributeNameTreatmentphp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_TOphp_LOWERphp:
-php php php php php php php php php php php php php php php php php php php php php$attrNamephp php=php strtolowerphp(php$namephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_TOphp_UPPERphp:
-php php php php php php php php php php php php php php php php php php php php php$attrNamephp php=php strtoupperphp(php$namephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:ATTRIBUTEphp_NATIVEphp:
-php php php php php php php php php php php php php php php php php php php php php$attrNamephp php=php php$namephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$attrNamephp php=php callphp_userphp_funcphp(php$thisphp-php>php_attributeNameTreatmentphp,php php$namephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$entryphp[php$attrNamephp]php php=php php$dataphp;
-php php php php php php php php php php php php php$namephp php=php php@ldapphp_nextphp_attributephp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_currentphp,
-php php php php php php php php php php php php php php php php php$berphp_identifierphp)php;
-php php php php php php php php php}
-php php php php php php php php ksortphp(php$entryphp,php SORTphp_LOCALEphp_STRINGphp)php;
-php php php php php php php php returnphp php$entryphp;
-php php php php php}
+            switch($this->_attributeNameTreatment) {
+                case self::ATTRIBUTE_TO_LOWER:
+                    $attrName = strtolower($name);
+                    break;
+                case self::ATTRIBUTE_TO_UPPER:
+                    $attrName = strtoupper($name);
+                    break;
+                case self::ATTRIBUTE_NATIVE:
+                    $attrName = $name;
+                    break;
+                default:
+                    $attrName = call_user_func($this->_attributeNameTreatment, $name);
+                    break;
+            }
+            $entry[$attrName] = $data;
+            $name = @ldap_next_attribute($this->_ldap->getResource(), $this->_current,
+                $ber_identifier);
+        }
+        ksort($entry, SORT_LOCALE_STRING);
+        return $entry;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp resultphp itemphp key
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_resourcephp(php$thisphp-php>php_currentphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_currentphp)php)php php{
-php php php php php php php php php php php php php$currentDnphp php=php php@ldapphp_getphp_dnphp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_currentphp)php;
-php php php php php php php php php php php php ifphp php(php$currentDnphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Ldapphp_Exceptionphp php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(php$thisphp-php>php_ldapphp,php php'gettingphp dnphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$currentDnphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return the result item key
+     * Implements Iterator
+     *
+     * @return string|null
+     */
+    public function key()
+    {
+        if (!is_resource($this->_current)) {
+            $this->rewind();
+        }
+        if (is_resource($this->_current)) {
+            $currentDn = @ldap_get_dn($this->_ldap->getResource(), $this->_current);
+            if ($currentDn === false) {
+                /** @see Zend_Ldap_Exception */
+                require_once 'Zend/Ldap/Exception.php';
+                throw new Zend_Ldap_Exception($this->_ldap, 'getting dn');
+            }
+            return $currentDn;
+        } else {
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movephp forwardphp tophp nextphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_currentphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php@ldapphp_nextphp_entryphp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_currentphp)php;
-php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Ldapphp_Exceptionphp php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_currentphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$msgphp php=php php$thisphp-php>php_ldapphp-php>getLastErrorphp(php$codephp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$codephp php=php=php=php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_SIZELIMITphp_EXCEEDEDphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php wephp havephp reachedphp thephp sizephp limitphp enforcedphp byphp thephp server
-php php php php php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$codephp php>php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_SUCCESSphp)php php{
-php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(php$thisphp-php>php_ldapphp,php php'gettingphp nextphp entryphp php(php'php php.php php$msgphp php.php php'php)php'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Move forward to next result item
+     * Implements Iterator
+     *
+     * @throws Zend_Ldap_Exception
+     */
+    public function next()
+    {
+        if (is_resource($this->_current)) {
+            $this->_current = @ldap_next_entry($this->_ldap->getResource(), $this->_current);
+            /** @see Zend_Ldap_Exception */
+            require_once 'Zend/Ldap/Exception.php';
+            if ($this->_current === false) {
+                $msg = $this->_ldap->getLastError($code);
+                if ($code === Zend_Ldap_Exception::LDAP_SIZELIMIT_EXCEEDED) {
+                    // we have reached the size limit enforced by the server
+                    return;
+                } else if ($code > Zend_Ldap_Exception::LDAP_SUCCESS) {
+                     throw new Zend_Ldap_Exception($this->_ldap, 'getting next entry (' . $msg . ')');
+                }
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_resultIdphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php@ldapphp_firstphp_entryphp(php$thisphp-php>php_ldapphp-php>getResourcephp(php)php,php php$thisphp-php>php_resultIdphp)php;
-php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Ldapphp_Exceptionphp php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_currentphp php=php=php=php falsephp php&php&
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_ldapphp-php>getLastErrorCodephp(php)php php>php Zendphp_Ldapphp_Exceptionphp:php:LDAPphp_SUCCESSphp)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Exceptionphp(php$thisphp-php>php_ldapphp,php php'gettingphp firstphp entryphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Rewind the Iterator to the first result item
+     * Implements Iterator
+     *
+     * @throws Zend_Ldap_Exception
+     */
+    public function rewind()
+    {
+        if (is_resource($this->_resultId)) {
+            $this->_current = @ldap_first_entry($this->_ldap->getResource(), $this->_resultId);
+            /** @see Zend_Ldap_Exception */
+            require_once 'Zend/Ldap/Exception.php';
+            if ($this->_current === false &&
+                    $this->_ldap->getLastErrorCode() > Zend_Ldap_Exception::LDAP_SUCCESS) {
+                throw new Zend_Ldap_Exception($this->_ldap, 'getting first entry');
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp resultphp item
-php php php php php php*php afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php(isphp_resourcephp(php$thisphp-php>php_currentphp)php)php;
-php php php php php}
+    /**
+     * Check if there is a current result item
+     * after calls to rewind() or next()
+     * Implements Iterator
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        return (is_resource($this->_current));
+    }
 
-php}
+}

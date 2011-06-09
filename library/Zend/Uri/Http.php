@@ -1,769 +1,769 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Uri
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Httpphp.phpphp php2php3php4php0php9php php2php0php1php0php-php1php1php-php1php9php php1php9php:php5php5php:php2php5Zphp bittarmanphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Uri
-php php*php/
-requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Hostname
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Hostnamephp.phpphp'php;
-
-php/php*php*
-php php*php HTTPphp(Sphp)php URIphp handler
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Uri
-php php*php php@usesphp php php php php php Zendphp_Uri
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Uriphp_Httpphp extendsphp Zendphp_Uri
-php{
-php php php php php/php*php*
-php php php php php php*php Characterphp classesphp forphp validationphp regularphp expressions
-php php php php php php*php/
-php php php php constphp CHARphp_ALNUMphp php php php php=php php'Aphp-Zaphp-zphp0php-php9php'php;
-php php php php constphp CHARphp_MARKphp php php php php php=php php'php-php_php.php!php~php*php\php'php(php)php\php[php\php]php'php;
-php php php php constphp CHARphp_RESERVEDphp php=php php'php;php\php/php?php:php@php&php=php+php$php,php'php;
-php php php php constphp CHARphp_SEGMENTphp php php=php php'php:php@php&php=php+php$php,php;php'php;
-php php php php constphp CHARphp_UNWISEphp php php php=php php'php{php}php|php\php\php\php\php^php`php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp username
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_usernamephp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp password
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_passwordphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp host
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_hostphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp post
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_portphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp part
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_pathphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp query
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_queryphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp fragment
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_fragmentphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php Regularphp expressionphp grammarphp rulesphp forphp validationphp;php valuesphp addedphp byphp constructor
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_regexphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Constructorphp acceptsphp aphp stringphp php$schemephp php(ephp.gphp.php,php httpphp,php httpsphp)php andphp aphp schemephp-specificphp partphp ofphp thephp URI
-php php php php php php*php php(ephp.gphp.php,php examplephp.comphp/pathphp/tophp/resourcephp?queryphp=paramphp#fragmentphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$schemephp php php php php php php php php Thephp schemephp ofphp thephp URI
-php php php php php php*php php@paramphp php stringphp php$schemeSpecificphp Thephp schemephp-specificphp partphp ofphp thephp URI
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp thephp URIphp isphp notphp valid
-php php php php php php*php/
-php php php php protectedphp functionphp php_php_constructphp(php$schemephp,php php$schemeSpecificphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php/php/php Setphp thephp scheme
-php php php php php php php php php$thisphp-php>php_schemephp php=php php$schemephp;
-
-php php php php php php php php php/php/php Setphp upphp grammarphp rulesphp forphp validationphp viaphp regularphp expressionsphp.php These
-php php php php php php php php php/php/php arephp tophp bephp usedphp withphp slashphp-delimitedphp regularphp expressionphp stringsphp.
-
-php php php php php php php php php/php/php Escapedphp specialphp charactersphp php(egphp.php php'php%php2php5php'php forphp php'php%php'php)
-php php php php php php php php php$thisphp-php>php_regexphp[php'escapedphp'php]php php php php php=php php'php%php[php[php:xdigitphp:php]php]php{php2php}php'php;
-
-php php php php php php php php php/php/php Unreservedphp characters
-php php php php php php php php php$thisphp-php>php_regexphp[php'unreservedphp'php]php php=php php'php[php'php php.php selfphp:php:CHARphp_ALNUMphp php.php selfphp:php:CHARphp_MARKphp php.php php'php]php'php;
-
-php php php php php php php php php/php/php Segmentphp canphp usephp escapedphp,php unreservedphp orphp aphp setphp ofphp additionalphp chars
-php php php php php php php php php$thisphp-php>php_regexphp[php'segmentphp'php]php php php php php=php php'php(php?php:php'php php.php php$thisphp-php>php_regexphp[php'escapedphp'php]php php.php php'php|php[php'php php.
-php php php php php php php php php php php php selfphp:php:CHARphp_ALNUMphp php.php selfphp:php:CHARphp_MARKphp php.php selfphp:php:CHARphp_SEGMENTphp php.php php'php]php)php*php'php;
-
-php php php php php php php php php/php/php Pathphp canphp bephp aphp seriesphp ofphp segmetsphp charphp stringsphp seperatedphp byphp php'php/php'
-php php php php php php php php php$thisphp-php>php_regexphp[php'pathphp'php]php php php php php php php php=php php'php(php?php:php\php/php(php?php:php'php php.php php$thisphp-php>php_regexphp[php'segmentphp'php]php php.php php'php)php?php)php+php'php;
-
-php php php php php php php php php/php/php URIphp charactersphp canphp bephp escapedphp,php alphanumericphp,php markphp orphp reservedphp chars
-php php php php php php php php php$thisphp-php>php_regexphp[php'uricphp'php]php php php php php php php php=php php'php(php?php:php'php php.php php$thisphp-php>php_regexphp[php'escapedphp'php]php php.php php'php|php[php'php php.
-php php php php php php php php php php php php selfphp:php:CHARphp_ALNUMphp php.php selfphp:php:CHARphp_MARKphp php.php selfphp:php:CHARphp_RESERVEDphp php.
-
-php php php php php php php php php/php/php Ifphp unwisephp charsphp arephp allowedphp,php addphp themphp tophp thephp URIphp charsphp class
-php php php php php php php php php php php php php(selfphp:php:php$php_configphp[php'allowphp_unwisephp'php]php php?php selfphp:php:CHARphp_UNWISEphp php:php php'php'php)php php.php php'php]php)php'php;
-
-php php php php php php php php php/php/php Ifphp nophp schemephp-specificphp partphp wasphp suppliedphp,php thephp userphp intendsphp tophp create
-php php php php php php php php php/php/php aphp newphp URIphp withphp thisphp objectphp.php php Nophp furtherphp parsingphp isphp requiredphp.
-php php php php php php php php ifphp php(strlenphp(php$schemeSpecificphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Parsephp thephp schemephp-specificphp URIphp partsphp intophp thephp instancephp variablesphp.
-php php php php php php php php php$thisphp-php>php_parseUriphp(php$schemeSpecificphp)php;
-
-php php php php php php php php php/php/php Validatephp thephp URI
-php php php php php php php php ifphp php(php$thisphp-php>validphp(php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Invalidphp URIphp suppliedphp'php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp Zendphp_Uriphp_Httpphp fromphp thephp givenphp string
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$uriphp Stringphp tophp createphp URIphp fromphp,php mustphp startphp with
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php'httpphp:php/php/php'php orphp php'httpsphp:php/php/php'
-php php php php php php*php php@throwsphp InvalidArgumentExceptionphp php Whenphp thephp givenphp php$uriphp isphp notphp aphp stringphp or
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php doesphp notphp startphp withphp httpphp:php/php/php orphp httpsphp:php/php/
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp php php php php php php php Whenphp thephp givenphp php$uriphp isphp invalid
-php php php php php php*php php@returnphp Zendphp_Uriphp_Http
-php php php php php php*php/
-php php php php publicphp staticphp functionphp fromStringphp(php$uriphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$uriphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'php$uriphp isphp notphp aphp stringphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$uriphp php php php php php php php php php php php php=php explodephp(php'php:php'php,php php$uriphp,php php2php)php;
-php php php php php php php php php$schemephp php php php php php php php php php=php strtolowerphp(php$uriphp[php0php]php)php;
-php php php php php php php php php$schemeSpecificphp php=php issetphp(php$uriphp[php1php]php)php php=php=php=php truephp php?php php$uriphp[php1php]php php:php php'php'php;
-
-php php php php php php php php ifphp php(inphp_arrayphp(php$schemephp,php arrayphp(php'httpphp'php,php php'httpsphp'php)php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Invalidphp schemephp:php php'php$schemephp'php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$schemeHandlerphp php=php newphp Zendphp_Uriphp_Httpphp(php$schemephp,php php$schemeSpecificphp)php;
-php php php php php php php php returnphp php$schemeHandlerphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Parsephp thephp schemephp-specificphp portionphp ofphp thephp URIphp andphp placephp itsphp partsphp intophp instancephp variablesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$schemeSpecificphp Thephp schemephp-specificphp portionphp tophp parse
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp schemephp-specificphp decopositionphp fails
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp authorityphp decompositionphp fails
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseUriphp(php$schemeSpecificphp)
-php php php php php{
-php php php php php php php php php/php/php Highphp-levelphp decompositionphp parser
-php php php php php php php php php$patternphp php=php php'php~php^php(php(php/php/php)php(php[php^php/php?php#php]php*php)php)php(php[php^php?php#php]php*php)php(php\php?php(php[php^php#php]php*php)php)php?php(php#php(php.php*php)php)php?php$php~php'php;
-php php php php php php php php php$statusphp php php=php php@pregphp_matchphp(php$patternphp,php php$schemeSpecificphp,php php$matchesphp)php;
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php schemephp-specificphp decompositionphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Failedphp decompositionphp;php nophp furtherphp processingphp needed
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Savephp URIphp componentsphp thatphp needphp nophp furtherphp decomposition
-php php php php php php php php php$thisphp-php>php_pathphp php php php php php=php issetphp(php$matchesphp[php4php]php)php php=php=php=php truephp php?php php$matchesphp[php4php]php php:php php'php'php;
-php php php php php php php php php$thisphp-php>php_queryphp php php php php=php issetphp(php$matchesphp[php6php]php)php php=php=php=php truephp php?php php$matchesphp[php6php]php php:php php'php'php;
-php php php php php php php php php$thisphp-php>php_fragmentphp php=php issetphp(php$matchesphp[php8php]php)php php=php=php=php truephp php?php php$matchesphp[php8php]php php:php php'php'php;
-
-php php php php php php php php php/php/php Additionalphp decompositionphp tophp getphp usernamephp,php passwordphp,php hostphp,php andphp port
-php php php php php php php php php$combophp php php php=php issetphp(php$matchesphp[php3php]php)php php=php=php=php truephp php?php php$matchesphp[php3php]php php:php php'php'php;
-php php php php php php php php php$patternphp php=php php'php~php^php(php(php[php^php:php@php]php*php)php(php:php(php[php^php@php]php*php)php)php?php@php)php?php(php[php^php:php]php+php)php(php:php(php.php*php)php)php?php$php~php'php;
-php php php php php php php php php$statusphp php php=php php@pregphp_matchphp(php$patternphp,php php$combophp,php php$matchesphp)php;
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php authorityphp decompositionphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Failedphp decompositionphp;php nophp furtherphp processingphp needed
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Savephp remainingphp URIphp components
-php php php php php php php php php$thisphp-php>php_usernamephp php=php issetphp(php$matchesphp[php2php]php)php php=php=php=php truephp php?php php$matchesphp[php2php]php php:php php'php'php;
-php php php php php php php php php$thisphp-php>php_passwordphp php=php issetphp(php$matchesphp[php4php]php)php php=php=php=php truephp php?php php$matchesphp[php4php]php php:php php'php'php;
-php php php php php php php php php$thisphp-php>php_hostphp php php php php php=php issetphp(php$matchesphp[php5php]php)php php=php=php=php truephp php?php php$matchesphp[php5php]php php:php php'php'php;
-php php php php php php php php php$thisphp-php>php_portphp php php php php php=php issetphp(php$matchesphp[php7php]php)php php=php=php=php truephp php?php php$matchesphp[php7php]php php:php php'php'php;
-
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp URIphp basedphp onphp currentphp valuesphp ofphp thephp instancephp variablesphp.php Ifphp any
-php php php php php php*php partphp ofphp thephp URIphp doesphp notphp passphp validationphp,php thenphp anphp exceptionphp isphp thrownphp.
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp onephp orphp morephp partsphp ofphp thephp URIphp arephp invalid
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getUriphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validphp(php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Onephp orphp morephp partsphp ofphp thephp URIphp arephp invalidphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$passwordphp php=php strlenphp(php$thisphp-php>php_passwordphp)php php>php php0php php?php php"php:php$thisphp-php>php_passwordphp"php php:php php'php'php;
-php php php php php php php php php$authphp php php php php php=php strlenphp(php$thisphp-php>php_usernamephp)php php>php php0php php?php php"php$thisphp-php>php_usernamephp$passwordphp@php"php php:php php'php'php;
-php php php php php php php php php$portphp php php php php php=php strlenphp(php$thisphp-php>php_portphp)php php>php php0php php?php php"php:php$thisphp-php>php_portphp"php php:php php'php'php;
-php php php php php php php php php$queryphp php php php php=php strlenphp(php$thisphp-php>php_queryphp)php php>php php0php php?php php"php?php$thisphp-php>php_queryphp"php php:php php'php'php;
-php php php php php php php php php$fragmentphp php=php strlenphp(php$thisphp-php>php_fragmentphp)php php>php php0php php?php php"php#php$thisphp-php>php_fragmentphp"php php:php php'php'php;
-
-php php php php php php php php returnphp php$thisphp-php>php_scheme
-php php php php php php php php php php php php php php.php php'php:php/php/php'
-php php php php php php php php php php php php php php.php php$auth
-php php php php php php php php php php php php php php.php php$thisphp-php>php_host
-php php php php php php php php php php php php php php.php php$port
-php php php php php php php php php php php php php php.php php$thisphp-php>php_path
-php php php php php php php php php php php php php php.php php$query
-php php php php php php php php php php php php php php.php php$fragmentphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Validatephp thephp currentphp URIphp fromphp thephp instancephp variablesphp.php Returnsphp truephp ifphp andphp onlyphp ifphp all
-php php php php php php*php partsphp passphp validationphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php php/php/php Returnphp truephp ifphp andphp onlyphp ifphp allphp partsphp ofphp thephp URIphp havephp passedphp validation
-php php php php php php php php returnphp php$thisphp-php>validateUsernamephp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validatePasswordphp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validateHostphp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validatePortphp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validatePathphp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validateQueryphp(php)
-php php php php php php php php php php php andphp php$thisphp-php>validateFragmentphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp usernamephp portionphp ofphp thephp URLphp,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getUsernamephp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_usernamephp)php php>php php0php php?php php$thisphp-php>php_usernamephp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp usernamephp passesphp validationphp.php Ifphp nophp usernamephp isphp passedphp,
-php php php php php php*php thenphp thephp usernamephp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$usernamephp Thephp HTTPphp username
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp usernamephp validationphp fails
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php3php9php6php.html
-php php php php php php*php/
-php php php php publicphp functionphp validateUsernamephp(php$usernamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$usernamephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$usernamephp php=php php$thisphp-php>php_usernamephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp usernamephp isphp emptyphp,php thenphp itphp isphp consideredphp valid
-php php php php php php php php ifphp php(strlenphp(php$usernamephp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp thephp usernamephp againstphp thephp allowedphp values
-php php php php php php php php php$statusphp php=php php@pregphp_matchphp(php'php/php^php(php?php:php'php php.php php$thisphp-php>php_regexphp[php'escapedphp'php]php php.php php'php|php[php'php php.
-php php php php php php php php php php php php selfphp:php:CHARphp_ALNUMphp php.php selfphp:php:CHARphp_MARKphp php.php php'php;php:php&php=php+php$php,php'php php.php php'php]php)php+php$php/php'php,php php$usernamephp)php;
-
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php usernamephp validationphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$statusphp php=php=php=php php1php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp usernamephp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp username
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$usernamephp Thephp HTTPphp username
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$usernamephp isphp notphp aphp validphp HTTPphp username
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setUsernamephp(php$usernamephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validateUsernamephp(php$usernamephp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Usernamephp php\php"php$usernamephp\php"php isphp notphp aphp validphp HTTPphp usernamephp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldUsernamephp php php php php php=php php$thisphp-php>php_usernamephp;
-php php php php php php php php php$thisphp-php>php_usernamephp php=php php$usernamephp;
-
-php php php php php php php php returnphp php$oldUsernamephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp passwordphp portionphp ofphp thephp URLphp,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPasswordphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_passwordphp)php php>php php0php php?php php$thisphp-php>php_passwordphp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp passwordphp passesphp validationphp.php Ifphp nophp passwordphp isphp passedphp,
-php php php php php php*php thenphp thephp passwordphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$passwordphp Thephp HTTPphp password
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp passwordphp validationphp fails
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php3php9php6php.html
-php php php php php php*php/
-php php php php publicphp functionphp validatePasswordphp(php$passwordphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$passwordphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$passwordphp php=php php$thisphp-php>php_passwordphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp passwordphp isphp emptyphp,php thenphp itphp isphp consideredphp valid
-php php php php php php php php ifphp php(strlenphp(php$passwordphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp passwordphp isphp nonemptyphp,php butphp therephp isphp nophp usernamephp,php thenphp itphp isphp consideredphp invalid
-php php php php php php php php ifphp php(strlenphp(php$passwordphp)php php>php php0php andphp strlenphp(php$thisphp-php>php_usernamephp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp thephp passwordphp againstphp thephp allowedphp values
-php php php php php php php php php$statusphp php=php php@pregphp_matchphp(php'php/php^php(php?php:php'php php.php php$thisphp-php>php_regexphp[php'escapedphp'php]php php.php php'php|php[php'php php.
-php php php php php php php php php php php php selfphp:php:CHARphp_ALNUMphp php.php selfphp:php:CHARphp_MARKphp php.php php'php;php:php&php=php+php$php,php'php php.php php'php]php)php+php$php/php'php,php php$passwordphp)php;
-
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php passwordphp validationphp failedphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$statusphp php=php=php php1php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp passwordphp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp password
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$passwordphp Thephp HTTPphp password
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$passwordphp isphp notphp aphp validphp HTTPphp password
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setPasswordphp(php$passwordphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validatePasswordphp(php$passwordphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Passwordphp php\php"php$passwordphp\php"php isphp notphp aphp validphp HTTPphp passwordphp.php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldPasswordphp php php php php php=php php$thisphp-php>php_passwordphp;
-php php php php php php php php php$thisphp-php>php_passwordphp php=php php$passwordphp;
-
-php php php php php php php php returnphp php$oldPasswordphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp domainphp orphp hostphp IPphp portionphp ofphp thephp URLphp,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHostphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_hostphp)php php>php php0php php?php php$thisphp-php>php_hostphp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp hostphp stringphp passesphp validationphp.php Ifphp nophp hostphp isphp passedphp,
-php php php php php php*php thenphp thephp hostphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hostphp Thephp HTTPphp host
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@usesphp php php Zendphp_Filter
-php php php php php php*php/
-php php php php publicphp functionphp validateHostphp(php$hostphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$hostphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$hostphp php=php php$thisphp-php>php_hostphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp hostphp isphp emptyphp,php thenphp itphp isphp consideredphp invalid
-php php php php php php php php ifphp php(strlenphp(php$hostphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp thephp hostphp againstphp thephp allowedphp valuesphp;php delegatedphp tophp Zendphp_Filterphp.
-php php php php php php php php php$validatephp php=php newphp Zendphp_Validatephp_Hostnamephp(Zendphp_Validatephp_Hostnamephp:php:ALLOWphp_ALLphp)php;
-
-php php php php php php php php returnphp php$validatephp-php>isValidphp(php$hostphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp hostphp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp host
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hostphp Thephp HTTPphp host
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$hostphp isphp notaphp validphp HTTPphp host
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setHostphp(php$hostphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validateHostphp(php$hostphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Hostphp php\php"php$hostphp\php"php isphp notphp aphp validphp HTTPphp hostphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldHostphp php php php php php=php php$thisphp-php>php_hostphp;
-php php php php php php php php php$thisphp-php>php_hostphp php=php php$hostphp;
-
-php php php php php php php php returnphp php$oldHostphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp TCPphp portphp,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPortphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_portphp)php php>php php0php php?php php$thisphp-php>php_portphp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp TCPphp portphp stringphp passesphp validationphp.php Ifphp nophp portphp isphp passedphp,
-php php php php php php*php thenphp thephp portphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$portphp Thephp HTTPphp port
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validatePortphp(php$portphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$portphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$portphp php=php php$thisphp-php>php_portphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp portphp isphp emptyphp,php thenphp itphp isphp consideredphp valid
-php php php php php php php php ifphp php(strlenphp(php$portphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp thephp portphp againstphp thephp allowedphp values
-php php php php php php php php returnphp ctypephp_digitphp(php(stringphp)php php$portphp)php andphp php1php <php=php php$portphp andphp php$portphp <php=php php6php5php5php3php5php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp portphp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp port
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$portphp Thephp HTTPphp port
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$portphp isphp notphp aphp validphp HTTPphp port
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setPortphp(php$portphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validatePortphp(php$portphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Portphp php\php"php$portphp\php"php isphp notphp aphp validphp HTTPphp portphp.php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldPortphp php php php php php=php php$thisphp-php>php_portphp;
-php php php php php php php php php$thisphp-php>php_portphp php=php php$portphp;
-
-php php php php php php php php returnphp php$oldPortphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp pathphp andphp filenamephp portionphp ofphp thephp URLphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPathphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_pathphp)php php>php php0php php?php php$thisphp-php>php_pathphp php:php php'php/php'php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp pathphp stringphp passesphp validationphp.php Ifphp nophp pathphp isphp passedphp,
-php php php php php php*php thenphp thephp pathphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$pathphp Thephp HTTPphp path
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp pathphp validationphp fails
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validatePathphp(php$pathphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$pathphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$pathphp php=php php$thisphp-php>php_pathphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp thephp pathphp isphp emptyphp,php thenphp itphp isphp consideredphp valid
-php php php php php php php php ifphp php(strlenphp(php$pathphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Determinephp whetherphp thephp pathphp isphp wellphp-formed
-php php php php php php php php php$patternphp php=php php'php/php^php'php php.php php$thisphp-php>php_regexphp[php'pathphp'php]php php.php php'php$php/php'php;
-php php php php php php php php php$statusphp php php=php php@pregphp_matchphp(php$patternphp,php php$pathphp)php;
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php pathphp validationphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php(booleanphp)php php$statusphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp pathphp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp path
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$pathphp Thephp HTTPphp path
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$pathphp isphp notphp aphp validphp HTTPphp path
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setPathphp(php$pathphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validatePathphp(php$pathphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Pathphp php\php"php$pathphp\php"php isphp notphp aphp validphp HTTPphp pathphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldPathphp php php php php php=php php$thisphp-php>php_pathphp;
-php php php php php php php php php$thisphp-php>php_pathphp php=php php$pathphp;
-
-php php php php php php php php returnphp php$oldPathphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp queryphp portionphp ofphp thephp URLphp php(afterphp php?php)php,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getQueryphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_queryphp)php php>php php0php php?php php$thisphp-php>php_queryphp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp queryphp portionphp ofphp thephp URLphp php(afterphp php?php)php asphp a
-php php php php php php*php keyphp-valuephp-arrayphp.php Ifphp thephp queryphp isphp emptyphp anphp emptyphp array
-php php php php php php*php isphp returned
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getQueryAsArrayphp(php)
-php php php php php{
-php php php php php php php php php$queryphp php=php php$thisphp-php>getQueryphp(php)php;
-php php php php php php php php php$querryArrayphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php$queryphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php parsephp_strphp(php$queryphp,php php$querryArrayphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$querryArrayphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp queryphp stringphp passesphp validationphp.php Ifphp nophp queryphp isphp passedphp,
-php php php php php php*php thenphp thephp queryphp stringphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queryphp Thephp queryphp tophp validate
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp queryphp validationphp fails
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php3php9php6php.html
-php php php php php php*php/
-php php php php publicphp functionphp validateQueryphp(php$queryphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$queryphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$queryphp php=php php$thisphp-php>php_queryphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp queryphp isphp emptyphp,php itphp isphp consideredphp tophp bephp valid
-php php php php php php php php ifphp php(strlenphp(php$queryphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Determinephp whetherphp thephp queryphp isphp wellphp-formed
-php php php php php php php php php$patternphp php=php php'php/php^php'php php.php php$thisphp-php>php_regexphp[php'uricphp'php]php php.php php'php*php$php/php'php;
-php php php php php php php php php$statusphp php php=php php@pregphp_matchphp(php$patternphp,php php$queryphp)php;
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php queryphp validationphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$statusphp php=php=php php1php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp orphp replacephp paramsphp inphp thephp queryphp stringphp forphp thephp currentphp URIphp,php and
-php php php php php php*php returnphp thephp oldphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$queryParams
-php php php php php php*php php@returnphp stringphp Oldphp queryphp string
-php php php php php php*php/
-php php php php publicphp functionphp addReplaceQueryParametersphp(arrayphp php$queryParamsphp)
-php php php php php{
-php php php php php php php php php$queryParamsphp php=php arrayphp_mergephp(php$thisphp-php>getQueryAsArrayphp(php)php,php php$queryParamsphp)php;
-php php php php php php php php returnphp php$thisphp-php>setQueryphp(php$queryParamsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp paramsphp inphp thephp queryphp stringphp forphp thephp currentphp URIphp,php and
-php php php php php php*php returnphp thephp oldphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$queryParamKeys
-php php php php php php*php php@returnphp stringphp Oldphp queryphp string
-php php php php php php*php/
-php php php php publicphp functionphp removeQueryParametersphp(arrayphp php$queryParamKeysphp)
-php php php php php{
-php php php php php php php php php$queryParamsphp php=php arrayphp_diffphp_keyphp(php$thisphp-php>getQueryAsArrayphp(php)php,php arrayphp_fillphp_keysphp(php$queryParamKeysphp,php php0php)php)php;
-php php php php php php php php returnphp php$thisphp-php>setQueryphp(php$queryParamsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp queryphp stringphp forphp thephp currentphp URIphp,php andphp returnphp thephp oldphp query
-php php php php php php*php stringphp Thisphp methodphp acceptsphp bothphp stringsphp andphp arraysphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$queryphp Thephp queryphp stringphp orphp array
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$queryphp isphp notphp aphp validphp queryphp string
-php php php php php php*php php@returnphp stringphp php php php php php php php php php php php php php Oldphp queryphp string
-php php php php php php*php/
-php php php php publicphp functionphp setQueryphp(php$queryphp)
-php php php php php{
-php php php php php php php php php$oldQueryphp php=php php$thisphp-php>php_queryphp;
-
-php php php php php php php php php/php/php Ifphp queryphp isphp emptyphp,php setphp anphp emptyphp string
-php php php php php php php php ifphp php(emptyphp(php$queryphp)php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_queryphp php=php php'php'php;
-php php php php php php php php php php php php returnphp php$oldQueryphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp queryphp isphp anphp arrayphp,php makephp aphp stringphp outphp ofphp it
-php php php php php php php php ifphp php(isphp_arrayphp(php$queryphp)php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php$queryphp php=php httpphp_buildphp_queryphp(php$queryphp,php php'php'php,php php'php&php'php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Ifphp itphp isphp aphp stringphp,php makephp surephp itphp isphp validphp.php Ifphp notphp parsephp andphp encodephp it
-php php php php php php php php php php php php php$queryphp php=php php(stringphp)php php$queryphp;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>validateQueryphp(php$queryphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php parsephp_strphp(php$queryphp,php php$queryArrayphp)php;
-php php php php php php php php php php php php php php php php php$queryphp php=php httpphp_buildphp_queryphp(php$queryArrayphp,php php'php'php,php php'php&php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Makephp surephp thephp queryphp isphp validphp,php andphp setphp it
-php php php php php php php php ifphp php(php$thisphp-php>validateQueryphp(php$queryphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"php'php$queryphp'php isphp notphp aphp validphp queryphp stringphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_queryphp php=php php$queryphp;
-
-php php php php php php php php returnphp php$oldQueryphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp fragmentphp portionphp ofphp thephp URLphp php(afterphp php#php)php,php orphp FALSEphp ifphp nonephp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|false
-php php php php php php*php/
-php php php php publicphp functionphp getFragmentphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_fragmentphp)php php>php php0php php?php php$thisphp-php>php_fragmentphp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp fragmentphp passesphp validationphp.php Ifphp nophp fragmentphp isphp passedphp,
-php php php php php php*php thenphp thephp fragmentphp containedphp inphp thephp instancephp variablephp isphp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$fragmentphp Fragmentphp ofphp anphp URI
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp fragmentphp validationphp fails
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@linkphp php php httpphp:php/php/wwwphp.faqsphp.orgphp/rfcsphp/rfcphp2php3php9php6php.html
-php php php php php php*php/
-php php php php publicphp functionphp validateFragmentphp(php$fragmentphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$fragmentphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$fragmentphp php=php php$thisphp-php>php_fragmentphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp fragmentphp isphp emptyphp,php itphp isphp consideredphp tophp bephp valid
-php php php php php php php php ifphp php(strlenphp(php$fragmentphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Determinephp whetherphp thephp fragmentphp isphp wellphp-formed
-php php php php php php php php php$patternphp php=php php'php/php^php'php php.php php$thisphp-php>php_regexphp[php'uricphp'php]php php.php php'php*php$php/php'php;
-php php php php php php php php php$statusphp php php=php php@pregphp_matchphp(php$patternphp,php php$fragmentphp)php;
-php php php php php php php php ifphp php(php$statusphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php'Internalphp errorphp:php fragmentphp validationphp failedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php(booleanphp)php php$statusphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp fragmentphp forphp thephp currentphp URIphp,php andphp returnsphp thephp oldphp fragment
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$fragmentphp Fragmentphp ofphp thephp currentphp URI
-php php php php php php*php php@throwsphp Zendphp_Uriphp_Exceptionphp Whenphp php$fragmentphp isphp notphp aphp validphp HTTPphp fragment
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp setFragmentphp(php$fragmentphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validateFragmentphp(php$fragmentphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Uriphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Uriphp_Exceptionphp(php"Fragmentphp php\php"php$fragmentphp\php"php isphp notphp aphp validphp HTTPphp fragmentphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$oldFragmentphp php php php php php=php php$thisphp-php>php_fragmentphp;
-php php php php php php php php php$thisphp-php>php_fragmentphp php=php php$fragmentphp;
-
-php php php php php php php php returnphp php$oldFragmentphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Uri
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Http.php 23409 2010-11-19 19:55:25Z bittarman $
+ */
+
+/**
+ * @see Zend_Uri
+ */
+require_once 'Zend/Uri.php';
+
+/**
+ * @see Zend_Validate_Hostname
+ */
+require_once 'Zend/Validate/Hostname.php';
+
+/**
+ * HTTP(S) URI handler
+ *
+ * @category  Zend
+ * @package   Zend_Uri
+ * @uses      Zend_Uri
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Uri_Http extends Zend_Uri
+{
+    /**
+     * Character classes for validation regular expressions
+     */
+    const CHAR_ALNUM    = 'A-Za-z0-9';
+    const CHAR_MARK     = '-_.!~*\'()\[\]';
+    const CHAR_RESERVED = ';\/?:@&=+$,';
+    const CHAR_SEGMENT  = ':@&=+$,;';
+    const CHAR_UNWISE   = '{}|\\\\^`';
+
+    /**
+     * HTTP username
+     *
+     * @var string
+     */
+    protected $_username = '';
+
+    /**
+     * HTTP password
+     *
+     * @var string
+     */
+    protected $_password = '';
+
+    /**
+     * HTTP host
+     *
+     * @var string
+     */
+    protected $_host = '';
+
+    /**
+     * HTTP post
+     *
+     * @var string
+     */
+    protected $_port = '';
+
+    /**
+     * HTTP part
+     *
+     * @var string
+     */
+    protected $_path = '';
+
+    /**
+     * HTTP query
+     *
+     * @var string
+     */
+    protected $_query = '';
+
+    /**
+     * HTTP fragment
+     *
+     * @var string
+     */
+    protected $_fragment = '';
+
+    /**
+     * Regular expression grammar rules for validation; values added by constructor
+     *
+     * @var array
+     */
+    protected $_regex = array();
+
+    /**
+     * Constructor accepts a string $scheme (e.g., http, https) and a scheme-specific part of the URI
+     * (e.g., example.com/path/to/resource?query=param#fragment)
+     *
+     * @param  string $scheme         The scheme of the URI
+     * @param  string $schemeSpecific The scheme-specific part of the URI
+     * @throws Zend_Uri_Exception When the URI is not valid
+     */
+    protected function __construct($scheme, $schemeSpecific = '')
+    {
+        // Set the scheme
+        $this->_scheme = $scheme;
+
+        // Set up grammar rules for validation via regular expressions. These
+        // are to be used with slash-delimited regular expression strings.
+
+        // Escaped special characters (eg. '%25' for '%')
+        $this->_regex['escaped']    = '%[[:xdigit:]]{2}';
+
+        // Unreserved characters
+        $this->_regex['unreserved'] = '[' . self::CHAR_ALNUM . self::CHAR_MARK . ']';
+
+        // Segment can use escaped, unreserved or a set of additional chars
+        $this->_regex['segment']    = '(?:' . $this->_regex['escaped'] . '|[' .
+            self::CHAR_ALNUM . self::CHAR_MARK . self::CHAR_SEGMENT . '])*';
+
+        // Path can be a series of segmets char strings seperated by '/'
+        $this->_regex['path']       = '(?:\/(?:' . $this->_regex['segment'] . ')?)+';
+
+        // URI characters can be escaped, alphanumeric, mark or reserved chars
+        $this->_regex['uric']       = '(?:' . $this->_regex['escaped'] . '|[' .
+            self::CHAR_ALNUM . self::CHAR_MARK . self::CHAR_RESERVED .
+
+        // If unwise chars are allowed, add them to the URI chars class
+            (self::$_config['allow_unwise'] ? self::CHAR_UNWISE : '') . '])';
+
+        // If no scheme-specific part was supplied, the user intends to create
+        // a new URI with this object.  No further parsing is required.
+        if (strlen($schemeSpecific) === 0) {
+            return;
+        }
+
+        // Parse the scheme-specific URI parts into the instance variables.
+        $this->_parseUri($schemeSpecific);
+
+        // Validate the URI
+        if ($this->valid() === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Invalid URI supplied');
+        }
+    }
+
+    /**
+     * Creates a Zend_Uri_Http from the given string
+     *
+     * @param  string $uri String to create URI from, must start with
+     *                     'http://' or 'https://'
+     * @throws InvalidArgumentException  When the given $uri is not a string or
+     *                                   does not start with http:// or https://
+     * @throws Zend_Uri_Exception        When the given $uri is invalid
+     * @return Zend_Uri_Http
+     */
+    public static function fromString($uri)
+    {
+        if (is_string($uri) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('$uri is not a string');
+        }
+
+        $uri            = explode(':', $uri, 2);
+        $scheme         = strtolower($uri[0]);
+        $schemeSpecific = isset($uri[1]) === true ? $uri[1] : '';
+
+        if (in_array($scheme, array('http', 'https')) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Invalid scheme: '$scheme'");
+        }
+
+        $schemeHandler = new Zend_Uri_Http($scheme, $schemeSpecific);
+        return $schemeHandler;
+    }
+
+    /**
+     * Parse the scheme-specific portion of the URI and place its parts into instance variables.
+     *
+     * @param  string $schemeSpecific The scheme-specific portion to parse
+     * @throws Zend_Uri_Exception When scheme-specific decoposition fails
+     * @throws Zend_Uri_Exception When authority decomposition fails
+     * @return void
+     */
+    protected function _parseUri($schemeSpecific)
+    {
+        // High-level decomposition parser
+        $pattern = '~^((//)([^/?#]*))([^?#]*)(\?([^#]*))?(#(.*))?$~';
+        $status  = @preg_match($pattern, $schemeSpecific, $matches);
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: scheme-specific decomposition failed');
+        }
+
+        // Failed decomposition; no further processing needed
+        if ($status === false) {
+            return;
+        }
+
+        // Save URI components that need no further decomposition
+        $this->_path     = isset($matches[4]) === true ? $matches[4] : '';
+        $this->_query    = isset($matches[6]) === true ? $matches[6] : '';
+        $this->_fragment = isset($matches[8]) === true ? $matches[8] : '';
+
+        // Additional decomposition to get username, password, host, and port
+        $combo   = isset($matches[3]) === true ? $matches[3] : '';
+        $pattern = '~^(([^:@]*)(:([^@]*))?@)?([^:]+)(:(.*))?$~';
+        $status  = @preg_match($pattern, $combo, $matches);
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: authority decomposition failed');
+        }
+
+        // Failed decomposition; no further processing needed
+        if ($status === false) {
+            return;
+        }
+
+        // Save remaining URI components
+        $this->_username = isset($matches[2]) === true ? $matches[2] : '';
+        $this->_password = isset($matches[4]) === true ? $matches[4] : '';
+        $this->_host     = isset($matches[5]) === true ? $matches[5] : '';
+        $this->_port     = isset($matches[7]) === true ? $matches[7] : '';
+
+    }
+
+    /**
+     * Returns a URI based on current values of the instance variables. If any
+     * part of the URI does not pass validation, then an exception is thrown.
+     *
+     * @throws Zend_Uri_Exception When one or more parts of the URI are invalid
+     * @return string
+     */
+    public function getUri()
+    {
+        if ($this->valid() === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('One or more parts of the URI are invalid');
+        }
+
+        $password = strlen($this->_password) > 0 ? ":$this->_password" : '';
+        $auth     = strlen($this->_username) > 0 ? "$this->_username$password@" : '';
+        $port     = strlen($this->_port) > 0 ? ":$this->_port" : '';
+        $query    = strlen($this->_query) > 0 ? "?$this->_query" : '';
+        $fragment = strlen($this->_fragment) > 0 ? "#$this->_fragment" : '';
+
+        return $this->_scheme
+             . '://'
+             . $auth
+             . $this->_host
+             . $port
+             . $this->_path
+             . $query
+             . $fragment;
+    }
+
+    /**
+     * Validate the current URI from the instance variables. Returns true if and only if all
+     * parts pass validation.
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        // Return true if and only if all parts of the URI have passed validation
+        return $this->validateUsername()
+           and $this->validatePassword()
+           and $this->validateHost()
+           and $this->validatePort()
+           and $this->validatePath()
+           and $this->validateQuery()
+           and $this->validateFragment();
+    }
+
+    /**
+     * Returns the username portion of the URL, or FALSE if none.
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return strlen($this->_username) > 0 ? $this->_username : false;
+    }
+
+    /**
+     * Returns true if and only if the username passes validation. If no username is passed,
+     * then the username contained in the instance variable is used.
+     *
+     * @param  string $username The HTTP username
+     * @throws Zend_Uri_Exception When username validation fails
+     * @return boolean
+     * @link   http://www.faqs.org/rfcs/rfc2396.html
+     */
+    public function validateUsername($username = null)
+    {
+        if ($username === null) {
+            $username = $this->_username;
+        }
+
+        // If the username is empty, then it is considered valid
+        if (strlen($username) === 0) {
+            return true;
+        }
+
+        // Check the username against the allowed values
+        $status = @preg_match('/^(?:' . $this->_regex['escaped'] . '|[' .
+            self::CHAR_ALNUM . self::CHAR_MARK . ';:&=+$,' . '])+$/', $username);
+
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: username validation failed');
+        }
+
+        return $status === 1;
+    }
+
+    /**
+     * Sets the username for the current URI, and returns the old username
+     *
+     * @param  string $username The HTTP username
+     * @throws Zend_Uri_Exception When $username is not a valid HTTP username
+     * @return string
+     */
+    public function setUsername($username)
+    {
+        if ($this->validateUsername($username) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Username \"$username\" is not a valid HTTP username");
+        }
+
+        $oldUsername     = $this->_username;
+        $this->_username = $username;
+
+        return $oldUsername;
+    }
+
+    /**
+     * Returns the password portion of the URL, or FALSE if none.
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return strlen($this->_password) > 0 ? $this->_password : false;
+    }
+
+    /**
+     * Returns true if and only if the password passes validation. If no password is passed,
+     * then the password contained in the instance variable is used.
+     *
+     * @param  string $password The HTTP password
+     * @throws Zend_Uri_Exception When password validation fails
+     * @return boolean
+     * @link   http://www.faqs.org/rfcs/rfc2396.html
+     */
+    public function validatePassword($password = null)
+    {
+        if ($password === null) {
+            $password = $this->_password;
+        }
+
+        // If the password is empty, then it is considered valid
+        if (strlen($password) === 0) {
+            return true;
+        }
+
+        // If the password is nonempty, but there is no username, then it is considered invalid
+        if (strlen($password) > 0 and strlen($this->_username) === 0) {
+            return false;
+        }
+
+        // Check the password against the allowed values
+        $status = @preg_match('/^(?:' . $this->_regex['escaped'] . '|[' .
+            self::CHAR_ALNUM . self::CHAR_MARK . ';:&=+$,' . '])+$/', $password);
+
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: password validation failed.');
+        }
+
+        return $status == 1;
+    }
+
+    /**
+     * Sets the password for the current URI, and returns the old password
+     *
+     * @param  string $password The HTTP password
+     * @throws Zend_Uri_Exception When $password is not a valid HTTP password
+     * @return string
+     */
+    public function setPassword($password)
+    {
+        if ($this->validatePassword($password) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Password \"$password\" is not a valid HTTP password.");
+        }
+
+        $oldPassword     = $this->_password;
+        $this->_password = $password;
+
+        return $oldPassword;
+    }
+
+    /**
+     * Returns the domain or host IP portion of the URL, or FALSE if none.
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return strlen($this->_host) > 0 ? $this->_host : false;
+    }
+
+    /**
+     * Returns true if and only if the host string passes validation. If no host is passed,
+     * then the host contained in the instance variable is used.
+     *
+     * @param  string $host The HTTP host
+     * @return boolean
+     * @uses   Zend_Filter
+     */
+    public function validateHost($host = null)
+    {
+        if ($host === null) {
+            $host = $this->_host;
+        }
+
+        // If the host is empty, then it is considered invalid
+        if (strlen($host) === 0) {
+            return false;
+        }
+
+        // Check the host against the allowed values; delegated to Zend_Filter.
+        $validate = new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_ALL);
+
+        return $validate->isValid($host);
+    }
+
+    /**
+     * Sets the host for the current URI, and returns the old host
+     *
+     * @param  string $host The HTTP host
+     * @throws Zend_Uri_Exception When $host is nota valid HTTP host
+     * @return string
+     */
+    public function setHost($host)
+    {
+        if ($this->validateHost($host) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Host \"$host\" is not a valid HTTP host");
+        }
+
+        $oldHost     = $this->_host;
+        $this->_host = $host;
+
+        return $oldHost;
+    }
+
+    /**
+     * Returns the TCP port, or FALSE if none.
+     *
+     * @return string
+     */
+    public function getPort()
+    {
+        return strlen($this->_port) > 0 ? $this->_port : false;
+    }
+
+    /**
+     * Returns true if and only if the TCP port string passes validation. If no port is passed,
+     * then the port contained in the instance variable is used.
+     *
+     * @param  string $port The HTTP port
+     * @return boolean
+     */
+    public function validatePort($port = null)
+    {
+        if ($port === null) {
+            $port = $this->_port;
+        }
+
+        // If the port is empty, then it is considered valid
+        if (strlen($port) === 0) {
+            return true;
+        }
+
+        // Check the port against the allowed values
+        return ctype_digit((string) $port) and 1 <= $port and $port <= 65535;
+    }
+
+    /**
+     * Sets the port for the current URI, and returns the old port
+     *
+     * @param  string $port The HTTP port
+     * @throws Zend_Uri_Exception When $port is not a valid HTTP port
+     * @return string
+     */
+    public function setPort($port)
+    {
+        if ($this->validatePort($port) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Port \"$port\" is not a valid HTTP port.");
+        }
+
+        $oldPort     = $this->_port;
+        $this->_port = $port;
+
+        return $oldPort;
+    }
+
+    /**
+     * Returns the path and filename portion of the URL.
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return strlen($this->_path) > 0 ? $this->_path : '/';
+    }
+
+    /**
+     * Returns true if and only if the path string passes validation. If no path is passed,
+     * then the path contained in the instance variable is used.
+     *
+     * @param  string $path The HTTP path
+     * @throws Zend_Uri_Exception When path validation fails
+     * @return boolean
+     */
+    public function validatePath($path = null)
+    {
+        if ($path === null) {
+            $path = $this->_path;
+        }
+
+        // If the path is empty, then it is considered valid
+        if (strlen($path) === 0) {
+            return true;
+        }
+
+        // Determine whether the path is well-formed
+        $pattern = '/^' . $this->_regex['path'] . '$/';
+        $status  = @preg_match($pattern, $path);
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: path validation failed');
+        }
+
+        return (boolean) $status;
+    }
+
+    /**
+     * Sets the path for the current URI, and returns the old path
+     *
+     * @param  string $path The HTTP path
+     * @throws Zend_Uri_Exception When $path is not a valid HTTP path
+     * @return string
+     */
+    public function setPath($path)
+    {
+        if ($this->validatePath($path) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Path \"$path\" is not a valid HTTP path");
+        }
+
+        $oldPath     = $this->_path;
+        $this->_path = $path;
+
+        return $oldPath;
+    }
+
+    /**
+     * Returns the query portion of the URL (after ?), or FALSE if none.
+     *
+     * @return string
+     */
+    public function getQuery()
+    {
+        return strlen($this->_query) > 0 ? $this->_query : false;
+    }
+
+    /**
+     * Returns the query portion of the URL (after ?) as a
+     * key-value-array. If the query is empty an empty array
+     * is returned
+     *
+     * @return array
+     */
+    public function getQueryAsArray()
+    {
+        $query = $this->getQuery();
+        $querryArray = array();
+        if ($query !== false) {
+            parse_str($query, $querryArray);
+        }
+        return $querryArray;
+    }
+
+    /**
+     * Returns true if and only if the query string passes validation. If no query is passed,
+     * then the query string contained in the instance variable is used.
+     *
+     * @param  string $query The query to validate
+     * @throws Zend_Uri_Exception When query validation fails
+     * @return boolean
+     * @link   http://www.faqs.org/rfcs/rfc2396.html
+     */
+    public function validateQuery($query = null)
+    {
+        if ($query === null) {
+            $query = $this->_query;
+        }
+
+        // If query is empty, it is considered to be valid
+        if (strlen($query) === 0) {
+            return true;
+        }
+
+        // Determine whether the query is well-formed
+        $pattern = '/^' . $this->_regex['uric'] . '*$/';
+        $status  = @preg_match($pattern, $query);
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: query validation failed');
+        }
+
+        return $status == 1;
+    }
+
+    /**
+     * Add or replace params in the query string for the current URI, and
+     * return the old query.
+     *
+     * @param  array $queryParams
+     * @return string Old query string
+     */
+    public function addReplaceQueryParameters(array $queryParams)
+    {
+        $queryParams = array_merge($this->getQueryAsArray(), $queryParams);
+        return $this->setQuery($queryParams);
+    }
+
+    /**
+     * Remove params in the query string for the current URI, and
+     * return the old query.
+     *
+     * @param  array $queryParamKeys
+     * @return string Old query string
+     */
+    public function removeQueryParameters(array $queryParamKeys)
+    {
+        $queryParams = array_diff_key($this->getQueryAsArray(), array_fill_keys($queryParamKeys, 0));
+        return $this->setQuery($queryParams);
+    }
+
+    /**
+     * Set the query string for the current URI, and return the old query
+     * string This method accepts both strings and arrays.
+     *
+     * @param  string|array $query The query string or array
+     * @throws Zend_Uri_Exception When $query is not a valid query string
+     * @return string              Old query string
+     */
+    public function setQuery($query)
+    {
+        $oldQuery = $this->_query;
+
+        // If query is empty, set an empty string
+        if (empty($query) === true) {
+            $this->_query = '';
+            return $oldQuery;
+        }
+
+        // If query is an array, make a string out of it
+        if (is_array($query) === true) {
+            $query = http_build_query($query, '', '&');
+        } else {
+            // If it is a string, make sure it is valid. If not parse and encode it
+            $query = (string) $query;
+            if ($this->validateQuery($query) === false) {
+                parse_str($query, $queryArray);
+                $query = http_build_query($queryArray, '', '&');
+            }
+        }
+
+        // Make sure the query is valid, and set it
+        if ($this->validateQuery($query) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("'$query' is not a valid query string");
+        }
+
+        $this->_query = $query;
+
+        return $oldQuery;
+    }
+
+    /**
+     * Returns the fragment portion of the URL (after #), or FALSE if none.
+     *
+     * @return string|false
+     */
+    public function getFragment()
+    {
+        return strlen($this->_fragment) > 0 ? $this->_fragment : false;
+    }
+
+    /**
+     * Returns true if and only if the fragment passes validation. If no fragment is passed,
+     * then the fragment contained in the instance variable is used.
+     *
+     * @param  string $fragment Fragment of an URI
+     * @throws Zend_Uri_Exception When fragment validation fails
+     * @return boolean
+     * @link   http://www.faqs.org/rfcs/rfc2396.html
+     */
+    public function validateFragment($fragment = null)
+    {
+        if ($fragment === null) {
+            $fragment = $this->_fragment;
+        }
+
+        // If fragment is empty, it is considered to be valid
+        if (strlen($fragment) === 0) {
+            return true;
+        }
+
+        // Determine whether the fragment is well-formed
+        $pattern = '/^' . $this->_regex['uric'] . '*$/';
+        $status  = @preg_match($pattern, $fragment);
+        if ($status === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception('Internal error: fragment validation failed');
+        }
+
+        return (boolean) $status;
+    }
+
+    /**
+     * Sets the fragment for the current URI, and returns the old fragment
+     *
+     * @param  string $fragment Fragment of the current URI
+     * @throws Zend_Uri_Exception When $fragment is not a valid HTTP fragment
+     * @return string
+     */
+    public function setFragment($fragment)
+    {
+        if ($this->validateFragment($fragment) === false) {
+            require_once 'Zend/Uri/Exception.php';
+            throw new Zend_Uri_Exception("Fragment \"$fragment\" is not a valid HTTP fragment");
+        }
+
+        $oldFragment     = $this->_fragment;
+        $this->_fragment = $fragment;
+
+        return $oldFragment;
+    }
+}

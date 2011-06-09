@@ -1,994 +1,994 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Frontphp.phpphp php2php0php2php4php6php php2php0php1php0php-php0php1php-php1php2php php2php1php:php3php6php:php0php8Zphp daspridphp php$
-php php*php/
-
-
-php/php*php*php Zendphp_Loaderphp php*php/
-requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-
-php/php*php*php Zendphp_Controllerphp_Actionphp_HelperBrokerphp php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/HelperBrokerphp.phpphp'php;
-
-php/php*php*php Zendphp_Controllerphp_Pluginphp_Brokerphp php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/Brokerphp.phpphp'php;
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Controllerphp_Front
-php{
-php php php php php/php*php*
-php php php php php php*php Basephp URL
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_baseUrlphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Directoryphp|iesphp wherephp controllersphp arephp stored
-php php php php php php*
-php php php php php php*php php@varphp stringphp|array
-php php php php php php*php/
-php php php php protectedphp php$php_controllerDirphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php php@varphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_dispatcherphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Singletonphp instance
-php php php php php php*
-php php php php php php*php Markedphp onlyphp asphp protectedphp tophp allowphp extensionphp ofphp thephp classphp.php Tophp extendphp,
-php php php php php php*php simplyphp overridephp php{php@linkphp getInstancephp(php)php}php.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_instancephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp ofphp invocationphp parametersphp tophp usephp whenphp instantiatingphp action
-php php php php php php*php controllers
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_invokeParamsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Subdirectoryphp withinphp aphp modulephp containingphp controllersphp;php defaultsphp tophp php'controllersphp'
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_moduleControllerDirectoryNamephp php=php php'controllersphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp Zendphp_Controllerphp_Pluginphp_Broker
-php php php php php php*php php@varphp Zendphp_Controllerphp_Pluginphp_Broker
-php php php php php php*php/
-php php php php protectedphp php$php_pluginsphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp Zendphp_Controllerphp_Requestphp_Abstract
-php php php php php php*php php@varphp Zendphp_Controllerphp_Requestphp_Abstract
-php php php php php php*php/
-php php php php protectedphp php$php_requestphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp Zendphp_Controllerphp_Responsephp_Abstract
-php php php php php php*php php@varphp Zendphp_Controllerphp_Responsephp_Abstract
-php php php php php php*php/
-php php php php protectedphp php$php_responsephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp tophp returnphp thephp responsephp priorphp tophp renderingphp outputphp whilephp in
-php php php php php php*php php{php@linkphp dispatchphp(php)php}php;php defaultphp isphp tophp sendphp headersphp andphp renderphp outputphp.
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_returnResponsephp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp Zendphp_Controllerphp_Routerphp_Interface
-php php php php php php*php php@varphp Zendphp_Controllerphp_Routerphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_routerphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp exceptionsphp encounteredphp inphp php{php@linkphp dispatchphp(php)php}php shouldphp be
-php php php php php php*php thrownphp orphp trappedphp inphp thephp responsephp object
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_throwExceptionsphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Instantiatephp usingphp php{php@linkphp getInstancephp(php)php}php;php frontphp controllerphp isphp aphp singleton
-php php php php php php*php objectphp.
-php php php php php php*
-php php php php php php*php Instantiatesphp thephp pluginphp brokerphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pluginsphp php=php newphp Zendphp_Controllerphp_Pluginphp_Brokerphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Enforcephp singletonphp;php disallowphp cloning
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_php_clonephp(php)
-php php php php php{
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Singletonphp instance
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getInstancephp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_instancephp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_instancephp php=php newphp selfphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp selfphp:php:php$php_instancephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Resetsphp allphp objectphp propertiesphp ofphp thephp singletonphp instance
-php php php php php php*
-php php php php php php*php Primarilyphp usedphp forphp testingphp;php couldphp bephp usedphp tophp chainphp frontphp controllersphp.
-php php php php php php*
-php php php php php php*php Alsophp resetsphp actionphp helperphp brokerphp,php clearingphp allphp registeredphp helpersphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp resetInstancephp(php)
-php php php php php{
-php php php php php php php php php$reflectionphp php=php newphp ReflectionObjectphp(php$thisphp)php;
-php php php php php php php php foreachphp php(php$reflectionphp-php>getPropertiesphp(php)php asphp php$propertyphp)php php{
-php php php php php php php php php php php php php$namephp php=php php$propertyphp-php>getNamephp(php)php;
-php php php php php php php php php php php php switchphp php(php$namephp)php php{
-php php php php php php php php php php php php php php php php casephp php'php_instancephp'php:
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'php_controllerDirphp'php:
-php php php php php php php php php php php php php php php php casephp php'php_invokeParamsphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$namephp}php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'php_pluginsphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$namephp}php php=php newphp Zendphp_Controllerphp_Pluginphp_Brokerphp(php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'php_throwExceptionsphp'php:
-php php php php php php php php php php php php php php php php casephp php'php_returnResponsephp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$namephp}php php=php falsephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'php_moduleControllerDirectoryNamephp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$namephp}php php=php php'controllersphp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php{php$namephp}php php=php nullphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:resetHelpersphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp featurephp,php callsphp setControllerDirectoryphp(php)php-php>setRouterphp(php)php-php>dispatchphp(php)
-php php php php php php*
-php php php php php php*php Inphp PHPphp php5php.php1php.xphp,php aphp callphp tophp aphp staticphp methodphp neverphp populatesphp php$thisphp php-php-php sophp runphp(php)
-php php php php php php*php mayphp actuallyphp bephp calledphp afterphp settingphp upphp yourphp frontphp controllerphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$controllerDirectoryphp Pathphp tophp Zendphp_Controllerphp_Action
-php php php php php php*php controllerphp classesphp orphp arrayphp ofphp suchphp paths
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp ifphp calledphp fromphp anphp objectphp instance
-php php php php php php*php/
-php php php php publicphp staticphp functionphp runphp(php$controllerDirectoryphp)
-php php php php php{
-php php php php php php php php selfphp:php:getInstancephp(php)
-php php php php php php php php php php php php php-php>setControllerDirectoryphp(php$controllerDirectoryphp)
-php php php php php php php php php php php php php-php>dispatchphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp controllerphp directoryphp tophp thephp controllerphp directoryphp stack
-php php php php php php*
-php php php php php php*php Ifphp php$argsphp isphp presentedphp andphp isphp aphp stringphp,php usesphp itphp forphp thephp arrayphp keyphp mapping
-php php php php php php*php tophp thephp directoryphp specifiedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$directory
-php php php php php php*php php@paramphp stringphp php$modulephp Optionalphp argumentphp;php modulephp withphp whichphp tophp associatephp directoryphp.php Ifphp nonephp providedphp,php assumesphp php'defaultphp'
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp ifphp directoryphp notphp foundphp orphp readable
-php php php php php php*php/
-php php php php publicphp functionphp addControllerDirectoryphp(php$directoryphp,php php$modulephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getDispatcherphp(php)php-php>addControllerDirectoryphp(php$directoryphp,php php$modulephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp controllerphp directory
-php php php php php php*
-php php php php php php*php Storesphp controllerphp directoryphp(iesphp)php inphp dispatcherphp.php Mayphp bephp anphp arrayphp of
-php php php php php php*php directoriesphp orphp aphp stringphp containingphp aphp singlephp directoryphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$directoryphp Pathphp tophp Zendphp_Controllerphp_Actionphp controller
-php php php php php php*php classesphp orphp arrayphp ofphp suchphp paths
-php php php php php php*php php@paramphp php stringphp php$modulephp Optionalphp modulephp namephp tophp usephp withphp stringphp php$directory
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setControllerDirectoryphp(php$directoryphp,php php$modulephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getDispatcherphp(php)php-php>setControllerDirectoryphp(php$directoryphp,php php$modulephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp controllerphp directory
-php php php php php php*
-php php php php php php*php Retrievesphp:
-php php php php php php*php php-php Arrayphp ofphp allphp controllerphp directoriesphp ifphp nophp php$namephp passed
-php php php php php php*php php-php Stringphp pathphp ifphp php$namephp passedphp andphp existsphp asphp aphp keyphp inphp controllerphp directoryphp array
-php php php php php php*php php-php nullphp ifphp php$namephp passedphp butphp doesphp notphp existphp inphp controllerphp directoryphp keys
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp Defaultphp null
-php php php php php php*php php@returnphp arrayphp|stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getControllerDirectoryphp(php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getDispatcherphp(php)php-php>getControllerDirectoryphp(php$namephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp aphp controllerphp directoryphp byphp modulephp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$module
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp removeControllerDirectoryphp(php$modulephp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getDispatcherphp(php)php-php>removeControllerDirectoryphp(php$modulephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Specifyphp aphp directoryphp asphp containingphp modules
-php php php php php php*
-php php php php php php*php Iteratesphp throughphp thephp directoryphp,php addingphp anyphp subdirectoriesphp asphp modulesphp;
-php php php php php php*php thephp subdirectoryphp withinphp eachphp modulephp namedphp afterphp php{php@linkphp php$php_moduleControllerDirectoryNamephp}
-php php php php php php*php willphp bephp usedphp asphp thephp controllerphp directoryphp pathphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp addModuleDirectoryphp(php$pathphp)
-php php php php php{
-php php php php php php php php tryphp{
-php php php php php php php php php php php php php$dirphp php=php newphp DirectoryIteratorphp(php$pathphp)php;
-php php php php php php php php php}php catchphp(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php"Directoryphp php$pathphp notphp readablephp"php,php php0php,php php$ephp)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$dirphp asphp php$filephp)php php{
-php php php php php php php php php php php php ifphp php(php$filephp-php>isDotphp(php)php php|php|php php!php$filephp-php>isDirphp(php)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$modulephp php php php php=php php$filephp-php>getFilenamephp(php)php;
-
-php php php php php php php php php php php php php/php/php Donphp'tphp usephp SCCSphp directoriesphp asphp modules
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php[php^aphp-zphp]php/iphp'php,php php$modulephp)php php|php|php php(php'CVSphp'php php=php=php php$modulephp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$moduleDirphp php=php php$filephp-php>getPathnamephp(php)php php.php DIRECTORYphp_SEPARATORphp php.php php$thisphp-php>getModuleControllerDirectoryNamephp(php)php;
-php php php php php php php php php php php php php$thisphp-php>addControllerDirectoryphp(php$moduleDirphp,php php$modulephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp pathphp tophp aphp modulephp directoryphp php(butphp notphp thephp controllersphp directoryphp withinphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$module
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getModuleDirectoryphp(php$modulephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$modulephp)php php{
-php php php php php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$requestphp)php php{
-php php php php php php php php php php php php php php php php php$modulephp php=php php$thisphp-php>getRequestphp(php)php-php>getModuleNamephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(emptyphp(php$modulephp)php)php php{
-php php php php php php php php php php php php php php php php php$modulephp php=php php$thisphp-php>getDispatcherphp(php)php-php>getDefaultModulephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$controllerDirphp php=php php$thisphp-php>getControllerDirectoryphp(php$modulephp)php;
-
-php php php php php php php php ifphp php(php(nullphp php=php=php=php php$controllerDirphp)php php|php|php php!isphp_stringphp(php$controllerDirphp)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp dirnamephp(php$controllerDirphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp directoryphp namephp withinphp aphp modulephp containingphp controllers
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setModuleControllerDirectoryNamephp(php$namephp php=php php'controllersphp'php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_moduleControllerDirectoryNamephp php=php php(stringphp)php php$namephp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp directoryphp namephp withinphp aphp modulephp containingphp controllers
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getModuleControllerDirectoryNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_moduleControllerDirectoryNamephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp controllerphp php(unformattedphp stringphp)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$controller
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultControllerNamephp(php$controllerphp)
-php php php php php{
-php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getDispatcherphp(php)php;
-php php php php php php php php php$dispatcherphp-php>setDefaultControllerNamephp(php$controllerphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp controllerphp php(unformattedphp stringphp)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultControllerNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getDispatcherphp(php)php-php>getDefaultControllerNamephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp actionphp php(unformattedphp stringphp)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$action
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultActionphp(php$actionphp)
-php php php php php{
-php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getDispatcherphp(php)php;
-php php php php php php php php php$dispatcherphp-php>setDefaultActionphp(php$actionphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp actionphp php(unformattedphp stringphp)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultActionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getDispatcherphp(php)php-php>getDefaultActionphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp modulephp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$module
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultModulephp(php$modulephp)
-php php php php php{
-php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getDispatcherphp(php)php;
-php php php php php php php php php$dispatcherphp-php>setDefaultModulephp(php$modulephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp module
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultModulephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getDispatcherphp(php)php-php>getDefaultModulephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp requestphp classphp/object
-php php php php php php*
-php php php php php php*php Setphp thephp requestphp objectphp.php php Thephp requestphp holdsphp thephp requestphp environmentphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp classphp namephp isphp providedphp,php itphp willphp instantiatephp it
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Controllerphp_Requestphp_Abstractphp php$request
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp ifphp invalidphp requestphp class
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setRequestphp(php$requestphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$requestphp)php)php php{
-php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$requestphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$requestphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$requestphp php=php newphp php$requestphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$requestphp instanceofphp Zendphp_Controllerphp_Requestphp_Abstractphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Invalidphp requestphp classphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_requestphp php=php php$requestphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp requestphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp nullphp|Zendphp_Controllerphp_Requestphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getRequestphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_requestphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp routerphp classphp/object
-php php php php php php*
-php php php php php php*php Setphp thephp routerphp objectphp.php php Thephp routerphp isphp responsiblephp forphp mapping
-php php php php php php*php thephp requestphp tophp aphp controllerphp andphp actionphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp classphp namephp isphp providedphp,php instantiatesphp routerphp withphp anyphp parameters
-php php php php php php*php registeredphp viaphp php{php@linkphp setParamphp(php)php}php orphp php{php@linkphp setParamsphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Controllerphp_Routerphp_Interfacephp php$router
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp ifphp invalidphp routerphp class
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setRouterphp(php$routerphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$routerphp)php)php php{
-php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$routerphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$routerphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$routerphp php=php newphp php$routerphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php$routerphp instanceofphp Zendphp_Controllerphp_Routerphp_Interfacephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Invalidphp routerphp classphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$routerphp-php>setFrontControllerphp(php$thisphp)php;
-php php php php php php php php php$thisphp-php>php_routerphp php=php php$routerphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp routerphp objectphp.
-php php php php php php*
-php php php php php php*php Instantiatesphp aphp Zendphp_Controllerphp_Routerphp_Rewritephp objectphp ifphp nophp routerphp currentlyphp setphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Routerphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getRouterphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php php$thisphp-php>php_routerphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Rewritephp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>setRouterphp(newphp Zendphp_Controllerphp_Routerphp_Rewritephp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_routerphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp basephp URLphp usedphp forphp requests
-php php php php php php*
-php php php php php php*php Usephp tophp setphp thephp basephp URLphp segmentphp ofphp thephp REQUESTphp_URIphp tophp usephp when
-php php php php php php*php determiningphp PATHphp_INFOphp,php etcphp.php Examplesphp:
-php php php php php php*php php-php php/admin
-php php php php php php*php php-php php/myapp
-php php php php php php*php php-php php/subdirphp/indexphp.php
-php php php php php php*
-php php php php php php*php Notephp thatphp thephp URLphp shouldphp notphp includephp thephp fullphp URIphp.php Dophp notphp usephp:
-php php php php php php*php php-php httpphp:php/php/examplephp.comphp/admin
-php php php php php php*php php-php httpphp:php/php/examplephp.comphp/myapp
-php php php php php php*php php-php httpphp:php/php/examplephp.comphp/subdirphp/indexphp.php
-php php php php php php*
-php php php php php php*php Ifphp aphp nullphp valuephp isphp passedphp,php thisphp canphp bephp usedphp asphp wellphp forphp autodiscoveryphp php(defaultphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$base
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp forphp nonphp-stringphp php$base
-php php php php php php*php/
-php php php php publicphp functionphp setBaseUrlphp(php$basephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$basephp)php php&php&php php(nullphp php!php=php=php php$basephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Rewritephp basephp mustphp bephp aphp stringphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_baseUrlphp php=php php$basephp;
-
-php php php php php php php php ifphp php(php(nullphp php!php=php=php php(php$requestphp php=php php$thisphp-php>getRequestphp(php)php)php)php php&php&php php(methodphp_existsphp(php$requestphp,php php'setBaseUrlphp'php)php)php)php php{
-php php php php php php php php php php php php php$requestphp-php>setBaseUrlphp(php$basephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp currentlyphp setphp basephp URL
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getBaseUrlphp(php)
-php php php php php{
-php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
-php php php php php php php php ifphp php(php(nullphp php!php=php=php php$requestphp)php php&php&php methodphp_existsphp(php$requestphp,php php'getBaseUrlphp'php)php)php php{
-php php php php php php php php php php php php returnphp php$requestphp-php>getBaseUrlphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_baseUrlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp dispatcherphp objectphp.php php Thephp dispatcherphp isphp responsiblephp for
-php php php php php php*php takingphp aphp Zendphp_Controllerphp_Dispatcherphp_Tokenphp objectphp,php instantiatingphp thephp controllerphp,php and
-php php php php php php*php callphp thephp actionphp methodphp ofphp thephp controllerphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Dispatcherphp_Interfacephp php$dispatcher
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setDispatcherphp(Zendphp_Controllerphp_Dispatcherphp_Interfacephp php$dispatcherphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dispatcherphp php=php php$dispatcherphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp dispatcherphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getDispatcherphp(php)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Instantiatephp thephp defaultphp dispatcherphp ifphp onephp wasphp notphp setphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!php$thisphp-php>php_dispatcherphp instanceofphp Zendphp_Controllerphp_Dispatcherphp_Interfacephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Standardphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_dispatcherphp php=php newphp Zendphp_Controllerphp_Dispatcherphp_Standardphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_dispatcherphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp responsephp classphp/object
-php php php php php php*
-php php php php php php*php Setphp thephp responsephp objectphp.php php Thephp responsephp isphp aphp containerphp forphp action
-php php php php php php*php responsesphp andphp headersphp.php Usagephp isphp optionalphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp classphp namephp isphp providedphp,php instantiatesphp aphp responsephp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Controllerphp_Responsephp_Abstractphp php$response
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Exceptionphp ifphp invalidphp responsephp class
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setResponsephp(php$responsephp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$responsephp)php)php php{
-php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$responsephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$responsephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$responsephp php=php newphp php$responsephp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$responsephp instanceofphp Zendphp_Controllerphp_Responsephp_Abstractphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Exceptionphp(php'Invalidphp responsephp classphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_responsephp php=php php$responsephp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp responsephp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp nullphp|Zendphp_Controllerphp_Responsephp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getResponsephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_responsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp orphp modifyphp aphp parameterphp tophp usephp whenphp instantiatingphp anphp actionphp controller
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setParamphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php php$thisphp-php>php_invokeParamsphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp parametersphp tophp passphp tophp actionphp controllerphp constructors
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$params
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_invokeParamsphp php=php arrayphp_mergephp(php$thisphp-php>php_invokeParamsphp,php php$paramsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp parameterphp fromphp thephp controllerphp parameterphp stack
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getParamphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp(issetphp(php$thisphp-php>php_invokeParamsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_invokeParamsphp[php$namephp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp actionphp controllerphp instantiationphp parameters
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getParamsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_invokeParamsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearphp thephp controllerphp parameterphp stack
-php php php php php php*
-php php php php php php*php Byphp defaultphp,php clearsphp allphp parametersphp.php Ifphp aphp parameterphp namephp isphp givenphp,php clears
-php php php php php php*php onlyphp thatphp parameterphp;php ifphp anphp arrayphp ofphp parameterphp namesphp isphp providedphp,php clears
-php php php php php php*php eachphp.
-php php php php php php*
-php php php php php php*php php@paramphp nullphp|stringphp|arrayphp singlephp keyphp orphp arrayphp ofphp keysphp forphp paramsphp tophp clear
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp clearParamsphp(php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_invokeParamsphp php=php arrayphp(php)php;
-php php php php php php php php php}php elseifphp php(isphp_stringphp(php$namephp)php php&php&php issetphp(php$thisphp-php>php_invokeParamsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_invokeParamsphp[php$namephp]php)php;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$namephp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$namephp asphp php$keyphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$keyphp)php php&php&php issetphp(php$thisphp-php>php_invokeParamsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_invokeParamsphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Registerphp aphp pluginphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Pluginphp_Abstractphp php$plugin
-php php php php php php*php php@paramphp php intphp php$stackIndexphp Optionalphp;php stackphp indexphp forphp plugin
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp registerPluginphp(Zendphp_Controllerphp_Pluginphp_Abstractphp php$pluginphp,php php$stackIndexphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pluginsphp-php>registerPluginphp(php$pluginphp,php php$stackIndexphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Unregisterphp aphp pluginphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|Zendphp_Controllerphp_Pluginphp_Abstractphp php$pluginphp Pluginphp classphp orphp objectphp tophp unregister
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php publicphp functionphp unregisterPluginphp(php$pluginphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pluginsphp-php>unregisterPluginphp(php$pluginphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Isphp aphp particularphp pluginphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$class
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasPluginphp(php$classphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pluginsphp-php>hasPluginphp(php$classphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp pluginphp orphp pluginsphp byphp class
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$class
-php php php php php php*php php@returnphp falsephp|Zendphp_Controllerphp_Pluginphp_Abstractphp|array
-php php php php php php*php/
-php php php php publicphp functionphp getPluginphp(php$classphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pluginsphp-php>getPluginphp(php$classphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp plugins
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getPluginsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pluginsphp-php>getPluginsphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp throwExceptionsphp flagphp andphp retrievephp currentphp status
-php php php php php php*
-php php php php php php*php Setphp whetherphp exceptionsphp encountedphp inphp thephp dispatchphp loopphp shouldphp bephp thrown
-php php php php php php*php orphp caughtphp andphp trappedphp inphp thephp responsephp objectphp.
-php php php php php php*
-php php php php php php*php Defaultphp behaviourphp isphp tophp trapphp themphp inphp thephp responsephp objectphp;php callphp this
-php php php php php php*php methodphp tophp havephp themphp thrownphp.
-php php php php php php*
-php php php php php php*php Passingphp nophp valuephp willphp returnphp thephp currentphp valuephp ofphp thephp flagphp;php passingphp a
-php php php php php php*php booleanphp truephp orphp falsephp valuephp willphp setphp thephp flagphp andphp returnphp thephp current
-php php php php php php*php objectphp instancephp.
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$flagphp Defaultsphp tophp nullphp php(returnphp flagphp statephp)
-php php php php php php*php php@returnphp booleanphp|Zendphp_Controllerphp_Frontphp Usedphp asphp aphp setterphp,php returnsphp objectphp;php asphp aphp getterphp,php returnsphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp throwExceptionsphp(php$flagphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$flagphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_throwExceptionsphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_throwExceptionsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp whetherphp php{php@linkphp dispatchphp(php)php}php shouldphp returnphp thephp responsephp withoutphp first
-php php php php php php*php renderingphp outputphp.php Byphp defaultphp,php outputphp isphp renderedphp andphp dispatchphp(php)php returns
-php php php php php php*php nothingphp.
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$flag
-php php php php php php*php php@returnphp booleanphp|Zendphp_Controllerphp_Frontphp Usedphp asphp aphp setterphp,php returnsphp objectphp;php asphp aphp getterphp,php returnsphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp returnResponsephp(php$flagphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(truephp php=php=php=php php$flagphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_returnResponsephp php=php truephp;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}php elseifphp php(falsephp php=php=php=php php$flagphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_returnResponsephp php=php falsephp;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_returnResponsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Dispatchphp anphp HTTPphp requestphp tophp aphp controllerphp/actionphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Abstractphp|nullphp php$request
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp|nullphp php$response
-php php php php php php*php php@returnphp voidphp|Zendphp_Controllerphp_Responsephp_Abstractphp Returnsphp responsephp objectphp ifphp returnResponsephp(php)php isphp true
-php php php php php php*php/
-php php php php publicphp functionphp dispatchphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp php=php nullphp,php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>getParamphp(php'noErrorHandlerphp'php)php php&php&php php!php$thisphp-php>php_pluginsphp-php>hasPluginphp(php'Zendphp_Controllerphp_Pluginphp_ErrorHandlerphp'php)php)php php{
-php php php php php php php php php php php php php/php/php Registerphp withphp stackphp indexphp ofphp php1php0php0
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/ErrorHandlerphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>registerPluginphp(newphp Zendphp_Controllerphp_Pluginphp_ErrorHandlerphp(php)php,php php1php0php0php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php$thisphp-php>getParamphp(php'noViewRendererphp'php)php php&php&php php!Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:hasHelperphp(php'viewRendererphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Helperphp/ViewRendererphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:getStackphp(php)php-php>offsetSetphp(php-php8php0php,php newphp Zendphp_Controllerphp_Actionphp_Helperphp_ViewRendererphp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Instantiatephp defaultphp requestphp objectphp php(HTTPphp versionphp)php ifphp nonephp provided
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(nullphp php!php=php=php php$requestphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setRequestphp(php$requestphp)php;
-php php php php php php php php php}php elseifphp php(php(nullphp php=php=php=php php$requestphp)php php&php&php php(nullphp php=php=php=php php(php$requestphp php=php php$thisphp-php>getRequestphp(php)php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Requestphp/Httpphp.phpphp'php;
-php php php php php php php php php php php php php$requestphp php=php newphp Zendphp_Controllerphp_Requestphp_Httpphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>setRequestphp(php$requestphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Setphp basephp URLphp ofphp requestphp objectphp,php ifphp available
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(isphp_callablephp(arrayphp(php$thisphp-php>php_requestphp,php php'setBaseUrlphp'php)php)php)php php{
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_baseUrlphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_requestphp-php>setBaseUrlphp(php$thisphp-php>php_baseUrlphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Instantiatephp defaultphp responsephp objectphp php(HTTPphp versionphp)php ifphp nonephp provided
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(nullphp php!php=php=php php$responsephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setResponsephp(php$responsephp)php;
-php php php php php php php php php}php elseifphp php(php(nullphp php=php=php=php php$thisphp-php>php_responsephp)php php&php&php php(nullphp php=php=php=php php(php$thisphp-php>php_responsephp php=php php$thisphp-php>getResponsephp(php)php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Responsephp/Httpphp.phpphp'php;
-php php php php php php php php php php php php php$responsephp php=php newphp Zendphp_Controllerphp_Responsephp_Httpphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>setResponsephp(php$responsephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Registerphp requestphp andphp responsephp objectsphp withphp pluginphp broker
-php php php php php php php php php php*php/
-php php php php php php php php php$thisphp-php>php_plugins
-php php php php php php php php php php php php php php-php>setRequestphp(php$thisphp-php>php_requestphp)
-php php php php php php php php php php php php php php-php>setResponsephp(php$thisphp-php>php_responsephp)php;
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Initializephp router
-php php php php php php php php php php*php/
-php php php php php php php php php$routerphp php=php php$thisphp-php>getRouterphp(php)php;
-php php php php php php php php php$routerphp-php>setParamsphp(php$thisphp-php>getParamsphp(php)php)php;
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Initializephp dispatcher
-php php php php php php php php php php*php/
-php php php php php php php php php$dispatcherphp php=php php$thisphp-php>getDispatcherphp(php)php;
-php php php php php php php php php$dispatcherphp-php>setParamsphp(php$thisphp-php>getParamsphp(php)php)
-php php php php php php php php php php php php php php php php php php php php-php>setResponsephp(php$thisphp-php>php_responsephp)php;
-
-php php php php php php php php php/php/php Beginphp dispatch
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Routephp requestphp tophp controllerphp/actionphp,php ifphp aphp routerphp isphp provided
-php php php php php php php php php php php php php php*php/
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php*php Notifyphp pluginsphp ofphp routerphp startup
-php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>routeStartupphp(php$thisphp-php>php_requestphp)php;
-
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$routerphp-php>routephp(php$thisphp-php>php_requestphp)php;
-php php php php php php php php php php php php php}php php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>throwExceptionsphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_responsephp-php>setExceptionphp(php$ephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php*php Notifyphp pluginsphp ofphp routerphp completion
-php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>routeShutdownphp(php$thisphp-php>php_requestphp)php;
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Notifyphp pluginsphp ofphp dispatchphp loopphp startup
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>dispatchLoopStartupphp(php$thisphp-php>php_requestphp)php;
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php Attemptphp tophp dispatchphp thephp controllerphp/actionphp.php Ifphp thephp php$thisphp-php>php_request
-php php php php php php php php php php php php php php*php php indicatesphp thatphp itphp needsphp tophp bephp dispatchedphp,php movephp tophp thephp next
-php php php php php php php php php php php php php php*php php actionphp inphp thephp requestphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_requestphp-php>setDispatchedphp(truephp)php;
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Notifyphp pluginsphp ofphp dispatchphp startup
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>preDispatchphp(php$thisphp-php>php_requestphp)php;
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Skipphp requestedphp actionphp ifphp preDispatchphp(php)php hasphp resetphp it
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_requestphp-php>isDispatchedphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Dispatchphp request
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php php php php php$dispatcherphp-php>dispatchphp(php$thisphp-php>php_requestphp,php php$thisphp-php>php_responsephp)php;
-php php php php php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>throwExceptionsphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_responsephp-php>setExceptionphp(php$ephp)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Notifyphp pluginsphp ofphp dispatchphp completion
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>postDispatchphp(php$thisphp-php>php_requestphp)php;
-php php php php php php php php php php php php php}php whilephp php(php!php$thisphp-php>php_requestphp-php>isDispatchedphp(php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>throwExceptionsphp(php)php)php php{
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_responsephp-php>setExceptionphp(php$ephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Notifyphp pluginsphp ofphp dispatchphp loopphp completion
-php php php php php php php php php php*php/
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>php_pluginsphp-php>dispatchLoopShutdownphp(php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>throwExceptionsphp(php)php)php php{
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_responsephp-php>setExceptionphp(php$ephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>returnResponsephp(php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_responsephp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_responsephp-php>sendResponsephp(php)php;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Controller
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Front.php 20246 2010-01-12 21:36:08Z dasprid $
+ */
+
+
+/** Zend_Loader */
+require_once 'Zend/Loader.php';
+
+/** Zend_Controller_Action_HelperBroker */
+require_once 'Zend/Controller/Action/HelperBroker.php';
+
+/** Zend_Controller_Plugin_Broker */
+require_once 'Zend/Controller/Plugin/Broker.php';
+
+/**
+ * @category   Zend
+ * @package    Zend_Controller
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Controller_Front
+{
+    /**
+     * Base URL
+     * @var string
+     */
+    protected $_baseUrl = null;
+
+    /**
+     * Directory|ies where controllers are stored
+     *
+     * @var string|array
+     */
+    protected $_controllerDir = null;
+
+    /**
+     * Instance of Zend_Controller_Dispatcher_Interface
+     * @var Zend_Controller_Dispatcher_Interface
+     */
+    protected $_dispatcher = null;
+
+    /**
+     * Singleton instance
+     *
+     * Marked only as protected to allow extension of the class. To extend,
+     * simply override {@link getInstance()}.
+     *
+     * @var Zend_Controller_Front
+     */
+    protected static $_instance = null;
+
+    /**
+     * Array of invocation parameters to use when instantiating action
+     * controllers
+     * @var array
+     */
+    protected $_invokeParams = array();
+
+    /**
+     * Subdirectory within a module containing controllers; defaults to 'controllers'
+     * @var string
+     */
+    protected $_moduleControllerDirectoryName = 'controllers';
+
+    /**
+     * Instance of Zend_Controller_Plugin_Broker
+     * @var Zend_Controller_Plugin_Broker
+     */
+    protected $_plugins = null;
+
+    /**
+     * Instance of Zend_Controller_Request_Abstract
+     * @var Zend_Controller_Request_Abstract
+     */
+    protected $_request = null;
+
+    /**
+     * Instance of Zend_Controller_Response_Abstract
+     * @var Zend_Controller_Response_Abstract
+     */
+    protected $_response = null;
+
+    /**
+     * Whether or not to return the response prior to rendering output while in
+     * {@link dispatch()}; default is to send headers and render output.
+     * @var boolean
+     */
+    protected $_returnResponse = false;
+
+    /**
+     * Instance of Zend_Controller_Router_Interface
+     * @var Zend_Controller_Router_Interface
+     */
+    protected $_router = null;
+
+    /**
+     * Whether or not exceptions encountered in {@link dispatch()} should be
+     * thrown or trapped in the response object
+     * @var boolean
+     */
+    protected $_throwExceptions = false;
+
+    /**
+     * Constructor
+     *
+     * Instantiate using {@link getInstance()}; front controller is a singleton
+     * object.
+     *
+     * Instantiates the plugin broker.
+     *
+     * @return void
+     */
+    protected function __construct()
+    {
+        $this->_plugins = new Zend_Controller_Plugin_Broker();
+    }
+
+    /**
+     * Enforce singleton; disallow cloning
+     *
+     * @return void
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * Singleton instance
+     *
+     * @return Zend_Controller_Front
+     */
+    public static function getInstance()
+    {
+        if (null === self::$_instance) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
+    }
+
+    /**
+     * Resets all object properties of the singleton instance
+     *
+     * Primarily used for testing; could be used to chain front controllers.
+     *
+     * Also resets action helper broker, clearing all registered helpers.
+     *
+     * @return void
+     */
+    public function resetInstance()
+    {
+        $reflection = new ReflectionObject($this);
+        foreach ($reflection->getProperties() as $property) {
+            $name = $property->getName();
+            switch ($name) {
+                case '_instance':
+                    break;
+                case '_controllerDir':
+                case '_invokeParams':
+                    $this->{$name} = array();
+                    break;
+                case '_plugins':
+                    $this->{$name} = new Zend_Controller_Plugin_Broker();
+                    break;
+                case '_throwExceptions':
+                case '_returnResponse':
+                    $this->{$name} = false;
+                    break;
+                case '_moduleControllerDirectoryName':
+                    $this->{$name} = 'controllers';
+                    break;
+                default:
+                    $this->{$name} = null;
+                    break;
+            }
+        }
+        Zend_Controller_Action_HelperBroker::resetHelpers();
+    }
+
+    /**
+     * Convenience feature, calls setControllerDirectory()->setRouter()->dispatch()
+     *
+     * In PHP 5.1.x, a call to a static method never populates $this -- so run()
+     * may actually be called after setting up your front controller.
+     *
+     * @param string|array $controllerDirectory Path to Zend_Controller_Action
+     * controller classes or array of such paths
+     * @return void
+     * @throws Zend_Controller_Exception if called from an object instance
+     */
+    public static function run($controllerDirectory)
+    {
+        self::getInstance()
+            ->setControllerDirectory($controllerDirectory)
+            ->dispatch();
+    }
+
+    /**
+     * Add a controller directory to the controller directory stack
+     *
+     * If $args is presented and is a string, uses it for the array key mapping
+     * to the directory specified.
+     *
+     * @param string $directory
+     * @param string $module Optional argument; module with which to associate directory. If none provided, assumes 'default'
+     * @return Zend_Controller_Front
+     * @throws Zend_Controller_Exception if directory not found or readable
+     */
+    public function addControllerDirectory($directory, $module = null)
+    {
+        $this->getDispatcher()->addControllerDirectory($directory, $module);
+        return $this;
+    }
+
+    /**
+     * Set controller directory
+     *
+     * Stores controller directory(ies) in dispatcher. May be an array of
+     * directories or a string containing a single directory.
+     *
+     * @param string|array $directory Path to Zend_Controller_Action controller
+     * classes or array of such paths
+     * @param  string $module Optional module name to use with string $directory
+     * @return Zend_Controller_Front
+     */
+    public function setControllerDirectory($directory, $module = null)
+    {
+        $this->getDispatcher()->setControllerDirectory($directory, $module);
+        return $this;
+    }
+
+    /**
+     * Retrieve controller directory
+     *
+     * Retrieves:
+     * - Array of all controller directories if no $name passed
+     * - String path if $name passed and exists as a key in controller directory array
+     * - null if $name passed but does not exist in controller directory keys
+     *
+     * @param  string $name Default null
+     * @return array|string|null
+     */
+    public function getControllerDirectory($name = null)
+    {
+        return $this->getDispatcher()->getControllerDirectory($name);
+    }
+
+    /**
+     * Remove a controller directory by module name
+     *
+     * @param  string $module
+     * @return bool
+     */
+    public function removeControllerDirectory($module)
+    {
+        return $this->getDispatcher()->removeControllerDirectory($module);
+    }
+
+    /**
+     * Specify a directory as containing modules
+     *
+     * Iterates through the directory, adding any subdirectories as modules;
+     * the subdirectory within each module named after {@link $_moduleControllerDirectoryName}
+     * will be used as the controller directory path.
+     *
+     * @param  string $path
+     * @return Zend_Controller_Front
+     */
+    public function addModuleDirectory($path)
+    {
+        try{
+            $dir = new DirectoryIterator($path);
+        } catch(Exception $e) {
+            require_once 'Zend/Controller/Exception.php';
+            throw new Zend_Controller_Exception("Directory $path not readable", 0, $e);
+        }
+        foreach ($dir as $file) {
+            if ($file->isDot() || !$file->isDir()) {
+                continue;
+            }
+
+            $module    = $file->getFilename();
+
+            // Don't use SCCS directories as modules
+            if (preg_match('/^[^a-z]/i', $module) || ('CVS' == $module)) {
+                continue;
+            }
+
+            $moduleDir = $file->getPathname() . DIRECTORY_SEPARATOR . $this->getModuleControllerDirectoryName();
+            $this->addControllerDirectory($moduleDir, $module);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Return the path to a module directory (but not the controllers directory within)
+     *
+     * @param  string $module
+     * @return string|null
+     */
+    public function getModuleDirectory($module = null)
+    {
+        if (null === $module) {
+            $request = $this->getRequest();
+            if (null !== $request) {
+                $module = $this->getRequest()->getModuleName();
+            }
+            if (empty($module)) {
+                $module = $this->getDispatcher()->getDefaultModule();
+            }
+        }
+
+        $controllerDir = $this->getControllerDirectory($module);
+
+        if ((null === $controllerDir) || !is_string($controllerDir)) {
+            return null;
+        }
+
+        return dirname($controllerDir);
+    }
+
+    /**
+     * Set the directory name within a module containing controllers
+     *
+     * @param  string $name
+     * @return Zend_Controller_Front
+     */
+    public function setModuleControllerDirectoryName($name = 'controllers')
+    {
+        $this->_moduleControllerDirectoryName = (string) $name;
+
+        return $this;
+    }
+
+    /**
+     * Return the directory name within a module containing controllers
+     *
+     * @return string
+     */
+    public function getModuleControllerDirectoryName()
+    {
+        return $this->_moduleControllerDirectoryName;
+    }
+
+    /**
+     * Set the default controller (unformatted string)
+     *
+     * @param string $controller
+     * @return Zend_Controller_Front
+     */
+    public function setDefaultControllerName($controller)
+    {
+        $dispatcher = $this->getDispatcher();
+        $dispatcher->setDefaultControllerName($controller);
+        return $this;
+    }
+
+    /**
+     * Retrieve the default controller (unformatted string)
+     *
+     * @return string
+     */
+    public function getDefaultControllerName()
+    {
+        return $this->getDispatcher()->getDefaultControllerName();
+    }
+
+    /**
+     * Set the default action (unformatted string)
+     *
+     * @param string $action
+     * @return Zend_Controller_Front
+     */
+    public function setDefaultAction($action)
+    {
+        $dispatcher = $this->getDispatcher();
+        $dispatcher->setDefaultAction($action);
+        return $this;
+    }
+
+    /**
+     * Retrieve the default action (unformatted string)
+     *
+     * @return string
+     */
+    public function getDefaultAction()
+    {
+        return $this->getDispatcher()->getDefaultAction();
+    }
+
+    /**
+     * Set the default module name
+     *
+     * @param string $module
+     * @return Zend_Controller_Front
+     */
+    public function setDefaultModule($module)
+    {
+        $dispatcher = $this->getDispatcher();
+        $dispatcher->setDefaultModule($module);
+        return $this;
+    }
+
+    /**
+     * Retrieve the default module
+     *
+     * @return string
+     */
+    public function getDefaultModule()
+    {
+        return $this->getDispatcher()->getDefaultModule();
+    }
+
+    /**
+     * Set request class/object
+     *
+     * Set the request object.  The request holds the request environment.
+     *
+     * If a class name is provided, it will instantiate it
+     *
+     * @param string|Zend_Controller_Request_Abstract $request
+     * @throws Zend_Controller_Exception if invalid request class
+     * @return Zend_Controller_Front
+     */
+    public function setRequest($request)
+    {
+        if (is_string($request)) {
+            if (!class_exists($request)) {
+                require_once 'Zend/Loader.php';
+                Zend_Loader::loadClass($request);
+            }
+            $request = new $request();
+        }
+        if (!$request instanceof Zend_Controller_Request_Abstract) {
+            require_once 'Zend/Controller/Exception.php';
+            throw new Zend_Controller_Exception('Invalid request class');
+        }
+
+        $this->_request = $request;
+
+        return $this;
+    }
+
+    /**
+     * Return the request object.
+     *
+     * @return null|Zend_Controller_Request_Abstract
+     */
+    public function getRequest()
+    {
+        return $this->_request;
+    }
+
+    /**
+     * Set router class/object
+     *
+     * Set the router object.  The router is responsible for mapping
+     * the request to a controller and action.
+     *
+     * If a class name is provided, instantiates router with any parameters
+     * registered via {@link setParam()} or {@link setParams()}.
+     *
+     * @param string|Zend_Controller_Router_Interface $router
+     * @throws Zend_Controller_Exception if invalid router class
+     * @return Zend_Controller_Front
+     */
+    public function setRouter($router)
+    {
+        if (is_string($router)) {
+            if (!class_exists($router)) {
+                require_once 'Zend/Loader.php';
+                Zend_Loader::loadClass($router);
+            }
+            $router = new $router();
+        }
+
+        if (!$router instanceof Zend_Controller_Router_Interface) {
+            require_once 'Zend/Controller/Exception.php';
+            throw new Zend_Controller_Exception('Invalid router class');
+        }
+
+        $router->setFrontController($this);
+        $this->_router = $router;
+
+        return $this;
+    }
+
+    /**
+     * Return the router object.
+     *
+     * Instantiates a Zend_Controller_Router_Rewrite object if no router currently set.
+     *
+     * @return Zend_Controller_Router_Interface
+     */
+    public function getRouter()
+    {
+        if (null == $this->_router) {
+            require_once 'Zend/Controller/Router/Rewrite.php';
+            $this->setRouter(new Zend_Controller_Router_Rewrite());
+        }
+
+        return $this->_router;
+    }
+
+    /**
+     * Set the base URL used for requests
+     *
+     * Use to set the base URL segment of the REQUEST_URI to use when
+     * determining PATH_INFO, etc. Examples:
+     * - /admin
+     * - /myapp
+     * - /subdir/index.php
+     *
+     * Note that the URL should not include the full URI. Do not use:
+     * - http://example.com/admin
+     * - http://example.com/myapp
+     * - http://example.com/subdir/index.php
+     *
+     * If a null value is passed, this can be used as well for autodiscovery (default).
+     *
+     * @param string $base
+     * @return Zend_Controller_Front
+     * @throws Zend_Controller_Exception for non-string $base
+     */
+    public function setBaseUrl($base = null)
+    {
+        if (!is_string($base) && (null !== $base)) {
+            require_once 'Zend/Controller/Exception.php';
+            throw new Zend_Controller_Exception('Rewrite base must be a string');
+        }
+
+        $this->_baseUrl = $base;
+
+        if ((null !== ($request = $this->getRequest())) && (method_exists($request, 'setBaseUrl'))) {
+            $request->setBaseUrl($base);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Retrieve the currently set base URL
+     *
+     * @return string
+     */
+    public function getBaseUrl()
+    {
+        $request = $this->getRequest();
+        if ((null !== $request) && method_exists($request, 'getBaseUrl')) {
+            return $request->getBaseUrl();
+        }
+
+        return $this->_baseUrl;
+    }
+
+    /**
+     * Set the dispatcher object.  The dispatcher is responsible for
+     * taking a Zend_Controller_Dispatcher_Token object, instantiating the controller, and
+     * call the action method of the controller.
+     *
+     * @param Zend_Controller_Dispatcher_Interface $dispatcher
+     * @return Zend_Controller_Front
+     */
+    public function setDispatcher(Zend_Controller_Dispatcher_Interface $dispatcher)
+    {
+        $this->_dispatcher = $dispatcher;
+        return $this;
+    }
+
+    /**
+     * Return the dispatcher object.
+     *
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function getDispatcher()
+    {
+        /**
+         * Instantiate the default dispatcher if one was not set.
+         */
+        if (!$this->_dispatcher instanceof Zend_Controller_Dispatcher_Interface) {
+            require_once 'Zend/Controller/Dispatcher/Standard.php';
+            $this->_dispatcher = new Zend_Controller_Dispatcher_Standard();
+        }
+        return $this->_dispatcher;
+    }
+
+    /**
+     * Set response class/object
+     *
+     * Set the response object.  The response is a container for action
+     * responses and headers. Usage is optional.
+     *
+     * If a class name is provided, instantiates a response object.
+     *
+     * @param string|Zend_Controller_Response_Abstract $response
+     * @throws Zend_Controller_Exception if invalid response class
+     * @return Zend_Controller_Front
+     */
+    public function setResponse($response)
+    {
+        if (is_string($response)) {
+            if (!class_exists($response)) {
+                require_once 'Zend/Loader.php';
+                Zend_Loader::loadClass($response);
+            }
+            $response = new $response();
+        }
+        if (!$response instanceof Zend_Controller_Response_Abstract) {
+            require_once 'Zend/Controller/Exception.php';
+            throw new Zend_Controller_Exception('Invalid response class');
+        }
+
+        $this->_response = $response;
+
+        return $this;
+    }
+
+    /**
+     * Return the response object.
+     *
+     * @return null|Zend_Controller_Response_Abstract
+     */
+    public function getResponse()
+    {
+        return $this->_response;
+    }
+
+    /**
+     * Add or modify a parameter to use when instantiating an action controller
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return Zend_Controller_Front
+     */
+    public function setParam($name, $value)
+    {
+        $name = (string) $name;
+        $this->_invokeParams[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Set parameters to pass to action controller constructors
+     *
+     * @param array $params
+     * @return Zend_Controller_Front
+     */
+    public function setParams(array $params)
+    {
+        $this->_invokeParams = array_merge($this->_invokeParams, $params);
+        return $this;
+    }
+
+    /**
+     * Retrieve a single parameter from the controller parameter stack
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getParam($name)
+    {
+        if(isset($this->_invokeParams[$name])) {
+            return $this->_invokeParams[$name];
+        }
+
+        return null;
+    }
+
+    /**
+     * Retrieve action controller instantiation parameters
+     *
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->_invokeParams;
+    }
+
+    /**
+     * Clear the controller parameter stack
+     *
+     * By default, clears all parameters. If a parameter name is given, clears
+     * only that parameter; if an array of parameter names is provided, clears
+     * each.
+     *
+     * @param null|string|array single key or array of keys for params to clear
+     * @return Zend_Controller_Front
+     */
+    public function clearParams($name = null)
+    {
+        if (null === $name) {
+            $this->_invokeParams = array();
+        } elseif (is_string($name) && isset($this->_invokeParams[$name])) {
+            unset($this->_invokeParams[$name]);
+        } elseif (is_array($name)) {
+            foreach ($name as $key) {
+                if (is_string($key) && isset($this->_invokeParams[$key])) {
+                    unset($this->_invokeParams[$key]);
+                }
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Register a plugin.
+     *
+     * @param  Zend_Controller_Plugin_Abstract $plugin
+     * @param  int $stackIndex Optional; stack index for plugin
+     * @return Zend_Controller_Front
+     */
+    public function registerPlugin(Zend_Controller_Plugin_Abstract $plugin, $stackIndex = null)
+    {
+        $this->_plugins->registerPlugin($plugin, $stackIndex);
+        return $this;
+    }
+
+    /**
+     * Unregister a plugin.
+     *
+     * @param  string|Zend_Controller_Plugin_Abstract $plugin Plugin class or object to unregister
+     * @return Zend_Controller_Front
+     */
+    public function unregisterPlugin($plugin)
+    {
+        $this->_plugins->unregisterPlugin($plugin);
+        return $this;
+    }
+
+    /**
+     * Is a particular plugin registered?
+     *
+     * @param  string $class
+     * @return bool
+     */
+    public function hasPlugin($class)
+    {
+        return $this->_plugins->hasPlugin($class);
+    }
+
+    /**
+     * Retrieve a plugin or plugins by class
+     *
+     * @param  string $class
+     * @return false|Zend_Controller_Plugin_Abstract|array
+     */
+    public function getPlugin($class)
+    {
+        return $this->_plugins->getPlugin($class);
+    }
+
+    /**
+     * Retrieve all plugins
+     *
+     * @return array
+     */
+    public function getPlugins()
+    {
+        return $this->_plugins->getPlugins();
+    }
+
+    /**
+     * Set the throwExceptions flag and retrieve current status
+     *
+     * Set whether exceptions encounted in the dispatch loop should be thrown
+     * or caught and trapped in the response object.
+     *
+     * Default behaviour is to trap them in the response object; call this
+     * method to have them thrown.
+     *
+     * Passing no value will return the current value of the flag; passing a
+     * boolean true or false value will set the flag and return the current
+     * object instance.
+     *
+     * @param boolean $flag Defaults to null (return flag state)
+     * @return boolean|Zend_Controller_Front Used as a setter, returns object; as a getter, returns boolean
+     */
+    public function throwExceptions($flag = null)
+    {
+        if ($flag !== null) {
+            $this->_throwExceptions = (bool) $flag;
+            return $this;
+        }
+
+        return $this->_throwExceptions;
+    }
+
+    /**
+     * Set whether {@link dispatch()} should return the response without first
+     * rendering output. By default, output is rendered and dispatch() returns
+     * nothing.
+     *
+     * @param boolean $flag
+     * @return boolean|Zend_Controller_Front Used as a setter, returns object; as a getter, returns boolean
+     */
+    public function returnResponse($flag = null)
+    {
+        if (true === $flag) {
+            $this->_returnResponse = true;
+            return $this;
+        } elseif (false === $flag) {
+            $this->_returnResponse = false;
+            return $this;
+        }
+
+        return $this->_returnResponse;
+    }
+
+    /**
+     * Dispatch an HTTP request to a controller/action.
+     *
+     * @param Zend_Controller_Request_Abstract|null $request
+     * @param Zend_Controller_Response_Abstract|null $response
+     * @return void|Zend_Controller_Response_Abstract Returns response object if returnResponse() is true
+     */
+    public function dispatch(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null)
+    {
+        if (!$this->getParam('noErrorHandler') && !$this->_plugins->hasPlugin('Zend_Controller_Plugin_ErrorHandler')) {
+            // Register with stack index of 100
+            require_once 'Zend/Controller/Plugin/ErrorHandler.php';
+            $this->_plugins->registerPlugin(new Zend_Controller_Plugin_ErrorHandler(), 100);
+        }
+
+        if (!$this->getParam('noViewRenderer') && !Zend_Controller_Action_HelperBroker::hasHelper('viewRenderer')) {
+            require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
+            Zend_Controller_Action_HelperBroker::getStack()->offsetSet(-80, new Zend_Controller_Action_Helper_ViewRenderer());
+        }
+
+        /**
+         * Instantiate default request object (HTTP version) if none provided
+         */
+        if (null !== $request) {
+            $this->setRequest($request);
+        } elseif ((null === $request) && (null === ($request = $this->getRequest()))) {
+            require_once 'Zend/Controller/Request/Http.php';
+            $request = new Zend_Controller_Request_Http();
+            $this->setRequest($request);
+        }
+
+        /**
+         * Set base URL of request object, if available
+         */
+        if (is_callable(array($this->_request, 'setBaseUrl'))) {
+            if (null !== $this->_baseUrl) {
+                $this->_request->setBaseUrl($this->_baseUrl);
+            }
+        }
+
+        /**
+         * Instantiate default response object (HTTP version) if none provided
+         */
+        if (null !== $response) {
+            $this->setResponse($response);
+        } elseif ((null === $this->_response) && (null === ($this->_response = $this->getResponse()))) {
+            require_once 'Zend/Controller/Response/Http.php';
+            $response = new Zend_Controller_Response_Http();
+            $this->setResponse($response);
+        }
+
+        /**
+         * Register request and response objects with plugin broker
+         */
+        $this->_plugins
+             ->setRequest($this->_request)
+             ->setResponse($this->_response);
+
+        /**
+         * Initialize router
+         */
+        $router = $this->getRouter();
+        $router->setParams($this->getParams());
+
+        /**
+         * Initialize dispatcher
+         */
+        $dispatcher = $this->getDispatcher();
+        $dispatcher->setParams($this->getParams())
+                   ->setResponse($this->_response);
+
+        // Begin dispatch
+        try {
+            /**
+             * Route request to controller/action, if a router is provided
+             */
+
+            /**
+            * Notify plugins of router startup
+            */
+            $this->_plugins->routeStartup($this->_request);
+
+            try {
+                $router->route($this->_request);
+            }  catch (Exception $e) {
+                if ($this->throwExceptions()) {
+                    throw $e;
+                }
+
+                $this->_response->setException($e);
+            }
+
+            /**
+            * Notify plugins of router completion
+            */
+            $this->_plugins->routeShutdown($this->_request);
+
+            /**
+             * Notify plugins of dispatch loop startup
+             */
+            $this->_plugins->dispatchLoopStartup($this->_request);
+
+            /**
+             *  Attempt to dispatch the controller/action. If the $this->_request
+             *  indicates that it needs to be dispatched, move to the next
+             *  action in the request.
+             */
+            do {
+                $this->_request->setDispatched(true);
+
+                /**
+                 * Notify plugins of dispatch startup
+                 */
+                $this->_plugins->preDispatch($this->_request);
+
+                /**
+                 * Skip requested action if preDispatch() has reset it
+                 */
+                if (!$this->_request->isDispatched()) {
+                    continue;
+                }
+
+                /**
+                 * Dispatch request
+                 */
+                try {
+                    $dispatcher->dispatch($this->_request, $this->_response);
+                } catch (Exception $e) {
+                    if ($this->throwExceptions()) {
+                        throw $e;
+                    }
+                    $this->_response->setException($e);
+                }
+
+                /**
+                 * Notify plugins of dispatch completion
+                 */
+                $this->_plugins->postDispatch($this->_request);
+            } while (!$this->_request->isDispatched());
+        } catch (Exception $e) {
+            if ($this->throwExceptions()) {
+                throw $e;
+            }
+
+            $this->_response->setException($e);
+        }
+
+        /**
+         * Notify plugins of dispatch loop completion
+         */
+        try {
+            $this->_plugins->dispatchLoopShutdown();
+        } catch (Exception $e) {
+            if ($this->throwExceptions()) {
+                throw $e;
+            }
+
+            $this->_response->setException($e);
+        }
+
+        if ($this->returnResponse()) {
+            return $this->_response;
+        }
+
+        $this->_response->sendResponse();
+    }
+}

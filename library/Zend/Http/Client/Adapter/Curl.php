@@ -1,507 +1,507 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@versionphp php php php php$Idphp:php Curlphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @version    $Id: Curl.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Uriphp_Http
-php php*php/
-requirephp_oncephp php'Zendphp/Uriphp/Httpphp.phpphp'php;
+/**
+ * @see Zend_Uri_Http
+ */
+require_once 'Zend/Uri/Http.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Interfacephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Stream
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Streamphp.phpphp'php;
+/**
+ * @see Zend_Http_Client_Adapter_Interface
+ */
+require_once 'Zend/Http/Client/Adapter/Interface.php';
+/**
+ * @see Zend_Http_Client_Adapter_Stream
+ */
+require_once 'Zend/Http/Client/Adapter/Stream.php';
 
-php/php*php*
-php php*php Anphp adapterphp classphp forphp Zendphp_Httpphp_Clientphp basedphp onphp thephp curlphp extensionphp.
-php php*php Curlphp requiresphp libcurlphp.php Seephp forphp fullphp requirementsphp thephp PHPphp manualphp:php httpphp:php/php/phpphp.netphp/curl
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Httpphp_Clientphp_Adapterphp_Curlphp implementsphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp,php Zendphp_Httpphp_Clientphp_Adapterphp_Stream
-php{
-php php php php php/php*php*
-php php php php php php*php Parametersphp array
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_configphp php=php arrayphp(php)php;
+/**
+ * An adapter class for Zend_Http_Client based on the curl extension.
+ * Curl requires libcurl. See for full requirements the PHP manual: http://php.net/curl
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interface, Zend_Http_Client_Adapter_Stream
+{
+    /**
+     * Parameters array
+     *
+     * @var array
+     */
+    protected $_config = array();
 
-php php php php php/php*php*
-php php php php php php*php Whatphp hostphp/portphp arephp wephp connectedphp tophp?
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_connectedphp_tophp php=php arrayphp(nullphp,php nullphp)php;
+    /**
+     * What host/port are we connected to?
+     *
+     * @var array
+     */
+    protected $_connected_to = array(null, null);
 
-php php php php php/php*php*
-php php php php php php*php Thephp curlphp sessionphp handle
-php php php php php php*
-php php php php php php*php php@varphp resourcephp|null
-php php php php php php*php/
-php php php php protectedphp php$php_curlphp php=php nullphp;
+    /**
+     * The curl session handle
+     *
+     * @var resource|null
+     */
+    protected $_curl = null;
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp cURLphp optionsphp thatphp shouldphp neverphp bephp overwritten
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_invalidOverwritableCurlOptionsphp;
+    /**
+     * List of cURL options that should never be overwritten
+     *
+     * @var array
+     */
+    protected $_invalidOverwritableCurlOptions;
 
-php php php php php/php*php*
-php php php php php php*php Responsephp gottenphp fromphp server
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_responsephp php=php nullphp;
+    /**
+     * Response gotten from server
+     *
+     * @var string
+     */
+    protected $_response = null;
 
-php php php php php/php*php*
-php php php php php php*php Streamphp forphp storingphp output
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$outphp_streamphp;
+    /**
+     * Stream for storing output
+     *
+     * @var resource
+     */
+    protected $out_stream;
 
-php php php php php/php*php*
-php php php php php php*php Adapterphp constructor
-php php php php php php*
-php php php php php php*php Configphp isphp setphp usingphp setConfigphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Adapterphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'curlphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'cURLphp extensionphp hasphp tophp bephp loadedphp tophp usephp thisphp Zendphp_Httpphp_Clientphp adapterphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_invalidOverwritableCurlOptionsphp php=php arrayphp(
-php php php php php php php php php php php php CURLOPTphp_HTTPGETphp,
-php php php php php php php php php php php php CURLOPTphp_POSTphp,
-php php php php php php php php php php php php CURLOPTphp_PUTphp,
-php php php php php php php php php php php php CURLOPTphp_CUSTOMREQUESTphp,
-php php php php php php php php php php php php CURLOPTphp_HEADERphp,
-php php php php php php php php php php php php CURLOPTphp_RETURNTRANSFERphp,
-php php php php php php php php php php php php CURLOPTphp_HTTPHEADERphp,
-php php php php php php php php php php php php CURLOPTphp_POSTFIELDSphp,
-php php php php php php php php php php php php CURLOPTphp_INFILEphp,
-php php php php php php php php php php php php CURLOPTphp_INFILESIZEphp,
-php php php php php php php php php php php php CURLOPTphp_PORTphp,
-php php php php php php php php php php php php CURLOPTphp_MAXREDIRSphp,
-php php php php php php php php php php php php CURLOPTphp_CONNECTTIMEOUTphp,
-php php php php php php php php php php php php CURLphp_HTTPphp_VERSIONphp_php1php_php1php,
-php php php php php php php php php php php php CURLphp_HTTPphp_VERSIONphp_php1php_php0php,
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Adapter constructor
+     *
+     * Config is set using setConfig()
+     *
+     * @return void
+     * @throws Zend_Http_Client_Adapter_Exception
+     */
+    public function __construct()
+    {
+        if (!extension_loaded('curl')) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception('cURL extension has to be loaded to use this Zend_Http_Client adapter.');
+        }
+        $this->_invalidOverwritableCurlOptions = array(
+            CURLOPT_HTTPGET,
+            CURLOPT_POST,
+            CURLOPT_PUT,
+            CURLOPT_CUSTOMREQUEST,
+            CURLOPT_HEADER,
+            CURLOPT_RETURNTRANSFER,
+            CURLOPT_HTTPHEADER,
+            CURLOPT_POSTFIELDS,
+            CURLOPT_INFILE,
+            CURLOPT_INFILESIZE,
+            CURLOPT_PORT,
+            CURLOPT_MAXREDIRS,
+            CURLOPT_CONNECTTIMEOUT,
+            CURL_HTTP_VERSION_1_1,
+            CURL_HTTP_VERSION_1_0,
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp configurationphp arrayphp forphp thephp adapter
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Adapterphp_Exception
-php php php php php php*php php@paramphp php Zendphp_Configphp php|php arrayphp php$config
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Curl
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(php$configphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
+    /**
+     * Set the configuration array for the adapter
+     *
+     * @throws Zend_Http_Client_Adapter_Exception
+     * @param  Zend_Config | array $config
+     * @return Zend_Http_Client_Adapter_Curl
+     */
+    public function setConfig($config = array())
+    {
+        if ($config instanceof Zend_Config) {
+            $config = $config->toArray();
 
-php php php php php php php php php}php elseifphp php(php!php isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Arrayphp orphp Zendphp_Configphp objectphp expectedphp,php gotphp php'php php.php gettypephp(php$configphp)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        } elseif (! is_array($config)) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception(
+                'Array or Zend_Config object expected, got ' . gettype($config)
+            );
+        }
 
-php php php php php php php php ifphp(issetphp(php$configphp[php'proxyphp_userphp'php]php)php php&php&php issetphp(php$configphp[php'proxyphp_passphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setCurlOptionphp(CURLOPTphp_PROXYUSERPWDphp,php php$configphp[php'proxyphp_userphp'php]php.php"php:php"php.php$configphp[php'proxyphp_passphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$configphp[php'proxyphp_userphp'php]php,php php$configphp[php'proxyphp_passphp'php]php)php;
-php php php php php php php php php}
+        if(isset($config['proxy_user']) && isset($config['proxy_pass'])) {
+            $this->setCurlOption(CURLOPT_PROXYUSERPWD, $config['proxy_user'].":".$config['proxy_pass']);
+            unset($config['proxy_user'], $config['proxy_pass']);
+        }
 
-php php php php php php php php foreachphp php(php$configphp asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php php$optionphp php=php strtolowerphp(php$kphp)php;
-php php php php php php php php php php php php switchphp(php$optionphp)php php{
-php php php php php php php php php php php php php php php php casephp php'proxyphp_hostphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCurlOptionphp(CURLOPTphp_PROXYphp,php php$vphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'proxyphp_portphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCurlOptionphp(CURLOPTphp_PROXYPORTphp,php php$vphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php$optionphp]php php=php php$vphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($config as $k => $v) {
+            $option = strtolower($k);
+            switch($option) {
+                case 'proxy_host':
+                    $this->setCurlOption(CURLOPT_PROXY, $v);
+                    break;
+                case 'proxy_port':
+                    $this->setCurlOption(CURLOPT_PROXYPORT, $v);
+                    break;
+                default:
+                    $this->_config[$option] = $v;
+                    break;
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php php*php Retrievephp thephp arrayphp ofphp allphp configurationphp options
-php php php php php php php*
-php php php php php php php*php php@returnphp array
-php php php php php php php*php/
-php php php php php publicphp functionphp getConfigphp(php)
-php php php php php php{
-php php php php php php php php php returnphp php$thisphp-php>php_configphp;
-php php php php php php}
+    /**
+      * Retrieve the array of all configuration options
+      *
+      * @return array
+      */
+     public function getConfig()
+     {
+         return $this->_config;
+     }
 
-php php php php php/php*php*
-php php php php php php*php Directphp setterphp forphp cURLphp adapterphp relatedphp optionsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$option
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Httpphp_Adapterphp_Curl
-php php php php php php*php/
-php php php php publicphp functionphp setCurlOptionphp(php$optionphp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_configphp[php'curloptionsphp'php]php php=php arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_configphp[php'curloptionsphp'php]php[php$optionphp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Direct setter for cURL adapter related options.
+     *
+     * @param  string|int $option
+     * @param  mixed $value
+     * @return Zend_Http_Adapter_Curl
+     */
+    public function setCurlOption($option, $value)
+    {
+        if (!isset($this->_config['curloptions'])) {
+            $this->_config['curloptions'] = array();
+        }
+        $this->_config['curloptions'][$option] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp curl
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$host
-php php php php php php*php php@paramphp php intphp php php php php php$port
-php php php php php php*php php@paramphp php booleanphp php$secure
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp ifphp unablephp tophp connect
-php php php php php php*php/
-php php php php publicphp functionphp connectphp(php$hostphp,php php$portphp php=php php8php0php,php php$securephp php=php falsephp)
-php php php php php{
-php php php php php php php php php/php/php Ifphp wephp'rephp alreadyphp connectedphp,php disconnectphp first
-php php php php php php php php ifphp php(php$thisphp-php>php_curlphp)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
+    /**
+     * Initialize curl
+     *
+     * @param  string  $host
+     * @param  int     $port
+     * @param  boolean $secure
+     * @return void
+     * @throws Zend_Http_Client_Adapter_Exception if unable to connect
+     */
+    public function connect($host, $port = 80, $secure = false)
+    {
+        // If we're already connected, disconnect first
+        if ($this->_curl) {
+            $this->close();
+        }
 
-php php php php php php php php php/php/php Ifphp wephp arephp connectedphp tophp aphp differentphp serverphp orphp portphp,php disconnectphp first
-php php php php php php php php ifphp php(php$thisphp-php>php_curl
-php php php php php php php php php php php php php&php&php isphp_arrayphp(php$thisphp-php>php_connectedphp_tophp)
-php php php php php php php php php php php php php&php&php php(php$thisphp-php>php_connectedphp_tophp[php0php]php php!php=php php$host
-php php php php php php php php php php php php php|php|php php$thisphp-php>php_connectedphp_tophp[php1php]php php!php=php php$portphp)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
+        // If we are connected to a different server or port, disconnect first
+        if ($this->_curl
+            && is_array($this->_connected_to)
+            && ($this->_connected_to[0] != $host
+            || $this->_connected_to[1] != $port)
+        ) {
+            $this->close();
+        }
 
-php php php php php php php php php/php/php Dophp thephp actualphp connection
-php php php php php php php php php$thisphp-php>php_curlphp php=php curlphp_initphp(php)php;
-php php php php php php php php ifphp php(php$portphp php!php=php php8php0php)php php{
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_PORTphp,php intvalphp(php$portphp)php)php;
-php php php php php php php php php}
+        // Do the actual connection
+        $this->_curl = curl_init();
+        if ($port != 80) {
+            curl_setopt($this->_curl, CURLOPT_PORT, intval($port));
+        }
 
-php php php php php php php php php/php/php Setphp timeout
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_CONNECTTIMEOUTphp,php php$thisphp-php>php_configphp[php'timeoutphp'php]php)php;
+        // Set timeout
+        curl_setopt($this->_curl, CURLOPT_CONNECTTIMEOUT, $this->_config['timeout']);
 
-php php php php php php php php php/php/php Setphp Maxphp redirects
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_MAXREDIRSphp,php php$thisphp-php>php_configphp[php'maxredirectsphp'php]php)php;
+        // Set Max redirects
+        curl_setopt($this->_curl, CURLOPT_MAXREDIRS, $this->_config['maxredirects']);
 
-php php php php php php php php ifphp php(php!php$thisphp-php>php_curlphp)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
+        if (!$this->_curl) {
+            $this->close();
 
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Unablephp tophp Connectphp tophp php'php php.php php php$hostphp php.php php'php:php'php php.php php$portphp)php;
-php php php php php php php php php}
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception('Unable to Connect to ' .  $host . ':' . $port);
+        }
 
-php php php php php php php php ifphp php(php$securephp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php/php Behavephp thephp samephp likephp Zendphp_Httpphp_Adapterphp_Socketphp onphp SSLphp optionsphp.
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php'sslcertphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_SSLCERTphp,php php$thisphp-php>php_configphp[php'sslcertphp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php'sslpassphrasephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_SSLCERTPASSWDphp,php php$thisphp-php>php_configphp[php'sslpassphrasephp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($secure !== false) {
+            // Behave the same like Zend_Http_Adapter_Socket on SSL options.
+            if (isset($this->_config['sslcert'])) {
+                curl_setopt($this->_curl, CURLOPT_SSLCERT, $this->_config['sslcert']);
+            }
+            if (isset($this->_config['sslpassphrase'])) {
+                curl_setopt($this->_curl, CURLOPT_SSLCERTPASSWD, $this->_config['sslpassphrase']);
+            }
+        }
 
-php php php php php php php php php/php/php Updatephp connectedphp_to
-php php php php php php php php php$thisphp-php>php_connectedphp_tophp php=php arrayphp(php$hostphp,php php$portphp)php;
-php php php php php}
+        // Update connected_to
+        $this->_connected_to = array($host, $port);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Sendphp requestphp tophp thephp remotephp server
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php$method
-php php php php php php*php php@paramphp php Zendphp_Uriphp_Httpphp php$uri
-php php php php php php*php php@paramphp php floatphp php php php php php php php php php$httpphp_ver
-php php php php php php*php php@paramphp php arrayphp php php php php php php php php php$headers
-php php php php php php*php php@paramphp php stringphp php php php php php php php php$body
-php php php php php php*php php@returnphp stringphp php php php php php php php php$request
-php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp Ifphp connectionphp failsphp,php connectedphp tophp wrongphp hostphp,php nophp PUTphp filephp definedphp,php unsupportedphp methodphp,php orphp unsupportedphp cURLphp option
-php php php php php php*php/
-php php php php publicphp functionphp writephp(php$methodphp,php php$uriphp,php php$httpVersionphp php=php php1php.php1php,php php$headersphp php=php arrayphp(php)php,php php$bodyphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php/php/php Makephp surephp wephp'rephp properlyphp connected
-php php php php php php php php ifphp php(php!php$thisphp-php>php_curlphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Tryingphp tophp writephp butphp wephp arephp notphp connectedphp"php)php;
-php php php php php php php php php}
+    /**
+     * Send request to the remote server
+     *
+     * @param  string        $method
+     * @param  Zend_Uri_Http $uri
+     * @param  float         $http_ver
+     * @param  array         $headers
+     * @param  string        $body
+     * @return string        $request
+     * @throws Zend_Http_Client_Adapter_Exception If connection fails, connected to wrong host, no PUT file defined, unsupported method, or unsupported cURL option
+     */
+    public function write($method, $uri, $httpVersion = 1.1, $headers = array(), $body = '')
+    {
+        // Make sure we're properly connected
+        if (!$this->_curl) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Trying to write but we are not connected");
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_connectedphp_tophp[php0php]php php!php=php php$uriphp-php>getHostphp(php)php php|php|php php$thisphp-php>php_connectedphp_tophp[php1php]php php!php=php php$uriphp-php>getPortphp(php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Tryingphp tophp writephp butphp wephp arephp connectedphp tophp thephp wrongphp hostphp"php)php;
-php php php php php php php php php}
+        if ($this->_connected_to[0] != $uri->getHost() || $this->_connected_to[1] != $uri->getPort()) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Trying to write but we are connected to the wrong host");
+        }
 
-php php php php php php php php php/php/php setphp URL
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_URLphp,php php$uriphp-php>php_php_toStringphp(php)php)php;
+        // set URL
+        curl_setopt($this->_curl, CURLOPT_URL, $uri->__toString());
 
-php php php php php php php php php/php/php ensurephp correctphp curlphp call
-php php php php php php php php php$curlValuephp php=php truephp;
-php php php php php php php php switchphp php(php$methodphp)php php{
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:GETphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_HTTPGETphp;
-php php php php php php php php php php php php php php php php breakphp;
+        // ensure correct curl call
+        $curlValue = true;
+        switch ($method) {
+            case Zend_Http_Client::GET:
+                $curlMethod = CURLOPT_HTTPGET;
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:POSTphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_POSTphp;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Http_Client::POST:
+                $curlMethod = CURLOPT_POST;
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:PUTphp:
-php php php php php php php php php php php php php php php php php/php/php Therephp arephp twophp differentphp typesphp ofphp PUTphp requestphp,php eitherphp aphp Rawphp Dataphp stringphp hasphp beenphp set
-php php php php php php php php php php php php php php php php php/php/php orphp CURLOPTphp_INFILEphp andphp CURLOPTphp_INFILESIZEphp arephp usedphp.
-php php php php php php php php php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILEphp]php php=php php$bodyphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILEphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Nowphp wephp willphp probablyphp alreadyphp havephp Contentphp-Lengthphp setphp,php sophp thatphp wephp havephp tophp deletephp it
-php php php php php php php php php php php php php php php php php php php php php/php/php fromphp php$headersphp atphp thisphp pointphp:
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$headersphp ASphp php$kphp php=php>php php$headerphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/Contentphp-Lengthphp:php\sphp*php(php\dphp+php)php/iphp'php,php php$headerphp,php php$mphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILESIZEphp]php php=php php(intphp)php$mphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$headersphp[php$kphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
+            case Zend_Http_Client::PUT:
+                // There are two different types of PUT request, either a Raw Data string has been set
+                // or CURLOPT_INFILE and CURLOPT_INFILESIZE are used.
+                if(is_resource($body)) {
+                    $this->_config['curloptions'][CURLOPT_INFILE] = $body;
+                }
+                if (isset($this->_config['curloptions'][CURLOPT_INFILE])) {
+                    // Now we will probably already have Content-Length set, so that we have to delete it
+                    // from $headers at this point:
+                    foreach ($headers AS $k => $header) {
+                        if (preg_match('/Content-Length:\s*(\d+)/i', $header, $m)) {
+                            if(is_resource($body)) {
+                                $this->_config['curloptions'][CURLOPT_INFILESIZE] = (int)$m[1];
+                            }
+                            unset($headers[$k]);
+                        }
+                    }
 
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILESIZEphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Cannotphp setphp aphp filephp-handlephp forphp cURLphp optionphp CURLOPTphp_INFILEphp withoutphp alsophp settingphp itsphp sizephp inphp CURLOPTphp_INFILESIZEphp.php"php)php;
-php php php php php php php php php php php php php php php php php php php php php}
+                    if (!isset($this->_config['curloptions'][CURLOPT_INFILESIZE])) {
+                        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                        throw new Zend_Http_Client_Adapter_Exception("Cannot set a file-handle for cURL option CURLOPT_INFILE without also setting its size in CURLOPT_INFILESIZE.");
+                    }
 
-php php php php php php php php php php php php php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$bodyphp php=php php'php'php;
-php php php php php php php php php php php php php php php php php php php php php}
+                    if(is_resource($body)) {
+                        $body = '';
+                    }
 
-php php php php php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_PUTphp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_CUSTOMREQUESTphp;
-php php php php php php php php php php php php php php php php php php php php php$curlValuephp php=php php"PUTphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
+                    $curlMethod = CURLOPT_PUT;
+                } else {
+                    $curlMethod = CURLOPT_CUSTOMREQUEST;
+                    $curlValue = "PUT";
+                }
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:DELETEphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_CUSTOMREQUESTphp;
-php php php php php php php php php php php php php php php php php$curlValuephp php=php php"DELETEphp"php;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Http_Client::DELETE:
+                $curlMethod = CURLOPT_CUSTOMREQUEST;
+                $curlValue = "DELETE";
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:OPTIONSphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_CUSTOMREQUESTphp;
-php php php php php php php php php php php php php php php php php$curlValuephp php=php php"OPTIONSphp"php;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Http_Client::OPTIONS:
+                $curlMethod = CURLOPT_CUSTOMREQUEST;
+                $curlValue = "OPTIONS";
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:TRACEphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_CUSTOMREQUESTphp;
-php php php php php php php php php php php php php php php php php$curlValuephp php=php php"TRACEphp"php;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Http_Client::TRACE:
+                $curlMethod = CURLOPT_CUSTOMREQUEST;
+                $curlValue = "TRACE";
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Httpphp_Clientphp:php:HEADphp:
-php php php php php php php php php php php php php php php php php$curlMethodphp php=php CURLOPTphp_CUSTOMREQUESTphp;
-php php php php php php php php php php php php php php php php php$curlValuephp php=php php"HEADphp"php;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Http_Client::HEAD:
+                $curlMethod = CURLOPT_CUSTOMREQUEST;
+                $curlValue = "HEAD";
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php/php/php Forphp nowphp,php throughphp anphp exceptionphp forphp unsupportedphp requestphp methods
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Methodphp currentlyphp notphp supportedphp"php)php;
-php php php php php php php php php}
+            default:
+                // For now, through an exception for unsupported request methods
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception("Method currently not supported");
+        }
 
-php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php php&php&php php$curlMethodphp php!php=php CURLOPTphp_PUTphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Streamingphp requestsphp arephp allowedphp onlyphp withphp PUTphp"php)php;
-php php php php php php php php php}
+        if(is_resource($body) && $curlMethod != CURLOPT_PUT) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Streaming requests are allowed only with PUT");
+        }
 
-php php php php php php php php php/php/php getphp httpphp versionphp tophp use
-php php php php php php php php php$curlHttpphp php=php php(php$httpVersionphp php=php=php php1php.php1php)php php?php CURLphp_HTTPphp_VERSIONphp_php1php_php1php php:php CURLphp_HTTPphp_VERSIONphp_php1php_php0php;
+        // get http version to use
+        $curlHttp = ($httpVersion == 1.1) ? CURL_HTTP_VERSION_1_1 : CURL_HTTP_VERSION_1_0;
 
-php php php php php php php php php/php/php markphp asphp HTTPphp requestphp andphp setphp HTTPphp method
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php php$curlHttpphp,php truephp)php;
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php php$curlMethodphp,php php$curlValuephp)php;
+        // mark as HTTP request and set HTTP method
+        curl_setopt($this->_curl, $curlHttp, true);
+        curl_setopt($this->_curl, $curlMethod, $curlValue);
 
-php php php php php php php php ifphp(php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php/php/php headersphp willphp bephp readphp intophp thephp response
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_HEADERphp,php falsephp)php;
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_HEADERFUNCTIONphp,php arrayphp(php$thisphp,php php"readHeaderphp"php)php)php;
-php php php php php php php php php php php php php/php/php andphp dataphp willphp bephp writtenphp intophp thephp file
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_FILEphp,php php$thisphp-php>outphp_streamphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php ensurephp headersphp arephp alsophp returned
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_HEADERphp,php truephp)php;
+        if($this->out_stream) {
+            // headers will be read into the response
+            curl_setopt($this->_curl, CURLOPT_HEADER, false);
+            curl_setopt($this->_curl, CURLOPT_HEADERFUNCTION, array($this, "readHeader"));
+            // and data will be written into the file
+            curl_setopt($this->_curl, CURLOPT_FILE, $this->out_stream);
+        } else {
+            // ensure headers are also returned
+            curl_setopt($this->_curl, CURLOPT_HEADER, true);
 
-php php php php php php php php php php php php php/php/php ensurephp actualphp responsephp isphp returned
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_RETURNTRANSFERphp,php truephp)php;
-php php php php php php php php php}
+            // ensure actual response is returned
+            curl_setopt($this->_curl, CURLOPT_RETURNTRANSFER, true);
+        }
 
-php php php php php php php php php/php/php setphp additionalphp headers
-php php php php php php php php php$headersphp[php'Acceptphp'php]php php=php php'php'php;
-php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_HTTPHEADERphp,php php$headersphp)php;
+        // set additional headers
+        $headers['Accept'] = '';
+        curl_setopt($this->_curl, CURLOPT_HTTPHEADER, $headers);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Makephp surephp POSTFIELDSphp isphp setphp afterphp php$curlMethodphp isphp setphp:
-php php php php php php php php php php*php php@linkphp httpphp:php/php/dephp2php.phpphp.netphp/manualphp/enphp/functionphp.curlphp-setoptphp.phpphp#php8php1php1php6php1
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php$methodphp php=php=php Zendphp_Httpphp_Clientphp:php:POSTphp)php php{
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_POSTFIELDSphp,php php$bodyphp)php;
-php php php php php php php php php}php elseifphp php(php$curlMethodphp php=php=php CURLOPTphp_PUTphp)php php{
-php php php php php php php php php php php php php/php/php thisphp coversphp aphp PUTphp byphp filephp-handlephp:
-php php php php php php php php php php php php php/php/php Makephp thephp settingphp ofphp thisphp optionsphp explicitphp php(ratherphp thanphp settingphp itphp throughphp thephp loopphp followingphp aphp bitphp lowerphp)
-php php php php php php php php php php php php php/php/php tophp groupphp commonphp functionalityphp togetherphp.
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_INFILEphp,php php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILEphp]php)php;
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_INFILESIZEphp,php php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILESIZEphp]php)php;
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILEphp]php)php;
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php[CURLOPTphp_INFILESIZEphp]php)php;
-php php php php php php php php php}php elseifphp php(php$methodphp php=php=php Zendphp_Httpphp_Clientphp:php:PUTphp)php php{
-php php php php php php php php php php php php php/php/php Thisphp isphp aphp PUTphp byphp aphp setRawDataphp stringphp,php notphp byphp filephp-handle
-php php php php php php php php php php php php curlphp_setoptphp(php$thisphp-php>php_curlphp,php CURLOPTphp_POSTFIELDSphp,php php$bodyphp)php;
-php php php php php php php php php}
+        /**
+         * Make sure POSTFIELDS is set after $curlMethod is set:
+         * @link http://de2.php.net/manual/en/function.curl-setopt.php#81161
+         */
+        if ($method == Zend_Http_Client::POST) {
+            curl_setopt($this->_curl, CURLOPT_POSTFIELDS, $body);
+        } elseif ($curlMethod == CURLOPT_PUT) {
+            // this covers a PUT by file-handle:
+            // Make the setting of this options explicit (rather than setting it through the loop following a bit lower)
+            // to group common functionality together.
+            curl_setopt($this->_curl, CURLOPT_INFILE, $this->_config['curloptions'][CURLOPT_INFILE]);
+            curl_setopt($this->_curl, CURLOPT_INFILESIZE, $this->_config['curloptions'][CURLOPT_INFILESIZE]);
+            unset($this->_config['curloptions'][CURLOPT_INFILE]);
+            unset($this->_config['curloptions'][CURLOPT_INFILESIZE]);
+        } elseif ($method == Zend_Http_Client::PUT) {
+            // This is a PUT by a setRawData string, not by file-handle
+            curl_setopt($this->_curl, CURLOPT_POSTFIELDS, $body);
+        }
 
-php php php php php php php php php/php/php setphp additionalphp curlphp options
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php'curloptionsphp'php]php)php)php php{
-php php php php php php php php php php php php foreachphp php(php(arrayphp)php$thisphp-php>php_configphp[php'curloptionsphp'php]php asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$kphp,php php$thisphp-php>php_invalidOverwritableCurlOptionsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(curlphp_setoptphp(php$thisphp-php>php_curlphp,php php$kphp,php php$vphp)php php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(sprintfphp(php"Unknownphp orphp erroreousphp cURLphp optionphp php'php%sphp'php setphp"php,php php$kphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // set additional curl options
+        if (isset($this->_config['curloptions'])) {
+            foreach ((array)$this->_config['curloptions'] as $k => $v) {
+                if (!in_array($k, $this->_invalidOverwritableCurlOptions)) {
+                    if (curl_setopt($this->_curl, $k, $v) == false) {
+                        require_once 'Zend/Http/Client/Exception.php';
+                        throw new Zend_Http_Client_Exception(sprintf("Unknown or erroreous cURL option '%s' set", $k));
+                    }
+                }
+            }
+        }
 
-php php php php php php php php php/php/php sendphp thephp request
-php php php php php php php php php$responsephp php=php curlphp_execphp(php$thisphp-php>php_curlphp)php;
+        // send the request
+        $response = curl_exec($this->_curl);
 
-php php php php php php php php php/php/php ifphp wephp usedphp streamingphp,php headersphp arephp alreadyphp there
-php php php php php php php php ifphp(php!isphp_resourcephp(php$thisphp-php>outphp_streamphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_responsephp php=php php$responsephp;
-php php php php php php php php php}
+        // if we used streaming, headers are already there
+        if(!is_resource($this->out_stream)) {
+            $this->_response = $response;
+        }
 
-php php php php php php php php php$requestphp php php=php curlphp_getinfophp(php$thisphp-php>php_curlphp,php CURLINFOphp_HEADERphp_OUTphp)php;
-php php php php php php php php php$requestphp php.php=php php$bodyphp;
+        $request  = curl_getinfo($this->_curl, CURLINFO_HEADER_OUT);
+        $request .= $body;
 
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_responsephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Exceptionphp(php"Errorphp inphp cURLphp requestphp:php php"php php.php curlphp_errorphp(php$thisphp-php>php_curlphp)php)php;
-php php php php php php php php php}
+        if (empty($this->_response)) {
+            require_once 'Zend/Http/Client/Exception.php';
+            throw new Zend_Http_Client_Exception("Error in cURL request: " . curl_error($this->_curl));
+        }
 
-php php php php php php php php php/php/php cURLphp automaticallyphp decodesphp chunkedphp-messagesphp,php thisphp meansphp wephp havephp tophp disallowphp thephp Zendphp_Httpphp_Responsephp tophp dophp itphp again
-php php php php php php php php ifphp php(striposphp(php$thisphp-php>php_responsephp,php php"Transferphp-Encodingphp:php chunkedphp\rphp\nphp"php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_responsephp php=php strphp_ireplacephp(php"Transferphp-Encodingphp:php chunkedphp\rphp\nphp"php,php php'php'php,php php$thisphp-php>php_responsephp)php;
-php php php php php php php php php}
+        // cURL automatically decodes chunked-messages, this means we have to disallow the Zend_Http_Response to do it again
+        if (stripos($this->_response, "Transfer-Encoding: chunked\r\n")) {
+            $this->_response = str_ireplace("Transfer-Encoding: chunked\r\n", '', $this->_response);
+        }
 
-php php php php php php php php php/php/php Eliminatephp multiplephp HTTPphp responsesphp.
-php php php php php php php php dophp php{
-php php php php php php php php php php php php php$partsphp php php=php pregphp_splitphp(php'php|php(php?php:php\rphp?php\nphp)php{php2php}php|mphp'php,php php$thisphp-php>php_responsephp,php php2php)php;
-php php php php php php php php php php php php php$againphp php php=php falsephp;
+        // Eliminate multiple HTTP responses.
+        do {
+            $parts  = preg_split('|(?:\r?\n){2}|m', $this->_response, 2);
+            $again  = false;
 
-php php php php php php php php php php php php ifphp php(issetphp(php$partsphp[php1php]php)php php&php&php pregphp_matchphp(php"php|php^HTTPphp/php1php\php.php[php0php1php]php(php.php*php?php)php\rphp\nphp|miphp"php,php php$partsphp[php1php]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_responsephp php php php php=php php$partsphp[php1php]php;
-php php php php php php php php php php php php php php php php php$againphp php php php php php php php php php php php php php php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php whilephp php(php$againphp)php;
+            if (isset($parts[1]) && preg_match("|^HTTP/1\.[01](.*?)\r\n|mi", $parts[1])) {
+                $this->_response    = $parts[1];
+                $again              = true;
+            }
+        } while ($again);
 
-php php php php php php php php php/php/php cURLphp automaticallyphp handlesphp Proxyphp rewritesphp,php removephp thephp php"HTTPphp/php1php.php0php php2php0php0php Connectionphp establishedphp"php stringphp:
-php php php php php php php php ifphp php(striposphp(php$thisphp-php>php_responsephp,php php"HTTPphp/php1php.php0php php2php0php0php Connectionphp establishedphp\rphp\nphp\rphp\nphp"php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_responsephp php=php strphp_ireplacephp(php"HTTPphp/php1php.php0php php2php0php0php Connectionphp establishedphp\rphp\nphp\rphp\nphp"php,php php'php'php,php php$thisphp-php>php_responsephp)php;
-php php php php php php php php php}
+        // cURL automatically handles Proxy rewrites, remove the "HTTP/1.0 200 Connection established" string:
+        if (stripos($this->_response, "HTTP/1.0 200 Connection established\r\n\r\n") !== false) {
+            $this->_response = str_ireplace("HTTP/1.0 200 Connection established\r\n\r\n", '', $this->_response);
+        }
 
-php php php php php php php php returnphp php$requestphp;
-php php php php php}
+        return $request;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp readphp responsephp fromphp server
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp readphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_responsephp;
-php php php php php}
+    /**
+     * Return read response from server
+     *
+     * @return string
+     */
+    public function read()
+    {
+        return $this->_response;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closephp thephp connectionphp tophp thephp server
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php ifphp(isphp_resourcephp(php$thisphp-php>php_curlphp)php)php php{
-php php php php php php php php php php php php curlphp_closephp(php$thisphp-php>php_curlphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_curlphp php php php php php php php php php=php nullphp;
-php php php php php php php php php$thisphp-php>php_connectedphp_tophp php=php arrayphp(nullphp,php nullphp)php;
-php php php php php}
+    /**
+     * Close the connection to the server
+     *
+     */
+    public function close()
+    {
+        if(is_resource($this->_curl)) {
+            curl_close($this->_curl);
+        }
+        $this->_curl         = null;
+        $this->_connected_to = array(null, null);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp cUrlphp Handle
-php php php php php php*
-php php php php php php*php php@returnphp resource
-php php php php php php*php/
-php php php php publicphp functionphp getHandlephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_curlphp;
-php php php php php}
+    /**
+     * Get cUrl Handle
+     *
+     * @return resource
+     */
+    public function getHandle()
+    {
+        return $this->_curl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp outputphp streamphp forphp thephp response
-php php php php php php*
-php php php php php php*php php@paramphp resourcephp php$stream
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Socket
-php php php php php php*php/
-php php php php publicphp functionphp setOutputStreamphp(php$streamphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>outphp_streamphp php=php php$streamphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set output stream for the response
+     *
+     * @param resource $stream
+     * @return Zend_Http_Client_Adapter_Socket
+     */
+    public function setOutputStream($stream)
+    {
+        $this->out_stream = $stream;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Headerphp readerphp functionphp forphp CURL
-php php php php php php*
-php php php php php php*php php@paramphp resourcephp php$curl
-php php php php php php*php php@paramphp stringphp php$header
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp readHeaderphp(php$curlphp,php php$headerphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_responsephp php.php=php php$headerphp;
-php php php php php php php php returnphp strlenphp(php$headerphp)php;
-php php php php php}
-php}
+    /**
+     * Header reader function for CURL
+     *
+     * @param resource $curl
+     * @param string $header
+     * @return int
+     */
+    public function readHeader($curl, $header)
+    {
+        $this->_response .= $header;
+        return strlen($header);
+    }
+}

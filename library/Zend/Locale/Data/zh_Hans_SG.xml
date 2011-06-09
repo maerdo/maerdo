@@ -1,87 +1,87 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php3php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php3php php$php"php/php>
-php	php	php<languagephp typephp=php"zhphp"php/php>
-php	php	php<scriptphp typephp=php"Hansphp"php/php>
-php	php	php<territoryphp typephp=php"SGphp"php/php>
-php	<php/identityphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp/MMphp/yy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ahhphp:mmphp:ssz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ahhphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>Mphp月dphp日<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	php	php<intervalFormatsphp>
-php	php	php	php	php	php	php<intervalFormatFallbackphp>php{php0php}php至php{php1php}<php/intervalFormatFallbackphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahhphp至ahh<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahhphp至hh<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahhphp:mmphp至ahhphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahhphp:mmphp至hhphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>ahhphp:mmphp至hhphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahhphp:mmphp至ahhphp:mmv<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahhphp:mmphp至hhphp:mmv<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>ahhphp:mmphp至hhphp:mmv<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>ahhphp至ahhv<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>ahhphp至hhv<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp至ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp至ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMEphp至ddphp/MME<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMEphp至ddphp/MME<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp-y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp/yyphp至MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp/yyphp至MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp/yyphp至ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp/yyphp至ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>ddphp/MMphp/yyphp至ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp/yyEphp至ddphp/MMphp/yyE<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp/yyEphp至ddphp/MMphp/yyE<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>ddphp/MMphp/yyEphp至ddphp/MMphp/yyE<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	<php/intervalFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.63 $"/>
+		<generation date="$Date: 2009/06/15 03:46:23 $"/>
+		<language type="zh"/>
+		<script type="Hans"/>
+		<territory type="SG"/>
+	</identity>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<dateFormats>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>dd/MM/yy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>ahh:mm:ssz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>ahh:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="Md">M月d日</dateFormatItem>
+					</availableFormats>
+					<intervalFormats>
+						<intervalFormatFallback>{0}至{1}</intervalFormatFallback>
+						<intervalFormatItem id="h">
+							<greatestDifference id="a">ahh至ahh</greatestDifference>
+							<greatestDifference id="h">ahh至hh</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hm">
+							<greatestDifference id="a">ahh:mm至ahh:mm</greatestDifference>
+							<greatestDifference id="h">ahh:mm至hh:mm</greatestDifference>
+							<greatestDifference id="m">ahh:mm至hh:mm</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hmv">
+							<greatestDifference id="a">ahh:mm至ahh:mmv</greatestDifference>
+							<greatestDifference id="h">ahh:mm至hh:mmv</greatestDifference>
+							<greatestDifference id="m">ahh:mm至hh:mmv</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hv">
+							<greatestDifference id="a">ahh至ahhv</greatestDifference>
+							<greatestDifference id="h">ahh至hhv</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="Md">
+							<greatestDifference id="d">dd/MM至dd/MM</greatestDifference>
+							<greatestDifference id="M">dd/MM至dd/MM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MEd">
+							<greatestDifference id="d">dd/MME至dd/MME</greatestDifference>
+							<greatestDifference id="M">dd/MME至dd/MME</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="y">
+							<greatestDifference id="y">y-y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yM">
+							<greatestDifference id="M">MM/yy至MM/yy</greatestDifference>
+							<greatestDifference id="y">MM/yy至MM/yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMd">
+							<greatestDifference id="d">dd/MM/yy至dd/MM/yy</greatestDifference>
+							<greatestDifference id="M">dd/MM/yy至dd/MM/yy</greatestDifference>
+							<greatestDifference id="y">dd/MM/yy至dd/MM/yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMEd">
+							<greatestDifference id="d">dd/MM/yyE至dd/MM/yyE</greatestDifference>
+							<greatestDifference id="M">dd/MM/yyE至dd/MM/yyE</greatestDifference>
+							<greatestDifference id="y">dd/MM/yyE至dd/MM/yyE</greatestDifference>
+						</intervalFormatItem>
+					</intervalFormats>
+				</dateTimeFormats>
+			</calendar>
+		</calendars>
+	</dates>
+</ldml>
 

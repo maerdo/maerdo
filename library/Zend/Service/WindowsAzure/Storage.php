@@ -1,573 +1,573 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Storagephp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Storage.php 23584 2010-12-28 19:51:49Z matthew $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/CredentialsAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+ */
+require_once 'Zend/Service/WindowsAzure/Credentials/CredentialsAbstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedKey
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/SharedKeyphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Credentials_SharedKey
+ */
+require_once 'Zend/Service/WindowsAzure/Credentials/SharedKey.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/RetryPolicyphp/RetryPolicyAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
+ */
+require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Exception
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Exceptionphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Exception
+ */
+require_once 'Zend/Service/WindowsAzure/Exception.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
+/**
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Response
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Responsephp.phpphp'php;
+/**
+ * @see Zend_Http_Response
+ */
+require_once 'Zend/Http/Response.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_WindowsAzurephp_Storage
-php{
-php	php/php*php*
-php	php php*php Developmentphp storagephp URLS
-php	php php*php/
-php	constphp URLphp_DEVphp_BLOBphp php php php php php php=php php"php1php2php7php.php0php.php0php.php1php:php1php0php0php0php0php"php;
-php	constphp URLphp_DEVphp_QUEUEphp php php php php php=php php"php1php2php7php.php0php.php0php.php1php:php1php0php0php0php1php"php;
-php	constphp URLphp_DEVphp_TABLEphp php php php php php=php php"php1php2php7php.php0php.php0php.php1php:php1php0php0php0php2php"php;
-php	
-php	php/php*php*
-php	php php*php Livephp storagephp URLS
-php	php php*php/
-php	constphp URLphp_CLOUDphp_BLOBphp php php php php=php php"blobphp.corephp.windowsphp.netphp"php;
-php	constphp URLphp_CLOUDphp_QUEUEphp php php php=php php"queuephp.corephp.windowsphp.netphp"php;
-php	constphp URLphp_CLOUDphp_TABLEphp php php php=php php"tablephp.corephp.windowsphp.netphp"php;
-php	
-php	php/php*php*
-php	php php*php Resourcephp types
-php	php php*php/
-php	constphp RESOURCEphp_UNKNOWNphp php php php php php=php php"unknownphp"php;
-php	constphp RESOURCEphp_CONTAINERphp php php php=php php"cphp"php;
-php	constphp RESOURCEphp_BLOBphp php php php php php php php php=php php"bphp"php;
-php	constphp RESOURCEphp_TABLEphp php php php php php php php=php php"tphp"php;
-php	constphp RESOURCEphp_ENTITYphp php php php php php php=php php"ephp"php;
-php	constphp RESOURCEphp_QUEUEphp php php php php php php php=php php"qphp"php;
-php	
-php	php/php*php*
-php	php php*php HTTPphp headerphp prefixes
-php	php php*php/
-php	constphp PREFIXphp_PROPERTIESphp php php php php php php=php php"xphp-msphp-propphp-php"php;
-php	constphp PREFIXphp_METADATAphp php php php php php php php php=php php"xphp-msphp-metaphp-php"php;
-php	constphp PREFIXphp_STORAGEphp_HEADERphp php php=php php"xphp-msphp-php"php;
-php	
-php	php/php*php*
-php	php php*php Currentphp APIphp version
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_apiVersionphp php=php php'php2php0php0php9php-php0php9php-php1php9php'php;
-php	
-php	php/php*php*
-php	php php*php Storagephp hostphp name
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_hostphp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Accountphp namephp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_accountNamephp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Accountphp keyphp forphp Windowsphp Azure
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_accountKeyphp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Usephp pathphp-stylephp URIphp's
-php	php php*
-php	php php*php php@varphp boolean
-php	php php*php/
-php	protectedphp php$php_usePathStyleUriphp php=php falsephp;
-php	
-php	php/php*php*
-php	php php*php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp instance
-php	php php*
-php	php php*php php@varphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php	php php*php/
-php	protectedphp php$php_credentialsphp php=php nullphp;
-php	
-php	php/php*php*
-php	php php*php Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp instance
-php	php php*
-php	php php*php php@varphp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstract
-php	php php*php/
-php	protectedphp php$php_retryPolicyphp php=php nullphp;
-php	
-php	php/php*php*
-php	php php*php Zendphp_Httpphp_Clientphp channelphp usedphp forphp communicationphp withphp RESTphp services
-php	php php*
-php	php php*php php@varphp Zendphp_Httpphp_Client
-php	php php*php/
-php	protectedphp php$php_httpClientChannelphp php=php nullphp;
-php	
-php	php/php*php*
-php	php php*php Usephp proxyphp?
-php	php php*
-php	php php*php php@varphp boolean
-php	php php*php/
-php	protectedphp php$php_useProxyphp php=php falsephp;
-php	
-php	php/php*php*
-php	php php*php Proxyphp url
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_proxyUrlphp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Proxyphp port
-php	php php*
-php	php php*php php@varphp int
-php	php php*php/
-php	protectedphp php$php_proxyPortphp php=php php8php0php;
-php	
-php	php/php*php*
-php	php php*php Proxyphp credentials
-php	php php*
-php	php php*php php@varphp string
-php	php php*php/
-php	protectedphp php$php_proxyCredentialsphp php=php php'php'php;
-php	
-php	php/php*php*
-php	php php*php Createsphp aphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp instance
-php	php php*
-php	php php*php php@paramphp stringphp php$hostphp Storagephp hostphp name
-php	php php*php php@paramphp stringphp php$accountNamephp Accountphp namephp forphp Windowsphp Azure
-php	php php*php php@paramphp stringphp php$accountKeyphp Accountphp keyphp forphp Windowsphp Azure
-php	php php*php php@paramphp booleanphp php$usePathStyleUriphp Usephp pathphp-stylephp URIphp's
-php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp Retryphp policyphp tophp usephp whenphp makingphp requests
-php	php php*php/
-php	publicphp functionphp php_php_constructphp(
-php	php	php$hostphp php=php selfphp:php:URLphp_DEVphp_BLOBphp,
-php	php	php$accountNamephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_ACCOUNTphp,
-php	php	php$accountKeyphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_KEYphp,
-php	php	php$usePathStyleUriphp php=php falsephp,
-php	php	Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp php=php null
-php	php)php php{
-php	php	php$thisphp-php>php_hostphp php=php php$hostphp;
-php	php	php$thisphp-php>php_accountNamephp php=php php$accountNamephp;
-php	php	php$thisphp-php>php_accountKeyphp php=php php$accountKeyphp;
-php	php	php$thisphp-php>php_usePathStyleUriphp php=php php$usePathStyleUriphp;
-php	php	
-php	php	php/php/php Usingphp localphp storagephp?
-php	php	ifphp php(php!php$thisphp-php>php_usePathStyleUri
-php	php	php	php&php&php php(php$thisphp-php>php_hostphp php=php=php selfphp:php:URLphp_DEVphp_BLOB
-php	php	php	php	php|php|php php$thisphp-php>php_hostphp php=php=php selfphp:php:URLphp_DEVphp_QUEUE
-php	php	php	php	php|php|php php$thisphp-php>php_hostphp php=php=php selfphp:php:URLphp_DEVphp_TABLEphp)
-php	php	php)php php{
-php	php	php	php/php/php Localphp storage
-php	php	php	php$thisphp-php>php_usePathStyleUriphp php=php truephp;
-php	php	php}
-php	php	
-php	php	ifphp php(php$thisphp-php>php_credentialsphp php=php=php=php nullphp)php php{
-php	php	php php php php php$thisphp-php>php_credentialsphp php=php newphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedKeyphp(
-php	php	php php php php php	php$thisphp-php>php_accountNamephp,php php$thisphp-php>php_accountKeyphp,php php$thisphp-php>php_usePathStyleUriphp)php;
-php	php	php}
-php	php	
-php	php	php$thisphp-php>php_retryPolicyphp php=php php$retryPolicyphp;
-php	php	ifphp php(php$thisphp-php>php_retryPolicyphp php=php=php=php nullphp)php php{
-php	php	php php php php php$thisphp-php>php_retryPolicyphp php=php Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp:php:noRetryphp(php)php;
-php	php	php}
-php	php	
-php	php	php/php/php Setupphp defaultphp Zendphp_Httpphp_Clientphp channel
-php	php	php$optionsphp php=php arrayphp(
-php	php	php	php'adapterphp'php php=php>php php'Zendphp_Httpphp_Clientphp_Adapterphp_Proxyphp'
-php	php	php)php;
-php	php	ifphp php(functionphp_existsphp(php'curlphp_initphp'php)php)php php{
-php	php	php	php/php/php Setphp cURLphp optionsphp ifphp cURLphp isphp usedphp afterwards
-php	php	php	php$optionsphp[php'curloptionsphp'php]php php=php arrayphp(
-php	php	php	php	php	CURLOPTphp_FOLLOWLOCATIONphp php=php>php truephp,
-php	php	php	php	php	CURLOPTphp_TIMEOUTphp php=php>php php1php2php0php,
-php	php	php	php)php;
-php	php	php}
-php	php	php$thisphp-php>php_httpClientChannelphp php=php newphp Zendphp_Httpphp_Clientphp(nullphp,php php$optionsphp)php;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp thephp HTTPphp clientphp channelphp tophp use
-php	php php*
-php	php php*php php@paramphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp|stringphp php$adapterInstancephp Adapterphp instancephp orphp adapterphp classphp namephp.
-php	php php*php/
-php	publicphp functionphp setHttpClientChannelphp(php$adapterInstancephp php=php php'Zendphp_Httpphp_Clientphp_Adapterphp_Proxyphp'php)
-php	php{
-php	php	php$thisphp-php>php_httpClientChannelphp-php>setAdapterphp(php$adapterInstancephp)php;
-php	php}
+/**
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_WindowsAzure_Storage
+{
+	/**
+	 * Development storage URLS
+	 */
+	const URL_DEV_BLOB      = "127.0.0.1:10000";
+	const URL_DEV_QUEUE     = "127.0.0.1:10001";
+	const URL_DEV_TABLE     = "127.0.0.1:10002";
+	
+	/**
+	 * Live storage URLS
+	 */
+	const URL_CLOUD_BLOB    = "blob.core.windows.net";
+	const URL_CLOUD_QUEUE   = "queue.core.windows.net";
+	const URL_CLOUD_TABLE   = "table.core.windows.net";
+	
+	/**
+	 * Resource types
+	 */
+	const RESOURCE_UNKNOWN     = "unknown";
+	const RESOURCE_CONTAINER   = "c";
+	const RESOURCE_BLOB        = "b";
+	const RESOURCE_TABLE       = "t";
+	const RESOURCE_ENTITY      = "e";
+	const RESOURCE_QUEUE       = "q";
+	
+	/**
+	 * HTTP header prefixes
+	 */
+	const PREFIX_PROPERTIES      = "x-ms-prop-";
+	const PREFIX_METADATA        = "x-ms-meta-";
+	const PREFIX_STORAGE_HEADER  = "x-ms-";
+	
+	/**
+	 * Current API version
+	 *
+	 * @var string
+	 */
+	protected $_apiVersion = '2009-09-19';
+	
+	/**
+	 * Storage host name
+	 *
+	 * @var string
+	 */
+	protected $_host = '';
+	
+	/**
+	 * Account name for Windows Azure
+	 *
+	 * @var string
+	 */
+	protected $_accountName = '';
+	
+	/**
+	 * Account key for Windows Azure
+	 *
+	 * @var string
+	 */
+	protected $_accountKey = '';
+	
+	/**
+	 * Use path-style URI's
+	 *
+	 * @var boolean
+	 */
+	protected $_usePathStyleUri = false;
+	
+	/**
+	 * Zend_Service_WindowsAzure_Credentials_CredentialsAbstract instance
+	 *
+	 * @var Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+	 */
+	protected $_credentials = null;
+	
+	/**
+	 * Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract instance
+	 *
+	 * @var Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
+	 */
+	protected $_retryPolicy = null;
+	
+	/**
+	 * Zend_Http_Client channel used for communication with REST services
+	 *
+	 * @var Zend_Http_Client
+	 */
+	protected $_httpClientChannel = null;
+	
+	/**
+	 * Use proxy?
+	 *
+	 * @var boolean
+	 */
+	protected $_useProxy = false;
+	
+	/**
+	 * Proxy url
+	 *
+	 * @var string
+	 */
+	protected $_proxyUrl = '';
+	
+	/**
+	 * Proxy port
+	 *
+	 * @var int
+	 */
+	protected $_proxyPort = 80;
+	
+	/**
+	 * Proxy credentials
+	 *
+	 * @var string
+	 */
+	protected $_proxyCredentials = '';
+	
+	/**
+	 * Creates a new Zend_Service_WindowsAzure_Storage instance
+	 *
+	 * @param string $host Storage host name
+	 * @param string $accountName Account name for Windows Azure
+	 * @param string $accountKey Account key for Windows Azure
+	 * @param boolean $usePathStyleUri Use path-style URI's
+	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
+	 */
+	public function __construct(
+		$host = self::URL_DEV_BLOB,
+		$accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT,
+		$accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY,
+		$usePathStyleUri = false,
+		Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null
+	) {
+		$this->_host = $host;
+		$this->_accountName = $accountName;
+		$this->_accountKey = $accountKey;
+		$this->_usePathStyleUri = $usePathStyleUri;
+		
+		// Using local storage?
+		if (!$this->_usePathStyleUri
+			&& ($this->_host == self::URL_DEV_BLOB
+				|| $this->_host == self::URL_DEV_QUEUE
+				|| $this->_host == self::URL_DEV_TABLE)
+		) {
+			// Local storage
+			$this->_usePathStyleUri = true;
+		}
+		
+		if ($this->_credentials === null) {
+		    $this->_credentials = new Zend_Service_WindowsAzure_Credentials_SharedKey(
+		    	$this->_accountName, $this->_accountKey, $this->_usePathStyleUri);
+		}
+		
+		$this->_retryPolicy = $retryPolicy;
+		if ($this->_retryPolicy === null) {
+		    $this->_retryPolicy = Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::noRetry();
+		}
+		
+		// Setup default Zend_Http_Client channel
+		$options = array(
+			'adapter' => 'Zend_Http_Client_Adapter_Proxy'
+		);
+		if (function_exists('curl_init')) {
+			// Set cURL options if cURL is used afterwards
+			$options['curloptions'] = array(
+					CURLOPT_FOLLOWLOCATION => true,
+					CURLOPT_TIMEOUT => 120,
+			);
+		}
+		$this->_httpClientChannel = new Zend_Http_Client(null, $options);
+	}
+	
+	/**
+	 * Set the HTTP client channel to use
+	 *
+	 * @param Zend_Http_Client_Adapter_Interface|string $adapterInstance Adapter instance or adapter class name.
+	 */
+	public function setHttpClientChannel($adapterInstance = 'Zend_Http_Client_Adapter_Proxy')
+	{
+		$this->_httpClientChannel->setAdapter($adapterInstance);
+	}
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp HTTPphp clientphp channel
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getHttpClientChannelphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_httpClientChannelphp;
-php php php php php}
-php	
-php	php/php*php*
-php	php php*php Setphp retryphp policyphp tophp usephp whenphp makingphp requests
-php	php php*
-php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp Retryphp policyphp tophp usephp whenphp makingphp requests
-php	php php*php/
-php	publicphp functionphp setRetryPolicyphp(Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp php=php nullphp)
-php	php{
-php	php	php$thisphp-php>php_retryPolicyphp php=php php$retryPolicyphp;
-php	php	ifphp php(php$thisphp-php>php_retryPolicyphp php=php=php=php nullphp)php php{
-php	php	php php php php php$thisphp-php>php_retryPolicyphp php=php Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp:php:noRetryphp(php)php;
-php	php	php}
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp proxy
-php	php php*
-php	php php*php php@paramphp booleanphp php$useProxyphp php php php php php php php php Usephp proxyphp?
-php	php php*php php@paramphp stringphp php php$proxyUrlphp php php php php php php php php Proxyphp URL
-php	php php*php php@paramphp intphp php php php php php$proxyPortphp php php php php php php php Proxyphp port
-php	php php*php php@paramphp stringphp php php$proxyCredentialsphp Proxyphp credentials
-php	php php*php/
-php	publicphp functionphp setProxyphp(php$useProxyphp php=php falsephp,php php$proxyUrlphp php=php php'php'php,php php$proxyPortphp php=php php8php0php,php php$proxyCredentialsphp php=php php'php'php)
-php	php{
-php	php php php php php$thisphp-php>php_useProxyphp php php php php php php php php php=php php$useProxyphp;
-php	php php php php php$thisphp-php>php_proxyUrlphp php php php php php php php php php=php php$proxyUrlphp;
-php	php php php php php$thisphp-php>php_proxyPortphp php php php php php php php php=php php$proxyPortphp;
-php	php php php php php$thisphp-php>php_proxyCredentialsphp php=php php$proxyCredentialsphp;
-php	
-php	php php php php ifphp php(php$thisphp-php>php_useProxyphp)php php{
-php	php php php php php	php$credentialsphp php=php explodephp(php'php:php'php,php php$thisphp-php>php_proxyCredentialsphp)php;
-php	php php php php php	
-php	php php php php php	php$thisphp-php>php_httpClientChannelphp-php>setConfigphp(arrayphp(
-php	php	php	php	php'proxyphp_hostphp'php php=php>php php$thisphp-php>php_proxyUrlphp,
-php	php php php php php	php	php'proxyphp_portphp'php php=php>php php$thisphp-php>php_proxyPortphp,
-php	php php php php php	php	php'proxyphp_userphp'php php=php>php php$credentialsphp[php0php]php,
-php	php php php php php	php	php'proxyphp_passphp'php php=php>php php$credentialsphp[php1php]php,
-php	php php php php php	php)php)php;
-php	php php php php php}php elsephp php{
-php	php	php	php$thisphp-php>php_httpClientChannelphp-php>setConfigphp(arrayphp(
-php	php	php	php	php'proxyphp_hostphp'php php=php>php php'php'php,
-php	php php php php php	php	php'proxyphp_portphp'php php=php>php php8php0php8php0php,
-php	php php php php php	php	php'proxyphp_userphp'php php=php>php php'php'php,
-php	php php php php php	php	php'proxyphp_passphp'php php=php>php php'php'php,
-php	php php php php php	php)php)php;
-php	php php php php php}
-php	php}
-php	
-php	php/php*php*
-php	php php*php Returnsphp thephp Windowsphp Azurephp accountphp name
-php	php php*
-php	php php*php php@returnphp string
-php	php php*php/
-php	publicphp functionphp getAccountNamephp(php)
-php	php{
-php	php	returnphp php$thisphp-php>php_accountNamephp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Getphp basephp URLphp forphp creatingphp requests
-php	php php*
-php	php php*php php@returnphp string
-php	php php*php/
-php	publicphp functionphp getBaseUrlphp(php)
-php	php{
-php	php	ifphp php(php$thisphp-php>php_usePathStyleUriphp)php php{
-php	php	php	returnphp php'httpphp:php/php/php'php php.php php$thisphp-php>php_hostphp php.php php'php/php'php php.php php$thisphp-php>php_accountNamephp;
-php	php	php}php elsephp php{
-php	php	php	returnphp php'httpphp:php/php/php'php php.php php$thisphp-php>php_accountNamephp php.php php'php.php'php php.php php$thisphp-php>php_hostphp;
-php	php	php}
-php	php}
-php	
-php	php/php*php*
-php	php php*php Setphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp instance
-php	php php*
-php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp php$credentialsphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp instancephp tophp usephp forphp requestphp signingphp.
-php	php php*php/
-php	publicphp functionphp setCredentialsphp(Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp php$credentialsphp)
-php	php{
-php	php php php php php$thisphp-php>php_credentialsphp php=php php$credentialsphp;
-php	php php php php php$thisphp-php>php_credentialsphp-php>setAccountNamephp(php$thisphp-php>php_accountNamephp)php;
-php	php php php php php$thisphp-php>php_credentialsphp-php>setAccountkeyphp(php$thisphp-php>php_accountKeyphp)php;
-php	php php php php php$thisphp-php>php_credentialsphp-php>setUsePathStyleUriphp(php$thisphp-php>php_usePathStyleUriphp)php;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Getphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp instance
-php	php php*
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstract
-php	php php*php/
-php	publicphp functionphp getCredentialsphp(php)
-php	php{
-php	php php php php returnphp php$thisphp-php>php_credentialsphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Performphp requestphp usingphp Zendphp_Httpphp_Clientphp channel
-php	php php*
-php	php php*php php@paramphp stringphp php$pathphp Path
-php	php php*php php@paramphp stringphp php$queryStringphp Queryphp string
-php	php php*php php@paramphp stringphp php$httpVerbphp HTTPphp verbphp thephp requestphp willphp use
-php	php php*php php@paramphp arrayphp php$headersphp xphp-msphp headersphp tophp add
-php	php php*php php@paramphp booleanphp php$forTableStoragephp Isphp thephp requestphp forphp tablephp storagephp?
-php	php php*php php@paramphp mixedphp php$rawDataphp Optionalphp RAWphp HTTPphp dataphp tophp bephp sentphp overphp thephp wire
-php	php php*php php@paramphp stringphp php$resourceTypephp Resourcephp type
-php	php php*php php@paramphp stringphp php$requiredPermissionphp Requiredphp permission
-php	php php*php php@returnphp Zendphp_Httpphp_Response
-php	php php*php/
-php	protectedphp functionphp php_performRequestphp(
-php	php	php$pathphp php=php php'php/php'php,
-php	php	php$queryStringphp php=php php'php'php,
-php	php	php$httpVerbphp php=php Zendphp_Httpphp_Clientphp:php:GETphp,
-php	php	php$headersphp php=php arrayphp(php)php,
-php	php	php$forTableStoragephp php=php falsephp,
-php	php	php$rawDataphp php=php nullphp,
-php	php	php$resourceTypephp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_UNKNOWNphp,
-php	php	php$requiredPermissionphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READ
-php	php)php php{
-php	php php php php php/php/php Cleanphp path
-php	php	ifphp php(strposphp(php$pathphp,php php'php/php'php)php php!php=php=php php0php)php php{
-php	php	php	php$pathphp php=php php'php/php'php php.php php$pathphp;
-php	php	php}
-php	php	php	
-php	php	php/php/php Cleanphp headers
-php	php	ifphp php(php$headersphp php=php=php=php nullphp)php php{
-php	php	php php php php php$headersphp php=php arrayphp(php)php;
-php	php	php}
-php	php	
-php	php	php/php/php Ensurephp cUrlphp willphp alsophp workphp correctlyphp:
-php	php	php/php/php php php-php disablephp Contentphp-Typephp ifphp required
-php	php	php/php/php php php-php disablephp Expectphp:php php1php0php0php Continue
-php	php	ifphp php(php!issetphp(php$headersphp[php"Contentphp-Typephp"php]php)php)php php{
-php	php	php	php$headersphp[php"Contentphp-Typephp"php]php php=php php'php'php;
-php	php	php}
-php	php	php$headersphp[php"Expectphp"php]php=php php'php'php;
+    /**
+     * Retrieve HTTP client channel
+     *
+     * @return Zend_Http_Client_Adapter_Interface
+     */
+    public function getHttpClientChannel()
+    {
+        return $this->_httpClientChannel;
+    }
+	
+	/**
+	 * Set retry policy to use when making requests
+	 *
+	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
+	 */
+	public function setRetryPolicy(Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
+	{
+		$this->_retryPolicy = $retryPolicy;
+		if ($this->_retryPolicy === null) {
+		    $this->_retryPolicy = Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::noRetry();
+		}
+	}
+	
+	/**
+	 * Set proxy
+	 *
+	 * @param boolean $useProxy         Use proxy?
+	 * @param string  $proxyUrl         Proxy URL
+	 * @param int     $proxyPort        Proxy port
+	 * @param string  $proxyCredentials Proxy credentials
+	 */
+	public function setProxy($useProxy = false, $proxyUrl = '', $proxyPort = 80, $proxyCredentials = '')
+	{
+	    $this->_useProxy         = $useProxy;
+	    $this->_proxyUrl         = $proxyUrl;
+	    $this->_proxyPort        = $proxyPort;
+	    $this->_proxyCredentials = $proxyCredentials;
+	
+	    if ($this->_useProxy) {
+	    	$credentials = explode(':', $this->_proxyCredentials);
+	    	
+	    	$this->_httpClientChannel->setConfig(array(
+				'proxy_host' => $this->_proxyUrl,
+	    		'proxy_port' => $this->_proxyPort,
+	    		'proxy_user' => $credentials[0],
+	    		'proxy_pass' => $credentials[1],
+	    	));
+	    } else {
+			$this->_httpClientChannel->setConfig(array(
+				'proxy_host' => '',
+	    		'proxy_port' => 8080,
+	    		'proxy_user' => '',
+	    		'proxy_pass' => '',
+	    	));
+	    }
+	}
+	
+	/**
+	 * Returns the Windows Azure account name
+	 *
+	 * @return string
+	 */
+	public function getAccountName()
+	{
+		return $this->_accountName;
+	}
+	
+	/**
+	 * Get base URL for creating requests
+	 *
+	 * @return string
+	 */
+	public function getBaseUrl()
+	{
+		if ($this->_usePathStyleUri) {
+			return 'http://' . $this->_host . '/' . $this->_accountName;
+		} else {
+			return 'http://' . $this->_accountName . '.' . $this->_host;
+		}
+	}
+	
+	/**
+	 * Set Zend_Service_WindowsAzure_Credentials_CredentialsAbstract instance
+	 *
+	 * @param Zend_Service_WindowsAzure_Credentials_CredentialsAbstract $credentials Zend_Service_WindowsAzure_Credentials_CredentialsAbstract instance to use for request signing.
+	 */
+	public function setCredentials(Zend_Service_WindowsAzure_Credentials_CredentialsAbstract $credentials)
+	{
+	    $this->_credentials = $credentials;
+	    $this->_credentials->setAccountName($this->_accountName);
+	    $this->_credentials->setAccountkey($this->_accountKey);
+	    $this->_credentials->setUsePathStyleUri($this->_usePathStyleUri);
+	}
+	
+	/**
+	 * Get Zend_Service_WindowsAzure_Credentials_CredentialsAbstract instance
+	 *
+	 * @return Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
+	 */
+	public function getCredentials()
+	{
+	    return $this->_credentials;
+	}
+	
+	/**
+	 * Perform request using Zend_Http_Client channel
+	 *
+	 * @param string $path Path
+	 * @param string $queryString Query string
+	 * @param string $httpVerb HTTP verb the request will use
+	 * @param array $headers x-ms headers to add
+	 * @param boolean $forTableStorage Is the request for table storage?
+	 * @param mixed $rawData Optional RAW HTTP data to be sent over the wire
+	 * @param string $resourceType Resource type
+	 * @param string $requiredPermission Required permission
+	 * @return Zend_Http_Response
+	 */
+	protected function _performRequest(
+		$path = '/',
+		$queryString = '',
+		$httpVerb = Zend_Http_Client::GET,
+		$headers = array(),
+		$forTableStorage = false,
+		$rawData = null,
+		$resourceType = Zend_Service_WindowsAzure_Storage::RESOURCE_UNKNOWN,
+		$requiredPermission = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ
+	) {
+	    // Clean path
+		if (strpos($path, '/') !== 0) {
+			$path = '/' . $path;
+		}
+			
+		// Clean headers
+		if ($headers === null) {
+		    $headers = array();
+		}
+		
+		// Ensure cUrl will also work correctly:
+		//  - disable Content-Type if required
+		//  - disable Expect: 100 Continue
+		if (!isset($headers["Content-Type"])) {
+			$headers["Content-Type"] = '';
+		}
+		$headers["Expect"]= '';
 
-php	php	php/php/php Addphp versionphp header
-php	php	php$headersphp[php'xphp-msphp-versionphp'php]php php=php php$thisphp-php>php_apiVersionphp;
-php	php	
-php	php	php/php/php URLphp encoding
-php	php	php$pathphp php php php php php php php php php php php=php selfphp:php:urlencodephp(php$pathphp)php;
-php	php	php$queryStringphp php php php php=php selfphp:php:urlencodephp(php$queryStringphp)php;
+		// Add version header
+		$headers['x-ms-version'] = $this->_apiVersion;
+		
+		// URL encoding
+		$path           = self::urlencode($path);
+		$queryString    = self::urlencode($queryString);
 
-php php php php php php php php php/php/php Generatephp URLphp andphp signphp request
-php php php php php php php php php$requestUrlphp php php php php php=php php$thisphp-php>php_credentials
-php php php php php php php php php php php php php php php php php php php php php php php php php php php-php>signRequestUrlphp(php$thisphp-php>getBaseUrlphp(php)php php.php php$pathphp php.php php$queryStringphp,php php$resourceTypephp,php php$requiredPermissionphp)php;
-php php php php php php php php php$requestHeadersphp php=php php$thisphp-php>php_credentials
-php php php php php php php php php php php php php php php php php php php php php php php php php php php-php>signRequestHeadersphp(php$httpVerbphp,php php$pathphp,php php$queryStringphp,php php$headersphp,php php$forTableStoragephp,php php$resourceTypephp,php php$requiredPermissionphp,php php$rawDataphp)php;
+        // Generate URL and sign request
+        $requestUrl     = $this->_credentials
+                          ->signRequestUrl($this->getBaseUrl() . $path . $queryString, $resourceType, $requiredPermission);
+        $requestHeaders = $this->_credentials
+                          ->signRequestHeaders($httpVerb, $path, $queryString, $headers, $forTableStorage, $resourceType, $requiredPermission, $rawData);
 
-php	php	php/php/php Preparephp request
-php	php	php$thisphp-php>php_httpClientChannelphp-php>resetParametersphp(truephp)php;
-php	php	php$thisphp-php>php_httpClientChannelphp-php>setUriphp(php$requestUrlphp)php;
-php	php	php$thisphp-php>php_httpClientChannelphp-php>setHeadersphp(php$requestHeadersphp)php;
-php	php	php$thisphp-php>php_httpClientChannelphp-php>setRawDataphp(php$rawDataphp)php;
-php	php	php	php	
-php	php	php/php/php Executephp request
-php	php	php$responsephp php=php php$thisphp-php>php_retryPolicyphp-php>executephp(
-php	php	php php php php arrayphp(php$thisphp-php>php_httpClientChannelphp,php php'requestphp'php)php,
-php	php	php php php php arrayphp(php$httpVerbphp)
-php	php	php)php;
-php	php	
-php	php	returnphp php$responsephp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Parsephp resultphp fromphp Zendphp_Httpphp_Response
-php	php php*
-php	php php*php php@paramphp Zendphp_Httpphp_Responsephp php$responsephp Responsephp fromphp HTTPphp call
-php	php php*php php@returnphp object
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	protectedphp functionphp php_parseResponsephp(Zendphp_Httpphp_Responsephp php$responsephp php=php nullphp)
-php	php{
-php	php	ifphp php(php$responsephp php=php=php=php nullphp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Responsephp shouldphp notphp bephp nullphp.php'php)php;
-php	php	php}
-php	php	
-php php php php php php php php php$xmlphp php=php php@simplexmlphp_loadphp_stringphp(php$responsephp-php>getBodyphp(php)php)php;
+		// Prepare request
+		$this->_httpClientChannel->resetParameters(true);
+		$this->_httpClientChannel->setUri($requestUrl);
+		$this->_httpClientChannel->setHeaders($requestHeaders);
+		$this->_httpClientChannel->setRawData($rawData);
+				
+		// Execute request
+		$response = $this->_retryPolicy->execute(
+		    array($this->_httpClientChannel, 'request'),
+		    array($httpVerb)
+		);
+		
+		return $response;
+	}
+	
+	/**
+	 * Parse result from Zend_Http_Response
+	 *
+	 * @param Zend_Http_Response $response Response from HTTP call
+	 * @return object
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	protected function _parseResponse(Zend_Http_Response $response = null)
+	{
+		if ($response === null) {
+			throw new Zend_Service_WindowsAzure_Exception('Response should not be null.');
+		}
+		
+        $xml = @simplexml_load_string($response->getBody());
 
-php php php php php php php php ifphp php(php$xmlphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php/php Fetchphp allphp namespaces
-php php php php php php php php php php php php php$namespacesphp php=php arrayphp_mergephp(php$xmlphp-php>getNamespacesphp(truephp)php,php php$xmlphp-php>getDocNamespacesphp(truephp)php)php;
+        if ($xml !== false) {
+            // Fetch all namespaces
+            $namespaces = array_merge($xml->getNamespaces(true), $xml->getDocNamespaces(true));
 
-php php php php php php php php php php php php php/php/php Registerphp allphp namespacephp prefixes
-php php php php php php php php php php php php foreachphp php(php$namespacesphp asphp php$prefixphp php=php>php php$nsphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$prefixphp php!php=php php'php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php$xmlphp-php>registerXPathNamespacephp(php$prefixphp,php php$nsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            // Register all namespace prefixes
+            foreach ($namespaces as $prefix => $ns) {
+                if ($prefix != '') {
+                    $xml->registerXPathNamespace($prefix, $ns);
+                }
+            }
+        }
 
-php php php php php php php php returnphp php$xmlphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Generatephp metadataphp headers
-php	php php*
-php	php php*php php@paramphp arrayphp php$metadata
-php	php php*php php@returnphp HTTPphp headersphp containingphp metadata
-php	php php*php/
-php	protectedphp functionphp php_generateMetadataHeadersphp(php$metadataphp php=php arrayphp(php)php)
-php	php{
-php	php	php/php/php Validate
-php	php	ifphp php(php!isphp_arrayphp(php$metadataphp)php)php php{
-php	php	php	returnphp arrayphp(php)php;
-php	php	php}
-php	php	
-php	php	php/php/php Returnphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	foreachphp php(php$metadataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	ifphp php(strposphp(php$valuephp,php php"php\rphp"php)php php!php=php=php falsephp php|php|php strposphp(php$valuephp,php php"php\nphp"php)php php!php=php=php falsephp)php php{
-php	php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Metadataphp cannotphp containphp newlinephp charactersphp.php'php)php;
-php	php	php	php}
-php	php	php	
-php	php	php	ifphp php(php!selfphp:php:isValidMetadataNamephp(php$keyphp)php)php php{
-php	php	php php php php php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Metadataphp namephp doesphp notphp adherephp tophp metadataphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/aaphp6php6php4php6php7php0php(VSphp.php7php1php)php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php	php}
-php	php	php	
-php	php	php php php php php$headersphp[php"xphp-msphp-metaphp-php"php php.php strtolowerphp(php$keyphp)php]php php=php php$valuephp;
-php	php	php}
-php	php	returnphp php$headersphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Parsephp metadataphp headers
-php	php php*
-php	php php*php php@paramphp arrayphp php$headersphp HTTPphp headersphp containingphp metadata
-php	php php*php php@returnphp array
-php	php php*php/
-php	protectedphp functionphp php_parseMetadataHeadersphp(php$headersphp php=php arrayphp(php)php)
-php	php{
-php	php	php/php/php Validate
-php	php	ifphp php(php!isphp_arrayphp(php$headersphp)php)php php{
-php	php	php	returnphp arrayphp(php)php;
-php	php	php}
-php	php	
-php	php	php/php/php Returnphp metadata
-php	php	php$metadataphp php=php arrayphp(php)php;
-php	php	foreachphp php(php$headersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php php php php ifphp php(substrphp(strtolowerphp(php$keyphp)php,php php0php,php php1php0php)php php=php=php php"xphp-msphp-metaphp-php"php)php php{
-php	php	php php php php php php php php php$metadataphp[strphp_replacephp(php"xphp-msphp-metaphp-php"php,php php'php'php,php strtolowerphp(php$keyphp)php)php]php php=php php$valuephp;
-php	php	php php php php php}
-php	php	php}
-php	php	returnphp php$metadataphp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Parsephp metadataphp XML
-php	php php*
-php	php php*php php@paramphp SimpleXMLElementphp php$parentElementphp Elementphp containingphp thephp Metadataphp elementphp.
-php	php php*php php@returnphp array
-php	php php*php/
-php	protectedphp functionphp php_parseMetadataElementphp(php$elementphp php=php nullphp)
-php	php{
-php	php	php/php/php Metadataphp presentphp?
-php	php	ifphp php(php$elementphp php!php=php=php nullphp php&php&php issetphp(php$elementphp-php>Metadataphp)php php&php&php php$elementphp-php>Metadataphp php!php=php=php nullphp)php php{
-php	php	php	returnphp getphp_objectphp_varsphp(php$elementphp-php>Metadataphp)php;
-php	php	php}
+        return $xml;
+	}
+	
+	/**
+	 * Generate metadata headers
+	 *
+	 * @param array $metadata
+	 * @return HTTP headers containing metadata
+	 */
+	protected function _generateMetadataHeaders($metadata = array())
+	{
+		// Validate
+		if (!is_array($metadata)) {
+			return array();
+		}
+		
+		// Return headers
+		$headers = array();
+		foreach ($metadata as $key => $value) {
+			if (strpos($value, "\r") !== false || strpos($value, "\n") !== false) {
+				throw new Zend_Service_WindowsAzure_Exception('Metadata cannot contain newline characters.');
+			}
+			
+			if (!self::isValidMetadataName($key)) {
+		    	throw new Zend_Service_WindowsAzure_Exception('Metadata name does not adhere to metadata naming conventions. See http://msdn.microsoft.com/en-us/library/aa664670(VS.71).aspx for more information.');
+			}
+			
+		    $headers["x-ms-meta-" . strtolower($key)] = $value;
+		}
+		return $headers;
+	}
+	
+	/**
+	 * Parse metadata headers
+	 *
+	 * @param array $headers HTTP headers containing metadata
+	 * @return array
+	 */
+	protected function _parseMetadataHeaders($headers = array())
+	{
+		// Validate
+		if (!is_array($headers)) {
+			return array();
+		}
+		
+		// Return metadata
+		$metadata = array();
+		foreach ($headers as $key => $value) {
+		    if (substr(strtolower($key), 0, 10) == "x-ms-meta-") {
+		        $metadata[str_replace("x-ms-meta-", '', strtolower($key))] = $value;
+		    }
+		}
+		return $metadata;
+	}
+	
+	/**
+	 * Parse metadata XML
+	 *
+	 * @param SimpleXMLElement $parentElement Element containing the Metadata element.
+	 * @return array
+	 */
+	protected function _parseMetadataElement($element = null)
+	{
+		// Metadata present?
+		if ($element !== null && isset($element->Metadata) && $element->Metadata !== null) {
+			return get_object_vars($element->Metadata);
+		}
 
-php	php	returnphp arrayphp(php)php;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Generatephp ISOphp php8php6php0php1php compliantphp datephp stringphp inphp UTCphp timephp zone
-php	php php*
-php	php php*php php@paramphp intphp php$timestamp
-php	php php*php php@returnphp string
-php	php php*php/
-php	publicphp functionphp isoDatephp(php$timestampphp php=php nullphp)
-php	php{
-php	php php php php php$tzphp php=php php@datephp_defaultphp_timezonephp_getphp(php)php;
-php	php php php php php@datephp_defaultphp_timezonephp_setphp(php'UTCphp'php)php;
-php	
-php	php php php php ifphp php(php$timestampphp php=php=php=php nullphp)php php{
-php	php php php php php php php php php$timestampphp php=php timephp(php)php;
-php	php php php php php}
-php	
-php	php php php php php$returnValuephp php=php strphp_replacephp(php'php+php0php0php:php0php0php'php,php php'php.php0php0php0php0php0php0php0Zphp'php,php php@datephp(php'cphp'php,php php$timestampphp)php)php;
-php	php php php php php@datephp_defaultphp_timezonephp_setphp(php$tzphp)php;
-php	php php php php returnphp php$returnValuephp;
-php	php}
-php	
-php	php/php*php*
-php	php php*php URLphp encodephp function
-php	php php*
-php	php php*php php@paramphp php stringphp php$valuephp Valuephp tophp encode
-php	php php*php php@returnphp stringphp php php php php php php php Encodedphp value
-php	php php*php/
-php	publicphp staticphp functionphp urlencodephp(php$valuephp)
-php	php{
-php	php php php php returnphp strphp_replacephp(php'php php'php,php php'php%php2php0php'php,php php$valuephp)php;
-php	php}
-php	
-php	php/php*php*
-php	php php*php Isphp validphp metadataphp namephp?
-php	php php*
-php	php php*php php@paramphp stringphp php$metadataNamephp Metadataphp name
-php	php php*php php@returnphp boolean
-php	php php*php/
-php php php php publicphp staticphp functionphp isValidMetadataNamephp(php$metadataNamephp php=php php'php'php)
-php php php php php{
-php php php php php php php php ifphp php(pregphp_matchphp(php"php/php^php[aphp-zAphp-Zphp0php-php9php_php@php]php[aphp-zAphp-Zphp0php-php9php_php]php*php$php/php"php,php php$metadataNamephp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+		return array();
+	}
+	
+	/**
+	 * Generate ISO 8601 compliant date string in UTC time zone
+	 *
+	 * @param int $timestamp
+	 * @return string
+	 */
+	public function isoDate($timestamp = null)
+	{
+	    $tz = @date_default_timezone_get();
+	    @date_default_timezone_set('UTC');
+	
+	    if ($timestamp === null) {
+	        $timestamp = time();
+	    }
+	
+	    $returnValue = str_replace('+00:00', '.0000000Z', @date('c', $timestamp));
+	    @date_default_timezone_set($tz);
+	    return $returnValue;
+	}
+	
+	/**
+	 * URL encode function
+	 *
+	 * @param  string $value Value to encode
+	 * @return string        Encoded value
+	 */
+	public static function urlencode($value)
+	{
+	    return str_replace(' ', '%20', $value);
+	}
+	
+	/**
+	 * Is valid metadata name?
+	 *
+	 * @param string $metadataName Metadata name
+	 * @return boolean
+	 */
+    public static function isValidMetadataName($metadataName = '')
+    {
+        if (preg_match("/^[a-zA-Z0-9_@][a-zA-Z0-9_]*$/", $metadataName) === 0) {
+            return false;
+        }
 
-php php php php php php php php ifphp php(php$metadataNamephp php=php=php php'php'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if ($metadataName == '') {
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Buildsphp aphp queryphp stringphp fromphp anphp arrayphp ofphp elements
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php php php php Arrayphp ofphp elements
-php php php php php php*php php@returnphp stringphp php php Assembledphp queryphp string
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createQueryStringFromArrayphp(php$queryStringphp)
-php php php php php{
-php php php php php php php php returnphp countphp(php$queryStringphp)php php>php php0php php?php php'php?php'php php.php implodephp(php'php&php'php,php php$queryStringphp)php php:php php'php'php;
-php php php php php}php php php php 
-php}
+    /**
+     * Builds a query string from an array of elements
+     *
+     * @param array     Array of elements
+     * @return string   Assembled query string
+     */
+    public static function createQueryStringFromArray($queryString)
+    {
+        return count($queryString) > 0 ? '?' . implode('&', $queryString) : '';
+    }    
+}

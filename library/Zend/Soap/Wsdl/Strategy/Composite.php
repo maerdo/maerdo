@@ -1,188 +1,188 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Soap
-php php*php php@subpackagephp Wsdl
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Compositephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Soap
+ * @subpackage Wsdl
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Composite.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interface
-php php*php/
-requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Strategyphp/Interfacephp.phpphp"php;
+/**
+ * @see Zend_Soap_Wsdl_Strategy_Interface
+ */
+require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
 
-php/php*php*
-php php*php Zendphp_Soapphp_Wsdlphp_Strategyphp_Composite
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Soap
-php php*php php@subpackagephp Wsdl
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Compositephp implementsphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Typemapphp ofphp Complexphp Typephp php=php>php Strategyphp pairsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_typeMapphp php=php arrayphp(php)php;
+/**
+ * Zend_Soap_Wsdl_Strategy_Composite
+ *
+ * @category   Zend
+ * @package    Zend_Soap
+ * @subpackage Wsdl
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Soap_Wsdl_Strategy_Composite implements Zend_Soap_Wsdl_Strategy_Interface
+{
+    /**
+     * Typemap of Complex Type => Strategy pairs.
+     *
+     * @var array
+     */
+    protected $_typeMap = array();
 
-php php php php php/php*php*
-php php php php php php*php Defaultphp Strategyphp ofphp thisphp composite
-php php php php php php*
-php php php php php php*php php@varphp stringphp|Zendphp_Soapphp_Wsdlphp_Strategyphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_defaultStrategyphp;
+    /**
+     * Default Strategy of this composite
+     *
+     * @var string|Zend_Soap_Wsdl_Strategy_Interface
+     */
+    protected $_defaultStrategy;
 
-php php php php php/php*php*
-php php php php php php*php Contextphp WSDLphp filephp thatphp thisphp compositephp serves
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Soapphp_Wsdlphp|null
-php php php php php php*php/
-php php php php protectedphp php$php_contextphp;
+    /**
+     * Context WSDL file that this composite serves
+     *
+     * @var Zend_Soap_Wsdl|null
+     */
+    protected $_context;
 
-php php php php php/php*php*
-php php php php php php*php Constructphp Compositephp WSDLphp Strategyphp.
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php*php php@paramphp arrayphp php$typeMap
-php php php php php php*php php@paramphp stringphp|Zendphp_Soapphp_Wsdlphp_Strategyphp_Interfacephp php$defaultStrategy
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$typeMapphp=arrayphp(php)php,php php$defaultStrategyphp=php"Zendphp_Soapphp_Wsdlphp_Strategyphp_DefaultComplexTypephp"php)
-php php php php php{
-php php php php php php php php foreachphp(php$typeMapphp ASphp php$typephp php=php>php php$strategyphp)php php{
-php php php php php php php php php php php php php$thisphp-php>connectTypeToStrategyphp(php$typephp,php php$strategyphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_defaultStrategyphp php=php php$defaultStrategyphp;
-php php php php php}
+    /**
+     * Construct Composite WSDL Strategy.
+     *
+     * @throws Zend_Soap_Wsdl_Exception
+     * @param array $typeMap
+     * @param string|Zend_Soap_Wsdl_Strategy_Interface $defaultStrategy
+     */
+    public function __construct(array $typeMap=array(), $defaultStrategy="Zend_Soap_Wsdl_Strategy_DefaultComplexType")
+    {
+        foreach($typeMap AS $type => $strategy) {
+            $this->connectTypeToStrategy($type, $strategy);
+        }
+        $this->_defaultStrategy = $defaultStrategy;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Connectphp aphp complexphp typephp tophp aphp givenphp strategyphp.
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@paramphp php stringphp|Zendphp_Soapphp_Wsdlphp_Strategyphp_Interfacephp php$strategy
-php php php php php php*php php@returnphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Composite
-php php php php php php*php/
-php php php php publicphp functionphp connectTypeToStrategyphp(php$typephp,php php$strategyphp)
-php php php php php{
-php php php php php php php php ifphp(php!isphp_stringphp(php$typephp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Exceptionphp.phpphp"php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Wsdlphp_Exceptionphp(php"Invalidphp typephp givenphp tophp Compositephp Typephp Mapphp.php"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_typeMapphp[php$typephp]php php=php php$strategyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Connect a complex type to a given strategy.
+     *
+     * @throws Zend_Soap_Wsdl_Exception
+     * @param  string $type
+     * @param  string|Zend_Soap_Wsdl_Strategy_Interface $strategy
+     * @return Zend_Soap_Wsdl_Strategy_Composite
+     */
+    public function connectTypeToStrategy($type, $strategy)
+    {
+        if(!is_string($type)) {
+            /**
+             * @see Zend_Soap_Wsdl_Exception
+             */
+            require_once "Zend/Soap/Wsdl/Exception.php";
+            throw new Zend_Soap_Wsdl_Exception("Invalid type given to Composite Type Map.");
+        }
+        $this->_typeMap[$type] = $strategy;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp defaultphp strategyphp ofphp thisphp composite
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultStrategyphp(php)
-php php php php php{
-php php php php php php php php php$strategyphp php=php php$thisphp-php>php_defaultStrategyphp;
-php php php php php php php php ifphp(isphp_stringphp(php$strategyphp)php php&php&php classphp_existsphp(php$strategyphp)php)php php{
-php php php php php php php php php php php php php$strategyphp php=php newphp php$strategyphp;
-php php php php php php php php php}
-php php php php php php php php ifphp(php php!php(php$strategyphp instanceofphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interfacephp)php php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Exceptionphp.phpphp"php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Wsdlphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Defaultphp Strategyphp forphp Complexphp Typesphp isphp notphp aphp validphp strategyphp objectphp.php"
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_defaultStrategyphp php=php php$strategyphp;
-php php php php php php php php returnphp php$strategyphp;
-php php php php php}
+    /**
+     * Return default strategy of this composite
+     *
+     * @throws Zend_Soap_Wsdl_Exception
+     * @param  string $type
+     * @return Zend_Soap_Wsdl_Strategy_Interface
+     */
+    public function getDefaultStrategy()
+    {
+        $strategy = $this->_defaultStrategy;
+        if(is_string($strategy) && class_exists($strategy)) {
+            $strategy = new $strategy;
+        }
+        if( !($strategy instanceof Zend_Soap_Wsdl_Strategy_Interface) ) {
+            /**
+             * @see Zend_Soap_Wsdl_Exception
+             */
+            require_once "Zend/Soap/Wsdl/Exception.php";
+            throw new Zend_Soap_Wsdl_Exception(
+                "Default Strategy for Complex Types is not a valid strategy object."
+            );
+        }
+        $this->_defaultStrategy = $strategy;
+        return $strategy;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp specificphp strategyphp orphp thephp defaultphp strategyphp ofphp thisphp typephp.
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getStrategyOfTypephp(php$typephp)
-php php php php php{
-php php php php php php php php ifphp(issetphp(php$thisphp-php>php_typeMapphp[php$typephp]php)php)php php{
-php php php php php php php php php php php php php$strategyphp php=php php$thisphp-php>php_typeMapphp[php$typephp]php;
+    /**
+     * Return specific strategy or the default strategy of this type.
+     *
+     * @throws Zend_Soap_Wsdl_Exception
+     * @param  string $type
+     * @return Zend_Soap_Wsdl_Strategy_Interface
+     */
+    public function getStrategyOfType($type)
+    {
+        if(isset($this->_typeMap[$type])) {
+            $strategy = $this->_typeMap[$type];
 
-php php php php php php php php php php php php ifphp(isphp_stringphp(php$strategyphp)php php&php&php classphp_existsphp(php$strategyphp)php)php php{
-php php php php php php php php php php php php php php php php php$strategyphp php=php newphp php$strategyphp(php)php;
-php php php php php php php php php php php php php}
+            if(is_string($strategy) && class_exists($strategy)) {
+                $strategy = new $strategy();
+            }
 
-php php php php php php php php php php php php ifphp(php php!php(php$strategyphp instanceofphp Zendphp_Soapphp_Wsdlphp_Strategyphp_Interfacephp)php php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Exceptionphp.phpphp"php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Wsdlphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php"Strategyphp forphp Complexphp Typephp php'php"php.php$typephp.php"php'php isphp notphp aphp validphp strategyphp objectphp.php"
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_typeMapphp[php$typephp]php php=php php$strategyphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$strategyphp php=php php$thisphp-php>getDefaultStrategyphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$strategyphp;
-php php php php php}
+            if( !($strategy instanceof Zend_Soap_Wsdl_Strategy_Interface) ) {
+                /**
+                 * @see Zend_Soap_Wsdl_Exception
+                 */
+                require_once "Zend/Soap/Wsdl/Exception.php";
+                throw new Zend_Soap_Wsdl_Exception(
+                    "Strategy for Complex Type '".$type."' is not a valid strategy object."
+                );
+            }
+            $this->_typeMap[$type] = $strategy;
+        } else {
+            $strategy = $this->getDefaultStrategy();
+        }
+        return $strategy;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Methodphp acceptsphp thephp currentphp WSDLphp contextphp filephp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Soapphp_Wsdlphp php$context
-php php php php php php*php/
-php php php php publicphp functionphp setContextphp(Zendphp_Soapphp_Wsdlphp php$contextphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_contextphp php=php php$contextphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Method accepts the current WSDL context file.
+     *
+     * @param Zend_Soap_Wsdl $context
+     */
+    public function setContext(Zend_Soap_Wsdl $context)
+    {
+        $this->_context = $context;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp complexphp typephp basedphp onphp aphp strategy
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp stringphp XSDphp type
-php php php php php php*php/
-php php php php publicphp functionphp addComplexTypephp(php$typephp)
-php php php php php{
-php php php php php php php php ifphp(php!php(php$thisphp-php>php_contextphp instanceofphp Zendphp_Soapphp_Wsdlphp)php php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Soapphp_Wsdlphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Soapphp/Wsdlphp/Exceptionphp.phpphp"php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Soapphp_Wsdlphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Cannotphp addphp complexphp typephp php'php"php.php$typephp.php"php'php,php nophp contextphp isphp setphp forphp thisphp compositephp strategyphp.php"
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * Create a complex type based on a strategy
+     *
+     * @throws Zend_Soap_Wsdl_Exception
+     * @param  string $type
+     * @return string XSD type
+     */
+    public function addComplexType($type)
+    {
+        if(!($this->_context instanceof Zend_Soap_Wsdl) ) {
+            /**
+             * @see Zend_Soap_Wsdl_Exception
+             */
+            require_once "Zend/Soap/Wsdl/Exception.php";
+            throw new Zend_Soap_Wsdl_Exception(
+                "Cannot add complex type '".$type."', no context is set for this composite strategy."
+            );
+        }
 
-php php php php php php php php php$strategyphp php=php php$thisphp-php>getStrategyOfTypephp(php$typephp)php;
-php php php php php php php php php$strategyphp-php>setContextphp(php$thisphp-php>php_contextphp)php;
-php php php php php php php php returnphp php$strategyphp-php>addComplexTypephp(php$typephp)php;
-php php php php php}
-php}
+        $strategy = $this->getStrategyOfType($type);
+        $strategy->setContext($this->_context);
+        return $strategy->addComplexType($type);
+    }
+}

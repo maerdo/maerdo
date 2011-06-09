@@ -1,732 +1,732 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Fontphp.phpphp php2php0php2php1php1php php2php0php1php0php-php0php1php-php1php2php php0php2php:php1php4php:php2php9Zphp yoshidaphp@zendphp.cophp.jpphp php$
-php php*php/
-
-
-php/php*php*
-php php*php Abstractphp factoryphp classphp whichphp vendsphp php{php@linkphp Zendphp_Pdfphp_Resourcephp_Fontphp}php objectsphp.
-php php*
-php php*php Fontphp objectsphp themselvesphp arephp normallyphp instantiatedphp throughphp thephp factoryphp methods
-php php*php php{php@linkphp fontWithNamephp(php)php}php orphp php{php@linkphp fontWithPathphp(php)php}php.
-php php*
-php php*php Thisphp classphp isphp alsophp thephp homephp forphp fontphp-relatedphp constantsphp becausephp thephp namephp of
-php php*php thephp truephp basephp classphp php(php{php@linkphp Zendphp_Pdfphp_Resourcephp_Fontphp}php)php isphp notphp intuitivephp forphp the
-php php*php endphp userphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Pdfphp_Font
-php{
-php php php/php*php*php*php*php Classphp Constantsphp php*php*php*php*php/
-
-
-php php php/php*php Fontphp Typesphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Unknownphp fontphp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_UNKNOWNphp php=php php0php;
-
-php php php php php/php*php*
-php php php php php php*php Onephp ofphp thephp standardphp php1php4php PDFphp fontsphp.
-php php php php php php*php/
-php php php php constphp TYPEphp_STANDARDphp php=php php1php;
-
-php php php php php/php*php*
-php php php php php php*php Aphp PostScriptphp Typephp php1php fontphp.
-php php php php php php*php/
-php php php php constphp TYPEphp_TYPEphp_php1php php=php php2php;
-
-php php php php php/php*php*
-php php php php php php*php Aphp TrueTypephp fontphp orphp anphp OpenTypephp fontphp containingphp TrueTypephp outlinesphp.
-php php php php php php*php/
-php php php php constphp TYPEphp_TRUETYPEphp php=php php3php;
-
-php php php php php/php*php*
-php php php php php php*php Typephp php0php compositephp fontphp.
-php php php php php php*php/
-php php php php constphp TYPEphp_TYPEphp_php0php php=php php4php;
-
-php php php php php/php*php*
-php php php php php php*php CIDphp fontphp containingphp aphp PostScriptphp Typephp php1php fontphp.
-php php php php php php*php Thesephp fontsphp arephp usedphp onlyphp tophp constructphp Typephp php0php compositephp fontsphp andphp canphp'tphp bephp usedphp directly
-php php php php php php*php/
-php php php php constphp TYPEphp_CIDFONTphp_TYPEphp_php0php php=php php5php;
-
-php php php php php/php*php*
-php php php php php php*php CIDphp fontphp containingphp aphp TrueTypephp fontphp orphp anphp OpenTypephp fontphp containingphp TrueTypephp outlinesphp.
-php php php php php php*php Thesephp fontsphp arephp usedphp onlyphp tophp constructphp Typephp php0php compositephp fontsphp andphp canphp'tphp bephp usedphp directly
-php php php php php php*php/
-php php php php constphp TYPEphp_CIDFONTphp_TYPEphp_php2php php=php php6php;
-
-
-php php php/php*php Namesphp ofphp thephp Standardphp php1php4php PDFphp Fontsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp standardphp PDFphp fontphp Courierphp.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp php=php php'Courierphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp stylephp ofphp thephp standardphp PDFphp fontphp Courierphp.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp_BOLDphp php=php php'Courierphp-Boldphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Courierphp.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp_OBLIQUEphp php=php php'Courierphp-Obliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp constantphp forphp aphp commonphp misspellingphp of
-php php php php php php*php php{php@linkphp FONTphp_COURIERphp_OBLIQUEphp}php.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp_ITALICphp php=php php'Courierphp-Obliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp andphp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Courierphp.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp_BOLDphp_OBLIQUEphp php=php php'Courierphp-BoldObliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp constantphp forphp aphp commonphp misspellingphp of
-php php php php php php*php php{php@linkphp FONTphp_COURIERphp_BOLDphp_OBLIQUEphp}php.
-php php php php php php*php/
-php php php php constphp FONTphp_COURIERphp_BOLDphp_ITALICphp php=php php'Courierphp-BoldObliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp standardphp PDFphp fontphp Helveticaphp.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp php=php php'Helveticaphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp stylephp ofphp thephp standardphp PDFphp fontphp Helveticaphp.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp_BOLDphp php=php php'Helveticaphp-Boldphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Helveticaphp.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp_OBLIQUEphp php=php php'Helveticaphp-Obliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp constantphp forphp aphp commonphp misspellingphp of
-php php php php php php*php php{php@linkphp FONTphp_HELVETICAphp_OBLIQUEphp}php.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp_ITALICphp php=php php'Helveticaphp-Obliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp andphp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Helveticaphp.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp_BOLDphp_OBLIQUEphp php=php php'Helveticaphp-BoldObliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp constantphp forphp aphp commonphp misspellingphp of
-php php php php php php*php php{php@linkphp FONTphp_HELVETICAphp_BOLDphp_OBLIQUEphp}php.
-php php php php php php*php/
-php php php php constphp FONTphp_HELVETICAphp_BOLDphp_ITALICphp php=php php'Helveticaphp-BoldObliquephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp standardphp PDFphp fontphp Symbolphp.
-php php php php php php*php/
-php php php php constphp FONTphp_SYMBOLphp php=php php'Symbolphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp standardphp PDFphp fontphp Timesphp.
-php php php php php php*php/
-php php php php constphp FONTphp_TIMESphp_ROMANphp php=php php'Timesphp-Romanphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Conveniencephp constantphp forphp aphp commonphp misspellingphp of
-php php php php php php*php php{php@linkphp FONTphp_TIMESphp_ROMANphp}php.
-php php php php php php*php/
-php php php php constphp FONTphp_TIMESphp php=php php'Timesphp-Romanphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp stylephp ofphp thephp standardphp PDFphp fontphp Timesphp.
-php php php php php php*php/
-php php php php constphp FONTphp_TIMESphp_BOLDphp php=php php'Timesphp-Boldphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Timesphp.
-php php php php php php*php/
-php php php php constphp FONTphp_TIMESphp_ITALICphp php=php php'Timesphp-Italicphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp boldphp andphp italicphp stylephp ofphp thephp standardphp PDFphp fontphp Timesphp.
-php php php php php php*php/
-php php php php constphp FONTphp_TIMESphp_BOLDphp_ITALICphp php=php php'Timesphp-BoldItalicphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp standardphp PDFphp fontphp Zapfphp Dingbatsphp.
-php php php php php php*php/
-php php php php constphp FONTphp_ZAPFDINGBATSphp php=php php'ZapfDingbatsphp'php;
-
-
-php php php/php*php Fontphp Namephp Stringphp Typesphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Fullphp copyrightphp noticephp forphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_COPYRIGHTphp php=php php php0php;
-
-php php php php php/php*php*
-php php php php php php*php Fontphp familyphp namephp.php Usedphp tophp groupphp similarphp stylesphp ofphp fontsphp togetherphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_FAMILYphp php=php php php1php;
-
-php php php php php/php*php*
-php php php php php php*php Fontphp stylephp withinphp thephp fontphp familyphp.php Examplesphp:php Regularphp,php Italicphp,php Boldphp,php etcphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_STYLEphp php=php php php2php;
-
-php php php php php/php*php*
-php php php php php php*php Uniquephp fontphp identifierphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_IDphp php=php php php3php;
-
-php php php php php/php*php*
-php php php php php php*php Fullphp fontphp namephp.php Usuallyphp aphp combinationphp ofphp thephp php{php@linkphp NAMEphp_FAMILYphp}php and
-php php php php php php*php php{php@linkphp NAMEphp_STYLEphp}php stringsphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_FULLphp php=php php php4php;
-
-php php php php php/php*php*
-php php php php php php*php Versionphp numberphp ofphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_VERSIONphp php=php php php5php;
-
-php php php php php/php*php*
-php php php php php php*php PostScriptphp namephp forphp thephp fontphp.php Thisphp isphp thephp namephp usedphp tophp identifyphp fonts
-php php php php php php*php internallyphp andphp withinphp thephp PDFphp filephp.
-php php php php php php*php/
-php php php php constphp NAMEphp_POSTSCRIPTphp php=php php php6php;
-
-php php php php php/php*php*
-php php php php php php*php Fontphp trademarkphp noticephp.php Thisphp isphp distinctphp fromphp thephp php{php@linkphp NAMEphp_COPYRIGHTphp}php.
-php php php php php php*php/
-php php php php constphp NAMEphp_TRADEMARKphp php=php php php7php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp fontphp manufacturerphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_MANUFACTURERphp php=php php php8php;
-
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp designerphp ofphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_DESIGNERphp php=php php php9php;
-
-php php php php php/php*php*
-php php php php php php*php Descriptionphp ofphp thephp fontphp.php Mayphp containphp revisionphp informationphp,php usage
-php php php php php php*php recommendationsphp,php featuresphp,php etcphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_DESCRIPTIONphp php=php php1php0php;
-
-php php php php php/php*php*
-php php php php php php*php URLphp ofphp thephp fontphp vendorphp.php Somephp fontsphp mayphp containphp aphp uniquephp serialphp number
-php php php php php php*php embeddedphp inphp thisphp URLphp,php whichphp isphp usedphp forphp licensingphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_VENDORphp_URLphp php=php php1php1php;
-
-php php php php php/php*php*
-php php php php php php*php URLphp ofphp thephp fontphp designerphp php(php{php@linkphp NAMEphp_DESIGNERphp}php)php.
-php php php php php php*php/
-php php php php constphp NAMEphp_DESIGNERphp_URLphp php=php php1php2php;
-
-php php php php php/php*php*
-php php php php php php*php Plainphp languagephp licensingphp termsphp forphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_LICENSEphp php=php php1php3php;
-
-php php php php php/php*php*
-php php php php php php*php URLphp ofphp morephp detailedphp licensingphp informationphp forphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_LICENSEphp_URLphp php=php php1php4php;
-
-php php php php php/php*php*
-php php php php php php*php Preferredphp fontphp familyphp.php Usedphp byphp somephp fontsphp tophp workphp aroundphp aphp Microsoft
-php php php php php php*php Windowsphp limitationphp wherephp onlyphp fourphp fontsphp stylesphp canphp sharephp thephp same
-php php php php php php*php php{php@linkphp NAMEphp_FAMILYphp}php valuephp.
-php php php php php php*php/
-php php php php constphp NAMEphp_PREFERREDphp_FAMILYphp php=php php1php6php;
-
-php php php php php/php*php*
-php php php php php php*php Preferredphp fontphp stylephp.php Aphp morephp descriptivephp stringphp thanphp php{php@linkphp NAMEphp_STYLEphp}php.
-php php php php php php*php/
-php php php php constphp NAMEphp_PREFERREDphp_STYLEphp php=php php1php7php;
-
-php php php php php/php*php*
-php php php php php php*php Suggestedphp textphp tophp usephp asphp aphp representativephp samplephp ofphp thephp fontphp.
-php php php php php php*php/
-php php php php constphp NAMEphp_SAMPLEphp_TEXTphp php=php php1php9php;
-
-php php php php php/php*php*
-php php php php php php*php PostScriptphp CIDphp findfontphp namephp.
-php php php php php php*php/
-php php php php constphp NAMEphp_CIDphp_NAMEphp php=php php2php0php;
-
-
-php php php/php*php Fontphp Weightsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Thinphp fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_THINphp php=php php1php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Extraphp-lightphp php(Ultraphp-lightphp)php fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_EXTRAphp_LIGHTphp php=php php2php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Lightphp fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_LIGHTphp php=php php3php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Normalphp php(Regularphp)php fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_NORMALphp php=php php4php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Mediumphp fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_MEDIUMphp php=php php5php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Semiphp-boldphp php(Demiphp-boldphp)php fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_SEMIphp_BOLDphp php=php php6php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Boldphp fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_BOLDphp php=php php7php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Extraphp-boldphp php(Ultraphp-boldphp)php fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_EXTRAphp_BOLDphp php=php php8php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Blackphp php(Heavyphp)php fontphp weightphp.
-php php php php php php*php/
-php php php php constphp WEIGHTphp_BLACKphp php=php php9php0php0php;
-
-
-php php php/php*php Fontphp Widthsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Ultraphp-condensedphp fontphp widthphp.php Typicallyphp php5php0php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_ULTRAphp_CONDENSEDphp php=php php1php;
-
-php php php php php/php*php*
-php php php php php php*php Extraphp-condensedphp fontphp widthphp.php Typicallyphp php6php2php.php5php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_EXTRAphp_CONDENSEDphp php=php php2php;
-
-php php php php php/php*php*
-php php php php php php*php Condensedphp fontphp widthphp.php Typicallyphp php7php5php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_CONDENSEDphp php=php php3php;
-
-php php php php php/php*php*
-php php php php php php*php Semiphp-condensedphp fontphp widthphp.php Typicallyphp php8php7php.php5php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_SEMIphp_CONDENSEDphp php=php php4php;
-
-php php php php php/php*php*
-php php php php php php*php Normalphp php(Mediumphp)php fontphp widthphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_NORMALphp php=php php5php;
-
-php php php php php/php*php*
-php php php php php php*php Semiphp-expandedphp fontphp widthphp.php Typicallyphp php1php1php2php.php5php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_SEMIphp_EXPANDEDphp php=php php6php;
-
-php php php php php/php*php*
-php php php php php php*php Expandedphp fontphp widthphp.php Typicallyphp php1php2php5php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_EXPANDEDphp php=php php7php;
-
-php php php php php/php*php*
-php php php php php php*php Extraphp-expandedphp fontphp widthphp.php Typicallyphp php1php5php0php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_EXTRAphp_EXPANDEDphp php=php php8php;
-
-php php php php php/php*php*
-php php php php php php*php Ultraphp-expandedphp fontphp widthphp.php Typicallyphp php2php0php0php%php ofphp normalphp.
-php php php php php php*php/
-php php php php constphp WIDTHphp_ULTRAphp_EXPANDEDphp php=php php9php;
-
-
-php php php/php*php Fontphp Embeddingphp Optionsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Dophp notphp embedphp thephp fontphp inphp thephp PDFphp documentphp.
-php php php php php php*php/
-php php php php constphp EMBEDphp_DONTphp_EMBEDphp php=php php0xphp0php1php;
-
-php php php php php/php*php*
-php php php php php php*php Embedphp,php butphp dophp notphp subsetphp thephp fontphp inphp thephp PDFphp documentphp.
-php php php php php php*php/
-php php php php constphp EMBEDphp_DONTphp_SUBSETphp php=php php0xphp0php2php;
-
-php php php php php/php*php*
-php php php php php php*php Embedphp,php butphp dophp notphp compressphp thephp fontphp inphp thephp PDFphp documentphp.
-php php php php php php*php/
-php php php php constphp EMBEDphp_DONTphp_COMPRESSphp php=php php0xphp0php4php;
-
-php php php php php/php*php*
-php php php php php php*php Suppressphp thephp exceptionphp normallyphp thrownphp ifphp thephp fontphp cannotphp bephp embedded
-php php php php php php*php duephp tophp itsphp copyrightphp bitsphp beingphp setphp.
-php php php php php php*php/
-php php php php constphp EMBEDphp_SUPPRESSphp_EMBEDphp_EXCEPTIONphp php=php php0xphp0php8php;
-
-
-
-php php php/php*php*php*php*php Classphp Variablesphp php*php*php*php*php/
-
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp whosephp keysphp arephp thephp uniquephp PostScriptphp namesphp ofphp instantiatedphp fontsphp.
-php php php php php php*php Thephp valuesphp arephp thephp fontphp objectsphp themselvesphp.
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp staticphp php$php_fontNamesphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp whosephp keysphp arephp thephp mdphp5php hashphp ofphp thephp fullphp pathsphp onphp diskphp forphp parsed
-php php php php php php*php fontsphp.php Thephp valuesphp arephp thephp fontphp objectsphp themselvesphp.
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp staticphp php$php_fontFilePathsphp php=php arrayphp(php)php;
-
-
-
-php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
-
-
-php php php/php*php Factoryphp Methodsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp php{php@linkphp Zendphp_Pdfphp_Resourcephp_Fontphp}php objectphp byphp fullphp namephp.
-php php php php php php*
-php php php php php php*php Thisphp isphp thephp preferredphp methodphp tophp obtainphp onephp ofphp thephp standardphp php1php4php PDFphp fontsphp.
-php php php php php php*
-php php php php php php*php Thephp resultphp ofphp thisphp methodphp isphp cachedphp,php preventingphp unnecessaryphp duplication
-php php php php php php*php ofphp fontphp objectsphp.php Repetitivephp callsphp forphp aphp fontphp withphp thephp samephp namephp will
-php php php php php php*php returnphp thephp samephp objectphp.
-php php php php php php*
-php php php php php php*php Thephp php$embeddingOptionsphp parameterphp allowsphp youphp tophp setphp certainphp flagsphp related
-php php php php php php*php tophp fontphp embeddingphp.php Youphp mayphp combinephp optionsphp byphp ORphp-ingphp themphp togetherphp.php See
-php php php php php php*php thephp EMBEDphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_Fontphp}php forphp thephp listphp of
-php php php php php php*php availablephp optionsphp andphp theirphp descriptionsphp.php Notephp thatphp thisphp valuephp isphp only
-php php php php php php*php usedphp whenphp creatingphp aphp fontphp forphp thephp firstphp timephp.php Ifphp aphp fontphp withphp thephp same
-php php php php php php*php namephp alreadyphp existsphp,php youphp willphp getphp thatphp objectphp andphp thephp optionsphp youphp specify
-php php php php php php*php herephp willphp bephp ignoredphp.php Thisphp isphp becausephp fontsphp arephp onlyphp embeddedphp withinphp the
-php php php php php php*php PDFphp filephp oncephp.
-php php php php php php*
-php php php php php php*php Ifphp thephp fontphp namephp suppliedphp doesphp notphp matchphp thephp namephp ofphp aphp previously
-php php php php php php*php instantiatedphp objectphp andphp itphp isphp notphp onephp ofphp thephp php1php4php standardphp PDFphp fontsphp,php an
-php php php php php php*php exceptionphp willphp bephp thrownphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp Fullphp PostScriptphp namephp ofphp fontphp.
-php php php php php php*php php@paramphp integerphp php$embeddingOptionsphp php(optionalphp)php Optionsphp forphp fontphp embeddingphp.
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Resourcephp_Font
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp fontWithNamephp(php$namephp,php php$embeddingOptionsphp php=php php0php)
-php php php php php php php php php{
-php php php php php php php php php/php*php Firstphp checkphp thephp cachephp.php Donphp'tphp duplicatephp fontphp objectsphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(issetphp(Zendphp_Pdfphp_Fontphp:php:php$php_fontNamesphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Fontphp:php:php$php_fontNamesphp[php$namephp]php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@todophp Itphp wouldphp bephp coolphp tophp bephp ablephp tophp havephp aphp mappingphp ofphp fontphp namesphp to
-php php php php php php php php php php*php php php filephp pathsphp inphp aphp configurationphp filephp forphp frequentlyphp usedphp custom
-php php php php php php php php php php*php php php fontsphp.php Thisphp wouldphp allowphp aphp userphp tophp usephp customphp fontsphp withoutphp having
-php php php php php php php php php php*php php php tophp hardphp-codephp filephp pathsphp allphp overphp thephp placephp.php Tablephp thisphp ideaphp until
-php php php php php php php php php php*php php php php{php@linkphp Zendphp_Configphp}php isphp readyphp.
-php php php php php php php php php php*php/
-
-php php php php php php php php php/php*php Notphp anphp existingphp fontphp andphp nophp mappingphp inphp thephp configphp filephp.php Checkphp tophp see
-php php php php php php php php php php*php ifphp thisphp isphp onephp ofphp thephp standardphp php1php4php PDFphp fontsphp.
-php php php php php php php php php php*php/
-php php php php php php php php switchphp php(php$namephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_COURIERphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/Courierphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_Courierphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_COURIERphp_BOLDphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/CourierBoldphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_CourierBoldphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_COURIERphp_OBLIQUEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/CourierObliquephp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_CourierObliquephp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_COURIERphp_BOLDphp_OBLIQUEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/CourierBoldObliquephp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_CourierBoldObliquephp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_HELVETICAphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/Helveticaphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_Helveticaphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_HELVETICAphp_BOLDphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/HelveticaBoldphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_HelveticaBoldphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_HELVETICAphp_OBLIQUEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/HelveticaObliquephp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_HelveticaObliquephp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_HELVETICAphp_BOLDphp_OBLIQUEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/HelveticaBoldObliquephp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_HelveticaBoldObliquephp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_SYMBOLphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/Symbolphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_Symbolphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_TIMESphp_ROMANphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/TimesRomanphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_TimesRomanphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_TIMESphp_BOLDphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/TimesBoldphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_TimesBoldphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_TIMESphp_ITALICphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/TimesItalicphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_TimesItalicphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_TIMESphp_BOLDphp_ITALICphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/TimesBoldItalicphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_TimesBoldItalicphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Fontphp:php:FONTphp_ZAPFDINGBATSphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp/ZapfDingbatsphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_ZapfDingbatsphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Unknownphp fontphp namephp:php php$namephp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:BADphp_FONTphp_NAMEphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php Addphp thisphp newphp fontphp tophp thephp cachephp arrayphp andphp returnphp itphp forphp usephp.
-php php php php php php php php php php*php/
-php php php php php php php php Zendphp_Pdfphp_Fontphp:php:php$php_fontNamesphp[php$namephp]php php=php php$fontphp;
-php php php php php php php php returnphp php$fontphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp php{php@linkphp Zendphp_Pdfphp_Resourcephp_Fontphp}php objectphp byphp filephp pathphp.
-php php php php php php*
-php php php php php php*php Thephp resultphp ofphp thisphp methodphp isphp cachedphp,php preventingphp unnecessaryphp duplication
-php php php php php php*php ofphp fontphp objectsphp.php Repetitivephp callsphp forphp thephp fontphp withphp thephp samephp pathphp will
-php php php php php php*php returnphp thephp samephp objectphp.
-php php php php php php*
-php php php php php php*php Thephp php$embeddingOptionsphp parameterphp allowsphp youphp tophp setphp certainphp flagsphp related
-php php php php php php*php tophp fontphp embeddingphp.php Youphp mayphp combinephp optionsphp byphp ORphp-ingphp themphp togetherphp.php See
-php php php php php php*php thephp EMBEDphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_Fontphp}php forphp thephp listphp of
-php php php php php php*php availablephp optionsphp andphp theirphp descriptionsphp.php Notephp thatphp thisphp valuephp isphp only
-php php php php php php*php usedphp whenphp creatingphp aphp fontphp forphp thephp firstphp timephp.php Ifphp aphp fontphp withphp thephp same
-php php php php php php*php namephp alreadyphp existsphp,php youphp willphp getphp thatphp objectphp andphp thephp optionsphp youphp specify
-php php php php php php*php herephp willphp bephp ignoredphp.php Thisphp isphp becausephp fontsphp arephp onlyphp embeddedphp withinphp the
-php php php php php php*php PDFphp filephp oncephp.
-php php php php php php*
-php php php php php php*php Ifphp thephp filephp pathphp suppliedphp doesphp notphp matchphp thephp pathphp ofphp aphp previously
-php php php php php php*php instantiatedphp objectphp orphp thephp fontphp typephp cannotphp bephp determinedphp,php anphp exception
-php php php php php php*php willphp bephp thrownphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$filePathphp Fullphp pathphp tophp thephp fontphp filephp.
-php php php php php php*php php@paramphp integerphp php$embeddingOptionsphp php(optionalphp)php Optionsphp forphp fontphp embeddingphp.
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Resourcephp_Font
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp fontWithPathphp(php$filePathphp,php php$embeddingOptionsphp php=php php0php)
-php php php php php{
-php php php php php php php php php/php*php Firstphp checkphp thephp cachephp.php Donphp'tphp duplicatephp fontphp objectsphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$filePathKeyphp php=php mdphp5php(php$filePathphp)php;
-php php php php php php php php ifphp php(issetphp(Zendphp_Pdfphp_Fontphp:php:php$php_fontFilePathsphp[php$filePathKeyphp]php)php)php php{
-php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Fontphp:php:php$php_fontFilePathsphp[php$filePathKeyphp]php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php Createphp aphp filephp parserphp dataphp sourcephp objectphp forphp thisphp filephp.php Filephp pathphp and
-php php php php php php php php php php*php accessphp permissionphp checksphp arephp handledphp herephp.
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/FileParserDataSourcephp/Filephp.phpphp'php;
-php php php php php php php php php$dataSourcephp php=php newphp Zendphp_Pdfphp_FileParserDataSourcephp_Filephp(php$filePathphp)php;
-
-php php php php php php php php php/php*php Attemptphp tophp determinephp thephp typephp ofphp fontphp.php Wephp canphp'tphp alwaysphp trustphp file
-php php php php php php php php php php*php extensionsphp,php butphp tryphp thatphp firstphp sincephp itphp'sphp fastestphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$fileExtensionphp php=php strtolowerphp(pathinfophp(php$filePathphp,php PATHINFOphp_EXTENSIONphp)php)php;
-
-php php php php php php php php php/php*php Ifphp itphp turnsphp outphp thatphp thephp filephp isphp namedphp improperlyphp andphp wephp guessphp the
-php php php php php php php php php php*php wrongphp typephp,php wephp'llphp getphp nullphp insteadphp ofphp aphp fontphp objectphp.
-php php php php php php php php php php*php/
-php php php php php php php php switchphp php(php$fileExtensionphp)php php{
-php php php php php php php php php php php php casephp php'ttfphp'php:
-php php php php php php php php php php php php php php php php php$fontphp php=php Zendphp_Pdfphp_Fontphp:php:php_extractTrueTypeFontphp(php$dataSourcephp,php php$embeddingOptionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php/php*php Unrecognizedphp extensionphp.php Tryphp tophp determinephp thephp typephp byphp actually
-php php php php php php php php php php php php php php php php php php*php parsingphp itphp belowphp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$fontphp php=php nullphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-
-
-php php php php php php php php ifphp php(php$fontphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php Therephp wasphp nophp matchphp forphp thephp filephp extensionphp orphp thephp extensionphp was
-php php php php php php php php php php php php php php*php wrongphp.php Attemptphp tophp detectphp thephp typephp ofphp fontphp byphp actuallyphp parsingphp itphp.
-php php php php php php php php php php php php php php*php Wephp'llphp dophp thephp checksphp inphp orderphp ofphp mostphp likelyphp formatphp tophp tryphp to
-php php php php php php php php php php php php php php*php reducephp thephp detectionphp timephp.
-php php php php php php php php php php php php php php*php/
-
-php php php php php php php php php php php php php/php/php OpenType
-
-php php php php php php php php php php php php php/php/php TrueType
-php php php php php php php php php php php php ifphp php(php(php$fontphp php=php=php=php nullphp)php php&php&php php(php$fileExtensionphp php!php=php php'ttfphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$fontphp php=php Zendphp_Pdfphp_Fontphp:php:php_extractTrueTypeFontphp(php$dataSourcephp,php php$embeddingOptionsphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Typephp php1php PostScript
-
-php php php php php php php php php php php php php/php/php Macphp OSphp Xphp dfont
-
-php php php php php php php php php php php php php/php/php othersphp?
-php php php php php php php php php}
-
-
-php php php php php php php php php/php*php Donephp withphp thephp dataphp sourcephp objectphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$dataSourcephp php=php nullphp;
-
-php php php php php php php php ifphp php(php$fontphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php Parsingphp wasphp successfulphp.php Addphp thisphp fontphp instancephp tophp thephp cachephp arrays
-php php php php php php php php php php php php php php*php andphp returnphp itphp forphp usephp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$fontNamephp php=php php$fontphp-php>getFontNamephp(Zendphp_Pdfphp_Fontphp:php:NAMEphp_POSTSCRIPTphp,php php'php'php,php php'php'php)php;
-php php php php php php php php php php php php Zendphp_Pdfphp_Fontphp:php:php$php_fontNamesphp[php$fontNamephp]php php=php php$fontphp;
-php php php php php php php php php php php php php$filePathKeyphp php=php mdphp5php(php$filePathphp)php;
-php php php php php php php php php php php php Zendphp_Pdfphp_Fontphp:php:php$php_fontFilePathsphp[php$filePathKeyphp]php php=php php$fontphp;
-php php php php php php php php php php php php returnphp php$fontphp;
-
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php*php Thephp typephp ofphp fontphp couldphp notphp bephp determinedphp.php Givephp upphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Cannotphp determinephp fontphp typephp:php php$filePathphp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CANTphp_DETERMINEphp_FONTphp_TYPEphp)php;
-php php php php php php php php php php}
-
-php php php php php}
-
-
-
-php php php/php*php*php*php*php Internalphp Methodsphp php*php*php*php*php/
-
-
-php php php/php*php Fontphp Extractionphp Methodsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Attemptsphp tophp extractphp aphp TrueTypephp fontphp fromphp thephp dataphp sourcephp.
-php php php php php php*
-php php php php php php*php Ifphp thephp fontphp parserphp throwsphp anphp exceptionphp thatphp suggestsphp thephp dataphp source
-php php php php php php*php simplyphp doesnphp'tphp containphp aphp TrueTypephp fontphp,php catchesphp itphp andphp returnsphp nullphp.php If
-php php php php php php*php anphp exceptionphp isphp thrownphp thatphp suggestsphp thephp TrueTypephp fontphp isphp corruptphp or
-php php php php php php*php otherwisephp unusablephp,php throwsphp thatphp exceptionphp.php Ifphp successfulphp,php returnsphp the
-php php php php php php*php fontphp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_FileParserDataSourcephp php$dataSource
-php php php php php php*php php@paramphp integerphp php$embeddingOptionsphp Optionsphp forphp fontphp embeddingphp.
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Resourcephp_Fontphp_OpenTypephp_TrueTypephp Mayphp alsophp returnphp nullphp if
-php php php php php php*php php php thephp dataphp sourcephp doesphp notphp appearphp tophp containphp aphp TrueTypephp fontphp.
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_extractTrueTypeFontphp(php$dataSourcephp,php php$embeddingOptionsphp)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/FileParserphp/Fontphp/OpenTypephp/TrueTypephp.phpphp'php;
-php php php php php php php php php php php php php$fontParserphp php=php newphp Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp_TrueTypephp(php$dataSourcephp)php;
-
-php php php php php php php php php php php php php$fontParserphp-php>parsephp(php)php;
-php php php php php php php php php php php php ifphp php(php$fontParserphp-php>isAdobeLatinSubsetphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Parsedphp/TrueTypephp.phpphp'php;
-php php php php php php php php php php php php php php php php php$fontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Parsedphp_TrueTypephp(php$fontParserphp,php php$embeddingOptionsphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/CidFontphp/TrueTypephp.phpphp'php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Typephp0php.phpphp'php;
-php php php php php php php php php php php php php php php php php/php*php Usephp Compositephp Typephp php0php fontphp whichphp supportsphp Unicodephp characterphp mappingphp php*php/
-php php php php php php php php php php php php php php php php php$cidFontphp php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_CidFontphp_TrueTypephp(php$fontParserphp,php php$embeddingOptionsphp)php;
-php php php php php php php php php php php php php php php php php$fontphp php php php php=php newphp Zendphp_Pdfphp_Resourcephp_Fontphp_Typephp0php(php$cidFontphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php catchphp php(Zendphp_Pdfphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php/php*php Thephp followingphp exceptionphp codesphp suggestphp thatphp thisphp isnphp'tphp reallyphp a
-php php php php php php php php php php php php php php*php TrueTypephp fontphp.php Ifphp wephp caughtphp suchphp anphp exceptionphp,php simplyphp return
-php php php php php php php php php php php php php php*php nullphp.php Forphp allphp otherphp casesphp,php itphp probablyphp isphp aphp TrueTypephp fontphp butphp has
-php php php php php php php php php php php php php php*php aphp problemphp;php throwphp thephp exceptionphp againphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$fontParserphp php=php nullphp;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php switchphp php(php$ephp-php>getCodephp(php)php)php php{
-php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Exceptionphp:php:WRONGphp_FONTphp_TYPEphp:php php php php php/php/php breakphp intentionallyphp omitted
-php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Exceptionphp:php:BADphp_TABLEphp_COUNTphp:php php php php php/php/php breakphp intentionallyphp omitted
-php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Exceptionphp:php:BADphp_MAGICphp_NUMBERphp:
-php php php php php php php php php php php php php php php php php php php php returnphp nullphp;
-
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$fontphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Font.php 20211 2010-01-12 02:14:29Z yoshida@zend.co.jp $
+ */
+
+
+/**
+ * Abstract factory class which vends {@link Zend_Pdf_Resource_Font} objects.
+ *
+ * Font objects themselves are normally instantiated through the factory methods
+ * {@link fontWithName()} or {@link fontWithPath()}.
+ *
+ * This class is also the home for font-related constants because the name of
+ * the true base class ({@link Zend_Pdf_Resource_Font}) is not intuitive for the
+ * end user.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Pdf_Font
+{
+  /**** Class Constants ****/
+
+
+  /* Font Types */
+
+    /**
+     * Unknown font type.
+     */
+    const TYPE_UNKNOWN = 0;
+
+    /**
+     * One of the standard 14 PDF fonts.
+     */
+    const TYPE_STANDARD = 1;
+
+    /**
+     * A PostScript Type 1 font.
+     */
+    const TYPE_TYPE_1 = 2;
+
+    /**
+     * A TrueType font or an OpenType font containing TrueType outlines.
+     */
+    const TYPE_TRUETYPE = 3;
+
+    /**
+     * Type 0 composite font.
+     */
+    const TYPE_TYPE_0 = 4;
+
+    /**
+     * CID font containing a PostScript Type 1 font.
+     * These fonts are used only to construct Type 0 composite fonts and can't be used directly
+     */
+    const TYPE_CIDFONT_TYPE_0 = 5;
+
+    /**
+     * CID font containing a TrueType font or an OpenType font containing TrueType outlines.
+     * These fonts are used only to construct Type 0 composite fonts and can't be used directly
+     */
+    const TYPE_CIDFONT_TYPE_2 = 6;
+
+
+  /* Names of the Standard 14 PDF Fonts */
+
+    /**
+     * Name of the standard PDF font Courier.
+     */
+    const FONT_COURIER = 'Courier';
+
+    /**
+     * Name of the bold style of the standard PDF font Courier.
+     */
+    const FONT_COURIER_BOLD = 'Courier-Bold';
+
+    /**
+     * Name of the italic style of the standard PDF font Courier.
+     */
+    const FONT_COURIER_OBLIQUE = 'Courier-Oblique';
+
+    /**
+     * Convenience constant for a common misspelling of
+     * {@link FONT_COURIER_OBLIQUE}.
+     */
+    const FONT_COURIER_ITALIC = 'Courier-Oblique';
+
+    /**
+     * Name of the bold and italic style of the standard PDF font Courier.
+     */
+    const FONT_COURIER_BOLD_OBLIQUE = 'Courier-BoldOblique';
+
+    /**
+     * Convenience constant for a common misspelling of
+     * {@link FONT_COURIER_BOLD_OBLIQUE}.
+     */
+    const FONT_COURIER_BOLD_ITALIC = 'Courier-BoldOblique';
+
+    /**
+     * Name of the standard PDF font Helvetica.
+     */
+    const FONT_HELVETICA = 'Helvetica';
+
+    /**
+     * Name of the bold style of the standard PDF font Helvetica.
+     */
+    const FONT_HELVETICA_BOLD = 'Helvetica-Bold';
+
+    /**
+     * Name of the italic style of the standard PDF font Helvetica.
+     */
+    const FONT_HELVETICA_OBLIQUE = 'Helvetica-Oblique';
+
+    /**
+     * Convenience constant for a common misspelling of
+     * {@link FONT_HELVETICA_OBLIQUE}.
+     */
+    const FONT_HELVETICA_ITALIC = 'Helvetica-Oblique';
+
+    /**
+     * Name of the bold and italic style of the standard PDF font Helvetica.
+     */
+    const FONT_HELVETICA_BOLD_OBLIQUE = 'Helvetica-BoldOblique';
+
+    /**
+     * Convenience constant for a common misspelling of
+     * {@link FONT_HELVETICA_BOLD_OBLIQUE}.
+     */
+    const FONT_HELVETICA_BOLD_ITALIC = 'Helvetica-BoldOblique';
+
+    /**
+     * Name of the standard PDF font Symbol.
+     */
+    const FONT_SYMBOL = 'Symbol';
+
+    /**
+     * Name of the standard PDF font Times.
+     */
+    const FONT_TIMES_ROMAN = 'Times-Roman';
+
+    /**
+     * Convenience constant for a common misspelling of
+     * {@link FONT_TIMES_ROMAN}.
+     */
+    const FONT_TIMES = 'Times-Roman';
+
+    /**
+     * Name of the bold style of the standard PDF font Times.
+     */
+    const FONT_TIMES_BOLD = 'Times-Bold';
+
+    /**
+     * Name of the italic style of the standard PDF font Times.
+     */
+    const FONT_TIMES_ITALIC = 'Times-Italic';
+
+    /**
+     * Name of the bold and italic style of the standard PDF font Times.
+     */
+    const FONT_TIMES_BOLD_ITALIC = 'Times-BoldItalic';
+
+    /**
+     * Name of the standard PDF font Zapf Dingbats.
+     */
+    const FONT_ZAPFDINGBATS = 'ZapfDingbats';
+
+
+  /* Font Name String Types */
+
+    /**
+     * Full copyright notice for the font.
+     */
+    const NAME_COPYRIGHT =  0;
+
+    /**
+     * Font family name. Used to group similar styles of fonts together.
+     */
+    const NAME_FAMILY =  1;
+
+    /**
+     * Font style within the font family. Examples: Regular, Italic, Bold, etc.
+     */
+    const NAME_STYLE =  2;
+
+    /**
+     * Unique font identifier.
+     */
+    const NAME_ID =  3;
+
+    /**
+     * Full font name. Usually a combination of the {@link NAME_FAMILY} and
+     * {@link NAME_STYLE} strings.
+     */
+    const NAME_FULL =  4;
+
+    /**
+     * Version number of the font.
+     */
+    const NAME_VERSION =  5;
+
+    /**
+     * PostScript name for the font. This is the name used to identify fonts
+     * internally and within the PDF file.
+     */
+    const NAME_POSTSCRIPT =  6;
+
+    /**
+     * Font trademark notice. This is distinct from the {@link NAME_COPYRIGHT}.
+     */
+    const NAME_TRADEMARK =  7;
+
+    /**
+     * Name of the font manufacturer.
+     */
+    const NAME_MANUFACTURER =  8;
+
+    /**
+     * Name of the designer of the font.
+     */
+    const NAME_DESIGNER =  9;
+
+    /**
+     * Description of the font. May contain revision information, usage
+     * recommendations, features, etc.
+     */
+    const NAME_DESCRIPTION = 10;
+
+    /**
+     * URL of the font vendor. Some fonts may contain a unique serial number
+     * embedded in this URL, which is used for licensing.
+     */
+    const NAME_VENDOR_URL = 11;
+
+    /**
+     * URL of the font designer ({@link NAME_DESIGNER}).
+     */
+    const NAME_DESIGNER_URL = 12;
+
+    /**
+     * Plain language licensing terms for the font.
+     */
+    const NAME_LICENSE = 13;
+
+    /**
+     * URL of more detailed licensing information for the font.
+     */
+    const NAME_LICENSE_URL = 14;
+
+    /**
+     * Preferred font family. Used by some fonts to work around a Microsoft
+     * Windows limitation where only four fonts styles can share the same
+     * {@link NAME_FAMILY} value.
+     */
+    const NAME_PREFERRED_FAMILY = 16;
+
+    /**
+     * Preferred font style. A more descriptive string than {@link NAME_STYLE}.
+     */
+    const NAME_PREFERRED_STYLE = 17;
+
+    /**
+     * Suggested text to use as a representative sample of the font.
+     */
+    const NAME_SAMPLE_TEXT = 19;
+
+    /**
+     * PostScript CID findfont name.
+     */
+    const NAME_CID_NAME = 20;
+
+
+  /* Font Weights */
+
+    /**
+     * Thin font weight.
+     */
+    const WEIGHT_THIN = 100;
+
+    /**
+     * Extra-light (Ultra-light) font weight.
+     */
+    const WEIGHT_EXTRA_LIGHT = 200;
+
+    /**
+     * Light font weight.
+     */
+    const WEIGHT_LIGHT = 300;
+
+    /**
+     * Normal (Regular) font weight.
+     */
+    const WEIGHT_NORMAL = 400;
+
+    /**
+     * Medium font weight.
+     */
+    const WEIGHT_MEDIUM = 500;
+
+    /**
+     * Semi-bold (Demi-bold) font weight.
+     */
+    const WEIGHT_SEMI_BOLD = 600;
+
+    /**
+     * Bold font weight.
+     */
+    const WEIGHT_BOLD = 700;
+
+    /**
+     * Extra-bold (Ultra-bold) font weight.
+     */
+    const WEIGHT_EXTRA_BOLD = 800;
+
+    /**
+     * Black (Heavy) font weight.
+     */
+    const WEIGHT_BLACK = 900;
+
+
+  /* Font Widths */
+
+    /**
+     * Ultra-condensed font width. Typically 50% of normal.
+     */
+    const WIDTH_ULTRA_CONDENSED = 1;
+
+    /**
+     * Extra-condensed font width. Typically 62.5% of normal.
+     */
+    const WIDTH_EXTRA_CONDENSED = 2;
+
+    /**
+     * Condensed font width. Typically 75% of normal.
+     */
+    const WIDTH_CONDENSED = 3;
+
+    /**
+     * Semi-condensed font width. Typically 87.5% of normal.
+     */
+    const WIDTH_SEMI_CONDENSED = 4;
+
+    /**
+     * Normal (Medium) font width.
+     */
+    const WIDTH_NORMAL = 5;
+
+    /**
+     * Semi-expanded font width. Typically 112.5% of normal.
+     */
+    const WIDTH_SEMI_EXPANDED = 6;
+
+    /**
+     * Expanded font width. Typically 125% of normal.
+     */
+    const WIDTH_EXPANDED = 7;
+
+    /**
+     * Extra-expanded font width. Typically 150% of normal.
+     */
+    const WIDTH_EXTRA_EXPANDED = 8;
+
+    /**
+     * Ultra-expanded font width. Typically 200% of normal.
+     */
+    const WIDTH_ULTRA_EXPANDED = 9;
+
+
+  /* Font Embedding Options */
+
+    /**
+     * Do not embed the font in the PDF document.
+     */
+    const EMBED_DONT_EMBED = 0x01;
+
+    /**
+     * Embed, but do not subset the font in the PDF document.
+     */
+    const EMBED_DONT_SUBSET = 0x02;
+
+    /**
+     * Embed, but do not compress the font in the PDF document.
+     */
+    const EMBED_DONT_COMPRESS = 0x04;
+
+    /**
+     * Suppress the exception normally thrown if the font cannot be embedded
+     * due to its copyright bits being set.
+     */
+    const EMBED_SUPPRESS_EMBED_EXCEPTION = 0x08;
+
+
+
+  /**** Class Variables ****/
+
+
+    /**
+     * Array whose keys are the unique PostScript names of instantiated fonts.
+     * The values are the font objects themselves.
+     * @var array
+     */
+    private static $_fontNames = array();
+
+    /**
+     * Array whose keys are the md5 hash of the full paths on disk for parsed
+     * fonts. The values are the font objects themselves.
+     * @var array
+     */
+    private static $_fontFilePaths = array();
+
+
+
+  /**** Public Interface ****/
+
+
+  /* Factory Methods */
+
+    /**
+     * Returns a {@link Zend_Pdf_Resource_Font} object by full name.
+     *
+     * This is the preferred method to obtain one of the standard 14 PDF fonts.
+     *
+     * The result of this method is cached, preventing unnecessary duplication
+     * of font objects. Repetitive calls for a font with the same name will
+     * return the same object.
+     *
+     * The $embeddingOptions parameter allows you to set certain flags related
+     * to font embedding. You may combine options by OR-ing them together. See
+     * the EMBED_ constants defined in {@link Zend_Pdf_Font} for the list of
+     * available options and their descriptions. Note that this value is only
+     * used when creating a font for the first time. If a font with the same
+     * name already exists, you will get that object and the options you specify
+     * here will be ignored. This is because fonts are only embedded within the
+     * PDF file once.
+     *
+     * If the font name supplied does not match the name of a previously
+     * instantiated object and it is not one of the 14 standard PDF fonts, an
+     * exception will be thrown.
+     *
+     * @param string $name Full PostScript name of font.
+     * @param integer $embeddingOptions (optional) Options for font embedding.
+     * @return Zend_Pdf_Resource_Font
+     * @throws Zend_Pdf_Exception
+     */
+    public static function fontWithName($name, $embeddingOptions = 0)
+        {
+        /* First check the cache. Don't duplicate font objects.
+         */
+        if (isset(Zend_Pdf_Font::$_fontNames[$name])) {
+            return Zend_Pdf_Font::$_fontNames[$name];
+        }
+
+        /**
+         * @todo It would be cool to be able to have a mapping of font names to
+         *   file paths in a configuration file for frequently used custom
+         *   fonts. This would allow a user to use custom fonts without having
+         *   to hard-code file paths all over the place. Table this idea until
+         *   {@link Zend_Config} is ready.
+         */
+
+        /* Not an existing font and no mapping in the config file. Check to see
+         * if this is one of the standard 14 PDF fonts.
+         */
+        switch ($name) {
+            case Zend_Pdf_Font::FONT_COURIER:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/Courier.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_Courier();
+                break;
+
+            case Zend_Pdf_Font::FONT_COURIER_BOLD:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/CourierBold.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_CourierBold();
+                break;
+
+            case Zend_Pdf_Font::FONT_COURIER_OBLIQUE:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/CourierOblique.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_CourierOblique();
+                break;
+
+            case Zend_Pdf_Font::FONT_COURIER_BOLD_OBLIQUE:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/CourierBoldOblique.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_CourierBoldOblique();
+                break;
+
+            case Zend_Pdf_Font::FONT_HELVETICA:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/Helvetica.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_Helvetica();
+                break;
+
+            case Zend_Pdf_Font::FONT_HELVETICA_BOLD:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/HelveticaBold.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBold();
+                break;
+
+            case Zend_Pdf_Font::FONT_HELVETICA_OBLIQUE:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/HelveticaOblique.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_HelveticaOblique();
+                break;
+
+            case Zend_Pdf_Font::FONT_HELVETICA_BOLD_OBLIQUE:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/HelveticaBoldOblique.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBoldOblique();
+                break;
+
+            case Zend_Pdf_Font::FONT_SYMBOL:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/Symbol.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_Symbol();
+                break;
+
+            case Zend_Pdf_Font::FONT_TIMES_ROMAN:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/TimesRoman.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_TimesRoman();
+                break;
+
+            case Zend_Pdf_Font::FONT_TIMES_BOLD:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/TimesBold.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_TimesBold();
+                break;
+
+            case Zend_Pdf_Font::FONT_TIMES_ITALIC:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/TimesItalic.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_TimesItalic();
+                break;
+
+            case Zend_Pdf_Font::FONT_TIMES_BOLD_ITALIC:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/TimesBoldItalic.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_TimesBoldItalic();
+                break;
+
+            case Zend_Pdf_Font::FONT_ZAPFDINGBATS:
+                require_once 'Zend/Pdf/Resource/Font/Simple/Standard/ZapfDingbats.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Standard_ZapfDingbats();
+                break;
+
+            default:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception("Unknown font name: $name",
+                                             Zend_Pdf_Exception::BAD_FONT_NAME);
+        }
+
+        /* Add this new font to the cache array and return it for use.
+         */
+        Zend_Pdf_Font::$_fontNames[$name] = $font;
+        return $font;
+    }
+
+    /**
+     * Returns a {@link Zend_Pdf_Resource_Font} object by file path.
+     *
+     * The result of this method is cached, preventing unnecessary duplication
+     * of font objects. Repetitive calls for the font with the same path will
+     * return the same object.
+     *
+     * The $embeddingOptions parameter allows you to set certain flags related
+     * to font embedding. You may combine options by OR-ing them together. See
+     * the EMBED_ constants defined in {@link Zend_Pdf_Font} for the list of
+     * available options and their descriptions. Note that this value is only
+     * used when creating a font for the first time. If a font with the same
+     * name already exists, you will get that object and the options you specify
+     * here will be ignored. This is because fonts are only embedded within the
+     * PDF file once.
+     *
+     * If the file path supplied does not match the path of a previously
+     * instantiated object or the font type cannot be determined, an exception
+     * will be thrown.
+     *
+     * @param string $filePath Full path to the font file.
+     * @param integer $embeddingOptions (optional) Options for font embedding.
+     * @return Zend_Pdf_Resource_Font
+     * @throws Zend_Pdf_Exception
+     */
+    public static function fontWithPath($filePath, $embeddingOptions = 0)
+    {
+        /* First check the cache. Don't duplicate font objects.
+         */
+        $filePathKey = md5($filePath);
+        if (isset(Zend_Pdf_Font::$_fontFilePaths[$filePathKey])) {
+            return Zend_Pdf_Font::$_fontFilePaths[$filePathKey];
+        }
+
+        /* Create a file parser data source object for this file. File path and
+         * access permission checks are handled here.
+         */
+        require_once 'Zend/Pdf/FileParserDataSource/File.php';
+        $dataSource = new Zend_Pdf_FileParserDataSource_File($filePath);
+
+        /* Attempt to determine the type of font. We can't always trust file
+         * extensions, but try that first since it's fastest.
+         */
+        $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+        /* If it turns out that the file is named improperly and we guess the
+         * wrong type, we'll get null instead of a font object.
+         */
+        switch ($fileExtension) {
+            case 'ttf':
+                $font = Zend_Pdf_Font::_extractTrueTypeFont($dataSource, $embeddingOptions);
+                break;
+
+            default:
+                /* Unrecognized extension. Try to determine the type by actually
+                 * parsing it below.
+                 */
+                $font = null;
+                break;
+        }
+
+
+        if ($font === null) {
+            /* There was no match for the file extension or the extension was
+             * wrong. Attempt to detect the type of font by actually parsing it.
+             * We'll do the checks in order of most likely format to try to
+             * reduce the detection time.
+             */
+
+            // OpenType
+
+            // TrueType
+            if (($font === null) && ($fileExtension != 'ttf')) {
+                $font = Zend_Pdf_Font::_extractTrueTypeFont($dataSource, $embeddingOptions);
+            }
+
+            // Type 1 PostScript
+
+            // Mac OS X dfont
+
+            // others?
+        }
+
+
+        /* Done with the data source object.
+         */
+        $dataSource = null;
+
+        if ($font !== null) {
+            /* Parsing was successful. Add this font instance to the cache arrays
+             * and return it for use.
+             */
+            $fontName = $font->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT, '', '');
+            Zend_Pdf_Font::$_fontNames[$fontName] = $font;
+            $filePathKey = md5($filePath);
+            Zend_Pdf_Font::$_fontFilePaths[$filePathKey] = $font;
+            return $font;
+
+        } else {
+            /* The type of font could not be determined. Give up.
+             */
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception("Cannot determine font type: $filePath",
+                                         Zend_Pdf_Exception::CANT_DETERMINE_FONT_TYPE);
+         }
+
+    }
+
+
+
+  /**** Internal Methods ****/
+
+
+  /* Font Extraction Methods */
+
+    /**
+     * Attempts to extract a TrueType font from the data source.
+     *
+     * If the font parser throws an exception that suggests the data source
+     * simply doesn't contain a TrueType font, catches it and returns null. If
+     * an exception is thrown that suggests the TrueType font is corrupt or
+     * otherwise unusable, throws that exception. If successful, returns the
+     * font object.
+     *
+     * @param Zend_Pdf_FileParserDataSource $dataSource
+     * @param integer $embeddingOptions Options for font embedding.
+     * @return Zend_Pdf_Resource_Font_OpenType_TrueType May also return null if
+     *   the data source does not appear to contain a TrueType font.
+     * @throws Zend_Pdf_Exception
+     */
+    protected static function _extractTrueTypeFont($dataSource, $embeddingOptions)
+    {
+        try {
+            require_once 'Zend/Pdf/FileParser/Font/OpenType/TrueType.php';
+            $fontParser = new Zend_Pdf_FileParser_Font_OpenType_TrueType($dataSource);
+
+            $fontParser->parse();
+            if ($fontParser->isAdobeLatinSubset) {
+                require_once 'Zend/Pdf/Resource/Font/Simple/Parsed/TrueType.php';
+                $font = new Zend_Pdf_Resource_Font_Simple_Parsed_TrueType($fontParser, $embeddingOptions);
+            } else {
+                require_once 'Zend/Pdf/Resource/Font/CidFont/TrueType.php';
+                require_once 'Zend/Pdf/Resource/Font/Type0.php';
+                /* Use Composite Type 0 font which supports Unicode character mapping */
+                $cidFont = new Zend_Pdf_Resource_Font_CidFont_TrueType($fontParser, $embeddingOptions);
+                $font    = new Zend_Pdf_Resource_Font_Type0($cidFont);
+            }
+        } catch (Zend_Pdf_Exception $e) {
+            /* The following exception codes suggest that this isn't really a
+             * TrueType font. If we caught such an exception, simply return
+             * null. For all other cases, it probably is a TrueType font but has
+             * a problem; throw the exception again.
+             */
+            $fontParser = null;
+            require_once 'Zend/Pdf/Exception.php';
+            switch ($e->getCode()) {
+                case Zend_Pdf_Exception::WRONG_FONT_TYPE:    // break intentionally omitted
+                case Zend_Pdf_Exception::BAD_TABLE_COUNT:    // break intentionally omitted
+                case Zend_Pdf_Exception::BAD_MAGIC_NUMBER:
+                    return null;
+
+                default:
+                    throw new Zend_Pdf_Exception($e->getMessage(), $e->getCode(), $e);
+            }
+        }
+        return $font;
+    }
+}

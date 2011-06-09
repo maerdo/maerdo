@@ -1,109 +1,109 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Imagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Image.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Objectphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Object.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Resourcephp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp.phpphp'php;
+/** Zend_Pdf_Resource */
+require_once 'Zend/Pdf/Resource.php';
 
 
-php/php*php*
-php php*php Graphicsphp Statephp.
-php php*
-php php*php Whilephp somephp parametersphp inphp thephp graphicsphp statephp canphp bephp setphp withphp individualphp operatorsphp,
-php php*php asphp shownphp inphp Tablephp php4php.php7php,php othersphp cannotphp.php Thephp latterphp canphp onlyphp bephp setphp withphp thephp generic
-php php*php graphicsphp statephp operatorphp gsphp php(PDFphp php1php.php2php)php.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Resourcephp_GraphicsStatephp extendsphp Zendphp_Pdfphp_Resource
-php{
-php php php php php/php*php*
-php php php php php php*php Objectphp constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Objectphp php$extGStateObject
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_Elementphp_Objectphp php$extGStateObjectphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$extGStateObjectphp php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Createphp newphp Graphicsphp Statephp object
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp.phpphp'php;
-php php php php php php php php php php php php php$factoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
+/**
+ * Graphics State.
+ *
+ * While some parameters in the graphics state can be set with individual operators,
+ * as shown in Table 4.7, others cannot. The latter can only be set with the generic
+ * graphics state operator gs (PDF 1.2).
+ *
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Resource_GraphicsState extends Zend_Pdf_Resource
+{
+    /**
+     * Object constructor.
+     *
+     * @param Zend_Pdf_Element_Object $extGStateObject
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct(Zend_Pdf_Element_Object $extGStateObject = null)
+    {
+        if ($extGStateObject == null) {
+            // Create new Graphics State object
+            require_once 'Zend/Pdf/ElementFactory.php';
+            $factory = Zend_Pdf_ElementFactory::createFactory(1);
 
-php php php php php php php php php php php php php$gsDictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php php php php php$gsDictionaryphp-php>Typephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'ExtGStatephp'php)php;
+            $gsDictionary = new Zend_Pdf_Element_Dictionary();
+            $gsDictionary->Type = new Zend_Pdf_Element_Name('ExtGState');
 
-php php php php php php php php php php php php php$extGStateObjectphp php=php php$factoryphp-php>newObjectphp(php$gsDictionaryphp)php;
-php php php php php php php php php}
+            $extGStateObject = $factory->newObject($gsDictionary);
+        }
 
-php php php php php php php php ifphp php(php$extGStateObjectphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Graphicsphp statephp PDFphp objectphp mustphp bephp aphp dictionaryphp'php)php;
-php php php php php php php php php}
+        if ($extGStateObject->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Graphics state PDF object must be a dictionary');
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$gsDictionaryphp)php;
-php php php php php}
+        parent::__construct($gsDictionary);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp transparancy
-php php php php php php*
-php php php php php php*php php$alphaphp php=php=php php0php php php-php transparent
-php php php php php php*php php$alphaphp php=php=php php1php php php-php opaque
-php php php php php php*
-php php php php php php*php Transparencyphp modesphp,php supportedphp byphp PDFphp:
-php php php php php php*php Normalphp php(defaultphp)php,php Multiplyphp,php Screenphp,php Overlayphp,php Darkenphp,php Lightenphp,php ColorDodgephp,php ColorBurnphp,php HardLightphp,
-php php php php php php*php SoftLightphp,php Differencephp,php Exclusion
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$alpha
-php php php php php php*php php@paramphp stringphp php$mode
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Canvasphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp setAlphaphp(php$alphaphp,php php$modephp php=php php'Normalphp'php)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$modephp,php arrayphp(php'Normalphp'php,php php'Multiplyphp'php,php php'Screenphp'php,php php'Overlayphp'php,php php'Darkenphp'php,php php'Lightenphp'php,php php'ColorDodgephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'ColorBurnphp'php,php php'HardLightphp'php,php php'SoftLightphp'php,php php'Differencephp'php,php php'Exclusionphp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unsupportedphp transparencyphp modephp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!isphp_numericphp(php$alphaphp)php php php|php|php php php$alphaphp <php php0php php php|php|php php php$alphaphp php>php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Alphaphp valuephp mustphp bephp numericphp betweenphp php0php php(transparentphp)php andphp php1php php(opaquephp)php.php'php)php;
-php php php php php php php php php}
+    /**
+     * Set the transparancy
+     *
+     * $alpha == 0  - transparent
+     * $alpha == 1  - opaque
+     *
+     * Transparency modes, supported by PDF:
+     * Normal (default), Multiply, Screen, Overlay, Darken, Lighten, ColorDodge, ColorBurn, HardLight,
+     * SoftLight, Difference, Exclusion
+     *
+     * @param float $alpha
+     * @param string $mode
+     * @throws Zend_Pdf_Exception
+     * @return Zend_Pdf_Canvas_Interface
+     */
+    public function setAlpha($alpha, $mode = 'Normal')
+    {
+        if (!in_array($mode, array('Normal', 'Multiply', 'Screen', 'Overlay', 'Darken', 'Lighten', 'ColorDodge',
+                                   'ColorBurn', 'HardLight', 'SoftLight', 'Difference', 'Exclusion'))) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Unsupported transparency mode.');
+        }
+        if (!is_numeric($alpha)  ||  $alpha < 0  ||  $alpha > 1) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Alpha value must be numeric between 0 (transparent) and 1 (opaque).');
+        }
 
-php php php php php php php php php$thisphp-php>php_resourcephp-php>BMphp php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$modephp)php;
-php php php php php php php php php$thisphp-php>php_resourcephp-php>CAphp php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$alphaphp)php;
-php php php php php php php php php$thisphp-php>php_resourcephp-php>caphp php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$alphaphp)php;
-php php php php php}
+        $this->_resource->BM   = new Zend_Pdf_Element_Name($mode);
+        $this->_resource->CA   = new Zend_Pdf_Element_Numeric($alpha);
+        $this->_resource->ca   = new Zend_Pdf_Element_Numeric($alpha);
+    }
 
 
-php php php php php/php*php*php php@todophp addphp otherphp Graphicsphp Statephp featuresphp supportphp php*php/
-php}
+    /** @todo add other Graphics State features support */
+}
 

@@ -1,76 +1,76 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Targetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Target.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php PDFphp targetphp php(actionphp orphp destinationphp)
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Pdfphp_Target
-php{
-php php php php php/php*php*
-php php php php php php*php Parsephp resourcephp andphp returnphp itphp asphp anphp Actionphp orphp Explicitphp Destination
-php php php php php php*
-php php php php php php*php php$paramphp Zendphp_Pdfphp_Elementphp php$resource
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Destinationphp|
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp loadphp(Zendphp_Pdfphp_Elementphp php$resourcephp)php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-php php php php php php php php ifphp php(php$resourcephp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php ifphp php(php(php$resourcephp-php>Typephp php=php=php=php nullphp php php|php|php php php$resourcephp-php>Typephp-php>valuephp php=php=php'Actionphp'php)php php php&php&php php php$resourcephp-php>Sphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Itphp'sphp aphp wellphp-formedphp actionphp,php loadphp it
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Actionphp:php:loadphp(php$resourcephp)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(php$resourcephp-php>Dphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Itphp'sphp aphp destination
-php php php php php php php php php php php php php php php php php$resourcephp php=php php$resourcephp-php>Dphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Wrongphp resourcephp typephp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+/**
+ * PDF target (action or destination)
+ *
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Pdf_Target
+{
+    /**
+     * Parse resource and return it as an Action or Explicit Destination
+     *
+     * $param Zend_Pdf_Element $resource
+     * @return Zend_Pdf_Destination|
+     * @throws Zend_Pdf_Exception
+     */
+    public static function load(Zend_Pdf_Element $resource) {
+        require_once 'Zend/Pdf/Element.php';
+        if ($resource->getType() == Zend_Pdf_Element::TYPE_DICTIONARY) {
+            if (($resource->Type === null  ||  $resource->Type->value =='Action')  &&  $resource->S !== null) {
+                // It's a well-formed action, load it
+                require_once 'Zend/Pdf/Action.php';
+                return Zend_Pdf_Action::load($resource);
+            } else if ($resource->D !== null) {
+                // It's a destination
+                $resource = $resource->D;
+            } else {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Wrong resource type.');
+            }
+        }
 
-php php php php php php php php ifphp php(php$resourcephp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_ARRAYphp php php|php|
-php php php php php php php php php php php php php$resourcephp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_NAMEphp php php php|php|
-php php php php php php php php php php php php php$resourcephp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_STRINGphp)php php{
-php php php php php php php php php php php php php/php/php Resourcephp isphp anphp arrayphp,php justphp treatphp itphp asphp anphp explicitphp destinationphp array
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Destinationphp.phpphp'php;
-php php php php php php php php php php php php returnphp Zendphp_Pdfphp_Destinationphp:php:loadphp(php$resourcephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php'Wrongphp resourcephp typephp.php'php php)php;
-php php php php php php php php php}
-php php php php php}
+        if ($resource->getType() == Zend_Pdf_Element::TYPE_ARRAY  ||
+            $resource->getType() == Zend_Pdf_Element::TYPE_NAME   ||
+            $resource->getType() == Zend_Pdf_Element::TYPE_STRING) {
+            // Resource is an array, just treat it as an explicit destination array
+            require_once 'Zend/Pdf/Destination.php';
+            return Zend_Pdf_Destination::load($resource);
+        } else {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception( 'Wrong resource type.' );
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp resource
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Element
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp getResourcephp(php)php;
-php}
+    /**
+     * Get resource
+     *
+     * @internal
+     * @return Zend_Pdf_Element
+     */
+    abstract public function getResource();
+}

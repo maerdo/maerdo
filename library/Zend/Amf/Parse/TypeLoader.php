@@ -1,231 +1,231 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Amf
-php php*php php@subpackagephp Parse
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php TypeLoaderphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Amf
+ * @subpackage Parse
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: TypeLoader.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessage
-php php*php/
-requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/AcknowledgeMessagephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_AsyncMessage
-php php*php/
-requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/AsyncMessagephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessage
-php php*php/
-requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/CommandMessagephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_ErrorMessage
-php php*php/
-requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/ErrorMessagephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Amfphp_Valuephp_Messagingphp_RemotingMessage
-php php*php/
-requirephp_oncephp php'Zendphp/Amfphp/Valuephp/Messagingphp/RemotingMessagephp.phpphp'php;
+/**
+ * @see Zend_Amf_Value_Messaging_AcknowledgeMessage
+ */
+require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
+/**
+ * @see Zend_Amf_Value_Messaging_AsyncMessage
+ */
+require_once 'Zend/Amf/Value/Messaging/AsyncMessage.php';
+/**
+ * @see Zend_Amf_Value_Messaging_CommandMessage
+ */
+require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
+/**
+ * @see Zend_Amf_Value_Messaging_ErrorMessage
+ */
+require_once 'Zend/Amf/Value/Messaging/ErrorMessage.php';
+/**
+ * @see Zend_Amf_Value_Messaging_RemotingMessage
+ */
+require_once 'Zend/Amf/Value/Messaging/RemotingMessage.php';
 
-php/php*php*
-php php*php Loadsphp aphp localphp classphp andphp executesphp thephp instantiationphp ofphp thatphp classphp.
-php php*
-php php*php php@todophp php php php php php php PHPphp php5php.php3php canphp drasticallyphp changephp thisphp classphp wphp/php namespacephp andphp thephp newphp callphp_userphp_funcphp wphp/php namespace
-php php*php php@packagephp php php php Zendphp_Amf
-php php*php php@subpackagephp Parse
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-finalphp classphp Zendphp_Amfphp_Parsephp_TypeLoader
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp stringphp callbackphp class
-php php php php php php*php/
-php php php php publicphp staticphp php$callbackClassphp;
+/**
+ * Loads a local class and executes the instantiation of that class.
+ *
+ * @todo       PHP 5.3 can drastically change this class w/ namespace and the new call_user_func w/ namespace
+ * @package    Zend_Amf
+ * @subpackage Parse
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+final class Zend_Amf_Parse_TypeLoader
+{
+    /**
+     * @var string callback class
+     */
+    public static $callbackClass;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp arrayphp AMFphp classphp map
-php php php php php php*php/
-php php php php publicphp staticphp php$classMapphp php=php arrayphp php(
-php php php php php php php php php'flexphp.messagingphp.messagesphp.AcknowledgeMessagephp'php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.ErrorMessagephp'php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_AsyncMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.CommandMessagephp'php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.ErrorMessagephp'php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_ErrorMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.RemotingMessagephp'php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_RemotingMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.iophp.ArrayCollectionphp'php php php php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_ArrayCollectionphp'php,
-php php php php php)php;
+    /**
+     * @var array AMF class map
+     */
+    public static $classMap = array (
+        'flex.messaging.messages.AcknowledgeMessage' => 'Zend_Amf_Value_Messaging_AcknowledgeMessage',
+        'flex.messaging.messages.ErrorMessage'       => 'Zend_Amf_Value_Messaging_AsyncMessage',
+        'flex.messaging.messages.CommandMessage'     => 'Zend_Amf_Value_Messaging_CommandMessage',
+        'flex.messaging.messages.ErrorMessage'       => 'Zend_Amf_Value_Messaging_ErrorMessage',
+        'flex.messaging.messages.RemotingMessage'    => 'Zend_Amf_Value_Messaging_RemotingMessage',
+        'flex.messaging.io.ArrayCollection'          => 'Zend_Amf_Value_Messaging_ArrayCollection',
+    );
 
-php php php php php/php*php*
-php php php php php php*php php@varphp arrayphp Defaultphp classphp map
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_defaultClassMapphp php=php arrayphp(
-php php php php php php php php php'flexphp.messagingphp.messagesphp.AcknowledgeMessagephp'php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_AcknowledgeMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.ErrorMessagephp'php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_AsyncMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.CommandMessagephp'php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_CommandMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.ErrorMessagephp'php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_ErrorMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.messagesphp.RemotingMessagephp'php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_RemotingMessagephp'php,
-php php php php php php php php php'flexphp.messagingphp.iophp.ArrayCollectionphp'php php php php php php php php php php php=php>php php'Zendphp_Amfphp_Valuephp_Messagingphp_ArrayCollectionphp'php,
-php php php php php)php;
+    /**
+     * @var array Default class map
+     */
+    protected static $_defaultClassMap = array(
+        'flex.messaging.messages.AcknowledgeMessage' => 'Zend_Amf_Value_Messaging_AcknowledgeMessage',
+        'flex.messaging.messages.ErrorMessage'       => 'Zend_Amf_Value_Messaging_AsyncMessage',
+        'flex.messaging.messages.CommandMessage'     => 'Zend_Amf_Value_Messaging_CommandMessage',
+        'flex.messaging.messages.ErrorMessage'       => 'Zend_Amf_Value_Messaging_ErrorMessage',
+        'flex.messaging.messages.RemotingMessage'    => 'Zend_Amf_Value_Messaging_RemotingMessage',
+        'flex.messaging.io.ArrayCollection'          => 'Zend_Amf_Value_Messaging_ArrayCollection',
+    );
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Loaderphp_PluginLoaderphp_Interface
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_resourceLoaderphp php=php nullphp;
+    /**
+     * @var Zend_Loader_PluginLoader_Interface
+     */
+    protected static $_resourceLoader = null;
 
 
-php php php php php/php*php*
-php php php php php php*php Loadphp thephp mappedphp classphp typephp intophp aphp callbackphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$className
-php php php php php php*php php@returnphp objectphp|false
-php php php php php php*php/
-php php php php publicphp staticphp functionphp loadTypephp(php$classNamephp)
-php php php php php{
-php php php php php php php php php$classphp php php php php=php selfphp:php:getMappedClassNamephp(php$classNamephp)php;
-php php php php php php php php ifphp(php!php$classphp)php php{
-php php php php php php php php php php php php php$classphp php=php strphp_replacephp(php'php.php'php,php php'php_php'php,php php$classNamephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp)php)php php{
-php php php php php php php php php php php php returnphp php"stdClassphp"php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$classphp;
-php php php php php}
+    /**
+     * Load the mapped class type into a callback.
+     *
+     * @param  string $className
+     * @return object|false
+     */
+    public static function loadType($className)
+    {
+        $class    = self::getMappedClassName($className);
+        if(!$class) {
+            $class = str_replace('.', '_', $className);
+        }
+        if (!class_exists($class)) {
+            return "stdClass";
+        }
+        return $class;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Looksphp upphp thephp suppliedphp callphp namephp tophp itsphp mappedphp classphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$className
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getMappedClassNamephp(php$classNamephp)
-php php php php php{
-php php php php php php php php php$mappedNamephp php=php arrayphp_searchphp(php$classNamephp,php selfphp:php:php$classMapphp)php;
+    /**
+     * Looks up the supplied call name to its mapped class name
+     *
+     * @param  string $className
+     * @return string
+     */
+    public static function getMappedClassName($className)
+    {
+        $mappedName = array_search($className, self::$classMap);
 
-php php php php php php php php ifphp php(php$mappedNamephp)php php{
-php php php php php php php php php php php php returnphp php$mappedNamephp;
-php php php php php php php php php}
+        if ($mappedName) {
+            return $mappedName;
+        }
 
-php php php php php php php php php$mappedNamephp php=php arrayphp_searchphp(php$classNamephp,php arrayphp_flipphp(selfphp:php:php$classMapphp)php)php;
+        $mappedName = array_search($className, array_flip(self::$classMap));
 
-php php php php php php php php ifphp php(php$mappedNamephp)php php{
-php php php php php php php php php php php php returnphp php$mappedNamephp;
-php php php php php php php php php}
+        if ($mappedName) {
+            return $mappedName;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mapphp PHPphp classphp namesphp tophp ActionScriptphp classphp names
-php php php php php php*
-php php php php php php*php Allowsphp usersphp tophp mapphp thephp classphp namesphp ofphp therephp actionphp scriptphp classes
-php php php php php php*php tophp thephp equivelentphp phpphp classphp namephp.php Usedphp inphp deserializationphp tophp loadphp aphp class
-php php php php php php*php andphp serialiationphp tophp setphp thephp classphp namephp ofphp thephp returnedphp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$asClassName
-php php php php php php*php php@paramphp php stringphp php$phpClassName
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setMappingphp(php$asClassNamephp,php php$phpClassNamephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$classMapphp[php$asClassNamephp]php php=php php$phpClassNamephp;
-php php php php php}
+    /**
+     * Map PHP class names to ActionScript class names
+     *
+     * Allows users to map the class names of there action script classes
+     * to the equivelent php class name. Used in deserialization to load a class
+     * and serialiation to set the class name of the returned object.
+     *
+     * @param  string $asClassName
+     * @param  string $phpClassName
+     * @return void
+     */
+    public static function setMapping($asClassName, $phpClassName)
+    {
+        self::$classMap[$asClassName] = $phpClassName;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Resetphp typephp map
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp resetMapphp(php)
-php php php php php{
-php php php php php php php php selfphp:php:php$classMapphp php=php selfphp:php:php$php_defaultClassMapphp;
-php php php php php}
+    /**
+     * Reset type map
+     *
+     * @return void
+     */
+    public static function resetMap()
+    {
+        self::$classMap = self::$_defaultClassMap;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp loaderphp forphp resourcephp typephp handlers
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setResourceLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_resourceLoaderphp php=php php$loaderphp;
-php php php php php}
+    /**
+     * Set loader for resource type handlers
+     *
+     * @param Zend_Loader_PluginLoader_Interface $loader
+     */
+    public static function setResourceLoader(Zend_Loader_PluginLoader_Interface $loader)
+    {
+        self::$_resourceLoader = $loader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp directoryphp tophp thephp listphp ofphp placesphp wherephp tophp lookphp forphp resourcephp handlers
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$prefix
-php php php php php php*php php@paramphp stringphp php$dir
-php php php php php php*php/
-php php php php publicphp staticphp functionphp addResourceDirectoryphp(php$prefixphp,php php$dirphp)
-php php php php php{
-php php php php php php php php ifphp(selfphp:php:php$php_resourceLoaderphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_resourceLoaderphp-php>addPrefixPathphp(php$prefixphp,php php$dirphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Add directory to the list of places where to look for resource handlers
+     *
+     * @param string $prefix
+     * @param string $dir
+     */
+    public static function addResourceDirectory($prefix, $dir)
+    {
+        if(self::$_resourceLoader) {
+            self::$_resourceLoader->addPrefixPath($prefix, $dir);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp pluginphp classphp thatphp handlesphp thisphp resource
-php php php php php php*
-php php php php php php*php php@paramphp resourcephp php$resourcephp Resourcephp type
-php php php php php php*php php@returnphp stringphp Classphp name
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getResourceParserphp(php$resourcephp)
-php php php php php{
-php php php php php php php php ifphp(selfphp:php:php$php_resourceLoaderphp)php php{
-php php php php php php php php php php php php php$typephp php=php pregphp_replacephp(php"php/php[php^Aphp-Zaphp-zphp0php-php9php_php]php/php"php,php php"php php"php,php getphp_resourcephp_typephp(php$resourcephp)php)php;
-php php php php php php php php php php php php php$typephp php=php strphp_replacephp(php"php php"php,php"php"php,php ucwordsphp(php$typephp)php)php;
-php php php php php php php php php php php php returnphp selfphp:php:php$php_resourceLoaderphp-php>loadphp(php$typephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Get plugin class that handles this resource
+     *
+     * @param resource $resource Resource type
+     * @return string Class name
+     */
+    public static function getResourceParser($resource)
+    {
+        if(self::$_resourceLoader) {
+            $type = preg_replace("/[^A-Za-z0-9_]/", " ", get_resource_type($resource));
+            $type = str_replace(" ","", ucwords($type));
+            return self::$_resourceLoader->load($type);
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Convertphp resourcephp tophp aphp serializablephp object
-php php php php php php*
-php php php php php php*php php@paramphp resourcephp php$resource
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp staticphp functionphp handleResourcephp(php$resourcephp)
-php php php php php{
-php php php php php php php php ifphp(php!selfphp:php:php$php_resourceLoaderphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Exceptionphp(php'Unablephp tophp handlephp resourcesphp php-php resourcephp pluginphp loaderphp notphp setphp'php)php;
-php php php php php php php php php}
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php whilephp(isphp_resourcephp(php$resourcephp)php)php php{
-php php php php php php php php php php php php php php php php php$resclassphp php=php selfphp:php:getResourceParserphp(php$resourcephp)php;
-php php php php php php php php php php php php php php php php ifphp(php!php$resclassphp)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Exceptionphp(php'Canphp notphp serializephp resourcephp typephp:php php'php.php getphp_resourcephp_typephp(php$resourcephp)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$parserphp php=php newphp php$resclassphp(php)php;
-php php php php php php php php php php php php php php php php ifphp(isphp_callablephp(arrayphp(php$parserphp,php php'parsephp'php)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$resourcephp php=php php$parserphp-php>parsephp(php$resourcephp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Exceptionphp(php"Couldphp notphp callphp parsephp(php)php methodphp onphp classphp php$resclassphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$resourcephp;
-php php php php php php php php php}php catchphp(Zendphp_Amfphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
-php php php php php php php php php}php catchphp(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Amfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Amfphp_Exceptionphp(php'Canphp notphp serializephp resourcephp typephp:php php'php.php getphp_resourcephp_typephp(php$resourcephp)php,php php0php,php php$ephp)php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Convert resource to a serializable object
+     *
+     * @param resource $resource
+     * @return mixed
+     */
+    public static function handleResource($resource)
+    {
+        if(!self::$_resourceLoader) {
+            require_once 'Zend/Amf/Exception.php';
+            throw new Zend_Amf_Exception('Unable to handle resources - resource plugin loader not set');
+        }
+        try {
+            while(is_resource($resource)) {
+                $resclass = self::getResourceParser($resource);
+                if(!$resclass) {
+                    require_once 'Zend/Amf/Exception.php';
+                    throw new Zend_Amf_Exception('Can not serialize resource type: '. get_resource_type($resource));
+                }
+                $parser = new $resclass();
+                if(is_callable(array($parser, 'parse'))) {
+                    $resource = $parser->parse($resource);
+                } else {
+                    require_once 'Zend/Amf/Exception.php';
+                    throw new Zend_Amf_Exception("Could not call parse() method on class $resclass");
+                }
+            }
+            return $resource;
+        } catch(Zend_Amf_Exception $e) {
+            throw new Zend_Amf_Exception($e->getMessage(), $e->getCode(), $e);
+        } catch(Exception $e) {
+            require_once 'Zend/Amf/Exception.php';
+            throw new Zend_Amf_Exception('Can not serialize resource type: '. get_resource_type($resource), 0, $e);
+        }
+    }
+}

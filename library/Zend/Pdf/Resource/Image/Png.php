@@ -1,380 +1,380 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Pngphp.phpphp php2php3php3php9php5php php2php0php1php0php-php1php1php-php1php9php php1php5php:php3php0php:php4php7Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Png.php 23395 2010-11-19 15:30:47Z alexander $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp/Binaryphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Array.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
+require_once 'Zend/Pdf/Element/String/Binary.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Resourcephp_Imagephp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Imagephp.phpphp'php;
+/** Zend_Pdf_Resource_Image */
+require_once 'Zend/Pdf/Resource/Image.php';
 
-php/php*php*
-php php*php PNGphp image
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp extendsphp Zendphp_Pdfphp_Resourcephp_Image
-php{
-php php php php constphp PNGphp_COMPRESSIONphp_DEFAULTphp_STRATEGYphp php=php php0php;
-php php php php constphp PNGphp_COMPRESSIONphp_FILTEREDphp php=php php1php;
-php php php php constphp PNGphp_COMPRESSIONphp_HUFFMANphp_ONLYphp php=php php2php;
-php php php php constphp PNGphp_COMPRESSIONphp_RLEphp php=php php3php;
+/**
+ * PNG image
+ *
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
+{
+    const PNG_COMPRESSION_DEFAULT_STRATEGY = 0;
+    const PNG_COMPRESSION_FILTERED = 1;
+    const PNG_COMPRESSION_HUFFMAN_ONLY = 2;
+    const PNG_COMPRESSION_RLE = 3;
 
-php php php php constphp PNGphp_FILTERphp_NONEphp php=php php0php;
-php php php php constphp PNGphp_FILTERphp_SUBphp php=php php1php;
-php php php php constphp PNGphp_FILTERphp_UPphp php=php php2php;
-php php php php constphp PNGphp_FILTERphp_AVERAGEphp php=php php3php;
-php php php php constphp PNGphp_FILTERphp_PAETHphp php=php php4php;
+    const PNG_FILTER_NONE = 0;
+    const PNG_FILTER_SUB = 1;
+    const PNG_FILTER_UP = 2;
+    const PNG_FILTER_AVERAGE = 3;
+    const PNG_FILTER_PAETH = 4;
 
-php php php php constphp PNGphp_INTERLACINGphp_DISABLEDphp php=php php0php;
-php php php php constphp PNGphp_INTERLACINGphp_ENABLEDphp php=php php1php;
+    const PNG_INTERLACING_DISABLED = 0;
+    const PNG_INTERLACING_ENABLED = 1;
 
-php php php php constphp PNGphp_CHANNELphp_GRAYphp php=php php0php;
-php php php php constphp PNGphp_CHANNELphp_RGBphp php=php php2php;
-php php php php constphp PNGphp_CHANNELphp_INDEXEDphp php=php php3php;
-php php php php constphp PNGphp_CHANNELphp_GRAYphp_ALPHAphp php=php php4php;
-php php php php constphp PNGphp_CHANNELphp_RGBphp_ALPHAphp php=php php6php;
+    const PNG_CHANNEL_GRAY = 0;
+    const PNG_CHANNEL_RGB = 2;
+    const PNG_CHANNEL_INDEXED = 3;
+    const PNG_CHANNEL_GRAY_ALPHA = 4;
+    const PNG_CHANNEL_RGB_ALPHA = 6;
 
-php php php php protectedphp php$php_widthphp;
-php php php php protectedphp php$php_heightphp;
-php php php php protectedphp php$php_imagePropertiesphp;
+    protected $_width;
+    protected $_height;
+    protected $_imageProperties;
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$imageFileName
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php php@todophp Addphp compressionphp conversionsphp tophp supportphp compressionphp strategysphp otherphp thanphp PNGphp_COMPRESSIONphp_DEFAULTphp_STRATEGYphp.
-php php php php php php*php php@todophp Addphp prephp-compressionphp filteringphp.
-php php php php php php*php php@todophp Addphp interlacedphp imagephp handlingphp.
-php php php php php php*php php@todophp Addphp supportphp forphp php1php6php-bitphp imagesphp.php Requiresphp PDFphp versionphp bumpphp tophp php1php.php5php atphp leastphp.
-php php php php php php*php php@todophp Addphp processingphp forphp allphp PNGphp chunksphp definedphp inphp thephp specphp.php gAMAphp etcphp.
-php php php php php php*php php@todophp Fixphp tRNSphp chunkphp supportphp forphp Indexedphp Imagesphp tophp aphp SMaskphp.
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$imageFileNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$imageFilephp php=php php@fopenphp(php$imageFileNamephp,php php'rbphp'php)php)php php=php=php=php falsephp php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Canphp notphp openphp php'php$imageFileNamephp'php filephp forphp readingphp.php"php php)php;
-php php php php php php php php php}
+    /**
+     * Object constructor
+     *
+     * @param string $imageFileName
+     * @throws Zend_Pdf_Exception
+     * @todo Add compression conversions to support compression strategys other than PNG_COMPRESSION_DEFAULT_STRATEGY.
+     * @todo Add pre-compression filtering.
+     * @todo Add interlaced image handling.
+     * @todo Add support for 16-bit images. Requires PDF version bump to 1.5 at least.
+     * @todo Add processing for all PNG chunks defined in the spec. gAMA etc.
+     * @todo Fix tRNS chunk support for Indexed Images to a SMask.
+     */
+    public function __construct($imageFileName)
+    {
+        if (($imageFile = @fopen($imageFileName, 'rb')) === false ) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception( "Can not open '$imageFileName' file for reading." );
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php)php;
+        parent::__construct();
 
-php php php php php php php php php/php/Checkphp ifphp thephp filephp isphp aphp PNG
-php php php php php php php php fseekphp(php$imageFilephp,php php1php,php SEEKphp_CURphp)php;php php/php/Firstphp signaturephp bytephp php(php%php)
-php php php php php php php php ifphp php(php'PNGphp'php php!php=php freadphp(php$imageFilephp,php php3php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Imagephp isphp notphp aphp PNGphp'php)php;
-php php php php php php php php php}
-php php php php php php php php fseekphp(php$imageFilephp,php php1php2php,php SEEKphp_CURphp)php;php php/php/Signaturephp bytesphp php(Includesphp thephp IHDRphp chunkphp)php IHDRphp processedphp linerarlyphp becausephp itphp doesntphp containphp aphp variablephp chunkphp length
-php php php php php php php php php$wtmpphp php=php unpackphp(php'Niphp'php,freadphp(php$imageFilephp,php php4php)php)php;php php/php/Unpackphp aphp php4php-Bytephp Long
-php php php php php php php php php$widthphp php=php php$wtmpphp[php'iphp'php]php;
-php php php php php php php php php$htmpphp php=php unpackphp(php'Niphp'php,freadphp(php$imageFilephp,php php4php)php)php;
-php php php php php php php php php$heightphp php=php php$htmpphp[php'iphp'php]php;
-php php php php php php php php php$bitsphp php=php ordphp(freadphp(php$imageFilephp,php php1php)php)php;php php/php/Higherphp thanphp php8php bitphp depthsphp arephp onlyphp supportedphp inphp laterphp versionsphp ofphp PDFphp.
-php php php php php php php php php$colorphp php=php ordphp(freadphp(php$imageFilephp,php php1php)php)php;
+        //Check if the file is a PNG
+        fseek($imageFile, 1, SEEK_CUR); //First signature byte (%)
+        if ('PNG' != fread($imageFile, 3)) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Image is not a PNG');
+        }
+        fseek($imageFile, 12, SEEK_CUR); //Signature bytes (Includes the IHDR chunk) IHDR processed linerarly because it doesnt contain a variable chunk length
+        $wtmp = unpack('Ni',fread($imageFile, 4)); //Unpack a 4-Byte Long
+        $width = $wtmp['i'];
+        $htmp = unpack('Ni',fread($imageFile, 4));
+        $height = $htmp['i'];
+        $bits = ord(fread($imageFile, 1)); //Higher than 8 bit depths are only supported in later versions of PDF.
+        $color = ord(fread($imageFile, 1));
 
-php php php php php php php php php$compressionphp php=php ordphp(freadphp(php$imageFilephp,php php1php)php)php;
-php php php php php php php php php$prefilterphp php=php ordphp(freadphp(php$imageFilephp,php1php)php)php;
+        $compression = ord(fread($imageFile, 1));
+        $prefilter = ord(fread($imageFile,1));
 
-php php php php php php php php ifphp php(php(php$interlacingphp php=php ordphp(freadphp(php$imageFilephp,php1php)php)php)php php!php=php Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_INTERLACINGphp_DISABLEDphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Onlyphp nonphp-interlacedphp imagesphp arephp currentlyphp supportedphp.php"php php)php;
-php php php php php php php php php}
+        if (($interlacing = ord(fread($imageFile,1))) != Zend_Pdf_Resource_Image_Png::PNG_INTERLACING_DISABLED) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception( "Only non-interlaced images are currently supported." );
+        }
 
-php php php php php php php php php$thisphp-php>php_widthphp php=php php$widthphp;
-php php php php php php php php php$thisphp-php>php_heightphp php=php php$heightphp;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'bitDepthphp'php]php php=php php$bitsphp;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'pngColorTypephp'php]php php=php php$colorphp;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'pngFilterTypephp'php]php php=php php$prefilterphp;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'pngCompressionTypephp'php]php php=php php$compressionphp;
-php php php php php php php php php$thisphp-php>php_imagePropertiesphp[php'pngInterlacingTypephp'php]php php=php php$interlacingphp;
+        $this->_width = $width;
+        $this->_height = $height;
+        $this->_imageProperties = array();
+        $this->_imageProperties['bitDepth'] = $bits;
+        $this->_imageProperties['pngColorType'] = $color;
+        $this->_imageProperties['pngFilterType'] = $prefilter;
+        $this->_imageProperties['pngCompressionType'] = $compression;
+        $this->_imageProperties['pngInterlacingType'] = $interlacing;
 
-php php php php php php php php fseekphp(php$imageFilephp,php php4php,php SEEKphp_CURphp)php;php php/php/php4php Bytephp Endingphp Sequence
-php php php php php php php php php$imageDataphp php=php php'php'php;
+        fseek($imageFile, 4, SEEK_CUR); //4 Byte Ending Sequence
+        $imageData = '';
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Thephp followingphp loopphp processesphp PNGphp chunksphp.php php4php Bytephp Longsphp arephp packedphp firstphp givephp thephp chunkphp length
-php php php php php php php php php php*php followedphp byphp thephp chunkphp signaturephp,php aphp fourphp bytephp codephp.php IDATphp andphp IENDphp arephp manditoryphp inphp anyphp PNGphp.
-php php php php php php php php php php*php/
-php php php php php php php php whilephp php(php!feofphp(php$imageFilephp)php)php php{
-php php php php php php php php php php php php php$chunkLengthBytesphp php=php freadphp(php$imageFilephp,php php4php)php;
-php php php php php php php php php php php php ifphp php(php$chunkLengthBytesphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Errorphp ocuuredphp whilephp imagephp filephp readingphp.php'php)php;
-php php php php php php php php php php php php php}
+        /*
+         * The following loop processes PNG chunks. 4 Byte Longs are packed first give the chunk length
+         * followed by the chunk signature, a four byte code. IDAT and IEND are manditory in any PNG.
+         */
+        while (!feof($imageFile)) {
+            $chunkLengthBytes = fread($imageFile, 4);
+            if ($chunkLengthBytes === false) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Error ocuured while image file reading.');
+            }
 
-php php php php php php php php php php php php php$chunkLengthtmpphp php=php unpackphp(php'Niphp'php,php php$chunkLengthBytesphp)php;
-php php php php php php php php php php php php php$chunkLengthphp php php php php=php php$chunkLengthtmpphp[php'iphp'php]php;
-php php php php php php php php php php php php php$chunkTypephp php php php php php php=php freadphp(php$imageFilephp,php php4php)php;
-php php php php php php php php php php php php switchphp(php$chunkTypephp)php php{
-php php php php php php php php php php php php php php php php casephp php'IDATphp'php:php php/php/Imagephp Data
-php php php php php php php php php php php php php php php php php php php php php/php*
-php php php php php php php php php php php php php php php php php php php php php php*php Readsphp thephp actualphp imagephp dataphp fromphp thephp PNGphp filephp.php Sincephp wephp knowphp atphp thisphp pointphp thatphp thephp compression
-php php php php php php php php php php php php php php php php php php php php php php*php strategyphp isphp thephp defaultphp strategyphp,php wephp alsophp knowphp thatphp thisphp dataphp isphp Zipphp compressedphp.php Wephp willphp eitherphp copy
-php php php php php php php php php php php php php php php php php php php php php php*php thephp dataphp directlyphp tophp thephp PDFphp andphp providephp thephp correctphp FlateDecodephp predictorphp,php orphp decompressphp thephp data
-php php php php php php php php php php php php php php php php php php php php php php*php decodephp thephp filtersphp andphp outputphp thephp dataphp asphp aphp rawphp pixelphp mapphp.
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php php$imageDataphp php.php=php freadphp(php$imageFilephp,php php$chunkLengthphp)php;
-php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php4php,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+            $chunkLengthtmp = unpack('Ni', $chunkLengthBytes);
+            $chunkLength    = $chunkLengthtmp['i'];
+            $chunkType      = fread($imageFile, 4);
+            switch($chunkType) {
+                case 'IDAT': //Image Data
+                    /*
+                     * Reads the actual image data from the PNG file. Since we know at this point that the compression
+                     * strategy is the default strategy, we also know that this data is Zip compressed. We will either copy
+                     * the data directly to the PDF and provide the correct FlateDecode predictor, or decompress the data
+                     * decode the filters and output the data as a raw pixel map.
+                     */
+                    $imageData .= fread($imageFile, $chunkLength);
+                    fseek($imageFile, 4, SEEK_CUR);
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php'PLTEphp'php:php php/php/Palette
-php php php php php php php php php php php php php php php php php php php php php$paletteDataphp php=php freadphp(php$imageFilephp,php php$chunkLengthphp)php;
-php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php4php,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+                case 'PLTE': //Palette
+                    $paletteData = fread($imageFile, $chunkLength);
+                    fseek($imageFile, 4, SEEK_CUR);
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php'tRNSphp'php:php php/php/Basicphp php(nonphp-alphaphp channelphp)php transparencyphp.
-php php php php php php php php php php php php php php php php php php php php php$trnsDataphp php=php freadphp(php$imageFilephp,php php$chunkLengthphp)php;
-php php php php php php php php php php php php php php php php php php php php switchphp php(php$colorphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_GRAYphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$baseColorphp php=php ordphp(substrphp(php$trnsDataphp,php php1php,php php1php)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$transparencyDataphp php=php arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$baseColorphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$baseColorphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+                case 'tRNS': //Basic (non-alpha channel) transparency.
+                    $trnsData = fread($imageFile, $chunkLength);
+                    switch ($color) {
+                        case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_GRAY:
+                            $baseColor = ord(substr($trnsData, 1, 1));
+                            $transparencyData = array(new Zend_Pdf_Element_Numeric($baseColor),
+                                                      new Zend_Pdf_Element_Numeric($baseColor));
+                            break;
 
-php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$redphp php=php ordphp(substrphp(php$trnsDataphp,php1php,php1php)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$greenphp php=php ordphp(substrphp(php$trnsDataphp,php3php,php1php)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$bluephp php=php ordphp(substrphp(php$trnsDataphp,php5php,php1php)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$transparencyDataphp php=php arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$redphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$redphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$greenphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$greenphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bluephp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bluephp)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+                        case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB:
+                            $red = ord(substr($trnsData,1,1));
+                            $green = ord(substr($trnsData,3,1));
+                            $blue = ord(substr($trnsData,5,1));
+                            $transparencyData = array(new Zend_Pdf_Element_Numeric($red),
+                                                      new Zend_Pdf_Element_Numeric($red),
+                                                      new Zend_Pdf_Element_Numeric($green),
+                                                      new Zend_Pdf_Element_Numeric($green),
+                                                      new Zend_Pdf_Element_Numeric($blue),
+                                                      new Zend_Pdf_Element_Numeric($blue));
+                            break;
 
-php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_INDEXEDphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/Findphp thephp firstphp transparentphp colorphp inphp thephp indexphp,php wephp willphp maskphp thatphp.php php(Thisphp isphp aphp bitphp ofphp aphp hackphp.php Thisphp shouldphp bephp aphp SMaskphp andphp maskphp allphp entriesphp valuesphp)php.
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php(php$trnsIdxphp php=php strposphp(php$trnsDataphp,php php"php\php0php"php)php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$transparencyDataphp php=php arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$trnsIdxphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$trnsIdxphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+                        case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_INDEXED:
+                            //Find the first transparent color in the index, we will mask that. (This is a bit of a hack. This should be a SMask and mask all entries values).
+                            if(($trnsIdx = strpos($trnsData, "\0")) !== false) {
+                                $transparencyData = array(new Zend_Pdf_Element_Numeric($trnsIdx),
+                                                          new Zend_Pdf_Element_Numeric($trnsIdx));
+                            }
+                            break;
 
-php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_GRAYphp_ALPHAphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Fallphp throughphp tophp thephp nextphp case
+                        case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_GRAY_ALPHA:
+                            // Fall through to the next case
 
-php php php php php php php php php php php php php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp_ALPHAphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"tRNSphp chunkphp illegalphp forphp Alphaphp Channelphp Imagesphp"php php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php4php,php SEEKphp_CURphp)php;php php/php/php4php Bytephp Endingphp Sequence
-php php php php php php php php php php php php php php php php php php php php breakphp;
+                        case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB_ALPHA:
+                            require_once 'Zend/Pdf/Exception.php';
+                            throw new Zend_Pdf_Exception( "tRNS chunk illegal for Alpha Channel Images" );
+                            break;
+                    }
+                    fseek($imageFile, 4, SEEK_CUR); //4 Byte Ending Sequence
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php'IENDphp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp php2php;php php/php/Endphp thephp loopphp too
+                case 'IEND';
+                    break 2; //End the loop too
 
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php fseekphp(php$imageFilephp,php php$chunkLengthphp php+php php4php,php SEEKphp_CURphp)php;php php/php/Skipphp thephp section
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php fclosephp(php$imageFilephp)php;
+                default:
+                    fseek($imageFile, $chunkLength + 4, SEEK_CUR); //Skip the section
+                    break;
+            }
+        }
+        fclose($imageFile);
 
-php php php php php php php php php$compressedphp php=php truephp;
-php php php php php php php php php$imageDataTmpphp php=php php'php'php;
-php php php php php php php php php$smaskDataphp php=php php'php'php;
-php php php php php php php php switchphp php(php$colorphp)php php{
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp:
-php php php php php php php php php php php php php php php php php$colorSpacephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceRGBphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
+        $compressed = true;
+        $imageDataTmp = '';
+        $smaskData = '';
+        switch ($color) {
+            case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB:
+                $colorSpace = new Zend_Pdf_Element_Name('DeviceRGB');
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_GRAYphp:
-php php php php php php php php php php php php php php php php php$colorSpacephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceGrayphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_GRAY:
+                $colorSpace = new Zend_Pdf_Element_Name('DeviceGray');
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_INDEXEDphp:
-php php php php php php php php php php php php php php php php ifphp(emptyphp(php$paletteDataphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"PNGphp Corruptionphp:php Nophp palettephp dataphp readphp forphp indexedphp typephp PNGphp.php"php php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$colorSpacephp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
-php php php php php php php php php php php php php php php php php$colorSpacephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Indexedphp'php)php;
-php php php php php php php php php php php php php php php php php$colorSpacephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceRGBphp'php)php;
-php php php php php php php php php php php php php php php php php$colorSpacephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php(strlenphp(php$paletteDataphp)php/php3php-php1php)php)php;
-php php php php php php php php php php php php php php php php php$paletteObjectphp php=php php$thisphp-php>php_objectFactoryphp-php>newObjectphp(newphp Zendphp_Pdfphp_Elementphp_Stringphp_Binaryphp(php$paletteDataphp)php)php;
-php php php php php php php php php php php php php php php php php$colorSpacephp-php>itemsphp[php]php php=php php$paletteObjectphp;
-php php php php php php php php php php php php php php php php breakphp;
+            case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_INDEXED:
+                if(empty($paletteData)) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception( "PNG Corruption: No palette data read for indexed type PNG." );
+                }
+                $colorSpace = new Zend_Pdf_Element_Array();
+                $colorSpace->items[] = new Zend_Pdf_Element_Name('Indexed');
+                $colorSpace->items[] = new Zend_Pdf_Element_Name('DeviceRGB');
+                $colorSpace->items[] = new Zend_Pdf_Element_Numeric((strlen($paletteData)/3-1));
+                $paletteObject = $this->_objectFactory->newObject(new Zend_Pdf_Element_String_Binary($paletteData));
+                $colorSpace->items[] = $paletteObject;
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_GRAYphp_ALPHAphp:
-php php php php php php php php php php php php php php php php php/php*
-php php php php php php php php php php php php php php php php php php*php Tophp decodephp PNGphp'sphp withphp alphaphp dataphp wephp mustphp createphp twophp imagesphp fromphp onephp.php Onephp imagephp willphp containphp thephp Grayphp data
-php php php php php php php php php php php php php php php php php php*php thephp otherphp willphp containphp thephp Grayphp transparencyphp overlayphp dataphp.php Thephp formerphp willphp becomephp thephp objectphp dataphp andphp thephp latter
-php php php php php php php php php php php php php php php php php php*php willphp becomephp thephp Shadowphp Maskphp php(SMaskphp)php.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php ifphp(php$bitsphp php>php php8php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Alphaphp PNGsphp withphp bitphp depthphp php>php php8php arephp notphp yetphp supportedphp"php)php;
-php php php php php php php php php php php php php php php php php}
+            case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_GRAY_ALPHA:
+                /*
+                 * To decode PNG's with alpha data we must create two images from one. One image will contain the Gray data
+                 * the other will contain the Gray transparency overlay data. The former will become the object data and the latter
+                 * will become the Shadow Mask (SMask).
+                 */
+                if($bits > 8) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception("Alpha PNGs with bit depth > 8 are not yet supported");
+                }
 
-php php php php php php php php php php php php php php php php php$colorSpacephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceGrayphp'php)php;
+                $colorSpace = new Zend_Pdf_Element_Name('DeviceGray');
 
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$decodingObjFactoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp php=php php$decodingObjFactoryphp-php>newStreamObjectphp(php$imageDataphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>Filterphp php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FlateDecodephp'php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Predictorphp php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php5php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Columnsphp php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Colorsphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php2php)php;php php php php/php/GreyAlpha
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>BitsPerComponentphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bitsphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>skipFiltersphp(php)php;
+                require_once 'Zend/Pdf/ElementFactory.php';
+                $decodingObjFactory = Zend_Pdf_ElementFactory::createFactory(1);
+                $decodingStream = $decodingObjFactory->newStreamObject($imageData);
+                $decodingStream->dictionary->Filter      = new Zend_Pdf_Element_Name('FlateDecode');
+                $decodingStream->dictionary->DecodeParms = new Zend_Pdf_Element_Dictionary();
+                $decodingStream->dictionary->DecodeParms->Predictor        = new Zend_Pdf_Element_Numeric(15);
+                $decodingStream->dictionary->DecodeParms->Columns          = new Zend_Pdf_Element_Numeric($width);
+                $decodingStream->dictionary->DecodeParms->Colors           = new Zend_Pdf_Element_Numeric(2);   //GreyAlpha
+                $decodingStream->dictionary->DecodeParms->BitsPerComponent = new Zend_Pdf_Element_Numeric($bits);
+                $decodingStream->skipFilters();
 
-php php php php php php php php php php php php php php php php php$pngDataRawDecodedphp php=php php$decodingStreamphp-php>valuephp;
+                $pngDataRawDecoded = $decodingStream->value;
 
-php php php php php php php php php php php php php php php php php/php/Iteratephp everyphp pixelphp andphp copyphp outphp grayphp dataphp andphp alphaphp channelphp php(thisphp willphp bephp slowphp)
-php php php php php php php php php php php php php php php php forphp(php$pixelphp php=php php0php,php php$pixelcountphp php=php php(php$widthphp php*php php$heightphp)php;php php$pixelphp <php php$pixelcountphp;php php$pixelphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$imageDataTmpphp php.php=php php$pngDataRawDecodedphp[php(php$pixelphp*php2php)php]php;
-php php php php php php php php php php php php php php php php php php php php php$smaskDataphp php.php=php php$pngDataRawDecodedphp[php(php$pixelphp*php2php)php+php1php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$compressedphp php=php falsephp;
-php php php php php php php php php php php php php php php php php$imageDataphp php php=php php$imageDataTmpphp;php php/php/Overwritephp imagephp dataphp withphp thephp grayphp channelphp withoutphp alpha
-php php php php php php php php php php php php php php php php breakphp;
+                //Iterate every pixel and copy out gray data and alpha channel (this will be slow)
+                for($pixel = 0, $pixelcount = ($width * $height); $pixel < $pixelcount; $pixel++) {
+                    $imageDataTmp .= $pngDataRawDecoded[($pixel*2)];
+                    $smaskData .= $pngDataRawDecoded[($pixel*2)+1];
+                }
+                $compressed = false;
+                $imageData  = $imageDataTmp; //Overwrite image data with the gray channel without alpha
+                break;
 
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp_ALPHAphp:
-php php php php php php php php php php php php php php php php php/php*
-php php php php php php php php php php php php php php php php php php*php Tophp decodephp PNGphp'sphp withphp alphaphp dataphp wephp mustphp createphp twophp imagesphp fromphp onephp.php Onephp imagephp willphp containphp thephp RGBphp data
-php php php php php php php php php php php php php php php php php php*php thephp otherphp willphp containphp thephp Grayphp transparencyphp overlayphp dataphp.php Thephp formerphp willphp becomephp thephp objectphp dataphp andphp thephp latter
-php php php php php php php php php php php php php php php php php php*php willphp becomephp thephp Shadowphp Maskphp php(SMaskphp)php.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php ifphp(php$bitsphp php>php php8php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Alphaphp PNGsphp withphp bitphp depthphp php>php php8php arephp notphp yetphp supportedphp"php)php;
-php php php php php php php php php php php php php php php php php}
+            case Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB_ALPHA:
+                /*
+                 * To decode PNG's with alpha data we must create two images from one. One image will contain the RGB data
+                 * the other will contain the Gray transparency overlay data. The former will become the object data and the latter
+                 * will become the Shadow Mask (SMask).
+                 */
+                if($bits > 8) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception("Alpha PNGs with bit depth > 8 are not yet supported");
+                }
 
-php php php php php php php php php php php php php php php php php$colorSpacephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceRGBphp'php)php;
+                $colorSpace = new Zend_Pdf_Element_Name('DeviceRGB');
 
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/ElementFactoryphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$decodingObjFactoryphp php=php Zendphp_Pdfphp_ElementFactoryphp:php:createFactoryphp(php1php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp php=php php$decodingObjFactoryphp-php>newStreamObjectphp(php$imageDataphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>Filterphp php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FlateDecodephp'php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Predictorphp php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php5php)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Columnsphp php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>Colorsphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php4php)php;php php php php/php/RGBA
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>dictionaryphp-php>DecodeParmsphp-php>BitsPerComponentphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bitsphp)php;
-php php php php php php php php php php php php php php php php php$decodingStreamphp-php>skipFiltersphp(php)php;
+                require_once 'Zend/Pdf/ElementFactory.php';
+                $decodingObjFactory = Zend_Pdf_ElementFactory::createFactory(1);
+                $decodingStream = $decodingObjFactory->newStreamObject($imageData);
+                $decodingStream->dictionary->Filter      = new Zend_Pdf_Element_Name('FlateDecode');
+                $decodingStream->dictionary->DecodeParms = new Zend_Pdf_Element_Dictionary();
+                $decodingStream->dictionary->DecodeParms->Predictor        = new Zend_Pdf_Element_Numeric(15);
+                $decodingStream->dictionary->DecodeParms->Columns          = new Zend_Pdf_Element_Numeric($width);
+                $decodingStream->dictionary->DecodeParms->Colors           = new Zend_Pdf_Element_Numeric(4);   //RGBA
+                $decodingStream->dictionary->DecodeParms->BitsPerComponent = new Zend_Pdf_Element_Numeric($bits);
+                $decodingStream->skipFilters();
 
-php php php php php php php php php php php php php php php php php$pngDataRawDecodedphp php=php php$decodingStreamphp-php>valuephp;
+                $pngDataRawDecoded = $decodingStream->value;
 
-php php php php php php php php php php php php php php php php php/php/Iteratephp everyphp pixelphp andphp copyphp outphp rgbphp dataphp andphp alphaphp channelphp php(thisphp willphp bephp slowphp)
-php php php php php php php php php php php php php php php php forphp(php$pixelphp php=php php0php,php php$pixelcountphp php=php php(php$widthphp php*php php$heightphp)php;php php$pixelphp <php php$pixelcountphp;php php$pixelphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$imageDataTmpphp php.php=php php$pngDataRawDecodedphp[php(php$pixelphp*php4php)php+php0php]php php.php php$pngDataRawDecodedphp[php(php$pixelphp*php4php)php+php1php]php php.php php$pngDataRawDecodedphp[php(php$pixelphp*php4php)php+php2php]php;
-php php php php php php php php php php php php php php php php php php php php php$smaskDataphp php.php=php php$pngDataRawDecodedphp[php(php$pixelphp*php4php)php+php3php]php;
-php php php php php php php php php php php php php php php php php}
+                //Iterate every pixel and copy out rgb data and alpha channel (this will be slow)
+                for($pixel = 0, $pixelcount = ($width * $height); $pixel < $pixelcount; $pixel++) {
+                    $imageDataTmp .= $pngDataRawDecoded[($pixel*4)+0] . $pngDataRawDecoded[($pixel*4)+1] . $pngDataRawDecoded[($pixel*4)+2];
+                    $smaskData .= $pngDataRawDecoded[($pixel*4)+3];
+                }
 
-php php php php php php php php php php php php php php php php php$compressedphp php=php falsephp;
-php php php php php php php php php php php php php php php php php$imageDataphp php php=php php$imageDataTmpphp;php php/php/Overwritephp imagephp dataphp withphp thephp RGBphp channelphp withoutphp alpha
-php php php php php php php php php php php php php php php php breakphp;
+                $compressed = false;
+                $imageData  = $imageDataTmp; //Overwrite image data with the RGB channel without alpha
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"PNGphp Corruptionphp:php Invalidphp colorphp spacephp.php"php php)php;
-php php php php php php php php php}
+            default:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception( "PNG Corruption: Invalid color space." );
+        }
 
-php php php php php php php php ifphp(emptyphp(php$imageDataphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Corruptphp PNGphp Imagephp.php Mandatoryphp IDATphp chunkphp notphp foundphp.php"php php)php;
-php php php php php php php php php}
+        if(empty($imageData)) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception( "Corrupt PNG Image. Mandatory IDAT chunk not found." );
+        }
 
-php php php php php php php php php$imageDictionaryphp php=php php$thisphp-php>php_resourcephp-php>dictionaryphp;
-php php php php php php php php ifphp(php!emptyphp(php$smaskDataphp)php)php php{
-php php php php php php php php php php php php php/php*
-php php php php php php php php php php php php php php*php Includesphp thephp Alphaphp transparencyphp dataphp asphp aphp Grayphp Imagephp,php thenphp assignsphp thephp imagephp asphp thephp Shadowphp Maskphp forphp thephp mainphp imagephp dataphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$smaskStreamphp php=php php$thisphp-php>php_objectFactoryphp-php>newStreamObjectphp(php$smaskDataphp)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>Typephp php php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'XObjectphp'php)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>Subtypephp php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Imagephp'php)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>Widthphp php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>Heightphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$heightphp)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>ColorSpacephp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'DeviceGrayphp'php)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>BitsPerComponentphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bitsphp)php;
-php php php php php php php php php php php php php$imageDictionaryphp-php>SMaskphp php=php php$smaskStreamphp;
+        $imageDictionary = $this->_resource->dictionary;
+        if(!empty($smaskData)) {
+            /*
+             * Includes the Alpha transparency data as a Gray Image, then assigns the image as the Shadow Mask for the main image data.
+             */
+            $smaskStream = $this->_objectFactory->newStreamObject($smaskData);
+            $smaskStream->dictionary->Type             = new Zend_Pdf_Element_Name('XObject');
+            $smaskStream->dictionary->Subtype          = new Zend_Pdf_Element_Name('Image');
+            $smaskStream->dictionary->Width            = new Zend_Pdf_Element_Numeric($width);
+            $smaskStream->dictionary->Height           = new Zend_Pdf_Element_Numeric($height);
+            $smaskStream->dictionary->ColorSpace       = new Zend_Pdf_Element_Name('DeviceGray');
+            $smaskStream->dictionary->BitsPerComponent = new Zend_Pdf_Element_Numeric($bits);
+            $imageDictionary->SMask = $smaskStream;
 
-php php php php php php php php php php php php php/php/php Encodephp streamphp withphp FlateDecodephp filter
-php php php php php php php php php php php php php$smaskStreamDecodeParmsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$smaskStreamDecodeParmsphp[php'Predictorphp'php]php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php5php)php;
-php php php php php php php php php php php php php$smaskStreamDecodeParmsphp[php'Columnsphp'php]php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php php php php php$smaskStreamDecodeParmsphp[php'Colorsphp'php]php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php)php;
-php php php php php php php php php php php php php$smaskStreamDecodeParmsphp[php'BitsPerComponentphp'php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php8php)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>DecodeParmsphp php php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php$smaskStreamDecodeParmsphp)php;
-php php php php php php php php php php php php php$smaskStreamphp-php>dictionaryphp-php>Filterphp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FlateDecodephp'php)php;
-php php php php php php php php php}
+            // Encode stream with FlateDecode filter
+            $smaskStreamDecodeParms = array();
+            $smaskStreamDecodeParms['Predictor']        = new Zend_Pdf_Element_Numeric(15);
+            $smaskStreamDecodeParms['Columns']          = new Zend_Pdf_Element_Numeric($width);
+            $smaskStreamDecodeParms['Colors']           = new Zend_Pdf_Element_Numeric(1);
+            $smaskStreamDecodeParms['BitsPerComponent'] = new Zend_Pdf_Element_Numeric(8);
+            $smaskStream->dictionary->DecodeParms  = new Zend_Pdf_Element_Dictionary($smaskStreamDecodeParms);
+            $smaskStream->dictionary->Filter       = new Zend_Pdf_Element_Name('FlateDecode');
+        }
 
-php php php php php php php php ifphp(php!emptyphp(php$transparencyDataphp)php)php php{
-php php php php php php php php php php php php php/php/Thisphp isphp experimentalphp andphp notphp properlyphp testedphp.
-php php php php php php php php php php php php php$imageDictionaryphp-php>Maskphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$transparencyDataphp)php;
-php php php php php php php php php}
+        if(!empty($transparencyData)) {
+            //This is experimental and not properly tested.
+            $imageDictionary->Mask = new Zend_Pdf_Element_Array($transparencyData);
+        }
 
-php php php php php php php php php$imageDictionaryphp-php>Widthphp php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php$imageDictionaryphp-php>Heightphp php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$heightphp)php;
-php php php php php php php php php$imageDictionaryphp-php>ColorSpacephp php php php php php php php=php php$colorSpacephp;
-php php php php php php php php php$imageDictionaryphp-php>BitsPerComponentphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bitsphp)php;
-php php php php php php php php php$imageDictionaryphp-php>Filterphp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FlateDecodephp'php)php;
+        $imageDictionary->Width            = new Zend_Pdf_Element_Numeric($width);
+        $imageDictionary->Height           = new Zend_Pdf_Element_Numeric($height);
+        $imageDictionary->ColorSpace       = $colorSpace;
+        $imageDictionary->BitsPerComponent = new Zend_Pdf_Element_Numeric($bits);
+        $imageDictionary->Filter       = new Zend_Pdf_Element_Name('FlateDecode');
 
-php php php php php php php php php$decodeParmsphp php=php arrayphp(php)php;
-php php php php php php php php php$decodeParmsphp[php'Predictorphp'php]php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php1php5php)php;php php/php/php Optimalphp prediction
-php php php php php php php php php$decodeParmsphp[php'Columnsphp'php]php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$widthphp)php;
-php php php php php php php php php$decodeParmsphp[php'Colorsphp'php]php php php php php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php(php(php$colorphp=php=Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp php|php|php php$colorphp=php=Zendphp_Pdfphp_Resourcephp_Imagephp_Pngphp:php:PNGphp_CHANNELphp_RGBphp_ALPHAphp)php?php(php3php)php:php(php1php)php)php)php;
-php php php php php php php php php$decodeParmsphp[php'BitsPerComponentphp'php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bitsphp)php;
-php php php php php php php php php$imageDictionaryphp-php>DecodeParmsphp php php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php$decodeParmsphp)php;
+        $decodeParms = array();
+        $decodeParms['Predictor']        = new Zend_Pdf_Element_Numeric(15); // Optimal prediction
+        $decodeParms['Columns']          = new Zend_Pdf_Element_Numeric($width);
+        $decodeParms['Colors']           = new Zend_Pdf_Element_Numeric((($color==Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB || $color==Zend_Pdf_Resource_Image_Png::PNG_CHANNEL_RGB_ALPHA)?(3):(1)));
+        $decodeParms['BitsPerComponent'] = new Zend_Pdf_Element_Numeric($bits);
+        $imageDictionary->DecodeParms  = new Zend_Pdf_Element_Dictionary($decodeParms);
 
-php php php php php php php php php/php/Includephp onlyphp thephp imagephp IDATphp sectionphp dataphp.
-php php php php php php php php php$thisphp-php>php_resourcephp-php>valuephp php=php php$imageDataphp;
+        //Include only the image IDAT section data.
+        $this->_resource->value = $imageData;
 
-php php php php php php php php php/php/Skipphp doublephp compression
-php php php php php php php php ifphp php(php$compressedphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp-php>skipFiltersphp(php)php;
-php php php php php php php php php}
-php php php php php}
+        //Skip double compression
+        if ($compressed) {
+            $this->_resource->skipFilters();
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Imagephp width
-php php php php php php*php/
-php php php php publicphp functionphp getPixelWidthphp(php)php php{
-php php php php returnphp php$thisphp-php>php_widthphp;
-php php php php php}
+    /**
+     * Image width
+     */
+    public function getPixelWidth() {
+    return $this->_width;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Imagephp height
-php php php php php php*php/
-php php php php publicphp functionphp getPixelHeightphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_heightphp;
-php php php php php}
+    /**
+     * Image height
+     */
+    public function getPixelHeight() {
+        return $this->_height;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Imagephp properties
-php php php php php php*php/
-php php php php publicphp functionphp getPropertiesphp(php)php php{
-php php php php php php php php returnphp php$thisphp-php>php_imagePropertiesphp;
-php php php php php}
-php}
+    /**
+     * Image properties
+     */
+    public function getProperties() {
+        return $this->_imageProperties;
+    }
+}

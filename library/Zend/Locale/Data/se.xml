@@ -1,740 +1,740 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php6php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"sephp"php/php>
-php	<php/identityphp>
-php	php<fallbackphp>nbphp svphp en<php/fallbackphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"acephp"php>acehgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"afphp"php>afrikánsagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"anphp"php>aragoniagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"angphp"php>boaresphp eaŋgalasgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"apaphp"php>apachešphp giella<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>arábagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"astphp"php>asturiagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>vilgesphp-ruoššagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>bulgáriagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>bengalgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>bretonagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>bosniagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>katalánagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"celphp"php>kelttalašphp gielat<php/languagephp>
-php	php	php	php<languagephp typephp=php"chmphp"php>marigiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"cophp"php>corsicagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>čeahkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>dánskkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>duiskkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>greikkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>eaŋgalsgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>spánskkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>esttegiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>persijagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>suomagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiuphp"php>fennophp-ugrálašphp giella<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>fearagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>fránskkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>oarjifriisagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>iirragiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"gemphp"php>germánalašphp gielat<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>gujaratagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"gvphp"php>manksgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>hindigiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>kroátiagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>armeenagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>islánddagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>itáliagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>japánagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"krlphp"php>gárjilgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"kvphp"php>komigiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"kwphp"php>kornagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>láhtengiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"lbphp"php>luxemburggagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>liettuvagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>látviagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"mdfphp"php>mokšagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>makedoniagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"myvphp"php>ersagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"nbphp"php>girjedárogiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>hollánddagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>ođđadárogiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>dárogiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>oksitánagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>polskkagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>portugálagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"rmphp"php>retorománagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>romániagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"roaphp"php>románalašphp gielat<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>ruoššagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"scphp"php>sardigiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"scnphp"php>sisiliagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"sephp"php>davvisámegiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"selphp"php>selkupagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>slovákiagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>slovenagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"smaphp"php>lullisámegiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"smiphp"php>sámegielat<php/languagephp>
-php	php	php	php<languagephp typephp=php"smjphp"php>julevsámegiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"smnphp"php>anárašgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"smsphp"php>nuortalašgiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>albánagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>serbiagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>ruoŧagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"udmphp"php>udmurtagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>ukrainagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"waphp"php>vallonagiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"wenphp"php>sorbigiella<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>kiinnágiella<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>arába<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>kyrillalaš<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Grekphp"php>greikkalaš<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>láhtenaš<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php0php1php"php>máilbmi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php2php"php>Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php3php"php>dávviphp-Amerihkkáphp japhp gaskaphp-Amerihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php5php"php>máttaphp-Amerihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php9php"php>Oseania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php1php"php>oarjiphp-Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php3php"php>gaskaphp-Amerihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php4php"php>nuortaphp-Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php5php"php>davviphp-Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php7php"php>gaskaphp-Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php8php"php>máttaphp-Afrihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php9php"php>Amerihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php1php"php>dávviphp-Amerihkká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php9php"php>Karibia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php0php"php>nuortaphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php4php"php>máttaphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php5php"php>máttaphp-nuortaphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php9php"php>máttaphp-Eurohpá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php3php"php>Austráliaphp japhp Ođđaphp-Selánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php4php"php>Melanesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php1php"php>Polynesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php2php"php>máttaphp-gaskaphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php2php"php>Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php3php"php>gaskaphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php5php"php>oarjiphp-Ásia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php0php"php>Eurohpá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php1php"php>nuortaphp-Eurohpá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php4php"php>davviphp-Eurohpá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php5php"php>oarjiphp-Eurohpá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php4php1php9php"php>Lulliphp-Amerihkkáphp japhp Karibia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>Andorra<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>Ovttastuvvanphp Arábaemiráhtat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Afghanistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Antiguaphp japhp Barbuda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>Albánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>Armenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>Antárktis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>Argentina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>Amerihkáphp Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>Nuortariika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>Austrália<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AWphp"php>Aruba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AXphp"php>Ålánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>Aserbaiphpžan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Bosniaphp-Hercegovina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>Barbados<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Bangladesh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Belgia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp Faso<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>Bulgária<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>Bahrain<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>Burundi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>Benin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BLphp"php>Saintphp Barthélemy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BMphp"php>Bermuda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BNphp"php>Brunei<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>Bolivia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Brasil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>Bahamas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>Bhutan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>Bouvetphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>Vilgesphp-Ruošša<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>Belize<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kanáda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CCphp"php>Cocosphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>Kongophp-Kinshasa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>Kongophp-Brazzaville<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Šveica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>Cookphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>Čiile<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Kamerun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Kiinná<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>Kolombia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CRphp"php>Costaphp Rica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>Kuba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CVphp"php>Kapphp Verde<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>Kypros<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Čeahkka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Duiska<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Djibouti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>Dánmárku<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>Dominica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>Algeria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>Ecuador<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>Estlánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Egypta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>Oarjephp-Sahára<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>Eritrea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Spánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Etiopia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Suopma<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>Fijisullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FKphp"php>Falklandsullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>Mikronesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FOphp"php>Fearsullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Frankriika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>Gabon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Stuorraphp-Británnia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Grenada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>Georgia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>Frankriikkaphp Guayana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GGphp"php>Guernsey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Ghana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Gibraltar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GLphp"php>Kalaallitphp Nunaat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Gámbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GPphp"php>Guadeloupe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>Ekvatoriálaphp Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Greika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>Lulliphp Georgiaphp japhp Lulliphp Sandwichphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GTphp"php>Guatemala<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GUphp"php>Guam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>Guineaphp-Bissau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>Guyana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>Hongkong<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>Honduras<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Kroátia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>Haiti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Ungár<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Indonesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Irlánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>Israel<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IMphp"php>Mann<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>India<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>Irak<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>Iran<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Islánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Itália<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JEphp"php>Jersey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>Jamaica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Jordánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Japána<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Kenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>Kirgisistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>Kambodphpža<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>Kiribati<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>Komorosullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KNphp"php>Saintphp Kittsphp japhp Nevis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Davviphp-Korea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Máttaphp-Korea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>Kuwait<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KYphp"php>Caymanphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Kasakstan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>Laos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Libanon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LCphp"php>Saintphp Lucia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>Liechtenstein<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Sriphp Lanka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Liberia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Lesotho<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>Lietuva<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Luxembourg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Látvia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Libya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>Marokko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>Monaco<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>Moldávia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MEphp"php>Montenegro<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MFphp"php>Saintphp Martin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>Madagaskar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>Marshallsullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Makedonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Mali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>Burma<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>Mongolia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>Makáo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>Davviphp-Mariánat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MQphp"php>Martinique<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>Mauretánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>Montserrat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Málta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>Mauritius<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Malediivvat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Malawi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Meksiko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>Malesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Mosambik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namibia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>Ođđaphp-Kaledonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>Niger<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>Norfolksullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Nigeria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>Nicaragua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Vuolleeatnamat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Norga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>Nepal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NRphp"php>Nauru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>Niue<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Ođđaphp-Selánda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>Oman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>Panama<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>Peru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaphp-Ođđaphp-Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>Filippiinnat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Pakistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Polen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PMphp"php>Saintphp Pierrephp japhp Miquelon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PNphp"php>Pitcairn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PRphp"php>Puertophp Rico<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PSphp"php>Palestina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Portugála<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>Paraguay<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>Qatar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QUphp"php>Eurohpaphp Uniovdna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"REphp"php>Reunion<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Románia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RSphp"php>Serbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Ruošša<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Rwanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>Saudiphp-Arábia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>Salomonphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>Seychellsullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Sudan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Ruoŧŧa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>Singapore<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>Saintphp Helena<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>Slovenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SJphp"php>Svalbárdaphp japhp Janphp Mayen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>Slovákia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>Sierraphp Leone<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>Sanphp Marino<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>Senegal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Somália<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>Surinam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"STphp"php>Sãophp Toméphp japhp Príncipe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SVphp"php>Elphp Salvador<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Syria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>Svazieana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TCphp"php>Turksphp japhp Caicosphp-sullot<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>Tčad<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Togo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>Thaieana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>Taphpžikistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>Tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>Nuortaphp-Timor<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>Turkmenistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Tunisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Durka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Trinidadphp japhp Tobago<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>Tuvalu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>Taiwan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>Tanzánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>Ukraina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>Uganda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Amerihkáphp ovttastuvvanphp stáhtat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>Uruguay<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>Usbekistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Vatikána<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VCphp"php>Saintphp Vincentphp japhp Grenadine<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>Venezuela<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Vietnam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>Wallisphp japhp Futuna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Jemen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YTphp"php>Mayotte<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Máttaphp-Afrihká<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Zambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Zimbabwe<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>kaleandar<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>valuhtta<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>SI<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>US<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	php	php<codePatternsphp>
-php	php	php	php<codePatternphp typephp=php"languagephp"php>giellaphp:php php{php0php}<php/codePatternphp>
-php	php	<php/codePatternsphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp bphp cphp čphp dphp đphp ephp-nphp ŋphp ophp pphp rphp sphp šphp tphp ŧphp uphp vphp zphp phpžphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[àphp åphp äphp ãphp æphp çphp éphp èphp íphp ńphp ñphp óphp òphp öphp øphp qphp úphp üphp wphp-yphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp áphp àphp åphp äphp æphp bphp cphp čphp dphp đphp ephp éphp èphp fphp-nphp ńphp ŋphp ophp óphp òphp öphp øphp pphp-sphp šphp tphp ŧphp uphp úphp vphp xphp-zphp phpžphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php”<php/quotationStartphp>
-php	php	php<quotationEndphp>php”<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php’<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php’<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<dateRangePatternphp>php{php0php}php–php{php1php}<php/dateRangePatternphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>ođđj<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>guov<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>njuk<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>cuo<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>mies<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>geas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>suoi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>borg<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>čakč<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>golg<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>skáb<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>juov<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>ođđajagemánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>guovvamánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>njukčamánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>cuoŋománnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>miessemánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>geassemánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>suoidnemánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>borgemánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>čakčamánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>golggotmánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>skábmamánnu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>juovlamánnu<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>O<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>G<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>N<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>C<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>G<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>B<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Č<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>G<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>J<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>sotn<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>vuos<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>maŋ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>gask<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>duor<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>bear<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>láv<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>sotnabeaivi<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>vuossárga<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>maŋŋebárga<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>gaskavahkku<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>duorasdat<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>bearjadat<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>lávvardat<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>s<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>v<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>m<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>g<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>d<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>b<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>L<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Kphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>AM<php/amphp>
-php	php	php	php	php<pmphp>PM<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>ovdalphp Kristtusa<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>maŋŋelphp Kristtusa<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>ophp.Krphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>mphp.Krphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	php	php<eraNarrowphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>ophp.Krphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>mphp.Krphp.<php/eraphp>
-php	php	php	php	php	<php/eraNarrowphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>éra<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>jáhki<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>mánnu<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>váhkku<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>beaivi<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>ikte<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>odne<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>ihttin<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>váhkkubeaivi<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>diibmu<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>minuhtta<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>sekunda<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>áigeavádat<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php−HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>UTCphp{php0php}<php/gmtFormatphp>
-php	php	php	php<gmtZeroFormatphp>UTC<php/gmtZeroFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<fallbackFormatphp>php{php0php}php php(php{php1php}php)<php/fallbackFormatphp>
-php	php	php	php<zonephp typephp=php"Americaphp/Saophp_Paulophp"php>
-php	php	php	php	php<exemplarCityphp>Sãophp Paulo<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Meridaphp"php>
-php	php	php	php	php<exemplarCityphp>Mérida<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Centralphp"php>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>CET<php/standardphp>
-php	php	php	php	php	php<daylightphp>CEST<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Easternphp"php>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>EET<php/standardphp>
-php	php	php	php	php	php<daylightphp>EEST<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Westernphp"php>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>WET<php/standardphp>
-php	php	php	php	php	php<daylightphp>WEST<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"GMTphp"php>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>GMT<php/standardphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php,<php/decimalphp>
-php	php	php	php<groupphp>php <php/groupphp>
-php	php	php	php<listphp>php;<php/listphp>
-php	php	php	php<percentSignphp>php%<php/percentSignphp>
-php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
-php	php	php	php<patternDigitphp>php#<php/patternDigitphp>
-php	php	php	php<plusSignphp>php+<php/plusSignphp>
-php	php	php	php<minusSignphp>php−<php/minusSignphp>
-php	php	php	php<exponentialphp>php×php1php0php^<php/exponentialphp>
-php	php	php	php<perMillephp>php‰<php/perMillephp>
-php	php	php	php<infinityphp>php∞<php/infinityphp>
-php	php	php	php<nanphp>php¤php¤php¤<php/nanphp>
-php	php	<php/symbolsphp>
-php	php	php<decimalFormatsphp>
-php	php	php	php<decimalFormatLengthphp>
-php	php	php	php	php<decimalFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
-php	php	php	php	<php/decimalFormatphp>
-php	php	php	<php/decimalFormatLengthphp>
-php	php	<php/decimalFormatsphp>
-php	php	php<scientificFormatsphp>
-php	php	php	php<scientificFormatLengthphp>
-php	php	php	php	php<scientificFormatphp>
-php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
-php	php	php	php	<php/scientificFormatphp>
-php	php	php	<php/scientificFormatLengthphp>
-php	php	<php/scientificFormatsphp>
-php	php	php<percentFormatsphp>
-php	php	php	php<percentFormatLengthphp>
-php	php	php	php	php<percentFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php php%<php/patternphp>
-php	php	php	php	<php/percentFormatphp>
-php	php	php	<php/percentFormatLengthphp>
-php	php	<php/percentFormatsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php php{php1php}<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php php{php1php}<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php php{php1php}<php/unitPatternphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>euro<php/displayNamephp>
-php	php	php	php	php<displayNamephp countphp=php"onephp"php>euro<php/displayNamephp>
-php	php	php	php	php<displayNamephp countphp=php"otherphp"php>euro<php/displayNamephp>
-php	php	php	php	php<displayNamephp countphp=php"twophp"php>euro<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FIMphp"php>
-php	php	php	php	php<displayNamephp>suomaphp márkki<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NOKphp"php>
-php	php	php	php	php<displayNamephp>norggaphp kruvdno<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SEKphp"php>
-php	php	php	php	php<displayNamephp>ruoŧŧaphp kruvdno<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAGphp"php>
-php	php	php	php	php<displayNamephp>unsphp silba<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAUphp"php>
-php	php	php	php	php<displayNamephp>golli<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<unitsphp>
-php	php	php<unitphp typephp=php"dayphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php beaivi<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php beaivi<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php beaivi<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"hourphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php tiibmu<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php tiibmu<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"minutephp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php minuhtta<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php minuhtta<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php minuhtta<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"monthphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php mánnu<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php mánnu<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php mánnu<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"secondphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php sekunda<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php sekunda<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php sekunda<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"weekphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php váhkku<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php váhkku<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php váhkku<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"yearphp"php>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php jáhki<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php jáhki<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"twophp"php>php{php0php}php jáhki<php/unitPatternphp>
-php	php	<php/unitphp>
-php	<php/unitsphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>jo<php/yesstrphp>
-php	php	php	php<nostrphp>ii<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.36 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="se"/>
+	</identity>
+	<fallback>nb sv en</fallback>
+	<localeDisplayNames>
+		<languages>
+			<language type="ace">acehgiella</language>
+			<language type="af">afrikánsagiella</language>
+			<language type="an">aragoniagiella</language>
+			<language type="ang">boares eaŋgalasgiella</language>
+			<language type="apa">apacheš giella</language>
+			<language type="ar">arábagiella</language>
+			<language type="ast">asturiagiella</language>
+			<language type="be">vilges-ruoššagiella</language>
+			<language type="bg">bulgáriagiella</language>
+			<language type="bn">bengalgiella</language>
+			<language type="br">bretonagiella</language>
+			<language type="bs">bosniagiella</language>
+			<language type="ca">katalánagiella</language>
+			<language type="cel">kelttalaš gielat</language>
+			<language type="chm">marigiella</language>
+			<language type="co">corsicagiella</language>
+			<language type="cs">čeahkagiella</language>
+			<language type="da">dánskkagiella</language>
+			<language type="de">duiskkagiella</language>
+			<language type="el">greikkagiella</language>
+			<language type="en">eaŋgalsgiella</language>
+			<language type="es">spánskkagiella</language>
+			<language type="et">esttegiella</language>
+			<language type="fa">persijagiella</language>
+			<language type="fi">suomagiella</language>
+			<language type="fiu">fenno-ugrálaš giella</language>
+			<language type="fo">fearagiella</language>
+			<language type="fr">fránskkagiella</language>
+			<language type="fy">oarjifriisagiella</language>
+			<language type="ga">iirragiella</language>
+			<language type="gem">germánalaš gielat</language>
+			<language type="gu">gujaratagiella</language>
+			<language type="gv">manksgiella</language>
+			<language type="hi">hindigiella</language>
+			<language type="hr">kroátiagiella</language>
+			<language type="hy">armeenagiella</language>
+			<language type="is">islánddagiella</language>
+			<language type="it">itáliagiella</language>
+			<language type="ja">japánagiella</language>
+			<language type="krl">gárjilgiella</language>
+			<language type="kv">komigiella</language>
+			<language type="kw">kornagiella</language>
+			<language type="la">láhtengiella</language>
+			<language type="lb">luxemburggagiella</language>
+			<language type="lt">liettuvagiella</language>
+			<language type="lv">látviagiella</language>
+			<language type="mdf">mokšagiella</language>
+			<language type="mk">makedoniagiella</language>
+			<language type="myv">ersagiella</language>
+			<language type="nb">girjedárogiella</language>
+			<language type="nl">hollánddagiella</language>
+			<language type="nn">ođđadárogiella</language>
+			<language type="no">dárogiella</language>
+			<language type="oc">oksitánagiella</language>
+			<language type="pl">polskkagiella</language>
+			<language type="pt">portugálagiella</language>
+			<language type="rm">retorománagiella</language>
+			<language type="ro">romániagiella</language>
+			<language type="roa">románalaš gielat</language>
+			<language type="ru">ruoššagiella</language>
+			<language type="sc">sardigiella</language>
+			<language type="scn">sisiliagiella</language>
+			<language type="se">davvisámegiella</language>
+			<language type="sel">selkupagiella</language>
+			<language type="sk">slovákiagiella</language>
+			<language type="sl">slovenagiella</language>
+			<language type="sma">lullisámegiella</language>
+			<language type="smi">sámegielat</language>
+			<language type="smj">julevsámegiella</language>
+			<language type="smn">anárašgiella</language>
+			<language type="sms">nuortalašgiella</language>
+			<language type="sq">albánagiella</language>
+			<language type="sr">serbiagiella</language>
+			<language type="sv">ruoŧagiella</language>
+			<language type="udm">udmurtagiella</language>
+			<language type="uk">ukrainagiella</language>
+			<language type="wa">vallonagiella</language>
+			<language type="wen">sorbigiella</language>
+			<language type="zh">kiinnágiella</language>
+		</languages>
+		<scripts>
+			<script type="Arab">arába</script>
+			<script type="Cyrl">kyrillalaš</script>
+			<script type="Grek">greikkalaš</script>
+			<script type="Latn">láhtenaš</script>
+		</scripts>
+		<territories>
+			<territory type="001">máilbmi</territory>
+			<territory type="002">Afrihkká</territory>
+			<territory type="003">dávvi-Amerihkká ja gaska-Amerihkká</territory>
+			<territory type="005">mátta-Amerihkká</territory>
+			<territory type="009">Oseania</territory>
+			<territory type="011">oarji-Afrihkká</territory>
+			<territory type="013">gaska-Amerihkká</territory>
+			<territory type="014">nuorta-Afrihkká</territory>
+			<territory type="015">davvi-Afrihkká</territory>
+			<territory type="017">gaska-Afrihkká</territory>
+			<territory type="018">mátta-Afrihkká</territory>
+			<territory type="019">Amerihkká</territory>
+			<territory type="021">dávvi-Amerihkká</territory>
+			<territory type="029">Karibia</territory>
+			<territory type="030">nuorta-Ásia</territory>
+			<territory type="034">mátta-Ásia</territory>
+			<territory type="035">mátta-nuorta-Ásia</territory>
+			<territory type="039">mátta-Eurohpá</territory>
+			<territory type="053">Austrália ja Ođđa-Selánda</territory>
+			<territory type="054">Melanesia</territory>
+			<territory type="061">Polynesia</territory>
+			<territory type="062">mátta-gaska-Ásia</territory>
+			<territory type="142">Ásia</territory>
+			<territory type="143">gaska-Ásia</territory>
+			<territory type="145">oarji-Ásia</territory>
+			<territory type="150">Eurohpá</territory>
+			<territory type="151">nuorta-Eurohpá</territory>
+			<territory type="154">davvi-Eurohpá</territory>
+			<territory type="155">oarji-Eurohpá</territory>
+			<territory type="419">Lulli-Amerihkká ja Karibia</territory>
+			<territory type="AD">Andorra</territory>
+			<territory type="AE">Ovttastuvvan Arábaemiráhtat</territory>
+			<territory type="AF">Afghanistan</territory>
+			<territory type="AG">Antigua ja Barbuda</territory>
+			<territory type="AI">Anguilla</territory>
+			<territory type="AL">Albánia</territory>
+			<territory type="AM">Armenia</territory>
+			<territory type="AO">Angola</territory>
+			<territory type="AQ">Antárktis</territory>
+			<territory type="AR">Argentina</territory>
+			<territory type="AS">Amerihká Samoa</territory>
+			<territory type="AT">Nuortariika</territory>
+			<territory type="AU">Austrália</territory>
+			<territory type="AW">Aruba</territory>
+			<territory type="AX">Ålánda</territory>
+			<territory type="AZ">Aserbaižan</territory>
+			<territory type="BA">Bosnia-Hercegovina</territory>
+			<territory type="BB">Barbados</territory>
+			<territory type="BD">Bangladesh</territory>
+			<territory type="BE">Belgia</territory>
+			<territory type="BF">Burkina Faso</territory>
+			<territory type="BG">Bulgária</territory>
+			<territory type="BH">Bahrain</territory>
+			<territory type="BI">Burundi</territory>
+			<territory type="BJ">Benin</territory>
+			<territory type="BL">Saint Barthélemy</territory>
+			<territory type="BM">Bermuda</territory>
+			<territory type="BN">Brunei</territory>
+			<territory type="BO">Bolivia</territory>
+			<territory type="BR">Brasil</territory>
+			<territory type="BS">Bahamas</territory>
+			<territory type="BT">Bhutan</territory>
+			<territory type="BV">Bouvet-sullot</territory>
+			<territory type="BW">Botswana</territory>
+			<territory type="BY">Vilges-Ruošša</territory>
+			<territory type="BZ">Belize</territory>
+			<territory type="CA">Kanáda</territory>
+			<territory type="CC">Cocos-sullot</territory>
+			<territory type="CD">Kongo-Kinshasa</territory>
+			<territory type="CG">Kongo-Brazzaville</territory>
+			<territory type="CH">Šveica</territory>
+			<territory type="CK">Cook-sullot</territory>
+			<territory type="CL">Čiile</territory>
+			<territory type="CM">Kamerun</territory>
+			<territory type="CN">Kiinná</territory>
+			<territory type="CO">Kolombia</territory>
+			<territory type="CR">Costa Rica</territory>
+			<territory type="CU">Kuba</territory>
+			<territory type="CV">Kap Verde</territory>
+			<territory type="CY">Kypros</territory>
+			<territory type="CZ">Čeahkka</territory>
+			<territory type="DE">Duiska</territory>
+			<territory type="DJ">Djibouti</territory>
+			<territory type="DK">Dánmárku</territory>
+			<territory type="DM">Dominica</territory>
+			<territory type="DZ">Algeria</territory>
+			<territory type="EC">Ecuador</territory>
+			<territory type="EE">Estlánda</territory>
+			<territory type="EG">Egypta</territory>
+			<territory type="EH">Oarje-Sahára</territory>
+			<territory type="ER">Eritrea</territory>
+			<territory type="ES">Spánia</territory>
+			<territory type="ET">Etiopia</territory>
+			<territory type="FI">Suopma</territory>
+			<territory type="FJ">Fijisullot</territory>
+			<territory type="FK">Falklandsullot</territory>
+			<territory type="FM">Mikronesia</territory>
+			<territory type="FO">Fearsullot</territory>
+			<territory type="FR">Frankriika</territory>
+			<territory type="GA">Gabon</territory>
+			<territory type="GB">Stuorra-Británnia</territory>
+			<territory type="GD">Grenada</territory>
+			<territory type="GE">Georgia</territory>
+			<territory type="GF">Frankriikka Guayana</territory>
+			<territory type="GG">Guernsey</territory>
+			<territory type="GH">Ghana</territory>
+			<territory type="GI">Gibraltar</territory>
+			<territory type="GL">Kalaallit Nunaat</territory>
+			<territory type="GM">Gámbia</territory>
+			<territory type="GN">Guinea</territory>
+			<territory type="GP">Guadeloupe</territory>
+			<territory type="GQ">Ekvatoriála Guinea</territory>
+			<territory type="GR">Greika</territory>
+			<territory type="GS">Lulli Georgia ja Lulli Sandwich-sullot</territory>
+			<territory type="GT">Guatemala</territory>
+			<territory type="GU">Guam</territory>
+			<territory type="GW">Guinea-Bissau</territory>
+			<territory type="GY">Guyana</territory>
+			<territory type="HK">Hongkong</territory>
+			<territory type="HN">Honduras</territory>
+			<territory type="HR">Kroátia</territory>
+			<territory type="HT">Haiti</territory>
+			<territory type="HU">Ungár</territory>
+			<territory type="ID">Indonesia</territory>
+			<territory type="IE">Irlánda</territory>
+			<territory type="IL">Israel</territory>
+			<territory type="IM">Mann</territory>
+			<territory type="IN">India</territory>
+			<territory type="IQ">Irak</territory>
+			<territory type="IR">Iran</territory>
+			<territory type="IS">Islánda</territory>
+			<territory type="IT">Itália</territory>
+			<territory type="JE">Jersey</territory>
+			<territory type="JM">Jamaica</territory>
+			<territory type="JO">Jordánia</territory>
+			<territory type="JP">Japána</territory>
+			<territory type="KE">Kenia</territory>
+			<territory type="KG">Kirgisistan</territory>
+			<territory type="KH">Kambodža</territory>
+			<territory type="KI">Kiribati</territory>
+			<territory type="KM">Komorosullot</territory>
+			<territory type="KN">Saint Kitts ja Nevis</territory>
+			<territory type="KP">Davvi-Korea</territory>
+			<territory type="KR">Mátta-Korea</territory>
+			<territory type="KW">Kuwait</territory>
+			<territory type="KY">Cayman-sullot</territory>
+			<territory type="KZ">Kasakstan</territory>
+			<territory type="LA">Laos</territory>
+			<territory type="LB">Libanon</territory>
+			<territory type="LC">Saint Lucia</territory>
+			<territory type="LI">Liechtenstein</territory>
+			<territory type="LK">Sri Lanka</territory>
+			<territory type="LR">Liberia</territory>
+			<territory type="LS">Lesotho</territory>
+			<territory type="LT">Lietuva</territory>
+			<territory type="LU">Luxembourg</territory>
+			<territory type="LV">Látvia</territory>
+			<territory type="LY">Libya</territory>
+			<territory type="MA">Marokko</territory>
+			<territory type="MC">Monaco</territory>
+			<territory type="MD">Moldávia</territory>
+			<territory type="ME">Montenegro</territory>
+			<territory type="MF">Saint Martin</territory>
+			<territory type="MG">Madagaskar</territory>
+			<territory type="MH">Marshallsullot</territory>
+			<territory type="MK">Makedonia</territory>
+			<territory type="ML">Mali</territory>
+			<territory type="MM">Burma</territory>
+			<territory type="MN">Mongolia</territory>
+			<territory type="MO">Makáo</territory>
+			<territory type="MP">Davvi-Mariánat</territory>
+			<territory type="MQ">Martinique</territory>
+			<territory type="MR">Mauretánia</territory>
+			<territory type="MS">Montserrat</territory>
+			<territory type="MT">Málta</territory>
+			<territory type="MU">Mauritius</territory>
+			<territory type="MV">Malediivvat</territory>
+			<territory type="MW">Malawi</territory>
+			<territory type="MX">Meksiko</territory>
+			<territory type="MY">Malesia</territory>
+			<territory type="MZ">Mosambik</territory>
+			<territory type="NA">Namibia</territory>
+			<territory type="NC">Ođđa-Kaledonia</territory>
+			<territory type="NE">Niger</territory>
+			<territory type="NF">Norfolksullot</territory>
+			<territory type="NG">Nigeria</territory>
+			<territory type="NI">Nicaragua</territory>
+			<territory type="NL">Vuolleeatnamat</territory>
+			<territory type="NO">Norga</territory>
+			<territory type="NP">Nepal</territory>
+			<territory type="NR">Nauru</territory>
+			<territory type="NU">Niue</territory>
+			<territory type="NZ">Ođđa-Selánda</territory>
+			<territory type="OM">Oman</territory>
+			<territory type="PA">Panama</territory>
+			<territory type="PE">Peru</territory>
+			<territory type="PG">Papua-Ođđa-Guinea</territory>
+			<territory type="PH">Filippiinnat</territory>
+			<territory type="PK">Pakistan</territory>
+			<territory type="PL">Polen</territory>
+			<territory type="PM">Saint Pierre ja Miquelon</territory>
+			<territory type="PN">Pitcairn</territory>
+			<territory type="PR">Puerto Rico</territory>
+			<territory type="PS">Palestina</territory>
+			<territory type="PT">Portugála</territory>
+			<territory type="PW">Palau</territory>
+			<territory type="PY">Paraguay</territory>
+			<territory type="QA">Qatar</territory>
+			<territory type="QU">Eurohpa Uniovdna</territory>
+			<territory type="RE">Reunion</territory>
+			<territory type="RO">Románia</territory>
+			<territory type="RS">Serbia</territory>
+			<territory type="RU">Ruošša</territory>
+			<territory type="RW">Rwanda</territory>
+			<territory type="SA">Saudi-Arábia</territory>
+			<territory type="SB">Salomon-sullot</territory>
+			<territory type="SC">Seychellsullot</territory>
+			<territory type="SD">Sudan</territory>
+			<territory type="SE">Ruoŧŧa</territory>
+			<territory type="SG">Singapore</territory>
+			<territory type="SH">Saint Helena</territory>
+			<territory type="SI">Slovenia</territory>
+			<territory type="SJ">Svalbárda ja Jan Mayen</territory>
+			<territory type="SK">Slovákia</territory>
+			<territory type="SL">Sierra Leone</territory>
+			<territory type="SM">San Marino</territory>
+			<territory type="SN">Senegal</territory>
+			<territory type="SO">Somália</territory>
+			<territory type="SR">Surinam</territory>
+			<territory type="ST">São Tomé ja Príncipe</territory>
+			<territory type="SV">El Salvador</territory>
+			<territory type="SY">Syria</territory>
+			<territory type="SZ">Svazieana</territory>
+			<territory type="TC">Turks ja Caicos-sullot</territory>
+			<territory type="TD">Tčad</territory>
+			<territory type="TG">Togo</territory>
+			<territory type="TH">Thaieana</territory>
+			<territory type="TJ">Tažikistan</territory>
+			<territory type="TK">Tokelau</territory>
+			<territory type="TL">Nuorta-Timor</territory>
+			<territory type="TM">Turkmenistan</territory>
+			<territory type="TN">Tunisia</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">Durka</territory>
+			<territory type="TT">Trinidad ja Tobago</territory>
+			<territory type="TV">Tuvalu</territory>
+			<territory type="TW">Taiwan</territory>
+			<territory type="TZ">Tanzánia</territory>
+			<territory type="UA">Ukraina</territory>
+			<territory type="UG">Uganda</territory>
+			<territory type="US">Amerihká ovttastuvvan stáhtat</territory>
+			<territory type="UY">Uruguay</territory>
+			<territory type="UZ">Usbekistan</territory>
+			<territory type="VA">Vatikána</territory>
+			<territory type="VC">Saint Vincent ja Grenadine</territory>
+			<territory type="VE">Venezuela</territory>
+			<territory type="VN">Vietnam</territory>
+			<territory type="VU">Vanuatu</territory>
+			<territory type="WF">Wallis ja Futuna</territory>
+			<territory type="WS">Samoa</territory>
+			<territory type="YE">Jemen</territory>
+			<territory type="YT">Mayotte</territory>
+			<territory type="ZA">Mátta-Afrihká</territory>
+			<territory type="ZM">Zambia</territory>
+			<territory type="ZW">Zimbabwe</territory>
+		</territories>
+		<keys>
+			<key type="calendar">kaleandar</key>
+			<key type="currency">valuhtta</key>
+		</keys>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">SI</measurementSystemName>
+			<measurementSystemName type="US">US</measurementSystemName>
+		</measurementSystemNames>
+		<codePatterns>
+			<codePattern type="language">giella: {0}</codePattern>
+		</codePatterns>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a á b c č d đ e-n ŋ o p r s š t ŧ u v z ž]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à å ä ã æ ç é è í ń ñ ó ò ö ø q ú ü w-y]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a á à å ä æ b c č d đ e é è f-n ń ŋ o ó ò ö ø p-s š t ŧ u ú v x-z ž]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>”</quotationStart>
+		<quotationEnd>”</quotationEnd>
+		<alternateQuotationStart>’</alternateQuotationStart>
+		<alternateQuotationEnd>’</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<dateRangePattern>{0}–{1}</dateRangePattern>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">ođđj</month>
+							<month type="2">guov</month>
+							<month type="3">njuk</month>
+							<month type="4">cuo</month>
+							<month type="5">mies</month>
+							<month type="6">geas</month>
+							<month type="7">suoi</month>
+							<month type="8">borg</month>
+							<month type="9">čakč</month>
+							<month type="10">golg</month>
+							<month type="11">skáb</month>
+							<month type="12">juov</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">ođđajagemánnu</month>
+							<month type="2">guovvamánnu</month>
+							<month type="3">njukčamánnu</month>
+							<month type="4">cuoŋománnu</month>
+							<month type="5">miessemánnu</month>
+							<month type="6">geassemánnu</month>
+							<month type="7">suoidnemánnu</month>
+							<month type="8">borgemánnu</month>
+							<month type="9">čakčamánnu</month>
+							<month type="10">golggotmánnu</month>
+							<month type="11">skábmamánnu</month>
+							<month type="12">juovlamánnu</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">O</month>
+							<month type="2">G</month>
+							<month type="3">N</month>
+							<month type="4">C</month>
+							<month type="5">M</month>
+							<month type="6">G</month>
+							<month type="7">S</month>
+							<month type="8">B</month>
+							<month type="9">Č</month>
+							<month type="10">G</month>
+							<month type="11">S</month>
+							<month type="12">J</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">sotn</day>
+							<day type="mon">vuos</day>
+							<day type="tue">maŋ</day>
+							<day type="wed">gask</day>
+							<day type="thu">duor</day>
+							<day type="fri">bear</day>
+							<day type="sat">láv</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">sotnabeaivi</day>
+							<day type="mon">vuossárga</day>
+							<day type="tue">maŋŋebárga</day>
+							<day type="wed">gaskavahkku</day>
+							<day type="thu">duorasdat</day>
+							<day type="fri">bearjadat</day>
+							<day type="sat">lávvardat</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">s</day>
+							<day type="mon">v</day>
+							<day type="tue">m</day>
+							<day type="wed">g</day>
+							<day type="thu">d</day>
+							<day type="fri">b</day>
+							<day type="sat">L</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">K2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>AM</am>
+				<pm>PM</pm>
+				<eras>
+					<eraNames>
+						<era type="0">ovdal Kristtusa</era>
+						<era type="1">maŋŋel Kristtusa</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">o.Kr.</era>
+						<era type="1">m.Kr.</era>
+					</eraAbbr>
+					<eraNarrow>
+						<era type="0">o.Kr.</era>
+						<era type="1">m.Kr.</era>
+					</eraNarrow>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, y MMMM dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>y MMMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>y MMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>yy/MM/dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>HH:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>éra</displayName>
+					</field>
+					<field type="year">
+						<displayName>jáhki</displayName>
+					</field>
+					<field type="month">
+						<displayName>mánnu</displayName>
+					</field>
+					<field type="week">
+						<displayName>váhkku</displayName>
+					</field>
+					<field type="day">
+						<displayName>beaivi</displayName>
+						<relative type="-1">ikte</relative>
+						<relative type="0">odne</relative>
+						<relative type="1">ihttin</relative>
+					</field>
+					<field type="weekday">
+						<displayName>váhkkubeaivi</displayName>
+					</field>
+					<field type="hour">
+						<displayName>diibmu</displayName>
+					</field>
+					<field type="minute">
+						<displayName>minuhtta</displayName>
+					</field>
+					<field type="second">
+						<displayName>sekunda</displayName>
+					</field>
+					<field type="zone">
+						<displayName>áigeavádat</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;−HH:mm</hourFormat>
+			<gmtFormat>UTC{0}</gmtFormat>
+			<gmtZeroFormat>UTC</gmtZeroFormat>
+			<regionFormat>{0}</regionFormat>
+			<fallbackFormat>{0} ({1})</fallbackFormat>
+			<zone type="America/Sao_Paulo">
+				<exemplarCity>São Paulo</exemplarCity>
+			</zone>
+			<zone type="America/Merida">
+				<exemplarCity>Mérida</exemplarCity>
+			</zone>
+			<metazone type="Europe_Central">
+				<short>
+					<standard>CET</standard>
+					<daylight>CEST</daylight>
+				</short>
+			</metazone>
+			<metazone type="Europe_Eastern">
+				<short>
+					<standard>EET</standard>
+					<daylight>EEST</daylight>
+				</short>
+			</metazone>
+			<metazone type="Europe_Western">
+				<short>
+					<standard>WET</standard>
+					<daylight>WEST</daylight>
+				</short>
+			</metazone>
+			<metazone type="GMT">
+				<short>
+					<standard>GMT</standard>
+				</short>
+			</metazone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>,</decimal>
+			<group> </group>
+			<list>;</list>
+			<percentSign>%</percentSign>
+			<nativeZeroDigit>0</nativeZeroDigit>
+			<patternDigit>#</patternDigit>
+			<plusSign>+</plusSign>
+			<minusSign>−</minusSign>
+			<exponential>×10^</exponential>
+			<perMille>‰</perMille>
+			<infinity>∞</infinity>
+			<nan>¤¤¤</nan>
+		</symbols>
+		<decimalFormats>
+			<decimalFormatLength>
+				<decimalFormat>
+					<pattern>#,##0.###</pattern>
+				</decimalFormat>
+			</decimalFormatLength>
+		</decimalFormats>
+		<scientificFormats>
+			<scientificFormatLength>
+				<scientificFormat>
+					<pattern>#E0</pattern>
+				</scientificFormat>
+			</scientificFormatLength>
+		</scientificFormats>
+		<percentFormats>
+			<percentFormatLength>
+				<percentFormat>
+					<pattern>#,##0 %</pattern>
+				</percentFormat>
+			</percentFormatLength>
+		</percentFormats>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>#,##0.00 ¤</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+			<unitPattern count="one">{0} {1}</unitPattern>
+			<unitPattern count="other">{0} {1}</unitPattern>
+			<unitPattern count="two">{0} {1}</unitPattern>
+		</currencyFormats>
+		<currencies>
+			<currency type="EUR">
+				<displayName>euro</displayName>
+				<displayName count="one">euro</displayName>
+				<displayName count="other">euro</displayName>
+				<displayName count="two">euro</displayName>
+			</currency>
+			<currency type="FIM">
+				<displayName>suoma márkki</displayName>
+			</currency>
+			<currency type="NOK">
+				<displayName>norgga kruvdno</displayName>
+			</currency>
+			<currency type="SEK">
+				<displayName>ruoŧŧa kruvdno</displayName>
+			</currency>
+			<currency type="XAG">
+				<displayName>uns silba</displayName>
+			</currency>
+			<currency type="XAU">
+				<displayName>golli</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<units>
+		<unit type="day">
+			<unitPattern count="one">{0} beaivi</unitPattern>
+			<unitPattern count="other">{0} beaivi</unitPattern>
+			<unitPattern count="two">{0} beaivi</unitPattern>
+		</unit>
+		<unit type="hour">
+			<unitPattern count="one">{0} tiibmu</unitPattern>
+			<unitPattern count="two">{0} tiibmu</unitPattern>
+		</unit>
+		<unit type="minute">
+			<unitPattern count="one">{0} minuhtta</unitPattern>
+			<unitPattern count="other">{0} minuhtta</unitPattern>
+			<unitPattern count="two">{0} minuhtta</unitPattern>
+		</unit>
+		<unit type="month">
+			<unitPattern count="one">{0} mánnu</unitPattern>
+			<unitPattern count="other">{0} mánnu</unitPattern>
+			<unitPattern count="two">{0} mánnu</unitPattern>
+		</unit>
+		<unit type="second">
+			<unitPattern count="one">{0} sekunda</unitPattern>
+			<unitPattern count="other">{0} sekunda</unitPattern>
+			<unitPattern count="two">{0} sekunda</unitPattern>
+		</unit>
+		<unit type="week">
+			<unitPattern count="one">{0} váhkku</unitPattern>
+			<unitPattern count="other">{0} váhkku</unitPattern>
+			<unitPattern count="two">{0} váhkku</unitPattern>
+		</unit>
+		<unit type="year">
+			<unitPattern count="one">{0} jáhki</unitPattern>
+			<unitPattern count="other">{0} jáhki</unitPattern>
+			<unitPattern count="two">{0} jáhki</unitPattern>
+		</unit>
+	</units>
+	<posix>
+		<messages>
+			<yesstr>jo</yesstr>
+			<nostr>ii</nostr>
+		</messages>
+	</posix>
+</ldml>
 

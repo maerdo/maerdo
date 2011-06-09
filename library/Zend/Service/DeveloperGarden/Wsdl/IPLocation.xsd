@@ -1,69 +1,69 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>
-php<xsdphp:schemaphp xmlnsphp:tnsphp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/schemaphp/php"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php targetNamespacephp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/schemaphp/php"php elementFormDefaultphp=php"qualifiedphp"php attributeFormDefaultphp=php"qualifiedphp"php versionphp=php"php1php.php0php"php>
-php	php<xsdphp:simpleTypephp namephp=php"EnvironmentTypephp"php>
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:intphp"php>
-php	php	php	php<xsdphp:minInclusivephp valuephp=php"php1php"php/php>
-php	php	php	php<xsdphp:maxInclusivephp valuephp=php"php3php"php/php>
-php	php	<php/xsdphp:restrictionphp>
-php	<php/xsdphp:simpleTypephp>
-php	php<xsdphp:simpleTypephp namephp=php"IPTypephp"php>
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:integerphp"php>
-php	php	php	php<xsdphp:enumerationphp valuephp=php"php4php"php/php>
-php	php	php	php<xsdphp:enumerationphp valuephp=php"php6php"php/php>
-php	php	<php/xsdphp:restrictionphp>
-php	<php/xsdphp:simpleTypephp>
-php	php<xsdphp:complexTypephp namephp=php"IPAddressTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"ipTypephp"php typephp=php"tnsphp:IPTypephp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"ipAddressphp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"CityTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"countryCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"cityCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"cityphp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"RegionTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"countryCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"regionCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"regionNamephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"GeoCoordinatesTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"geoLatitudephp"php typephp=php"xsdphp:decimalphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"geoLongitudephp"php typephp=php"xsdphp:decimalphp"php nillablephp=php"falsephp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"IPAddressLocationTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"isInRegionphp"php typephp=php"tnsphp:RegionTypephp"php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"isInGeophp"php typephp=php"tnsphp:GeoCoordinatesTypephp"php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"isInCityphp"php typephp=php"tnsphp:CityTypephp"php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"ipTypephp"php typephp=php"tnsphp:IPTypephp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"ipAddressphp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"radiusphp"php typephp=php"xsdphp:integerphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"statusCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"statusMessagephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"LocateIPRequestTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"environmentphp"php typephp=php"tnsphp:EnvironmentTypephp"php php nillablephp=php"falsephp"php php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"accountphp"php typephp=php"xsdphp:stringphp"php php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"addressphp"php typephp=php"tnsphp:IPAddressTypephp"php nillablephp=php"falsephp"php maxOccursphp=php"unboundedphp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:complexTypephp namephp=php"LocateIPResponseTypephp"php>
-php	php	php<xsdphp:sequencephp>
-php	php	php	php<xsdphp:elementphp namephp=php"statusCodephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"falsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"statusMessagephp"php typephp=php"xsdphp:stringphp"php nillablephp=php"truephp"php minOccursphp=php"php0php"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"ipAddressLocationphp"php typephp=php"tnsphp:IPAddressLocationTypephp"php nillablephp=php"falsephp"php minOccursphp=php"php0php"php maxOccursphp=php"unboundedphp"php/php>
-php	php	<php/xsdphp:sequencephp>
-php	<php/xsdphp:complexTypephp>
-php	php<xsdphp:elementphp namephp=php"LocateIPRequestphp"php typephp=php"tnsphp:LocateIPRequestTypephp"php/php>
-php	php<xsdphp:elementphp namephp=php"LocateIPResponsephp"php typephp=php"tnsphp:LocateIPResponseTypephp"php/php>
-<php/xsdphp:schemaphp>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://iplocation.developer.telekom.com/schema/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://iplocation.developer.telekom.com/schema/" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0">
+	<xsd:simpleType name="EnvironmentType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IPType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="IPAddressType">
+		<xsd:sequence>
+			<xsd:element name="ipType" type="tns:IPType" nillable="false"/>
+			<xsd:element name="ipAddress" type="xsd:string" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CityType">
+		<xsd:sequence>
+			<xsd:element name="countryCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="cityCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="city" type="xsd:string" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RegionType">
+		<xsd:sequence>
+			<xsd:element name="countryCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="regionCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="regionName" type="xsd:string" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GeoCoordinatesType">
+		<xsd:sequence>
+			<xsd:element name="geoLatitude" type="xsd:decimal" nillable="false"/>
+			<xsd:element name="geoLongitude" type="xsd:decimal" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IPAddressLocationType">
+		<xsd:sequence>
+			<xsd:element name="isInRegion" type="tns:RegionType" nillable="true" minOccurs="0"/>
+			<xsd:element name="isInGeo" type="tns:GeoCoordinatesType" nillable="true" minOccurs="0"/>
+			<xsd:element name="isInCity" type="tns:CityType" nillable="true" minOccurs="0"/>
+			<xsd:element name="ipType" type="tns:IPType" nillable="false"/>
+			<xsd:element name="ipAddress" type="xsd:string" nillable="false"/>
+			<xsd:element name="radius" type="xsd:integer" nillable="false"/>
+			<xsd:element name="statusCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="statusMessage" type="xsd:string" nillable="true" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LocateIPRequestType">
+		<xsd:sequence>
+			<xsd:element name="environment" type="tns:EnvironmentType"  nillable="false" />
+			<xsd:element name="account" type="xsd:string"  nillable="true" minOccurs="0"/>
+			<xsd:element name="address" type="tns:IPAddressType" nillable="false" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LocateIPResponseType">
+		<xsd:sequence>
+			<xsd:element name="statusCode" type="xsd:string" nillable="false"/>
+			<xsd:element name="statusMessage" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="ipAddressLocation" type="tns:IPAddressLocationType" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LocateIPRequest" type="tns:LocateIPRequestType"/>
+	<xsd:element name="LocateIPResponse" type="tns:LocateIPResponseType"/>
+</xsd:schema>

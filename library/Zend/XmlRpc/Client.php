@@ -1,386 +1,386 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_XmlRpc
-php php*php php@subpackagephp Client
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Clientphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_XmlRpc
+ * @subpackage Client
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Client.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Forphp handlingphp thephp HTTPphp connectionphp tophp thephp XMLphp-RPCphp service
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
+/**
+ * For handling the HTTP connection to the XML-RPC service
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
 
-php/php*php*
-php php*php Enablesphp objectphp chainingphp forphp callingphp namespacedphp XMLphp-RPCphp methodsphp.
-php php*php php@seephp Zendphp_XmlRpcphp_Clientphp_ServerProxy
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Clientphp/ServerProxyphp.phpphp'php;
+/**
+ * Enables object chaining for calling namespaced XML-RPC methods.
+ * @see Zend_XmlRpc_Client_ServerProxy
+ */
+require_once 'Zend/XmlRpc/Client/ServerProxy.php';
 
-php/php*php*
-php php*php Introspectsphp remotephp serversphp usingphp thephp XMLphp-RPCphp dephp factophp systemphp.php*php methods
-php php*php php@seephp Zendphp_XmlRpcphp_Clientphp_ServerIntrospection
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Clientphp/ServerIntrospectionphp.phpphp'php;
+/**
+ * Introspects remote servers using the XML-RPC de facto system.* methods
+ * @see Zend_XmlRpc_Client_ServerIntrospection
+ */
+require_once 'Zend/XmlRpc/Client/ServerIntrospection.php';
 
-php/php*php*
-php php*php Representphp aphp nativephp XMLphp-RPCphp valuephp,php usedphp bothphp inphp sendingphp parameters
-php php*php tophp methodsphp andphp asphp thephp parametersphp retrievephp fromphp methodphp calls
-php php*php php@seephp Zendphp_XmlRpcphp_Value
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Valuephp.phpphp'php;
+/**
+ * Represent a native XML-RPC value, used both in sending parameters
+ * to methods and as the parameters retrieve from method calls
+ * @see Zend_XmlRpc_Value
+ */
+require_once 'Zend/XmlRpc/Value.php';
 
-php/php*php*
-php php*php XMLphp-RPCphp Request
-php php*php php@seephp Zendphp_XmlRpcphp_Request
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Requestphp.phpphp'php;
+/**
+ * XML-RPC Request
+ * @see Zend_XmlRpc_Request
+ */
+require_once 'Zend/XmlRpc/Request.php';
 
-php/php*php*
-php php*php XMLphp-RPCphp Response
-php php*php php@seephp Zendphp_XmlRpcphp_Response
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Responsephp.phpphp'php;
+/**
+ * XML-RPC Response
+ * @see Zend_XmlRpc_Response
+ */
+require_once 'Zend/XmlRpc/Response.php';
 
-php/php*php*
-php php*php XMLphp-RPCphp Fault
-php php*php php@seephp Zendphp_XmlRpcphp_Fault
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Faultphp.phpphp'php;
-
-
-php/php*php*
-php php*php Anphp XMLphp-RPCphp clientphp implementation
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_XmlRpc
-php php*php php@subpackagephp Client
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_XmlRpcphp_Client
-php{
-php php php php php/php*php*
-php php php php php php*php Fullphp addressphp ofphp thephp XMLphp-RPCphp service
-php php php php php php*php php@varphp string
-php php php php php php*php php@examplephp httpphp:php/php/timephp.xmlrpcphp.comphp/RPCphp2
-php php php php php php*php/
-php php php php protectedphp php$php_serverAddressphp;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp Clientphp tophp usephp forphp requests
-php php php php php php*php php@varphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp php$php_httpClientphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Introspectionphp object
-php php php php php php*php php@varphp Zendphp_Httpphp_Clientphp_Introspector
-php php php php php php*php/
-php php php php protectedphp php$php_introspectorphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Requestphp ofphp thephp lastphp methodphp call
-php php php php php php*php php@varphp Zendphp_XmlRpcphp_Request
-php php php php php php*php/
-php php php php protectedphp php$php_lastRequestphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Responsephp receivedphp fromphp thephp lastphp methodphp call
-php php php php php php*php php@varphp Zendphp_XmlRpcphp_Response
-php php php php php php*php/
-php php php php protectedphp php$php_lastResponsephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Proxyphp objectphp forphp morephp convenientphp methodphp calls
-php php php php php php*php php@varphp arrayphp ofphp Zendphp_XmlRpcphp_Clientphp_ServerProxy
-php php php php php php*php/
-php php php php protectedphp php$php_proxyCachephp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Flagphp forphp skippingphp systemphp lookup
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_skipSystemLookupphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp XMLphp-RPCphp clientphp tophp aphp remotephp server
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$serverphp php php php php php Fullphp addressphp ofphp thephp XMLphp-RPCphp service
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(ephp.gphp.php httpphp:php/php/timephp.xmlrpcphp.comphp/RPCphp2php)
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Clientphp php$httpClientphp HTTPphp Clientphp tophp usephp forphp requests
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$serverphp,php Zendphp_Httpphp_Clientphp php$httpClientphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$httpClientphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_httpClientphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_httpClientphp php=php php$httpClientphp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_introspectorphp php php=php newphp Zendphp_XmlRpcphp_Clientphp_ServerIntrospectionphp(php$thisphp)php;
-php php php php php php php php php$thisphp-php>php_serverAddressphp php=php php$serverphp;
-php php php php php}
+/**
+ * XML-RPC Fault
+ * @see Zend_XmlRpc_Fault
+ */
+require_once 'Zend/XmlRpc/Fault.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp HTTPphp clientphp objectphp tophp usephp forphp connectingphp thephp XMLphp-RPCphp serverphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Clientphp php$httpClient
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp setHttpClientphp(Zendphp_Httpphp_Clientphp php$httpClientphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_httpClientphp php=php php$httpClientphp;
-php php php php php}
+/**
+ * An XML-RPC client implementation
+ *
+ * @category   Zend
+ * @package    Zend_XmlRpc
+ * @subpackage Client
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_XmlRpc_Client
+{
+    /**
+     * Full address of the XML-RPC service
+     * @var string
+     * @example http://time.xmlrpc.com/RPC2
+     */
+    protected $_serverAddress;
+
+    /**
+     * HTTP Client to use for requests
+     * @var Zend_Http_Client
+     */
+    protected $_httpClient = null;
+
+    /**
+     * Introspection object
+     * @var Zend_Http_Client_Introspector
+     */
+    protected $_introspector = null;
+
+    /**
+     * Request of the last method call
+     * @var Zend_XmlRpc_Request
+     */
+    protected $_lastRequest = null;
+
+    /**
+     * Response received from the last method call
+     * @var Zend_XmlRpc_Response
+     */
+    protected $_lastResponse = null;
+
+    /**
+     * Proxy object for more convenient method calls
+     * @var array of Zend_XmlRpc_Client_ServerProxy
+     */
+    protected $_proxyCache = array();
+
+    /**
+     * Flag for skipping system lookup
+     * @var bool
+     */
+    protected $_skipSystemLookup = false;
+
+    /**
+     * Create a new XML-RPC client to a remote server
+     *
+     * @param  string $server      Full address of the XML-RPC service
+     *                             (e.g. http://time.xmlrpc.com/RPC2)
+     * @param  Zend_Http_Client $httpClient HTTP Client to use for requests
+     * @return void
+     */
+    public function __construct($server, Zend_Http_Client $httpClient = null)
+    {
+        if ($httpClient === null) {
+            $this->_httpClient = new Zend_Http_Client();
+        } else {
+            $this->_httpClient = $httpClient;
+        }
+
+        $this->_introspector  = new Zend_XmlRpc_Client_ServerIntrospection($this);
+        $this->_serverAddress = $server;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp HTTPphp clientphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp getHttpClientphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_httpClientphp;
-php php php php php}
+    /**
+     * Sets the HTTP client object to use for connecting the XML-RPC server.
+     *
+     * @param  Zend_Http_Client $httpClient
+     * @return Zend_Http_Client
+     */
+    public function setHttpClient(Zend_Http_Client $httpClient)
+    {
+        return $this->_httpClient = $httpClient;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp objectphp usedphp tophp introspectphp remotephp servers
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_XmlRpcphp_Clientphp_ServerIntrospection
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Clientphp_ServerIntrospection
-php php php php php php*php/
-php php php php publicphp functionphp setIntrospectorphp(Zendphp_XmlRpcphp_Clientphp_ServerIntrospectionphp php$introspectorphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_introspectorphp php=php php$introspectorphp;
-php php php php php}
+    /**
+     * Gets the HTTP client object.
+     *
+     * @return Zend_Http_Client
+     */
+    public function getHttpClient()
+    {
+        return $this->_httpClient;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp introspectionphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Clientphp_ServerIntrospection
-php php php php php php*php/
-php php php php publicphp functionphp getIntrospectorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_introspectorphp;
-php php php php php}
+    /**
+     * Sets the object used to introspect remote servers
+     *
+     * @param  Zend_XmlRpc_Client_ServerIntrospection
+     * @return Zend_XmlRpc_Client_ServerIntrospection
+     */
+    public function setIntrospector(Zend_XmlRpc_Client_ServerIntrospection $introspector)
+    {
+        return $this->_introspector = $introspector;
+    }
 
 
-php php php php/php*php*
-php php php php php php*php Thephp requestphp ofphp thephp lastphp methodphp call
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Request
-php php php php php php*php/
-php php php php publicphp functionphp getLastRequestphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lastRequestphp;
-php php php php php}
+    /**
+     * Gets the introspection object.
+     *
+     * @return Zend_XmlRpc_Client_ServerIntrospection
+     */
+    public function getIntrospector()
+    {
+        return $this->_introspector;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Thephp responsephp receivedphp fromphp thephp lastphp methodphp call
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp getLastResponsephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lastResponsephp;
-php php php php php}
+   /**
+     * The request of the last method call
+     *
+     * @return Zend_XmlRpc_Request
+     */
+    public function getLastRequest()
+    {
+        return $this->_lastRequest;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp proxyphp objectphp forphp morephp convenientphp methodphp calls
-php php php php php php*
-php php php php php php*php php@paramphp php$namespacephp php Namespacephp tophp proxyphp orphp emptyphp stringphp forphp none
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Clientphp_ServerProxy
-php php php php php php*php/
-php php php php publicphp functionphp getProxyphp(php$namespacephp php=php php'php'php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_proxyCachephp[php$namespacephp]php)php)php php{
-php php php php php php php php php php php php php$proxyphp php=php newphp Zendphp_XmlRpcphp_Clientphp_ServerProxyphp(php$thisphp,php php$namespacephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_proxyCachephp[php$namespacephp]php php=php php$proxyphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_proxyCachephp[php$namespacephp]php;
-php php php php php}
+    /**
+     * The response received from the last method call
+     *
+     * @return Zend_XmlRpc_Response
+     */
+    public function getLastResponse()
+    {
+        return $this->_lastResponse;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp skipphp systemphp lookupphp flag
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp setSkipSystemLookupphp(php$flagphp php=php truephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_skipSystemLookupphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
 
-php php php php php/php*php*
-php php php php php php*php Skipphp systemphp lookupphp whenphp determiningphp ifphp parameterphp shouldphp bephp arrayphp orphp structphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp skipSystemLookupphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_skipSystemLookupphp;
-php php php php php}
+    /**
+     * Returns a proxy object for more convenient method calls
+     *
+     * @param $namespace  Namespace to proxy or empty string for none
+     * @return Zend_XmlRpc_Client_ServerProxy
+     */
+    public function getProxy($namespace = '')
+    {
+        if (empty($this->_proxyCache[$namespace])) {
+            $proxy = new Zend_XmlRpc_Client_ServerProxy($this, $namespace);
+            $this->_proxyCache[$namespace] = $proxy;
+        }
+        return $this->_proxyCache[$namespace];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Performphp anphp XMLphp-RPCphp requestphp andphp returnphp aphp responsephp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_XmlRpcphp_Requestphp php$request
-php php php php php php*php php@paramphp nullphp|Zendphp_XmlRpcphp_Responsephp php$response
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_XmlRpcphp_Clientphp_HttpException
-php php php php php php*php/
-php php php php publicphp functionphp doRequestphp(php$requestphp,php php$responsephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_lastRequestphp php=php php$requestphp;
+    /**
+     * Set skip system lookup flag
+     *
+     * @param  bool $flag
+     * @return Zend_XmlRpc_Client
+     */
+    public function setSkipSystemLookup($flag = true)
+    {
+        $this->_skipSystemLookup = (bool) $flag;
+        return $this;
+    }
 
-php php php php php php php php iconvphp_setphp_encodingphp(php'inputphp_encodingphp'php,php php'UTFphp-php8php'php)php;
-php php php php php php php php iconvphp_setphp_encodingphp(php'outputphp_encodingphp'php,php php'UTFphp-php8php'php)php;
-php php php php php php php php iconvphp_setphp_encodingphp(php'internalphp_encodingphp'php,php php'UTFphp-php8php'php)php;
+    /**
+     * Skip system lookup when determining if parameter should be array or struct?
+     *
+     * @return bool
+     */
+    public function skipSystemLookup()
+    {
+        return $this->_skipSystemLookup;
+    }
 
-php php php php php php php php php$httpphp php=php php$thisphp-php>getHttpClientphp(php)php;
-php php php php php php php php ifphp(php$httpphp-php>getUriphp(php)php php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$httpphp-php>setUriphp(php$thisphp-php>php_serverAddressphp)php;
-php php php php php php php php php}
+    /**
+     * Perform an XML-RPC request and return a response.
+     *
+     * @param Zend_XmlRpc_Request $request
+     * @param null|Zend_XmlRpc_Response $response
+     * @return void
+     * @throws Zend_XmlRpc_Client_HttpException
+     */
+    public function doRequest($request, $response = null)
+    {
+        $this->_lastRequest = $request;
 
-php php php php php php php php php$httpphp-php>setHeadersphp(arrayphp(
-php php php php php php php php php php php php php'Contentphp-Typephp:php textphp/xmlphp;php charsetphp=utfphp-php8php'php,
-php php php php php php php php php php php php php'Acceptphp:php textphp/xmlphp'php,
-php php php php php php php php php)php)php;
+        iconv_set_encoding('input_encoding', 'UTF-8');
+        iconv_set_encoding('output_encoding', 'UTF-8');
+        iconv_set_encoding('internal_encoding', 'UTF-8');
 
-php php php php php php php php ifphp php(php$httpphp-php>getHeaderphp(php'userphp-agentphp'php)php php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$httpphp-php>setHeadersphp(arrayphp(php'Userphp-Agentphp:php Zendphp_XmlRpcphp_Clientphp'php)php)php;
-php php php php php php php php php}
+        $http = $this->getHttpClient();
+        if($http->getUri() === null) {
+            $http->setUri($this->_serverAddress);
+        }
 
-php php php php php php php php php$xmlphp php=php php$thisphp-php>php_lastRequestphp-php>php_php_toStringphp(php)php;
-php php php php php php php php php$httpphp-php>setRawDataphp(php$xmlphp)php;
-php php php php php php php php php$httpResponsephp php=php php$httpphp-php>requestphp(Zendphp_Httpphp_Clientphp:php:POSTphp)php;
+        $http->setHeaders(array(
+            'Content-Type: text/xml; charset=utf-8',
+            'Accept: text/xml',
+        ));
 
-php php php php php php php php ifphp php(php!php php$httpResponsephp-php>isSuccessfulphp(php)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Exceptionphp thrownphp whenphp anphp HTTPphp errorphp occurs
-php php php php php php php php php php php php php php*php php@seephp Zendphp_XmlRpcphp_Clientphp_HttpException
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/XmlRpcphp/Clientphp/HttpExceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_XmlRpcphp_Clientphp_HttpExceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$httpResponsephp-php>getMessagephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$httpResponsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php}
+        if ($http->getHeader('user-agent') === null) {
+            $http->setHeaders(array('User-Agent: Zend_XmlRpc_Client'));
+        }
 
-php php php php php php php php ifphp php(php$responsephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$responsephp php=php newphp Zendphp_XmlRpcphp_Responsephp(php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_lastResponsephp php=php php$responsephp;
-php php php php php php php php php$thisphp-php>php_lastResponsephp-php>loadXmlphp(php$httpResponsephp-php>getBodyphp(php)php)php;
-php php php php php}
+        $xml = $this->_lastRequest->__toString();
+        $http->setRawData($xml);
+        $httpResponse = $http->request(Zend_Http_Client::POST);
 
-php php php php php/php*php*
-php php php php php php*php Sendphp anphp XMLphp-RPCphp requestphp tophp thephp servicephp php(forphp aphp specificphp methodphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$methodphp Namephp ofphp thephp methodphp wephp wantphp tophp call
-php php php php php php*php php@paramphp php arrayphp php$paramsphp Arrayphp ofphp parametersphp forphp thephp method
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@throwsphp Zendphp_XmlRpcphp_Clientphp_FaultException
-php php php php php php*php/
-php php php php publicphp functionphp callphp(php$methodphp,php php$paramsphp=arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>skipSystemLookupphp(php)php php&php&php php(php'systemphp.php'php php!php=php substrphp(php$methodphp,php php0php,php php7php)php)php)php php{
-php php php php php php php php php php php php php/php/php Ensurephp emptyphp arrayphp/structphp paramsphp arephp castphp correctly
-php php php php php php php php php php php php php/php/php Ifphp systemphp.php*php methodsphp arephp notphp availablephp,php bypassphp.php php(ZFphp-php2php9php7php8php)
-php php php php php php php php php php php php php$successphp php=php truephp;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$signaturesphp php=php php$thisphp-php>getIntrospectorphp(php)php-php>getMethodSignaturephp(php$methodphp)php;
-php php php php php php php php php php php php php}php catchphp php(Zendphp_XmlRpcphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php php$successphp php=php falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$successphp)php php{
-php php php php php php php php php php php php php php php php php$validTypesphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_ARRAYphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_BASEphp6php4php,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_BOOLEANphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_DATETIMEphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_DOUBLEphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_Iphp4php,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_INTEGERphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_NILphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_STRINGphp,
-php php php php php php php php php php php php php php php php php php php php Zendphp_XmlRpcphp_Valuephp:php:XMLRPCphp_TYPEphp_STRUCTphp,
-php php php php php php php php php php php php php php php php php)php;
+        if (! $httpResponse->isSuccessful()) {
+            /**
+             * Exception thrown when an HTTP error occurs
+             * @see Zend_XmlRpc_Client_HttpException
+             */
+            require_once 'Zend/XmlRpc/Client/HttpException.php';
+            throw new Zend_XmlRpc_Client_HttpException(
+                                    $httpResponse->getMessage(),
+                                    $httpResponse->getStatus());
+        }
 
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$paramsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$paramsphp php=php arrayphp(php$paramsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$paramphp)php php{
+        if ($response === null) {
+            $response = new Zend_XmlRpc_Response();
+        }
+        $this->_lastResponse = $response;
+        $this->_lastResponse->loadXml($httpResponse->getBody());
+    }
 
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$paramphp instanceofphp Zendphp_XmlRpcphp_Valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
+    /**
+     * Send an XML-RPC request to the service (for a specific method)
+     *
+     * @param  string $method Name of the method we want to call
+     * @param  array $params Array of parameters for the method
+     * @return mixed
+     * @throws Zend_XmlRpc_Client_FaultException
+     */
+    public function call($method, $params=array())
+    {
+        if (!$this->skipSystemLookup() && ('system.' != substr($method, 0, 7))) {
+            // Ensure empty array/struct params are cast correctly
+            // If system.* methods are not available, bypass. (ZF-2978)
+            $success = true;
+            try {
+                $signatures = $this->getIntrospector()->getMethodSignature($method);
+            } catch (Zend_XmlRpc_Exception $e) {
+                $success = false;
+            }
+            if ($success) {
+                $validTypes = array(
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_ARRAY,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_BASE64,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_BOOLEAN,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_DOUBLE,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_I4,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_INTEGER,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_NIL,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_STRING,
+                    Zend_XmlRpc_Value::XMLRPC_TYPE_STRUCT,
+                );
 
-php php php php php php php php php php php php php php php php php php php php php$typephp php=php Zendphp_XmlRpcphp_Valuephp:php:AUTOphp_DETECTphp_TYPEphp;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$signaturesphp asphp php$signaturephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$signaturephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
+                if (!is_array($params)) {
+                    $params = array($params);
+                }
+                foreach ($params as $key => $param) {
 
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$signaturephp[php'parametersphp'php]php[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$signaturephp[php'parametersphp'php]php[php$keyphp]php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php inphp_arrayphp(php$typephp,php php$validTypesphp)php php?php php$typephp php:php Zendphp_XmlRpcphp_Valuephp:php:AUTOphp_DETECTphp_TYPEphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
+                    if ($param instanceof Zend_XmlRpc_Value) {
+                        continue;
+                    }
 
-php php php php php php php php php php php php php php php php php php php php php$paramsphp[php$keyphp]php php=php Zendphp_XmlRpcphp_Valuephp:php:getXmlRpcValuephp(php$paramphp,php php$typephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                    $type = Zend_XmlRpc_Value::AUTO_DETECT_TYPE;
+                    foreach ($signatures as $signature) {
+                        if (!is_array($signature)) {
+                            continue;
+                        }
 
-php php php php php php php php php$requestphp php=php php$thisphp-php>php_createRequestphp(php$methodphp,php php$paramsphp)php;
+                        if (isset($signature['parameters'][$key])) {
+                            $type = $signature['parameters'][$key];
+                            $type = in_array($type, $validTypes) ? $type : Zend_XmlRpc_Value::AUTO_DETECT_TYPE;
+                        }
+                    }
 
-php php php php php php php php php$thisphp-php>doRequestphp(php$requestphp)php;
+                    $params[$key] = Zend_XmlRpc_Value::getXmlRpcValue($param, $type);
+                }
+            }
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_lastResponsephp-php>isFaultphp(php)php)php php{
-php php php php php php php php php php php php php$faultphp php=php php$thisphp-php>php_lastResponsephp-php>getFaultphp(php)php;
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Exceptionphp thrownphp whenphp anphp XMLphp-RPCphp faultphp isphp returned
-php php php php php php php php php php php php php php*php php@seephp Zendphp_XmlRpcphp_Clientphp_FaultException
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/XmlRpcphp/Clientphp/FaultExceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_XmlRpcphp_Clientphp_FaultExceptionphp(php$faultphp-php>getMessagephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$faultphp-php>getCodephp(php)php)php;
-php php php php php php php php php}
+        $request = $this->_createRequest($method, $params);
 
-php php php php php php php php returnphp php$thisphp-php>php_lastResponsephp-php>getReturnValuephp(php)php;
-php php php php php}
+        $this->doRequest($request);
 
-php php php php php/php*php*
-php php php php php php*php Createphp requestphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_XmlRpcphp_Request
-php php php php php php*php/
-php php php php protectedphp functionphp php_createRequestphp(php$methodphp,php php$paramsphp)
-php php php php php{
-php php php php php php php php returnphp newphp Zendphp_XmlRpcphp_Requestphp(php$methodphp,php php$paramsphp)php;
-php php php php php}
-php}
+        if ($this->_lastResponse->isFault()) {
+            $fault = $this->_lastResponse->getFault();
+            /**
+             * Exception thrown when an XML-RPC fault is returned
+             * @see Zend_XmlRpc_Client_FaultException
+             */
+            require_once 'Zend/XmlRpc/Client/FaultException.php';
+            throw new Zend_XmlRpc_Client_FaultException($fault->getMessage(),
+                                                        $fault->getCode());
+        }
+
+        return $this->_lastResponse->getReturnValue();
+    }
+
+    /**
+     * Create request object
+     *
+     * @return Zend_XmlRpc_Request
+     */
+    protected function _createRequest($method, $params)
+    {
+        return new Zend_XmlRpc_Request($method, $params);
+    }
+}

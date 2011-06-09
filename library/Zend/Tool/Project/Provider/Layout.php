@@ -1,109 +1,109 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Layoutphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Layout.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Provider_Abstract
+ */
+require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Providerphp_Layoutphp extendsphp Zendphp_Toolphp_Projectphp_Providerphp_Abstractphp implementsphp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Provider_Layout extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
+{
 
-php php php php publicphp staticphp functionphp createResourcephp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$layoutNamephp php=php php'layoutphp'php)
-php php php php php{
-php php php php php php php php php$applicationDirectoryphp php=php php$profilephp-php>searchphp(php'applicationDirectoryphp'php)php;
-php php php php php php php php php$layoutDirectoryphp php=php php$applicationDirectoryphp-php>searchphp(php'layoutsDirectoryphp'php)php;
+    public static function createResource(Zend_Tool_Project_Profile $profile, $layoutName = 'layout')
+    {
+        $applicationDirectory = $profile->search('applicationDirectory');
+        $layoutDirectory = $applicationDirectory->search('layoutsDirectory');
 
-php php php php php php php php ifphp php(php$layoutDirectoryphp php=php=php falsephp)php php{
-php php php php php php php php php php php php php$layoutDirectoryphp php=php php$applicationDirectoryphp-php>createResourcephp(php'layoutsDirectoryphp'php)php;
-php php php php php php php php php}
+        if ($layoutDirectory == false) {
+            $layoutDirectory = $applicationDirectory->createResource('layoutsDirectory');
+        }
 
-php php php php php php php php php$layoutScriptsDirectoryphp php=php php$layoutDirectoryphp-php>searchphp(php'layoutScriptsDirectoryphp'php)php;
+        $layoutScriptsDirectory = $layoutDirectory->search('layoutScriptsDirectory');
 
-php php php php php php php php ifphp php(php$layoutScriptsDirectoryphp php=php=php falsephp)php php{
-php php php php php php php php php php php php php$layoutScriptsDirectoryphp php=php php$layoutDirectoryphp-php>createResourcephp(php'layoutScriptsDirectoryphp'php)php;
-php php php php php php php php php}
+        if ($layoutScriptsDirectory == false) {
+            $layoutScriptsDirectory = $layoutDirectory->createResource('layoutScriptsDirectory');
+        }
 
-php php php php php php php php php$layoutScriptFilephp php=php php$layoutScriptsDirectoryphp-php>searchphp(php'layoutScriptFilephp'php,php arrayphp(php'layoutNamephp'php php=php>php php'layoutphp'php)php)php;
+        $layoutScriptFile = $layoutScriptsDirectory->search('layoutScriptFile', array('layoutName' => 'layout'));
 
-php php php php php php php php ifphp php(php$layoutScriptFilephp php=php=php falsephp)php php{
-php php php php php php php php php php php php php$layoutScriptFilephp php=php php$layoutScriptsDirectoryphp-php>createResourcephp(php'layoutScriptFilephp'php,php arrayphp(php'layoutNamephp'php php=php>php php'layoutphp'php)php)php;
-php php php php php php php php php}
+        if ($layoutScriptFile == false) {
+            $layoutScriptFile = $layoutScriptsDirectory->createResource('layoutScriptFile', array('layoutName' => 'layout'));
+        }
 
-php php php php php php php php returnphp php$layoutScriptFilephp;
-php php php php php}
+        return $layoutScriptFile;
+    }
 
-php php php php publicphp functionphp enablephp(php)
-php php php php php{
-php php php php php php php php php$profilephp php=php php$thisphp-php>php_loadProfilephp(selfphp:php:NOphp_PROFILEphp_THROWphp_EXCEPTIONphp)php;
+    public function enable()
+    {
+        $profile = $this->_loadProfile(self::NO_PROFILE_THROW_EXCEPTION);
 
-php php php php php php php php php$applicationConfigResourcephp php=php php$profilephp-php>searchphp(php'ApplicationConfigFilephp'php)php;
+        $applicationConfigResource = $profile->search('ApplicationConfigFile');
 
-php php php php php php php php ifphp php(php!php$applicationConfigResourcephp)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'Aphp projectphp withphp anphp applicationphp configphp filephp isphp requiredphp tophp usephp thisphp providerphp.php'php)php;
-php php php php php php php php php}
+        if (!$applicationConfigResource) {
+            throw new Zend_Tool_Project_Exception('A project with an application config file is required to use this provider.');
+        }
 
-php php php php php php php php php$zcphp php=php php$applicationConfigResourcephp-php>getAsZendConfigphp(php)php;
+        $zc = $applicationConfigResource->getAsZendConfig();
 
-php php php php php php php php ifphp php(issetphp(php$zcphp-php>resourcesphp)php php&php&php issetphp(php$zfphp-php>resourcesphp-php>layoutphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Aphp layoutphp resourcephp alreadyphp existsphp inphp thisphp projectphp\php'sphp applicationphp configurationphp filephp.php'php)php;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        if (isset($zc->resources) && isset($zf->resources->layout)) {
+            $this->_registry->getResponse()->appendContent('A layout resource already exists in this project\'s application configuration file.');
+            return;
+        }
 
-php php php php php php php php php$layoutPathphp php=php php'APPLICATIONphp_PATHphp php"php/layoutsphp/scriptsphp/php"php'php;
+        $layoutPath = 'APPLICATION_PATH "/layouts/scripts/"';
 
-php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>isPretendphp(php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Wouldphp addphp php"resourcesphp.layoutphp.layoutPathphp"php keyphp tophp thephp applicationphp configphp filephp.php'php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$applicationConfigResourcephp-php>addStringItemphp(php'resourcesphp.layoutphp.layoutPathphp'php,php php$layoutPathphp,php php'productionphp'php,php falsephp)php;
-php php php php php php php php php php php php php$applicationConfigResourcephp-php>createphp(php)php;
+        if ($this->_registry->getRequest()->isPretend()) {
+            $this->_registry->getResponse()->appendContent('Would add "resources.layout.layoutPath" key to the application config file.');
+        } else {
+            $applicationConfigResource->addStringItem('resources.layout.layoutPath', $layoutPath, 'production', false);
+            $applicationConfigResource->create();
 
-php php php php php php php php php php php php php$layoutScriptFilephp php=php selfphp:php:createResourcephp(php$profilephp)php;
+            $layoutScriptFile = self::createResource($profile);
 
-php php php php php php php php php php php php php$layoutScriptFilephp-php>createphp(php)php;
+            $layoutScriptFile->create();
 
-php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(
-php php php php php php php php php php php php php php php php php'Layoutsphp havephp beenphp enabledphp,php andphp aphp defaultphp layoutphp createdphp atphp php'
-php php php php php php php php php php php php php php php php php.php php$layoutScriptFilephp-php>getPathphp(php)
-php php php php php php php php php php php php php php php php php)php;
+            $this->_registry->getResponse()->appendContent(
+                'Layouts have been enabled, and a default layout created at '
+                . $layoutScriptFile->getPath()
+                );
 
-php php php php php php php php php php php php php$thisphp-php>php_registryphp-php>getResponsephp(php)php-php>appendContentphp(php'Aphp layoutphp entryphp hasphp beenphp addedphp tophp thephp applicationphp configphp filephp.php'php)php;
-php php php php php php php php php}
-
-
-
-php php php php php}
-
-php php php php publicphp functionphp disablephp(php)
-php php php php php{
-php php php php php php php php php/php/php php@todo
-php php php php php}
+            $this->_registry->getResponse()->appendContent('A layout entry has been added to the application config file.');
+        }
 
 
 
-php}
+    }
+
+    public function disable()
+    {
+        // @todo
+    }
+
+
+
+}

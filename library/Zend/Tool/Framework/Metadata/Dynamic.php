@@ -1,219 +1,219 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dynamicphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Dynamic.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Metadataphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Metadataphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Metadata_Interface
+ */
+require_once 'Zend/Tool/Framework/Metadata/Interface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Metadataphp_Attributable
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Metadataphp/Attributablephp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Metadata_Attributable
+ */
+require_once 'Zend/Tool/Framework/Metadata/Attributable.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamic
-php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Interfacephp,php Zendphp_Toolphp_Frameworkphp_Metadataphp_Attributable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Framework_Metadata_Dynamic
+    implements Zend_Tool_Framework_Metadata_Interface, Zend_Tool_Framework_Metadata_Attributable
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_typephp php=php php'Dynamicphp'php;
+    /**
+     * @var string
+     */
+    protected $_type = 'Dynamic';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_namephp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_name = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_valuephp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_value = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_dynamicAttributesphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_dynamicAttributes = array();
 
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+    public function __construct($options = array())
+    {
+        if ($options) {
+            $this->setOptions($options);
+        }
+    }
 
-php php php php publicphp functionphp setOptionsphp(Arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$optNamephp php=php>php php$optValuephp)php php{
-php php php php php php php php php php php php php$methodNamephp php=php php'setphp'php php.php php$optNamephp;
-php php php php php php php php php php php php php$thisphp-php>php{php$methodNamephp}php(php$optValuephp)php;
-php php php php php php php php php}
-php php php php php}
+    public function setOptions(Array $options = array())
+    {
+        foreach ($options as $optName => $optValue) {
+            $methodName = 'set' . $optName;
+            $this->{$methodName}($optValue);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php setTypephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php$type
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamic
-php php php php php php*php/
-php php php php publicphp functionphp setTypephp(php$typephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setType()
+     *
+     * @param $type
+     * @return Zend_Tool_Framework_Metadata_Dynamic
+     */
+    public function setType($type)
+    {
+        $this->_type = $type;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getTypephp(php)
-php php php php php php*
-php php php php php php*php Thephp typephp ofphp metadataphp thisphp describes
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTypephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_typephp;
-php php php php php}
+    /**
+     * getType()
+     *
+     * The type of metadata this describes
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setNamephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php$name
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamic
-php php php php php php*php/
-php php php php publicphp functionphp setNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_namephp php=php php$namephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setName()
+     *
+     * @param $name
+     * @return Zend_Tool_Framework_Metadata_Dynamic
+     */
+    public function setName($name)
+    {
+        $this->_name = $name;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getNamephp(php)
-php php php php php php*
-php php php php php php*php Metadataphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_namephp;
-php php php php php}
+    /**
+     * getName()
+     *
+     * Metadata name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_name;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setValuephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php$value
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Metadataphp_Dynamic
-php php php php php php*php/
-php php php php publicphp functionphp setValuephp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_valuephp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setValue()
+     *
+     * @param $value
+     * @return Zend_Tool_Framework_Metadata_Dynamic
+     */
+    public function setValue($value)
+    {
+        $this->_value = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getValuephp(php)
-php php php php php php*
-php php php php php php*php Metadataphp Value
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getValuephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_valuephp;
-php php php php php}
+    /**
+     * getValue()
+     *
+     * Metadata Value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->_value;
+    }
 
-php php php php publicphp functionphp getAttributesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_dynamicAttributesphp;
-php php php php php}
+    public function getAttributes()
+    {
+        return $this->_dynamicAttributes;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_issetphp(php)
-php php php php php php*
-php php php php php php*php Checkphp ifphp anphp attrbutephp isphp set
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_dynamicAttributesphp[php$namephp]php)php;
-php php php php php}
+    /**
+     * __isset()
+     *
+     * Check if an attrbute is set
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return isset($this->_dynamicAttributes[$name]);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_unsetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp null
-php php php php php php*php/
-php php php php publicphp functionphp php_php_unsetphp(php$namephp)
-php php php php php{
-php php php php php php php php unsetphp(php$thisphp-php>php_dynamicAttributesphp[php$namephp]php)php;
-php php php php php php php php returnphp;
-php php php php php}
+    /**
+     * __unset()
+     *
+     * @param string $name
+     * @return null
+     */
+    public function __unset($name)
+    {
+        unset($this->_dynamicAttributes[$name]);
+        return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_getphp(php)php php-php Getphp aphp propertyphp viaphp propertyphp callphp php$metadataphp-php>foo
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php'getphp'php php.php php$namephp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php{php'getphp'php php.php php$namephp}php(php)php;
-php php php php php php php php php}php elseifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_dynamicAttributesphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dynamicAttributesphp[php$namephp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Registryphp_Exceptionphp(php'Propertyphp php'php php.php php$namephp php.php php'php wasphp notphp locatedphp inphp thisphp metadataphp.php'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * __get() - Get a property via property call $metadata->foo
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if (method_exists($this, 'get' . $name)) {
+            return $this->{'get' . $name}();
+        } elseif (array_key_exists($name, $this->_dynamicAttributes)) {
+            return $this->_dynamicAttributes[$name];
+        } else {
+            require_once 'Zend/Tool/Framework/Registry/Exception.php';
+            throw new Zend_Tool_Framework_Registry_Exception('Property ' . $name . ' was not located in this metadata.');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_setphp(php)php php-php Setphp aphp propertyphp viaphp thephp magicphp setphp php$metadataphp-php>foophp php=php php'foophp'
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php'setphp'php php.php php$namephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php{php'setphp'php php.php php$namephp}php(php$valuephp)php;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_dynamicAttributesphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php/php/php php php php php php php php php{
-php/php/php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Registryphp/Exceptionphp.phpphp'php;
-php/php/php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Registryphp_Exceptionphp(php'Propertyphp php'php php.php php$namephp php.php php'php wasphp notphp locatedphp inphp thisphp registryphp.php'php)php;
-php/php/php php php php php php php php php}
-php php php php php}
+    /**
+     * __set() - Set a property via the magic set $metadata->foo = 'foo'
+     *
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value)
+    {
+        if (method_exists($this, 'set' . $name)) {
+            $this->{'set' . $name}($value);
+            return $this;
+        } else {
+            $this->_dynamicAttributes[$name] = $value;
+            return $this;
+        }
+//        {
+//            require_once 'Zend/Tool/Framework/Registry/Exception.php';
+//            throw new Zend_Tool_Framework_Registry_Exception('Property ' . $name . ' was not located in this registry.');
+//        }
+    }
 
-php}
+}

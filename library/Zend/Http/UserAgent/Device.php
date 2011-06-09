@@ -1,200 +1,200 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp UserAgent
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage UserAgent
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php Interfacephp definingphp aphp browserphp devicephp typephp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp UserAgent
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Httpphp_UserAgentphp_Devicephp extendsphp Serializable
-php{
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Allowsphp injectingphp userphp agentphp,php serverphp arrayphp,php andphp/orphp configphp arrayphp.php Ifphp an
-php php php php php php*php arrayphp isphp providedphp forphp thephp firstphp argumentphp,php thephp assumptionphp shouldphp bephp that
-php php php php php php*php thephp devicephp objectphp isphp beingphp seededphp withphp cachedphp valuesphp fromphp serializationphp.
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp|arrayphp php$userAgent
-php php php php php php*php php@paramphp php arrayphp php$server
-php php php php php php*php php@paramphp php arrayphp php$config
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$userAgentphp php=php nullphp,php arrayphp php$serverphp php=php arrayphp(php)php,php arrayphp php$configphp php=php arrayphp(php)php)php;
+/**
+ * Interface defining a browser device type.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage UserAgent
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Http_UserAgent_Device extends Serializable
+{
+    /**
+     * Constructor
+     *
+     * Allows injecting user agent, server array, and/or config array. If an
+     * array is provided for the first argument, the assumption should be that
+     * the device object is being seeded with cached values from serialization.
+     *
+     * @param  null|string|array $userAgent
+     * @param  array $server
+     * @param  array $config
+     * @return void
+     */
+    public function __construct($userAgent = null, array $server = array(), array $config = array());
 
-php php php php php/php*php*
-php php php php php php*php Attemptphp tophp matchphp thephp userphp agent
-php php php php php php*
-php php php php php php*php Returnphp eitherphp anphp arrayphp ofphp browserphp signaturephp stringsphp,php orphp aphp booleanphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$userAgent
-php php php php php php*php php@paramphp php arrayphp php$server
-php php php php php php*php php@returnphp boolphp|array
-php php php php php php*php/
-php php php php publicphp staticphp functionphp matchphp(php$userAgentphp,php php$serverphp)php;
+    /**
+     * Attempt to match the user agent
+     *
+     * Return either an array of browser signature strings, or a boolean.
+     *
+     * @param  string $userAgent
+     * @param  array $server
+     * @return bool|array
+     */
+    public static function match($userAgent, $server);
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp browserphp/devicephp features
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAllFeaturesphp(php)php;
+    /**
+     * Get all browser/device features
+     *
+     * @return array
+     */
+    public function getAllFeatures();
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp ofphp thephp browserphp/devicephp'sphp featuresphp'php groups
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp getAllGroupsphp(php)php;
+    /**
+     * Get all of the browser/device's features' groups
+     *
+     * @return void
+     */
+    public function getAllGroups();
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp thephp devicephp hasphp aphp givenphp feature
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$feature
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasFeaturephp(php$featurephp)php;
+    /**
+     * Whether or not the device has a given feature
+     *
+     * @param  string $feature
+     * @return bool
+     */
+    public function hasFeature($feature);
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp valuephp ofphp aphp specificphp devicephp feature
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$feature
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getFeaturephp(php$featurephp)php;
+    /**
+     * Get the value of a specific device feature
+     *
+     * @param  string $feature
+     * @return mixed
+     */
+    public function getFeature($feature);
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp browserphp type
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getBrowserphp(php)php;
+    /**
+     * Get the browser type
+     *
+     * @return string
+     */
+    public function getBrowser();
 
-php php php php php/php*php*
-php php php php php php*php Retrurnphp thephp browserphp version
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getBrowserVersionphp(php)php;
+    /**
+     * Retrurn the browser version
+     *
+     * @return string
+     */
+    public function getBrowserVersion();
 
-php php php php php/php*php*
-php php php php php php*php Getphp anphp arrayphp ofphp featuresphp associatedphp withphp aphp group
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$group
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getGroupphp(php$groupphp)php;
+    /**
+     * Get an array of features associated with a group
+     *
+     * @param  string $group
+     * @return array
+     */
+    public function getGroup($group);
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp imagephp formatphp support
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getImageFormatSupportphp(php)php;
+    /**
+     * Retrieve image format support
+     *
+     * @return array
+     */
+    public function getImageFormatSupport();
 
-php php php php php/php*php*
-php php php php php php*php Getphp imagephp types
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getImagesphp(php)php;
+    /**
+     * Get image types
+     *
+     * @return array
+     */
+    public function getImages();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp maximumphp imagephp heightphp supportedphp byphp thisphp device
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getMaxImageHeightphp(php)php;
+    /**
+     * Get the maximum image height supported by this device
+     *
+     * @return int
+     */
+    public function getMaxImageHeight();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp maximumphp imagephp widthphp supportedphp byphp thisphp device
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getMaxImageWidthphp(php)php;
+    /**
+     * Get the maximum image width supported by this device
+     *
+     * @return int
+     */
+    public function getMaxImageWidth();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp physicalphp screenphp heightphp ofphp thisphp device
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getPhysicalScreenHeightphp(php)php;
+    /**
+     * Get the physical screen height of this device
+     *
+     * @return int
+     */
+    public function getPhysicalScreenHeight();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp physicalphp screenphp widthphp ofphp thisphp device
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getPhysicalScreenWidthphp(php)php;
+    /**
+     * Get the physical screen width of this device
+     *
+     * @return int
+     */
+    public function getPhysicalScreenWidth();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp preferredphp markupphp type
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPreferredMarkupphp(php)php;
+    /**
+     * Get the preferred markup type
+     *
+     * @return string
+     */
+    public function getPreferredMarkup();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp userphp agentphp string
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getUserAgentphp(php)php;
+    /**
+     * Get the user agent string
+     *
+     * @return string
+     */
+    public function getUserAgent();
 
-php php php php php/php*php*
-php php php php php php*php Getphp supportedphp Xphp/HTMLphp version
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getXhtmlSupportLevelphp(php)php;
+    /**
+     * Get supported X/HTML version
+     *
+     * @return int
+     */
+    public function getXhtmlSupportLevel();
 
-php php php php php/php*php*
-php php php php php php*php Doesphp thephp devicephp supportphp Flashphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasFlashSupportphp(php)php;
+    /**
+     * Does the device support Flash?
+     *
+     * @return bool
+     */
+    public function hasFlashSupport();
 
-php php php php php/php*php*
-php php php php php php*php Doesphp thephp devicephp supportphp PDFphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasPdfSupportphp(php)php;
+    /**
+     * Does the device support PDF?
+     *
+     * @return bool
+     */
+    public function hasPdfSupport();
 
-php php php php php/php*php*
-php php php php php php*php Doesphp thephp devicephp havephp aphp phonephp numberphp associatedphp withphp itphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasPhoneNumberphp(php)php;
+    /**
+     * Does the device have a phone number associated with it?
+     *
+     * @return bool
+     */
+    public function hasPhoneNumber();
 
-php php php php php/php*php*
-php php php php php php*php Doesphp thephp devicephp supportphp HTTPSphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp httpsSupportphp(php)php;
-php}
+    /**
+     * Does the device support HTTPS?
+     *
+     * @return bool
+     */
+    public function httpsSupport();
+}

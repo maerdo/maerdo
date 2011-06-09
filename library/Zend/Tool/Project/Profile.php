@@ -1,237 +1,237 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Profilephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Profile.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xml
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/FileParserphp/Xmlphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_FileParser_Xml
+ */
+require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Resourcephp/Containerphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_Resource_Container
+ */
+require_once 'Zend/Tool/Project/Profile/Resource/Container.php';
 
-php/php*php*
-php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
-php php*
-php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
-php php*php itemsphp withinphp aphp specificphp projectphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Profilephp extendsphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php{
+/**
+ * This class is the front most class for utilizing Zend_Tool_Project
+ *
+ * A profile is a hierarchical set of resources that keep track of
+ * items within a specific project.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Profile extends Zend_Tool_Project_Profile_Resource_Container
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_traverseEnabledphp php=php falsephp;
+    /**
+     * @var bool
+     */
+    protected static $_traverseEnabled = false;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp,php standardphp usagephp wouldphp allowphp thephp settingphp ofphp options
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$options
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
+    /**
+     * Constructor, standard usage would allow the setting of options
+     *
+     * @param array $options
+     * @return bool
+     */
+    public function __construct($options = null)
+    {
+        if ($options) {
+            $this->setOptions($options);
+        }
 
-php php php php php php php php php$thisphp-php>php_topResourcesphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp(php)php;
-php php php php php}
+        $this->_topResources = new Zend_Tool_Project_Profile_Resource_Container();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Processphp optionsphp andphp eitherphp setphp aphp profilephp propertyphp or
-php php php php php php*php setphp aphp profilephp php'attributephp'
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$options
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(Arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setAttributesphp(php$optionsphp)php;
-php php php php php}
+    /**
+     * Process options and either set a profile property or
+     * set a profile 'attribute'
+     *
+     * @param array $options
+     */
+    public function setOptions(Array $options)
+    {
+        $this->setAttributes($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php getIteratorphp(php)php php-php reqruiedphp byphp thephp RecursiveIteratorphp interface
-php php php php php php*
-php php php php php php*php php@returnphp RecursiveIteratorIterator
-php php php php php php*php/
-php php php php publicphp functionphp getIteratorphp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Iteratorphp/EnabledResourceFilterphp.phpphp'php;
+    /**
+     * getIterator() - reqruied by the RecursiveIterator interface
+     *
+     * @return RecursiveIteratorIterator
+     */
+    public function getIterator()
+    {
+        require_once 'Zend/Tool/Project/Profile/Iterator/EnabledResourceFilter.php';
 
-php php php php php php php php returnphp newphp RecursiveIteratorIteratorphp(
-php php php php php php php php php php php php newphp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_EnabledResourceFilterphp(php$thisphp)php,
-php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRST
-php php php php php php php php php php php php php)php;
-php php php php php}
+        return new RecursiveIteratorIterator(
+            new Zend_Tool_Project_Profile_Iterator_EnabledResourceFilter($this),
+            RecursiveIteratorIterator::SELF_FIRST
+            );
+    }
 
-php php php php php/php*php*
-php php php php php php*php loadFromDataphp(php)php php-php Loadphp aphp profilephp fromphp dataphp providedphp byphp the
-php php php php php php*php php'profilDataphp'php attribute
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp loadFromDataphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_attributesphp[php'profileDataphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'loadFromDataphp(php)php mustphp havephp php"profileDataphp"php setphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * loadFromData() - Load a profile from data provided by the
+     * 'profilData' attribute
+     *
+     */
+    public function loadFromData()
+    {
+        if (!isset($this->_attributes['profileData'])) {
+            require_once 'Zend/Tool/Project/Exception.php';
+            throw new Zend_Tool_Project_Exception('loadFromData() must have "profileData" set.');
+        }
 
-php php php php php php php php php$profileFileParserphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xmlphp(php)php;
-php php php php php php php php php$profileFileParserphp-php>unserializephp(php$thisphp-php>php_attributesphp[php'profileDataphp'php]php,php php$thisphp)php;
+        $profileFileParser = new Zend_Tool_Project_Profile_FileParser_Xml();
+        $profileFileParser->unserialize($this->_attributes['profileData'], $this);
 
-php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php}
+        $this->rewind();
+    }
 
-php php php php php/php*php*
-php php php php php php*php isLoadableFromFilephp(php)php php-php canphp aphp profilephp bephp loadedphp fromphp aphp file
-php php php php php php*
-php php php php php php*php wetherphp orphp notphp aphp profilephp canphp bephp loadedphp fromphp the
-php php php php php php*php filephp inphp attributephp php'projectProfileFilephp'php,php orphp fromphp aphp filephp named
-php php php php php php*php php'php.zfprojectphp.xmlphp'php insidephp aphp directoryphp inphp keyphp php'projectDirectoryphp'
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isLoadableFromFilephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php)php php&php&php php!issetphp(php$thisphp-php>php_attributesphp[php'projectDirectoryphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * isLoadableFromFile() - can a profile be loaded from a file
+     *
+     * wether or not a profile can be loaded from the
+     * file in attribute 'projectProfileFile', or from a file named
+     * '.zfproject.xml' inside a directory in key 'projectDirectory'
+     *
+     * @return bool
+     */
+    public function isLoadableFromFile()
+    {
+        if (!isset($this->_attributes['projectProfileFile']) && !isset($this->_attributes['projectDirectory'])) {
+            return false;
+        }
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php)php)php php{
-php php php php php php php php php php php php php$projectProfileFilePathphp php=php php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php;
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$projectProfileFilePathphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$projectProfileFilePathphp php=php rtrimphp(php$thisphp-php>php_attributesphp[php'projectDirectoryphp'php]php,php php'php/php\php\php'php)php php.php php'php/php.zfprojectphp.xmlphp'php;
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$projectProfileFilePathphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (isset($this->_attributes['projectProfileFile'])) {
+            $projectProfileFilePath = $this->_attributes['projectProfileFile'];
+            if (!file_exists($projectProfileFilePath)) {
+                return false;
+            }
+        } else {
+            $projectProfileFilePath = rtrim($this->_attributes['projectDirectory'], '/\\') . '/.zfproject.xml';
+            if (!file_exists($projectProfileFilePath)) {
+                return false;
+            }
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php loadFromFilephp(php)php php-php Loadphp dataphp fromphp file
-php php php php php php*
-php php php php php php*php thisphp attemptsphp tophp loadphp aphp projectphp profilephp filephp fromphp aphp varietyphp ofphp locationsphp depending
-php php php php php php*php onphp whatphp informationphp thephp userphp providedphp viephp php$optionsphp orphp attributesphp,php specificallyphp the
-php php php php php php*php php'projectDirectoryphp'php orphp php'projectProfileFilephp'
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp loadFromFilephp(php)
-php php php php php{
-php php php php php php php php php/php/php ifphp nophp dataphp isphp suppliedphp,php needphp eitherphp aphp projectProfileFilephp orphp aphp projectDirectory
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php)php php&php&php php!issetphp(php$thisphp-php>php_attributesphp[php'projectDirectoryphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'loadFromFilephp(php)php mustphp havephp atphp leastphp php"projectProfileFilephp"php orphp php"projectDirectoryphp"php setphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * loadFromFile() - Load data from file
+     *
+     * this attempts to load a project profile file from a variety of locations depending
+     * on what information the user provided vie $options or attributes, specifically the
+     * 'projectDirectory' or 'projectProfileFile'
+     *
+     */
+    public function loadFromFile()
+    {
+        // if no data is supplied, need either a projectProfileFile or a projectDirectory
+        if (!isset($this->_attributes['projectProfileFile']) && !isset($this->_attributes['projectDirectory'])) {
+            require_once 'Zend/Tool/Project/Exception.php';
+            throw new Zend_Tool_Project_Exception('loadFromFile() must have at least "projectProfileFile" or "projectDirectory" set.');
+        }
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php)php)php php{
-php php php php php php php php php php php php php$projectProfileFilePathphp php=php php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php;
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$projectProfileFilePathphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'php"projectProfileFilephp"php wasphp suppliedphp butphp filephp wasphp notphp foundphp atphp locationphp php'php php.php php$projectProfileFilePathphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_attributesphp[php'projectDirectoryphp'php]php php=php dirnamephp(php$projectProfileFilePathphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$projectProfileFilePathphp php=php rtrimphp(php$thisphp-php>php_attributesphp[php'projectDirectoryphp'php]php,php php'php/php\php\php'php)php php.php php'php/php.zfprojectphp.xmlphp'php;
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$projectProfileFilePathphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'php"projectDirectoryphp"php wasphp suppliedphp butphp nophp profilephp filephp filephp wasphp notphp foundphp atphp locationphp php'php php.php php$projectProfileFilePathphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php php=php php$projectProfileFilePathphp;
-php php php php php php php php php}
+        if (isset($this->_attributes['projectProfileFile'])) {
+            $projectProfileFilePath = $this->_attributes['projectProfileFile'];
+            if (!file_exists($projectProfileFilePath)) {
+                require_once 'Zend/Tool/Project/Exception.php';
+                throw new Zend_Tool_Project_Exception('"projectProfileFile" was supplied but file was not found at location ' . $projectProfileFilePath);
+            }
+            $this->_attributes['projectDirectory'] = dirname($projectProfileFilePath);
+        } else {
+            $projectProfileFilePath = rtrim($this->_attributes['projectDirectory'], '/\\') . '/.zfproject.xml';
+            if (!file_exists($projectProfileFilePath)) {
+                require_once 'Zend/Tool/Project/Exception.php';
+                throw new Zend_Tool_Project_Exception('"projectDirectory" was supplied but no profile file file was not found at location ' . $projectProfileFilePath);
+            }
+            $this->_attributes['projectProfileFile'] = $projectProfileFilePath;
+        }
 
-php php php php php php php php php$profileDataphp php=php filephp_getphp_contentsphp(php$projectProfileFilePathphp)php;
+        $profileData = file_get_contents($projectProfileFilePath);
 
-php php php php php php php php php$profileFileParserphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xmlphp(php)php;
-php php php php php php php php php$profileFileParserphp-php>unserializephp(php$profileDataphp,php php$thisphp)php;
+        $profileFileParser = new Zend_Tool_Project_Profile_FileParser_Xml();
+        $profileFileParser->unserialize($profileData, $this);
 
-php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php}
+        $this->rewind();
+    }
 
-php php php php php/php*php*
-php php php php php php*php storeToFilephp(php)php php-php storephp thephp currentphp profilephp tophp file
-php php php php php php*
-php php php php php php*php Thisphp willphp storephp thephp profilephp inphp memoryphp tophp aphp placephp onphp diskphp determinedphp byphp thephp attributes
-php php php php php php*php availablephp,php specificallyphp ifphp thephp keyphp php'projectProfileFilephp'php isphp available
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp storeToFilephp(php)
-php php php php php{
-php php php php php php php php php$filephp php=php nullphp;
+    /**
+     * storeToFile() - store the current profile to file
+     *
+     * This will store the profile in memory to a place on disk determined by the attributes
+     * available, specifically if the key 'projectProfileFile' is available
+     *
+     */
+    public function storeToFile()
+    {
+        $file = null;
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php)php)php php{
-php php php php php php php php php php php php php$filephp php=php php$thisphp-php>php_attributesphp[php'projectProfileFilephp'php]php;
-php php php php php php php php php}
+        if (isset($this->_attributes['projectProfileFile'])) {
+            $file = $this->_attributes['projectProfileFile'];
+        }
 
-php php php php php php php php ifphp php(php$filephp php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Exceptionphp(php'storeToFilephp(php)php mustphp havephp aphp php"projectProfileFilephp"php attributephp setphp.php'php)php;
-php php php php php php php php php}
+        if ($file == null) {
+            require_once 'Zend/Tool/Project/Exception.php';
+            throw new Zend_Tool_Project_Exception('storeToFile() must have a "projectProfileFile" attribute set.');
+        }
 
-php php php php php php php php php$parserphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xmlphp(php)php;
-php php php php php php php php php$xmlphp php=php php$parserphp-php>serializephp(php$thisphp)php;
-php php php php php php php php filephp_putphp_contentsphp(php$filephp,php php$xmlphp)php;
-php php php php php}
+        $parser = new Zend_Tool_Project_Profile_FileParser_Xml();
+        $xml = $parser->serialize($this);
+        file_put_contents($file, $xml);
+    }
 
-php php php php php/php*php*
-php php php php php php*php storeToDataphp(php)php php-php createphp aphp stringphp representationphp ofphp thephp profilephp inphp memory
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp storeToDataphp(php)
-php php php php php{
-php php php php php php php php php$parserphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_FileParserphp_Xmlphp(php)php;
-php php php php php php php php php$xmlphp php=php php$parserphp-php>serializephp(php$thisphp)php;
-php php php php php php php php returnphp php$xmlphp;
-php php php php php}
+    /**
+     * storeToData() - create a string representation of the profile in memory
+     *
+     * @return string
+     */
+    public function storeToData()
+    {
+        $parser = new Zend_Tool_Project_Profile_FileParser_Xml();
+        $xml = $parser->serialize($this);
+        return $xml;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_toStringphp(php)php php-php castphp thisphp profilephp tophp stringphp tophp bephp ablephp tophp viewphp itphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php php$stringphp php=php php'php'php;
-php php php php php php php php foreachphp php(php$thisphp asphp php$resourcephp)php php{
-php php php php php php php php php php php php php$stringphp php.php=php php$resourcephp-php>getNamephp(php)php php.php PHPphp_EOLphp;
-php php php php php php php php php php php php php$riiphp php=php newphp RecursiveIteratorIteratorphp(php$resourcephp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
-php php php php php php php php php php php php foreachphp php(php$riiphp asphp php$itemphp)php php{
-php php php php php php php php php php php php php php php php php$stringphp php.php=php strphp_repeatphp(php'php php php'php,php php$riiphp-php>getDepthphp(php)php+php1php)php php.php php$itemphp-php>getNamephp(php)
-php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(countphp(php$attributesphp php=php php$itemphp-php>getAttributesphp(php)php)php php>php php0php)php php?php php'php php[php'php php.php httpphp_buildphp_queryphp(php$attributesphp)php php.php php'php]php'php php:php php'php'php)
-php php php php php php php php php php php php php php php php php php php php php php php php php.php PHPphp_EOLphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$stringphp;
-php php php php php}
-php}
+    /**
+     * __toString() - cast this profile to string to be able to view it.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $string = '';
+        foreach ($this as $resource) {
+            $string .= $resource->getName() . PHP_EOL;
+            $rii = new RecursiveIteratorIterator($resource, RecursiveIteratorIterator::SELF_FIRST);
+            foreach ($rii as $item) {
+                $string .= str_repeat('  ', $rii->getDepth()+1) . $item->getName()
+                        . ((count($attributes = $item->getAttributes()) > 0) ? ' [' . http_build_query($attributes) . ']' : '')
+                        . PHP_EOL;
+            }
+        }
+        return $string;
+    }
+}

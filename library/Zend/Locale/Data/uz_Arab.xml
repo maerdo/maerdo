@@ -1,166 +1,166 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php8php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php5php:php5php0php:php2php7php php$php"php/php>
-php	php	php<languagephp typephp=php"uzphp"php/php>
-php	php	php<scriptphp typephp=php"Arabphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"faphp"php>phpدphpرphpی<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>phpپphpشphpتphpو<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>phpاphpۉphpزphpبphpېphpک<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>phpاphpفphpغphpاphpنphpسphpتphpاphpن<php/territoryphp>
-php	php	<php/territoriesphp>
-php	<php/localeDisplayNamesphp>
-php	php<layoutphp>
-php	php	php<orientationphp charactersphp=php"rightphp-tophp-leftphp"php/php>
-php	<php/layoutphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[php\uphp0php6php4Bphp-php\uphp0php6php5php2php php\uphp0php6php5php4php php\uphp0php6php7php0php phpءphp-phpؤphp phpئphp-phpبphp phpپphp phpةphp-phpثphp phpټphp phpجphp phpچphp phpحphp phpخphp phpځphp phpڅphp phpدphp phpذphp phpډphp phpرphp phpزphp phpړphp phpږphp phpژphp phpسphp phpشphp phpښphp phpصphp-phpغphp phpفphp phpقphp phpکphp phpګphp phpگphp phpلphp-phpنphp phpڼphp phpهphp phpوphp phpۇphp phpۉphp phpيphp phpیphp phpۍphp phpېphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[php\uphp2php0php0Cphp php\uphp2php0php0Dphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpجphpنphpو<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpفphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpمphpاphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpاphpپphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpمphpـphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpجphpوphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpجphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpاphpگphpس<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpسphpپphpت<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpاphpکphpت<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpنphpوphpم<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpدphpسphpم<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpجphpنphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpفphpبphpرphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpمphpاphpرphpچ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpاphpپphpرphpیphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpمphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpجphpوphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpجphpوphpلphpاphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpاphpگphpسphpت<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpسphpپphpتphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpاphpکphpتphpوphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpنphpوphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpدphpسphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpیphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpدphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpسphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpچphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpپphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpجphp.<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpشphp.<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpیphpکphpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpدphpوphpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpسphpهphp‌phpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpچphpهphpاphpرphpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpپphpنphpجphpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpجphpمphpعphpه<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpشphpنphpبphpه<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpقphp.phpمphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpمphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp phpنphpچphpیphp phpیphpیphpلphp dphp phpنphpچphpیphp MMMMphp EEEEphp phpکphpوphpنphpی<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp phpنphpچphpیphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yyyyphp/Mphp/d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ssphp php(zzzzphp)<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ssphp php(zphp)<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>Mphp/d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp phpنphpچphpیphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<defaultNumberingSystemphp>arabext<php/defaultNumberingSystemphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php,<php/decimalphp>
-php	php	php	php<groupphp>php.<php/groupphp>
-php	php	php	php<percentSignphp>php%<php/percentSignphp>
-php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
-php	php	php	php<minusSignphp>php−<php/minusSignphp>
-php	php	php	php<exponentialphp>E<php/exponentialphp>
-php	php	<php/symbolsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"AFNphp"php>
-php	php	php	php	php<displayNamephp>phpاphpفphpغphpاphpنphpی<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.38 $"/>
+		<generation date="$Date: 2009/06/15 05:50:27 $"/>
+		<language type="uz"/>
+		<script type="Arab"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="fa">دری</language>
+			<language type="ps">پشتو</language>
+			<language type="uz">اۉزبېک</language>
+		</languages>
+		<territories>
+			<territory type="AF">افغانستان</territory>
+		</territories>
+	</localeDisplayNames>
+	<layout>
+		<orientation characters="right-to-left"/>
+	</layout>
+	<characters>
+		<exemplarCharacters>[\u064B-\u0652 \u0654 \u0670 ء-ؤ ئ-ب پ ة-ث ټ ج چ ح خ ځ څ د ذ ډ ر ز ړ ږ ژ س ش ښ ص-غ ف ق ک ګ گ ل-ن ڼ ه و ۇ ۉ ي ی ۍ ې]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u200C \u200D]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">جنو</month>
+							<month type="2">فبر</month>
+							<month type="3">مار</month>
+							<month type="4">اپر</month>
+							<month type="5">مـی</month>
+							<month type="6">جون</month>
+							<month type="7">جول</month>
+							<month type="8">اگس</month>
+							<month type="9">سپت</month>
+							<month type="10">اکت</month>
+							<month type="11">نوم</month>
+							<month type="12">دسم</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">جنوری</month>
+							<month type="2">فبروری</month>
+							<month type="3">مارچ</month>
+							<month type="4">اپریل</month>
+							<month type="5">می</month>
+							<month type="6">جون</month>
+							<month type="7">جولای</month>
+							<month type="8">اگست</month>
+							<month type="9">سپتمبر</month>
+							<month type="10">اکتوبر</month>
+							<month type="11">نومبر</month>
+							<month type="12">دسمبر</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">ی.</day>
+							<day type="mon">د.</day>
+							<day type="tue">س.</day>
+							<day type="wed">چ.</day>
+							<day type="thu">پ.</day>
+							<day type="fri">ج.</day>
+							<day type="sat">ش.</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">یکشنبه</day>
+							<day type="mon">دوشنبه</day>
+							<day type="tue">سه‌شنبه</day>
+							<day type="wed">چهارشنبه</day>
+							<day type="thu">پنجشنبه</day>
+							<day type="fri">جمعه</day>
+							<day type="sat">شنبه</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<eras>
+					<eraAbbr>
+						<era type="0">ق.م.</era>
+						<era type="1">م.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>y نچی ییل d نچی MMMM EEEE کونی</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d نچی MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>yyyy/M/d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>H:mm:ss (zzzz)</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>H:mm:ss (z)</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>H:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>H:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="Md">M/d</dateFormatItem>
+						<dateFormatItem id="MMMMd">d نچی MMMM</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+			</calendar>
+		</calendars>
+	</dates>
+	<numbers>
+		<defaultNumberingSystem>arabext</defaultNumberingSystem>
+		<symbols>
+			<decimal>,</decimal>
+			<group>.</group>
+			<percentSign>%</percentSign>
+			<nativeZeroDigit>0</nativeZeroDigit>
+			<minusSign>−</minusSign>
+			<exponential>E</exponential>
+		</symbols>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>#,##0.00 ¤</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="AFN">
+				<displayName>افغانی</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+</ldml>
 

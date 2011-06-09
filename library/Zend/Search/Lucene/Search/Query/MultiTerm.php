@@ -1,668 +1,668 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php MultiTermphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp.phpphp'php;
-
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_MultiTermphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php{
-
-php php php php php/php*php*
-php php php php php php*php Termsphp tophp findphp.
-php php php php php php*php Arrayphp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_Term
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Termphp signsphp.
-php php php php php php*php Ifphp truephp thenphp termphp isphp requiredphp.
-php php php php php php*php Ifphp falsephp thenphp termphp isphp prohibitedphp.
-php php php php php php*php Ifphp nullphp thenphp termphp isphp neitherphp prohibitedphp,php norphp required
-php php php php php php*
-php php php php php php*php Ifphp arrayphp isphp nullphp thenphp allphp termsphp arephp required
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_signsphp;
-
-php php php php php/php*php*
-php php php php php php*php Resultphp vectorphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_resVectorphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Termsphp positionsphp vectorsphp.
-php php php php php php*php Arrayphp ofphp Arraysphp:
-php php php php php php*php termphp1Idphp php=php>php php(docIdphp php=php>php freqphp,php php.php.php.php)
-php php php php php php*php termphp2Idphp php=php>php php(docIdphp php=php>php freqphp,php php.php.php.php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termsFreqsphp php=php arrayphp(php)php;
-
-
-php php php php php/php*php*
-php php php php php php*php Aphp scorephp factorphp basedphp onphp thephp fractionphp ofphp allphp queryphp terms
-php php php php php php*php thatphp aphp documentphp containsphp.
-php php php php php php*php floatphp forphp conjunctionphp queries
-php php php php php php*php arrayphp ofphp floatphp forphp nonphp conjunctionphp queries
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php privatephp php$php_coordphp php=php nullphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Termsphp weights
-php php php php php php*php arrayphp ofphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_weightsphp php=php arrayphp(php)php;
-
-
-php php php php php/php*php*
-php php php php php php*php Classphp constructorphp.php php Createphp aphp newphp multiphp-termphp queryphp objectphp.
-php php php php php php*
-php php php php php php*php ifphp php$signsphp arrayphp isphp omittedphp thenphp allphp termsphp arephp required
-php php php php php php*php itphp differsphp fromphp addTermphp(php)php behaviorphp,php butphp shouldphp neverphp bephp used
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$termsphp php php php Arrayphp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp objects
-php php php php php php*php php@paramphp arrayphp php$signsphp php php php Arrayphp ofphp signsphp.php php Signphp isphp booleanphp|nullphp.
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$termsphp php=php nullphp,php php$signsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$termsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp.phpphp'php;
-php php php php php php php php php php php php ifphp php(countphp(php$termsphp)php php>php Zendphp_Searchphp_Lucenephp:php:getTermsPerQueryLimitphp(php)php)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Termsphp perphp queryphp limitphp isphp reachedphp.php'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_termsphp php=php php$termsphp;
-
-php php php php php php php php php php php php php$thisphp-php>php_signsphp php=php nullphp;
-php php php php php php php php php php php php php/php/php Checkphp ifphp allphp termsphp arephp required
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$signsphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$signsphp asphp php$signphp php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$signphp php!php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_signsphp php=php php$signsphp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp php$termphp php(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp)php tophp thisphp queryphp.
-php php php php php php*
-php php php php php php*php Thephp signphp isphp specifiedphp asphp:
-php php php php php php*php php php php php TRUEphp php php-php termphp isphp required
-php php php php php php*php php php php php FALSEphp php-php termphp isphp prohibited
-php php php php php php*php php php php php NULLphp php php-php termphp isphp neitherphp prohibitedphp,php norphp required
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp php booleanphp|nullphp php$sign
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp addTermphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$signphp php=php nullphp)php php{
-php php php php php php php php ifphp php(php$signphp php!php=php=php truephp php|php|php php$thisphp-php>php_signsphp php!php=php=php nullphp)php php{php php php php php php php php/php/php Skipphp,php ifphp allphp termsphp arephp required
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php php{php php php php php php php php php php php php php php php php php php php php php php/php/php Checkphp,php Ifphp allphp previousphp termsphp arephp required
-php php php php php php php php php php php php php php php php php$thisphp-php>php_signsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$prevTermphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_signsphp[php]php php=php truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_signsphp[php]php php=php php$signphp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_termsphp[php]php php=php php$termphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp,php thatphp allphp fieldsphp arephp qualified
-php php php php php php php php php$allQualifiedphp php=php truephp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termphp)php php{
-php php php php php php php php php php php php ifphp php(php$termphp-php>fieldphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$allQualifiedphp php=php falsephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$allQualifiedphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php*php*php transformphp multitermphp queryphp tophp booleanphp andphp applyphp rewritephp(php)php methodphp tophp subqueriesphp.php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Booleanphp.phpphp'php;
-php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Booleanphp(php)php;
-php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php php php php php$subqueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$termphp)php;
-
-php php php php php php php php php php php php php php php php php$queryphp-php>addSubqueryphp(php$subqueryphp-php>rewritephp(php$indexphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php?php php truephp php:php php$thisphp-php>php_signsphp[php$termIdphp]php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$queryphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Optimizephp queryphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp optimizephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php php$termsphp php=php php$thisphp-php>php_termsphp;
-php php php php php php php php php$signsphp php=php php$thisphp-php>php_signsphp;
-
-php php php php php php php php foreachphp php(php$termsphp asphp php$idphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$indexphp-php>hasTermphp(php$termphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$signsphp php=php=php=php nullphp php php|php|php php php$signsphp[php$idphp]php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Termphp isphp required
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Termphp isphp optionalphp orphp prohibited
-php php php php php php php php php php php php php php php php php php php php php/php/php Removephp itphp fromphp termsphp andphp signsphp list
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$termsphp[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$signsphp[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Checkphp ifphp allphp presentedphp termsphp arephp prohibited
-php php php php php php php php php$allProhibitedphp php=php truephp;
-php php php php php php php php ifphp php(php$signsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$allProhibitedphp php=php falsephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php foreachphp php(php$signsphp asphp php$signphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$signphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$allProhibitedphp php=php falsephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$allProhibitedphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@todophp makephp anphp optimizationphp forphp repeatedphp terms
-php php php php php php php php php php*php php(theyphp mayphp havephp differentphp signsphp)
-php php php php php php php php php php*php/
-
-php php php php php php php php ifphp php(countphp(php$termsphp)php php=php=php php1php)php php{
-php php php php php php php php php php php php php/php/php Itphp'sphp alreadyphp checkedphp,php thatphp itphp'sphp notphp aphp prohibitedphp term
-
-php php php php php php php php php php php php php/php/php Itphp'sphp onephp termphp queryphp withphp onephp requiredphp orphp optionalphp element
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
-php php php php php php php php php php php php php$optimizedQueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(resetphp(php$termsphp)php)php;
-php php php php php php php php php php php php php$optimizedQueryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
-
-php php php php php php php php php php php php returnphp php$optimizedQueryphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$termsphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$optimizedQueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_MultiTermphp(php$termsphp,php php$signsphp)php;
-php php php php php php php php php$optimizedQueryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
-php php php php php php php php returnphp php$optimizedQueryphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp queryphp term
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getTermsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_termsphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnphp termsphp signs
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getSignsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_signsphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Setphp weightphp forphp specifiedphp term
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$num
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_Termphp php$weight
-php php php php php php*php/
-php php php php publicphp functionphp setWeightphp(php$numphp,php php$weightphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_weightsphp[php$numphp]php php=php php$weightphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Constructsphp anphp appropriatephp Weightphp implementationphp forphp thisphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
-php php php php php php*php/
-php php php php publicphp functionphp createWeightphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Weightphp/MultiTermphp.phpphp'php;
-php php php php php php php php php$thisphp-php>php_weightphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_MultiTermphp(php$thisphp,php php$readerphp)php;
-php php php php php php php php returnphp php$thisphp-php>php_weightphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Calculatephp resultphp vectorphp forphp Conjunctionphp query
-php php php php php php*php php(likephp php'php+somethingphp php+anotherphp'php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php/
-php php php php privatephp functionphp php_calculateConjunctionResultphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_resVectorphp php=php nullphp;
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termsphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php arrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Orderphp termsphp byphp selectivity
-php php php php php php php php php$docFreqsphp php=php arrayphp(php)php;
-php php php php php php php php php$idsphp php php php php php php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$idphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php$docFreqsphp[php]php php=php php$readerphp-php>docFreqphp(php$termphp)php;
-php php php php php php php php php php php php php$idsphp[php]php php php php php php php=php php$idphp;php php/php/php Usedphp tophp keepphp originalphp orderphp forphp termsphp withphp thephp samephp selectivityphp andphp omitphp termsphp comparison
-php php php php php php php php php}
-php php php php php php php php arrayphp_multisortphp(php$docFreqsphp,php SORTphp_ASCphp,php SORTphp_NUMERICphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$idsphp,php php php php php php SORTphp_ASCphp,php SORTphp_NUMERICphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termsphp)php;
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/DocsFilterphp.phpphp'php;
-php php php php php php php php php$docsFilterphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php$termDocsphp php=php php$readerphp-php>termDocsphp(php$termphp,php php$docsFilterphp)php;
-php php php php php php php php php}
-php php php php php php php php php/php/php Treatphp lastphp retrievedphp docsphp vectorphp asphp aphp resultphp set
-php php php php php php php php php/php/php php(filterphp collectsphp dataphp forphp otherphp termsphp)
-php php php php php php php php php$thisphp-php>php_resVectorphp php=php arrayphp_flipphp(php$termDocsphp)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_termsFreqsphp[php$termIdphp]php php=php php$readerphp-php>termFreqsphp(php$termphp,php php$docsFilterphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php ksortphp(php$thisphp-php>php_resVectorphp,php SORTphp_NUMERICphp)php;
-php php php php php php php php php/php/php Docsphp arephp returnedphp orderedphp.php Usedphp algorithmsphp doesnphp'tphp changephp elementsphp orderphp.
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Calculatephp resultphp vectorphp forphp nonphp Conjunctionphp query
-php php php php php php*php php(likephp php'php+somethingphp php-anotherphp'php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php/
-php php php php privatephp functionphp php_calculateNonConjunctionResultphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php php$requiredVectorsphp php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$requiredVectorsSizesphp php=php arrayphp(php)php;
-php php php php php php php php php$requiredVectorsIdsphp php php php=php arrayphp(php)php;php php/php/php isphp usedphp tophp preventphp arraysphp comparison
-
-php php php php php php php php php$optionalphp php php php=php arrayphp(php)php;
-php php php php php php php php php$prohibitedphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php$termDocsphp php=php arrayphp_flipphp(php$readerphp-php>termDocsphp(php$termphp)php)php;
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_signsphp[php$termIdphp]php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php/php/php required
-php php php php php php php php php php php php php php php php php$requiredVectorsphp[php]php php php php php php php=php php$termDocsphp;
-php php php php php php php php php php php php php php php php php$requiredVectorsSizesphp[php]php php=php countphp(php$termDocsphp)php;
-php php php php php php php php php php php php php php php php php$requiredVectorsIdsphp[php]php php php php=php php$termIdphp;
-php php php php php php php php php php php php php}php elseifphp php(php$thisphp-php>php_signsphp[php$termIdphp]php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php/php/php prohibited
-php php php php php php php php php php php php php php php php php/php/php arrayphp union
-php php php php php php php php php php php php php php php php php$prohibitedphp php+php=php php$termDocsphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php neitherphp requiredphp,php norphp prohibited
-php php php php php php php php php php php php php php php php php/php/php arrayphp union
-php php php php php php php php php php php php php php php php php$optionalphp php+php=php php$termDocsphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_termsFreqsphp[php$termIdphp]php php=php php$readerphp-php>termFreqsphp(php$termphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php sortphp resvectorsphp inphp orderphp ofphp subqueryphp cardinalityphp increasing
-php php php php php php php php arrayphp_multisortphp(php$requiredVectorsSizesphp,php SORTphp_ASCphp,php SORTphp_NUMERICphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$requiredVectorsIdsphp,php php php SORTphp_ASCphp,php SORTphp_NUMERICphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$requiredVectorsphp)php;
-
-php php php php php php php php php$requiredphp php=php nullphp;
-php php php php php php php php foreachphp php(php$requiredVectorsphp asphp php$nextResVectorphp)php php{
-php php php php php php php php php php php php ifphp(php$requiredphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$requiredphp php=php php$nextResVectorphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php$requiredphp php=php arrayphp_intersectphp_keyphp(php$requiredphp,php php$nextResVectorphp)php;
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Thisphp codephp isphp usedphp asphp workaroundphp forphp arrayphp_intersectphp_keyphp(php)php slownessphp problemphp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$updatedVectorphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$requiredphp asphp php$idphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$nextResVectorphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$updatedVectorphp[php$idphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$requiredphp php=php php$updatedVectorphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(countphp(php$requiredphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php/php/php Emptyphp resultphp setphp,php wephp donphp'tphp needphp tophp checkphp otherphp terms
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$requiredphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$requiredphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$optionalphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$prohibitedphp)php php!php=php php0php)php php{
-php php php php php php php php php php php php php/php/php php$thisphp-php>php_resVectorphp php=php arrayphp_diffphp_keyphp(php$thisphp-php>php_resVectorphp,php php$prohibitedphp)php;
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Thisphp codephp isphp usedphp asphp workaroundphp forphp arrayphp_diffphp_keyphp(php)php slownessphp problemphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>php_resVectorphp)php <php countphp(php$prohibitedphp)php)php php{
-php php php php php php php php php php php php php php php php php$updatedVectorphp php=php php$thisphp-php>php_resVectorphp;
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_resVectorphp asphp php$idphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$prohibitedphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$updatedVectorphp[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$updatedVectorphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$updatedVectorphp php=php php$thisphp-php>php_resVectorphp;
-php php php php php php php php php php php php php php php php foreachphp php(php$prohibitedphp asphp php$idphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$updatedVectorphp[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_resVectorphp php=php php$updatedVectorphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ksortphp(php$thisphp-php>php_resVectorphp,php SORTphp_NUMERICphp)php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Scorephp calculatorphp forphp conjunctionphp queriesphp php(allphp termsphp arephp requiredphp)
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp php_conjunctionScorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_coordphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_coordphp php=php php$readerphp-php>getSimilarityphp(php)php-php>coordphp(countphp(php$thisphp-php>php_termsphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php countphp(php$thisphp-php>php_termsphp)php php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$scorephp php=php php0php.php0php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Wephp donphp'tphp needphp tophp checkphp thatphp termphp freqphp isphp notphp php0
-php php php php php php php php php php php php php php*php Scorephp calculationphp isphp performedphp onlyphp forphp matchedphp docs
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$scorephp php+php=php php$readerphp-php>getSimilarityphp(php)php-php>tfphp(php$thisphp-php>php_termsFreqsphp[php$termIdphp]php[php$docIdphp]php)php php*
-php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_weightsphp[php$termIdphp]php-php>getValuephp(php)php php*
-php php php php php php php php php php php php php php php php php php php php php php php$readerphp-php>normphp(php$docIdphp,php php$termphp-php>fieldphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$scorephp php*php php$thisphp-php>php_coordphp php*php php$thisphp-php>getBoostphp(php)php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Scorephp calculatorphp forphp nonphp conjunctionphp queriesphp php(notphp allphp termsphp arephp requiredphp)
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp php_nonConjunctionScorephp(php$docIdphp,php php$readerphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_coordphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_coordphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php$maxCoordphp php=php php0php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_signsphp asphp php$signphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$signphp php!php=php=php falsephp php/php*php notphp prohibitedphp php*php/php)php php{
-php php php php php php php php php php php php php php php php php php php php php$maxCoordphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php=php php$maxCoordphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_coordphp[php$countphp]php php=php php$readerphp-php>getSimilarityphp(php)php-php>coordphp(php$countphp,php php$maxCoordphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$scorephp php=php php0php.php0php;
-php php php php php php php php php$matchedTermsphp php=php php0php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termIdphp=php>php$termphp)php php{
-php php php php php php php php php php php php php/php/php Checkphp ifphp termphp is
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_signsphp[php$termIdphp]php php!php=php=php falsephp php&php&php php php php php php php php php/php/php notphp prohibited
-php php php php php php php php php php php php php php php php issetphp(php$thisphp-php>php_termsFreqsphp[php$termIdphp]php[php$docIdphp]php)php php/php/php matched
-php php php php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$matchedTermsphp+php+php;
-
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Wephp donphp'tphp needphp tophp checkphp thatphp termphp freqphp isphp notphp php0
-php php php php php php php php php php php php php php php php php php*php Scorephp calculationphp isphp performedphp onlyphp forphp matchedphp docs
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$scorephp php+php=
-php php php php php php php php php php php php php php php php php php php php php php php$readerphp-php>getSimilarityphp(php)php-php>tfphp(php$thisphp-php>php_termsFreqsphp[php$termIdphp]php[php$docIdphp]php)php php*
-php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_weightsphp[php$termIdphp]php-php>getValuephp(php)php php*
-php php php php php php php php php php php php php php php php php php php php php php php$readerphp-php>normphp(php$docIdphp,php php$termphp-php>fieldphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$scorephp php*php php$thisphp-php>php_coordphp[php$matchedTermsphp]php php*php php$thisphp-php>getBoostphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Executephp queryphp inphp contextphp ofphp indexphp reader
-php php php php php php*php Itphp alsophp initializesphp necessaryphp internalphp structures
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php/
-php php php php publicphp functionphp executephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_calculateConjunctionResultphp(php$readerphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_calculateNonConjunctionResultphp(php$readerphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Initializephp weightphp ifphp itphp'sphp notphp donephp yet
-php php php php php php php php php$thisphp-php>php_initWeightphp(php$readerphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp idsphp likelyphp matchingphp thephp query
-php php php php php php*
-php php php php php php*php Itphp'sphp anphp arrayphp withphp documentphp idsphp asphp keysphp php(performancephp considerationsphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp matchedDocsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_resVectorphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Scorephp specifiedphp document
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp scorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_resVectorphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_conjunctionScorephp(php$docIdphp,php php$readerphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_nonConjunctionScorephp(php$docIdphp,php php$readerphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php0php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp queryphp terms
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getQueryTermsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_termsphp;
-php php php php php php php php php}
-
-php php php php php php php php php$termsphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_signsphp asphp php$idphp php=php>php php$signphp)php php{
-php php php php php php php php php php php php ifphp php(php$signphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$termsphp[php]php php=php php$thisphp-php>php_termsphp[php$idphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$termsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Queryphp specificphp matchesphp highlighting
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
-php php php php php{
-php php php php php php php php php$wordsphp php=php arrayphp(php)php;
-
-php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$termphp)php php{
-php php php php php php php php php php php php php php php php php$wordsphp[php]php php=php php$termphp-php>textphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_signsphp asphp php$idphp php=php>php php$signphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$signphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$wordsphp[php]php php=php php$thisphp-php>php_termsphp[php$idphp]php-php>textphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$highlighterphp-php>highlightphp(php$wordsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Printphp aphp query
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
-
-php php php php php php php php php$queryphp php=php php'php'php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_termsphp asphp php$idphp php=php>php php$termphp)php php{
-php php php php php php php php php php php php ifphp php(php$idphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$queryphp php.php=php php'php php'php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_signsphp php=php=php=php nullphp php|php|php php$thisphp-php>php_signsphp[php$idphp]php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$queryphp php.php=php php'php+php'php;
-php php php php php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_signsphp[php$idphp]php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$queryphp php.php=php php'php-php'php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$termphp-php>fieldphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$queryphp php.php=php php$termphp-php>fieldphp php.php php'php:php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$queryphp php.php=php php$termphp-php>textphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php php{
-php php php php php php php php php php php php php$queryphp php=php php'php(php'php php.php php$queryphp php.php php'php)php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$queryphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: MultiTerm.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+
+
+/** Zend_Search_Lucene_Search_Query */
+require_once 'Zend/Search/Lucene/Search/Query.php';
+
+
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Search_Query
+{
+
+    /**
+     * Terms to find.
+     * Array of Zend_Search_Lucene_Index_Term
+     *
+     * @var array
+     */
+    private $_terms = array();
+
+    /**
+     * Term signs.
+     * If true then term is required.
+     * If false then term is prohibited.
+     * If null then term is neither prohibited, nor required
+     *
+     * If array is null then all terms are required
+     *
+     * @var array
+     */
+    private $_signs;
+
+    /**
+     * Result vector.
+     *
+     * @var array
+     */
+    private $_resVector = null;
+
+    /**
+     * Terms positions vectors.
+     * Array of Arrays:
+     * term1Id => (docId => freq, ...)
+     * term2Id => (docId => freq, ...)
+     *
+     * @var array
+     */
+    private $_termsFreqs = array();
+
+
+    /**
+     * A score factor based on the fraction of all query terms
+     * that a document contains.
+     * float for conjunction queries
+     * array of float for non conjunction queries
+     *
+     * @var mixed
+     */
+    private $_coord = null;
+
+
+    /**
+     * Terms weights
+     * array of Zend_Search_Lucene_Search_Weight
+     *
+     * @var array
+     */
+    private $_weights = array();
+
+
+    /**
+     * Class constructor.  Create a new multi-term query object.
+     *
+     * if $signs array is omitted then all terms are required
+     * it differs from addTerm() behavior, but should never be used
+     *
+     * @param array $terms    Array of Zend_Search_Lucene_Index_Term objects
+     * @param array $signs    Array of signs.  Sign is boolean|null.
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function __construct($terms = null, $signs = null)
+    {
+        if (is_array($terms)) {
+            require_once 'Zend/Search/Lucene.php';
+            if (count($terms) > Zend_Search_Lucene::getTermsPerQueryLimit()) {
+                throw new Zend_Search_Lucene_Exception('Terms per query limit is reached.');
+            }
+
+            $this->_terms = $terms;
+
+            $this->_signs = null;
+            // Check if all terms are required
+            if (is_array($signs)) {
+                foreach ($signs as $sign ) {
+                    if ($sign !== true) {
+                        $this->_signs = $signs;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Add a $term (Zend_Search_Lucene_Index_Term) to this query.
+     *
+     * The sign is specified as:
+     *     TRUE  - term is required
+     *     FALSE - term is prohibited
+     *     NULL  - term is neither prohibited, nor required
+     *
+     * @param  Zend_Search_Lucene_Index_Term $term
+     * @param  boolean|null $sign
+     * @return void
+     */
+    public function addTerm(Zend_Search_Lucene_Index_Term $term, $sign = null) {
+        if ($sign !== true || $this->_signs !== null) {       // Skip, if all terms are required
+            if ($this->_signs === null) {                     // Check, If all previous terms are required
+                $this->_signs = array();
+                foreach ($this->_terms as $prevTerm) {
+                    $this->_signs[] = true;
+                }
+            }
+            $this->_signs[] = $sign;
+        }
+
+        $this->_terms[] = $term;
+    }
+
+
+    /**
+     * Re-write query into primitive queries in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function rewrite(Zend_Search_Lucene_Interface $index)
+    {
+        if (count($this->_terms) == 0) {
+            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+            return new Zend_Search_Lucene_Search_Query_Empty();
+        }
+
+        // Check, that all fields are qualified
+        $allQualified = true;
+        foreach ($this->_terms as $term) {
+            if ($term->field === null) {
+                $allQualified = false;
+                break;
+            }
+        }
+
+        if ($allQualified) {
+            return $this;
+        } else {
+            /** transform multiterm query to boolean and apply rewrite() method to subqueries. */
+            require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
+            $query = new Zend_Search_Lucene_Search_Query_Boolean();
+            $query->setBoost($this->getBoost());
+
+            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
+            foreach ($this->_terms as $termId => $term) {
+                $subquery = new Zend_Search_Lucene_Search_Query_Term($term);
+
+                $query->addSubquery($subquery->rewrite($index),
+                                    ($this->_signs === null)?  true : $this->_signs[$termId]);
+            }
+
+            return $query;
+        }
+    }
+
+    /**
+     * Optimize query in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function optimize(Zend_Search_Lucene_Interface $index)
+    {
+        $terms = $this->_terms;
+        $signs = $this->_signs;
+
+        foreach ($terms as $id => $term) {
+            if (!$index->hasTerm($term)) {
+                if ($signs === null  ||  $signs[$id] === true) {
+                    // Term is required
+                    require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+                    return new Zend_Search_Lucene_Search_Query_Empty();
+                } else {
+                    // Term is optional or prohibited
+                    // Remove it from terms and signs list
+                    unset($terms[$id]);
+                    unset($signs[$id]);
+                }
+            }
+        }
+
+        // Check if all presented terms are prohibited
+        $allProhibited = true;
+        if ($signs === null) {
+            $allProhibited = false;
+        } else {
+            foreach ($signs as $sign) {
+                if ($sign !== false) {
+                    $allProhibited = false;
+                    break;
+                }
+            }
+        }
+        if ($allProhibited) {
+            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+            return new Zend_Search_Lucene_Search_Query_Empty();
+        }
+
+        /**
+         * @todo make an optimization for repeated terms
+         * (they may have different signs)
+         */
+
+        if (count($terms) == 1) {
+            // It's already checked, that it's not a prohibited term
+
+            // It's one term query with one required or optional element
+            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
+            $optimizedQuery = new Zend_Search_Lucene_Search_Query_Term(reset($terms));
+            $optimizedQuery->setBoost($this->getBoost());
+
+            return $optimizedQuery;
+        }
+
+        if (count($terms) == 0) {
+            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+            return new Zend_Search_Lucene_Search_Query_Empty();
+        }
+
+        $optimizedQuery = new Zend_Search_Lucene_Search_Query_MultiTerm($terms, $signs);
+        $optimizedQuery->setBoost($this->getBoost());
+        return $optimizedQuery;
+    }
+
+
+    /**
+     * Returns query term
+     *
+     * @return array
+     */
+    public function getTerms()
+    {
+        return $this->_terms;
+    }
+
+
+    /**
+     * Return terms signs
+     *
+     * @return array
+     */
+    public function getSigns()
+    {
+        return $this->_signs;
+    }
+
+
+    /**
+     * Set weight for specified term
+     *
+     * @param integer $num
+     * @param Zend_Search_Lucene_Search_Weight_Term $weight
+     */
+    public function setWeight($num, $weight)
+    {
+        $this->_weights[$num] = $weight;
+    }
+
+
+    /**
+     * Constructs an appropriate Weight implementation for this query.
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return Zend_Search_Lucene_Search_Weight
+     */
+    public function createWeight(Zend_Search_Lucene_Interface $reader)
+    {
+        require_once 'Zend/Search/Lucene/Search/Weight/MultiTerm.php';
+        $this->_weight = new Zend_Search_Lucene_Search_Weight_MultiTerm($this, $reader);
+        return $this->_weight;
+    }
+
+
+    /**
+     * Calculate result vector for Conjunction query
+     * (like '+something +another')
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     */
+    private function _calculateConjunctionResult(Zend_Search_Lucene_Interface $reader)
+    {
+        $this->_resVector = null;
+
+        if (count($this->_terms) == 0) {
+            $this->_resVector = array();
+        }
+
+        // Order terms by selectivity
+        $docFreqs = array();
+        $ids      = array();
+        foreach ($this->_terms as $id => $term) {
+            $docFreqs[] = $reader->docFreq($term);
+            $ids[]      = $id; // Used to keep original order for terms with the same selectivity and omit terms comparison
+        }
+        array_multisort($docFreqs, SORT_ASC, SORT_NUMERIC,
+                        $ids,      SORT_ASC, SORT_NUMERIC,
+                        $this->_terms);
+
+        require_once 'Zend/Search/Lucene/Index/DocsFilter.php';
+        $docsFilter = new Zend_Search_Lucene_Index_DocsFilter();
+        foreach ($this->_terms as $termId => $term) {
+            $termDocs = $reader->termDocs($term, $docsFilter);
+        }
+        // Treat last retrieved docs vector as a result set
+        // (filter collects data for other terms)
+        $this->_resVector = array_flip($termDocs);
+
+        foreach ($this->_terms as $termId => $term) {
+            $this->_termsFreqs[$termId] = $reader->termFreqs($term, $docsFilter);
+        }
+
+        // ksort($this->_resVector, SORT_NUMERIC);
+        // Docs are returned ordered. Used algorithms doesn't change elements order.
+    }
+
+
+    /**
+     * Calculate result vector for non Conjunction query
+     * (like '+something -another')
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     */
+    private function _calculateNonConjunctionResult(Zend_Search_Lucene_Interface $reader)
+    {
+        $requiredVectors      = array();
+        $requiredVectorsSizes = array();
+        $requiredVectorsIds   = array(); // is used to prevent arrays comparison
+
+        $optional   = array();
+        $prohibited = array();
+
+        foreach ($this->_terms as $termId => $term) {
+            $termDocs = array_flip($reader->termDocs($term));
+
+            if ($this->_signs[$termId] === true) {
+                // required
+                $requiredVectors[]      = $termDocs;
+                $requiredVectorsSizes[] = count($termDocs);
+                $requiredVectorsIds[]   = $termId;
+            } elseif ($this->_signs[$termId] === false) {
+                // prohibited
+                // array union
+                $prohibited += $termDocs;
+            } else {
+                // neither required, nor prohibited
+                // array union
+                $optional += $termDocs;
+            }
+
+            $this->_termsFreqs[$termId] = $reader->termFreqs($term);
+        }
+
+        // sort resvectors in order of subquery cardinality increasing
+        array_multisort($requiredVectorsSizes, SORT_ASC, SORT_NUMERIC,
+                        $requiredVectorsIds,   SORT_ASC, SORT_NUMERIC,
+                        $requiredVectors);
+
+        $required = null;
+        foreach ($requiredVectors as $nextResVector) {
+            if($required === null) {
+                $required = $nextResVector;
+            } else {
+                //$required = array_intersect_key($required, $nextResVector);
+
+                /**
+                 * This code is used as workaround for array_intersect_key() slowness problem.
+                 */
+                $updatedVector = array();
+                foreach ($required as $id => $value) {
+                    if (isset($nextResVector[$id])) {
+                        $updatedVector[$id] = $value;
+                    }
+                }
+                $required = $updatedVector;
+            }
+
+            if (count($required) == 0) {
+                // Empty result set, we don't need to check other terms
+                break;
+            }
+        }
+
+        if ($required !== null) {
+            $this->_resVector = $required;
+        } else {
+            $this->_resVector = $optional;
+        }
+
+        if (count($prohibited) != 0) {
+            // $this->_resVector = array_diff_key($this->_resVector, $prohibited);
+
+            /**
+             * This code is used as workaround for array_diff_key() slowness problem.
+             */
+            if (count($this->_resVector) < count($prohibited)) {
+                $updatedVector = $this->_resVector;
+                foreach ($this->_resVector as $id => $value) {
+                    if (isset($prohibited[$id])) {
+                        unset($updatedVector[$id]);
+                    }
+                }
+                $this->_resVector = $updatedVector;
+            } else {
+                $updatedVector = $this->_resVector;
+                foreach ($prohibited as $id => $value) {
+                    unset($updatedVector[$id]);
+                }
+                $this->_resVector = $updatedVector;
+            }
+        }
+
+        ksort($this->_resVector, SORT_NUMERIC);
+    }
+
+
+    /**
+     * Score calculator for conjunction queries (all terms are required)
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     */
+    public function _conjunctionScore($docId, Zend_Search_Lucene_Interface $reader)
+    {
+        if ($this->_coord === null) {
+            $this->_coord = $reader->getSimilarity()->coord(count($this->_terms),
+                                                            count($this->_terms) );
+        }
+
+        $score = 0.0;
+
+        foreach ($this->_terms as $termId => $term) {
+            /**
+             * We don't need to check that term freq is not 0
+             * Score calculation is performed only for matched docs
+             */
+            $score += $reader->getSimilarity()->tf($this->_termsFreqs[$termId][$docId]) *
+                      $this->_weights[$termId]->getValue() *
+                      $reader->norm($docId, $term->field);
+        }
+
+        return $score * $this->_coord * $this->getBoost();
+    }
+
+
+    /**
+     * Score calculator for non conjunction queries (not all terms are required)
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     */
+    public function _nonConjunctionScore($docId, $reader)
+    {
+        if ($this->_coord === null) {
+            $this->_coord = array();
+
+            $maxCoord = 0;
+            foreach ($this->_signs as $sign) {
+                if ($sign !== false /* not prohibited */) {
+                    $maxCoord++;
+                }
+            }
+
+            for ($count = 0; $count <= $maxCoord; $count++) {
+                $this->_coord[$count] = $reader->getSimilarity()->coord($count, $maxCoord);
+            }
+        }
+
+        $score = 0.0;
+        $matchedTerms = 0;
+        foreach ($this->_terms as $termId=>$term) {
+            // Check if term is
+            if ($this->_signs[$termId] !== false &&        // not prohibited
+                isset($this->_termsFreqs[$termId][$docId]) // matched
+               ) {
+                $matchedTerms++;
+
+                /**
+                 * We don't need to check that term freq is not 0
+                 * Score calculation is performed only for matched docs
+                 */
+                $score +=
+                      $reader->getSimilarity()->tf($this->_termsFreqs[$termId][$docId]) *
+                      $this->_weights[$termId]->getValue() *
+                      $reader->norm($docId, $term->field);
+            }
+        }
+
+        return $score * $this->_coord[$matchedTerms] * $this->getBoost();
+    }
+
+    /**
+     * Execute query in context of index reader
+     * It also initializes necessary internal structures
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     */
+    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
+    {
+        if ($this->_signs === null) {
+            $this->_calculateConjunctionResult($reader);
+        } else {
+            $this->_calculateNonConjunctionResult($reader);
+        }
+
+        // Initialize weight if it's not done yet
+        $this->_initWeight($reader);
+    }
+
+    /**
+     * Get document ids likely matching the query
+     *
+     * It's an array with document ids as keys (performance considerations)
+     *
+     * @return array
+     */
+    public function matchedDocs()
+    {
+        return $this->_resVector;
+    }
+
+    /**
+     * Score specified document
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     */
+    public function score($docId, Zend_Search_Lucene_Interface $reader)
+    {
+        if (isset($this->_resVector[$docId])) {
+            if ($this->_signs === null) {
+                return $this->_conjunctionScore($docId, $reader);
+            } else {
+                return $this->_nonConjunctionScore($docId, $reader);
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Return query terms
+     *
+     * @return array
+     */
+    public function getQueryTerms()
+    {
+        if ($this->_signs === null) {
+            return $this->_terms;
+        }
+
+        $terms = array();
+
+        foreach ($this->_signs as $id => $sign) {
+            if ($sign !== false) {
+                $terms[] = $this->_terms[$id];
+            }
+        }
+
+        return $terms;
+    }
+
+    /**
+     * Query specific matches highlighting
+     *
+     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
+     */
+    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
+    {
+        $words = array();
+
+        if ($this->_signs === null) {
+            foreach ($this->_terms as $term) {
+                $words[] = $term->text;
+            }
+        } else {
+            foreach ($this->_signs as $id => $sign) {
+                if ($sign !== false) {
+                    $words[] = $this->_terms[$id]->text;
+                }
+            }
+        }
+
+        $highlighter->highlight($words);
+    }
+
+    /**
+     * Print a query
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        // It's used only for query visualisation, so we don't care about characters escaping
+
+        $query = '';
+
+        foreach ($this->_terms as $id => $term) {
+            if ($id != 0) {
+                $query .= ' ';
+            }
+
+            if ($this->_signs === null || $this->_signs[$id] === true) {
+                $query .= '+';
+            } else if ($this->_signs[$id] === false) {
+                $query .= '-';
+            }
+
+            if ($term->field !== null) {
+                $query .= $term->field . ':';
+            }
+            $query .= $term->text;
+        }
+
+        if ($this->getBoost() != 1) {
+            $query = '(' . $query . ')^' . round($this->getBoost(), 4);
+        }
+
+        return $query;
+    }
+}
 

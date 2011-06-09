@@ -1,280 +1,280 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Atomphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Entryphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Entryphp/Abstractphp.phpphp'php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Atom.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Concretephp classphp forphp workingphp withphp Atomphp entriesphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Entryphp_Atomphp extendsphp Zendphp_Feedphp_Entryphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Contentphp-Type
-php php php php php php*php/
-php php php php constphp CONTENTphp_TYPEphp php=php php'applicationphp/atomphp+xmlphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Rootphp XMLphp elementphp forphp Atomphp entriesphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootElementphp php=php php'entryphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Rootphp namespacephp forphp Atomphp entriesphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootNamespacephp php=php php'atomphp'php;
+/**
+ * @see Zend_Feed_Entry_Abstract
+ */
+require_once 'Zend/Feed/Entry/Abstract.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Deletephp anphp atomphp entryphp.
-php php php php php php*
-php php php php php php*php Deletephp triesphp tophp deletephp thisphp entryphp fromphp itsphp feedphp.php Ifphp thephp entry
-php php php php php php*php doesphp notphp containphp aphp linkphp relphp=php"editphp"php,php wephp throwphp anphp errorphp php(either
-php php php php php php*php thephp entryphp doesphp notphp yetphp existphp orphp thisphp isphp notphp anphp editable
-php php php php php php*php feedphp)php.php Ifphp wephp havephp aphp linkphp relphp=php"editphp"php,php wephp dophp thephp emptyphp-body
-php php php php php php*php HTTPphp DELETEphp tophp thatphp URIphp andphp checkphp forphp aphp responsephp ofphp php2xxphp.
-php php php php php php*php Usuallyphp thephp responsephp wouldphp bephp php2php0php4php Nophp Contentphp,php butphp thephp Atom
-php php php php php php*php Publishingphp Protocolphp permitsphp itphp tophp bephp php2php0php0php OKphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp deletephp(php)
-php php php php php{
-php php php php php php php php php/php/php Lookphp forphp linkphp relphp=php"editphp"php inphp thephp entryphp objectphp.
-php php php php php php php php php$deleteUriphp php=php php$thisphp-php>linkphp(php'editphp'php)php;
-php php php php php php php php ifphp php(php!php$deleteUriphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Cannotphp deletephp entryphp;php nophp linkphp relphp=php"editphp"php isphp presentphp.php'php)php;
-php php php php php php php php php}
+/**
+ * Concrete class for working with Atom entries.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Entry_Atom extends Zend_Feed_Entry_Abstract
+{
+    /**
+     * Content-Type
+     */
+    const CONTENT_TYPE = 'application/atom+xml';
 
-php php php php php php php php php/php/php DELETE
-php php php php php php php php php$clientphp php=php Zendphp_Feedphp:php:getHttpClientphp(php)php;
-php php php php php php php php dophp php{
-php php php php php php php php php php php php php$clientphp-php>setUriphp(php$deleteUriphp)php;
-php php php php php php php php php php php php ifphp php(Zendphp_Feedphp:php:getHttpMethodOverridephp(php)php)php php{
-php php php php php php php php php php php php php php php php php$clientphp-php>setHeaderphp(php'Xphp-HTTPphp-Methodphp-Overridephp'php,php php'DELETEphp'php)php;
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'DELETEphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$httpStatusphp php=php php$responsephp-php>getStatusphp(php)php;
-php php php php php php php php php php php php switchphp php(php(intphp)php php$httpStatusphp php/php php1php0php0php)php php{
-php php php php php php php php php php php php php php php php php/php/php Success
-php php php php php php php php php php php php php php php php casephp php2php:
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php/php/php Redirect
-php php php php php php php php php php php php php php php php casephp php3php:
-php php php php php php php php php php php php php php php php php php php php php$deleteUriphp php=php php$responsephp-php>getHeaderphp(php'Locationphp'php)php;
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php/php/php Error
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php"Expectedphp responsephp codephp php2xxphp,php gotphp php$httpStatusphp"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php whilephp php(truephp)php;
-php php php php php}
+    /**
+     * Root XML element for Atom entries.
+     *
+     * @var string
+     */
+    protected $_rootElement = 'entry';
+
+    /**
+     * Root namespace for Atom entries.
+     *
+     * @var string
+     */
+    protected $_rootNamespace = 'atom';
 
 
-php php php php php/php*php*
-php php php php php php*php Savephp aphp newphp orphp updatedphp Atomphp entryphp.
-php php php php php php*
-php php php php php php*php Savephp isphp usedphp tophp eitherphp createphp newphp entriesphp orphp tophp savephp changesphp to
-php php php php php php*php existingphp onesphp.php Ifphp wephp havephp aphp linkphp relphp=php"editphp"php,php wephp arephp changing
-php php php php php php*php anphp existingphp entryphp.php Inphp thisphp casephp wephp rephp-serializephp thephp entryphp and
-php php php php php php*php PUTphp itphp tophp thephp editphp URIphp,php checkingphp forphp aphp php2php0php0php OKphp resultphp.
-php php php php php php*
-php php php php php php*php Forphp postingphp newphp entriesphp,php youphp mustphp specifyphp thephp php$postUri
-php php php php php php*php parameterphp tophp savephp(php)php tophp tellphp thephp objectphp wherephp tophp postphp itselfphp.
-php php php php php php*php Wephp usephp php$postUriphp andphp POSTphp thephp serializedphp entryphp therephp,php checking
-php php php php php php*php forphp aphp php2php0php1php Createdphp responsephp.php Ifphp thephp insertphp isphp successfulphp,php we
-php php php php php php*php thenphp parsephp thephp responsephp fromphp thephp POSTphp tophp getphp anyphp valuesphp that
-php php php php php php*php thephp serverphp hasphp generatedphp:php anphp idphp,php anphp updatedphp timephp,php andphp itsphp new
-php php php php php php*php linkphp relphp=php"editphp"php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$postUriphp Locationphp tophp POSTphp forphp creatingphp newphp entriesphp.
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp savephp(php$postUriphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>idphp(php)php)php php{
-php php php php php php php php php php php php php/php/php Ifphp idphp isphp setphp,php lookphp forphp linkphp relphp=php"editphp"php inphp the
-php php php php php php php php php php php php php/php/php entryphp objectphp andphp PUTphp.
-php php php php php php php php php php php php php$editUriphp php=php php$thisphp-php>linkphp(php'editphp'php)php;
-php php php php php php php php php php php php ifphp php(php!php$editUriphp)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Cannotphp editphp entryphp;php nophp linkphp relphp=php"editphp"php isphp presentphp.php'php)php;
-php php php php php php php php php php php php php}
+    /**
+     * Delete an atom entry.
+     *
+     * Delete tries to delete this entry from its feed. If the entry
+     * does not contain a link rel="edit", we throw an error (either
+     * the entry does not yet exist or this is not an editable
+     * feed). If we have a link rel="edit", we do the empty-body
+     * HTTP DELETE to that URI and check for a response of 2xx.
+     * Usually the response would be 204 No Content, but the Atom
+     * Publishing Protocol permits it to be 200 OK.
+     *
+     * @return void
+     * @throws Zend_Feed_Exception
+     */
+    public function delete()
+    {
+        // Look for link rel="edit" in the entry object.
+        $deleteUri = $this->link('edit');
+        if (!$deleteUri) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('Cannot delete entry; no link rel="edit" is present.');
+        }
 
-php php php php php php php php php php php php php$clientphp php=php Zendphp_Feedphp:php:getHttpClientphp(php)php;
-php php php php php php php php php php php php php$clientphp-php>setUriphp(php$editUriphp)php;
-php php php php php php php php php php php php ifphp php(Zendphp_Feedphp:php:getHttpMethodOverridephp(php)php)php php{
-php php php php php php php php php php php php php php php php php$clientphp-php>setHeadersphp(arrayphp(php'Xphp-HTTPphp-Methodphp-Overridephp:php PUTphp'php,
-php php php php php php php php php php php php php php php php php php php php php'Contentphp-Typephp:php php'php php.php selfphp:php:CONTENTphp_TYPEphp)php)php;
-php php php php php php php php php php php php php php php php php$clientphp-php>setRawDataphp(php$thisphp-php>saveXMLphp(php)php)php;
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$clientphp-php>setHeadersphp(php'Contentphp-Typephp'php,php selfphp:php:CONTENTphp_TYPEphp)php;
-php php php php php php php php php php php php php php php php php$clientphp-php>setRawDataphp(php$thisphp-php>saveXMLphp(php)php)php;
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'PUTphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php0php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Expectedphp responsephp codephp php2php0php0php,php gotphp php'php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$postUriphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'PostURIphp mustphp bephp specifiedphp tophp savephp newphp entriesphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$clientphp php=php Zendphp_Feedphp:php:getHttpClientphp(php)php;
-php php php php php php php php php php php php php$clientphp-php>setUriphp(php$postUriphp)php;
-php php php php php php php php php php php php php$clientphp-php>setHeadersphp(php'Contentphp-Typephp'php,php selfphp:php:CONTENTphp_TYPEphp)php;
-php php php php php php php php php php php php php$clientphp-php>setRawDataphp(php$thisphp-php>saveXMLphp(php)php)php;
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php1php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Expectedphp responsephp codephp php2php0php1php,php gotphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Updatephp internalphp propertiesphp usingphp php$clientphp-php>responseBodyphp;
-php php php php php php php php php@iniphp_setphp(php'trackphp_errorsphp'php,php php1php)php;
-php php php php php php php php php$newEntryphp php=php newphp DOMDocumentphp;
-php php php php php php php php php$statusphp php=php php@php$newEntryphp-php>loadXMLphp(php$responsephp-php>getBodyphp(php)php)php;
-php php php php php php php php php@iniphp_restorephp(php'trackphp_errorsphp'php)php;
-
-php php php php php php php php ifphp php(php!php$statusphp)php php{
-php php php php php php php php php php php php php/php/php preventphp thephp classphp tophp generatephp anphp undefinedphp variablephp noticephp php(ZFphp-php2php5php9php0php)
-php php php php php php php php php php php php ifphp php(php!issetphp(php$phpphp_errormsgphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(functionphp_existsphp(php'xdebugphp_isphp_enabledphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp,php whenphp XDebugphp isphp runningphp)php'php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp)php'php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'XMLphp cannotphp bephp parsedphp:php php'php php.php php$phpphp_errormsgphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$newEntryphp php=php php$newEntryphp-php>getElementsByTagNamephp(php$thisphp-php>php_rootElementphp)php-php>itemphp(php0php)php;
-php php php php php php php php ifphp php(php!php$newEntryphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Nophp rootphp php<feedphp>php elementphp foundphp inphp serverphp responsephp:php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php"php\nphp\nphp"php php.php php$clientphp-php>responseBodyphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_elementphp-php>parentNodephp)php php{
-php php php php php php php php php php php php php$oldElementphp php=php php$thisphp-php>php_elementphp;
-php php php php php php php php php php php php php$thisphp-php>php_elementphp php=php php$oldElementphp-php>ownerDocumentphp-php>importNodephp(php$newEntryphp,php truephp)php;
-php php php php php php php php php php php php php$oldElementphp-php>parentNodephp-php>replaceChildphp(php$thisphp-php>php_elementphp,php php$oldElementphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_elementphp php=php php$newEntryphp;
-php php php php php php php php php}
-php php php php php}
+        // DELETE
+        $client = Zend_Feed::getHttpClient();
+        do {
+            $client->setUri($deleteUri);
+            if (Zend_Feed::getHttpMethodOverride()) {
+                $client->setHeader('X-HTTP-Method-Override', 'DELETE');
+                $response = $client->request('POST');
+            } else {
+                $response = $client->request('DELETE');
+            }
+            $httpStatus = $response->getStatus();
+            switch ((int) $httpStatus / 100) {
+                // Success
+                case 2:
+                    return true;
+                // Redirect
+                case 3:
+                    $deleteUri = $response->getHeader('Location');
+                    continue;
+                // Error
+                default:
+                    /**
+                     * @see Zend_Feed_Exception
+                     */
+                    require_once 'Zend/Feed/Exception.php';
+                    throw new Zend_Feed_Exception("Expected response code 2xx, got $httpStatus");
+            }
+        } while (true);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Easyphp accessphp tophp php<linkphp>php tagsphp keyedphp byphp php"relphp"php attributesphp.
-php php php php php php*
-php php php php php php*php Ifphp php$eltphp-php>linkphp(php)php isphp calledphp withphp nophp argumentsphp,php wephp willphp attemptphp to
-php php php php php php*php returnphp thephp valuephp ofphp thephp php<linkphp>php tagphp(sphp)php likephp allphp other
-php php php php php php*php methodphp-syntaxphp attributephp accessphp.php Ifphp anphp argumentphp isphp passedphp to
-php php php php php php*php linkphp(php)php,php howeverphp,php thenphp wephp willphp returnphp thephp php"hrefphp"php valuephp ofphp the
-php php php php php php*php firstphp php<linkphp>php tagphp thatphp hasphp aphp php"relphp"php attributephp matchingphp php$relphp:
-php php php php php php*
-php php php php php php*php php$eltphp-php>linkphp(php)php:php returnsphp thephp valuephp ofphp thephp linkphp tagphp.
-php php php php php php*php php$eltphp-php>linkphp(php'selfphp'php)php:php returnsphp thephp hrefphp fromphp thephp firstphp php<linkphp relphp=php"selfphp"php>php inphp thephp entryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$relphp Thephp php"relphp"php attributephp tophp lookphp forphp.
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp linkphp(php$relphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$relphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp parentphp:php:php_php_callphp(php'linkphp'php,php nullphp)php;
-php php php php php php php php php}
+    /**
+     * Save a new or updated Atom entry.
+     *
+     * Save is used to either create new entries or to save changes to
+     * existing ones. If we have a link rel="edit", we are changing
+     * an existing entry. In this case we re-serialize the entry and
+     * PUT it to the edit URI, checking for a 200 OK result.
+     *
+     * For posting new entries, you must specify the $postUri
+     * parameter to save() to tell the object where to post itself.
+     * We use $postUri and POST the serialized entry there, checking
+     * for a 201 Created response. If the insert is successful, we
+     * then parse the response from the POST to get any values that
+     * the server has generated: an id, an updated time, and its new
+     * link rel="edit".
+     *
+     * @param  string $postUri Location to POST for creating new entries.
+     * @return void
+     * @throws Zend_Feed_Exception
+     */
+    public function save($postUri = null)
+    {
+        if ($this->id()) {
+            // If id is set, look for link rel="edit" in the
+            // entry object and PUT.
+            $editUri = $this->link('edit');
+            if (!$editUri) {
+                /**
+                 * @see Zend_Feed_Exception
+                 */
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Cannot edit entry; no link rel="edit" is present.');
+            }
 
-php php php php php php php php php/php/php indexphp linkphp tagsphp byphp theirphp php"relphp"php attributephp.
-php php php php php php php php php$linksphp php=php parentphp:php:php_php_getphp(php'linkphp'php)php;
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$linksphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$linksphp instanceofphp Zendphp_Feedphp_Elementphp)php php{
-php php php php php php php php php php php php php php php php php$linksphp php=php arrayphp(php$linksphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php$linksphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            $client = Zend_Feed::getHttpClient();
+            $client->setUri($editUri);
+            if (Zend_Feed::getHttpMethodOverride()) {
+                $client->setHeaders(array('X-HTTP-Method-Override: PUT',
+                    'Content-Type: ' . self::CONTENT_TYPE));
+                $client->setRawData($this->saveXML());
+                $response = $client->request('POST');
+            } else {
+                $client->setHeaders('Content-Type', self::CONTENT_TYPE);
+                $client->setRawData($this->saveXML());
+                $response = $client->request('PUT');
+            }
+            if ($response->getStatus() !== 200) {
+                /**
+                 * @see Zend_Feed_Exception
+                 */
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Expected response code 200, got ' . $response->getStatus());
+            }
+        } else {
+            if ($postUri === null) {
+                /**
+                 * @see Zend_Feed_Exception
+                 */
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('PostURI must be specified to save new entries.');
+            }
+            $client = Zend_Feed::getHttpClient();
+            $client->setUri($postUri);
+            $client->setHeaders('Content-Type', self::CONTENT_TYPE);
+            $client->setRawData($this->saveXML());
+            $response = $client->request('POST');
 
-php php php php php php php php foreachphp php(php$linksphp asphp php$linkphp)php php{
-php php php php php php php php php php php php ifphp php(emptyphp(php$linkphp[php'relphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$linkphp[php'relphp'php]php php=php php'alternatephp'php;php php/php/php seephp Atomphp php1php.php0php spec
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$relphp php=php=php php$linkphp[php'relphp'php]php)php php{
-php php php php php php php php php php php php php php php php returnphp php$linkphp[php'hrefphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if ($response->getStatus() !== 201) {
+                /**
+                 * @see Zend_Feed_Exception
+                 */
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Expected response code 201, got '
+                                              . $response->getStatus());
+            }
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        // Update internal properties using $client->responseBody;
+        @ini_set('track_errors', 1);
+        $newEntry = new DOMDocument;
+        $status = @$newEntry->loadXML($response->getBody());
+        @ini_restore('track_errors');
 
-php}
+        if (!$status) {
+            // prevent the class to generate an undefined variable notice (ZF-2590)
+            if (!isset($php_errormsg)) {
+                if (function_exists('xdebug_is_enabled')) {
+                    $php_errormsg = '(error message not available, when XDebug is running)';
+                } else {
+                    $php_errormsg = '(error message not available)';
+                }
+            }
+
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('XML cannot be parsed: ' . $php_errormsg);
+        }
+
+        $newEntry = $newEntry->getElementsByTagName($this->_rootElement)->item(0);
+        if (!$newEntry) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('No root <feed> element found in server response:'
+                                          . "\n\n" . $client->responseBody);
+        }
+
+        if ($this->_element->parentNode) {
+            $oldElement = $this->_element;
+            $this->_element = $oldElement->ownerDocument->importNode($newEntry, true);
+            $oldElement->parentNode->replaceChild($this->_element, $oldElement);
+        } else {
+            $this->_element = $newEntry;
+        }
+    }
+
+
+    /**
+     * Easy access to <link> tags keyed by "rel" attributes.
+     *
+     * If $elt->link() is called with no arguments, we will attempt to
+     * return the value of the <link> tag(s) like all other
+     * method-syntax attribute access. If an argument is passed to
+     * link(), however, then we will return the "href" value of the
+     * first <link> tag that has a "rel" attribute matching $rel:
+     *
+     * $elt->link(): returns the value of the link tag.
+     * $elt->link('self'): returns the href from the first <link rel="self"> in the entry.
+     *
+     * @param  string $rel The "rel" attribute to look for.
+     * @return mixed
+     */
+    public function link($rel = null)
+    {
+        if ($rel === null) {
+            return parent::__call('link', null);
+        }
+
+        // index link tags by their "rel" attribute.
+        $links = parent::__get('link');
+        if (!is_array($links)) {
+            if ($links instanceof Zend_Feed_Element) {
+                $links = array($links);
+            } else {
+                return $links;
+            }
+        }
+
+        foreach ($links as $link) {
+            if (empty($link['rel'])) {
+                $link['rel'] = 'alternate'; // see Atom 1.0 spec
+            }
+            if ($rel == $link['rel']) {
+                return $link['href'];
+            }
+        }
+
+        return null;
+    }
+
+}

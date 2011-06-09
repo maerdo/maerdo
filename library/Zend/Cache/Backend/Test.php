@@ -1,413 +1,413 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Testphp.phpphp php2php3php0php5php1php php2php0php1php0php-php1php0php-php0php7php php1php7php:php0php1php:php2php1Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Test.php 23051 2010-10-07 17:01:21Z mabe $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backendphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp/ExtendedInterfacephp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend_Interface
+ */
+require_once 'Zend/Cache/Backend/ExtendedInterface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backend
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend
+ */
+require_once 'Zend/Cache/Backend.php';
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Backendphp_Testphp extendsphp Zendphp_Cachephp_Backendphp implementsphp Zendphp_Cachephp_Backendphp_ExtendedInterface
-php{
-php php php php php/php*php*
-php php php php php php*php Availablephp options
-php php php php php php*
-php php php php php php*php php@varphp arrayphp availablephp options
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
+{
+    /**
+     * Available options
+     *
+     * @var array available options
+     */
+    protected $_options = array();
 
-php php php php php/php*php*
-php php php php php php*php Frontendphp orphp Corephp directives
-php php php php php php*
-php php php php php php*php php@varphp arrayphp directives
-php php php php php php*php/
-php php php php protectedphp php$php_directivesphp php=php arrayphp(php)php;
+    /**
+     * Frontend or Core directives
+     *
+     * @var array directives
+     */
+    protected $_directives = array();
 
-php php php php php/php*php*
-php php php php php php*php Arrayphp tophp logphp actions
-php php php php php php*
-php php php php php php*php php@varphp arrayphp php$php_log
-php php php php php php*php/
-php php php php privatephp php$php_logphp php=php arrayphp(php)php;
+    /**
+     * Array to log actions
+     *
+     * @var array $_log
+     */
+    private $_log = array();
 
-php php php php php/php*php*
-php php php php php php*php Currentphp indexphp forphp logphp array
-php php php php php php*
-php php php php php php*php php@varphp intphp php$php_index
-php php php php php php*php/
-php php php php privatephp php$php_indexphp php=php php0php;
+    /**
+     * Current index for log array
+     *
+     * @var int $_index
+     */
+    private $_index = 0;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp associativephp arrayphp ofphp options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'constructphp'php,php arrayphp(php$optionsphp)php)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array $options associative array of options
+     * @return void
+     */
+    public function __construct($options = array())
+    {
+        $this->_addLog('construct', array($options));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp frontendphp directives
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$directivesphp assocphp ofphp directives
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setDirectivesphp(php$directivesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'setDirectivesphp'php,php arrayphp(php$directivesphp)php)php;
-php php php php php}
+    /**
+     * Set the frontend directives
+     *
+     * @param  array $directives assoc of directives
+     * @return void
+     */
+    public function setDirectives($directives)
+    {
+        $this->_addLog('setDirectives', array($directives));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
-php php php php php php*
-php php php php php php*php Forphp thisphp testphp backendphp onlyphp,php ifphp php$idphp php=php=php php'falsephp'php,php thenphp thephp methodphp willphp returnphp false
-php php php php php php*php ifphp php$idphp php=php=php php'serializedphp'php,php thephp methodphp willphp returnphp aphp serializedphp array
-php php php php php php*php php(php'foophp'php elsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
-php php php php php php*php php@returnphp stringphp Cachedphp datasphp php(orphp falsephp)
-php php php php php php*php/
-php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'getphp'php,php arrayphp(php$idphp,php php$doNotTestCacheValidityphp)php)php;
+    /**
+     * Test if a cache is available for the given id and (if yes) return it (false else)
+     *
+     * For this test backend only, if $id == 'false', then the method will return false
+     * if $id == 'serialized', the method will return a serialized array
+     * ('foo' else)
+     *
+     * @param  string  $id                     Cache id
+     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
+     * @return string Cached datas (or false)
+     */
+    public function load($id, $doNotTestCacheValidity = false)
+    {
+        $this->_addLog('get', array($id, $doNotTestCacheValidity));
 
-php php php php php php php php ifphp php(php php$idphp php=php=php php'falsephp'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'dphp8php5php2php3bphp3eephp4php4php1php0php0php6php2php6php1eeffaphp5cphp3dphp3aphp0aphp7php'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'ephp8php3php2php4php9eaphp2php2php1php7php8php2php7php7dphp5befcphp2cphp5ephp2ephp9acephp'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php4php0fphp6php4php9bphp9php4php9php7php7cphp0aphp6ephp7php6php9php0php2ephp2aphp0bphp4php3php5php8php7php'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php8php8php1php6php1php9php8php9bphp7php3aphp4cbfdphp0bphp7php0php1cphp4php4php6php1php1php5aphp9php9php'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php2php0php5fcphp7php9cbaphp2php4fphp0fphp0php0php1php8ebphp9php2cphp7cphp8bphp3baphp4php'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php1php7php0php7php2php0ephp3php5fphp3php8php1php5php0bphp8php1php1fphp6php8aphp9php3php7fbphp0php4php2dphp'php)
-php php php php php php php php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$idphp=php=php'serializedphp'php)php php{
-php php php php php php php php php php php php returnphp serializephp(arrayphp(php'foophp'php)php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$idphp=php=php'serializedphp2php'php)php php{
-php php php php php php php php php php php php returnphp serializephp(arrayphp(php'headersphp'php php=php>php arrayphp(php)php,php php'dataphp'php php=php>php php'foophp'php)php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php php$idphp php=php=php php'php7php1php7php6php9fphp3php9php0php5php4fphp7php5php8php9php4php2php8php8ephp3php9php7dfphp0php4ephp4php4php5php'php php|php|php php$idphp php=php=php php'php6php1php5dphp2php2php2php6php1php9fbphp2php0bphp5php2php7php1php6php8php3php4php0cebdphp0php5php7php8php'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php8aphp0php2dphp2php1php8aphp5php1php6php5cphp4php6php7ephp7aphp5php7php4php7ccphp6bdphp4bphp6php'php php|php|php php$idphp php=php=php php'php6php4php8acaphp1php3php6php6php2php1php1dphp1php7cbfphp4php8ephp6php5dcphp5php7php0beephp'
-php php php php php php php php php php php|php|php php$idphp php=php=php php'php4aphp9php2php3efphp0php2dphp7fphp9php9php7caphp1php4dphp5php6dfeaephp2php5eaphp7php'php)php php{
-php php php php php php php php php php php php returnphp serializephp(arrayphp(php'foophp'php,php php'barphp'php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php'foophp'php;
-php php php php php}
+        if ( $id == 'false'
+          || $id == 'd8523b3ee441006261eeffa5c3d3a0a7'
+          || $id == 'e83249ea22178277d5befc2c5e2e9ace'
+          || $id == '40f649b94977c0a6e76902e2a0b43587'
+          || $id == '88161989b73a4cbfd0b701c446115a99'
+          || $id == '205fc79cba24f0f0018eb92c7c8b3ba4'
+          || $id == '170720e35f38150b811f68a937fb042d')
+        {
+            return false;
+        }
+        if ($id=='serialized') {
+            return serialize(array('foo'));
+        }
+        if ($id=='serialized2') {
+            return serialize(array('headers' => array(), 'data' => 'foo'));
+        }
+        if ( $id == '71769f39054f75894288e397df04e445' || $id == '615d222619fb20b527168340cebd0578'
+          || $id == '8a02d218a5165c467e7a5747cc6bd4b6' || $id == '648aca1366211d17cbf48e65dc570bee'
+          || $id == '4a923ef02d7f997ca14d56dfeae25ea7') {
+            return serialize(array('foo', 'bar'));
+        }
+        return 'foo';
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp orphp notphp php(forphp thephp givenphp idphp)
-php php php php php php*
-php php php php php php*php Forphp thisphp testphp backendphp onlyphp,php ifphp php$idphp php=php=php php'falsephp'php,php thenphp thephp methodphp willphp returnphp false
-php php php php php php*php php(php1php2php3php4php5php6php elsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp mixedphp|falsephp falsephp php(aphp cachephp isphp notphp availablephp)php orphp php"lastphp modifiedphp"php timestampphp php(intphp)php ofphp thephp availablephp cachephp record
-php php php php php php*php/
-php php php php publicphp functionphp testphp(php$idphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'testphp'php,php arrayphp(php$idphp)php)php;
-php php php php php php php php ifphp php(php$idphp=php=php'falsephp'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php(php$idphp=php=php'php3cphp4php3php9cphp9php2php2php2php0php9ephp2cbphp0bphp5php4dphp6deffccdphp7php5aphp'php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php1php2php3php4php5php6php;
-php php php php php}
+    /**
+     * Test if a cache is available or not (for the given id)
+     *
+     * For this test backend only, if $id == 'false', then the method will return false
+     * (123456 else)
+     *
+     * @param  string $id Cache id
+     * @return mixed|false false (a cache is not available) or "last modified" timestamp (int) of the available cache record
+     */
+    public function test($id)
+    {
+        $this->_addLog('test', array($id));
+        if ($id=='false') {
+            return false;
+        }
+        if (($id=='3c439c922209e2cb0b54d6deffccd75a')) {
+            return false;
+        }
+        return 123456;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Savephp somephp stringphp datasphp intophp aphp cachephp record
-php php php php php php*
-php php php php php php*php Forphp thisphp testphp backendphp onlyphp,php ifphp php$idphp php=php=php php'falsephp'php,php thenphp thephp methodphp willphp returnphp false
-php php php php php php*php php(truephp elsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$dataphp php php php php php php php php php php php php Datasphp tophp cache
-php php php php php php*php php@paramphp php stringphp php$idphp php php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php arrayphp php php$tagsphp php php php php php php php php php php php php Arrayphp ofphp stringsphp,php thephp cachephp recordphp willphp bephp taggedphp byphp eachphp stringphp entry
-php php php php php php*php php@paramphp php intphp php php php php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp savephp(php$dataphp,php php$idphp,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'savephp'php,php arrayphp(php$dataphp,php php$idphp,php php$tagsphp)php)php;
-php php php php php php php php ifphp php(php$idphp=php=php'falsephp'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Save some string datas into a cache record
+     *
+     * For this test backend only, if $id == 'false', then the method will return false
+     * (true else)
+     *
+     * @param  string $data             Datas to cache
+     * @param  string $id               Cache id
+     * @param  array  $tags             Array of strings, the cache record will be tagged by each string entry
+     * @param  int    $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @return boolean True if no problem
+     */
+    public function save($data, $id, $tags = array(), $specificLifetime = false)
+    {
+        $this->_addLog('save', array($data, $id, $tags));
+        if ($id=='false') {
+            return false;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp cachephp record
-php php php php php php*
-php php php php php php*php Forphp thisphp testphp backendphp onlyphp,php ifphp php$idphp php=php=php php'falsephp'php,php thenphp thephp methodphp willphp returnphp false
-php php php php php php*php php(truephp elsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp removephp(php$idphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'removephp'php,php arrayphp(php$idphp)php)php;
-php php php php php php php php ifphp php(php$idphp=php=php'falsephp'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Remove a cache record
+     *
+     * For this test backend only, if $id == 'false', then the method will return false
+     * (true else)
+     *
+     * @param  string $id Cache id
+     * @return boolean True if no problem
+     */
+    public function remove($id)
+    {
+        $this->_addLog('remove', array($id));
+        if ($id=='false') {
+            return false;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Cleanphp somephp cachephp records
-php php php php php php*
-php php php php php php*php Forphp thisphp testphp backendphp onlyphp,php ifphp php$modephp php=php=php php'falsephp'php,php thenphp thephp methodphp willphp returnphp false
-php php php php php php*php php(truephp elsephp)
-php php php php php php*
-php php php php php php*php Availablephp modesphp arephp php:
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp php(defaultphp)php php php php php=php>php removephp allphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp php php php php php php php php php php php php php php=php>php removephp toophp oldphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp php php php php php=php>php removephp cachephp entriesphp matchingphp allphp givenphp tags
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp php=php>php removephp cachephp entriesphp notphp php{matchingphp onephp ofphp thephp givenphp tagsphp}
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$modephp Cleanphp mode
-php php php php php php*php php@paramphp php arrayphp php php$tagsphp Arrayphp ofphp tags
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp cleanphp(php$modephp php=php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp,php php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_addLogphp(php'cleanphp'php,php arrayphp(php$modephp,php php$tagsphp)php)php;
-php php php php php php php php ifphp php(php$modephp=php=php'falsephp'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Clean some cache records
+     *
+     * For this test backend only, if $mode == 'false', then the method will return false
+     * (true else)
+     *
+     * Available modes are :
+     * Zend_Cache::CLEANING_MODE_ALL (default)    => remove all cache entries ($tags is not used)
+     * Zend_Cache::CLEANING_MODE_OLD              => remove too old cache entries ($tags is not used)
+     * Zend_Cache::CLEANING_MODE_MATCHING_TAG     => remove cache entries matching all given tags
+     *                                               ($tags can be an array of strings or a single string)
+     * Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG => remove cache entries not {matching one of the given tags}
+     *                                               ($tags can be an array of strings or a single string)
+     *
+     * @param  string $mode Clean mode
+     * @param  array  $tags Array of tags
+     * @return boolean True if no problem
+     */
+    public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
+    {
+        $this->_addLog('clean', array($mode, $tags));
+        if ($mode=='false') {
+            return false;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp lastphp log
-php php php php php php*
-php php php php php php*php php@returnphp stringphp Thephp lastphp log
-php php php php php php*php/
-php php php php publicphp functionphp getLastLogphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_logphp[php$thisphp-php>php_indexphp php-php php1php]php;
-php php php php php}
+    /**
+     * Get the last log
+     *
+     * @return string The last log
+     */
+    public function getLastLog()
+    {
+        return $this->_log[$this->_index - 1];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp logphp index
-php php php php php php*
-php php php php php php*php php@returnphp intphp Logphp index
-php php php php php php*php/
-php php php php publicphp functionphp getLogIndexphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_indexphp;
-php php php php php}
+    /**
+     * Get the log index
+     *
+     * @return int Log index
+     */
+    public function getLogIndex()
+    {
+        return $this->_index;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp completephp logphp array
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp Completephp logphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAllLogsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_logphp;
-php php php php php}
+    /**
+     * Get the complete log array
+     *
+     * @return array Complete log array
+     */
+    public function getAllLogs()
+    {
+        return $this->_log;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp truephp ifphp thephp automaticphp cleaningphp isphp availablephp forphp thephp backend
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isAutomaticCleaningAvailablephp(php)
-php php php php php{
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Return true if the automatic cleaning is available for the backend
+     *
+     * @return boolean
+     */
+    public function isAutomaticCleaningAvailable()
+    {
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp ids
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'prefixphp_idphp1php'php,php php'prefixphp_idphp2php'
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Return an array of stored cache ids
+     *
+     * @return array array of stored cache ids (string)
+     */
+    public function getIds()
+    {
+        return array(
+            'prefix_id1', 'prefix_id2'
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp tags
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp tagsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getTagsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'tagphp1php'php,php php'tagphp2php'
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Return an array of stored tags
+     *
+     * @return array array of stored tags (string)
+     */
+    public function getTags()
+    {
+        return array(
+            'tag1', 'tag2'
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$tagsphp php=php=php arrayphp(php'tagphp1php'php,php php'tagphp2php'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php'prefixphp_idphp1php'php,php php'prefixphp_idphp2php'php)php;
-php php php php php php php php php}
+    /**
+     * Return an array of stored cache ids which match given tags
+     *
+     * In case of multiple tags, a logical AND is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of matching cache ids (string)
+     */
+    public function getIdsMatchingTags($tags = array())
+    {
+        if ($tags == array('tag1', 'tag2')) {
+            return array('prefix_id1', 'prefix_id2');
+        }
 
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp donphp'tphp matchphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ORphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp notphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsNotMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$tagsphp php=php=php arrayphp(php'tagphp3php'php,php php'tagphp4php'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php'prefixphp_idphp3php'php,php php'prefixphp_idphp4php'php)php;
-php php php php php php php php php}
+    /**
+     * Return an array of stored cache ids which don't match given tags
+     *
+     * In case of multiple tags, a logical OR is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of not matching cache ids (string)
+     */
+    public function getIdsNotMatchingTags($tags = array())
+    {
+        if ($tags == array('tag3', 'tag4')) {
+            return array('prefix_id3', 'prefix_id4');
+        }
 
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp anyphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp anyphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsMatchingAnyTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$tagsphp php=php=php arrayphp(php'tagphp5php'php,php php'tagphp6php'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php'prefixphp_idphp5php'php,php php'prefixphp_idphp6php'php)php;
-php php php php php php php php php}
+    /**
+     * Return an array of stored cache ids which match any given tags
+     *
+     * In case of multiple tags, a logical AND is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of any matching cache ids (string)
+     */
+    public function getIdsMatchingAnyTags($tags = array())
+    {
+        if ($tags == array('tag5', 'tag6')) {
+            return array('prefix_id5', 'prefix_id6');
+        }
 
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp fillingphp percentagephp ofphp thephp backendphp storage
-php php php php php php*
-php php php php php php*php php@returnphp intphp integerphp betweenphp php0php andphp php1php0php0
-php php php php php php*php/
-php php php php publicphp functionphp getFillingPercentagephp(php)
-php php php php php{
-php php php php php php php php returnphp php5php0php;
-php php php php php}
+    /**
+     * Return the filling percentage of the backend storage
+     *
+     * @return int integer between 0 and 100
+     */
+    public function getFillingPercentage()
+    {
+        return 50;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp metadatasphp forphp thephp givenphp cachephp id
-php php php php php php*
-php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
-php php php php php php*php php-php expirephp php:php thephp expirephp timestamp
-php php php php php php*php php-php tagsphp php:php aphp stringphp arrayphp ofphp tags
-php php php php php php*php php-php mtimephp php:php timestampphp ofphp lastphp modificationphp time
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp cachephp id
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp metadatasphp php(falsephp ifphp thephp cachephp idphp isphp notphp foundphp)
-php php php php php php*php/
-php php php php publicphp functionphp getMetadatasphp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Return an array of metadatas for the given cache id
+     *
+     * The array must include these keys :
+     * - expire : the expire timestamp
+     * - tags : a string array of tags
+     * - mtime : timestamp of last modification time
+     *
+     * @param string $id cache id
+     * @return array array of metadatas (false if the cache id is not found)
+     */
+    public function getMetadatas($id)
+    {
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Givephp php(ifphp possiblephp)php anphp extraphp lifetimephp tophp thephp givenphp cachephp id
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp cachephp id
-php php php php php php*php php@paramphp intphp php$extraLifetime
-php php php php php php*php php@returnphp booleanphp truephp ifphp ok
-php php php php php php*php/
-php php php php publicphp functionphp touchphp(php$idphp,php php$extraLifetimephp)
-php php php php php{
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Give (if possible) an extra lifetime to the given cache id
+     *
+     * @param string $id cache id
+     * @param int $extraLifetime
+     * @return boolean true if ok
+     */
+    public function touch($id, $extraLifetime)
+    {
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp associativephp arrayphp ofphp capabilitiesphp php(booleansphp)php ofphp thephp backend
-php php php php php php*
-php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
-php php php php php php*php php-php automaticphp_cleaningphp php(isphp automatingphp cleaningphp necessaryphp)
-php php php php php php*php php-php tagsphp php(arephp tagsphp supportedphp)
-php php php php php php*php php-php expiredphp_readphp php(isphp itphp possiblephp tophp readphp expiredphp cachephp records
-php php php php php php*php php php php php php php php php php php php php php php php php php(forphp doNotTestCacheValidityphp optionphp forphp examplephp)php)
-php php php php php php*php php-php priorityphp doesphp thephp backendphp dealphp withphp priorityphp whenphp saving
-php php php php php php*php php-php infinitephp_lifetimephp php(isphp infinitephp lifetimephp canphp workphp withphp thisphp backendphp)
-php php php php php php*php php-php getphp_listphp php(isphp itphp possiblephp tophp getphp thephp listphp ofphp cachephp idsphp andphp thephp completephp listphp ofphp tagsphp)
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp associativephp ofphp withphp capabilities
-php php php php php php*php/
-php php php php publicphp functionphp getCapabilitiesphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'automaticphp_cleaningphp'php php=php>php truephp,
-php php php php php php php php php php php php php'tagsphp'php php php php php php php php php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'expiredphp_readphp'php php php php php php php php=php>php falsephp,
-php php php php php php php php php php php php php'priorityphp'php php php php php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'infinitephp_lifetimephp'php php php=php>php truephp,
-php php php php php php php php php php php php php'getphp_listphp'php php php php php php php php php php php php=php>php true
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Return an associative array of capabilities (booleans) of the backend
+     *
+     * The array must include these keys :
+     * - automatic_cleaning (is automating cleaning necessary)
+     * - tags (are tags supported)
+     * - expired_read (is it possible to read expired cache records
+     *                 (for doNotTestCacheValidity option for example))
+     * - priority does the backend deal with priority when saving
+     * - infinite_lifetime (is infinite lifetime can work with this backend)
+     * - get_list (is it possible to get the list of cache ids and the complete list of tags)
+     *
+     * @return array associative of with capabilities
+     */
+    public function getCapabilities()
+    {
+        return array(
+            'automatic_cleaning' => true,
+            'tags'               => true,
+            'expired_read'       => false,
+            'priority'           => true,
+            'infinite_lifetime'  => true,
+            'get_list'           => true
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp anphp eventphp tophp thephp logphp array
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$methodNamephp MethodName
-php php php php php php*php php@paramphp php arrayphp php php$argsphp php php php php php php Arguments
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_addLogphp(php$methodNamephp,php php$argsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp[php$thisphp-php>php_indexphp]php php=php arrayphp(
-php php php php php php php php php php php php php'methodNamephp'php php=php>php php$methodNamephp,
-php php php php php php php php php php php php php'argsphp'php php=php>php php$args
-php php php php php php php php php)php;
-php php php php php php php php php$thisphp-php>php_indexphp php=php php$thisphp-php>php_indexphp php+php php1php;
-php php php php php}
+    /**
+     * Add an event to the log array
+     *
+     * @param  string $methodName MethodName
+     * @param  array  $args       Arguments
+     * @return void
+     */
+    private function _addLog($methodName, $args)
+    {
+        $this->_log[$this->_index] = array(
+            'methodName' => $methodName,
+            'args' => $args
+        );
+        $this->_index = $this->_index + 1;
+    }
 
-php}
+}

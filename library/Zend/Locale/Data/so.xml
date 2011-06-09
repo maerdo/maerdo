@@ -1,559 +1,559 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php8php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"sophp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"afphp"php>Afrikaanays<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>Amhari<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>Carabi<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>Asaamiis<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>Azerbaijan<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>Beleruusiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>Bulgeeriyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>Bixaari<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>Bangaali<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>Bereton<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>Boosniya<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>Katalaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>Jeeg<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>Welsh<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>Danmarkays<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>Jarmal<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp_CHphp"php>Jarmalphp php(Iswiiserlaandphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>Giriik<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>Ingiriisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_GBphp"php>Ingiriisiphp php(Boqortooyadaphp Midowdayphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_USphp"php>Ingiriisiphp php(Maraykanphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>Isberento<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>Isbaanish<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp_php4php1php9php"php>Isbaanishkaphp Laatiinphp Ameerika<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp_ESphp"php>Isbaanishphp php(Isbaynphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>Istooniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>Basquu<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>Faarisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>Fiinlaandees<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>Tagalog<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>Farowsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>Faransiis<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp_CHphp"php>Faransiisphp php(Iswiiserlaandphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>Firiisiyanphp Galbeed<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>Ayrish<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>Iskotphp Giilik<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>Galiisiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>Guraani<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>Gujaraati<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>Cibri<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>Hindi<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>Korophp'eeshiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>Hangariyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>Armeeniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>Interlinguwa<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>Indunuusiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>Interlingue<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>Ayslandays<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>Talyaani<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>Jabbaaniis<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>Jafaaniis<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>Joorijiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>Kamboodhian<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>Kannadays<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>Kuuriyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>Kurdishka<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>Kirgiis<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>Laatiin<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>Lingala<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>Laothian<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>Lituwaanays<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>Laatfiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>Masadooniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>Malayalam<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>Mangooli<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>Maarati<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>Malaay<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>Maltiis<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>Nebaali<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>Holandays<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>Nowrwejiyanphp php(naynoroskiphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>Afphp Noorwiijiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>Okitaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>Oriya<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>Bunjaabi<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>Boolish<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>Bashtuu<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>Boortaqiis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Boortaqiiskaphp Baraasiil<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Boortaqiisphp php(Boortuqaalphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>Romanka<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>Ruush<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>Sanskrit<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>SINDHI<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>Serbiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>Sinhaleys<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>Isloofaak<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>Islofeeniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>Soomaali<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>Albaaniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>Seerbiyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>Sesooto<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>Suudaaniis<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>Swiidhis<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>Sawaaxili<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>Tamiil<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>Teluugu<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>Taaylandays<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>Tigrinya<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>Turkumaanish<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>Kiligoon<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>Turkish<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>Tiwiyan<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>UIGHUR<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>Yukreeniyaan<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>Afphp aanphp laphp aqoonphp amaphp aanphp saxphp ahayn<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>Urduu<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>Usbakis<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>Fiitnaamays<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>Hoosta<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>Yadhish<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>Jayniis<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>Zuulu<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>Laatiin<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>Aanphp laphp qorin<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>Farphp aanphp laphp aqoonphp amasephp aanphp saxnayn<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php1php4php"php>Afrikadaphp Bari<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php0php"php>Aasiyadaphp Bari<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php1php"php>Yurubtaphp Bari<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>Imaaraadkaphp Carabtaphp eephp Midoobay<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Afgaanistaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>Armeeniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angoola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>Osteeriya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>Awstraaliya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Boosniyaphp Heersigoviina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>Baarbadoos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Bangaalaphp-Deesh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Beljiyam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>Baxrayn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>Beniin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Braasiil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kanada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Swiiserlaand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>Jili<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Kameruun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Shiinaha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>Kuuba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Jekoslafaakiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Jarmal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Jabuuti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>Danmaark<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>Ikwadoor<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Masar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Isbeyn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Itoobiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Fiinlaand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Faransiis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Unitedphp Kingdom<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Giriinaada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Gini<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Giriigga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Korweeshiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Hangeri<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Indoneesiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Ayrlaanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>Israaphpʼiil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>Hindiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>Ciraaq<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>Iiraan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Iislaand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Talyaani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>Jameyka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Urdun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Jabbaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Kiiniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>Kamboodiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Kuuriyadaphp Waqooyi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Kuuriyadaphp Koonfureed<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>Kuwayt<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Kasaakhistaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Lubnaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Siirilaanka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Laybeeriya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Losooto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Luksemboorg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Laatfiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Liibiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>Marooko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>Moonako<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Makadooniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Maali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>Muritaaniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Maalda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Maaldiqeen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Malaawi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Meksiko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Musambiig<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namiibiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Nayjeeriya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>Nikaraaguwa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Noorweey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Neyuusilaand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>Cumaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>Filibiin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Bakistaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Booland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Bortuqaal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>Qadar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Rumaaniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Ruush<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>Sacuudiphp Carabiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Sudaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Iswidhan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>Siraaliyoon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Soomaaliya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Suuriya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>Jaad<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Toogo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>Taylaand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Tuniisiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Turki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>Tansaaniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>Ugaanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Qaramadaphp Midoobeyphp eephp Maraykanka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Faatikaan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>Fenisuweela<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Fiyetnaam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Yaman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Koonfurphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Saambiya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Simbaabwe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Farphp aanphp laphp aqoonphp amasephp aanphp saxnayn<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>Habeentiris<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>Lacag<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>Habeentiriskaphp yuhuudda<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>Habeentiriskaphp islaamka<php/typephp>
-php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>Habeentiriskaphp jabbaanka<php/typephp>
-php	php	<php/typesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp-zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Kob<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Lab<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Sad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Afr<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Sha<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Lix<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Tod<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Sid<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sag<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Tob<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>KIT<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>LIT<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Bishaphp Koobaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Bishaphp Labaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Bishaphp Saddexaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Bishaphp Afraad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Bishaphp Shanaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Bishaphp Lixaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Bishaphp Todobaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Bishaphp Sideedaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Bishaphp Sagaalaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Bishaphp Tobnaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Bishaphp Kowphp iyophp Tobnaad<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Bishaphp Labaphp iyophp Tobnaad<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>K<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>L<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>A<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>L<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>T<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>T<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>K<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>L<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Axa<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Isn<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Sal<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Arb<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Kha<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jim<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Sab<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Axad<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Isniin<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Salaaso<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Arbaco<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Khamiis<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jimco<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Sabti<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>A<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>I<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>S<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>A<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>K<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>J<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>S<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>sn<php/amphp>
-php	php	php	php	php<pmphp>gn<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>Ciisephp kaphp hor<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>Ciisephp kaphp dib<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php MMMMphp ddphp,php y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp-MMMphp-y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp/MMphp/yy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp a<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp a<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMddphp"php>ddphp/MM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMddphp"php>ddphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMphp"php>MMphp/yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	php	php<intervalFormatsphp>
-php	php	php	php	php	php	php<intervalFormatFallbackphp>php{php0php}php php-php php{php1php}<php/intervalFormatFallbackphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"dphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp-d<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp aphp php-php hphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp-hphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp:mmphp aphp php-php hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp:mmphp-hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>hphp:mmphp-hphp:mmphp a<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp:mmphp aphp php-php hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp:mmphp-hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>hphp:mmphp-hphp:mmphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>hphp aphp php-php hphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>hphp-hphp aphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp-M<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp php-php ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp php-php ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php ddphp/MMphp php-php Ephp,php ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php ddphp/MMphp php-php Ephp,php ddphp/MM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp-ddphp MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp MMMphp php-php ddphp MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php ddphp php-php Ephp,php ddphp MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php ddphp MMMphp php-php Ephp,php ddphp MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp-y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp/yyphp php-php MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>ddphp/MMphp/yyphp php-php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php ddphp/MMphp/yyphp php-php Ephp,php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php ddphp/MMphp/yyphp php-php Ephp,php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php ddphp/MMphp/yyphp php-php Ephp,php ddphp/MMphp/yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMMphp yphp php-php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>ddphp-ddphp MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>ddphp MMMphp php-php ddphp MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>ddphp MMMphp yphp php-php ddphp MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php MMMphp ddphp php-php Ephp,php MMMphp ddphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php MMMphp ddphp php-php Ephp,php MMMphp ddphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php MMMphp ddphp,php yphp php-php Ephp,php MMMphp ddphp,php y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	<php/intervalFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Farphp aanphp laphp aqoonphp amasephp aanphp saxnayn<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	<php/symbolsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"BRLphp"php>
-php	php	php	php	php<displayNamephp>Brazilianphp Real<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CNYphp"php>
-php	php	php	php	php<displayNamephp>Chinesephp Yuanphp Renminbi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DJFphp"php>
-php	php	php	php	php<displayNamephp>Faranphp Jabbuuti<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ETBphp"php>
-php	php	php	php	php<displayNamephp>Birtaphp Itoobbiya<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>Yuuroo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GBPphp"php>
-php	php	php	php	php<displayNamephp>Britishphp Poundphp Sterling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>Indianphp Rupee<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JPYphp"php>
-php	php	php	php	php<displayNamephp>Japanesephp Yen<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RUBphp"php>
-php	php	php	php	php<displayNamephp>Russianphp Ruble<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SOSphp"php>
-php	php	php	php	php<displayNamephp>Shilinphp soomaali<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USDphp"php>
-php	php	php	php	php<displayNamephp>Doollarphp maraykan<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XXXphp"php>
-php	php	php	php	php<displayNamephp>Lacagphp aanphp laphp qoonphp amaphp aanphp saxnayn<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>haaphp:h<php/yesstrphp>
-php	php	php	php<nostrphp>mayaphp:m<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.68 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="so"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="af">Afrikaanays</language>
+			<language type="am">Amhari</language>
+			<language type="ar">Carabi</language>
+			<language type="as">Asaamiis</language>
+			<language type="az">Azerbaijan</language>
+			<language type="be">Beleruusiyaan</language>
+			<language type="bg">Bulgeeriyaan</language>
+			<language type="bh">Bixaari</language>
+			<language type="bn">Bangaali</language>
+			<language type="br">Bereton</language>
+			<language type="bs">Boosniya</language>
+			<language type="ca">Katalaan</language>
+			<language type="cs">Jeeg</language>
+			<language type="cy">Welsh</language>
+			<language type="da">Danmarkays</language>
+			<language type="de">Jarmal</language>
+			<language type="de_CH">Jarmal (Iswiiserlaand)</language>
+			<language type="el">Giriik</language>
+			<language type="en">Ingiriisi</language>
+			<language type="en_GB">Ingiriisi (Boqortooyada Midowday)</language>
+			<language type="en_US">Ingiriisi (Maraykan)</language>
+			<language type="eo">Isberento</language>
+			<language type="es">Isbaanish</language>
+			<language type="es_419">Isbaanishka Laatiin Ameerika</language>
+			<language type="es_ES">Isbaanish (Isbayn)</language>
+			<language type="et">Istooniyaan</language>
+			<language type="eu">Basquu</language>
+			<language type="fa">Faarisi</language>
+			<language type="fi">Fiinlaandees</language>
+			<language type="fil">Tagalog</language>
+			<language type="fo">Farowsi</language>
+			<language type="fr">Faransiis</language>
+			<language type="fr_CH">Faransiis (Iswiiserlaand)</language>
+			<language type="fy">Firiisiyan Galbeed</language>
+			<language type="ga">Ayrish</language>
+			<language type="gd">Iskot Giilik</language>
+			<language type="gl">Galiisiyaan</language>
+			<language type="gn">Guraani</language>
+			<language type="gu">Gujaraati</language>
+			<language type="he">Cibri</language>
+			<language type="hi">Hindi</language>
+			<language type="hr">Koro'eeshiyaan</language>
+			<language type="hu">Hangariyaan</language>
+			<language type="hy">Armeeniyaan</language>
+			<language type="ia">Interlinguwa</language>
+			<language type="id">Indunuusiyaan</language>
+			<language type="ie">Interlingue</language>
+			<language type="is">Ayslandays</language>
+			<language type="it">Talyaani</language>
+			<language type="ja">Jabbaaniis</language>
+			<language type="jv">Jafaaniis</language>
+			<language type="ka">Joorijiyaan</language>
+			<language type="km">Kamboodhian</language>
+			<language type="kn">Kannadays</language>
+			<language type="ko">Kuuriyaan</language>
+			<language type="ku">Kurdishka</language>
+			<language type="ky">Kirgiis</language>
+			<language type="la">Laatiin</language>
+			<language type="ln">Lingala</language>
+			<language type="lo">Laothian</language>
+			<language type="lt">Lituwaanays</language>
+			<language type="lv">Laatfiyaan</language>
+			<language type="mk">Masadooniyaan</language>
+			<language type="ml">Malayalam</language>
+			<language type="mn">Mangooli</language>
+			<language type="mr">Maarati</language>
+			<language type="ms">Malaay</language>
+			<language type="mt">Maltiis</language>
+			<language type="ne">Nebaali</language>
+			<language type="nl">Holandays</language>
+			<language type="nn">Nowrwejiyan (naynoroski)</language>
+			<language type="no">Af Noorwiijiyaan</language>
+			<language type="oc">Okitaan</language>
+			<language type="or">Oriya</language>
+			<language type="pa">Bunjaabi</language>
+			<language type="pl">Boolish</language>
+			<language type="ps">Bashtuu</language>
+			<language type="pt">Boortaqiis</language>
+			<language type="pt_BR">Boortaqiiska Baraasiil</language>
+			<language type="pt_PT">Boortaqiis (Boortuqaal)</language>
+			<language type="ro">Romanka</language>
+			<language type="ru">Ruush</language>
+			<language type="sa">Sanskrit</language>
+			<language type="sd">SINDHI</language>
+			<language type="sh">Serbiyaan</language>
+			<language type="si">Sinhaleys</language>
+			<language type="sk">Isloofaak</language>
+			<language type="sl">Islofeeniyaan</language>
+			<language type="so">Soomaali</language>
+			<language type="sq">Albaaniyaan</language>
+			<language type="sr">Seerbiyaan</language>
+			<language type="st">Sesooto</language>
+			<language type="su">Suudaaniis</language>
+			<language type="sv">Swiidhis</language>
+			<language type="sw">Sawaaxili</language>
+			<language type="ta">Tamiil</language>
+			<language type="te">Teluugu</language>
+			<language type="th">Taaylandays</language>
+			<language type="ti">Tigrinya</language>
+			<language type="tk">Turkumaanish</language>
+			<language type="tlh">Kiligoon</language>
+			<language type="tr">Turkish</language>
+			<language type="tw">Tiwiyan</language>
+			<language type="ug">UIGHUR</language>
+			<language type="uk">Yukreeniyaan</language>
+			<language type="und">Af aan la aqoon ama aan sax ahayn</language>
+			<language type="ur">Urduu</language>
+			<language type="uz">Usbakis</language>
+			<language type="vi">Fiitnaamays</language>
+			<language type="xh">Hoosta</language>
+			<language type="yi">Yadhish</language>
+			<language type="zh">Jayniis</language>
+			<language type="zu">Zuulu</language>
+		</languages>
+		<scripts>
+			<script type="Latn">Laatiin</script>
+			<script type="Zxxx">Aan la qorin</script>
+			<script type="Zzzz">Far aan la aqoon amase aan saxnayn</script>
+		</scripts>
+		<territories>
+			<territory type="014">Afrikada Bari</territory>
+			<territory type="030">Aasiyada Bari</territory>
+			<territory type="151">Yurubta Bari</territory>
+			<territory type="AE">Imaaraadka Carabta ee Midoobay</territory>
+			<territory type="AF">Afgaanistaan</territory>
+			<territory type="AM">Armeeniya</territory>
+			<territory type="AO">Angoola</territory>
+			<territory type="AT">Osteeriya</territory>
+			<territory type="AU">Awstraaliya</territory>
+			<territory type="BA">Boosniya Heersigoviina</territory>
+			<territory type="BB">Baarbadoos</territory>
+			<territory type="BD">Bangaala-Deesh</territory>
+			<territory type="BE">Beljiyam</territory>
+			<territory type="BH">Baxrayn</territory>
+			<territory type="BJ">Beniin</territory>
+			<territory type="BR">Braasiil</territory>
+			<territory type="CA">Kanada</territory>
+			<territory type="CH">Swiiserlaand</territory>
+			<territory type="CL">Jili</territory>
+			<territory type="CM">Kameruun</territory>
+			<territory type="CN">Shiinaha</territory>
+			<territory type="CU">Kuuba</territory>
+			<territory type="CZ">Jekoslafaakiya</territory>
+			<territory type="DE">Jarmal</territory>
+			<territory type="DJ">Jabuuti</territory>
+			<territory type="DK">Danmaark</territory>
+			<territory type="EC">Ikwadoor</territory>
+			<territory type="EG">Masar</territory>
+			<territory type="ES">Isbeyn</territory>
+			<territory type="ET">Itoobiya</territory>
+			<territory type="FI">Fiinlaand</territory>
+			<territory type="FR">Faransiis</territory>
+			<territory type="GB">United Kingdom</territory>
+			<territory type="GD">Giriinaada</territory>
+			<territory type="GN">Gini</territory>
+			<territory type="GR">Giriigga</territory>
+			<territory type="HR">Korweeshiya</territory>
+			<territory type="HU">Hangeri</territory>
+			<territory type="ID">Indoneesiya</territory>
+			<territory type="IE">Ayrlaanda</territory>
+			<territory type="IL">Israaʼiil</territory>
+			<territory type="IN">Hindiya</territory>
+			<territory type="IQ">Ciraaq</territory>
+			<territory type="IR">Iiraan</territory>
+			<territory type="IS">Iislaand</territory>
+			<territory type="IT">Talyaani</territory>
+			<territory type="JM">Jameyka</territory>
+			<territory type="JO">Urdun</territory>
+			<territory type="JP">Jabbaan</territory>
+			<territory type="KE">Kiiniya</territory>
+			<territory type="KH">Kamboodiya</territory>
+			<territory type="KP">Kuuriyada Waqooyi</territory>
+			<territory type="KR">Kuuriyada Koonfureed</territory>
+			<territory type="KW">Kuwayt</territory>
+			<territory type="KZ">Kasaakhistaan</territory>
+			<territory type="LB">Lubnaan</territory>
+			<territory type="LK">Siirilaanka</territory>
+			<territory type="LR">Laybeeriya</territory>
+			<territory type="LS">Losooto</territory>
+			<territory type="LU">Luksemboorg</territory>
+			<territory type="LV">Laatfiya</territory>
+			<territory type="LY">Liibiya</territory>
+			<territory type="MA">Marooko</territory>
+			<territory type="MC">Moonako</territory>
+			<territory type="MK">Makadooniya</territory>
+			<territory type="ML">Maali</territory>
+			<territory type="MR">Muritaaniya</territory>
+			<territory type="MT">Maalda</territory>
+			<territory type="MV">Maaldiqeen</territory>
+			<territory type="MW">Malaawi</territory>
+			<territory type="MX">Meksiko</territory>
+			<territory type="MZ">Musambiig</territory>
+			<territory type="NA">Namiibiya</territory>
+			<territory type="NG">Nayjeeriya</territory>
+			<territory type="NI">Nikaraaguwa</territory>
+			<territory type="NO">Noorweey</territory>
+			<territory type="NZ">Neyuusilaand</territory>
+			<territory type="OM">Cumaan</territory>
+			<territory type="PH">Filibiin</territory>
+			<territory type="PK">Bakistaan</territory>
+			<territory type="PL">Booland</territory>
+			<territory type="PT">Bortuqaal</territory>
+			<territory type="QA">Qadar</territory>
+			<territory type="RO">Rumaaniya</territory>
+			<territory type="RU">Ruush</territory>
+			<territory type="SA">Sacuudi Carabiya</territory>
+			<territory type="SD">Sudaan</territory>
+			<territory type="SE">Iswidhan</territory>
+			<territory type="SL">Siraaliyoon</territory>
+			<territory type="SO">Soomaaliya</territory>
+			<territory type="SY">Suuriya</territory>
+			<territory type="TD">Jaad</territory>
+			<territory type="TG">Toogo</territory>
+			<territory type="TH">Taylaand</territory>
+			<territory type="TN">Tuniisiya</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">Turki</territory>
+			<territory type="TZ">Tansaaniya</territory>
+			<territory type="UG">Ugaanda</territory>
+			<territory type="US">Qaramada Midoobey ee Maraykanka</territory>
+			<territory type="VA">Faatikaan</territory>
+			<territory type="VE">Fenisuweela</territory>
+			<territory type="VN">Fiyetnaam</territory>
+			<territory type="YE">Yaman</territory>
+			<territory type="ZA">Koonfur Afrika</territory>
+			<territory type="ZM">Saambiya</territory>
+			<territory type="ZW">Simbaabwe</territory>
+			<territory type="ZZ">Far aan la aqoon amase aan saxnayn</territory>
+		</territories>
+		<keys>
+			<key type="calendar">Habeentiris</key>
+			<key type="currency">Lacag</key>
+		</keys>
+		<types>
+			<type type="hebrew" key="calendar">Habeentiriska yuhuudda</type>
+			<type type="islamic" key="calendar">Habeentiriska islaamka</type>
+			<type type="japanese" key="calendar">Habeentiriska jabbaanka</type>
+		</types>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a-z]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Kob</month>
+							<month type="2">Lab</month>
+							<month type="3">Sad</month>
+							<month type="4">Afr</month>
+							<month type="5">Sha</month>
+							<month type="6">Lix</month>
+							<month type="7">Tod</month>
+							<month type="8">Sid</month>
+							<month type="9">Sag</month>
+							<month type="10">Tob</month>
+							<month type="11">KIT</month>
+							<month type="12">LIT</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Bisha Koobaad</month>
+							<month type="2">Bisha Labaad</month>
+							<month type="3">Bisha Saddexaad</month>
+							<month type="4">Bisha Afraad</month>
+							<month type="5">Bisha Shanaad</month>
+							<month type="6">Bisha Lixaad</month>
+							<month type="7">Bisha Todobaad</month>
+							<month type="8">Bisha Sideedaad</month>
+							<month type="9">Bisha Sagaalaad</month>
+							<month type="10">Bisha Tobnaad</month>
+							<month type="11">Bisha Kow iyo Tobnaad</month>
+							<month type="12">Bisha Laba iyo Tobnaad</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">K</month>
+							<month type="2">L</month>
+							<month type="3">S</month>
+							<month type="4">A</month>
+							<month type="5">S</month>
+							<month type="6">L</month>
+							<month type="7">T</month>
+							<month type="8">S</month>
+							<month type="9">S</month>
+							<month type="10">T</month>
+							<month type="11">K</month>
+							<month type="12">L</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Axa</day>
+							<day type="mon">Isn</day>
+							<day type="tue">Sal</day>
+							<day type="wed">Arb</day>
+							<day type="thu">Kha</day>
+							<day type="fri">Jim</day>
+							<day type="sat">Sab</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Axad</day>
+							<day type="mon">Isniin</day>
+							<day type="tue">Salaaso</day>
+							<day type="wed">Arbaco</day>
+							<day type="thu">Khamiis</day>
+							<day type="fri">Jimco</day>
+							<day type="sat">Sabti</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">A</day>
+							<day type="mon">I</day>
+							<day type="tue">S</day>
+							<day type="wed">A</day>
+							<day type="thu">K</day>
+							<day type="fri">J</day>
+							<day type="sat">S</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>sn</am>
+				<pm>gn</pm>
+				<eras>
+					<eraAbbr>
+						<era type="0">Ciise ka hor</era>
+						<era type="1">Ciise ka dib</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, MMMM dd, y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>dd MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>dd-MMM-y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>dd/MM/yy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>h:mm:ss a zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>h:mm:ss a z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>h:mm:ss a</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>h:mm a</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="MMdd">dd/MM</dateFormatItem>
+						<dateFormatItem id="MMMMdd">dd MMMM</dateFormatItem>
+						<dateFormatItem id="yyMM">MM/yy</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
+					</availableFormats>
+					<intervalFormats>
+						<intervalFormatFallback>{0} - {1}</intervalFormatFallback>
+						<intervalFormatItem id="d">
+							<greatestDifference id="d">d-d</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="h">
+							<greatestDifference id="a">h a - h a</greatestDifference>
+							<greatestDifference id="h">h-h a</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hm">
+							<greatestDifference id="a">h:mm a - h:mm a</greatestDifference>
+							<greatestDifference id="h">h:mm-h:mm a</greatestDifference>
+							<greatestDifference id="m">h:mm-h:mm a</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hmv">
+							<greatestDifference id="a">h:mm a - h:mm a v</greatestDifference>
+							<greatestDifference id="h">h:mm-h:mm a v</greatestDifference>
+							<greatestDifference id="m">h:mm-h:mm a v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hv">
+							<greatestDifference id="a">h a - h a v</greatestDifference>
+							<greatestDifference id="h">h-h a v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="M">
+							<greatestDifference id="M">M-M</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="Md">
+							<greatestDifference id="d">dd/MM - dd/MM</greatestDifference>
+							<greatestDifference id="M">dd/MM - dd/MM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MEd">
+							<greatestDifference id="d">E, dd/MM - E, dd/MM</greatestDifference>
+							<greatestDifference id="M">E, dd/MM - E, dd/MM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMM">
+							<greatestDifference id="M">MMM-MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMd">
+							<greatestDifference id="d">dd-dd MMM</greatestDifference>
+							<greatestDifference id="M">dd MMM - dd MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMEd">
+							<greatestDifference id="d">E, dd - E, dd MMM</greatestDifference>
+							<greatestDifference id="M">E, dd MMM - E, dd MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="y">
+							<greatestDifference id="y">y-y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yM">
+							<greatestDifference id="M">MM/yy - MM/yy</greatestDifference>
+							<greatestDifference id="y">MM/yy - MM/yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMd">
+							<greatestDifference id="d">dd/MM/yy - dd/MM/yy</greatestDifference>
+							<greatestDifference id="M">dd/MM/yy - dd/MM/yy</greatestDifference>
+							<greatestDifference id="y">dd/MM/yy - dd/MM/yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMEd">
+							<greatestDifference id="d">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
+							<greatestDifference id="M">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
+							<greatestDifference id="y">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMM">
+							<greatestDifference id="M">MMM-MMM y</greatestDifference>
+							<greatestDifference id="y">MMM y - MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMd">
+							<greatestDifference id="d">dd-dd MMM y</greatestDifference>
+							<greatestDifference id="M">dd MMM - dd MMM y</greatestDifference>
+							<greatestDifference id="y">dd MMM y - dd MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMEd">
+							<greatestDifference id="d">E, MMM dd - E, MMM dd, y</greatestDifference>
+							<greatestDifference id="M">E, MMM dd - E, MMM dd, y</greatestDifference>
+							<greatestDifference id="y">E, MMM dd, y - E, MMM dd, y</greatestDifference>
+						</intervalFormatItem>
+					</intervalFormats>
+				</dateTimeFormats>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Far aan la aqoon amase aan saxnayn</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+		</symbols>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="BRL">
+				<displayName>Brazilian Real</displayName>
+			</currency>
+			<currency type="CNY">
+				<displayName>Chinese Yuan Renminbi</displayName>
+			</currency>
+			<currency type="DJF">
+				<displayName>Faran Jabbuuti</displayName>
+			</currency>
+			<currency type="ETB">
+				<displayName>Birta Itoobbiya</displayName>
+			</currency>
+			<currency type="EUR">
+				<displayName>Yuuroo</displayName>
+			</currency>
+			<currency type="GBP">
+				<displayName>British Pound Sterling</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>Indian Rupee</displayName>
+			</currency>
+			<currency type="JPY">
+				<displayName>Japanese Yen</displayName>
+			</currency>
+			<currency type="RUB">
+				<displayName>Russian Ruble</displayName>
+			</currency>
+			<currency type="SOS">
+				<displayName>Shilin soomaali</displayName>
+			</currency>
+			<currency type="USD">
+				<displayName>Doollar maraykan</displayName>
+			</currency>
+			<currency type="XXX">
+				<displayName>Lacag aan la qoon ama aan saxnayn</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>haa:h</yesstr>
+			<nostr>maya:m</nostr>
+		</messages>
+	</posix>
+</ldml>
 

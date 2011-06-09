@@ -1,221 +1,221 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@versionphp php php php php$Idphp:php Doctypephp.phpphp php2php3php5php3php9php php2php0php1php0php-php1php2php-php1php7php php2php3php:php5php0php:php1php4Zphp gammamatrixphp php$
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: Doctype.php 23539 2010-12-17 23:50:14Z gammamatrix $
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Registryphp php*php/
-requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
+/** Zend_Registry */
+require_once 'Zend/Registry.php';
 
-php/php*php*php Zendphp_Viewphp_Helperphp_Abstractphp.phpphp php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Abstractphp.phpphp'php;
+/** Zend_View_Helper_Abstract.php */
+require_once 'Zend/View/Helper/Abstract.php';
 
-php/php*php*
-php php*php Helperphp forphp settingphp andphp retrievingphp thephp doctype
-php php*
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Viewphp_Helperphp_Doctypephp extendsphp Zendphp_Viewphp_Helperphp_Abstract
-php{
-php php php php php/php*php*php#php@php+
-php php php php php php*php DocTypephp constants
-php php php php php php*php/
-php php php php constphp XHTMLphp1php1php php php php php php php php php php php php php php=php php'XHTMLphp1php1php'php;
-php php php php constphp XHTMLphp1php_STRICTphp php php php php php php php=php php'XHTMLphp1php_STRICTphp'php;
-php php php php constphp XHTMLphp1php_TRANSITIONALphp php=php php'XHTMLphp1php_TRANSITIONALphp'php;
-php php php php constphp XHTMLphp1php_FRAMESETphp php php php php php=php php'XHTMLphp1php_FRAMESETphp'php;
-php php php php constphp XHTMLphp1php_RDFAphp php php php php php php php php php=php php'XHTMLphp1php_RDFAphp'php;
-php php php php constphp XHTMLphp_BASICphp1php php php php php php php php php=php php'XHTMLphp_BASICphp1php'php;
-php php php php constphp XHTMLphp5php php php php php php php php php php php php php php php=php php'XHTMLphp5php'php;
-php php php php constphp HTMLphp4php_STRICTphp php php php php php php php php=php php'HTMLphp4php_STRICTphp'php;
-php php php php constphp HTMLphp4php_LOOSEphp php php php php php php php php php=php php'HTMLphp4php_LOOSEphp'php;
-php php php php constphp HTMLphp4php_FRAMESETphp php php php php php php=php php'HTMLphp4php_FRAMESETphp'php;
-php php php php constphp HTMLphp5php php php php php php php php php php php php php php php php=php php'HTMLphp5php'php;
-php php php php constphp CUSTOMphp_XHTMLphp php php php php php php php php=php php'CUSTOMphp_XHTMLphp'php;
-php php php php constphp CUSTOMphp php php php php php php php php php php php php php php=php php'CUSTOMphp'php;
-php php php php php/php*php*php#php@php-php*php/
+/**
+ * Helper for setting and retrieving the doctype
+ *
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
+{
+    /**#@+
+     * DocType constants
+     */
+    const XHTML11             = 'XHTML11';
+    const XHTML1_STRICT       = 'XHTML1_STRICT';
+    const XHTML1_TRANSITIONAL = 'XHTML1_TRANSITIONAL';
+    const XHTML1_FRAMESET     = 'XHTML1_FRAMESET';
+    const XHTML1_RDFA         = 'XHTML1_RDFA';
+    const XHTML_BASIC1        = 'XHTML_BASIC1';
+    const XHTML5              = 'XHTML5';
+    const HTML4_STRICT        = 'HTML4_STRICT';
+    const HTML4_LOOSE         = 'HTML4_LOOSE';
+    const HTML4_FRAMESET      = 'HTML4_FRAMESET';
+    const HTML5               = 'HTML5';
+    const CUSTOM_XHTML        = 'CUSTOM_XHTML';
+    const CUSTOM              = 'CUSTOM';
+    /**#@-*/
 
-php php php php php/php*php*
-php php php php php php*php Defaultphp DocType
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_defaultDoctypephp php=php selfphp:php:HTMLphp4php_LOOSEphp;
+    /**
+     * Default DocType
+     * @var string
+     */
+    protected $_defaultDoctype = self::HTML4_LOOSE;
 
-php php php php php/php*php*
-php php php php php php*php Registryphp containingphp currentphp doctypephp andphp mappings
-php php php php php php*php php@varphp ArrayObject
-php php php php php php*php/
-php php php php protectedphp php$php_registryphp;
+    /**
+     * Registry containing current doctype and mappings
+     * @var ArrayObject
+     */
+    protected $_registry;
 
-php php php php php/php*php*
-php php php php php php*php Registryphp keyphp inphp whichphp helperphp isphp stored
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_regKeyphp php=php php'Zendphp_Viewphp_Helperphp_Doctypephp'php;
+    /**
+     * Registry key in which helper is stored
+     * @var string
+     */
+    protected $_regKey = 'Zend_View_Helper_Doctype';
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Mapphp constantsphp tophp doctypephp stringsphp,php andphp setphp defaultphp doctype
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Registryphp:php:isRegisteredphp(php$thisphp-php>php_regKeyphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_registryphp php=php newphp ArrayObjectphp(arrayphp(
-php php php php php php php php php php php php php php php php php'doctypesphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp1php1php php php php php php php php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp php1php.php1php/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp1php1php/DTDphp/xhtmlphp1php1php.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp1php_STRICTphp php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp php1php.php0php Strictphp/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp1php/DTDphp/xhtmlphp1php-strictphp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp1php_TRANSITIONALphp php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp php1php.php0php Transitionalphp/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp1php/DTDphp/xhtmlphp1php-transitionalphp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp1php_FRAMESETphp php php php php php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp php1php.php0php Framesetphp/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp1php/DTDphp/xhtmlphp1php-framesetphp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp1php_RDFAphp php php php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp+RDFaphp php1php.php0php/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/MarkUpphp/DTDphp/xhtmlphp-rdfaphp-php1php.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp_BASICphp1php php php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp Basicphp php1php.php0php/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp-basicphp/xhtmlphp-basicphp1php0php.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:XHTMLphp5php php php php php php php php php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:HTMLphp4php_STRICTphp php php php php php php php php=php>php php'<php!DOCTYPEphp HTMLphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp HTMLphp php4php.php0php1php/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/strictphp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:HTMLphp4php_LOOSEphp php php php php php php php php php=php>php php'<php!DOCTYPEphp HTMLphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp HTMLphp php4php.php0php1php Transitionalphp/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/loosephp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:HTMLphp4php_FRAMESETphp php php php php php php=php>php php'<php!DOCTYPEphp HTMLphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp HTMLphp php4php.php0php1php Framesetphp/php/ENphp"php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/htmlphp4php/framesetphp.dtdphp"php>php'php,
-php php php php php php php php php php php php php php php php php php php php selfphp:php:HTMLphp5php php php php php php php php php php php php php php php php=php>php php'<php!DOCTYPEphp htmlphp>php'php,
-php php php php php php php php php php php php php php php php php)
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php php php php Zendphp_Registryphp:php:setphp(php$thisphp-php>php_regKeyphp,php php$thisphp-php>php_registryphp)php;
-php php php php php php php php php php php php php$thisphp-php>setDoctypephp(php$thisphp-php>php_defaultDoctypephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_registryphp php=php Zendphp_Registryphp:php:getphp(php$thisphp-php>php_regKeyphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * Map constants to doctype strings, and set default doctype
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        if (!Zend_Registry::isRegistered($this->_regKey)) {
+            $this->_registry = new ArrayObject(array(
+                'doctypes' => array(
+                    self::XHTML11             => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">',
+                    self::XHTML1_STRICT       => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+                    self::XHTML1_TRANSITIONAL => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+                    self::XHTML1_FRAMESET     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
+                    self::XHTML1_RDFA         => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">',
+                    self::XHTML_BASIC1        => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.0//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd">',
+                    self::XHTML5              => '<!DOCTYPE html>',
+                    self::HTML4_STRICT        => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
+                    self::HTML4_LOOSE         => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+                    self::HTML4_FRAMESET      => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
+                    self::HTML5               => '<!DOCTYPE html>',
+                )
+            ));
+            Zend_Registry::set($this->_regKey, $this->_registry);
+            $this->setDoctype($this->_defaultDoctype);
+        } else {
+            $this->_registry = Zend_Registry::get($this->_regKey);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp orphp retrievephp doctype
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$doctype
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Doctype
-php php php php php php*php/
-php php php php publicphp functionphp doctypephp(php$doctypephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$doctypephp)php php{
-php php php php php php php php php php php php switchphp php(php$doctypephp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp1php1php:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp1php_STRICTphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp1php_TRANSITIONALphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp1php_FRAMESETphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp_BASICphp1php:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp1php_RDFAphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:XHTMLphp5php:
-php php php php php php php php php php php php php php php php casephp selfphp:php:HTMLphp4php_STRICTphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:HTMLphp4php_LOOSEphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:HTMLphp4php_FRAMESETphp:
-php php php php php php php php php php php php php php php php casephp selfphp:php:HTMLphp5php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setDoctypephp(php$doctypephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php ifphp php(substrphp(php$doctypephp,php php0php,php php9php)php php!php=php php'<php!DOCTYPEphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Thephp specifiedphp doctypephp isphp malformedphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(stristrphp(php$doctypephp,php php'xhtmlphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:CUSTOMphp_XHTMLphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:CUSTOMphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setDoctypephp(php$typephp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_registryphp[php'doctypesphp'php]php[php$typephp]php php=php php$doctypephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Set or retrieve doctype
+     *
+     * @param  string $doctype
+     * @return Zend_View_Helper_Doctype
+     */
+    public function doctype($doctype = null)
+    {
+        if (null !== $doctype) {
+            switch ($doctype) {
+                case self::XHTML11:
+                case self::XHTML1_STRICT:
+                case self::XHTML1_TRANSITIONAL:
+                case self::XHTML1_FRAMESET:
+                case self::XHTML_BASIC1:
+                case self::XHTML1_RDFA:
+                case self::XHTML5:
+                case self::HTML4_STRICT:
+                case self::HTML4_LOOSE:
+                case self::HTML4_FRAMESET:
+                case self::HTML5:
+                    $this->setDoctype($doctype);
+                    break;
+                default:
+                    if (substr($doctype, 0, 9) != '<!DOCTYPE') {
+                        require_once 'Zend/View/Exception.php';
+                        $e = new Zend_View_Exception('The specified doctype is malformed');
+                        $e->setView($this->view);
+                        throw $e;
+                    }
+                    if (stristr($doctype, 'xhtml')) {
+                        $type = self::CUSTOM_XHTML;
+                    } else {
+                        $type = self::CUSTOM;
+                    }
+                    $this->setDoctype($type);
+                    $this->_registry['doctypes'][$type] = $doctype;
+                    break;
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp doctype
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$doctype
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_Doctype
-php php php php php php*php/
-php php php php publicphp functionphp setDoctypephp(php$doctypephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_registryphp[php'doctypephp'php]php php=php php$doctypephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set doctype
+     *
+     * @param  string $doctype
+     * @return Zend_View_Helper_Doctype
+     */
+    public function setDoctype($doctype)
+    {
+        $this->_registry['doctype'] = $doctype;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp doctype
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDoctypephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_registryphp[php'doctypephp'php]php;
-php php php php php}
+    /**
+     * Retrieve doctype
+     *
+     * @return string
+     */
+    public function getDoctype()
+    {
+        return $this->_registry['doctype'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp doctypephp php=php>php stringphp mappings
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getDoctypesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_registryphp[php'doctypesphp'php]php;
-php php php php php}
+    /**
+     * Get doctype => string mappings
+     *
+     * @return array
+     */
+    public function getDoctypes()
+    {
+        return $this->_registry['doctypes'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp doctypephp XHTMLphp?
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isXhtmlphp(php)
-php php php php php{
-php php php php php php php php returnphp php(stristrphp(php$thisphp-php>getDoctypephp(php)php,php php'xhtmlphp'php)php php?php truephp php:php falsephp)php;
-php php php php php}
-php php php php 
-php php php php php/php*php*
-php php php php php php*php Isphp doctypephp HTMLphp5php?php php(HeadMetaphp usesphp thisphp forphp validationphp)
-php php php php php php*
-php php php php php php*php php@returnphp booleean
-php php php php php php*php/
-php php php php publicphp functionphp isHtmlphp5php(php)php php{
-php php php php php php php php returnphp php(stristrphp(php$thisphp-php>doctypephp(php)php,php php'<php!DOCTYPEphp htmlphp>php'php)php php?php truephp php:php falsephp)php;
-php php php php php}
-php php php php 
-php php php php php/php*php*
-php php php php php php*php Isphp doctypephp RDFaphp?
-php php php php php php*
-php php php php php php*php php@returnphp booleean
-php php php php php php*php/
-php php php php publicphp functionphp isRdfaphp(php)php php{
-php php php php php php php php returnphp php(stristrphp(php$thisphp-php>getDoctypephp(php)php,php php'rdfaphp'php)php php?php truephp php:php falsephp)php;
-php php php php php}
+    /**
+     * Is doctype XHTML?
+     *
+     * @return boolean
+     */
+    public function isXhtml()
+    {
+        return (stristr($this->getDoctype(), 'xhtml') ? true : false);
+    }
+    
+    /**
+     * Is doctype HTML5? (HeadMeta uses this for validation)
+     *
+     * @return booleean
+     */
+    public function isHtml5() {
+        return (stristr($this->doctype(), '<!DOCTYPE html>') ? true : false);
+    }
+    
+    /**
+     * Is doctype RDFa?
+     *
+     * @return booleean
+     */
+    public function isRdfa() {
+        return (stristr($this->getDoctype(), 'rdfa') ? true : false);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Stringphp representationphp ofphp doctype
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php php$doctypesphp php=php php$thisphp-php>getDoctypesphp(php)php;
-php php php php php php php php returnphp php$doctypesphp[php$thisphp-php>getDoctypephp(php)php]php;
-php php php php php}
-php}
+    /**
+     * String representation of doctype
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $doctypes = $this->getDoctypes();
+        return $doctypes[$this->getDoctype()];
+    }
+}

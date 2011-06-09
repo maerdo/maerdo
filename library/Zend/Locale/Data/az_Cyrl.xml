@@ -1,84 +1,84 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php1php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php4php php$php"php/php>
-php	php	php<languagephp typephp=php"azphp"php/php>
-php	php	php<scriptphp typephp=php"Cyrlphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"azphp"php>phpАphpзphpәphpрphpбphpаphpјphpҹphpаphpн<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>phpаphpлphpмphpаphpнphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>phpиphpнphpҝphpиphpлphpиphpсphpҹphpә<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>phpиphpсphpпphpаphpнphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>phpфphpрphpаphpнphpсphpыphpзphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>phpиphpтphpаphpлphpјphpаphpнphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>phpјphpаphpпphpоphpнphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>phpпphpоphpрphpтphpуphpгphpаphpлphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>phpрphpуphpсphpҹphpа<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>phpчphpиphpнphpҹphpә<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>phpАphpзphpәphpрphpбphpаphpјphpҹphpаphpн<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>phpБphpрphpаphpзphpиphpлphpиphpјphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>phpЧphpиphpн<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>phpАphpлphpмphpаphpнphpиphpјphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>phpФphpрphpаphpнphpсphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>phpҺphpиphpнphpдphpиphpсphpтphpаphpн<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>phpИphpтphpаphpлphpиphpјphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>phpЈphpаphpпphpоphpнphpиphpјphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>phpРphpуphpсphpиphpјphpа<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>phpАphpмphpеphpрphpиphpкphpаphp phpБphpиphpрphpлphpәphpшphpмphpиphpшphp phpШphpтphpаphpтphpлphpаphpрphpы<php/territoryphp>
-php	php	<php/territoriesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[phpаphp phpәphp phpбphp-phpгphp phpғphp phpдphp-phpйphp phpјphp phpкphp phpҝphp phpлphp-phpоphp phpөphp phpпphp-phpуphp phpүphp phpфphp phpхphp phpһphp phpчphp phpҹphp phpшphp phpыphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[phpцphp phpщphp phpъphp phpьphp-phpяphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpјphpаphpнphpвphpаphpр<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpфphpеphpвphpрphpаphpл<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpмphpаphpрphpт<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpаphpпphpрphpеphpл<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpмphpаphpй<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpиphpјphpуphpн<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpиphpјphpуphpл<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpаphpвphpгphpуphpсphpт<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpсphpеphpнphpтphpјphpаphpбphpр<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpоphpкphpтphpјphpаphpбphpр<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpнphpоphpјphpаphpбphpр<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpдphpеphpкphpаphpбphpр<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpбphpаphpзphpаphpр<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpбphpаphpзphpаphpрphp phpеphpрphpтphpәphpсphpи<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpчphpәphpрphpшphpәphpнphpбphpәphp phpаphpхphpшphpаphpмphpы<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpчphpәphpрphpшphpәphpнphpбphpә<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpҹphpүphpмphpәphp phpаphpхphpшphpаphpмphpы<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpҹphpүphpмphpә<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpшphpәphpнphpбphpә<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"AZNphp"php>
-php	php	php	php	php<displayNamephp>phpмphpаphpнphpаphpт<php/displayNamephp>
-php	php	php	php	php<symbolphp>phpмphpаphpнphp.<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.31 $"/>
+		<generation date="$Date: 2009/05/05 23:06:34 $"/>
+		<language type="az"/>
+		<script type="Cyrl"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="az">Азәрбајҹан</language>
+			<language type="de">алманҹа</language>
+			<language type="en">инҝилисҹә</language>
+			<language type="es">испанҹа</language>
+			<language type="fr">франсызҹа</language>
+			<language type="it">италјанҹа</language>
+			<language type="ja">јапонҹа</language>
+			<language type="pt">португалҹа</language>
+			<language type="ru">русҹа</language>
+			<language type="zh">чинҹә</language>
+		</languages>
+		<territories>
+			<territory type="AZ">Азәрбајҹан</territory>
+			<territory type="BR">Бразилија</territory>
+			<territory type="CN">Чин</territory>
+			<territory type="DE">Алманија</territory>
+			<territory type="FR">Франса</territory>
+			<territory type="IN">Һиндистан</territory>
+			<territory type="IT">Италија</territory>
+			<territory type="JP">Јапонија</territory>
+			<territory type="RU">Русија</territory>
+			<territory type="US">Америка Бирләшмиш Штатлары</territory>
+		</territories>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[а ә б-г ғ д-й ј к ҝ л-о ө п-у ү ф х һ ч ҹ ш ы]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ц щ ъ ь-я]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="wide">
+							<month type="1">јанвар</month>
+							<month type="2">феврал</month>
+							<month type="3">март</month>
+							<month type="4">апрел</month>
+							<month type="5">май</month>
+							<month type="6">ијун</month>
+							<month type="7">ијул</month>
+							<month type="8">август</month>
+							<month type="9">сентјабр</month>
+							<month type="10">октјабр</month>
+							<month type="11">нојабр</month>
+							<month type="12">декабр</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="wide">
+							<day type="sun">базар</day>
+							<day type="mon">базар ертәси</day>
+							<day type="tue">чәршәнбә ахшамы</day>
+							<day type="wed">чәршәнбә</day>
+							<day type="thu">ҹүмә ахшамы</day>
+							<day type="fri">ҹүмә</day>
+							<day type="sat">шәнбә</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+			</calendar>
+		</calendars>
+	</dates>
+	<numbers>
+		<currencies>
+			<currency type="AZN">
+				<displayName>манат</displayName>
+				<symbol>ман.</symbol>
+			</currency>
+		</currencies>
+	</numbers>
+</ldml>

@@ -1,229 +1,229 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php7php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"yophp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"afphp"php>Edephp Afrikani<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>Edephp Amharic<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>Edephp Arabia<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>Tiphp Assam<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>Edephp Azerbaijani<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>Edephp Belarusi<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>Edephp Bulgaria<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>Edephp Bihari<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>Edephp Bengali<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>Bretoni<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>Edephp Bosnia<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>Edephp Catala<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>Orilephp-edephp Tseki<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>Edephp Welshi<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>Èdèphp Ilẹphp̀php Denmark<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>Èdèphp Ilẹphp̀php Germany<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>giriki<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>Èdèphp Gẹphp̀ẹphṕsì<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>Edephp Esperanto<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>Panyan<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>Edephp Estonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>Edephp Baski<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>Edephp Persia<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>Finisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>Edephp Tagalogi<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>Edephp Faroesi<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>Èdèphp Faransé<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>Edephp Frisia<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>Edephp Ireland<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>Edephp Gaelikphp tiphp Iluphp Scotland<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>Edephp Galicia<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>Guarani<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>Edephp Gujarati<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>Heberu<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>Edephp Hindi<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>Edephp Kroatia<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>Edephp Hungaria<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>Ilephp Armenia<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>Edephp pipo<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>Edephp Indonesia<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>Iruphp Ede<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>Edephp Icelandic<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>Italiani<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>Japanisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>Edephp Javana<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>Edephp Georgia<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>Cambodian<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>Edephp Kannada<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>Korean<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>Kurdish<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>Kyrgyz<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>Edephp Latini<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>Ta<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>araphp Laos<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>Edephp Lithuania<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>Edephp Latvianu<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>Edephp Macedonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>Edephp Malayalami<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>araphp Mangoli<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>Edephp marathi<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>Edephp Malaya<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>Edephp Malta<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>Edephp Nepali<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>Edephp Dutch<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>Edephp Norway<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>Edephp Occitani<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>Oriya<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>Edephp Punjabi<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>Èdèphp Ilẹphp̀php Polandi<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>Pashto<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>Edephp Portugi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Edephp Portugal<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>Edephp Romania<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>Edephp Roosia<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>edephp awonphp araphp Indo<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>Sindhi<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>Serbophp-Croatiani<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>Edephp Sinhalese<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>Edephp Slovaki<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>Edephp Slovenia<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>araphp Somalia<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>Edephp Albania<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>Edephp Serbia<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>Sesoto<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>Edephp Sudani<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>suwidiisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>Edephp Swahili<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>Edephp Tamili<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>Edephp Telugu<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>Edephp Thai<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>Edephp Tigrinya<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>Turkmen<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>Edephp Klingoni<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>Edephp Turkey<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>Twi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>Uighur<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>Edephp Ukrani<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>Edephp Urdu<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>Edephp Uzbek<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>Edephp Vietnamu<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>Edephp Xhosa<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>Yiddishi<php/languagephp>
-php	php	php	php<languagephp typephp=php"yophp"php>Yorùbá<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>Edephp Zulu<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>BW<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>NG<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Metric<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>US<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp àphp bphp dphp ephp éphp èphp ẹphp php{ẹphp\uphp0php3php0php1php}php php{ẹphp\uphp0php3php0php0php}php fphp gphp php{gbphp}php hphp iphp íphp ìphp jphp-ophp óphp òphp ọphp php{ọphp\uphp0php3php0php1php}php php{ọphp\uphp0php3php0php0php}php pphp rphp sphp ṣphp tphp uphp úphp ùphp wphp yphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[cphp qphp vphp xphp zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Ṣẹphṕrẹphṕ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Èrèlè<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Ẹrẹphp̀nà<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Ìgbé<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Ẹphp̀bibi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Òkúdu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Agẹmọ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Ògún<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Owewe<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Ọphp̀wàrà<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Bélú<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Ọphp̀pẹphp̀<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Oṣùphp Ṣẹphṕrẹphṕ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Oṣùphp Èrèlè<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Oṣùphp Ẹrẹphp̀nà<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Oṣùphp Ìgbé<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Oṣùphp Ẹphp̀bibi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Oṣùphp Òkúdu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Oṣùphp Agẹmọ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Oṣùphp Ògún<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Oṣùphp Owewe<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Oṣùphp Ọphp̀wàrà<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Oṣùphp Bélú<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Oṣùphp Ọphp̀pẹphp̀<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Àìkú<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Ajé<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Ìsẹphṕgun<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Ọjọphṕrú<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Àṣẹphp̀ṣẹphp̀dáiyé<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Ẹtì<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Àbámẹphṕta<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Ọjọphṕphp Àìkú<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Ọjọphṕphp Ajé<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Ọjọphṕphp Ìsẹphṕgun<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Ọjọphṕrú<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Ọjọphṕphp Àṣẹphp̀ṣẹphp̀dáiyé<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Ọjọphṕphp Ẹtì<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Ọjọphṕphp Àbámẹphṕta<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<amphp>àárọphp̀<php/amphp>
-php	php	php	php	php<pmphp>ọphp̀sán<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>Sajuphp Kristi<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>Lehinphp Kristi<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>SK<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>LK<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Ọjọphṕ<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php3php"php>íjẹrin<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>íjẹta<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>ànón<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>ọphp̀ní<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>ọphp̣php̀la<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>òtúùnla<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php3php"php>ọjọphṕmẹphṕrinphp-òní<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Africaphp/php​Lagosphp/php​exemplarCity<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"NGNphp"php>
-php	php	php	php	php<displayNamephp>Naira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.37 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="yo"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="af">Ede Afrikani</language>
+			<language type="am">Ede Amharic</language>
+			<language type="ar">Ede Arabia</language>
+			<language type="as">Ti Assam</language>
+			<language type="az">Ede Azerbaijani</language>
+			<language type="be">Ede Belarusi</language>
+			<language type="bg">Ede Bulgaria</language>
+			<language type="bh">Ede Bihari</language>
+			<language type="bn">Ede Bengali</language>
+			<language type="br">Bretoni</language>
+			<language type="bs">Ede Bosnia</language>
+			<language type="ca">Ede Catala</language>
+			<language type="cs">Orile-ede Tseki</language>
+			<language type="cy">Ede Welshi</language>
+			<language type="da">Èdè Ilẹ̀ Denmark</language>
+			<language type="de">Èdè Ilẹ̀ Germany</language>
+			<language type="el">giriki</language>
+			<language type="en">Èdè Gẹ̀ẹ́sì</language>
+			<language type="eo">Ede Esperanto</language>
+			<language type="es">Panyan</language>
+			<language type="et">Ede Estonia</language>
+			<language type="eu">Ede Baski</language>
+			<language type="fa">Ede Persia</language>
+			<language type="fi">Finisi</language>
+			<language type="fil">Ede Tagalogi</language>
+			<language type="fo">Ede Faroesi</language>
+			<language type="fr">Èdè Faransé</language>
+			<language type="fy">Ede Frisia</language>
+			<language type="ga">Ede Ireland</language>
+			<language type="gd">Ede Gaelik ti Ilu Scotland</language>
+			<language type="gl">Ede Galicia</language>
+			<language type="gn">Guarani</language>
+			<language type="gu">Ede Gujarati</language>
+			<language type="he">Heberu</language>
+			<language type="hi">Ede Hindi</language>
+			<language type="hr">Ede Kroatia</language>
+			<language type="hu">Ede Hungaria</language>
+			<language type="hy">Ile Armenia</language>
+			<language type="ia">Ede pipo</language>
+			<language type="id">Ede Indonesia</language>
+			<language type="ie">Iru Ede</language>
+			<language type="is">Ede Icelandic</language>
+			<language type="it">Italiani</language>
+			<language type="ja">Japanisi</language>
+			<language type="jv">Ede Javana</language>
+			<language type="ka">Ede Georgia</language>
+			<language type="km">Cambodian</language>
+			<language type="kn">Ede Kannada</language>
+			<language type="ko">Korean</language>
+			<language type="ku">Kurdish</language>
+			<language type="ky">Kyrgyz</language>
+			<language type="la">Ede Latini</language>
+			<language type="ln">Ta</language>
+			<language type="lo">ara Laos</language>
+			<language type="lt">Ede Lithuania</language>
+			<language type="lv">Ede Latvianu</language>
+			<language type="mk">Ede Macedonia</language>
+			<language type="ml">Ede Malayalami</language>
+			<language type="mn">ara Mangoli</language>
+			<language type="mr">Ede marathi</language>
+			<language type="ms">Ede Malaya</language>
+			<language type="mt">Ede Malta</language>
+			<language type="ne">Ede Nepali</language>
+			<language type="nl">Ede Dutch</language>
+			<language type="no">Ede Norway</language>
+			<language type="oc">Ede Occitani</language>
+			<language type="or">Oriya</language>
+			<language type="pa">Ede Punjabi</language>
+			<language type="pl">Èdè Ilẹ̀ Polandi</language>
+			<language type="ps">Pashto</language>
+			<language type="pt">Ede Portugi</language>
+			<language type="pt_PT">Ede Portugal</language>
+			<language type="ro">Ede Romania</language>
+			<language type="ru">Ede Roosia</language>
+			<language type="sa">ede awon ara Indo</language>
+			<language type="sd">Sindhi</language>
+			<language type="sh">Serbo-Croatiani</language>
+			<language type="si">Ede Sinhalese</language>
+			<language type="sk">Ede Slovaki</language>
+			<language type="sl">Ede Slovenia</language>
+			<language type="so">ara Somalia</language>
+			<language type="sq">Ede Albania</language>
+			<language type="sr">Ede Serbia</language>
+			<language type="st">Sesoto</language>
+			<language type="su">Ede Sudani</language>
+			<language type="sv">suwidiisi</language>
+			<language type="sw">Ede Swahili</language>
+			<language type="ta">Ede Tamili</language>
+			<language type="te">Ede Telugu</language>
+			<language type="th">Ede Thai</language>
+			<language type="ti">Ede Tigrinya</language>
+			<language type="tk">Turkmen</language>
+			<language type="tlh">Ede Klingoni</language>
+			<language type="tr">Ede Turkey</language>
+			<language type="tw">Twi</language>
+			<language type="ug">Uighur</language>
+			<language type="uk">Ede Ukrani</language>
+			<language type="ur">Ede Urdu</language>
+			<language type="uz">Ede Uzbek</language>
+			<language type="vi">Ede Vietnamu</language>
+			<language type="xh">Ede Xhosa</language>
+			<language type="yi">Yiddishi</language>
+			<language type="yo">Yorùbá</language>
+			<language type="zu">Ede Zulu</language>
+		</languages>
+		<territories>
+			<territory type="BW">BW</territory>
+			<territory type="NG">NG</territory>
+			<territory type="TO">Tonga</territory>
+		</territories>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">Metric</measurementSystemName>
+			<measurementSystemName type="US">US</measurementSystemName>
+		</measurementSystemNames>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a á à b d e é è ẹ {ẹ\u0301} {ẹ\u0300} f g {gb} h i í ì j-o ó ò ọ {ọ\u0301} {ọ\u0300} p r s ṣ t u ú ù w y]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[c q v x z]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Ṣẹ́rẹ́</month>
+							<month type="2">Èrèlè</month>
+							<month type="3">Ẹrẹ̀nà</month>
+							<month type="4">Ìgbé</month>
+							<month type="5">Ẹ̀bibi</month>
+							<month type="6">Òkúdu</month>
+							<month type="7">Agẹmọ</month>
+							<month type="8">Ògún</month>
+							<month type="9">Owewe</month>
+							<month type="10">Ọ̀wàrà</month>
+							<month type="11">Bélú</month>
+							<month type="12">Ọ̀pẹ̀</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Oṣù Ṣẹ́rẹ́</month>
+							<month type="2">Oṣù Èrèlè</month>
+							<month type="3">Oṣù Ẹrẹ̀nà</month>
+							<month type="4">Oṣù Ìgbé</month>
+							<month type="5">Oṣù Ẹ̀bibi</month>
+							<month type="6">Oṣù Òkúdu</month>
+							<month type="7">Oṣù Agẹmọ</month>
+							<month type="8">Oṣù Ògún</month>
+							<month type="9">Oṣù Owewe</month>
+							<month type="10">Oṣù Ọ̀wàrà</month>
+							<month type="11">Oṣù Bélú</month>
+							<month type="12">Oṣù Ọ̀pẹ̀</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Àìkú</day>
+							<day type="mon">Ajé</day>
+							<day type="tue">Ìsẹ́gun</day>
+							<day type="wed">Ọjọ́rú</day>
+							<day type="thu">Àṣẹ̀ṣẹ̀dáiyé</day>
+							<day type="fri">Ẹtì</day>
+							<day type="sat">Àbámẹ́ta</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Ọjọ́ Àìkú</day>
+							<day type="mon">Ọjọ́ Ajé</day>
+							<day type="tue">Ọjọ́ Ìsẹ́gun</day>
+							<day type="wed">Ọjọ́rú</day>
+							<day type="thu">Ọjọ́ Àṣẹ̀ṣẹ̀dáiyé</day>
+							<day type="fri">Ọjọ́ Ẹtì</day>
+							<day type="sat">Ọjọ́ Àbámẹ́ta</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<am>àárọ̀</am>
+				<pm>ọ̀sán</pm>
+				<eras>
+					<eraNames>
+						<era type="0">Saju Kristi</era>
+						<era type="1">Lehin Kristi</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">SK</era>
+						<era type="1">LK</era>
+					</eraAbbr>
+				</eras>
+				<fields>
+					<field type="day">
+						<displayName>Ọjọ́</displayName>
+						<relative type="-3">íjẹrin</relative>
+						<relative type="-2">íjẹta</relative>
+						<relative type="-1">ànón</relative>
+						<relative type="0">ọ̀ní</relative>
+						<relative type="1">ọ̣̀la</relative>
+						<relative type="2">òtúùnla</relative>
+						<relative type="3">ọjọ́mẹ́rin-òní</relative>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Africa/​Lagos/​exemplarCity</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<currencies>
+			<currency type="NGN">
+				<displayName>Naira</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+</ldml>
 

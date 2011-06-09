@@ -1,250 +1,250 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Cachephp.phpphp php2php3php1php5php4php php2php0php1php0php-php1php0php-php1php8php php1php7php:php4php1php:php0php6Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Cache.php 23154 2010-10-18 17:41:06Z mabe $
+ */
 
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Cache
-php{
+/**
+ * @package    Zend_Cache
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Cache
+{
 
-php php php php php/php*php*
-php php php php php php*php Standardphp frontends
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php publicphp staticphp php$standardFrontendsphp php=php arrayphp(php'Corephp'php,php php'Outputphp'php,php php'Classphp'php,php php'Filephp'php,php php'Functionphp'php,php php'Pagephp'php)php;
+    /**
+     * Standard frontends
+     *
+     * @var array
+     */
+    public static $standardFrontends = array('Core', 'Output', 'Class', 'File', 'Function', 'Page');
 
-php php php php php/php*php*
-php php php php php php*php Standardphp backends
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php publicphp staticphp php$standardBackendsphp php=php arrayphp(php'Filephp'php,php php'Sqlitephp'php,php php'Memcachedphp'php,php php'Libmemcachedphp'php,php php'Apcphp'php,php php'ZendPlatformphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'Xcachephp'php,php php'TwoLevelsphp'php,php php'ZendServerphp_Diskphp'php,php php'ZendServerphp_ShMemphp'php)php;
+    /**
+     * Standard backends
+     *
+     * @var array
+     */
+    public static $standardBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'ZendPlatform',
+                                            'Xcache', 'TwoLevels', 'ZendServer_Disk', 'ZendServer_ShMem');
 
-php php php php php/php*php*
-php php php php php php*php Standardphp backendsphp whichphp implementphp thephp ExtendedInterface
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php publicphp staticphp php$standardExtendedBackendsphp php=php arrayphp(php'Filephp'php,php php'Apcphp'php,php php'TwoLevelsphp'php,php php'Memcachedphp'php,php php'Libmemcachedphp'php,php php'Sqlitephp'php)php;
+    /**
+     * Standard backends which implement the ExtendedInterface
+     *
+     * @var array
+     */
+    public static $standardExtendedBackends = array('File', 'Apc', 'TwoLevels', 'Memcached', 'Libmemcached', 'Sqlite');
 
-php php php php php/php*php*
-php php php php php php*php Onlyphp forphp backwardphp compatibilityphp php(mayphp bephp removedphp inphp nextphp majorphp releasephp)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php publicphp staticphp php$availableFrontendsphp php=php arrayphp(php'Corephp'php,php php'Outputphp'php,php php'Classphp'php,php php'Filephp'php,php php'Functionphp'php,php php'Pagephp'php)php;
+    /**
+     * Only for backward compatibility (may be removed in next major release)
+     *
+     * @var array
+     * @deprecated
+     */
+    public static $availableFrontends = array('Core', 'Output', 'Class', 'File', 'Function', 'Page');
 
-php php php php php/php*php*
-php php php php php php*php Onlyphp forphp backwardphp compatibilityphp php(mayphp bephp removedphp inphp nextphp majorphp releasephp)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php publicphp staticphp php$availableBackendsphp php=php arrayphp(php'Filephp'php,php php'Sqlitephp'php,php php'Memcachedphp'php,php php'Libmemcachedphp'php,php php'Apcphp'php,php php'ZendPlatformphp'php,php php'Xcachephp'php,php php'TwoLevelsphp'php)php;
+    /**
+     * Only for backward compatibility (may be removed in next major release)
+     *
+     * @var array
+     * @deprecated
+     */
+    public static $availableBackends = array('File', 'Sqlite', 'Memcached', 'Libmemcached', 'Apc', 'ZendPlatform', 'Xcache', 'TwoLevels');
 
-php php php php php/php*php*
-php php php php php php*php Constsphp forphp cleanphp(php)php method
-php php php php php php*php/
-php php php php constphp CLEANINGphp_MODEphp_ALLphp php php php php php php php php php php php php php php=php php'allphp'php;
-php php php php constphp CLEANINGphp_MODEphp_OLDphp php php php php php php php php php php php php php php=php php'oldphp'php;
-php php php php constphp CLEANINGphp_MODEphp_MATCHINGphp_TAGphp php php php php php=php php'matchingTagphp'php;
-php php php php constphp CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp php=php php'notMatchingTagphp'php;
-php php php php constphp CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp php=php php'matchingAnyTagphp'php;
+    /**
+     * Consts for clean() method
+     */
+    const CLEANING_MODE_ALL              = 'all';
+    const CLEANING_MODE_OLD              = 'old';
+    const CLEANING_MODE_MATCHING_TAG     = 'matchingTag';
+    const CLEANING_MODE_NOT_MATCHING_TAG = 'notMatchingTag';
+    const CLEANING_MODE_MATCHING_ANY_TAG = 'matchingAnyTag';
 
-php php php php php/php*php*
-php php php php php php*php Factory
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php php$frontendphp php php php php php php php frontendphp namephp php(stringphp)php orphp Zendphp_Cachephp_Frontendphp_php object
-php php php php php php*php php@paramphp mixedphp php php$backendphp php php php php php php php php backendphp namephp php(stringphp)php orphp Zendphp_Cachephp_Backendphp_php object
-php php php php php php*php php@paramphp arrayphp php php$frontendOptionsphp associativephp arrayphp ofphp optionsphp forphp thephp correspondingphp frontendphp constructor
-php php php php php php*php php@paramphp arrayphp php php$backendOptionsphp php associativephp arrayphp ofphp optionsphp forphp thephp correspondingphp backendphp constructor
-php php php php php php*php php@paramphp booleanphp php$customFrontendNamingphp ifphp truephp,php thephp frontendphp argumentphp isphp usedphp asphp aphp completephp classphp namephp php;php ifphp falsephp,php thephp frontendphp argumentphp isphp usedphp asphp thephp endphp ofphp php"Zendphp_Cachephp_Frontendphp_php[php.php.php.php]php"php classphp name
-php php php php php php*php php@paramphp booleanphp php$customBackendNamingphp ifphp truephp,php thephp backendphp argumentphp isphp usedphp asphp aphp completephp classphp namephp php;php ifphp falsephp,php thephp backendphp argumentphp isphp usedphp asphp thephp endphp ofphp php"Zendphp_Cachephp_Backendphp_php[php.php.php.php]php"php classphp name
-php php php php php php*php php@paramphp booleanphp php$autoloadphp ifphp truephp,php therephp willphp nophp requirephp_oncephp forphp backendphp andphp frontendphp php(usefulphp onlyphp forphp customphp backendsphp/frontendsphp)
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp|Zendphp_Cachephp_Frontend
-php php php php php php*php/
-php php php php publicphp staticphp functionphp factoryphp(php$frontendphp,php php$backendphp,php php$frontendOptionsphp php=php arrayphp(php)php,php php$backendOptionsphp php=php arrayphp(php)php,php php$customFrontendNamingphp php=php falsephp,php php$customBackendNamingphp php=php falsephp,php php$autoloadphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$backendphp)php)php php{
-php php php php php php php php php php php php php$backendObjectphp php=php selfphp:php:php_makeBackendphp(php$backendphp,php php$backendOptionsphp,php php$customBackendNamingphp,php php$autoloadphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php(isphp_objectphp(php$backendphp)php)php php&php&php php(inphp_arrayphp(php'Zendphp_Cachephp_Backendphp_Interfacephp'php,php classphp_implementsphp(php$backendphp)php)php)php)php php{
-php php php php php php php php php php php php php php php php php$backendObjectphp php=php php$backendphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php selfphp:php:throwExceptionphp(php'backendphp mustphp bephp aphp backendphp namephp php(stringphp)php orphp anphp objectphp whichphp implementsphp Zendphp_Cachephp_Backendphp_Interfacephp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(isphp_stringphp(php$frontendphp)php)php php{
-php php php php php php php php php php php php php$frontendObjectphp php=php selfphp:php:php_makeFrontendphp(php$frontendphp,php php$frontendOptionsphp,php php$customFrontendNamingphp,php php$autoloadphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(isphp_objectphp(php$frontendphp)php)php php{
-php php php php php php php php php php php php php php php php php$frontendObjectphp php=php php$frontendphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php selfphp:php:throwExceptionphp(php'frontendphp mustphp bephp aphp frontendphp namephp php(stringphp)php orphp anphp objectphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$frontendObjectphp-php>setBackendphp(php$backendObjectphp)php;
-php php php php php php php php returnphp php$frontendObjectphp;
-php php php php php}
+    /**
+     * Factory
+     *
+     * @param mixed  $frontend        frontend name (string) or Zend_Cache_Frontend_ object
+     * @param mixed  $backend         backend name (string) or Zend_Cache_Backend_ object
+     * @param array  $frontendOptions associative array of options for the corresponding frontend constructor
+     * @param array  $backendOptions  associative array of options for the corresponding backend constructor
+     * @param boolean $customFrontendNaming if true, the frontend argument is used as a complete class name ; if false, the frontend argument is used as the end of "Zend_Cache_Frontend_[...]" class name
+     * @param boolean $customBackendNaming if true, the backend argument is used as a complete class name ; if false, the backend argument is used as the end of "Zend_Cache_Backend_[...]" class name
+     * @param boolean $autoload if true, there will no require_once for backend and frontend (useful only for custom backends/frontends)
+     * @throws Zend_Cache_Exception
+     * @return Zend_Cache_Core|Zend_Cache_Frontend
+     */
+    public static function factory($frontend, $backend, $frontendOptions = array(), $backendOptions = array(), $customFrontendNaming = false, $customBackendNaming = false, $autoload = false)
+    {
+        if (is_string($backend)) {
+            $backendObject = self::_makeBackend($backend, $backendOptions, $customBackendNaming, $autoload);
+        } else {
+            if ((is_object($backend)) && (in_array('Zend_Cache_Backend_Interface', class_implements($backend)))) {
+                $backendObject = $backend;
+            } else {
+                self::throwException('backend must be a backend name (string) or an object which implements Zend_Cache_Backend_Interface');
+            }
+        }
+        if (is_string($frontend)) {
+            $frontendObject = self::_makeFrontend($frontend, $frontendOptions, $customFrontendNaming, $autoload);
+        } else {
+            if (is_object($frontend)) {
+                $frontendObject = $frontend;
+            } else {
+                self::throwException('frontend must be a frontend name (string) or an object');
+            }
+        }
+        $frontendObject->setBackend($backendObject);
+        return $frontendObject;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Backendphp Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$backend
-php php php php php php*php php@paramphp arrayphp php php php$backendOptions
-php php php php php php*php php@paramphp booleanphp php$customBackendNaming
-php php php php php php*php php@paramphp booleanphp php$autoload
-php php php php php php*php php@returnphp Zendphp_Cachephp_Backend
-php php php php php php*php/
-php php php php publicphp staticphp functionphp php_makeBackendphp(php$backendphp,php php$backendOptionsphp,php php$customBackendNamingphp php=php falsephp,php php$autoloadphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$customBackendNamingphp)php php{
-php php php php php php php php php php php php php$backendphp php php=php selfphp:php:php_normalizeNamephp(php$backendphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(inphp_arrayphp(php$backendphp,php Zendphp_Cachephp:php:php$standardBackendsphp)php)php php{
-php php php php php php php php php php php php php/php/php wephp usephp aphp standardphp backend
-php php php php php php php php php php php php php$backendClassphp php=php php'Zendphp_Cachephp_Backendphp_php'php php.php php$backendphp;
-php php php php php php php php php php php php php/php/php securityphp controlsphp arephp explicit
-php php php php php php php php php php php php requirephp_oncephp strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$backendClassphp)php php.php php'php.phpphp'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php wephp usephp aphp customphp backend
-php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php'php~php^php[php\wphp]php+php$php~Dphp'php,php php$backendphp)php)php php{
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Invalidphp backendphp namephp php[php$backendphp]php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!php$customBackendNamingphp)php php{
-php php php php php php php php php php php php php php php php php/php/php wephp usephp thisphp booleanphp tophp avoidphp anphp APIphp break
-php php php php php php php php php php php php php php php php php$backendClassphp php=php php'Zendphp_Cachephp_Backendphp_php'php php.php php$backendphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$backendClassphp php=php php$backendphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!php$autoloadphp)php php{
-php php php php php php php php php php php php php php php php php$filephp php=php strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$backendClassphp)php php.php php'php.phpphp'php;
-php php php php php php php php php php php php php php php php ifphp php(php!php(selfphp:php:php_isReadablephp(php$filephp)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php selfphp:php:throwExceptionphp(php"filephp php$filephp notphp foundphp inphp includephp_pathphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php requirephp_oncephp php$filephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp newphp php$backendClassphp(php$backendOptionsphp)php;
-php php php php php}
+    /**
+     * Backend Constructor
+     *
+     * @param string  $backend
+     * @param array   $backendOptions
+     * @param boolean $customBackendNaming
+     * @param boolean $autoload
+     * @return Zend_Cache_Backend
+     */
+    public static function _makeBackend($backend, $backendOptions, $customBackendNaming = false, $autoload = false)
+    {
+        if (!$customBackendNaming) {
+            $backend  = self::_normalizeName($backend);
+        }
+        if (in_array($backend, Zend_Cache::$standardBackends)) {
+            // we use a standard backend
+            $backendClass = 'Zend_Cache_Backend_' . $backend;
+            // security controls are explicit
+            require_once str_replace('_', DIRECTORY_SEPARATOR, $backendClass) . '.php';
+        } else {
+            // we use a custom backend
+            if (!preg_match('~^[\w]+$~D', $backend)) {
+                Zend_Cache::throwException("Invalid backend name [$backend]");
+            }
+            if (!$customBackendNaming) {
+                // we use this boolean to avoid an API break
+                $backendClass = 'Zend_Cache_Backend_' . $backend;
+            } else {
+                $backendClass = $backend;
+            }
+            if (!$autoload) {
+                $file = str_replace('_', DIRECTORY_SEPARATOR, $backendClass) . '.php';
+                if (!(self::_isReadable($file))) {
+                    self::throwException("file $file not found in include_path");
+                }
+                require_once $file;
+            }
+        }
+        return new $backendClass($backendOptions);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Frontendphp Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$frontend
-php php php php php php*php php@paramphp arrayphp php php php$frontendOptions
-php php php php php php*php php@paramphp booleanphp php$customFrontendNaming
-php php php php php php*php php@paramphp booleanphp php$autoload
-php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp|Zendphp_Cachephp_Frontend
-php php php php php php*php/
-php php php php publicphp staticphp functionphp php_makeFrontendphp(php$frontendphp,php php$frontendOptionsphp php=php arrayphp(php)php,php php$customFrontendNamingphp php=php falsephp,php php$autoloadphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$customFrontendNamingphp)php php{
-php php php php php php php php php php php php php$frontendphp php=php selfphp:php:php_normalizeNamephp(php$frontendphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(inphp_arrayphp(php$frontendphp,php selfphp:php:php$standardFrontendsphp)php)php php{
-php php php php php php php php php php php php php/php/php wephp usephp aphp standardphp frontend
-php php php php php php php php php php php php php/php/php Forphp perfsphp reasonsphp,php withphp frontendphp php=php=php php'Corephp'php,php wephp canphp interactphp withphp thephp Corephp itself
-php php php php php php php php php php php php php$frontendClassphp php=php php'Zendphp_Cachephp_php'php php.php php(php$frontendphp php!php=php php'Corephp'php php?php php'Frontendphp_php'php php:php php'php'php)php php.php php$frontendphp;
-php php php php php php php php php php php php php/php/php securityphp controlsphp arephp explicit
-php php php php php php php php php php php php requirephp_oncephp strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$frontendClassphp)php php.php php'php.phpphp'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php wephp usephp aphp customphp frontend
-php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php'php~php^php[php\wphp]php+php$php~Dphp'php,php php$frontendphp)php)php php{
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Invalidphp frontendphp namephp php[php$frontendphp]php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!php$customFrontendNamingphp)php php{
-php php php php php php php php php php php php php php php php php/php/php wephp usephp thisphp booleanphp tophp avoidphp anphp APIphp break
-php php php php php php php php php php php php php php php php php$frontendClassphp php=php php'Zendphp_Cachephp_Frontendphp_php'php php.php php$frontendphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$frontendClassphp php=php php$frontendphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!php$autoloadphp)php php{
-php php php php php php php php php php php php php php php php php$filephp php=php strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$frontendClassphp)php php.php php'php.phpphp'php;
-php php php php php php php php php php php php php php php php ifphp php(php!php(selfphp:php:php_isReadablephp(php$filephp)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php selfphp:php:throwExceptionphp(php"filephp php$filephp notphp foundphp inphp includephp_pathphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php requirephp_oncephp php$filephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp newphp php$frontendClassphp(php$frontendOptionsphp)php;
-php php php php php}
+    /**
+     * Frontend Constructor
+     *
+     * @param string  $frontend
+     * @param array   $frontendOptions
+     * @param boolean $customFrontendNaming
+     * @param boolean $autoload
+     * @return Zend_Cache_Core|Zend_Cache_Frontend
+     */
+    public static function _makeFrontend($frontend, $frontendOptions = array(), $customFrontendNaming = false, $autoload = false)
+    {
+        if (!$customFrontendNaming) {
+            $frontend = self::_normalizeName($frontend);
+        }
+        if (in_array($frontend, self::$standardFrontends)) {
+            // we use a standard frontend
+            // For perfs reasons, with frontend == 'Core', we can interact with the Core itself
+            $frontendClass = 'Zend_Cache_' . ($frontend != 'Core' ? 'Frontend_' : '') . $frontend;
+            // security controls are explicit
+            require_once str_replace('_', DIRECTORY_SEPARATOR, $frontendClass) . '.php';
+        } else {
+            // we use a custom frontend
+            if (!preg_match('~^[\w]+$~D', $frontend)) {
+                Zend_Cache::throwException("Invalid frontend name [$frontend]");
+            }
+            if (!$customFrontendNaming) {
+                // we use this boolean to avoid an API break
+                $frontendClass = 'Zend_Cache_Frontend_' . $frontend;
+            } else {
+                $frontendClass = $frontend;
+            }
+            if (!$autoload) {
+                $file = str_replace('_', DIRECTORY_SEPARATOR, $frontendClass) . '.php';
+                if (!(self::_isReadable($file))) {
+                    self::throwException("file $file not found in include_path");
+                }
+                require_once $file;
+            }
+        }
+        return new $frontendClass($frontendOptions);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Throwphp anphp exception
-php php php php php php*
-php php php php php php*php Notephp php:php forphp perfphp reasonsphp,php thephp php"loadphp"php ofphp Zendphp/Cachephp/Exceptionphp isphp dynamic
-php php php php php php*php php@paramphp php stringphp php$msgphp php Messagephp forphp thephp exception
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp throwExceptionphp(php$msgphp,php Exceptionphp php$ephp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php Forphp perfsphp reasonsphp,php wephp usephp thisphp dynamicphp inclusion
-php php php php php php php php requirephp_oncephp php'Zendphp/Cachephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Cachephp_Exceptionphp(php$msgphp,php php0php,php php$ephp)php;
-php php php php php}
+    /**
+     * Throw an exception
+     *
+     * Note : for perf reasons, the "load" of Zend/Cache/Exception is dynamic
+     * @param  string $msg  Message for the exception
+     * @throws Zend_Cache_Exception
+     */
+    public static function throwException($msg, Exception $e = null)
+    {
+        // For perfs reasons, we use this dynamic inclusion
+        require_once 'Zend/Cache/Exception.php';
+        throw new Zend_Cache_Exception($msg, 0, $e);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Normalizephp frontendphp andphp backendphp namesphp tophp allowphp multiplephp wordsphp TitleCased
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp php Namephp tophp normalize
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_normalizeNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php ucfirstphp(strtolowerphp(php$namephp)php)php;
-php php php php php php php php php$namephp php=php strphp_replacephp(arrayphp(php'php-php'php,php php'php_php'php,php php'php.php'php)php,php php'php php'php,php php$namephp)php;
-php php php php php php php php php$namephp php=php ucwordsphp(php$namephp)php;
-php php php php php php php php php$namephp php=php strphp_replacephp(php'php php'php,php php'php'php,php php$namephp)php;
-php php php php php php php php ifphp php(striposphp(php$namephp,php php'ZendServerphp'php)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php$namephp php=php php'ZendServerphp_php'php php.php substrphp(php$namephp,php strlenphp(php'ZendServerphp'php)php)php;
-php php php php php php php php php}
+    /**
+     * Normalize frontend and backend names to allow multiple words TitleCased
+     *
+     * @param  string $name  Name to normalize
+     * @return string
+     */
+    protected static function _normalizeName($name)
+    {
+        $name = ucfirst(strtolower($name));
+        $name = str_replace(array('-', '_', '.'), ' ', $name);
+        $name = ucwords($name);
+        $name = str_replace(' ', '', $name);
+        if (stripos($name, 'ZendServer') === 0) {
+            $name = 'ZendServer_' . substr($name, strlen('ZendServer'));
+        }
 
-php php php php php php php php returnphp php$namephp;
-php php php php php}
+        return $name;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp TRUEphp ifphp thephp php$filenamephp isphp readablephp,php orphp FALSEphp otherwisephp.
-php php php php php php*php Thisphp functionphp usesphp thephp PHPphp includephp_pathphp,php wherephp PHPphp'sphp isphp_readablephp(php)
-php php php php php php*php doesphp notphp.
-php php php php php php*
-php php php php php php*php Notephp php:php thisphp methodphp comesphp fromphp Zendphp_Loaderphp php(seephp php#ZFphp-php2php8php9php1php forphp detailsphp)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$filename
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_isReadablephp(php$filenamephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$fhphp php=php php@fopenphp(php$filenamephp,php php'rphp'php,php truephp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php php@fclosephp(php$fhphp)php;
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Returns TRUE if the $filename is readable, or FALSE otherwise.
+     * This function uses the PHP include_path, where PHP's is_readable()
+     * does not.
+     *
+     * Note : this method comes from Zend_Loader (see #ZF-2891 for details)
+     *
+     * @param string   $filename
+     * @return boolean
+     */
+    private static function _isReadable($filename)
+    {
+        if (!$fh = @fopen($filename, 'r', true)) {
+            return false;
+        }
+        @fclose($fh);
+        return true;
+    }
 
-php}
+}

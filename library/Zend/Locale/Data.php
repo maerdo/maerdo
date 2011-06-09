@@ -1,1514 +1,1514 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Locale
-php php*php php@subpackagephp Data
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dataphp.phpphp php2php2php7php1php2php php2php0php1php0php-php0php7php-php2php9php php0php8php:php2php4php:php2php8Zphp thomasphp php$
-php php*php/
-
-php/php*php*
-php php*php includephp neededphp classes
-php php*php/
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
-
-php/php*php*
-php php*php Localephp dataphp readerphp,php handlesphp thephp CLDR
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Locale
-php php*php php@subpackagephp Data
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Localephp_Data
-php{
-php php php php php/php*php*
-php php php php php php*php Localephp files
-php php php php php php*
-php php php php php php*php php@varphp ressource
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp php$php_ldmlphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp valuesphp whichphp arephp collected
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp php$php_listphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Internalphp cachephp forphp ldmlphp values
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cachephp_Core
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp php$php_cachephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Internalphp valuephp tophp rememberphp ifphp cachephp supportsphp tags
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp staticphp php$php_cacheTagsphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Internalphp optionphp,php cachephp disabled
-php php php php php php*
-php php php php php php*php php@varphp php php php boolean
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp php$php_cacheDisabledphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Readphp thephp contentphp fromphp locale
-php php php php php php*
-php php php php php php*php Canphp bephp calledphp likephp:
-php php php php php php*php php<ldmlphp>
-php php php php php php*php php php php php php<delimiterphp>test<php/delimiterphp>
-php php php php php php*php php php php php php<secondphp typephp=php'myonephp'php>content<php/secondphp>
-php php php php php php*php php php php php php<secondphp typephp=php'mysecondphp'php>contentphp2<php/secondphp>
-php php php php php php*php php php php php php<thirdphp typephp=php'mythirdphp'php php/php>
-php php php php php php*php <php/ldmlphp>
-php php php php php php*
-php php php php php php*php Casephp php1php:php php_readFilephp(php'arphp'php,php'php/ldmlphp/delimiterphp'php)php php php php php php php php php php php php php php-php>php returnsphp php[php]php php=php test
-php php php php php php*php Casephp php1php:php php_readFilephp(php'arphp'php,php'php/ldmlphp/secondphp[php@typephp=myonephp]php'php)php php php php-php>php returnsphp php[php]php php=php content
-php php php php php php*php Casephp php2php:php php_readFilephp(php'arphp'php,php'php/ldmlphp/secondphp'php,php'typephp'php)php php php php php php php php php php-php>php returnsphp php[myonephp]php php=php contentphp;php php[mysecondphp]php php=php contentphp2
-php php php php php php*php Casephp php3php:php php_readFilephp(php'arphp'php,php'php/ldmlphp/delimiterphp'php,php,php'rightphp'php)php php php php php-php>php returnsphp php[rightphp]php php=php test
-php php php php php php*php Casephp php4php:php php_readFilephp(php'arphp'php,php'php/ldmlphp/thirdphp'php,php'typephp'php,php'myonephp'php)php php php-php>php returnsphp php[myonephp]php php=php mythird
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$locale
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$attribute
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@accessphp private
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_readFilephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)
-php php php php php{
-php php php php php php php php php/php/php withoutphp attributephp php-php readphp allphp values
-php php php php php php php php php/php/php withphp attributephp php php php php-php readphp onlyphp thisphp value
-php php php php php php php php ifphp php(php!emptyphp(selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php)php)php php{
-
-php php php php php php php php php php php php php$resultphp php=php selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php-php>xpathphp(php$pathphp)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$resultphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$resultphp asphp php&php$foundphp)php php{
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$attributephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Casephp php1
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php]php php=php php(stringphp)php php$foundphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(emptyphp(php$tempphp[php(stringphp)php php$foundphp[php$attributephp]php]php)php)php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Casephp php2
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php(stringphp)php php$foundphp[php$attributephp]php]php php=php php(stringphp)php php$foundphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(emptyphp php(php$tempphp[php$valuephp]php)php)php php{
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$attributephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Casephp php3
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valuephp]php php=php php(stringphp)php php$foundphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Casephp php4
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valuephp]php php=php php(stringphp)php php$foundphp[php$attributephp]php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$tempphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Findphp possiblephp routingphp tophp otherphp pathphp orphp locale
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$locale
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$attribute
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@paramphp php arrayphp php php$temp
-php php php php php php*php php@throwsphp Zendphp_Localephp_Exception
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_findRoutephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php&php$tempphp)
-php php php php php{
-php php php php php php php php php/php/php loadphp localephp filephp ifphp notphp alreadyphp inphp cache
-php php php php php php php php php/php/php neededphp forphp aliasphp tagphp whenphp referringphp tophp otherphp locale
-php php php php php php php php ifphp php(emptyphp(selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php)php)php php{
-php php php php php php php php php php php php php$filenamephp php=php dirnamephp(php_php_FILEphp_php_php)php php.php php'php/Dataphp/php'php php.php php$localephp php.php php'php.xmlphp'php;
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$filenamephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Missingphp localephp filephp php'php$filenamephp'php forphp php'php$localephp'php localephp.php"php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php php=php simplexmlphp_loadphp_filephp(php$filenamephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php searchphp forphp php'aliasphp'php tagphp inphp thephp searchphp pathphp forphp redirection
-php php php php php php php php php$searchphp php=php php'php'php;
-php php php php php php php php php$tokphp php=php strtokphp(php$pathphp,php php'php/php'php)php;
-
-php php php php php php php php php/php/php parsephp thephp completephp path
-php php php php php php php php ifphp php(php!emptyphp(selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php)php)php php{
-php php php php php php php php php php php php whilephp php(php$tokphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$searchphp php.php=php php php'php/php'php php.php php$tokphp;
-php php php php php php php php php php php php php php php php ifphp php(strposphp(php$searchphp,php php'php[php@php'php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php whilephp php(strrposphp(php$searchphp,php php'php[php@php'php)php php>php strrposphp(php$searchphp,php php'php]php'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tokphp php=php strtokphp(php'php/php'php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tokphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$searchphp php.php=php php'php/php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$searchphp php=php php$searchphp php.php php'php/php'php php.php php$tokphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$resultphp php=php selfphp:php:php$php_ldmlphp[php(stringphp)php php$localephp]php-php>xpathphp(php$searchphp php.php php'php/aliasphp'php)php;
-
-php php php php php php php php php php php php php php php php php/php/php aliasphp found
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$resultphp)php)php php{
-
-php php php php php php php php php php php php php php php php php php php php php$sourcephp php=php php$resultphp[php0php]php[php'sourcephp'php]php;
-php php php php php php php php php php php php php php php php php php php php php$newpathphp php=php php$resultphp[php0php]php[php'pathphp'php]php;
-
-php php php php php php php php php php php php php php php php php php php php php/php/php newphp pathphp php-php pathphp php/php/ldmlphp isphp tophp ignore
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$newpathphp php!php=php php'php/php/ldmlphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php otherphp pathphp php-php parsephp tophp makephp realphp path
-
-php php php php php php php php php php php php php php php php php php php php php php php php whilephp php(substrphp(php$newpathphp,php0php,php3php)php php=php=php php'php.php.php/php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$newpathphp php=php substrphp(php$newpathphp,php php3php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$searchphp php=php substrphp(php$searchphp,php php0php,php strrposphp(php$searchphp,php php'php/php'php)php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php truncatephp php.php.php/php tophp realpathphp otherwisephp problemsphp withphp alias
-php php php php php php php php php php php php php php php php php php php php php php php php php$pathphp php=php php$searchphp php.php php'php/php'php php.php php$newpathphp;
-php php php php php php php php php php php php php php php php php php php php php php php php whilephp php(php(php$tokphp php=php strtokphp(php'php/php'php)php)php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$pathphp php=php php$pathphp php.php php'php/php'php php.php php$tokphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php/php/php reroutephp tophp otherphp locale
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$sourcephp php!php=php php'localephp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$localephp php=php php$sourcephp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$tokphp php=php strtokphp(php'php/php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Readphp thephp rightphp LDMLphp file
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$locale
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$attribute
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_getFilephp(php$localephp,php php$pathphp,php php$attributephp php=php falsephp,php php$valuephp php=php falsephp,php php$tempphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$resultphp php=php selfphp:php:php_findRoutephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)php;
-php php php php php php php php ifphp php(php$resultphp)php php{
-php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_readFilephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php parsephp requiredphp localesphp reversive
-php php php php php php php php php/php/php examplephp:php whenphp givenphp zhphp_Hansphp_CN
-php php php php php php php php php/php/php php1php.php php-php>php zhphp_Hansphp_CN
-php php php php php php php php php/php/php php2php.php php-php>php zhphp_Hans
-php php php php php php php php php/php/php php3php.php php-php>php zh
-php php php php php php php php php/php/php php4php.php php-php>php root
-php php php php php php php php ifphp php(php(php$localephp php!php=php php'rootphp'php)php php&php&php php(php$resultphp)php)php php{
-php php php php php php php php php php php php php$localephp php=php substrphp(php$localephp,php php0php,php php-strlenphp(strrchrphp(php$localephp,php php'php_php'php)php)php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$localephp)php)php php{
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'rootphp'php,php php$pathphp,php php$attributephp,php php$valuephp,php php$tempphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$tempphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Findphp thephp detailsphp forphp supplementalphp calendarphp datas
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$localephp Localephp forphp Detaildata
-php php php php php php*php php@paramphp php arrayphp php php$listphp php php Listphp tophp search
-php php php php php php*php php@returnphp stringphp php php php php php php php php Keyphp forphp Detaildata
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_calendarDetailphp(php$localephp,php php$listphp)
-php php php php php{
-php php php php php php php php php$retphp php=php php"php0php0php1php"php;
-php php php php php php php php foreachphp php(php$listphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(strposphp(php$localephp,php php'php_php'php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$localephp php=php substrphp(php$localephp,php strposphp(php$localephp,php php'php_php'php)php php+php php1php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(strposphp(php$keyphp,php php$localephp)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$retphp php=php php$keyphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Internalphp functionphp forphp checkingphp thephp locale
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Localephp php$localephp Localephp tophp check
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_checkLocalephp(php$localephp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$localephp)php)php php{
-php php php php php php php php php php php php php$localephp php=php newphp Zendphp_Localephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php(Zendphp_Localephp:php:isLocalephp(php(stringphp)php php$localephp,php nullphp,php falsephp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Localephp php(php"php php.php php(stringphp)php php$localephp php.php php"php)php isphp aphp unknownphp localephp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php(stringphp)php php$localephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Readphp thephp LDMLphp filephp,php getphp aphp arrayphp ofphp multipathphp definedphp value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$locale
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp array
-php php php php php php*php php@accessphp public
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getListphp(php$localephp,php php$pathphp,php php$valuephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$localephp php=php selfphp:php:php_checkLocalephp(php$localephp)php;
-
-php php php php php php php php ifphp php(php!issetphp(selfphp:php:php$php_cachephp)php php&php&php php!selfphp:php:php$php_cacheDisabledphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cachephp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_cachephp php=php Zendphp_Cachephp:php:factoryphp(
-php php php php php php php php php php php php php php php php php'Corephp'php,
-php php php php php php php php php php php php php php php php php'Filephp'php,
-php php php php php php php php php php php php php php php php arrayphp(php'automaticphp_serializationphp'php php=php>php truephp)php,
-php php php php php php php php php php php php php php php php arrayphp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$valphp php=php php$valuephp;
-php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$valphp php=php implodephp(php'php_php'php php,php php$valuephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$valphp php=php urlencodephp(php$valphp)php;
-php php php php php php php php php$idphp php=php strtrphp(php'Zendphp_LocaleLphp_php'php php.php php$localephp php.php php'php_php'php php.php php$pathphp php.php php'php_php'php php.php php$valphp,php arrayphp(php'php-php'php php=php>php php'php_php'php,php php'php%php'php php=php>php php'php_php'php,php php'php+php'php php=php>php php'php_php'php)php)php;
-php php php php php php php php ifphp php(php!selfphp:php:php$php_cacheDisabledphp php&php&php php(php$resultphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php)php)php php{
-php php php php php php php php php php php php returnphp unserializephp(php$resultphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php switchphp(strtolowerphp(php$pathphp)php)php php{
-php php php php php php php php php php php php casephp php'languagephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/languagesphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'scriptphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/scriptsphp/scriptphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/territoriesphp/territoryphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$valuephp php=php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$tempphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php(isphp_numericphp(php$keyphp)php php=php=php=php falsephp)php andphp php(php$keyphp php!php=php php'QOphp'php)php andphp php(php$keyphp php!php=php php'QUphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$valuephp php=php=php=php php2php)php php{
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$tempphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_numericphp(php$keyphp)php orphp php(php$keyphp php=php=php php'QOphp'php)php orphp php(php$keyphp php=php=php php'QUphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'variantphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/variantsphp/variantphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'keyphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/keysphp/keyphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'typephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$typephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/typesphp/typephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$valuephp php=php=php php'calendarphp'php)php or
-php php php php php php php php php php php php php php php php php php php php php php php php php(php$valuephp php=php=php php'collationphp'php)php or
-php php php php php php php php php php php php php php php php php php php php php php php php php(php$valuephp php=php=php php'currencyphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/typesphp/typephp[php@keyphp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/typesphp/typephp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'layoutphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/orientationphp'php,php php php php php php php php php php php php php php php php php php'linesphp'php,php php php php php php php'linesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/orientationphp'php,php php php php php php php php php php php php php php php php php php'charactersphp'php,php php'charactersphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inListphp'php,php php php php php php php php php php php php php php php php php php php php php php php'php'php,php php php php php php php php php php php php'inListphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'currencyphp\php'php]php'php,php php php'php'php,php php php php php php php php php php php php'currencyphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'dayWidthphp\php'php]php'php,php php php'php'php,php php php php php php php php php php php php'dayWidthphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'fieldsphp\php'php]php'php,php php php php php'php'php,php php php php php php php php php php php php'fieldsphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'keysphp\php'php]php'php,php php php php php php php'php'php,php php php php php php php php php php php php'keysphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'languagesphp\php'php]php'php,php php'php'php,php php php php php php php php php php php php'languagesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'longphp\php'php]php'php,php php php php php php php'php'php,php php php php php php php php php php php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'measurementSystemNamesphp\php'php]php'php,php php'php'php,php php'measurementSystemNamesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'monthWidthphp\php'php]php'php,php php php php'php'php,php php php php php php php php php'monthWidthphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'quarterWidthphp\php'php]php'php,php php'php'php,php php php php php php php php php'quarterWidthphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'scriptsphp\php'php]php'php,php php php php'php'php,php php php php php php php php php php php php'scriptsphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'territoriesphp\php'php]php'php,php php php'php'php,php php php php php php php php php'territoriesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'typesphp\php'php]php'php,php php php php php php'php'php,php php php php php php php php php php php php'typesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/layoutphp/inTextphp[php@typephp=php\php'variantsphp\php'php]php'php,php php php'php'php,php php php php php php php php php php php php'variantsphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'charactersphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/charactersphp/exemplarCharactersphp'php,php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php'php,php php'charactersphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/charactersphp/exemplarCharactersphp[php@typephp=php\php'auxiliaryphp\php'php]php'php,php php php php php php php'php'php,php php'auxiliaryphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/charactersphp/exemplarCharactersphp[php@typephp=php\php'currencySymbolphp\php'php]php'php,php php'php'php,php php'currencySymbolphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'delimitersphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/delimitersphp/quotationStartphp'php,php php php php php php php php php php php'php'php,php php'quoteStartphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/delimitersphp/quotationEndphp'php,php php php php php php php php php php php php php'php'php,php php'quoteEndphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/delimitersphp/alternateQuotationStartphp'php,php php'php'php,php php'quoteStartAltphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/delimitersphp/alternateQuotationEndphp'php,php php php php'php'php,php php'quoteEndAltphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'measurementphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/measurementDataphp/measurementSystemphp[php@typephp=php\php'metricphp\php'php]php'php,php php'territoriesphp'php,php php'metricphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/measurementDataphp/measurementSystemphp[php@typephp=php\php'USphp\php'php]php'php,php php php php php php'territoriesphp'php,php php'USphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/measurementDataphp/paperSizephp[php@typephp=php\php'Aphp4php\php'php]php'php,php php php php php php php php php php php php php php'territoriesphp'php,php php'Aphp4php'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/measurementDataphp/paperSizephp[php@typephp=php\php'USphp-Letterphp\php'php]php'php,php php php php php php php'territoriesphp'php,php php'USphp-Letterphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'monthsphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/defaultphp'php,php php'choicephp'php,php php'contextphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'formatphp\php'php]php/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'abbreviatedphp'php]php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'formatphp\php'php]php/monthWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'narrowphp'php]php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'formatphp\php'php]php/monthWidthphp[php@typephp=php\php'narrowphp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'widephp'php]php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'formatphp\php'php]php/monthWidthphp[php@typephp=php\php'widephp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'abbreviatedphp'php]php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/monthWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'narrowphp'php]php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/monthWidthphp[php@typephp=php\php'narrowphp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'widephp'php]php php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/monthWidthphp[php@typephp=php\php'widephp\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'monthphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/monthWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/monthphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'daysphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/defaultphp'php,php php'choicephp'php,php php'contextphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'formatphp\php'php]php/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'abbreviatedphp'php]php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'formatphp\php'php]php/dayWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'narrowphp'php]php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'formatphp\php'php]php/dayWidthphp[php@typephp=php\php'narrowphp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'widephp'php]php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'formatphp\php'php]php/dayWidthphp[php@typephp=php\php'widephp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'abbreviatedphp'php]php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/dayWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'narrowphp'php]php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/dayWidthphp[php@typephp=php\php'narrowphp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'widephp'php]php php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/dayWidthphp[php@typephp=php\php'widephp\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dayphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/dayWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/dayphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'weekphp'php:
-php php php php php php php php php php php php php php php php php$minDaysphp php php php=php selfphp:php:php_calendarDetailphp(php$localephp,php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/weekDataphp/minDaysphp'php,php php'territoriesphp'php)php)php;
-php php php php php php php php php php php php php php php php php$firstDayphp php php=php selfphp:php:php_calendarDetailphp(php$localephp,php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/weekDataphp/firstDayphp'php,php php'territoriesphp'php)php)php;
-php php php php php php php php php php php php php php php php php$weekStartphp php=php selfphp:php:php_calendarDetailphp(php$localephp,php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/weekDataphp/weekendStartphp'php,php php'territoriesphp'php)php)php;
-php php php php php php php php php php php php php php php php php$weekEndphp php php php=php selfphp:php:php_calendarDetailphp(php$localephp,php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/weekDataphp/weekendEndphp'php,php php'territoriesphp'php)php)php;
-
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php"php/supplementalDataphp/weekDataphp/minDaysphp[php@territoriesphp=php'php"php php.php php$minDaysphp php.php php"php'php]php"php,php php'countphp'php,php php'minDaysphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php"php/supplementalDataphp/weekDataphp/firstDayphp[php@territoriesphp=php'php"php php.php php$firstDayphp php.php php"php'php]php"php,php php'dayphp'php,php php'firstDayphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php"php/supplementalDataphp/weekDataphp/weekendStartphp[php@territoriesphp=php'php"php php.php php$weekStartphp php.php php"php'php]php"php,php php'dayphp'php,php php'weekendStartphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php"php/supplementalDataphp/weekDataphp/weekendEndphp[php@territoriesphp=php'php"php php.php php$weekEndphp php.php php"php'php]php"php,php php'dayphp'php,php php'weekendEndphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'quartersphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'abbreviatedphp'php]php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'formatphp\php'php]php/quarterWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'narrowphp'php]php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'formatphp\php'php]php/quarterWidthphp[php@typephp=php\php'narrowphp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'formatphp'php]php[php'widephp'php]php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'formatphp\php'php]php/quarterWidthphp[php@typephp=php\php'widephp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'abbreviatedphp'php]php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/quarterWidthphp[php@typephp=php\php'abbreviatedphp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'narrowphp'php]php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/quarterWidthphp[php@typephp=php\php'narrowphp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'standphp-alonephp'php]php[php'widephp'php]php php php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'standphp-alonephp\php'php]php/quarterWidthphp[php@typephp=php\php'widephp\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'quarterphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/quarterWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/quarterphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'erasphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp[php'namesphp'php]php php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/erasphp/eraNamesphp/eraphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'abbreviatedphp'php]php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/erasphp/eraAbbrphp/eraphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'narrowphp'php]php php php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/erasphp/eraNarrowphp/eraphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'eraphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"Abbrphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/erasphp/eraphp'php php.php php$valuephp[php1php]php php.php php'php/eraphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'datephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'fullphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'fullphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'longphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'mediumphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'mediumphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'shortphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'shortphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'fullphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'fullphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'longphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'mediumphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'mediumphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'shortphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'shortphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'datetimephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$timefullphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'fullphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'fullphp'php)php;
-php php php php php php php php php php php php php php php php php$timelongphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'longphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$timemediphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'mediumphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'mediphp'php)php;
-php php php php php php php php php php php php php php php php php$timeshorphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'shortphp\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'shorphp'php)php;
-
-php php php php php php php php php php php php php php php php php$datefullphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'fullphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'fullphp'php)php;
-php php php php php php php php php php php php php php php php php$datelongphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'longphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$datemediphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'mediumphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'mediphp'php)php;
-php php php php php php php php php php php php php php php php php$dateshorphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'shortphp\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'shorphp'php)php;
-
-php php php php php php php php php php php php php php php php php$fullphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/dateTimeFormatLengthphp[php@typephp=php\php'fullphp\php'php]php/dateTimeFormatphp/patternphp'php,php php'php'php,php php'fullphp'php)php;
-php php php php php php php php php php php php php php php php php$longphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/dateTimeFormatLengthphp[php@typephp=php\php'longphp\php'php]php/dateTimeFormatphp/patternphp'php,php php'php'php,php php'longphp'php)php;
-php php php php php php php php php php php php php php php php php$mediphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/dateTimeFormatLengthphp[php@typephp=php\php'mediumphp\php'php]php/dateTimeFormatphp/patternphp'php,php php'php'php,php php'mediphp'php)php;
-php php php php php php php php php php php php php php php php php$shorphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/dateTimeFormatLengthphp[php@typephp=php\php'shortphp\php'php]php/dateTimeFormatphp/patternphp'php,php php'php'php,php php'shorphp'php)php;
-
-php php php php php php php php php php php php php php php php php$tempphp[php'fullphp'php]php php php php=php strphp_replacephp(arrayphp(php'php{php0php}php'php,php php'php{php1php}php'php)php,php arrayphp(php$timefullphp[php'fullphp'php]php,php php$datefullphp[php'fullphp'php]php)php,php php$fullphp[php'fullphp'php]php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'longphp'php]php php php php=php strphp_replacephp(arrayphp(php'php{php0php}php'php,php php'php{php1php}php'php)php,php arrayphp(php$timelongphp[php'longphp'php]php,php php$datelongphp[php'longphp'php]php)php,php php$longphp[php'longphp'php]php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'mediumphp'php]php php=php strphp_replacephp(arrayphp(php'php{php0php}php'php,php php'php{php1php}php'php)php,php arrayphp(php$timemediphp[php'mediphp'php]php,php php$datemediphp[php'mediphp'php]php)php,php php$mediphp[php'mediphp'php]php)php;
-php php php php php php php php php php php php php php php php php$tempphp[php'shortphp'php]php php php=php strphp_replacephp(arrayphp(php'php{php0php}php'php,php php'php{php1php}php'php)php,php arrayphp(php$timeshorphp[php'shorphp'php]php,php php$dateshorphp[php'shorphp'php]php)php,php php$shorphp[php'shorphp'php]php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dateitemphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/availableFormatsphp/dateFormatItemphp'php,php php'idphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/availableFormatsphp/dateFormatItemphp[php@idphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dateintervalphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/intervalFormatsphp/intervalFormatItemphp'php,php php'idphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp[php$keyphp]php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateTimeFormatsphp/intervalFormatsphp/intervalFormatItemphp[php@idphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/greatestDifferencephp'php,php php'idphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'fieldphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp2php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/fieldsphp/fieldphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$tempphp2php asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/fieldsphp/fieldphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'relativephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/fieldsphp/fieldphp/relativephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'symbolsphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/decimalphp'php,php php php php php php php php php php'php'php,php php'decimalphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/groupphp'php,php php php php php php php php php php php php'php'php,php php'groupphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/listphp'php,php php php php php php php php php php php php php'php'php,php php'listphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/percentSignphp'php,php php php php php php'php'php,php php'percentphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/nativeZeroDigitphp'php,php php'php'php,php php'zerophp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/patternDigitphp'php,php php php php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/plusSignphp'php,php php php php php php php php php'php'php,php php'plusphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/minusSignphp'php,php php php php php php php php'php'php,php php'minusphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/exponentialphp'php,php php php php php php'php'php,php php'exponentphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/perMillephp'php,php php php php php php php php php'php'php,php php'millephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/infinityphp'php,php php php php php php php php php'php'php,php php'infinityphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/symbolsphp/nanphp'php,php php php php php php php php php php php php php php'php'php,php php'nanphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'nametocurrencyphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencytonamephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$valphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$valphp[php$keyphp]php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencysymbolphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/symbolphp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'questionphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/posixphp/messagesphp/yesstrphp'php,php php php'php'php,php php'yesphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/posixphp/messagesphp/nostrphp'php,php php php php'php'php,php php'nophp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencyfractionphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp'php,php php'isophp4php2php1php7php'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp[php@isophp4php2php1php7php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'digitsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencyroundingphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp'php,php php'isophp4php2php1php7php'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp[php@isophp4php2php1php7php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'roundingphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencytoregionphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp'php,php php'isophp3php1php6php6php'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp[php@isophp3php1php6php6php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/currencyphp'php,php php'isophp4php2php1php7php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'regiontocurrencyphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp'php,php php'isophp3php1php6php6php'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp[php@isophp3php1php6php6php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/currencyphp'php,php php'isophp4php2php1php7php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$valphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$valphp[php$keyphp]php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'regiontoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'containsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytoregionphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'containsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'scripttolanguagephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'scriptsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tempphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'languagetoscriptphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'scriptsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$foundphp3php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytolanguagephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'territoriesphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tempphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'languagetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'territoriesphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$foundphp3php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetowindowsphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp'php,php php'otherphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp[php@otherphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'typephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'windowstotimezonephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp[php@typephp=php\php'php'php php.php$keyphp php.php php'php\php'php]php'php,php php'otherphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytotimezonephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'territoryphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp'php,php php'territoryphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp[php@territoryphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'typephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'citytotimezonephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/exemplarCityphp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetocityphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/exemplarCityphp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$tempphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$tempphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'phonetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp'php,php php'territoryphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp[php@territoryphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/telephoneCountryCodephp'php,php php'codephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytophonephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp'php,php php'territoryphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp[php@territoryphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/telephoneCountryCodephp'php,php php'codephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$valphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$valphp[php$keyphp]php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'numerictoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'numericphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytonumericphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp'php,php php'numericphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@numericphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'typephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'alphaphp3toterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'alphaphp3php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytoalphaphp3php'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp'php,php php'alphaphp3php'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@alphaphp3php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'typephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'postaltoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'postalCodeDataphp'php,php php'php/supplementalDataphp/postalCodeDataphp/postCodeRegexphp'php,php php'territoryIdphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'postalCodeDataphp'php,php php'php/supplementalDataphp/postalCodeDataphp/postCodeRegexphp[php@territoryIdphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'territoryIdphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'numberingsystemphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'numberingSystemsphp'php,php php'php/supplementalDataphp/numberingSystemsphp/numberingSystemphp'php,php php'idphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'numberingSystemsphp'php,php php'php/supplementalDataphp/numberingSystemsphp/numberingSystemphp[php@idphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'digitsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tempphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'chartofallbackphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp'php,php php'valuephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp2php php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp[php@valuephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/substitutephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php php$tempphp[currentphp(php$tempphp2php)php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'fallbacktocharphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp'php,php php'valuephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp[php@valuephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/substitutephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'localeupgradephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'likelySubtagsphp'php,php php'php/supplementalDataphp/likelySubtagsphp/likelySubtagphp'php,php php'fromphp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php'likelySubtagsphp'php,php php'php/supplementalDataphp/likelySubtagsphp/likelySubtagphp[php@fromphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'tophp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'unitphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/unitsphp/unitphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/unitsphp/unitphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/unitPatternphp'php,php php'countphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$tempphp[php$keyphp]php php=php php$php_tempphp2php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php defaultphp php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp listphp php(php$pathphp)php forphp parsingphp localephp dataphp.php"php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
-php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$tempphp)php,php php$idphp,php arrayphp(php'Zendphp_Localephp'php)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$tempphp)php,php php$idphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$tempphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Readphp thephp LDMLphp filephp,php getphp aphp singlephp pathphp definedphp value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$locale
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php php@accessphp public
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getContentphp(php$localephp,php php$pathphp,php php$valuephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$localephp php=php selfphp:php:php_checkLocalephp(php$localephp)php;
-
-php php php php php php php php ifphp php(php!issetphp(selfphp:php:php$php_cachephp)php php&php&php php!selfphp:php:php$php_cacheDisabledphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cachephp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_cachephp php=php Zendphp_Cachephp:php:factoryphp(
-php php php php php php php php php php php php php php php php php'Corephp'php,
-php php php php php php php php php php php php php php php php php'Filephp'php,
-php php php php php php php php php php php php php php php php arrayphp(php'automaticphp_serializationphp'php php=php>php truephp)php,
-php php php php php php php php php php php php php php php php arrayphp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$valphp php=php php$valuephp;
-php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$valphp php=php implodephp(php'php_php'php php,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php php$valphp php=php urlencodephp(php$valphp)php;
-php php php php php php php php php$idphp php=php strtrphp(php'Zendphp_LocaleCphp_php'php php.php php$localephp php.php php'php_php'php php.php php$pathphp php.php php'php_php'php php.php php$valphp,php arrayphp(php'php-php'php php=php>php php'php_php'php,php php'php%php'php php=php>php php'php_php'php,php php'php+php'php php=php>php php'php_php'php)php)php;
-php php php php php php php php ifphp php(php!selfphp:php:php$php_cacheDisabledphp php&php&php php(php$resultphp php=php selfphp:php:php$php_cachephp-php>loadphp(php$idphp)php)php)php php{
-php php php php php php php php php php php php returnphp unserializephp(php$resultphp)php;
-php php php php php php php php php}
-
-php php php php php php php php switchphp(strtolowerphp(php$pathphp)php)php php{
-php php php php php php php php php php php php casephp php'languagephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/languagesphp/languagephp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'scriptphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/scriptsphp/scriptphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'countryphp'php:
-php php php php php php php php php php php php casephp php'territoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/territoriesphp/territoryphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'variantphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/variantsphp/variantphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'keyphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/localeDisplayNamesphp/keysphp/keyphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'defaultcalendarphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'monthcontextphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp php(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/defaultphp'php,php php'choicephp'php,php php'contextphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'defaultmonthphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp php(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'formatphp\php'php]php/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'monthphp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/monthsphp/monthContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/monthWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/monthphp[php@typephp=php\php'php'php php.php php$valuephp[php3php]php php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'daycontextphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/defaultphp'php,php php'choicephp'php,php php'contextphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'defaultdayphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'formatphp\php'php]php/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dayphp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/daysphp/dayContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/dayWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/dayphp[php@typephp=php\php'php'php php.php php$valuephp[php3php]php php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'quarterphp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"formatphp"php,php php"widephp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/quartersphp/quarterContextphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/quarterWidthphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php/quarterphp[php@typephp=php\php'php'php php.php php$valuephp[php3php]php php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'amphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/amphp'php,php php'php'php,php php'amphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'pmphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/pmphp'php,php php'php'php,php php'pmphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'eraphp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"Abbrphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/erasphp/eraphp'php php.php php$valuephp[php1php]php php.php php'php/eraphp[php@typephp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'defaultdatephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/dateFormatsphp/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'datephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"mediumphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'defaulttimephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"gregorianphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/timeFormatsphp/defaultphp'php,php php'choicephp'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"mediumphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'datetimephp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"mediumphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$datephp php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/dateFormatsphp/dateFormatLengthphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/dateFormatphp/patternphp'php,php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php php$timephp php php php php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/timeFormatsphp/timeFormatLengthphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/timeFormatphp/patternphp'php,php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php php$datetimephp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/dateTimeFormatsphp/dateTimeFormatLengthphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/dateTimeFormatphp/patternphp'php,php php'php'php,php php'patternphp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php=php strphp_replacephp(arrayphp(php'php{php0php}php'php,php php'php{php1php}php'php)php,php arrayphp(currentphp(php$timephp)php,php currentphp(php$datephp)php)php,php currentphp(php$datetimephp)php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dateitemphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"yyMMddphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/dateTimeFormatsphp/availableFormatsphp/dateFormatItemphp[php@idphp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php'php,php php'php'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'dateintervalphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php"yMdphp"php,php php"yphp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp,php php$tempphp[php0php]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/dateTimeFormatsphp/intervalFormatsphp/intervalFormatItemphp[php@idphp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/greatestDifferencephp[php@idphp=php\php'php'php php.php php$valuephp[php2php]php php.php php'php\php'php]php'php,php php'php'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'fieldphp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/fieldsphp/fieldphp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$valuephp[php1php]php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'relativephp'php:
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php"gregorianphp"php,php php$tempphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/calendarsphp/calendarphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/fieldsphp/fieldphp/relativephp[php@typephp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php'php,php php'php'php,php php$valuephp[php1php]php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'decimalnumberphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/decimalFormatsphp/decimalFormatLengthphp/decimalFormatphp/patternphp'php,php php'php'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'scientificnumberphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/scientificFormatsphp/scientificFormatLengthphp/scientificFormatphp/patternphp'php,php php'php'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'percentnumberphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/percentFormatsphp/percentFormatLengthphp/percentFormatphp/patternphp'php,php php'php'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencynumberphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currencyFormatsphp/currencyFormatLengthphp/currencyFormatphp/patternphp'php,php php'php'php,php php'defaultphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'nametocurrencyphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencytonamephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/displayNamephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$valphp[php$keyphp]php)php orphp php(php$valphp[php$keyphp]php php!php=php php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$valphp[php$keyphp]php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencysymbolphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/numbersphp/currenciesphp/currencyphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/symbolphp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'questionphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/posixphp/messagesphp/php'php php.php php$valuephp php.php php'strphp'php,php php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencyfractionphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"DEFAULTphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp[php@isophp4php2php1php7php=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'digitsphp'php,php php'digitsphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencyroundingphp'php:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php"DEFAULTphp"php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/fractionsphp/infophp[php@isophp4php2php1php7php=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'roundingphp'php,php php'roundingphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'currencytoregionphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp[php@isophp3php1php6php6php=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/currencyphp'php,php php'isophp4php2php1php7php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'regiontocurrencyphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp'php,php php'isophp3php1php6php6php'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/currencyDataphp/regionphp[php@isophp3php1php6php6php=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/currencyphp'php,php php'isophp4php2php1php7php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$valphp[php$keyphp]php)php orphp php(php$valphp[php$keyphp]php php!php=php php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$valphp[php$keyphp]php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$valphp[php$keyphp]php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'regiontoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'containsphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytoregionphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/territoryContainmentphp/groupphp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'containsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp3php php!php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'scripttolanguagephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'scriptsphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'languagetoscriptphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'scriptsphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp3php php!php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytolanguagephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'territoriesphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'languagetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/languageDataphp/languagephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php'php,php php'territoriesphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp3php php!php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetowindowsphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp[php@otherphp=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'typephp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'windowstotimezonephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/mapTimezonesphp[php@typephp=php\php'windowsphp\php'php]php/mapZonephp[php@typephp=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'otherphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytotimezonephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'territoryphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/timezoneDataphp/zoneFormattingphp/zoneItemphp[php@territoryphp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'typephp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'citytotimezonephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp[php@typephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/exemplarCityphp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'timezonetocityphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp php+php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/datesphp/timeZoneNamesphp/zonephp[php@typephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/exemplarCityphp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$tempphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$tempphp[php$keyphp]php php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$tempphp[php$keyphp]php]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$tempphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'phonetoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp[php@territoryphp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/telephoneCountryCodephp'php,php php'codephp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytophonephp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp2php php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp'php,php php'territoryphp'php)php;
-php php php php php php php php php php php php php php php php php$php_tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp2php asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp php+php=php selfphp:php:php_getFilephp(php'telephoneCodeDataphp'php,php php'php/supplementalDataphp/telephoneCodeDataphp/codesByTerritoryphp[php@territoryphp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/telephoneCountryCodephp'php,php php'codephp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$tempphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp asphp php$keyphp php=php>php php$foundphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_tempphp3php php=php explodephp(php"php php"php,php php$foundphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp(php$php_tempphp3php asphp php$foundphp3php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$foundphp3php php!php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$tempphp[php$foundphp3php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php=php php(stringphp)php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp[php$foundphp3php]php php.php=php php"php php"php php.php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'numerictoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@typephp=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'numericphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytonumericphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@numericphp=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'typephp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'alphaphp3toterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@typephp=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'alphaphp3php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'territorytoalphaphp3php'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'supplementalDataphp'php,php php'php/supplementalDataphp/codeMappingsphp/territoryCodesphp[php@alphaphp3php=php\php'php'php.php$valuephp.php'php\php'php]php'php,php php'typephp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'postaltoterritoryphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'postalCodeDataphp'php,php php'php/supplementalDataphp/postalCodeDataphp/postCodeRegexphp[php@territoryIdphp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'territoryIdphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'numberingsystemphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'numberingSystemsphp'php,php php'php/supplementalDataphp/numberingSystemsphp/numberingSystemphp[php@idphp=php\php'php'php php.php strtolowerphp(php$valuephp)php php.php php'php\php'php]php'php,php php'digitsphp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'chartofallbackphp'php:
-php php php php php php php php php php php php php php php php php$php_tempphp php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp'php,php php'valuephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$php_tempphp asphp php$keyphp php=php>php php$keyvaluephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$tempphp2php php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp[php@valuephp=php\php'php'php php.php php$keyphp php.php php'php\php'php]php/substitutephp'php,php php'php'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(currentphp(php$tempphp2php)php php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$tempphp php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp[php@valuephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/substitutephp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'fallbacktocharphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'charactersphp'php,php php'php/supplementalDataphp/charactersphp/characterphp-fallbackphp/characterphp[php@valuephp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php/substitutephp'php,php php'php'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'localeupgradephp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php'likelySubtagsphp'php,php php'php/supplementalDataphp/likelySubtagsphp/likelySubtagphp[php@fromphp=php\php'php'php php.php php$valuephp php.php php'php\php'php]php'php,php php'tophp'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp php'unitphp'php:
-php php php php php php php php php php php php php php php php php$tempphp php=php selfphp:php:php_getFilephp(php$localephp,php php'php/ldmlphp/unitsphp/unitphp[php@typephp=php\php'php'php php.php php$valuephp[php0php]php php.php php'php\php'php]php/unitPatternphp[php@countphp=php\php'php'php php.php php$valuephp[php1php]php php.php php'php\php'php]php'php,php php'php'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php defaultphp php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Localephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Localephp_Exceptionphp(php"Unknownphp detailphp php(php$pathphp)php forphp parsingphp localephp dataphp.php"php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(isphp_arrayphp(php$tempphp)php)php php{
-php php php php php php php php php php php php php$tempphp php=php currentphp(php$tempphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_cachephp)php)php php{
-php php php php php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$tempphp)php,php php$idphp,php arrayphp(php'Zendphp_Localephp'php)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>savephp(php serializephp(php$tempphp)php,php php$idphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$tempphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp cache
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp Thephp setphp cache
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getCachephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_cachephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp aphp cachephp forphp Zendphp_Localephp_Data
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Cachephp_Corephp php$cachephp Aphp cachephp frontend
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setCachephp(Zendphp_Cachephp_Corephp php$cachephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php=php php$cachephp;
-php php php php php php php php selfphp:php:php_getTagSupportForCachephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp whenphp aphp cachephp isphp set
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp hasCachephp(php)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_cachephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removesphp anyphp setphp cache
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp removeCachephp(php)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php=php nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearsphp allphp setphp cachephp data
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp clearCachephp(php)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_cacheTagsphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp,php arrayphp(php'Zendphp_Localephp'php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php selfphp:php:php$php_cachephp-php>cleanphp(Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Disablesphp thephp cache
-php php php php php php*
-php php php php php php*php php@paramphp unknownphp_typephp php$flag
-php php php php php php*php/
-php php php php publicphp staticphp functionphp disableCachephp(php$flagphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cacheDisabledphp php=php php(booleanphp)php php$flagphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Internalphp methodphp tophp checkphp ifphp thephp givenphp cachephp supportsphp tags
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Cachephp php$cache
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_getTagSupportForCachephp(php)
-php php php php php{
-php php php php php php php php php$backendphp php=php selfphp:php:php$php_cachephp-php>getBackendphp(php)php;
-php php php php php php php php ifphp php(php$backendphp instanceofphp Zendphp_Cachephp_Backendphp_ExtendedInterfacephp)php php{
-php php php php php php php php php php php php php$cacheOptionsphp php=php php$backendphp-php>getCapabilitiesphp(php)php;
-php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php php$cacheOptionsphp[php'tagsphp'php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php selfphp:php:php$php_cacheTagsphp php=php falsephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp selfphp:php:php$php_cacheTagsphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Locale
+ * @subpackage Data
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Data.php 22712 2010-07-29 08:24:28Z thomas $
+ */
+
+/**
+ * include needed classes
+ */
+require_once 'Zend/Locale.php';
+
+/**
+ * Locale data reader, handles the CLDR
+ *
+ * @category   Zend
+ * @package    Zend_Locale
+ * @subpackage Data
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Locale_Data
+{
+    /**
+     * Locale files
+     *
+     * @var ressource
+     * @access private
+     */
+    private static $_ldml = array();
+
+    /**
+     * List of values which are collected
+     *
+     * @var array
+     * @access private
+     */
+    private static $_list = array();
+
+    /**
+     * Internal cache for ldml values
+     *
+     * @var Zend_Cache_Core
+     * @access private
+     */
+    private static $_cache = null;
+
+    /**
+     * Internal value to remember if cache supports tags
+     *
+     * @var boolean
+     */
+    private static $_cacheTags = false;
+
+    /**
+     * Internal option, cache disabled
+     *
+     * @var    boolean
+     * @access private
+     */
+    private static $_cacheDisabled = false;
+
+    /**
+     * Read the content from locale
+     *
+     * Can be called like:
+     * <ldml>
+     *     <delimiter>test</delimiter>
+     *     <second type='myone'>content</second>
+     *     <second type='mysecond'>content2</second>
+     *     <third type='mythird' />
+     * </ldml>
+     *
+     * Case 1: _readFile('ar','/ldml/delimiter')             -> returns [] = test
+     * Case 1: _readFile('ar','/ldml/second[@type=myone]')   -> returns [] = content
+     * Case 2: _readFile('ar','/ldml/second','type')         -> returns [myone] = content; [mysecond] = content2
+     * Case 3: _readFile('ar','/ldml/delimiter',,'right')    -> returns [right] = test
+     * Case 4: _readFile('ar','/ldml/third','type','myone')  -> returns [myone] = mythird
+     *
+     * @param  string $locale
+     * @param  string $path
+     * @param  string $attribute
+     * @param  string $value
+     * @access private
+     * @return array
+     */
+    private static function _readFile($locale, $path, $attribute, $value, $temp)
+    {
+        // without attribute - read all values
+        // with attribute    - read only this value
+        if (!empty(self::$_ldml[(string) $locale])) {
+
+            $result = self::$_ldml[(string) $locale]->xpath($path);
+            if (!empty($result)) {
+                foreach ($result as &$found) {
+
+                    if (empty($value)) {
+
+                        if (empty($attribute)) {
+                            // Case 1
+                            $temp[] = (string) $found;
+                        } else if (empty($temp[(string) $found[$attribute]])){
+                            // Case 2
+                            $temp[(string) $found[$attribute]] = (string) $found;
+                        }
+
+                    } else if (empty ($temp[$value])) {
+
+                        if (empty($attribute)) {
+                            // Case 3
+                            $temp[$value] = (string) $found;
+                        } else {
+                            // Case 4
+                            $temp[$value] = (string) $found[$attribute];
+                        }
+
+                    }
+                }
+            }
+        }
+        return $temp;
+    }
+
+    /**
+     * Find possible routing to other path or locale
+     *
+     * @param  string $locale
+     * @param  string $path
+     * @param  string $attribute
+     * @param  string $value
+     * @param  array  $temp
+     * @throws Zend_Locale_Exception
+     * @access private
+     */
+    private static function _findRoute($locale, $path, $attribute, $value, &$temp)
+    {
+        // load locale file if not already in cache
+        // needed for alias tag when referring to other locale
+        if (empty(self::$_ldml[(string) $locale])) {
+            $filename = dirname(__FILE__) . '/Data/' . $locale . '.xml';
+            if (!file_exists($filename)) {
+                require_once 'Zend/Locale/Exception.php';
+                throw new Zend_Locale_Exception("Missing locale file '$filename' for '$locale' locale.");
+            }
+
+            self::$_ldml[(string) $locale] = simplexml_load_file($filename);
+        }
+
+        // search for 'alias' tag in the search path for redirection
+        $search = '';
+        $tok = strtok($path, '/');
+
+        // parse the complete path
+        if (!empty(self::$_ldml[(string) $locale])) {
+            while ($tok !== false) {
+                $search .=  '/' . $tok;
+                if (strpos($search, '[@') !== false) {
+                    while (strrpos($search, '[@') > strrpos($search, ']')) {
+                        $tok = strtok('/');
+                        if (empty($tok)) {
+                            $search .= '/';
+                        }
+                        $search = $search . '/' . $tok;
+                    }
+                }
+                $result = self::$_ldml[(string) $locale]->xpath($search . '/alias');
+
+                // alias found
+                if (!empty($result)) {
+
+                    $source = $result[0]['source'];
+                    $newpath = $result[0]['path'];
+
+                    // new path - path //ldml is to ignore
+                    if ($newpath != '//ldml') {
+                        // other path - parse to make real path
+
+                        while (substr($newpath,0,3) == '../') {
+                            $newpath = substr($newpath, 3);
+                            $search = substr($search, 0, strrpos($search, '/'));
+                        }
+
+                        // truncate ../ to realpath otherwise problems with alias
+                        $path = $search . '/' . $newpath;
+                        while (($tok = strtok('/'))!== false) {
+                            $path = $path . '/' . $tok;
+                        }
+                    }
+
+                    // reroute to other locale
+                    if ($source != 'locale') {
+                        $locale = $source;
+                    }
+
+                    $temp = self::_getFile($locale, $path, $attribute, $value, $temp);
+                    return false;
+                }
+
+                $tok = strtok('/');
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Read the right LDML file
+     *
+     * @param  string $locale
+     * @param  string $path
+     * @param  string $attribute
+     * @param  string $value
+     * @access private
+     */
+    private static function _getFile($locale, $path, $attribute = false, $value = false, $temp = array())
+    {
+        $result = self::_findRoute($locale, $path, $attribute, $value, $temp);
+        if ($result) {
+            $temp = self::_readFile($locale, $path, $attribute, $value, $temp);
+        }
+
+        // parse required locales reversive
+        // example: when given zh_Hans_CN
+        // 1. -> zh_Hans_CN
+        // 2. -> zh_Hans
+        // 3. -> zh
+        // 4. -> root
+        if (($locale != 'root') && ($result)) {
+            $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
+            if (!empty($locale)) {
+                $temp = self::_getFile($locale, $path, $attribute, $value, $temp);
+            } else {
+                $temp = self::_getFile('root', $path, $attribute, $value, $temp);
+            }
+        }
+        return $temp;
+    }
+
+    /**
+     * Find the details for supplemental calendar datas
+     *
+     * @param  string $locale Locale for Detaildata
+     * @param  array  $list   List to search
+     * @return string         Key for Detaildata
+     */
+    private static function _calendarDetail($locale, $list)
+    {
+        $ret = "001";
+        foreach ($list as $key => $value) {
+            if (strpos($locale, '_') !== false) {
+                $locale = substr($locale, strpos($locale, '_') + 1);
+            }
+            if (strpos($key, $locale) !== false) {
+                $ret = $key;
+                break;
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * Internal function for checking the locale
+     *
+     * @param string|Zend_Locale $locale Locale to check
+     * @return string
+     */
+    private static function _checkLocale($locale)
+    {
+        if (empty($locale)) {
+            $locale = new Zend_Locale();
+        }
+
+        if (!(Zend_Locale::isLocale((string) $locale, null, false))) {
+            require_once 'Zend/Locale/Exception.php';
+            throw new Zend_Locale_Exception("Locale (" . (string) $locale . ") is a unknown locale");
+        }
+
+        return (string) $locale;
+    }
+
+    /**
+     * Read the LDML file, get a array of multipath defined value
+     *
+     * @param  string $locale
+     * @param  string $path
+     * @param  string $value
+     * @return array
+     * @access public
+     */
+    public static function getList($locale, $path, $value = false)
+    {
+        $locale = self::_checkLocale($locale);
+
+        if (!isset(self::$_cache) && !self::$_cacheDisabled) {
+            require_once 'Zend/Cache.php';
+            self::$_cache = Zend_Cache::factory(
+                'Core',
+                'File',
+                array('automatic_serialization' => true),
+                array());
+        }
+
+        $val = $value;
+        if (is_array($value)) {
+            $val = implode('_' , $value);
+        }
+
+        $val = urlencode($val);
+        $id = strtr('Zend_LocaleL_' . $locale . '_' . $path . '_' . $val, array('-' => '_', '%' => '_', '+' => '_'));
+        if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
+            return unserialize($result);
+        }
+
+        $temp = array();
+        switch(strtolower($path)) {
+            case 'language':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language', 'type');
+                break;
+
+            case 'script':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/scripts/script', 'type');
+                break;
+
+            case 'territory':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/territories/territory', 'type');
+                if ($value === 1) {
+                    foreach($temp as $key => $value) {
+                        if ((is_numeric($key) === false) and ($key != 'QO') and ($key != 'QU')) {
+                            unset($temp[$key]);
+                        }
+                    }
+                } else if ($value === 2) {
+                    foreach($temp as $key => $value) {
+                        if (is_numeric($key) or ($key == 'QO') or ($key == 'QU')) {
+                            unset($temp[$key]);
+                        }
+                    }
+                }
+                break;
+
+            case 'variant':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/variants/variant', 'type');
+                break;
+
+            case 'key':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/keys/key', 'type');
+                break;
+
+            case 'type':
+                if (empty($type)) {
+                    $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type', 'type');
+                } else {
+                    if (($value == 'calendar') or
+                        ($value == 'collation') or
+                        ($value == 'currency')) {
+                        $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type[@key=\'' . $value . '\']', 'type');
+                    } else {
+                        $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type[@type=\'' . $value . '\']', 'type');
+                    }
+                }
+                break;
+
+            case 'layout':
+                $temp  = self::_getFile($locale, '/ldml/layout/orientation',                 'lines',      'lines');
+                $temp += self::_getFile($locale, '/ldml/layout/orientation',                 'characters', 'characters');
+                $temp += self::_getFile($locale, '/ldml/layout/inList',                      '',           'inList');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'currency\']',  '',           'currency');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'dayWidth\']',  '',           'dayWidth');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'fields\']',    '',           'fields');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'keys\']',      '',           'keys');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'languages\']', '',           'languages');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'long\']',      '',           'long');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'measurementSystemNames\']', '', 'measurementSystemNames');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'monthWidth\']',   '',        'monthWidth');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'quarterWidth\']', '',        'quarterWidth');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'scripts\']',   '',           'scripts');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'territories\']',  '',        'territories');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'types\']',     '',           'types');
+                $temp += self::_getFile($locale, '/ldml/layout/inText[@type=\'variants\']',  '',           'variants');
+                break;
+
+            case 'characters':
+                $temp  = self::_getFile($locale, '/ldml/characters/exemplarCharacters',                           '', 'characters');
+                $temp += self::_getFile($locale, '/ldml/characters/exemplarCharacters[@type=\'auxiliary\']',      '', 'auxiliary');
+                $temp += self::_getFile($locale, '/ldml/characters/exemplarCharacters[@type=\'currencySymbol\']', '', 'currencySymbol');
+                break;
+
+            case 'delimiters':
+                $temp  = self::_getFile($locale, '/ldml/delimiters/quotationStart',          '', 'quoteStart');
+                $temp += self::_getFile($locale, '/ldml/delimiters/quotationEnd',            '', 'quoteEnd');
+                $temp += self::_getFile($locale, '/ldml/delimiters/alternateQuotationStart', '', 'quoteStartAlt');
+                $temp += self::_getFile($locale, '/ldml/delimiters/alternateQuotationEnd',   '', 'quoteEndAlt');
+                break;
+
+            case 'measurement':
+                $temp  = self::_getFile('supplementalData', '/supplementalData/measurementData/measurementSystem[@type=\'metric\']', 'territories', 'metric');
+                $temp += self::_getFile('supplementalData', '/supplementalData/measurementData/measurementSystem[@type=\'US\']',     'territories', 'US');
+                $temp += self::_getFile('supplementalData', '/supplementalData/measurementData/paperSize[@type=\'A4\']',             'territories', 'A4');
+                $temp += self::_getFile('supplementalData', '/supplementalData/measurementData/paperSize[@type=\'US-Letter\']',      'territories', 'US-Letter');
+                break;
+
+            case 'months':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/default', 'choice', 'context');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'format\']/default', 'choice', 'default');
+                $temp['format']['abbreviated'] = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'format\']/monthWidth[@type=\'abbreviated\']/month', 'type');
+                $temp['format']['narrow']      = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'format\']/monthWidth[@type=\'narrow\']/month', 'type');
+                $temp['format']['wide']        = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'format\']/monthWidth[@type=\'wide\']/month', 'type');
+                $temp['stand-alone']['abbreviated']  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'stand-alone\']/monthWidth[@type=\'abbreviated\']/month', 'type');
+                $temp['stand-alone']['narrow']       = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'stand-alone\']/monthWidth[@type=\'narrow\']/month', 'type');
+                $temp['stand-alone']['wide']         = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'stand-alone\']/monthWidth[@type=\'wide\']/month', 'type');
+                break;
+
+            case 'month':
+                if (empty($value)) {
+                    $value = array("gregorian", "format", "wide");
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/months/monthContext[@type=\'' . $value[1] . '\']/monthWidth[@type=\'' . $value[2] . '\']/month', 'type');
+                break;
+
+            case 'days':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/default', 'choice', 'context');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'format\']/default', 'choice', 'default');
+                $temp['format']['abbreviated'] = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'format\']/dayWidth[@type=\'abbreviated\']/day', 'type');
+                $temp['format']['narrow']      = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'format\']/dayWidth[@type=\'narrow\']/day', 'type');
+                $temp['format']['wide']        = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'format\']/dayWidth[@type=\'wide\']/day', 'type');
+                $temp['stand-alone']['abbreviated']  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'stand-alone\']/dayWidth[@type=\'abbreviated\']/day', 'type');
+                $temp['stand-alone']['narrow']       = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'stand-alone\']/dayWidth[@type=\'narrow\']/day', 'type');
+                $temp['stand-alone']['wide']         = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'stand-alone\']/dayWidth[@type=\'wide\']/day', 'type');
+                break;
+
+            case 'day':
+                if (empty($value)) {
+                    $value = array("gregorian", "format", "wide");
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/days/dayContext[@type=\'' . $value[1] . '\']/dayWidth[@type=\'' . $value[2] . '\']/day', 'type');
+                break;
+
+            case 'week':
+                $minDays   = self::_calendarDetail($locale, self::_getFile('supplementalData', '/supplementalData/weekData/minDays', 'territories'));
+                $firstDay  = self::_calendarDetail($locale, self::_getFile('supplementalData', '/supplementalData/weekData/firstDay', 'territories'));
+                $weekStart = self::_calendarDetail($locale, self::_getFile('supplementalData', '/supplementalData/weekData/weekendStart', 'territories'));
+                $weekEnd   = self::_calendarDetail($locale, self::_getFile('supplementalData', '/supplementalData/weekData/weekendEnd', 'territories'));
+
+                $temp  = self::_getFile('supplementalData', "/supplementalData/weekData/minDays[@territories='" . $minDays . "']", 'count', 'minDays');
+                $temp += self::_getFile('supplementalData', "/supplementalData/weekData/firstDay[@territories='" . $firstDay . "']", 'day', 'firstDay');
+                $temp += self::_getFile('supplementalData', "/supplementalData/weekData/weekendStart[@territories='" . $weekStart . "']", 'day', 'weekendStart');
+                $temp += self::_getFile('supplementalData', "/supplementalData/weekData/weekendEnd[@territories='" . $weekEnd . "']", 'day', 'weekendEnd');
+                break;
+
+            case 'quarters':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp['format']['abbreviated'] = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'format\']/quarterWidth[@type=\'abbreviated\']/quarter', 'type');
+                $temp['format']['narrow']      = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'format\']/quarterWidth[@type=\'narrow\']/quarter', 'type');
+                $temp['format']['wide']        = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'format\']/quarterWidth[@type=\'wide\']/quarter', 'type');
+                $temp['stand-alone']['abbreviated']  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'stand-alone\']/quarterWidth[@type=\'abbreviated\']/quarter', 'type');
+                $temp['stand-alone']['narrow']       = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'stand-alone\']/quarterWidth[@type=\'narrow\']/quarter', 'type');
+                $temp['stand-alone']['wide']         = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/quarters/quarterContext[@type=\'stand-alone\']/quarterWidth[@type=\'wide\']/quarter', 'type');
+                break;
+
+            case 'quarter':
+                if (empty($value)) {
+                    $value = array("gregorian", "format", "wide");
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/quarters/quarterContext[@type=\'' . $value[1] . '\']/quarterWidth[@type=\'' . $value[2] . '\']/quarter', 'type');
+                break;
+
+            case 'eras':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp['names']       = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/eras/eraNames/era', 'type');
+                $temp['abbreviated'] = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/eras/eraAbbr/era', 'type');
+                $temp['narrow']      = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/eras/eraNarrow/era', 'type');
+                break;
+
+            case 'era':
+                if (empty($value)) {
+                    $value = array("gregorian", "Abbr");
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/eras/era' . $value[1] . '/era', 'type');
+                break;
+
+            case 'date':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'full\']/dateFormat/pattern', '', 'full');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'long\']/dateFormat/pattern', '', 'long');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'medium\']/dateFormat/pattern', '', 'medium');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'short\']/dateFormat/pattern', '', 'short');
+                break;
+
+            case 'time':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp  = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'full\']/timeFormat/pattern', '', 'full');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'long\']/timeFormat/pattern', '', 'long');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'medium\']/timeFormat/pattern', '', 'medium');
+                $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'short\']/timeFormat/pattern', '', 'short');
+                break;
+
+            case 'datetime':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+
+                $timefull = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'full\']/timeFormat/pattern', '', 'full');
+                $timelong = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'long\']/timeFormat/pattern', '', 'long');
+                $timemedi = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'medium\']/timeFormat/pattern', '', 'medi');
+                $timeshor = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/timeFormatLength[@type=\'short\']/timeFormat/pattern', '', 'shor');
+
+                $datefull = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'full\']/dateFormat/pattern', '', 'full');
+                $datelong = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'long\']/dateFormat/pattern', '', 'long');
+                $datemedi = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'medium\']/dateFormat/pattern', '', 'medi');
+                $dateshor = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/dateFormatLength[@type=\'short\']/dateFormat/pattern', '', 'shor');
+
+                $full = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/dateTimeFormatLength[@type=\'full\']/dateTimeFormat/pattern', '', 'full');
+                $long = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/dateTimeFormatLength[@type=\'long\']/dateTimeFormat/pattern', '', 'long');
+                $medi = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/dateTimeFormatLength[@type=\'medium\']/dateTimeFormat/pattern', '', 'medi');
+                $shor = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/dateTimeFormatLength[@type=\'short\']/dateTimeFormat/pattern', '', 'shor');
+
+                $temp['full']   = str_replace(array('{0}', '{1}'), array($timefull['full'], $datefull['full']), $full['full']);
+                $temp['long']   = str_replace(array('{0}', '{1}'), array($timelong['long'], $datelong['long']), $long['long']);
+                $temp['medium'] = str_replace(array('{0}', '{1}'), array($timemedi['medi'], $datemedi['medi']), $medi['medi']);
+                $temp['short']  = str_replace(array('{0}', '{1}'), array($timeshor['shor'], $dateshor['shor']), $shor['shor']);
+                break;
+
+            case 'dateitem':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $_temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/availableFormats/dateFormatItem', 'id');
+                foreach($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/availableFormats/dateFormatItem[@id=\'' . $key . '\']', '', $key);
+                }
+                break;
+
+            case 'dateinterval':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $_temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/intervalFormats/intervalFormatItem', 'id');
+                foreach($_temp as $key => $found) {
+                    $temp[$key] = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateTimeFormats/intervalFormats/intervalFormatItem[@id=\'' . $key . '\']/greatestDifference', 'id');
+                }
+                break;
+
+            case 'field':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp2 = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/fields/field', 'type');
+                foreach ($temp2 as $key => $keyvalue) {
+                    $temp += self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/fields/field[@type=\'' . $key . '\']/displayName', '', $key);
+                }
+                break;
+
+            case 'relative':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/fields/field/relative', 'type');
+                break;
+
+            case 'symbols':
+                $temp  = self::_getFile($locale, '/ldml/numbers/symbols/decimal',         '', 'decimal');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/group',           '', 'group');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/list',            '', 'list');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/percentSign',     '', 'percent');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/nativeZeroDigit', '', 'zero');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/patternDigit',    '', 'pattern');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/plusSign',        '', 'plus');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/minusSign',       '', 'minus');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/exponential',     '', 'exponent');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/perMille',        '', 'mille');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/infinity',        '', 'infinity');
+                $temp += self::_getFile($locale, '/ldml/numbers/symbols/nan',             '', 'nan');
+                break;
+
+            case 'nametocurrency':
+                $_temp = self::_getFile($locale, '/ldml/numbers/currencies/currency', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $key . '\']/displayName', '', $key);
+                }
+                break;
+
+            case 'currencytoname':
+                $_temp = self::_getFile($locale, '/ldml/numbers/currencies/currency', 'type');
+                foreach ($_temp as $key => $keyvalue) {
+                    $val = self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $key . '\']/displayName', '', $key);
+                    if (!isset($val[$key])) {
+                        continue;
+                    }
+                    if (!isset($temp[$val[$key]])) {
+                        $temp[$val[$key]] = $key;
+                    } else {
+                        $temp[$val[$key]] .= " " . $key;
+                    }
+                }
+                break;
+
+            case 'currencysymbol':
+                $_temp = self::_getFile($locale, '/ldml/numbers/currencies/currency', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $key . '\']/symbol', '', $key);
+                }
+                break;
+
+            case 'question':
+                $temp  = self::_getFile($locale, '/ldml/posix/messages/yesstr',  '', 'yes');
+                $temp += self::_getFile($locale, '/ldml/posix/messages/nostr',   '', 'no');
+                break;
+
+            case 'currencyfraction':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info', 'iso4217');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info[@iso4217=\'' . $key . '\']', 'digits', $key);
+                }
+                break;
+
+            case 'currencyrounding':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info', 'iso4217');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info[@iso4217=\'' . $key . '\']', 'rounding', $key);
+                }
+                break;
+
+            case 'currencytoregion':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/currencyData/region', 'iso3166');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/currencyData/region[@iso3166=\'' . $key . '\']/currency', 'iso4217', $key);
+                }
+                break;
+
+            case 'regiontocurrency':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/currencyData/region', 'iso3166');
+                foreach ($_temp as $key => $keyvalue) {
+                    $val = self::_getFile('supplementalData', '/supplementalData/currencyData/region[@iso3166=\'' . $key . '\']/currency', 'iso4217', $key);
+                    if (!isset($val[$key])) {
+                        continue;
+                    }
+                    if (!isset($temp[$val[$key]])) {
+                        $temp[$val[$key]] = $key;
+                    } else {
+                        $temp[$val[$key]] .= " " . $key;
+                    }
+                }
+                break;
+
+            case 'regiontoterritory':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/territoryContainment/group', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/territoryContainment/group[@type=\'' . $key . '\']', 'contains', $key);
+                }
+                break;
+
+            case 'territorytoregion':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/territoryContainment/group', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/territoryContainment/group[@type=\'' . $key . '\']', 'contains', $key);
+                }
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'scripttolanguage':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'scripts', $key);
+                    if (empty($temp[$key])) {
+                        unset($temp[$key]);
+                    }
+                }
+                break;
+
+            case 'languagetoscript':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'scripts', $key);
+                }
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if (empty($found3)) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'territorytolanguage':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'territories', $key);
+                    if (empty($temp[$key])) {
+                        unset($temp[$key]);
+                    }
+                }
+                break;
+
+            case 'languagetoterritory':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'territories', $key);
+                }
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if (empty($found3)) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'timezonetowindows':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone', 'other');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone[@other=\'' . $key . '\']', 'type', $key);
+                }
+                break;
+
+            case 'windowstotimezone':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone[@type=\'' .$key . '\']', 'other', $key);
+                }
+                break;
+
+            case 'territorytotimezone':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem', 'type');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem[@type=\'' . $key . '\']', 'territory', $key);
+                }
+                break;
+
+            case 'timezonetoterritory':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem', 'territory');
+                foreach ($_temp as $key => $found) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem[@territory=\'' . $key . '\']', 'type', $key);
+                }
+                break;
+
+            case 'citytotimezone':
+                $_temp = self::_getFile($locale, '/ldml/dates/timeZoneNames/zone', 'type');
+                foreach($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/dates/timeZoneNames/zone[@type=\'' . $key . '\']/exemplarCity', '', $key);
+                }
+                break;
+
+            case 'timezonetocity':
+                $_temp  = self::_getFile($locale, '/ldml/dates/timeZoneNames/zone', 'type');
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/dates/timeZoneNames/zone[@type=\'' . $key . '\']/exemplarCity', '', $key);
+                    if (!empty($temp[$key])) {
+                        $temp[$temp[$key]] = $key;
+                    }
+                    unset($temp[$key]);
+                }
+                break;
+
+            case 'phonetoterritory':
+                $_temp = self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory', 'territory');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory[@territory=\'' . $key . '\']/telephoneCountryCode', 'code', $key);
+                }
+                break;
+
+            case 'territorytophone':
+                $_temp = self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory', 'territory');
+                foreach ($_temp as $key => $keyvalue) {
+                    $val = self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory[@territory=\'' . $key . '\']/telephoneCountryCode', 'code', $key);
+                    if (!isset($val[$key])) {
+                        continue;
+                    }
+                    if (!isset($temp[$val[$key]])) {
+                        $temp[$val[$key]] = $key;
+                    } else {
+                        $temp[$val[$key]] .= " " . $key;
+                    }
+                }
+                break;
+
+            case 'numerictoterritory':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes', 'type');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@type=\'' . $key . '\']', 'numeric', $key);
+                }
+                break;
+
+            case 'territorytonumeric':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes', 'numeric');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@numeric=\'' . $key . '\']', 'type', $key);
+                }
+                break;
+
+            case 'alpha3toterritory':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes', 'type');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@type=\'' . $key . '\']', 'alpha3', $key);
+                }
+                break;
+
+            case 'territorytoalpha3':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes', 'alpha3');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@alpha3=\'' . $key . '\']', 'type', $key);
+                }
+                break;
+
+            case 'postaltoterritory':
+                $_temp = self::_getFile('postalCodeData', '/supplementalData/postalCodeData/postCodeRegex', 'territoryId');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('postalCodeData', '/supplementalData/postalCodeData/postCodeRegex[@territoryId=\'' . $key . '\']', 'territoryId');
+                }
+                break;
+
+            case 'numberingsystem':
+                $_temp = self::_getFile('numberingSystems', '/supplementalData/numberingSystems/numberingSystem', 'id');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('numberingSystems', '/supplementalData/numberingSystems/numberingSystem[@id=\'' . $key . '\']', 'digits', $key);
+                    if (empty($temp[$key])) {
+                        unset($temp[$key]);
+                    }
+                }
+                break;
+
+            case 'chartofallback':
+                $_temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character', 'value');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp2 = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $key . '\']/substitute', '', $key);
+                    $temp[current($temp2)] = $key;
+                }
+                break;
+
+            case 'fallbacktochar':
+                $_temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character', 'value');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $key . '\']/substitute', '', $key);
+                }
+                break;
+
+            case 'localeupgrade':
+                $_temp = self::_getFile('likelySubtags', '/supplementalData/likelySubtags/likelySubtag', 'from');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp += self::_getFile('likelySubtags', '/supplementalData/likelySubtags/likelySubtag[@from=\'' . $key . '\']', 'to', $key);
+                }
+                break;
+
+            case 'unit':
+                $_temp = self::_getFile($locale, '/ldml/units/unit', 'type');
+                foreach($_temp as $key => $keyvalue) {
+                    $_temp2 = self::_getFile($locale, '/ldml/units/unit[@type=\'' . $key . '\']/unitPattern', 'count');
+                    $temp[$key] = $_temp2;
+                }
+                break;
+
+            default :
+                require_once 'Zend/Locale/Exception.php';
+                throw new Zend_Locale_Exception("Unknown list ($path) for parsing locale data.");
+                break;
+        }
+
+        if (isset(self::$_cache)) {
+            if (self::$_cacheTags) {
+                self::$_cache->save( serialize($temp), $id, array('Zend_Locale'));
+            } else {
+                self::$_cache->save( serialize($temp), $id);
+            }
+        }
+
+        return $temp;
+    }
+
+    /**
+     * Read the LDML file, get a single path defined value
+     *
+     * @param  string $locale
+     * @param  string $path
+     * @param  string $value
+     * @return string
+     * @access public
+     */
+    public static function getContent($locale, $path, $value = false)
+    {
+        $locale = self::_checkLocale($locale);
+
+        if (!isset(self::$_cache) && !self::$_cacheDisabled) {
+            require_once 'Zend/Cache.php';
+            self::$_cache = Zend_Cache::factory(
+                'Core',
+                'File',
+                array('automatic_serialization' => true),
+                array());
+        }
+
+        $val = $value;
+        if (is_array($value)) {
+            $val = implode('_' , $value);
+        }
+        $val = urlencode($val);
+        $id = strtr('Zend_LocaleC_' . $locale . '_' . $path . '_' . $val, array('-' => '_', '%' => '_', '+' => '_'));
+        if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
+            return unserialize($result);
+        }
+
+        switch(strtolower($path)) {
+            case 'language':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language[@type=\'' . $value . '\']', 'type');
+                break;
+
+            case 'script':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/scripts/script[@type=\'' . $value . '\']', 'type');
+                break;
+
+            case 'country':
+            case 'territory':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/territories/territory[@type=\'' . $value . '\']', 'type');
+                break;
+
+            case 'variant':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/variants/variant[@type=\'' . $value . '\']', 'type');
+                break;
+
+            case 'key':
+                $temp = self::_getFile($locale, '/ldml/localeDisplayNames/keys/key[@type=\'' . $value . '\']', 'type');
+                break;
+
+            case 'defaultcalendar':
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/default', 'choice', 'default');
+                break;
+
+            case 'monthcontext':
+                if (empty ($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/default', 'choice', 'context');
+                break;
+
+            case 'defaultmonth':
+                if (empty ($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/months/monthContext[@type=\'format\']/default', 'choice', 'default');
+                break;
+
+            case 'month':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", "format", "wide", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/months/monthContext[@type=\'' . $value[1] . '\']/monthWidth[@type=\'' . $value[2] . '\']/month[@type=\'' . $value[3] . '\']', 'type');
+                break;
+
+            case 'daycontext':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/default', 'choice', 'context');
+                break;
+
+            case 'defaultday':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/days/dayContext[@type=\'format\']/default', 'choice', 'default');
+                break;
+
+            case 'day':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", "format", "wide", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/days/dayContext[@type=\'' . $value[1] . '\']/dayWidth[@type=\'' . $value[2] . '\']/day[@type=\'' . $value[3] . '\']', 'type');
+                break;
+
+            case 'quarter':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", "format", "wide", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/quarters/quarterContext[@type=\'' . $value[1] . '\']/quarterWidth[@type=\'' . $value[2] . '\']/quarter[@type=\'' . $value[3] . '\']', 'type');
+                break;
+
+            case 'am':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/am', '', 'am');
+                break;
+
+            case 'pm':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/pm', '', 'pm');
+                break;
+
+            case 'era':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", "Abbr", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/eras/era' . $value[1] . '/era[@type=\'' . $value[2] . '\']', 'type');
+                break;
+
+            case 'defaultdate':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/dateFormats/default', 'choice', 'default');
+                break;
+
+            case 'date':
+                if (empty($value)) {
+                    $value = array("gregorian", "medium");
+                }
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/dateFormats/dateFormatLength[@type=\'' . $value[1] . '\']/dateFormat/pattern', '', 'pattern');
+                break;
+
+            case 'defaulttime':
+                if (empty($value)) {
+                    $value = "gregorian";
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value . '\']/timeFormats/default', 'choice', 'default');
+                break;
+
+            case 'time':
+                if (empty($value)) {
+                    $value = array("gregorian", "medium");
+                }
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/timeFormats/timeFormatLength[@type=\'' . $value[1] . '\']/timeFormat/pattern', '', 'pattern');
+                break;
+
+            case 'datetime':
+                if (empty($value)) {
+                    $value = array("gregorian", "medium");
+                }
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+
+                $date     = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/dateFormats/dateFormatLength[@type=\'' . $value[1] . '\']/dateFormat/pattern', '', 'pattern');
+                $time     = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/timeFormats/timeFormatLength[@type=\'' . $value[1] . '\']/timeFormat/pattern', '', 'pattern');
+                $datetime = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/dateTimeFormats/dateTimeFormatLength[@type=\'' . $value[1] . '\']/dateTimeFormat/pattern', '', 'pattern');
+                $temp = str_replace(array('{0}', '{1}'), array(current($time), current($date)), current($datetime));
+                break;
+
+            case 'dateitem':
+                if (empty($value)) {
+                    $value = array("gregorian", "yyMMdd");
+                }
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/dateTimeFormats/availableFormats/dateFormatItem[@id=\'' . $value[1] . '\']', '');
+                break;
+
+            case 'dateinterval':
+                if (empty($value)) {
+                    $value = array("gregorian", "yMd", "y");
+                }
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp, $temp[0]);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/dateTimeFormats/intervalFormats/intervalFormatItem[@id=\'' . $value[1] . '\']/greatestDifference[@id=\'' . $value[2] . '\']', '');
+                break;
+
+            case 'field':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/fields/field[@type=\'' . $value[1] . '\']/displayName', '', $value[1]);
+                break;
+
+            case 'relative':
+                if (!is_array($value)) {
+                    $temp = $value;
+                    $value = array("gregorian", $temp);
+                }
+                $temp = self::_getFile($locale, '/ldml/dates/calendars/calendar[@type=\'' . $value[0] . '\']/fields/field/relative[@type=\'' . $value[1] . '\']', '', $value[1]);
+                break;
+
+            case 'decimalnumber':
+                $temp = self::_getFile($locale, '/ldml/numbers/decimalFormats/decimalFormatLength/decimalFormat/pattern', '', 'default');
+                break;
+
+            case 'scientificnumber':
+                $temp = self::_getFile($locale, '/ldml/numbers/scientificFormats/scientificFormatLength/scientificFormat/pattern', '', 'default');
+                break;
+
+            case 'percentnumber':
+                $temp = self::_getFile($locale, '/ldml/numbers/percentFormats/percentFormatLength/percentFormat/pattern', '', 'default');
+                break;
+
+            case 'currencynumber':
+                $temp = self::_getFile($locale, '/ldml/numbers/currencyFormats/currencyFormatLength/currencyFormat/pattern', '', 'default');
+                break;
+
+            case 'nametocurrency':
+                $temp = self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $value . '\']/displayName', '', $value);
+                break;
+
+            case 'currencytoname':
+                $temp = self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $value . '\']/displayName', '', $value);
+                $_temp = self::_getFile($locale, '/ldml/numbers/currencies/currency', 'type');
+                $temp = array();
+                foreach ($_temp as $key => $keyvalue) {
+                    $val = self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $key . '\']/displayName', '', $key);
+                    if (!isset($val[$key]) or ($val[$key] != $value)) {
+                        continue;
+                    }
+                    if (!isset($temp[$val[$key]])) {
+                        $temp[$val[$key]] = $key;
+                    } else {
+                        $temp[$val[$key]] .= " " . $key;
+                    }
+                }
+                break;
+
+            case 'currencysymbol':
+                $temp = self::_getFile($locale, '/ldml/numbers/currencies/currency[@type=\'' . $value . '\']/symbol', '', $value);
+                break;
+
+            case 'question':
+                $temp = self::_getFile($locale, '/ldml/posix/messages/' . $value . 'str',  '', $value);
+                break;
+
+            case 'currencyfraction':
+                if (empty($value)) {
+                    $value = "DEFAULT";
+                }
+                $temp = self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info[@iso4217=\'' . $value . '\']', 'digits', 'digits');
+                break;
+
+            case 'currencyrounding':
+                if (empty($value)) {
+                    $value = "DEFAULT";
+                }
+                $temp = self::_getFile('supplementalData', '/supplementalData/currencyData/fractions/info[@iso4217=\'' . $value . '\']', 'rounding', 'rounding');
+                break;
+
+            case 'currencytoregion':
+                $temp = self::_getFile('supplementalData', '/supplementalData/currencyData/region[@iso3166=\'' . $value . '\']/currency', 'iso4217', $value);
+                break;
+
+            case 'regiontocurrency':
+                $_temp = self::_getFile('supplementalData', '/supplementalData/currencyData/region', 'iso3166');
+                $temp = array();
+                foreach ($_temp as $key => $keyvalue) {
+                    $val = self::_getFile('supplementalData', '/supplementalData/currencyData/region[@iso3166=\'' . $key . '\']/currency', 'iso4217', $key);
+                    if (!isset($val[$key]) or ($val[$key] != $value)) {
+                        continue;
+                    }
+                    if (!isset($temp[$val[$key]])) {
+                        $temp[$val[$key]] = $key;
+                    } else {
+                        $temp[$val[$key]] .= " " . $key;
+                    }
+                }
+                break;
+
+            case 'regiontoterritory':
+                $temp = self::_getFile('supplementalData', '/supplementalData/territoryContainment/group[@type=\'' . $value . '\']', 'contains', $value);
+                break;
+
+            case 'territorytoregion':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/territoryContainment/group', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/territoryContainment/group[@type=\'' . $key . '\']', 'contains', $key);
+                }
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if ($found3 !== $value) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'scripttolanguage':
+                $temp = self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $value . '\']', 'scripts', $value);
+                break;
+
+            case 'languagetoscript':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'scripts', $key);
+                }
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if ($found3 !== $value) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'territorytolanguage':
+                $temp = self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $value . '\']', 'territories', $value);
+                break;
+
+            case 'languagetoterritory':
+                $_temp2 = self::_getFile('supplementalData', '/supplementalData/languageData/language', 'type');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('supplementalData', '/supplementalData/languageData/language[@type=\'' . $key . '\']', 'territories', $key);
+                }
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if ($found3 !== $value) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'timezonetowindows':
+                $temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone[@other=\''.$value.'\']', 'type', $value);
+                break;
+
+            case 'windowstotimezone':
+                $temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/mapTimezones[@type=\'windows\']/mapZone[@type=\''.$value.'\']', 'other', $value);
+                break;
+
+            case 'territorytotimezone':
+                $temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem[@type=\'' . $value . '\']', 'territory', $value);
+                break;
+
+            case 'timezonetoterritory':
+                $temp = self::_getFile('supplementalData', '/supplementalData/timezoneData/zoneFormatting/zoneItem[@territory=\'' . $value . '\']', 'type', $value);
+                break;
+
+            case 'citytotimezone':
+                $temp = self::_getFile($locale, '/ldml/dates/timeZoneNames/zone[@type=\'' . $value . '\']/exemplarCity', '', $value);
+                break;
+
+            case 'timezonetocity':
+                $_temp  = self::_getFile($locale, '/ldml/dates/timeZoneNames/zone', 'type');
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $temp += self::_getFile($locale, '/ldml/dates/timeZoneNames/zone[@type=\'' . $key . '\']/exemplarCity', '', $key);
+                    if (!empty($temp[$key])) {
+                        if ($temp[$key] == $value) {
+                            $temp[$temp[$key]] = $key;
+                        }
+                    }
+                    unset($temp[$key]);
+                }
+                break;
+
+            case 'phonetoterritory':
+                $temp = self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory[@territory=\'' . $value . '\']/telephoneCountryCode', 'code', $value);
+                break;
+
+            case 'territorytophone':
+                $_temp2 = self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory', 'territory');
+                $_temp = array();
+                foreach ($_temp2 as $key => $found) {
+                    $_temp += self::_getFile('telephoneCodeData', '/supplementalData/telephoneCodeData/codesByTerritory[@territory=\'' . $key . '\']/telephoneCountryCode', 'code', $key);
+                }
+                $temp = array();
+                foreach($_temp as $key => $found) {
+                    $_temp3 = explode(" ", $found);
+                    foreach($_temp3 as $found3) {
+                        if ($found3 !== $value) {
+                            continue;
+                        }
+                        if (!isset($temp[$found3])) {
+                            $temp[$found3] = (string) $key;
+                        } else {
+                            $temp[$found3] .= " " . $key;
+                        }
+                    }
+                }
+                break;
+
+            case 'numerictoterritory':
+                $temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@type=\''.$value.'\']', 'numeric', $value);
+                break;
+
+            case 'territorytonumeric':
+                $temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@numeric=\''.$value.'\']', 'type', $value);
+                break;
+
+            case 'alpha3toterritory':
+                $temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@type=\''.$value.'\']', 'alpha3', $value);
+                break;
+
+            case 'territorytoalpha3':
+                $temp = self::_getFile('supplementalData', '/supplementalData/codeMappings/territoryCodes[@alpha3=\''.$value.'\']', 'type', $value);
+                break;
+
+            case 'postaltoterritory':
+                $temp = self::_getFile('postalCodeData', '/supplementalData/postalCodeData/postCodeRegex[@territoryId=\'' . $value . '\']', 'territoryId');
+                break;
+
+            case 'numberingsystem':
+                $temp = self::_getFile('numberingSystems', '/supplementalData/numberingSystems/numberingSystem[@id=\'' . strtolower($value) . '\']', 'digits', $value);
+                break;
+
+            case 'chartofallback':
+                $_temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character', 'value');
+                foreach ($_temp as $key => $keyvalue) {
+                    $temp2 = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $key . '\']/substitute', '', $key);
+                    if (current($temp2) == $value) {
+                        $temp = $key;
+                    }
+                }
+                break;
+
+                $temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $value . '\']/substitute', '', $value);
+                break;
+
+            case 'fallbacktochar':
+                $temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $value . '\']/substitute', '');
+                break;
+
+            case 'localeupgrade':
+                $temp = self::_getFile('likelySubtags', '/supplementalData/likelySubtags/likelySubtag[@from=\'' . $value . '\']', 'to', $value);
+                break;
+
+            case 'unit':
+                $temp = self::_getFile($locale, '/ldml/units/unit[@type=\'' . $value[0] . '\']/unitPattern[@count=\'' . $value[1] . '\']', '');
+                break;
+
+            default :
+                require_once 'Zend/Locale/Exception.php';
+                throw new Zend_Locale_Exception("Unknown detail ($path) for parsing locale data.");
+                break;
+        }
+
+        if (is_array($temp)) {
+            $temp = current($temp);
+        }
+        if (isset(self::$_cache)) {
+            if (self::$_cacheTags) {
+                self::$_cache->save( serialize($temp), $id, array('Zend_Locale'));
+            } else {
+                self::$_cache->save( serialize($temp), $id);
+            }
+        }
+
+        return $temp;
+    }
+
+    /**
+     * Returns the set cache
+     *
+     * @return Zend_Cache_Core The set cache
+     */
+    public static function getCache()
+    {
+        return self::$_cache;
+    }
+
+    /**
+     * Set a cache for Zend_Locale_Data
+     *
+     * @param Zend_Cache_Core $cache A cache frontend
+     */
+    public static function setCache(Zend_Cache_Core $cache)
+    {
+        self::$_cache = $cache;
+        self::_getTagSupportForCache();
+    }
+
+    /**
+     * Returns true when a cache is set
+     *
+     * @return boolean
+     */
+    public static function hasCache()
+    {
+        if (self::$_cache !== null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Removes any set cache
+     *
+     * @return void
+     */
+    public static function removeCache()
+    {
+        self::$_cache = null;
+    }
+
+    /**
+     * Clears all set cache data
+     *
+     * @return void
+     */
+    public static function clearCache()
+    {
+        if (self::$_cacheTags) {
+            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array('Zend_Locale'));
+        } else {
+            self::$_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+        }
+    }
+
+    /**
+     * Disables the cache
+     *
+     * @param unknown_type $flag
+     */
+    public static function disableCache($flag)
+    {
+        self::$_cacheDisabled = (boolean) $flag;
+    }
+
+    /**
+     * Internal method to check if the given cache supports tags
+     *
+     * @param Zend_Cache $cache
+     */
+    private static function _getTagSupportForCache()
+    {
+        $backend = self::$_cache->getBackend();
+        if ($backend instanceof Zend_Cache_Backend_ExtendedInterface) {
+            $cacheOptions = $backend->getCapabilities();
+            self::$_cacheTags = $cacheOptions['tags'];
+        } else {
+            self::$_cacheTags = false;
+        }
+
+        return self::$_cacheTags;
+    }
+}

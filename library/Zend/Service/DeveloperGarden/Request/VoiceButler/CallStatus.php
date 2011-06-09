@@ -1,100 +1,100 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CallStatusphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CallStatus.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_VoiceButlerphp_VoiceButlerAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/VoiceButlerphp/VoiceButlerAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_VoiceButler_VoiceButlerAbstract
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/VoiceButlerAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_CallStatus
-php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_VoiceButlerAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php extendphp thephp keepphp alivephp forphp thisphp call
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php publicphp php$keepAlivephp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
+    extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
+{
+    /**
+     * extend the keep alive for this call
+     *
+     * @var integer
+     */
+    public $keepAlive = null;
 
-php php php php php/php*php*
-php php php php php php*php constructorphp givephp themphp thephp environmentphp andphp thephp sessionId
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$environment
-php php php php php php*php php@paramphp stringphp php$sessionId
-php php php php php php*php php@paramphp integerphp php$keepAlive
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$environmentphp,php php$sessionIdphp,php php$keepAlivephp php=php nullphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$environmentphp)php;
-php php php php php php php php php$thisphp-php>setSessionIdphp(php$sessionIdphp)
-php php php php php php php php php php php php php php-php>setKeepAlivephp(php$keepAlivephp)php;
-php php php php php}
+    /**
+     * constructor give them the environment and the sessionId
+     *
+     * @param integer $environment
+     * @param string $sessionId
+     * @param integer $keepAlive
+     * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
+     */
+    public function __construct($environment, $sessionId, $keepAlive = null)
+    {
+        parent::__construct($environment);
+        $this->setSessionId($sessionId)
+             ->setKeepAlive($keepAlive);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSessionIdphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>sessionIdphp;
-php php php php php}
+    /**
+     * @return string
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp sessionId
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$sessionId
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_CallStatus
-php php php php php php*php/
-php php php php publicphp functionphp setSessionIdphp(php$sessionIdphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>sessionIdphp php=php php$sessionIdphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets new sessionId
+     *
+     * @param string $sessionId
+     * @return Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
+     */
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getKeepAlivephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>keepAlivephp;
-php php php php php}
+    /**
+     * @return integer
+     */
+    public function getKeepAlive()
+    {
+        return $this->keepAlive;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp keepAlivephp flag
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$keepAlive
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_CallStatus
-php php php php php php*php/
-php php php php publicphp functionphp setKeepAlivephp(php$keepAlivephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>keepAlivephp php=php php$keepAlivephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php}
+    /**
+     * sets new keepAlive flag
+     *
+     * @param integer $keepAlive
+     * @return Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
+     */
+    public function setKeepAlive($keepAlive)
+    {
+        $this->keepAlive = $keepAlive;
+        return $this;
+    }
+}

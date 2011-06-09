@@ -1,154 +1,154 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CallStatusResponsephp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CallStatusResponse.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_VoiceButlerAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/VoiceButlerAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/VoiceButlerAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusResponse
-php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_VoiceButlerAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp sessionphp id
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSessionIdphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>sessionIdphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>sessionIdphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
+    extends Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
+{
+    /**
+     * returns the session id
+     * @return string
+     */
+    public function getSessionId()
+    {
+        if (isset($this->return->sessionId)) {
+            return $this->return->sessionId;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp connectionphp timephp forphp participantphp a
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getConnectionTimeAphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>connectiontimeaphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>connectiontimeaphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the connection time for participant a
+     *
+     * @return integer
+     */
+    public function getConnectionTimeA()
+    {
+        if (isset($this->return->connectiontimea)) {
+            return $this->return->connectiontimea;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp connectionphp timephp forphp participantphp b
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getConnectionTimeBphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>connectiontimebphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>connectiontimebphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the connection time for participant b
+     *
+     * @return integer
+     */
+    public function getConnectionTimeB()
+    {
+        if (isset($this->return->connectiontimeb)) {
+            return $this->return->connectiontimeb;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp descriptionphp timephp forphp participantphp a
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionAphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>descriptionaphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>descriptionaphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the description time for participant a
+     *
+     * @return string
+     */
+    public function getDescriptionA()
+    {
+        if (isset($this->return->descriptiona)) {
+            return $this->return->descriptiona;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp descriptionphp timephp forphp participantphp b
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionBphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>descriptionbphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>descriptionbphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the description time for participant b
+     *
+     * @return string
+     */
+    public function getDescriptionB()
+    {
+        if (isset($this->return->descriptionb)) {
+            return $this->return->descriptionb;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp reasonphp timephp forphp participantphp a
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getReasonAphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>reasonaphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>reasonaphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the reason time for participant a
+     *
+     * @return integer
+     */
+    public function getReasonA()
+    {
+        if (isset($this->return->reasona)) {
+            return $this->return->reasona;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp reasonphp timephp forphp participantphp b
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getReasonBphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>reasonbphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>reasonbphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the reason time for participant b
+     *
+     * @return integer
+     */
+    public function getReasonB()
+    {
+        if (isset($this->return->reasonb)) {
+            return $this->return->reasonb;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp statephp timephp forphp participantphp a
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getStateAphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>stateaphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>stateaphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * returns the state time for participant a
+     *
+     * @return string
+     */
+    public function getStateA()
+    {
+        if (isset($this->return->statea)) {
+            return $this->return->statea;
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp statephp timephp forphp participantphp b
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getStateBphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>returnphp-php>statebphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>returnphp-php>statebphp;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
-php}
+    /**
+     * returns the state time for participant b
+     *
+     * @return string
+     */
+    public function getStateB()
+    {
+        if (isset($this->return->stateb)) {
+            return $this->return->stateb;
+        }
+        return null;
+    }
+}

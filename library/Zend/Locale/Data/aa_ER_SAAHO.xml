@@ -1,38 +1,38 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php3php6php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php3php php$php"php/php>
-php	php	php<languagephp typephp=php"aaphp"php/php>
-php	php	php<territoryphp typephp=php"ERphp"php/php>
-php	php	php<variantphp typephp=php"SAAHOphp"php/php>
-php	<php/identityphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Nab<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>San<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Sal<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Rab<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Cam<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jum<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Qun<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Nabaphp Sambat<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Sani<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Salus<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Rabuq<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Camus<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jumqata<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Qunxaphp Sambat<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.36 $"/>
+		<generation date="$Date: 2009/05/05 23:06:33 $"/>
+		<language type="aa"/>
+		<territory type="ER"/>
+		<variant type="SAAHO"/>
+	</identity>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Nab</day>
+							<day type="mon">San</day>
+							<day type="tue">Sal</day>
+							<day type="wed">Rab</day>
+							<day type="thu">Cam</day>
+							<day type="fri">Jum</day>
+							<day type="sat">Qun</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Naba Sambat</day>
+							<day type="mon">Sani</day>
+							<day type="tue">Salus</day>
+							<day type="wed">Rabuq</day>
+							<day type="thu">Camus</day>
+							<day type="fri">Jumqata</day>
+							<day type="sat">Qunxa Sambat</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+			</calendar>
+		</calendars>
+	</dates>
+</ldml>

@@ -1,104 +1,104 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ZfStandardLibraryDirectoryphp.phpphp php2php0php9php0php4php php2php0php1php0php-php0php2php-php0php4php php1php6php:php1php8php:php1php8Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ZfStandardLibraryDirectory.php 20904 2010-02-04 16:18:18Z matthew $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Filesystemphp/Directoryphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Context_Filesystem_Directory
+ */
+require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
 
-php/php*php*
-php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
-php php*
-php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
-php php*php itemsphp withinphp aphp specificphp projectphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Contextphp_Zfphp_ZfStandardLibraryDirectoryphp extendsphp Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Directory
-php{
+/**
+ * This class is the front most class for utilizing Zend_Tool_Project
+ *
+ * A profile is a hierarchical set of resources that keep track of
+ * items within a specific project.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_Project_Context_Filesystem_Directory
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_filesystemNamephp php=php php'Zendphp'php;
+    /**
+     * @var string
+     */
+    protected $_filesystemName = 'Zend';
 
-php php php php php/php*php*
-php php php php php php*php getNamephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php'ZfStandardLibraryDirectoryphp'php;
-php php php php php}
+    /**
+     * getName()
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'ZfStandardLibraryDirectory';
+    }
 
-php php php php php/php*php*
-php php php php php php*php createphp(php)
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp createphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:createphp(php)php;
-php php php php php php php php php$zfPathphp php=php php$thisphp-php>php_getZfPathphp(php)php;
-php php php php php php php php ifphp php(php$zfPathphp php!php=php falsephp)php php{
-php php php php php php php php php php php php php$zfIteratorphp php=php newphp RecursiveDirectoryIteratorphp(php$zfPathphp)php;
-php php php php php php php php php php php php foreachphp php(php$riiphp php=php newphp RecursiveIteratorIteratorphp(php$zfIteratorphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php asphp php$filephp)php php{
-php php php php php php php php php php php php php php php php php$relativePathphp php=php pregphp_replacephp(php'php#php^php'php.pregphp_quotephp(realpathphp(php$zfPathphp)php,php php'php#php'php)php.php'php#php'php,php php'php'php,php realpathphp(php$filephp-php>getPathphp(php)php)php)php php.php DIRECTORYphp_SEPARATORphp php.php php$filephp-php>getFilenamephp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(strposphp(php$relativePathphp,php DIRECTORYphp_SEPARATORphp php.php php'php.php'php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
+    /**
+     * create()
+     *
+     */
+    public function create()
+    {
+        parent::create();
+        $zfPath = $this->_getZfPath();
+        if ($zfPath != false) {
+            $zfIterator = new RecursiveDirectoryIterator($zfPath);
+            foreach ($rii = new RecursiveIteratorIterator($zfIterator, RecursiveIteratorIterator::SELF_FIRST) as $file) {
+                $relativePath = preg_replace('#^'.preg_quote(realpath($zfPath), '#').'#', '', realpath($file->getPath())) . DIRECTORY_SEPARATOR . $file->getFilename();
+                if (strpos($relativePath, DIRECTORY_SEPARATOR . '.') !== false) {
+                    continue;
+                }
 
-php php php php php php php php php php php php php php php php ifphp php(php$filephp-php>isDirphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php mkdirphp(php$thisphp-php>getBaseDirectoryphp(php)php php.php DIRECTORYphp_SEPARATORphp php.php php$thisphp-php>getFilesystemNamephp(php)php php.php php$relativePathphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php copyphp(php$filephp-php>getPathnamephp(php)php,php php$thisphp-php>getBaseDirectoryphp(php)php php.php DIRECTORYphp_SEPARATORphp php.php php$thisphp-php>getFilesystemNamephp(php)php php.php php$relativePathphp)php;
-php php php php php php php php php php php php php php php php php}
+                if ($file->isDir()) {
+                    mkdir($this->getBaseDirectory() . DIRECTORY_SEPARATOR . $this->getFilesystemName() . $relativePath);
+                } else {
+                    copy($file->getPathname(), $this->getBaseDirectory() . DIRECTORY_SEPARATOR . $this->getFilesystemName() . $relativePath);
+                }
 
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_getZfPathphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|false
-php php php php php php*php/
-php php php php protectedphp functionphp php_getZfPathphp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php foreachphp php(Zendphp_Loaderphp:php:explodeIncludePathphp(php)php asphp php$includePathphp)php php{
-php php php php php php php php php php php php ifphp php(php!filephp_existsphp(php$includePathphp)php php|php|php php$includePathphp[php0php]php php=php=php php'php.php'php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+    /**
+     * _getZfPath()
+     *
+     * @return string|false
+     */
+    protected function _getZfPath()
+    {
+        require_once 'Zend/Loader.php';
+        foreach (Zend_Loader::explodeIncludePath() as $includePath) {
+            if (!file_exists($includePath) || $includePath[0] == '.') {
+                continue;
+            }
 
-php php php php php php php php php php php php ifphp php(realpathphp(php$checkedPathphp php=php rtrimphp(php$includePathphp,php php'php\php\php/php'php)php php.php php'php/Zendphp/Loaderphp.phpphp'php)php php!php=php=php falsephp php&php&php filephp_existsphp(php$checkedPathphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp dirnamephp(php$checkedPathphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if (realpath($checkedPath = rtrim($includePath, '\\/') . '/Zend/Loader.php') !== false && file_exists($checkedPath)) {
+                return dirname($checkedPath);
+            }
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php}
+}

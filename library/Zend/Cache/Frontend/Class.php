@@ -1,259 +1,259 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Frontend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Classphp.phpphp php2php3php0php5php1php php2php0php1php0php-php1php0php-php0php7php php1php7php:php0php1php:php2php1Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Frontend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Class.php 23051 2010-10-07 17:01:21Z mabe $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Core
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Corephp.phpphp'php;
+/**
+ * @see Zend_Cache_Core
+ */
+require_once 'Zend/Cache/Core.php';
 
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Frontend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Frontendphp_Classphp extendsphp Zendphp_Cachephp_Core
-php{
-php php php php php/php*php*
-php php php php php php*php Availablephp options
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(mixedphp)php cachedphp_entityphp php:
-php php php php php php*php php-php ifphp setphp tophp aphp classphp namephp,php wephp willphp cachephp anphp abstractphp classphp andphp willphp usephp onlyphp staticphp calls
-php php php php php php*php php-php ifphp setphp tophp anphp objectphp,php wephp willphp cachephp thisphp objectphp methods
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(booleanphp)php cachephp_byphp_defaultphp php:
-php php php php php php*php php-php ifphp truephp,php methodphp callsphp willphp bephp cachedphp byphp default
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(arrayphp)php cachedphp_methodsphp php:
-php php php php php php*php php-php anphp arrayphp ofphp methodphp namesphp whichphp willphp bephp cachedphp php(evenphp ifphp cachephp_byphp_defaultphp php=php falsephp)
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(arrayphp)php nonphp_cachedphp_methodsphp php:
-php php php php php php*php php-php anphp arrayphp ofphp methodphp namesphp whichphp wonphp'tphp bephp cachedphp php(evenphp ifphp cachephp_byphp_defaultphp php=php truephp)
-php php php php php php*
-php php php php php php*php php@varphp arrayphp availablephp options
-php php php php php php*php/
-php php php php protectedphp php$php_specificOptionsphp php=php arrayphp(
-php php php php php php php php php'cachedphp_entityphp'php php=php>php nullphp,
-php php php php php php php php php'cachephp_byphp_defaultphp'php php=php>php truephp,
-php php php php php php php php php'cachedphp_methodsphp'php php=php>php arrayphp(php)php,
-php php php php php php php php php'nonphp_cachedphp_methodsphp'php php=php>php arrayphp(php)
-php php php php php)php;
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Frontend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Frontend_Class extends Zend_Cache_Core
+{
+    /**
+     * Available options
+     *
+     * ====> (mixed) cached_entity :
+     * - if set to a class name, we will cache an abstract class and will use only static calls
+     * - if set to an object, we will cache this object methods
+     *
+     * ====> (boolean) cache_by_default :
+     * - if true, method calls will be cached by default
+     *
+     * ====> (array) cached_methods :
+     * - an array of method names which will be cached (even if cache_by_default = false)
+     *
+     * ====> (array) non_cached_methods :
+     * - an array of method names which won't be cached (even if cache_by_default = true)
+     *
+     * @var array available options
+     */
+    protected $_specificOptions = array(
+        'cached_entity' => null,
+        'cache_by_default' => true,
+        'cached_methods' => array(),
+        'non_cached_methods' => array()
+    );
 
-php php php php php/php*php*
-php php php php php php*php Tagsphp array
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_tagsphp php=php arrayphp(php)php;
+    /**
+     * Tags array
+     *
+     * @var array
+     */
+    private $_tags = array();
 
-php php php php php/php*php*
-php php php php php php*php SpecificLifetimephp value
-php php php php php php*
-php php php php php php*php falsephp php=php>php nophp specificphp lifephp time
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php privatephp php$php_specificLifetimephp php=php falsephp;
+    /**
+     * SpecificLifetime value
+     *
+     * false => no specific life time
+     *
+     * @var int
+     */
+    private $_specificLifetime = false;
 
-php php php php php/php*php*
-php php php php php php*php Thephp cachedphp objectphp orphp thephp namephp ofphp thephp cachedphp abstractphp class
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php privatephp php$php_cachedEntityphp php=php nullphp;
+    /**
+     * The cached object or the name of the cached abstract class
+     *
+     * @var mixed
+     */
+    private $_cachedEntity = null;
 
-php php php php php php/php*php*
-php php php php php php php*php Thephp classphp namephp ofphp thephp cachedphp objectphp orphp cachedphp abstractphp class
-php php php php php php php*
-php php php php php php php*php Usedphp tophp differentiatephp betweenphp differentphp classesphp withphp thephp samephp methodphp callsphp.
-php php php php php php php*
-php php php php php php php*php php@varphp string
-php php php php php php php*php/
-php php php php privatephp php$php_cachedEntityLabelphp php=php php'php'php;
+     /**
+      * The class name of the cached object or cached abstract class
+      *
+      * Used to differentiate between different classes with the same method calls.
+      *
+      * @var string
+      */
+    private $_cachedEntityLabel = '';
 
-php php php php php/php*php*
-php php php php php php*php Priorityphp php(usedphp byphp somephp particularphp backendsphp)
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php privatephp php$php_priorityphp php=php php8php;
+    /**
+     * Priority (used by some particular backends)
+     *
+     * @var int
+     */
+    private $_priority = 8;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp arrayphp ofphp options
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_specificOptionsphp[php'cachedphp_entityphp'php]php php=php=php=php nullphp)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'cachedphp_entityphp mustphp bephp setphp php!php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setCachedEntityphp(php$thisphp-php>php_specificOptionsphp[php'cachedphp_entityphp'php]php)php;
-php php php php php php php php php$thisphp-php>setOptionphp(php'automaticphp_serializationphp'php,php truephp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array $options Associative array of options
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    public function __construct(array $options = array())
+    {
+        while (list($name, $value) = each($options)) {
+            $this->setOption($name, $value);
+        }
+        if ($this->_specificOptions['cached_entity'] === null) {
+            Zend_Cache::throwException('cached_entity must be set !');
+        }
+        $this->setCachedEntity($this->_specificOptions['cached_entity']);
+        $this->setOption('automatic_serialization', true);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp aphp specificphp lifephp time
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$specificLifetime
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setSpecificLifetimephp(php$specificLifetimephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_specificLifetimephp php=php php$specificLifetimephp;
-php php php php php}
+    /**
+     * Set a specific life time
+     *
+     * @param  int $specificLifetime
+     * @return void
+     */
+    public function setSpecificLifetime($specificLifetime = false)
+    {
+        $this->_specificLifetime = $specificLifetime;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp priorityphp php(usedphp byphp somephp particularphp backendsphp)
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$priorityphp integerphp betweenphp php0php php(veryphp lowphp priorityphp)php andphp php1php0php php(maximumphp priorityphp)
-php php php php php php*php/
-php php php php publicphp functionphp setPriorityphp(php$priorityphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_priorityphp php=php php$priorityphp;
-php php php php php}
+    /**
+     * Set the priority (used by some particular backends)
+     *
+     * @param int $priority integer between 0 (very low priority) and 10 (maximum priority)
+     */
+    public function setPriority($priority)
+    {
+        $this->_priority = $priority;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Publicphp frontendphp tophp setphp anphp option
-php php php php php php*
-php php php php php php*php Justphp aphp wrapperphp tophp getphp aphp specificphp behaviourphp forphp cachedphp_entity
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp php Namephp ofphp thephp option
-php php php php php php*php php@paramphp php mixedphp php php$valuephp Valuephp ofphp thephp option
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$namephp php=php=php php'cachedphp_entityphp'php)php php{
-php php php php php php php php php php php php php$thisphp-php>setCachedEntityphp(php$valuephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php parentphp:php:setOptionphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Public frontend to set an option
+     *
+     * Just a wrapper to get a specific behaviour for cached_entity
+     *
+     * @param  string $name  Name of the option
+     * @param  mixed  $value Value of the option
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    public function setOption($name, $value)
+    {
+        if ($name == 'cached_entity') {
+            $this->setCachedEntity($value);
+        } else {
+            parent::setOption($name, $value);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Specificphp methodphp tophp setphp thephp cachedEntity
-php php php php php php*
-php php php php php php*php ifphp setphp tophp aphp classphp namephp,php wephp willphp cachephp anphp abstractphp classphp andphp willphp usephp onlyphp staticphp calls
-php php php php php php*php ifphp setphp tophp anphp objectphp,php wephp willphp cachephp thisphp objectphp methods
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$cachedEntity
-php php php php php php*php/
-php php php php publicphp functionphp setCachedEntityphp(php$cachedEntityphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$cachedEntityphp)php php&php&php php!isphp_objectphp(php$cachedEntityphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'cachedphp_entityphp mustphp bephp anphp objectphp orphp aphp classphp namephp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_cachedEntityphp php=php php$cachedEntityphp;
-php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'cachedphp_entityphp'php]php php=php php$cachedEntityphp;
-php php php php php php php php ifphp php(isphp_stringphp(php$thisphp-php>php_cachedEntityphp)php)php{
-php php php php php php php php php php php php php$thisphp-php>php_cachedEntityLabelphp php=php php$thisphp-php>php_cachedEntityphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$rophp php=php newphp ReflectionObjectphp(php$thisphp-php>php_cachedEntityphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_cachedEntityLabelphp php=php php$rophp-php>getNamephp(php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Specific method to set the cachedEntity
+     *
+     * if set to a class name, we will cache an abstract class and will use only static calls
+     * if set to an object, we will cache this object methods
+     *
+     * @param mixed $cachedEntity
+     */
+    public function setCachedEntity($cachedEntity)
+    {
+        if (!is_string($cachedEntity) && !is_object($cachedEntity)) {
+            Zend_Cache::throwException('cached_entity must be an object or a class name');
+        }
+        $this->_cachedEntity = $cachedEntity;
+        $this->_specificOptions['cached_entity'] = $cachedEntity;
+        if (is_string($this->_cachedEntity)){
+            $this->_cachedEntityLabel = $this->_cachedEntity;
+        } else {
+            $ro = new ReflectionObject($this->_cachedEntity);
+            $this->_cachedEntityLabel = $ro->getName();
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp cachephp array
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$tags
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setTagsArrayphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tagsphp php=php php$tagsphp;
-php php php php php}
+    /**
+     * Set the cache array
+     *
+     * @param  array $tags
+     * @return void
+     */
+    public function setTagsArray($tags = array())
+    {
+        $this->_tags = $tags;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mainphp methodphp php:php callphp thephp specifiedphp methodphp orphp getphp thephp resultphp fromphp cache
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp php php php php php php Methodphp name
-php php php php php php*php php@paramphp php arrayphp php php$parametersphp Methodphp parameters
-php php php php php php*php php@returnphp mixedphp Result
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$namephp,php php$parametersphp)
-php php php php php{
-php php php php php php php php php$cacheBoolphp1php php=php php$thisphp-php>php_specificOptionsphp[php'cachephp_byphp_defaultphp'php]php;
-php php php php php php php php php$cacheBoolphp2php php=php inphp_arrayphp(php$namephp,php php$thisphp-php>php_specificOptionsphp[php'cachedphp_methodsphp'php]php)php;
-php php php php php php php php php$cacheBoolphp3php php=php inphp_arrayphp(php$namephp,php php$thisphp-php>php_specificOptionsphp[php'nonphp_cachedphp_methodsphp'php]php)php;
-php php php php php php php php php$cachephp php=php php(php(php$cacheBoolphp1php php|php|php php$cacheBoolphp2php)php php&php&php php(php!php$cacheBoolphp3php)php)php;
-php php php php php php php php ifphp php(php!php$cachephp)php php{
-php php php php php php php php php php php php php/php/php Wephp dophp notphp havephp notphp cache
-php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_cachedEntityphp,php php$namephp)php,php php$parametersphp)php;
-php php php php php php php php php}
+    /**
+     * Main method : call the specified method or get the result from cache
+     *
+     * @param  string $name       Method name
+     * @param  array  $parameters Method parameters
+     * @return mixed Result
+     */
+    public function __call($name, $parameters)
+    {
+        $cacheBool1 = $this->_specificOptions['cache_by_default'];
+        $cacheBool2 = in_array($name, $this->_specificOptions['cached_methods']);
+        $cacheBool3 = in_array($name, $this->_specificOptions['non_cached_methods']);
+        $cache = (($cacheBool1 || $cacheBool2) && (!$cacheBool3));
+        if (!$cache) {
+            // We do not have not cache
+            return call_user_func_array(array($this->_cachedEntity, $name), $parameters);
+        }
 
-php php php php php php php php php$idphp php=php php$thisphp-php>php_makeIdphp(php$namephp,php php$parametersphp)php;
-php php php php php php php php ifphp php(php php(php$rsphp php=php php$thisphp-php>loadphp(php$idphp)php)php php&php&php issetphp(php$rsphp[php0php]php,php php$rsphp[php1php]php)php php)php php{
-php php php php php php php php php php php php php/php/php Aphp cachephp isphp available
-php php php php php php php php php php php php php$outputphp php=php php$rsphp[php0php]php;
-php php php php php php php php php php php php php$returnphp php=php php$rsphp[php1php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Aphp cachephp isphp notphp availablephp php(orphp notphp validphp forphp thisphp frontendphp)
-php php php php php php php php php php php php obphp_startphp(php)php;
-php php php php php php php php php php php php obphp_implicitphp_flushphp(falsephp)php;
+        $id = $this->_makeId($name, $parameters);
+        if ( ($rs = $this->load($id)) && isset($rs[0], $rs[1]) ) {
+            // A cache is available
+            $output = $rs[0];
+            $return = $rs[1];
+        } else {
+            // A cache is not available (or not valid for this frontend)
+            ob_start();
+            ob_implicit_flush(false);
 
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$returnphp php=php callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_cachedEntityphp,php php$namephp)php,php php$parametersphp)php;
-php php php php php php php php php php php php php php php php php$outputphp php=php obphp_getphp_cleanphp(php)php;
-php php php php php php php php php php php php php php php php php$dataphp php=php arrayphp(php$outputphp,php php$returnphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>savephp(php$dataphp,php php$idphp,php php$thisphp-php>php_tagsphp,php php$thisphp-php>php_specificLifetimephp,php php$thisphp-php>php_priorityphp)php;
-php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php obphp_endphp_cleanphp(php)php;
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            try {
+                $return = call_user_func_array(array($this->_cachedEntity, $name), $parameters);
+                $output = ob_get_clean();
+                $data = array($output, $return);
+                $this->save($data, $id, $this->_tags, $this->_specificLifetime, $this->_priority);
+            } catch (Exception $e) {
+                ob_end_clean();
+                throw $e;
+            }
+        }
 
-php php php php php php php php echophp php$outputphp;
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        echo $output;
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php ZFphp-php9php9php7php0
-php php php php php php*
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php privatephp functionphp php_makeIdphp(php$namephp,php php$argsphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>makeIdphp(php$namephp,php php$argsphp)php;
-php php php php php}
+    /**
+     * ZF-9970
+     *
+     * @deprecated
+     */
+    private function _makeId($name, $args)
+    {
+        return $this->makeId($name, $args);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Makephp aphp cachephp idphp fromphp thephp methodphp namephp andphp parameters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp Methodphp name
-php php php php php php*php php@paramphp php arrayphp php php$argsphp Methodphp parameters
-php php php php php php*php php@returnphp stringphp Cachephp id
-php php php php php php*php/
-php php php php publicphp functionphp makeIdphp(php$namephp,php arrayphp php$argsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php returnphp mdphp5php(php$thisphp-php>php_cachedEntityLabelphp php.php php'php_php_php'php php.php php$namephp php.php php'php_php_php'php php.php serializephp(php$argsphp)php)php;
-php php php php php}
+    /**
+     * Make a cache id from the method name and parameters
+     *
+     * @param  string $name Method name
+     * @param  array  $args Method parameters
+     * @return string Cache id
+     */
+    public function makeId($name, array $args = array())
+    {
+        return md5($this->_cachedEntityLabel . '__' . $name . '__' . serialize($args));
+    }
 
-php}
+}

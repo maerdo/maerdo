@@ -1,130 +1,130 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php IpAddressphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: IpAddress.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Ip
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Ipphp.phpphp'php;
+/**
+ * @see Zend_Validate_Ip
+ */
+require_once 'Zend/Validate/Ip.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_IpLocationphp_IpAddress
-php{
-php php php php php/php*php*
-php php php php php php*php thephp ipphp version
-php php php php php php*php ipphp vphp4php php=php php4
-php php php php php php*php ipphp vphp6php php=php php6
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_versionphp php=php php4php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_IpLocation_IpAddress
+{
+    /**
+     * the ip version
+     * ip v4 = 4
+     * ip v6 = 6
+     *
+     * @var integer
+     */
+    private $_version = 4;
 
-php php php php php/php*php*
-php php php php php php*php currentlyphp supportedphp versions
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_versionSupportedphp php=php arrayphp(
-php php php php php php php php php4php,
-php php php php php php php php php/php/php6php,php notphp supportedphp yet
-php php php php php)php;
+    /**
+     * currently supported versions
+     *
+     * @var array
+     */
+    private $_versionSupported = array(
+        4,
+        //6, not supported yet
+    );
 
-php php php php privatephp php$php_addressphp php=php nullphp;
+    private $_address = null;
 
-php php php php php/php*php*
-php php php php php php*php createphp ipaddressphp object
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$ip
-php php php php php php*php php@paramphp integerphp php$version
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_Developergardephp_IpLocationphp_IpAddress
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$ipphp,php php$versionphp php=php php4php)
-php php php php php{
-php php php php php php php php php$thisphp-php>setIpphp(php$ipphp)
-php php php php php php php php php php php php php php-php>setVersionphp(php$versionphp)php;
-php php php php php}
+    /**
+     * create ipaddress object
+     *
+     * @param string $ip
+     * @param integer $version
+     *
+     * @return Zend_Service_Developergarde_IpLocation_IpAddress
+     */
+    public function __construct($ip, $version = 4)
+    {
+        $this->setIp($ip)
+             ->setVersion($version);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp ipphp address
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$ip
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_IpLocationphp_IpAddress
-php php php php php php*php/
-php php php php publicphp functionphp setIpphp(php$ipphp)
-php php php php php{
-php php php php php php php php php$validatorphp php=php newphp Zendphp_Validatephp_Ipphp(php)php;
+    /**
+     * sets new ip address
+     *
+     * @param string $ip
+     * @throws Zend_Service_DeveloperGarden_Exception
+     * @return Zend_Service_DeveloperGarden_IpLocation_IpAddress
+     */
+    public function setIp($ip)
+    {
+        $validator = new Zend_Validate_Ip();
 
-php php php php php php php php ifphp php(php!php$validatorphp-php>isValidphp(php$ipphp)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$validatorphp-php>getMessagesphp(php)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php$messagephp[php'notIpAddressphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_addressphp php=php php$ipphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        if (!$validator->isValid($ip)) {
+            $message = $validator->getMessages();
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception($message['notIpAddress']);
+        }
+        $this->_address = $ip;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp currentphp address
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getIpphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_addressphp;
-php php php php php}
+    /**
+     * returns the current address
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->_address;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp ipphp version
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$version
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_IpLocationphp_IpAddress
-php php php php php php*php/
-php php php php publicphp functionphp setVersionphp(php$versionphp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$versionphp,php php$thisphp-php>php_versionSupportedphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php'Ipphp Versionphp php'php php.php php(intphp)php$versionphp php.php php'php isphp notphp supportedphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * sets new ip version
+     *
+     * @param integer $version
+     * @throws Zend_Service_DeveloperGarden_Exception
+     * @return Zend_Service_DeveloperGarden_IpLocation_IpAddress
+     */
+    public function setVersion($version)
+    {
+        if (!in_array($version, $this->_versionSupported)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception('Ip Version ' . (int)$version . ' is not supported.');
+        }
 
-php php php php php php php php php$thisphp-php>php_versionphp php=php php$versionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_version = $version;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp ipphp version
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_versionphp;
-php php php php php}
-php}
+    /**
+     * returns the ip version
+     *
+     * @return integer
+     */
+    public function getVersion()
+    {
+        return $this->_version;
+    }
+}

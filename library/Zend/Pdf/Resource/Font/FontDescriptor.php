@@ -1,204 +1,204 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php FontDescriptorphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: FontDescriptor.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Array.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
 
-php/php*php*php Zendphp_Pdfphp_Fontphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Fontphp.phpphp'php;
+/** Zend_Pdf_Font */
+require_once 'Zend/Pdf/Font.php';
 
 
-php/php*php*
-php php*php FontDescriptorphp implementation
-php php*
-php php*php Aphp fontphp descriptorphp specifiesphp metricsphp andphp otherphp attributesphp ofphp aphp simplephp fontphp orphp a
-php php*php CIDFontphp asphp aphp wholephp,php asphp distinctphp fromphp thephp metricsphp ofphp individualphp glyphsphp.php Thesephp font
-php php*php metricsphp providephp informationphp thatphp enablesphp aphp viewerphp applicationphp tophp synthesizephp a
-php php*php substitutephp fontphp orphp selectphp aphp similarphp fontphp whenphp thephp fontphp programphp isphp unavailablephp.php The
-php php*php fontphp descriptorphp mayphp alsophp bephp usedphp tophp embedphp thephp fontphp programphp inphp thephp PDFphp filephp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Resourcephp_Fontphp_FontDescriptor
-php{
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Zendphp_Pdfphp_Resourcephp_Fontphp_FontDescriptorphp isphp notphp intendedphp tophp bephp instantiatedphp'php)php;
-php php php php php}
+/**
+ * FontDescriptor implementation
+ *
+ * A font descriptor specifies metrics and other attributes of a simple font or a
+ * CIDFont as a whole, as distinct from the metrics of individual glyphs. These font
+ * metrics provide information that enables a viewer application to synthesize a
+ * substitute font or select a similar font when the font program is unavailable. The
+ * font descriptor may also be used to embed the font program in the PDF file.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Resource_Font_FontDescriptor
+{
+    /**
+     * Object constructor
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct()
+    {
+        require_once 'Zend/Pdf/Exception.php';
+        throw new Zend_Pdf_Exception('Zend_Pdf_Resource_Font_FontDescriptor is not intended to be instantiated');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php Thephp php$embeddingOptionsphp parameterphp allowsphp youphp tophp setphp certainphp flagsphp related
-php php php php php php*php tophp fontphp embeddingphp.php Youphp mayphp combinephp optionsphp byphp ORphp-ingphp themphp togetherphp.php See
-php php php php php php*php thephp EMBEDphp_php constantsphp definedphp inphp php{php@linkphp Zendphp_Pdfphp_Fontphp}php forphp thephp listphp of
-php php php php php php*php availablephp optionsphp andphp theirphp descriptionsphp.
-php php php php php php*
-php php php php php php*php Notephp thatphp itphp isphp notphp requriedphp thatphp fontsphp bephp embeddedphp withinphp thephp PDFphp file
-php php php php php php*php tophp usephp themphp.php Ifphp thephp recipientphp ofphp thephp PDFphp hasphp thephp fontphp installedphp onphp their
-php php php php php php*php computerphp,php theyphp willphp seephp thephp correctphp fontsphp inphp thephp documentphp.php Ifphp theyphp donphp'tphp,
-php php php php php php*php thephp PDFphp viewerphp willphp substitutephp orphp synthesizephp aphp replacementphp.
-php php php php php php*
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Resourcephp_Fontphp php$fontphp Font
-php php php php php php*php php@paramphp Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp php$fontParserphp Fontphp parserphp objectphp containingphp parsedphp TrueTypephp filephp.
-php php php php php php*php php@paramphp integerphp php$embeddingOptionsphp Optionsphp forphp fontphp embeddingphp.
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Dictionary
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php staticphp publicphp functionphp factoryphp(Zendphp_Pdfphp_Resourcephp_Fontphp php$fontphp,php Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp php$fontParserphp,php php$embeddingOptionsphp)
-php php php php php{
-php php php php php php php php php/php*php Thephp fontphp descriptorphp objectphp containsphp thephp restphp ofphp thephp fontphp metricsphp and
-php php php php php php php php php php*php thephp informationphp aboutphp thephp embeddedphp fontphp programphp php(ifphp appliciblephp)php.
-php php php php php php php php php php*php/
-php php php php php php php php php$fontDescriptorphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+    /**
+     * Object constructor
+     *
+     * The $embeddingOptions parameter allows you to set certain flags related
+     * to font embedding. You may combine options by OR-ing them together. See
+     * the EMBED_ constants defined in {@link Zend_Pdf_Font} for the list of
+     * available options and their descriptions.
+     *
+     * Note that it is not requried that fonts be embedded within the PDF file
+     * to use them. If the recipient of the PDF has the font installed on their
+     * computer, they will see the correct fonts in the document. If they don't,
+     * the PDF viewer will substitute or synthesize a replacement.
+     *
+     *
+     * @param Zend_Pdf_Resource_Font $font Font
+     * @param Zend_Pdf_FileParser_Font_OpenType $fontParser Font parser object containing parsed TrueType file.
+     * @param integer $embeddingOptions Options for font embedding.
+     * @return Zend_Pdf_Element_Dictionary
+     * @throws Zend_Pdf_Exception
+     */
+    static public function factory(Zend_Pdf_Resource_Font $font, Zend_Pdf_FileParser_Font_OpenType $fontParser, $embeddingOptions)
+    {
+        /* The font descriptor object contains the rest of the font metrics and
+         * the information about the embedded font program (if applicible).
+         */
+        $fontDescriptor = new Zend_Pdf_Element_Dictionary();
 
-php php php php php php php php php$fontDescriptorphp-php>Typephp php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FontDescriptorphp'php)php;
-php php php php php php php php php$fontDescriptorphp-php>FontNamephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$fontphp-php>getResourcephp(php)php-php>BaseFontphp-php>valuephp)php;
+        $fontDescriptor->Type     = new Zend_Pdf_Element_Name('FontDescriptor');
+        $fontDescriptor->FontName = new Zend_Pdf_Element_Name($font->getResource()->BaseFont->value);
 
-php php php php php php php php php/php*php Thephp fontphp flagsphp valuephp isphp aphp bitfieldphp thatphp describesphp thephp stylistic
-php php php php php php php php php php*php attributesphp ofphp thephp fontphp.php Wephp willphp setphp asphp manyphp ofphp thephp bitsphp asphp canphp be
-php php php php php php php php php php*php determinedphp fromphp thephp fontphp parserphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$flagsphp php=php php0php;
-php php php php php php php php ifphp php(php$fontParserphp-php>isMonospacedphp)php php{php php php php php/php/php bitphp php1php:php FixedPitch
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php0php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$fontParserphp-php>isSerifFontphp)php php{php php php php php/php/php bitphp php2php:php Serif
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php1php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php php$fontParserphp-php>isAdobeLatinSubsetphp)php php{php php php php php/php/php bitphp php3php:php Symbolic
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php2php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$fontParserphp-php>isScriptFontphp)php php{php php php php php/php/php bitphp php4php:php Script
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php3php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$fontParserphp-php>isAdobeLatinSubsetphp)php php{php php php php php/php/php bitphp php6php:php Nonsymbolic
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php5php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$fontParserphp-php>isItalicphp)php php{php php php php php/php/php bitphp php7php:php Italic
-php php php php php php php php php php php php php$flagsphp php|php=php php1php <php<php php6php;
-php php php php php php php php php}
-php php php php php php php php php/php/php bitsphp php1php7php-php1php9php:php AllCapphp,php SmallCapphp,php ForceBoldphp;php notphp available
-php php php php php php php php php$fontDescriptorphp-php>Flagsphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$flagsphp)php;
+        /* The font flags value is a bitfield that describes the stylistic
+         * attributes of the font. We will set as many of the bits as can be
+         * determined from the font parser.
+         */
+        $flags = 0;
+        if ($fontParser->isMonospaced) {    // bit 1: FixedPitch
+            $flags |= 1 << 0;
+        }
+        if ($fontParser->isSerifFont) {    // bit 2: Serif
+            $flags |= 1 << 1;
+        }
+        if (! $fontParser->isAdobeLatinSubset) {    // bit 3: Symbolic
+            $flags |= 1 << 2;
+        }
+        if ($fontParser->isScriptFont) {    // bit 4: Script
+            $flags |= 1 << 3;
+        }
+        if ($fontParser->isAdobeLatinSubset) {    // bit 6: Nonsymbolic
+            $flags |= 1 << 5;
+        }
+        if ($fontParser->isItalic) {    // bit 7: Italic
+            $flags |= 1 << 6;
+        }
+        // bits 17-19: AllCap, SmallCap, ForceBold; not available
+        $fontDescriptor->Flags = new Zend_Pdf_Element_Numeric($flags);
 
-php php php php php php php php php$fontBBoxphp php=php arrayphp(newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>xMinphp)php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>yMinphp)php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>xMaxphp)php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>yMaxphp)php)php)php;
-php php php php php php php php php$fontDescriptorphp-php>FontBBoxphp php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php$fontBBoxphp)php;
+        $fontBBox = array(new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->xMin)),
+                          new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->yMin)),
+                          new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->xMax)),
+                          new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->yMax)));
+        $fontDescriptor->FontBBox     = new Zend_Pdf_Element_Array($fontBBox);
 
-php php php php php php php php php$fontDescriptorphp-php>ItalicAnglephp php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontParserphp-php>italicAnglephp)php;
+        $fontDescriptor->ItalicAngle  = new Zend_Pdf_Element_Numeric($fontParser->italicAngle);
 
-php php php php php php php php php$fontDescriptorphp-php>Ascentphp php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>ascentphp)php)php;
-php php php php php php php php php$fontDescriptorphp-php>Descentphp php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontphp-php>toEmSpacephp(php$fontParserphp-php>descentphp)php)php;
+        $fontDescriptor->Ascent       = new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->ascent));
+        $fontDescriptor->Descent      = new Zend_Pdf_Element_Numeric($font->toEmSpace($fontParser->descent));
 
-php php php php php php php php php$fontDescriptorphp-php>CapHeightphp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontParserphp-php>capitalHeightphp)php;
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Thephp verticalphp stemphp widthphp isphp notphp yetphp extractedphp fromphp thephp OpenTypephp font
-php php php php php php php php php php*php filephp.php Forphp nowphp,php recordphp zerophp whichphp isphp interpretedphp asphp php'unknownphp'php.
-php php php php php php php php php php*php php@todophp Calculatephp valuephp forphp StemVphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$fontDescriptorphp-php>StemVphp php php php php php php php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php0php)php;
+        $fontDescriptor->CapHeight    = new Zend_Pdf_Element_Numeric($fontParser->capitalHeight);
+        /**
+         * The vertical stem width is not yet extracted from the OpenType font
+         * file. For now, record zero which is interpreted as 'unknown'.
+         * @todo Calculate value for StemV.
+         */
+        $fontDescriptor->StemV        = new Zend_Pdf_Element_Numeric(0);
 
-php php php php php php php php php$fontDescriptorphp-php>MissingWidthphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$fontParserphp-php>glyphWidthsphp[php0php]php)php;
+        $fontDescriptor->MissingWidth = new Zend_Pdf_Element_Numeric($fontParser->glyphWidths[0]);
 
-php php php php php php php php php/php*php Setphp upphp fontphp embeddingphp.php Thisphp isphp wherephp thephp actualphp fontphp programphp itself
-php php php php php php php php php php*php isphp embeddedphp withinphp thephp PDFphp documentphp.
-php php php php php php php php php php*
-php php php php php php php php php php*php Notephp thatphp itphp isphp notphp requriedphp thatphp fontsphp bephp embeddedphp withinphp thephp PDF
-php php php php php php php php php php*php documentphp tophp usephp themphp.php Ifphp thephp recipientphp ofphp thephp PDFphp hasphp thephp font
-php php php php php php php php php php*php installedphp onphp theirphp computerphp,php theyphp willphp seephp thephp correctphp fontsphp inphp the
-php php php php php php php php php php*php documentphp.php Ifphp theyphp donphp'tphp,php thephp PDFphp viewerphp willphp substitutephp orphp synthesize
-php php php php php php php php php php*php aphp replacementphp.
-php php php php php php php php php php*
-php php php php php php php php php php*php Therephp arephp severalphp guidelinesphp forphp fontphp embeddingphp:
-php php php php php php php php php php*
-php php php php php php php php php php*php Firstphp,php thephp developerphp mightphp specificallyphp requestphp notphp tophp embedphp thephp fontphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!php(php$embeddingOptionsphp php&php Zendphp_Pdfphp_Fontphp:php:EMBEDphp_DONTphp_EMBEDphp)php)php php{
+        /* Set up font embedding. This is where the actual font program itself
+         * is embedded within the PDF document.
+         *
+         * Note that it is not requried that fonts be embedded within the PDF
+         * document to use them. If the recipient of the PDF has the font
+         * installed on their computer, they will see the correct fonts in the
+         * document. If they don't, the PDF viewer will substitute or synthesize
+         * a replacement.
+         *
+         * There are several guidelines for font embedding:
+         *
+         * First, the developer might specifically request not to embed the font.
+         */
+        if (!($embeddingOptions & Zend_Pdf_Font::EMBED_DONT_EMBED)) {
 
-php php php php php php php php php php php php php/php*php Secondphp,php thephp fontphp authorphp mayphp havephp setphp copyrightphp bitsphp thatphp prohibit
-php php php php php php php php php php php php php php*php thephp fontphp programphp fromphp beingphp embeddedphp.php Yesphp thisphp isphp controversialphp,
-php php php php php php php php php php php php php php*php butphp itphp'sphp thephp rulesphp:
-php php php php php php php php php php php php php php*php php php httpphp:php/php/partnersphp.adobephp.comphp/publicphp/developerphp/enphp/acrobatphp/sdkphp/FontPoliciesphp.pdf
-php php php php php php php php php php php php php php*
-php php php php php php php php php php php php php php*php Tophp keepphp thephp developerphp inphp thephp loopphp,php andphp tophp preventphp surprisingphp bug
-php php php php php php php php php php php php php php*php reportsphp ofphp php"yourphp PDFphp doesnphp'tphp havephp thephp rightphp fontsphp,php"php throwphp an
-php php php php php php php php php php php php php php*php exceptionphp ifphp thephp fontphp cannotphp bephp embeddedphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php ifphp php(php!php php$fontParserphp-php>isEmbeddablephp)php php{
-php php php php php php php php php php php php php php php php php/php*php Thisphp exceptionphp mayphp bephp suppressedphp ifphp thephp developerphp decidesphp that
-php php php php php php php php php php php php php php php php php php*php itphp'sphp notphp aphp bigphp dealphp thatphp thephp fontphp programphp canphp'tphp bephp embeddedphp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php ifphp php(php!php(php$embeddingOptionsphp php&php Zendphp_Pdfphp_Fontphp:php:EMBEDphp_SUPPRESSphp_EMBEDphp_EXCEPTIONphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$messagephp php=php php'Thisphp fontphp cannotphp bephp embeddedphp inphp thephp PDFphp documentphp.php Ifphp youphp wouldphp likephp tophp usephp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'itphp anywayphp,php youphp mustphp passphp Zendphp_Pdfphp_Fontphp:php:EMBEDphp_SUPPRESSphp_EMBEDphp_EXCEPTIONphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'inphp thephp php$optionsphp parameterphp ofphp thephp fontphp constructorphp.php'php;
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php$messagephp,php Zendphp_Pdfphp_Exceptionphp:php:FONTphp_CANTphp_BEphp_EMBEDDEDphp)php;
-php php php php php php php php php php php php php php php php php}
+            /* Second, the font author may have set copyright bits that prohibit
+             * the font program from being embedded. Yes this is controversial,
+             * but it's the rules:
+             *   http://partners.adobe.com/public/developer/en/acrobat/sdk/FontPolicies.pdf
+             *
+             * To keep the developer in the loop, and to prevent surprising bug
+             * reports of "your PDF doesn't have the right fonts," throw an
+             * exception if the font cannot be embedded.
+             */
+            if (! $fontParser->isEmbeddable) {
+                /* This exception may be suppressed if the developer decides that
+                 * it's not a big deal that the font program can't be embedded.
+                 */
+                if (!($embeddingOptions & Zend_Pdf_Font::EMBED_SUPPRESS_EMBED_EXCEPTION)) {
+                    $message = 'This font cannot be embedded in the PDF document. If you would like to use '
+                             . 'it anyway, you must pass Zend_Pdf_Font::EMBED_SUPPRESS_EMBED_EXCEPTION '
+                             . 'in the $options parameter of the font constructor.';
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception($message, Zend_Pdf_Exception::FONT_CANT_BE_EMBEDDED);
+                }
 
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php*php Otherwisephp,php thephp defaultphp behaviorphp isphp tophp embedphp allphp customphp fontsphp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php/php*php Thisphp sectionphp willphp changephp soonphp tophp aphp streamphp objectphp data
-php php php php php php php php php php php php php php php php php php*php providerphp modelphp sophp thatphp wephp donphp'tphp havephp tophp keepphp aphp copyphp ofphp the
-php php php php php php php php php php php php php php php php php php*php entirephp fontphp inphp memoryphp.
-php php php php php php php php php php php php php php php php php php*
-php php php php php php php php php php php php php php php php php php*php Wephp alsophp cannotphp buildphp fontphp subsettingphp untilphp thephp dataphp provider
-php php php php php php php php php php php php php php php php php php*php modelphp isphp inphp placephp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$fontFilephp php=php php$fontParserphp-php>getDataSourcephp(php)php-php>readAllBytesphp(php)php;
-php php php php php php php php php php php php php php php php php$fontFileObjectphp php=php php$fontphp-php>getFactoryphp(php)php-php>newStreamObjectphp(php$fontFilephp)php;
-php php php php php php php php php php php php php php php php php$fontFileObjectphp-php>dictionaryphp-php>Lengthphp1php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(strlenphp(php$fontFilephp)php)php;
-php php php php php php php php php php php php php php php php ifphp php(php!php(php$embeddingOptionsphp php&php Zendphp_Pdfphp_Fontphp:php:EMBEDphp_DONTphp_COMPRESSphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php*php Compressphp thephp fontphp filephp usingphp Flatephp.php Thisphp generallyphp cutsphp file
-php php php php php php php php php php php php php php php php php php php php php php*php sizesphp byphp aboutphp halfphp!
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php php$fontFileObjectphp-php>dictionaryphp-php>Filterphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FlateDecodephp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$fontParserphp instanceofphp Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp_Typephp1php php/php*php notphp implementedphp nowphp php*php/php)php php{
-php php php php php php php php php php php php php php php php php php php php php$fontDescriptorphp-php>FontFilephp php php=php php$fontFileObjectphp;
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$fontParserphp instanceofphp Zendphp_Pdfphp_FileParserphp_Fontphp_OpenTypephp_TrueTypephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$fontDescriptorphp-php>FontFilephp2php php=php php$fontFileObjectphp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$fontDescriptorphp-php>FontFilephp3php php=php php$fontFileObjectphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            } else {
+                /* Otherwise, the default behavior is to embed all custom fonts.
+                 */
+                /* This section will change soon to a stream object data
+                 * provider model so that we don't have to keep a copy of the
+                 * entire font in memory.
+                 *
+                 * We also cannot build font subsetting until the data provider
+                 * model is in place.
+                 */
+                $fontFile = $fontParser->getDataSource()->readAllBytes();
+                $fontFileObject = $font->getFactory()->newStreamObject($fontFile);
+                $fontFileObject->dictionary->Length1 = new Zend_Pdf_Element_Numeric(strlen($fontFile));
+                if (!($embeddingOptions & Zend_Pdf_Font::EMBED_DONT_COMPRESS)) {
+                    /* Compress the font file using Flate. This generally cuts file
+                     * sizes by about half!
+                     */
+                    $fontFileObject->dictionary->Filter = new Zend_Pdf_Element_Name('FlateDecode');
+                }
+                if ($fontParser instanceof Zend_Pdf_FileParser_Font_OpenType_Type1 /* not implemented now */) {
+                    $fontDescriptor->FontFile  = $fontFileObject;
+                } else if ($fontParser instanceof Zend_Pdf_FileParser_Font_OpenType_TrueType) {
+                    $fontDescriptor->FontFile2 = $fontFileObject;
+                } else {
+                    $fontDescriptor->FontFile3 = $fontFileObject;
+                }
+            }
+        }
 
-php php php php php php php php returnphp php$fontDescriptorphp;
-php php php php php}
-php}
+        return $fontDescriptor;
+    }
+}

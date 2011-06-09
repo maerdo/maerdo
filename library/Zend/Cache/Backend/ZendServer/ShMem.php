@@ -1,100 +1,100 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ShMemphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ShMem.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php php@seephp Zendphp_Cachephp_Backendphp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp/Interfacephp.phpphp'php;
+/** @see Zend_Cache_Backend_Interface */
+require_once 'Zend/Cache/Backend/Interface.php';
 
-php/php*php*php php@seephp Zendphp_Cachephp_Backendphp_ZendServerphp php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp/ZendServerphp.phpphp'php;
+/** @see Zend_Cache_Backend_ZendServer */
+require_once 'Zend/Cache/Backend/ZendServer.php';
 
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Backendphp_ZendServerphp_ShMemphp extendsphp Zendphp_Cachephp_Backendphp_ZendServerphp implementsphp Zendphp_Cachephp_Backendphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp associativephp arrayphp ofphp options
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!functionphp_existsphp(php'zendphp_shmphp_cachephp_storephp'php)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Zendphp_Cachephp_ZendServerphp_ShMemphp backendphp hasphp tophp bephp usedphp withinphp Zendphp Serverphp environmentphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
-php php php php php}
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer implements Zend_Cache_Backend_Interface
+{
+    /**
+     * Constructor
+     *
+     * @param  array $options associative array of options
+     * @throws Zend_Cache_Exception
+     */
+    public function __construct(array $options = array())
+    {
+        if (!function_exists('zend_shm_cache_store')) {
+            Zend_Cache::throwException('Zend_Cache_ZendServer_ShMem backend has to be used within Zend Server environment.');
+        }
+        parent::__construct($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Storephp data
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php php$dataphp php php php php php php php Objectphp tophp store
-php php php php php php*php php@paramphp stringphp php$idphp php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp intphp php php php php$timeToLivephp php Timephp tophp livephp inphp seconds
-php php php php php php*
-php php php php php php*php/
-php php php php protectedphp functionphp php_storephp(php$dataphp,php php$idphp,php php$timeToLivephp)
-php php php php php{
-php php php php php php php php ifphp php(zendphp_shmphp_cachephp_storephp(php$thisphp-php>php_optionsphp[php'namespacephp'php]php php.php php'php:php:php'php php.php php$idphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$dataphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$timeToLivephp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_logphp(php'Storephp operationphp failedphp.php'php)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Store data
+     *
+     * @param mixed  $data        Object to store
+     * @param string $id          Cache id
+     * @param int    $timeToLive  Time to live in seconds
+     *
+     */
+    protected function _store($data, $id, $timeToLive)
+    {
+        if (zend_shm_cache_store($this->_options['namespace'] . '::' . $id,
+                                  $data,
+                                  $timeToLive) === false) {
+            $this->_log('Store operation failed.');
+            return false;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Fetchphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp php php php php php php php php php Cachephp id
-php php php php php php*php/
-php php php php protectedphp functionphp php_fetchphp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp zendphp_shmphp_cachephp_fetchphp(php$thisphp-php>php_optionsphp[php'namespacephp'php]php php.php php'php:php:php'php php.php php$idphp)php;
-php php php php php}
+    /**
+     * Fetch data
+     *
+     * @param string $id          Cache id
+     */
+    protected function _fetch($id)
+    {
+        return zend_shm_cache_fetch($this->_options['namespace'] . '::' . $id);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Unsetphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp php php php php php php php php php Cachephp id
-php php php php php php*php php@returnphp booleanphp truephp ifphp nophp problem
-php php php php php php*php/
-php php php php protectedphp functionphp php_unsetphp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp zendphp_shmphp_cachephp_deletephp(php$thisphp-php>php_optionsphp[php'namespacephp'php]php php.php php'php:php:php'php php.php php$idphp)php;
-php php php php php}
+    /**
+     * Unset data
+     *
+     * @param string $id          Cache id
+     * @return boolean true if no problem
+     */
+    protected function _unset($id)
+    {
+        return zend_shm_cache_delete($this->_options['namespace'] . '::' . $id);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp cache
-php php php php php php*php/
-php php php php protectedphp functionphp php_clearphp(php)
-php php php php php{
-php php php php php php php php zendphp_shmphp_cachephp_clearphp(php$thisphp-php>php_optionsphp[php'namespacephp'php]php)php;
-php php php php php}
-php}
+    /**
+     * Clear cache
+     */
+    protected function _clear()
+    {
+        zend_shm_cache_clear($this->_options['namespace']);
+    }
+}

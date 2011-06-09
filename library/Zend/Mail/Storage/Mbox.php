@@ -1,447 +1,447 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Mboxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Mbox.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Loader
-php php*php Mayphp bephp usedphp inphp constructorphp,php butphp commentedphp outphp forphp now
-php php*php/
-php/php/php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+/**
+ * @see Zend_Loader
+ * May be used in constructor, but commented out for now
+ */
+// require_once 'Zend/Loader.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Storagephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Mail_Storage_Abstract
+ */
+require_once 'Zend/Mail/Storage/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Messagephp_File
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Messagephp/Filephp.phpphp'php;
-
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Mailphp_Storagephp_Mboxphp extendsphp Zendphp_Mailphp_Storagephp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php filephp handlephp tophp mboxphp file
-php php php php php php*php php@varphp nullphp|resource
-php php php php php php*php/
-php php php php protectedphp php$php_fhphp;
-
-php php php php php/php*php*
-php php php php php php*php filenamephp ofphp mboxphp filephp forphp php_php_wakeup
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_filenamephp;
-
-php php php php php/php*php*
-php php php php php php*php modificationphp datephp ofphp mboxphp filephp forphp php_php_wakeup
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_filemtimephp;
-
-php php php php php/php*php*
-php php php php php php*php startphp andphp endphp positionphp ofphp messagesphp asphp arrayphp(php'startphp'php php=php>php startphp,php php'seperatorphp'php php=php>php headersepphp,php php'endphp'php php=php>php endphp)
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_positionsphp;
-
-php php php php php/php*php*
-php php php php php php*php usedphp messagephp classphp,php changephp itphp inphp anphp extenedphp classphp tophp extendphp thephp returnedphp messagephp class
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_messageClassphp php=php php'Zendphp_Mailphp_Messagephp_Filephp'php;
-
-php php php php php/php*php*
-php php php php php php*php Countphp messagesphp allphp messagesphp inphp currentphp box
-php php php php php php*
-php php php php php php*php php@returnphp intphp numberphp ofphp messages
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp countMessagesphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_positionsphp)php;
-php php php php php}
+/**
+ * @see Zend_Mail_Message_File
+ */
+require_once 'Zend/Mail/Message/File.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp listphp ofphp messagesphp withphp numberphp andphp size
-php php php php php php*
-php php php php php php*php php@paramphp php intphp|nullphp php$idphp php numberphp ofphp messagephp orphp nullphp forphp allphp messages
-php php php php php php*php php@returnphp intphp|arrayphp sizephp ofphp givenphp messagephp ofphp listphp withphp allphp messagesphp asphp arrayphp(numphp php=php>php sizephp)
-php php php php php php*php/
-php php php php publicphp functionphp getSizephp(php$idphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php$idphp)php php{
-php php php php php php php php php php php php php$posphp php=php php$thisphp-php>php_positionsphp[php$idphp php-php php1php]php;
-php php php php php php php php php php php php returnphp php$posphp[php'endphp'php]php php-php php$posphp[php'startphp'php]php;
-php php php php php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
+{
+    /**
+     * file handle to mbox file
+     * @var null|resource
+     */
+    protected $_fh;
 
-php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_positionsphp asphp php$numphp php=php>php php$posphp)php php{
-php php php php php php php php php php php php php$resultphp[php$numphp php+php php1php]php php=php php$posphp[php'endphp'php]php php-php php$posphp[php'startphp'php]php;
-php php php php php php php php php}
+    /**
+     * filename of mbox file for __wakeup
+     * @var string
+     */
+    protected $_filename;
 
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
+    /**
+     * modification date of mbox file for __wakeup
+     * @var int
+     */
+    protected $_filemtime;
 
+    /**
+     * start and end position of messages as array('start' => start, 'seperator' => headersep, 'end' => end)
+     * @var array
+     */
+    protected $_positions;
 
-php php php php php/php*php*
-php php php php php php*php Getphp positionsphp forphp mailphp messagephp orphp throwphp exeptionphp ifphp idphp isphp invalid
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$idphp numberphp ofphp message
-php php php php php php*php php@returnphp arrayphp positionsphp asphp inphp php_positions
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_getPosphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_positionsphp[php$idphp php-php php1php]php)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'idphp doesphp notphp existphp'php)php;
-php php php php php php php php php}
+    /**
+     * used message class, change it in an extened class to extend the returned message class
+     * @var string
+     */
+    protected $_messageClass = 'Zend_Mail_Message_File';
 
-php php php php php php php php returnphp php$thisphp-php>php_positionsphp[php$idphp php-php php1php]php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Fetchphp aphp message
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$idphp numberphp ofphp message
-php php php php php php*php php@returnphp Zendphp_Mailphp_Messagephp_File
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getMessagephp(php$idphp)
-php php php php php{
-php php php php php php php php php/php/php TODOphp thatphp'sphp uglyphp,php wouldphp bephp betterphp tophp letphp thephp messagephp classphp decide
-php php php php php php php php ifphp php(strtolowerphp(php$thisphp-php>php_messageClassphp)php php=php=php php'zendphp_mailphp_messagephp_filephp'php php|php|php isphp_subclassphp_ofphp(php$thisphp-php>php_messageClassphp,php php'zendphp_mailphp_messagephp_filephp'php)php)php php{
-php php php php php php php php php php php php php/php/php TODOphp topphp/bodyphp lines
-php php php php php php php php php php php php php$messagePosphp php=php php$thisphp-php>php_getPosphp(php$idphp)php;
-php php php php php php php php php php php php returnphp newphp php$thisphp-php>php_messageClassphp(arrayphp(php'filephp'php php=php>php php$thisphp-php>php_fhphp,php php'startPosphp'php php=php>php php$messagePosphp[php'startphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'endPosphp'php php=php>php php$messagePosphp[php'endphp'php]php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$bodyLinesphp php=php php0php;php php/php/php TODOphp:php needphp aphp wayphp tophp changephp that
-
-php php php php php php php php php$messagephp php=php php$thisphp-php>getRawHeaderphp(php$idphp)php;
-php php php php php php php php php/php/php filephp pointerphp isphp afterphp headersphp now
-php php php php php php php php ifphp php(php$bodyLinesphp)php php{
-php php php php php php php php php php php php php$messagephp php.php=php php"php\nphp"php;
-php php php php php php php php php php php php whilephp php(php$bodyLinesphp-php-php php&php&php ftellphp(php$thisphp-php>php_fhphp)php <php php$thisphp-php>php_positionsphp[php$idphp php-php php1php]php[php'endphp'php]php)php php{
-php php php php php php php php php php php php php php php php php$messagephp php.php=php fgetsphp(php$thisphp-php>php_fhphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp newphp php$thisphp-php>php_messageClassphp(arrayphp(php'handlerphp'php php=php>php php$thisphp,php php'idphp'php php=php>php php$idphp,php php'headersphp'php php=php>php php$messagephp)php)php;
-php php php php php}
-
-php php php php php/php*
-php php php php php php*php Getphp rawphp headerphp ofphp messagephp orphp part
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php php php php php numberphp ofphp message
-php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp php php php php pathphp tophp partphp orphp nullphp forphp messsagephp header
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$topLinesphp includephp thisphp manyphp linesphp withphp headerphp php(afterphp anphp emptyphp linephp)
-php php php php php php*php php@returnphp stringphp rawphp header
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getRawHeaderphp(php$idphp,php php$partphp php=php nullphp,php php$topLinesphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php TODOphp:php implement
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$messagePosphp php=php php$thisphp-php>php_getPosphp(php$idphp)php;
-php php php php php php php php php/php/php TODOphp:php toplines
-php php php php php php php php returnphp streamphp_getphp_contentsphp(php$thisphp-php>php_fhphp,php php$messagePosphp[php'separatorphp'php]php php-php php$messagePosphp[php'startphp'php]php,php php$messagePosphp[php'startphp'php]php)php;
-php php php php php}
-
-php php php php php/php*
-php php php php php php*php Getphp rawphp contentphp ofphp messagephp orphp part
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php php php php php php php php php php php php php php php$idphp php php numberphp ofphp message
-php php php php php php*php php@paramphp php nullphp|arrayphp|stringphp php$partphp pathphp tophp partphp orphp nullphp forphp messsagephp content
-php php php php php php*php php@returnphp stringphp rawphp content
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Protocolphp_Exception
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getRawContentphp(php$idphp,php php$partphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$partphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php TODOphp:php implement
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'notphp implementedphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$messagePosphp php=php php$thisphp-php>php_getPosphp(php$idphp)php;
-php php php php php php php php returnphp streamphp_getphp_contentsphp(php$thisphp-php>php_fhphp,php php$messagePosphp[php'endphp'php]php php-php php$messagePosphp[php'separatorphp'php]php,php php$messagePosphp[php'separatorphp'php]php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Createphp instancephp withphp parameters
-php php php php php php*php Supportedphp parametersphp arephp:
-php php php php php php*php php php php-php filenamephp filenamephp ofphp mboxphp file
-php php php php php php*
-php php php php php php*php php@paramphp php php$paramsphp arrayphp mailphp readerphp specificphp parameters
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$paramsphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$paramsphp)php)php php{
-php php php php php php php php php php php php php$paramsphp php=php php(objectphp)php$paramsphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!issetphp(php$paramsphp-php>filenamephp)php php/php*php php|php|php Zendphp_Loaderphp:php:isReadablephp(php$paramsphp[php'filenamephp'php]php)php php*php/php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'nophp validphp filenamephp givenphp inphp paramsphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_openMboxFilephp(php$paramsphp-php>filenamephp)php;
-php php php php php php php php php$thisphp-php>php_hasphp[php'topphp'php]php php php php php php php=php truephp;
-php php php php php php php php php$thisphp-php>php_hasphp[php'uniqueidphp'php]php php=php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php checkphp ifphp givenphp filephp isphp aphp mboxphp file
-php php php php php php*
-php php php php php php*php ifphp php$filephp isphp aphp resourcephp itsphp filephp pointerphp isphp movedphp afterphp thephp firstphp line
-php php php php php php*
-php php php php php php*php php@paramphp php resourcephp|stringphp php$filephp streamphp resourcephp ofphp namephp ofphp file
-php php php php php php*php php@paramphp php boolphp php$fileIsStringphp filephp isphp stringphp orphp resource
-php php php php php php*php php@returnphp boolphp filephp isphp mboxphp file
-php php php php php php*php/
-php php php php protectedphp functionphp php_isMboxFilephp(php$filephp,php php$fileIsStringphp php=php truephp)
-php php php php php{
-php php php php php php php php ifphp php(php$fileIsStringphp)php php{
-php php php php php php php php php php php php php$filephp php=php php@fopenphp(php$filephp,php php'rphp'php)php;
-php php php php php php php php php php php php ifphp php(php!php$filephp)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php fseekphp(php$filephp,php php0php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$resultphp php=php falsephp;
-
-php php php php php php php php php$linephp php=php fgetsphp(php$filephp)php;
-php php php php php php php php ifphp php(strposphp(php$linephp,php php'Fromphp php'php)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php$resultphp php=php truephp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$fileIsStringphp)php php{
-php php php php php php php php php php php php php@fclosephp(php$filephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php openphp givenphp filephp asphp currentphp mboxphp file
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filenamephp filenamephp ofphp mboxphp file
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_openMboxFilephp(php$filenamephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_fhphp)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_fhphp php=php php@fopenphp(php$filenamephp,php php'rphp'php)php;
-php php php php php php php php ifphp php(php!php$thisphp-php>php_fhphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'cannotphp openphp mboxphp filephp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_filenamephp php=php php$filenamephp;
-php php php php php php php php php$thisphp-php>php_filemtimephp php=php filemtimephp(php$thisphp-php>php_filenamephp)php;
-
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isMboxFilephp(php$thisphp-php>php_fhphp,php falsephp)php)php php{
-php php php php php php php php php php php php php@fclosephp(php$thisphp-php>php_fhphp)php;
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'filephp isphp notphp aphp validphp mboxphp formatphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$messagePosphp php=php arrayphp(php'startphp'php php=php>php ftellphp(php$thisphp-php>php_fhphp)php,php php'separatorphp'php php=php>php php0php,php php'endphp'php php=php>php php0php)php;
-php php php php php php php php whilephp php(php(php$linephp php=php fgetsphp(php$thisphp-php>php_fhphp)php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php ifphp php(strposphp(php$linephp,php php'Fromphp php'php)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$messagePosphp[php'endphp'php]php php=php ftellphp(php$thisphp-php>php_fhphp)php php-php strlenphp(php$linephp)php php-php php2php;php php/php/php php+php newline
-php php php php php php php php php php php php php php php php ifphp php(php!php$messagePosphp[php'separatorphp'php]php)php php{
-php php php php php php php php php php php php php php php php php php php php php$messagePosphp[php'separatorphp'php]php php=php php$messagePosphp[php'endphp'php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_positionsphp[php]php php=php php$messagePosphp;
-php php php php php php php php php php php php php php php php php$messagePosphp php=php arrayphp(php'startphp'php php=php>php ftellphp(php$thisphp-php>php_fhphp)php,php php'separatorphp'php php=php>php php0php,php php'endphp'php php=php>php php0php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!php$messagePosphp[php'separatorphp'php]php php&php&php php!trimphp(php$linephp)php)php php{
-php php php php php php php php php php php php php php php php php$messagePosphp[php'separatorphp'php]php php=php ftellphp(php$thisphp-php>php_fhphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$messagePosphp[php'endphp'php]php php=php ftellphp(php$thisphp-php>php_fhphp)php;
-php php php php php php php php ifphp php(php!php$messagePosphp[php'separatorphp'php]php)php php{
-php php php php php php php php php php php php php$messagePosphp[php'separatorphp'php]php php=php php$messagePosphp[php'endphp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_positionsphp[php]php php=php php$messagePosphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Closephp resourcephp forphp mailphp libphp.php Ifphp youphp needphp tophp controlphp,php whenphp thephp resource
-php php php php php php*php isphp closedphp.php Otherwisephp thephp destructorphp wouldphp callphp thisphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php php@fclosephp(php$thisphp-php>php_fhphp)php;
-php php php php php php php php php$thisphp-php>php_positionsphp php=php arrayphp(php)php;
-php php php php php}
+    /**
+     * Count messages all messages in current box
+     *
+     * @return int number of messages
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function countMessages()
+    {
+        return count($this->_positions);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Wastephp somephp CPUphp cyclesphp doingphp nothingphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp noopphp(php)
-php php php php php{
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Get a list of messages with number and size
+     *
+     * @param  int|null $id  number of message or null for all messages
+     * @return int|array size of given message of list with all messages as array(num => size)
+     */
+    public function getSize($id = 0)
+    {
+        if ($id) {
+            $pos = $this->_positions[$id - 1];
+            return $pos['end'] - $pos['start'];
+        }
+
+        $result = array();
+        foreach ($this->_positions as $num => $pos) {
+            $result[$num + 1] = $pos['end'] - $pos['start'];
+        }
+
+        return $result;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php stubphp forphp notphp supportedphp messagephp deletion
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp removeMessagephp(php$idphp)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'mboxphp isphp readphp-onlyphp'php)php;
-php php php php php}
+    /**
+     * Get positions for mail message or throw exeption if id is invalid
+     *
+     * @param int $id number of message
+     * @return array positions as in _positions
+     * @throws Zend_Mail_Storage_Exception
+     */
+    protected function _getPos($id)
+    {
+        if (!isset($this->_positions[$id - 1])) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('id does not exist');
+        }
 
-php php php php php/php*php*
-php php php php php php*php getphp uniquephp idphp forphp onephp orphp allphp messages
-php php php php php php*
-php php php php php php*php Mboxphp doesphp notphp supportphp uniquephp idsphp php(yetphp)php php-php itphp'sphp alwaysphp thephp samephp asphp thephp messagephp numberphp.
-php php php php php php*php Thatphp shouldnphp'tphp bephp aphp problemphp,php becausephp wephp canphp'tphp changephp mboxphp filesphp.php Thereforphp thephp message
-php php php php php php*php numberphp isphp savephp enoughphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp|nullphp php$idphp messagephp number
-php php php php php php*php php@returnphp arrayphp|stringphp messagephp numberphp forphp givenphp messagephp orphp allphp messagesphp asphp array
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getUniqueIdphp(php$idphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$idphp)php php{
-php php php php php php php php php php php php php/php/php checkphp ifphp idphp exists
-php php php php php php php php php php php php php$thisphp-php>php_getPosphp(php$idphp)php;
-php php php php php php php php php php php php returnphp php$idphp;
-php php php php php php php php php}
+        return $this->_positions[$id - 1];
+    }
 
-php php php php php php php php php$rangephp php=php rangephp(php1php,php php$thisphp-php>countMessagesphp(php)php)php;
-php php php php php php php php returnphp arrayphp_combinephp(php$rangephp,php php$rangephp)php;
-php php php php php}
 
-php php php php php/php*php*
-php php php php php php*php getphp aphp messagephp numberphp fromphp aphp uniquephp id
-php php php php php php*
-php php php php php php*php Iphp.ephp.php ifphp youphp havephp aphp webmailerphp thatphp supportsphp deletingphp messagesphp youphp shouldphp usephp uniquephp ids
-php php php php php php*php asphp parameterphp andphp usephp thisphp methodphp tophp translatephp itphp tophp messagephp numberphp rightphp beforephp callingphp removeMessagephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp uniquephp id
-php php php php php php*php php@returnphp intphp messagephp number
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getNumberByUniqueIdphp(php$idphp)
-php php php php php{
-php php php php php php php php php/php/php checkphp ifphp idphp exists
-php php php php php php php php php$thisphp-php>php_getPosphp(php$idphp)php;
-php php php php php php php php returnphp php$idphp;
-php php php php php}
+    /**
+     * Fetch a message
+     *
+     * @param  int $id number of message
+     * @return Zend_Mail_Message_File
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getMessage($id)
+    {
+        // TODO that's ugly, would be better to let the message class decide
+        if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
+            // TODO top/body lines
+            $messagePos = $this->_getPos($id);
+            return new $this->_messageClass(array('file' => $this->_fh, 'startPos' => $messagePos['start'],
+                                                  'endPos' => $messagePos['end']));
+        }
 
-php php php php php/php*php*
-php php php php php php*php magicphp methodphp forphp serializephp(php)
-php php php php php php*
-php php php php php php*php withphp thisphp methodphp youphp canphp cachephp thephp mboxphp class
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp namephp ofphp variables
-php php php php php php*php/
-php php php php publicphp functionphp php_php_sleepphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php'php_filenamephp'php,php php'php_positionsphp'php,php php'php_filemtimephp'php)php;
-php php php php php}
+        $bodyLines = 0; // TODO: need a way to change that
 
-php php php php php/php*php*
-php php php php php php*php magicphp methodphp forphp unserializephp(php)
-php php php php php php*
-php php php php php php*php withphp thisphp methodphp youphp canphp cachephp thephp mboxphp class
-php php php php php php*php forphp cachephp validationphp thephp mtimephp ofphp thephp mboxphp filephp isphp used
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_filemtimephp php!php=php php@filemtimephp(php$thisphp-php>php_filenamephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_openMboxFilephp(php$thisphp-php>php_filenamephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_fhphp php=php php@fopenphp(php$thisphp-php>php_filenamephp,php php'rphp'php)php;
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_fhphp)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'cannotphp openphp mboxphp filephp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+        $message = $this->getRawHeader($id);
+        // file pointer is after headers now
+        if ($bodyLines) {
+            $message .= "\n";
+            while ($bodyLines-- && ftell($this->_fh) < $this->_positions[$id - 1]['end']) {
+                $message .= fgets($this->_fh);
+            }
+        }
 
-php}
+        return new $this->_messageClass(array('handler' => $this, 'id' => $id, 'headers' => $message));
+    }
+
+    /*
+     * Get raw header of message or part
+     *
+     * @param  int               $id       number of message
+     * @param  null|array|string $part     path to part or null for messsage header
+     * @param  int               $topLines include this many lines with header (after an empty line)
+     * @return string raw header
+     * @throws Zend_Mail_Protocol_Exception
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getRawHeader($id, $part = null, $topLines = 0)
+    {
+        if ($part !== null) {
+            // TODO: implement
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('not implemented');
+        }
+        $messagePos = $this->_getPos($id);
+        // TODO: toplines
+        return stream_get_contents($this->_fh, $messagePos['separator'] - $messagePos['start'], $messagePos['start']);
+    }
+
+    /*
+     * Get raw content of message or part
+     *
+     * @param  int               $id   number of message
+     * @param  null|array|string $part path to part or null for messsage content
+     * @return string raw content
+     * @throws Zend_Mail_Protocol_Exception
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getRawContent($id, $part = null)
+    {
+        if ($part !== null) {
+            // TODO: implement
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('not implemented');
+        }
+        $messagePos = $this->_getPos($id);
+        return stream_get_contents($this->_fh, $messagePos['end'] - $messagePos['separator'], $messagePos['separator']);
+    }
+
+    /**
+     * Create instance with parameters
+     * Supported parameters are:
+     *   - filename filename of mbox file
+     *
+     * @param  $params array mail reader specific parameters
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function __construct($params)
+    {
+        if (is_array($params)) {
+            $params = (object)$params;
+        }
+
+        if (!isset($params->filename) /* || Zend_Loader::isReadable($params['filename']) */) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('no valid filename given in params');
+        }
+
+        $this->_openMboxFile($params->filename);
+        $this->_has['top']      = true;
+        $this->_has['uniqueid'] = false;
+    }
+
+    /**
+     * check if given file is a mbox file
+     *
+     * if $file is a resource its file pointer is moved after the first line
+     *
+     * @param  resource|string $file stream resource of name of file
+     * @param  bool $fileIsString file is string or resource
+     * @return bool file is mbox file
+     */
+    protected function _isMboxFile($file, $fileIsString = true)
+    {
+        if ($fileIsString) {
+            $file = @fopen($file, 'r');
+            if (!$file) {
+                return false;
+            }
+        } else {
+            fseek($file, 0);
+        }
+
+        $result = false;
+
+        $line = fgets($file);
+        if (strpos($line, 'From ') === 0) {
+            $result = true;
+        }
+
+        if ($fileIsString) {
+            @fclose($file);
+        }
+
+        return $result;
+    }
+
+    /**
+     * open given file as current mbox file
+     *
+     * @param  string $filename filename of mbox file
+     * @return null
+     * @throws Zend_Mail_Storage_Exception
+     */
+    protected function _openMboxFile($filename)
+    {
+        if ($this->_fh) {
+            $this->close();
+        }
+
+        $this->_fh = @fopen($filename, 'r');
+        if (!$this->_fh) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('cannot open mbox file');
+        }
+        $this->_filename = $filename;
+        $this->_filemtime = filemtime($this->_filename);
+
+        if (!$this->_isMboxFile($this->_fh, false)) {
+            @fclose($this->_fh);
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('file is not a valid mbox format');
+        }
+
+        $messagePos = array('start' => ftell($this->_fh), 'separator' => 0, 'end' => 0);
+        while (($line = fgets($this->_fh)) !== false) {
+            if (strpos($line, 'From ') === 0) {
+                $messagePos['end'] = ftell($this->_fh) - strlen($line) - 2; // + newline
+                if (!$messagePos['separator']) {
+                    $messagePos['separator'] = $messagePos['end'];
+                }
+                $this->_positions[] = $messagePos;
+                $messagePos = array('start' => ftell($this->_fh), 'separator' => 0, 'end' => 0);
+            }
+            if (!$messagePos['separator'] && !trim($line)) {
+                $messagePos['separator'] = ftell($this->_fh);
+            }
+        }
+
+        $messagePos['end'] = ftell($this->_fh);
+        if (!$messagePos['separator']) {
+            $messagePos['separator'] = $messagePos['end'];
+        }
+        $this->_positions[] = $messagePos;
+    }
+
+    /**
+     * Close resource for mail lib. If you need to control, when the resource
+     * is closed. Otherwise the destructor would call this.
+     *
+     * @return void
+     */
+    public function close()
+    {
+        @fclose($this->_fh);
+        $this->_positions = array();
+    }
+
+
+    /**
+     * Waste some CPU cycles doing nothing.
+     *
+     * @return void
+     */
+    public function noop()
+    {
+        return true;
+    }
+
+
+    /**
+     * stub for not supported message deletion
+     *
+     * @return null
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function removeMessage($id)
+    {
+        /**
+         * @see Zend_Mail_Storage_Exception
+         */
+        require_once 'Zend/Mail/Storage/Exception.php';
+        throw new Zend_Mail_Storage_Exception('mbox is read-only');
+    }
+
+    /**
+     * get unique id for one or all messages
+     *
+     * Mbox does not support unique ids (yet) - it's always the same as the message number.
+     * That shouldn't be a problem, because we can't change mbox files. Therefor the message
+     * number is save enough.
+     *
+     * @param int|null $id message number
+     * @return array|string message number for given message or all messages as array
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getUniqueId($id = null)
+    {
+        if ($id) {
+            // check if id exists
+            $this->_getPos($id);
+            return $id;
+        }
+
+        $range = range(1, $this->countMessages());
+        return array_combine($range, $range);
+    }
+
+    /**
+     * get a message number from a unique id
+     *
+     * I.e. if you have a webmailer that supports deleting messages you should use unique ids
+     * as parameter and use this method to translate it to message number right before calling removeMessage()
+     *
+     * @param string $id unique id
+     * @return int message number
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getNumberByUniqueId($id)
+    {
+        // check if id exists
+        $this->_getPos($id);
+        return $id;
+    }
+
+    /**
+     * magic method for serialize()
+     *
+     * with this method you can cache the mbox class
+     *
+     * @return array name of variables
+     */
+    public function __sleep()
+    {
+        return array('_filename', '_positions', '_filemtime');
+    }
+
+    /**
+     * magic method for unserialize()
+     *
+     * with this method you can cache the mbox class
+     * for cache validation the mtime of the mbox file is used
+     *
+     * @return null
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function __wakeup()
+    {
+        if ($this->_filemtime != @filemtime($this->_filename)) {
+            $this->close();
+            $this->_openMboxFile($this->_filename);
+        } else {
+            $this->_fh = @fopen($this->_filename, 'r');
+            if (!$this->_fh) {
+                /**
+                 * @see Zend_Mail_Storage_Exception
+                 */
+                require_once 'Zend/Mail/Storage/Exception.php';
+                throw new Zend_Mail_Storage_Exception('cannot open mbox file');
+            }
+        }
+    }
+
+}

@@ -1,206 +1,206 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Dispatcher
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Dispatcher
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_Controllerphp_Requestphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Requestphp/Abstractphp.phpphp'php;
+/**
+ * Zend_Controller_Request_Abstract
+ */
+require_once 'Zend/Controller/Request/Abstract.php';
 
-php/php*php*
-php php*php Zendphp_Controllerphp_Responsephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Responsephp/Abstractphp.phpphp'php;
+/**
+ * Zend_Controller_Response_Abstract
+ */
+require_once 'Zend/Controller/Response/Abstract.php';
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Dispatcher
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Controllerphp_Dispatcherphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Formatsphp aphp stringphp intophp aphp controllerphp namephp.php php Thisphp isphp usedphp tophp takephp aphp raw
-php php php php php php*php controllerphp namephp,php suchphp asphp onephp thatphp wouldphp bephp packagedphp insidephp aphp request
-php php php php php php*php objectphp,php andphp reformatphp itphp tophp aphp properphp classphp namephp thatphp aphp classphp extending
-php php php php php php*php Zendphp_Controllerphp_Actionphp wouldphp usephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$unformatted
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp formatControllerNamephp(php$unformattedphp)php;
+/**
+ * @package    Zend_Controller
+ * @subpackage Dispatcher
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Controller_Dispatcher_Interface
+{
+    /**
+     * Formats a string into a controller name.  This is used to take a raw
+     * controller name, such as one that would be packaged inside a request
+     * object, and reformat it to a proper class name that a class extending
+     * Zend_Controller_Action would use.
+     *
+     * @param string $unformatted
+     * @return string
+     */
+    public function formatControllerName($unformatted);
 
-php php php php php/php*php*
-php php php php php php*php Formatsphp aphp stringphp intophp aphp modulephp namephp.php php Thisphp isphp usedphp tophp takephp aphp raw
-php php php php php php*php modulephp namephp,php suchphp asphp onephp thatphp wouldphp bephp packagedphp insidephp aphp request
-php php php php php php*php objectphp,php andphp reformatphp itphp tophp aphp properphp directoryphp/classphp namephp thatphp aphp classphp extending
-php php php php php php*php Zendphp_Controllerphp_Actionphp wouldphp usephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$unformatted
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp formatModuleNamephp(php$unformattedphp)php;
+    /**
+     * Formats a string into a module name.  This is used to take a raw
+     * module name, such as one that would be packaged inside a request
+     * object, and reformat it to a proper directory/class name that a class extending
+     * Zend_Controller_Action would use.
+     *
+     * @param string $unformatted
+     * @return string
+     */
+    public function formatModuleName($unformatted);
 
-php php php php php/php*php*
-php php php php php php*php Formatsphp aphp stringphp intophp anphp actionphp namephp.php php Thisphp isphp usedphp tophp takephp aphp raw
-php php php php php php*php actionphp namephp,php suchphp asphp onephp thatphp wouldphp bephp packagedphp insidephp aphp request
-php php php php php php*php objectphp,php andphp reformatphp intophp aphp properphp methodphp namephp thatphp wouldphp bephp found
-php php php php php php*php insidephp aphp classphp extendingphp Zendphp_Controllerphp_Actionphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$unformatted
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp formatActionNamephp(php$unformattedphp)php;
+    /**
+     * Formats a string into an action name.  This is used to take a raw
+     * action name, such as one that would be packaged inside a request
+     * object, and reformat into a proper method name that would be found
+     * inside a class extending Zend_Controller_Action.
+     *
+     * @param string $unformatted
+     * @return string
+     */
+    public function formatActionName($unformatted);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp TRUEphp ifphp anphp actionphp canphp bephp dispatchedphp,php orphp FALSEphp otherwisephp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$request
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isDispatchablephp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)php;
+    /**
+     * Returns TRUE if an action can be dispatched, or FALSE otherwise.
+     *
+     * @param  Zend_Controller_Request_Abstract $request
+     * @return boolean
+     */
+    public function isDispatchable(Zend_Controller_Request_Abstract $request);
 
-php php php php php/php*php*
-php php php php php php*php Addphp orphp modifyphp aphp parameterphp withphp whichphp tophp instantiatephp anphp Actionphp Controller
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp setParamphp(php$namephp,php php$valuephp)php;
+    /**
+     * Add or modify a parameter with which to instantiate an Action Controller
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function setParam($name, $value);
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp arrayphp ofphp aphp parametersphp tophp passphp tophp thephp Actionphp Controllerphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$params
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp)php;
+    /**
+     * Set an array of a parameters to pass to the Action Controller constructor
+     *
+     * @param array $params
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function setParams(array $params);
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp parameterphp fromphp thephp controllerphp parameterphp stack
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getParamphp(php$namephp)php;
+    /**
+     * Retrieve a single parameter from the controller parameter stack
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getParam($name);
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp parametersphp tophp passphp tophp thephp Actionphp Controllerphp constructor
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getParamsphp(php)php;
+    /**
+     * Retrieve the parameters to pass to the Action Controller constructor
+     *
+     * @return array
+     */
+    public function getParams();
 
-php php php php php/php*php*
-php php php php php php*php Clearphp thephp controllerphp parameterphp stack
-php php php php php php*
-php php php php php php*php Byphp defaultphp,php clearsphp allphp parametersphp.php Ifphp aphp parameterphp namephp isphp givenphp,php clears
-php php php php php php*php onlyphp thatphp parameterphp;php ifphp anphp arrayphp ofphp parameterphp namesphp isphp providedphp,php clears
-php php php php php php*php eachphp.
-php php php php php php*
-php php php php php php*php php@paramphp nullphp|stringphp|arrayphp singlephp keyphp orphp arrayphp ofphp keysphp forphp paramsphp tophp clear
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp clearParamsphp(php$namephp php=php nullphp)php;
+    /**
+     * Clear the controller parameter stack
+     *
+     * By default, clears all parameters. If a parameter name is given, clears
+     * only that parameter; if an array of parameter names is provided, clears
+     * each.
+     *
+     * @param null|string|array single key or array of keys for params to clear
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function clearParams($name = null);
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp responsephp objectphp tophp usephp,php ifphp any
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Responsephp_Abstractphp|nullphp php$response
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setResponsephp(Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp php=php nullphp)php;
+    /**
+     * Set the response object to use, if any
+     *
+     * @param Zend_Controller_Response_Abstract|null $response
+     * @return void
+     */
+    public function setResponse(Zend_Controller_Response_Abstract $response = null);
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp responsephp objectphp,php ifphp any
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Responsephp_Abstractphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getResponsephp(php)php;
+    /**
+     * Retrieve the response object, if any
+     *
+     * @return Zend_Controller_Response_Abstract|null
+     */
+    public function getResponse();
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp controllerphp directoryphp tophp thephp controllerphp directoryphp stack
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$path
-php php php php php php*php php@paramphp stringphp php$args
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp addControllerDirectoryphp(php$pathphp,php php$argsphp php=php nullphp)php;
+    /**
+     * Add a controller directory to the controller directory stack
+     *
+     * @param string $path
+     * @param string $args
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function addControllerDirectory($path, $args = null);
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp directoryphp wherephp controllerphp filesphp arephp stored
-php php php php php php*
-php php php php php php*php Specifyphp aphp stringphp orphp anphp arrayphp;php ifphp anphp arrayphp isphp specifiedphp,php allphp pathsphp willphp be
-php php php php php php*php addedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$dir
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp setControllerDirectoryphp(php$pathphp)php;
+    /**
+     * Set the directory where controller files are stored
+     *
+     * Specify a string or an array; if an array is specified, all paths will be
+     * added.
+     *
+     * @param string|array $dir
+     * @return Zend_Controller_Dispatcher_Interface
+     */
+    public function setControllerDirectory($path);
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentlyphp setphp directoryphp(iesphp)php forphp controllerphp filephp lookup
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getControllerDirectoryphp(php)php;
+    /**
+     * Return the currently set directory(ies) for controller file lookup
+     *
+     * @return array
+     */
+    public function getControllerDirectory();
 
-php php php php php/php*php*
-php php php php php php*php Dispatchesphp aphp requestphp objectphp tophp aphp controllerphp/actionphp.php php Ifphp thephp action
-php php php php php php*php requestsphp aphp forwardphp tophp anotherphp actionphp,php aphp newphp requestphp willphp bephp returnedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$request
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Responsephp_Abstractphp php$response
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp dispatchphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp,php Zendphp_Controllerphp_Responsephp_Abstractphp php$responsephp)php;
+    /**
+     * Dispatches a request object to a controller/action.  If the action
+     * requests a forward to another action, a new request will be returned.
+     *
+     * @param  Zend_Controller_Request_Abstract $request
+     * @param  Zend_Controller_Response_Abstract $response
+     * @return void
+     */
+    public function dispatch(Zend_Controller_Request_Abstract $request, Zend_Controller_Response_Abstract $response);
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp aphp givenphp modulephp isphp valid
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$module
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidModulephp(php$modulephp)php;
+    /**
+     * Whether or not a given module is valid
+     *
+     * @param string $module
+     * @return boolean
+     */
+    public function isValidModule($module);
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp modulephp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultModulephp(php)php;
+    /**
+     * Retrieve the default module name
+     *
+     * @return string
+     */
+    public function getDefaultModule();
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp controllerphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultControllerNamephp(php)php;
+    /**
+     * Retrieve the default controller name
+     *
+     * @return string
+     */
+    public function getDefaultControllerName();
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp defaultphp action
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultActionphp(php)php;
-php}
+    /**
+     * Retrieve the default action
+     *
+     * @return string
+     */
+    public function getDefaultAction();
+}

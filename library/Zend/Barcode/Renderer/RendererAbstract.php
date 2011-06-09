@@ -1,540 +1,540 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@subpackagephp Renderer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php RendererAbstractphp.phpphp php2php2php9php9php9php php2php0php1php0php-php0php9php-php2php3php php1php9php:php4php3php:php1php4Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @subpackage Renderer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: RendererAbstract.php 22999 2010-09-23 19:43:14Z mikaelkael $
+ */
 
-php/php*php*
-php php*php Classphp forphp renderingphp thephp barcode
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Barcodephp_Rendererphp_RendererAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php Namespacephp ofphp thephp rendererphp forphp autoloading
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rendererNamespacephp php=php php'Zendphp_Barcodephp_Rendererphp'php;
+/**
+ * Class for rendering the barcode
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Barcode_Renderer_RendererAbstract
+{
+    /**
+     * Namespace of the renderer for autoloading
+     * @var string
+     */
+    protected $_rendererNamespace = 'Zend_Barcode_Renderer';
 
-php php php php php/php*php*
-php php php php php php*php Rendererphp type
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_typephp php=php nullphp;
+    /**
+     * Renderer type
+     * @var string
+     */
+    protected $_type = null;
 
-php php php php php/php*php*
-php php php php php php*php Activatephp/Deactivatephp thephp automaticphp renderingphp ofphp exception
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_automaticRenderErrorphp php=php falsephp;
+    /**
+     * Activate/Deactivate the automatic rendering of exception
+     * @var boolean
+     */
+    protected $_automaticRenderError = false;
 
-php php php php php/php*php*
-php php php php php php*php Offsetphp ofphp thephp barcodephp fromphp thephp topphp ofphp thephp renderingphp resource
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_topOffsetphp php=php php0php;
+    /**
+     * Offset of the barcode from the top of the rendering resource
+     * @var integer
+     */
+    protected $_topOffset = 0;
 
-php php php php php/php*php*
-php php php php php php*php Offsetphp ofphp thephp barcodephp fromphp thephp leftphp ofphp thephp renderingphp resource
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_leftOffsetphp php=php php0php;
+    /**
+     * Offset of the barcode from the left of the rendering resource
+     * @var integer
+     */
+    protected $_leftOffset = 0;
 
-php php php php php/php*php*
-php php php php php php*php Horizontalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_horizontalPositionphp php=php php'leftphp'php;
+    /**
+     * Horizontal position of the barcode in the rendering resource
+     * @var integer
+     */
+    protected $_horizontalPosition = 'left';
 
-php php php php php/php*php*
-php php php php php php*php Verticalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_verticalPositionphp php=php php'topphp'php;
+    /**
+     * Vertical position of the barcode in the rendering resource
+     * @var integer
+     */
+    protected $_verticalPosition = 'top';
 
-php php php php php/php*php*
-php php php php php php*php Modulephp sizephp rendering
-php php php php php php*php php@varphp float
-php php php php php php*php/
-php php php php protectedphp php$php_moduleSizephp php=php php1php;
+    /**
+     * Module size rendering
+     * @var float
+     */
+    protected $_moduleSize = 1;
 
-php php php php php/php*php*
-php php php php php php*php Barcodephp object
-php php php php php php*php php@varphp Zendphp_Barcodephp_Objectphp_ObjectAbstract
-php php php php php php*php/
-php php php php protectedphp php$php_barcodephp;
+    /**
+     * Barcode object
+     * @var Zend_Barcode_Object_ObjectAbstract
+     */
+    protected $_barcode;
 
-php php php php php/php*php*
-php php php php php php*php Drawingphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_resourcephp;
+    /**
+     * Drawing resource
+     */
+    protected $_resource;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_typephp php=php strtolowerphp(substrphp(
-php php php php php php php php php php php php getphp_classphp(php$thisphp)php,
-php php php php php php php php php php php php strlenphp(php$thisphp-php>php_rendererNamespacephp)php php+php php1
-php php php php php php php php php)php)php;
-php php php php php}
+    /**
+     * Constructor
+     * @param array|Zend_Config $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
+        if (is_array($options)) {
+            $this->setOptions($options);
+        }
+        $this->_type = strtolower(substr(
+            get_class($this),
+            strlen($this->_rendererNamespace) + 1
+        ));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp rendererphp statephp fromphp optionsphp array
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Rendererphp_Object
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(php$optionsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php php$keyphp;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set renderer state from options array
+     * @param  array $options
+     * @return Zend_Renderer_Object
+     */
+    public function setOptions($options)
+    {
+        foreach ($options as $key => $value) {
+            $method = 'set' . $key;
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp rendererphp statephp fromphp configphp object
-php php php php php php*php php@paramphp Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Rendererphp_Object
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
-php php php php php}
+    /**
+     * Set renderer state from config object
+     * @param Zend_Config $config
+     * @return Zend_Renderer_Object
+     */
+    public function setConfig(Zend_Config $config)
+    {
+        return $this->setOptions($config->toArray());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp rendererphp namespacephp forphp autoloading
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namespace
-php php php php php php*php php@returnphp Zendphp_Rendererphp_Object
-php php php php php php*php/
-php php php php publicphp functionphp setRendererNamespacephp(php$namespacephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_rendererNamespacephp php=php php$namespacephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set renderer namespace for autoloading
+     *
+     * @param string $namespace
+     * @return Zend_Renderer_Object
+     */
+    public function setRendererNamespace($namespace)
+    {
+        $this->_rendererNamespace = $namespace;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp rendererphp namespace
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getRendererNamespacephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_rendererNamespacephp;
-php php php php php}
+    /**
+     * Retrieve renderer namespace
+     *
+     * @return string
+     */
+    public function getRendererNamespace()
+    {
+        return $this->_rendererNamespace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp rendererphp type
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTypephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_typephp;
-php php php php php}
+    /**
+     * Retrieve renderer type
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Manuallyphp adjustphp topphp position
-php php php php php php*php php@paramphp integerphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setTopOffsetphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php php|php|php intvalphp(php$valuephp)php <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Verticalphp positionphp mustphp bephp greaterphp thanphp orphp equalsphp php0php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_topOffsetphp php=php intvalphp(php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Manually adjust top position
+     * @param integer $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setTopOffset($value)
+    {
+        if (!is_numeric($value) || intval($value) < 0) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Vertical position must be greater than or equals 0'
+            );
+        }
+        $this->_topOffset = intval($value);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp verticalphp adjustment
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getTopOffsetphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_topOffsetphp;
-php php php php php}
+    /**
+     * Retrieve vertical adjustment
+     * @return integer
+     */
+    public function getTopOffset()
+    {
+        return $this->_topOffset;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Manuallyphp adjustphp leftphp position
-php php php php php php*php php@paramphp integerphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setLeftOffsetphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php php|php|php intvalphp(php$valuephp)php <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Horizontalphp positionphp mustphp bephp greaterphp thanphp orphp equalsphp php0php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_leftOffsetphp php=php intvalphp(php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Manually adjust left position
+     * @param integer $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setLeftOffset($value)
+    {
+        if (!is_numeric($value) || intval($value) < 0) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Horizontal position must be greater than or equals 0'
+            );
+        }
+        $this->_leftOffset = intval($value);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp verticalphp adjustment
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getLeftOffsetphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_leftOffsetphp;
-php php php php php}
+    /**
+     * Retrieve vertical adjustment
+     * @return integer
+     */
+    public function getLeftOffset()
+    {
+        return $this->_leftOffset;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Activatephp/Deactivatephp thephp automaticphp renderingphp ofphp exception
-php php php php php php*php php@paramphp booleanphp php$value
-php php php php php php*php/
-php php php php publicphp functionphp setAutomaticRenderErrorphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_automaticRenderErrorphp php=php php(boolphp)php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Activate/Deactivate the automatic rendering of exception
+     * @param boolean $value
+     */
+    public function setAutomaticRenderError($value)
+    {
+        $this->_automaticRenderError = (bool) $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Horizontalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setHorizontalPositionphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$valuephp,php arrayphp(php'leftphp'php php,php php'centerphp'php php,php php'rightphp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Invalidphp barcodephp positionphp providedphp mustphp bephp php'leftphp'php,php php'centerphp'php orphp php'rightphp'php"
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_horizontalPositionphp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Horizontal position of the barcode in the rendering resource
+     * @param string $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setHorizontalPosition($value)
+    {
+        if (!in_array($value, array('left' , 'center' , 'right'))) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                "Invalid barcode position provided must be 'left', 'center' or 'right'"
+            );
+        }
+        $this->_horizontalPosition = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Horizontalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHorizontalPositionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_horizontalPositionphp;
-php php php php php}
+    /**
+     * Horizontal position of the barcode in the rendering resource
+     * @return string
+     */
+    public function getHorizontalPosition()
+    {
+        return $this->_horizontalPosition;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Verticalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setVerticalPositionphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$valuephp,php arrayphp(php'topphp'php php,php php'middlephp'php php,php php'bottomphp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Invalidphp barcodephp positionphp providedphp mustphp bephp php'topphp'php,php php'middlephp'php orphp php'bottomphp'php"
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_verticalPositionphp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Vertical position of the barcode in the rendering resource
+     * @param string $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setVerticalPosition($value)
+    {
+        if (!in_array($value, array('top' , 'middle' , 'bottom'))) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                "Invalid barcode position provided must be 'top', 'middle' or 'bottom'"
+            );
+        }
+        $this->_verticalPosition = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Verticalphp positionphp ofphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getVerticalPositionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_verticalPositionphp;
-php php php php php}
+    /**
+     * Vertical position of the barcode in the rendering resource
+     * @return string
+     */
+    public function getVerticalPosition()
+    {
+        return $this->_verticalPosition;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp sizephp ofphp aphp module
-php php php php php php*php php@paramphp floatphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setModuleSizephp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php php|php|php floatvalphp(php$valuephp)php <php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Floatphp sizephp mustphp bephp greaterphp thanphp php0php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_moduleSizephp php=php floatvalphp(php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the size of a module
+     * @param float $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setModuleSize($value)
+    {
+        if (!is_numeric($value) || floatval($value) <= 0) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Float size must be greater than 0'
+            );
+        }
+        $this->_moduleSize = floatval($value);
+        return $this;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp sizephp ofphp aphp module
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp getModuleSizephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_moduleSizephp;
-php php php php php}
+    /**
+     * Set the size of a module
+     * @return float
+     */
+    public function getModuleSize()
+    {
+        return $this->_moduleSize;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp automaticphp renderingphp ofphp exception
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp getAutomaticRenderErrorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_automaticRenderErrorphp;
-php php php php php}
+    /**
+     * Retrieve the automatic rendering of exception
+     * @return boolean
+     */
+    public function getAutomaticRenderError()
+    {
+        return $this->_automaticRenderError;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp barcodephp object
-php php php php php php*php php@paramphp Zendphp_Barcodephp_Objectphp php$barcode
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php/
-php php php php publicphp functionphp setBarcodephp(php$barcodephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$barcodephp instanceofphp Zendphp_Barcodephp_Objectphp_ObjectAbstractphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Invalidphp barcodephp objectphp providedphp tophp setBarcodephp(php)php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_barcodephp php=php php$barcodephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the barcode object
+     * @param Zend_Barcode_Object $barcode
+     * @return Zend_Barcode_Renderer
+     */
+    public function setBarcode($barcode)
+    {
+        if (!$barcode instanceof Zend_Barcode_Object_ObjectAbstract) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Invalid barcode object provided to setBarcode()'
+            );
+        }
+        $this->_barcode = $barcode;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp barcodephp object
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Object
-php php php php php php*php/
-php php php php publicphp functionphp getBarcodephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_barcodephp;
-php php php php php}
+    /**
+     * Retrieve the barcode object
+     * @return Zend_Barcode_Object
+     */
+    public function getBarcode()
+    {
+        return $this->_barcode;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkingphp ofphp parametersphp afterphp allphp settings
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp checkParamsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_checkBarcodeObjectphp(php)php;
-php php php php php php php php php$thisphp-php>php_checkParamsphp(php)php;
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Checking of parameters after all settings
+     * @return boolean
+     */
+    public function checkParams()
+    {
+        $this->_checkBarcodeObject();
+        $this->_checkParams();
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp aphp barcodephp objectphp isphp correctlyphp provided
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkBarcodeObjectphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_barcodephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Nophp barcodephp objectphp providedphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Check if a barcode object is correctly provided
+     * @return void
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    protected function _checkBarcodeObject()
+    {
+        if ($this->_barcode === null) {
+            /**
+             * @see Zend_Barcode_Renderer_Exception
+             */
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'No barcode object provided'
+            );
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Calculatephp thephp leftphp andphp topphp offsetphp ofphp thephp barcodephp inphp the
-php php php php php php*php renderingphp support
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$supportHeight
-php php php php php php*php php@paramphp floatphp php$supportWidth
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_adjustPositionphp(php$supportHeightphp,php php$supportWidthphp)
-php php php php php{
-php php php php php php php php php$barcodeHeightphp php=php php$thisphp-php>php_barcodephp-php>getHeightphp(truephp)php php*php php$thisphp-php>php_moduleSizephp;
-php php php php php php php php ifphp php(php$barcodeHeightphp php!php=php php$supportHeightphp php&php&php php$thisphp-php>php_topOffsetphp php=php=php php0php)php php{
-php php php php php php php php php php php php switchphp php(php$thisphp-php>php_verticalPositionphp)php php{
-php php php php php php php php php php php php php php php php casephp php'middlephp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_topOffsetphp php=php floorphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$supportHeightphp php-php php$barcodeHeightphp)php php/php php2php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'bottomphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_topOffsetphp php=php php$supportHeightphp php-php php$barcodeHeightphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'topphp'php:
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_topOffsetphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$barcodeWidthphp php=php php$thisphp-php>php_barcodephp-php>getWidthphp(truephp)php php*php php$thisphp-php>php_moduleSizephp;
-php php php php php php php php ifphp php(php$barcodeWidthphp php!php=php php$supportWidthphp php&php&php php$thisphp-php>php_leftOffsetphp php=php=php php0php)php php{
-php php php php php php php php php php php php switchphp php(php$thisphp-php>php_horizontalPositionphp)php php{
-php php php php php php php php php php php php php php php php casephp php'centerphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_leftOffsetphp php=php floorphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$supportWidthphp php-php php$barcodeWidthphp)php php/php php2php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'rightphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_leftOffsetphp php=php php$supportWidthphp php-php php$barcodeWidthphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'leftphp'php:
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_leftOffsetphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Calculate the left and top offset of the barcode in the
+     * rendering support
+     *
+     * @param float $supportHeight
+     * @param float $supportWidth
+     * @return void
+     */
+    protected function _adjustPosition($supportHeight, $supportWidth)
+    {
+        $barcodeHeight = $this->_barcode->getHeight(true) * $this->_moduleSize;
+        if ($barcodeHeight != $supportHeight && $this->_topOffset == 0) {
+            switch ($this->_verticalPosition) {
+                case 'middle':
+                    $this->_topOffset = floor(
+                            ($supportHeight - $barcodeHeight) / 2);
+                    break;
+                case 'bottom':
+                    $this->_topOffset = $supportHeight - $barcodeHeight;
+                    break;
+                case 'top':
+                default:
+                    $this->_topOffset = 0;
+                    break;
+            }
+        }
+        $barcodeWidth = $this->_barcode->getWidth(true) * $this->_moduleSize;
+        if ($barcodeWidth != $supportWidth && $this->_leftOffset == 0) {
+            switch ($this->_horizontalPosition) {
+                case 'center':
+                    $this->_leftOffset = floor(
+                            ($supportWidth - $barcodeWidth) / 2);
+                    break;
+                case 'right':
+                    $this->_leftOffset = $supportWidth - $barcodeWidth;
+                    break;
+                case 'left':
+                default:
+                    $this->_leftOffset = 0;
+                    break;
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp drawphp(php)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>checkParamsphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_initRendererphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_drawInstructionListphp(php)php;
-php php php php php php php php php}php catchphp php(Zendphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php$renderablephp php=php falsephp;
-php php php php php php php php php php php php ifphp php(php$ephp instanceofphp Zendphp_Barcodephp_Exceptionphp)php php{
-php php php php php php php php php php php php php php php php php$renderablephp php=php php$ephp-php>isRenderablephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_automaticRenderErrorphp php&php&php php$renderablephp)php php{
-php php php php php php php php php php php php php php php php php$barcodephp php=php Zendphp_Barcodephp:php:makeBarcodephp(
-php php php php php php php php php php php php php php php php php php php php php'errorphp'php,
-php php php php php php php php php php php php php php php php php php php php arrayphp(php'textphp'php php=php>php php$ephp-php>getMessagephp(php)php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>setBarcodephp(php$barcodephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_resourcephp php=php nullphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_initRendererphp(php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_drawInstructionListphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php ifphp php(php$ephp instanceofphp Zendphp_Barcodephp_Exceptionphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$ephp-php>setIsRenderablephp(falsephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_resourcephp;
-php php php php php}
+    /**
+     * Draw the barcode in the rendering resource
+     * @return mixed
+     */
+    public function draw()
+    {
+        try {
+            $this->checkParams();
+            $this->_initRenderer();
+            $this->_drawInstructionList();
+        } catch (Zend_Exception $e) {
+            $renderable = false;
+            if ($e instanceof Zend_Barcode_Exception) {
+                $renderable = $e->isRenderable();
+            }
+            if ($this->_automaticRenderError && $renderable) {
+                $barcode = Zend_Barcode::makeBarcode(
+                    'error',
+                    array('text' => $e->getMessage())
+                );
+                $this->setBarcode($barcode);
+                $this->_resource = null;
+                $this->_initRenderer();
+                $this->_drawInstructionList();
+            } else {
+                if ($e instanceof Zend_Barcode_Exception) {
+                    $e->setIsRenderable(false);
+                }
+                throw $e;
+            }
+        }
+        return $this->_resource;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Subphp processphp tophp drawphp thephp barcodephp instructions
-php php php php php php*php Neededphp byphp thephp automaticphp errorphp rendering
-php php php php php php*php/
-php php php php privatephp functionphp php_drawInstructionListphp(php)
-php php php php php{
-php php php php php php php php php$instructionListphp php=php php$thisphp-php>php_barcodephp-php>drawphp(php)php;
-php php php php php php php php foreachphp php(php$instructionListphp asphp php$instructionphp)php php{
-php php php php php php php php php php php php switchphp php(php$instructionphp[php'typephp'php]php)php php{
-php php php php php php php php php php php php php php php php casephp php'polygonphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_drawPolygonphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'pointsphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'colorphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'filledphp'php]
-php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'textphp'php:php php/php/php$textphp,php php$sizephp,php php$positionphp,php php$fontphp,php php$colorphp,php php$alignmentphp php=php php'centerphp'php,php php$orientationphp php=php php0php)
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_drawTextphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'textphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'sizephp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'positionphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'fontphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'colorphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'alignmentphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$instructionphp[php'orientationphp'php]
-php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php'Unkownphp drawingphp commandphp'
-php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Sub process to draw the barcode instructions
+     * Needed by the automatic error rendering
+     */
+    private function _drawInstructionList()
+    {
+        $instructionList = $this->_barcode->draw();
+        foreach ($instructionList as $instruction) {
+            switch ($instruction['type']) {
+                case 'polygon':
+                    $this->_drawPolygon(
+                        $instruction['points'],
+                        $instruction['color'],
+                        $instruction['filled']
+                    );
+                    break;
+                case 'text': //$text, $size, $position, $font, $color, $alignment = 'center', $orientation = 0)
+                    $this->_drawText(
+                        $instruction['text'],
+                        $instruction['size'],
+                        $instruction['position'],
+                        $instruction['font'],
+                        $instruction['color'],
+                        $instruction['alignment'],
+                        $instruction['orientation']
+                    );
+                    break;
+                default:
+                    /**
+                     * @see Zend_Barcode_Renderer_Exception
+                     */
+                    require_once 'Zend/Barcode/Renderer/Exception.php';
+                    throw new Zend_Barcode_Renderer_Exception(
+                        'Unkown drawing command'
+                    );
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkingphp ofphp parametersphp afterphp allphp settings
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php abstractphp protectedphp functionphp php_checkParamsphp(php)php;
+    /**
+     * Checking of parameters after all settings
+     * @return void
+     */
+    abstract protected function _checkParams();
 
-php php php php php/php*php*
-php php php php php php*php Renderphp thephp resourcephp byphp sendingphp headersphp andphp drawedphp resource
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp renderphp(php)php;
+    /**
+     * Render the resource by sending headers and drawed resource
+     * @return mixed
+     */
+    abstract public function render();
 
-php php php php php/php*php*
-php php php php php php*php Initializephp thephp renderingphp resource
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php abstractphp protectedphp functionphp php_initRendererphp(php)php;
+    /**
+     * Initialize the rendering resource
+     * @return void
+     */
+    abstract protected function _initRenderer();
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp polygonphp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp arrayphp php$points
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp booleanphp php$filled
-php php php php php php*php/
-php php php php abstractphp protectedphp functionphp php_drawPolygonphp(php$pointsphp,php php$colorphp,php php$filledphp php=php truephp)php;
+    /**
+     * Draw a polygon in the rendering resource
+     * @param array $points
+     * @param integer $color
+     * @param boolean $filled
+     */
+    abstract protected function _drawPolygon($points, $color, $filled = true);
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp polygonphp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*php php@paramphp floatphp php$size
-php php php php php php*php php@paramphp arrayphp php$position
-php php php php php php*php php@paramphp stringphp php$font
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp stringphp php$alignment
-php php php php php php*php php@paramphp floatphp php$orientation
-php php php php php php*php/
-php php php php abstractphp protectedphp functionphp php_drawTextphp(
-php php php php php php php php php$textphp,
-php php php php php php php php php$sizephp,
-php php php php php php php php php$positionphp,
-php php php php php php php php php$fontphp,
-php php php php php php php php php$colorphp,
-php php php php php php php php php$alignmentphp php=php php'centerphp'php,
-php php php php php php php php php$orientationphp php=php php0
-php php php php php)php;
-php}
+    /**
+     * Draw a polygon in the rendering resource
+     * @param string $text
+     * @param float $size
+     * @param array $position
+     * @param string $font
+     * @param integer $color
+     * @param string $alignment
+     * @param float $orientation
+     */
+    abstract protected function _drawText(
+        $text,
+        $size,
+        $position,
+        $font,
+        $color,
+        $alignment = 'center',
+        $orientation = 0
+    );
+}

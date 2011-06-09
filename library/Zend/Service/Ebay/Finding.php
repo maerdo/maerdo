@@ -1,421 +1,421 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Ebay
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Findingphp.phpphp php2php2php8php2php4php php2php0php1php0php-php0php8php-php0php9php php1php8php:php5php9php:php5php4Zphp renanbrphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Ebay
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Finding.php 22824 2010-08-09 18:59:54Z renanbr $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Ebayphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Service_Ebay_Abstract
+ */
+require_once 'Zend/Service/Ebay/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Ebay
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@usesphp php php php php php php Zendphp_Servicephp_Ebayphp_Abstract
-php php*php/
-classphp Zendphp_Servicephp_Ebayphp_Findingphp extendsphp Zendphp_Servicephp_Ebayphp_Abstract
-php{
-php php php php constphp SERVICEphp_NAMEphp php php php php php php php php php=php php'FindingServicephp'php;
-php php php php constphp SERVICEphp_VERSIONphp php php php php php php=php php'php1php.php0php.php0php'php;
-php php php php constphp RESPONSEphp_DATAphp_FORMATphp php=php php'XMLphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Ebay
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @uses       Zend_Service_Ebay_Abstract
+ */
+class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
+{
+    const SERVICE_NAME         = 'FindingService';
+    const SERVICE_VERSION      = '1.0.0';
+    const RESPONSE_DATA_FORMAT = 'XML';
 
-php php php php constphp ENDPOINTphp_URIphp php php=php php'httpphp:php/php/svcsphp.ebayphp.comphp'php;
-php php php php constphp ENDPOINTphp_PATHphp php=php php'servicesphp/searchphp/FindingServicephp/vphp1php'php;
+    const ENDPOINT_URI  = 'http://svcs.ebay.com';
+    const ENDPOINT_PATH = 'services/search/FindingService/v1';
 
-php php php php constphp XMLNSphp_FINDINGphp php=php php'ephp'php;
-php php php php constphp XMLNSphp_MSphp php php php php php php=php php'msphp'php;
+    const XMLNS_FINDING = 'e';
+    const XMLNS_MS      = 'ms';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_xmlNamespacesphp php=php arrayphp(
-php php php php php php php php selfphp:php:XMLNSphp_FINDINGphp php=php>php php'httpphp:php/php/wwwphp.ebayphp.comphp/marketplacephp/searchphp/vphp1php/servicesphp'php,
-php php php php php php php php selfphp:php:XMLNSphp_MSphp php php php php php php=php>php php'httpphp:php/php/wwwphp.ebayphp.comphp/marketplacephp/servicesphp'
-php php php php php)php;
+    /**
+     * @var array
+     */
+    protected static $_xmlNamespaces = array(
+        self::XMLNS_FINDING => 'http://www.ebay.com/marketplace/search/v1/services',
+        self::XMLNS_MS      => 'http://www.ebay.com/marketplace/services'
+    );
 
-php php php php php/php*php*
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(
-php php php php php php php php selfphp:php:OPTIONphp_GLOBALphp_IDphp php=php>php php'EBAYphp-USphp'
-php php php php php)php;
+    /**
+     *
+     * @var array
+     */
+    protected $_options = array(
+        self::OPTION_GLOBAL_ID => 'EBAY-US'
+    );
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getXmlNamespacesphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_xmlNamespacesphp;
-php php php php php}
+    /**
+     * @return array
+     */
+    public static function getXmlNamespaces()
+    {
+        return self::$_xmlNamespaces;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp|stringphp php$optionsphp Applicationphp Idphp orphp arrayphp ofphp options
-php php php php php php*php php@throwsphp Zendphp_Servicephp_Ebayphp_Findingphp_Exceptionphp Whenphp applicationphp idphp isphp missing
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php/php/php applicationphp idphp wasphp given
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(selfphp:php:OPTIONphp_APPphp_IDphp php=php>php php$optionsphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php checkphp applicationphp id
-php php php php php php php php php php php php php$optionsphp php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(selfphp:php:OPTIONphp_APPphp_IDphp,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Ebayphp_Findingphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Applicationphp Idphp isphp missingphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * @param  Zend_Config|array|string $options Application Id or array of options
+     * @throws Zend_Service_Ebay_Finding_Exception When application id is missing
+     * @return void
+     */
+    public function __construct($options)
+    {
+        // prepare options
+        if (is_string($options)) {
+            // application id was given
+            $options = array(self::OPTION_APP_ID => $options);
+        } else {
+            // check application id
+            $options = parent::optionsToArray($options);
+            if (!array_key_exists(self::OPTION_APP_ID, $options)) {
+                /**
+                 * @see Zend_Service_Ebay_Finding_Exception
+                 */
+                require_once 'Zend/Service/Ebay/Finding/Exception.php';
+                throw new Zend_Service_Ebay_Finding_Exception(
+                    'Application Id is missing.');
+            }
+        }
 
-php php php php php php php php php/php/php loadphp options
-php php php php php php php php parentphp:php:setOptionphp(php$optionsphp)php;
-php php php php php}
+        // load options
+        parent::setOption($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp php Zendphp_Restphp_Clientphp php$client
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setClientphp(php$clientphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$clientphp instanceofphp Zendphp_Restphp_Clientphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Ebayphp_Findingphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Clientphp objectphp mustphp extendphp Zendphp_Restphp_Clientphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_clientphp php=php php$clientphp;
+    /**
+     * @param  Zend_Rest_Client $client
+     * @return Zend_Service_Ebay_Finding Provides a fluent interface
+     */
+    public function setClient($client)
+    {
+        if (!$client instanceof Zend_Rest_Client) {
+            /**
+             * @see Zend_Service_Ebay_Finding_Exception
+             */
+            require_once 'Zend/Service/Ebay/Finding/Exception.php';
+            throw new Zend_Service_Ebay_Finding_Exception(
+                'Client object must extend Zend_Rest_Client.');
+        }
+        $this->_client = $client;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp Zendphp_Restphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp getClientphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_clientphp instanceofphp Zendphp_Restphp_Clientphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Restphp_Client
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Restphp/Clientphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_clientphp php=php newphp Zendphp_Restphp_Clientphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_clientphp;
-php php php php php}
+    /**
+     * @return Zend_Rest_Client
+     */
+    public function getClient()
+    {
+        if (!$this->_client instanceof Zend_Rest_Client) {
+            /**
+             * @see Zend_Rest_Client
+             */
+            require_once 'Zend/Rest/Client.php';
+            $this->_client = new Zend_Rest_Client();
+        }
+        return $this->_client;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findsphp itemsphp byphp aphp keywordphp queryphp andphp/orphp categoryphp andphp allowsphp searching
-php php php php php php*php withinphp itemphp descriptionsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php$keywords
-php php php php php php*php php@paramphp php booleanphp php php php php php php php php php php php$descriptionSearch
-php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php$categoryId
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/findItemsAdvancedphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php publicphp functionphp findItemsAdvancedphp(php$keywordsphp,php php$descriptionSearchphp php=php truephp,php php$categoryIdphp php=php nullphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'keywordsphp'php]php php php php php php php php php php php=php php$keywordsphp;
-php php php php php php php php php$optionsphp[php'descriptionSearchphp'php]php php=php php$descriptionSearchphp;
-php php php php php php php php ifphp php(php!emptyphp(php$categoryIdphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'categoryIdphp'php]php php=php php$categoryIdphp;
-php php php php php php php php php}
+    /**
+     * Finds items by a keyword query and/or category and allows searching
+     * within item descriptions.
+     *
+     * @param  string            $keywords
+     * @param  boolean           $descriptionSearch
+     * @param  integer           $categoryId
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    public function findItemsAdvanced($keywords, $descriptionSearch = true, $categoryId = null, $options = null)
+    {
+        // prepare options
+        $options                      = parent::optionsToArray($options);
+        $options['keywords']          = $keywords;
+        $options['descriptionSearch'] = $descriptionSearch;
+        if (!empty($categoryId)) {
+            $options['categoryId'] = $categoryId;
+        }
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php returnphp php$thisphp-php>php_findItemsphp(php$optionsphp,php php'findItemsAdvancedphp'php)php;
-php php php php php}
+        // do request
+        return $this->_findItems($options, 'findItemsAdvanced');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findsphp itemsphp inphp aphp specificphp categoryphp.php Resultsphp canphp bephp filteredphp andphp sortedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php$categoryId
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/findItemsByCategoryphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php publicphp functionphp findItemsByCategoryphp(php$categoryIdphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'categoryIdphp'php]php php=php php$categoryIdphp;
+    /**
+     * Finds items in a specific category. Results can be filtered and sorted.
+     *
+     * @param  integer           $categoryId
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsByCategory.html
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    public function findItemsByCategory($categoryId, $options = null)
+    {
+        // prepare options
+        $options               = parent::optionsToArray($options);
+        $options['categoryId'] = $categoryId;
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php returnphp php$thisphp-php>php_findItemsphp(php$optionsphp,php php'findItemsByCategoryphp'php)php;
-php php php php php}
+        // do request
+        return $this->_findItems($options, 'findItemsByCategory');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findsphp itemsphp onphp eBayphp basedphp uponphp aphp keywordphp queryphp andphp returnsphp detailsphp for
-php php php php php php*php matchingphp itemsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php$keywords
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/findItemsByKeywordsphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php publicphp functionphp findItemsByKeywordsphp(php$keywordsphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'keywordsphp'php]php php=php php$keywordsphp;
+    /**
+     * Finds items on eBay based upon a keyword query and returns details for
+     * matching items.
+     *
+     * @param  string            $keywords
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsByKeywords.html
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    public function findItemsByKeywords($keywords, $options = null)
+    {
+        // prepare options
+        $options             = parent::optionsToArray($options);
+        $options['keywords'] = $keywords;
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php returnphp php$thisphp-php>php_findItemsphp(php$optionsphp,php php'findItemsByKeywordsphp'php)php;
-php php php php php}
+        // do request
+        return $this->_findItems($options, 'findItemsByKeywords');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findsphp itemsphp basedphp uponphp aphp productphp IDphp,php suchphp asphp anphp ISBNphp,php UPCphp,php EANphp,php orphp ePIDphp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php$productId
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php$productIdTypephp Defaultphp valuephp isphp ReferenceID
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/findItemsByProductphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php publicphp functionphp findItemsByProductphp(php$productIdphp,php php$productIdTypephp php=php nullphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php php$productIdTypephp)php php{
-php php php php php php php php php php php php php$productIdTypephp php=php php'ReferenceIDphp'php;
-php php php php php php php php php}
+    /**
+     * Finds items based upon a product ID, such as an ISBN, UPC, EAN, or ePID.
+     *
+     * @param  integer           $productId
+     * @param  string            $productIdType Default value is ReferenceID
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsByProduct.html
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    public function findItemsByProduct($productId, $productIdType = null, $options = null)
+    {
+        if (null == $productIdType) {
+            $productIdType = 'ReferenceID';
+        }
 
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'productIdphp'php]php php=php arrayphp(php'php'php php php php php php=php>php php$productIdphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'typephp'php php=php>php php$productIdTypephp)php;
+        // prepare options
+        $options              = parent::optionsToArray($options);
+        $options['productId'] = array(''     => $productId,
+                                      'type' => $productIdType);
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php returnphp php$thisphp-php>php_findItemsphp(php$optionsphp,php php'findItemsByProductphp'php)php;
-php php php php php}
+        // do request
+        return $this->_findItems($options, 'findItemsByProduct');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findsphp itemsphp inphp eBayphp storesphp.php Canphp searchphp aphp specificphp storephp orphp canphp searchphp all
-php php php php php php*php storesphp withphp aphp keywordphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php$storeName
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/findItemsIneBayStoresphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php publicphp functionphp findItemsInEbayStoresphp(php$storeNamephp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'storeNamephp'php]php php=php php$storeNamephp;
+    /**
+     * Finds items in eBay stores. Can search a specific store or can search all
+     * stores with a keyword query.
+     *
+     * @param  string            $storeName
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsIneBayStores.html
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    public function findItemsInEbayStores($storeName, $options = null)
+    {
+        // prepare options
+        $options              = parent::optionsToArray($options);
+        $options['storeName'] = $storeName;
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php returnphp php$thisphp-php>php_findItemsphp(php$optionsphp,php php'findItemsIneBayStoresphp'php)php;
-php php php php php}
+        // do request
+        return $this->_findItems($options, 'findItemsIneBayStores');
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@paramphp php stringphp php$operation
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php*php/
-php php php php protectedphp functionphp php_findItemsphp(arrayphp php$optionsphp,php php$operationphp)
-php php php php php{
-php php php php php php php php php/php/php setphp defaultphp outputphp selectorphp value
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'outputSelectorphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'outputSelectorphp'php]php php=php arrayphp(php'AspectHistogramphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'CategoryHistogramphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'SellerInfophp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'StoreInfophp'php)php;
-php php php php php php php php php}
+    /**
+     * @param  array  $options
+     * @param  string $operation
+     * @return Zend_Service_Ebay_Finding_Response_Items
+     */
+    protected function _findItems(array $options, $operation)
+    {
+        // set default output selector value
+        if (!array_key_exists('outputSelector', $options)) {
+            $options['outputSelector'] = array('AspectHistogram',
+                                               'CategoryHistogram',
+                                               'SellerInfo',
+                                               'StoreInfo');
+        }
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php php$domphp php=php php$thisphp-php>php_requestphp(php$operationphp,php php$optionsphp)php;
+        // do request
+        $dom = $this->_request($operation, $options);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Items
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Responsephp/Itemsphp.phpphp'php;
-php php php php php php php php php$responsephp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Itemsphp(php$domphp-php>firstChildphp)php;
-php php php php php php php php returnphp php$responsephp-php>setOperationphp(php$operationphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php-php>setOptionphp(php$optionsphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Ebay_Finding_Response_Items
+         */
+        require_once 'Zend/Service/Ebay/Finding/Response/Items.php';
+        $response = new Zend_Service_Ebay_Finding_Response_Items($dom->firstChild);
+        return $response->setOperation($operation)
+                        ->setOption($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getsphp categoryphp andphp/orphp aspectphp metadataphp forphp thephp specifiedphp categoryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php php php php php php php php php php php$categoryId
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/getHistogramsphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Histograms
-php php php php php php*php/
-php php php php publicphp functionphp getHistogramsphp(php$categoryIdphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'categoryIdphp'php]php php=php php$categoryIdphp;
+    /**
+     * Gets category and/or aspect metadata for the specified category.
+     *
+     * @param  integer           $categoryId
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/getHistograms.html
+     * @return Zend_Service_Ebay_Finding_Response_Histograms
+     */
+    public function getHistograms($categoryId, $options = null)
+    {
+        // prepare options
+        $options               = parent::optionsToArray($options);
+        $options['categoryId'] = $categoryId;
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php php$operationphp php=php php'getHistogramsphp'php;
-php php php php php php php php php$domphp php php php php php php php=php php$thisphp-php>php_requestphp(php$operationphp,php php$optionsphp)php;
+        // do request
+        $operation = 'getHistograms';
+        $dom       = $this->_request($operation, $options);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Histograms
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Responsephp/Histogramsphp.phpphp'php;
-php php php php php php php php php$responsephp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Histogramsphp(php$domphp-php>firstChildphp)php;
-php php php php php php php php returnphp php$responsephp-php>setOperationphp(php$operationphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php-php>setOptionphp(php$optionsphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Ebay_Finding_Response_Histograms
+         */
+        require_once 'Zend/Service/Ebay/Finding/Response/Histograms.php';
+        $response = new Zend_Service_Ebay_Finding_Response_Histograms($dom->firstChild);
+        return $response->setOperation($operation)
+                        ->setOption($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checksphp specifiedphp keywordsphp andphp returnsphp correctlyphp spelledphp keywordsphp forphp best
-php php php php php php*php searchphp resultsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php$keywords
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/getSearchKeywordsRecommendationphp.html
-php php php php php php*php php@returnphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Keywords
-php php php php php php*php/
-php php php php publicphp functionphp getSearchKeywordsRecommendationphp(php$keywordsphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php preparephp options
-php php php php php php php php php$optionsphp php php php php php php php php php php php php php=php parentphp:php:optionsToArrayphp(php$optionsphp)php;
-php php php php php php php php php$optionsphp[php'keywordsphp'php]php php=php php$keywordsphp;
+    /**
+     * Checks specified keywords and returns correctly spelled keywords for best
+     * search results.
+     *
+     * @param  string            $keywords
+     * @param  Zend_Config|array $options
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/getSearchKeywordsRecommendation.html
+     * @return Zend_Service_Ebay_Finding_Response_Keywords
+     */
+    public function getSearchKeywordsRecommendation($keywords, $options = null)
+    {
+        // prepare options
+        $options             = parent::optionsToArray($options);
+        $options['keywords'] = $keywords;
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php php$operationphp php=php php'getSearchKeywordsRecommendationphp'php;
-php php php php php php php php php$domphp php php php php php php php=php php$thisphp-php>php_requestphp(php$operationphp,php php$optionsphp)php;
+        // do request
+        $operation = 'getSearchKeywordsRecommendation';
+        $dom       = $this->_request($operation, $options);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Keywords
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Responsephp/Keywordsphp.phpphp'php;
-php php php php php php php php php$responsephp php=php newphp Zendphp_Servicephp_Ebayphp_Findingphp_Responsephp_Keywordsphp(php$domphp-php>firstChildphp)php;
-php php php php php php php php returnphp php$responsephp-php>setOperationphp(php$operationphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php-php>setOptionphp(php$optionsphp)php;
-php php php php php}
+        /**
+         * @see Zend_Service_Ebay_Finding_Response_Keywords
+         */
+        require_once 'Zend/Service/Ebay/Finding/Response/Keywords.php';
+        $response = new Zend_Service_Ebay_Finding_Response_Keywords($dom->firstChild);
+        return $response->setOperation($operation)
+                        ->setOption($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp php stringphp php$operation
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/Conceptsphp/MakingACallphp.htmlphp#StandardURLParameters
-php php php php php php*php php@returnphp DOMDocument
-php php php php php php*php/
-php php php php protectedphp functionphp php_requestphp(php$operationphp,php arrayphp php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php generatephp defaultphp options
-php php php php php php php php php/php/php constructorphp loadphp globalphp-idphp andphp applicationphp-idphp values
-php php php php php php php php php$defaultphp php=php arrayphp(php'OPERATIONphp-NAMEphp'php php php php php php php php=php>php php$operationphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'SERVICEphp-NAMEphp'php php php php php php php php php php=php>php selfphp:php:SERVICEphp_NAMEphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'SERVICEphp-VERSIONphp'php php php php php php php=php>php selfphp:php:SERVICEphp_VERSIONphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'GLOBALphp-IDphp'php php php php php php php php php php php php php=php>php php$thisphp-php>getOptionphp(selfphp:php:OPTIONphp_GLOBALphp_IDphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'SECURITYphp-APPNAMEphp'php php php php php php=php>php php$thisphp-php>getOptionphp(selfphp:php:OPTIONphp_APPphp_IDphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'RESPONSEphp-DATAphp-FORMATphp'php php=php>php selfphp:php:RESPONSEphp_DATAphp_FORMATphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php'RESTphp-PAYLOADphp'php php php php php php php php php php=php>php php'php'php)php;
+    /**
+     * @param  string $operation
+     * @param  array  $options
+     * @link   http://developer.ebay.com/DevZone/finding/Concepts/MakingACall.html#StandardURLParameters
+     * @return DOMDocument
+     */
+    protected function _request($operation, array $options = null)
+    {
+        // generate default options
+        // constructor load global-id and application-id values
+        $default = array('OPERATION-NAME'       => $operation,
+                         'SERVICE-NAME'         => self::SERVICE_NAME,
+                         'SERVICE-VERSION'      => self::SERVICE_VERSION,
+                         'GLOBAL-ID'            => $this->getOption(self::OPTION_GLOBAL_ID),
+                         'SECURITY-APPNAME'     => $this->getOption(self::OPTION_APP_ID),
+                         'RESPONSE-DATA-FORMAT' => self::RESPONSE_DATA_FORMAT,
+                         'REST-PAYLOAD'         => '');
 
-php php php php php php php php php/php/php preparephp optionsphp tophp ebayphp syntax
-php php php php php php php php php$optionsphp php=php php$defaultphp php+php php$thisphp-php>php_optionsToNameValueSyntaxphp(php$optionsphp)php;
+        // prepare options to ebay syntax
+        $options = $default + $this->_optionsToNameValueSyntax($options);
 
-php php php php php php php php php/php/php dophp request
-php php php php php php php php php$clientphp php=php php$thisphp-php>getClientphp(php)php;
-php php php php php php php php php$clientphp-php>getHttpClientphp(php)php-php>resetParametersphp(php)php;
-php php php php php php php php php$responsephp php=php php$clientphp-php>setUriphp(selfphp:php:ENDPOINTphp_URIphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php-php>restGetphp(selfphp:php:ENDPOINTphp_PATHphp,php php$optionsphp)php;
+        // do request
+        $client = $this->getClient();
+        $client->getHttpClient()->resetParameters();
+        $response = $client->setUri(self::ENDPOINT_URI)
+                           ->restGet(self::ENDPOINT_PATH, $options);
 
-php php php php php php php php returnphp php$thisphp-php>php_parseResponsephp(php$responsephp)php;
-php php php php php}
+        return $this->_parseResponse($response);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Searchphp forphp errorphp fromphp requestphp.
-php php php php php php*
-php php php php php php*php Ifphp anyphp errorphp isphp foundphp aphp DOMDocumentphp isphp returnedphp,php thisphp objectphp containsphp a
-php php php php php php*php DOMXPathphp objectphp asphp php"ebayFindingXPathphp"php attributephp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Responsephp php$response
-php php php php php php*php php@linkphp php php httpphp:php/php/developerphp.ebayphp.comphp/DevZonephp/findingphp/CallRefphp/typesphp/ErrorSeverityphp.html
-php php php php php php*php php@seephp php php php Zendphp_Servicephp_Ebayphp_Findingphp_Abstractphp:php:php_initXPathphp(php)
-php php php php php php*php php@throwsphp Zendphp_Servicephp_Ebayphp_Findingphp_Exceptionphp Whenphp anyphp errorphp occurrsphp duringphp request
-php php php php php php*php php@returnphp DOMDocument
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseResponsephp(Zendphp_Httpphp_Responsephp php$responsephp)
-php php php php php{
-php php php php php php php php php/php/php errorphp message
-php php php php php php php php php$messagephp php=php php'php'php;
+    /**
+     * Search for error from request.
+     *
+     * If any error is found a DOMDocument is returned, this object contains a
+     * DOMXPath object as "ebayFindingXPath" attribute.
+     *
+     * @param  Zend_Http_Response $response
+     * @link   http://developer.ebay.com/DevZone/finding/CallRef/types/ErrorSeverity.html
+     * @see    Zend_Service_Ebay_Finding_Abstract::_initXPath()
+     * @throws Zend_Service_Ebay_Finding_Exception When any error occurrs during request
+     * @return DOMDocument
+     */
+    protected function _parseResponse(Zend_Http_Response $response)
+    {
+        // error message
+        $message = '';
 
-php php php php php php php php php/php/php firstphp tryingphp,php loadingphp XML
-php php php php php php php php php$domphp php=php newphp DOMDocumentphp(php)php;
-php php php php php php php php ifphp php(php!php@php$domphp-php>loadXMLphp(php$responsephp-php>getBodyphp(php)php)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php'Itphp wasphp notphp possiblephp tophp loadphp XMLphp returnedphp.php'php;
-php php php php php php php php php}
+        // first trying, loading XML
+        $dom = new DOMDocument();
+        if (!@$dom->loadXML($response->getBody())) {
+            $message = 'It was not possible to load XML returned.';
+        }
 
-php php php php php php php php php/php/php secondphp tryingphp,php checkphp requestphp status
-php php php php php php php php ifphp php(php$responsephp-php>isErrorphp(php)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$responsephp-php>getMessagephp(php)
-php php php php php php php php php php php php php php php php php php php php php php.php php'php php(HTTPphp statusphp codephp php#php'php php.php php$responsephp-php>getStatusphp(php)php php.php php'php)php'php;
-php php php php php php php php php}
+        // second trying, check request status
+        if ($response->isError()) {
+            $message = $response->getMessage()
+                     . ' (HTTP status code #' . $response->getStatus() . ')';
+        }
 
-php php php php php php php php php/php/php thirdphp tryingphp,php searchphp forphp errorphp messagephp intophp XMLphp response
-php php php php php php php php php/php/php onlyphp firstphp errorphp thatphp containsphp severiryphp=Errorphp isphp read
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$domphp)php;
-php php php php php php php php foreachphp php(selfphp:php:php$php_xmlNamespacesphp asphp php$aliasphp php=php>php php$uriphp)php php{
-php php php php php php php php php php php php php$xpathphp-php>registerNamespacephp(php$aliasphp,php php$uriphp)php;
-php php php php php php php php php}
-php php php php php php php php php$nsphp php php php php php php php php php php php=php selfphp:php:XMLNSphp_FINDINGphp;
-php php php php php php php php php$nsMsphp php php php php php php php php php=php selfphp:php:XMLNSphp_MSphp;
-php php php php php php php php php$expressionphp php php php=php php"php/php/php$nsMsphp:errorMessagephp[php1php]php/php$nsphp:errorphp/php$nsphp:severityphp[php.php=php'Errorphp'php]php"php;
-php php php php php php php php php$severityNodephp php=php php$xpathphp-php>queryphp(php$expressionphp)php-php>itemphp(php0php)php;
-php php php php php php php php ifphp php(php$severityNodephp)php php{
-php php php php php php php php php php php php php$errorNodephp php=php php$severityNodephp-php>parentNodephp;
-php php php php php php php php php php php php php/php/php ebayphp message
-php php php php php php php php php php php php php$messageNodephp php=php php$xpathphp-php>queryphp(php"php/php/php$nsphp:messagephp[php1php]php"php,php php$errorNodephp)php-php>itemphp(php0php)php;
-php php php php php php php php php php php php ifphp php(php$messageNodephp)php php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php'eBayphp errorphp:php php'php php.php php$messageNodephp-php>nodeValuephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php'eBayphp errorphp:php unknownphp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php/php/php ebayphp errorphp id
-php php php php php php php php php php php php php$errorIdNodephp php=php php$xpathphp-php>queryphp(php"php/php/php$nsphp:errorIdphp[php1php]php"php,php php$errorNodephp)php-php>itemphp(php0php)php;
-php php php php php php php php php php php php ifphp php(php$errorIdNodephp)php php{
-php php php php php php php php php php php php php php php php php$messagephp php.php=php php'php php(php#php'php php.php php$errorIdNodephp-php>nodeValuephp php.php php'php)php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // third trying, search for error message into XML response
+        // only first error that contains severiry=Error is read
+        $xpath = new DOMXPath($dom);
+        foreach (self::$_xmlNamespaces as $alias => $uri) {
+            $xpath->registerNamespace($alias, $uri);
+        }
+        $ns           = self::XMLNS_FINDING;
+        $nsMs         = self::XMLNS_MS;
+        $expression   = "//$nsMs:errorMessage[1]/$ns:error/$ns:severity[.='Error']";
+        $severityNode = $xpath->query($expression)->item(0);
+        if ($severityNode) {
+            $errorNode = $severityNode->parentNode;
+            // ebay message
+            $messageNode = $xpath->query("//$ns:message[1]", $errorNode)->item(0);
+            if ($messageNode) {
+                $message = 'eBay error: ' . $messageNode->nodeValue;
+            } else {
+                $message = 'eBay error: unknown';
+            }
+            // ebay error id
+            $errorIdNode = $xpath->query("//$ns:errorId[1]", $errorNode)->item(0);
+            if ($errorIdNode) {
+                $message .= ' (#' . $errorIdNode->nodeValue . ')';
+            }
+        }
 
-php php php php php php php php php/php/php throwphp exceptionphp whenphp anphp errorphp wasphp detected
-php php php php php php php php ifphp php(strlenphp(php$messagephp)php php>php php0php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Servicephp_Ebayphp_Findingphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/Ebayphp/Findingphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_Ebayphp_Findingphp_Exceptionphp(php$messagephp)php;
-php php php php php php php php php}
+        // throw exception when an error was detected
+        if (strlen($message) > 0) {
+            /**
+             * @see Zend_Service_Ebay_Finding_Exception
+             */
+            require_once 'Zend/Service/Ebay/Finding/Exception.php';
+            throw new Zend_Service_Ebay_Finding_Exception($message);
+        }
 
-php php php php php php php php php/php/php addphp xpathphp tophp domphp document
-php php php php php php php php php/php/php itphp allowsphp servicephp_ebayphp_findingphp classesphp usephp this
-php php php php php php php php php$domphp-php>ebayFindingXPathphp php=php php$xpathphp;
+        // add xpath to dom document
+        // it allows service_ebay_finding classes use this
+        $dom->ebayFindingXPath = $xpath;
 
-php php php php php php php php returnphp php$domphp;
-php php php php php}
-php}
+        return $dom;
+    }
+}

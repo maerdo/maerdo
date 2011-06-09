@@ -1,254 +1,254 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php2php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"iiphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"dephp"php>phpꄓphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>phpꑱphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>phpꑭphpꀠphpꑸphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>phpꃔphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"iiphp"php>phpꆈphpꌠphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>phpꑴphpꄊphpꆺphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>phpꏝphpꀪphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>phpꁍphpꄨphpꑸphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>phpꀠphpꑟphpꁍphpꄨphpꑸphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>phpꊉphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>phpꅉphpꀋphpꌠphpꅇphpꂷ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>phpꍏphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>phpꈝphpꐯphpꍏphpꇩphpꉙ<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>phpꀎphpꋏphpꍏphpꇩphpꉙ<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>phpꀊphpꇁphpꀨphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>phpꀊphpꆨphpꌦphpꇁphpꃚphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hansphp"php>phpꈝphpꐯphpꉌphpꈲphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hantphp"php>phpꀎphpꋏphpꉌphpꈲphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>phpꇁphpꄀphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Yiiiphp"php>phpꆈphpꌠphpꁱphpꂷ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>phpꁱphpꀋphpꉆphpꌠ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>phpꅉphpꀋphpꐚphpꌠphpꁱphpꂷ<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>phpꀠphpꑭ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>phpꍏphpꇩ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>phpꄓphpꇩ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>phpꃔphpꇩ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>phpꑱphpꇩ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>phpꑴphpꄗ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>phpꑴphpꄊphpꆺ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>phpꏝphpꀪ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>phpꊉphpꇆphpꌦ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>phpꂰphpꇩ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>phpꃅphpꄷphpꅉphpꀋphpꐚphpꌠ<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>phpꄉphpꉻphpꃅphpꑍ<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>phpꑳphpꌦphpꇂphpꑍphpꉖ<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>phpꂰphpꌬphpꌠ<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>phpꂰphpꇩ<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	php	php<codePatternsphp>
-php	php	php	php<codePatternphp typephp=php"languagephp"php>phpꅇphpꉙphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"scriptphp"php>phpꇇphpꁱphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"territoryphp"php>phpꃅphpꄷphp:php php{php0php}<php/codePatternphp>
-php	php	<php/codePatternsphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[phpꀀphp-phpꒌphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpꋍphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpꑍphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpꌕphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpꇖphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpꉬphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpꃘphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpꏃphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpꉆphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpꈬphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpꊰphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpꊰphpꊪphpꆪ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpꊰphpꑋphpꆪ<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpꆏphpꑍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpꆏphpꋍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpꆏphpꑍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpꆏphpꌕ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpꆏphpꇖ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpꆏphpꉬ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpꆏphpꃘ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpꑭphpꆏphpꑍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpꆏphpꊂphpꋍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpꆏphpꊂphpꑍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpꆏphpꊂphpꌕ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpꆏphpꊂphpꇖ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpꆏphpꊂphpꉬ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpꆏphpꊂphpꃘ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpꆏ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpꋍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpꑍ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpꌕ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpꇖ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpꉬ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpꃘ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>phpꃅphpꑌ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>phpꃅphpꎸ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>phpꃅphpꍵ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>phpꃅphpꋆ<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>phpꃅphpꑌ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>phpꃅphpꎸ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>phpꃅphpꍵ<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>phpꃅphpꋆ<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>phpꎸphpꄑ<php/amphp>
-php	php	php	php	php<pmphp>phpꁯphpꋒ<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpꃅphpꋊphpꂿ<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpꃅphpꋊphpꊂ<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꃅphpꋊ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꈎ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꆪ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꑭphpꆏ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꑍ<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>phpꎴphpꂿphpꋍphpꑍ<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>phpꀋphpꅔphpꉈ<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>phpꀃphpꑍ<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>phpꃆphpꏂphpꑍ<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>phpꌕphpꀿphpꑍ<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꆏphpꑍ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꎸphpꄑphp/phpꁯphpꋒ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꄮphpꈉ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꃏ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꇙ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpꃅphpꄷphpꄮphpꈉ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>phpꅉphpꀋphpꐚphpꌠ<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	<php/symbolsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"XXXphp"php>
-php	php	php	php	php<displayNamephp>phpꅉphpꀋphpꐚphpꌠphpꌋphpꆀphpꎆphpꃀphpꀋphpꈁphpꀐphpꌠ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>phpꉬ<php/yesstrphp>
-php	php	php	php<nostrphp>phpꀋphpꉬ<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.12 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="ii"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="de">ꄓꇩꉙ</language>
+			<language type="en">ꑱꇩꉙ</language>
+			<language type="es">ꑭꀠꑸꉙ</language>
+			<language type="fr">ꃔꇩꉙ</language>
+			<language type="ii">ꆈꌠꉙ</language>
+			<language type="it">ꑴꄊꆺꉙ</language>
+			<language type="ja">ꏝꀪꉙ</language>
+			<language type="pt">ꁍꄨꑸꉙ</language>
+			<language type="pt_BR">ꀠꑟꁍꄨꑸꉙ</language>
+			<language type="ru">ꊉꇩꉙ</language>
+			<language type="und">ꅉꀋꌠꅇꂷ</language>
+			<language type="zh">ꍏꇩꉙ</language>
+			<language type="zh_Hans">ꈝꐯꍏꇩꉙ</language>
+			<language type="zh_Hant">ꀎꋏꍏꇩꉙ</language>
+		</languages>
+		<scripts>
+			<script type="Arab">ꀊꇁꀨꁱꂷ</script>
+			<script type="Cyrl">ꀊꆨꌦꇁꃚꁱꂷ</script>
+			<script type="Hans">ꈝꐯꉌꈲꁱꂷ</script>
+			<script type="Hant">ꀎꋏꉌꈲꁱꂷ</script>
+			<script type="Latn">ꇁꄀꁱꂷ</script>
+			<script type="Yiii">ꆈꌠꁱꂷ</script>
+			<script type="Zxxx">ꁱꀋꉆꌠ</script>
+			<script type="Zzzz">ꅉꀋꐚꌠꁱꂷ</script>
+		</scripts>
+		<territories>
+			<territory type="BR">ꀠꑭ</territory>
+			<territory type="CN">ꍏꇩ</territory>
+			<territory type="DE">ꄓꇩ</territory>
+			<territory type="FR">ꃔꇩ</territory>
+			<territory type="GB">ꑱꇩ</territory>
+			<territory type="IN">ꑴꄗ</territory>
+			<territory type="IT">ꑴꄊꆺ</territory>
+			<territory type="JP">ꏝꀪ</territory>
+			<territory type="RU">ꊉꇆꌦ</territory>
+			<territory type="US">ꂰꇩ</territory>
+			<territory type="ZZ">ꃅꄷꅉꀋꐚꌠ</territory>
+		</territories>
+		<types>
+			<type type="gregorian" key="calendar">ꄉꉻꃅꑍ</type>
+			<type type="islamic" key="calendar">ꑳꌦꇂꑍꉖ</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">ꂰꌬꌠ</measurementSystemName>
+			<measurementSystemName type="US">ꂰꇩ</measurementSystemName>
+		</measurementSystemNames>
+		<codePatterns>
+			<codePattern type="language">ꅇꉙ: {0}</codePattern>
+			<codePattern type="script">ꇇꁱ: {0}</codePattern>
+			<codePattern type="territory">ꃅꄷ: {0}</codePattern>
+		</codePatterns>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[ꀀ-ꒌ]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">1</month>
+							<month type="2">2</month>
+							<month type="3">3</month>
+							<month type="4">4</month>
+							<month type="5">5</month>
+							<month type="6">6</month>
+							<month type="7">7</month>
+							<month type="8">8</month>
+							<month type="9">9</month>
+							<month type="10">10</month>
+							<month type="11">11</month>
+							<month type="12">12</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">ꋍꆪ</month>
+							<month type="2">ꑍꆪ</month>
+							<month type="3">ꌕꆪ</month>
+							<month type="4">ꇖꆪ</month>
+							<month type="5">ꉬꆪ</month>
+							<month type="6">ꃘꆪ</month>
+							<month type="7">ꏃꆪ</month>
+							<month type="8">ꉆꆪ</month>
+							<month type="9">ꈬꆪ</month>
+							<month type="10">ꊰꆪ</month>
+							<month type="11">ꊰꊪꆪ</month>
+							<month type="12">ꊰꑋꆪ</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">1</month>
+							<month type="2">2</month>
+							<month type="3">3</month>
+							<month type="4">4</month>
+							<month type="5">5</month>
+							<month type="6">6</month>
+							<month type="7">7</month>
+							<month type="8">8</month>
+							<month type="9">9</month>
+							<month type="10">10</month>
+							<month type="11">11</month>
+							<month type="12">12</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">ꆏꑍ</day>
+							<day type="mon">ꆏꋍ</day>
+							<day type="tue">ꆏꑍ</day>
+							<day type="wed">ꆏꌕ</day>
+							<day type="thu">ꆏꇖ</day>
+							<day type="fri">ꆏꉬ</day>
+							<day type="sat">ꆏꃘ</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">ꑭꆏꑍ</day>
+							<day type="mon">ꆏꊂꋍ</day>
+							<day type="tue">ꆏꊂꑍ</day>
+							<day type="wed">ꆏꊂꌕ</day>
+							<day type="thu">ꆏꊂꇖ</day>
+							<day type="fri">ꆏꊂꉬ</day>
+							<day type="sat">ꆏꊂꃘ</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">ꆏ</day>
+							<day type="mon">ꋍ</day>
+							<day type="tue">ꑍ</day>
+							<day type="wed">ꌕ</day>
+							<day type="thu">ꇖ</day>
+							<day type="fri">ꉬ</day>
+							<day type="sat">ꃘ</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">ꃅꑌ</quarter>
+							<quarter type="2">ꃅꎸ</quarter>
+							<quarter type="3">ꃅꍵ</quarter>
+							<quarter type="4">ꃅꋆ</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">ꃅꑌ</quarter>
+							<quarter type="2">ꃅꎸ</quarter>
+							<quarter type="3">ꃅꍵ</quarter>
+							<quarter type="4">ꃅꋆ</quarter>
+						</quarterWidth>
+					</quarterContext>
+					<quarterContext type="stand-alone">
+						<quarterWidth type="narrow">
+							<quarter type="1">1</quarter>
+							<quarter type="2">2</quarter>
+							<quarter type="3">3</quarter>
+							<quarter type="4">4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>ꎸꄑ</am>
+				<pm>ꁯꋒ</pm>
+				<eras>
+					<eraAbbr>
+						<era type="0">ꃅꋊꂿ</era>
+						<era type="1">ꃅꋊꊂ</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>y MMMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<fields>
+					<field type="era">
+						<displayName>ꃅꋊ</displayName>
+					</field>
+					<field type="year">
+						<displayName>ꈎ</displayName>
+					</field>
+					<field type="month">
+						<displayName>ꆪ</displayName>
+					</field>
+					<field type="week">
+						<displayName>ꑭꆏ</displayName>
+					</field>
+					<field type="day">
+						<displayName>ꑍ</displayName>
+						<relative type="-2">ꎴꂿꋍꑍ</relative>
+						<relative type="-1">ꀋꅔꉈ</relative>
+						<relative type="0">ꀃꑍ</relative>
+						<relative type="1">ꃆꏂꑍ</relative>
+						<relative type="2">ꌕꀿꑍ</relative>
+					</field>
+					<field type="weekday">
+						<displayName>ꆏꑍ</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>ꎸꄑ/ꁯꋒ</displayName>
+					</field>
+					<field type="hour">
+						<displayName>ꄮꈉ</displayName>
+					</field>
+					<field type="minute">
+						<displayName>ꃏ</displayName>
+					</field>
+					<field type="second">
+						<displayName>ꇙ</displayName>
+					</field>
+					<field type="zone">
+						<displayName>ꃅꄷꄮꈉ</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<zone type="Etc/Unknown">
+				<exemplarCity>ꅉꀋꐚꌠ</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+		</symbols>
+		<currencies>
+			<currency type="XXX">
+				<displayName>ꅉꀋꐚꌠꌋꆀꎆꃀꀋꈁꀐꌠ</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>ꉬ</yesstr>
+			<nostr>ꀋꉬ</nostr>
+		</messages>
+	</posix>
+</ldml>
 

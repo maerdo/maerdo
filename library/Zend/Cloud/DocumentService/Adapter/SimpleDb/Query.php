@@ -1,175 +1,175 @@
-<php?php
-php/php*php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp DocumentService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage DocumentService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*
-php php*php php@seephp Zendphp_Cloudphp_DocumentServicephp_Query
-php php*php/
-requirephp_oncephp php'Zendphp/Cloudphp/DocumentServicephp/Queryphp.phpphp'php;
+/*
+ * @see Zend_Cloud_DocumentService_Query
+ */
+require_once 'Zend/Cloud/DocumentService/Query.php';
 
-php/php*php*
-php php*php Classphp implementingphp Queryphp adapterphp forphp workingphp withphp SimpleDbphp queriesphp inphp a
-php php*php structuredphp way
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp DocumentService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp_Query
-php php php php extendsphp Zendphp_Cloudphp_DocumentServicephp_Query
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDb
-php php php php php php*php/
-php php php php protectedphp php$php_adapterphp;
+/**
+ * Class implementing Query adapter for working with SimpleDb queries in a
+ * structured way
+ *
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage DocumentService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cloud_DocumentService_Adapter_SimpleDb_Query
+    extends Zend_Cloud_DocumentService_Query
+{
+    /**
+     * @var Zend_Cloud_DocumentService_Adapter_SimpleDb
+     */
+    protected $_adapter;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp php$adapter
-php php php php php php*php php@paramphp php nullphp|stringphp php$collectionName
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDbphp php$adapterphp,php php$collectionNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
-php php php php php php php php ifphp php(nullphp php!php=php=php php$collectionNamephp)php php{
-php php php php php php php php php php php php php$thisphp-php>fromphp(php$collectionNamephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  Zend_Cloud_DocumentService_Adapter_SimpleDb $adapter
+     * @param  null|string $collectionName
+     * @return void
+     */
+    public function __construct(Zend_Cloud_DocumentService_Adapter_SimpleDb $adapter, $collectionName = null)
+    {
+        $this->_adapter = $adapter;
+        if (null !== $collectionName) {
+            $this->from($collectionName);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp adapter
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cloudphp_DocumentServicephp_Adapterphp_SimpleDb
-php php php php php php*php/
-php php php php publicphp functionphp getAdapterphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
-php php php php php}
+    /**
+     * Get adapter
+     *
+     * @return Zend_Cloud_DocumentService_Adapter_SimpleDb
+     */
+    public function getAdapter()
+    {
+        return $this->_adapter;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Assemblephp thephp queryphp intophp aphp formatphp thephp adapterphp canphp utilize
-php php php php php php*
-php php php php php php*php php@varphp php php php stringphp php$collectionNamephp Namephp ofphp collectionphp fromphp whichphp tophp select
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp assemblephp(php$collectionNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$adapterphp php=php php$thisphp-php>getAdapterphp(php)php-php>getClientphp(php)php;
-php php php php php php php php php$selectphp php php=php nullphp;
-php php php php php php php php php$fromphp php php php php=php nullphp;
-php php php php php php php php php$wherephp php php php=php nullphp;
-php php php php php php php php php$orderphp php php php=php nullphp;
-php php php php php php php php php$limitphp php php php=php nullphp;
-php php php php php php php php foreachphp php(php$thisphp-php>getClausesphp(php)php asphp php$clausephp)php php{
-php php php php php php php php php php php php listphp(php$namephp,php php$argsphp)php php=php php$clausephp;
+    /**
+     * Assemble the query into a format the adapter can utilize
+     *
+     * @var    string $collectionName Name of collection from which to select
+     * @return string
+     */
+    public function assemble($collectionName = null)
+    {
+        $adapter = $this->getAdapter()->getClient();
+        $select  = null;
+        $from    = null;
+        $where   = null;
+        $order   = null;
+        $limit   = null;
+        foreach ($this->getClauses() as $clause) {
+            list($name, $args) = $clause;
 
-php php php php php php php php php php php php switchphp php(php$namephp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_SELECTphp:
-php php php php php php php php php php php php php php php php php php php php php$selectphp php=php php$argsphp[php0php]php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_FROMphp:
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$fromphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Onlyphp allowphp settingphp FROMphp clausephp once
-php php php php php php php php php php php php php php php php php php php php php php php php php$fromphp php=php php$adapterphp-php>quoteNamephp(php$argsphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_WHEREphp:
-php php php php php php php php php php php php php php php php php php php php php$statementphp php=php php$thisphp-php>php_parseWherephp(php$argsphp[php0php]php,php php$argsphp[php1php]php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$wherephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php=php php$statementphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$operatorphp php=php emptyphp(php$argsphp[php2php]php)php php?php php'ANDphp'php php:php php$argsphp[php2php]php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php.php=php php'php php'php php.php php$operatorphp php.php php'php php'php php.php php$statementphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_WHEREIDphp:
-php php php php php php php php php php php php php php php php php php php php php$statementphp php=php php$thisphp-php>php_parseWherephp(php'ItemNamephp(php)php php=php php?php'php,php arrayphp(php$argsphp)php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$wherephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php=php php$statementphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$operatorphp php=php emptyphp(php$argsphp[php2php]php)php php?php php'ANDphp'php php:php php$argsphp[php2php]php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$wherephp php.php=php php'php php'php php.php php$operatorphp php.php php'php php'php php.php php$statementphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_ORDERphp:
-php php php php php php php php php php php php php php php php php php php php php$orderphp php=php php$adapterphp-php>quoteNamephp(php$argsphp[php0php]php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$argsphp[php1php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$orderphp php.php=php php'php php'php php.php php$argsphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:QUERYphp_LIMITphp:
-php php php php php php php php php php php php php php php php php php php php php$limitphp php=php php$argsphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php/php/php Ignorephp unknownphp clauses
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            switch ($name) {
+                case self::QUERY_SELECT:
+                    $select = $args[0];
+                    break;
+                case self::QUERY_FROM:
+                    if (null === $from) {
+                        // Only allow setting FROM clause once
+                        $from = $adapter->quoteName($args);
+                    }
+                    break;
+                case self::QUERY_WHERE:
+                    $statement = $this->_parseWhere($args[0], $args[1]);
+                    if (null === $where) {
+                        $where = $statement;
+                    } else {
+                        $operator = empty($args[2]) ? 'AND' : $args[2];
+                        $where .= ' ' . $operator . ' ' . $statement;
+                    }
+                    break;
+                case self::QUERY_WHEREID:
+                    $statement = $this->_parseWhere('ItemName() = ?', array($args));
+                    if (null === $where) {
+                        $where = $statement;
+                    } else {
+                        $operator = empty($args[2]) ? 'AND' : $args[2];
+                        $where .= ' ' . $operator . ' ' . $statement;
+                    }
+                    break;
+                case self::QUERY_ORDER:
+                    $order = $adapter->quoteName($args[0]);
+                    if (isset($args[1])) {
+                        $order .= ' ' . $args[1];
+                    }
+                    break;
+                case self::QUERY_LIMIT:
+                    $limit = $args;
+                    break;
+                default:
+                    // Ignore unknown clauses
+                    break;
+            }
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$selectphp)php)php php{
-php php php php php php php php php php php php php$selectphp php=php php"php*php"php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$fromphp)php)php php{
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$collectionNamephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/DocumentServicephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_DocumentServicephp_Exceptionphp(php"Queryphp requiresphp aphp FROMphp clausephp"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$fromphp php=php php$adapterphp-php>quoteNamephp(php$collectionNamephp)php;
-php php php php php php php php php}
-php php php php php php php php php$queryphp php=php php"selectphp php$selectphp fromphp php$fromphp"php;
-php php php php php php php php ifphp php(php!emptyphp(php$wherephp)php)php php{
-php php php php php php php php php php php php php$queryphp php.php=php php"php wherephp php$wherephp"php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$orderphp)php)php php{
-php php php php php php php php php php php php php$queryphp php.php=php php"php orderphp byphp php$orderphp"php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$limitphp)php)php php{
-php php php php php php php php php php php php php$queryphp php.php=php php"php limitphp php$limitphp"php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$queryphp;
-php php php php php}
+        if (empty($select)) {
+            $select = "*";
+        }
+        if (empty($from)) {
+            if (null === $collectionName) {
+                require_once 'Zend/Cloud/DocumentService/Exception.php';
+                throw new Zend_Cloud_DocumentService_Exception("Query requires a FROM clause");
+            }
+            $from = $adapter->quoteName($collectionName);
+        }
+        $query = "select $select from $from";
+        if (!empty($where)) {
+            $query .= " where $where";
+        }
+        if (!empty($order)) {
+            $query .= " order by $order";
+        }
+        if (!empty($limit)) {
+            $query .= " limit $limit";
+        }
+        return $query;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp aphp wherephp statementphp intophp servicephp-specificphp language
-php php php php php php*
-php php php php php php*php php@todophp php php Ensurephp thisphp fulfillsphp thephp entirephp SimpleDBphp queryphp specificationphp forphp WHERE
-php php php php php php*php php@paramphp php stringphp php$where
-php php php php php php*php php@paramphp php arrayphp php$args
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseWherephp(php$wherephp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$argsphp)php)php php{
-php php php php php php php php php php php php php$argsphp php=php php(arrayphp)php php$argsphp;
-php php php php php php php php php}
-php php php php php php php php php$adapterphp php=php php$thisphp-php>getAdapterphp(php)php-php>getClientphp(php)php;
-php php php php php php php php php$iphp php=php php0php;
-php php php php php php php php whilephp php(falsephp php!php=php=php php(php$posphp php=php strposphp(php$wherephp,php php'php?php'php)php)php)php php{
-php php php php php php php php php php php php$wherephp php=php substrphp_replacephp(php$wherephp,php php$adapterphp-php>quotephp(php$argsphp[php$iphp]php)php,php php$posphp)php;
-php php php php php php php php php php php php+php+php$iphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php(php'php(php'php php!php=php php$wherephp[php0php]php)php php|php|php php(php'php)php'php php!php=php php$wherephp[strlenphp(php$wherephp)php php-php php1php]php)php)php php{
-php php php php php php php php php php php php php$wherephp php=php php'php(php'php php.php php$wherephp php.php php'php)php'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$wherephp;
-php php php php php}
-php php}
+    /**
+     * Parse a where statement into service-specific language
+     *
+     * @todo   Ensure this fulfills the entire SimpleDB query specification for WHERE
+     * @param  string $where
+     * @param  array $args
+     * @return string
+     */
+    protected function _parseWhere($where, $args)
+    {
+        if (!is_array($args)) {
+            $args = (array) $args;
+        }
+        $adapter = $this->getAdapter()->getClient();
+        $i = 0;
+        while (false !== ($pos = strpos($where, '?'))) {
+           $where = substr_replace($where, $adapter->quote($args[$i]), $pos);
+           ++$i;
+        }
+        if (('(' != $where[0]) || (')' != $where[strlen($where) - 1])) {
+            $where = '(' . $where . ')';
+        }
+        return $where;
+    }
+ }

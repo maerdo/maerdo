@@ -1,138 +1,138 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ActionStackphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Zend_Controller_Action_Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ActionStack.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Helperphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Controller_Action_Helper_Abstract
+ */
+require_once 'Zend/Controller/Action/Helper/Abstract.php';
 
-php/php*php*
-php php*php Addphp tophp actionphp stack
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Zendphp_Controllerphp_Actionphp_Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Controllerphp_Actionphp_Helperphp_ActionStackphp extendsphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Controllerphp_Pluginphp_ActionStack
-php php php php php php*php/
-php php php php protectedphp php$php_actionStackphp;
+/**
+ * Add to action stack
+ *
+ * @uses       Zend_Controller_Action_Helper_Abstract
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Zend_Controller_Action_Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Controller_Action_Helper_ActionStack extends Zend_Controller_Action_Helper_Abstract
+{
+    /**
+     * @var Zend_Controller_Plugin_ActionStack
+     */
+    protected $_actionStack;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Registerphp actionphp stackphp plugin
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php php$frontphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
-php php php php php php php php ifphp php(php!php$frontphp-php>hasPluginphp(php'Zendphp_Controllerphp_Pluginphp_ActionStackphp'php)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Pluginphp_ActionStack
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/ActionStackphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_actionStackphp php=php newphp Zendphp_Controllerphp_Pluginphp_ActionStackphp(php)php;
-php php php php php php php php php php php php php$frontphp-php>registerPluginphp(php$thisphp-php>php_actionStackphp,php php9php7php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_actionStackphp php=php php$frontphp-php>getPluginphp(php'Zendphp_Controllerphp_Pluginphp_ActionStackphp'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * Register action stack plugin
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $front = Zend_Controller_Front::getInstance();
+        if (!$front->hasPlugin('Zend_Controller_Plugin_ActionStack')) {
+            /**
+             * @see Zend_Controller_Plugin_ActionStack
+             */
+            require_once 'Zend/Controller/Plugin/ActionStack.php';
+            $this->_actionStack = new Zend_Controller_Plugin_ActionStack();
+            $front->registerPlugin($this->_actionStack, 97);
+        } else {
+            $this->_actionStack = $front->getPlugin('Zend_Controller_Plugin_ActionStack');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Pushphp ontophp thephp stack
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$next
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ActionStackphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp pushStackphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$nextphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_actionStackphp-php>pushStackphp(php$nextphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Push onto the stack
+     *
+     * @param  Zend_Controller_Request_Abstract $next
+     * @return Zend_Controller_Action_Helper_ActionStack Provides a fluent interface
+     */
+    public function pushStack(Zend_Controller_Request_Abstract $next)
+    {
+        $this->_actionStack->pushStack($next);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Pushphp aphp newphp actionphp ontophp thephp stack
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$action
-php php php php php php*php php@paramphp php stringphp php$controller
-php php php php php php*php php@paramphp php stringphp php$module
-php php php php php php*php php@paramphp php arrayphp php php$params
-php php php php php php*php php@throwsphp Zendphp_Controllerphp_Actionphp_Exception
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_ActionStack
-php php php php php php*php/
-php php php php publicphp functionphp actionToStackphp(php$actionphp,php php$controllerphp php=php nullphp,php php$modulephp php=php nullphp,php arrayphp php$paramsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$actionphp instanceofphp Zendphp_Controllerphp_Requestphp_Abstractphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>pushStackphp(php$actionphp)php;
-php php php php php php php php php}php elseifphp php(php!isphp_stringphp(php$actionphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Actionphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'ActionStackphp requiresphp eitherphp aphp requestphp objectphp orphp minimallyphp aphp stringphp actionphp'php)php;
-php php php php php php php php php}
+    /**
+     * Push a new action onto the stack
+     *
+     * @param  string $action
+     * @param  string $controller
+     * @param  string $module
+     * @param  array  $params
+     * @throws Zend_Controller_Action_Exception
+     * @return Zend_Controller_Action_Helper_ActionStack
+     */
+    public function actionToStack($action, $controller = null, $module = null, array $params = array())
+    {
+        if ($action instanceof Zend_Controller_Request_Abstract) {
+            return $this->pushStack($action);
+        } elseif (!is_string($action)) {
+            /**
+             * @see Zend_Controller_Action_Exception
+             */
+            require_once 'Zend/Controller/Action/Exception.php';
+            throw new Zend_Controller_Action_Exception('ActionStack requires either a request object or minimally a string action');
+        }
 
-php php php php php php php php php$requestphp php=php php$thisphp-php>getRequestphp(php)php;
+        $request = $this->getRequest();
 
-php php php php php php php php ifphp php(php$requestphp instanceofphp Zendphp_Controllerphp_Requestphp_Abstractphp php=php=php=php falsephp)php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Actionphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'Requestphp objectphp notphp setphp yetphp'php)php;
-php php php php php php php php php}
+        if ($request instanceof Zend_Controller_Request_Abstract === false){
+            /**
+             * @see Zend_Controller_Action_Exception
+             */
+            require_once 'Zend/Controller/Action/Exception.php';
+            throw new Zend_Controller_Action_Exception('Request object not set yet');
+        }
 
-php php php php php php php php php$controllerphp php=php php(nullphp php=php=php=php php$controllerphp)php php?php php$requestphp-php>getControllerNamephp(php)php php:php php$controllerphp;
-php php php php php php php php php$modulephp php=php php(nullphp php=php=php=php php$modulephp)php php?php php$requestphp-php>getModuleNamephp(php)php php:php php$modulephp;
+        $controller = (null === $controller) ? $request->getControllerName() : $controller;
+        $module = (null === $module) ? $request->getModuleName() : $module;
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Controllerphp_Requestphp_Simple
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Requestphp/Simplephp.phpphp'php;
-php php php php php php php php php$newRequestphp php=php newphp Zendphp_Controllerphp_Requestphp_Simplephp(php$actionphp,php php$controllerphp,php php$modulephp,php php$paramsphp)php;
+        /**
+         * @see Zend_Controller_Request_Simple
+         */
+        require_once 'Zend/Controller/Request/Simple.php';
+        $newRequest = new Zend_Controller_Request_Simple($action, $controller, $module, $params);
 
-php php php php php php php php returnphp php$thisphp-php>pushStackphp(php$newRequestphp)php;
-php php php php php}
+        return $this->pushStack($newRequest);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Performphp helperphp whenphp calledphp asphp php$thisphp-php>php_helperphp-php>actionStackphp(php)php fromphp anphp actionphp controller
-php php php php php php*
-php php php php php php*php Proxiesphp tophp php{php@linkphp simplephp(php)php}
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$action
-php php php php php php*php php@paramphp php stringphp php$controller
-php php php php php php*php php@paramphp php stringphp php$module
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp directphp(php$actionphp,php php$controllerphp php=php nullphp,php php$modulephp php=php nullphp,php arrayphp php$paramsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>actionToStackphp(php$actionphp,php php$controllerphp,php php$modulephp,php php$paramsphp)php;
-php php php php php}
-php}
+    /**
+     * Perform helper when called as $this->_helper->actionStack() from an action controller
+     *
+     * Proxies to {@link simple()}
+     *
+     * @param  string $action
+     * @param  string $controller
+     * @param  string $module
+     * @param  array $params
+     * @return boolean
+     */
+    public function direct($action, $controller = null, $module = null, array $params = array())
+    {
+        return $this->actionToStack($action, $controller, $module, $params);
+    }
+}

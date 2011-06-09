@@ -1,107 +1,107 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@subpackagephp Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Logicalphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @subpackage Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Logical.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Ldapphp_Filterphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Ldapphp/Filterphp/Abstractphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Ldapphp_Filterphp_String
-php php*php/
-requirephp_oncephp php'Zendphp/Ldapphp/Filterphp/Stringphp.phpphp'php;
+/**
+ * @see Zend_Ldap_Filter_Abstract
+ */
+require_once 'Zend/Ldap/Filter/Abstract.php';
+/**
+ * @see Zend_Ldap_Filter_String
+ */
+require_once 'Zend/Ldap/Filter/String.php';
 
-php/php*php*
-php php*php Zendphp_Ldapphp_Filterphp_Logicalphp providesphp aphp basephp implementationphp forphp aphp groupingphp filterphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@subpackagephp Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Ldapphp_Filterphp_Logicalphp extendsphp Zendphp_Ldapphp_Filterphp_Abstract
-php{
-php php php php constphp TYPEphp_ANDphp php=php php'php&php'php;
-php php php php constphp TYPEphp_ORphp php php=php php'php|php'php;
+/**
+ * Zend_Ldap_Filter_Logical provides a base implementation for a grouping filter.
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @subpackage Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
+{
+    const TYPE_AND = '&';
+    const TYPE_OR  = '|';
 
-php php php php php/php*php*
-php php php php php php*php Allphp thephp subphp-filtersphp forphp thisphp groupingphp filterphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_subfiltersphp;
+    /**
+     * All the sub-filters for this grouping filter.
+     *
+     * @var array
+     */
+    private $_subfilters;
 
-php php php php php/php*php*
-php php php php php php*php Thephp groupingphp symbolphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php privatephp php$php_symbolphp;
+    /**
+     * The grouping symbol.
+     *
+     * @var string
+     */
+    private $_symbol;
 
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp newphp groupingphp filterphp.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php php$subfilters
-php php php php php php*php php@paramphp stringphp php$symbol
-php php php php php php*php/
-php php php php protectedphp functionphp php_php_constructphp(arrayphp php$subfiltersphp,php php$symbolphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$subfiltersphp asphp php$keyphp php=php>php php$sphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$sphp)php)php php$subfiltersphp[php$keyphp]php php=php newphp Zendphp_Ldapphp_Filterphp_Stringphp(php$sphp)php;
-php php php php php php php php php php php php elsephp ifphp php(php!php(php$sphp instanceofphp Zendphp_Ldapphp_Filterphp_Abstractphp)php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Ldapphp_Filterphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Ldapphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Ldapphp_Filterphp_Exceptionphp(php'Onlyphp stringsphp orphp Zendphp_Ldapphp_Filterphp_Abstractphp allowedphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_subfiltersphp php=php php$subfiltersphp;
-php php php php php php php php php$thisphp-php>php_symbolphp php=php php$symbolphp;
-php php php php php}
+    /**
+     * Creates a new grouping filter.
+     *
+     * @param array  $subfilters
+     * @param string $symbol
+     */
+    protected function __construct(array $subfilters, $symbol)
+    {
+        foreach ($subfilters as $key => $s) {
+            if (is_string($s)) $subfilters[$key] = new Zend_Ldap_Filter_String($s);
+            else if (!($s instanceof Zend_Ldap_Filter_Abstract)) {
+                /**
+                 * @see Zend_Ldap_Filter_Exception
+                 */
+                require_once 'Zend/Ldap/Filter/Exception.php';
+                throw new Zend_Ldap_Filter_Exception('Only strings or Zend_Ldap_Filter_Abstract allowed.');
+            }
+        }
+        $this->_subfilters = $subfilters;
+        $this->_symbol = $symbol;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp filterphp tophp thisphp groupingphp filterphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Ldapphp_Filterphp_Abstractphp php$filter
-php php php php php php*php php@returnphp Zendphp_Ldapphp_Filterphp_Logical
-php php php php php php*php/
-php php php php publicphp functionphp addFilterphp(Zendphp_Ldapphp_Filterphp_Abstractphp php$filterphp)
-php php php php php{
-php php php php php php php php php$newphp php=php clonephp php$thisphp;
-php php php php php php php php php$newphp-php>php_subfiltersphp[php]php php=php php$filterphp;
-php php php php php php php php returnphp php$newphp;
-php php php php php}
+    /**
+     * Adds a filter to this grouping filter.
+     *
+     * @param  Zend_Ldap_Filter_Abstract $filter
+     * @return Zend_Ldap_Filter_Logical
+     */
+    public function addFilter(Zend_Ldap_Filter_Abstract $filter)
+    {
+        $new = clone $this;
+        $new->_subfilters[] = $filter;
+        return $new;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp stringphp representationphp ofphp thephp filterphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php)
-php php php php php{
-php php php php php php php php php$returnphp php=php php'php(php'php php.php php$thisphp-php>php_symbolphp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_subfiltersphp asphp php$subphp)php php$returnphp php.php=php php$subphp-php>toStringphp(php)php;
-php php php php php php php php php$returnphp php.php=php php'php)php'php;
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-php}
+    /**
+     * Returns a string representation of the filter.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        $return = '(' . $this->_symbol;
+        foreach ($this->_subfilters as $sub) $return .= $sub->toString();
+        $return .= ')';
+        return $return;
+    }
+}

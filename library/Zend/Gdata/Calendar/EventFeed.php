@@ -1,106 +1,106 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Gdata
-php php*php php@subpackagephp Calendar
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php EventFeedphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Gdata
+ * @subpackage Calendar
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: EventFeed.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Gdataphp_Feed
-php php*php/
-requirephp_oncephp php'Zendphp/Gdataphp/Feedphp.phpphp'php;
+/**
+ * @see Zend_Gdata_Feed
+ */
+require_once 'Zend/Gdata/Feed.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Gdataphp_Extensionphp_Timezone
-php php*php/
-requirephp_oncephp php'Zendphp/Gdataphp/Calendarphp/Extensionphp/Timezonephp.phpphp'php;
+/**
+ * @see Zend_Gdata_Extension_Timezone
+ */
+require_once 'Zend/Gdata/Calendar/Extension/Timezone.php';
 
-php/php*php*
-php php*php Dataphp modelphp forphp aphp Googlephp Calendarphp feedphp ofphp events
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Gdata
-php php*php php@subpackagephp Calendar
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Gdataphp_Calendarphp_EventFeedphp extendsphp Zendphp_Gdataphp_Feed
-php{
+/**
+ * Data model for a Google Calendar feed of events
+ *
+ * @category   Zend
+ * @package    Zend_Gdata
+ * @subpackage Calendar
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Gdata_Calendar_EventFeed extends Zend_Gdata_Feed
+{
 
-php php php php protectedphp php$php_timezonephp php=php nullphp;
+    protected $_timezone = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp classnamephp forphp individualphp feedphp elementsphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_entryClassNamephp php=php php'Zendphp_Gdataphp_Calendarphp_EventEntryphp'php;
+    /**
+     * The classname for individual feed elements.
+     *
+     * @var string
+     */
+    protected $_entryClassName = 'Zend_Gdata_Calendar_EventEntry';
 
-php php php php php/php*php*
-php php php php php php*php Thephp classnamephp forphp thephp feedphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_feedClassNamephp php=php php'Zendphp_Gdataphp_Calendarphp_EventFeedphp'php;
+    /**
+     * The classname for the feed.
+     *
+     * @var string
+     */
+    protected $_feedClassName = 'Zend_Gdata_Calendar_EventFeed';
 
-php php php php publicphp functionphp php_php_constructphp(php$elementphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>registerAllNamespacesphp(Zendphp_Gdataphp_Calendarphp:php:php$namespacesphp)php;
-php php php php php php php php parentphp:php:php_php_constructphp(php$elementphp)php;
-php php php php php}
+    public function __construct($element = null)
+    {
+        $this->registerAllNamespaces(Zend_Gdata_Calendar::$namespaces);
+        parent::__construct($element);
+    }
 
-php php php php publicphp functionphp getDOMphp(php$docphp php=php nullphp,php php$majorVersionphp php=php php1php,php php$minorVersionphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$elementphp php=php parentphp:php:getDOMphp(php$docphp,php php$majorVersionphp,php php$minorVersionphp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_timezonephp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$elementphp-php>appendChildphp(php$thisphp-php>php_timezonephp-php>getDOMphp(php$elementphp-php>ownerDocumentphp)php)php;
-php php php php php php php php php}
+    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    {
+        $element = parent::getDOM($doc, $majorVersion, $minorVersion);
+        if ($this->_timezone != null) {
+            $element->appendChild($this->_timezone->getDOM($element->ownerDocument));
+        }
 
-php php php php php php php php returnphp php$elementphp;
-php php php php php}
+        return $element;
+    }
 
-php php php php protectedphp functionphp takeChildFromDOMphp(php$childphp)
-php php php php php{
-php php php php php php php php php$absoluteNodeNamephp php=php php$childphp-php>namespaceURIphp php.php php'php:php'php php.php php$childphp-php>localNamephp;
+    protected function takeChildFromDOM($child)
+    {
+        $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
 
-php php php php php php php php switchphp php(php$absoluteNodeNamephp)php php{
-php php php php php php php php php php php php casephp php$thisphp-php>lookupNamespacephp(php'gCalphp'php)php php.php php'php:php'php php.php php'timezonephp'php;
-php php php php php php php php php php php php php php php php php$timezonephp php=php newphp Zendphp_Gdataphp_Calendarphp_Extensionphp_Timezonephp(php)php;
-php php php php php php php php php php php php php php php php php$timezonephp-php>transferFromDOMphp(php$childphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_timezonephp php=php php$timezonephp;
-php php php php php php php php php php php php php php php php breakphp;
+        switch ($absoluteNodeName) {
+            case $this->lookupNamespace('gCal') . ':' . 'timezone';
+                $timezone = new Zend_Gdata_Calendar_Extension_Timezone();
+                $timezone->transferFromDOM($child);
+                $this->_timezone = $timezone;
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php parentphp:php:takeChildFromDOMphp(php$childphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php}
+            default:
+                parent::takeChildFromDOM($child);
+                break;
+        }
+    }
 
-php php php php publicphp functionphp getTimezonephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_timezonephp;
-php php php php php}
+    public function getTimezone()
+    {
+        return $this->_timezone;
+    }
 
-php php php php publicphp functionphp setTimezonephp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_timezonephp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    public function setTimezone($value)
+    {
+        $this->_timezone = $value;
+        return $this;
+    }
 
-php}
+}

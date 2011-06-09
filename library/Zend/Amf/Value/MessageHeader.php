@@ -1,81 +1,81 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Amf
-php php*php php@subpackagephp Value
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php MessageHeaderphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Amf
+ * @subpackage Value
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: MessageHeader.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Messagephp Headersphp providephp contextphp forphp thephp processingphp ofphp the
-php php*php thephp AMFphp Packetphp andphp allphp subsequentphp Messagesphp.
-php php*
-php php*php Multiplephp Messagephp Headersphp mayphp bephp includedphp withinphp anphp AMFphp Packetphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Amf
-php php*php php@subpackagephp Value
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Amfphp_Valuephp_MessageHeader
-php{
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp header
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$namephp;
+/**
+ * Message Headers provide context for the processing of the
+ * the AMF Packet and all subsequent Messages.
+ *
+ * Multiple Message Headers may be included within an AMF Packet.
+ *
+ * @package    Zend_Amf
+ * @subpackage Value
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Amf_Value_MessageHeader
+{
+    /**
+     * Name of the header
+     *
+     * @var string
+     */
+    public $name;
 
-php php php php php/php*php*
-php php php php php php*php Flagphp ifphp thephp dataphp hasphp tophp bephp parsedphp onphp return
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php publicphp php$mustReadphp;
+    /**
+     * Flag if the data has to be parsed on return
+     *
+     * @var boolean
+     */
+    public $mustRead;
 
-php php php php php/php*php*
-php php php php php php*php Lengthphp ofphp thephp dataphp field
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php publicphp php$lengthphp;
+    /**
+     * Length of the data field
+     *
+     * @var int
+     */
+    public $length;
 
-php php php php php/php*php*
-php php php php php php*php Dataphp sentphp withphp thephp headerphp name
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php publicphp php$dataphp;
+    /**
+     * Data sent with the header name
+     *
+     * @var mixed
+     */
+    public $data;
 
-php php php php php/php*php*
-php php php php php php*php Usedphp tophp createphp andphp storephp AMFphp Headerphp dataphp.
-php php php php php php*
-php php php php php php*php php@paramphp Stringphp php$name
-php php php php php php*php php@paramphp Booleanphp php$mustRead
-php php php php php php*php php@paramphp miscphp php$content
-php php php php php php*php php@paramphp integerphp php$length
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$namephp,php php$mustReadphp,php php$dataphp,php php$lengthphp=nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>namephp php php php php php=php php$namephp;
-php php php php php php php php php$thisphp-php>mustReadphp php=php php(boolphp)php php$mustReadphp;
-php php php php php php php php php$thisphp-php>dataphp php php php php php=php php$dataphp;
-php php php php php php php php ifphp php(nullphp php!php=php=php php$lengthphp)php php{
-php php php php php php php php php php php php php$thisphp-php>lengthphp php=php php(intphp)php php$lengthphp;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Used to create and store AMF Header data.
+     *
+     * @param String $name
+     * @param Boolean $mustRead
+     * @param misc $content
+     * @param integer $length
+     */
+    public function __construct($name, $mustRead, $data, $length=null)
+    {
+        $this->name     = $name;
+        $this->mustRead = (bool) $mustRead;
+        $this->data     = $data;
+        if (null !== $length) {
+            $this->length = (int) $length;
+        }
+    }
+}

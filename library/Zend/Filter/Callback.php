@@ -1,152 +1,152 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Callbackphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Callback.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Callbackphp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Callbackphp inphp aphp callphp_userphp_funcphp format
-php php php php php php*
-php php php php php php*php php@varphp stringphp|array
-php php php php php php*php/
-php php php php protectedphp php$php_callbackphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_Callback implements Zend_Filter_Interface
+{
+    /**
+     * Callback in a call_user_func format
+     *
+     * @var string|array
+     */
+    protected $_callback = null;
 
-php php php php php/php*php*
-php php php php php php*php Defaultphp optionsphp tophp setphp forphp thephp filter
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php nullphp;
+    /**
+     * Default options to set for the filter
+     *
+     * @var mixed
+     */
+    protected $_options = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$callbackphp Callbackphp inphp aphp callphp_userphp_funcphp format
-php php php php php php*php php@paramphp mixedphp php php php php php php php php$optionsphp php php(Optionalphp)php Defaultphp optionsphp forphp thisphp filter
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php php|php|php php!arrayphp_keyphp_existsphp(php'callbackphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php php php php php php php php php php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php php php php php php$tempphp[php'callbackphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$tempphp[php'optionsphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
-php php php php php php php php php php php php php}
+    /**
+     * Constructor
+     *
+     * @param string|array $callback Callback in a call_user_func format
+     * @param mixed        $options  (Optional) Default options for this filter
+     */
+    public function __construct($options)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } else if (!is_array($options) || !array_key_exists('callback', $options)) {
+            $options          = func_get_args();
+            $temp['callback'] = array_shift($options);
+            if (!empty($options)) {
+                $temp['options'] = array_shift($options);
+            }
 
-php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
-php php php php php php php php php}
+            $options = $temp;
+        }
 
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'callbackphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Missingphp callbackphp tophp usephp'php)php;
-php php php php php php php php php}
+        if (!array_key_exists('callback', $options)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Missing callback to use');
+        }
 
-php php php php php php php php php$thisphp-php>setCallbackphp(php$optionsphp[php'callbackphp'php]php)php;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'optionsphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp[php'optionsphp'php]php)php;
-php php php php php php php php php}
-php php php php php}
+        $this->setCallback($options['callback']);
+        if (array_key_exists('options', $options)) {
+            $this->setOptions($options['options']);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp callback
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|arrayphp Setphp callback
-php php php php php php*php/
-php php php php publicphp functionphp getCallbackphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_callbackphp;
-php php php php php}
+    /**
+     * Returns the set callback
+     *
+     * @return string|array Set callback
+     */
+    public function getCallback()
+    {
+        return $this->_callback;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp aphp newphp callbackphp forphp thisphp filter
-php php php php php php*
-php php php php php php*php php@paramphp unknownphp_typephp php$callback
-php php php php php php*php php@returnphp unknown
-php php php php php php*php/
-php php php php publicphp functionphp setCallbackphp(php$callbackphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Callbackphp canphp notphp bephp accessedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets a new callback for this filter
+     *
+     * @param unknown_type $callback
+     * @return unknown
+     */
+    public function setCallback($callback, $options = null)
+    {
+        if (!is_callable($callback)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Callback can not be accessed');
+        }
 
-php php php php php php php php php$thisphp-php>php_callbackphp php=php php$callbackphp;
-php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_callback = $callback;
+        $this->setOptions($options);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp defaultphp options
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getOptionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
-php php php php php}
+    /**
+     * Returns the set default options
+     *
+     * @return mixed
+     */
+    public function getOptions()
+    {
+        return $this->_options;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp newphp defaultphp optionsphp tophp thephp callbackphp filter
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$optionsphp Defaultphp optionsphp tophp set
-php php php php php php*php php@returnphp Zendphp_Filterphp_Callback
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_optionsphp php=php php$optionsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets new default options to the callback filter
+     *
+     * @param mixed $options Default options to set
+     * @return Zend_Filter_Callback
+     */
+    public function setOptions($options)
+    {
+        $this->_options = $options;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Callsphp thephp filterphp perphp callback
-php php php php php php*
-php php php php php php*php php@paramphp php$valuephp mixedphp Optionsphp forphp thephp setphp callback
-php php php php php php*php php@returnphp mixedphp php php php php php php Resultphp fromphp thephp filterphp whichphp wasphp callbacked
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$optionsphp php=php arrayphp(php)php;
+    /**
+     * Calls the filter per callback
+     *
+     * @param $value mixed Options for the set callback
+     * @return mixed       Result from the filter which was callbacked
+     */
+    public function filter($value)
+    {
+        $options = array();
 
-php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$thisphp-php>php_optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php$thisphp-php>php_optionsphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>php_optionsphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($this->_options !== null) {
+            if (!is_array($this->_options)) {
+                $options = array($this->_options);
+            } else {
+                $options = $this->_options;
+            }
+        }
 
-php php php php php php php php arrayphp_unshiftphp(php$optionsphp,php php$valuephp)php;
+        array_unshift($options, $value);
 
-php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(php$thisphp-php>php_callbackphp,php php$optionsphp)php;
-php php php php php}
-php}
+        return call_user_func_array($this->_callback, $options);
+    }
+}

@@ -1,410 +1,410 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tag
-php php*php php@subpackagephp Cloud
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Cloudphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tag
+ * @subpackage Cloud
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Cloud.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Tagphp_Item
-php php*php/
-requirephp_oncephp php'Zendphp/Tagphp/Itemphp.phpphp'php;
+/**
+ * @see Zend_Tag_Item
+ */
+require_once 'Zend/Tag/Item.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tag
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Tagphp_Cloud
-php{
-php php php php php/php*php*
-php php php php php php*php Decoratorphp forphp thephp cloud
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Cloud
-php php php php php php*php/
-php php php php protectedphp php$php_cloudDecoratorphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Tag
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tag_Cloud
+{
+    /**
+     * Decorator for the cloud
+     *
+     * @var Zend_Tag_Cloud_Decorator_Cloud
+     */
+    protected $_cloudDecorator = null;
 
-php php php php php/php*php*
-php php php php php php*php Decoratorphp forphp thephp tags
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Tag
-php php php php php php*php/
-php php php php protectedphp php$php_tagDecoratorphp php=php nullphp;
+    /**
+     * Decorator for the tags
+     *
+     * @var Zend_Tag_Cloud_Decorator_Tag
+     */
+    protected $_tagDecorator = null;
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp allphp tags
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Tagphp_ItemList
-php php php php php php*php/
-php php php php protectedphp php$php_tagsphp php=php nullphp;
+    /**
+     * List of all tags
+     *
+     * @var Zend_Tag_ItemList
+     */
+    protected $_tags = null;
 
-php php php php php/php*php*
-php php php php php php*php Pluginphp loaderphp forphp decorators
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php protectedphp php$php_pluginLoaderphp php=php nullphp;
+    /**
+     * Plugin loader for decorators
+     *
+     * @var Zend_Loader_PluginLoader
+     */
+    protected $_pluginLoader = null;
 
-php php php php php/php*php*
-php php php php php php*php Optionphp keysphp tophp skipphp whenphp callingphp setOptionsphp(php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_skipOptionsphp php=php arrayphp(
-php php php php php php php php php'optionsphp'php,
-php php php php php php php php php'configphp'php,
-php php php php php)php;
+    /**
+     * Option keys to skip when calling setOptions()
+     *
+     * @var array
+     */
+    protected $_skipOptions = array(
+        'options',
+        'config',
+    );
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp tagphp cloudphp withphp options
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$options
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$optionsphp)php;
-php php php php php php php php php}
+    /**
+     * Create a new tag cloud with options
+     *
+     * @param mixed $options
+     */
+    public function __construct($options = null)
+    {
+        if ($options instanceof Zend_Config) {
+            $this->setConfig($options);
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+        if (is_array($options)) {
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp optionsphp fromphp Zendphp_Config
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
+    /**
+     * Set options from Zend_Config
+     *
+     * @param  Zend_Config $config
+     * @return Zend_Tag_Cloud
+     */
+    public function setConfig(Zend_Config $config)
+    {
+        $this->setOptions($config->toArray());
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp optionsphp fromphp array
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp Configurationphp forphp Zendphp_Tagphp_Cloud
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'prefixPathphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addPrefixPathsphp(php$optionsphp[php'prefixPathphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'prefixPathphp'php]php)php;
-php php php php php php php php php}
+    /**
+     * Set options from array
+     *
+     * @param  array $options Configuration for Zend_Tag_Cloud
+     * @return Zend_Tag_Cloud
+     */
+    public function setOptions(array $options)
+    {
+        if (isset($options['prefixPath'])) {
+            $this->addPrefixPaths($options['prefixPath']);
+            unset($options['prefixPath']);
+        }
 
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(strtolowerphp(php$keyphp)php,php php$thisphp-php>php_skipOptionsphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+        foreach ($options as $key => $value) {
+            if (in_array(strtolower($key), $this->_skipOptions)) {
+                continue;
+            }
 
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php ucfirstphp(php$keyphp)php;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp tagsphp forphp thephp tagphp cloudphp.
-php php php php php php*
-php php php php php php*php php$tagsphp shouldphp bephp anphp arrayphp containingphp singlephp tagsphp asphp arrayphp.php Eachphp tag
-php php php php php php*php arrayphp shouldphp atphp leastphp containphp thephp keysphp php'titlephp'php andphp php'weightphp'php.php Optionally
-php php php php php php*php youphp mayphp supplyphp thephp keyphp php'urlphp'php,php tophp whichphp thephp tagphp linksphp tophp.php Anyphp additional
-php php php php php php*php parameterphp inphp thephp arrayphp isphp silentlyphp ignoredphp andphp canphp bephp usedphp byphp custom
-php php php php php php*php decoratorsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$tags
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setTagsphp(arrayphp php$tagsphp)
-php php php php php{
-php php php php php php php php php/php/php Validatephp andphp cleanupphp thephp tags
-php php php php php php php php php$itemListphp php=php php$thisphp-php>getItemListphp(php)php;
+    /**
+     * Set the tags for the tag cloud.
+     *
+     * $tags should be an array containing single tags as array. Each tag
+     * array should at least contain the keys 'title' and 'weight'. Optionally
+     * you may supply the key 'url', to which the tag links to. Any additional
+     * parameter in the array is silently ignored and can be used by custom
+     * decorators.
+     *
+     * @param  array $tags
+     * @return Zend_Tag_Cloud
+     */
+    public function setTags(array $tags)
+    {
+        // Validate and cleanup the tags
+        $itemList = $this->getItemList();
 
-php php php php php php php php foreachphp php(php$tagsphp asphp php$tagphp)php php{
-php php php php php php php php php php php php ifphp php(php$tagphp instanceofphp Zendphp_Tagphp_Taggablephp)php php{
-php php php php php php php php php php php php php php php php php$itemListphp[php]php php=php php$tagphp;
-php php php php php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$tagphp)php)php php{
-php php php php php php php php php php php php php php php php php$itemListphp[php]php php=php newphp Zendphp_Tagphp_Itemphp(php$tagphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Cloudphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Cloudphp_Exceptionphp(php'Tagphp mustphp bephp anphp instancephp ofphp Zendphp_Tagphp_Taggablephp orphp anphp arrayphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($tags as $tag) {
+            if ($tag instanceof Zend_Tag_Taggable) {
+                $itemList[] = $tag;
+            } else if (is_array($tag)) {
+                $itemList[] = new Zend_Tag_Item($tag);
+            } else {
+                require_once 'Zend/Tag/Cloud/Exception.php';
+                throw new Zend_Tag_Cloud_Exception('Tag must be an instance of Zend_Tag_Taggable or an array');
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Appendphp aphp singlephp tagphp tophp thephp cloud
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Tagphp_Taggablephp|arrayphp php$tag
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp appendTagphp(php$tagphp)
-php php php php php{
-php php php php php php php php php$tagsphp php=php php$thisphp-php>getItemListphp(php)php;
-php php php php php php php php ifphp php(php$tagphp instanceofphp Zendphp_Tagphp_Taggablephp)php php{
-php php php php php php php php php php php php php$tagsphp[php]php php=php php$tagphp;
-php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$tagphp)php)php php{
-php php php php php php php php php php php php php$tagsphp[php]php php=php newphp Zendphp_Tagphp_Itemphp(php$tagphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Cloudphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Cloudphp_Exceptionphp(php'Tagphp mustphp bephp anphp instancephp ofphp Zendphp_Tagphp_Taggablephp orphp anphp arrayphp'php)php;
-php php php php php php php php php}
+    /**
+     * Append a single tag to the cloud
+     *
+     * @param  Zend_Tag_Taggable|array $tag
+     * @return Zend_Tag_Cloud
+     */
+    public function appendTag($tag)
+    {
+        $tags = $this->getItemList();
+        if ($tag instanceof Zend_Tag_Taggable) {
+            $tags[] = $tag;
+        } else if (is_array($tag)) {
+            $tags[] = new Zend_Tag_Item($tag);
+        } else {
+            require_once 'Zend/Tag/Cloud/Exception.php';
+            throw new Zend_Tag_Cloud_Exception('Tag must be an instance of Zend_Tag_Taggable or an array');
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp itemphp list
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Tagphp_ItemListphp php$itemList
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setItemListphp(Zendphp_Tagphp_ItemListphp php$itemListphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tagsphp php=php php$itemListphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the item list
+     *
+     * @param  Zend_Tag_ItemList $itemList
+     * @return Zend_Tag_Cloud
+     */
+    public function setItemList(Zend_Tag_ItemList $itemList)
+    {
+        $this->_tags = $itemList;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp itemphp list
-php php php php php php*
-php php php php php php*php Ifphp itemphp listphp isphp undefinedphp,php createsphp onephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Tagphp_ItemList
-php php php php php php*php/
-php php php php publicphp functionphp getItemListphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_tagsphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/ItemListphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>setItemListphp(newphp Zendphp_Tagphp_ItemListphp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_tagsphp;
-php php php php php}
+    /**
+     * Retrieve the item list
+     *
+     * If item list is undefined, creates one.
+     *
+     * @return Zend_Tag_ItemList
+     */
+    public function getItemList()
+    {
+        if (null === $this->_tags) {
+            require_once 'Zend/Tag/ItemList.php';
+            $this->setItemList(new Zend_Tag_ItemList());
+        }
+        return $this->_tags;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp decoratorphp forphp thephp cloud
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$decorator
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setCloudDecoratorphp(php$decoratorphp)
-php php php php php{
-php php php php php php php php php$optionsphp php=php nullphp;
+    /**
+     * Set the decorator for the cloud
+     *
+     * @param  mixed $decorator
+     * @return Zend_Tag_Cloud
+     */
+    public function setCloudDecorator($decorator)
+    {
+        $options = null;
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$decoratorphp[php'optionsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$decoratorphp[php'optionsphp'php]php;
-php php php php php php php php php php php php php}
+        if (is_array($decorator)) {
+            if (isset($decorator['options'])) {
+                $options = $decorator['options'];
+            }
 
-php php php php php php php php php php php php ifphp php(issetphp(php$decoratorphp[php'decoratorphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$decoratorphp php=php php$decoratorphp[php'decoratorphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if (isset($decorator['decorator'])) {
+                $decorator = $decorator['decorator'];
+            }
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php php$classnamephp php=php php$thisphp-php>getPluginLoaderphp(php)php-php>loadphp(php$decoratorphp)php;
-php php php php php php php php php php php php php$decoratorphp php=php newphp php$classnamephp(php$optionsphp)php;
-php php php php php php php php php}
+        if (is_string($decorator)) {
+            $classname = $this->getPluginLoader()->load($decorator);
+            $decorator = new $classname($options);
+        }
 
-php php php php php php php php ifphp php(php!php(php$decoratorphp instanceofphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Cloudphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Cloudphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Cloudphp_Exceptionphp(php'Decoratorphp isphp nophp instancephp ofphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Cloudphp'php)php;
-php php php php php php php php php}
+        if (!($decorator instanceof Zend_Tag_Cloud_Decorator_Cloud)) {
+            require_once 'Zend/Tag/Cloud/Exception.php';
+            throw new Zend_Tag_Cloud_Exception('Decorator is no instance of Zend_Tag_Cloud_Decorator_Cloud');
+        }
 
-php php php php php php php php php$thisphp-php>php_cloudDecoratorphp php=php php$decoratorphp;
+        $this->_cloudDecorator = $decorator;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp decoratorphp forphp thephp cloud
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp getCloudDecoratorphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_cloudDecoratorphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setCloudDecoratorphp(php'htmlCloudphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_cloudDecoratorphp;
-php php php php php}
+    /**
+     * Get the decorator for the cloud
+     *
+     * @return Zend_Tag_Cloud_Decorator_Cloud
+     */
+    public function getCloudDecorator()
+    {
+        if (null === $this->_cloudDecorator) {
+            $this->setCloudDecorator('htmlCloud');
+        }
+        return $this->_cloudDecorator;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp decoratorphp forphp thephp tags
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$decorator
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setTagDecoratorphp(php$decoratorphp)
-php php php php php{
-php php php php php php php php php$optionsphp php=php nullphp;
+    /**
+     * Set the decorator for the tags
+     *
+     * @param  mixed $decorator
+     * @return Zend_Tag_Cloud
+     */
+    public function setTagDecorator($decorator)
+    {
+        $options = null;
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$decoratorphp[php'optionsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$decoratorphp[php'optionsphp'php]php;
-php php php php php php php php php php php php php}
+        if (is_array($decorator)) {
+            if (isset($decorator['options'])) {
+                $options = $decorator['options'];
+            }
 
-php php php php php php php php php php php php ifphp php(issetphp(php$decoratorphp[php'decoratorphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$decoratorphp php=php php$decoratorphp[php'decoratorphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if (isset($decorator['decorator'])) {
+                $decorator = $decorator['decorator'];
+            }
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php php$classnamephp php=php php$thisphp-php>getPluginLoaderphp(php)php-php>loadphp(php$decoratorphp)php;
-php php php php php php php php php php php php php$decoratorphp php=php newphp php$classnamephp(php$optionsphp)php;
-php php php php php php php php php}
+        if (is_string($decorator)) {
+            $classname = $this->getPluginLoader()->load($decorator);
+            $decorator = new $classname($options);
+        }
 
-php php php php php php php php ifphp php(php!php(php$decoratorphp instanceofphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Tagphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Tagphp/Cloudphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Tagphp_Cloudphp_Exceptionphp(php'Decoratorphp isphp nophp instancephp ofphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Tagphp'php)php;
-php php php php php php php php php}
+        if (!($decorator instanceof Zend_Tag_Cloud_Decorator_Tag)) {
+            require_once 'Zend/Tag/Cloud/Exception.php';
+            throw new Zend_Tag_Cloud_Exception('Decorator is no instance of Zend_Tag_Cloud_Decorator_Tag');
+        }
 
-php php php php php php php php php$thisphp-php>php_tagDecoratorphp php=php php$decoratorphp;
+        $this->_tagDecorator = $decorator;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp decoratorphp forphp thephp tags
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloudphp_Decoratorphp_Tag
-php php php php php php*php/
-php php php php publicphp functionphp getTagDecoratorphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_tagDecoratorphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setTagDecoratorphp(php'htmlTagphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_tagDecoratorphp;
-php php php php php}
+    /**
+     * Get the decorator for the tags
+     *
+     * @return Zend_Tag_Cloud_Decorator_Tag
+     */
+    public function getTagDecorator()
+    {
+        if (null === $this->_tagDecorator) {
+            $this->setTagDecorator('htmlTag');
+        }
+        return $this->_tagDecorator;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp pluginphp loadersphp forphp usephp withphp decorators
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pluginLoaderphp php=php php$loaderphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set plugin loaders for use with decorators
+     *
+     * @param  Zend_Loader_PluginLoader_Interface $loader
+     * @return Zend_Tag_Cloud
+     */
+    public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader)
+    {
+        $this->_pluginLoader = $loader;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp pluginphp loaderphp forphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp getPluginLoaderphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_pluginLoaderphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$prefixphp php php php php php=php php'Zendphp_Tagphp_Cloudphp_Decoratorphp_php'php;
-php php php php php php php php php php php php php$pathPrefixphp php=php php'Zendphp/Tagphp/Cloudphp/Decoratorphp/php'php;
+    /**
+     * Get the plugin loader for decorators
+     *
+     * @return Zend_Loader_PluginLoader
+     */
+    public function getPluginLoader()
+    {
+        if ($this->_pluginLoader === null) {
+            $prefix     = 'Zend_Tag_Cloud_Decorator_';
+            $pathPrefix = 'Zend/Tag/Cloud/Decorator/';
 
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_pluginLoaderphp php=php newphp Zendphp_Loaderphp_PluginLoaderphp(arrayphp(php$prefixphp php=php>php php$pathPrefixphp)php)php;
-php php php php php php php php php}
+            require_once 'Zend/Loader/PluginLoader.php';
+            $this->_pluginLoader = new Zend_Loader_PluginLoader(array($prefix => $pathPrefix));
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_pluginLoaderphp;
-php php php php php}
+        return $this->_pluginLoader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp manyphp prefixphp pathsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$paths
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathsphp(arrayphp php$pathsphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$pathsphp[php'prefixphp'php]php)php php&php&php issetphp(php$pathsphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>addPrefixPathphp(php$pathsphp[php'prefixphp'php]php,php php$pathsphp[php'pathphp'php]php)php;
-php php php php php php php php php}
+    /**
+     * Add many prefix paths at once
+     *
+     * @param  array $paths
+     * @return Zend_Tag_Cloud
+     */
+    public function addPrefixPaths(array $paths)
+    {
+        if (isset($paths['prefix']) && isset($paths['path'])) {
+            return $this->addPrefixPath($paths['prefix'], $paths['path']);
+        }
 
-php php php php php php php php foreachphp php(php$pathsphp asphp php$pathphp)php php{
-php php php php php php php php php php php php ifphp php(php!issetphp(php$pathphp[php'prefixphp'php]php)php php|php|php php!issetphp(php$pathphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+        foreach ($paths as $path) {
+            if (!isset($path['prefix']) || !isset($path['path'])) {
+                continue;
+            }
 
-php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$pathphp[php'prefixphp'php]php,php php$pathphp[php'pathphp'php]php)php;
-php php php php php php php php php}
+            $this->addPrefixPath($path['prefix'], $path['path']);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp pluginphp loader
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Tagphp_Cloud
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp)
-php php php php php{
-php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php)php;
-php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
+    /**
+     * Add prefix path for plugin loader
+     *
+     * @param  string $prefix
+     * @param  string $path
+     * @return Zend_Tag_Cloud
+     */
+    public function addPrefixPath($prefix, $path)
+    {
+        $loader = $this->getPluginLoader();
+        $loader->addPrefixPath($prefix, $path);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp thephp tagphp cloud
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php)
-php php php php php{
-php php php php php php php php php$tagsphp php=php php$thisphp-php>getItemListphp(php)php;
+    /**
+     * Render the tag cloud
+     *
+     * @return string
+     */
+    public function render()
+    {
+        $tags = $this->getItemList();
 
-php php php php php php php php ifphp php(countphp(php$tagsphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
+        if (count($tags) === 0) {
+            return '';
+        }
 
-php php php php php php php php php$tagsResultphp php php=php php$thisphp-php>getTagDecoratorphp(php)php-php>renderphp(php$tagsphp)php;
-php php php php php php php php php$cloudResultphp php=php php$thisphp-php>getCloudDecoratorphp(php)php-php>renderphp(php$tagsResultphp)php;
+        $tagsResult  = $this->getTagDecorator()->render($tags);
+        $cloudResult = $this->getCloudDecorator()->render($tagsResult);
 
-php php php php php php php php returnphp php$cloudResultphp;
-php php php php php}
+        return $cloudResult;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp thephp tagphp cloud
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>renderphp(php)php;
-php php php php php php php php php php php php returnphp php$resultphp;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php$messagephp php=php php"Exceptionphp caughtphp byphp tagphp cloudphp:php php"php php.php php$ephp-php>getMessagephp(php)
-php php php php php php php php php php php php php php php php php php php php php php.php php"php\nStackphp Tracephp:php\nphp"php php.php php$ephp-php>getTraceAsStringphp(php)php;
-php php php php php php php php php php php php triggerphp_errorphp(php$messagephp,php Ephp_USERphp_WARNINGphp)php;
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Render the tag cloud
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        try {
+            $result = $this->render();
+            return $result;
+        } catch (Exception $e) {
+            $message = "Exception caught by tag cloud: " . $e->getMessage()
+                     . "\nStack Trace:\n" . $e->getTraceAsString();
+            trigger_error($message, E_USER_WARNING);
+            return '';
+        }
+    }
+}

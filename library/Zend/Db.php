@@ -1,273 +1,273 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dbphp.phpphp php2php3php4php0php5php php2php0php1php0php-php1php1php-php1php9php php1php9php:php4php6php:php1php0Zphp bittarmanphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Db.php 23405 2010-11-19 19:46:10Z bittarman $
+ */
 
 
-php/php*php*
-php php*php Classphp forphp connectingphp tophp SQLphp databasesphp andphp performingphp commonphp operationsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Db
-php{
+/**
+ * Class for connecting to SQL databases and performing common operations.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Db
+{
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp PROFILERphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp PROFILERphp php=php php'profilerphp'php;
+    /**
+     * Use the PROFILER constant in the config of a Zend_Db_Adapter.
+     */
+    const PROFILER = 'profiler';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp CASEphp_FOLDINGphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp CASEphp_FOLDINGphp php=php php'caseFoldingphp'php;
+    /**
+     * Use the CASE_FOLDING constant in the config of a Zend_Db_Adapter.
+     */
+    const CASE_FOLDING = 'caseFolding';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp FETCHphp_MODEphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp FETCHphp_MODEphp php=php php'fetchModephp'php;
+    /**
+     * Use the FETCH_MODE constant in the config of a Zend_Db_Adapter.
+     */
+    const FETCH_MODE = 'fetchMode';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp AUTOphp_QUOTEphp_IDENTIFIERSphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp AUTOphp_QUOTEphp_IDENTIFIERSphp php=php php'autoQuoteIdentifiersphp'php;
+    /**
+     * Use the AUTO_QUOTE_IDENTIFIERS constant in the config of a Zend_Db_Adapter.
+     */
+    const AUTO_QUOTE_IDENTIFIERS = 'autoQuoteIdentifiers';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp ALLOWphp_SERIALIZATIONphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp ALLOWphp_SERIALIZATIONphp php=php php'allowSerializationphp'php;
+    /**
+     * Use the ALLOW_SERIALIZATION constant in the config of a Zend_Db_Adapter.
+     */
+    const ALLOW_SERIALIZATION = 'allowSerialization';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp AUTOphp_RECONNECTphp_ONphp_UNSERIALIZEphp constantphp inphp thephp configphp ofphp aphp Zendphp_Dbphp_Adapterphp.
-php php php php php php*php/
-php php php php constphp AUTOphp_RECONNECTphp_ONphp_UNSERIALIZEphp php=php php'autoReconnectOnUnserializephp'php;
+    /**
+     * Use the AUTO_RECONNECT_ON_UNSERIALIZE constant in the config of a Zend_Db_Adapter.
+     */
+    const AUTO_RECONNECT_ON_UNSERIALIZE = 'autoReconnectOnUnserialize';
 
-php php php php php/php*php*
-php php php php php php*php Usephp thephp INTphp_TYPEphp,php BIGINTphp_TYPEphp,php andphp FLOATphp_TYPEphp withphp thephp quotephp(php)php methodphp.
-php php php php php php*php/
-php php php php constphp INTphp_TYPEphp php php php php=php php0php;
-php php php php constphp BIGINTphp_TYPEphp php=php php1php;
-php php php php constphp FLOATphp_TYPEphp php php=php php2php;
+    /**
+     * Use the INT_TYPE, BIGINT_TYPE, and FLOAT_TYPE with the quote() method.
+     */
+    const INT_TYPE    = 0;
+    const BIGINT_TYPE = 1;
+    const FLOAT_TYPE  = 2;
 
-php php php php php/php*php*
-php php php php php php*php PDOphp constantphp valuesphp discoveredphp byphp thisphp scriptphp resultphp:
-php php php php php php*
-php php php php php php*php php$listphp php=php arrayphp(
-php php php php php php*php php php php php'PARAMphp_BOOLphp'php,php php'PARAMphp_NULLphp'php,php php'PARAMphp_INTphp'php,php php'PARAMphp_STRphp'php,php php'PARAMphp_LOBphp'php,
-php php php php php php*php php php php php'PARAMphp_STMTphp'php,php php'PARAMphp_INPUTphp_OUTPUTphp'php,php php'FETCHphp_LAZYphp'php,php php'FETCHphp_ASSOCphp'php,
-php php php php php php*php php php php php'FETCHphp_NUMphp'php,php php'FETCHphp_BOTHphp'php,php php'FETCHphp_OBJphp'php,php php'FETCHphp_BOUNDphp'php,
-php php php php php php*php php php php php'FETCHphp_COLUMNphp'php,php php'FETCHphp_CLASSphp'php,php php'FETCHphp_INTOphp'php,php php'FETCHphp_FUNCphp'php,
-php php php php php php*php php php php php'FETCHphp_GROUPphp'php,php php'FETCHphp_UNIQUEphp'php,php php'FETCHphp_CLASSTYPEphp'php,php php'FETCHphp_SERIALIZEphp'php,
-php php php php php php*php php php php php'FETCHphp_NAMEDphp'php,php php'ATTRphp_AUTOCOMMITphp'php,php php'ATTRphp_PREFETCHphp'php,php php'ATTRphp_TIMEOUTphp'php,
-php php php php php php*php php php php php'ATTRphp_ERRMODEphp'php,php php'ATTRphp_SERVERphp_VERSIONphp'php,php php'ATTRphp_CLIENTphp_VERSIONphp'php,
-php php php php php php*php php php php php'ATTRphp_SERVERphp_INFOphp'php,php php'ATTRphp_CONNECTIONphp_STATUSphp'php,php php'ATTRphp_CASEphp'php,
-php php php php php php*php php php php php'ATTRphp_CURSORphp_NAMEphp'php,php php'ATTRphp_CURSORphp'php,php php'ATTRphp_ORACLEphp_NULLSphp'php,
-php php php php php php*php php php php php'ATTRphp_PERSISTENTphp'php,php php'ATTRphp_STATEMENTphp_CLASSphp'php,php php'ATTRphp_FETCHphp_TABLEphp_NAMESphp'php,
-php php php php php php*php php php php php'ATTRphp_FETCHphp_CATALOGphp_NAMESphp'php,php php'ATTRphp_DRIVERphp_NAMEphp'php,
-php php php php php php*php php php php php'ATTRphp_STRINGIFYphp_FETCHESphp'php,php php'ATTRphp_MAXphp_COLUMNphp_LENphp'php,php php'ERRMODEphp_SILENTphp'php,
-php php php php php php*php php php php php'ERRMODEphp_WARNINGphp'php,php php'ERRMODEphp_EXCEPTIONphp'php,php php'CASEphp_NATURALphp'php,
-php php php php php php*php php php php php'CASEphp_LOWERphp'php,php php'CASEphp_UPPERphp'php,php php'NULLphp_NATURALphp'php,php php'NULLphp_EMPTYphp_STRINGphp'php,
-php php php php php php*php php php php php'NULLphp_TOphp_STRINGphp'php,php php'ERRphp_NONEphp'php,php php'FETCHphp_ORIphp_NEXTphp'php,
-php php php php php php*php php php php php'FETCHphp_ORIphp_PRIORphp'php,php php'FETCHphp_ORIphp_FIRSTphp'php,php php'FETCHphp_ORIphp_LASTphp'php,
-php php php php php php*php php php php php'FETCHphp_ORIphp_ABSphp'php,php php'FETCHphp_ORIphp_RELphp'php,php php'CURSORphp_FWDONLYphp'php,php php'CURSORphp_SCROLLphp'php,
-php php php php php php*php php)php;
-php php php php php php*
-php php php php php php*php php$constphp php=php arrayphp(php)php;
-php php php php php php*php foreachphp php(php$listphp asphp php$namephp)php php{
-php php php php php php*php php php php php$constphp[php$namephp]php php=php constantphp(php"PDOphp:php:php$namephp"php)php;
-php php php php php php*php php}
-php php php php php php*php varphp_exportphp(php$constphp)php;
-php php php php php php*php/
-php php php php constphp ATTRphp_AUTOCOMMITphp php=php php0php;
-php php php php constphp ATTRphp_CASEphp php=php php8php;
-php php php php constphp ATTRphp_CLIENTphp_VERSIONphp php=php php5php;
-php php php php constphp ATTRphp_CONNECTIONphp_STATUSphp php=php php7php;
-php php php php constphp ATTRphp_CURSORphp php=php php1php0php;
-php php php php constphp ATTRphp_CURSORphp_NAMEphp php=php php9php;
-php php php php constphp ATTRphp_DRIVERphp_NAMEphp php=php php1php6php;
-php php php php constphp ATTRphp_ERRMODEphp php=php php3php;
-php php php php constphp ATTRphp_FETCHphp_CATALOGphp_NAMESphp php=php php1php5php;
-php php php php constphp ATTRphp_FETCHphp_TABLEphp_NAMESphp php=php php1php4php;
-php php php php constphp ATTRphp_MAXphp_COLUMNphp_LENphp php=php php1php8php;
-php php php php constphp ATTRphp_ORACLEphp_NULLSphp php=php php1php1php;
-php php php php constphp ATTRphp_PERSISTENTphp php=php php1php2php;
-php php php php constphp ATTRphp_PREFETCHphp php=php php1php;
-php php php php constphp ATTRphp_SERVERphp_INFOphp php=php php6php;
-php php php php constphp ATTRphp_SERVERphp_VERSIONphp php=php php4php;
-php php php php constphp ATTRphp_STATEMENTphp_CLASSphp php=php php1php3php;
-php php php php constphp ATTRphp_STRINGIFYphp_FETCHESphp php=php php1php7php;
-php php php php constphp ATTRphp_TIMEOUTphp php=php php2php;
-php php php php constphp CASEphp_LOWERphp php=php php2php;
-php php php php constphp CASEphp_NATURALphp php=php php0php;
-php php php php constphp CASEphp_UPPERphp php=php php1php;
-php php php php constphp CURSORphp_FWDONLYphp php=php php0php;
-php php php php constphp CURSORphp_SCROLLphp php=php php1php;
-php php php php constphp ERRphp_NONEphp php=php php'php0php0php0php0php0php'php;
-php php php php constphp ERRMODEphp_EXCEPTIONphp php=php php2php;
-php php php php constphp ERRMODEphp_SILENTphp php=php php0php;
-php php php php constphp ERRMODEphp_WARNINGphp php=php php1php;
-php php php php constphp FETCHphp_ASSOCphp php=php php2php;
-php php php php constphp FETCHphp_BOTHphp php=php php4php;
-php php php php constphp FETCHphp_BOUNDphp php=php php6php;
-php php php php constphp FETCHphp_CLASSphp php=php php8php;
-php php php php constphp FETCHphp_CLASSTYPEphp php=php php2php6php2php1php4php4php;
-php php php php constphp FETCHphp_COLUMNphp php=php php7php;
-php php php php constphp FETCHphp_FUNCphp php=php php1php0php;
-php php php php constphp FETCHphp_GROUPphp php=php php6php5php5php3php6php;
-php php php php constphp FETCHphp_INTOphp php=php php9php;
-php php php php constphp FETCHphp_LAZYphp php=php php1php;
-php php php php constphp FETCHphp_NAMEDphp php=php php1php1php;
-php php php php constphp FETCHphp_NUMphp php=php php3php;
-php php php php constphp FETCHphp_OBJphp php=php php5php;
-php php php php constphp FETCHphp_ORIphp_ABSphp php=php php4php;
-php php php php constphp FETCHphp_ORIphp_FIRSTphp php=php php2php;
-php php php php constphp FETCHphp_ORIphp_LASTphp php=php php3php;
-php php php php constphp FETCHphp_ORIphp_NEXTphp php=php php0php;
-php php php php constphp FETCHphp_ORIphp_PRIORphp php=php php1php;
-php php php php constphp FETCHphp_ORIphp_RELphp php=php php5php;
-php php php php constphp FETCHphp_SERIALIZEphp php=php php5php2php4php2php8php8php;
-php php php php constphp FETCHphp_UNIQUEphp php=php php1php9php6php6php0php8php;
-php php php php constphp NULLphp_EMPTYphp_STRINGphp php=php php1php;
-php php php php constphp NULLphp_NATURALphp php=php php0php;
-php php php php constphp NULLphp_TOphp_STRINGphp php=php NULLphp;
-php php php php constphp PARAMphp_BOOLphp php=php php5php;
-php php php php constphp PARAMphp_INPUTphp_OUTPUTphp php=php php-php2php1php4php7php4php8php3php6php4php8php;
-php php php php constphp PARAMphp_INTphp php=php php1php;
-php php php php constphp PARAMphp_LOBphp php=php php3php;
-php php php php constphp PARAMphp_NULLphp php=php php0php;
-php php php php constphp PARAMphp_STMTphp php=php php4php;
-php php php php constphp PARAMphp_STRphp php=php php2php;
+    /**
+     * PDO constant values discovered by this script result:
+     *
+     * $list = array(
+     *    'PARAM_BOOL', 'PARAM_NULL', 'PARAM_INT', 'PARAM_STR', 'PARAM_LOB',
+     *    'PARAM_STMT', 'PARAM_INPUT_OUTPUT', 'FETCH_LAZY', 'FETCH_ASSOC',
+     *    'FETCH_NUM', 'FETCH_BOTH', 'FETCH_OBJ', 'FETCH_BOUND',
+     *    'FETCH_COLUMN', 'FETCH_CLASS', 'FETCH_INTO', 'FETCH_FUNC',
+     *    'FETCH_GROUP', 'FETCH_UNIQUE', 'FETCH_CLASSTYPE', 'FETCH_SERIALIZE',
+     *    'FETCH_NAMED', 'ATTR_AUTOCOMMIT', 'ATTR_PREFETCH', 'ATTR_TIMEOUT',
+     *    'ATTR_ERRMODE', 'ATTR_SERVER_VERSION', 'ATTR_CLIENT_VERSION',
+     *    'ATTR_SERVER_INFO', 'ATTR_CONNECTION_STATUS', 'ATTR_CASE',
+     *    'ATTR_CURSOR_NAME', 'ATTR_CURSOR', 'ATTR_ORACLE_NULLS',
+     *    'ATTR_PERSISTENT', 'ATTR_STATEMENT_CLASS', 'ATTR_FETCH_TABLE_NAMES',
+     *    'ATTR_FETCH_CATALOG_NAMES', 'ATTR_DRIVER_NAME',
+     *    'ATTR_STRINGIFY_FETCHES', 'ATTR_MAX_COLUMN_LEN', 'ERRMODE_SILENT',
+     *    'ERRMODE_WARNING', 'ERRMODE_EXCEPTION', 'CASE_NATURAL',
+     *    'CASE_LOWER', 'CASE_UPPER', 'NULL_NATURAL', 'NULL_EMPTY_STRING',
+     *    'NULL_TO_STRING', 'ERR_NONE', 'FETCH_ORI_NEXT',
+     *    'FETCH_ORI_PRIOR', 'FETCH_ORI_FIRST', 'FETCH_ORI_LAST',
+     *    'FETCH_ORI_ABS', 'FETCH_ORI_REL', 'CURSOR_FWDONLY', 'CURSOR_SCROLL',
+     * );
+     *
+     * $const = array();
+     * foreach ($list as $name) {
+     *    $const[$name] = constant("PDO::$name");
+     * }
+     * var_export($const);
+     */
+    const ATTR_AUTOCOMMIT = 0;
+    const ATTR_CASE = 8;
+    const ATTR_CLIENT_VERSION = 5;
+    const ATTR_CONNECTION_STATUS = 7;
+    const ATTR_CURSOR = 10;
+    const ATTR_CURSOR_NAME = 9;
+    const ATTR_DRIVER_NAME = 16;
+    const ATTR_ERRMODE = 3;
+    const ATTR_FETCH_CATALOG_NAMES = 15;
+    const ATTR_FETCH_TABLE_NAMES = 14;
+    const ATTR_MAX_COLUMN_LEN = 18;
+    const ATTR_ORACLE_NULLS = 11;
+    const ATTR_PERSISTENT = 12;
+    const ATTR_PREFETCH = 1;
+    const ATTR_SERVER_INFO = 6;
+    const ATTR_SERVER_VERSION = 4;
+    const ATTR_STATEMENT_CLASS = 13;
+    const ATTR_STRINGIFY_FETCHES = 17;
+    const ATTR_TIMEOUT = 2;
+    const CASE_LOWER = 2;
+    const CASE_NATURAL = 0;
+    const CASE_UPPER = 1;
+    const CURSOR_FWDONLY = 0;
+    const CURSOR_SCROLL = 1;
+    const ERR_NONE = '00000';
+    const ERRMODE_EXCEPTION = 2;
+    const ERRMODE_SILENT = 0;
+    const ERRMODE_WARNING = 1;
+    const FETCH_ASSOC = 2;
+    const FETCH_BOTH = 4;
+    const FETCH_BOUND = 6;
+    const FETCH_CLASS = 8;
+    const FETCH_CLASSTYPE = 262144;
+    const FETCH_COLUMN = 7;
+    const FETCH_FUNC = 10;
+    const FETCH_GROUP = 65536;
+    const FETCH_INTO = 9;
+    const FETCH_LAZY = 1;
+    const FETCH_NAMED = 11;
+    const FETCH_NUM = 3;
+    const FETCH_OBJ = 5;
+    const FETCH_ORI_ABS = 4;
+    const FETCH_ORI_FIRST = 2;
+    const FETCH_ORI_LAST = 3;
+    const FETCH_ORI_NEXT = 0;
+    const FETCH_ORI_PRIOR = 1;
+    const FETCH_ORI_REL = 5;
+    const FETCH_SERIALIZE = 524288;
+    const FETCH_UNIQUE = 196608;
+    const NULL_EMPTY_STRING = 1;
+    const NULL_NATURAL = 0;
+    const NULL_TO_STRING = NULL;
+    const PARAM_BOOL = 5;
+    const PARAM_INPUT_OUTPUT = -2147483648;
+    const PARAM_INT = 1;
+    const PARAM_LOB = 3;
+    const PARAM_NULL = 0;
+    const PARAM_STMT = 4;
+    const PARAM_STR = 2;
 
-php php php php php/php*php*
-php php php php php php*php Factoryphp forphp Zendphp_Dbphp_Adapterphp_Abstractphp classesphp.
-php php php php php php*
-php php php php php php*php Firstphp argumentphp mayphp bephp aphp stringphp containingphp thephp basephp ofphp thephp adapterphp class
-php php php php php php*php namephp,php ephp.gphp.php php'Mysqliphp'php correspondsphp tophp classphp Zendphp_Dbphp_Adapterphp_Mysqliphp.php php This
-php php php php php php*php namephp isphp currentlyphp casephp-insensitivephp,php butphp isphp notphp idealphp tophp relyphp onphp thisphp behaviorphp.
-php php php php php php*php Ifphp yourphp classphp isphp namedphp php'Myphp_Companyphp_Pdophp_Mysqlphp'php,php wherephp php'Myphp_Companyphp'php isphp thephp namespace
-php php php php php php*php andphp php'Pdophp_Mysqlphp'php isphp thephp adapterphp namephp,php itphp isphp bestphp tophp usephp thephp namephp exactlyphp asphp it
-php php php php php php*php isphp definedphp inphp thephp classphp.php php Thisphp willphp ensurephp properphp usephp ofphp thephp factoryphp APIphp.
-php php php php php php*
-php php php php php php*php Firstphp argumentphp mayphp alternativelyphp bephp anphp objectphp ofphp typephp Zendphp_Configphp.
-php php php php php php*php Thephp adapterphp classphp basephp namephp isphp readphp fromphp thephp php'adapterphp'php propertyphp.
-php php php php php php*php Thephp adapterphp configphp parametersphp arephp readphp fromphp thephp php'paramsphp'php propertyphp.
-php php php php php php*
-php php php php php php*php Secondphp argumentphp isphp optionalphp andphp mayphp bephp anphp associativephp arrayphp ofphp keyphp-value
-php php php php php php*php pairsphp.php php Thisphp isphp usedphp asphp thephp argumentphp tophp thephp adapterphp constructorphp.
-php php php php php php*
-php php php php php php*php Ifphp thephp firstphp argumentphp isphp ofphp typephp Zendphp_Configphp,php itphp isphp assumedphp tophp contain
-php php php php php php*php allphp parametersphp,php andphp thephp secondphp argumentphp isphp ignoredphp.
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$adapterphp Stringphp namephp ofphp basephp adapterphp classphp,php orphp Zendphp_Configphp objectphp.
-php php php php php php*php php@paramphp php mixedphp php$configphp php OPTIONALphp;php anphp arrayphp orphp Zendphp_Configphp objectphp withphp adapterphp parametersphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp factoryphp(php$adapterphp,php php$configphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
-php php php php php php php php php}
+    /**
+     * Factory for Zend_Db_Adapter_Abstract classes.
+     *
+     * First argument may be a string containing the base of the adapter class
+     * name, e.g. 'Mysqli' corresponds to class Zend_Db_Adapter_Mysqli.  This
+     * name is currently case-insensitive, but is not ideal to rely on this behavior.
+     * If your class is named 'My_Company_Pdo_Mysql', where 'My_Company' is the namespace
+     * and 'Pdo_Mysql' is the adapter name, it is best to use the name exactly as it
+     * is defined in the class.  This will ensure proper use of the factory API.
+     *
+     * First argument may alternatively be an object of type Zend_Config.
+     * The adapter class base name is read from the 'adapter' property.
+     * The adapter config parameters are read from the 'params' property.
+     *
+     * Second argument is optional and may be an associative array of key-value
+     * pairs.  This is used as the argument to the adapter constructor.
+     *
+     * If the first argument is of type Zend_Config, it is assumed to contain
+     * all parameters, and the second argument is ignored.
+     *
+     * @param  mixed $adapter String name of base adapter class, or Zend_Config object.
+     * @param  mixed $config  OPTIONAL; an array or Zend_Config object with adapter parameters.
+     * @return Zend_Db_Adapter_Abstract
+     * @throws Zend_Db_Exception
+     */
+    public static function factory($adapter, $config = array())
+    {
+        if ($config instanceof Zend_Config) {
+            $config = $config->toArray();
+        }
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Convertphp Zendphp_Configphp argumentphp tophp plainphp string
-php php php php php php php php php php*php adapterphp namephp andphp separatephp configphp objectphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php$adapterphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$adapterphp-php>paramsphp)php)php php{
-php php php php php php php php php php php php php php php php php$configphp php=php php$adapterphp-php>paramsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$adapterphp-php>adapterphp)php)php php{
-php php php php php php php php php php php php php php php php php$adapterphp php=php php(stringphp)php php$adapterphp-php>adapterphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$adapterphp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        /*
+         * Convert Zend_Config argument to plain string
+         * adapter name and separate config object.
+         */
+        if ($adapter instanceof Zend_Config) {
+            if (isset($adapter->params)) {
+                $config = $adapter->params->toArray();
+            }
+            if (isset($adapter->adapter)) {
+                $adapter = (string) $adapter->adapter;
+            } else {
+                $adapter = null;
+            }
+        }
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Verifyphp thatphp adapterphp parametersphp arephp inphp anphp arrayphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Exceptionphp(php'Adapterphp parametersphp mustphp bephp inphp anphp arrayphp orphp aphp Zendphp_Configphp objectphp'php)php;
-php php php php php php php php php}
+        /*
+         * Verify that adapter parameters are in an array.
+         */
+        if (!is_array($config)) {
+            /**
+             * @see Zend_Db_Exception
+             */
+            require_once 'Zend/Db/Exception.php';
+            throw new Zend_Db_Exception('Adapter parameters must be in an array or a Zend_Config object');
+        }
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Verifyphp thatphp anphp adapterphp namephp hasphp beenphp specifiedphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!isphp_stringphp(php$adapterphp)php php|php|php emptyphp(php$adapterphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Exceptionphp(php'Adapterphp namephp mustphp bephp specifiedphp inphp aphp stringphp'php)php;
-php php php php php php php php php}
+        /*
+         * Verify that an adapter name has been specified.
+         */
+        if (!is_string($adapter) || empty($adapter)) {
+            /**
+             * @see Zend_Db_Exception
+             */
+            require_once 'Zend/Db/Exception.php';
+            throw new Zend_Db_Exception('Adapter name must be specified in a string');
+        }
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Formphp fullphp adapterphp classphp name
-php php php php php php php php php php*php/
-php php php php php php php php php$adapterNamespacephp php=php php'Zendphp_Dbphp_Adapterphp'php;
-php php php php php php php php ifphp php(issetphp(php$configphp[php'adapterNamespacephp'php]php)php)php php{
-php php php php php php php php php php php php ifphp php(php$configphp[php'adapterNamespacephp'php]php php!php=php php'php'php)php php{
-php php php php php php php php php php php php php php php php php$adapterNamespacephp php=php php$configphp[php'adapterNamespacephp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$configphp[php'adapterNamespacephp'php]php)php;
-php php php php php php php php php}
+        /*
+         * Form full adapter class name
+         */
+        $adapterNamespace = 'Zend_Db_Adapter';
+        if (isset($config['adapterNamespace'])) {
+            if ($config['adapterNamespace'] != '') {
+                $adapterNamespace = $config['adapterNamespace'];
+            }
+            unset($config['adapterNamespace']);
+        }
 
-php php php php php php php php php/php/php Adapterphp nophp longerphp normalizedphp-php seephp httpphp:php/php/frameworkphp.zendphp.comphp/issuesphp/browsephp/ZFphp-php5php6php0php6
-php php php php php php php php php$adapterNamephp php=php php$adapterNamespacephp php.php php'php_php'php;
-php php php php php php php php php$adapterNamephp php.php=php strphp_replacephp(php'php php'php,php php'php_php'php,php ucwordsphp(strphp_replacephp(php'php_php'php,php php'php php'php,php strtolowerphp(php$adapterphp)php)php)php)php;
+        // Adapter no longer normalized- see http://framework.zend.com/issues/browse/ZF-5606
+        $adapterName = $adapterNamespace . '_';
+        $adapterName .= str_replace(' ', '_', ucwords(str_replace('_', ' ', strtolower($adapter))));
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Loadphp thephp adapterphp classphp.php php Thisphp throwsphp anphp exception
-php php php php php php php php php php*php ifphp thephp specifiedphp classphp cannotphp bephp loadedphp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!classphp_existsphp(php$adapterNamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$adapterNamephp)php;
-php php php php php php php php php}
+        /*
+         * Load the adapter class.  This throws an exception
+         * if the specified class cannot be loaded.
+         */
+        if (!class_exists($adapterName)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($adapterName);
+        }
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Createphp anphp instancephp ofphp thephp adapterphp classphp.
-php php php php php php php php php php*php Passphp thephp configphp tophp thephp adapterphp classphp constructorphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$dbAdapterphp php=php newphp php$adapterNamephp(php$configphp)php;
+        /*
+         * Create an instance of the adapter class.
+         * Pass the config to the adapter class constructor.
+         */
+        $dbAdapter = new $adapterName($config);
 
-php php php php php php php php php/php*
-php php php php php php php php php php*php Verifyphp thatphp thephp objectphp createdphp isphp aphp descendentphp ofphp thephp abstractphp adapterphp typephp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php!php php$dbAdapterphp instanceofphp Zendphp_Dbphp_Adapterphp_Abstractphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Exceptionphp(php"Adapterphp classphp php'php$adapterNamephp'php doesphp notphp extendphp Zendphp_Dbphp_Adapterphp_Abstractphp"php)php;
-php php php php php php php php php}
+        /*
+         * Verify that the object created is a descendent of the abstract adapter type.
+         */
+        if (! $dbAdapter instanceof Zend_Db_Adapter_Abstract) {
+            /**
+             * @see Zend_Db_Exception
+             */
+            require_once 'Zend/Db/Exception.php';
+            throw new Zend_Db_Exception("Adapter class '$adapterName' does not extend Zend_Db_Adapter_Abstract");
+        }
 
-php php php php php php php php returnphp php$dbAdapterphp;
-php php php php php}
+        return $dbAdapter;
+    }
 
-php}
+}

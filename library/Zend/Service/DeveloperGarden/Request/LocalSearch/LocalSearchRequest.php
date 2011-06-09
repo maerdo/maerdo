@@ -1,113 +1,113 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php LocalSearchRequestphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: LocalSearchRequest.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_RequestAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/RequestAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_RequestAbstract
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_LocalSearchphp_LocalSearchRequest
-php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php arrayphp ofphp searchphp parameters
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php publicphp php$searchParametersphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Request_LocalSearch_LocalSearchRequest
+    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+{
+    /**
+     * array of search parameters
+     *
+     * @var array
+     */
+    public $searchParameters = null;
 
-php php php php php/php*php*
-php php php php php php*php originalphp object
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php privatephp php$php_searchParametersphp php=php nullphp;
+    /**
+     * original object
+     *
+     * @var Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    private $_searchParameters = null;
 
-php php php php php/php*php*
-php php php php php php*php accountphp id
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php publicphp php$accountphp php=php nullphp;
+    /**
+     * account id
+     *
+     * @var integer
+     */
+    public $account = null;
 
-php php php php php/php*php*
-php php php php php php*php constructorphp givephp themphp thephp environmentphp andphp thephp sessionId
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$environment
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParametersphp php$searchParameters
-php php php php php php*php php@paramphp integerphp php$account
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$environmentphp,
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParametersphp php$searchParametersphp,
-php php php php php php php php php$accountphp php=php null
-php php php php php)php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$environmentphp)php;
-php php php php php php php php php$thisphp-php>setSearchParametersphp(php$searchParametersphp)
-php php php php php php php php php php php php php php-php>setAccountphp(php$accountphp)php;
-php php php php php}
+    /**
+     * constructor give them the environment and the sessionId
+     *
+     * @param integer $environment
+     * @param Zend_Service_DeveloperGarden_LocalSearch_SearchParameters $searchParameters
+     * @param integer $account
+     * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
+     */
+    public function __construct($environment,
+        Zend_Service_DeveloperGarden_LocalSearch_SearchParameters $searchParameters,
+        $account = null
+    ) {
+        parent::__construct($environment);
+        $this->setSearchParameters($searchParameters)
+             ->setAccount($account);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp integerphp php$account
-php php php php php php*php/
-php php php php publicphp functionphp setAccountphp(php$accountphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>accountphp php=php php$accountphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * @param integer $account
+     */
+    public function setAccount($account = null)
+    {
+        $this->account = $account;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getAccountphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>accountphp;
-php php php php php}
+    /**
+     * @return integer
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParametersphp php$searchParameters
-php php php php php php*php/
-php php php php publicphp functionphp setSearchParametersphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParametersphp php$searchParameters
-php php php php php)php php{
-php php php php php php php php php$thisphp-php>searchParametersphp php php=php php$searchParametersphp-php>getSearchParametersphp(php)php;
-php php php php php php php php php$thisphp-php>php_searchParametersphp php=php php$searchParametersphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * @param Zend_Service_DeveloperGarden_LocalSearch_SearchParameters $searchParameters
+     */
+    public function setSearchParameters(
+        Zend_Service_DeveloperGarden_LocalSearch_SearchParameters $searchParameters
+    ) {
+        $this->searchParameters  = $searchParameters->getSearchParameters();
+        $this->_searchParameters = $searchParameters;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_LocalSearchphp_SearchParameters
-php php php php php php*php/
-php php php php publicphp functionphp getSearchParametersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_searchParametersphp;
-php php php php php}
+    /**
+     * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
+     */
+    public function getSearchParameters()
+    {
+        return $this->_searchParameters;
+    }
 
-php}
+}

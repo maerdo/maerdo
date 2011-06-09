@@ -1,81 +1,81 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Translate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@versionphp php php php php$Idphp:php Arrayphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Translate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: Array.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
 
-php/php*php*php Zendphp_Localephp php*php/
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/** Zend_Locale */
+require_once 'Zend/Locale.php';
 
-php/php*php*php Zendphp_Translatephp_Adapterphp php*php/
-requirephp_oncephp php'Zendphp/Translatephp/Adapterphp.phpphp'php;
+/** Zend_Translate_Adapter */
+require_once 'Zend/Translate/Adapter.php';
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Translate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Translatephp_Adapterphp_Arrayphp extendsphp Zendphp_Translatephp_Adapter
-php{
-php php php php privatephp php$php_dataphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Translate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Translate_Adapter_Array extends Zend_Translate_Adapter
+{
+    private $_data = array();
 
-php php php php php/php*php*
-php php php php php php*php Loadphp translationphp data
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php php$data
-php php php php php php*php php@paramphp php stringphp php php php php php php php php$localephp php Localephp/Languagephp tophp addphp dataphp forphp,php identicalphp withphp localephp identifierphp,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php seephp Zendphp_Localephp forphp morephp information
-php php php php php php*php php@paramphp php arrayphp php php php php php php php php php$optionsphp OPTIONALphp Optionsphp tophp use
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadTranslationDataphp(php$dataphp,php php$localephp,php arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dataphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$dataphp)php)php php{
-php php php php php php php php php php php php ifphp php(filephp_existsphp(php$dataphp)php)php php{
-php php php php php php php php php php php php php php php php obphp_startphp(php)php;
-php php php php php php php php php php php php php php php php php$dataphp php=php includephp(php$dataphp)php;
-php php php php php php php php php php php php php php php php obphp_endphp_cleanphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$dataphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Translatephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Translatephp_Exceptionphp(php"Errorphp includingphp arrayphp orphp filephp php'php"php.php$dataphp.php"php'php"php)php;
-php php php php php php php php php}
+    /**
+     * Load translation data
+     *
+     * @param  string|array  $data
+     * @param  string        $locale  Locale/Language to add data for, identical with locale identifier,
+     *                                see Zend_Locale for more information
+     * @param  array         $options OPTIONAL Options to use
+     * @return array
+     */
+    protected function _loadTranslationData($data, $locale, array $options = array())
+    {
+        $this->_data = array();
+        if (!is_array($data)) {
+            if (file_exists($data)) {
+                ob_start();
+                $data = include($data);
+                ob_end_clean();
+            }
+        }
+        if (!is_array($data)) {
+            require_once 'Zend/Translate/Exception.php';
+            throw new Zend_Translate_Exception("Error including array or file '".$data."'");
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_dataphp[php$localephp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php php=php arrayphp(php)php;
-php php php php php php php php php}
+        if (!isset($this->_data[$locale])) {
+            $this->_data[$locale] = array();
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php$localephp]php php=php php$dataphp php+php php$thisphp-php>php_dataphp[php$localephp]php;
-php php php php php php php php returnphp php$thisphp-php>php_dataphp;
-php php php php php}
+        $this->_data[$locale] = $data + $this->_data[$locale];
+        return $this->_data;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp adaptersphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php"Arrayphp"php;
-php php php php php}
-php}
+    /**
+     * returns the adapters name
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return "Array";
+    }
+}

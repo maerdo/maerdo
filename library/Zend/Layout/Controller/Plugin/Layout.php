@@ -1,156 +1,156 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Plugins
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Plugins
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Controllerphp_Pluginphp_Abstractphp php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Pluginphp/Abstractphp.phpphp'php;
+/** Zend_Controller_Plugin_Abstract */
+require_once 'Zend/Controller/Plugin/Abstract.php';
 
-php/php*php*
-php php*php Renderphp layouts
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Controllerphp_Pluginphp_Abstract
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Plugins
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Layoutphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Layoutphp_Controllerphp_Pluginphp_Layoutphp extendsphp Zendphp_Controllerphp_Pluginphp_Abstract
-php{
-php php php php protectedphp php$php_layoutActionHelperphp php=php nullphp;
+/**
+ * Render layouts
+ *
+ * @uses       Zend_Controller_Plugin_Abstract
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Plugins
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Layout.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstract
+{
+    protected $_layoutActionHelper = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Layout
-php php php php php php*php/
-php php php php protectedphp php$php_layoutphp;
+    /**
+     * @var Zend_Layout
+     */
+    protected $_layout;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Layoutphp php$layout
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Layoutphp php$layoutphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$layoutphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setLayoutphp(php$layoutphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  Zend_Layout $layout
+     * @return void
+     */
+    public function __construct(Zend_Layout $layout = null)
+    {
+        if (null !== $layout) {
+            $this->setLayout($layout);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp layoutphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Layout
-php php php php php php*php/
-php php php php publicphp functionphp getLayoutphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_layoutphp;
-php php php php php}
+    /**
+     * Retrieve layout object
+     *
+     * @return Zend_Layout
+     */
+    public function getLayout()
+    {
+        return $this->_layout;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp layoutphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Layoutphp php$layout
-php php php php php php*php php@returnphp Zendphp_Layoutphp_Controllerphp_Pluginphp_Layout
-php php php php php php*php/
-php php php php publicphp functionphp setLayoutphp(Zendphp_Layoutphp php$layoutphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_layoutphp php=php php$layoutphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set layout object
+     *
+     * @param  Zend_Layout $layout
+     * @return Zend_Layout_Controller_Plugin_Layout
+     */
+    public function setLayout(Zend_Layout $layout)
+    {
+        $this->_layout = $layout;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp layoutphp actionphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Layoutphp_Controllerphp_Actionphp_Helperphp_Layoutphp php$layoutActionHelper
-php php php php php php*php php@returnphp Zendphp_Layoutphp_Controllerphp_Pluginphp_Layout
-php php php php php php*php/
-php php php php publicphp functionphp setLayoutActionHelperphp(Zendphp_Layoutphp_Controllerphp_Actionphp_Helperphp_Layoutphp php$layoutActionHelperphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_layoutActionHelperphp php=php php$layoutActionHelperphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set layout action helper
+     *
+     * @param  Zend_Layout_Controller_Action_Helper_Layout $layoutActionHelper
+     * @return Zend_Layout_Controller_Plugin_Layout
+     */
+    public function setLayoutActionHelper(Zend_Layout_Controller_Action_Helper_Layout $layoutActionHelper)
+    {
+        $this->_layoutActionHelper = $layoutActionHelper;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp layoutphp actionphp helper
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Layoutphp_Controllerphp_Actionphp_Helperphp_Layout
-php php php php php php*php/
-php php php php publicphp functionphp getLayoutActionHelperphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_layoutActionHelperphp;
-php php php php php}
+    /**
+     * Retrieve layout action helper
+     *
+     * @return Zend_Layout_Controller_Action_Helper_Layout
+     */
+    public function getLayoutActionHelper()
+    {
+        return $this->_layoutActionHelper;
+    }
 
-php php php php php/php*php*
-php php php php php php*php postDispatchphp(php)php pluginphp hookphp php-php-php renderphp layout
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Requestphp_Abstractphp php$request
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp postDispatchphp(Zendphp_Controllerphp_Requestphp_Abstractphp php$requestphp)
-php php php php php{
-php php php php php php php php php$layoutphp php=php php$thisphp-php>getLayoutphp(php)php;
-php php php php php php php php php$helperphp php=php php$thisphp-php>getLayoutActionHelperphp(php)php;
+    /**
+     * postDispatch() plugin hook -- render layout
+     *
+     * @param  Zend_Controller_Request_Abstract $request
+     * @return void
+     */
+    public function postDispatch(Zend_Controller_Request_Abstract $request)
+    {
+        $layout = $this->getLayout();
+        $helper = $this->getLayoutActionHelper();
 
-php php php php php php php php php/php/php Returnphp earlyphp ifphp forwardphp detected
-php php php php php php php php ifphp php(php!php$requestphp-php>isDispatchedphp(php)
-php php php php php php php php php php php php php|php|php php$thisphp-php>getResponsephp(php)php-php>isRedirectphp(php)
-php php php php php php php php php php php php php|php|php php(php$layoutphp-php>getMvcSuccessfulActionOnlyphp(php)
-php php php php php php php php php php php php php php php php php&php&php php(php!emptyphp(php$helperphp)php php&php&php php!php$helperphp-php>isActionControllerSuccessfulphp(php)php)php)php)
-php php php php php php php php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        // Return early if forward detected
+        if (!$request->isDispatched()
+            || $this->getResponse()->isRedirect()
+            || ($layout->getMvcSuccessfulActionOnly()
+                && (!empty($helper) && !$helper->isActionControllerSuccessful())))
+        {
+            return;
+        }
 
-php php php php php php php php php/php/php Returnphp earlyphp ifphp layoutphp hasphp beenphp disabled
-php php php php php php php php ifphp php(php!php$layoutphp-php>isEnabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        // Return early if layout has been disabled
+        if (!$layout->isEnabled()) {
+            return;
+        }
 
-php php php php php php php php php$responsephp php php php=php php$thisphp-php>getResponsephp(php)php;
-php php php php php php php php php$contentphp php php php php=php php$responsephp-php>getBodyphp(truephp)php;
-php php php php php php php php php$contentKeyphp php=php php$layoutphp-php>getContentKeyphp(php)php;
+        $response   = $this->getResponse();
+        $content    = $response->getBody(true);
+        $contentKey = $layout->getContentKey();
 
-php php php php php php php php ifphp php(issetphp(php$contentphp[php'defaultphp'php]php)php)php php{
-php php php php php php php php php php php php php$contentphp[php$contentKeyphp]php php=php php$contentphp[php'defaultphp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php'defaultphp'php php!php=php php$contentKeyphp)php php{
-php php php php php php php php php php php php unsetphp(php$contentphp[php'defaultphp'php]php)php;
-php php php php php php php php php}
+        if (isset($content['default'])) {
+            $content[$contentKey] = $content['default'];
+        }
+        if ('default' != $contentKey) {
+            unset($content['default']);
+        }
 
-php php php php php php php php php$layoutphp-php>assignphp(php$contentphp)php;
+        $layout->assign($content);
 
-php php php php php php php php php$fullContentphp php=php nullphp;
-php php php php php php php php php$obStartLevelphp php=php obphp_getphp_levelphp(php)php;
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$fullContentphp php=php php$layoutphp-php>renderphp(php)php;
-php php php php php php php php php php php php php$responsephp-php>setBodyphp(php$fullContentphp)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php whilephp php(obphp_getphp_levelphp(php)php php>php php$obStartLevelphp)php php{
-php php php php php php php php php php php php php php php php php$fullContentphp php.php=php obphp_getphp_cleanphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$requestphp-php>setParamphp(php'layoutFullContentphp'php,php php$fullContentphp)php;
-php php php php php php php php php php php php php$requestphp-php>setParamphp(php'layoutContentphp'php,php php$layoutphp-php>contentphp)php;
-php php php php php php php php php php php php php$responsephp-php>setBodyphp(nullphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+        $fullContent = null;
+        $obStartLevel = ob_get_level();
+        try {
+            $fullContent = $layout->render();
+            $response->setBody($fullContent);
+        } catch (Exception $e) {
+            while (ob_get_level() > $obStartLevel) {
+                $fullContent .= ob_get_clean();
+            }
+            $request->setParam('layoutFullContent', $fullContent);
+            $request->setParam('layoutContent', $layout->content);
+            $response->setBody(null);
+            throw $e;
+        }
 
-php php php php php}
-php}
+    }
+}

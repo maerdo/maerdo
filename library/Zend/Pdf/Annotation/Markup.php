@@ -1,142 +1,142 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Annotation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Markupphp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Annotation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Markup.php 20785 2010-01-31 09:43:03Z mikaelkael $
+ */
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Stringphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element.php';
+require_once 'Zend/Pdf/Element/Array.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
+require_once 'Zend/Pdf/Element/String.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Annotationphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Annotationphp.phpphp'php;
+/** Zend_Pdf_Annotation */
+require_once 'Zend/Pdf/Annotation.php';
 
-php/php*php*
-php php*php Aphp markupphp annotation
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Annotation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Annotationphp_Markupphp extendsphp Zendphp_Pdfphp_Annotation
-php{
-php php php php php/php*php*
-php php php php php php*php Annotationphp subtypes
-php php php php php php*php/
-php php php php constphp SUBTYPEphp_HIGHLIGHTphp php=php php'Highlightphp'php;
-php php php php constphp SUBTYPEphp_UNDERLINEphp php=php php'Underlinephp'php;
-php php php php constphp SUBTYPEphp_SQUIGGLYphp php php=php php'Squigglyphp'php;
-php php php php constphp SUBTYPEphp_STRIKEOUTphp php=php php'StrikeOutphp'php;
+/**
+ * A markup annotation
+ *
+ * @package    Zend_Pdf
+ * @subpackage Annotation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Annotation_Markup extends Zend_Pdf_Annotation
+{
+    /**
+     * Annotation subtypes
+     */
+    const SUBTYPE_HIGHLIGHT = 'Highlight';
+    const SUBTYPE_UNDERLINE = 'Underline';
+    const SUBTYPE_SQUIGGLY  = 'Squiggly';
+    const SUBTYPE_STRIKEOUT = 'StrikeOut';
 
-php php php php php/php*php*
-php php php php php php*php Annotationphp objectphp constructor
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_Elementphp php$annotationDictionaryphp)
-php php php php php{
-php php php php php php php php ifphp php(php$annotationDictionaryphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Annotationphp dictionaryphp resourcephp hasphp tophp bephp aphp dictionaryphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * Annotation object constructor
+     *
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct(Zend_Pdf_Element $annotationDictionary)
+    {
+        if ($annotationDictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Annotation dictionary resource has to be a dictionary.');
+        }
 
-php php php php php php php php ifphp php(php$annotationDictionaryphp-php>Subtypephp php=php=php=php nullphp php php|php|
-php php php php php php php php php php php php php$annotationDictionaryphp-php>Subtypephp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_NAMEphp php php|php|
-php php php php php php php php php php php php php!inphp_arrayphp(php php$annotationDictionaryphp-php>Subtypephp-php>valuephp,
-php php php php php php php php php php php php php php php php php php php php php php php arrayphp(selfphp:php:SUBTYPEphp_HIGHLIGHTphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:SUBTYPEphp_UNDERLINEphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:SUBTYPEphp_SQUIGGLYphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:SUBTYPEphp_STRIKEOUTphp)php php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Subtypephp php=php>php Markupphp entryphp isphp omittedphp orphp hasphp wrongphp valuephp.php'php)php;
-php php php php php php php php php}
+        if ($annotationDictionary->Subtype === null  ||
+            $annotationDictionary->Subtype->getType() != Zend_Pdf_Element::TYPE_NAME  ||
+            !in_array( $annotationDictionary->Subtype->value,
+                       array(self::SUBTYPE_HIGHLIGHT,
+                             self::SUBTYPE_UNDERLINE,
+                             self::SUBTYPE_SQUIGGLY,
+                             self::SUBTYPE_STRIKEOUT) )) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Subtype => Markup entry is omitted or has wrong value.');
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$annotationDictionaryphp)php;
-php php php php php}
+        parent::__construct($annotationDictionary);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp markupphp annotationphp object
-php php php php php php*
-php php php php php php*php Textphp markupphp annotationsphp appearphp asphp highlightsphp,php underlinesphp,php strikeoutsphp or
-php php php php php php*php jaggedphp php(php"squigglyphp"php)php underlinesphp inphp thephp textphp ofphp aphp documentphp.php Whenphp openedphp,
-php php php php php php*php theyphp displayphp aphp popphp-upphp windowphp containingphp thephp textphp ofphp thephp associatedphp notephp.
-php php php php php php*
-php php php php php php*php php$subTypephp parameterphp mayphp contain
-php php php php php php*php php php php php Zendphp_Pdfphp_Annotationphp_Markupphp:php:SUBTYPEphp_HIGHLIGHT
-php php php php php php*php php php php php Zendphp_Pdfphp_Annotationphp_Markupphp:php:SUBTYPEphp_UNDERLINE
-php php php php php php*php php php php php Zendphp_Pdfphp_Annotationphp_Markupphp:php:SUBTYPEphp_SQUIGGLY
-php php php php php php*php php php php php Zendphp_Pdfphp_Annotationphp_Markupphp:php:SUBTYPEphp_STRIKEOUT
-php php php php php php*php forphp forphp aphp highlightphp,php underlinephp,php squigglyphp-underlinephp,php orphp strikeoutphp annotationphp,
-php php php php php php*php respectivelyphp.
-php php php php php php*
-php php php php php php*php php$quadPointsphp isphp anphp arrayphp ofphp php8xNphp numbersphp specifyingphp thephp coordinatesphp of
-php php php php php php*php Nphp quadrilateralsphp defaultphp userphp spacephp.php Eachphp quadrilateralphp encompassesphp aphp wordphp or
-php php php php php php*php groupphp ofphp contiguousphp wordsphp inphp thephp textphp underlyingphp thephp annotationphp.
-php php php php php php*php Thephp coordinatesphp forphp eachphp quadrilateralphp arephp givenphp inphp thephp order
-php php php php php php*php php php php php xphp1php yphp1php xphp2php yphp2php xphp3php yphp3php xphp4php yphp4
-php php php php php php*php specifyingphp thephp quadrilateralphp’sphp fourphp verticesphp inphp counterclockwisephp order
-php php php php php php*php startingphp fromphp leftphp bottomphp cornerphp.
-php php php php php php*php Thephp textphp isphp orientedphp withphp respectphp tophp thephp edgephp connectingphp points
-php php php php php php*php php(xphp1php,php yphp1php)php andphp php(xphp2php,php yphp2php)php.
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$xphp1
-php php php php php php*php php@paramphp floatphp php$yphp1
-php php php php php php*php php@paramphp floatphp php$xphp2
-php php php php php php*php php@paramphp floatphp php$yphp2
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*php php@paramphp stringphp php$subType
-php php php php php php*php php@paramphp arrayphp php$quadPointsphp php php[xphp1php yphp1php xphp2php yphp2php xphp3php yphp3php xphp4php yphp4php]
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Annotationphp_Markup
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createphp(php$xphp1php,php php$yphp1php,php php$xphp2php,php php$yphp2php,php php$textphp,php php$subTypephp,php php$quadPointsphp)
-php php php php php{
-php php php php php php php php php$annotationDictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
+    /**
+     * Create markup annotation object
+     *
+     * Text markup annotations appear as highlights, underlines, strikeouts or
+     * jagged ("squiggly") underlines in the text of a document. When opened,
+     * they display a pop-up window containing the text of the associated note.
+     *
+     * $subType parameter may contain
+     *     Zend_Pdf_Annotation_Markup::SUBTYPE_HIGHLIGHT
+     *     Zend_Pdf_Annotation_Markup::SUBTYPE_UNDERLINE
+     *     Zend_Pdf_Annotation_Markup::SUBTYPE_SQUIGGLY
+     *     Zend_Pdf_Annotation_Markup::SUBTYPE_STRIKEOUT
+     * for for a highlight, underline, squiggly-underline, or strikeout annotation,
+     * respectively.
+     *
+     * $quadPoints is an array of 8xN numbers specifying the coordinates of
+     * N quadrilaterals default user space. Each quadrilateral encompasses a word or
+     * group of contiguous words in the text underlying the annotation.
+     * The coordinates for each quadrilateral are given in the order
+     *     x1 y1 x2 y2 x3 y3 x4 y4
+     * specifying the quadrilateral’s four vertices in counterclockwise order
+     * starting from left bottom corner.
+     * The text is oriented with respect to the edge connecting points
+     * (x1, y1) and (x2, y2).
+     *
+     * @param float $x1
+     * @param float $y1
+     * @param float $x2
+     * @param float $y2
+     * @param string $text
+     * @param string $subType
+     * @param array $quadPoints  [x1 y1 x2 y2 x3 y3 x4 y4]
+     * @return Zend_Pdf_Annotation_Markup
+     * @throws Zend_Pdf_Exception
+     */
+    public static function create($x1, $y1, $x2, $y2, $text, $subType, $quadPoints)
+    {
+        $annotationDictionary = new Zend_Pdf_Element_Dictionary();
 
-php php php php php php php php php$annotationDictionaryphp-php>Typephp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Annotphp'php)php;
-php php php php php php php php php$annotationDictionaryphp-php>Subtypephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php$subTypephp)php;
+        $annotationDictionary->Type    = new Zend_Pdf_Element_Name('Annot');
+        $annotationDictionary->Subtype = new Zend_Pdf_Element_Name($subType);
 
-php php php php php php php php php$rectanglephp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$xphp1php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$yphp1php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$xphp2php)php;
-php php php php php php php php php$rectanglephp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$yphp2php)php;
-php php php php php php php php php$annotationDictionaryphp-php>Rectphp php=php php$rectanglephp;
+        $rectangle = new Zend_Pdf_Element_Array();
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($x1);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($y1);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($x2);
+        $rectangle->items[] = new Zend_Pdf_Element_Numeric($y2);
+        $annotationDictionary->Rect = $rectangle;
 
-php php php php php php php php php$annotationDictionaryphp-php>Contentsphp php=php newphp Zendphp_Pdfphp_Elementphp_Stringphp(php$textphp)php;
+        $annotationDictionary->Contents = new Zend_Pdf_Element_String($text);
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$quadPointsphp)php php php|php|php php countphp(php$quadPointsphp)php php=php=php php0php php php|php|php php countphp(php$quadPointsphp)php php%php php8php php!php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'php$quadPointsphp parameterphp mustphp bephp anphp arrayphp ofphp php8xNphp numbersphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$pointsphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
-php php php php php php php php foreachphp php(php$quadPointsphp asphp php$quadPointphp)php php{
-php php php php php php php php php php php php php$pointsphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$quadPointphp)php;
-php php php php php php php php php}
-php php php php php php php php php$annotationDictionaryphp-php>QuadPointsphp php=php php$pointsphp;
+        if (!is_array($quadPoints)  ||  count($quadPoints) == 0  ||  count($quadPoints) % 8 != 0) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('$quadPoints parameter must be an array of 8xN numbers');
+        }
+        $points = new Zend_Pdf_Element_Array();
+        foreach ($quadPoints as $quadPoint) {
+            $points->items[] = new Zend_Pdf_Element_Numeric($quadPoint);
+        }
+        $annotationDictionary->QuadPoints = $points;
 
-php php php php php php php php returnphp newphp Zendphp_Pdfphp_Annotationphp_Markupphp(php$annotationDictionaryphp)php;
-php php php php php}
-php}
+        return new Zend_Pdf_Annotation_Markup($annotationDictionary);
+    }
+}

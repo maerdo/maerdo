@@ -1,146 +1,146 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Alphaphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Alpha.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Locale
-php php*php/
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
+/**
+ * @see Zend_Locale
+ */
+require_once 'Zend/Locale.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Alphaphp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Whetherphp tophp allowphp whitephp spacephp charactersphp;php offphp byphp default
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php publicphp php$allowWhiteSpacephp;
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_Alpha implements Zend_Filter_Interface
+{
+    /**
+     * Whether to allow white space characters; off by default
+     *
+     * @var boolean
+     * @deprecated
+     */
+    public $allowWhiteSpace;
 
-php php php php php/php*php*
-php php php php php php*php Isphp PCREphp isphp compiledphp withphp UTFphp-php8php andphp Unicodephp support
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php*php/
-php php php php protectedphp staticphp php$php_unicodeEnabledphp;
+    /**
+     * Is PCRE is compiled with UTF-8 and Unicode support
+     *
+     * @var mixed
+     **/
+    protected static $_unicodeEnabled;
 
-php php php php php/php*php*
-php php php php php php*php Localephp inphp browserphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Localephp object
-php php php php php php*php/
-php php php php protectedphp php$php_localephp;
+    /**
+     * Locale in browser.
+     *
+     * @var Zend_Locale object
+     */
+    protected $_locale;
 
-php php php php php/php*php*
-php php php php php php*php Thephp Alphabetphp meansphp englishphp alphabetphp.
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_meansEnglishAlphabetphp;
+    /**
+     * The Alphabet means english alphabet.
+     *
+     * @var boolean
+     */
+    protected static $_meansEnglishAlphabet;
 
-php php php php php/php*php*
-php php php php php php*php Setsphp defaultphp optionphp valuesphp forphp thisphp instance
-php php php php php php*
-php php php php php php*php php@paramphp php booleanphp php$allowWhiteSpace
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$allowWhiteSpacephp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$allowWhiteSpacephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$allowWhiteSpacephp php=php php$allowWhiteSpacephp-php>toArrayphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$allowWhiteSpacephp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'allowwhitespacephp'php,php php$allowWhiteSpacephp)php)php php{
-php php php php php php php php php php php php php php php php php$allowWhiteSpacephp php=php php$allowWhiteSpacephp[php'allowwhitespacephp'php]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$allowWhiteSpacephp php=php falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Sets default option values for this instance
+     *
+     * @param  boolean $allowWhiteSpace
+     * @return void
+     */
+    public function __construct($allowWhiteSpace = false)
+    {
+        if ($allowWhiteSpace instanceof Zend_Config) {
+            $allowWhiteSpace = $allowWhiteSpace->toArray();
+        } else if (is_array($allowWhiteSpace)) {
+            if (array_key_exists('allowwhitespace', $allowWhiteSpace)) {
+                $allowWhiteSpace = $allowWhiteSpace['allowwhitespace'];
+            } else {
+                $allowWhiteSpace = false;
+            }
+        }
 
-php php php php php php php php php$thisphp-php>allowWhiteSpacephp php=php php(booleanphp)php php$allowWhiteSpacephp;
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_unicodeEnabledphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_unicodeEnabledphp php=php php(php@pregphp_matchphp(php'php/php\pLphp/uphp'php,php php'aphp'php)php)php php?php truephp php:php falsephp;
-php php php php php php php php php}
+        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        if (null === self::$_unicodeEnabled) {
+            self::$_unicodeEnabled = (@preg_match('/\pL/u', 'a')) ? true : false;
+        }
 
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_meansEnglishAlphabetphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_localephp php=php newphp Zendphp_Localephp(php'autophp'php)php;
-php php php php php php php php php php php php selfphp:php:php$php_meansEnglishAlphabetphp php=php inphp_arrayphp(php$thisphp-php>php_localephp-php>getLanguagephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php'japhp'php,php php'kophp'php,php php'zhphp'php)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        if (null === self::$_meansEnglishAlphabet) {
+            $this->_locale = new Zend_Locale('auto');
+            self::$_meansEnglishAlphabet = in_array($this->_locale->getLanguage(),
+                                                    array('ja', 'ko', 'zh')
+                                                    );
+        }
 
-php php php php php}
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp allowWhiteSpacephp option
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp getAllowWhiteSpacephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>allowWhiteSpacephp;
-php php php php php}
+    /**
+     * Returns the allowWhiteSpace option
+     *
+     * @return boolean
+     */
+    public function getAllowWhiteSpace()
+    {
+        return $this->allowWhiteSpace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp allowWhiteSpacephp option
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$allowWhiteSpace
-php php php php php php*php php@returnphp Zendphp_Filterphp_Alphaphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setAllowWhiteSpacephp(php$allowWhiteSpacephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>allowWhiteSpacephp php=php php(booleanphp)php php$allowWhiteSpacephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the allowWhiteSpace option
+     *
+     * @param boolean $allowWhiteSpace
+     * @return Zend_Filter_Alpha Provides a fluent interface
+     */
+    public function setAllowWhiteSpace($allowWhiteSpace)
+    {
+        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Returnsphp thephp stringphp php$valuephp,php removingphp allphp butphp alphabeticphp characters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$whiteSpacephp php=php php$thisphp-php>allowWhiteSpacephp php?php php'php\sphp'php php:php php'php'php;
-php php php php php php php php ifphp php(php!selfphp:php:php$php_unicodeEnabledphp)php php{
-php php php php php php php php php php php php php/php/php POSIXphp namedphp classesphp arephp notphp supportedphp,php usephp alternativephp aphp-zAphp-Zphp match
-php php php php php php php php php php php php php$patternphp php=php php'php/php[php^aphp-zAphp-Zphp'php php.php php$whiteSpacephp php.php php'php]php/php'php;
-php php php php php php php php php}php elsephp ifphp php(selfphp:php:php$php_meansEnglishAlphabetphp)php php{
-php php php php php php php php php php php php php/php/Thephp Alphabetphp meansphp englishphp alphabetphp.
-php php php php php php php php php php php php php$patternphp php=php php'php/php[php^aphp-zAphp-Zphp'php php php.php php$whiteSpacephp php.php php'php]php/uphp'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/Thephp Alphabetphp meansphp eachphp languagephp'sphp alphabetphp.
-php php php php php php php php php php php php php$patternphp php=php php'php/php[php^php\pphp{Lphp}php'php php.php php$whiteSpacephp php.php php'php]php/uphp'php;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Returns the string $value, removing all but alphabetic characters
+     *
+     * @param  string $value
+     * @return string
+     */
+    public function filter($value)
+    {
+        $whiteSpace = $this->allowWhiteSpace ? '\s' : '';
+        if (!self::$_unicodeEnabled) {
+            // POSIX named classes are not supported, use alternative a-zA-Z match
+            $pattern = '/[^a-zA-Z' . $whiteSpace . ']/';
+        } else if (self::$_meansEnglishAlphabet) {
+            //The Alphabet means english alphabet.
+            $pattern = '/[^a-zA-Z'  . $whiteSpace . ']/u';
+        } else {
+            //The Alphabet means each language's alphabet.
+            $pattern = '/[^\p{L}' . $whiteSpace . ']/u';
+        }
 
-php php php php php php php php returnphp pregphp_replacephp(php$patternphp,php php'php'php,php php(stringphp)php php$valuephp)php;
-php php php php php}
-php}
+        return preg_replace($pattern, '', (string) $value);
+    }
+}

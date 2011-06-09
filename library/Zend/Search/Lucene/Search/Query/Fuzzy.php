@@ -1,493 +1,493 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Fuzzyphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp.phpphp'php;
-
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Fuzzyphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php{
-php php php php php/php*php*php Defaultphp minimumphp similarityphp php*php/
-php php php php constphp DEFAULTphp_MINphp_SIMILARITYphp php=php php0php.php5php;
-
-php php php php php/php*php*
-php php php php php php*php Maximumphp numberphp ofphp matchedphp termsphp.
-php php php php php php*php Apachephp Lucenephp definesphp thisphp limitationphp asphp booleanphp queryphp maximumphp numberphp ofphp clausesphp:
-php php php php php php*php orgphp.apachephp.lucenephp.searchphp.BooleanQueryphp.getMaxClauseCountphp(php)
-php php php php php php*php/
-php php php php constphp MAXphp_CLAUSEphp_COUNTphp php=php php1php0php2php4php;
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp ofphp precalculatedphp maxphp distances
-php php php php php php*
-php php php php php php*php keysphp arephp integersphp representingphp aphp wordphp size
-php php php php php php*php/
-php php php php privatephp php$php_maxDistancesphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Basephp searchingphp termphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Indexphp_Term
-php php php php php php*php/
-php php php php privatephp php$php_termphp;
-
-php php php php php/php*php*
-php php php php php php*php Aphp valuephp betweenphp php0php andphp php1php tophp setphp thephp requiredphp similarity
-php php php php php php*php php betweenphp thephp queryphp termphp andphp thephp matchingphp termsphp.php Forphp examplephp,php forphp a
-php php php php php php*php php php_minimumSimilarityphp ofphp php0php.php5php aphp termphp ofphp thephp samephp length
-php php php php php php*php php asphp thephp queryphp termphp isphp consideredphp similarphp tophp thephp queryphp termphp ifphp thephp editphp distance
-php php php php php php*php php betweenphp bothphp termsphp isphp lessphp thanphp lengthphp(termphp)php*php0php.php5
-php php php php php php*
-php php php php php php*php php@varphp float
-php php php php php php*php/
-php php php php privatephp php$php_minimumSimilarityphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp lengthphp ofphp commonphp php(nonphp-fuzzyphp)php prefix
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_prefixLengthphp;
-
-php php php php php/php*php*
-php php php php php php*php Matchedphp termsphp.
-php php php php php php*
-php php php php php php*php Matchedphp termsphp listphp.
-php php php php php php*php Itphp'sphp filledphp duringphp thephp searchphp php(rewritephp operationphp)php andphp mayphp bephp usedphp forphp searchphp result
-php php php php php php*php postphp-processing
-php php php php php php*
-php php php php php php*php Arrayphp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp objects
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_matchesphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Matchedphp termsphp scores
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_scoresphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp ofphp thephp termphp keysphp.
-php php php php php php*php Usedphp tophp sortphp termsphp inphp alphabeticalphp orderphp ifphp termsphp havephp thephp samephp socres
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termKeysphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Defaultphp nonphp-fuzzyphp prefixphp length
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp staticphp php$php_defaultPrefixLengthphp php=php php3php;
-
-php php php php php/php*php*
-php php php php php php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Wildcardphp constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp floatphp php php php$minimumSimilarity
-php php php php php php*php php@paramphp integerphp php$prefixLength
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$minimumSimilarityphp php=php selfphp:php:DEFAULTphp_MINphp_SIMILARITYphp,php php$prefixLengthphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$minimumSimilarityphp <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'minimumSimilarityphp cannotphp bephp lessphp thanphp php0php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$minimumSimilarityphp php>php=php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'minimumSimilarityphp cannotphp bephp greaterphp thanphp orphp equalphp tophp php1php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$prefixLengthphp <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'prefixLengthphp cannotphp bephp lessphp thanphp php0php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_termphp php php php php php php php php php php php php php php=php php$termphp;
-php php php php php php php php php$thisphp-php>php_minimumSimilarityphp php=php php$minimumSimilarityphp;
-php php php php php php php php php$thisphp-php>php_prefixLengthphp php php php php php php=php php(php$prefixLengthphp php!php=php=php nullphp)php?php php$prefixLengthphp php:php selfphp:php:php$php_defaultPrefixLengthphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp defaultphp nonphp-fuzzyphp prefixphp length
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getDefaultPrefixLengthphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_defaultPrefixLengthphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp defaultphp nonphp-fuzzyphp prefixphp length
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$defaultPrefixLength
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setDefaultPrefixLengthphp(php$defaultPrefixLengthphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_defaultPrefixLengthphp php=php php$defaultPrefixLengthphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Calculatephp maximumphp distancephp forphp specifiedphp wordphp length
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$prefixLength
-php php php php php php*php php@paramphp integerphp php$termLength
-php php php php php php*php php@paramphp integerphp php$length
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php privatephp functionphp php_calculateMaxDistancephp(php$prefixLengthphp,php php$termLengthphp,php php$lengthphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_maxDistancesphp[php$lengthphp]php php=php php(intphp)php php(php(php1php php-php php$thisphp-php>php_minimumSimilarityphp)php*php(minphp(php$termLengthphp,php php$lengthphp)php php+php php$prefixLengthphp)php)php;
-php php php php php php php php returnphp php$thisphp-php>php_maxDistancesphp[php$lengthphp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_matchesphp php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_scoresphp php php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_termKeysphp php=php arrayphp(php)php;
-
-php php php php php php php php ifphp php(php$thisphp-php>php_termphp-php>fieldphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Searchphp throughphp allphp fields
-php php php php php php php php php php php php php$fieldsphp php=php php$indexphp-php>getFieldNamesphp(truephp php/php*php indexedphp fieldsphp listphp php*php/php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$fieldsphp php=php arrayphp(php$thisphp-php>php_termphp-php>fieldphp)php;
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
-php php php php php php php php php$prefixphp php php php php php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getPrefixphp(php$thisphp-php>php_termphp-php>textphp,php php$thisphp-php>php_prefixLengthphp)php;
-php php php php php php php php php$prefixByteLengthphp php=php strlenphp(php$prefixphp)php;
-php php php php php php php php php$prefixUtfphp8Lengthphp php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getLengthphp(php$prefixphp)php;
-
-php php php php php php php php php$termLengthphp php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getLengthphp(php$thisphp-php>php_termphp-php>textphp)php;
-
-php php php php php php php php php$termRestphp php php php php php php php php php=php substrphp(php$thisphp-php>php_termphp-php>textphp,php php$prefixByteLengthphp)php;
-php php php php php php php php php/php/php wephp calculatephp lengthphp ofphp thephp restphp inphp bytesphp sincephp levenshteinphp(php)php isphp notphp UTFphp-php8php compatible
-php php php php php php php php php$termRestLengthphp php php php=php strlenphp(php$termRestphp)php;
-
-php php php php php php php php php$scaleFactorphp php=php php1php/php(php1php php-php php$thisphp-php>php_minimumSimilarityphp)php;
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp.phpphp'php;
-php php php php php php php php php$maxTermsphp php=php Zendphp_Searchphp_Lucenephp:php:getTermsPerQueryLimitphp(php)php;
-php php php php php php php php foreachphp php(php$fieldsphp asphp php$fieldphp)php php{
-php php php php php php php php php php php php php$indexphp-php>resetTermsStreamphp(php)php;
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(php$prefixphp php!php=php php'php'php)php php{
-php php php php php php php php php php php php php php php php php$indexphp-php>skipTophp(newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$prefixphp,php php$fieldphp)php)php;
-
-php php php php php php php php php php php php php php php php whilephp php(php$indexphp-php>currentTermphp(php)php php!php=php=php nullphp php php php php php php php php php php&php&
-php php php php php php php php php php php php php php php php php php php php php php php php$indexphp-php>currentTermphp(php)php-php>fieldphp php=php=php php$fieldphp php php&php&
-php php php php php php php php php php php php php php php php php php php php php php php substrphp(php$indexphp-php>currentTermphp(php)php-php>textphp,php php0php,php php$prefixByteLengthphp)php php=php=php php$prefixphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Calculatephp similarity
-php php php php php php php php php php php php php php php php php php php php php$targetphp php=php substrphp(php$indexphp-php>currentTermphp(php)php-php>textphp,php php$prefixByteLengthphp)php;
-
-php php php php php php php php php php php php php php php php php php php php php$maxDistancephp php=php issetphp(php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php)php?
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_calculateMaxDistancephp(php$prefixUtfphp8Lengthphp,php php$termRestLengthphp,php strlenphp(php$targetphp)php)php;
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$termRestLengthphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php wephp donphp'tphp havephp anythingphp tophp comparephp.php php Thatphp meansphp ifphp wephp justphp add
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php thephp lettersphp forphp currentphp termphp wephp getphp thephp newphp word
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php(php(php$prefixUtfphp8Lengthphp php=php=php php0php)php?php php0php php:php php1php php-php strlenphp(php$targetphp)php/php$prefixUtfphp8Lengthphp)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strlenphp(php$targetphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php(php(php$prefixUtfphp8Lengthphp php=php=php php0php)php?php php0php php:php php1php php-php php$termRestLengthphp/php$prefixUtfphp8Lengthphp)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$maxDistancephp <php absphp(php$termRestLengthphp php-php strlenphp(php$targetphp)php)php)php{
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/justphp addingphp thephp charactersphp ofphp termphp tophp targetphp orphp vicephp-versaphp resultsphp inphp toophp manyphp edits
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/forphp examplephp php"prephp"php lengthphp isphp php3php andphp php"prefixesphp"php lengthphp isphp php8php.php php Wephp canphp seephp that
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/givenphp thisphp optimalphp circumstancephp,php thephp editphp distancephp cannotphp bephp lessphp thanphp php5php.
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/whichphp isphp php8php-php3php orphp morephp preciseslyphp absphp(php3php-php8php)php.
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/ifphp ourphp maximumphp editphp distancephp isphp php4php,php thenphp wephp canphp discardphp thisphp word
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/withoutphp lookingphp atphp itphp.
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php1php php-php levenshteinphp(php$termRestphp,php php$targetphp)php/php(php$prefixUtfphp8Lengthphp php+php minphp(php$termRestLengthphp,php strlenphp(php$targetphp)php)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$similarityphp php>php php$thisphp-php>php_minimumSimilarityphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_matchesphp[php]php php php=php php$indexphp-php>currentTermphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termKeysphp[php]php php=php php$indexphp-php>currentTermphp(php)php-php>keyphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_scoresphp[php]php php php php=php php(php$similarityphp php-php php$thisphp-php>php_minimumSimilarityphp)php*php$scaleFactorphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$maxTermsphp php!php=php php0php php php&php&php php countphp(php$thisphp-php>php_matchesphp)php php>php php$maxTermsphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Termsphp perphp queryphp limitphp isphp reachedphp.php'php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$indexphp-php>nextTermphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$indexphp-php>skipTophp(newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php'php'php,php php$fieldphp)php)php;
-
-php php php php php php php php php php php php php php php php whilephp php(php$indexphp-php>currentTermphp(php)php php!php=php=php nullphp php php&php&php php php$indexphp-php>currentTermphp(php)php-php>fieldphp php=php=php php$fieldphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Calculatephp similarity
-php php php php php php php php php php php php php php php php php php php php php$targetphp php=php php$indexphp-php>currentTermphp(php)php-php>textphp;
-
-php php php php php php php php php php php php php php php php php php php php php$maxDistancephp php=php issetphp(php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php)php?
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_calculateMaxDistancephp(php0php,php php$termRestLengthphp,php strlenphp(php$targetphp)php)php;
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$maxDistancephp <php absphp(php$termRestLengthphp php-php strlenphp(php$targetphp)php)php)php{
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/justphp addingphp thephp charactersphp ofphp termphp tophp targetphp orphp vicephp-versaphp resultsphp inphp toophp manyphp edits
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/forphp examplephp php"prephp"php lengthphp isphp php3php andphp php"prefixesphp"php lengthphp isphp php8php.php php Wephp canphp seephp that
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/givenphp thisphp optimalphp circumstancephp,php thephp editphp distancephp cannotphp bephp lessphp thanphp php5php.
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/whichphp isphp php8php-php3php orphp morephp preciseslyphp absphp(php3php-php8php)php.
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/ifphp ourphp maximumphp editphp distancephp isphp php4php,php thenphp wephp canphp discardphp thisphp word
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/withoutphp lookingphp atphp itphp.
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php1php php-php levenshteinphp(php$termRestphp,php php$targetphp)php/minphp(php$termRestLengthphp,php strlenphp(php$targetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$similarityphp php>php php$thisphp-php>php_minimumSimilarityphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_matchesphp[php]php php php=php php$indexphp-php>currentTermphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termKeysphp[php]php php=php php$indexphp-php>currentTermphp(php)php-php>keyphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_scoresphp[php]php php php php=php php(php$similarityphp php-php php$thisphp-php>php_minimumSimilarityphp)php*php$scaleFactorphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$maxTermsphp php!php=php php0php php php&php&php php countphp(php$thisphp-php>php_matchesphp)php php>php php$maxTermsphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Termsphp perphp queryphp limitphp isphp reachedphp.php'php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$indexphp-php>nextTermphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$indexphp-php>closeTermsStreamphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_matchesphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(countphp(php$thisphp-php>php_matchesphp)php php=php=php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(resetphp(php$thisphp-php>php_matchesphp)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Booleanphp.phpphp'php;
-php php php php php php php php php php php php php$rewrittenQueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Booleanphp(php)php;
-
-php php php php php php php php php php php php arrayphp_multisortphp(php$thisphp-php>php_scoresphp,php php php SORTphp_DESCphp,php SORTphp_NUMERICphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_termKeysphp,php SORTphp_ASCphp,php php SORTphp_STRINGphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_matchesphp)php;
-
-php php php php php php php php php php php php php$termCountphp php=php php0php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Termphp.phpphp'php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_matchesphp asphp php$idphp php=php>php php$matchedTermphp)php php{
-php php php php php php php php php php php php php php php php php$subqueryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp(php$matchedTermphp)php;
-php php php php php php php php php php php php php php php php php$subqueryphp-php>setBoostphp(php$thisphp-php>php_scoresphp[php$idphp]php)php;
-
-php php php php php php php php php php php php php php php php php$rewrittenQueryphp-php>addSubqueryphp(php$subqueryphp)php;
-
-php php php php php php php php php php php php php php php php php$termCountphp+php+php;
-php php php php php php php php php php php php php php php php ifphp php(php$termCountphp php>php=php selfphp:php:MAXphp_CLAUSEphp_COUNTphp)php php{
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$rewrittenQueryphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Optimizephp queryphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp optimizephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Fuzzyphp queryphp shouldphp notphp bephp directlyphp usedphp forphp searchphp.php Usephp php$queryphp-php>rewritephp(php$indexphp)php'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp queryphp terms
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getQueryTermsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_matchesphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Searchphp orphp rewritephp operationsphp havephp tophp bephp performedphp beforephp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_matchesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Constructsphp anphp appropriatephp Weightphp implementationphp forphp thisphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp createWeightphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Fuzzyphp queryphp shouldphp notphp bephp directlyphp usedphp forphp searchphp.php Usephp php$queryphp-php>rewritephp(php$indexphp)php'php)php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Executephp queryphp inphp contextphp ofphp indexphp reader
-php php php php php php*php Itphp alsophp initializesphp necessaryphp internalphp structures
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp executephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Fuzzyphp queryphp shouldphp notphp bephp directlyphp usedphp forphp searchphp.php Usephp php$queryphp-php>rewritephp(php$indexphp)php'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp idsphp likelyphp matchingphp thephp query
-php php php php php php*
-php php php php php php*php Itphp'sphp anphp arrayphp withphp documentphp idsphp asphp keysphp php(performancephp considerationsphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp matchedDocsphp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Fuzzyphp queryphp shouldphp notphp bephp directlyphp usedphp forphp searchphp.php Usephp php$queryphp-php>rewritephp(php$indexphp)php'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Scorephp specifiedphp document
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp scorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Fuzzyphp queryphp shouldphp notphp bephp directlyphp usedphp forphp searchphp.php Usephp php$queryphp-php>rewritephp(php$indexphp)php'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Queryphp specificphp matchesphp highlighting
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
-php php php php php{
-php php php php php php php php php$wordsphp php=php arrayphp(php)php;
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
-php php php php php php php php php$prefixphp php php php php php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getPrefixphp(php$thisphp-php>php_termphp-php>textphp,php php$thisphp-php>php_prefixLengthphp)php;
-php php php php php php php php php$prefixByteLengthphp php=php strlenphp(php$prefixphp)php;
-php php php php php php php php php$prefixUtfphp8Lengthphp php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getLengthphp(php$prefixphp)php;
-
-php php php php php php php php php$termLengthphp php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getLengthphp(php$thisphp-php>php_termphp-php>textphp)php;
-
-php php php php php php php php php$termRestphp php php php php php php php php php=php substrphp(php$thisphp-php>php_termphp-php>textphp,php php$prefixByteLengthphp)php;
-php php php php php php php php php/php/php wephp calculatephp lengthphp ofphp thephp restphp inphp bytesphp sincephp levenshteinphp(php)php isphp notphp UTFphp-php8php compatible
-php php php php php php php php php$termRestLengthphp php php php=php strlenphp(php$termRestphp)php;
-
-php php php php php php php php php$scaleFactorphp php=php php1php/php(php1php php-php php$thisphp-php>php_minimumSimilarityphp)php;
-
-php php php php php php php php php$docBodyphp php=php php$highlighterphp-php>getDocumentphp(php)php-php>getFieldUtfphp8Valuephp(php'bodyphp'php)php;
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
-php php php php php php php php php$tokensphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php-php>tokenizephp(php$docBodyphp,php php'UTFphp-php8php'php)php;
-php php php php php php php php foreachphp php(php$tokensphp asphp php$tokenphp)php php{
-php php php php php php php php php php php php php$termTextphp php=php php$tokenphp-php>getTermTextphp(php)php;
-
-php php php php php php php php php php php php ifphp php(substrphp(php$termTextphp,php php0php,php php$prefixByteLengthphp)php php=php=php php$prefixphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Calculatephp similarity
-php php php php php php php php php php php php php php php php php$targetphp php=php substrphp(php$termTextphp,php php$prefixByteLengthphp)php;
-
-php php php php php php php php php php php php php php php php php$maxDistancephp php=php issetphp(php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php)php?
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_maxDistancesphp[strlenphp(php$targetphp)php]php php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_calculateMaxDistancephp(php$prefixUtfphp8Lengthphp,php php$termRestLengthphp,php strlenphp(php$targetphp)php)php;
-
-php php php php php php php php php php php php php php php php ifphp php(php$termRestLengthphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php wephp donphp'tphp havephp anythingphp tophp comparephp.php php Thatphp meansphp ifphp wephp justphp add
-php php php php php php php php php php php php php php php php php php php php php/php/php thephp lettersphp forphp currentphp termphp wephp getphp thephp newphp word
-php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php(php(php$prefixUtfphp8Lengthphp php=php=php php0php)php?php php0php php:php php1php php-php strlenphp(php$targetphp)php/php$prefixUtfphp8Lengthphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(strlenphp(php$targetphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php(php(php$prefixUtfphp8Lengthphp php=php=php php0php)php?php php0php php:php php1php php-php php$termRestLengthphp/php$prefixUtfphp8Lengthphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$maxDistancephp <php absphp(php$termRestLengthphp php-php strlenphp(php$targetphp)php)php)php{
-php php php php php php php php php php php php php php php php php php php php php/php/justphp addingphp thephp charactersphp ofphp termphp tophp targetphp orphp vicephp-versaphp resultsphp inphp toophp manyphp edits
-php php php php php php php php php php php php php php php php php php php php php/php/forphp examplephp php"prephp"php lengthphp isphp php3php andphp php"prefixesphp"php lengthphp isphp php8php.php php Wephp canphp seephp that
-php php php php php php php php php php php php php php php php php php php php php/php/givenphp thisphp optimalphp circumstancephp,php thephp editphp distancephp cannotphp bephp lessphp thanphp php5php.
-php php php php php php php php php php php php php php php php php php php php php/php/whichphp isphp php8php-php3php orphp morephp preciseslyphp absphp(php3php-php8php)php.
-php php php php php php php php php php php php php php php php php php php php php/php/ifphp ourphp maximumphp editphp distancephp isphp php4php,php thenphp wephp canphp discardphp thisphp word
-php php php php php php php php php php php php php php php php php php php php php/php/withoutphp lookingphp atphp itphp.
-php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php0php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$similarityphp php=php php1php php-php levenshteinphp(php$termRestphp,php php$targetphp)php/php(php$prefixUtfphp8Lengthphp php+php minphp(php$termRestLengthphp,php strlenphp(php$targetphp)php)php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(php$similarityphp php>php php$thisphp-php>php_minimumSimilarityphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$wordsphp[php]php php=php php$termTextphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$highlighterphp-php>highlightphp(php$wordsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Printphp aphp query
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
-php php php php php php php php returnphp php(php(php$thisphp-php>php_termphp-php>fieldphp php=php=php=php nullphp)php?php php'php'php php:php php$thisphp-php>php_termphp-php>fieldphp php.php php'php:php'php)
-php php php php php php php php php php php php php php.php php$thisphp-php>php_termphp-php>textphp php.php php'php~php'
-php php php php php php php php php php php php php php.php php(php(php$thisphp-php>php_minimumSimilarityphp php!php=php selfphp:php:DEFAULTphp_MINphp_SIMILARITYphp)php?php roundphp(php$thisphp-php>php_minimumSimilarityphp,php php4php)php php:php php'php'php)
-php php php php php php php php php php php php php php.php php(php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php?php php'php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php php:php php'php'php)php;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Fuzzy.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+
+
+/** Zend_Search_Lucene_Search_Query */
+require_once 'Zend/Search/Lucene/Search/Query.php';
+
+
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Query
+{
+    /** Default minimum similarity */
+    const DEFAULT_MIN_SIMILARITY = 0.5;
+
+    /**
+     * Maximum number of matched terms.
+     * Apache Lucene defines this limitation as boolean query maximum number of clauses:
+     * org.apache.lucene.search.BooleanQuery.getMaxClauseCount()
+     */
+    const MAX_CLAUSE_COUNT = 1024;
+
+    /**
+     * Array of precalculated max distances
+     *
+     * keys are integers representing a word size
+     */
+    private $_maxDistances = array();
+
+    /**
+     * Base searching term.
+     *
+     * @var Zend_Search_Lucene_Index_Term
+     */
+    private $_term;
+
+    /**
+     * A value between 0 and 1 to set the required similarity
+     *  between the query term and the matching terms. For example, for a
+     *  _minimumSimilarity of 0.5 a term of the same length
+     *  as the query term is considered similar to the query term if the edit distance
+     *  between both terms is less than length(term)*0.5
+     *
+     * @var float
+     */
+    private $_minimumSimilarity;
+
+    /**
+     * The length of common (non-fuzzy) prefix
+     *
+     * @var integer
+     */
+    private $_prefixLength;
+
+    /**
+     * Matched terms.
+     *
+     * Matched terms list.
+     * It's filled during the search (rewrite operation) and may be used for search result
+     * post-processing
+     *
+     * Array of Zend_Search_Lucene_Index_Term objects
+     *
+     * @var array
+     */
+    private $_matches = null;
+
+    /**
+     * Matched terms scores
+     *
+     * @var array
+     */
+    private $_scores = null;
+
+    /**
+     * Array of the term keys.
+     * Used to sort terms in alphabetical order if terms have the same socres
+     *
+     * @var array
+     */
+    private $_termKeys = null;
+
+    /**
+     * Default non-fuzzy prefix length
+     *
+     * @var integer
+     */
+    private static $_defaultPrefixLength = 3;
+
+    /**
+     * Zend_Search_Lucene_Search_Query_Wildcard constructor.
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @param float   $minimumSimilarity
+     * @param integer $prefixLength
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function __construct(Zend_Search_Lucene_Index_Term $term, $minimumSimilarity = self::DEFAULT_MIN_SIMILARITY, $prefixLength = null)
+    {
+        if ($minimumSimilarity < 0) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('minimumSimilarity cannot be less than 0');
+        }
+        if ($minimumSimilarity >= 1) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('minimumSimilarity cannot be greater than or equal to 1');
+        }
+        if ($prefixLength < 0) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('prefixLength cannot be less than 0');
+        }
+
+        $this->_term              = $term;
+        $this->_minimumSimilarity = $minimumSimilarity;
+        $this->_prefixLength      = ($prefixLength !== null)? $prefixLength : self::$_defaultPrefixLength;
+    }
+
+    /**
+     * Get default non-fuzzy prefix length
+     *
+     * @return integer
+     */
+    public static function getDefaultPrefixLength()
+    {
+        return self::$_defaultPrefixLength;
+    }
+
+    /**
+     * Set default non-fuzzy prefix length
+     *
+     * @param integer $defaultPrefixLength
+     */
+    public static function setDefaultPrefixLength($defaultPrefixLength)
+    {
+        self::$_defaultPrefixLength = $defaultPrefixLength;
+    }
+
+    /**
+     * Calculate maximum distance for specified word length
+     *
+     * @param integer $prefixLength
+     * @param integer $termLength
+     * @param integer $length
+     * @return integer
+     */
+    private function _calculateMaxDistance($prefixLength, $termLength, $length)
+    {
+        $this->_maxDistances[$length] = (int) ((1 - $this->_minimumSimilarity)*(min($termLength, $length) + $prefixLength));
+        return $this->_maxDistances[$length];
+    }
+
+    /**
+     * Re-write query into primitive queries in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function rewrite(Zend_Search_Lucene_Interface $index)
+    {
+        $this->_matches  = array();
+        $this->_scores   = array();
+        $this->_termKeys = array();
+
+        if ($this->_term->field === null) {
+            // Search through all fields
+            $fields = $index->getFieldNames(true /* indexed fields list */);
+        } else {
+            $fields = array($this->_term->field);
+        }
+
+        require_once 'Zend/Search/Lucene/Index/Term.php';
+        $prefix           = Zend_Search_Lucene_Index_Term::getPrefix($this->_term->text, $this->_prefixLength);
+        $prefixByteLength = strlen($prefix);
+        $prefixUtf8Length = Zend_Search_Lucene_Index_Term::getLength($prefix);
+
+        $termLength       = Zend_Search_Lucene_Index_Term::getLength($this->_term->text);
+
+        $termRest         = substr($this->_term->text, $prefixByteLength);
+        // we calculate length of the rest in bytes since levenshtein() is not UTF-8 compatible
+        $termRestLength   = strlen($termRest);
+
+        $scaleFactor = 1/(1 - $this->_minimumSimilarity);
+
+        require_once 'Zend/Search/Lucene.php';
+        $maxTerms = Zend_Search_Lucene::getTermsPerQueryLimit();
+        foreach ($fields as $field) {
+            $index->resetTermsStream();
+
+            require_once 'Zend/Search/Lucene/Index/Term.php';
+            if ($prefix != '') {
+                $index->skipTo(new Zend_Search_Lucene_Index_Term($prefix, $field));
+
+                while ($index->currentTerm() !== null          &&
+                       $index->currentTerm()->field == $field  &&
+                       substr($index->currentTerm()->text, 0, $prefixByteLength) == $prefix) {
+                    // Calculate similarity
+                    $target = substr($index->currentTerm()->text, $prefixByteLength);
+
+                    $maxDistance = isset($this->_maxDistances[strlen($target)])?
+                                       $this->_maxDistances[strlen($target)] :
+                                       $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen($target));
+
+                    if ($termRestLength == 0) {
+                        // we don't have anything to compare.  That means if we just add
+                        // the letters for current term we get the new word
+                        $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen($target)/$prefixUtf8Length);
+                    } else if (strlen($target) == 0) {
+                        $similarity = (($prefixUtf8Length == 0)? 0 : 1 - $termRestLength/$prefixUtf8Length);
+                    } else if ($maxDistance < abs($termRestLength - strlen($target))){
+                        //just adding the characters of term to target or vice-versa results in too many edits
+                        //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
+                        //given this optimal circumstance, the edit distance cannot be less than 5.
+                        //which is 8-3 or more precisesly abs(3-8).
+                        //if our maximum edit distance is 4, then we can discard this word
+                        //without looking at it.
+                        $similarity = 0;
+                    } else {
+                        $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen($target)));
+                    }
+
+                    if ($similarity > $this->_minimumSimilarity) {
+                        $this->_matches[]  = $index->currentTerm();
+                        $this->_termKeys[] = $index->currentTerm()->key();
+                        $this->_scores[]   = ($similarity - $this->_minimumSimilarity)*$scaleFactor;
+
+                        if ($maxTerms != 0  &&  count($this->_matches) > $maxTerms) {
+                            require_once 'Zend/Search/Lucene/Exception.php';
+                            throw new Zend_Search_Lucene_Exception('Terms per query limit is reached.');
+                        }
+                    }
+
+                    $index->nextTerm();
+                }
+            } else {
+                $index->skipTo(new Zend_Search_Lucene_Index_Term('', $field));
+
+                while ($index->currentTerm() !== null  &&  $index->currentTerm()->field == $field) {
+                    // Calculate similarity
+                    $target = $index->currentTerm()->text;
+
+                    $maxDistance = isset($this->_maxDistances[strlen($target)])?
+                                       $this->_maxDistances[strlen($target)] :
+                                       $this->_calculateMaxDistance(0, $termRestLength, strlen($target));
+
+                    if ($maxDistance < abs($termRestLength - strlen($target))){
+                        //just adding the characters of term to target or vice-versa results in too many edits
+                        //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
+                        //given this optimal circumstance, the edit distance cannot be less than 5.
+                        //which is 8-3 or more precisesly abs(3-8).
+                        //if our maximum edit distance is 4, then we can discard this word
+                        //without looking at it.
+                        $similarity = 0;
+                    } else {
+                        $similarity = 1 - levenshtein($termRest, $target)/min($termRestLength, strlen($target));
+                    }
+
+                    if ($similarity > $this->_minimumSimilarity) {
+                        $this->_matches[]  = $index->currentTerm();
+                        $this->_termKeys[] = $index->currentTerm()->key();
+                        $this->_scores[]   = ($similarity - $this->_minimumSimilarity)*$scaleFactor;
+
+                        if ($maxTerms != 0  &&  count($this->_matches) > $maxTerms) {
+                            require_once 'Zend/Search/Lucene/Exception.php';
+                            throw new Zend_Search_Lucene_Exception('Terms per query limit is reached.');
+                        }
+                    }
+
+                    $index->nextTerm();
+                }
+            }
+
+            $index->closeTermsStream();
+        }
+
+        if (count($this->_matches) == 0) {
+            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+            return new Zend_Search_Lucene_Search_Query_Empty();
+        } else if (count($this->_matches) == 1) {
+            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
+            return new Zend_Search_Lucene_Search_Query_Term(reset($this->_matches));
+        } else {
+            require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
+            $rewrittenQuery = new Zend_Search_Lucene_Search_Query_Boolean();
+
+            array_multisort($this->_scores,   SORT_DESC, SORT_NUMERIC,
+                            $this->_termKeys, SORT_ASC,  SORT_STRING,
+                            $this->_matches);
+
+            $termCount = 0;
+            require_once 'Zend/Search/Lucene/Search/Query/Term.php';
+            foreach ($this->_matches as $id => $matchedTerm) {
+                $subquery = new Zend_Search_Lucene_Search_Query_Term($matchedTerm);
+                $subquery->setBoost($this->_scores[$id]);
+
+                $rewrittenQuery->addSubquery($subquery);
+
+                $termCount++;
+                if ($termCount >= self::MAX_CLAUSE_COUNT) {
+                    break;
+                }
+            }
+
+            return $rewrittenQuery;
+        }
+    }
+
+    /**
+     * Optimize query in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function optimize(Zend_Search_Lucene_Interface $index)
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        throw new Zend_Search_Lucene_Exception('Fuzzy query should not be directly used for search. Use $query->rewrite($index)');
+    }
+
+    /**
+     * Return query terms
+     *
+     * @return array
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function getQueryTerms()
+    {
+        if ($this->_matches === null) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Search or rewrite operations have to be performed before.');
+        }
+
+        return $this->_matches;
+    }
+
+    /**
+     * Constructs an appropriate Weight implementation for this query.
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return Zend_Search_Lucene_Search_Weight
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function createWeight(Zend_Search_Lucene_Interface $reader)
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        throw new Zend_Search_Lucene_Exception('Fuzzy query should not be directly used for search. Use $query->rewrite($index)');
+    }
+
+
+    /**
+     * Execute query in context of index reader
+     * It also initializes necessary internal structures
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        throw new Zend_Search_Lucene_Exception('Fuzzy query should not be directly used for search. Use $query->rewrite($index)');
+    }
+
+    /**
+     * Get document ids likely matching the query
+     *
+     * It's an array with document ids as keys (performance considerations)
+     *
+     * @return array
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function matchedDocs()
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        throw new Zend_Search_Lucene_Exception('Fuzzy query should not be directly used for search. Use $query->rewrite($index)');
+    }
+
+    /**
+     * Score specified document
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function score($docId, Zend_Search_Lucene_Interface $reader)
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        throw new Zend_Search_Lucene_Exception('Fuzzy query should not be directly used for search. Use $query->rewrite($index)');
+    }
+
+    /**
+     * Query specific matches highlighting
+     *
+     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
+     */
+    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
+    {
+        $words = array();
+
+        require_once 'Zend/Search/Lucene/Index/Term.php';
+        $prefix           = Zend_Search_Lucene_Index_Term::getPrefix($this->_term->text, $this->_prefixLength);
+        $prefixByteLength = strlen($prefix);
+        $prefixUtf8Length = Zend_Search_Lucene_Index_Term::getLength($prefix);
+
+        $termLength       = Zend_Search_Lucene_Index_Term::getLength($this->_term->text);
+
+        $termRest         = substr($this->_term->text, $prefixByteLength);
+        // we calculate length of the rest in bytes since levenshtein() is not UTF-8 compatible
+        $termRestLength   = strlen($termRest);
+
+        $scaleFactor = 1/(1 - $this->_minimumSimilarity);
+
+        $docBody = $highlighter->getDocument()->getFieldUtf8Value('body');
+        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
+        $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($docBody, 'UTF-8');
+        foreach ($tokens as $token) {
+            $termText = $token->getTermText();
+
+            if (substr($termText, 0, $prefixByteLength) == $prefix) {
+                // Calculate similarity
+                $target = substr($termText, $prefixByteLength);
+
+                $maxDistance = isset($this->_maxDistances[strlen($target)])?
+                                   $this->_maxDistances[strlen($target)] :
+                                   $this->_calculateMaxDistance($prefixUtf8Length, $termRestLength, strlen($target));
+
+                if ($termRestLength == 0) {
+                    // we don't have anything to compare.  That means if we just add
+                    // the letters for current term we get the new word
+                    $similarity = (($prefixUtf8Length == 0)? 0 : 1 - strlen($target)/$prefixUtf8Length);
+                } else if (strlen($target) == 0) {
+                    $similarity = (($prefixUtf8Length == 0)? 0 : 1 - $termRestLength/$prefixUtf8Length);
+                } else if ($maxDistance < abs($termRestLength - strlen($target))){
+                    //just adding the characters of term to target or vice-versa results in too many edits
+                    //for example "pre" length is 3 and "prefixes" length is 8.  We can see that
+                    //given this optimal circumstance, the edit distance cannot be less than 5.
+                    //which is 8-3 or more precisesly abs(3-8).
+                    //if our maximum edit distance is 4, then we can discard this word
+                    //without looking at it.
+                    $similarity = 0;
+                } else {
+                    $similarity = 1 - levenshtein($termRest, $target)/($prefixUtf8Length + min($termRestLength, strlen($target)));
+                }
+
+                if ($similarity > $this->_minimumSimilarity) {
+                    $words[] = $termText;
+                }
+            }
+        }
+
+        $highlighter->highlight($words);
+    }
+
+    /**
+     * Print a query
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        // It's used only for query visualisation, so we don't care about characters escaping
+        return (($this->_term->field === null)? '' : $this->_term->field . ':')
+             . $this->_term->text . '~'
+             . (($this->_minimumSimilarity != self::DEFAULT_MIN_SIMILARITY)? round($this->_minimumSimilarity, 4) : '')
+             . (($this->getBoost() != 1)? '^' . round($this->getBoost(), 4) : '');
+    }
+}
 

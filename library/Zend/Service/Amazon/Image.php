@@ -1,69 +1,69 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Amazon
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Imagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Amazon
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Image.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Amazon
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Amazonphp_Image
-php{
-php php php php php/php*php*
-php php php php php php*php Imagephp URL
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Uri
-php php php php php php*php/
-php php php php publicphp php$Urlphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Amazon
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Amazon_Image
+{
+    /**
+     * Image URL
+     *
+     * @var Zend_Uri
+     */
+    public $Url;
 
-php php php php php/php*php*
-php php php php php php*php Imagephp heightphp inphp pixels
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php publicphp php$Heightphp;
+    /**
+     * Image height in pixels
+     *
+     * @var int
+     */
+    public $Height;
 
-php php php php php/php*php*
-php php php php php php*php Imagephp widthphp inphp pixels
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php publicphp php$Widthphp;
+    /**
+     * Image width in pixels
+     *
+     * @var int
+     */
+    public $Width;
 
-php php php php php/php*php*
-php php php php php php*php Assignsphp valuesphp tophp propertiesphp relevantphp tophp Image
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php$dom
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$domphp)
-php php php php php{
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$domphp-php>ownerDocumentphp)php;
-php php php php php php php php php$xpathphp-php>registerNamespacephp(php'azphp'php,php php'httpphp:php/php/webservicesphp.amazonphp.comphp/AWSECommerceServicephp/php2php0php0php5php-php1php0php-php0php5php'php)php;
-php php php php php php php php php$thisphp-php>Urlphp php=php Zendphp_Uriphp:php:factoryphp(php$xpathphp-php>queryphp(php'php.php/azphp:URLphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp)php;
-php php php php php php php php php$thisphp-php>Heightphp php=php php(intphp)php php$xpathphp-php>queryphp(php'php.php/azphp:Heightphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
-php php php php php php php php php$thisphp-php>Widthphp php=php php(intphp)php php$xpathphp-php>queryphp(php'php.php/azphp:Widthphp/textphp(php)php'php,php php$domphp)php-php>itemphp(php0php)php-php>dataphp;
-php php php php php}
-php}
+    /**
+     * Assigns values to properties relevant to Image
+     *
+     * @param  DOMElement $dom
+     * @return void
+     */
+    public function __construct(DOMElement $dom)
+    {
+        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath->registerNamespace('az', 'http://webservices.amazon.com/AWSECommerceService/2005-10-05');
+        $this->Url = Zend_Uri::factory($xpath->query('./az:URL/text()', $dom)->item(0)->data);
+        $this->Height = (int) $xpath->query('./az:Height/text()', $dom)->item(0)->data;
+        $this->Width = (int) $xpath->query('./az:Width/text()', $dom)->item(0)->data;
+    }
+}

@@ -1,60 +1,60 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php HtmlFlashphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: HtmlFlash.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Viewphp_Helperphp_HtmlObject
-php php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/HtmlObjectphp.phpphp'php;
+/**
+ * @see Zend_View_Helper_HtmlObject
+ */
+require_once 'Zend/View/Helper/HtmlObject.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Viewphp_Helperphp_HtmlFlashphp extendsphp Zendphp_Viewphp_Helperphp_HtmlObject
-php{
-php php php php php/php*php*
-php php php php php php*php Defaultphp filephp typephp forphp aphp flashphp applet
-php php php php php php*
-php php php php php php*php/
-php php php php constphp TYPEphp php=php php'applicationphp/xphp-shockwavephp-flashphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_View_Helper_HtmlFlash extends Zend_View_Helper_HtmlObject
+{
+    /**
+     * Default file type for a flash applet
+     *
+     */
+    const TYPE = 'application/x-shockwave-flash';
 
-php php php php php/php*php*
-php php php php php php*php Outputphp aphp flashphp moviephp objectphp tag
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$dataphp Thephp flashphp file
-php php php php php php*php php@paramphp arrayphp php php$attribsphp Attribsphp forphp thephp objectphp tag
-php php php php php php*php php@paramphp arrayphp php php$paramsphp Paramsphp forphp inphp thephp objectphp tag
-php php php php php php*php php@paramphp stringphp php$contentphp Alternativephp content
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp htmlFlashphp(php$dataphp,php arrayphp php$attribsphp php=php arrayphp(php)php,php arrayphp php$paramsphp php=php arrayphp(php)php,php php$contentphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php Params
-php php php php php php php php php$paramsphp php=php arrayphp_mergephp(arrayphp(php'moviephp'php php php php=php>php php$dataphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'qualityphp'php php=php>php php'highphp'php)php,php php$paramsphp)php;
+    /**
+     * Output a flash movie object tag
+     *
+     * @param string $data The flash file
+     * @param array  $attribs Attribs for the object tag
+     * @param array  $params Params for in the object tag
+     * @param string $content Alternative content
+     * @return string
+     */
+    public function htmlFlash($data, array $attribs = array(), array $params = array(), $content = null)
+    {
+        // Params
+        $params = array_merge(array('movie'   => $data,
+                                    'quality' => 'high'), $params);
 
-php php php php php php php php returnphp php$thisphp-php>htmlObjectphp(php$dataphp,php selfphp:php:TYPEphp,php php$attribsphp,php php$paramsphp,php php$contentphp)php;
-php php php php php}
-php}
+        return $this->htmlObject($data, self::TYPE, $attribs, $params, $content);
+    }
+}

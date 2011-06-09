@@ -1,117 +1,117 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Measure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Timephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Measure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Time.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Implementphp neededphp classes
-php php*php/
-requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/**
+ * Implement needed classes
+ */
+require_once 'Zend/Measure/Abstract.php';
+require_once 'Zend/Locale.php';
 
-php/php*php*
-php php*php Classphp forphp handlingphp timephp conversions
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Measure
-php php*php php@subpackagephp Zendphp_Measurephp_Time
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Measurephp_Timephp extendsphp Zendphp_Measurephp_Abstract
-php{
-php php php php constphp STANDARDphp php=php php'SECONDphp'php;
+/**
+ * Class for handling time conversions
+ *
+ * @category   Zend
+ * @package    Zend_Measure
+ * @subpackage Zend_Measure_Time
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Measure_Time extends Zend_Measure_Abstract
+{
+    const STANDARD = 'SECOND';
 
-php php php php constphp ANOMALISTICphp_YEARphp php php=php php'ANOMALISTICphp_YEARphp'php;
-php php php php constphp ATTOSECONDphp php php php php php php php php=php php'ATTOSECONDphp'php;
-php php php php constphp CENTURYphp php php php php php php php php php php php=php php'CENTURYphp'php;
-php php php php constphp DAYphp php php php php php php php php php php php php php php php=php php'DAYphp'php;
-php php php php constphp DECADEphp php php php php php php php php php php php php=php php'DECADEphp'php;
-php php php php constphp DRACONICphp_YEARphp php php php php php=php php'DRACONTICphp_YEARphp'php;
-php php php php constphp EXASECONDphp php php php php php php php php php=php php'EXASECONDphp'php;
-php php php php constphp FEMTOSECONDphp php php php php php php php=php php'FEMTOSECONDphp'php;
-php php php php constphp FORTNIGHTphp php php php php php php php php php=php php'FORTNIGHTphp'php;
-php php php php constphp GAUSSIANphp_YEARphp php php php php php=php php'GAUSSIANphp_YEARphp'php;
-php php php php constphp GIGASECONDphp php php php php php php php php=php php'GIGASECONDphp'php;
-php php php php constphp GREGORIANphp_YEARphp php php php php=php php'GREGORIANphp_YEARphp'php;
-php php php php constphp HOURphp php php php php php php php php php php php php php php=php php'HOURphp'php;
-php php php php constphp JULIANphp_YEARphp php php php php php php php=php php'JULIANphp_YEARphp'php;
-php php php php constphp KILOSECONDphp php php php php php php php php=php php'KILOSECONDphp'php;
-php php php php constphp LEAPYEARphp php php php php php php php php php php=php php'LEAPYEARphp'php;
-php php php php constphp MEGASECONDphp php php php php php php php php=php php'MEGASECONDphp'php;
-php php php php constphp MICROSECONDphp php php php php php php php=php php'MICROSECONDphp'php;
-php php php php constphp MILLENIUMphp php php php php php php php php php=php php'MILLENIUMphp'php;
-php php php php constphp MILLISECONDphp php php php php php php php=php php'MILLISECONDphp'php;
-php php php php constphp MINUTEphp php php php php php php php php php php php php=php php'MINUTEphp'php;
-php php php php constphp MONTHphp php php php php php php php php php php php php php=php php'MONTHphp'php;
-php php php php constphp NANOSECONDphp php php php php php php php php=php php'NANOSECONDphp'php;
-php php php php constphp PETASECONDphp php php php php php php php php=php php'PETASECONDphp'php;
-php php php php constphp PICOSECONDphp php php php php php php php php=php php'PICOSECONDphp'php;
-php php php php constphp QUARTERphp php php php php php php php php php php php=php php'QUARTERphp'php;
-php php php php constphp SECONDphp php php php php php php php php php php php php=php php'SECONDphp'php;
-php php php php constphp SHAKEphp php php php php php php php php php php php php php=php php'SHAKEphp'php;
-php php php php constphp SIDEREALphp_YEARphp php php php php php=php php'SYNODICphp_MONTHphp'php;
-php php php php constphp TERASECONDphp php php php php php php php php=php php'TERASECONDphp'php;
-php php php php constphp TROPICALphp_YEARphp php php php php php=php php'TROPICphp_YEARphp'php;
-php php php php constphp WEEKphp php php php php php php php php php php php php php php=php php'WEEKphp'php;
-php php php php constphp YEARphp php php php php php php php php php php php php php php=php php'YEARphp'php;
+    const ANOMALISTIC_YEAR  = 'ANOMALISTIC_YEAR';
+    const ATTOSECOND        = 'ATTOSECOND';
+    const CENTURY           = 'CENTURY';
+    const DAY               = 'DAY';
+    const DECADE            = 'DECADE';
+    const DRACONIC_YEAR     = 'DRACONTIC_YEAR';
+    const EXASECOND         = 'EXASECOND';
+    const FEMTOSECOND       = 'FEMTOSECOND';
+    const FORTNIGHT         = 'FORTNIGHT';
+    const GAUSSIAN_YEAR     = 'GAUSSIAN_YEAR';
+    const GIGASECOND        = 'GIGASECOND';
+    const GREGORIAN_YEAR    = 'GREGORIAN_YEAR';
+    const HOUR              = 'HOUR';
+    const JULIAN_YEAR       = 'JULIAN_YEAR';
+    const KILOSECOND        = 'KILOSECOND';
+    const LEAPYEAR          = 'LEAPYEAR';
+    const MEGASECOND        = 'MEGASECOND';
+    const MICROSECOND       = 'MICROSECOND';
+    const MILLENIUM         = 'MILLENIUM';
+    const MILLISECOND       = 'MILLISECOND';
+    const MINUTE            = 'MINUTE';
+    const MONTH             = 'MONTH';
+    const NANOSECOND        = 'NANOSECOND';
+    const PETASECOND        = 'PETASECOND';
+    const PICOSECOND        = 'PICOSECOND';
+    const QUARTER           = 'QUARTER';
+    const SECOND            = 'SECOND';
+    const SHAKE             = 'SHAKE';
+    const SIDEREAL_YEAR     = 'SYNODIC_MONTH';
+    const TERASECOND        = 'TERASECOND';
+    const TROPICAL_YEAR     = 'TROPIC_YEAR';
+    const WEEK              = 'WEEK';
+    const YEAR              = 'YEAR';
 
-php php php php php/php*php*
-php php php php php php*php Calculationsphp forphp allphp timephp units
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_unitsphp php=php arrayphp(
-php php php php php php php php php'ANOMALISTICphp_YEARphp'php php php=php>php arrayphp(php'php3php1php5php5php8php4php3php2php'php,php php'anomalisticphp yearphp'php)php,
-php php php php php php php php php'ATTOSECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php8php'php,php php'asphp'php)php,
-php php php php php php php php php'CENTURYphp'php php php php php php php php php php php php=php>php arrayphp(php'php3php1php5php3php6php0php0php0php0php0php'php,php php'centuryphp'php)php,
-php php php php php php php php php'DAYphp'php php php php php php php php php php php php php php php php=php>php arrayphp(php'php8php6php4php0php0php'php,php php'dayphp'php)php,
-php php php php php php php php php'DECADEphp'php php php php php php php php php php php php php=php>php arrayphp(php'php3php1php5php3php6php0php0php0php0php'php,php php'decadephp'php)php,
-php php php php php php php php php'DRACONICphp_YEARphp'php php php php php php=php>php arrayphp(php'php2php9php9php4php7php9php7php4php'php,php php'draconicphp yearphp'php)php,
-php php php php php php php php php'EXASECONDphp'php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php8php'php,php php'Esphp'php)php,
-php php php php php php php php php'FEMTOSECONDphp'php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php5php'php,php php'fsphp'php)php,
-php php php php php php php php php'FORTNIGHTphp'php php php php php php php php php php=php>php arrayphp(php'php1php2php0php9php6php0php0php'php,php php'fortnightphp'php)php,
-php php php php php php php php php'GAUSSIANphp_YEARphp'php php php php php php=php>php arrayphp(php'php3php1php5php5php8php1php9php6php'php,php php'gaussianphp yearphp'php)php,
-php php php php php php php php php'GIGASECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php'Gsphp'php)php,
-php php php php php php php php php'GREATphp_YEARphp'php php php php php php php php php=php>php arrayphp(arrayphp(php'php*php'php php=php>php php'php3php1php5php3php6php0php0php0php'php,php php'php*php'php php=php>php php'php2php5php7php0php0php'php)php,php php'greatphp yearphp'php)php,
-php php php php php php php php php'GREGORIANphp_YEARphp'php php php php php=php>php arrayphp(php'php3php1php5php3php6php0php0php0php'php,php php'yearphp'php)php,
-php php php php php php php php php'HOURphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php3php6php0php0php'php,php php'hphp'php)php,
-php php php php php php php php php'JULIANphp_YEARphp'php php php php php php php php=php>php arrayphp(php'php3php1php5php5php7php6php0php0php'php,php php'aphp'php)php,
-php php php php php php php php php'KILOSECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php'ksphp'php)php,
-php php php php php php php php php'LEAPYEARphp'php php php php php php php php php php php=php>php arrayphp(php'php3php1php6php2php2php4php0php0php'php,php php'yearphp'php)php,
-php php php php php php php php php'MEGASECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php'Msphp'php)php,
-php php php php php php php php php'MICROSECONDphp'php php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php0php1php'php,php php'phpµsphp'php)php,
-php php php php php php php php php'MILLENIUMphp'php php php php php php php php php php=php>php arrayphp(php'php3php1php5php3php6php0php0php0php0php0php0php'php,php php'milleniumphp'php)php,
-php php php php php php php php php'MILLISECONDphp'php php php php php php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php'msphp'php)php,
-php php php php php php php php php'MINUTEphp'php php php php php php php php php php php php php=php>php arrayphp(php'php6php0php'php,php php'minphp'php)php,
-php php php php php php php php php'MONTHphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php2php6php2php8php6php0php0php'php,php php'monthphp'php)php,
-php php php php php php php php php'NANOSECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php9php'php,php php'nsphp'php)php,
-php php php php php php php php php'PETASECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php5php'php,php php'Psphp'php)php,
-php php php php php php php php php'PICOSECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php1php2php'php,php php'psphp'php)php,
-php php php php php php php php php'QUARTERphp'php php php php php php php php php php php php=php>php arrayphp(php'php7php8php8php4php0php0php0php'php,php php'quarterphp'php)php,
-php php php php php php php php php'SECONDphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php'sphp'php)php,
-php php php php php php php php php'SHAKEphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php9php'php,php php'shakephp'php)php,
-php php php php php php php php php'SIDEREALphp_YEARphp'php php php php php php=php>php arrayphp(php'php3php1php5php5php8php1php4php9php.php7php6php7php6php'php,php php'siderealphp yearphp'php)php,
-php php php php php php php php php'TERASECONDphp'php php php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php1php2php'php,php php'Tsphp'php)php,
-php php php php php php php php php'TROPICALphp_YEARphp'php php php php php php=php>php arrayphp(php'php3php1php5php5php6php9php2php5php'php,php php'tropicalphp yearphp'php)php,
-php php php php php php php php php'WEEKphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php6php0php4php8php0php0php'php,php php'weekphp'php)php,
-php php php php php php php php php'YEARphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php3php1php5php3php6php0php0php0php'php,php php'yearphp'php)php,
-php php php php php php php php php'STANDARDphp'php php php php php php php php php php php=php>php php'SECONDphp'
-php php php php php)php;
-php}
+    /**
+     * Calculations for all time units
+     *
+     * @var array
+     */
+    protected $_units = array(
+        'ANOMALISTIC_YEAR'  => array('31558432', 'anomalistic year'),
+        'ATTOSECOND'        => array('1.0e-18', 'as'),
+        'CENTURY'           => array('3153600000', 'century'),
+        'DAY'               => array('86400', 'day'),
+        'DECADE'            => array('315360000', 'decade'),
+        'DRACONIC_YEAR'     => array('29947974', 'draconic year'),
+        'EXASECOND'         => array('1.0e+18', 'Es'),
+        'FEMTOSECOND'       => array('1.0e-15', 'fs'),
+        'FORTNIGHT'         => array('1209600', 'fortnight'),
+        'GAUSSIAN_YEAR'     => array('31558196', 'gaussian year'),
+        'GIGASECOND'        => array('1.0e+9', 'Gs'),
+        'GREAT_YEAR'        => array(array('*' => '31536000', '*' => '25700'), 'great year'),
+        'GREGORIAN_YEAR'    => array('31536000', 'year'),
+        'HOUR'              => array('3600', 'h'),
+        'JULIAN_YEAR'       => array('31557600', 'a'),
+        'KILOSECOND'        => array('1000', 'ks'),
+        'LEAPYEAR'          => array('31622400', 'year'),
+        'MEGASECOND'        => array('1000000', 'Ms'),
+        'MICROSECOND'       => array('0.000001', 'µs'),
+        'MILLENIUM'         => array('31536000000', 'millenium'),
+        'MILLISECOND'       => array('0.001', 'ms'),
+        'MINUTE'            => array('60', 'min'),
+        'MONTH'             => array('2628600', 'month'),
+        'NANOSECOND'        => array('1.0e-9', 'ns'),
+        'PETASECOND'        => array('1.0e+15', 'Ps'),
+        'PICOSECOND'        => array('1.0e-12', 'ps'),
+        'QUARTER'           => array('7884000', 'quarter'),
+        'SECOND'            => array('1', 's'),
+        'SHAKE'             => array('1.0e-9', 'shake'),
+        'SIDEREAL_YEAR'     => array('31558149.7676', 'sidereal year'),
+        'TERASECOND'        => array('1.0e+12', 'Ts'),
+        'TROPICAL_YEAR'     => array('31556925', 'tropical year'),
+        'WEEK'              => array('604800', 'week'),
+        'YEAR'              => array('31536000', 'year'),
+        'STANDARD'          => 'SECOND'
+    );
+}

@@ -1,228 +1,228 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Termphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Term.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp.phpphp'php;
+/** Zend_Search_Lucene_Search_Query */
+require_once 'Zend/Search/Lucene/Search/Query.php';
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php{
-php php php php php/php*php*
-php php php php php php*php Termphp tophp findphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Indexphp_Term
-php php php php php php*php/
-php php php php privatephp php$php_termphp;
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Query
+{
+    /**
+     * Term to find.
+     *
+     * @var Zend_Search_Lucene_Index_Term
+     */
+    private $_term;
 
-php php php php php/php*php*
-php php php php php php*php Documentsphp vectorphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_docVectorphp php=php nullphp;
+    /**
+     * Documents vector.
+     *
+     * @var array
+     */
+    private $_docVector = null;
 
-php php php php php/php*php*
-php php php php php php*php Termphp freqsphp vectorphp.
-php php php php php php*php arrayphp(docIdphp php=php>php freqphp,php php.php.php.php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termFreqsphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Termphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp booleanphp php$sign
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_termphp php=php php$termphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_termphp-php>fieldphp php!php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/MultiTermphp.phpphp'php;
-php php php php php php php php php php php php php$queryphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_MultiTermphp(php)php;
-php php php php php php php php php php php php php$queryphp-php>setBoostphp(php$thisphp-php>getBoostphp(php)php)php;
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
-php php php php php php php php php php php php foreachphp php(php$indexphp-php>getFieldNamesphp(truephp)php asphp php$fieldNamephp)php php{
-php php php php php php php php php php php php php php php php php$termphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$thisphp-php>php_termphp-php>textphp,php php$fieldNamephp)php;
-
-php php php php php php php php php php php php php php php php php$queryphp-php>addTermphp(php$termphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$queryphp-php>rewritephp(php$indexphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Optimizephp queryphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp optimizephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php php/php/php Checkphp,php thatphp indexphp containsphp specifiedphp term
-php php php php php php php php ifphp php(php!php$indexphp-php>hasTermphp(php$thisphp-php>php_termphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp/Emptyphp.phpphp'php;
-php php php php php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Term freqs vector.
+     * array(docId => freq, ...)
+     *
+     * @var array
+     */
+    private $_termFreqs;
 
 
-php php php php php/php*php*
-php php php php php php*php Constructsphp anphp appropriatephp Weightphp implementationphp forphp thisphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
-php php php php php php*php/
-php php php php publicphp functionphp createWeightphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Weightphp/Termphp.phpphp'php;
-php php php php php php php php php$thisphp-php>php_weightphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_Termphp(php$thisphp-php>php_termphp,php php$thisphp,php php$readerphp)php;
-php php php php php php php php returnphp php$thisphp-php>php_weightphp;
-php php php php php}
+    /**
+     * Zend_Search_Lucene_Search_Query_Term constructor
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @param boolean $sign
+     */
+    public function __construct(Zend_Search_Lucene_Index_Term $term)
+    {
+        $this->_term = $term;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Executephp queryphp inphp contextphp ofphp indexphp reader
-php php php php php php*php Itphp alsophp initializesphp necessaryphp internalphp structures
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php/
-php php php php publicphp functionphp executephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_docVectorphp php=php arrayphp_flipphp(php$readerphp-php>termDocsphp(php$thisphp-php>php_termphp,php php$docsFilterphp)php)php;
-php php php php php php php php php$thisphp-php>php_termFreqsphp php=php php$readerphp-php>termFreqsphp(php$thisphp-php>php_termphp,php php$docsFilterphp)php;
+    /**
+     * Re-write query into primitive queries in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function rewrite(Zend_Search_Lucene_Interface $index)
+    {
+        if ($this->_term->field != null) {
+            return $this;
+        } else {
+            require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
+            $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
+            $query->setBoost($this->getBoost());
 
-php php php php php php php php php/php/php Initializephp weightphp ifphp itphp'sphp notphp donephp yet
-php php php php php php php php php$thisphp-php>php_initWeightphp(php$readerphp)php;
-php php php php php}
+            require_once 'Zend/Search/Lucene/Index/Term.php';
+            foreach ($index->getFieldNames(true) as $fieldName) {
+                $term = new Zend_Search_Lucene_Index_Term($this->_term->text, $fieldName);
 
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp idsphp likelyphp matchingphp thephp query
-php php php php php php*
-php php php php php php*php Itphp'sphp anphp arrayphp withphp documentphp idsphp asphp keysphp php(performancephp considerationsphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp matchedDocsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_docVectorphp;
-php php php php php}
+                $query->addTerm($term);
+            }
 
-php php php php php/php*php*
-php php php php php php*php Scorephp specifiedphp document
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp scorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_docVectorphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$readerphp-php>getSimilarityphp(php)php-php>tfphp(php$thisphp-php>php_termFreqsphp[php$docIdphp]php)php php*
-php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_weightphp-php>getValuephp(php)php php*
-php php php php php php php php php php php php php php php php php php php php$readerphp-php>normphp(php$docIdphp,php php$thisphp-php>php_termphp-php>fieldphp)php php*
-php php php php php php php php php php php php php php php php php php php php$thisphp-php>getBoostphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php0php;
-php php php php php php php php php}
-php php php php php}
+            return $query->rewrite($index);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp queryphp terms
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getQueryTermsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php$thisphp-php>php_termphp)php;
-php php php php php}
+    /**
+     * Optimize query in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function optimize(Zend_Search_Lucene_Interface $index)
+    {
+        // Check, that index contains specified term
+        if (!$index->hasTerm($this->_term)) {
+            require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+            return new Zend_Search_Lucene_Search_Query_Empty();
+        }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp queryphp term
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_Term
-php php php php php php*php/
-php php php php publicphp functionphp getTermphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_termphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Queryphp specificphp matchesphp highlighting
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
-php php php php php{
-php php php php php php php php php$highlighterphp-php>highlightphp(php$thisphp-php>php_termphp-php>textphp)php;
-php php php php php}
 
-php php php php php/php*php*
-php php php php php php*php Printphp aphp query
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php php/php/php Itphp'sphp usedphp onlyphp forphp queryphp visualisationphp,php sophp wephp donphp'tphp carephp aboutphp charactersphp escaping
-php php php php php php php php ifphp php(php$thisphp-php>php_termphp-php>fieldphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$queryphp php=php php$thisphp-php>php_termphp-php>fieldphp php.php php'php:php'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$queryphp php=php php'php'php;
-php php php php php php php php php}
+    /**
+     * Constructs an appropriate Weight implementation for this query.
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return Zend_Search_Lucene_Search_Weight
+     */
+    public function createWeight(Zend_Search_Lucene_Interface $reader)
+    {
+        require_once 'Zend/Search/Lucene/Search/Weight/Term.php';
+        $this->_weight = new Zend_Search_Lucene_Search_Weight_Term($this->_term, $this, $reader);
+        return $this->_weight;
+    }
 
-php php php php php php php php php$queryphp php.php=php php$thisphp-php>php_termphp-php>textphp;
+    /**
+     * Execute query in context of index reader
+     * It also initializes necessary internal structures
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     */
+    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
+    {
+        $this->_docVector = array_flip($reader->termDocs($this->_term, $docsFilter));
+        $this->_termFreqs = $reader->termFreqs($this->_term, $docsFilter);
 
-php php php php php php php php ifphp php(php$thisphp-php>getBoostphp(php)php php!php=php php1php)php php{
-php php php php php php php php php php php php php$queryphp php=php php$queryphp php.php php'php^php'php php.php roundphp(php$thisphp-php>getBoostphp(php)php,php php4php)php;
-php php php php php php php php php}
+        // Initialize weight if it's not done yet
+        $this->_initWeight($reader);
+    }
 
-php php php php php php php php returnphp php$queryphp;
-php php php php php}
-php}
+    /**
+     * Get document ids likely matching the query
+     *
+     * It's an array with document ids as keys (performance considerations)
+     *
+     * @return array
+     */
+    public function matchedDocs()
+    {
+        return $this->_docVector;
+    }
+
+    /**
+     * Score specified document
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     */
+    public function score($docId, Zend_Search_Lucene_Interface $reader)
+    {
+        if (isset($this->_docVector[$docId])) {
+            return $reader->getSimilarity()->tf($this->_termFreqs[$docId]) *
+                   $this->_weight->getValue() *
+                   $reader->norm($docId, $this->_term->field) *
+                   $this->getBoost();
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Return query terms
+     *
+     * @return array
+     */
+    public function getQueryTerms()
+    {
+        return array($this->_term);
+    }
+
+    /**
+     * Return query term
+     *
+     * @return Zend_Search_Lucene_Index_Term
+     */
+    public function getTerm()
+    {
+        return $this->_term;
+    }
+
+    /**
+     * Query specific matches highlighting
+     *
+     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
+     */
+    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
+    {
+        $highlighter->highlight($this->_term->text);
+    }
+
+    /**
+     * Print a query
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        // It's used only for query visualisation, so we don't care about characters escaping
+        if ($this->_term->field !== null) {
+            $query = $this->_term->field . ':';
+        } else {
+            $query = '';
+        }
+
+        $query .= $this->_term->text;
+
+        if ($this->getBoost() != 1) {
+            $query = $query . '^' . round($this->getBoost(), 4);
+        }
+
+        return $query;
+    }
+}
 

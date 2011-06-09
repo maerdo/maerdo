@@ -1,591 +1,591 @@
-<php?php
-
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webatphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Session
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php DbTablephp.phpphp php2php3php5php4php3php php2php0php1php0php-php1php2php-php1php8php php0php0php:php5php5php:php5php3Zphp ramonphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Session
-php php*php/
-requirephp_oncephp php'Zendphp/Sessionphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Dbphp_Tablephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Abstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Dbphp_Tablephp_Rowphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Rowphp/Abstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Config
-php php*php/
-requirephp_oncephp php'Zendphp/Configphp.phpphp'php;
-
-php/php*php*
-php php*php Zendphp_Sessionphp_SaveHandlerphp_DbTable
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Session
-php php*php php@subpackagephp SaveHandler
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Sessionphp_SaveHandlerphp_DbTable
-php php php php extendsphp Zendphp_Dbphp_Tablephp_Abstract
-php php php php implementsphp Zendphp_Sessionphp_SaveHandlerphp_Interface
-php{
-php php php php constphp PRIMARYphp_ASSIGNMENTphp php php php php php php php php php php php php php php php php php php php=php php'primaryAssignmentphp'php;
-php php php php constphp PRIMARYphp_ASSIGNMENTphp_SESSIONphp_SAVEphp_PATHphp php=php php'sessionSavePathphp'php;
-php php php php constphp PRIMARYphp_ASSIGNMENTphp_SESSIONphp_NAMEphp php php php php php php=php php'sessionNamephp'php;
-php php php php constphp PRIMARYphp_ASSIGNMENTphp_SESSIONphp_IDphp php php php php php php php php=php php'sessionIdphp'php;
-
-php php php php constphp MODIFIEDphp_COLUMNphp php php php=php php'modifiedColumnphp'php;
-php php php php constphp LIFETIMEphp_COLUMNphp php php php=php php'lifetimeColumnphp'php;
-php php php php constphp DATAphp_COLUMNphp php php php php php php php=php php'dataColumnphp'php;
-
-php php php php constphp LIFETIMEphp php php php php php php php php php php=php php'lifetimephp'php;
-php php php php constphp OVERRIDEphp_LIFETIMEphp php=php php'overrideLifetimephp'php;
-
-php php php php constphp PRIMARYphp_TYPEphp_NUMphp php php php php php php php php php=php php'PRIMARYphp_TYPEphp_NUMphp'php;
-php php php php constphp PRIMARYphp_TYPEphp_PRIMARYNUMphp php php=php php'PRIMARYphp_TYPEphp_PRIMARYNUMphp'php;
-php php php php constphp PRIMARYphp_TYPEphp_ASSOCphp php php php php php php php=php php'PRIMARYphp_TYPEphp_ASSOCphp'php;
-php php php php constphp PRIMARYphp_TYPEphp_WHERECLAUSEphp php=php php'PRIMARYphp_TYPEphp_WHERECLAUSEphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp tablephp primaryphp keyphp valuephp assignment
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_primaryAssignmentphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp tablephp lastphp modificationphp timephp column
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_modifiedColumnphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp tablephp lifetimephp column
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_lifetimeColumnphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp tablephp dataphp column
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_dataColumnphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp lifetime
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_lifetimephp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp thephp lifetimephp ofphp anphp existingphp sessionphp shouldphp bephp overridden
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_overrideLifetimephp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp savephp path
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_sessionSavePathphp;
-
-php php php php php/php*php*
-php php php php php php*php Sessionphp name
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_sessionNamephp;
-
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php$configphp isphp anphp instancephp ofphp Zendphp_Configphp orphp anphp arrayphp ofphp keyphp/valuephp pairsphp containingphp configurationphp optionsphp for
-php php php php php php*php Zendphp_Sessionphp_SaveHandlerphp_DbTablephp andphp Zendphp_Dbphp_Tablephp_Abstractphp.php Thesephp arephp thephp configurationphp optionsphp for
-php php php php php php*php Zendphp_Sessionphp_SaveHandlerphp_DbTablephp:
-php php php php php php*
-php php php php php php*php primaryAssignmentphp php=php>php php(stringphp|arrayphp)php Sessionphp tablephp primaryphp keyphp valuephp assignment
-php php php php php php*php php php php php php php(optionalphp;php defaultphp:php php1php php=php>php sessionIdphp)php Youphp havephp tophp assignphp aphp valuephp tophp eachphp primaryphp keyphp ofphp yourphp sessionphp tablephp.
-php php php php php php*php php php php php php Thephp valuephp ofphp thisphp configurationphp optionphp isphp eitherphp aphp stringphp ifphp youphp havephp onlyphp onephp primaryphp keyphp orphp anphp arrayphp if
-php php php php php php*php php php php php php youphp havephp multiplephp primaryphp keysphp.php Thephp arrayphp consistsphp ofphp numericphp keysphp startingphp atphp php1php andphp stringphp valuesphp.php There
-php php php php php php*php php php php php php arephp somephp valuesphp whichphp willphp bephp replacedphp byphp sessionphp informationphp:
-php php php php php php*
-php php php php php php*php php php php php php sessionIdphp php php php php php php php=php>php Thephp idphp ofphp thephp currentphp session
-php php php php php php*php php php php php php sessionNamephp php php php php php=php>php Thephp namephp ofphp thephp currentphp session
-php php php php php php*php php php php php php sessionSavePathphp php=php>php Thephp savephp pathphp ofphp thephp currentphp session
-php php php php php php*
-php php php php php php*php php php php php php NOTEphp:php Onephp ofphp yourphp assignmentsphp MUSTphp containphp php'sessionIdphp'php asphp valuephp!
-php php php php php php*
-php php php php php php*php modifiedColumnphp php php php php=php>php php(stringphp)php Sessionphp tablephp lastphp modificationphp timephp column
-php php php php php php*
-php php php php php php*php lifetimeColumnphp php php php php=php>php php(stringphp)php Sessionphp tablephp lifetimephp column
-php php php php php php*
-php php php php php php*php dataColumnphp php php php php php php php php=php>php php(stringphp)php Sessionphp tablephp dataphp column
-php php php php php php*
-php php php php php php*php lifetimephp php php php php php php php php php php=php>php php(integerphp)php Sessionphp lifetimephp php(optionalphp;php defaultphp:php iniphp_getphp(php'sessionphp.gcphp_maxlifetimephp'php)php)
-php php php php php php*
-php php php php php php*php overrideLifetimephp php php=php>php php(booleanphp)php Whetherphp orphp notphp thephp lifetimephp ofphp anphp existingphp sessionphp shouldphp bephp overridden
-php php php php php php*php php php php php php php(optionalphp;php defaultphp:php falsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Configphp|arrayphp php$configphp php php php php php Userphp-providedphp configuration
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$configphp)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php$configphp mustphp bephp anphp instancephp ofphp Zendphp_Configphp orphp arrayphp ofphp keyphp/valuephp pairsphp containingphp php'
-php php php php php php php php php php php php php php php.php php'configurationphp optionsphp forphp Zendphp_Sessionphp_SaveHandlerphp_DbTablephp andphp Zendphp_Dbphp_Tablephp_Abstractphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$configphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php switchphp php(php$keyphp)php php{
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_ASSIGNMENTphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_primaryAssignmentphp php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:MODIFIEDphp_COLUMNphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_modifiedColumnphp php=php php(stringphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:LIFETIMEphp_COLUMNphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_lifetimeColumnphp php=php php(stringphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:DATAphp_COLUMNphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataColumnphp php=php php(stringphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:LIFETIMEphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setLifetimephp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:OVERRIDEphp_LIFETIMEphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setOverrideLifetimephp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php unrecognizedphp optionsphp passedphp tophp parentphp:php:php_php_constructphp(php)
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp php2php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php unsetphp(php$configphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}php whilephp php(falsephp)php;
-php php php php php php php php php}
-
-php php php php php php php php parentphp:php:php_php_constructphp(php$configphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Destructor
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php Zendphp_Sessionphp:php:writeClosephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp sessionphp lifetimephp andphp optionalphp whetherphp orphp notphp thephp lifetimephp ofphp anphp existingphp sessionphp shouldphp bephp overridden
-php php php php php php*
-php php php php php php*php php$lifetimephp php=php=php=php falsephp resetsphp lifetimephp tophp sessionphp.gcphp_maxlifetime
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$lifetime
-php php php php php php*php php@paramphp booleanphp php$overrideLifetimephp php(optionalphp)
-php php php php php php*php php@returnphp Zendphp_Sessionphp_SaveHandlerphp_DbTable
-php php php php php php*php/
-php php php php publicphp functionphp setLifetimephp(php$lifetimephp,php php$overrideLifetimephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$lifetimephp <php php0php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(emptyphp(php$lifetimephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_lifetimephp php=php php(intphp)php iniphp_getphp(php'sessionphp.gcphp_maxlifetimephp'php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_lifetimephp php=php php(intphp)php php$lifetimephp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$overrideLifetimephp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setOverrideLifetimephp(php$overrideLifetimephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp sessionphp lifetime
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getLifetimephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lifetimephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp whetherphp orphp notphp thephp lifetimephp ofphp anphp existingphp sessionphp shouldphp bephp overridden
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$overrideLifetime
-php php php php php php*php php@returnphp Zendphp_Sessionphp_SaveHandlerphp_DbTable
-php php php php php php*php/
-php php php php publicphp functionphp setOverrideLifetimephp(php$overrideLifetimephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_overrideLifetimephp php=php php(booleanphp)php php$overrideLifetimephp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp whetherphp orphp notphp thephp lifetimephp ofphp anphp existingphp sessionphp shouldphp bephp overridden
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp getOverrideLifetimephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_overrideLifetimephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Openphp Session
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$savephp_path
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp openphp(php$savephp_pathphp,php php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sessionSavePathphp php=php php$savephp_pathphp;
-php php php php php php php php php$thisphp-php>php_sessionNamephp php php php php php=php php$namephp;
-
-php php php php php php php php returnphp truephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Closephp session
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php returnphp truephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Readphp sessionphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$id
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp readphp(php$idphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php php'php'php;
-
-php php php php php php php php php$rowsphp php=php callphp_userphp_funcphp_arrayphp(arrayphp(php&php$thisphp,php php'findphp'php)php,php php$thisphp-php>php_getPrimaryphp(php$idphp)php)php;
-
-php php php php php php php php ifphp php(countphp(php$rowsphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getExpirationTimephp(php$rowphp php=php php$rowsphp-php>currentphp(php)php)php php>php timephp(php)php)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php php$rowphp-php>php{php$thisphp-php>php_dataColumnphp}php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>destroyphp(php$idphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Writephp sessionphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$id
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp writephp(php$idphp,php php$dataphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php falsephp;
-
-php php php php php php php php php$dataphp php=php arrayphp(php$thisphp-php>php_modifiedColumnphp php=php>php timephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dataColumnphp php php php php php=php>php php(stringphp)php php$dataphp)php;
-
-php php php php php php php php php$rowsphp php=php callphp_userphp_funcphp_arrayphp(arrayphp(php&php$thisphp,php php'findphp'php)php,php php$thisphp-php>php_getPrimaryphp(php$idphp)php)php;
-
-php php php php php php php php ifphp php(countphp(php$rowsphp)php)php php{
-php php php php php php php php php php php php php$dataphp[php$thisphp-php>php_lifetimeColumnphp]php php=php php$thisphp-php>php_getLifetimephp(php$rowsphp-php>currentphp(php)php)php;
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>updatephp(php$dataphp,php php$thisphp-php>php_getPrimaryphp(php$idphp,php selfphp:php:PRIMARYphp_TYPEphp_WHERECLAUSEphp)php)php)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$dataphp[php$thisphp-php>php_lifetimeColumnphp]php php=php php$thisphp-php>php_lifetimephp;
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>insertphp(arrayphp_mergephp(php$thisphp-php>php_getPrimaryphp(php$idphp,php selfphp:php:PRIMARYphp_TYPEphp_ASSOCphp)php,php php$dataphp)php)php)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Destroyphp session
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$id
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp destroyphp(php$idphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php falsephp;
-
-php php php php php php php php ifphp php(php$thisphp-php>deletephp(php$thisphp-php>php_getPrimaryphp(php$idphp,php selfphp:php:PRIMARYphp_TYPEphp_WHERECLAUSEphp)php)php)php php{
-php php php php php php php php php php php php php$returnphp php=php truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Garbagephp Collection
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$maxlifetime
-php php php php php php*php php@returnphp true
-php php php php php php*php/
-php php php php publicphp functionphp gcphp(php$maxlifetimephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>deletephp(php$thisphp-php>getAdapterphp(php)php-php>quoteIdentifierphp(php$thisphp-php>php_modifiedColumnphp,php truephp)php php.php php'php php+php php'
-php php php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>getAdapterphp(php)php-php>quoteIdentifierphp(php$thisphp-php>php_lifetimeColumnphp,php truephp)php php.php php'php <php php'
-php php php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>getAdapterphp(php)php-php>quotephp(timephp(php)php)php)php;
-
-php php php php php php php php returnphp truephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Callsphp otherphp protectedphp methodsphp forphp individualphp setupphp tasksphp andphp requirementphp checks
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setupphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:php_setupphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_setupPrimaryAssignmentphp(php)php;
-php php php php php php php php php$thisphp-php>setLifetimephp(php$thisphp-php>php_lifetimephp)php;
-
-php php php php php php php php php$thisphp-php>php_checkRequiredColumnsphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Initializephp tablephp andphp schemaphp names
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_setupTableNamephp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_namephp)php php&php&php basenamephp(php(php$thisphp-php>php_namephp php=php sessionphp_savephp_pathphp(php)php)php)php php!php=php php$thisphp-php>php_namephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(php'sessionphp.savephp_pathphp isphp aphp pathphp andphp notphp aphp tablephp namephp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(strposphp(php$thisphp-php>php_namephp,php php'php.php'php)php)php php{
-php php php php php php php php php php php php listphp(php$thisphp-php>php_schemaphp,php php$thisphp-php>php_namephp)php php=php explodephp(php'php.php'php,php php$thisphp-php>php_namephp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Initializephp sessionphp tablephp primaryphp keyphp valuephp assignment
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_setupPrimaryAssignmentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_primaryAssignmentphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_primaryAssignmentphp php=php arrayphp(php1php php=php>php selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_IDphp)php;
-php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$thisphp-php>php_primaryAssignmentphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_primaryAssignmentphp php=php arrayphp(php1php php=php>php php(stringphp)php php$thisphp-php>php_primaryAssignmentphp)php;
-php php php php php php php php php}php elsephp ifphp php(issetphp(php$thisphp-php>php_primaryAssignmentphp[php0php]php)php)php php{
-php php php php php php php php php php php php arrayphp_unshiftphp(php$thisphp-php>php_primaryAssignmentphp,php nullphp)php;
-
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_primaryAssignmentphp[php0php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_primaryAssignmentphp)php php!php=php=php countphp(php$thisphp-php>php_primaryphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Valuephp forphp configurationphp optionphp php'php"php php.php selfphp:php:PRIMARYphp_ASSIGNMENTphp php.php php"php'php mustphp havephp anphp assignmentphp php"
-php php php php php php php php php php php php php php php.php php"forphp eachphp sessionphp tablephp primaryphp keyphp.php"php)php;
-php php php php php php php php php}php elsephp ifphp php(php!inphp_arrayphp(selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_IDphp,php php$thisphp-php>php_primaryAssignmentphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Valuephp forphp configurationphp optionphp php'php"php php.php selfphp:php:PRIMARYphp_ASSIGNMENTphp php.php php"php'php mustphp havephp anphp assignmentphp php"
-php php php php php php php php php php php php php php php.php php"forphp thephp sessionphp idphp php(php'php"php php.php selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_IDphp php.php php"php'php)php.php"php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp forphp requiredphp sessionphp tablephp columns
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkRequiredColumnsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_modifiedColumnphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Configurationphp mustphp definephp php'php"php php.php selfphp:php:MODIFIEDphp_COLUMNphp php.php php"php'php whichphp namesphp thephp php"
-php php php php php php php php php php php php php php php.php php"sessionphp tablephp lastphp modificationphp timephp columnphp.php"php)php;
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_lifetimeColumnphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Configurationphp mustphp definephp php'php"php php.php selfphp:php:LIFETIMEphp_COLUMNphp php.php php"php'php whichphp namesphp thephp php"
-php php php php php php php php php php php php php php php.php php"sessionphp tablephp lifetimephp columnphp.php"php)php;
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_dataColumnphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_SaveHandlerphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/SaveHandlerphp/Exceptionphp.phpphp'php;
-
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_SaveHandlerphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Configurationphp mustphp definephp php'php"php php.php selfphp:php:DATAphp_COLUMNphp php.php php"php'php whichphp namesphp thephp php"
-php php php php php php php php php php php php php php php.php php"sessionphp tablephp dataphp columnphp.php"php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp sessionphp tablephp primaryphp keyphp values
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$id
-php php php php php php*php php@paramphp stringphp php$typephp php(optionalphp;php defaultphp:php selfphp:php:PRIMARYphp_TYPEphp_NUMphp)
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_getPrimaryphp(php$idphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_setupPrimaryKeyphp(php)php;
-
-php php php php php php php php ifphp php(php$typephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$typephp php=php selfphp:php:PRIMARYphp_TYPEphp_NUMphp;
-php php php php php php php php php}
-
-php php php php php php php php php$primaryArrayphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_primaryphp asphp php$indexphp php=php>php php$primaryphp)php php{
-php php php php php php php php php php php php switchphp php(php$thisphp-php>php_primaryAssignmentphp[php$indexphp]php)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_SAVEphp_PATHphp:
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>php_sessionSavePathphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_NAMEphp:
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$thisphp-php>php_sessionNamephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_ASSIGNMENTphp_SESSIONphp_IDphp:
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php(stringphp)php php$idphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php(stringphp)php php$thisphp-php>php_primaryAssignmentphp[php$indexphp]php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php switchphp php(php(stringphp)php php$typephp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_TYPEphp_PRIMARYNUMphp:
-php php php php php php php php php php php php php php php php php php php php php$primaryArrayphp[php$indexphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_TYPEphp_ASSOCphp:
-php php php php php php php php php php php php php php php php php php php php php$primaryArrayphp[php$primaryphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_TYPEphp_WHERECLAUSEphp:
-php php php php php php php php php php php php php php php php php php php php php$primaryArrayphp[php]php php=php php$thisphp-php>getAdapterphp(php)php-php>quoteIdentifierphp(php$primaryphp,php truephp)php php.php php'php php=php php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$thisphp-php>getAdapterphp(php)php-php>quotephp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:PRIMARYphp_TYPEphp_NUMphp:
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$primaryArrayphp[php]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$primaryArrayphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp sessionphp lifetimephp consideringphp Zendphp_Sessionphp_SaveHandlerphp_DbTablephp:php:OVERRIDEphp_LIFETIME
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp php$row
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php protectedphp functionphp php_getLifetimephp(Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp php$rowphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php php$thisphp-php>php_lifetimephp;
-
-php php php php php php php php ifphp php(php!php$thisphp-php>php_overrideLifetimephp)php php{
-php php php php php php php php php php php php php$returnphp php=php php(intphp)php php$rowphp-php>php{php$thisphp-php>php_lifetimeColumnphp}php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp sessionphp expirationphp time
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp php$row
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php protectedphp functionphp php_getExpirationTimephp(Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp php$rowphp)
-php php php php php{
-php php php php php php php php returnphp php(intphp)php php$rowphp-php>php{php$thisphp-php>php_modifiedColumnphp}php php+php php$thisphp-php>php_getLifetimephp(php$rowphp)php;
-php php php php php}
-php}
+<?php
+
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-webat this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Session
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: DbTable.php 23543 2010-12-18 00:55:53Z ramon $
+ */
+
+/**
+ * @see Zend_Session
+ */
+require_once 'Zend/Session.php';
+
+/**
+ * @see Zend_Db_Table_Abstract
+ */
+require_once 'Zend/Db/Table/Abstract.php';
+
+/**
+ * @see Zend_Db_Table_Row_Abstract
+ */
+require_once 'Zend/Db/Table/Row/Abstract.php';
+
+/**
+ * @see Zend_Config
+ */
+require_once 'Zend/Config.php';
+
+/**
+ * Zend_Session_SaveHandler_DbTable
+ *
+ * @category   Zend
+ * @package    Zend_Session
+ * @subpackage SaveHandler
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Session_SaveHandler_DbTable
+    extends Zend_Db_Table_Abstract
+    implements Zend_Session_SaveHandler_Interface
+{
+    const PRIMARY_ASSIGNMENT                   = 'primaryAssignment';
+    const PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH = 'sessionSavePath';
+    const PRIMARY_ASSIGNMENT_SESSION_NAME      = 'sessionName';
+    const PRIMARY_ASSIGNMENT_SESSION_ID        = 'sessionId';
+
+    const MODIFIED_COLUMN   = 'modifiedColumn';
+    const LIFETIME_COLUMN   = 'lifetimeColumn';
+    const DATA_COLUMN       = 'dataColumn';
+
+    const LIFETIME          = 'lifetime';
+    const OVERRIDE_LIFETIME = 'overrideLifetime';
+
+    const PRIMARY_TYPE_NUM         = 'PRIMARY_TYPE_NUM';
+    const PRIMARY_TYPE_PRIMARYNUM  = 'PRIMARY_TYPE_PRIMARYNUM';
+    const PRIMARY_TYPE_ASSOC       = 'PRIMARY_TYPE_ASSOC';
+    const PRIMARY_TYPE_WHERECLAUSE = 'PRIMARY_TYPE_WHERECLAUSE';
+
+    /**
+     * Session table primary key value assignment
+     *
+     * @var array
+     */
+    protected $_primaryAssignment = null;
+
+    /**
+     * Session table last modification time column
+     *
+     * @var string
+     */
+    protected $_modifiedColumn = null;
+
+    /**
+     * Session table lifetime column
+     *
+     * @var string
+     */
+    protected $_lifetimeColumn = null;
+
+    /**
+     * Session table data column
+     *
+     * @var string
+     */
+    protected $_dataColumn = null;
+
+    /**
+     * Session lifetime
+     *
+     * @var int
+     */
+    protected $_lifetime = false;
+
+    /**
+     * Whether or not the lifetime of an existing session should be overridden
+     *
+     * @var boolean
+     */
+    protected $_overrideLifetime = false;
+
+    /**
+     * Session save path
+     *
+     * @var string
+     */
+    protected $_sessionSavePath;
+
+    /**
+     * Session name
+     *
+     * @var string
+     */
+    protected $_sessionName;
+
+    /**
+     * Constructor
+     *
+     * $config is an instance of Zend_Config or an array of key/value pairs containing configuration options for
+     * Zend_Session_SaveHandler_DbTable and Zend_Db_Table_Abstract. These are the configuration options for
+     * Zend_Session_SaveHandler_DbTable:
+     *
+     * primaryAssignment => (string|array) Session table primary key value assignment
+     *      (optional; default: 1 => sessionId) You have to assign a value to each primary key of your session table.
+     *      The value of this configuration option is either a string if you have only one primary key or an array if
+     *      you have multiple primary keys. The array consists of numeric keys starting at 1 and string values. There
+     *      are some values which will be replaced by session information:
+     *
+     *      sessionId       => The id of the current session
+     *      sessionName     => The name of the current session
+     *      sessionSavePath => The save path of the current session
+     *
+     *      NOTE: One of your assignments MUST contain 'sessionId' as value!
+     *
+     * modifiedColumn    => (string) Session table last modification time column
+     *
+     * lifetimeColumn    => (string) Session table lifetime column
+     *
+     * dataColumn        => (string) Session table data column
+     *
+     * lifetime          => (integer) Session lifetime (optional; default: ini_get('session.gc_maxlifetime'))
+     *
+     * overrideLifetime  => (boolean) Whether or not the lifetime of an existing session should be overridden
+     *      (optional; default: false)
+     *
+     * @param  Zend_Config|array $config      User-provided configuration
+     * @return void
+     * @throws Zend_Session_SaveHandler_Exception
+     */
+    public function __construct($config)
+    {
+        if ($config instanceof Zend_Config) {
+            $config = $config->toArray();
+        } else if (!is_array($config)) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                '$config must be an instance of Zend_Config or array of key/value pairs containing '
+              . 'configuration options for Zend_Session_SaveHandler_DbTable and Zend_Db_Table_Abstract.');
+        }
+
+        foreach ($config as $key => $value) {
+            do {
+                switch ($key) {
+                    case self::PRIMARY_ASSIGNMENT:
+                        $this->_primaryAssignment = $value;
+                        break;
+                    case self::MODIFIED_COLUMN:
+                        $this->_modifiedColumn = (string) $value;
+                        break;
+                    case self::LIFETIME_COLUMN:
+                        $this->_lifetimeColumn = (string) $value;
+                        break;
+                    case self::DATA_COLUMN:
+                        $this->_dataColumn = (string) $value;
+                        break;
+                    case self::LIFETIME:
+                        $this->setLifetime($value);
+                        break;
+                    case self::OVERRIDE_LIFETIME:
+                        $this->setOverrideLifetime($value);
+                        break;
+                    default:
+                        // unrecognized options passed to parent::__construct()
+                        break 2;
+                }
+                unset($config[$key]);
+            } while (false);
+        }
+
+        parent::__construct($config);
+    }
+
+    /**
+     * Destructor
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        Zend_Session::writeClose();
+    }
+
+    /**
+     * Set session lifetime and optional whether or not the lifetime of an existing session should be overridden
+     *
+     * $lifetime === false resets lifetime to session.gc_maxlifetime
+     *
+     * @param int $lifetime
+     * @param boolean $overrideLifetime (optional)
+     * @return Zend_Session_SaveHandler_DbTable
+     */
+    public function setLifetime($lifetime, $overrideLifetime = null)
+    {
+        if ($lifetime < 0) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+            throw new Zend_Session_SaveHandler_Exception();
+        } else if (empty($lifetime)) {
+            $this->_lifetime = (int) ini_get('session.gc_maxlifetime');
+        } else {
+            $this->_lifetime = (int) $lifetime;
+        }
+
+        if ($overrideLifetime != null) {
+            $this->setOverrideLifetime($overrideLifetime);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Retrieve session lifetime
+     *
+     * @return int
+     */
+    public function getLifetime()
+    {
+        return $this->_lifetime;
+    }
+
+    /**
+     * Set whether or not the lifetime of an existing session should be overridden
+     *
+     * @param boolean $overrideLifetime
+     * @return Zend_Session_SaveHandler_DbTable
+     */
+    public function setOverrideLifetime($overrideLifetime)
+    {
+        $this->_overrideLifetime = (boolean) $overrideLifetime;
+
+        return $this;
+    }
+
+    /**
+     * Retrieve whether or not the lifetime of an existing session should be overridden
+     *
+     * @return boolean
+     */
+    public function getOverrideLifetime()
+    {
+        return $this->_overrideLifetime;
+    }
+
+    /**
+     * Open Session
+     *
+     * @param string $save_path
+     * @param string $name
+     * @return boolean
+     */
+    public function open($save_path, $name)
+    {
+        $this->_sessionSavePath = $save_path;
+        $this->_sessionName     = $name;
+
+        return true;
+    }
+
+    /**
+     * Close session
+     *
+     * @return boolean
+     */
+    public function close()
+    {
+        return true;
+    }
+
+    /**
+     * Read session data
+     *
+     * @param string $id
+     * @return string
+     */
+    public function read($id)
+    {
+        $return = '';
+
+        $rows = call_user_func_array(array(&$this, 'find'), $this->_getPrimary($id));
+
+        if (count($rows)) {
+            if ($this->_getExpirationTime($row = $rows->current()) > time()) {
+                $return = $row->{$this->_dataColumn};
+            } else {
+                $this->destroy($id);
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Write session data
+     *
+     * @param string $id
+     * @param string $data
+     * @return boolean
+     */
+    public function write($id, $data)
+    {
+        $return = false;
+
+        $data = array($this->_modifiedColumn => time(),
+                      $this->_dataColumn     => (string) $data);
+
+        $rows = call_user_func_array(array(&$this, 'find'), $this->_getPrimary($id));
+
+        if (count($rows)) {
+            $data[$this->_lifetimeColumn] = $this->_getLifetime($rows->current());
+
+            if ($this->update($data, $this->_getPrimary($id, self::PRIMARY_TYPE_WHERECLAUSE))) {
+                $return = true;
+            }
+        } else {
+            $data[$this->_lifetimeColumn] = $this->_lifetime;
+
+            if ($this->insert(array_merge($this->_getPrimary($id, self::PRIMARY_TYPE_ASSOC), $data))) {
+                $return = true;
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Destroy session
+     *
+     * @param string $id
+     * @return boolean
+     */
+    public function destroy($id)
+    {
+        $return = false;
+
+        if ($this->delete($this->_getPrimary($id, self::PRIMARY_TYPE_WHERECLAUSE))) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Garbage Collection
+     *
+     * @param int $maxlifetime
+     * @return true
+     */
+    public function gc($maxlifetime)
+    {
+        $this->delete($this->getAdapter()->quoteIdentifier($this->_modifiedColumn, true) . ' + '
+                    . $this->getAdapter()->quoteIdentifier($this->_lifetimeColumn, true) . ' < '
+                    . $this->getAdapter()->quote(time()));
+
+        return true;
+    }
+
+    /**
+     * Calls other protected methods for individual setup tasks and requirement checks
+     *
+     * @return void
+     */
+    protected function _setup()
+    {
+        parent::_setup();
+
+        $this->_setupPrimaryAssignment();
+        $this->setLifetime($this->_lifetime);
+
+        $this->_checkRequiredColumns();
+    }
+
+    /**
+     * Initialize table and schema names
+     *
+     * @return void
+     * @throws Zend_Session_SaveHandler_Exception
+     */
+    protected function _setupTableName()
+    {
+        if (empty($this->_name) && basename(($this->_name = session_save_path())) != $this->_name) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception('session.save_path is a path and not a table name.');
+        }
+
+        if (strpos($this->_name, '.')) {
+            list($this->_schema, $this->_name) = explode('.', $this->_name);
+        }
+    }
+
+    /**
+     * Initialize session table primary key value assignment
+     *
+     * @return void
+     * @throws Zend_Session_SaveHandler_Exception
+     */
+    protected function _setupPrimaryAssignment()
+    {
+        if ($this->_primaryAssignment === null) {
+            $this->_primaryAssignment = array(1 => self::PRIMARY_ASSIGNMENT_SESSION_ID);
+        } else if (!is_array($this->_primaryAssignment)) {
+            $this->_primaryAssignment = array(1 => (string) $this->_primaryAssignment);
+        } else if (isset($this->_primaryAssignment[0])) {
+            array_unshift($this->_primaryAssignment, null);
+
+            unset($this->_primaryAssignment[0]);
+        }
+
+        if (count($this->_primaryAssignment) !== count($this->_primary)) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                "Value for configuration option '" . self::PRIMARY_ASSIGNMENT . "' must have an assignment "
+              . "for each session table primary key.");
+        } else if (!in_array(self::PRIMARY_ASSIGNMENT_SESSION_ID, $this->_primaryAssignment)) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                "Value for configuration option '" . self::PRIMARY_ASSIGNMENT . "' must have an assignment "
+              . "for the session id ('" . self::PRIMARY_ASSIGNMENT_SESSION_ID . "').");
+        }
+    }
+
+    /**
+     * Check for required session table columns
+     *
+     * @return void
+     * @throws Zend_Session_SaveHandler_Exception
+     */
+    protected function _checkRequiredColumns()
+    {
+        if ($this->_modifiedColumn === null) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                "Configuration must define '" . self::MODIFIED_COLUMN . "' which names the "
+              . "session table last modification time column.");
+        } else if ($this->_lifetimeColumn === null) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                "Configuration must define '" . self::LIFETIME_COLUMN . "' which names the "
+              . "session table lifetime column.");
+        } else if ($this->_dataColumn === null) {
+            /**
+             * @see Zend_Session_SaveHandler_Exception
+             */
+            require_once 'Zend/Session/SaveHandler/Exception.php';
+
+            throw new Zend_Session_SaveHandler_Exception(
+                "Configuration must define '" . self::DATA_COLUMN . "' which names the "
+              . "session table data column.");
+        }
+    }
+
+    /**
+     * Retrieve session table primary key values
+     *
+     * @param string $id
+     * @param string $type (optional; default: self::PRIMARY_TYPE_NUM)
+     * @return array
+     */
+    protected function _getPrimary($id, $type = null)
+    {
+        $this->_setupPrimaryKey();
+
+        if ($type === null) {
+            $type = self::PRIMARY_TYPE_NUM;
+        }
+
+        $primaryArray = array();
+
+        foreach ($this->_primary as $index => $primary) {
+            switch ($this->_primaryAssignment[$index]) {
+                case self::PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH:
+                    $value = $this->_sessionSavePath;
+                    break;
+                case self::PRIMARY_ASSIGNMENT_SESSION_NAME:
+                    $value = $this->_sessionName;
+                    break;
+                case self::PRIMARY_ASSIGNMENT_SESSION_ID:
+                    $value = (string) $id;
+                    break;
+                default:
+                    $value = (string) $this->_primaryAssignment[$index];
+                    break;
+            }
+
+            switch ((string) $type) {
+                case self::PRIMARY_TYPE_PRIMARYNUM:
+                    $primaryArray[$index] = $value;
+                    break;
+                case self::PRIMARY_TYPE_ASSOC:
+                    $primaryArray[$primary] = $value;
+                    break;
+                case self::PRIMARY_TYPE_WHERECLAUSE:
+                    $primaryArray[] = $this->getAdapter()->quoteIdentifier($primary, true) . ' = '
+                                    . $this->getAdapter()->quote($value);
+                    break;
+                case self::PRIMARY_TYPE_NUM:
+                default:
+                    $primaryArray[] = $value;
+                    break;
+            }
+        }
+
+        return $primaryArray;
+    }
+
+    /**
+     * Retrieve session lifetime considering Zend_Session_SaveHandler_DbTable::OVERRIDE_LIFETIME
+     *
+     * @param Zend_Db_Table_Row_Abstract $row
+     * @return int
+     */
+    protected function _getLifetime(Zend_Db_Table_Row_Abstract $row)
+    {
+        $return = $this->_lifetime;
+
+        if (!$this->_overrideLifetime) {
+            $return = (int) $row->{$this->_lifetimeColumn};
+        }
+
+        return $return;
+    }
+
+    /**
+     * Retrieve session expiration time
+     *
+     * @param Zend_Db_Table_Row_Abstract $row
+     * @return int
+     */
+    protected function _getExpirationTime(Zend_Db_Table_Row_Abstract $row)
+    {
+        return (int) $row->{$this->_modifiedColumn} + $this->_getLifetime($row);
+    }
+}

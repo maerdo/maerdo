@@ -1,481 +1,481 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Document
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Htmlphp.phpphp php2php3php3php9php2php php2php0php1php0php-php1php1php-php1php9php php0php9php:php5php3php:php1php6Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Document
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Html.php 23392 2010-11-19 09:53:16Z ramon $
+ */
 
 
-php/php*php*php Zendphp_Searchphp_Lucenephp_Documentphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Documentphp.phpphp'php;
+/** Zend_Search_Lucene_Document */
+require_once 'Zend/Search/Lucene/Document.php';
 
 
-php/php*php*
-php php*php HTMLphp documentphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Document
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Documentphp_Htmlphp extendsphp Zendphp_Searchphp_Lucenephp_Document
-php{
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp documentphp links
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_linksphp php=php arrayphp(php)php;
+/**
+ * HTML document.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Document
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
+{
+    /**
+     * List of document links
+     *
+     * @var array
+     */
+    private $_links = array();
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp documentphp headerphp links
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_headerLinksphp php=php arrayphp(php)php;
+    /**
+     * List of document header links
+     *
+     * @var array
+     */
+    private $_headerLinks = array();
 
-php php php php php/php*php*
-php php php php php php*php Storedphp DOMphp representation
-php php php php php php*
-php php php php php php*php php@varphp DOMDocument
-php php php php php php*php/
-php php php php privatephp php$php_docphp;
+    /**
+     * Stored DOM representation
+     *
+     * @var DOMDocument
+     */
+    private $_doc;
 
-php php php php php/php*php*
-php php php php php php*php Excludphp nofollowphp linksphp flag
-php php php php php php*
-php php php php php php*php Ifphp truephp thenphp linksphp withphp relphp=php'nofollowphp'php attributephp arephp notphp includedphp into
-php php php php php php*php documentphp linksphp.
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp staticphp php$php_excludeNoFollowLinksphp php=php falsephp;
+    /**
+     * Exclud nofollow links flag
+     *
+     * If true then links with rel='nofollow' attribute are not included into
+     * document links.
+     *
+     * @var boolean
+     */
+    private static $_excludeNoFollowLinks = false;
 
-php php php php php/php*php*
-php php php php php php*
-php php php php php php*php Listphp ofphp inlinephp tags
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_inlineTagsphp php=php arrayphp(php'aphp'php,php php'abbrphp'php,php php'acronymphp'php,php php'dfnphp'php,php php'emphp'php,php php'strongphp'php,php php'codephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'sampphp'php,php php'kbdphp'php,php php'varphp'php,php php'bphp'php,php php'iphp'php,php php'bigphp'php,php php'smallphp'php,php php'strikephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'ttphp'php,php php'uphp'php,php php'fontphp'php,php php'spanphp'php,php php'bdophp'php,php php'citephp'php,php php'delphp'php,php php'insphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'qphp'php,php php'subphp'php,php php'supphp'php)php;
+    /**
+     *
+     * List of inline tags
+     *
+     * @var array
+     */
+    private $_inlineTags = array('a', 'abbr', 'acronym', 'dfn', 'em', 'strong', 'code',
+                                'samp', 'kbd', 'var', 'b', 'i', 'big', 'small', 'strike',
+                                'tt', 'u', 'font', 'span', 'bdo', 'cite', 'del', 'ins',
+                                'q', 'sub', 'sup');
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$dataphp php php php php php php php php HTMLphp stringphp php(mayphp bephp HTMLphp fragmentphp,php php)
-php php php php php php*php php@paramphp booleanphp php$isFile
-php php php php php php*php php@paramphp booleanphp php$storeContent
-php php php php php php*php php@paramphp stringphp php php$defaultEncodingphp php php HTMLphp encodingphp,php isphp usedphp ifphp itphp'sphp notphp specifiedphp usingphp Contentphp-typephp HTTPphp-EQUIVphp metaphp tagphp.
-php php php php php php*php/
-php php php php privatephp functionphp php_php_constructphp(php$dataphp,php php$isFilephp,php php$storeContentphp,php php$defaultEncodingphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_docphp php=php newphp DOMDocumentphp(php)php;
-php php php php php php php php php$thisphp-php>php_docphp-php>substituteEntitiesphp php=php truephp;
+    /**
+     * Object constructor
+     *
+     * @param string  $data         HTML string (may be HTML fragment, )
+     * @param boolean $isFile
+     * @param boolean $storeContent
+     * @param string  $defaultEncoding   HTML encoding, is used if it's not specified using Content-type HTTP-EQUIV meta tag.
+     */
+    private function __construct($data, $isFile, $storeContent, $defaultEncoding = '')
+    {
+        $this->_doc = new DOMDocument();
+        $this->_doc->substituteEntities = true;
 
-php php php php php php php php ifphp php(php$isFilephp)php php{
-php php php php php php php php php php php php php$htmlDataphp php=php filephp_getphp_contentsphp(php$dataphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$htmlDataphp php=php php$dataphp;
-php php php php php php php php php}
-php php php php php php php php php@php$thisphp-php>php_docphp-php>loadHTMLphp(php$htmlDataphp)php;
+        if ($isFile) {
+            $htmlData = file_get_contents($data);
+        } else {
+            $htmlData = $data;
+        }
+        @$this->_doc->loadHTML($htmlData);
 
-php php php php php php php php ifphp php(php$thisphp-php>php_docphp-php>encodingphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Documentphp encodingphp isphp notphp recognized
+        if ($this->_doc->encoding === null) {
+            // Document encoding is not recognized
 
-php php php php php php php php php php php php php/php*php*php php@todophp improvephp HTMLphp vsphp HTMLphp fragmentphp recognitionphp php*php/
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php<htmlphp[php^php>php]php*php>php/iphp'php,php php$htmlDataphp,php php$matchesphp,php PREGphp_OFFSETphp_CAPTUREphp)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Itphp'sphp anphp HTMLphp document
-php php php php php php php php php php php php php php php php php/php/php Addphp additionalphp HEADphp sectionphp andphp recognizephp document
-php php php php php php php php php php php php php php php php php$htmlTagOffsetphp php=php php$matchesphp[php0php]php[php1php]php php+php strlenphp(php$matchesphp[php0php]php[php0php]php)php;
+            /** @todo improve HTML vs HTML fragment recognition */
+            if (preg_match('/<html[^>]*>/i', $htmlData, $matches, PREG_OFFSET_CAPTURE)) {
+                // It's an HTML document
+                // Add additional HEAD section and recognize document
+                $htmlTagOffset = $matches[0][1] + strlen($matches[0][0]);
 
-php php php php php php php php php php php php php php php php php@php$thisphp-php>php_docphp-php>loadHTMLphp(iconvphp(php$defaultEncodingphp,php php'UTFphp-php8php/php/IGNOREphp'php,php substrphp(php$htmlDataphp,php php0php,php php$htmlTagOffsetphp)php)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php<headphp>php<METAphp HTTPphp-EQUIVphp=php"Contentphp-typephp"php CONTENTphp=php"textphp/htmlphp;php charsetphp=UTFphp-php8php"php/php><php/headphp>php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp(php$defaultEncodingphp,php php'UTFphp-php8php/php/IGNOREphp'php,php substrphp(php$htmlDataphp,php php$htmlTagOffsetphp)php)php)php;
+                @$this->_doc->loadHTML(iconv($defaultEncoding, 'UTF-8//IGNORE', substr($htmlData, 0, $htmlTagOffset))
+                                     . '<head><META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/></head>'
+                                     . iconv($defaultEncoding, 'UTF-8//IGNORE', substr($htmlData, $htmlTagOffset)));
 
-php php php php php php php php php php php php php php php php php/php/php Removephp additionalphp HEADphp section
-php php php php php php php php php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$thisphp-php>php_docphp)php;
-php php php php php php php php php php php php php php php php php$headphp php php=php php$xpathphp-php>queryphp(php'php/htmlphp/headphp'php)php-php>itemphp(php0php)php;
-php php php php php php php php php php php php php php php php php$headphp-php>parentNodephp-php>removeChildphp(php$headphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Itphp'sphp anphp HTMLphp fragment
-php php php php php php php php php php php php php php php php php@php$thisphp-php>php_docphp-php>loadHTMLphp(php'php<htmlphp>php<headphp>php<METAphp HTTPphp-EQUIVphp=php"Contentphp-typephp"php CONTENTphp=php"textphp/htmlphp;php charsetphp=UTFphp-php8php"php/php><php/headphp>php<bodyphp>php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php iconvphp(php$defaultEncodingphp,php php'UTFphp-php8php/php/IGNOREphp'php,php php$htmlDataphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'<php/bodyphp><php/htmlphp>php'php)php;
-php php php php php php php php php php php php php}
+                // Remove additional HEAD section
+                $xpath = new DOMXPath($this->_doc);
+                $head  = $xpath->query('/html/head')->item(0);
+                $head->parentNode->removeChild($head);
+            } else {
+                // It's an HTML fragment
+                @$this->_doc->loadHTML('<html><head><META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/></head><body>'
+                                     . iconv($defaultEncoding, 'UTF-8//IGNORE', $htmlData)
+                                     . '</body></html>');
+            }
 
-php php php php php php php php php}
-php php php php php php php php php/php*php*php php@todophp Addphp correctionphp ofphp wrongphp HTMLphp encodingphp recognitionphp processing
-php php php php php php php php php php*php Thephp casephp isphp:
-php php php php php php php php php php*php Contentphp-typephp HTTPphp-EQUIVphp metaphp tagphp isphp presentedphp,php butphp ISOphp-php8php8php5php9php-php5php encodingphp isphp actuallyphp usedphp,
-php php php php php php php php php php*php evenphp php$thisphp-php>php_docphp-php>encodingphp demonstratesphp anotherphp recognizedphp encoding
-php php php php php php php php php php*php/
+        }
+        /** @todo Add correction of wrong HTML encoding recognition processing
+         * The case is:
+         * Content-type HTTP-EQUIV meta tag is presented, but ISO-8859-5 encoding is actually used,
+         * even $this->_doc->encoding demonstrates another recognized encoding
+         */
 
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$thisphp-php>php_docphp)php;
+        $xpath = new DOMXPath($this->_doc);
 
-php php php php php php php php php$docTitlephp php=php php'php'php;
-php php php php php php php php php$titleNodesphp php=php php$xpathphp-php>queryphp(php'php/htmlphp/headphp/titlephp'php)php;
-php php php php php php php php foreachphp php(php$titleNodesphp asphp php$titleNodephp)php php{
-php php php php php php php php php php php php php/php/php titlephp shouldphp alwaysphp havephp onlyphp onephp entryphp,php butphp wephp processphp allphp nodesetphp entries
-php php php php php php php php php php php php php$docTitlephp php.php=php php$titleNodephp-php>nodeValuephp php.php php'php php'php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>addFieldphp(Zendphp_Searchphp_Lucenephp_Fieldphp:php:Textphp(php'titlephp'php,php php$docTitlephp,php php'UTFphp-php8php'php)php)php;
+        $docTitle = '';
+        $titleNodes = $xpath->query('/html/head/title');
+        foreach ($titleNodes as $titleNode) {
+            // title should always have only one entry, but we process all nodeset entries
+            $docTitle .= $titleNode->nodeValue . ' ';
+        }
+        $this->addField(Zend_Search_Lucene_Field::Text('title', $docTitle, 'UTF-8'));
 
-php php php php php php php php php$metaNodesphp php=php php$xpathphp-php>queryphp(php'php/htmlphp/headphp/metaphp[php@namephp]php'php)php;
-php php php php php php php php foreachphp php(php$metaNodesphp asphp php$metaNodephp)php php{
-php php php php php php php php php php php php php$thisphp-php>addFieldphp(Zendphp_Searchphp_Lucenephp_Fieldphp:php:Textphp(php$metaNodephp-php>getAttributephp(php'namephp'php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$metaNodephp-php>getAttributephp(php'contentphp'php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'UTFphp-php8php'php)php)php;
-php php php php php php php php php}
+        $metaNodes = $xpath->query('/html/head/meta[@name]');
+        foreach ($metaNodes as $metaNode) {
+            $this->addField(Zend_Search_Lucene_Field::Text($metaNode->getAttribute('name'),
+                                                           $metaNode->getAttribute('content'),
+                                                           'UTF-8'));
+        }
 
-php php php php php php php php php$docBodyphp php=php php'php'php;
-php php php php php php php php php$bodyNodesphp php=php php$xpathphp-php>queryphp(php'php/htmlphp/bodyphp'php)php;
-php php php php php php php php foreachphp php(php$bodyNodesphp asphp php$bodyNodephp)php php{
-php php php php php php php php php php php php php/php/php bodyphp shouldphp alwaysphp havephp onlyphp onephp entryphp,php butphp wephp processphp allphp nodesetphp entries
-php php php php php php php php php php php php php$thisphp-php>php_retrieveNodeTextphp(php$bodyNodephp,php php$docBodyphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$storeContentphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addFieldphp(Zendphp_Searchphp_Lucenephp_Fieldphp:php:Textphp(php'bodyphp'php,php php$docBodyphp,php php'UTFphp-php8php'php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>addFieldphp(Zendphp_Searchphp_Lucenephp_Fieldphp:php:UnStoredphp(php'bodyphp'php,php php$docBodyphp,php php'UTFphp-php8php'php)php)php;
-php php php php php php php php php}
+        $docBody = '';
+        $bodyNodes = $xpath->query('/html/body');
+        foreach ($bodyNodes as $bodyNode) {
+            // body should always have only one entry, but we process all nodeset entries
+            $this->_retrieveNodeText($bodyNode, $docBody);
+        }
+        if ($storeContent) {
+            $this->addField(Zend_Search_Lucene_Field::Text('body', $docBody, 'UTF-8'));
+        } else {
+            $this->addField(Zend_Search_Lucene_Field::UnStored('body', $docBody, 'UTF-8'));
+        }
 
-php php php php php php php php php$linkNodesphp php=php php$thisphp-php>php_docphp-php>getElementsByTagNamephp(php'aphp'php)php;
-php php php php php php php php foreachphp php(php$linkNodesphp asphp php$linkNodephp)php php{
-php php php php php php php php php php php php ifphp php(php(php$hrefphp php=php php$linkNodephp-php>getAttributephp(php'hrefphp'php)php)php php!php=php php'php'php php&php&
-php php php php php php php php php php php php php php php php php(php!selfphp:php:php$php_excludeNoFollowLinksphp php php|php|php php strtolowerphp(php$linkNodephp-php>getAttributephp(php'relphp'php)php)php php!php=php php'nofollowphp'php php)
-php php php php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_linksphp[php]php php=php php$hrefphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$linkNodesphp php=php php$thisphp-php>php_docphp-php>getElementsByTagNamephp(php'areaphp'php)php;
-php php php php php php php php foreachphp php(php$linkNodesphp asphp php$linkNodephp)php php{
-php php php php php php php php php php php php ifphp php(php(php$hrefphp php=php php$linkNodephp-php>getAttributephp(php'hrefphp'php)php)php php!php=php php'php'php php&php&
-php php php php php php php php php php php php php php php php php(php!selfphp:php:php$php_excludeNoFollowLinksphp php php|php|php php strtolowerphp(php$linkNodephp-php>getAttributephp(php'relphp'php)php)php php!php=php php'nofollowphp'php php)
-php php php php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_linksphp[php]php php=php php$hrefphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_linksphp php=php arrayphp_uniquephp(php$thisphp-php>php_linksphp)php;
+        $linkNodes = $this->_doc->getElementsByTagName('a');
+        foreach ($linkNodes as $linkNode) {
+            if (($href = $linkNode->getAttribute('href')) != '' &&
+                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+               ) {
+                $this->_links[] = $href;
+            }
+        }
+        $linkNodes = $this->_doc->getElementsByTagName('area');
+        foreach ($linkNodes as $linkNode) {
+            if (($href = $linkNode->getAttribute('href')) != '' &&
+                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+               ) {
+                $this->_links[] = $href;
+            }
+        }
+        $this->_links = array_unique($this->_links);
 
-php php php php php php php php php$linkNodesphp php=php php$xpathphp-php>queryphp(php'php/htmlphp/headphp/linkphp'php)php;
-php php php php php php php php foreachphp php(php$linkNodesphp asphp php$linkNodephp)php php{
-php php php php php php php php php php php php ifphp php(php(php$hrefphp php=php php$linkNodephp-php>getAttributephp(php'hrefphp'php)php)php php!php=php php'php'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_headerLinksphp[php]php php=php php$hrefphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_headerLinksphp php=php arrayphp_uniquephp(php$thisphp-php>php_headerLinksphp)php;
-php php php php php}
+        $linkNodes = $xpath->query('/html/head/link');
+        foreach ($linkNodes as $linkNode) {
+            if (($href = $linkNode->getAttribute('href')) != '') {
+                $this->_headerLinks[] = $href;
+            }
+        }
+        $this->_headerLinks = array_unique($this->_headerLinks);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp excludephp nofollowphp linksphp flag
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$newValue
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setExcludeNoFollowLinksphp(php$newValuephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_excludeNoFollowLinksphp php=php php$newValuephp;
-php php php php php}
+    /**
+     * Set exclude nofollow links flag
+     *
+     * @param boolean $newValue
+     */
+    public static function setExcludeNoFollowLinks($newValue)
+    {
+        self::$_excludeNoFollowLinks = $newValue;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp excludephp nofollowphp linksphp flag
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getExcludeNoFollowLinksphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_excludeNoFollowLinksphp;
-php php php php php}
+    /**
+     * Get exclude nofollow links flag
+     *
+     * @return boolean
+     */
+    public static function getExcludeNoFollowLinks()
+    {
+        return self::$_excludeNoFollowLinks;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp nodephp text
-php php php php php php*
-php php php php php php*php Wephp shouldphp excludephp scriptsphp,php whichphp mayphp bephp notphp includedphp intophp commentphp tagsphp,php CDATAphp sectionsphp,
-php php php php php php*
-php php php php php php*php php@paramphp DOMNodephp php$node
-php php php php php php*php php@paramphp stringphp php&php$text
-php php php php php php*php/
-php php php php privatephp functionphp php_retrieveNodeTextphp(DOMNodephp php$nodephp,php php&php$textphp)
-php php php php php{
-php php php php php php php php ifphp php(php$nodephp-php>nodeTypephp php=php=php XMLphp_TEXTphp_NODEphp)php php{
-php php php php php php php php php php php php php$textphp php.php=php php$nodephp-php>nodeValuephp;
-php php php php php php php php php php php php ifphp(php!inphp_arrayphp(php$nodephp-php>parentNodephp-php>tagNamephp,php php$thisphp-php>php_inlineTagsphp)php)php php{
-php php php php php php php php php php php php php php php php php$textphp php.php=php php'php php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp ifphp php(php$nodephp-php>nodeTypephp php=php=php XMLphp_ELEMENTphp_NODEphp php php&php&php php php$nodephp-php>nodeNamephp php!php=php php'scriptphp'php)php php{
-php php php php php php php php php php php php foreachphp php(php$nodephp-php>childNodesphp asphp php$childNodephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_retrieveNodeTextphp(php$childNodephp,php php$textphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Get node text
+     *
+     * We should exclude scripts, which may be not included into comment tags, CDATA sections,
+     *
+     * @param DOMNode $node
+     * @param string &$text
+     */
+    private function _retrieveNodeText(DOMNode $node, &$text)
+    {
+        if ($node->nodeType == XML_TEXT_NODE) {
+            $text .= $node->nodeValue;
+            if(!in_array($node->parentNode->tagName, $this->_inlineTags)) {
+                $text .= ' ';
+            }
+        } else if ($node->nodeType == XML_ELEMENT_NODE  &&  $node->nodeName != 'script') {
+            foreach ($node->childNodes as $childNode) {
+                $this->_retrieveNodeText($childNode, $text);
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp HREFphp links
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getLinksphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_linksphp;
-php php php php php}
+    /**
+     * Get document HREF links
+     *
+     * @return array
+     */
+    public function getLinks()
+    {
+        return $this->_links;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp headerphp links
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getHeaderLinksphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_headerLinksphp;
-php php php php php}
+    /**
+     * Get document header links
+     *
+     * @return array
+     */
+    public function getHeaderLinks()
+    {
+        return $this->_headerLinks;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp HTMLphp documentphp fromphp aphp string
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$data
-php php php php php php*php php@paramphp booleanphp php$storeContent
-php php php php php php*php php@paramphp stringphp php php$defaultEncodingphp php php HTMLphp encodingphp,php isphp usedphp ifphp itphp'sphp notphp specifiedphp usingphp Contentphp-typephp HTTPphp-EQUIVphp metaphp tagphp.
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Documentphp_Html
-php php php php php php*php/
-php php php php publicphp staticphp functionphp loadHTMLphp(php$dataphp,php php$storeContentphp php=php falsephp,php php$defaultEncodingphp php=php php'php'php)
-php php php php php{
-php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Documentphp_Htmlphp(php$dataphp,php falsephp,php php$storeContentphp,php php$defaultEncodingphp)php;
-php php php php php}
+    /**
+     * Load HTML document from a string
+     *
+     * @param string  $data
+     * @param boolean $storeContent
+     * @param string  $defaultEncoding   HTML encoding, is used if it's not specified using Content-type HTTP-EQUIV meta tag.
+     * @return Zend_Search_Lucene_Document_Html
+     */
+    public static function loadHTML($data, $storeContent = false, $defaultEncoding = '')
+    {
+        return new Zend_Search_Lucene_Document_Html($data, false, $storeContent, $defaultEncoding);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp HTMLphp documentphp fromphp aphp file
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$file
-php php php php php php*php php@paramphp booleanphp php$storeContent
-php php php php php php*php php@paramphp stringphp php php$defaultEncodingphp php php HTMLphp encodingphp,php isphp usedphp ifphp itphp'sphp notphp specifiedphp usingphp Contentphp-typephp HTTPphp-EQUIVphp metaphp tagphp.
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Documentphp_Html
-php php php php php php*php/
-php php php php publicphp staticphp functionphp loadHTMLFilephp(php$filephp,php php$storeContentphp php=php falsephp,php php$defaultEncodingphp php=php php'php'php)
-php php php php php{
-php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Documentphp_Htmlphp(php$filephp,php truephp,php php$storeContentphp,php php$defaultEncodingphp)php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Highlightphp textphp inphp textphp node
-php php php php php php*
-php php php php php php*php php@paramphp DOMTextphp php$node
-php php php php php php*php php@paramphp arrayphp php php php$wordsToHighlight
-php php php php php php*php php@paramphp callbackphp php$callbackphp php php Callbackphp methodphp,php usedphp tophp transformphp php(highlightingphp)php textphp.
-php php php php php php*php php@paramphp arrayphp php php php php$paramsphp php php php php Arrayphp ofphp additionallphp callbackphp parametersphp php(firstphp nonphp-optionalphp parameterphp isphp aphp textphp tophp transformphp)
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightTextNodephp(DOMTextphp php$nodephp,php php$wordsToHighlightphp,php php$callbackphp,php php$paramsphp)
-php php php php php{
-php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
-
-php php php php php php php php php$analyzerphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php;
-php php php php php php php php php$analyzerphp-php>setInputphp(php$nodephp-php>nodeValuephp,php php'UTFphp-php8php'php)php;
-
-php php php php php php php php php$matchedTokensphp php=php arrayphp(php)php;
-
-php php php php php php php php whilephp php(php(php$tokenphp php=php php$analyzerphp-php>nextTokenphp(php)php)php php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$wordsToHighlightphp[php$tokenphp-php>getTermTextphp(php)php]php)php)php php{
-php php php php php php php php php php php php php php php php php$matchedTokensphp[php]php php=php php$tokenphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$matchedTokensphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php$matchedTokensphp php=php arrayphp_reversephp(php$matchedTokensphp)php;
-
-php php php php php php php php foreachphp php(php$matchedTokensphp asphp php$tokenphp)php php{
-php php php php php php php php php php php php php/php/php Cutphp textphp afterphp matchedphp token
-php php php php php php php php php php php php php$nodephp-php>splitTextphp(php$tokenphp-php>getEndOffsetphp(php)php)php;
-
-php php php php php php php php php php php php php/php/php Cutphp matchedphp node
-php php php php php php php php php php php php php$matchedWordNodephp php=php php$nodephp-php>splitTextphp(php$tokenphp-php>getStartOffsetphp(php)php)php;
-
-php php php php php php php php php php php php php/php/php Retrievephp HTMLphp stringphp representationphp forphp highlihtedphp word
-php php php php php php php php php php php php php$fullCallbackparamsListphp php=php php$paramsphp;
-php php php php php php php php php php php php arrayphp_unshiftphp(php$fullCallbackparamsListphp,php php$matchedWordNodephp-php>nodeValuephp)php;
-php php php php php php php php php php php php php$highlightedWordNodeSetHtmlphp php=php callphp_userphp_funcphp_arrayphp(php$callbackphp,php php$fullCallbackparamsListphp)php;
-
-php php php php php php php php php php php php php/php/php Transformphp HTMLphp stringphp tophp aphp DOMphp representationphp andphp automaticallyphp transformphp retrievedphp string
-php php php php php php php php php php php php php/php/php intophp validphp XHTMLphp php(Itphp'sphp automaticallyphp donephp byphp loadHTMLphp(php)php methodphp)
-php php php php php php php php php php php php php$highlightedWordNodeSetDomDocumentphp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php'UTFphp-php8php'php)php;
-php php php php php php php php php php php php php$successphp php=php php@php$highlightedWordNodeSetDomDocumentphp-php>
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php loadHTMLphp(php'php<htmlphp>php<headphp>php<metaphp httpphp-equivphp=php"Contentphp-typephp"php contentphp=php"textphp/htmlphp;php charsetphp=UTFphp-php8php"php/php><php/headphp>php<bodyphp>php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$highlightedWordNodeSetHtml
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'<php/bodyphp><php/htmlphp>php'php)php;
-php php php php php php php php php php php php ifphp php(php!php$successphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php"Errorphp occuredphp whilephp loadingphp highlightedphp textphp fragmentphp:php php'php$highlightedWordNodeSetHtmlphp'php.php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$highlightedWordNodeSetXpathphp php=php newphp DOMXPathphp(php$highlightedWordNodeSetDomDocumentphp)php;
-php php php php php php php php php php php php php$highlightedWordNodeSetphp php php php php php php=php php$highlightedWordNodeSetXpathphp-php>queryphp(php'php/htmlphp/bodyphp'php)php-php>itemphp(php0php)php-php>childNodesphp;
-
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$highlightedWordNodeSetphp-php>lengthphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$nodeToImportphp php=php php$highlightedWordNodeSetphp-php>itemphp(php$countphp)php;
-php php php php php php php php php php php php php php php php php$nodephp-php>parentNodephp-php>insertBeforephp(php$thisphp-php>php_docphp-php>importNodephp(php$nodeToImportphp,php truephp php/php*php deepphp copyphp php*php/php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$matchedWordNodephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$nodephp-php>parentNodephp-php>removeChildphp(php$matchedWordNodephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Load HTML document from a file
+     *
+     * @param string  $file
+     * @param boolean $storeContent
+     * @param string  $defaultEncoding   HTML encoding, is used if it's not specified using Content-type HTTP-EQUIV meta tag.
+     * @return Zend_Search_Lucene_Document_Html
+     */
+    public static function loadHTMLFile($file, $storeContent = false, $defaultEncoding = '')
+    {
+        return new Zend_Search_Lucene_Document_Html($file, true, $storeContent, $defaultEncoding);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php highlightphp wordsphp inphp contentphp ofphp thephp specifiedphp node
-php php php php php php*
-php php php php php php*php php@paramphp DOMNodephp php$contextNode
-php php php php php php*php php@paramphp arrayphp php$wordsToHighlight
-php php php php php php*php php@paramphp callbackphp php$callbackphp php php Callbackphp methodphp,php usedphp tophp transformphp php(highlightingphp)php textphp.
-php php php php php php*php php@paramphp arrayphp php php php php$paramsphp php php php php Arrayphp ofphp additionallphp callbackphp parametersphp php(firstphp nonphp-optionalphp parameterphp isphp aphp textphp tophp transformphp)
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightNodeRecursivephp(DOMNodephp php$contextNodephp,php php$wordsToHighlightphp,php php$callbackphp,php php$paramsphp)
-php php php php php{
-php php php php php php php php php$textNodesphp php=php arrayphp(php)php;
+    /**
+     * Highlight text in text node
+     *
+     * @param DOMText $node
+     * @param array   $wordsToHighlight
+     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param array    $params     Array of additionall callback parameters (first non-optional parameter is a text to transform)
+     * @throws Zend_Search_Lucene_Exception
+     */
+    protected function _highlightTextNode(DOMText $node, $wordsToHighlight, $callback, $params)
+    {
+        /** Zend_Search_Lucene_Analysis_Analyzer */
+        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
 
-php php php php php php php php ifphp php(php!php$contextNodephp-php>hasChildNodesphp(php)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        $analyzer = Zend_Search_Lucene_Analysis_Analyzer::getDefault();
+        $analyzer->setInput($node->nodeValue, 'UTF-8');
 
-php php php php php php php php foreachphp php(php$contextNodephp-php>childNodesphp asphp php$childNodephp)php php{
-php php php php php php php php php php php php ifphp php(php$childNodephp-php>nodeTypephp php=php=php XMLphp_TEXTphp_NODEphp)php php{
-php php php php php php php php php php php php php php php php php/php/php processphp nodephp laterphp tophp leavephp childNodesphp structurephp untouched
-php php php php php php php php php php php php php php php php php$textNodesphp[php]php php=php php$childNodephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Processphp nodephp ifphp itphp'sphp notphp aphp scriptphp node
-php php php php php php php php php php php php php php php php ifphp php(php$childNodephp-php>nodeNamephp php!php=php php'scriptphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_highlightNodeRecursivephp(php$childNodephp,php php$wordsToHighlightphp,php php$callbackphp,php php$paramsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $matchedTokens = array();
 
-php php php php php php php php foreachphp php(php$textNodesphp asphp php$textNodephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_highlightTextNodephp(php$textNodephp,php php$wordsToHighlightphp,php php$callbackphp,php php$paramsphp)php;
-php php php php php php php php php}
-php php php php php}
+        while (($token = $analyzer->nextToken()) !== null) {
+            if (isset($wordsToHighlight[$token->getTermText()])) {
+                $matchedTokens[] = $token;
+            }
+        }
 
-php php php php php/php*php*
-php php php php php php*php Standardphp callbackphp methodphp usedphp tophp highlightphp wordsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$stringToHighlight
-php php php php php php*php php@returnphp string
-php php php php php php*php php@internal
-php php php php php php*php/
-php php php php publicphp functionphp applyColourphp(php$stringToHighlightphp,php php$colourphp)
-php php php php php{
-php php php php php php php php returnphp php'php<bphp stylephp=php"colorphp:blackphp;backgroundphp-colorphp:php'php php.php php$colourphp php.php php'php"php>php'php php.php php$stringToHighlightphp php.php php'<php/bphp>php'php;
-php php php php php}
+        if (count($matchedTokens) == 0) {
+            return;
+        }
 
-php php php php php/php*php*
-php php php php php php*php Highlightphp textphp withphp specifiedphp color
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$words
-php php php php php php*php php@paramphp stringphp php$colour
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp highlightphp(php$wordsphp,php php$colourphp php=php php'php#php6php6ffffphp'php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>highlightExtendedphp(php$wordsphp,php arrayphp(php$thisphp,php php'applyColourphp'php)php,php arrayphp(php$colourphp)php)php;
-php php php php php}
+        $matchedTokens = array_reverse($matchedTokens);
 
+        foreach ($matchedTokens as $token) {
+            // Cut text after matched token
+            $node->splitText($token->getEndOffset());
 
+            // Cut matched node
+            $matchedWordNode = $node->splitText($token->getStartOffset());
 
-php php php php php/php*php*
-php php php php php php*php Highlightphp textphp usingphp specifiedphp Viewphp helperphp orphp callbackphp functionphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$wordsphp php Wordsphp tophp highlightphp.php Wordsphp couldphp bephp organizedphp usingphp thephp arrayphp orphp stringphp.
-php php php php php php*php php@paramphp callbackphp php$callbackphp php php Callbackphp methodphp,php usedphp tophp transformphp php(highlightingphp)php textphp.
-php php php php php php*php php@paramphp arrayphp php php php php$paramsphp php php php php Arrayphp ofphp additionallphp callbackphp parametersphp passedphp throughphp intophp it
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(firstphp nonphp-optionalphp parameterphp isphp anphp HTMLphp fragmentphp forphp highlightingphp)
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp highlightExtendedphp(php$wordsphp,php php$callbackphp,php php$paramsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Analysisphp/Analyzerphp.phpphp'php;
+            // Retrieve HTML string representation for highlihted word
+            $fullCallbackparamsList = $params;
+            array_unshift($fullCallbackparamsList, $matchedWordNode->nodeValue);
+            $highlightedWordNodeSetHtml = call_user_func_array($callback, $fullCallbackparamsList);
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$wordsphp)php)php php{
-php php php php php php php php php php php php php$wordsphp php=php arrayphp(php$wordsphp)php;
-php php php php php php php php php}
+            // Transform HTML string to a DOM representation and automatically transform retrieved string
+            // into valid XHTML (It's automatically done by loadHTML() method)
+            $highlightedWordNodeSetDomDocument = new DOMDocument('1.0', 'UTF-8');
+            $success = @$highlightedWordNodeSetDomDocument->
+                                loadHTML('<html><head><meta http-equiv="Content-type" content="text/html; charset=UTF-8"/></head><body>'
+                                       . $highlightedWordNodeSetHtml
+                                       . '</body></html>');
+            if (!$success) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception("Error occured while loading highlighted text fragment: '$highlightedWordNodeSetHtml'.");
+            }
+            $highlightedWordNodeSetXpath = new DOMXPath($highlightedWordNodeSetDomDocument);
+            $highlightedWordNodeSet      = $highlightedWordNodeSetXpath->query('/html/body')->item(0)->childNodes;
 
-php php php php php php php php php$wordsToHighlightListphp php=php arrayphp(php)php;
-php php php php php php php php php$analyzerphp php=php Zendphp_Searchphp_Lucenephp_Analysisphp_Analyzerphp:php:getDefaultphp(php)php;
-php php php php php php php php foreachphp php(php$wordsphp asphp php$wordStringphp)php php{
-php php php php php php php php php php php php php$wordsToHighlightListphp[php]php php=php php$analyzerphp-php>tokenizephp(php$wordStringphp)php;
-php php php php php php php php php}
-php php php php php php php php php$wordsToHighlightphp php=php callphp_userphp_funcphp_arrayphp(php'arrayphp_mergephp'php,php php$wordsToHighlightListphp)php;
+            for ($count = 0; $count < $highlightedWordNodeSet->length; $count++) {
+                $nodeToImport = $highlightedWordNodeSet->item($count);
+                $node->parentNode->insertBefore($this->_doc->importNode($nodeToImport, true /* deep copy */),
+                                                $matchedWordNode);
+            }
 
-php php php php php php php php ifphp php(countphp(php$wordsToHighlightphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_docphp-php>saveHTMLphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$wordsToHighlightFlippedphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$wordsToHighlightphp asphp php$idphp php=php>php php$tokenphp)php php{
-php php php php php php php php php php php php php$wordsToHighlightFlippedphp[php$tokenphp-php>getTermTextphp(php)php]php php=php php$idphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!isphp_callablephp(php$callbackphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'php$viewHelperphp parameterphp mastphp bephp aphp Viewphp Helperphp namephp,php Viewphp Helperphp objectphp orphp callbackphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$thisphp-php>php_docphp)php;
-
-php php php php php php php php php$matchedNodesphp php=php php$xpathphp-php>queryphp(php"php/htmlphp/bodyphp"php)php;
-php php php php php php php php foreachphp php(php$matchedNodesphp asphp php$matchedNodephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_highlightNodeRecursivephp(php$matchedNodephp,php php$wordsToHighlightFlippedphp,php php$callbackphp,php php$paramsphp)php;
-php php php php php php php php php}
-php php php php php}
+            $node->parentNode->removeChild($matchedWordNode);
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp HTML
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHTMLphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_docphp-php>saveHTMLphp(php)php;
-php php php php php}
+    /**
+     * highlight words in content of the specified node
+     *
+     * @param DOMNode $contextNode
+     * @param array $wordsToHighlight
+     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param array    $params     Array of additionall callback parameters (first non-optional parameter is a text to transform)
+     */
+    protected function _highlightNodeRecursive(DOMNode $contextNode, $wordsToHighlight, $callback, $params)
+    {
+        $textNodes = array();
 
-php php php php php/php*php*
-php php php php php php*php Getphp HTMLphp body
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHtmlBodyphp(php)
-php php php php php{
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$thisphp-php>php_docphp)php;
-php php php php php php php php php$bodyNodesphp php=php php$xpathphp-php>queryphp(php'php/htmlphp/bodyphp'php)php-php>itemphp(php0php)php-php>childNodesphp;
+        if (!$contextNode->hasChildNodes()) {
+            return;
+        }
 
-php php php php php php php php php$outputFragmentsphp php=php arrayphp(php)php;
-php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$bodyNodesphp-php>lengthphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php$outputFragmentsphp[php]php php=php php$thisphp-php>php_docphp-php>saveXMLphp(php$bodyNodesphp-php>itemphp(php$countphp)php)php;
-php php php php php php php php php}
+        foreach ($contextNode->childNodes as $childNode) {
+            if ($childNode->nodeType == XML_TEXT_NODE) {
+                // process node later to leave childNodes structure untouched
+                $textNodes[] = $childNode;
+            } else {
+                // Process node if it's not a script node
+                if ($childNode->nodeName != 'script') {
+                    $this->_highlightNodeRecursive($childNode, $wordsToHighlight, $callback, $params);
+                }
+            }
+        }
 
-php php php php php php php php returnphp implodephp(php$outputFragmentsphp)php;
-php php php php php}
-php}
+        foreach ($textNodes as $textNode) {
+            $this->_highlightTextNode($textNode, $wordsToHighlight, $callback, $params);
+        }
+    }
+
+    /**
+     * Standard callback method used to highlight words.
+     *
+     * @param  string  $stringToHighlight
+     * @return string
+     * @internal
+     */
+    public function applyColour($stringToHighlight, $colour)
+    {
+        return '<b style="color:black;background-color:' . $colour . '">' . $stringToHighlight . '</b>';
+    }
+
+    /**
+     * Highlight text with specified color
+     *
+     * @param string|array $words
+     * @param string $colour
+     * @return string
+     */
+    public function highlight($words, $colour = '#66ffff')
+    {
+        return $this->highlightExtended($words, array($this, 'applyColour'), array($colour));
+    }
+
+
+
+    /**
+     * Highlight text using specified View helper or callback function.
+     *
+     * @param string|array $words  Words to highlight. Words could be organized using the array or string.
+     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param array    $params     Array of additionall callback parameters passed through into it
+     *                             (first non-optional parameter is an HTML fragment for highlighting)
+     * @return string
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function highlightExtended($words, $callback, $params = array())
+    {
+        /** Zend_Search_Lucene_Analysis_Analyzer */
+        require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
+
+        if (!is_array($words)) {
+            $words = array($words);
+        }
+
+        $wordsToHighlightList = array();
+        $analyzer = Zend_Search_Lucene_Analysis_Analyzer::getDefault();
+        foreach ($words as $wordString) {
+            $wordsToHighlightList[] = $analyzer->tokenize($wordString);
+        }
+        $wordsToHighlight = call_user_func_array('array_merge', $wordsToHighlightList);
+
+        if (count($wordsToHighlight) == 0) {
+            return $this->_doc->saveHTML();
+        }
+
+        $wordsToHighlightFlipped = array();
+        foreach ($wordsToHighlight as $id => $token) {
+            $wordsToHighlightFlipped[$token->getTermText()] = $id;
+        }
+
+        if (!is_callable($callback)) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('$viewHelper parameter mast be a View Helper name, View Helper object or callback.');
+        }
+
+        $xpath = new DOMXPath($this->_doc);
+
+        $matchedNodes = $xpath->query("/html/body");
+        foreach ($matchedNodes as $matchedNode) {
+            $this->_highlightNodeRecursive($matchedNode, $wordsToHighlightFlipped, $callback, $params);
+        }
+    }
+
+
+    /**
+     * Get HTML
+     *
+     * @return string
+     */
+    public function getHTML()
+    {
+        return $this->_doc->saveHTML();
+    }
+
+    /**
+     * Get HTML body
+     *
+     * @return string
+     */
+    public function getHtmlBody()
+    {
+        $xpath = new DOMXPath($this->_doc);
+        $bodyNodes = $xpath->query('/html/body')->item(0)->childNodes;
+
+        $outputFragments = array();
+        for ($count = 0; $count < $bodyNodes->length; $count++) {
+            $outputFragments[] = $this->_doc->saveXML($bodyNodes->item($count));
+        }
+
+        return implode($outputFragments);
+    }
+}
 

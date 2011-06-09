@@ -1,174 +1,174 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_InfoCard
-php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php EncryptedKeyphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_InfoCard
+ * @subpackage Zend_InfoCard_Xml
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: EncryptedKey.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_InfoCardphp_Xmlphp_Element
-php php*php/
-requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/Elementphp.phpphp'php;
+/**
+ * Zend_InfoCard_Xml_Element
+ */
+require_once 'Zend/InfoCard/Xml/Element.php';
 
-php/php*php*
-php php*php Zendphp_InfoCardphp_Xmlphp_EncryptedKey
-php php*php/
-requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/EncryptedKeyphp.phpphp'php;
+/**
+ * Zend_InfoCard_Xml_EncryptedKey
+ */
+require_once 'Zend/InfoCard/Xml/EncryptedKey.php';
 
-php/php*php*
-php php*php Zendphp_InfoCardphp_Xmlphp_KeyInfophp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/InfoCardphp/Xmlphp/KeyInfophp/Interfacephp.phpphp'php;
+/**
+ * Zend_InfoCard_Xml_KeyInfo_Interface
+ */
+require_once 'Zend/InfoCard/Xml/KeyInfo/Interface.php';
 
-php/php*php*
-php php*php Anphp objectphp representingphp anphp Xmlphp EncryptedKEyphp block
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_InfoCard
-php php*php php@subpackagephp Zendphp_InfoCardphp_Xml
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_InfoCardphp_Xmlphp_EncryptedKey
-php php php php extendsphp Zendphp_InfoCardphp_Xmlphp_Element
-php php php php implementsphp Zendphp_InfoCardphp_Xmlphp_KeyInfophp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp instancephp ofphp thephp objectphp basedphp onphp inputphp XMLphp Data
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
-php php php php php php*php php@paramphp stringphp php$xmlDataphp Thephp EncryptedKeyphp XMLphp Block
-php php php php php php*php php@returnphp Zendphp_InfoCardphp_Xmlphp_EncryptedKey
-php php php php php php*php/
-php php php php staticphp publicphp functionphp getInstancephp(php$xmlDataphp)
-php php php php php{
-php php php php php php php php ifphp(php$xmlDataphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php php{
-php php php php php php php php php php php php php$strXmlDataphp php=php php$xmlDataphp-php>asXMLphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(isphp_stringphp(php$xmlDataphp)php)php php{
-php php php php php php php php php php php php php$strXmlDataphp php=php php$xmlDataphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Invalidphp Dataphp providedphp tophp createphp instancephp"php)php;
-php php php php php php php php php}
+/**
+ * An object representing an Xml EncryptedKEy block
+ *
+ * @category   Zend
+ * @package    Zend_InfoCard
+ * @subpackage Zend_InfoCard_Xml
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_InfoCard_Xml_EncryptedKey
+    extends Zend_InfoCard_Xml_Element
+    implements Zend_InfoCard_Xml_KeyInfo_Interface
+{
+    /**
+     * Return an instance of the object based on input XML Data
+     *
+     * @throws Zend_InfoCard_Xml_Exception
+     * @param string $xmlData The EncryptedKey XML Block
+     * @return Zend_InfoCard_Xml_EncryptedKey
+     */
+    static public function getInstance($xmlData)
+    {
+        if($xmlData instanceof Zend_InfoCard_Xml_Element) {
+            $strXmlData = $xmlData->asXML();
+        } else if (is_string($xmlData)) {
+            $strXmlData = $xmlData;
+        } else {
+            throw new Zend_InfoCard_Xml_Exception("Invalid Data provided to create instance");
+        }
 
-php php php php php php php php php$sxephp php=php simplexmlphp_loadphp_stringphp(php$strXmlDataphp)php;
+        $sxe = simplexml_load_string($strXmlData);
 
-php php php php php php php php ifphp(php$sxephp-php>getNamephp(php)php php!php=php php"EncryptedKeyphp"php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Invalidphp XMLphp Blockphp providedphp forphp EncryptedKeyphp"php)php;
-php php php php php php php php php}
+        if($sxe->getName() != "EncryptedKey") {
+            throw new Zend_InfoCard_Xml_Exception("Invalid XML Block provided for EncryptedKey");
+        }
 
-php php php php php php php php returnphp simplexmlphp_loadphp_stringphp(php$strXmlDataphp,php php"Zendphp_InfoCardphp_Xmlphp_EncryptedKeyphp"php)php;
-php php php php php}
+        return simplexml_load_string($strXmlData, "Zend_InfoCard_Xml_EncryptedKey");
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp Encyptionphp Methodphp Algorithmphp URIphp ofphp thephp block
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
-php php php php php php*php php@returnphp stringphp thephp Encryptionphp methodphp algorithmphp URI
-php php php php php php*php/
-php php php php publicphp functionphp getEncryptionMethodphp(php)
-php php php php php{
+    /**
+     * Returns the Encyption Method Algorithm URI of the block
+     *
+     * @throws Zend_InfoCard_Xml_Exception
+     * @return string the Encryption method algorithm URI
+     */
+    public function getEncryptionMethod()
+    {
 
-php php php php php php php php php$thisphp-php>registerXPathNamespacephp(php'ephp'php,php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/php0php4php/xmlencphp#php'php)php;
-php php php php php php php php listphp(php$encryptionphp_methodphp)php php=php php$thisphp-php>xpathphp(php"php/php/ephp:EncryptionMethodphp"php)php;
+        $this->registerXPathNamespace('e', 'http://www.w3.org/2001/04/xmlenc#');
+        list($encryption_method) = $this->xpath("//e:EncryptionMethod");
 
-php php php php php php php php ifphp(php!php(php$encryptionphp_methodphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp findphp thephp ephp:EncryptionMethodphp KeyInfophp encryptionphp blockphp"php)php;
-php php php php php php php php php}
+        if(!($encryption_method instanceof Zend_InfoCard_Xml_Element)) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to find the e:EncryptionMethod KeyInfo encryption block");
+        }
 
-php php php php php php php php php$domphp php=php selfphp:php:convertToDOMphp(php$encryptionphp_methodphp)php;
+        $dom = self::convertToDOM($encryption_method);
 
-php php php php php php php php ifphp(php!php$domphp-php>hasAttributephp(php'Algorithmphp'php)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp determinephp thephp encryptionphp algorithmphp inphp thephp Symmetricphp encphp:EncryptionMethodphp XMLphp blockphp"php)php;
-php php php php php php php php php}
+        if(!$dom->hasAttribute('Algorithm')) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to determine the encryption algorithm in the Symmetric enc:EncryptionMethod XML block");
+        }
 
-php php php php php php php php returnphp php$domphp-php>getAttributephp(php'Algorithmphp'php)php;
+        return $dom->getAttribute('Algorithm');
 
-php php php php php}
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp Digestphp Methodphp Algorithmphp URIphp used
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
-php php php php php php*php php@returnphp stringphp thephp Digestphp Methodphp Algorithmphp URI
-php php php php php php*php/
-php php php php publicphp functionphp getDigestMethodphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>registerXPathNamespacephp(php'ephp'php,php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/php0php4php/xmlencphp#php'php)php;
-php php php php php php php php listphp(php$encryptionphp_methodphp)php php=php php$thisphp-php>xpathphp(php"php/php/ephp:EncryptionMethodphp"php)php;
+    /**
+     * Returns the Digest Method Algorithm URI used
+     *
+     * @throws Zend_InfoCard_Xml_Exception
+     * @return string the Digest Method Algorithm URI
+     */
+    public function getDigestMethod()
+    {
+        $this->registerXPathNamespace('e', 'http://www.w3.org/2001/04/xmlenc#');
+        list($encryption_method) = $this->xpath("//e:EncryptionMethod");
 
-php php php php php php php php ifphp(php!php(php$encryptionphp_methodphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp findphp thephp ephp:EncryptionMethodphp KeyInfophp encryptionphp blockphp"php)php;
-php php php php php php php php php}
+        if(!($encryption_method instanceof Zend_InfoCard_Xml_Element)) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to find the e:EncryptionMethod KeyInfo encryption block");
+        }
 
-php php php php php php php php ifphp(php!php(php$encryptionphp_methodphp-php>DigestMethodphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp findphp thephp DigestMethodphp blockphp"php)php;
-php php php php php php php php php}
+        if(!($encryption_method->DigestMethod instanceof Zend_InfoCard_Xml_Element)) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to find the DigestMethod block");
+        }
 
-php php php php php php php php php$domphp php=php selfphp:php:convertToDOMphp(php$encryptionphp_methodphp-php>DigestMethodphp)php;
+        $dom = self::convertToDOM($encryption_method->DigestMethod);
 
-php php php php php php php php ifphp(php!php$domphp-php>hasAttributephp(php'Algorithmphp'php)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp determinephp thephp digestphp algorithmphp forphp thephp symmetricphp Keyinfophp"php)php;
-php php php php php php php php php}
+        if(!$dom->hasAttribute('Algorithm')) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to determine the digest algorithm for the symmetric Keyinfo");
+        }
 
-php php php php php php php php returnphp php$domphp-php>getAttributephp(php'Algorithmphp'php)php;
+        return $dom->getAttribute('Algorithm');
 
-php php php php php}
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp KeyInfophp blockphp object
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
-php php php php php php*php php@returnphp Zendphp_InfoCardphp_Xmlphp_KeyInfophp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getKeyInfophp(php)
-php php php php php{
+    /**
+     * Returns the KeyInfo block object
+     *
+     * @throws Zend_InfoCard_Xml_Exception
+     * @return Zend_InfoCard_Xml_KeyInfo_Abstract
+     */
+    public function getKeyInfo()
+    {
 
-php php php php php php php php ifphp(issetphp(php$thisphp-php>KeyInfophp)php)php php{
-php php php php php php php php php php php php returnphp Zendphp_InfoCardphp_Xmlphp_KeyInfophp:php:getInstancephp(php$thisphp-php>KeyInfophp)php;
-php php php php php php php php php}
+        if(isset($this->KeyInfo)) {
+            return Zend_InfoCard_Xml_KeyInfo::getInstance($this->KeyInfo);
+        }
 
-php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp locatephp aphp KeyInfophp blockphp"php)php;
-php php php php php}
+        throw new Zend_InfoCard_Xml_Exception("Unable to locate a KeyInfo block");
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp encryptedphp valuephp ofphp thephp blockphp inphp basephp6php4php format
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Xmlphp_Exception
-php php php php php php*php php@returnphp stringphp Thephp Valuephp ofphp thephp CipherValuephp blockphp inphp basephp6php4php format
-php php php php php php*php/
-php php php php publicphp functionphp getCipherValuephp(php)
-php php php php php{
+    /**
+     * Return the encrypted value of the block in base64 format
+     *
+     * @throws Zend_InfoCard_Xml_Exception
+     * @return string The Value of the CipherValue block in base64 format
+     */
+    public function getCipherValue()
+    {
 
-php php php php php php php php php$thisphp-php>registerXPathNamespacephp(php'ephp'php,php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/php0php4php/xmlencphp#php'php)php;
+        $this->registerXPathNamespace('e', 'http://www.w3.org/2001/04/xmlenc#');
 
-php php php php php php php php listphp(php$cipherdataphp)php php=php php$thisphp-php>xpathphp(php"php/php/ephp:CipherDataphp"php)php;
+        list($cipherdata) = $this->xpath("//e:CipherData");
 
-php php php php php php php php ifphp(php!php(php$cipherdataphp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp findphp thephp ephp:CipherDataphp blockphp"php)php;
-php php php php php php php php php}
+        if(!($cipherdata instanceof Zend_InfoCard_Xml_Element)) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to find the e:CipherData block");
+        }
 
-php php php php php php php php php$cipherdataphp-php>registerXPathNameSpacephp(php'encphp'php,php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/php0php4php/xmlencphp#php'php)php;
-php php php php php php php php listphp(php$ciphervaluephp)php php=php php$cipherdataphp-php>xpathphp(php"php/php/encphp:CipherValuephp"php)php;
+        $cipherdata->registerXPathNameSpace('enc', 'http://www.w3.org/2001/04/xmlenc#');
+        list($ciphervalue) = $cipherdata->xpath("//enc:CipherValue");
 
-php php php php php php php php ifphp(php!php(php$ciphervaluephp instanceofphp Zendphp_InfoCardphp_Xmlphp_Elementphp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Xmlphp_Exceptionphp(php"Unablephp tophp fidnphp thephp encphp:CipherValuephp blockphp"php)php;
-php php php php php php php php php}
+        if(!($ciphervalue instanceof Zend_InfoCard_Xml_Element)) {
+            throw new Zend_InfoCard_Xml_Exception("Unable to fidn the enc:CipherValue block");
+        }
 
-php php php php php php php php returnphp php(stringphp)php$ciphervaluephp;
-php php php php php}
-php}
+        return (string)$ciphervalue;
+    }
+}

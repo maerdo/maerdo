@@ -1,702 +1,702 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Markup
-php php*php php@subpackagephp Renderer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php RendererAbstractphp.phpphp php2php2php1php9php7php php2php0php1php0php-php0php5php-php1php9php php1php3php:php3php2php:php2php5Zphp kokxphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_config
-php php*php/
-requirephp_oncephp php'Zendphp/Configphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Filter
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Markupphp_Rendererphp_TokenConverterInterface
-php php*php/
-requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/TokenConverterInterfacephp.phpphp'php;
-
-php/php*php*
-php php*php Definesphp thephp basicphp renderingphp functionality
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Markup
-php php*php php@subpackagephp Renderer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Markupphp_Rendererphp_RendererAbstract
-php{
-php php php php constphp TYPEphp_CALLBACKphp php=php php4php;
-php php php php constphp TYPEphp_REPLACEphp php php=php php8php;
-php php php php constphp TYPEphp_ALIASphp php php php php=php php1php6php;
-
-php php php php php/php*php*
-php php php php php php*php Tagphp info
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_markupsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Parser
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Markupphp_Parserphp_ParserInterface
-php php php php php php*php/
-php php php php protectedphp php$php_parserphp;
-
-php php php php php/php*php*
-php php php php php php*php Whatphp filterphp tophp use
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_filterphp;
-
-php php php php php/php*php*
-php php php php php php*php Filterphp chain
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Filter
-php php php php php php*php/
-php php php php protectedphp php$php_defaultFilterphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp currentphp group
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_groupphp;
-
-php php php php php/php*php*
-php php php php php php*php Groupsphp definition
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_groupsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Pluginphp loaderphp forphp tags
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php protectedphp php$php_pluginLoaderphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp currentphp token
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Markupphp_Token
-php php php php php php*php/
-php php php php protectedphp php$php_tokenphp;
-
-php php php php php/php*php*
-php php php php php php*php Encoding
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_encodingphp php=php php'UTFphp-php8php'php;
-
-
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|Zendphp_Configphp php$options
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'encodingphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setEncodingphp(php$optionsphp[php'encodingphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'parserphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setParserphp(php$optionsphp[php'parserphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'useDefaultFiltersphp'php]php)php php|php|php php(php$optionsphp[php'useDefaultFiltersphp'php]php php=php=php=php truephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDefaultFiltersphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'defaultFilterphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDefaultFilterphp(php$optionsphp[php'defaultFilterphp'php]php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp parser
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Parserphp_ParserInterfacephp php$parser
-php php php php php php*php php@returnphp Zendphp_Markupphp_Rendererphp_RendererAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setParserphp(Zendphp_Markupphp_Parserphp_ParserInterfacephp php$parserphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parserphp php=php php$parserphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp parser
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Markupphp_Parserphp_ParserInterface
-php php php php php php*php/
-php php php php publicphp functionphp getParserphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_parserphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp pluginphp loader
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp getPluginLoaderphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pluginLoaderphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp rendererphp'sphp encoding
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$encoding
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setEncodingphp(php$encodingphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_encodingphp php=php php$encodingphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp rendererphp'sphp encoding
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getEncodingphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_encodingphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp newphp markup
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp stringphp php$type
-php php php php php php*php php@paramphp arrayphp php$options
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Markupphp_Rendererphp_RendererAbstract
-php php php php php php*php/
-php php php php publicphp functionphp addMarkupphp(php$namephp,php php$typephp,php arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$optionsphp[php'groupphp'php]php)php php&php&php php(php$typephp php^php selfphp:php:TYPEphp_ALIASphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Rendererphp_Exceptionphp(php"Therephp isphp nophp renderphp groupphp definedphp.php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php addphp thephp filter
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'filterphp'php]php)php)php php{
-php php php php php php php php php php php php ifphp php(php$optionsphp[php'filterphp'php]php instanceofphp Zendphp_Filterphp_Interfacephp)php php{
-php php php php php php php php php php php php php php php php php$filterphp php=php php$optionsphp[php'filterphp'php]php;
-php php php php php php php php php php php php php}php elseifphp php(php$optionsphp[php'filterphp'php]php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$filterphp php=php php$thisphp-php>getDefaultFilterphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$filterphp php=php falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$filterphp php=php php$thisphp-php>getDefaultFilterphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php checkphp thephp type
-php php php php php php php php ifphp php(php$typephp php&php selfphp:php:TYPEphp_CALLBACKphp)php php{
-php php php php php php php php php php php php php/php/php addphp aphp callbackphp tag
-php php php php php php php php php php php php ifphp php(issetphp(php$optionsphp[php'callbackphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!php(php$optionsphp[php'callbackphp'php]php instanceofphp Zendphp_Markupphp_Rendererphp_TokenConverterInterfacephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Rendererphp_Exceptionphp(php"Notphp aphp validphp tagphp callbackphp.php"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$optionsphp[php'callbackphp'php]php,php php'setRendererphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'callbackphp'php]php-php>setRendererphp(php$thisphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$optionsphp[php'callbackphp'php]php php=php nullphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$optionsphp[php'typephp'php]php php=php php$typephp;
-php php php php php php php php php php php php php$optionsphp[php'filterphp'php]php php=php php$filterphp;
-
-php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$namephp]php php=php php$optionsphp;
-php php php php php php php php php}php elseifphp php(php$typephp php&php selfphp:php:TYPEphp_ALIASphp)php php{
-php php php php php php php php php php php php php/php/php addphp anphp alias
-php php php php php php php php php php php php ifphp php(emptyphp(php$optionsphp[php'namephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php'Nophp aliasphp wasphp providedphp butphp tagphp wasphp definedphp asphp suchphp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$namephp]php php=php arrayphp(
-php php php php php php php php php php php php php php php php php'typephp'php php=php>php selfphp:php:TYPEphp_ALIASphp,
-php php php php php php php php php php php php php php php php php'namephp'php php=php>php php$optionsphp[php'namephp'php]
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$typephp php&php&php arrayphp_keyphp_existsphp(php'emptyphp'php,php php$optionsphp)php php&php&php php$optionsphp[php'emptyphp'php]php)php php{
-php php php php php php php php php php php php php php php php php/php/php addphp aphp singlephp replacephp markup
-php php php php php php php php php php php php php php php php php$optionsphp[php'typephp'php]php php php php=php php$typephp;
-php php php php php php php php php php php php php php php php php$optionsphp[php'filterphp'php]php php=php php$filterphp;
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$namephp]php php=php php$optionsphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php addphp aphp replacephp markup
-php php php php php php php php php php php php php php php php php$optionsphp[php'typephp'php]php php php php=php php$typephp;
-php php php php php php php php php php php php php php php php php$optionsphp[php'filterphp'php]php php=php php$filterphp;
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$namephp]php php=php php$optionsphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp aphp markup
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp removeMarkupphp(php$namephp)
-php php php php php{
-php php php php php php php php unsetphp(php$thisphp-php>php_markupsphp[php$namephp]php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp thephp defaultphp tags
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp clearMarkupsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_markupsphp php=php arrayphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp function
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_TokenListphp|stringphp php$tokenList
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Markupphp_TokenListphp)php php{
-php php php php php php php php php php php php php$tokenListphp php=php php$valuephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$tokenListphp php=php php$thisphp-php>getParserphp(php)php-php>parsephp(php$valuephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$rootphp php=php php$tokenListphp-php>currentphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_filterphp php=php php$thisphp-php>getDefaultFilterphp(php)php;
-
-php php php php php php php php returnphp php$thisphp-php>php_renderphp(php$rootphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp aphp singlephp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderphp(Zendphp_Markupphp_Tokenphp php$tokenphp)
-php php php php php{
-php php php php php php php php php$returnphp php php php php=php php'php'php;
-
-php php php php php php php php php$thisphp-php>php_tokenphp php=php php$tokenphp;
-
-php php php php php php php php php/php/php ifphp thisphp tagphp hasphp childrenphp,php executephp them
-php php php php php php php php ifphp php(php$tokenphp-php>hasChildrenphp(php)php)php php{
-php php php php php php php php php php php php foreachphp php(php$tokenphp-php>getChildrenphp(php)php asphp php$childphp)php php{
-php php php php php php php php php php php php php php php php php$returnphp php.php=php php$thisphp-php>php_executephp(php$childphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp groupphp ofphp aphp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@returnphp stringphp|bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_getGroupphp(Zendphp_Markupphp_Tokenphp php$tokenphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_markupsphp[php$tokenphp-php>getNamephp(php)php]php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php php$tagphp php=php php$thisphp-php>php_markupsphp[php$tokenphp-php>getNamephp(php)php]php;
-
-php php php php php php php php php/php/php aliasphp processing
-php php php php php php php php whilephp php(php$tagphp[php'typephp'php]php php&php selfphp:php:TYPEphp_ALIASphp)php php{
-php php php php php php php php php php php php php$tagphp php=php php$thisphp-php>php_markupsphp[php$tagphp[php'namephp'php]php]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp issetphp(php$tagphp[php'groupphp'php]php)php php?php php$tagphp[php'groupphp'php]php php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Executephp thephp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_executephp(Zendphp_Markupphp_Tokenphp php$tokenphp)
-php php php php php{
-php php php php php php php php php/php/php firstphp returnphp thephp normalphp textphp tags
-php php php php php php php php ifphp php(php$tokenphp-php>getTypephp(php)php php=php=php Zendphp_Markupphp_Tokenphp:php:TYPEphp_NONEphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_filterphp(php$tokenphp-php>getTagphp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php ifphp thephp tokenphp doesnphp'tphp havephp aphp notationphp,php returnphp thephp plainphp text
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_markupsphp[php$tokenphp-php>getNamephp(php)php]php)php)php php{
-php php php php php php php php php php php php php$oldTokenphp php php=php php$thisphp-php>php_tokenphp;
-php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_filterphp(php$tokenphp-php>getTagphp(php)php)php php.php php$thisphp-php>php_renderphp(php$tokenphp)php php.php php$tokenphp-php>getStopperphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php php$oldTokenphp;
-php php php php php php php php php php php php returnphp php$returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php$namephp php php php=php php$thisphp-php>php_getMarkupNamephp(php$tokenphp)php;
-php php php php php php php php php$markupphp php=php php(php!php$namephp)php php?php falsephp php:php php$thisphp-php>php_markupsphp[php$namephp]php;
-php php php php php php php php php$emptyphp php php=php php(isphp_arrayphp(php$markupphp)php php&php&php arrayphp_keyphp_existsphp(php'emptyphp'php,php php$markupphp)php php&php&php php$markupphp[php'emptyphp'php]php)php;
-
-php php php php php php php php php/php/php checkphp ifphp thephp tagphp hasphp content
-php php php php php php php php ifphp php(php!php$emptyphp php&php&php php!php$tokenphp-php>hasChildrenphp(php)php)php php{
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php checkphp forphp thephp context
-php php php php php php php php ifphp php(isphp_arrayphp(php$markupphp)php php&php&php php!inphp_arrayphp(php$markupphp[php'groupphp'php]php,php php$thisphp-php>php_groupsphp[php$thisphp-php>php_groupphp]php)php)php php{
-php php php php php php php php php php php php php$oldTokenphp php=php php$thisphp-php>php_tokenphp;
-php php php php php php php php php php php php php$returnphp php php php=php php$thisphp-php>php_filterphp(php$tokenphp-php>getTagphp(php)php)php php.php php$thisphp-php>php_renderphp(php$tokenphp)php php.php php$tokenphp-php>getStopperphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_tokenphp php=php php$oldTokenphp;
-php php php php php php php php php php php php returnphp php$returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php checkphp forphp thephp filter
-php php php php php php php php ifphp php(php!issetphp(php$markupphp[php'filterphp'php]php)
-php php php php php php php php php php php php php|php|php php(php!php(php$markupphp[php'filterphp'php]php instanceofphp Zendphp_Filterphp_Interfacephp)php php&php&php php(php$markupphp[php'filterphp'php]php php!php=php=php falsephp)php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$namephp]php[php'filterphp'php]php php=php php$thisphp-php>getDefaultFilterphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php savephp oldphp valuesphp tophp resetphp themphp afterphp thephp workphp isphp done
-php php php php php php php php php$oldFilterphp php=php php$thisphp-php>php_filterphp;
-php php php php php php php php php$oldGroupphp php php=php php$thisphp-php>php_groupphp;
-
-php php php php php php php php php$returnphp php=php php'php'php;
-
-php php php php php php php php php/php/php setphp thephp filterphp andphp thephp group
-php php php php php php php php php$thisphp-php>php_filterphp php=php php$thisphp-php>getFilterphp(php$namephp)php;
-
-php php php php php php php php ifphp php(php$groupphp php=php php$thisphp-php>php_getGroupphp(php$tokenphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_groupphp php=php php$groupphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php callback
-php php php php php php php php ifphp php(isphp_arrayphp(php$markupphp)php php&php&php php(php$markupphp[php'typephp'php]php php&php selfphp:php:TYPEphp_CALLBACKphp)php)php php{
-php php php php php php php php php php php php php/php/php loadphp thephp callbackphp ifphp thephp tagphp doesnphp'tphp exist
-php php php php php php php php php php php php ifphp php(php!php(php$markupphp[php'callbackphp'php]php instanceofphp Zendphp_Markupphp_Rendererphp_TokenConverterInterfacephp)php)php php{
-php php php php php php php php php php php php php php php php php$classphp php=php php$thisphp-php>getPluginLoaderphp(php)php-php>loadphp(php$namephp)php;
-
-php php php php php php php php php php php php php php php php php$markupphp[php'callbackphp'php]php php=php newphp php$classphp;
-
-php php php php php php php php php php php php php php php php ifphp php(php!php(php$markupphp[php'callbackphp'php]php instanceofphp Zendphp_Markupphp_Rendererphp_TokenConverterInterfacephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Markupphp_Rendererphp_Exceptionphp(php"Callbackphp forphp tagphp php'php$namephp'php foundphp,php butphp itphp isnphp'tphp validphp.php"php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$markupphp[php'callbackphp'php]php,php php'setRendererphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$markupphp[php'callbackphp'php]php-php>setRendererphp(php$thisphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$markupphp[php'typephp'php]php php&php&php php!php$emptyphp)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php php$markupphp[php'callbackphp'php]php-php>convertphp(php$tokenphp,php php$thisphp-php>php_renderphp(php$tokenphp)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$returnphp php=php php$markupphp[php'callbackphp'php]php-php>convertphp(php$tokenphp,php nullphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php replace
-php php php php php php php php php php php php ifphp php(php$markupphp[php'typephp'php]php php&php&php php!php$emptyphp)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_executeReplacephp(php$tokenphp,php php$markupphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>php_executeSingleReplacephp(php$tokenphp,php php$markupphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php resetphp tophp thephp oldphp values
-php php php php php php php php php$thisphp-php>php_filterphp php=php php$oldFilterphp;
-php php php php php php php php php$thisphp-php>php_groupphp php php=php php$oldGroupphp;
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Filterphp method
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$value
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_filterphp instanceofphp Zendphp_Filterphp_Interfacephp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_filterphp-php>filterphp(php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$valuephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp markupphp name
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Markupphp_Token
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_getMarkupNamephp(Zendphp_Markupphp_Tokenphp php$tokenphp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$tokenphp-php>getNamephp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_resolveMarkupNamephp(php$namephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Resolvephp aliasesphp forphp aphp markupphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_resolveMarkupNamephp(php$namephp)
-php php php php php{
-php php php php php php php php whilephp php(php(php$typephp php=php php$thisphp-php>php_getMarkupTypephp(php$namephp)php)
-php php php php php php php php php php php php php php php php&php&php php(php$typephp php&php selfphp:php:TYPEphp_ALIASphp)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php php$namephp php=php php$thisphp-php>php_markupsphp[php$namephp]php[php'namephp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$namephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp markupphp type
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp falsephp|int
-php php php php php php*php/
-php php php php protectedphp functionphp php_getMarkupTypephp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_markupsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_markupsphp[php$namephp]php[php'typephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_markupsphp[php$namephp]php[php'typephp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Executephp aphp replacephp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@paramphp php arrayphp php$tag
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_executeReplacephp(Zendphp_Markupphp_Tokenphp php$tokenphp,php php$tagphp)
-php php php php php{
-php php php php php php php php returnphp php$tagphp[php'startphp'php]php php.php php$thisphp-php>php_renderphp(php$tokenphp)php php.php php$tagphp[php'endphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Executephp aphp singlephp replacephp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@paramphp php arrayphp php$tag
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_executeSingleReplacephp(Zendphp_Markupphp_Tokenphp php$tokenphp,php php$tagphp)
-php php php php php{
-php php php php php php php php returnphp php$tagphp[php'replacephp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp defaultphp filter
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultFilterphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_defaultFilterphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addDefaultFiltersphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_defaultFilterphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp defaultphp filter
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$filter
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp addDefaultFilterphp(Zendphp_Filterphp_Interfacephp php$filterphp,php php$placementphp php=php Zendphp_Filterphp:php:CHAINphp_APPENDphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php(php$thisphp-php>php_defaultFilterphp instanceofphp Zendphp_Filterphp)php)php php{
-php php php php php php php php php php php php php$defaultFilterphp php=php newphp Zendphp_Filterphp(php)php;
-php php php php php php php php php php php php php$defaultFilterphp-php>addFilterphp(php$filterphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_defaultFilterphp php=php php$defaultFilterphp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_defaultFilterphp-php>addFilterphp(php$filterphp,php php$placementphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp filter
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Filterphp_Interfacephp php$filter
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultFilterphp(Zendphp_Filterphp_Interfacephp php$filterphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_defaultFilterphp php=php php$filterphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp filterphp forphp anphp existingphp markup
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$markup
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Filterphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getFilterphp(php$markupphp)
-php php php php php{
-php php php php php php php php php$markupphp php=php php$thisphp-php>php_resolveMarkupNamephp(php$markupphp)php;
-
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php)
-php php php php php php php php php php php php php|php|php php!php(php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php instanceofphp Zendphp_Filterphp_Interfacephp)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php)php php&php&php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php php=php php$thisphp-php>getDefaultFilterphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp filterphp forphp anphp existingphp markup
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Filterphp_Interfacephp php$filter
-php php php php php php*php php@paramphp stringphp php$markup
-php php php php php php*php php@paramphp stringphp php$placement
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Markupphp_Rendererphp_RendererAbstract
-php php php php php php*php/
-php php php php publicphp functionphp addFilterphp(Zendphp_Filterphp_Interfacephp php$filterphp,php php$markupphp,php php$placementphp php=php Zendphp_Filterphp:php:CHAINphp_APPENDphp)
-php php php php php{
-php php php php php php php php php$markupphp php=php php$thisphp-php>php_resolveMarkupNamephp(php$markupphp)php;
-
-php php php php php php php php php$oldFilterphp php=php php$thisphp-php>getFilterphp(php$markupphp)php;
-
-php php php php php php php php php/php/php ifphp thisphp filterphp isphp thephp defaultphp filterphp,php clonephp itphp first
-php php php php php php php php ifphp php(php$oldFilterphp php=php=php=php php$thisphp-php>getDefaultFilterphp(php)php)php php{
-php php php php php php php php php php php php php$oldFilterphp php=php clonephp php$oldFilterphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php(php$oldFilterphp instanceofphp Zendphp_Filterphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php php=php newphp Zendphp_Filterphp(php)php;
-
-php php php php php php php php php php php php ifphp php(php$oldFilterphp instanceofphp Zendphp_Filterphp_Interfacephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php-php>addFilterphp(php$oldFilterphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php php=php php$oldFilterphp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php-php>addFilterphp(php$filterphp,php php$placementphp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp filterphp forphp anphp existing
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Filterphp_Interfacephp php$filter
-php php php php php php*php php@paramphp stringphp php$markup
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Markupphp_Rendererphp_RendererAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setFilterphp(Zendphp_Filterphp_Interfacephp php$filterphp,php php$markupphp)
-php php php php php{
-php php php php php php php php php$markupphp php=php php$thisphp-php>php_resolveMarkupNamephp(php$markupphp)php;
-
-php php php php php php php php php$thisphp-php>php_markupsphp[php$markupphp]php[php'filterphp'php]php php=php php$filterphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp renderphp group
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp arrayphp php$allowedInside
-php php php php php php*php php@paramphp arrayphp php$allowsInside
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp addGroupphp(php$namephp,php arrayphp php$allowedInsidephp php=php arrayphp(php)php,php arrayphp php$allowsInsidephp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_groupsphp[php$namephp]php php=php php$allowsInsidephp;
-
-php php php php php php php php foreachphp php(php$allowedInsidephp asphp php$groupphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_groupsphp[php$groupphp]php[php]php php=php php$namephp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp groupphp definitions
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getGroupsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_groupsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp filters
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp addDefaultFiltersphp(php)php;
-
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Markup
+ * @subpackage Renderer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: RendererAbstract.php 22197 2010-05-19 13:32:25Z kokx $
+ */
+
+/**
+ * @see Zend_config
+ */
+require_once 'Zend/Config.php';
+/**
+ * @see Zend_Filter
+ */
+require_once 'Zend/Filter.php';
+/**
+ * @see Zend_Markup_Renderer_TokenConverterInterface
+ */
+require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
+
+/**
+ * Defines the basic rendering functionality
+ *
+ * @category   Zend
+ * @package    Zend_Markup
+ * @subpackage Renderer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Markup_Renderer_RendererAbstract
+{
+    const TYPE_CALLBACK = 4;
+    const TYPE_REPLACE  = 8;
+    const TYPE_ALIAS    = 16;
+
+    /**
+     * Tag info
+     *
+     * @var array
+     */
+    protected $_markups = array();
+
+    /**
+     * Parser
+     *
+     * @var Zend_Markup_Parser_ParserInterface
+     */
+    protected $_parser;
+
+    /**
+     * What filter to use
+     *
+     * @var bool
+     */
+    protected $_filter;
+
+    /**
+     * Filter chain
+     *
+     * @var Zend_Filter
+     */
+    protected $_defaultFilter;
+
+    /**
+     * The current group
+     *
+     * @var string
+     */
+    protected $_group;
+
+    /**
+     * Groups definition
+     *
+     * @var array
+     */
+    protected $_groups = array();
+
+    /**
+     * Plugin loader for tags
+     *
+     * @var Zend_Loader_PluginLoader
+     */
+    protected $_pluginLoader;
+
+    /**
+     * The current token
+     *
+     * @var Zend_Markup_Token
+     */
+    protected $_token;
+
+    /**
+     * Encoding
+     *
+     * @var string
+     */
+    protected static $_encoding = 'UTF-8';
+
+
+    /**
+     * Constructor
+     *
+     * @param array|Zend_Config $options
+     *
+     * @return void
+     */
+    public function __construct($options = array())
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
+
+        if (isset($options['encoding'])) {
+            $this->setEncoding($options['encoding']);
+        }
+        if (isset($options['parser'])) {
+            $this->setParser($options['parser']);
+        }
+        if (!isset($options['useDefaultFilters']) || ($options['useDefaultFilters'] === true)) {
+            $this->addDefaultFilters();
+        }
+        if (isset($options['defaultFilter'])) {
+            $this->addDefaultFilter($options['defaultFilter']);
+        }
+    }
+
+    /**
+     * Set the parser
+     *
+     * @param  Zend_Markup_Parser_ParserInterface $parser
+     * @return Zend_Markup_Renderer_RendererAbstract
+     */
+    public function setParser(Zend_Markup_Parser_ParserInterface $parser)
+    {
+        $this->_parser = $parser;
+        return $this;
+    }
+
+    /**
+     * Get the parser
+     *
+     * @return Zend_Markup_Parser_ParserInterface
+     */
+    public function getParser()
+    {
+        return $this->_parser;
+    }
+
+    /**
+     * Get the plugin loader
+     *
+     * @return Zend_Loader_PluginLoader
+     */
+    public function getPluginLoader()
+    {
+        return $this->_pluginLoader;
+    }
+
+    /**
+     * Set the renderer's encoding
+     *
+     * @param string $encoding
+     *
+     * @return void
+     */
+    public static function setEncoding($encoding)
+    {
+        self::$_encoding = $encoding;
+    }
+
+    /**
+     * Get the renderer's encoding
+     *
+     * @return string
+     */
+    public static function getEncoding()
+    {
+        return self::$_encoding;
+    }
+
+    /**
+     * Add a new markup
+     *
+     * @param string $name
+     * @param string $type
+     * @param array $options
+     *
+     * @return Zend_Markup_Renderer_RendererAbstract
+     */
+    public function addMarkup($name, $type, array $options)
+    {
+        if (!isset($options['group']) && ($type ^ self::TYPE_ALIAS)) {
+            require_once 'Zend/Markup/Renderer/Exception.php';
+            throw new Zend_Markup_Renderer_Exception("There is no render group defined.");
+        }
+
+        // add the filter
+        if (isset($options['filter'])) {
+            if ($options['filter'] instanceof Zend_Filter_Interface) {
+                $filter = $options['filter'];
+            } elseif ($options['filter'] === true) {
+                $filter = $this->getDefaultFilter();
+            } else {
+                $filter = false;
+            }
+        } else {
+            $filter = $this->getDefaultFilter();
+        }
+
+        // check the type
+        if ($type & self::TYPE_CALLBACK) {
+            // add a callback tag
+            if (isset($options['callback'])) {
+                if (!($options['callback'] instanceof Zend_Markup_Renderer_TokenConverterInterface)) {
+                    require_once 'Zend/Markup/Renderer/Exception.php';
+                    throw new Zend_Markup_Renderer_Exception("Not a valid tag callback.");
+                }
+                if (method_exists($options['callback'], 'setRenderer')) {
+                    $options['callback']->setRenderer($this);
+                }
+            } else {
+                $options['callback'] = null;
+            }
+
+            $options['type'] = $type;
+            $options['filter'] = $filter;
+
+            $this->_markups[$name] = $options;
+        } elseif ($type & self::TYPE_ALIAS) {
+            // add an alias
+            if (empty($options['name'])) {
+                require_once 'Zend/Markup/Renderer/Exception.php';
+                throw new Zend_Markup_Renderer_Exception(
+                        'No alias was provided but tag was defined as such');
+            }
+
+            $this->_markups[$name] = array(
+                'type' => self::TYPE_ALIAS,
+                'name' => $options['name']
+            );
+        } else {
+            if ($type && array_key_exists('empty', $options) && $options['empty']) {
+                // add a single replace markup
+                $options['type']   = $type;
+                $options['filter'] = $filter;
+
+                $this->_markups[$name] = $options;
+            } else {
+                // add a replace markup
+                $options['type']   = $type;
+                $options['filter'] = $filter;
+
+                $this->_markups[$name] = $options;
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Remove a markup
+     *
+     * @param string $name
+     *
+     * @return void
+     */
+    public function removeMarkup($name)
+    {
+        unset($this->_markups[$name]);
+    }
+
+    /**
+     * Remove the default tags
+     *
+     * @return void
+     */
+    public function clearMarkups()
+    {
+        $this->_markups = array();
+    }
+
+    /**
+     * Render function
+     *
+     * @param  Zend_Markup_TokenList|string $tokenList
+     * @return string
+     */
+    public function render($value)
+    {
+        if ($value instanceof Zend_Markup_TokenList) {
+            $tokenList = $value;
+        } else {
+            $tokenList = $this->getParser()->parse($value);
+        }
+
+        $root = $tokenList->current();
+
+        $this->_filter = $this->getDefaultFilter();
+
+        return $this->_render($root);
+    }
+
+    /**
+     * Render a single token
+     *
+     * @param  Zend_Markup_Token $token
+     * @return string
+     */
+    protected function _render(Zend_Markup_Token $token)
+    {
+        $return    = '';
+
+        $this->_token = $token;
+
+        // if this tag has children, execute them
+        if ($token->hasChildren()) {
+            foreach ($token->getChildren() as $child) {
+                $return .= $this->_execute($child);
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Get the group of a token
+     *
+     * @param  Zend_Markup_Token $token
+     * @return string|bool
+     */
+    protected function _getGroup(Zend_Markup_Token $token)
+    {
+        if (!isset($this->_markups[$token->getName()])) {
+            return false;
+        }
+
+        $tag = $this->_markups[$token->getName()];
+
+        // alias processing
+        while ($tag['type'] & self::TYPE_ALIAS) {
+            $tag = $this->_markups[$tag['name']];
+        }
+
+        return isset($tag['group']) ? $tag['group'] : false;
+    }
+
+    /**
+     * Execute the token
+     *
+     * @param  Zend_Markup_Token $token
+     * @return string
+     */
+    protected function _execute(Zend_Markup_Token $token)
+    {
+        // first return the normal text tags
+        if ($token->getType() == Zend_Markup_Token::TYPE_NONE) {
+            return $this->_filter($token->getTag());
+        }
+
+        // if the token doesn't have a notation, return the plain text
+        if (!isset($this->_markups[$token->getName()])) {
+            $oldToken  = $this->_token;
+            $return = $this->_filter($token->getTag()) . $this->_render($token) . $token->getStopper();
+            $this->_token = $oldToken;
+            return $return;
+        }
+
+        $name   = $this->_getMarkupName($token);
+        $markup = (!$name) ? false : $this->_markups[$name];
+        $empty  = (is_array($markup) && array_key_exists('empty', $markup) && $markup['empty']);
+
+        // check if the tag has content
+        if (!$empty && !$token->hasChildren()) {
+            return '';
+        }
+
+        // check for the context
+        if (is_array($markup) && !in_array($markup['group'], $this->_groups[$this->_group])) {
+            $oldToken = $this->_token;
+            $return   = $this->_filter($token->getTag()) . $this->_render($token) . $token->getStopper();
+            $this->_token = $oldToken;
+            return $return;
+        }
+
+        // check for the filter
+        if (!isset($markup['filter'])
+            || (!($markup['filter'] instanceof Zend_Filter_Interface) && ($markup['filter'] !== false))) {
+            $this->_markups[$name]['filter'] = $this->getDefaultFilter();
+        }
+
+        // save old values to reset them after the work is done
+        $oldFilter = $this->_filter;
+        $oldGroup  = $this->_group;
+
+        $return = '';
+
+        // set the filter and the group
+        $this->_filter = $this->getFilter($name);
+
+        if ($group = $this->_getGroup($token)) {
+            $this->_group = $group;
+        }
+
+        // callback
+        if (is_array($markup) && ($markup['type'] & self::TYPE_CALLBACK)) {
+            // load the callback if the tag doesn't exist
+            if (!($markup['callback'] instanceof Zend_Markup_Renderer_TokenConverterInterface)) {
+                $class = $this->getPluginLoader()->load($name);
+
+                $markup['callback'] = new $class;
+
+                if (!($markup['callback'] instanceof Zend_Markup_Renderer_TokenConverterInterface)) {
+                    require_once 'Zend/Markup/Renderer/Exception.php';
+                    throw new Zend_Markup_Renderer_Exception("Callback for tag '$name' found, but it isn't valid.");
+                }
+
+                if (method_exists($markup['callback'], 'setRenderer')) {
+                    $markup['callback']->setRenderer($this);
+                }
+            }
+            if ($markup['type'] && !$empty) {
+                $return = $markup['callback']->convert($token, $this->_render($token));
+            } else {
+                $return = $markup['callback']->convert($token, null);
+            }
+        } else {
+            // replace
+            if ($markup['type'] && !$empty) {
+                $return = $this->_executeReplace($token, $markup);
+            } else {
+                $return = $this->_executeSingleReplace($token, $markup);
+            }
+        }
+
+        // reset to the old values
+        $this->_filter = $oldFilter;
+        $this->_group  = $oldGroup;
+
+        return $return;
+    }
+
+    /**
+     * Filter method
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function _filter($value)
+    {
+        if ($this->_filter instanceof Zend_Filter_Interface) {
+            return $this->_filter->filter($value);
+        }
+        return $value;
+    }
+
+    /**
+     * Get the markup name
+     *
+     * @param Zend_Markup_Token
+     *
+     * @return string
+     */
+    protected function _getMarkupName(Zend_Markup_Token $token)
+    {
+        $name = $token->getName();
+        if (empty($name)) {
+            return false;
+        }
+
+        return $this->_resolveMarkupName($name);
+    }
+
+    /**
+     * Resolve aliases for a markup name
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function _resolveMarkupName($name)
+    {
+        while (($type = $this->_getMarkupType($name))
+               && ($type & self::TYPE_ALIAS)
+        ) {
+            $name = $this->_markups[$name]['name'];
+        }
+
+        return $name;
+    }
+
+    /**
+     * Retrieve markup type
+     *
+     * @param  string $name
+     * @return false|int
+     */
+    protected function _getMarkupType($name)
+    {
+        if (!isset($this->_markups[$name])) {
+            return false;
+        }
+        if (!isset($this->_markups[$name]['type'])) {
+            return false;
+        }
+        return $this->_markups[$name]['type'];
+    }
+
+    /**
+     * Execute a replace token
+     *
+     * @param  Zend_Markup_Token $token
+     * @param  array $tag
+     * @return string
+     */
+    protected function _executeReplace(Zend_Markup_Token $token, $tag)
+    {
+        return $tag['start'] . $this->_render($token) . $tag['end'];
+    }
+
+    /**
+     * Execute a single replace token
+     *
+     * @param  Zend_Markup_Token $token
+     * @param  array $tag
+     * @return string
+     */
+    protected function _executeSingleReplace(Zend_Markup_Token $token, $tag)
+    {
+        return $tag['replace'];
+    }
+
+    /**
+     * Get the default filter
+     *
+     * @return void
+     */
+    public function getDefaultFilter()
+    {
+        if (null === $this->_defaultFilter) {
+            $this->addDefaultFilters();
+        }
+
+        return $this->_defaultFilter;
+    }
+
+    /**
+     * Add a default filter
+     *
+     * @param string $filter
+     *
+     * @return void
+     */
+    public function addDefaultFilter(Zend_Filter_Interface $filter, $placement = Zend_Filter::CHAIN_APPEND)
+    {
+        if (!($this->_defaultFilter instanceof Zend_Filter)) {
+            $defaultFilter = new Zend_Filter();
+            $defaultFilter->addFilter($filter);
+            $this->_defaultFilter = $defaultFilter;
+        }
+
+        $this->_defaultFilter->addFilter($filter, $placement);
+    }
+
+    /**
+     * Set the default filter
+     *
+     * @param Zend_Filter_Interface $filter
+     *
+     * @return void
+     */
+    public function setDefaultFilter(Zend_Filter_Interface $filter)
+    {
+        $this->_defaultFilter = $filter;
+    }
+
+    /**
+     * Get the filter for an existing markup
+     *
+     * @param string $markup
+     *
+     * @return Zend_Filter_Interface
+     */
+    public function getFilter($markup)
+    {
+        $markup = $this->_resolveMarkupName($markup);
+
+        if (!isset($this->_markups[$markup]['filter'])
+            || !($this->_markups[$markup]['filter'] instanceof Zend_Filter_Interface)
+        ) {
+            if (isset($this->_markups[$markup]['filter']) && $this->_markups[$markup]['filter']) {
+                $this->_markups[$markup]['filter'] = $this->getDefaultFilter();
+            } else {
+                return false;
+            }
+        }
+
+        return $this->_markups[$markup]['filter'];
+    }
+
+    /**
+     * Add a filter for an existing markup
+     *
+     * @param Zend_Filter_Interface $filter
+     * @param string $markup
+     * @param string $placement
+     *
+     * @return Zend_Markup_Renderer_RendererAbstract
+     */
+    public function addFilter(Zend_Filter_Interface $filter, $markup, $placement = Zend_Filter::CHAIN_APPEND)
+    {
+        $markup = $this->_resolveMarkupName($markup);
+
+        $oldFilter = $this->getFilter($markup);
+
+        // if this filter is the default filter, clone it first
+        if ($oldFilter === $this->getDefaultFilter()) {
+            $oldFilter = clone $oldFilter;
+        }
+
+        if (!($oldFilter instanceof Zend_Filter)) {
+            $this->_markups[$markup]['filter'] = new Zend_Filter();
+
+            if ($oldFilter instanceof Zend_Filter_Interface) {
+                $this->_markups[$markup]['filter']->addFilter($oldFilter);
+            }
+        } else {
+            $this->_markups[$markup]['filter'] = $oldFilter;
+        }
+
+        $this->_markups[$markup]['filter']->addFilter($filter, $placement);
+
+        return $this;
+    }
+
+    /**
+     * Set the filter for an existing
+     *
+     * @param Zend_Filter_Interface $filter
+     * @param string $markup
+     *
+     * @return Zend_Markup_Renderer_RendererAbstract
+     */
+    public function setFilter(Zend_Filter_Interface $filter, $markup)
+    {
+        $markup = $this->_resolveMarkupName($markup);
+
+        $this->_markups[$markup]['filter'] = $filter;
+
+        return $this;
+    }
+
+    /**
+     * Add a render group
+     *
+     * @param string $name
+     * @param array $allowedInside
+     * @param array $allowsInside
+     *
+     * @return void
+     */
+    public function addGroup($name, array $allowedInside = array(), array $allowsInside = array())
+    {
+        $this->_groups[$name] = $allowsInside;
+
+        foreach ($allowedInside as $group) {
+            $this->_groups[$group][] = $name;
+        }
+    }
+
+    /**
+     * Get group definitions
+     *
+     * @return array
+     */
+    public function getGroups()
+    {
+        return $this->_groups;
+    }
+
+    /**
+     * Set the default filters
+     *
+     * @return void
+     */
+    abstract public function addDefaultFilters();
+
+}

@@ -1,102 +1,102 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Sourcephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Source.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Feedphp_Atom
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Feedphp/Atomphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader_Feed_Atom
+ */
+require_once 'Zend/Feed/Reader/Feed/Atom.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Readerphp_Feedphp_Atomphp_Sourcephp extendsphp Zendphp_Feedphp_Readerphp_Feedphp_Atom
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
+{
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp:php Createphp aphp Sourcephp objectphp whichphp isphp largelyphp justphp aphp normal
-php php php php php php*php Zendphp_Feedphp_Readerphp_FeedAbstractphp objectphp onlyphp designedphp tophp retrievephp feedphp level
-php php php php php php*php metadataphp fromphp anphp Atomphp entryphp'sphp sourcephp elementphp.
-php php php php php php*
-php php php php php php*php php@paramphp DOMElementphp php$source
-php php php php php php*php php@paramphp stringphp php$xpathPrefixphp Passedphp fromphp parentphp Entryphp object
-php php php php php php*php php@paramphp stringphp php$typephp Nearlyphp alwaysphp Atomphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$sourcephp,php php$xpathPrefixphp,php php$typephp php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_domDocumentphp php=php php$sourcephp-php>ownerDocumentphp;
-php php php php php php php php php$thisphp-php>php_xpathphp php=php newphp DOMXPathphp(php$thisphp-php>php_domDocumentphp)php;
-php php php php php php php php php$thisphp-php>php_dataphp[php'typephp'php]php php=php php$typephp;
-php php php php php php php php php$thisphp-php>php_registerNamespacesphp(php)php;
-php php php php php php php php php$thisphp-php>php_loadExtensionsphp(php)php;
+    /**
+     * Constructor: Create a Source object which is largely just a normal
+     * Zend_Feed_Reader_FeedAbstract object only designed to retrieve feed level
+     * metadata from an Atom entry's source element.
+     *
+     * @param DOMElement $source
+     * @param string $xpathPrefix Passed from parent Entry object
+     * @param string $type Nearly always Atom 1.0
+     */
+    public function __construct(DOMElement $source, $xpathPrefix, $type = Zend_Feed_Reader::TYPE_ATOM_10)
+    {
+        $this->_domDocument = $source->ownerDocument;
+        $this->_xpath = new DOMXPath($this->_domDocument);
+        $this->_data['type'] = $type;
+        $this->_registerNamespaces();
+        $this->_loadExtensions();
 
-php php php php php php php php php$atomClassphp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php'Atomphp_Feedphp'php)php;
-php php php php php php php php php$thisphp-php>php_extensionsphp[php'Atomphp_Feedphp'php]php php=php newphp php$atomClassphp(php$thisphp-php>php_domDocumentphp,php php$thisphp-php>php_dataphp[php'typephp'php]php,php php$thisphp-php>php_xpathphp)php;
-php php php php php php php php php$atomClassphp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php'DublinCorephp_Feedphp'php)php;
-php php php php php php php php php$thisphp-php>php_extensionsphp[php'DublinCorephp_Feedphp'php]php php=php newphp php$atomClassphp(php$thisphp-php>php_domDocumentphp,php php$thisphp-php>php_dataphp[php'typephp'php]php,php php$thisphp-php>php_xpathphp)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_extensionsphp asphp php$extensionphp)php php{
-php php php php php php php php php php php php php$extensionphp-php>setXpathPrefixphp(rtrimphp(php$xpathPrefixphp,php php'php/php'php)php php.php php'php/atomphp:sourcephp'php)php;
-php php php php php php php php php}
-php php php php php}
+        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('Atom_Feed');
+        $this->_extensions['Atom_Feed'] = new $atomClass($this->_domDocument, $this->_data['type'], $this->_xpath);
+        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('DublinCore_Feed');
+        $this->_extensions['DublinCore_Feed'] = new $atomClass($this->_domDocument, $this->_data['type'], $this->_xpath);
+        foreach ($this->_extensions as $extension) {
+            $extension->setXpathPrefix(rtrim($xpathPrefix, '/') . '/atom:source');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Sincephp thisphp isphp notphp anphp Entryphp carrierphp butphp aphp vehiclephp forphp Feedphp metadataphp,php any
-php php php php php php*php applicablephp Entryphp methodsphp arephp stubbedphp outphp andphp dophp nothingphp.
-php php php php php php*php/
+    /**
+     * Since this is not an Entry carrier but a vehicle for Feed metadata, any
+     * applicable Entry methods are stubbed out and do nothing.
+     */
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function count() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function current() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function key() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function next() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function rewind() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)php php{php}
+    /**
+     * @return void
+     */
+    public function valid() {}
 
-php php php php php/php*php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_indexEntriesphp(php)php php{php}
+    /**
+     * @return void
+     */
+    protected function _indexEntries() {}
 
-php}
+}

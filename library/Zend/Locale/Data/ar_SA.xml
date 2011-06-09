@@ -1,49 +1,49 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php5php1php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php4php php$php"php/php>
-php	php	php<languagephp typephp=php"arphp"php/php>
-php	php	php<territoryphp typephp=php"SAphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Italphp"php>phpاphpلphpلphpأphpيphpطphpاphpلphpيphpةphp phpاphpلphpقphpدphpيphpمphpة<php/scriptphp>
-php	php	<php/scriptsphp>
-php	<php/localeDisplayNamesphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpاphpلphpأphpحphpد<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpاphpلphpاphpثphpنphpيphpن<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpاphpلphpثphpلphpاphpثphpاphpء<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpاphpلphpأphpرphpبphpعphpاphpء<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpاphpلphpخphpمphpيphpس<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpاphpلphpجphpمphpعphpة<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpاphpلphpسphpبphpت<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<decimalFormatsphp>
-php	php	php	php<decimalFormatLengthphp>
-php	php	php	php	php<decimalFormatphp>
-php	php	php	php	php	php<patternphp>php#php0php.php#php#php#php;php#php0php.php#php#php#php-<php/patternphp>
-php	php	php	php	<php/decimalFormatphp>
-php	php	php	<php/decimalFormatLengthphp>
-php	php	<php/decimalFormatsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.51 $"/>
+		<generation date="$Date: 2009/05/05 23:06:34 $"/>
+		<language type="ar"/>
+		<territory type="SA"/>
+	</identity>
+	<localeDisplayNames>
+		<scripts>
+			<script type="Ital">اللأيطالية القديمة</script>
+		</scripts>
+	</localeDisplayNames>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">الأحد</day>
+							<day type="mon">الاثنين</day>
+							<day type="tue">الثلاثاء</day>
+							<day type="wed">الأربعاء</day>
+							<day type="thu">الخميس</day>
+							<day type="fri">الجمعة</day>
+							<day type="sat">السبت</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+			</calendar>
+		</calendars>
+	</dates>
+	<numbers>
+		<decimalFormats>
+			<decimalFormatLength>
+				<decimalFormat>
+					<pattern>#0.###;#0.###-</pattern>
+				</decimalFormat>
+			</decimalFormatLength>
+		</decimalFormats>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+	</numbers>
+</ldml>

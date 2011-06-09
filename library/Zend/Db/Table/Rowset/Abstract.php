@@ -1,435 +1,435 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Table
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Table
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Table
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstractphp implementsphp SeekableIteratorphp,php Countablephp,php ArrayAccess
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp originalphp dataphp forphp eachphp rowphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Table
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Countable, ArrayAccess
+{
+    /**
+     * The original data for each row.
+     *
+     * @var array
+     */
+    protected $_data = array();
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Dbphp_Tablephp_Abstractphp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Dbphp_Tablephp_Abstract
-php php php php php php*php/
-php php php php protectedphp php$php_tablephp;
+    /**
+     * Zend_Db_Table_Abstract object.
+     *
+     * @var Zend_Db_Table_Abstract
+     */
+    protected $_table;
 
-php php php php php/php*php*
-php php php php php php*php Connectedphp isphp truephp ifphp wephp havephp aphp referencephp tophp aphp live
-php php php php php php*php Zendphp_Dbphp_Tablephp_Abstractphp objectphp.
-php php php php php php*php Thisphp isphp falsephp afterphp thephp Rowsetphp hasphp beenphp deserializedphp.
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_connectedphp php=php truephp;
+    /**
+     * Connected is true if we have a reference to a live
+     * Zend_Db_Table_Abstract object.
+     * This is false after the Rowset has been deserialized.
+     *
+     * @var boolean
+     */
+    protected $_connected = true;
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Dbphp_Tablephp_Abstractphp classphp namephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_tableClassphp;
+    /**
+     * Zend_Db_Table_Abstract class name.
+     *
+     * @var string
+     */
+    protected $_tableClass;
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp classphp namephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rowClassphp php=php php'Zendphp_Dbphp_Tablephp_Rowphp'php;
+    /**
+     * Zend_Db_Table_Row_Abstract class name.
+     *
+     * @var string
+     */
+    protected $_rowClass = 'Zend_Db_Table_Row';
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp pointerphp.
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_pointerphp php=php php0php;
+    /**
+     * Iterator pointer.
+     *
+     * @var integer
+     */
+    protected $_pointer = 0;
 
-php php php php php/php*php*
-php php php php php php*php Howphp manyphp dataphp rowsphp therephp arephp.
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_countphp;
+    /**
+     * How many data rows there are.
+     *
+     * @var integer
+     */
+    protected $_count;
 
-php php php php php/php*php*
-php php php php php php*php Collectionphp ofphp instantiatedphp Zendphp_Dbphp_Tablephp_Rowphp objectsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_rowsphp php=php arrayphp(php)php;
+    /**
+     * Collection of instantiated Zend_Db_Table_Row objects.
+     *
+     * @var array
+     */
+    protected $_rows = array();
 
-php php php php php/php*php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_storedphp php=php falsephp;
+    /**
+     * @var boolean
+     */
+    protected $_stored = false;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_readOnlyphp php=php falsephp;
+    /**
+     * @var boolean
+     */
+    protected $_readOnly = false;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$config
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$configphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$configphp[php'tablephp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_tablephp php php php php php php=php php$configphp[php'tablephp'php]php;
-php php php php php php php php php php php php php$thisphp-php>php_tableClassphp php=php getphp_classphp(php$thisphp-php>php_tablephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$configphp[php'rowClassphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_rowClassphp php php php=php php$configphp[php'rowClassphp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!classphp_existsphp(php$thisphp-php>php_rowClassphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$thisphp-php>php_rowClassphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$configphp[php'dataphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dataphp php php php php php php php=php php$configphp[php'dataphp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$configphp[php'readOnlyphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_readOnlyphp php php php=php php$configphp[php'readOnlyphp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$configphp[php'storedphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_storedphp php php php php php=php php$configphp[php'storedphp'php]php;
-php php php php php php php php php}
+    /**
+     * Constructor.
+     *
+     * @param array $config
+     */
+    public function __construct(array $config)
+    {
+        if (isset($config['table'])) {
+            $this->_table      = $config['table'];
+            $this->_tableClass = get_class($this->_table);
+        }
+        if (isset($config['rowClass'])) {
+            $this->_rowClass   = $config['rowClass'];
+        }
+        if (!class_exists($this->_rowClass)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($this->_rowClass);
+        }
+        if (isset($config['data'])) {
+            $this->_data       = $config['data'];
+        }
+        if (isset($config['readOnly'])) {
+            $this->_readOnly   = $config['readOnly'];
+        }
+        if (isset($config['stored'])) {
+            $this->_stored     = $config['stored'];
+        }
 
-php php php php php php php php php/php/php setphp thephp countphp ofphp rows
-php php php php php php php php php$thisphp-php>php_countphp php=php countphp(php$thisphp-php>php_dataphp)php;
+        // set the count of rows
+        $this->_count = count($this->_data);
 
-php php php php php php php php php$thisphp-php>initphp(php)php;
-php php php php php}
+        $this->init();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Storephp dataphp,php classphp namesphp,php andphp statephp inphp serializedphp object
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp php_php_sleepphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php'php_dataphp'php,php php'php_tableClassphp'php,php php'php_rowClassphp'php,php php'php_pointerphp'php,php php'php_countphp'php,php php'php_rowsphp'php,php php'php_storedphp'php,
-php php php php php php php php php php php php php php php php php php php php php php'php_readOnlyphp'php)php;
-php php php php php}
+    /**
+     * Store data, class names, and state in serialized object
+     *
+     * @return array
+     */
+    public function __sleep()
+    {
+        return array('_data', '_tableClass', '_rowClass', '_pointer', '_count', '_rows', '_stored',
+                     '_readOnly');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setupphp tophp dophp onphp wakeupphp.
-php php php php php php*php Aphp dephp-serializedphp Rowsetphp shouldphp notphp bephp assumedphp tophp havephp accessphp tophp aphp live
-php php php php php php*php databasephp connectionphp,php sophp setphp php_connectedphp php=php falsephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_connectedphp php=php falsephp;
-php php php php php}
+    /**
+     * Setup to do on wakeup.
+     * A de-serialized Rowset should not be assumed to have access to a live
+     * database connection, so set _connected = false.
+     *
+     * @return void
+     */
+    public function __wakeup()
+    {
+        $this->_connected = false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp object
-php php php php php php*
-php php php php php php*php Calledphp fromphp php{php@linkphp php_php_constructphp(php)php}php asphp finalphp stepphp ofphp objectphp instantiationphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp initphp(php)
-php php php php php{
-php php php php php}
+    /**
+     * Initialize object
+     *
+     * Called from {@link __construct()} as final step of object instantiation.
+     *
+     * @return void
+     */
+    public function init()
+    {
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp connectedphp statephp ofphp thephp rowsetphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isConnectedphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_connectedphp;
-php php php php php}
+    /**
+     * Return the connected state of the rowset.
+     *
+     * @return boolean
+     */
+    public function isConnected()
+    {
+        return $this->_connected;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp tablephp objectphp,php orphp nullphp ifphp thisphp isphp disconnectedphp rowset
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getTablephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_tablephp;
-php php php php php}
+    /**
+     * Returns the table object, or null if this is disconnected rowset
+     *
+     * @return Zend_Db_Table_Abstract
+     */
+    public function getTable()
+    {
+        return $this->_table;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp tablephp objectphp,php tophp rephp-establishphp aphp livephp connection
-php php php php php php*php tophp thephp databasephp forphp aphp Rowsetphp thatphp hasphp beenphp dephp-serializedphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Dbphp_Tablephp_Abstractphp php$table
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Rowphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setTablephp(Zendphp_Dbphp_Tablephp_Abstractphp php$tablephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tablephp php=php php$tablephp;
-php php php php php php php php php$thisphp-php>php_connectedphp php=php falsephp;
-php php php php php php php php php/php/php php@todophp Thisphp worksphp onlyphp ifphp wephp havephp iteratedphp through
-php php php php php php php php php/php/php thephp resultphp setphp oncephp tophp instantiatephp thephp rowsphp.
-php php php php php php php php foreachphp php(php$thisphp asphp php$rowphp)php php{
-php php php php php php php php php php php php php$connectedphp php=php php$rowphp-php>setTablephp(php$tablephp)php;
-php php php php php php php php php php php php ifphp php(php$connectedphp php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_connectedphp php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_connectedphp;
-php php php php php}
+    /**
+     * Set the table object, to re-establish a live connection
+     * to the database for a Rowset that has been de-serialized.
+     *
+     * @param Zend_Db_Table_Abstract $table
+     * @return boolean
+     * @throws Zend_Db_Table_Row_Exception
+     */
+    public function setTable(Zend_Db_Table_Abstract $table)
+    {
+        $this->_table = $table;
+        $this->_connected = false;
+        // @todo This works only if we have iterated through
+        // the result set once to instantiate the rows.
+        foreach ($this as $row) {
+            $connected = $row->setTable($table);
+            if ($connected == true) {
+                $this->_connected = true;
+            }
+        }
+        return $this->_connected;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Queryphp thephp classphp namephp ofphp thephp Tablephp objectphp forphp whichphp this
-php php php php php php*php Rowsetphp wasphp createdphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTableClassphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_tableClassphp;
-php php php php php}
+    /**
+     * Query the class name of the Table object for which this
+     * Rowset was created.
+     *
+     * @return string
+     */
+    public function getTableClass()
+    {
+        return $this->_tableClass;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp elementphp.
-php php php php php php*php Similarphp tophp thephp resetphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstractphp Fluentphp interfacephp.
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pointerphp php=php php0php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Rewind the Iterator to the first element.
+     * Similar to the reset() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return Zend_Db_Table_Rowset_Abstract Fluent interface.
+     */
+    public function rewind()
+    {
+        $this->_pointer = 0;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp elementphp.
-php php php php php php*php Similarphp tophp thephp currentphp(php)php functionphp forphp arraysphp inphp PHP
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowphp_Abstractphp currentphp elementphp fromphp thephp collection
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>validphp(php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
+    /**
+     * Return the current element.
+     * Similar to the current() function for arrays in PHP
+     * Required by interface Iterator.
+     *
+     * @return Zend_Db_Table_Row_Abstract current element from the collection
+     */
+    public function current()
+    {
+        if ($this->valid() === false) {
+            return null;
+        }
 
-php php php php php php php php php/php/php returnphp thephp rowphp object
-php php php php php php php php returnphp php$thisphp-php>php_loadAndReturnRowphp(php$thisphp-php>php_pointerphp)php;
-php php php php php}
+        // return the row object
+        return $this->_loadAndReturnRow($this->_pointer);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp identifyingphp keyphp ofphp thephp currentphp elementphp.
-php php php php php php*php Similarphp tophp thephp keyphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pointerphp;
-php php php php php}
+    /**
+     * Return the identifying key of the current element.
+     * Similar to the key() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return int
+     */
+    public function key()
+    {
+        return $this->_pointer;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movephp forwardphp tophp nextphp elementphp.
-php php php php php php*php Similarphp tophp thephp nextphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php+php+php$thisphp-php>php_pointerphp;
-php php php php php}
+    /**
+     * Move forward to next element.
+     * Similar to the next() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return void
+     */
+    public function next()
+    {
+        ++$this->_pointer;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp elementphp afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)php.
-php php php php php php*php Usedphp tophp checkphp ifphp wephp'vephp iteratedphp tophp thephp endphp ofphp thephp collectionphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolphp Falsephp ifphp therephp'sphp nothingphp morephp tophp iteratephp over
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pointerphp php>php=php php0php php&php&php php$thisphp-php>php_pointerphp <php php$thisphp-php>php_countphp;
-php php php php php}
+    /**
+     * Check if there is a current element after calls to rewind() or next().
+     * Used to check if we've iterated to the end of the collection.
+     * Required by interface Iterator.
+     *
+     * @return bool False if there's nothing more to iterate over
+     */
+    public function valid()
+    {
+        return $this->_pointer >= 0 && $this->_pointer < $this->_count;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp elementsphp inphp thephp collectionphp.
-php php php php php php*
-php php php php php php*php Implementsphp Countablephp:php:countphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_countphp;
-php php php php php}
+    /**
+     * Returns the number of elements in the collection.
+     *
+     * Implements Countable::count()
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->_count;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Takephp thephp Iteratorphp tophp positionphp php$position
-php php php php php php*php Requiredphp byphp interfacephp SeekableIteratorphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$positionphp thephp positionphp tophp seekphp to
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstract
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp seekphp(php$positionphp)
-php php php php php{
-php php php php php php php php php$positionphp php=php php(intphp)php php$positionphp;
-php php php php php php php php ifphp php(php$positionphp <php php0php php|php|php php$positionphp php>php=php php$thisphp-php>php_countphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Rowsetphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exceptionphp(php"Illegalphp indexphp php$positionphp"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_pointerphp php=php php$positionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Take the Iterator to position $position
+     * Required by interface SeekableIterator.
+     *
+     * @param int $position the position to seek to
+     * @return Zend_Db_Table_Rowset_Abstract
+     * @throws Zend_Db_Table_Rowset_Exception
+     */
+    public function seek($position)
+    {
+        $position = (int) $position;
+        if ($position < 0 || $position >= $this->_count) {
+            require_once 'Zend/Db/Table/Rowset/Exception.php';
+            throw new Zend_Db_Table_Rowset_Exception("Illegal index $position");
+        }
+        $this->_pointer = $position;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp anphp offsetphp exists
-php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$offset
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp offsetExistsphp(php$offsetphp)
-php php php php php{
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_dataphp[php(intphp)php php$offsetphp]php)php;
-php php php php php}
+    /**
+     * Check if an offset exists
+     * Required by the ArrayAccess implementation
+     *
+     * @param string $offset
+     * @return boolean
+     */
+    public function offsetExists($offset)
+    {
+        return isset($this->_data[(int) $offset]);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp rowphp forphp thephp givenphp offset
-php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$offset
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp offsetGetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php php$offsetphp php=php php(intphp)php php$offsetphp;
-php php php php php php php php ifphp php(php$offsetphp <php php0php php|php|php php$offsetphp php>php=php php$thisphp-php>php_countphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Rowsetphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exceptionphp(php"Illegalphp indexphp php$offsetphp"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_pointerphp php=php php$offsetphp;
+    /**
+     * Get the row for the given offset
+     * Required by the ArrayAccess implementation
+     *
+     * @param string $offset
+     * @return Zend_Db_Table_Row_Abstract
+     */
+    public function offsetGet($offset)
+    {
+        $offset = (int) $offset;
+        if ($offset < 0 || $offset >= $this->_count) {
+            require_once 'Zend/Db/Table/Rowset/Exception.php';
+            throw new Zend_Db_Table_Rowset_Exception("Illegal index $offset");
+        }
+        $this->_pointer = $offset;
 
-php php php php php php php php returnphp php$thisphp-php>currentphp(php)php;
-php php php php php}
+        return $this->current();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Doesphp nothing
-php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$offset
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php/
-php php php php publicphp functionphp offsetSetphp(php$offsetphp,php php$valuephp)
-php php php php php{
-php php php php php}
+    /**
+     * Does nothing
+     * Required by the ArrayAccess implementation
+     *
+     * @param string $offset
+     * @param mixed $value
+     */
+    public function offsetSet($offset, $value)
+    {
+    }
 
-php php php php php/php*php*
-php php php php php php*php Doesphp nothing
-php php php php php php*php Requiredphp byphp thephp ArrayAccessphp implementation
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$offset
-php php php php php php*php/
-php php php php publicphp functionphp offsetUnsetphp(php$offsetphp)
-php php php php php{
-php php php php php}
+    /**
+     * Does nothing
+     * Required by the ArrayAccess implementation
+     *
+     * @param string $offset
+     */
+    public function offsetUnset($offset)
+    {
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp Zendphp_Dbphp_Tablephp_Rowphp fromphp aphp knownphp positionphp intophp thephp Iterator
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$positionphp thephp positionphp ofphp thephp rowphp expected
-php php php php php php*php php@paramphp boolphp php$seekphp wetherphp orphp notphp seekphp thephp iteratorphp tophp thatphp positionphp after
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Row
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getRowphp(php$positionphp,php php$seekphp php=php falsephp)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$rowphp php=php php$thisphp-php>php_loadAndReturnRowphp(php$positionphp)php;
-php php php php php php php php php}php catchphp php(Zendphp_Dbphp_Tablephp_Rowsetphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Rowsetphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exceptionphp(php'Nophp rowphp couldphp bephp foundphp atphp positionphp php'php php.php php(intphp)php php$positionphp,php php0php,php php$ephp)php;
-php php php php php php php php php}
+    /**
+     * Returns a Zend_Db_Table_Row from a known position into the Iterator
+     *
+     * @param int $position the position of the row expected
+     * @param bool $seek wether or not seek the iterator to that position after
+     * @return Zend_Db_Table_Row
+     * @throws Zend_Db_Table_Rowset_Exception
+     */
+    public function getRow($position, $seek = false)
+    {
+        try {
+            $row = $this->_loadAndReturnRow($position);
+        } catch (Zend_Db_Table_Rowset_Exception $e) {
+            require_once 'Zend/Db/Table/Rowset/Exception.php';
+            throw new Zend_Db_Table_Rowset_Exception('No row could be found at position ' . (int) $position, 0, $e);
+        }
 
-php php php php php php php php ifphp php(php$seekphp php=php=php truephp)php php{
-php php php php php php php php php php php php php$thisphp-php>seekphp(php$positionphp)php;
-php php php php php php php php php}
+        if ($seek == true) {
+            $this->seek($position);
+        }
 
-php php php php php php php php returnphp php$rowphp;
-php php php php php}
+        return $row;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp allphp dataphp asphp anphp arrayphp.
-php php php php php php*
-php php php php php php*php Updatesphp thephp php$php_dataphp propertyphp withphp currentphp rowphp objectphp valuesphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php/php/php php@todophp Thisphp worksphp onlyphp ifphp wephp havephp iteratedphp through
-php php php php php php php php php/php/php thephp resultphp setphp oncephp tophp instantiatephp thephp rowsphp.
-php php php php php php php php foreachphp php(php$thisphp-php>php_rowsphp asphp php$iphp php=php>php php$rowphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$iphp]php php=php php$rowphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_dataphp;
-php php php php php}
+    /**
+     * Returns all data as an array.
+     *
+     * Updates the $_data property with current row object values.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        // @todo This works only if we have iterated through
+        // the result set once to instantiate the rows.
+        foreach ($this->_rows as $i => $row) {
+            $this->_data[$i] = $row->toArray();
+        }
+        return $this->_data;
+    }
 
-php php php php protectedphp functionphp php_loadAndReturnRowphp(php$positionphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_dataphp[php$positionphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Tablephp/Rowsetphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Tablephp_Rowsetphp_Exceptionphp(php"Dataphp forphp providedphp positionphp doesphp notphp existphp"php)php;
-php php php php php php php php php}
+    protected function _loadAndReturnRow($position)
+    {
+        if (!isset($this->_data[$position])) {
+            require_once 'Zend/Db/Table/Rowset/Exception.php';
+            throw new Zend_Db_Table_Rowset_Exception("Data for provided position does not exist");
+        }
 
-php php php php php php php php php/php/php dophp wephp alreadyphp havephp aphp rowphp objectphp forphp thisphp positionphp?
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_rowsphp[php$positionphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_rowsphp[php$positionphp]php php=php newphp php$thisphp-php>php_rowClassphp(
-php php php php php php php php php php php php php php php php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'tablephp'php php php php php=php>php php$thisphp-php>php_tablephp,
-php php php php php php php php php php php php php php php php php php php php php'dataphp'php php php php php php=php>php php$thisphp-php>php_dataphp[php$positionphp]php,
-php php php php php php php php php php php php php php php php php php php php php'storedphp'php php php php=php>php php$thisphp-php>php_storedphp,
-php php php php php php php php php php php php php php php php php php php php php'readOnlyphp'php php=php>php php$thisphp-php>php_readOnly
-php php php php php php php php php php php php php php php php php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        // do we already have a row object for this position?
+        if (empty($this->_rows[$position])) {
+            $this->_rows[$position] = new $this->_rowClass(
+                array(
+                    'table'    => $this->_table,
+                    'data'     => $this->_data[$position],
+                    'stored'   => $this->_stored,
+                    'readOnly' => $this->_readOnly
+                )
+            );
+        }
 
-php php php php php php php php php/php/php returnphp thephp rowphp object
-php php php php php php php php returnphp php$thisphp-php>php_rowsphp[php$positionphp]php;
-php php php php php}
+        // return the row object
+        return $this->_rows[$position];
+    }
 
-php}
+}

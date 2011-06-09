@@ -1,75 +1,75 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Loader
-php php*php php@subpackagephp PluginLoader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Loader
+ * @subpackage PluginLoader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Pluginphp classphp loaderphp interface
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Loader
-php php*php php@subpackagephp PluginLoader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Loaderphp_PluginLoaderphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Addphp prefixedphp pathsphp tophp thephp registryphp ofphp paths
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$prefix
-php php php php php php*php php@paramphp stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp)php;
+/**
+ * Plugin class loader interface
+ *
+ * @category   Zend
+ * @package    Zend_Loader
+ * @subpackage PluginLoader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Loader_PluginLoader_Interface
+{
+    /**
+     * Add prefixed paths to the registry of paths
+     *
+     * @param string $prefix
+     * @param string $path
+     * @return Zend_Loader_PluginLoader
+     */
+    public function addPrefixPath($prefix, $path);
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp prefixphp php(orphp prefixedphp-pathphp)php fromphp thephp registry
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$prefix
-php php php php php php*php php@paramphp stringphp php$pathphp OPTIONAL
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp removePrefixPathphp(php$prefixphp,php php$pathphp php=php nullphp)php;
+    /**
+     * Remove a prefix (or prefixed-path) from the registry
+     *
+     * @param string $prefix
+     * @param string $path OPTIONAL
+     * @return Zend_Loader_PluginLoader
+     */
+    public function removePrefixPath($prefix, $path = null);
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp aphp Helperphp byphp aphp specificphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp isLoadedphp(php$namephp)php;
+    /**
+     * Whether or not a Helper by a specific name
+     *
+     * @param string $name
+     * @return Zend_Loader_PluginLoader
+     */
+    public function isLoaded($name);
 
-php php php php php/php*php*
-php php php php php php*php Returnphp fullphp classphp namephp forphp aphp namedphp helper
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getClassNamephp(php$namephp)php;
+    /**
+     * Return full class name for a named helper
+     *
+     * @param string $name
+     * @return string
+     */
+    public function getClassName($name);
 
-php php php php php/php*php*
-php php php php php php*php Loadphp aphp helperphp viaphp thephp namephp provided
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp loadphp(php$namephp)php;
-php}
+    /**
+     * Load a helper via the name provided
+     *
+     * @param string $name
+     * @return string
+     */
+    public function load($name);
+}

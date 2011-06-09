@@ -1,340 +1,340 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Soapphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Soap.php 22662 2010-07-24 17:37:36Z mabe $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Soapphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Soapphp/Clientphp.phpphp'php;
+/**
+ * @see Zend_Soap_Client
+ */
+require_once 'Zend/Soap/Client.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soapphp extendsphp Zendphp_Soapphp_Client
-php{
-php php php php php/php*php*
-php php php php php php*php classphp withphp credentialphp interface
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php php php php php*php/
-php php php php privatephp php$php_credentialphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Client_Soap extends Zend_Soap_Client
+{
+    /**
+     * class with credential interface
+     *
+     * @var Zend_Service_DeveloperGarden_Credential
+     */
+    private $_credential = null;
 
-php php php php php/php*php*
-php php php php php php*php WSSEphp Securityphp Extphp Namespace
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_NAMESPACEphp_SECEXTphp php=php php'httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-wssecurityphp-secextphp-php1php.php0php.xsdphp'php;
+    /**
+     * WSSE Security Ext Namespace
+     *
+     * @var string
+     */
+    const WSSE_NAMESPACE_SECEXT = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
 
-php php php php php/php*php*
-php php php php php php*php WSSEphp Samlphp Namespace
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_NAMESPACEphp_SAMLphp php=php php'urnphp:oasisphp:namesphp:tcphp:SAMLphp:php2php.php0php:assertionphp'php;
+    /**
+     * WSSE Saml Namespace
+     *
+     * @var string
+     */
+    const WSSE_NAMESPACE_SAML = 'urn:oasis:names:tc:SAML:2.0:assertion';
 
-php php php php php/php*php*
-php php php php php php*php Securityphp Element
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_SECURITYphp_ELEMENTphp php=php php'Securityphp'php;
+    /**
+     * Security Element
+     *
+     * @var string
+     */
+    const WSSE_SECURITY_ELEMENT = 'Security';
 
-php php php php php/php*php*
-php php php php php php*php UsernameTokenphp Element
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_ELEMENTphp_USERNAMETOKENphp php=php php'UsernameTokenphp'php;
+    /**
+     * UsernameToken Element
+     *
+     * @var string
+     */
+    const WSSE_ELEMENT_USERNAMETOKEN = 'UsernameToken';
 
-php php php php php/php*php*
-php php php php php php*php Usernaephp Element
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_ELEMENTphp_USERNAMEphp php=php php'Usernamephp'php;
+    /**
+     * Usernae Element
+     *
+     * @var string
+     */
+    const WSSE_ELEMENT_USERNAME = 'Username';
 
-php php php php php/php*php*
-php php php php php php*php Passwordphp Element
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php constphp WSSEphp_ELEMENTphp_PASSWORDphp php=php php'Passwordphp'php;
+    /**
+     * Password Element
+     *
+     * @var string
+     */
+    const WSSE_ELEMENT_PASSWORD = 'Password';
 
-php php php php php/php*php*
-php php php php php php*php Passwordphp Elementphp WSSEphp Type
-php php php php php php*
-php php php php php php*php/
-php php php php constphp WSSEphp_ELEMENTphp_PASSWORDphp_TYPEphp php=php php'httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-usernamephp-tokenphp-profilephp-php1php.php0php#PasswordTextphp'php;
+    /**
+     * Password Element WSSE Type
+     *
+     */
+    const WSSE_ELEMENT_PASSWORD_TYPE = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText';
 
-php php php php php/php*php*
-php php php php php php*php isphp thisphp clientphp usedphp byphp thephp tokenphp service
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServer
-php php php php php php*php/
-php php php php protectedphp php$php_tokenServicephp php=php nullphp;
+    /**
+     * is this client used by the token service
+     *
+     * @var Zend_Service_DeveloperGarden_SecurityTokenServer
+     */
+    protected $_tokenService = null;
 
-php php php php php/php*php*
-php php php php php php*php Performphp aphp SOAPphp callphp butphp firstphp checkphp forphp addingphp STSphp Tokenphp orphp fetchphp one
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp arrayphp php php$arguments
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$namephp,php php$argumentsphp)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php addphp WSSEphp Securityphp header
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php$thisphp-php>php_tokenServicephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php ifphp loginphp methodphp wephp addWsseLoginHeader
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(php'loginphp'php,php php$argumentsphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addWsseLoginHeaderphp(php)php;
-php php php php php php php php php php php php php}php elseifphp php(php$namephp php=php=php php'getTokensphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addWsseTokenHeaderphp(php$thisphp-php>php_tokenServicephp-php>getLoginTokenphp(php)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addWsseSecurityTokenHeaderphp(php$thisphp-php>php_tokenServicephp-php>getTokensphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp parentphp:php:php_php_callphp(php$namephp,php php$argumentsphp)php;
-php php php php php}
+    /**
+     * Perform a SOAP call but first check for adding STS Token or fetch one
+     *
+     * @param string $name
+     * @param array  $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        /**
+         * add WSSE Security header
+         */
+        if ($this->_tokenService !== null) {
+            // if login method we addWsseLoginHeader
+            if (in_array('login', $arguments)) {
+                $this->addWsseLoginHeader();
+            } elseif ($name == 'getTokens') {
+                $this->addWsseTokenHeader($this->_tokenService->getLoginToken());
+            } else {
+                $this->addWsseSecurityTokenHeader($this->_tokenService->getTokens());
+            }
+        }
+        return parent::__call($name, $arguments);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp thephp internalphp handlingphp forphp handlephp tokenphp service
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServerphp php$isTokenService
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php publicphp functionphp setTokenServicephp(Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServerphp php$tokenServicephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tokenServicephp php=php php$tokenServicephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets the internal handling for handle token service
+     *
+     * @param Zend_Service_DeveloperGarden_SecurityTokenServer $isTokenService
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    public function setTokenService(Zend_Service_DeveloperGarden_SecurityTokenServer $tokenService)
+    {
+        $this->_tokenService = $tokenService;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp currentlyphp configuredphp tokenServicephp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServer
-php php php php php php*php/
-php php php php publicphp functionphp getTokenServicephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_tokenServicephp;
-php php php php php}
+    /**
+     * returns the currently configured tokenService object
+     *
+     * @return Zend_Service_DeveloperGarden_SecurityTokenServer
+     */
+    public function getTokenService()
+    {
+        return $this->_tokenService;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp newphp credentialphp callbackphp object
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Credentialphp php$credential
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php publicphp functionphp setCredentialphp(Zendphp_Servicephp_DeveloperGardenphp_Credentialphp php$credentialphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_credentialphp php=php php$credentialphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets new credential callback object
+     *
+     * @param Zend_Service_DeveloperGarden_Credential $credential
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    public function setCredential(Zend_Service_DeveloperGarden_Credential $credential)
+    {
+        $this->_credential = $credential;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp internalphp credentialphp callbackphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php php php php php*php/
-php php php php publicphp functionphp getCredentialphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_credentialphp;
-php php php php php}
+    /**
+     * returns the internal credential callback object
+     *
+     * @return Zend_Service_DeveloperGarden_Credential
+     */
+    public function getCredential()
+    {
+        return $this->_credential;
+    }
 
-php php php php php/php*php*
-php php php php php php*php createsphp thephp loginphp headerphp andphp add
-php php php php php php*
-php php php php php php*php php@returnphp SoapHeader
-php php php php php php*php/
-php php php php publicphp functionphp getWsseLoginHeaderphp(php)
-php php php php php{
-php php php php php php php php php$domphp php=php newphp DOMDocumentphp(php)php;
+    /**
+     * creates the login header and add
+     *
+     * @return SoapHeader
+     */
+    public function getWsseLoginHeader()
+    {
+        $dom = new DOMDocument();
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Securityphp Element
-php php php php php php php php php php*php/
-php php php php php php php php php$securityElementphp php=php php$domphp-php>createElementNSphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php php'wssephp:php'php php.php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
-php php php php php php php php php$securityElementphp-php>setAttributephp(php'mustUnderstandphp'php,php truephp)php;
+        /**
+         * Security Element
+         */
+        $securityElement = $dom->createElementNS(
+            self::WSSE_NAMESPACE_SECEXT,
+            'wsse:' . self::WSSE_SECURITY_ELEMENT
+        );
+        $securityElement->setAttribute('mustUnderstand', true);
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Usernamephp Tokenphp Element
-php php php php php php php php php php*php/
-php php php php php php php php php$usernameTokenElementphp php=php php$domphp-php>createElementNSphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_ELEMENTphp_USERNAMETOKEN
-php php php php php php php php php)php;
+        /**
+         * Username Token Element
+         */
+        $usernameTokenElement = $dom->createElementNS(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_ELEMENT_USERNAMETOKEN
+        );
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Usernamephp Element
-php php php php php php php php php php*php/
-php php php php php php php php php$usernameElementphp php=php php$domphp-php>createElementNSphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_ELEMENTphp_USERNAMEphp,
-php php php php php php php php php php php php php$thisphp-php>php_credentialphp-php>getUsernamephp(truephp)
-php php php php php php php php php)php;
+        /**
+         * Username Element
+         */
+        $usernameElement = $dom->createElementNS(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_ELEMENT_USERNAME,
+            $this->_credential->getUsername(true)
+        );
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Passwordphp Element
-php php php php php php php php php php*php/
-php php php php php php php php php$passwordElementphp php=php php$domphp-php>createElementNSphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_ELEMENTphp_PASSWORDphp,
-php php php php php php php php php php php php php$thisphp-php>php_credentialphp-php>getPasswordphp(php)
-php php php php php php php php php)php;
-php php php php php php php php php$passwordElementphp-php>setAttributephp(php'Typephp'php,php selfphp:php:WSSEphp_ELEMENTphp_PASSWORDphp_TYPEphp)php;
+        /**
+         * Password Element
+         */
+        $passwordElement = $dom->createElementNS(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_ELEMENT_PASSWORD,
+            $this->_credential->getPassword()
+        );
+        $passwordElement->setAttribute('Type', self::WSSE_ELEMENT_PASSWORD_TYPE);
 
-php php php php php php php php php$usernameTokenElementphp-php>appendChildphp(php$usernameElementphp)php;
-php php php php php php php php php$usernameTokenElementphp-php>appendChildphp(php$passwordElementphp)php;
+        $usernameTokenElement->appendChild($usernameElement);
+        $usernameTokenElement->appendChild($passwordElement);
 
-php php php php php php php php php$securityElementphp-php>appendChildphp(php$usernameTokenElementphp)php;
-php php php php php php php php php$domphp-php>appendChildphp(php$securityElementphp)php;
+        $securityElement->appendChild($usernameTokenElement);
+        $dom->appendChild($securityElement);
 
-php php php php php php php php php$authSoapVarphp php=php newphp SoapVarphp(
-php php php php php php php php php php php php php$domphp-php>saveXMLphp(php$securityElementphp)php,
-php php php php php php php php php php php php XSDphp_ANYXMLphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
+        $authSoapVar = new SoapVar(
+            $dom->saveXML($securityElement),
+            XSD_ANYXML,
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT
+        );
 
-php php php php php php php php php$authSoapHeaderphp php=php newphp SoapHeaderphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENTphp,
-php php php php php php php php php php php php php$authSoapVarphp,
-php php php php php php php php php php php php true
-php php php php php php php php php)php;
+        $authSoapHeader = new SoapHeader(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT,
+            $authSoapVar,
+            true
+        );
 
-php php php php php php php php returnphp php$authSoapHeaderphp;
-php php php php php}
+        return $authSoapHeader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php createsphp thephp tokenphp authphp headerphp forphp directphp calls
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php php*php php@returnphp SoapHeader
-php php php php php php*php/
-php php php php publicphp functionphp getWsseTokenHeaderphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php)php php{
-php php php php php php php php php$formatphp php=php php'php<wssephp:php%sphp xmlnsphp:wssephp=php"php%sphp"php SOAPphp-ENVphp:mustUnderstandphp=php"php1php"php>php%s<php/wssephp:php%sphp>php'php;
-php php php php php php php php php$securityHeaderphp php=php sprintfphp(
-php php php php php php php php php php php php php$formatphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php php$tokenphp-php>getTokenDataphp(php)php,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
+    /**
+     * creates the token auth header for direct calls
+     *
+     * @param Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+     * @return SoapHeader
+     */
+    public function getWsseTokenHeader(
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+    ) {
+        $format = '<wsse:%s xmlns:wsse="%s" SOAP-ENV:mustUnderstand="1">%s</wsse:%s>';
+        $securityHeader = sprintf(
+            $format,
+            self::WSSE_SECURITY_ELEMENT,
+            self::WSSE_NAMESPACE_SECEXT,
+            $token->getTokenData(),
+            self::WSSE_SECURITY_ELEMENT
+        );
 
-php php php php php php php php php$authSoapVarphp php=php newphp SoapVarphp(
-php php php php php php php php php php php php php$securityHeaderphp,
-php php php php php php php php php php php php XSDphp_ANYXMLphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
+        $authSoapVar = new SoapVar(
+            $securityHeader,
+            XSD_ANYXML,
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT
+        );
 
-php php php php php php php php php$authSoapHeaderphp php=php newphp SoapHeaderphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENTphp,
-php php php php php php php php php php php php php$authSoapVarphp,
-php php php php php php php php php php php php true
-php php php php php php php php php)php;
+        $authSoapHeader = new SoapHeader(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT,
+            $authSoapVar,
+            true
+        );
 
-php php php php php php php php returnphp php$authSoapHeaderphp;
-php php php php php}
+        return $authSoapHeader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php createsphp thephp securityphp tokenphp authphp headerphp forphp directphp calls
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php php*php php@returnphp SoapHeader
-php php php php php php*php/
-php php php php publicphp functionphp getWsseSecurityTokenHeaderphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_GetTokensResponsephp php$token
-php php php php php)php php{
-php php php php php php php php php$formatphp php=php php'php<wssephp:php%sphp xmlnsphp:wssephp=php"php%sphp"php SOAPphp-ENVphp:mustUnderstandphp=php"php1php"php>php%s<php/wssephp:php%sphp>php'php;
-php php php php php php php php php$securityHeaderphp php=php sprintfphp(
-php php php php php php php php php php php php php$formatphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php php$tokenphp-php>getTokenDataphp(php)php,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
+    /**
+     * creates the security token auth header for direct calls
+     *
+     * @param Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+     * @return SoapHeader
+     */
+    public function getWsseSecurityTokenHeader(
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse $token
+    ) {
+        $format = '<wsse:%s xmlns:wsse="%s" SOAP-ENV:mustUnderstand="1">%s</wsse:%s>';
+        $securityHeader = sprintf(
+            $format,
+            self::WSSE_SECURITY_ELEMENT,
+            self::WSSE_NAMESPACE_SECEXT,
+            $token->getTokenData(),
+            self::WSSE_SECURITY_ELEMENT
+        );
 
-php php php php php php php php php$authSoapVarphp php=php newphp SoapVarphp(
-php php php php php php php php php php php php php$securityHeaderphp,
-php php php php php php php php php php php php XSDphp_ANYXMLphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENT
-php php php php php php php php php)php;
+        $authSoapVar = new SoapVar(
+            $securityHeader,
+            XSD_ANYXML,
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT
+        );
 
-php php php php php php php php php$authSoapHeaderphp php=php newphp SoapHeaderphp(
-php php php php php php php php php php php php selfphp:php:WSSEphp_NAMESPACEphp_SECEXTphp,
-php php php php php php php php php php php php selfphp:php:WSSEphp_SECURITYphp_ELEMENTphp,
-php php php php php php php php php php php php php$authSoapVarphp,
-php php php php php php php php php php php php true
-php php php php php php php php php)php;
+        $authSoapHeader = new SoapHeader(
+            self::WSSE_NAMESPACE_SECEXT,
+            self::WSSE_SECURITY_ELEMENT,
+            $authSoapVar,
+            true
+        );
 
-php php php php php php php php returnphp php$authSoapHeaderphp;
-php php php php php}
+        return $authSoapHeader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php addsphp thephp loginphp specificphp headerphp tophp thephp client
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php publicphp functionphp addWsseLoginHeaderphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>addSoapInputHeaderphp(php$thisphp-php>getWsseLoginHeaderphp(php)php)php;
-php php php php php}
+    /**
+     * adds the login specific header to the client
+     *
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    public function addWsseLoginHeader()
+    {
+        return $this->addSoapInputHeader($this->getWsseLoginHeader());
+    }
 
-php php php php php/php*php*
-php php php php php php*php addsphp thephp earlierphp fetchedphp tokenphp tophp thephp header
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php publicphp functionphp addWsseTokenHeaderphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php)php php{
-php php php php php php php php returnphp php$thisphp-php>addSoapInputHeaderphp(php$thisphp-php>getWsseTokenHeaderphp(php$tokenphp)php)php;
-php php php php php}
+    /**
+     * adds the earlier fetched token to the header
+     *
+     * @param Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    public function addWsseTokenHeader(
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+    ) {
+        return $this->addSoapInputHeader($this->getWsseTokenHeader($token));
+    }
 
-php php php php php/php*php*
-php php php php php php*php addsphp thephp earlierphp fetchedphp tokenphp tophp thephp header
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_SecurityTokenResponsephp php$token
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php publicphp functionphp addWsseSecurityTokenHeaderphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_GetTokensResponsephp php$token
-php php php php php)php php{
-php php php php php php php php returnphp php$thisphp-php>addSoapInputHeaderphp(php$thisphp-php>getWsseSecurityTokenHeaderphp(php$tokenphp)php)php;
-php php php php php}
-php}
+    /**
+     * adds the earlier fetched token to the header
+     *
+     * @param Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse $token
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    public function addWsseSecurityTokenHeader(
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse $token
+    ) {
+        return $this->addSoapInputHeader($this->getWsseSecurityTokenHeader($token));
+    }
+}

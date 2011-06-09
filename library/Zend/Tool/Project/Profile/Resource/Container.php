@@ -1,421 +1,421 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Containerphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Container.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_SearchConstraints
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Resourcephp/SearchConstraintsphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_Resource_SearchConstraints
+ */
+require_once 'Zend/Tool/Project/Profile/Resource/SearchConstraints.php';
 
-php/php*php*
-php php*php Thisphp classphp isphp anphp iteratorphp thatphp willphp iteratephp onlyphp overphp enabledphp resources
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp implementsphp RecursiveIteratorphp,php Countable
-php{
+/**
+ * This class is an iterator that will iterate only over enabled resources
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator, Countable
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_subResourcesphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_subResources = array();
 
-php php php php php/php*php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_positionphp php=php php0php;
+    /**
+     * @var int
+     */
+    protected $_position = 0;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_appendablephp php=php truephp;
+    /**
+     * @var bool
+     */
+    protected $_appendable = true;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_attributesphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_attributes = array();
 
-php php php php php/php*php*
-php php php php php php*php Finderphp methodphp tophp bephp ablephp tophp findphp resourcesphp byphp contextphp name
-php php php php php php*php andphp attributesphp.php php Examplephp usagephp:
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_SearchConstraintsphp|stringphp|arrayphp php$searchParameters
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp functionphp searchphp(php$matchSearchConstraintsphp,php php$nonMatchSearchConstraintsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$matchSearchConstraintsphp instanceofphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_SearchConstraintsphp)php php{
-php php php php php php php php php php php php php$matchSearchConstraintsphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_SearchConstraintsphp(php$matchSearchConstraintsphp)php;
-php php php php php php php php php}
+    /**
+     * Finder method to be able to find resources by context name
+     * and attributes.  Example usage:
+     *
+     * <code>
+     *
+     * </code>
+     *
+     * @param Zend_Tool_Project_Profile_Resource_SearchConstraints|string|array $searchParameters
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public function search($matchSearchConstraints, $nonMatchSearchConstraints = null)
+    {
+        if (!$matchSearchConstraints instanceof Zend_Tool_Project_Profile_Resource_SearchConstraints) {
+            $matchSearchConstraints = new Zend_Tool_Project_Profile_Resource_SearchConstraints($matchSearchConstraints);
+        }
 
-php php php php php php php php php$thisphp-php>rewindphp(php)php;
+        $this->rewind();
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@todophp Thisphp shouldphp bephp rephp-writtenphp withphp betterphp supportphp forphp aphp filterphp iteratorphp,php itsphp thephp wayphp tophp go
-php php php php php php php php php php*php/
+        /**
+         * @todo This should be re-written with better support for a filter iterator, its the way to go
+         */
 
-php php php php php php php php ifphp php(php$nonMatchSearchConstraintsphp)php php{
-php php php php php php php php php php php php php$filterIteratorphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_ContextFilterphp(php$thisphp,php arrayphp(php'denyNamesphp'php php=php>php php$nonMatchSearchConstraintsphp)php)php;
-php php php php php php php php php php php php php$riIteratorphp php=php newphp RecursiveIteratorIteratorphp(php$filterIteratorphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$riIteratorphp php=php newphp RecursiveIteratorIteratorphp(php$thisphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
-php php php php php php php php php}
+        if ($nonMatchSearchConstraints) {
+            $filterIterator = new Zend_Tool_Project_Profile_Iterator_ContextFilter($this, array('denyNames' => $nonMatchSearchConstraints));
+            $riIterator = new RecursiveIteratorIterator($filterIterator, RecursiveIteratorIterator::SELF_FIRST);
+        } else {
+            $riIterator = new RecursiveIteratorIterator($this, RecursiveIteratorIterator::SELF_FIRST);
+        }
 
-php php php php php php php php php$foundResourcephp php php php php php=php falsephp;
-php php php php php php php php php$currentConstraintphp php=php php$matchSearchConstraintsphp-php>getConstraintphp(php)php;
-php php php php php php php php php$foundDepthphp php php php php php php php php=php php0php;
+        $foundResource     = false;
+        $currentConstraint = $matchSearchConstraints->getConstraint();
+        $foundDepth        = 0;
 
-php php php php php php php php foreachphp php(php$riIteratorphp asphp php$currentResourcephp)php php{
+        foreach ($riIterator as $currentResource) {
 
-php php php php php php php php php php php php php/php/php ifphp currentphp depthphp isphp lessphp thanphp foundphp depthphp,php end
-php php php php php php php php php php php php ifphp php(php$riIteratorphp-php>getDepthphp(php)php <php php$foundDepthphp)php php{
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
+            // if current depth is less than found depth, end
+            if ($riIterator->getDepth() < $foundDepth) {
+                break;
+            }
 
-php php php php php php php php php php php php ifphp php(strtolowerphp(php$currentResourcephp-php>getNamephp(php)php)php php=php=php strtolowerphp(php$currentConstraintphp-php>namephp)php)php php{
+            if (strtolower($currentResource->getName()) == strtolower($currentConstraint->name)) {
 
-php php php php php php php php php php php php php php php php php$paramsMatchphp php=php truephp;
+                $paramsMatch = true;
 
-php php php php php php php php php php php php php php php php php/php/php php@todophp checkphp tophp ensurephp paramsphp matchphp php(perhapsphp)
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$currentConstraintphp-php>paramsphp)php php>php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$currentResourceAttributesphp php=php php$currentResourcephp-php>getAttributesphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$currentConstraintphp-php>paramsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Profilephp_Exceptionphp(php'Searchphp parameterphp specificsphp mustphp bephp inphp thephp formphp ofphp anphp arrayphp forphp keyphp php"php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$currentConstraintphp-php>namephp php.php'php"php'php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$currentConstraintphp-php>paramsphp asphp php$paramNamephp php=php>php php$paramValuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$currentResourceAttributesphp[php$paramNamephp]php)php php|php|php php$currentResourceAttributesphp[php$paramNamephp]php php!php=php php$paramValuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$paramsMatchphp php=php falsephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
+                // @todo check to ensure params match (perhaps)
+                if (count($currentConstraint->params) > 0) {
+                    $currentResourceAttributes = $currentResource->getAttributes();
+                    if (!is_array($currentConstraint->params)) {
+                        require_once 'Zend/Tool/Project/Profile/Exception.php';
+                        throw new Zend_Tool_Project_Profile_Exception('Search parameter specifics must be in the form of an array for key "'
+                            . $currentConstraint->name .'"');
+                    }
+                    foreach ($currentConstraint->params as $paramName => $paramValue) {
+                        if (!isset($currentResourceAttributes[$paramName]) || $currentResourceAttributes[$paramName] != $paramValue) {
+                            $paramsMatch = false;
+                            break;
+                        }
+                    }
+                }
 
-php php php php php php php php php php php php php php php php ifphp php(php$paramsMatchphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$foundDepthphp php=php php$riIteratorphp-php>getDepthphp(php)php;
+                if ($paramsMatch) {
+                    $foundDepth = $riIterator->getDepth();
 
-php php php php php php php php php php php php php php php php php php php php ifphp php(php(php$currentConstraintphp php=php php$matchSearchConstraintsphp-php>getConstraintphp(php)php)php php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$foundResourcephp php=php php$currentResourcephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
+                    if (($currentConstraint = $matchSearchConstraints->getConstraint()) == null) {
+                        $foundResource = $currentResource;
+                        break;
+                    }
+                }
 
-php php php php php php php php php php php php php}
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php php php php returnphp php$foundResourcephp;
-php php php php php}
+        return $foundResource;
+    }
 
-php php php php php/php*php*
-php php php php php php*php createResourceAtphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_SearchConstraintsphp php$appendResourceOrSearchConstraints
-php php php php php php*php php@paramphp stringphp php$context
-php php php php php php*php php@paramphp arrayphp php$attributes
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp functionphp createResourceAtphp(php$appendResourceOrSearchConstraintsphp,php php$contextphp,php Arrayphp php$attributesphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$appendResourceOrSearchConstraintsphp instanceofphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp)php php{
-php php php php php php php php php php php php ifphp php(php(php$parentResourcephp php=php php$thisphp-php>searchphp(php$appendResourceOrSearchConstraintsphp)php)php php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Profilephp_Exceptionphp(php'Nophp nodephp wasphp foundphp tophp appendphp tophp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$parentResourcephp php=php php$appendResourceOrSearchConstraintsphp;
-php php php php php php php php php}
+    /**
+     * createResourceAt()
+     *
+     * @param array|Zend_Tool_Project_Profile_Resource_SearchConstraints $appendResourceOrSearchConstraints
+     * @param string $context
+     * @param array $attributes
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public function createResourceAt($appendResourceOrSearchConstraints, $context, Array $attributes = array())
+    {
+        if (!$appendResourceOrSearchConstraints instanceof Zend_Tool_Project_Profile_Resource_Container) {
+            if (($parentResource = $this->search($appendResourceOrSearchConstraints)) == false) {
+                require_once 'Zend/Tool/Project/Profile/Exception.php';
+                throw new Zend_Tool_Project_Profile_Exception('No node was found to append to.');
+            }
+        } else {
+            $parentResource = $appendResourceOrSearchConstraints;
+        }
 
-php php php php php php php php returnphp php$parentResourcephp-php>createResourcephp(php$contextphp,php php$attributesphp)php;
-php php php php php}
+        return $parentResource->createResource($context, $attributes);
+    }
 
-php php php php php/php*php*
-php php php php php php*php createResourcephp(php)
-php php php php php php*
-php php php php php php*php Methodphp tophp createphp aphp resourcephp withphp aphp givenphp contextphp withphp specificphp attributes
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$context
-php php php php php php*php php@paramphp arrayphp php$attributes
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp functionphp createResourcephp(php$contextphp,php Arrayphp php$attributesphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$contextRegistryphp php=php Zendphp_Toolphp_Projectphp_Contextphp_Repositoryphp:php:getInstancephp(php)php;
-php php php php php php php php php php php php ifphp php(php$contextRegistryphp-php>hasContextphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php php php php php$contextphp php=php php$contextRegistryphp-php>getContextphp(php$contextphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Profilephp_Exceptionphp(php'Contextphp byphp namephp php'php php.php php$contextphp php.php php'php wasphp notphp foundphp inphp thephp contextphp registryphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elseifphp php(php!php$contextphp instanceofphp Zendphp_Toolphp_Projectphp_Contextphp_Interfacephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Profilephp_Exceptionphp(php'Contextphp mustphp bephp ofphp typephp stringphp orphp Zendphp_Toolphp_Projectphp_Contextphp_Interfacephp.php'php)php;
-php php php php php php php php php}
+    /**
+     * createResource()
+     *
+     * Method to create a resource with a given context with specific attributes
+     *
+     * @param string $context
+     * @param array $attributes
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public function createResource($context, Array $attributes = array())
+    {
+        if (is_string($context)) {
+            $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
+            if ($contextRegistry->hasContext($context)) {
+                $context = $contextRegistry->getContext($context);
+            } else {
+                require_once 'Zend/Tool/Project/Profile/Exception.php';
+                throw new Zend_Tool_Project_Profile_Exception('Context by name ' . $context . ' was not found in the context registry.');
+            }
+        } elseif (!$context instanceof Zend_Tool_Project_Context_Interface) {
+            require_once 'Zend/Tool/Project/Profile/Exception.php';
+            throw new Zend_Tool_Project_Profile_Exception('Context must be of type string or Zend_Tool_Project_Context_Interface.');
+        }
 
-php php php php php php php php php$newResourcephp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp(php$contextphp)php;
+        $newResource = new Zend_Tool_Project_Profile_Resource($context);
 
-php php php php php php php php ifphp php(php$attributesphp)php php{
-php php php php php php php php php php php php php$newResourcephp-php>setAttributesphp(php$attributesphp)php;
-php php php php php php php php php}
+        if ($attributes) {
+            $newResource->setAttributes($attributes);
+        }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Interestingphp logicphp herephp:
-php php php php php php php php php php*
-php php php php php php php php php php*php Firstphp setphp thephp parentResourcephp php(thisphp willphp alsophp bephp donephp insidephp appendphp)php.php php Thisphp willphp allow
-php php php php php php php php php php*php thephp initializationphp routinephp tophp changephp thephp appendabilityphp ofphp thephp parentphp resourcephp.php php This
-php php php php php php php php php php*php isphp importantphp tophp allowphp specificphp resourcesphp tophp bephp appendablephp byphp veryphp specificphp subphp-resourcesphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$newResourcephp-php>setParentResourcephp(php$thisphp)php;
-php php php php php php php php php$newResourcephp-php>initializeContextphp(php)php;
-php php php php php php php php php$thisphp-php>appendphp(php$newResourcephp)php;
+        /**
+         * Interesting logic here:
+         *
+         * First set the parentResource (this will also be done inside append).  This will allow
+         * the initialization routine to change the appendability of the parent resource.  This
+         * is important to allow specific resources to be appendable by very specific sub-resources.
+         */
+        $newResource->setParentResource($this);
+        $newResource->initializeContext();
+        $this->append($newResource);
 
-php php php php php php php php returnphp php$newResourcephp;
-php php php php php}
+        return $newResource;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setAttributesphp(php)
-php php php php php php*
-php php php php php php*php persistphp thephp attributesphp ifphp thephp resourcephp willphp acceptphp them
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$attributes
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp setAttributesphp(Arrayphp php$attributesphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$attributesphp asphp php$attrNamephp php=php>php php$attrValuephp)php php{
-php php php php php php php php php php php php php$setMethodphp php=php php'setphp'php php.php php$attrNamephp;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$setMethodphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php{php$setMethodphp}php(php$attrValuephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setAttributephp(php$attrNamephp,php php$attrValuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setAttributes()
+     *
+     * persist the attributes if the resource will accept them
+     *
+     * @param array $attributes
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function setAttributes(Array $attributes)
+    {
+        foreach ($attributes as $attrName => $attrValue) {
+            $setMethod = 'set' . $attrName;
+            if (method_exists($this, $setMethod)) {
+                $this->{$setMethod}($attrValue);
+            } else {
+                $this->setAttribute($attrName, $attrValue);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getAttributesphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAttributesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_attributesphp;
-php php php php php}
+    /**
+     * getAttributes()
+     *
+     * @return array
+     */
+    public function getAttributes()
+    {
+        return $this->_attributes;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setAttributephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp setAttributephp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_attributesphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setAttribute()
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function setAttribute($name, $value)
+    {
+        $this->_attributes[$name] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getAttributephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp getAttributephp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_attributesphp)php)php php?php php$thisphp-php>php_attributesphp[php$namephp]php php:php nullphp;
-php php php php php}
+    /**
+     * getAttribute()
+     *
+     * @param string $name
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function getAttribute($name)
+    {
+        return (array_key_exists($name, $this->_attributes)) ? $this->_attributes[$name] : null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php hasAttributephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasAttributephp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_attributesphp)php;
-php php php php php}
+    /**
+     * hasAttribute()
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasAttribute($name)
+    {
+        return array_key_exists($name, $this->_attributes);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setAppendablephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$appendable
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp setAppendablephp(php$appendablephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_appendablephp php=php php(boolphp)php php$appendablephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setAppendable()
+     *
+     * @param bool $appendable
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function setAppendable($appendable)
+    {
+        $this->_appendable = (bool) $appendable;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php isAppendablephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isAppendablephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_appendablephp;
-php php php php php}
+    /**
+     * isAppendable()
+     *
+     * @return bool
+     */
+    public function isAppendable()
+    {
+        return $this->_appendable;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setParentResourcephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp php$parentResource
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp setParentResourcephp(Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp php$parentResourcephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parentResourcephp php=php php$parentResourcephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setParentResource()
+     *
+     * @param Zend_Tool_Project_Profile_Resource_Container $parentResource
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function setParentResource(Zend_Tool_Project_Profile_Resource_Container $parentResource)
+    {
+        $this->_parentResource = $parentResource;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getParentResourcephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp getParentResourcephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_parentResourcephp;
-php php php php php}
+    /**
+     * getParentResource()
+     *
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function getParentResource()
+    {
+        return $this->_parentResource;
+    }
 
-php php php php php/php*php*
-php php php php php php*php appendphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp php$resource
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Container
-php php php php php php*php/
-php php php php publicphp functionphp appendphp(Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp_Containerphp php$resourcephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>isAppendablephp(php)php)php php{
-php php php php php php php php php php php php throwphp newphp Exceptionphp(php'Resourcephp byphp namephp php'php php.php php(stringphp)php php$thisphp php.php php'php isphp notphp appendablephp'php)php;
-php php php php php php php php php}
-php php php php php php php php arrayphp_pushphp(php$thisphp-php>php_subResourcesphp,php php$resourcephp)php;
-php php php php php php php php php$resourcephp-php>setParentResourcephp(php$thisphp)php;
+    /**
+     * append()
+     *
+     * @param Zend_Tool_Project_Profile_Resource_Container $resource
+     * @return Zend_Tool_Project_Profile_Resource_Container
+     */
+    public function append(Zend_Tool_Project_Profile_Resource_Container $resource)
+    {
+        if (!$this->isAppendable()) {
+            throw new Exception('Resource by name ' . (string) $this . ' is not appendable');
+        }
+        array_push($this->_subResources, $resource);
+        $resource->setParentResource($this);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php currentphp(php)php php-php requiredphp byphp RecursiveIterator
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php returnphp currentphp(php$thisphp-php>php_subResourcesphp)php;
-php php php php php}
+    /**
+     * current() - required by RecursiveIterator
+     *
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public function current()
+    {
+        return current($this->_subResources);
+    }
 
-php php php php php/php*php*
-php php php php php php*php keyphp(php)php php-php requiredphp byphp RecursiveIterator
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp keyphp(php$thisphp-php>php_subResourcesphp)php;
-php php php php php}
+    /**
+     * key() - required by RecursiveIterator
+     *
+     * @return int
+     */
+    public function key()
+    {
+        return key($this->_subResources);
+    }
 
-php php php php php/php*php*
-php php php php php php*php nextphp(php)php php-php requiredphp byphp RecursiveIterator
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php returnphp nextphp(php$thisphp-php>php_subResourcesphp)php;
-php php php php php}
+    /**
+     * next() - required by RecursiveIterator
+     *
+     * @return bool
+     */
+    public function next()
+    {
+        return next($this->_subResources);
+    }
 
-php php php php php/php*php*
-php php php php php php*php rewindphp(php)php php-php requiredphp byphp RecursiveIterator
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php returnphp resetphp(php$thisphp-php>php_subResourcesphp)php;
-php php php php php}
+    /**
+     * rewind() - required by RecursiveIterator
+     *
+     * @return bool
+     */
+    public function rewind()
+    {
+        return reset($this->_subResources);
+    }
 
-php php php php php/php*php*
-php php php php php php*php validphp(php)php php-php php-php requiredphp byphp RecursiveIterator
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php(boolphp)php php$thisphp-php>currentphp(php)php;
-php php php php php}
+    /**
+     * valid() - - required by RecursiveIterator
+     *
+     * @return bool
+     */
+    public function valid()
+    {
+        return (bool) $this->current();
+    }
 
-php php php php php/php*php*
-php php php php php php*php hasChildrenphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasChildrenphp(php)
-php php php php php{
-php php php php php php php php returnphp php(countphp(php$thisphp-php>php_subResourcesphp php>php php0php)php)php php?php truephp php:php falsephp;
-php php php php php}
+    /**
+     * hasChildren()
+     *
+     * @return bool
+     */
+    public function hasChildren()
+    {
+        return (count($this->_subResources > 0)) ? true : false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getChildrenphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getChildrenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>currentphp(php)php;
-php php php php php}
+    /**
+     * getChildren()
+     *
+     * @return array
+     */
+    public function getChildren()
+    {
+        return $this->current();
+    }
 
-php php php php php/php*php*
-php php php php php php*php countphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_subResourcesphp)php;
-php php php php php}
+    /**
+     * count()
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_subResources);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_php_clonephp(php)
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp php_php_clonephp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_subResourcesphp asphp php$indexphp php=php>php php$resourcephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_subResourcesphp[php$indexphp]php php=php clonephp php$resourcephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * __clone()
+     *
+     */
+    public function __clone()
+    {
+        $this->rewind();
+        foreach ($this->_subResources as $index => $resource) {
+            $this->_subResources[$index] = clone $resource;
+        }
+    }
 
-php}
+}

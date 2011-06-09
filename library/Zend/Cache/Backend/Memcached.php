@@ -1,504 +1,504 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Memcachedphp.phpphp php2php2php2php0php7php php2php0php1php0php-php0php5php-php2php0php php1php6php:php4php7php:php1php6Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Memcached.php 22207 2010-05-20 16:47:16Z mabe $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backendphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp/ExtendedInterfacephp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend_Interface
+ */
+require_once 'Zend/Cache/Backend/ExtendedInterface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backend
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend
+ */
+require_once 'Zend/Cache/Backend.php';
 
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Backendphp_Memcachedphp extendsphp Zendphp_Cachephp_Backendphp implementsphp Zendphp_Cachephp_Backendphp_ExtendedInterface
-php{
-php php php php php/php*php*
-php php php php php php*php Defaultphp Values
-php php php php php php*php/
-php php php php constphp DEFAULTphp_HOSTphp php=php php'php1php2php7php.php0php.php0php.php1php'php;
-php php php php constphp DEFAULTphp_PORTphp php=php php php1php1php2php1php1php;
-php php php php constphp DEFAULTphp_PERSISTENTphp php=php truephp;
-php php php php constphp DEFAULTphp_WEIGHTphp php php=php php1php;
-php php php php constphp DEFAULTphp_TIMEOUTphp php=php php1php;
-php php php php constphp DEFAULTphp_RETRYphp_INTERVALphp php=php php1php5php;
-php php php php constphp DEFAULTphp_STATUSphp php=php truephp;
-php php php php constphp DEFAULTphp_FAILUREphp_CALLBACKphp php=php nullphp;
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
+{
+    /**
+     * Default Values
+     */
+    const DEFAULT_HOST = '127.0.0.1';
+    const DEFAULT_PORT =  11211;
+    const DEFAULT_PERSISTENT = true;
+    const DEFAULT_WEIGHT  = 1;
+    const DEFAULT_TIMEOUT = 1;
+    const DEFAULT_RETRY_INTERVAL = 15;
+    const DEFAULT_STATUS = true;
+    const DEFAULT_FAILURE_CALLBACK = null;
 
-php php php php php/php*php*
-php php php php php php*php Logphp message
-php php php php php php*php/
-php php php php constphp TAGSphp_UNSUPPORTEDphp_BYphp_CLEANphp_OFphp_MEMCACHEDphp_BACKENDphp php=php php'Zendphp_Cachephp_Backendphp_Memcachedphp:php:cleanphp(php)php php:php tagsphp arephp unsupportedphp byphp thephp Memcachedphp backendphp'php;
-php php php php constphp TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp php=php php php'Zendphp_Cachephp_Backendphp_Memcachedphp:php:savephp(php)php php:php tagsphp arephp unsupportedphp byphp thephp Memcachedphp backendphp'php;
+    /**
+     * Log message
+     */
+    const TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND = 'Zend_Cache_Backend_Memcached::clean() : tags are unsupported by the Memcached backend';
+    const TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND =  'Zend_Cache_Backend_Memcached::save() : tags are unsupported by the Memcached backend';
 
-php php php php php/php*php*
-php php php php php php*php Availablephp options
-php php php php php php*
-php php php php php php*php php=php=php=php=php=php>php php(arrayphp)php serversphp php:
-php php php php php php*php anphp arrayphp ofphp memcachedphp serverphp php;php eachphp memcachedphp serverphp isphp describedphp byphp anphp associativephp arrayphp php:
-php php php php php php*php php'hostphp'php php=php>php php(stringphp)php php:php thephp namephp ofphp thephp memcachedphp server
-php php php php php php*php php'portphp'php php=php>php php(intphp)php php:php thephp portphp ofphp thephp memcachedphp server
-php php php php php php*php php'persistentphp'php php=php>php php(boolphp)php php:php usephp orphp notphp persistentphp connectionsphp tophp thisphp memcachedphp server
-php php php php php php*php php'weightphp'php php=php>php php(intphp)php php:php numberphp ofphp bucketsphp tophp createphp forphp thisphp serverphp whichphp inphp turnphp controlphp its
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php probabilityphp ofphp itphp beingphp selectedphp.php Thephp probabilityphp isphp relativephp tophp thephp total
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php weightphp ofphp allphp serversphp.
-php php php php php php*php php'timeoutphp'php php=php>php php(intphp)php php:php valuephp inphp secondsphp whichphp willphp bephp usedphp forphp connectingphp tophp thephp daemonphp.php Thinkphp twice
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php beforephp changingphp thephp defaultphp valuephp ofphp php1php secondphp php-php youphp canphp losephp allphp the
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php advantagesphp ofphp cachingphp ifphp yourphp connectionphp isphp toophp slowphp.
-php php php php php php*php php'retryphp_intervalphp'php php=php>php php(intphp)php php:php controlsphp howphp oftenphp aphp failedphp serverphp willphp bephp retriedphp,php thephp defaultphp value
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php isphp php1php5php secondsphp.php Settingphp thisphp parameterphp tophp php-php1php disablesphp automaticphp retryphp.
-php php php php php php*php php'statusphp'php php=php>php php(boolphp)php php:php controlsphp ifphp thephp serverphp shouldphp bephp flaggedphp asphp onlinephp.
-php php php php php php*php php'failurephp_callbackphp'php php=php>php php(callbackphp)php php:php Allowsphp thephp userphp tophp specifyphp aphp callbackphp functionphp tophp runphp upon
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php encounteringphp anphp errorphp.php Thephp callbackphp isphp runphp beforephp failover
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php isphp attemptedphp.php Thephp functionphp takesphp twophp parametersphp,php thephp hostname
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php andphp portphp ofphp thephp failedphp serverphp.
-php php php php php php*
-php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php compressionphp php:
-php php php php php php*php truephp ifphp youphp wantphp tophp usephp onphp-thephp-flyphp compression
-php php php php php php*
-php php php php php php*php php=php=php=php=php=php>php php(booleanphp)php compatibilityphp php:
-php php php php php php*php truephp ifphp youphp usephp oldphp memcachephp serverphp orphp extension
-php php php php php php*
-php php php php php php*php php@varphp arrayphp availablephp options
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(
-php php php php php php php php php'serversphp'php php=php>php arrayphp(arrayphp(
-php php php php php php php php php php php php php'hostphp'php php=php>php selfphp:php:DEFAULTphp_HOSTphp,
-php php php php php php php php php php php php php'portphp'php php=php>php selfphp:php:DEFAULTphp_PORTphp,
-php php php php php php php php php php php php php'persistentphp'php php=php>php selfphp:php:DEFAULTphp_PERSISTENTphp,
-php php php php php php php php php php php php php'weightphp'php php php=php>php selfphp:php:DEFAULTphp_WEIGHTphp,
-php php php php php php php php php php php php php'timeoutphp'php php=php>php selfphp:php:DEFAULTphp_TIMEOUTphp,
-php php php php php php php php php php php php php'retryphp_intervalphp'php php=php>php selfphp:php:DEFAULTphp_RETRYphp_INTERVALphp,
-php php php php php php php php php php php php php'statusphp'php php=php>php selfphp:php:DEFAULTphp_STATUSphp,
-php php php php php php php php php php php php php'failurephp_callbackphp'php php=php>php selfphp:php:DEFAULTphp_FAILUREphp_CALLBACK
-php php php php php php php php php)php)php,
-php php php php php php php php php'compressionphp'php php=php>php falsephp,
-php php php php php php php php php'compatibilityphp'php php=php>php falsephp,
-php php php php php)php;
+    /**
+     * Available options
+     *
+     * =====> (array) servers :
+     * an array of memcached server ; each memcached server is described by an associative array :
+     * 'host' => (string) : the name of the memcached server
+     * 'port' => (int) : the port of the memcached server
+     * 'persistent' => (bool) : use or not persistent connections to this memcached server
+     * 'weight' => (int) : number of buckets to create for this server which in turn control its
+     *                     probability of it being selected. The probability is relative to the total
+     *                     weight of all servers.
+     * 'timeout' => (int) : value in seconds which will be used for connecting to the daemon. Think twice
+     *                      before changing the default value of 1 second - you can lose all the
+     *                      advantages of caching if your connection is too slow.
+     * 'retry_interval' => (int) : controls how often a failed server will be retried, the default value
+     *                             is 15 seconds. Setting this parameter to -1 disables automatic retry.
+     * 'status' => (bool) : controls if the server should be flagged as online.
+     * 'failure_callback' => (callback) : Allows the user to specify a callback function to run upon
+     *                                    encountering an error. The callback is run before failover
+     *                                    is attempted. The function takes two parameters, the hostname
+     *                                    and port of the failed server.
+     *
+     * =====> (boolean) compression :
+     * true if you want to use on-the-fly compression
+     *
+     * =====> (boolean) compatibility :
+     * true if you use old memcache server or extension
+     *
+     * @var array available options
+     */
+    protected $_options = array(
+        'servers' => array(array(
+            'host' => self::DEFAULT_HOST,
+            'port' => self::DEFAULT_PORT,
+            'persistent' => self::DEFAULT_PERSISTENT,
+            'weight'  => self::DEFAULT_WEIGHT,
+            'timeout' => self::DEFAULT_TIMEOUT,
+            'retry_interval' => self::DEFAULT_RETRY_INTERVAL,
+            'status' => self::DEFAULT_STATUS,
+            'failure_callback' => self::DEFAULT_FAILURE_CALLBACK
+        )),
+        'compression' => false,
+        'compatibility' => false,
+    );
 
-php php php php php/php*php*
-php php php php php php*php Memcachephp object
-php php php php php php*
-php php php php php php*php php@varphp mixedphp memcachephp object
-php php php php php php*php/
-php php php php protectedphp php$php_memcachephp php=php nullphp;
+    /**
+     * Memcache object
+     *
+     * @var mixed memcache object
+     */
+    protected $_memcache = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$optionsphp associativephp arrayphp ofphp options
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'memcachephp'php)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Thephp memcachephp extensionphp mustphp bephp loadedphp forphp usingphp thisphp backendphp php!php'php)php;
-php php php php php php php php php}
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php'serversphp'php]php)php)php php{
-php php php php php php php php php php php php php$valuephp=php php$thisphp-php>php_optionsphp[php'serversphp'php]php;
-php php php php php php php php php php php php ifphp php(issetphp(php$valuephp[php'hostphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php inphp thisphp casephp,php php$valuephp seemsphp tophp bephp aphp simplephp associativephp arrayphp php(onephp serverphp onlyphp)
-php php php php php php php php php php php php php php php php php$valuephp php=php arrayphp(php0php php=php>php php$valuephp)php;php php/php/php letphp'sphp transformphp itphp intophp aphp classicalphp arrayphp ofphp associativephp arrays
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>setOptionphp(php'serversphp'php,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_memcachephp php=php newphp Memcachephp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp[php'serversphp'php]php asphp php$serverphp)php php{
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'portphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'portphp'php]php php=php selfphp:php:DEFAULTphp_PORTphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'persistentphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'persistentphp'php]php php=php selfphp:php:DEFAULTphp_PERSISTENTphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'weightphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'weightphp'php]php php=php selfphp:php:DEFAULTphp_WEIGHTphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'timeoutphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'timeoutphp'php]php php=php selfphp:php:DEFAULTphp_TIMEOUTphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'retryphp_intervalphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'retryphp_intervalphp'php]php php=php selfphp:php:DEFAULTphp_RETRYphp_INTERVALphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'statusphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'statusphp'php]php php=php selfphp:php:DEFAULTphp_STATUSphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'failurephp_callbackphp'php,php php$serverphp)php)php php{
-php php php php php php php php php php php php php php php php php$serverphp[php'failurephp_callbackphp'php]php php=php selfphp:php:DEFAULTphp_FAILUREphp_CALLBACKphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'compatibilityphp'php]php)php php{
-php php php php php php php php php php php php php php php php php/php/php Nophp statusphp forphp compatibilityphp modephp php(php#ZFphp-php5php8php8php7php)
-php php php php php php php php php php php php php php php php php$thisphp-php>php_memcachephp-php>addServerphp(php$serverphp[php'hostphp'php]php,php php$serverphp[php'portphp'php]php,php php$serverphp[php'persistentphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$serverphp[php'weightphp'php]php,php php$serverphp[php'timeoutphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$serverphp[php'retryphp_intervalphp'php]php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_memcachephp-php>addServerphp(php$serverphp[php'hostphp'php]php,php php$serverphp[php'portphp'php]php,php php$serverphp[php'persistentphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$serverphp[php'weightphp'php]php,php php$serverphp[php'timeoutphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$serverphp[php'retryphp_intervalphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$serverphp[php'statusphp'php]php,php php$serverphp[php'failurephp_callbackphp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param array $options associative array of options
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    public function __construct(array $options = array())
+    {
+        if (!extension_loaded('memcache')) {
+            Zend_Cache::throwException('The memcache extension must be loaded for using this backend !');
+        }
+        parent::__construct($options);
+        if (isset($this->_options['servers'])) {
+            $value= $this->_options['servers'];
+            if (isset($value['host'])) {
+                // in this case, $value seems to be a simple associative array (one server only)
+                $value = array(0 => $value); // let's transform it into a classical array of associative arrays
+            }
+            $this->setOption('servers', $value);
+        }
+        $this->_memcache = new Memcache;
+        foreach ($this->_options['servers'] as $server) {
+            if (!array_key_exists('port', $server)) {
+                $server['port'] = self::DEFAULT_PORT;
+            }
+            if (!array_key_exists('persistent', $server)) {
+                $server['persistent'] = self::DEFAULT_PERSISTENT;
+            }
+            if (!array_key_exists('weight', $server)) {
+                $server['weight'] = self::DEFAULT_WEIGHT;
+            }
+            if (!array_key_exists('timeout', $server)) {
+                $server['timeout'] = self::DEFAULT_TIMEOUT;
+            }
+            if (!array_key_exists('retry_interval', $server)) {
+                $server['retry_interval'] = self::DEFAULT_RETRY_INTERVAL;
+            }
+            if (!array_key_exists('status', $server)) {
+                $server['status'] = self::DEFAULT_STATUS;
+            }
+            if (!array_key_exists('failure_callback', $server)) {
+                $server['failure_callback'] = self::DEFAULT_FAILURE_CALLBACK;
+            }
+            if ($this->_options['compatibility']) {
+                // No status for compatibility mode (#ZF-5887)
+                $this->_memcache->addServer($server['host'], $server['port'], $server['persistent'],
+                                        $server['weight'], $server['timeout'],
+                                        $server['retry_interval']);
+            } else {
+                $this->_memcache->addServer($server['host'], $server['port'], $server['persistent'],
+                                        $server['weight'], $server['timeout'],
+                                        $server['retry_interval'],
+                                        $server['status'], $server['failure_callback']);
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
-php php php php php php*php php@returnphp stringphp|falsephp cachedphp datas
-php php php php php php*php/
-php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$tmpphp php=php php$thisphp-php>php_memcachephp-php>getphp(php$idphp)php;
-php php php php php php php php ifphp php(isphp_arrayphp(php$tmpphp)php php&php&php issetphp(php$tmpphp[php0php]php)php)php php{
-php php php php php php php php php php php php returnphp php$tmpphp[php0php]php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Test if a cache is available for the given id and (if yes) return it (false else)
+     *
+     * @param  string  $id                     Cache id
+     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
+     * @return string|false cached datas
+     */
+    public function load($id, $doNotTestCacheValidity = false)
+    {
+        $tmp = $this->_memcache->get($id);
+        if (is_array($tmp) && isset($tmp[0])) {
+            return $tmp[0];
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp orphp notphp php(forphp thephp givenphp idphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp mixedphp|falsephp php(aphp cachephp isphp notphp availablephp)php orphp php"lastphp modifiedphp"php timestampphp php(intphp)php ofphp thephp availablephp cachephp record
-php php php php php php*php/
-php php php php publicphp functionphp testphp(php$idphp)
-php php php php php{
-php php php php php php php php php$tmpphp php=php php$thisphp-php>php_memcachephp-php>getphp(php$idphp)php;
-php php php php php php php php ifphp php(isphp_arrayphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php returnphp php$tmpphp[php1php]php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Test if a cache is available or not (for the given id)
+     *
+     * @param  string $id Cache id
+     * @return mixed|false (a cache is not available) or "last modified" timestamp (int) of the available cache record
+     */
+    public function test($id)
+    {
+        $tmp = $this->_memcache->get($id);
+        if (is_array($tmp)) {
+            return $tmp[1];
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Savephp somephp stringphp datasphp intophp aphp cachephp record
-php php php php php php*
-php php php php php php*php Notephp php:php php$dataphp isphp alwaysphp php"stringphp"php php(serializationphp isphp donephp byphp the
-php php php php php php*php corephp notphp byphp thephp backendphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$dataphp php php php php php php php php php php php php Datasphp tophp cache
-php php php php php php*php php@paramphp php stringphp php$idphp php php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php arrayphp php php$tagsphp php php php php php php php php php php php php Arrayphp ofphp stringsphp,php thephp cachephp recordphp willphp bephp taggedphp byphp eachphp stringphp entry
-php php php php php php*php php@paramphp php intphp php php php php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp savephp(php$dataphp,php php$idphp,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$lifetimephp php=php php$thisphp-php>getLifetimephp(php$specificLifetimephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'compressionphp'php]php)php php{
-php php php php php php php php php php php php php$flagphp php=php MEMCACHEphp_COMPRESSEDphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$flagphp php=php php0php;
-php php php php php php php php php}
+    /**
+     * Save some string datas into a cache record
+     *
+     * Note : $data is always "string" (serialization is done by the
+     * core not by the backend)
+     *
+     * @param  string $data             Datas to cache
+     * @param  string $id               Cache id
+     * @param  array  $tags             Array of strings, the cache record will be tagged by each string entry
+     * @param  int    $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @return boolean True if no problem
+     */
+    public function save($data, $id, $tags = array(), $specificLifetime = false)
+    {
+        $lifetime = $this->getLifetime($specificLifetime);
+        if ($this->_options['compression']) {
+            $flag = MEMCACHE_COMPRESSED;
+        } else {
+            $flag = 0;
+        }
 
-php php php php php php php php php/php/php ZFphp-php8php8php5php6php:php usingphp setphp becausephp addphp needsphp aphp secondphp requestphp ifphp itemphp alreadyphp exists
-php php php php php php php php php$resultphp php=php php@php$thisphp-php>php_memcachephp-php>setphp(php$idphp,php arrayphp(php$dataphp,php timephp(php)php,php php$lifetimephp)php,php php$flagphp,php php$lifetimephp)php;
+        // ZF-8856: using set because add needs a second request if item already exists
+        $result = @$this->_memcache->set($id, array($data, time(), $lifetime), $flag, $lifetime);
 
-php php php php php php php php ifphp php(countphp(php$tagsphp)php php>php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php php}
+        if (count($tags) > 0) {
+            $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND);
+        }
 
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
+        return $result;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp cachephp record
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp removephp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_memcachephp-php>deletephp(php$idphp,php php0php)php;
-php php php php php}
+    /**
+     * Remove a cache record
+     *
+     * @param  string $id Cache id
+     * @return boolean True if no problem
+     */
+    public function remove($id)
+    {
+        return $this->_memcache->delete($id, 0);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Cleanphp somephp cachephp records
-php php php php php php*
-php php php php php php*php Availablephp modesphp arephp php:
-php php php php php php*php php'allphp'php php(defaultphp)php php php=php>php removephp allphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
-php php php php php php*php php'oldphp'php php php php php php php php php php php php php=php>php unsupported
-php php php php php php*php php'matchingTagphp'php php php php php=php>php unsupported
-php php php php php php*php php'notMatchingTagphp'php php=php>php unsupported
-php php php php php php*php php'matchingAnyTagphp'php php=php>php unsupported
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$modephp Cleanphp mode
-php php php php php php*php php@paramphp php arrayphp php php$tagsphp Arrayphp ofphp tags
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp cleanphp(php$modephp php=php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp,php php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php switchphp php(php$modephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp:
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_memcachephp-php>flushphp(php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php"Zendphp_Cachephp_Backendphp_Memcachedphp:php:cleanphp(php)php php:php CLEANINGphp_MODEphp_OLDphp isphp unsupportedphp byphp thephp Memcachedphp backendphp"php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp:
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp:
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_CLEANphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp modephp forphp cleanphp(php)php methodphp'php)php;
-php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Clean some cache records
+     *
+     * Available modes are :
+     * 'all' (default)  => remove all cache entries ($tags is not used)
+     * 'old'            => unsupported
+     * 'matchingTag'    => unsupported
+     * 'notMatchingTag' => unsupported
+     * 'matchingAnyTag' => unsupported
+     *
+     * @param  string $mode Clean mode
+     * @param  array  $tags Array of tags
+     * @throws Zend_Cache_Exception
+     * @return boolean True if no problem
+     */
+    public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
+    {
+        switch ($mode) {
+            case Zend_Cache::CLEANING_MODE_ALL:
+                return $this->_memcache->flush();
+                break;
+            case Zend_Cache::CLEANING_MODE_OLD:
+                $this->_log("Zend_Cache_Backend_Memcached::clean() : CLEANING_MODE_OLD is unsupported by the Memcached backend");
+                break;
+            case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
+            case Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG:
+            case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
+                $this->_log(self::TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND);
+                break;
+               default:
+                Zend_Cache::throwException('Invalid mode for clean() method');
+                   break;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp truephp ifphp thephp automaticphp cleaningphp isphp availablephp forphp thephp backend
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isAutomaticCleaningAvailablephp(php)
-php php php php php{
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Return true if the automatic cleaning is available for the backend
+     *
+     * @return boolean
+     */
+    public function isAutomaticCleaningAvailable()
+    {
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp frontendphp directives
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$directivesphp Assocphp ofphp directives
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setDirectivesphp(php$directivesphp)
-php php php php php{
-php php php php php php php php parentphp:php:setDirectivesphp(php$directivesphp)php;
-php php php php php php php php php$lifetimephp php=php php$thisphp-php>getLifetimephp(falsephp)php;
-php php php php php php php php ifphp php(php$lifetimephp php>php php2php5php9php2php0php0php0php)php php{
-php php php php php php php php php php php php php/php/php php#ZFphp-php3php4php9php0php php:php Forphp thephp memcachedphp backendphp,php therephp isphp aphp lifetimephp limitphp ofphp php3php0php daysphp php(php2php5php9php2php0php0php0php secondsphp)
-php php php php php php php php php php php php php$thisphp-php>php_logphp(php'memcachedphp backendphp hasphp aphp limitphp ofphp php3php0php daysphp php(php2php5php9php2php0php0php0php secondsphp)php forphp thephp lifetimephp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$lifetimephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php php#ZFphp-php4php6php1php4php php:php wephp tranformphp nullphp tophp zerophp tophp getphp thephp maximalphp lifetime
-php php php php php php php php php php php php parentphp:php:setDirectivesphp(arrayphp(php'lifetimephp'php php=php>php php0php)php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Set the frontend directives
+     *
+     * @param  array $directives Assoc of directives
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    public function setDirectives($directives)
+    {
+        parent::setDirectives($directives);
+        $lifetime = $this->getLifetime(false);
+        if ($lifetime > 2592000) {
+            // #ZF-3490 : For the memcached backend, there is a lifetime limit of 30 days (2592000 seconds)
+            $this->_log('memcached backend has a limit of 30 days (2592000 seconds) for the lifetime');
+        }
+        if ($lifetime === null) {
+            // #ZF-4614 : we tranform null to zero to get the maximal lifetime
+            parent::setDirectives(array('lifetime' => 0));
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp ids
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp(php"Zendphp_Cachephp_Backendphp_Memcachedphp:php:savephp(php)php php:php gettingphp thephp listphp ofphp cachephp idsphp isphp unsupportedphp byphp thephp Memcachephp backendphp"php)php;
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return an array of stored cache ids
+     *
+     * @return array array of stored cache ids (string)
+     */
+    public function getIds()
+    {
+        $this->_log("Zend_Cache_Backend_Memcached::save() : getting the list of cache ids is unsupported by the Memcache backend");
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp tags
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp storedphp tagsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getTagsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return an array of stored tags
+     *
+     * @return array array of stored tags (string)
+     */
+    public function getTags()
+    {
+        $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND);
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return an array of stored cache ids which match given tags
+     *
+     * In case of multiple tags, a logical AND is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of matching cache ids (string)
+     */
+    public function getIdsMatchingTags($tags = array())
+    {
+        $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND);
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp donphp'tphp matchphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ORphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp notphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsNotMatchingTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return an array of stored cache ids which don't match given tags
+     *
+     * In case of multiple tags, a logical OR is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of not matching cache ids (string)
+     */
+    public function getIdsNotMatchingTags($tags = array())
+    {
+        $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND);
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp storedphp cachephp idsphp whichphp matchphp anyphp givenphp tags
-php php php php php php*
-php php php php php php*php Inphp casephp ofphp multiplephp tagsphp,php aphp logicalphp ANDphp isphp madephp betweenphp tags
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$tagsphp arrayphp ofphp tags
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp anyphp matchingphp cachephp idsphp php(stringphp)
-php php php php php php*php/
-php php php php publicphp functionphp getIdsMatchingAnyTagsphp(php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_logphp(selfphp:php:TAGSphp_UNSUPPORTEDphp_BYphp_SAVEphp_OFphp_MEMCACHEDphp_BACKENDphp)php;
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return an array of stored cache ids which match any given tags
+     *
+     * In case of multiple tags, a logical AND is made between tags
+     *
+     * @param array $tags array of tags
+     * @return array array of any matching cache ids (string)
+     */
+    public function getIdsMatchingAnyTags($tags = array())
+    {
+        $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND);
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp fillingphp percentagephp ofphp thephp backendphp storage
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp intphp integerphp betweenphp php0php andphp php1php0php0
-php php php php php php*php/
-php php php php publicphp functionphp getFillingPercentagephp(php)
-php php php php php{
-php php php php php php php php php$memsphp php=php php$thisphp-php>php_memcachephp-php>getExtendedStatsphp(php)php;
+    /**
+     * Return the filling percentage of the backend storage
+     *
+     * @throws Zend_Cache_Exception
+     * @return int integer between 0 and 100
+     */
+    public function getFillingPercentage()
+    {
+        $mems = $this->_memcache->getExtendedStats();
 
-php php php php php php php php php$memSizephp php=php nullphp;
-php php php php php php php php php$memUsedphp php=php nullphp;
-php php php php php php php php foreachphp php(php$memsphp asphp php$keyphp php=php>php php$memphp)php php{
-php php php php php php php php php php php php ifphp php(php$memphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php'canphp\php'tphp getphp statphp fromphp php'php php.php php$keyphp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+        $memSize = null;
+        $memUsed = null;
+        foreach ($mems as $key => $mem) {
+            if ($mem === false) {
+                $this->_log('can\'t get stat from ' . $key);
+                continue;
+            }
 
-php php php php php php php php php php php php php$eachSizephp php=php php$memphp[php'limitphp_maxbytesphp'php]php;
-php php php php php php php php php php php php php$eachUsedphp php=php php$memphp[php'bytesphp'php]php;
-php php php php php php php php php php php php ifphp php(php$eachUsedphp php>php php$eachSizephp)php php{
-php php php php php php php php php php php php php php php php php$eachUsedphp php=php php$eachSizephp;
-php php php php php php php php php php php php php}
+            $eachSize = $mem['limit_maxbytes'];
+            $eachUsed = $mem['bytes'];
+            if ($eachUsed > $eachSize) {
+                $eachUsed = $eachSize;
+            }
 
-php php php php php php php php php php php php php$memSizephp php+php=php php$eachSizephp;
-php php php php php php php php php php php php php$memUsedphp php+php=php php$eachUsedphp;
-php php php php php php php php php}
+            $memSize += $eachSize;
+            $memUsed += $eachUsed;
+        }
 
-php php php php php php php php ifphp php(php$memSizephp php=php=php=php nullphp php|php|php php$memUsedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Canphp\php'tphp getphp fillingphp percentagephp'php)php;
-php php php php php php php php php}
+        if ($memSize === null || $memUsed === null) {
+            Zend_Cache::throwException('Can\'t get filling percentage');
+        }
 
-php php php php php php php php returnphp php(php(intphp)php php(php1php0php0php.php php*php php(php$memUsedphp php/php php$memSizephp)php)php)php;
-php php php php php}
+        return ((int) (100. * ($memUsed / $memSize)));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp metadatasphp forphp thephp givenphp cachephp id
-php php php php php php*
-php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
-php php php php php php*php php-php expirephp php:php thephp expirephp timestamp
-php php php php php php*php php-php tagsphp php:php aphp stringphp arrayphp ofphp tags
-php php php php php php*php php-php mtimephp php:php timestampphp ofphp lastphp modificationphp time
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp cachephp id
-php php php php php php*php php@returnphp arrayphp arrayphp ofphp metadatasphp php(falsephp ifphp thephp cachephp idphp isphp notphp foundphp)
-php php php php php php*php/
-php php php php publicphp functionphp getMetadatasphp(php$idphp)
-php php php php php{
-php php php php php php php php php$tmpphp php=php php$thisphp-php>php_memcachephp-php>getphp(php$idphp)php;
-php php php php php php php php ifphp php(isphp_arrayphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php php$dataphp php=php php$tmpphp[php0php]php;
-php php php php php php php php php php php php php$mtimephp php=php php$tmpphp[php1php]php;
-php php php php php php php php php php php php ifphp php(php!issetphp(php$tmpphp[php2php]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php becausephp thisphp recordphp isphp onlyphp withphp php1php.php7php release
-php php php php php php php php php php php php php php php php php/php/php ifphp oldphp cachephp recordsphp arephp stillphp therephp.php.php.
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$lifetimephp php=php php$tmpphp[php2php]php;
-php php php php php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php php php php php'expirephp'php php=php>php php$mtimephp php+php php$lifetimephp,
-php php php php php php php php php php php php php php php php php'tagsphp'php php=php>php arrayphp(php)php,
-php php php php php php php php php php php php php php php php php'mtimephp'php php=php>php php$mtime
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Return an array of metadatas for the given cache id
+     *
+     * The array must include these keys :
+     * - expire : the expire timestamp
+     * - tags : a string array of tags
+     * - mtime : timestamp of last modification time
+     *
+     * @param string $id cache id
+     * @return array array of metadatas (false if the cache id is not found)
+     */
+    public function getMetadatas($id)
+    {
+        $tmp = $this->_memcache->get($id);
+        if (is_array($tmp)) {
+            $data = $tmp[0];
+            $mtime = $tmp[1];
+            if (!isset($tmp[2])) {
+                // because this record is only with 1.7 release
+                // if old cache records are still there...
+                return false;
+            }
+            $lifetime = $tmp[2];
+            return array(
+                'expire' => $mtime + $lifetime,
+                'tags' => array(),
+                'mtime' => $mtime
+            );
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Givephp php(ifphp possiblephp)php anphp extraphp lifetimephp tophp thephp givenphp cachephp id
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp cachephp id
-php php php php php php*php php@paramphp intphp php$extraLifetime
-php php php php php php*php php@returnphp booleanphp truephp ifphp ok
-php php php php php php*php/
-php php php php publicphp functionphp touchphp(php$idphp,php php$extraLifetimephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'compressionphp'php]php)php php{
-php php php php php php php php php php php php php$flagphp php=php MEMCACHEphp_COMPRESSEDphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$flagphp php=php php0php;
-php php php php php php php php php}
-php php php php php php php php php$tmpphp php=php php$thisphp-php>php_memcachephp-php>getphp(php$idphp)php;
-php php php php php php php php ifphp php(isphp_arrayphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php php$dataphp php=php php$tmpphp[php0php]php;
-php php php php php php php php php php php php php$mtimephp php=php php$tmpphp[php1php]php;
-php php php php php php php php php php php php ifphp php(php!issetphp(php$tmpphp[php2php]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php becausephp thisphp recordphp isphp onlyphp withphp php1php.php7php release
-php php php php php php php php php php php php php php php php php/php/php ifphp oldphp cachephp recordsphp arephp stillphp therephp.php.php.
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$lifetimephp php=php php$tmpphp[php2php]php;
-php php php php php php php php php php php php php$newLifetimephp php=php php$lifetimephp php-php php(timephp(php)php php-php php$mtimephp)php php+php php$extraLifetimephp;
-php php php php php php php php php php php php ifphp php(php$newLifetimephp <php=php0php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php/php/php php#ZFphp-php5php7php0php2php php:php wephp tryphp replacephp(php)php firstphp becasephp setphp(php)php seemsphp tophp bephp slower
-php php php php php php php php php php php php ifphp php(php!php(php$resultphp php=php php$thisphp-php>php_memcachephp-php>replacephp(php$idphp,php arrayphp(php$dataphp,php timephp(php)php,php php$newLifetimephp)php,php php$flagphp,php php$newLifetimephp)php)php)php php{
-php php php php php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_memcachephp-php>setphp(php$idphp,php arrayphp(php$dataphp,php timephp(php)php,php php$newLifetimephp)php,php php$flagphp,php php$newLifetimephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$resultphp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Give (if possible) an extra lifetime to the given cache id
+     *
+     * @param string $id cache id
+     * @param int $extraLifetime
+     * @return boolean true if ok
+     */
+    public function touch($id, $extraLifetime)
+    {
+        if ($this->_options['compression']) {
+            $flag = MEMCACHE_COMPRESSED;
+        } else {
+            $flag = 0;
+        }
+        $tmp = $this->_memcache->get($id);
+        if (is_array($tmp)) {
+            $data = $tmp[0];
+            $mtime = $tmp[1];
+            if (!isset($tmp[2])) {
+                // because this record is only with 1.7 release
+                // if old cache records are still there...
+                return false;
+            }
+            $lifetime = $tmp[2];
+            $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
+            if ($newLifetime <=0) {
+                return false;
+            }
+            // #ZF-5702 : we try replace() first becase set() seems to be slower
+            if (!($result = $this->_memcache->replace($id, array($data, time(), $newLifetime), $flag, $newLifetime))) {
+                $result = $this->_memcache->set($id, array($data, time(), $newLifetime), $flag, $newLifetime);
+            }
+            return $result;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp associativephp arrayphp ofphp capabilitiesphp php(booleansphp)php ofphp thephp backend
-php php php php php php*
-php php php php php php*php Thephp arrayphp mustphp includephp thesephp keysphp php:
-php php php php php php*php php-php automaticphp_cleaningphp php(isphp automatingphp cleaningphp necessaryphp)
-php php php php php php*php php-php tagsphp php(arephp tagsphp supportedphp)
-php php php php php php*php php-php expiredphp_readphp php(isphp itphp possiblephp tophp readphp expiredphp cachephp records
-php php php php php php*php php php php php php php php php php php php php php php php php php(forphp doNotTestCacheValidityphp optionphp forphp examplephp)php)
-php php php php php php*php php-php priorityphp doesphp thephp backendphp dealphp withphp priorityphp whenphp saving
-php php php php php php*php php-php infinitephp_lifetimephp php(isphp infinitephp lifetimephp canphp workphp withphp thisphp backendphp)
-php php php php php php*php php-php getphp_listphp php(isphp itphp possiblephp tophp getphp thephp listphp ofphp cachephp idsphp andphp thephp completephp listphp ofphp tagsphp)
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp associativephp ofphp withphp capabilities
-php php php php php php*php/
-php php php php publicphp functionphp getCapabilitiesphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'automaticphp_cleaningphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'tagsphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'expiredphp_readphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'priorityphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'infinitephp_lifetimephp'php php=php>php falsephp,
-php php php php php php php php php php php php php'getphp_listphp'php php=php>php false
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Return an associative array of capabilities (booleans) of the backend
+     *
+     * The array must include these keys :
+     * - automatic_cleaning (is automating cleaning necessary)
+     * - tags (are tags supported)
+     * - expired_read (is it possible to read expired cache records
+     *                 (for doNotTestCacheValidity option for example))
+     * - priority does the backend deal with priority when saving
+     * - infinite_lifetime (is infinite lifetime can work with this backend)
+     * - get_list (is it possible to get the list of cache ids and the complete list of tags)
+     *
+     * @return array associative of with capabilities
+     */
+    public function getCapabilities()
+    {
+        return array(
+            'automatic_cleaning' => false,
+            'tags' => false,
+            'expired_read' => false,
+            'priority' => false,
+            'infinite_lifetime' => false,
+            'get_list' => false
+        );
+    }
 
-php}
+}

@@ -1,1351 +1,1351 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Select
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Selectphp.phpphp php2php3php5php1php6php php2php0php1php0php-php1php2php-php1php6php php1php3php:php2php6php:php1php1Zphp bittarmanphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Dbphp_Adapterphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Adapterphp/Abstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Dbphp_Expr
-php php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Exprphp.phpphp'php;
-
-
-php/php*php*
-php php*php Classphp forphp SQLphp SELECTphp generationphp andphp resultsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Select
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dbphp_Select
-php{
-
-php php php php constphp DISTINCTphp php php php php php php php=php php'distinctphp'php;
-php php php php constphp COLUMNSphp php php php php php php php php=php php'columnsphp'php;
-php php php php constphp FROMphp php php php php php php php php php php php=php php'fromphp'php;
-php php php php constphp UNIONphp php php php php php php php php php php=php php'unionphp'php;
-php php php php constphp WHEREphp php php php php php php php php php php=php php'wherephp'php;
-php php php php constphp GROUPphp php php php php php php php php php php=php php'groupphp'php;
-php php php php constphp HAVINGphp php php php php php php php php php=php php'havingphp'php;
-php php php php constphp ORDERphp php php php php php php php php php php=php php'orderphp'php;
-php php php php constphp LIMITphp_COUNTphp php php php php=php php'limitcountphp'php;
-php php php php constphp LIMITphp_OFFSETphp php php php=php php'limitoffsetphp'php;
-php php php php constphp FORphp_UPDATEphp php php php php php=php php'forupdatephp'php;
-
-php php php php constphp INNERphp_JOINphp php php php php php=php php'innerphp joinphp'php;
-php php php php constphp LEFTphp_JOINphp php php php php php php=php php'leftphp joinphp'php;
-php php php php constphp RIGHTphp_JOINphp php php php php php=php php'rightphp joinphp'php;
-php php php php constphp FULLphp_JOINphp php php php php php php=php php'fullphp joinphp'php;
-php php php php constphp CROSSphp_JOINphp php php php php php=php php'crossphp joinphp'php;
-php php php php constphp NATURALphp_JOINphp php php php=php php'naturalphp joinphp'php;
-
-php php php php constphp SQLphp_WILDCARDphp php php php=php php'php*php'php;
-php php php php constphp SQLphp_SELECTphp php php php php php=php php'SELECTphp'php;
-php php php php constphp SQLphp_UNIONphp php php php php php php=php php'UNIONphp'php;
-php php php php constphp SQLphp_UNIONphp_ALLphp php php=php php'UNIONphp ALLphp'php;
-php php php php constphp SQLphp_FROMphp php php php php php php php=php php'FROMphp'php;
-php php php php constphp SQLphp_WHEREphp php php php php php php=php php'WHEREphp'php;
-php php php php constphp SQLphp_DISTINCTphp php php php=php php'DISTINCTphp'php;
-php php php php constphp SQLphp_GROUPphp_BYphp php php php=php php'GROUPphp BYphp'php;
-php php php php constphp SQLphp_ORDERphp_BYphp php php php=php php'ORDERphp BYphp'php;
-php php php php constphp SQLphp_HAVINGphp php php php php php=php php'HAVINGphp'php;
-php php php php constphp SQLphp_FORphp_UPDATEphp php=php php'FORphp UPDATEphp'php;
-php php php php constphp SQLphp_ANDphp php php php php php php php php=php php'ANDphp'php;
-php php php php constphp SQLphp_ASphp php php php php php php php php php=php php'ASphp'php;
-php php php php constphp SQLphp_ORphp php php php php php php php php php=php php'ORphp'php;
-php php php php constphp SQLphp_ONphp php php php php php php php php php=php php'ONphp'php;
-php php php php constphp SQLphp_ASCphp php php php php php php php php=php php'ASCphp'php;
-php php php php constphp SQLphp_DESCphp php php php php php php php=php php'DESCphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Bindphp variablesphp forphp query
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_bindphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Zendphp_Dbphp_Adapterphp_Abstractphp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Dbphp_Adapterphp_Abstract
-php php php php php php*php/
-php php php php protectedphp php$php_adapterphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp initialphp valuesphp forphp thephp php$php_partsphp arrayphp.
-php php php php php php*php NOTEphp:php Itphp isphp importantphp forphp thephp php'FORphp_UPDATEphp'php partphp tophp bephp lastphp tophp ensure
-php php php php php php*php meximumphp compatibilityphp withphp databasephp adaptersphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_partsInitphp php=php arrayphp(
-php php php php php php php php selfphp:php:DISTINCTphp php php php php php=php>php falsephp,
-php php php php php php php php selfphp:php:COLUMNSphp php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:UNIONphp php php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:FROMphp php php php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:WHEREphp php php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:GROUPphp php php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:HAVINGphp php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:ORDERphp php php php php php php php php=php>php arrayphp(php)php,
-php php php php php php php php selfphp:php:LIMITphp_COUNTphp php php=php>php nullphp,
-php php php php php php php php selfphp:php:LIMITphp_OFFSETphp php=php>php nullphp,
-php php php php php php php php selfphp:php:FORphp_UPDATEphp php php php=php>php false
-php php php php php)php;
-
-php php php php php/php*php*
-php php php php php php*php Specifyphp legalphp joinphp typesphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_joinTypesphp php=php arrayphp(
-php php php php php php php php selfphp:php:INNERphp_JOINphp,
-php php php php php php php php selfphp:php:LEFTphp_JOINphp,
-php php php php php php php php selfphp:php:RIGHTphp_JOINphp,
-php php php php php php php php selfphp:php:FULLphp_JOINphp,
-php php php php php php php php selfphp:php:CROSSphp_JOINphp,
-php php php php php php php php selfphp:php:NATURALphp_JOINphp,
-php php php php php)php;
-
-php php php php php/php*php*
-php php php php php php*php Specifyphp legalphp unionphp typesphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_unionTypesphp php=php arrayphp(
-php php php php php php php php selfphp:php:SQLphp_UNIONphp,
-php php php php php php php php selfphp:php:SQLphp_UNIONphp_ALL
-php php php php php)php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp componentphp partsphp ofphp aphp SELECTphp statementphp.
-php php php php php php*php Initializedphp tophp thephp php$php_partsInitphp arrayphp inphp thephp constructorphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_partsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Tracksphp whichphp columnsphp arephp beingphp selectphp fromphp eachphp tablephp andphp joinphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_tableColsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Dbphp_Adapterphp_Abstractphp php$adapter
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Dbphp_Adapterphp_Abstractphp php$adapterphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_adapterphp php=php php$adapterphp;
-php php php php php php php php php$thisphp-php>php_partsphp php=php selfphp:php:php$php_partsInitphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp bindphp variables
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getBindphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_bindphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp bindphp variables
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$bind
-php php php php php php*php php@returnphp Zendphp_Dbphp_Select
-php php php php php php*php/
-php php php php publicphp functionphp bindphp(php$bindphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_bindphp php=php php$bindphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Makesphp thephp queryphp SELECTphp DISTINCTphp.
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$flagphp Whetherphp orphp notphp thephp SELECTphp isphp DISTINCTphp php(defaultphp truephp)php.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp distinctphp(php$flagphp php=php truephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:DISTINCTphp]php php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp FROMphp tablephp andphp optionalphp columnsphp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php Thephp firstphp parameterphp php$namephp canphp bephp aphp simplephp stringphp,php inphp whichphp casephp the
-php php php php php php*php correlationphp namephp isphp generatedphp automaticallyphp.php php Ifphp youphp wantphp tophp specify
-php php php php php php*php thephp correlationphp namephp,php thephp firstphp parameterphp mustphp bephp anphp associative
-php php php php php php*php arrayphp inphp whichphp thephp keyphp isphp thephp correlationphp namephp,php andphp thephp valuephp is
-php php php php php php*php thephp physicalphp tablephp namephp.php php Forphp examplephp,php arrayphp(php'aliasphp'php php=php>php php'tablephp'php)php.
-php php php php php php*php Thephp correlationphp namephp isphp prependedphp tophp allphp columnsphp fetchedphp forphp this
-php php php php php php*php tablephp.
-php php php php php php*
-php php php php php php*php Thephp secondphp parameterphp canphp bephp aphp singlephp stringphp orphp Zendphp_Dbphp_Exprphp objectphp,
-php php php php php php*php orphp elsephp anphp arrayphp ofphp stringsphp orphp Zendphp_Dbphp_Exprphp objectsphp.
-php php php php php php*
-php php php php php php*php Thephp firstphp parameterphp canphp bephp nullphp orphp anphp emptyphp stringphp,php inphp whichphp case
-php php php php php php*php nophp correlationphp namephp isphp generatedphp orphp prependedphp tophp thephp columnsphp named
-php php php php php php*php inphp thephp secondphp parameterphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp orphp anphp associativephp array
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php relatingphp correlationphp namephp tophp tablephp namephp.
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$colsphp Thephp columnsphp tophp selectphp fromphp thisphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp schemaphp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp fromphp(php$namephp,php php$colsphp php=php php'php*php'php,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:FROMphp,php php$namephp,php nullphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Specifiesphp thephp columnsphp usedphp inphp thephp FROMphp clausephp.
-php php php php php php*
-php php php php php php*php Thephp parameterphp canphp bephp aphp singlephp stringphp orphp Zendphp_Dbphp_Exprphp objectphp,
-php php php php php php*php orphp elsephp anphp arrayphp ofphp stringsphp orphp Zendphp_Dbphp_Exprphp objectsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$colsphp Thephp columnsphp tophp selectphp fromphp thisphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$correlationNamephp Correlationphp namephp ofphp targetphp tablephp.php OPTIONAL
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp columnsphp(php$colsphp php=php php'php*php'php,php php$correlationNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$correlationNamephp php=php=php=php nullphp php&php&php countphp(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php)php php{
-php php php php php php php php php php php php php$correlationNameKeysphp php=php arrayphp_keysphp(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php;
-php php php php php php php php php php php php php$correlationNamephp php=php currentphp(php$correlationNameKeysphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$correlationNamephp,php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Selectphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Nophp tablephp hasphp beenphp specifiedphp forphp thephp FROMphp clausephp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_tableColsphp(php$correlationNamephp,php php$colsphp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp UNIONphp clausephp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php Thephp firstphp parameterphp hasphp tophp bephp anphp arrayphp ofphp Zendphp_Dbphp_Selectphp or
-php php php php php php*php sqlphp queryphp stringsphp.
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*php php$sqlphp1php php=php php$dbphp-php>selectphp(php)php;
-php php php php php php*php php$sqlphp2php php=php php"SELECTphp php.php.php.php"php;
-php php php php php php*php php$selectphp php=php php$dbphp-php>selectphp(php)
-php php php php php php*php php php php php php php-php>unionphp(arrayphp(php$sqlphp1php,php php$sqlphp2php)php)
-php php php php php php*php php php php php php php-php>orderphp(php"idphp"php)php;
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$selectphp Arrayphp ofphp selectphp clausesphp forphp thephp unionphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp unionphp(php$selectphp php=php arrayphp(php)php,php php$typephp php=php selfphp:php:SQLphp_UNIONphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$selectphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"unionphp(php)php onlyphp acceptsphp anphp arrayphp ofphp Zendphp_Dbphp_Selectphp instancesphp ofphp sqlphp queryphp stringsphp.php"
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php selfphp:php:php$php_unionTypesphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Invalidphp unionphp typephp php'php{php$typephp}php'php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$selectphp asphp php$targetphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php[php]php php=php arrayphp(php$targetphp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp JOINphp tablephp andphp columnsphp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp conditionphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinphp(php$namephp,php php$condphp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>joinInnerphp(php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp anphp INNERphp JOINphp tablephp andphp columsphp tophp thephp query
-php php php php php php*php Rowsphp inphp bothphp tablesphp arephp matchedphp accordingphp tophp thephp expression
-php php php php php php*php inphp thephp php$condphp argumentphp.php php Thephp resultphp setphp isphp comprised
-php php php php php php*php ofphp allphp casesphp wherephp rowsphp fromphp thephp leftphp tablephp match
-php php php php php php*php rowsphp fromphp thephp rightphp tablephp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp conditionphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinInnerphp(php$namephp,php php$condphp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:INNERphp_JOINphp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp LEFTphp OUTERphp JOINphp tablephp andphp columsphp tophp thephp query
-php php php php php php*php Allphp rowsphp fromphp thephp leftphp operandphp tablephp arephp includedphp,
-php php php php php php*php matchingphp rowsphp fromphp thephp rightphp operandphp tablephp includedphp,
-php php php php php php*php andphp thephp columnsphp fromphp thephp rightphp operandphp tablephp arephp filled
-php php php php php php*php withphp NULLsphp ifphp nophp rowphp existsphp matchingphp thephp leftphp tablephp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp conditionphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinLeftphp(php$namephp,php php$condphp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:LEFTphp_JOINphp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp RIGHTphp OUTERphp JOINphp tablephp andphp columsphp tophp thephp queryphp.
-php php php php php php*php Rightphp outerphp joinphp isphp thephp complementphp ofphp leftphp outerphp joinphp.
-php php php php php php*php Allphp rowsphp fromphp thephp rightphp operandphp tablephp arephp includedphp,
-php php php php php php*php matchingphp rowsphp fromphp thephp leftphp operandphp tablephp includedphp,
-php php php php php php*php andphp thephp columnsphp fromphp thephp leftphp operandphp tablephp arephp filled
-php php php php php php*php withphp NULLsphp ifphp nophp rowphp existsphp matchingphp thephp rightphp tablephp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp conditionphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinRightphp(php$namephp,php php$condphp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:RIGHTphp_JOINphp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp FULLphp OUTERphp JOINphp tablephp andphp columsphp tophp thephp queryphp.
-php php php php php php*php Aphp fullphp outerphp joinphp isphp likephp combiningphp aphp leftphp outerphp join
-php php php php php php*php andphp aphp rightphp outerphp joinphp.php php Allphp rowsphp fromphp bothphp tablesphp are
-php php php php php php*php includedphp,php pairedphp withphp eachphp otherphp onphp thephp samephp rowphp ofphp the
-php php php php php php*php resultphp setphp ifphp theyphp satisfyphp thephp joinphp conditionphp,php andphp otherwise
-php php php php php php*php pairedphp withphp NULLsphp inphp placephp ofphp columnsphp fromphp thephp otherphp tablephp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp conditionphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinFullphp(php$namephp,php php$condphp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:FULLphp_JOINphp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp CROSSphp JOINphp tablephp andphp columsphp tophp thephp queryphp.
-php php php php php php*php Aphp crossphp joinphp isphp aphp cartesianphp productphp;php therephp isphp nophp joinphp conditionphp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinCrossphp(php$namephp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:CROSSphp_JOINphp,php php$namephp,php nullphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp NATURALphp JOINphp tablephp andphp columsphp tophp thephp queryphp.
-php php php php php php*php Aphp naturalphp joinphp assumesphp anphp equiphp-joinphp acrossphp anyphp columnphp(sphp)
-php php php php php php*php thatphp appearphp withphp thephp samephp namephp inphp bothphp tablesphp.
-php php php php php php*php Onlyphp naturalphp innerphp joinsphp arephp supportedphp byphp thisphp APIphp,
-php php php php php php*php evenphp thoughphp SQLphp permitsphp naturalphp outerphp joinsphp asphp wellphp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Thephp tablephp namephp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp tablephp.
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp joinNaturalphp(php$namephp,php php$colsphp php=php selfphp:php:SQLphp_WILDCARDphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(selfphp:php:NATURALphp_JOINphp,php php$namephp,php nullphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp WHEREphp conditionphp tophp thephp queryphp byphp ANDphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp valuephp isphp passedphp asphp thephp secondphp paramphp,php itphp willphp bephp quoted
-php php php php php php*php andphp replacedphp intophp thephp conditionphp whereverphp aphp questionphp-mark
-php php php php php php*php appearsphp.php Arrayphp valuesphp arephp quotedphp andphp commaphp-separatedphp.
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*php php/php/php simplestphp butphp nonphp-secure
-php php php php php php*php php$selectphp-php>wherephp(php"idphp php=php php$idphp"php)php;
-php php php php php php*
-php php php php php php*php php/php/php securephp php(IDphp isphp quotedphp butphp matchedphp anywayphp)
-php php php php php php*php php$selectphp-php>wherephp(php'idphp php=php php?php'php,php php$idphp)php;
-php php php php php php*
-php php php php php php*php php/php/php alternativelyphp,php withphp namedphp binding
-php php php php php php*php php$selectphp-php>wherephp(php'idphp php=php php:idphp'php)php;
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php Notephp thatphp itphp isphp morephp correctphp tophp usephp namedphp bindingsphp inphp your
-php php php php php php*php queriesphp forphp valuesphp otherphp thanphp stringsphp.php Whenphp youphp usephp named
-php php php php php php*php bindingsphp,php donphp'tphp forgetphp tophp passphp thephp valuesphp whenphp actually
-php php php php php php*php makingphp aphp queryphp:
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*php php$dbphp-php>fetchAllphp(php$selectphp,php arrayphp(php'idphp'php php=php>php php5php)php)php;
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$condphp php Thephp WHEREphp conditionphp.
-php php php php php php*php php@paramphp mixedphp php php php php$valuephp OPTIONALphp Thephp valuephp tophp quotephp intophp thephp conditionphp.
-php php php php php php*php php@paramphp intphp php php php php php php$typephp php OPTIONALphp Thephp typephp ofphp thephp givenphp value
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp wherephp(php$condphp,php php$valuephp php=php nullphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:WHEREphp]php[php]php php=php php$thisphp-php>php_wherephp(php$condphp,php php$valuephp,php php$typephp,php truephp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp WHEREphp conditionphp tophp thephp queryphp byphp ORphp.
-php php php php php php*
-php php php php php php*php Otherwisephp identicalphp tophp wherephp(php)php.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$condphp php Thephp WHEREphp conditionphp.
-php php php php php php*php php@paramphp mixedphp php php php php$valuephp OPTIONALphp Thephp valuephp tophp quotephp intophp thephp conditionphp.
-php php php php php php*php php@paramphp intphp php php php php php php$typephp php OPTIONALphp Thephp typephp ofphp thephp givenphp value
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*
-php php php php php php*php php@seephp wherephp(php)
-php php php php php php*php/
-php php php php publicphp functionphp orWherephp(php$condphp,php php$valuephp php=php nullphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:WHEREphp]php[php]php php=php php$thisphp-php>php_wherephp(php$condphp,php php$valuephp,php php$typephp,php falsephp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp groupingphp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|stringphp php$specphp Thephp columnphp(sphp)php tophp groupphp byphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp groupphp(php$specphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$specphp)php)php php{
-php php php php php php php php php php php php php$specphp php=php arrayphp(php$specphp)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$specphp asphp php$valphp)php php{
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\php(php.php*php\php)php/php'php,php php(stringphp)php php$valphp)php)php php{
-php php php php php php php php php php php php php php php php php$valphp php=php newphp Zendphp_Dbphp_Exprphp(php$valphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:GROUPphp]php[php]php php=php php$valphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp HAVINGphp conditionphp tophp thephp queryphp byphp ANDphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp valuephp isphp passedphp asphp thephp secondphp paramphp,php itphp willphp bephp quoted
-php php php php php php*php andphp replacedphp intophp thephp conditionphp whereverphp aphp questionphp-mark
-php php php php php php*php appearsphp.php Seephp php{php@linkphp wherephp(php)php}php forphp anphp example
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$condphp Thephp HAVINGphp conditionphp.
-php php php php php php*php php@paramphp mixedphp php php php php$valuephp OPTIONALphp Thephp valuephp tophp quotephp intophp thephp conditionphp.
-php php php php php php*php php@paramphp intphp php php php php php php$typephp php OPTIONALphp Thephp typephp ofphp thephp givenphp value
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp havingphp(php$condphp,php php$valuephp php=php nullphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$valuephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$condphp php=php php$thisphp-php>php_adapterphp-php>quoteIntophp(php$condphp,php php$valuephp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php[php]php php=php selfphp:php:SQLphp_ANDphp php.php php"php php(php$condphp)php"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php[php]php php=php php"php(php$condphp)php"php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp HAVINGphp conditionphp tophp thephp queryphp byphp ORphp.
-php php php php php php*
-php php php php php php*php Otherwisephp identicalphp tophp orHavingphp(php)php.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$condphp Thephp HAVINGphp conditionphp.
-php php php php php php*php php@paramphp mixedphp php php php php$valuephp OPTIONALphp Thephp valuephp tophp quotephp intophp thephp conditionphp.
-php php php php php php*php php@paramphp intphp php php php php php php$typephp php OPTIONALphp Thephp typephp ofphp thephp givenphp value
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*
-php php php php php php*php php@seephp havingphp(php)
-php php php php php php*php/
-php php php php publicphp functionphp orHavingphp(php$condphp,php php$valuephp php=php nullphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$valuephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$condphp php=php php$thisphp-php>php_adapterphp-php>quoteIntophp(php$condphp,php php$valuephp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php[php]php php=php selfphp:php:SQLphp_ORphp php.php php"php php(php$condphp)php"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php[php]php php=php php"php(php$condphp)php"php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp rowphp orderphp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$specphp Thephp columnphp(sphp)php andphp directionphp tophp orderphp byphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp orderphp(php$specphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$specphp)php)php php{
-php php php php php php php php php php php php php$specphp php=php arrayphp(php$specphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php forcephp php'ASCphp'php orphp php'DESCphp'php onphp eachphp orderphp specphp,php defaultphp isphp ASCphp.
-php php php php php php php php foreachphp php(php$specphp asphp php$valphp)php php{
-php php php php php php php php php php php php ifphp php(php$valphp instanceofphp Zendphp_Dbphp_Exprphp)php php{
-php php php php php php php php php php php php php php php php php$exprphp php=php php$valphp-php>php_php_toStringphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$exprphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:ORDERphp]php[php]php php=php php$valphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$valphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$directionphp php=php selfphp:php:SQLphp_ASCphp;
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php(php.php*php\Wphp)php(php'php php.php selfphp:php:SQLphp_ASCphp php.php php'php|php'php php.php selfphp:php:SQLphp_DESCphp php.php php'php)php\bphp/siphp'php,php php$valphp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php trimphp(php$matchesphp[php1php]php)php;
-php php php php php php php php php php php php php php php php php php php php php$directionphp php=php php$matchesphp[php2php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\php(php.php*php\php)php/php'php,php php$valphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php newphp Zendphp_Dbphp_Exprphp(php$valphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:ORDERphp]php[php]php php=php arrayphp(php$valphp,php php$directionphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp aphp limitphp countphp andphp offsetphp tophp thephp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$countphp OPTIONALphp Thephp numberphp ofphp rowsphp tophp returnphp.
-php php php php php php*php php@paramphp intphp php$offsetphp OPTIONALphp Startphp returningphp afterphp thisphp manyphp rowsphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp limitphp(php$countphp php=php nullphp,php php$offsetphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_COUNTphp]php php php=php php(intphp)php php$countphp;
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_OFFSETphp]php php=php php(intphp)php php$offsetphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp limitphp andphp countphp byphp pagephp numberphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$pagephp Limitphp resultsphp tophp thisphp pagephp numberphp.
-php php php php php php*php php@paramphp intphp php$rowCountphp Usephp thisphp manyphp rowsphp perphp pagephp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp limitPagephp(php$pagephp,php php$rowCountphp)
-php php php php php{
-php php php php php php php php php$pagephp php php php php php=php php(php$pagephp php>php php0php)php php php php php php?php php$pagephp php php php php php:php php1php;
-php php php php php php php php php$rowCountphp php=php php(php$rowCountphp php>php php0php)php php?php php$rowCountphp php:php php1php;
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_COUNTphp]php php php=php php(intphp)php php$rowCountphp;
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_OFFSETphp]php php=php php(intphp)php php$rowCountphp php*php php(php$pagephp php-php php1php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Makesphp thephp queryphp SELECTphp FORphp UPDATEphp.
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$flagphp Whetherphp orphp notphp thephp SELECTphp isphp FORphp UPDATEphp php(defaultphp truephp)php.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp forUpdatephp(php$flagphp php=php truephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FORphp_UPDATEphp]php php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp partphp ofphp thephp structuredphp informationphp forphp thephp currectphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$part
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Selectphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getPartphp(php$partphp)
-php php php php php{
-php php php php php php php php php$partphp php=php strtolowerphp(php$partphp)php;
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$partphp,php php$thisphp-php>php_partsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Invalidphp Selectphp partphp php'php$partphp'php"php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_partsphp[php$partphp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Executesphp thephp currentphp selectphp objectphp andphp returnsphp thephp result
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$fetchModephp OPTIONAL
-php php php php php php*php php@paramphp php mixedphp php php$bindphp Anphp arrayphp ofphp dataphp tophp bindphp tophp thephp placeholdersphp.
-php php php php php php*php php@returnphp PDOphp_Statementphp|Zendphp_Dbphp_Statement
-php php php php php php*php/
-php php php php publicphp functionphp queryphp(php$fetchModephp php=php nullphp,php php$bindphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!emptyphp(php$bindphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>bindphp(php$bindphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$stmtphp php=php php$thisphp-php>php_adapterphp-php>queryphp(php$thisphp)php;
-php php php php php php php php ifphp php(php$fetchModephp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$fetchModephp php=php php$thisphp-php>php_adapterphp-php>getFetchModephp(php)php;
-php php php php php php php php php}
-php php php php php php php php php$stmtphp-php>setFetchModephp(php$fetchModephp)php;
-php php php php php php php php returnphp php$stmtphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertsphp thisphp objectphp tophp anphp SQLphp SELECTphp stringphp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|nullphp Thisphp objectphp asphp aphp SELECTphp stringphp.php php(orphp nullphp ifphp aphp stringphp cannotphp bephp producedphp.php)
-php php php php php php*php/
-php php php php publicphp functionphp assemblephp(php)
-php php php php php{
-php php php php php php php php php$sqlphp php=php selfphp:php:SQLphp_SELECTphp;
-php php php php php php php php foreachphp php(arrayphp_keysphp(selfphp:php:php$php_partsInitphp)php asphp php$partphp)php php{
-php php php php php php php php php php php php php$methodphp php=php php'php_renderphp'php php.php ucfirstphp(php$partphp)php;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php php$sqlphp php=php php$thisphp-php>php$methodphp(php$sqlphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearphp partsphp ofphp thephp Selectphp objectphp,php orphp anphp individualphp partphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$partphp OPTIONAL
-php php php php php php*php php@returnphp Zendphp_Dbphp_Select
-php php php php php php*php/
-php php php php publicphp functionphp resetphp(php$partphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$partphp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp php=php selfphp:php:php$php_partsInitphp;
-php php php php php php php php php}php elsephp ifphp php(arrayphp_keyphp_existsphp(php$partphp,php selfphp:php:php$php_partsInitphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[php$partphp]php php=php selfphp:php:php$php_partsInitphp[php$partphp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp Zendphp_Dbphp_Adapterphp_Abstractphp forphp this
-php php php php php php*php particularphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dbphp_Adapterphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getAdapterphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_adapterphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Populatephp thephp php{php@linkphp php$php_partsphp}php php'joinphp'php key
-php php php php php php*
-php php php php php php*php Doesphp thephp dirtyphp workphp ofphp populatingphp thephp joinphp keyphp.
-php php php php php php*
-php php php php php php*php Thephp php$namephp andphp php$colsphp parametersphp followphp thephp samephp logic
-php php php php php php*php asphp describedphp inphp thephp fromphp(php)php methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp php$typephp Typephp ofphp joinphp;php innerphp,php leftphp,php andphp nullphp arephp currentlyphp supported
-php php php php php php*php php@paramphp php arrayphp|stringphp|Zendphp_Dbphp_Exprphp php$namephp Tablephp name
-php php php php php php*php php@paramphp php stringphp php$condphp Joinphp onphp thisphp condition
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp columnsphp tophp selectphp fromphp thephp joinedphp table
-php php php php php php*php php@paramphp php stringphp php$schemaphp Thephp databasephp namephp tophp specifyphp,php ifphp anyphp.
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp object
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Selectphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_joinphp(php$typephp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php selfphp:php:php$php_joinTypesphp)php php&php&php php$typephp php!php=php selfphp:php:FROMphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Selectphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Invalidphp joinphp typephp php'php$typephp'php"php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Invalidphp usephp ofphp tablephp withphp php"php php.php selfphp:php:SQLphp_UNIONphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(emptyphp(php$namephp)php)php php{
-php php php php php php php php php php php php php$correlationNamephp php=php php$tableNamephp php=php php'php'php;
-php php php php php php php php php}php elsephp ifphp php(isphp_arrayphp(php$namephp)php)php php{
-php php php php php php php php php php php php php/php/php Mustphp bephp arrayphp(php$correlationNamephp php=php>php php$tableNamephp)php orphp arrayphp(php$identphp,php php.php.php.php)
-php php php php php php php php php php php php foreachphp php(php$namephp asphp php$php_correlationNamephp php=php>php php$php_tableNamephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$php_correlationNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Wephp assumephp thephp keyphp isphp thephp correlationphp namephp andphp valuephp isphp thephp tablephp name
-php php php php php php php php php php php php php php php php php php php php php$tableNamephp php=php php$php_tableNamephp;
-php php php php php php php php php php php php php php php php php php php php php$correlationNamephp php=php php$php_correlationNamephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Wephp assumephp justphp anphp arrayphp ofphp identifiersphp,php withphp nophp correlationphp name
-php php php php php php php php php php php php php php php php php php php php php$tableNamephp php=php php$php_tableNamephp;
-php php php php php php php php php php php php php php php php php php php php php$correlationNamephp php=php php$thisphp-php>php_uniqueCorrelationphp(php$tableNamephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp ifphp php(php$namephp instanceofphp Zendphp_Dbphp_Exprphp|php|php php$namephp instanceofphp Zendphp_Dbphp_Selectphp)php php{
-php php php php php php php php php php php php php$tableNamephp php=php php$namephp;
-php php php php php php php php php php php php php$correlationNamephp php=php php$thisphp-php>php_uniqueCorrelationphp(php'tphp'php)php;
-php php php php php php php php php}php elsephp ifphp php(pregphp_matchphp(php'php/php^php(php.php+php)php\sphp+ASphp\sphp+php(php.php+php)php$php/iphp'php,php php$namephp,php php$mphp)php)php php{
-php php php php php php php php php php php php php$tableNamephp php=php php$mphp[php1php]php;
-php php php php php php php php php php php php php$correlationNamephp php=php php$mphp[php2php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$tableNamephp php=php php$namephp;
-php php php php php php php php php php php php php$correlationNamephp php=php php$thisphp-php>php_uniqueCorrelationphp(php$tableNamephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Schemaphp fromphp tablephp namephp overridesphp schemaphp argument
-php php php php php php php php ifphp php(php!isphp_objectphp(php$tableNamephp)php php&php&php falsephp php!php=php=php strposphp(php$tableNamephp,php php'php.php'php)php)php php{
-php php php php php php php php php php php php listphp(php$schemaphp,php php$tableNamephp)php php=php explodephp(php'php.php'php,php php$tableNamephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$lastFromCorrelationNamephp php=php nullphp;
-php php php php php php php php ifphp php(php!emptyphp(php$correlationNamephp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$correlationNamephp,php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Dbphp_Selectphp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Youphp cannotphp definephp aphp correlationphp namephp php'php$correlationNamephp'php morephp thanphp oncephp"php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$typephp php=php=php selfphp:php:FROMphp)php php{
-php php php php php php php php php php php php php php php php php/php/php appendphp thisphp fromphp afterphp thephp lastphp fromphp joinType
-php php php php php php php php php php php php php php php php php$tmpFromPartsphp php=php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php/php/php movephp allphp thephp fromsphp ontophp thephp stack
-php php php php php php php php php php php php php php php php whilephp php(php$tmpFromPartsphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$currentCorrelationNamephp php=php keyphp(php$tmpFromPartsphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$tmpFromPartsphp[php$currentCorrelationNamephp]php[php'joinTypephp'php]php php!php=php selfphp:php:FROMphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$lastFromCorrelationNamephp php=php php$currentCorrelationNamephp;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php[php$currentCorrelationNamephp]php php=php arrayphp_shiftphp(php$tmpFromPartsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$tmpFromPartsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php[php$correlationNamephp]php php=php arrayphp(
-php php php php php php php php php php php php php php php php php'joinTypephp'php php php php php php php=php>php php$typephp,
-php php php php php php php php php php php php php php php php php'schemaphp'php php php php php php php php php=php>php php$schemaphp,
-php php php php php php php php php php php php php php php php php'tableNamephp'php php php php php php=php>php php$tableNamephp,
-php php php php php php php php php php php php php php php php php'joinConditionphp'php php=php>php php$cond
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php whilephp php(php$tmpFromPartsphp)php php{
-php php php php php php php php php php php php php php php php php$currentCorrelationNamephp php=php keyphp(php$tmpFromPartsphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php[php$currentCorrelationNamephp]php php=php arrayphp_shiftphp(php$tmpFromPartsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php addphp tophp thephp columnsphp fromphp thisphp joinedphp table
-php php php php php php php php ifphp php(php$typephp php=php=php selfphp:php:FROMphp php&php&php php$lastFromCorrelationNamephp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$lastFromCorrelationNamephp php=php truephp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_tableColsphp(php$correlationNamephp,php php$colsphp,php php$lastFromCorrelationNamephp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Handlephp JOINphp.php.php.php USINGphp.php.php.php syntax
-php php php php php php*
-php php php php php php*php Thisphp isphp functionalityphp identicalphp tophp thephp existingphp JOINphp methodsphp,php however
-php php php php php php*php thephp joinphp conditionphp canphp bephp passedphp asphp aphp singlephp columnphp namephp.php Thisphp method
-php php php php php php*php thenphp completesphp thephp ONphp conditionphp byphp usingphp thephp samephp fieldphp forphp thephp FROM
-php php php php php php*php tablephp andphp thephp JOINphp tablephp.
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*php php$selectphp php=php php$dbphp-php>selectphp(php)php-php>fromphp(php'tablephp1php'php)
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php-php>joinUsingphp(php'tablephp2php'php,php php'columnphp1php'php)php;
-php php php php php php*
-php php php php php php*php php/php/php SELECTphp php*php FROMphp tablephp1php JOINphp tablephp2php ONphp tablephp1php.columnphp1php php=php tablephp2php.columnphp2
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php Thesephp joinsphp arephp calledphp byphp thephp developerphp simplyphp byphp addingphp php'Usingphp'php tophp the
-php php php php php php*php methodphp namephp.php Ephp.gphp.
-php php php php php php*php php*php joinUsing
-php php php php php php*php php*php joinInnerUsing
-php php php php php php*php php*php joinFullUsing
-php php php php php php*php php*php joinRightUsing
-php php php php php php*php php*php joinLeftUsing
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dbphp_Selectphp Thisphp Zendphp_Dbphp_Selectphp objectphp.
-php php php php php php*php/
-php php php php publicphp functionphp php_joinUsingphp(php$typephp,php php$namephp,php php$condphp,php php$colsphp php=php php'php*php'php,php php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Youphp canphp onlyphp performphp aphp joinUsingphp afterphp specifyingphp aphp FROMphp tablephp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$joinphp php php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(keyphp(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php,php truephp)php;
-php php php php php php php php php$fromphp php php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$thisphp-php>php_uniqueCorrelationphp(php$namephp)php,php truephp)php;
-
-php php php php php php php php php$condphp1php php=php php$fromphp php.php php'php.php'php php.php php$condphp;
-php php php php php php php php php$condphp2php php=php php$joinphp php.php php'php.php'php php.php php$condphp;
-php php php php php php php php php$condphp php php=php php$condphp1php php.php php'php php=php php'php php.php php$condphp2php;
-
-php php php php php php php php returnphp php$thisphp-php>php_joinphp(php$typephp,php php$namephp,php php$condphp,php php$colsphp,php php$schemaphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Generatephp aphp uniquephp correlationphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$namephp Aphp qualifiedphp identifierphp.
-php php php php php php*php php@returnphp stringphp Aphp uniquephp correlationphp namephp.
-php php php php php php*php/
-php php php php privatephp functionphp php_uniqueCorrelationphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
-php php php php php php php php php php php php php$cphp php=php endphp(php$namephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Extractphp justphp thephp lastphp namephp ofphp aphp qualifiedphp tablephp name
-php php php php php php php php php php php php php$dotphp php=php strrposphp(php$namephp,php'php.php'php)php;
-php php php php php php php php php php php php php$cphp php=php php(php$dotphp php=php=php=php falsephp)php php?php php$namephp php:php substrphp(php$namephp,php php$dotphp+php1php)php;
-php php php php php php php php php}
-php php php php php php php php forphp php(php$iphp php=php php2php;php arrayphp_keyphp_existsphp(php$cphp,php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php;php php+php+php$iphp)php php{
-php php php php php php php php php php php php php$cphp php=php php$namephp php.php php'php_php'php php.php php(stringphp)php php$iphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$cphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp tophp thephp internalphp tablephp-tophp-columnphp mappingphp arrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$tblphp Thephp tablephp/joinphp thephp columnsphp comephp fromphp.
-php php php php php php*php php@paramphp php arrayphp|stringphp php$colsphp Thephp listphp ofphp columnsphp;php preferablyphp as
-php php php php php php*php anphp arrayphp,php butphp possiblyphp asphp aphp stringphp containingphp onephp columnphp.
-php php php php php php*php php@paramphp php boolphp|stringphp Truephp ifphp itphp shouldphp bephp prependedphp,php aphp correlationphp namephp ifphp itphp shouldphp bephp inserted
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_tableColsphp(php$correlationNamephp,php php$colsphp,php php$afterCorrelationNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$colsphp)php)php php{
-php php php php php php php php php php php php php$colsphp php=php arrayphp(php$colsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$correlationNamephp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$correlationNamephp php=php php'php'php;
-php php php php php php php php php}
-
-php php php php php php php php php$columnValuesphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(arrayphp_filterphp(php$colsphp)php asphp php$aliasphp php=php>php php$colphp)php php{
-php php php php php php php php php php php php php$currentCorrelationNamephp php=php php$correlationNamephp;
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$colphp)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Checkphp forphp aphp columnphp matchingphp php"php<columnphp>php ASphp php<aliasphp>php"php andphp extractphp thephp aliasphp name
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php(php.php+php)php\sphp+php'php php.php selfphp:php:SQLphp_ASphp php.php php'php\sphp+php(php.php+php)php$php/iphp'php,php php$colphp,php php$mphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$colphp php=php php$mphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php$aliasphp php=php php$mphp[php2php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php/php/php Checkphp forphp columnsphp thatphp lookphp likephp functionsphp andphp convertphp tophp Zendphp_Dbphp_Expr
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\php(php.php*php\php)php/php'php,php php$colphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$colphp php=php newphp Zendphp_Dbphp_Exprphp(php$colphp)php;
-php php php php php php php php php php php php php php php php php}php elseifphp php(pregphp_matchphp(php'php/php(php.php+php)php\php.php(php.php+php)php/php'php,php php$colphp,php php$mphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$currentCorrelationNamephp php=php php$mphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php$colphp php=php php$mphp[php2php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$columnValuesphp[php]php php=php arrayphp(php$currentCorrelationNamephp,php php$colphp,php isphp_stringphp(php$aliasphp)php php?php php$aliasphp php:php nullphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$columnValuesphp)php php{
-
-php php php php php php php php php php php php php/php/php shouldphp wephp attemptphp tophp prependphp orphp insertphp thesephp valuesphp?
-php php php php php php php php php php php php ifphp php(php$afterCorrelationNamephp php=php=php=php truephp php|php|php isphp_stringphp(php$afterCorrelationNamephp)php)php php{
-php php php php php php php php php php php php php php php php php$tmpColumnsphp php=php php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$tmpColumnsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php findphp thephp correlationphp namephp tophp insertphp after
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$afterCorrelationNamephp)php)php php{
-php php php php php php php php php php php php php php php php whilephp php(php$tmpColumnsphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php[php]php php=php php$currentColumnphp php=php arrayphp_shiftphp(php$tmpColumnsphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$currentColumnphp[php0php]php php=php=php php$afterCorrelationNamephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php applyphp currentphp valuesphp tophp currentphp stack
-php php php php php php php php php php php php foreachphp php(php$columnValuesphp asphp php$columnValuephp)php php{
-php php php php php php php php php php php php php php php php arrayphp_pushphp(php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php,php php$columnValuephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php finishphp ensuringphp thatphp allphp previousphp valuesphp arephp appliedphp php(ifphp theyphp existphp)
-php php php php php php php php php php php php whilephp php(php$tmpColumnsphp)php php{
-php php php php php php php php php php php php php php php php arrayphp_pushphp(php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php,php arrayphp_shiftphp(php$tmpColumnsphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Internalphp functionphp forphp creatingphp thephp wherephp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$condition
-php php php php php php*php php@paramphp mixedphp php php php php$valuephp php optional
-php php php php php php*php php@paramphp stringphp php php php$typephp php php optional
-php php php php php php*php php@paramphp booleanphp php php$boolphp php truephp php=php ANDphp,php falsephp php=php OR
-php php php php php php*php php@returnphp stringphp php clause
-php php php php php php*php/
-php php php php protectedphp functionphp php_wherephp(php$conditionphp,php php$valuephp php=php nullphp,php php$typephp php=php nullphp,php php$boolphp php=php truephp)
-php php php php php{
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Invalidphp usephp ofphp wherephp clausephp withphp php"php php.php selfphp:php:SQLphp_UNIONphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$valuephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$conditionphp php=php php$thisphp-php>php_adapterphp-php>quoteIntophp(php$conditionphp,php php$valuephp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$condphp php=php php"php"php;
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:WHEREphp]php)php php{
-php php php php php php php php php php php php ifphp php(php$boolphp php=php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$condphp php=php selfphp:php:SQLphp_ANDphp php.php php'php php'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$condphp php=php selfphp:php:SQLphp_ORphp php.php php'php php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$condphp php.php php"php(php$conditionphp)php"php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_getDummyTablephp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp quotedphp schemaphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$schemaphp php Thephp schemaphp namephp OPTIONAL
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php protectedphp functionphp php_getQuotedSchemaphp(php$schemaphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$schemaphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$schemaphp,php truephp)php php.php php'php.php'php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp quotedphp tablephp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$tableNamephp php php php php php php php Thephp tablephp name
-php php php php php php*php php@paramphp stringphp php php php$correlationNamephp php Thephp correlationphp namephp OPTIONAL
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_getQuotedTablephp(php$tableNamephp,php php$correlationNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_adapterphp-php>quoteTableAsphp(php$tableNamephp,php php$correlationNamephp,php truephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp DISTINCTphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderDistinctphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:DISTINCTphp]php)php php{
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_DISTINCTphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp DISTINCTphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderColumnsphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!countphp(php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php php$columnsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_partsphp[selfphp:php:COLUMNSphp]php asphp php$columnEntryphp)php php{
-php php php php php php php php php php php php listphp(php$correlationNamephp,php php$columnphp,php php$aliasphp)php php=php php$columnEntryphp;
-php php php php php php php php php php php php ifphp php(php$columnphp instanceofphp Zendphp_Dbphp_Exprphp)php php{
-php php php php php php php php php php php php php php php php php$columnsphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteColumnAsphp(php$columnphp,php php$aliasphp,php truephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php ifphp php(php$columnphp php=php=php selfphp:php:SQLphp_WILDCARDphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$columnphp php=php newphp Zendphp_Dbphp_Exprphp(selfphp:php:SQLphp_WILDCARDphp)php;
-php php php php php php php php php php php php php php php php php php php php php$aliasphp php=php nullphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$correlationNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$columnsphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteColumnAsphp(php$columnphp,php php$aliasphp,php truephp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$columnsphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteColumnAsphp(arrayphp(php$correlationNamephp,php php$columnphp)php,php php$aliasphp,php truephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp php.php=php php'php php'php php.php implodephp(php'php,php php'php,php php$columnsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp FROMphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderFromphp(php$sqlphp)
-php php php php php{
-php php php php php php php php php/php*
-php php php php php php php php php php*php Ifphp nophp tablephp specifiedphp,php usephp RDBMSphp-dependentphp solution
-php php php php php php php php php php*php forphp tablephp-lessphp queryphp.php php ephp.gphp.php DUALphp inphp Oraclephp.
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php php=php php$thisphp-php>php_getDummyTablephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$fromphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php asphp php$correlationNamephp php=php>php php$tablephp)php php{
-php php php php php php php php php php php php php$tmpphp php=php php'php'php;
-
-php php php php php php php php php php php php php$joinTypephp php=php php(php$tablephp[php'joinTypephp'php]php php=php=php selfphp:php:FROMphp)php php?php selfphp:php:INNERphp_JOINphp php:php php$tablephp[php'joinTypephp'php]php;
-
-php php php php php php php php php php php php php/php/php Addphp joinphp clausephp php(ifphp applicablephp)
-php php php php php php php php php php php php ifphp php(php!php emptyphp(php$fromphp)php)php php{
-php php php php php php php php php php php php php php php php php$tmpphp php.php=php php'php php'php php.php strtoupperphp(php$joinTypephp)php php.php php'php php'php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$tmpphp php.php=php php$thisphp-php>php_getQuotedSchemaphp(php$tablephp[php'schemaphp'php]php)php;
-php php php php php php php php php php php php php$tmpphp php.php=php php$thisphp-php>php_getQuotedTablephp(php$tablephp[php'tableNamephp'php]php,php php$correlationNamephp)php;
-
-php php php php php php php php php php php php php/php/php Addphp joinphp conditionsphp php(ifphp applicablephp)
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$fromphp)php php&php&php php!php emptyphp(php$tablephp[php'joinConditionphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$tmpphp php.php=php php'php php'php php.php selfphp:php:SQLphp_ONphp php.php php'php php'php php.php php$tablephp[php'joinConditionphp'php]php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Addphp thephp tablephp namephp andphp conditionphp addphp tophp thephp list
-php php php php php php php php php php php php php$fromphp[php]php php=php php$tmpphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Addphp thephp listphp ofphp allphp joins
-php php php php php php php php ifphp php(php!emptyphp(php$fromphp)php)php php{
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_FROMphp php.php php'php php'php php.php implodephp(php"php\nphp"php,php php$fromphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp UNIONphp query
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderUnionphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php)php php{
-php php php php php php php php php php php php php$partsphp php=php countphp(php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php)php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_partsphp[selfphp:php:UNIONphp]php asphp php$cntphp php=php>php php$unionphp)php php{
-php php php php php php php php php php php php php php php php listphp(php$targetphp,php php$typephp)php php=php php$unionphp;
-php php php php php php php php php php php php php php php php ifphp php(php$targetphp instanceofphp Zendphp_Dbphp_Selectphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$targetphp php=php php$targetphp-php>assemblephp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$sqlphp php.php=php php$targetphp;
-php php php php php php php php php php php php php php php php ifphp php(php$cntphp <php php$partsphp php-php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php php$typephp php.php php'php php'php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp WHEREphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderWherephp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php php&php&php php$thisphp-php>php_partsphp[selfphp:php:WHEREphp]php)php php{
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_WHEREphp php.php php'php php'php php.php php implodephp(php'php php'php,php php$thisphp-php>php_partsphp[selfphp:php:WHEREphp]php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp GROUPphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderGroupphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php php&php&php php$thisphp-php>php_partsphp[selfphp:php:GROUPphp]php)php php{
-php php php php php php php php php php php php php$groupphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_partsphp[selfphp:php:GROUPphp]php asphp php$termphp)php php{
-php php php php php php php php php php php php php php php php php$groupphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$termphp,php truephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_GROUPphp_BYphp php.php php'php php'php php.php implodephp(php"php,php\nphp\tphp"php,php php$groupphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp HAVINGphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderHavingphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:FROMphp]php php&php&php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php)php php{
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_HAVINGphp php.php php'php php'php php.php implodephp(php'php php'php,php php$thisphp-php>php_partsphp[selfphp:php:HAVINGphp]php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp ORDERphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderOrderphp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:ORDERphp]php)php php{
-php php php php php php php php php php php php php$orderphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_partsphp[selfphp:php:ORDERphp]php asphp php$termphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$termphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp(isphp_numericphp(php$termphp[php0php]php)php php&php&php strvalphp(intvalphp(php$termphp[php0php]php)php)php php=php=php php$termphp[php0php]php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$orderphp[php]php php=php php(intphp)trimphp(php$termphp[php0php]php)php php.php php'php php'php php.php php$termphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$orderphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$termphp[php0php]php,php truephp)php php.php php'php php'php php.php php$termphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php elsephp ifphp php(isphp_numericphp(php$termphp)php php&php&php strvalphp(intvalphp(php$termphp)php)php php=php=php php$termphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$orderphp[php]php php=php php(intphp)trimphp(php$termphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$orderphp[php]php php=php php$thisphp-php>php_adapterphp-php>quoteIdentifierphp(php$termphp,php truephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_ORDERphp_BYphp php.php php'php php'php php.php implodephp(php'php,php php'php,php php$orderphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp LIMITphp OFFSETphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderLimitoffsetphp(php$sqlphp)
-php php php php php{
-php php php php php php php php php$countphp php=php php0php;
-php php php php php php php php php$offsetphp php=php php0php;
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_OFFSETphp]php)php)php php{
-php php php php php php php php php php php php php$offsetphp php=php php(intphp)php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_OFFSETphp]php;
-php php php php php php php php php php php php php$countphp php=php PHPphp_INTphp_MAXphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_COUNTphp]php)php)php php{
-php php php php php php php php php php php php php$countphp php=php php(intphp)php php$thisphp-php>php_partsphp[selfphp:php:LIMITphp_COUNTphp]php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*
-php php php php php php php php php php*php Addphp limitsphp clause
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php$countphp php>php php0php)php php{
-php php php php php php php php php php php php php$sqlphp php=php trimphp(php$thisphp-php>php_adapterphp-php>limitphp(php$sqlphp,php php$countphp,php php$offsetphp)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp FORphp UPDATEphp clause
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php$sqlphp SQLphp query
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderForupdatephp(php$sqlphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_partsphp[selfphp:php:FORphp_UPDATEphp]php)php php{
-php php php php php php php php php php php php php$sqlphp php.php=php php'php php'php php.php selfphp:php:SQLphp_FORphp_UPDATEphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$sqlphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Turnphp magicphp functionphp callsphp intophp nonphp-magicphp functionphp calls
-php php php php php php*php forphp joinUsingphp syntax
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$method
-php php php php php php*php php@paramphp arrayphp php$argsphp OPTIONALphp Zendphp_Dbphp_Tablephp_Selectphp queryphp modifier
-php php php php php php*php php@returnphp Zendphp_Dbphp_Select
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Selectphp_Exceptionphp Ifphp anphp invalidphp methodphp isphp calledphp.
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php arrayphp php$argsphp)
-php php php php php{
-php php php php php php php php php$matchesphp php=php arrayphp(php)php;
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Recognizephp methodsphp forphp Hasphp-Manyphp casesphp:
-php php php php php php php php php php*php findParentphp<Classphp>php(php)
-php php php php php php php php php php*php findParentphp<Classphp>Byphp<Rulephp>php(php)
-php php php php php php php php php php*php Usephp thephp nonphp-greedyphp patternphp repeatphp modifierphp ephp.gphp.php php\wphp+php?
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^joinphp(php[aphp-zAphp-Zphp]php*php?php)Usingphp$php/php'php,php php$methodphp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php$typephp php=php strtolowerphp(php$matchesphp[php1php]php)php;
-php php php php php php php php php php php php ifphp php(php$typephp)php php{
-php php php php php php php php php php php php php php php php php$typephp php.php=php php'php joinphp'php;
-php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php selfphp:php:php$php_joinTypesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Unrecognizedphp methodphp php'php$methodphp(php)php'php"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$typephp,php arrayphp(selfphp:php:CROSSphp_JOINphp,php selfphp:php:NATURALphp_JOINphp)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Cannotphp performphp aphp joinUsingphp withphp methodphp php'php$methodphp(php)php'php"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:INNERphp_JOINphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php arrayphp_unshiftphp(php$argsphp,php php$typephp)php;
-php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp,php php'php_joinUsingphp'php)php,php php$argsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Dbphp/Selectphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Dbphp_Selectphp_Exceptionphp(php"Unrecognizedphp methodphp php'php$methodphp(php)php'php"php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Implementsphp magicphp methodphp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp Thisphp objectphp asphp aphp SELECTphp stringphp.
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$sqlphp php=php php$thisphp-php>assemblephp(php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php triggerphp_errorphp(php$ephp-php>getMessagephp(php)php,php Ephp_USERphp_WARNINGphp)php;
-php php php php php php php php php php php php php$sqlphp php=php php'php'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php(stringphp)php$sqlphp;
-php php php php php}
-
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Select
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Select.php 23516 2010-12-16 13:26:11Z bittarman $
+ */
+
+
+/**
+ * @see Zend_Db_Adapter_Abstract
+ */
+require_once 'Zend/Db/Adapter/Abstract.php';
+
+/**
+ * @see Zend_Db_Expr
+ */
+require_once 'Zend/Db/Expr.php';
+
+
+/**
+ * Class for SQL SELECT generation and results.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Select
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Db_Select
+{
+
+    const DISTINCT       = 'distinct';
+    const COLUMNS        = 'columns';
+    const FROM           = 'from';
+    const UNION          = 'union';
+    const WHERE          = 'where';
+    const GROUP          = 'group';
+    const HAVING         = 'having';
+    const ORDER          = 'order';
+    const LIMIT_COUNT    = 'limitcount';
+    const LIMIT_OFFSET   = 'limitoffset';
+    const FOR_UPDATE     = 'forupdate';
+
+    const INNER_JOIN     = 'inner join';
+    const LEFT_JOIN      = 'left join';
+    const RIGHT_JOIN     = 'right join';
+    const FULL_JOIN      = 'full join';
+    const CROSS_JOIN     = 'cross join';
+    const NATURAL_JOIN   = 'natural join';
+
+    const SQL_WILDCARD   = '*';
+    const SQL_SELECT     = 'SELECT';
+    const SQL_UNION      = 'UNION';
+    const SQL_UNION_ALL  = 'UNION ALL';
+    const SQL_FROM       = 'FROM';
+    const SQL_WHERE      = 'WHERE';
+    const SQL_DISTINCT   = 'DISTINCT';
+    const SQL_GROUP_BY   = 'GROUP BY';
+    const SQL_ORDER_BY   = 'ORDER BY';
+    const SQL_HAVING     = 'HAVING';
+    const SQL_FOR_UPDATE = 'FOR UPDATE';
+    const SQL_AND        = 'AND';
+    const SQL_AS         = 'AS';
+    const SQL_OR         = 'OR';
+    const SQL_ON         = 'ON';
+    const SQL_ASC        = 'ASC';
+    const SQL_DESC       = 'DESC';
+
+    /**
+     * Bind variables for query
+     *
+     * @var array
+     */
+    protected $_bind = array();
+
+    /**
+     * Zend_Db_Adapter_Abstract object.
+     *
+     * @var Zend_Db_Adapter_Abstract
+     */
+    protected $_adapter;
+
+    /**
+     * The initial values for the $_parts array.
+     * NOTE: It is important for the 'FOR_UPDATE' part to be last to ensure
+     * meximum compatibility with database adapters.
+     *
+     * @var array
+     */
+    protected static $_partsInit = array(
+        self::DISTINCT     => false,
+        self::COLUMNS      => array(),
+        self::UNION        => array(),
+        self::FROM         => array(),
+        self::WHERE        => array(),
+        self::GROUP        => array(),
+        self::HAVING       => array(),
+        self::ORDER        => array(),
+        self::LIMIT_COUNT  => null,
+        self::LIMIT_OFFSET => null,
+        self::FOR_UPDATE   => false
+    );
+
+    /**
+     * Specify legal join types.
+     *
+     * @var array
+     */
+    protected static $_joinTypes = array(
+        self::INNER_JOIN,
+        self::LEFT_JOIN,
+        self::RIGHT_JOIN,
+        self::FULL_JOIN,
+        self::CROSS_JOIN,
+        self::NATURAL_JOIN,
+    );
+
+    /**
+     * Specify legal union types.
+     *
+     * @var array
+     */
+    protected static $_unionTypes = array(
+        self::SQL_UNION,
+        self::SQL_UNION_ALL
+    );
+
+    /**
+     * The component parts of a SELECT statement.
+     * Initialized to the $_partsInit array in the constructor.
+     *
+     * @var array
+     */
+    protected $_parts = array();
+
+    /**
+     * Tracks which columns are being select from each table and join.
+     *
+     * @var array
+     */
+    protected $_tableCols = array();
+
+    /**
+     * Class constructor
+     *
+     * @param Zend_Db_Adapter_Abstract $adapter
+     */
+    public function __construct(Zend_Db_Adapter_Abstract $adapter)
+    {
+        $this->_adapter = $adapter;
+        $this->_parts = self::$_partsInit;
+    }
+
+    /**
+     * Get bind variables
+     *
+     * @return array
+     */
+    public function getBind()
+    {
+        return $this->_bind;
+    }
+
+    /**
+     * Set bind variables
+     *
+     * @param mixed $bind
+     * @return Zend_Db_Select
+     */
+    public function bind($bind)
+    {
+        $this->_bind = $bind;
+
+        return $this;
+    }
+
+    /**
+     * Makes the query SELECT DISTINCT.
+     *
+     * @param bool $flag Whether or not the SELECT is DISTINCT (default true).
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function distinct($flag = true)
+    {
+        $this->_parts[self::DISTINCT] = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Adds a FROM table and optional columns to the query.
+     *
+     * The first parameter $name can be a simple string, in which case the
+     * correlation name is generated automatically.  If you want to specify
+     * the correlation name, the first parameter must be an associative
+     * array in which the key is the correlation name, and the value is
+     * the physical table name.  For example, array('alias' => 'table').
+     * The correlation name is prepended to all columns fetched for this
+     * table.
+     *
+     * The second parameter can be a single string or Zend_Db_Expr object,
+     * or else an array of strings or Zend_Db_Expr objects.
+     *
+     * The first parameter can be null or an empty string, in which case
+     * no correlation name is generated or prepended to the columns named
+     * in the second parameter.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name or an associative array
+     *                                         relating correlation name to table name.
+     * @param  array|string|Zend_Db_Expr $cols The columns to select from this table.
+     * @param  string $schema The schema name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function from($name, $cols = '*', $schema = null)
+    {
+        return $this->_join(self::FROM, $name, null, $cols, $schema);
+    }
+
+    /**
+     * Specifies the columns used in the FROM clause.
+     *
+     * The parameter can be a single string or Zend_Db_Expr object,
+     * or else an array of strings or Zend_Db_Expr objects.
+     *
+     * @param  array|string|Zend_Db_Expr $cols The columns to select from this table.
+     * @param  string $correlationName Correlation name of target table. OPTIONAL
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function columns($cols = '*', $correlationName = null)
+    {
+        if ($correlationName === null && count($this->_parts[self::FROM])) {
+            $correlationNameKeys = array_keys($this->_parts[self::FROM]);
+            $correlationName = current($correlationNameKeys);
+        }
+
+        if (!array_key_exists($correlationName, $this->_parts[self::FROM])) {
+            /**
+             * @see Zend_Db_Select_Exception
+             */
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("No table has been specified for the FROM clause");
+        }
+
+        $this->_tableCols($correlationName, $cols);
+
+        return $this;
+    }
+
+    /**
+     * Adds a UNION clause to the query.
+     *
+     * The first parameter has to be an array of Zend_Db_Select or
+     * sql query strings.
+     *
+     * <code>
+     * $sql1 = $db->select();
+     * $sql2 = "SELECT ...";
+     * $select = $db->select()
+     *      ->union(array($sql1, $sql2))
+     *      ->order("id");
+     * </code>
+     *
+     * @param  array $select Array of select clauses for the union.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function union($select = array(), $type = self::SQL_UNION)
+    {
+        if (!is_array($select)) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception(
+                "union() only accepts an array of Zend_Db_Select instances of sql query strings."
+            );
+        }
+
+        if (!in_array($type, self::$_unionTypes)) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("Invalid union type '{$type}'");
+        }
+
+        foreach ($select as $target) {
+            $this->_parts[self::UNION][] = array($target, $type);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Adds a JOIN table and columns to the query.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function join($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->joinInner($name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Add an INNER JOIN table and colums to the query
+     * Rows in both tables are matched according to the expression
+     * in the $cond argument.  The result set is comprised
+     * of all cases where rows from the left table match
+     * rows from the right table.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinInner($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::INNER_JOIN, $name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Add a LEFT OUTER JOIN table and colums to the query
+     * All rows from the left operand table are included,
+     * matching rows from the right operand table included,
+     * and the columns from the right operand table are filled
+     * with NULLs if no row exists matching the left table.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinLeft($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::LEFT_JOIN, $name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Add a RIGHT OUTER JOIN table and colums to the query.
+     * Right outer join is the complement of left outer join.
+     * All rows from the right operand table are included,
+     * matching rows from the left operand table included,
+     * and the columns from the left operand table are filled
+     * with NULLs if no row exists matching the right table.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinRight($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::RIGHT_JOIN, $name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Add a FULL OUTER JOIN table and colums to the query.
+     * A full outer join is like combining a left outer join
+     * and a right outer join.  All rows from both tables are
+     * included, paired with each other on the same row of the
+     * result set if they satisfy the join condition, and otherwise
+     * paired with NULLs in place of columns from the other table.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinFull($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::FULL_JOIN, $name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Add a CROSS JOIN table and colums to the query.
+     * A cross join is a cartesian product; there is no join condition.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinCross($name, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::CROSS_JOIN, $name, null, $cols, $schema);
+    }
+
+    /**
+     * Add a NATURAL JOIN table and colums to the query.
+     * A natural join assumes an equi-join across any column(s)
+     * that appear with the same name in both tables.
+     * Only natural inner joins are supported by this API,
+     * even though SQL permits natural outer joins as well.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinNatural($name, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::NATURAL_JOIN, $name, null, $cols, $schema);
+    }
+
+    /**
+     * Adds a WHERE condition to the query by AND.
+     *
+     * If a value is passed as the second param, it will be quoted
+     * and replaced into the condition wherever a question-mark
+     * appears. Array values are quoted and comma-separated.
+     *
+     * <code>
+     * // simplest but non-secure
+     * $select->where("id = $id");
+     *
+     * // secure (ID is quoted but matched anyway)
+     * $select->where('id = ?', $id);
+     *
+     * // alternatively, with named binding
+     * $select->where('id = :id');
+     * </code>
+     *
+     * Note that it is more correct to use named bindings in your
+     * queries for values other than strings. When you use named
+     * bindings, don't forget to pass the values when actually
+     * making a query:
+     *
+     * <code>
+     * $db->fetchAll($select, array('id' => 5));
+     * </code>
+     *
+     * @param string   $cond  The WHERE condition.
+     * @param mixed    $value OPTIONAL The value to quote into the condition.
+     * @param int      $type  OPTIONAL The type of the given value
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function where($cond, $value = null, $type = null)
+    {
+        $this->_parts[self::WHERE][] = $this->_where($cond, $value, $type, true);
+
+        return $this;
+    }
+
+    /**
+     * Adds a WHERE condition to the query by OR.
+     *
+     * Otherwise identical to where().
+     *
+     * @param string   $cond  The WHERE condition.
+     * @param mixed    $value OPTIONAL The value to quote into the condition.
+     * @param int      $type  OPTIONAL The type of the given value
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     *
+     * @see where()
+     */
+    public function orWhere($cond, $value = null, $type = null)
+    {
+        $this->_parts[self::WHERE][] = $this->_where($cond, $value, $type, false);
+
+        return $this;
+    }
+
+    /**
+     * Adds grouping to the query.
+     *
+     * @param  array|string $spec The column(s) to group by.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function group($spec)
+    {
+        if (!is_array($spec)) {
+            $spec = array($spec);
+        }
+
+        foreach ($spec as $val) {
+            if (preg_match('/\(.*\)/', (string) $val)) {
+                $val = new Zend_Db_Expr($val);
+            }
+            $this->_parts[self::GROUP][] = $val;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Adds a HAVING condition to the query by AND.
+     *
+     * If a value is passed as the second param, it will be quoted
+     * and replaced into the condition wherever a question-mark
+     * appears. See {@link where()} for an example
+     *
+     * @param string $cond The HAVING condition.
+     * @param mixed    $value OPTIONAL The value to quote into the condition.
+     * @param int      $type  OPTIONAL The type of the given value
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function having($cond, $value = null, $type = null)
+    {
+        if ($value !== null) {
+            $cond = $this->_adapter->quoteInto($cond, $value, $type);
+        }
+
+        if ($this->_parts[self::HAVING]) {
+            $this->_parts[self::HAVING][] = self::SQL_AND . " ($cond)";
+        } else {
+            $this->_parts[self::HAVING][] = "($cond)";
+        }
+
+        return $this;
+    }
+
+    /**
+     * Adds a HAVING condition to the query by OR.
+     *
+     * Otherwise identical to orHaving().
+     *
+     * @param string $cond The HAVING condition.
+     * @param mixed    $value OPTIONAL The value to quote into the condition.
+     * @param int      $type  OPTIONAL The type of the given value
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     *
+     * @see having()
+     */
+    public function orHaving($cond, $value = null, $type = null)
+    {
+        if ($value !== null) {
+            $cond = $this->_adapter->quoteInto($cond, $value, $type);
+        }
+
+        if ($this->_parts[self::HAVING]) {
+            $this->_parts[self::HAVING][] = self::SQL_OR . " ($cond)";
+        } else {
+            $this->_parts[self::HAVING][] = "($cond)";
+        }
+
+        return $this;
+    }
+
+    /**
+     * Adds a row order to the query.
+     *
+     * @param mixed $spec The column(s) and direction to order by.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function order($spec)
+    {
+        if (!is_array($spec)) {
+            $spec = array($spec);
+        }
+
+        // force 'ASC' or 'DESC' on each order spec, default is ASC.
+        foreach ($spec as $val) {
+            if ($val instanceof Zend_Db_Expr) {
+                $expr = $val->__toString();
+                if (empty($expr)) {
+                    continue;
+                }
+                $this->_parts[self::ORDER][] = $val;
+            } else {
+                if (empty($val)) {
+                    continue;
+                }
+                $direction = self::SQL_ASC;
+                if (preg_match('/(.*\W)(' . self::SQL_ASC . '|' . self::SQL_DESC . ')\b/si', $val, $matches)) {
+                    $val = trim($matches[1]);
+                    $direction = $matches[2];
+                }
+                if (preg_match('/\(.*\)/', $val)) {
+                    $val = new Zend_Db_Expr($val);
+                }
+                $this->_parts[self::ORDER][] = array($val, $direction);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets a limit count and offset to the query.
+     *
+     * @param int $count OPTIONAL The number of rows to return.
+     * @param int $offset OPTIONAL Start returning after this many rows.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function limit($count = null, $offset = null)
+    {
+        $this->_parts[self::LIMIT_COUNT]  = (int) $count;
+        $this->_parts[self::LIMIT_OFFSET] = (int) $offset;
+        return $this;
+    }
+
+    /**
+     * Sets the limit and count by page number.
+     *
+     * @param int $page Limit results to this page number.
+     * @param int $rowCount Use this many rows per page.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function limitPage($page, $rowCount)
+    {
+        $page     = ($page > 0)     ? $page     : 1;
+        $rowCount = ($rowCount > 0) ? $rowCount : 1;
+        $this->_parts[self::LIMIT_COUNT]  = (int) $rowCount;
+        $this->_parts[self::LIMIT_OFFSET] = (int) $rowCount * ($page - 1);
+        return $this;
+    }
+
+    /**
+     * Makes the query SELECT FOR UPDATE.
+     *
+     * @param bool $flag Whether or not the SELECT is FOR UPDATE (default true).
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function forUpdate($flag = true)
+    {
+        $this->_parts[self::FOR_UPDATE] = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Get part of the structured information for the currect query.
+     *
+     * @param string $part
+     * @return mixed
+     * @throws Zend_Db_Select_Exception
+     */
+    public function getPart($part)
+    {
+        $part = strtolower($part);
+        if (!array_key_exists($part, $this->_parts)) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("Invalid Select part '$part'");
+        }
+        return $this->_parts[$part];
+    }
+
+    /**
+     * Executes the current select object and returns the result
+     *
+     * @param integer $fetchMode OPTIONAL
+     * @param  mixed  $bind An array of data to bind to the placeholders.
+     * @return PDO_Statement|Zend_Db_Statement
+     */
+    public function query($fetchMode = null, $bind = array())
+    {
+        if (!empty($bind)) {
+            $this->bind($bind);
+        }
+
+        $stmt = $this->_adapter->query($this);
+        if ($fetchMode == null) {
+            $fetchMode = $this->_adapter->getFetchMode();
+        }
+        $stmt->setFetchMode($fetchMode);
+        return $stmt;
+    }
+
+    /**
+     * Converts this object to an SQL SELECT string.
+     *
+     * @return string|null This object as a SELECT string. (or null if a string cannot be produced.)
+     */
+    public function assemble()
+    {
+        $sql = self::SQL_SELECT;
+        foreach (array_keys(self::$_partsInit) as $part) {
+            $method = '_render' . ucfirst($part);
+            if (method_exists($this, $method)) {
+                $sql = $this->$method($sql);
+            }
+        }
+        return $sql;
+    }
+
+    /**
+     * Clear parts of the Select object, or an individual part.
+     *
+     * @param string $part OPTIONAL
+     * @return Zend_Db_Select
+     */
+    public function reset($part = null)
+    {
+        if ($part == null) {
+            $this->_parts = self::$_partsInit;
+        } else if (array_key_exists($part, self::$_partsInit)) {
+            $this->_parts[$part] = self::$_partsInit[$part];
+        }
+        return $this;
+    }
+
+    /**
+     * Gets the Zend_Db_Adapter_Abstract for this
+     * particular Zend_Db_Select object.
+     *
+     * @return Zend_Db_Adapter_Abstract
+     */
+    public function getAdapter()
+    {
+        return $this->_adapter;
+    }
+
+    /**
+     * Populate the {@link $_parts} 'join' key
+     *
+     * Does the dirty work of populating the join key.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  null|string $type Type of join; inner, left, and null are currently supported
+     * @param  array|string|Zend_Db_Expr $name Table name
+     * @param  string $cond Join on this condition
+     * @param  array|string $cols The columns to select from the joined table
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object
+     * @throws Zend_Db_Select_Exception
+     */
+    protected function _join($type, $name, $cond, $cols, $schema = null)
+    {
+        if (!in_array($type, self::$_joinTypes) && $type != self::FROM) {
+            /**
+             * @see Zend_Db_Select_Exception
+             */
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("Invalid join type '$type'");
+        }
+
+        if (count($this->_parts[self::UNION])) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("Invalid use of table with " . self::SQL_UNION);
+        }
+
+        if (empty($name)) {
+            $correlationName = $tableName = '';
+        } else if (is_array($name)) {
+            // Must be array($correlationName => $tableName) or array($ident, ...)
+            foreach ($name as $_correlationName => $_tableName) {
+                if (is_string($_correlationName)) {
+                    // We assume the key is the correlation name and value is the table name
+                    $tableName = $_tableName;
+                    $correlationName = $_correlationName;
+                } else {
+                    // We assume just an array of identifiers, with no correlation name
+                    $tableName = $_tableName;
+                    $correlationName = $this->_uniqueCorrelation($tableName);
+                }
+                break;
+            }
+        } else if ($name instanceof Zend_Db_Expr|| $name instanceof Zend_Db_Select) {
+            $tableName = $name;
+            $correlationName = $this->_uniqueCorrelation('t');
+        } else if (preg_match('/^(.+)\s+AS\s+(.+)$/i', $name, $m)) {
+            $tableName = $m[1];
+            $correlationName = $m[2];
+        } else {
+            $tableName = $name;
+            $correlationName = $this->_uniqueCorrelation($tableName);
+        }
+
+        // Schema from table name overrides schema argument
+        if (!is_object($tableName) && false !== strpos($tableName, '.')) {
+            list($schema, $tableName) = explode('.', $tableName);
+        }
+
+        $lastFromCorrelationName = null;
+        if (!empty($correlationName)) {
+            if (array_key_exists($correlationName, $this->_parts[self::FROM])) {
+                /**
+                 * @see Zend_Db_Select_Exception
+                 */
+                require_once 'Zend/Db/Select/Exception.php';
+                throw new Zend_Db_Select_Exception("You cannot define a correlation name '$correlationName' more than once");
+            }
+
+            if ($type == self::FROM) {
+                // append this from after the last from joinType
+                $tmpFromParts = $this->_parts[self::FROM];
+                $this->_parts[self::FROM] = array();
+                // move all the froms onto the stack
+                while ($tmpFromParts) {
+                    $currentCorrelationName = key($tmpFromParts);
+                    if ($tmpFromParts[$currentCorrelationName]['joinType'] != self::FROM) {
+                        break;
+                    }
+                    $lastFromCorrelationName = $currentCorrelationName;
+                    $this->_parts[self::FROM][$currentCorrelationName] = array_shift($tmpFromParts);
+                }
+            } else {
+                $tmpFromParts = array();
+            }
+            $this->_parts[self::FROM][$correlationName] = array(
+                'joinType'      => $type,
+                'schema'        => $schema,
+                'tableName'     => $tableName,
+                'joinCondition' => $cond
+                );
+            while ($tmpFromParts) {
+                $currentCorrelationName = key($tmpFromParts);
+                $this->_parts[self::FROM][$currentCorrelationName] = array_shift($tmpFromParts);
+            }
+        }
+
+        // add to the columns from this joined table
+        if ($type == self::FROM && $lastFromCorrelationName == null) {
+            $lastFromCorrelationName = true;
+        }
+        $this->_tableCols($correlationName, $cols, $lastFromCorrelationName);
+
+        return $this;
+    }
+
+    /**
+     * Handle JOIN... USING... syntax
+     *
+     * This is functionality identical to the existing JOIN methods, however
+     * the join condition can be passed as a single column name. This method
+     * then completes the ON condition by using the same field for the FROM
+     * table and the JOIN table.
+     *
+     * <code>
+     * $select = $db->select()->from('table1')
+     *                        ->joinUsing('table2', 'column1');
+     *
+     * // SELECT * FROM table1 JOIN table2 ON table1.column1 = table2.column2
+     * </code>
+     *
+     * These joins are called by the developer simply by adding 'Using' to the
+     * method name. E.g.
+     * * joinUsing
+     * * joinInnerUsing
+     * * joinFullUsing
+     * * joinRightUsing
+     * * joinLeftUsing
+     *
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function _joinUsing($type, $name, $cond, $cols = '*', $schema = null)
+    {
+        if (empty($this->_parts[self::FROM])) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("You can only perform a joinUsing after specifying a FROM table");
+        }
+
+        $join  = $this->_adapter->quoteIdentifier(key($this->_parts[self::FROM]), true);
+        $from  = $this->_adapter->quoteIdentifier($this->_uniqueCorrelation($name), true);
+
+        $cond1 = $from . '.' . $cond;
+        $cond2 = $join . '.' . $cond;
+        $cond  = $cond1 . ' = ' . $cond2;
+
+        return $this->_join($type, $name, $cond, $cols, $schema);
+    }
+
+    /**
+     * Generate a unique correlation name
+     *
+     * @param string|array $name A qualified identifier.
+     * @return string A unique correlation name.
+     */
+    private function _uniqueCorrelation($name)
+    {
+        if (is_array($name)) {
+            $c = end($name);
+        } else {
+            // Extract just the last name of a qualified table name
+            $dot = strrpos($name,'.');
+            $c = ($dot === false) ? $name : substr($name, $dot+1);
+        }
+        for ($i = 2; array_key_exists($c, $this->_parts[self::FROM]); ++$i) {
+            $c = $name . '_' . (string) $i;
+        }
+        return $c;
+    }
+
+    /**
+     * Adds to the internal table-to-column mapping array.
+     *
+     * @param  string $tbl The table/join the columns come from.
+     * @param  array|string $cols The list of columns; preferably as
+     * an array, but possibly as a string containing one column.
+     * @param  bool|string True if it should be prepended, a correlation name if it should be inserted
+     * @return void
+     */
+    protected function _tableCols($correlationName, $cols, $afterCorrelationName = null)
+    {
+        if (!is_array($cols)) {
+            $cols = array($cols);
+        }
+
+        if ($correlationName == null) {
+            $correlationName = '';
+        }
+
+        $columnValues = array();
+
+        foreach (array_filter($cols) as $alias => $col) {
+            $currentCorrelationName = $correlationName;
+            if (is_string($col)) {
+                // Check for a column matching "<column> AS <alias>" and extract the alias name
+                if (preg_match('/^(.+)\s+' . self::SQL_AS . '\s+(.+)$/i', $col, $m)) {
+                    $col = $m[1];
+                    $alias = $m[2];
+                }
+                // Check for columns that look like functions and convert to Zend_Db_Expr
+                if (preg_match('/\(.*\)/', $col)) {
+                    $col = new Zend_Db_Expr($col);
+                } elseif (preg_match('/(.+)\.(.+)/', $col, $m)) {
+                    $currentCorrelationName = $m[1];
+                    $col = $m[2];
+                }
+            }
+            $columnValues[] = array($currentCorrelationName, $col, is_string($alias) ? $alias : null);
+        }
+
+        if ($columnValues) {
+
+            // should we attempt to prepend or insert these values?
+            if ($afterCorrelationName === true || is_string($afterCorrelationName)) {
+                $tmpColumns = $this->_parts[self::COLUMNS];
+                $this->_parts[self::COLUMNS] = array();
+            } else {
+                $tmpColumns = array();
+            }
+
+            // find the correlation name to insert after
+            if (is_string($afterCorrelationName)) {
+                while ($tmpColumns) {
+                    $this->_parts[self::COLUMNS][] = $currentColumn = array_shift($tmpColumns);
+                    if ($currentColumn[0] == $afterCorrelationName) {
+                        break;
+                    }
+                }
+            }
+
+            // apply current values to current stack
+            foreach ($columnValues as $columnValue) {
+                array_push($this->_parts[self::COLUMNS], $columnValue);
+            }
+
+            // finish ensuring that all previous values are applied (if they exist)
+            while ($tmpColumns) {
+                array_push($this->_parts[self::COLUMNS], array_shift($tmpColumns));
+            }
+        }
+    }
+
+    /**
+     * Internal function for creating the where clause
+     *
+     * @param string   $condition
+     * @param mixed    $value  optional
+     * @param string   $type   optional
+     * @param boolean  $bool  true = AND, false = OR
+     * @return string  clause
+     */
+    protected function _where($condition, $value = null, $type = null, $bool = true)
+    {
+        if (count($this->_parts[self::UNION])) {
+            require_once 'Zend/Db/Select/Exception.php';
+            throw new Zend_Db_Select_Exception("Invalid use of where clause with " . self::SQL_UNION);
+        }
+
+        if ($value !== null) {
+            $condition = $this->_adapter->quoteInto($condition, $value, $type);
+        }
+
+        $cond = "";
+        if ($this->_parts[self::WHERE]) {
+            if ($bool === true) {
+                $cond = self::SQL_AND . ' ';
+            } else {
+                $cond = self::SQL_OR . ' ';
+            }
+        }
+
+        return $cond . "($condition)";
+    }
+
+    /**
+     * @return array
+     */
+    protected function _getDummyTable()
+    {
+        return array();
+    }
+
+    /**
+     * Return a quoted schema name
+     *
+     * @param string   $schema  The schema name OPTIONAL
+     * @return string|null
+     */
+    protected function _getQuotedSchema($schema = null)
+    {
+        if ($schema === null) {
+            return null;
+        }
+        return $this->_adapter->quoteIdentifier($schema, true) . '.';
+    }
+
+    /**
+     * Return a quoted table name
+     *
+     * @param string   $tableName        The table name
+     * @param string   $correlationName  The correlation name OPTIONAL
+     * @return string
+     */
+    protected function _getQuotedTable($tableName, $correlationName = null)
+    {
+        return $this->_adapter->quoteTableAs($tableName, $correlationName, true);
+    }
+
+    /**
+     * Render DISTINCT clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderDistinct($sql)
+    {
+        if ($this->_parts[self::DISTINCT]) {
+            $sql .= ' ' . self::SQL_DISTINCT;
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render DISTINCT clause
+     *
+     * @param string   $sql SQL query
+     * @return string|null
+     */
+    protected function _renderColumns($sql)
+    {
+        if (!count($this->_parts[self::COLUMNS])) {
+            return null;
+        }
+
+        $columns = array();
+        foreach ($this->_parts[self::COLUMNS] as $columnEntry) {
+            list($correlationName, $column, $alias) = $columnEntry;
+            if ($column instanceof Zend_Db_Expr) {
+                $columns[] = $this->_adapter->quoteColumnAs($column, $alias, true);
+            } else {
+                if ($column == self::SQL_WILDCARD) {
+                    $column = new Zend_Db_Expr(self::SQL_WILDCARD);
+                    $alias = null;
+                }
+                if (empty($correlationName)) {
+                    $columns[] = $this->_adapter->quoteColumnAs($column, $alias, true);
+                } else {
+                    $columns[] = $this->_adapter->quoteColumnAs(array($correlationName, $column), $alias, true);
+                }
+            }
+        }
+
+        return $sql .= ' ' . implode(', ', $columns);
+    }
+
+    /**
+     * Render FROM clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderFrom($sql)
+    {
+        /*
+         * If no table specified, use RDBMS-dependent solution
+         * for table-less query.  e.g. DUAL in Oracle.
+         */
+        if (empty($this->_parts[self::FROM])) {
+            $this->_parts[self::FROM] = $this->_getDummyTable();
+        }
+
+        $from = array();
+
+        foreach ($this->_parts[self::FROM] as $correlationName => $table) {
+            $tmp = '';
+
+            $joinType = ($table['joinType'] == self::FROM) ? self::INNER_JOIN : $table['joinType'];
+
+            // Add join clause (if applicable)
+            if (! empty($from)) {
+                $tmp .= ' ' . strtoupper($joinType) . ' ';
+            }
+
+            $tmp .= $this->_getQuotedSchema($table['schema']);
+            $tmp .= $this->_getQuotedTable($table['tableName'], $correlationName);
+
+            // Add join conditions (if applicable)
+            if (!empty($from) && ! empty($table['joinCondition'])) {
+                $tmp .= ' ' . self::SQL_ON . ' ' . $table['joinCondition'];
+            }
+
+            // Add the table name and condition add to the list
+            $from[] = $tmp;
+        }
+
+        // Add the list of all joins
+        if (!empty($from)) {
+            $sql .= ' ' . self::SQL_FROM . ' ' . implode("\n", $from);
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render UNION query
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderUnion($sql)
+    {
+        if ($this->_parts[self::UNION]) {
+            $parts = count($this->_parts[self::UNION]);
+            foreach ($this->_parts[self::UNION] as $cnt => $union) {
+                list($target, $type) = $union;
+                if ($target instanceof Zend_Db_Select) {
+                    $target = $target->assemble();
+                }
+                $sql .= $target;
+                if ($cnt < $parts - 1) {
+                    $sql .= ' ' . $type . ' ';
+                }
+            }
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render WHERE clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderWhere($sql)
+    {
+        if ($this->_parts[self::FROM] && $this->_parts[self::WHERE]) {
+            $sql .= ' ' . self::SQL_WHERE . ' ' .  implode(' ', $this->_parts[self::WHERE]);
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render GROUP clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderGroup($sql)
+    {
+        if ($this->_parts[self::FROM] && $this->_parts[self::GROUP]) {
+            $group = array();
+            foreach ($this->_parts[self::GROUP] as $term) {
+                $group[] = $this->_adapter->quoteIdentifier($term, true);
+            }
+            $sql .= ' ' . self::SQL_GROUP_BY . ' ' . implode(",\n\t", $group);
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render HAVING clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderHaving($sql)
+    {
+        if ($this->_parts[self::FROM] && $this->_parts[self::HAVING]) {
+            $sql .= ' ' . self::SQL_HAVING . ' ' . implode(' ', $this->_parts[self::HAVING]);
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render ORDER clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderOrder($sql)
+    {
+        if ($this->_parts[self::ORDER]) {
+            $order = array();
+            foreach ($this->_parts[self::ORDER] as $term) {
+                if (is_array($term)) {
+                    if(is_numeric($term[0]) && strval(intval($term[0])) == $term[0]) {
+                        $order[] = (int)trim($term[0]) . ' ' . $term[1];
+                    } else {
+                        $order[] = $this->_adapter->quoteIdentifier($term[0], true) . ' ' . $term[1];
+                    }
+                } else if (is_numeric($term) && strval(intval($term)) == $term) {
+                    $order[] = (int)trim($term);
+                } else {
+                    $order[] = $this->_adapter->quoteIdentifier($term, true);
+                }
+            }
+            $sql .= ' ' . self::SQL_ORDER_BY . ' ' . implode(', ', $order);
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render LIMIT OFFSET clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderLimitoffset($sql)
+    {
+        $count = 0;
+        $offset = 0;
+
+        if (!empty($this->_parts[self::LIMIT_OFFSET])) {
+            $offset = (int) $this->_parts[self::LIMIT_OFFSET];
+            $count = PHP_INT_MAX;
+        }
+
+        if (!empty($this->_parts[self::LIMIT_COUNT])) {
+            $count = (int) $this->_parts[self::LIMIT_COUNT];
+        }
+
+        /*
+         * Add limits clause
+         */
+        if ($count > 0) {
+            $sql = trim($this->_adapter->limit($sql, $count, $offset));
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Render FOR UPDATE clause
+     *
+     * @param string   $sql SQL query
+     * @return string
+     */
+    protected function _renderForupdate($sql)
+    {
+        if ($this->_parts[self::FOR_UPDATE]) {
+            $sql .= ' ' . self::SQL_FOR_UPDATE;
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Turn magic function calls into non-magic function calls
+     * for joinUsing syntax
+     *
+     * @param string $method
+     * @param array $args OPTIONAL Zend_Db_Table_Select query modifier
+     * @return Zend_Db_Select
+     * @throws Zend_Db_Select_Exception If an invalid method is called.
+     */
+    public function __call($method, array $args)
+    {
+        $matches = array();
+
+        /**
+         * Recognize methods for Has-Many cases:
+         * findParent<Class>()
+         * findParent<Class>By<Rule>()
+         * Use the non-greedy pattern repeat modifier e.g. \w+?
+         */
+        if (preg_match('/^join([a-zA-Z]*?)Using$/', $method, $matches)) {
+            $type = strtolower($matches[1]);
+            if ($type) {
+                $type .= ' join';
+                if (!in_array($type, self::$_joinTypes)) {
+                    require_once 'Zend/Db/Select/Exception.php';
+                    throw new Zend_Db_Select_Exception("Unrecognized method '$method()'");
+                }
+                if (in_array($type, array(self::CROSS_JOIN, self::NATURAL_JOIN))) {
+                    require_once 'Zend/Db/Select/Exception.php';
+                    throw new Zend_Db_Select_Exception("Cannot perform a joinUsing with method '$method()'");
+                }
+            } else {
+                $type = self::INNER_JOIN;
+            }
+            array_unshift($args, $type);
+            return call_user_func_array(array($this, '_joinUsing'), $args);
+        }
+
+        require_once 'Zend/Db/Select/Exception.php';
+        throw new Zend_Db_Select_Exception("Unrecognized method '$method()'");
+    }
+
+    /**
+     * Implements magic method.
+     *
+     * @return string This object as a SELECT string.
+     */
+    public function __toString()
+    {
+        try {
+            $sql = $this->assemble();
+        } catch (Exception $e) {
+            trigger_error($e->getMessage(), E_USER_WARNING);
+            $sql = '';
+        }
+        return (string)$sql;
+    }
+
+}

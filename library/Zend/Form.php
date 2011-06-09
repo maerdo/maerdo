@@ -1,3393 +1,3393 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-
-php/php*php*php php@seephp Zendphp_Validatephp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Interfacephp.phpphp'php;
-
-php/php*php*
-php php*php Zendphp_Form
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Formphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
-classphp Zendphp_Formphp implementsphp Iteratorphp,php Countablephp,php Zendphp_Validatephp_Interface
-php{
-php php php php php/php*php*php#php@php+
-php php php php php php*php Pluginphp loaderphp typephp constants
-php php php php php php*php/
-php php php php constphp DECORATORphp php=php php'DECORATORphp'php;
-php php php php constphp ELEMENTphp php=php php'ELEMENTphp'php;
-php php php php php/php*php*php#php@php-php*php/
-
-php php php php php/php*php*php#php@php+
-php php php php php php*php Methodphp typephp constants
-php php php php php php*php/
-php php php php constphp METHODphp_DELETEphp php=php php'deletephp'php;
-php php php php constphp METHODphp_GETphp php php php php=php php'getphp'php;
-php php php php constphp METHODphp_POSTphp php php php=php php'postphp'php;
-php php php php constphp METHODphp_PUTphp php php php php=php php'putphp'php;
-php php php php php/php*php*php#php@php-php*php/
-
-php php php php php/php*php*php#php@php+
-php php php php php php*php Encodingphp typephp constants
-php php php php php php*php/
-php php php php constphp ENCTYPEphp_URLENCODEDphp php=php php'applicationphp/xphp-wwwphp-formphp-urlencodedphp'php;
-php php php php constphp ENCTYPEphp_MULTIPARTphp php php=php php'multipartphp/formphp-dataphp'php;
-php php php php php/php*php*php#php@php-php*php/
-
-php php php php php/php*php*
-php php php php php php*php Formphp metadataphp andphp attributes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_attribsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Decoratorsphp forphp rendering
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_decoratorsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Defaultphp displayphp groupphp class
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_defaultDisplayGroupClassphp php=php php'Zendphp_Formphp_DisplayGroupphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Formphp description
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_descriptionphp;
-
-php php php php php/php*php*
-php php php php php php*php Shouldphp wephp disablephp loadingphp thephp defaultphp decoratorsphp?
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_disableLoadDefaultDecoratorsphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Displayphp groupphp prefixphp paths
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_displayGroupPrefixPathsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Groupsphp ofphp elementsphp groupedphp forphp displayphp purposes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_displayGroupsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Globalphp decoratorsphp tophp applyphp tophp allphp elements
-php php php php php php*php php@varphp nullphp|array
-php php php php php php*php/
-php php php php protectedphp php$php_elementDecoratorsphp;
-
-php php php php php/php*php*
-php php php php php php*php Prefixphp pathsphp tophp usephp whenphp creatingphp elements
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_elementPrefixPathsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Formphp elements
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_elementsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Arrayphp tophp whichphp elementsphp belongphp php(ifphp anyphp)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_elementsBelongTophp;
-
-php php php php php/php*php*
-php php php php php php*php Customphp formphp-levelphp errorphp messages
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_errorMessagesphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Arephp therephp errorsphp inphp thephp formphp?
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_errorsExistphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Hasphp thephp formphp beenphp manuallyphp flaggedphp asphp anphp errorphp?
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_errorsForcedphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Formphp order
-php php php php php php*php php@varphp intphp|null
-php php php php php php*php/
-php php php php protectedphp php$php_formOrderphp;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp formphp elementsphp arephp membersphp ofphp anphp array
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_isArrayphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Formphp legend
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_legendphp;
-
-php php php php php/php*php*
-php php php php php php*php Pluginphp loaders
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_loadersphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Allowedphp formphp methods
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_methodsphp php=php arrayphp(php'deletephp'php,php php'getphp'php,php php'postphp'php,php php'putphp'php)php;
-
-php php php php php/php*php*
-php php php php php php*php Orderphp inphp whichphp tophp displayphp andphp iteratephp elements
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_orderphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp internalphp orderphp hasphp beenphp updatedphp orphp not
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_orderUpdatedphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Subphp formphp prefixphp paths
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_subFormPrefixPathsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Subphp forms
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_subFormsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Translate
-php php php php php php*php/
-php php php php protectedphp php$php_translatorphp;
-
-php php php php php/php*php*
-php php php php php php*php Globalphp defaultphp translationphp adapter
-php php php php php php*php php@varphp Zendphp_Translate
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_translatorDefaultphp;
-
-php php php php php/php*php*
-php php php php php php*php isphp thephp translatorphp disabledphp?
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_translatorDisabledphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Viewphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_viewphp;
-
-php php php php php/php*php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_isRenderedphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Registersphp formphp viewphp helperphp asphp decorator
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$optionsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Extensionsphp.php.php.
-php php php php php php php php php$thisphp-php>initphp(php)php;
-
-php php php php php php php php php$thisphp-php>loadDefaultDecoratorsphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clonephp formphp objectphp andphp allphp children
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_clonephp(php)
-php php php php php{
-php php php php php php php php php$elementsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$namephp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$elementsphp[php]php php=php clonephp php$elementphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setElementsphp(php$elementsphp)php;
-
-php php php php php php php php php$subFormsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$namephp php=php>php php$subFormphp)php php{
-php php php php php php php php php php php php php$subFormsphp[php$namephp]php php=php clonephp php$subFormphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setSubFormsphp(php$subFormsphp)php;
-
-php php php php php php php php php$displayGroupsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_displayGroupsphp asphp php$groupphp)php php php{
-php php php php php php php php php php php php php$clonephp php php php php=php clonephp php$groupphp;
-php php php php php php php php php php php php php$elementsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$clonephp-php>getElementsphp(php)php asphp php$namephp php=php>php php$ephp)php php{
-php php php php php php php php php php php php php php php php php$elementsphp[php]php php=php php$thisphp-php>getElementphp(php$namephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$clonephp-php>setElementsphp(php$elementsphp)php;
-php php php php php php php php php php php php php$displayGroupsphp[php]php php=php php$clonephp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setDisplayGroupsphp(php$displayGroupsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Resetphp valuesphp ofphp form
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp resetphp(php)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php$elementphp-php>setValuephp(nullphp)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$subFormphp)php php{
-php php php php php php php php php php php php php$subFormphp-php>resetphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Initializephp formphp php(usedphp byphp extendingphp classesphp)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp initphp(php)
-php php php php php{
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp statephp fromphp optionsphp array
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'prefixPathphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addPrefixPathsphp(php$optionsphp[php'prefixPathphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'prefixPathphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'elementPrefixPathphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addElementPrefixPathsphp(php$optionsphp[php'elementPrefixPathphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'elementPrefixPathphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'displayGroupPrefixPathphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDisplayGroupPrefixPathsphp(php$optionsphp[php'displayGroupPrefixPathphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'displayGroupPrefixPathphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'elementDecoratorsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_elementDecoratorsphp php=php php$optionsphp[php'elementDecoratorsphp'php]php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'elementDecoratorsphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'elementsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setElementsphp(php$optionsphp[php'elementsphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'elementsphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'defaultDisplayGroupClassphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setDefaultDisplayGroupClassphp(php$optionsphp[php'defaultDisplayGroupClassphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'defaultDisplayGroupClassphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'displayGroupDecoratorsphp'php]php)php)php php{
-php php php php php php php php php php php php php$displayGroupDecoratorsphp php=php php$optionsphp[php'displayGroupDecoratorsphp'php]php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'displayGroupDecoratorsphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'elementsBelongTophp'php]php)php)php php{
-php php php php php php php php php php php php php$elementsBelongTophp php=php php$optionsphp[php'elementsBelongTophp'php]php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'elementsBelongTophp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'attribsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addAttribsphp(php$optionsphp[php'attribsphp'php]php)php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'attribsphp'php]php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$forbiddenphp php=php arrayphp(
-php php php php php php php php php php php php php'Optionsphp'php,php php'Configphp'php,php php'PluginLoaderphp'php,php php'SubFormsphp'php,php php'Translatorphp'php,
-php php php php php php php php php php php php php'Attribphp'php,php php'Defaultphp'php,
-php php php php php php php php php)php;
-
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$normalizedphp php=php ucfirstphp(php$keyphp)php;
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$normalizedphp,php php$forbiddenphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php php$normalizedphp;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp(php$normalizedphp php=php=php php'Viewphp'php php&php&php php!php(php$valuephp instanceofphp Zendphp_Viewphp_Interfacephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setAttribphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$displayGroupDecoratorsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setDisplayGroupDecoratorsphp(php$displayGroupDecoratorsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$elementsBelongTophp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setElementsBelongTophp(php$elementsBelongTophp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp statephp fromphp configphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(Zendphp_Configphp php$configphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setOptionsphp(php$configphp-php>toArrayphp(php)php)php;
-php php php php php}
-
-
-php php php php php/php/php Loaders
-
-php php php php php/php*php*
-php php php php php php*php Setphp pluginphp loadersphp forphp usephp withphp decoratorsphp andphp elements
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
-php php php php php php*php php@paramphp php stringphp php$typephp php'decoratorphp'php orphp php'elementphp'
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp onphp invalidphp type
-php php php php php php*php/
-php php php php publicphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
-php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
-php php php php php php php php php php php php casephp selfphp:php:ELEMENTphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php php$loaderphp;
-php php php php php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp setPluginLoaderphp(php)php'php,php php$typephp)php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp pluginphp loaderphp forphp givenphp type
-php php php php php php*
-php php php php php php*php php$typephp mayphp bephp onephp ofphp:
-php php php php php php*php php-php decorator
-php php php php php php*php php-php element
-php php php php php php*
-php php php php php php*php Ifphp aphp pluginphp loaderphp doesphp notphp existphp forphp thephp givenphp typephp,php defaultsphp are
-php php php php php php*php createdphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoaderphp_Interface
-php php php php php php*php/
-php php php php publicphp functionphp getPluginLoaderphp(php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_loadersphp[php$typephp]php)php)php php{
-php php php php php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
-php php php php php php php php php php php php php php php php php php php php php$prefixSegmentphp php=php php'Formphp_Decoratorphp'php;
-php php php php php php php php php php php php php php php php php php php php php$pathSegmentphp php php php=php php'Formphp/Decoratorphp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp selfphp:php:ELEMENTphp:
-php php php php php php php php php php php php php php php php php php php php php$prefixSegmentphp php=php php'Formphp_Elementphp'php;
-php php php php php php php php php php php php php php php php php php php php php$pathSegmentphp php php php=php php'Formphp/Elementphp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp getPluginLoaderphp(php)php'php,php php$typephp)php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php newphp Zendphp_Loaderphp_PluginLoaderphp(
-php php php php php php php php php php php php php php php php arrayphp(php'Zendphp_php'php php.php php$prefixSegmentphp php.php php'php_php'php php=php>php php'Zendphp/php'php php.php php$pathSegmentphp php.php php'php/php'php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_loadersphp[php$typephp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp pluginphp loader
-php php php php php php*
-php php php php php php*php Ifphp nophp php$typephp specifiedphp,php assumesphp itphp isphp aphp basephp pathphp forphp bothphp filtersphp and
-php php php php php php*php validatorsphp,php andphp setsphp eachphp accordingphp tophp thephp followingphp rulesphp:
-php php php php php php*php php-php decoratorsphp:php php$prefixphp php=php php$prefixphp php.php php'php_Decoratorphp'
-php php php php php php*php php-php elementsphp:php php$prefixphp php=php php$prefixphp php.php php'php_Elementphp'
-php php php php php php*
-php php php php php php*php Otherwisephp,php thephp pathphp prefixphp isphp setphp onphp thephp appropriatephp pluginphp loaderphp.
-php php php php php php*
-php php php php php php*php Ifphp php$typephp isphp php'decoratorphp'php,php setsphp thephp pathphp inphp thephp decoratorphp pluginphp loader
-php php php php php php*php forphp allphp elementsphp.php Additionallyphp,php ifphp nophp php$typephp isphp providedphp,
-php php php php php php*php thephp prefixphp andphp pathphp isphp addedphp tophp bothphp decoratorphp andphp element
-php php php php php php*php pluginphp loaderphp withphp followingphp settingsphp:
-php php php php php php*php php$prefixphp php.php php'php_Decoratorphp'php,php php$pathphp php.php php'php/Decoratorphp/php'
-php php php php php php*php php$prefixphp php.php php'php_Elementphp'php,php php$pathphp php.php php'php/Elementphp/php'
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp type
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
-php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php casephp selfphp:php:DECORATORphp:
-php php php php php php php php php php php php casephp selfphp:php:ELEMENTphp:
-php php php php php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
-php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php php php php casephp nullphp:
-php php php php php php php php php php php php php php php php php$prefixphp php=php rtrimphp(php$prefixphp,php php'php_php'php)php;
-php php php php php php php php php php php php php php php php php$pathphp php php php=php rtrimphp(php$pathphp,php DIRECTORYphp_SEPARATORphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(arrayphp(selfphp:php:DECORATORphp,php selfphp:php:ELEMENTphp)php asphp php$typephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$cTypephp php php php php php php php php=php ucfirstphp(strtolowerphp(php$typephp)php)php;
-php php php php php php php php php php php php php php php php php php php php php$pluginPathphp php php php=php php$pathphp php.php DIRECTORYphp_SEPARATORphp php.php php$cTypephp php.php DIRECTORYphp_SEPARATORphp;
-php php php php php php php php php php php php php php php php php php php php php$pluginPrefixphp php=php php$prefixphp php.php php'php_php'php php.php php$cTypephp;
-php php php php php php php php php php php php php php php php php php php php php$loaderphp php php php php php php php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
-php php php php php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$pluginPrefixphp,php php$pluginPathphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Invalidphp typephp php"php%sphp"php providedphp tophp getPluginLoaderphp(php)php'php,php php$typephp)php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp manyphp prefixphp pathsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$spec
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathsphp(arrayphp php$specphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$specphp[php'prefixphp'php]php)php php&php&php issetphp(php$specphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>addPrefixPathphp(php$specphp[php'prefixphp'php]php,php php$specphp[php'pathphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$specphp asphp php$typephp php=php>php php$pathsphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_numericphp(php$typephp)php php&php&php isphp_arrayphp(php$pathsphp)php)php php{
-php php php php php php php php php php php php php php php php php$typephp php=php nullphp;
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$pathsphp[php'prefixphp'php]php)php php&php&php issetphp(php$pathsphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$pathsphp[php'typephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$pathsphp[php'typephp'php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$pathsphp[php'prefixphp'php]php,php php$pathsphp[php'pathphp'php]php,php php$typephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elseifphp php(php!isphp_numericphp(php$typephp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$pathsphp[php'prefixphp'php]php)php php|php|php php!issetphp(php$pathsphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$pathsphp[php'prefixphp'php]php,php php$pathsphp[php'pathphp'php]php,php php$typephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp allphp elements
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addElementPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_elementPrefixPathsphp[php]php php=php arrayphp(
-php php php php php php php php php php php php php'prefixphp'php php=php>php php$prefixphp,
-php php php php php php php php php php php php php'pathphp'php php php php=php>php php$pathphp,
-php php php php php php php php php php php php php'typephp'php php php php=php>php php$typephp,
-php php php php php php php php php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php$elementphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$subFormphp)php php{
-php php php php php php php php php php php php php$subFormphp-php>addElementPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathsphp forphp allphp elements
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$spec
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addElementPrefixPathsphp(arrayphp php$specphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_elementPrefixPathsphp php=php php$thisphp-php>php_elementPrefixPathsphp php+php php$specphp;
-
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php$elementphp-php>addPrefixPathsphp(php$specphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp allphp displayphp groups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addDisplayGroupPrefixPathphp(php$prefixphp,php php$pathphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_displayGroupPrefixPathsphp[php]php php=php arrayphp(
-php php php php php php php php php php php php php'prefixphp'php php=php>php php$prefixphp,
-php php php php php php php php php php php php php'pathphp'php php php php=php>php php$pathphp,
-php php php php php php php php php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>getDisplayGroupsphp(php)php asphp php$groupphp)php php{
-php php php php php php php php php php php php php$groupphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp displayphp groupphp prefixphp pathsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$spec
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addDisplayGroupPrefixPathsphp(arrayphp php$specphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$specphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php php&php&php php!isphp_numericphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupPrefixPathphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php php&php&php isphp_numericphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$countphp php=php countphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keysphp(php$valuephp)php php=php=php=php rangephp(php0php,php php$countphp php-php php1php)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$countphp <php php2php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$prefixphp php=php arrayphp_shiftphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php$pathphp php php php=php arrayphp_shiftphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'prefixphp'php,php php$valuephp)php php&php&php arrayphp_keyphp_existsphp(php'pathphp'php,php php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupPrefixPathphp(php$valuephp[php'prefixphp'php]php,php php$valuephp[php'pathphp'php]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php/php Formphp metadataphp:
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp attribute
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setAttribphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
-php php php php php php php php php$thisphp-php>php_attribsphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp formphp attributesphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$attribs
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addAttribsphp(arrayphp php$attribsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$attribsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setAttribphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp multiplephp formphp attributesphp atphp once
-php php php php php php*
-php php php php php php*php Overwritesphp anyphp previouslyphp setphp attributesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$attribs
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setAttribsphp(arrayphp php$attribsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearAttribsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addAttribsphp(php$attribsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp formphp attribute
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getAttribphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$keyphp php=php php(stringphp)php php$keyphp;
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_attribsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_attribsphp[php$keyphp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp formphp attributesphp/metadata
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAttribsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_attribsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp attribute
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp removeAttribphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_attribsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_attribsphp[php$keyphp]php)php;
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp formphp attributes
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearAttribsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_attribsphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp action
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$action
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setActionphp(php$actionphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setAttribphp(php'actionphp'php,php php(stringphp)php php$actionphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp formphp action
-php php php php php php*
-php php php php php php*php Setsphp defaultphp tophp php'php'php ifphp notphp setphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getActionphp(php)
-php php php php php{
-php php php php php php php php php$actionphp php=php php$thisphp-php>getAttribphp(php'actionphp'php)php;
-php php php php php php php php ifphp php(nullphp php=php=php=php php$actionphp)php php{
-php php php php php php php php php php php php php$actionphp php=php php'php'php;
-php php php php php php php php php php php php php$thisphp-php>setActionphp(php$actionphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$actionphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp method
-php php php php php php*
-php php php php php php*php Onlyphp valuesphp inphp php{php@linkphp php$php_methodsphp(php)php}php allowed
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setMethodphp(php$methodphp)
-php php php php php{
-php php php php php php php php php$methodphp php=php strtolowerphp(php$methodphp)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$methodphp,php php$thisphp-php>php_methodsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'php"php%sphp"php isphp anphp invalidphp formphp methodphp'php,php php$methodphp)php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setAttribphp(php'methodphp'php,php php$methodphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp formphp method
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getMethodphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php(php$methodphp php=php php$thisphp-php>getAttribphp(php'methodphp'php)php)php)php php{
-php php php php php php php php php php php php php$methodphp php=php selfphp:php:METHODphp_POSTphp;
-php php php php php php php php php php php php php$thisphp-php>setAttribphp(php'methodphp'php,php php$methodphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp strtolowerphp(php$methodphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp encodingphp type
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setEnctypephp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setAttribphp(php'enctypephp'php,php php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp encodingphp type
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getEnctypephp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php(php$enctypephp php=php php$thisphp-php>getAttribphp(php'enctypephp'php)php)php)php php{
-php php php php php php php php php php php php php$enctypephp php=php selfphp:php:ENCTYPEphp_URLENCODEDphp;
-php php php php php php php php php php php php php$thisphp-php>setAttribphp(php'enctypephp'php,php php$enctypephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getAttribphp(php'enctypephp'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Filterphp aphp namephp tophp onlyphp allowphp validphp variablephp characters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@paramphp php boolphp php$allowBrackets
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp filterNamephp(php$valuephp,php php$allowBracketsphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$charsetphp php=php php'php^aphp-zAphp-Zphp0php-php9php_php\xphp7fphp-php\xffphp'php;
-php php php php php php php php ifphp php(php$allowBracketsphp)php php{
-php php php php php php php php php php php php php$charsetphp php.php=php php'php\php[php\php]php'php;
-php php php php php php php php php}
-php php php php php php php php returnphp pregphp_replacephp(php'php/php[php'php php.php php$charsetphp php.php php'php]php/php'php,php php'php'php,php php(stringphp)php php$valuephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$thisphp-php>filterNamephp(php$namephp)php;
-php php php php php php php php ifphp php(php'php'php php=php=php=php php(stringphp)php$namephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp namephp providedphp;php mustphp containphp onlyphp validphp variablephp charactersphp andphp bephp nonphp-emptyphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>setAttribphp(php'namephp'php,php php$namephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp namephp attribute
-php php php php php php*
-php php php php php php*php php@returnphp nullphp|string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getAttribphp(php'namephp'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp fullyphp qualifiedphp name
-php php php php php php*
-php php php php php php*php Placesphp namephp asphp subitemphp ofphp arrayphp andphp/orphp appendsphp bracketsphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getFullyQualifiedNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getNamephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp elementphp id
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php(php$idphp php=php php$thisphp-php>getAttribphp(php'idphp'php)php)php)php php{
-php php php php php php php php php php php php returnphp php$idphp;
-php php php php php php php php php}
-
-php php php php php php php php php$idphp php=php php$thisphp-php>getFullyQualifiedNamephp(php)php;
-
-php php php php php php php php php/php/php Bailphp earlyphp ifphp nophp arrayphp notationphp detected
-php php php php php php php php ifphp php(php!strstrphp(php$idphp,php php'php[php'php)php)php php{
-php php php php php php php php php php php php returnphp php$idphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Stripphp arrayphp notation
-php php php php php php php php ifphp php(php'php[php]php'php php=php=php substrphp(php$idphp,php php-php2php)php)php php{
-php php php php php php php php php php php php php$idphp php=php substrphp(php$idphp,php php0php,php strlenphp(php$idphp)php php-php php2php)php;
-php php php php php php php php php}
-php php php php php php php php php$idphp php=php strphp_replacephp(php'php]php[php'php,php php'php-php'php,php php$idphp)php;
-php php php php php php php php php$idphp php=php strphp_replacephp(arrayphp(php'php]php'php,php php'php[php'php)php,php php'php-php'php,php php$idphp)php;
-php php php php php php php php php$idphp php=php trimphp(php$idphp,php php'php-php'php)php;
-
-php php php php php php php php returnphp php$idphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp legend
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setLegendphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_legendphp php=php php(stringphp)php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp formphp legend
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getLegendphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_legendphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp description
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDescriptionphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_descriptionphp php=php php(stringphp)php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp formphp description
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp order
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$index
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setOrderphp(php$indexphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_formOrderphp php=php php(intphp)php php$indexphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp formphp order
-php php php php php php*
-php php php php php php*php php@returnphp intphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getOrderphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_formOrderphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Whenphp callingphp renderFormElementsphp orphp renderphp thisphp method
-php php php php php php*php isphp usedphp tophp setphp php$php_isRenderedphp memberphp tophp preventphp repeatedly
-php php php php php php*php mergingphp belongsTophp setting
-php php php php php php*php/
-php php php php protectedphp functionphp php_setIsRenderedphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_isRenderedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp valuephp ofphp php$php_isRenderedphp member
-php php php php php php*php/
-php php php php protectedphp functionphp php_getIsRenderedphp(php)
-php php php php php{
-php php php php php php php php returnphp php(boolphp)php$thisphp-php>php_isRenderedphp;
-php php php php php}
-
-php php php php php/php/php Elementphp interactionphp:
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp newphp element
-php php php php php php*
-php php php php php php*php php$elementphp mayphp bephp eitherphp aphp stringphp elementphp typephp,php orphp anphp objectphp ofphp type
-php php php php php php*php Zendphp_Formphp_Elementphp.php Ifphp aphp stringphp elementphp typephp isphp providedphp,php php$namephp mustphp be
-php php php php php php*php providedphp,php andphp php$optionsphp mayphp bephp optionallyphp providedphp forphp configuringphp the
-php php php php php php*php elementphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp Zendphp_Formphp_Elementphp isphp providedphp,php php$namephp mayphp bephp optionallyphp providedphp,
-php php php php php php*php andphp anyphp providedphp php$optionsphp willphp bephp ignoredphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|Zendphp_Formphp_Elementphp php$element
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addElementphp(php$elementphp,php php$namephp php=php nullphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$elementphp)php)php php{
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Elementsphp specifiedphp byphp stringphp mustphp havephp anphp accompanyingphp namephp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_elementDecoratorsphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$optionsphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'decoratorsphp'php php=php>php php$thisphp-php>php_elementDecoratorsphp)php;
-php php php php php php php php php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)
-php php php php php php php php php php php php php php php php php php php php php&php&php php!arrayphp_keyphp_existsphp(php'decoratorsphp'php,php php$optionsphp)
-php php php php php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$optionsphp[php'decoratorsphp'php]php php=php php$thisphp-php>php_elementDecoratorsphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_elementsphp[php$namephp]php php=php php$thisphp-php>createElementphp(php$elementphp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php$elementphp instanceofphp Zendphp_Formphp_Elementphp)php php{
-php php php php php php php php php php php php php$prefixPathsphp php php php php php php php php php php php php php php=php arrayphp(php)php;
-php php php php php php php php php php php php php$prefixPathsphp[php'decoratorphp'php]php php=php php$thisphp-php>getPluginLoaderphp(php'decoratorphp'php)php-php>getPathsphp(php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_elementPrefixPathsphp)php)php php{
-php php php php php php php php php php php php php php php php php$prefixPathsphp php=php arrayphp_mergephp(php$prefixPathsphp,php php$thisphp-php>php_elementPrefixPathsphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php php php php php$namephp php=php php$elementphp-php>getNamephp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_elementsphp[php$namephp]php php=php php$elementphp;
-php php php php php php php php php php php php php$thisphp-php>php_elementsphp[php$namephp]php-php>addPrefixPathsphp(php$prefixPathsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php=php php$thisphp-php>php_elementsphp[php$namephp]php-php>getOrderphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php$thisphp-php>php_setElementsBelongTophp(php$namephp)php;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Createphp anphp element
-php php php php php php*
-php php php php php php*php Actsphp asphp aphp factoryphp forphp creatingphp elementsphp.php Elementsphp createdphp withphp this
-php php php php php php*php methodphp willphp notphp bephp attachedphp tophp thephp formphp,php butphp willphp containphp element
-php php php php php php*php settingsphp asphp specifiedphp inphp thephp formphp objectphp php(includingphp pluginphp loader
-php php php php php php*php prefixphp pathsphp,php defaultphp decoratorsphp,php etcphp.php)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp Zendphp_Formphp_Element
-php php php php php php*php/
-php php php php publicphp functionphp createElementphp(php$typephp,php php$namephp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$typephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Elementphp typephp mustphp bephp aphp stringphp indicatingphp typephp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Elementphp namephp mustphp bephp aphp stringphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$prefixPathsphp php php php php php php php php php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$prefixPathsphp[php'decoratorphp'php]php php=php php$thisphp-php>getPluginLoaderphp(php'decoratorphp'php)php-php>getPathsphp(php)php;
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_elementPrefixPathsphp)php)php php{
-php php php php php php php php php php php php php$prefixPathsphp php=php arrayphp_mergephp(php$prefixPathsphp,php php$thisphp-php>php_elementPrefixPathsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php(nullphp php=php=php=php php$optionsphp)php php|php|php php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'prefixPathphp'php php=php>php php$prefixPathsphp)php;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'prefixPathphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp[php'prefixPathphp'php]php php=php arrayphp_mergephp(php$prefixPathsphp,php php$optionsphp[php'prefixPathphp'php]php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$optionsphp[php'prefixPathphp'php]php php=php php$prefixPathsphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$classphp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:ELEMENTphp)php-php>loadphp(php$typephp)php;
-php php php php php php php php php$elementphp php=php newphp php$classphp(php$namephp,php php$optionsphp)php;
-
-php php php php php php php php returnphp php$elementphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp elementsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$elements
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addElementsphp(arrayphp php$elementsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$elementsphp asphp php$keyphp php=php>php php$specphp)php php{
-php php php php php php php php php php php php php$namephp php=php nullphp;
-php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php php$namephp php=php php$keyphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php php|php|php php(php$specphp instanceofphp Zendphp_Formphp_Elementphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addElementphp(php$specphp,php php$namephp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$specphp)php)php php{
-php php php php php php php php php php php php php php php php php$argcphp php=php countphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'typephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$specphp[php'typephp'php]php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'namephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$specphp[php'namephp'php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'optionsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$specphp[php'optionsphp'php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addElementphp(php$typephp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php switchphp php(php$argcphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php0php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$namephp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php3php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addElementphp(php$typephp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp formphp elementsphp php(overwritesphp existingphp elementsphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$elements
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setElementsphp(arrayphp php$elementsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearElementsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addElementsphp(php$elementsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getElementphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_elementsphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_elementsphp[php$namephp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp elements
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getElementsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_elementsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp removeElementphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php;
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$namephp]php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_displayGroupsphp asphp php$groupphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$groupphp-php>getElementphp(php$namephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$groupphp-php>removeElementphp(php$namephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp allphp formphp elements
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearElementsphp(php)
-php php php php php{
-php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_elementsphp)php asphp php$keyphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_elementsphp php php php php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp defaultphp valuesphp forphp elements
-php php php php php php*
-php php php php php php*php Setsphp valuesphp forphp allphp elementsphp specifiedphp inphp thephp arrayphp ofphp php$defaultsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$defaults
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultsphp(arrayphp php$defaultsphp)
-php php php php php{
-php php php php php php php php php$eBelongTophp php=php nullphp;
-
-php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$eBelongTophp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php php php php php$defaultsphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$defaultsphp,php php$eBelongTophp)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$namephp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$checkphp php=php php$defaultsphp;
-php php php php php php php php php php php php ifphp php(php(php$belongsTophp php=php php$elementphp-php>getBelongsTophp(php)php)php php!php=php=php php$eBelongTophp)php php{
-php php php php php php php php php php php php php php php php php$checkphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$defaultsphp,php php$belongsTophp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$checkphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setDefaultphp(php$namephp,php php$checkphp[php$namephp]php)php;
-php php php php php php php php php php php php php php php php php$defaultsphp php=php php$thisphp-php>php_dissolveArrayUnsetKeyphp(php$defaultsphp,php php$belongsTophp,php php$namephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$namephp php=php>php php$formphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$formphp-php>isArrayphp(php)php php&php&php arrayphp_keyphp_existsphp(php$namephp,php php$defaultsphp)php)php php{
-php php php php php php php php php php php php php php php php php$formphp-php>setDefaultsphp(php$defaultsphp[php$namephp]php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$formphp-php>setDefaultsphp(php$defaultsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp defaultphp valuephp forphp anphp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(php$elementphp php=php php$thisphp-php>getElementphp(php$namephp)php)php php{
-php php php php php php php php php php php php php$elementphp-php>setValuephp(php$valuephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(isphp_scalarphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$subFormphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$subFormphp-php>setDefaultphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php php&php&php php(php$subFormphp php=php php$thisphp-php>getSubFormphp(php$namephp)php)php)php php{
-php php php php php php php php php php php php php php php php php$subFormphp-php>setDefaultsphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp valuephp forphp singlephp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getValuephp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php$elementphp php=php php$thisphp-php>getElementphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp php$elementphp-php>getValuephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$subFormphp php=php php$thisphp-php>getSubFormphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp php$subFormphp-php>getValuesphp(truephp)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$subFormphp)php php{
-php php php php php php php php php php php php ifphp php(php$namephp php=php=php php$subFormphp-php>getElementsBelongTophp(php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$subFormphp-php>getValuesphp(truephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp formphp elementphp values
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$suppressArrayNotation
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getValuesphp(php$suppressArrayNotationphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php php$eBelongTophp php=php nullphp;
-
-php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$eBelongTophp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$elementphp-php>getIgnorephp(php)php)php php{
-php php php php php php php php php php php php php php php php php$mergephp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php(php$belongsTophp php=php php$elementphp-php>getBelongsTophp(php)php)php php!php=php=php php$eBelongTophp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php'php'php php!php=php=php php(stringphp)php$belongsTophp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php$belongsTophp php.php php'php[php'php php.php php$keyphp php.php php'php]php'php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$elementphp-php>getValuephp(php)php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$valuesphp,php php$mergephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$subFormphp)php php{
-php php php php php php php php php php php php php$mergephp php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php!php$subFormphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$mergephp[php$keyphp]php php=php php$subFormphp-php>getValuesphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$subFormphp-php>getValuesphp(truephp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subFormphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$valuesphp,php php$mergephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php$suppressArrayNotationphp php&php&
-php php php php php php php php php php php php php$thisphp-php>isArrayphp(php)php php&php&
-php php php php php php php php php php php php php!php$thisphp-php>php_getIsRenderedphp(php)php)php php{
-php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_attachToArrayphp(php$valuesphp,php php$thisphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$valuesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp onlyphp thephp validphp valuesphp fromphp thephp givenphp formphp inputphp.
-php php php php php php*
-php php php php php php*php Forphp modelsphp thatphp canphp bephp savedphp inphp aphp partiallyphp validphp statephp,php forphp examplephp whenphp followingphp thephp builderphp,
-php php php php php php*php prototypephp orphp statephp patternsphp itphp isphp particularlyphp interesstingphp tophp retrievephp allphp thephp currentphp valid
-php php php php php php*php valuesphp tophp persistphp themphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@paramphp php boolphp php$suppressArrayNotation
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getValidValuesphp(php$dataphp,php php$suppressArrayNotationphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php php$eBelongTophp php=php nullphp;
-
-php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$eBelongTophp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$eBelongTophp)php;
-php php php php php php php php php}
-php php php php php php php php php$contextphp php=php php$dataphp;
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$elementphp-php>getIgnorephp(php)php)php php{
-php php php php php php php php php php php php php php php php php$checkphp php=php php$dataphp;
-php php php php php php php php php php php php php php php php ifphp php(php(php$belongsTophp php=php php$elementphp-php>getBelongsTophp(php)php)php php!php=php=php php$eBelongTophp)php php{
-php php php php php php php php php php php php php php php php php php php php php$checkphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$belongsTophp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$checkphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp(php$elementphp-php>isValidphp(php$checkphp[php$keyphp]php,php php$contextphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$mergephp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$belongsTophp php!php=php=php php$eBelongTophp php&php&php php'php'php php!php=php=php php(stringphp)php$belongsTophp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$keyphp php=php php$belongsTophp php.php php'php[php'php php.php php$keyphp php.php php'php]php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$elementphp-php>getValuephp(php)php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$valuesphp,php php$mergephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayUnsetKeyphp(php$dataphp,php php$belongsTophp,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$formphp)php php{
-php php php php php php php php php php php php php$mergephp php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(issetphp(php$dataphp[php$keyphp]php)php php&php&php php!php$formphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$tmpphp php=php php$formphp-php>getValidValuesphp(php$dataphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$mergephp[php$keyphp]php php=php php$tmpphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$tmpphp php=php php$formphp-php>getValidValuesphp(php$dataphp,php truephp)php;
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$tmpphp,php php$formphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$valuesphp,php php$mergephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$suppressArrayNotationphp php&php&
-php php php php php php php php php php php php php$thisphp-php>isArrayphp(php)php php&php&
-php php php php php php php php php php php php php!emptyphp(php$valuesphp)php php&php&
-php php php php php php php php php php php php php!php$thisphp-php>php_getIsRenderedphp(php)php)php php{
-php php php php php php php php php php php php php$valuesphp php=php php$thisphp-php>php_attachToArrayphp(php$valuesphp,php php$thisphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$valuesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp unfilteredphp elementphp value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getUnfilteredValuephp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php$elementphp php=php php$thisphp-php>getElementphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp php$elementphp-php>getUnfilteredValuephp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp unfilteredphp elementphp values
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getUnfilteredValuesphp(php)
-php php php php php{
-php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$valuesphp[php$keyphp]php php=php php$elementphp-php>getUnfilteredValuephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$valuesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp allphp elementsphp'php filters
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$filters
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setElementFiltersphp(arrayphp php$filtersphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php$elementphp-php>setFiltersphp(php$filtersphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp namephp ofphp arrayphp elementsphp belongphp to
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$array
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setElementsBelongTophp(php$arrayphp)
-php php php php php{
-php php php php php php php php php$origNamephp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php$namephp php=php php$thisphp-php>filterNamephp(php$arrayphp,php truephp)php;
-php php php php php php php php ifphp php(php'php'php php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php$namephp php=php nullphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_elementsBelongTophp php=php php$namephp;
-
-php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setIsArrayphp(falsephp)php;
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$origNamephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_setElementsBelongTophp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>setIsArrayphp(truephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_setElementsBelongTophp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp arrayphp tophp whichphp elementsphp belong
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp Elementphp name
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setElementsBelongTophp(php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$arrayphp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-
-php php php php php php php php ifphp php(nullphp php=php=php=php php$arrayphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php php php php php$elementphp-php>setBelongsTophp(php$arrayphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php$namephp)php)php)php php{
-php php php php php php php php php php php php php php php php php$elementphp-php>setBelongsTophp(php$arrayphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp namephp ofphp arrayphp elementsphp belongphp to
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getElementsBelongTophp(php)
-php php php php php{
-php php php php php php php php ifphp php(php(nullphp php=php=php=php php$thisphp-php>php_elementsBelongTophp)php php&php&php php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$namephp php=php php$thisphp-php>getNamephp(php)php;
-php php php php php php php php php php php php ifphp php(php'php'php php!php=php=php php(stringphp)php$namephp)php php{
-php php php php php php php php php php php php php php php php returnphp php$namephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_elementsBelongTophp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp flagphp indicatingphp elementsphp belongphp tophp array
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flagphp Valuephp ofphp flag
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setIsArrayphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_isArrayphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp flagphp indicatingphp ifphp elementsphp belongphp tophp anphp array
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isArrayphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_isArrayphp;
-php php php php php}
-
-php php php php php/php/php Elementphp groupsphp:
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp formphp groupphp/subform
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Formphp php$form
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php intphp php$order
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addSubFormphp(Zendphp_Formphp php$formphp,php php$namephp,php php$orderphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_loadersphp asphp php$typephp php=php>php php$loaderphp)php php{
-php php php php php php php php php php php php php$loaderPathsphp php=php php$loaderphp-php>getPathsphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$loaderPathsphp asphp php$prefixphp php=php>php php$pathsphp)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$pathsphp asphp php$pathphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$formphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_elementPrefixPathsphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_elementPrefixPathsphp asphp php$specphp)php php{
-php php php php php php php php php php php php php php php php listphp(php$prefixphp,php php$pathphp,php php$typephp)php php=php arrayphp_valuesphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php$formphp-php>addElementPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_displayGroupPrefixPathsphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_displayGroupPrefixPathsphp asphp php$specphp)php php{
-php php php php php php php php php php php php php php php php listphp(php$prefixphp,php php$pathphp)php php=php arrayphp_valuesphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php$formphp-php>addDisplayGroupPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(nullphp php!php=php=php php$orderphp)php php{
-php php php php php php php php php php php php php$formphp-php>setOrderphp(php$orderphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php(php$oldNamephp php=php php$formphp-php>getNamephp(php)php)php php&php&
-php php php php php php php php php php php php php$oldNamephp php!php=php=php php$namephp php&php&
-php php php php php php php php php php php php php$oldNamephp php=php=php=php php$formphp-php>getElementsBelongTophp(php)php)php php{
-php php php php php php php php php php php php php$formphp-php>setElementsBelongTophp(php$namephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$formphp-php>setNamephp(php$namephp)php;
-php php php php php php php php php$thisphp-php>php_subFormsphp[php$namephp]php php=php php$formphp;
-php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php php php php=php php$orderphp;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php php php php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp formphp subFormsphp/subformsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$subForms
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addSubFormsphp(arrayphp php$subFormsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$subFormsphp asphp php$keyphp php=php>php php$specphp)php php{
-php php php php php php php php php php php php php$namephp php=php nullphp;
-php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php php$namephp php=php php$keyphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$specphp instanceofphp Zendphp_Formphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addSubFormphp(php$specphp,php php$namephp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$specphp)php)php php{
-php php php php php php php php php php php php php php php php php$argcphp php php=php countphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php$orderphp php=php nullphp;
-php php php php php php php php php php php php php php php php switchphp php(php$argcphp)php php{
-php php php php php php php php php php php php php php php php php php php php casephp php0php:
-php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$subFormphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$namephp php php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php casephp php(php3php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$orderphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addSubFormphp(php$subFormphp,php php$namephp,php php$orderphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp multiplephp formphp subFormsphp/subformsphp php(overwritesphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$subForms
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setSubFormsphp(arrayphp php$subFormsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearSubFormsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addSubFormsphp(php$subFormsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp formphp subFormphp/subform
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Formphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getSubFormphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_subFormsphp[php$namephp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp formphp subFormsphp/subforms
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getSubFormsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_subFormsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp formphp subFormphp/subform
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp removeSubFormphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_subFormsphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php;
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$namephp]php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp allphp formphp subFormsphp/subforms
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearSubFormsphp(php)
-php php php php php{
-php php php php php php php php foreachphp php(arrayphp_keysphp(php$thisphp-php>php_subFormsphp)php asphp php$keyphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_subFormsphp php php php php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-
-php php php php php/php/php Displayphp groupsphp:
-
-php php php php php/php*php*
-php php php php php php*php Setphp defaultphp displayphp groupphp class
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$class
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDefaultDisplayGroupClassphp(php$classphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_defaultDisplayGroupClassphp php=php php(stringphp)php php$classphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp defaultphp displayphp groupphp class
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDefaultDisplayGroupClassphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_defaultDisplayGroupClassphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp displayphp group
-php php php php php php*
-php php php php php php*php Groupsphp namedphp elementsphp forphp displayphp purposesphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp referencedphp elementphp doesphp notphp yetphp existphp inphp thephp formphp,php itphp isphp omittedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$elements
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp ifphp nophp validphp elementsphp provided
-php php php php php php*php/
-php php php php publicphp functionphp addDisplayGroupphp(arrayphp php$elementsphp,php php$namephp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$groupphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$elementsphp asphp php$elementphp)php php{
-php php php php php php php php php php php php ifphp(php$elementphp instanceofphp Zendphp_Formphp_Elementphp)php php{
-php php php php php php php php php php php php php php php php php$elementphp php=php php$elementphp-php>getIdphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$elementphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$addphp php=php php$thisphp-php>getElementphp(php$elementphp)php;
-php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$addphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$groupphp[php]php php=php php$addphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$groupphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Nophp validphp elementsphp specifiedphp forphp displayphp groupphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-
-php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'formphp'php]php php php php php php=php php$thisphp;
-php php php php php php php php php php php php php$optionsphp[php'elementsphp'php]php php=php php$groupphp;
-php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php$optionsphp[php'formphp'php]php php php php php php=php php$thisphp;
-php php php php php php php php php php php php php$optionsphp[php'elementsphp'php]php php=php php$groupphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'formphp'php php php php php php=php>php php$thisphp,
-php php php php php php php php php php php php php php php php php'elementsphp'php php=php>php php$groupphp,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'displayGroupClassphp'php]php)php)php php{
-php php php php php php php php php php php php php$classphp php=php php$optionsphp[php'displayGroupClassphp'php]php;
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'displayGroupClassphp'php]php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$classphp php=php php$thisphp-php>getDefaultDisplayGroupClassphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_displayGroupsphp[php$namephp]php php=php newphp php$classphp(
-php php php php php php php php php php php php php$namephp,
-php php php php php php php php php php php php php$thisphp-php>getPluginLoaderphp(selfphp:php:DECORATORphp)php,
-php php php php php php php php php php php php php$options
-php php php php php php php php php)php;
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_displayGroupPrefixPathsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_displayGroupsphp[php$namephp]php-php>addPrefixPathsphp(php$thisphp-php>php_displayGroupPrefixPathsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php=php php$thisphp-php>php_displayGroupsphp[php$namephp]php-php>getOrderphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp displayphp groupphp objectphp php(usedphp withphp cloningphp)
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Formphp_DisplayGroupphp php$group
-php php php php php php*php php@paramphp php stringphp|nullphp php$name
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php protectedphp functionphp php_addDisplayGroupObjectphp(Zendphp_Formphp_DisplayGroupphp php$groupphp,php php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$namephp)php php{
-php php php php php php php php php php php php php$namephp php=php php$groupphp-php>getNamephp(php)php;
-php php php php php php php php php php php php ifphp php(php'php'php php=php=php=php php(stringphp)php$namephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp displayphp groupphp addedphp;php requiresphp namephp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_displayGroupsphp[php$namephp]php php=php php$groupphp;
-php php php php php php php php php$groupphp-php>setFormphp(php$thisphp)php;
-
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_displayGroupPrefixPathsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_displayGroupsphp[php$namephp]php-php>addPrefixPathsphp(php$thisphp-php>php_displayGroupPrefixPathsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php=php php$thisphp-php>php_displayGroupsphp[php$namephp]php-php>getOrderphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp displayphp groupsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$groups
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addDisplayGroupsphp(arrayphp php$groupsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$groupsphp asphp php$keyphp php=php>php php$specphp)php php{
-php php php php php php php php php php php php php$namephp php=php nullphp;
-php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php php$namephp php=php php$keyphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$specphp instanceofphp Zendphp_Formphp_DisplayGroupphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_addDisplayGroupObjectphp(php$specphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$specphp)php php|php|php emptyphp(php$specphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$argcphp php php php php=php countphp(php$specphp)php;
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'elementsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$elementsphp php=php php$specphp[php'elementsphp'php]php;
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'namephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$specphp[php'namephp'php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$specphp[php'optionsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$specphp[php'optionsphp'php]php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupphp(php$elementsphp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php switchphp php(php$argcphp)php php{
-php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$elementsphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$elementsphp)php php&php&php php(nullphp php!php=php=php php$namephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$elementsphp php=php arrayphp_mergephp(php(arrayphp)php php$elementsphp,php php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupphp(php$elementsphp,php php$namephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$namephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupphp(php$elementsphp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$namephp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php casephp php(php3php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$specphp)php;
-php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDisplayGroupphp(php$elementsphp,php php$namephp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp displayphp groupsphp php(overwritesphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$groups
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDisplayGroupsphp(arrayphp php$groupsphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>clearDisplayGroupsphp(php)
-php php php php php php php php php php php php php php php php php php php php php-php>addDisplayGroupsphp(php$groupsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp displayphp group
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Formphp_DisplayGroupphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getDisplayGroupphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_displayGroupsphp[php$namephp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp allphp displayphp groups
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getDisplayGroupsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_displayGroupsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp aphp displayphp groupphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp removeDisplayGroupphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_displayGroupsphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_displayGroupsphp[php$namephp]php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_elementsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_orderphp[php$keyphp]php php php=php php$elementphp-php>getOrderphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php;
-
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$namephp]php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp allphp displayphp groups
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearDisplayGroupsphp(php)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>php_displayGroupsphp asphp php$keyphp php=php>php php$groupphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php foreachphp php(php$groupphp asphp php$namephp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php=php php$elementphp-php>getOrderphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_orderphp[php$namephp]php php=php php$elementphp-php>getOrderphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_displayGroupsphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_orderUpdatedphp php php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-
-php php php php php/php/php Processing
-
-php php php php php/php*php*
-php php php php php php*php Populatephp form
-php php php php php php*
-php php php php php php*php Proxiesphp tophp php{php@linkphp setDefaultsphp(php)php}
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$values
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp populatephp(arrayphp php$valuesphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setDefaultsphp(php$valuesphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Determinephp arrayphp keyphp namephp fromphp givenphp value
-php php php php php php*
-php php php php php php*php Givenphp aphp valuephp suchphp asphp foophp[barphp]php[bazphp]php,php returnsphp thephp lastphp elementphp php(inphp thisphp casephp,php php'bazphp'php)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_getArrayNamephp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php php|php|php php'php'php php=php=php=php php$valuephp)php php{
-php php php php php php php php php php php php returnphp php$valuephp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!strstrphp(php$valuephp,php php'php[php'php)php)php php{
-php php php php php php php php php php php php returnphp php$valuephp;
-php php php php php php php php php}
-
-php php php php php php php php php$endPosphp php=php strlenphp(php$valuephp)php php-php php1php;
-php php php php php php php php ifphp php(php'php]php'php php!php=php php$valuephp[php$endPosphp]php)php php{
-php php php php php php php php php php php php returnphp php$valuephp;
-php php php php php php php php php}
-
-php php php php php php php php php$startphp php=php strrposphp(php$valuephp,php php'php[php'php)php php+php php1php;
-php php php php php php php php php$namephp php=php substrphp(php$valuephp,php php$startphp,php php$endPosphp php-php php$startphp)php;
-php php php php php php php php returnphp php$namephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Extractphp thephp valuephp byphp walkingphp thephp arrayphp usingphp givenphp arrayphp pathphp.
-php php php php php php*
-php php php php php php*php Givenphp anphp arrayphp pathphp suchphp asphp foophp[barphp]php[bazphp]php,php returnsphp thephp valuephp ofphp thephp last
-php php php php php php*php elementphp php(inphp thisphp casephp,php php'bazphp'php)php.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$valuephp Arrayphp tophp walk
-php php php php php php*php php@paramphp php stringphp php$arrayPathphp Arrayphp notationphp pathphp ofphp thephp partphp tophp extract
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_dissolveArrayValuephp(php$valuephp,php php$arrayPathphp)
-php php php php php{
-php php php php php php php php php/php/php Asphp longphp asphp wephp havephp morephp levels
-php php php php php php php php whilephp php(php$arrayPosphp php=php strposphp(php$arrayPathphp,php php'php[php'php)php)php php{
-php php php php php php php php php php php php php/php/php Getphp thephp nextphp keyphp inphp thephp path
-php php php php php php php php php php php php php$arrayKeyphp php=php trimphp(substrphp(php$arrayPathphp,php php0php,php php$arrayPosphp)php,php php'php]php'php)php;
-
-php php php php php php php php php php php php php/php/php Setphp thephp potentiallyphp finalphp valuephp orphp thephp nextphp searchphp pointphp inphp thephp array
-php php php php php php php php php php php php ifphp php(issetphp(php$valuephp[php$arrayKeyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$valuephp php=php php$valuephp[php$arrayKeyphp]php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Setphp thephp nextphp searchphp pointphp inphp thephp path
-php php php php php php php php php php php php php$arrayPathphp php=php trimphp(substrphp(php$arrayPathphp,php php$arrayPosphp php+php php1php)php,php php'php]php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$valuephp[php$arrayPathphp]php)php)php php{
-php php php php php php php php php php php php php$valuephp php=php php$valuephp[php$arrayPathphp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$valuephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Givenphp anphp arrayphp,php anphp optionalphp arrayPathphp andphp aphp keyphp thisphp method
-php php php php php php*php dissolvesphp thephp arrayPathphp andphp unsetsphp thephp keyphp withinphp thephp array
-php php php php php php*php ifphp itphp existsphp.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$array
-php php php php php php*php php@paramphp stringphp|nullphp php$arrayPath
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_dissolveArrayUnsetKeyphp(php$arrayphp,php php$arrayPathphp,php php$keyphp)
-php php php php php{
-php php php php php php php php php$unsetphp php=php&php php$arrayphp;
-php php php php php php php php php$pathphp php php=php trimphp(strtrphp(php(stringphp)php$arrayPathphp,php arrayphp(php'php[php'php php=php>php php'php/php'php,php php'php]php'php php=php>php php'php'php)php)php,php php'php/php'php)php;
-php php php php php php php php php$segsphp php php=php php(php'php'php php!php=php=php php$pathphp)php php?php explodephp(php'php/php'php,php php$pathphp)php php:php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$segsphp asphp php$segphp)php php{
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$segphp,php php(arrayphp)php$unsetphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$arrayphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$unsetphp php=php&php php$unsetphp[php$segphp]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php(arrayphp)php$unsetphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$unsetphp[php$keyphp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$arrayphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertsphp givenphp arrayPathphp tophp anphp arrayphp andphp attachesphp givenphp valuephp atphp thephp endphp ofphp itphp.
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$valuephp Thephp valuephp tophp attach
-php php php php php php*php php@paramphp php stringphp php$arrayPathphp Givenphp arrayphp pathphp tophp convertphp andphp attachphp tophp.
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_attachToArrayphp(php$valuephp,php php$arrayPathphp)
-php php php php php{
-php php php php php php php php php/php/php Asphp longphp asphp wephp havephp morephp levels
-php php php php php php php php whilephp php(php$arrayPosphp php=php strrposphp(php$arrayPathphp,php php'php[php'php)php)php php{
-php php php php php php php php php php php php php/php/php Getphp thephp nextphp keyphp inphp thephp path
-php php php php php php php php php php php php php$arrayKeyphp php=php trimphp(substrphp(php$arrayPathphp,php php$arrayPosphp php+php php1php)php,php php'php]php'php)php;
-
-php php php php php php php php php php php php php/php/php Attach
-php php php php php php php php php php php php php$valuephp php=php arrayphp(php$arrayKeyphp php=php>php php$valuephp)php;
-
-php php php php php php php php php php php php php/php/php Setphp thephp nextphp searchphp pointphp inphp thephp path
-php php php php php php php php php php php php php$arrayPathphp php=php trimphp(substrphp(php$arrayPathphp,php php0php,php php$arrayPosphp)php,php php'php]php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$valuephp php=php arrayphp(php$arrayPathphp php=php>php php$valuephp)php;
-
-php php php php php php php php returnphp php$valuephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp onephp dimensionalphp numericalphp indexedphp arrayphp withphp the
-php php php php php php*php Elementsphp,php SubFormsphp andphp Elementsphp fromphp DisplayGroupsphp asphp Valuesphp.
-php php php php php php*
-php php php php php php*php Subitemsphp arephp insertedphp basedphp onphp theirphp orderphp Settingphp ifphp setphp,
-php php php php php php*php otherwisephp theyphp arephp appendedphp,php thephp resultingphp numericalphp index
-php php php php php php*php mayphp differphp fromphp thephp orderphp valuephp.
-php php php php php php*
-php php php php php php*php php@accessphp protected
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getElementsAndSubFormsOrderedphp(php)
-php php php php php{
-php php php php php php php php php$orderedphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_orderphp asphp php$namephp php=php>php php$orderphp)php php{
-php php php php php php php php php php php php php$orderphp php=php issetphp(php$orderphp)php php?php php$orderphp php:php countphp(php$orderedphp)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php$namephp instanceofphp Zendphp_Formphp_Elementphp php|php|
-php php php php php php php php php php php php php php php php php$thisphp-php>php$namephp instanceofphp Zendphp_Formphp)php php{
-php php php php php php php php php php php php php php php php arrayphp_splicephp(php$orderedphp,php php$orderphp,php php0php,php arrayphp(php$thisphp-php>php$namephp)php)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php$namephp instanceofphp Zendphp_Formphp_DisplayGroupphp)php php{
-php php php php php php php php php php php php php php php php php$suborderedphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php$namephp-php>getElementsphp(php)php asphp php$elementphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$suborderphp php=php php$elementphp-php>getOrderphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$suborderphp php=php php(nullphp php!php=php=php php$suborderphp)php php?php php$suborderphp php:php countphp(php$suborderedphp)php;
-php php php php php php php php php php php php php php php php php php php php arrayphp_splicephp(php$suborderedphp,php php$suborderphp,php php0php,php arrayphp(php$elementphp)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$suborderedphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php arrayphp_splicephp(php$orderedphp,php php$orderphp,php php0php,php php$suborderedphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$orderedphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Thisphp isphp aphp helperphp functionphp untilphp phpphp php5php.php3php isphp widespreaded
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$into
-php php php php php php*php php@accessphp protected
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_arrayphp_replacephp_recursivephp(arrayphp php$intophp)
-php php php php php{
-php php php php php php php php php$fromArraysphp php=php arrayphp_slicephp(funcphp_getphp_argsphp(php)php,php1php)php;
-
-php php php php php php php php foreachphp php(php$fromArraysphp asphp php$fromphp)php php{
-php php php php php php php php php php php php foreachphp php(php$fromphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$intophp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$intophp[php$keyphp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$intophp[php$keyphp]php php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$intophp[php$keyphp]php,php php$fromphp[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$intophp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$intophp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Validatephp thephp form
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$dataphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$dataphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php_php_METHODphp_php_php php.php php'php expectsphp anphp arrayphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
-php php php php php php php php php$validphp php php php php php php=php truephp;
-php php php php php php php php php$eBelongTophp php php=php nullphp;
-
-php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$eBelongTophp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$eBelongTophp)php;
-php php php php php php php php php}
-php php php php php php php php php$contextphp php=php php$dataphp;
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp php&php&php php$thisphp-php>hasTranslatorphp(php)
-php php php php php php php php php php php php php php php php php php php php php&php&php php!php$elementphp-php>hasTranslatorphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$elementphp-php>setTranslatorphp(php$translatorphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$checkphp php=php php$dataphp;
-php php php php php php php php php php php php ifphp php(php(php$belongsTophp php=php php$elementphp-php>getBelongsTophp(php)php)php php!php=php=php php$eBelongTophp)php php{
-php php php php php php php php php php php php php php php php php$checkphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$belongsTophp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!issetphp(php$checkphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$elementphp-php>isValidphp(nullphp,php php$contextphp)php php&php&php php$validphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$elementphp-php>isValidphp(php$checkphp[php$keyphp]php,php php$contextphp)php php&php&php php$validphp;
-php php php php php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayUnsetKeyphp(php$dataphp,php php$belongsTophp,php php$keyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$formphp)php php{
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp php&php&php php!php$formphp-php>hasTranslatorphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$formphp-php>setTranslatorphp(php$translatorphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$dataphp[php$keyphp]php)php php&php&php php!php$formphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$formphp-php>isValidphp(php$dataphp[php$keyphp]php)php php&php&php php$validphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$formphp-php>isValidphp(php$dataphp)php php&php&php php$validphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_errorsExistphp php=php php!php$validphp;
-
-php php php php php php php php php/php/php Ifphp manuallyphp flaggedphp asphp anphp errorphp,php returnphp invalidphp status
-php php php php php php php php ifphp php(php$thisphp-php>php_errorsForcedphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$validphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Validatephp aphp partialphp form
-php php php php php php*
-php php php php php php*php Doesphp notphp checkphp forphp requiredphp flagsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidPartialphp(arrayphp php$dataphp)
-php php php php php{
-php php php php php php php php php$eBelongTophp php php=php nullphp;
-
-php php php php php php php php ifphp php(php$thisphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php$eBelongTophp php=php php$thisphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$eBelongTophp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
-php php php php php php php php php$validphp php php php php php php=php truephp;
-php php php php php php php php php$contextphp php php php php=php php$dataphp;
-
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$checkphp php=php php$dataphp;
-php php php php php php php php php php php php ifphp php(php(php$belongsTophp php=php php$elementphp-php>getBelongsTophp(php)php)php php!php=php=php php$eBelongTophp)php php{
-php php php php php php php php php php php php php php php php php$checkphp php=php php$thisphp-php>php_dissolveArrayValuephp(php$dataphp,php php$belongsTophp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$checkphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp php&php&php php!php$elementphp-php>hasTranslatorphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$elementphp-php>setTranslatorphp(php$translatorphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$validphp php=php php$elementphp-php>isValidphp(php$checkphp[php$keyphp]php,php php$contextphp)php php&php&php php$validphp;
-php php php php php php php php php php php php php php php php php$dataphp php=php php$thisphp-php>php_dissolveArrayUnsetKeyphp(php$dataphp,php php$belongsTophp,php php$keyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$formphp)php php{
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp php&php&php php!php$formphp-php>hasTranslatorphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$formphp-php>setTranslatorphp(php$translatorphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$dataphp[php$keyphp]php)php php&php&php php!php$formphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$formphp-php>isValidPartialphp(php$dataphp[php$keyphp]php)php php&php&php php$validphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$validphp php=php php$formphp-php>isValidPartialphp(php$dataphp)php php&php&php php$validphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_errorsExistphp php=php php!php$validphp;
-php php php php php php php php returnphp php$validphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Processphp submittedphp AJAXphp data
-php php php php php php*
-php php php php php php*php Checksphp ifphp providedphp php$dataphp isphp validphp,php viaphp php{php@linkphp isValidPartialphp(php)php}php.php Ifphp sophp,
-php php php php php php*php itphp returnsphp JSONphp-encodedphp booleanphp truephp.php Ifphp notphp,php itphp returnsphp JSONphp-encoded
-php php php php php php*php errorphp messagesphp php(asphp returnedphp byphp php{php@linkphp getMessagesphp(php)php}php)php.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@returnphp stringphp JSONphp-encodedphp booleanphp truephp orphp errorphp messages
-php php php php php php*php/
-php php php php publicphp functionphp processAjaxphp(arrayphp php$dataphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php ifphp php(php$thisphp-php>isValidPartialphp(php$dataphp)php)php php{
-php php php php php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(truephp)php;
-php php php php php php php php php}
-php php php php php php php php php$messagesphp php=php php$thisphp-php>getMessagesphp(php)php;
-php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(php$messagesphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp customphp errorphp messagephp tophp returnphp inphp thephp eventphp ofphp failedphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$message
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addErrorMessagephp(php$messagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_errorMessagesphp[php]php php=php php(stringphp)php php$messagephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp customphp errorphp messagesphp tophp returnphp inphp thephp eventphp ofphp failedphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$messages
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addErrorMessagesphp(arrayphp php$messagesphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
-php php php php php php php php php php php php php$thisphp-php>addErrorMessagephp(php$messagephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Samephp asphp addErrorMessagesphp(php)php,php butphp clearsphp customphp errorphp messagephp stackphp first
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$messages
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setErrorMessagesphp(arrayphp php$messagesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearErrorMessagesphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addErrorMessagesphp(php$messagesphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp customphp errorphp messages
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getErrorMessagesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_errorMessagesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearphp customphp errorphp messagesphp stack
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearErrorMessagesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_errorMessagesphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Markphp thephp elementphp asphp beingphp inphp aphp failedphp validationphp state
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp markAsErrorphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_errorsExistphp php php=php truephp;
-php php php php php php php php php$thisphp-php>php_errorsForcedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp anphp errorphp messagephp andphp markphp elementphp asphp failedphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$message
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addErrorphp(php$messagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>addErrorMessagephp(php$messagephp)php;
-php php php php php php php php php$thisphp-php>markAsErrorphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp errorphp messagesphp andphp flagphp elementphp asphp failedphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$messages
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addErrorsphp(arrayphp php$messagesphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$messagesphp asphp php$messagephp)php php{
-php php php php php php php php php php php php php$thisphp-php>addErrorphp(php$messagephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overwritephp anyphp previouslyphp setphp errorphp messagesphp andphp flagphp asphp failedphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$messages
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setErrorsphp(arrayphp php$messagesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearErrorMessagesphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addErrorsphp(php$messagesphp)php;
-php php php php php}
-
-
-php php php php publicphp functionphp persistDataphp(php)
-php php php php php{
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Arephp therephp errorsphp inphp thephp formphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isErrorsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_errorsExistphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp errorphp codesphp forphp allphp elementsphp failingphp validation
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getErrorsphp(php$namephp php=php nullphp,php php$suppressArrayNotationphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$errorsphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(nullphp php!php=php=php php$namephp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>getElementphp(php$namephp)php-php>getErrorsphp(php)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>getSubFormphp(php$namephp)php-php>getErrorsphp(nullphp,php truephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_elementsphp asphp php$keyphp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$errorsphp[php$keyphp]php php=php php$elementphp-php>getErrorsphp(php)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$subFormphp)php php{
-php php php php php php php php php php php php php$mergephp php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php!php$subFormphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$mergephp[php$keyphp]php php=php php$subFormphp-php>getErrorsphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$subFormphp-php>getErrorsphp(nullphp,php truephp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subFormphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$errorsphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$errorsphp,php php$mergephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php$suppressArrayNotationphp php&php&
-php php php php php php php php php php php php php$thisphp-php>isArrayphp(php)php php&php&
-php php php php php php php php php php php php php!php$thisphp-php>php_getIsRenderedphp(php)php)php php{
-php php php php php php php php php php php php php$errorsphp php=php php$thisphp-php>php_attachToArrayphp(php$errorsphp,php php$thisphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$errorsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp errorphp messagesphp fromphp elementsphp failingphp validations
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php boolphp php$suppressArrayNotation
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getMessagesphp(php$namephp php=php nullphp,php php$suppressArrayNotationphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$namephp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>getElementphp(php$namephp)php-php>getMessagesphp(php)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>getSubFormphp(php$namephp)php-php>getMessagesphp(nullphp,php truephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$subFormphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$subFormphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$belongTophp php=php php$subFormphp-php>getElementsBelongTophp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$namephp php=php=php php$thisphp-php>php_getArrayNamephp(php$belongTophp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$subFormphp-php>getMessagesphp(nullphp,php truephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$customMessagesphp php=php php$thisphp-php>php_getErrorMessagesphp(php)php;
-php php php php php php php php ifphp php(php$thisphp-php>isErrorsphp(php)php php&php&php php!emptyphp(php$customMessagesphp)php)php php{
-php php php php php php php php php php php php returnphp php$customMessagesphp;
-php php php php php php php php php}
-
-php php php php php php php php php$messagesphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$thisphp-php>getElementsphp(php)php asphp php$namephp php=php>php php$elementphp)php php{
-php php php php php php php php php php php php php$eMessagesphp php=php php$elementphp-php>getMessagesphp(php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$eMessagesphp)php)php php{
-php php php php php php php php php php php php php php php php php$messagesphp[php$namephp]php php=php php$eMessagesphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$keyphp php=php>php php$subFormphp)php php{
-php php php php php php php php php php php php php$mergephp php=php php$subFormphp-php>getMessagesphp(nullphp,php truephp)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$mergephp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!php$subFormphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$mergephp php=php arrayphp(php$keyphp php=php>php php$mergephp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$mergephp php=php php$thisphp-php>php_attachToArrayphp(php$mergephp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$subFormphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$messagesphp php=php php$thisphp-php>php_arrayphp_replacephp_recursivephp(php$messagesphp,php php$mergephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!php$suppressArrayNotationphp php&php&
-php php php php php php php php php php php php php$thisphp-php>isArrayphp(php)php php&php&
-php php php php php php php php php php php php php!php$thisphp-php>php_getIsRenderedphp(php)php)php php{
-php php php php php php php php php php php php php$messagesphp php=php php$thisphp-php>php_attachToArrayphp(php$messagesphp,php php$thisphp-php>getElementsBelongTophp(php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$messagesphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp translatedphp customphp errorphp messages
-php php php php php php*php Proxiesphp tophp php{php@linkphp php_getErrorMessagesphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getCustomMessagesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_getErrorMessagesphp(php)php;
-php php php php php}
-
-
-php php php php php/php/php Rendering
-
-php php php php php/php*php*
-php php php php php php*php Setphp viewphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_viewphp php=php php$viewphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp viewphp object
-php php php php php php*
-php php php php php php*php Ifphp nonephp registeredphp,php attemptsphp tophp pullphp fromphp ViewRendererphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Viewphp_Interfacephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getViewphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_viewphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/HelperBrokerphp.phpphp'php;
-php php php php php php php php php php php php php$viewRendererphp php=php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:getStaticHelperphp(php'viewRendererphp'php)php;
-php php php php php php php php php php php php php$thisphp-php>setViewphp(php$viewRendererphp-php>viewphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_viewphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Instantiatephp aphp decoratorphp basedphp onphp classphp namephp orphp classphp namephp fragment
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php nullphp|arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
-php php php php php php*php/
-php php php php protectedphp functionphp php_getDecoratorphp(php$namephp,php php$optionsphp)
-php php php php php{
-php php php php php php php php php$classphp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:DECORATORphp)php-php>loadphp(php$namephp)php;
-php php php php php php php php ifphp php(nullphp php=php=php=php php$optionsphp)php php{
-php php php php php php php php php php php php php$decoratorphp php=php newphp php$classphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$decoratorphp php=php newphp php$classphp(php$optionsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$decoratorphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp aphp decoratorphp forphp renderingphp thephp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|Zendphp_Formphp_Decoratorphp_Interfacephp php$decorator
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp withphp whichphp tophp initializephp decorator
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addDecoratorphp(php$decoratorphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$decoratorphp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
-php php php php php php php php php php php php php$namephp php=php getphp_classphp(php$decoratorphp)php;
-php php php php php php php php php}php elseifphp php(isphp_stringphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php php$namephp php php php php php php=php php$decoratorphp;
-php php php php php php php php php php php php php$decoratorphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'decoratorphp'php php=php>php php$namephp,
-php php php php php php php php php php php php php php php php php'optionsphp'php php php php=php>php php$optionsphp,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$decoratorphp asphp php$namephp php=php>php php$specphp)php php{
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(isphp_numericphp(php$namephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp aliasphp providedphp tophp addDecoratorphp;php mustphp bephp alphanumericphp stringphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php)php php{
-php php php php php php php php php php php php php php php php php$decoratorphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'decoratorphp'php php=php>php php$specphp,
-php php php php php php php php php php php php php php php php php php php php php'optionsphp'php php php php=php>php php$optionsphp,
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}php elseifphp php(php$specphp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
-php php php php php php php php php php php php php php php php php$decoratorphp php=php php$specphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp decoratorphp providedphp tophp addDecoratorphp;php mustphp bephp stringphp orphp Zendphp_Formphp_Decoratorphp_Interfacephp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_decoratorsphp[php$namephp]php php=php php$decoratorphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp manyphp decoratorsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decorators
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp addDecoratorsphp(arrayphp php$decoratorsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$decoratorsphp asphp php$decoratorNamephp php=php>php php$decoratorInfophp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$decoratorInfophp)php php|php|
-php php php php php php php php php php php php php php php php php$decoratorInfophp instanceofphp Zendphp_Formphp_Decoratorphp_Interfacephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_numericphp(php$decoratorNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(arrayphp(php$decoratorNamephp php=php>php php$decoratorInfophp)php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorInfophp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$decoratorInfophp)php)php php{
-php php php php php php php php php php php php php php php php php$argcphp php php php php=php countphp(php$decoratorInfophp)php;
-php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$decoratorInfophp[php'decoratorphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$decoratorphp php=php php$decoratorInfophp[php'decoratorphp'php]php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$decoratorInfophp[php'optionsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php php$decoratorInfophp[php'optionsphp'php]php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorphp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php switchphp php(truephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php0php php=php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php1php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$decoratorphp php php=php arrayphp_shiftphp(php$decoratorInfophp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php(php2php <php=php php$argcphp)php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_shiftphp(php$decoratorInfophp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php$decoratorphp,php php$optionsphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp decoratorphp passedphp tophp addDecoratorsphp(php)php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overwritephp allphp decorators
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decorators
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDecoratorsphp(arrayphp php$decoratorsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearDecoratorsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addDecoratorsphp(php$decoratorsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp registeredphp decorator
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp falsephp|Zendphp_Formphp_Decoratorphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getDecoratorphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php$lenphp php=php strlenphp(php$namephp)php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_decoratorsphp asphp php$localNamephp php=php>php php$decoratorphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$lenphp php>php strlenphp(php$localNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(php0php php=php=php=php substrphp_comparephp(php$localNamephp,php php$namephp,php php-php$lenphp,php php$lenphp,php truephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_loadDecoratorphp(php$decoratorphp,php php$localNamephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php returnphp php$decoratorphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(isphp_arrayphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadDecoratorphp(php$thisphp-php>php_decoratorsphp[php$namephp]php,php php$namephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_decoratorsphp[php$namephp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getDecoratorsphp(php)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>php_decoratorsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loadDecoratorphp(php$valuephp,php php$keyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_decoratorsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp aphp singlephp decorator
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp removeDecoratorphp(php$namephp)
-php php php php php{
-php php php php php php php php php$decoratorphp php=php php$thisphp-php>getDecoratorphp(php$namephp)php;
-php php php php php php php php ifphp php(php$decoratorphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_decoratorsphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_decoratorsphp[php$namephp]php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$classphp php=php getphp_classphp(php$decoratorphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$classphp,php php$thisphp-php>php_decoratorsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_decoratorsphp[php$classphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp clearDecoratorsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_decoratorsphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp allphp elementphp decoratorsphp asphp specified
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decorators
-php php php php php php*php php@paramphp php arrayphp|nullphp php$elementsphp Specificphp elementsphp tophp decoratephp orphp excludephp fromphp decoration
-php php php php php php*php php@paramphp php boolphp php$includephp Whetherphp php$elementsphp isphp anphp inclusionphp orphp exclusionphp list
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setElementDecoratorsphp(arrayphp php$decoratorsphp,php arrayphp php$elementsphp php=php nullphp,php php$includephp php=php truephp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$elementsphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$includephp)php php{
-php php php php php php php php php php php php php php php php php$elementObjsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$elementsphp asphp php$namephp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php(php$elementphp php=php php$thisphp-php>getElementphp(php$namephp)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$elementObjsphp[php]php php=php php$elementphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$elementObjsphp php=php php$thisphp-php>getElementsphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$elementsphp asphp php$namephp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$elementObjsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$elementObjsphp[php$namephp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$elementObjsphp php=php php$thisphp-php>getElementsphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$elementObjsphp asphp php$elementphp)php php{
-php php php php php php php php php php php php php$elementphp-php>setDecoratorsphp(php$decoratorsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_elementDecoratorsphp php=php php$decoratorsphp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp allphp displayphp groupphp decoratorsphp asphp specified
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decorators
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDisplayGroupDecoratorsphp(arrayphp php$decoratorsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>getDisplayGroupsphp(php)php asphp php$groupphp)php php{
-php php php php php php php php php php php php php$groupphp-php>setDecoratorsphp(php$decoratorsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp allphp subformphp decoratorsphp asphp specified
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decorators
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setSubFormDecoratorsphp(arrayphp php$decoratorsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$thisphp-php>getSubFormsphp(php)php asphp php$formphp)php php{
-php php php php php php php php php php php php php$formphp-php>setDecoratorsphp(php$decoratorsphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Renderphp form
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$viewphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setViewphp(php$viewphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$contentphp php=php php'php'php;
-php php php php php php php php foreachphp php(php$thisphp-php>getDecoratorsphp(php)php asphp php$decoratorphp)php php{
-php php php php php php php php php php php php php$decoratorphp-php>setElementphp(php$thisphp)php;
-php php php php php php php php php php php php php$contentphp php=php php$decoratorphp-php>renderphp(php$contentphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_setIsRenderedphp(php)php;
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Serializephp asphp string
-php php php php php php*
-php php php php php php*php Proxiesphp tophp php{php@linkphp renderphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$returnphp php=php php$thisphp-php>renderphp(php)php;
-php php php php php php php php php php php php returnphp php$returnphp;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php$messagephp php=php php"Exceptionphp caughtphp byphp formphp:php php"php php.php php$ephp-php>getMessagephp(php)
-php php php php php php php php php php php php php php php php php php php php php php.php php"php\nStackphp Tracephp:php\nphp"php php.php php$ephp-php>getTraceAsStringphp(php)php;
-php php php php php php php php php php php php triggerphp_errorphp(php$messagephp,php Ephp_USERphp_WARNINGphp)php;
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
-php php php php php}
-
-
-php php php php php/php/php Localizationphp:
-
-php php php php php/php*php*
-php php php php php php*php Setphp translatorphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Translatephp|Zendphp_Translatephp_Adapterphp|nullphp php$translator
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setTranslatorphp(php$translatorphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$translatorphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php nullphp;
-php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp_Adapterphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatorphp;
-php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_translatorphp php=php php$translatorphp-php>getAdapterphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp translatorphp specifiedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp globalphp defaultphp translatorphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Translatephp|Zendphp_Translatephp_Adapterphp|nullphp php$translator
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setDefaultTranslatorphp(php$translatorphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$translatorphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_translatorDefaultphp php=php nullphp;
-php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp_Adapterphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_translatorDefaultphp php=php php$translatorphp;
-php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_translatorDefaultphp php=php php$translatorphp-php>getAdapterphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Invalidphp translatorphp specifiedphp'php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp translatorphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Translatephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getTranslatorphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>translatorIsDisabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_translatorphp)php php{
-php php php php php php php php php php php php returnphp selfphp:php:getDefaultTranslatorphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_translatorphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Doesphp thisphp formphp havephp itsphp ownphp specificphp translatorphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasTranslatorphp(php)
-php php php php php{
-php php php php php php php php returnphp php(boolphp)php$thisphp-php>php_translatorphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp globalphp defaultphp translatorphp object
-php php php php php php*
-php php php php php php*php php@returnphp nullphp|Zendphp_Translate
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getDefaultTranslatorphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_translatorDefaultphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php'Zendphp_Translatephp'php)php)php php{
-php php php php php php php php php php php php php php php php php$translatorphp php=php Zendphp_Registryphp:php:getphp(php'Zendphp_Translatephp'php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$translatorphp instanceofphp Zendphp_Translatephp_Adapterphp)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp php$translatorphp;
-php php php php php php php php php php php php php php php php php}php elseifphp php(php$translatorphp instanceofphp Zendphp_Translatephp)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp php$translatorphp-php>getAdapterphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp selfphp:php:php$php_translatorDefaultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Isphp therephp aphp defaultphp translationphp objectphp setphp?
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp hasDefaultTranslatorphp(php)
-php php php php php{
-php php php php php php php php returnphp php(boolphp)selfphp:php:php$php_translatorDefaultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Indicatephp whetherphp orphp notphp translationphp shouldphp bephp disabled
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDisableTranslatorphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_translatorDisabledphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Isphp translationphp disabledphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp translatorIsDisabledphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_translatorDisabledphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overloadingphp:php accessphp tophp elementsphp,php formphp groupsphp,php andphp displayphp groups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp|Zendphp_Formphp|null
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_elementsphp[php$namephp]php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_subFormsphp[php$namephp]php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_displayGroupsphp[php$namephp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overloadingphp:php accessphp tophp elementsphp,php formphp groupsphp,php andphp displayphp groups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php Zendphp_Formphp_Elementphp|Zendphp_Formphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp php$value
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Formphp_Elementphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addElementphp(php$valuephp,php php$namephp)php;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}php elseifphp php(php$valuephp instanceofphp Zendphp_Formphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addSubFormphp(php$valuephp,php php$namephp)php;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDisplayGroupphp(php$valuephp,php php$namephp)php;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php ifphp php(isphp_objectphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$typephp php=php getphp_classphp(php$valuephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$typephp php=php gettypephp(php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(php'Onlyphp formphp elementsphp andphp groupsphp mayphp bephp overloadedphp;php variablephp ofphp typephp php"php'php php.php php$typephp php.php php'php"php providedphp'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overloadingphp:php accessphp tophp elementsphp,php formphp groupsphp,php andphp displayphp groups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)
-php php php php php php php php php php php php php|php|php issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)
-php php php php php php php php php php php php php|php|php issetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php)
-php php php php php php php php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overloadingphp:php accessphp tophp elementsphp,php formphp groupsphp,php andphp displayphp groups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_unsetphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_elementsphp[php$namephp]php)php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_subFormsphp[php$namephp]php)php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_displayGroupsphp[php$namephp]php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Overloadingphp:php allowphp renderingphp specificphp decorators
-php php php php php php*
-php php php php php php*php Callphp renderDecoratorNamephp(php)php tophp renderphp aphp specificphp decoratorphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@paramphp php arrayphp php$args
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Formphp_Exceptionphp forphp invalidphp decoratorphp orphp invalidphp methodphp call
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(php'renderphp'php php=php=php substrphp(php$methodphp,php php0php,php php6php)php)php php{
-php php php php php php php php php php php php php$decoratorNamephp php=php substrphp(php$methodphp,php php6php)php;
-php php php php php php php php php php php php ifphp php(falsephp php!php=php=php php(php$decoratorphp php=php php$thisphp-php>getDecoratorphp(php$decoratorNamephp)php)php)php php{
-php php php php php php php php php php php php php php php php php$decoratorphp-php>setElementphp(php$thisphp)php;
-php php php php php php php php php php php php php php php php php$seedphp php=php php'php'php;
-php php php php php php php php php php php php php php php php ifphp php(php0php <php countphp(php$argsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$seedphp php=php arrayphp_shiftphp(php$argsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$decoratorNamephp php=php=php=php php'FormElementsphp'php php|php|
-php php php php php php php php php php php php php php php php php php php php php$decoratorNamephp php=php=php=php php'PrepareElementsphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setIsRenderedphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php returnphp php$decoratorphp-php>renderphp(php$seedphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Decoratorphp byphp namephp php%sphp doesphp notphp existphp'php,php php$decoratorNamephp)php)php;
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Methodphp php%sphp doesphp notphp existphp'php,php php$methodphp)php)php;
-php php php php php}
-
-php php php php php/php/php Interfacesphp:php Iteratorphp,php Countable
-
-php php php php php/php*php*
-php php php php php php*php Currentphp elementphp/subformphp/displayphp group
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp|Zendphp_Formphp_DisplayGroupphp|Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php currentphp(php$thisphp-php>php_orderphp)php;
-php php php php php php php php php$keyphp php=php keyphp(php$thisphp-php>php_orderphp)php;
-
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_elementsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>getElementphp(php$keyphp)php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_subFormsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>getSubFormphp(php$keyphp)php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_displayGroupsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>getDisplayGroupphp(php$keyphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Exceptionphp(sprintfphp(php'Corruptionphp detectedphp inphp formphp;php invalidphp keyphp php(php"php%sphp"php)php foundphp inphp internalphp iteratorphp'php,php php(stringphp)php php$keyphp)php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Currentphp elementphp/subformphp/displayphp groupphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php returnphp keyphp(php$thisphp-php>php_orderphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Movephp pointerphp tophp nextphp elementphp/subformphp/displayphp group
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php nextphp(php$thisphp-php>php_orderphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Movephp pointerphp tophp beginningphp ofphp elementphp/subformphp/displayphp groupphp loop
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php resetphp(php$thisphp-php>php_orderphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Determinephp ifphp currentphp elementphp/subformphp/displayphp groupphp isphp valid
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php returnphp php(currentphp(php$thisphp-php>php_orderphp)php php!php=php=php falsephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Countphp ofphp elementsphp/subformsphp thatphp arephp iterable
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_orderphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp flagphp tophp disablephp loadingphp defaultphp decorators
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Form
-php php php php php php*php/
-php php php php publicphp functionphp setDisableLoadDefaultDecoratorsphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_disableLoadDefaultDecoratorsphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Shouldphp wephp loadphp thephp defaultphp decoratorsphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp loadDefaultDecoratorsIsDisabledphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_disableLoadDefaultDecoratorsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp thephp defaultphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp loadDefaultDecoratorsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>loadDefaultDecoratorsIsDisabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-
-php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$decoratorsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php'FormElementsphp'php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'HtmlTagphp'php,php arrayphp(php'tagphp'php php=php>php php'dlphp'php,php php'classphp'php php=php>php php'zendphp_formphp'php)php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Formphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Removephp anphp elementphp fromphp iteration
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp Elementphp/groupphp/formphp name
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp removeFromIterationphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_orderphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_orderphp[php$namephp]php)php;
-php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php truephp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Sortphp itemsphp accordingphp tophp theirphp order
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_sortphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_orderUpdatedphp)php php{
-php php php php php php php php php php php php php$itemsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$indexphp php=php php0php;
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_orderphp asphp php$keyphp php=php>php php$orderphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$orderphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php(php$orderphp php=php php$thisphp-php>php{php$keyphp}php-php>getOrderphp(php)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php whilephp php(arrayphp_searchphp(php$indexphp,php php$thisphp-php>php_orderphp,php truephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php+php+php$indexphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$itemsphp[php$indexphp]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php+php+php$indexphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$itemsphp[php$orderphp]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$itemsphp[php$orderphp]php php=php php$keyphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$itemsphp php=php arrayphp_flipphp(php$itemsphp)php;
-php php php php php php php php php php php php asortphp(php$itemsphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_orderphp php=php php$itemsphp;
-php php php php php php php php php php php php php$thisphp-php>php_orderUpdatedphp php=php falsephp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Lazyphp-loadphp aphp decorator
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$decoratorphp Decoratorphp typephp andphp options
-php php php php php php*php php@paramphp php mixedphp php$namephp Decoratorphp namephp orphp alias
-php php php php php php*php php@returnphp Zendphp_Formphp_Decoratorphp_Interface
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadDecoratorphp(arrayphp php$decoratorphp,php php$namephp)
-php php php php php{
-php php php php php php php php php$sameNamephp php=php falsephp;
-php php php php php php php php ifphp php(php$namephp php=php=php php$decoratorphp[php'decoratorphp'php]php)php php{
-php php php php php php php php php php php php php$sameNamephp php=php truephp;
-php php php php php php php php php}
-
-php php php php php php php php php$instancephp php=php php$thisphp-php>php_getDecoratorphp(php$decoratorphp[php'decoratorphp'php]php,php php$decoratorphp[php'optionsphp'php]php)php;
-php php php php php php php php ifphp php(php$sameNamephp)php php{
-php php php php php php php php php php php php php$newNamephp php php php php php php php php php php php php=php getphp_classphp(php$instancephp)php;
-php php php php php php php php php php php php php$decoratorNamesphp php php php php php=php arrayphp_keysphp(php$thisphp-php>php_decoratorsphp)php;
-php php php php php php php php php php php php php$orderphp php php php php php php php php php php php php php php=php arrayphp_flipphp(php$decoratorNamesphp)php;
-php php php php php php php php php php php php php$orderphp[php$newNamephp]php php php php php=php php$orderphp[php$namephp]php;
-php php php php php php php php php php php php php$decoratorsExchangephp php=php arrayphp(php)php;
-php php php php php php php php php php php php unsetphp(php$orderphp[php$namephp]php)php;
-php php php php php php php php php php php php asortphp(php$orderphp)php;
-php php php php php php php php php php php php foreachphp php(php$orderphp asphp php$keyphp php=php>php php$indexphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php$newNamephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$decoratorsExchangephp[php$keyphp]php php=php php$instancephp;
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$decoratorsExchangephp[php$keyphp]php php=php php$thisphp-php>php_decoratorsphp[php$keyphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_decoratorsphp php=php php$decoratorsExchangephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_decoratorsphp[php$namephp]php php=php php$instancephp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$instancephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp optionallyphp translatedphp customphp errorphp messages
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_getErrorMessagesphp(php)
-php php php php php{
-php php php php php php php php php$messagesphp php php php=php php$thisphp-php>getErrorMessagesphp(php)php;
-php php php php php php php php php$translatorphp php=php php$thisphp-php>getTranslatorphp(php)php;
-php php php php php php php php ifphp php(nullphp php!php=php=php php$translatorphp)php php{
-php php php php php php php php php php php php foreachphp php(php$messagesphp asphp php$keyphp php=php>php php$messagephp)php php{
-php php php php php php php php php php php php php php php php php$messagesphp[php$keyphp]php php=php php$translatorphp-php>translatephp(php$messagephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$messagesphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/** @see Zend_Validate_Interface */
+require_once 'Zend/Validate/Interface.php';
+
+/**
+ * Zend_Form
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Form.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
+class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
+{
+    /**#@+
+     * Plugin loader type constants
+     */
+    const DECORATOR = 'DECORATOR';
+    const ELEMENT = 'ELEMENT';
+    /**#@-*/
+
+    /**#@+
+     * Method type constants
+     */
+    const METHOD_DELETE = 'delete';
+    const METHOD_GET    = 'get';
+    const METHOD_POST   = 'post';
+    const METHOD_PUT    = 'put';
+    /**#@-*/
+
+    /**#@+
+     * Encoding type constants
+     */
+    const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
+    const ENCTYPE_MULTIPART  = 'multipart/form-data';
+    /**#@-*/
+
+    /**
+     * Form metadata and attributes
+     * @var array
+     */
+    protected $_attribs = array();
+
+    /**
+     * Decorators for rendering
+     * @var array
+     */
+    protected $_decorators = array();
+
+    /**
+     * Default display group class
+     * @var string
+     */
+    protected $_defaultDisplayGroupClass = 'Zend_Form_DisplayGroup';
+
+    /**
+     * Form description
+     * @var string
+     */
+    protected $_description;
+
+    /**
+     * Should we disable loading the default decorators?
+     * @var bool
+     */
+    protected $_disableLoadDefaultDecorators = false;
+
+    /**
+     * Display group prefix paths
+     * @var array
+     */
+    protected $_displayGroupPrefixPaths = array();
+
+    /**
+     * Groups of elements grouped for display purposes
+     * @var array
+     */
+    protected $_displayGroups = array();
+
+    /**
+     * Global decorators to apply to all elements
+     * @var null|array
+     */
+    protected $_elementDecorators;
+
+    /**
+     * Prefix paths to use when creating elements
+     * @var array
+     */
+    protected $_elementPrefixPaths = array();
+
+    /**
+     * Form elements
+     * @var array
+     */
+    protected $_elements = array();
+
+    /**
+     * Array to which elements belong (if any)
+     * @var string
+     */
+    protected $_elementsBelongTo;
+
+    /**
+     * Custom form-level error messages
+     * @var array
+     */
+    protected $_errorMessages = array();
+
+    /**
+     * Are there errors in the form?
+     * @var bool
+     */
+    protected $_errorsExist = false;
+
+    /**
+     * Has the form been manually flagged as an error?
+     * @var bool
+     */
+    protected $_errorsForced = false;
+
+    /**
+     * Form order
+     * @var int|null
+     */
+    protected $_formOrder;
+
+    /**
+     * Whether or not form elements are members of an array
+     * @var bool
+     */
+    protected $_isArray = false;
+
+    /**
+     * Form legend
+     * @var string
+     */
+    protected $_legend;
+
+    /**
+     * Plugin loaders
+     * @var array
+     */
+    protected $_loaders = array();
+
+    /**
+     * Allowed form methods
+     * @var array
+     */
+    protected $_methods = array('delete', 'get', 'post', 'put');
+
+    /**
+     * Order in which to display and iterate elements
+     * @var array
+     */
+    protected $_order = array();
+
+    /**
+     * Whether internal order has been updated or not
+     * @var bool
+     */
+    protected $_orderUpdated = false;
+
+    /**
+     * Sub form prefix paths
+     * @var array
+     */
+    protected $_subFormPrefixPaths = array();
+
+    /**
+     * Sub forms
+     * @var array
+     */
+    protected $_subForms = array();
+
+    /**
+     * @var Zend_Translate
+     */
+    protected $_translator;
+
+    /**
+     * Global default translation adapter
+     * @var Zend_Translate
+     */
+    protected static $_translatorDefault;
+
+    /**
+     * is the translator disabled?
+     * @var bool
+     */
+    protected $_translatorDisabled = false;
+
+    /**
+     * @var Zend_View_Interface
+     */
+    protected $_view;
+
+    /**
+     * @var bool
+     */
+    protected $_isRendered = false;
+
+    /**
+     * Constructor
+     *
+     * Registers form view helper as decorator
+     *
+     * @param mixed $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        if (is_array($options)) {
+            $this->setOptions($options);
+        } elseif ($options instanceof Zend_Config) {
+            $this->setConfig($options);
+        }
+
+        // Extensions...
+        $this->init();
+
+        $this->loadDefaultDecorators();
+    }
+
+    /**
+     * Clone form object and all children
+     *
+     * @return void
+     */
+    public function __clone()
+    {
+        $elements = array();
+        foreach ($this->getElements() as $name => $element) {
+            $elements[] = clone $element;
+        }
+        $this->setElements($elements);
+
+        $subForms = array();
+        foreach ($this->getSubForms() as $name => $subForm) {
+            $subForms[$name] = clone $subForm;
+        }
+        $this->setSubForms($subForms);
+
+        $displayGroups = array();
+        foreach ($this->_displayGroups as $group)  {
+            $clone    = clone $group;
+            $elements = array();
+            foreach ($clone->getElements() as $name => $e) {
+                $elements[] = $this->getElement($name);
+            }
+            $clone->setElements($elements);
+            $displayGroups[] = $clone;
+        }
+        $this->setDisplayGroups($displayGroups);
+    }
+
+    /**
+     * Reset values of form
+     *
+     * @return Zend_Form
+     */
+    public function reset()
+    {
+        foreach ($this->getElements() as $element) {
+            $element->setValue(null);
+        }
+        foreach ($this->getSubForms() as $subForm) {
+            $subForm->reset();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Initialize form (used by extending classes)
+     *
+     * @return void
+     */
+    public function init()
+    {
+    }
+
+    /**
+     * Set form state from options array
+     *
+     * @param  array $options
+     * @return Zend_Form
+     */
+    public function setOptions(array $options)
+    {
+        if (isset($options['prefixPath'])) {
+            $this->addPrefixPaths($options['prefixPath']);
+            unset($options['prefixPath']);
+        }
+
+        if (isset($options['elementPrefixPath'])) {
+            $this->addElementPrefixPaths($options['elementPrefixPath']);
+            unset($options['elementPrefixPath']);
+        }
+
+        if (isset($options['displayGroupPrefixPath'])) {
+            $this->addDisplayGroupPrefixPaths($options['displayGroupPrefixPath']);
+            unset($options['displayGroupPrefixPath']);
+        }
+
+        if (isset($options['elementDecorators'])) {
+            $this->_elementDecorators = $options['elementDecorators'];
+            unset($options['elementDecorators']);
+        }
+
+        if (isset($options['elements'])) {
+            $this->setElements($options['elements']);
+            unset($options['elements']);
+        }
+
+        if (isset($options['defaultDisplayGroupClass'])) {
+            $this->setDefaultDisplayGroupClass($options['defaultDisplayGroupClass']);
+            unset($options['defaultDisplayGroupClass']);
+        }
+
+        if (isset($options['displayGroupDecorators'])) {
+            $displayGroupDecorators = $options['displayGroupDecorators'];
+            unset($options['displayGroupDecorators']);
+        }
+
+        if (isset($options['elementsBelongTo'])) {
+            $elementsBelongTo = $options['elementsBelongTo'];
+            unset($options['elementsBelongTo']);
+        }
+
+        if (isset($options['attribs'])) {
+            $this->addAttribs($options['attribs']);
+            unset($options['attribs']);
+        }
+
+        $forbidden = array(
+            'Options', 'Config', 'PluginLoader', 'SubForms', 'Translator',
+            'Attrib', 'Default',
+        );
+
+        foreach ($options as $key => $value) {
+            $normalized = ucfirst($key);
+            if (in_array($normalized, $forbidden)) {
+                continue;
+            }
+
+            $method = 'set' . $normalized;
+            if (method_exists($this, $method)) {
+                if($normalized == 'View' && !($value instanceof Zend_View_Interface)) {
+                    continue;
+                }
+                $this->$method($value);
+            } else {
+                $this->setAttrib($key, $value);
+            }
+        }
+
+        if (isset($displayGroupDecorators)) {
+            $this->setDisplayGroupDecorators($displayGroupDecorators);
+        }
+
+        if (isset($elementsBelongTo)) {
+            $this->setElementsBelongTo($elementsBelongTo);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set form state from config object
+     *
+     * @param  Zend_Config $config
+     * @return Zend_Form
+     */
+    public function setConfig(Zend_Config $config)
+    {
+        return $this->setOptions($config->toArray());
+    }
+
+
+    // Loaders
+
+    /**
+     * Set plugin loaders for use with decorators and elements
+     *
+     * @param  Zend_Loader_PluginLoader_Interface $loader
+     * @param  string $type 'decorator' or 'element'
+     * @return Zend_Form
+     * @throws Zend_Form_Exception on invalid type
+     */
+    public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader, $type = null)
+    {
+        $type = strtoupper($type);
+        switch ($type) {
+            case self::DECORATOR:
+            case self::ELEMENT:
+                $this->_loaders[$type] = $loader;
+                return $this;
+            default:
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to setPluginLoader()', $type));
+        }
+    }
+
+    /**
+     * Retrieve plugin loader for given type
+     *
+     * $type may be one of:
+     * - decorator
+     * - element
+     *
+     * If a plugin loader does not exist for the given type, defaults are
+     * created.
+     *
+     * @param  string $type
+     * @return Zend_Loader_PluginLoader_Interface
+     */
+    public function getPluginLoader($type = null)
+    {
+        $type = strtoupper($type);
+        if (!isset($this->_loaders[$type])) {
+            switch ($type) {
+                case self::DECORATOR:
+                    $prefixSegment = 'Form_Decorator';
+                    $pathSegment   = 'Form/Decorator';
+                    break;
+                case self::ELEMENT:
+                    $prefixSegment = 'Form_Element';
+                    $pathSegment   = 'Form/Element';
+                    break;
+                default:
+                    require_once 'Zend/Form/Exception.php';
+                    throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to getPluginLoader()', $type));
+            }
+
+            require_once 'Zend/Loader/PluginLoader.php';
+            $this->_loaders[$type] = new Zend_Loader_PluginLoader(
+                array('Zend_' . $prefixSegment . '_' => 'Zend/' . $pathSegment . '/')
+            );
+        }
+
+        return $this->_loaders[$type];
+    }
+
+    /**
+     * Add prefix path for plugin loader
+     *
+     * If no $type specified, assumes it is a base path for both filters and
+     * validators, and sets each according to the following rules:
+     * - decorators: $prefix = $prefix . '_Decorator'
+     * - elements: $prefix = $prefix . '_Element'
+     *
+     * Otherwise, the path prefix is set on the appropriate plugin loader.
+     *
+     * If $type is 'decorator', sets the path in the decorator plugin loader
+     * for all elements. Additionally, if no $type is provided,
+     * the prefix and path is added to both decorator and element
+     * plugin loader with following settings:
+     * $prefix . '_Decorator', $path . '/Decorator/'
+     * $prefix . '_Element', $path . '/Element/'
+     *
+     * @param  string $prefix
+     * @param  string $path
+     * @param  string $type
+     * @return Zend_Form
+     * @throws Zend_Form_Exception for invalid type
+     */
+    public function addPrefixPath($prefix, $path, $type = null)
+    {
+        $type = strtoupper($type);
+        switch ($type) {
+            case self::DECORATOR:
+            case self::ELEMENT:
+                $loader = $this->getPluginLoader($type);
+                $loader->addPrefixPath($prefix, $path);
+                return $this;
+            case null:
+                $prefix = rtrim($prefix, '_');
+                $path   = rtrim($path, DIRECTORY_SEPARATOR);
+                foreach (array(self::DECORATOR, self::ELEMENT) as $type) {
+                    $cType        = ucfirst(strtolower($type));
+                    $pluginPath   = $path . DIRECTORY_SEPARATOR . $cType . DIRECTORY_SEPARATOR;
+                    $pluginPrefix = $prefix . '_' . $cType;
+                    $loader       = $this->getPluginLoader($type);
+                    $loader->addPrefixPath($pluginPrefix, $pluginPath);
+                }
+                return $this;
+            default:
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception(sprintf('Invalid type "%s" provided to getPluginLoader()', $type));
+        }
+    }
+
+    /**
+     * Add many prefix paths at once
+     *
+     * @param  array $spec
+     * @return Zend_Form
+     */
+    public function addPrefixPaths(array $spec)
+    {
+        if (isset($spec['prefix']) && isset($spec['path'])) {
+            return $this->addPrefixPath($spec['prefix'], $spec['path']);
+        }
+        foreach ($spec as $type => $paths) {
+            if (is_numeric($type) && is_array($paths)) {
+                $type = null;
+                if (isset($paths['prefix']) && isset($paths['path'])) {
+                    if (isset($paths['type'])) {
+                        $type = $paths['type'];
+                    }
+                    $this->addPrefixPath($paths['prefix'], $paths['path'], $type);
+                }
+            } elseif (!is_numeric($type)) {
+                if (!isset($paths['prefix']) || !isset($paths['path'])) {
+                    continue;
+                }
+                $this->addPrefixPath($paths['prefix'], $paths['path'], $type);
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Add prefix path for all elements
+     *
+     * @param  string $prefix
+     * @param  string $path
+     * @param  string $type
+     * @return Zend_Form
+     */
+    public function addElementPrefixPath($prefix, $path, $type = null)
+    {
+        $this->_elementPrefixPaths[] = array(
+            'prefix' => $prefix,
+            'path'   => $path,
+            'type'   => $type,
+        );
+
+        foreach ($this->getElements() as $element) {
+            $element->addPrefixPath($prefix, $path, $type);
+        }
+
+        foreach ($this->getSubForms() as $subForm) {
+            $subForm->addElementPrefixPath($prefix, $path, $type);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add prefix paths for all elements
+     *
+     * @param  array $spec
+     * @return Zend_Form
+     */
+    public function addElementPrefixPaths(array $spec)
+    {
+        $this->_elementPrefixPaths = $this->_elementPrefixPaths + $spec;
+
+        foreach ($this->getElements() as $element) {
+            $element->addPrefixPaths($spec);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add prefix path for all display groups
+     *
+     * @param  string $prefix
+     * @param  string $path
+     * @return Zend_Form
+     */
+    public function addDisplayGroupPrefixPath($prefix, $path)
+    {
+        $this->_displayGroupPrefixPaths[] = array(
+            'prefix' => $prefix,
+            'path'   => $path,
+        );
+
+        foreach ($this->getDisplayGroups() as $group) {
+            $group->addPrefixPath($prefix, $path);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add multiple display group prefix paths at once
+     *
+     * @param  array $spec
+     * @return Zend_Form
+     */
+    public function addDisplayGroupPrefixPaths(array $spec)
+    {
+        foreach ($spec as $key => $value) {
+            if (is_string($value) && !is_numeric($key)) {
+                $this->addDisplayGroupPrefixPath($key, $value);
+                continue;
+            }
+
+            if (is_string($value) && is_numeric($key)) {
+                continue;
+            }
+
+            if (is_array($value)) {
+                $count = count($value);
+                if (array_keys($value) === range(0, $count - 1)) {
+                    if ($count < 2) {
+                        continue;
+                    }
+                    $prefix = array_shift($value);
+                    $path   = array_shift($value);
+                    $this->addDisplayGroupPrefixPath($prefix, $path);
+                    continue;
+                }
+                if (array_key_exists('prefix', $value) && array_key_exists('path', $value)) {
+                    $this->addDisplayGroupPrefixPath($value['prefix'], $value['path']);
+                }
+            }
+        }
+        return $this;
+    }
+
+    // Form metadata:
+
+    /**
+     * Set form attribute
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @return Zend_Form
+     */
+    public function setAttrib($key, $value)
+    {
+        $key = (string) $key;
+        $this->_attribs[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * Add multiple form attributes at once
+     *
+     * @param  array $attribs
+     * @return Zend_Form
+     */
+    public function addAttribs(array $attribs)
+    {
+        foreach ($attribs as $key => $value) {
+            $this->setAttrib($key, $value);
+        }
+        return $this;
+    }
+
+    /**
+     * Set multiple form attributes at once
+     *
+     * Overwrites any previously set attributes.
+     *
+     * @param  array $attribs
+     * @return Zend_Form
+     */
+    public function setAttribs(array $attribs)
+    {
+        $this->clearAttribs();
+        return $this->addAttribs($attribs);
+    }
+
+    /**
+     * Retrieve a single form attribute
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function getAttrib($key)
+    {
+        $key = (string) $key;
+        if (!isset($this->_attribs[$key])) {
+            return null;
+        }
+
+        return $this->_attribs[$key];
+    }
+
+    /**
+     * Retrieve all form attributes/metadata
+     *
+     * @return array
+     */
+    public function getAttribs()
+    {
+        return $this->_attribs;
+    }
+
+    /**
+     * Remove attribute
+     *
+     * @param  string $key
+     * @return bool
+     */
+    public function removeAttrib($key)
+    {
+        if (isset($this->_attribs[$key])) {
+            unset($this->_attribs[$key]);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Clear all form attributes
+     *
+     * @return Zend_Form
+     */
+    public function clearAttribs()
+    {
+        $this->_attribs = array();
+        return $this;
+    }
+
+    /**
+     * Set form action
+     *
+     * @param  string $action
+     * @return Zend_Form
+     */
+    public function setAction($action)
+    {
+        return $this->setAttrib('action', (string) $action);
+    }
+
+    /**
+     * Get form action
+     *
+     * Sets default to '' if not set.
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        $action = $this->getAttrib('action');
+        if (null === $action) {
+            $action = '';
+            $this->setAction($action);
+        }
+        return $action;
+    }
+
+    /**
+     * Set form method
+     *
+     * Only values in {@link $_methods()} allowed
+     *
+     * @param  string $method
+     * @return Zend_Form
+     * @throws Zend_Form_Exception
+     */
+    public function setMethod($method)
+    {
+        $method = strtolower($method);
+        if (!in_array($method, $this->_methods)) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception(sprintf('"%s" is an invalid form method', $method));
+        }
+        $this->setAttrib('method', $method);
+        return $this;
+    }
+
+    /**
+     * Retrieve form method
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        if (null === ($method = $this->getAttrib('method'))) {
+            $method = self::METHOD_POST;
+            $this->setAttrib('method', $method);
+        }
+        return strtolower($method);
+    }
+
+    /**
+     * Set encoding type
+     *
+     * @param  string $value
+     * @return Zend_Form
+     */
+    public function setEnctype($value)
+    {
+        $this->setAttrib('enctype', $value);
+        return $this;
+    }
+
+    /**
+     * Get encoding type
+     *
+     * @return string
+     */
+    public function getEnctype()
+    {
+        if (null === ($enctype = $this->getAttrib('enctype'))) {
+            $enctype = self::ENCTYPE_URLENCODED;
+            $this->setAttrib('enctype', $enctype);
+        }
+        return $this->getAttrib('enctype');
+    }
+
+    /**
+     * Filter a name to only allow valid variable characters
+     *
+     * @param  string $value
+     * @param  bool $allowBrackets
+     * @return string
+     */
+    public function filterName($value, $allowBrackets = false)
+    {
+        $charset = '^a-zA-Z0-9_\x7f-\xff';
+        if ($allowBrackets) {
+            $charset .= '\[\]';
+        }
+        return preg_replace('/[' . $charset . ']/', '', (string) $value);
+    }
+
+    /**
+     * Set form name
+     *
+     * @param  string $name
+     * @return Zend_Form
+     */
+    public function setName($name)
+    {
+        $name = $this->filterName($name);
+        if ('' === (string)$name) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Invalid name provided; must contain only valid variable characters and be non-empty');
+        }
+
+        return $this->setAttrib('name', $name);
+    }
+
+    /**
+     * Get name attribute
+     *
+     * @return null|string
+     */
+    public function getName()
+    {
+        return $this->getAttrib('name');
+    }
+
+    /**
+     * Get fully qualified name
+     *
+     * Places name as subitem of array and/or appends brackets.
+     *
+     * @return string
+     */
+    public function getFullyQualifiedName()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * Get element id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        if (null !== ($id = $this->getAttrib('id'))) {
+            return $id;
+        }
+
+        $id = $this->getFullyQualifiedName();
+
+        // Bail early if no array notation detected
+        if (!strstr($id, '[')) {
+            return $id;
+        }
+
+        // Strip array notation
+        if ('[]' == substr($id, -2)) {
+            $id = substr($id, 0, strlen($id) - 2);
+        }
+        $id = str_replace('][', '-', $id);
+        $id = str_replace(array(']', '['), '-', $id);
+        $id = trim($id, '-');
+
+        return $id;
+    }
+
+    /**
+     * Set form legend
+     *
+     * @param  string $value
+     * @return Zend_Form
+     */
+    public function setLegend($value)
+    {
+        $this->_legend = (string) $value;
+        return $this;
+    }
+
+    /**
+     * Get form legend
+     *
+     * @return string
+     */
+    public function getLegend()
+    {
+        return $this->_legend;
+    }
+
+    /**
+     * Set form description
+     *
+     * @param  string $value
+     * @return Zend_Form
+     */
+    public function setDescription($value)
+    {
+        $this->_description = (string) $value;
+        return $this;
+    }
+
+    /**
+     * Retrieve form description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
+
+    /**
+     * Set form order
+     *
+     * @param  int $index
+     * @return Zend_Form
+     */
+    public function setOrder($index)
+    {
+        $this->_formOrder = (int) $index;
+        return $this;
+    }
+
+    /**
+     * Get form order
+     *
+     * @return int|null
+     */
+    public function getOrder()
+    {
+        return $this->_formOrder;
+    }
+
+    /**
+     * When calling renderFormElements or render this method
+     * is used to set $_isRendered member to prevent repeatedly
+     * merging belongsTo setting
+     */
+    protected function _setIsRendered()
+    {
+        $this->_isRendered = true;
+        return $this;
+    }
+
+    /**
+     * Get the value of $_isRendered member
+     */
+    protected function _getIsRendered()
+    {
+        return (bool)$this->_isRendered;
+    }
+
+    // Element interaction:
+
+    /**
+     * Add a new element
+     *
+     * $element may be either a string element type, or an object of type
+     * Zend_Form_Element. If a string element type is provided, $name must be
+     * provided, and $options may be optionally provided for configuring the
+     * element.
+     *
+     * If a Zend_Form_Element is provided, $name may be optionally provided,
+     * and any provided $options will be ignored.
+     *
+     * @param  string|Zend_Form_Element $element
+     * @param  string $name
+     * @param  array|Zend_Config $options
+     * @return Zend_Form
+     */
+    public function addElement($element, $name = null, $options = null)
+    {
+        if (is_string($element)) {
+            if (null === $name) {
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception('Elements specified by string must have an accompanying name');
+            }
+
+            if (is_array($this->_elementDecorators)) {
+                if (null === $options) {
+                    $options = array('decorators' => $this->_elementDecorators);
+                } elseif ($options instanceof Zend_Config) {
+                    $options = $options->toArray();
+                }
+                if (is_array($options)
+                    && !array_key_exists('decorators', $options)
+                ) {
+                    $options['decorators'] = $this->_elementDecorators;
+                }
+            }
+
+            $this->_elements[$name] = $this->createElement($element, $name, $options);
+        } elseif ($element instanceof Zend_Form_Element) {
+            $prefixPaths              = array();
+            $prefixPaths['decorator'] = $this->getPluginLoader('decorator')->getPaths();
+            if (!empty($this->_elementPrefixPaths)) {
+                $prefixPaths = array_merge($prefixPaths, $this->_elementPrefixPaths);
+            }
+
+            if (null === $name) {
+                $name = $element->getName();
+            }
+
+            $this->_elements[$name] = $element;
+            $this->_elements[$name]->addPrefixPaths($prefixPaths);
+        }
+
+        $this->_order[$name] = $this->_elements[$name]->getOrder();
+        $this->_orderUpdated = true;
+        $this->_setElementsBelongTo($name);
+
+        return $this;
+    }
+
+    /**
+     * Create an element
+     *
+     * Acts as a factory for creating elements. Elements created with this
+     * method will not be attached to the form, but will contain element
+     * settings as specified in the form object (including plugin loader
+     * prefix paths, default decorators, etc.).
+     *
+     * @param  string $type
+     * @param  string $name
+     * @param  array|Zend_Config $options
+     * @return Zend_Form_Element
+     */
+    public function createElement($type, $name, $options = null)
+    {
+        if (!is_string($type)) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Element type must be a string indicating type');
+        }
+
+        if (!is_string($name)) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Element name must be a string');
+        }
+
+        $prefixPaths              = array();
+        $prefixPaths['decorator'] = $this->getPluginLoader('decorator')->getPaths();
+        if (!empty($this->_elementPrefixPaths)) {
+            $prefixPaths = array_merge($prefixPaths, $this->_elementPrefixPaths);
+        }
+
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
+
+        if ((null === $options) || !is_array($options)) {
+            $options = array('prefixPath' => $prefixPaths);
+        } elseif (is_array($options)) {
+            if (array_key_exists('prefixPath', $options)) {
+                $options['prefixPath'] = array_merge($prefixPaths, $options['prefixPath']);
+            } else {
+                $options['prefixPath'] = $prefixPaths;
+            }
+        }
+
+        $class = $this->getPluginLoader(self::ELEMENT)->load($type);
+        $element = new $class($name, $options);
+
+        return $element;
+    }
+
+    /**
+     * Add multiple elements at once
+     *
+     * @param  array $elements
+     * @return Zend_Form
+     */
+    public function addElements(array $elements)
+    {
+        foreach ($elements as $key => $spec) {
+            $name = null;
+            if (!is_numeric($key)) {
+                $name = $key;
+            }
+
+            if (is_string($spec) || ($spec instanceof Zend_Form_Element)) {
+                $this->addElement($spec, $name);
+                continue;
+            }
+
+            if (is_array($spec)) {
+                $argc = count($spec);
+                $options = array();
+                if (isset($spec['type'])) {
+                    $type = $spec['type'];
+                    if (isset($spec['name'])) {
+                        $name = $spec['name'];
+                    }
+                    if (isset($spec['options'])) {
+                        $options = $spec['options'];
+                    }
+                    $this->addElement($type, $name, $options);
+                } else {
+                    switch ($argc) {
+                        case 0:
+                            continue;
+                        case (1 <= $argc):
+                            $type = array_shift($spec);
+                        case (2 <= $argc):
+                            if (null === $name) {
+                                $name = array_shift($spec);
+                            } else {
+                                $options = array_shift($spec);
+                            }
+                        case (3 <= $argc):
+                            if (empty($options)) {
+                                $options = array_shift($spec);
+                            }
+                        default:
+                            $this->addElement($type, $name, $options);
+                    }
+                }
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Set form elements (overwrites existing elements)
+     *
+     * @param  array $elements
+     * @return Zend_Form
+     */
+    public function setElements(array $elements)
+    {
+        $this->clearElements();
+        return $this->addElements($elements);
+    }
+
+    /**
+     * Retrieve a single element
+     *
+     * @param  string $name
+     * @return Zend_Form_Element|null
+     */
+    public function getElement($name)
+    {
+        if (array_key_exists($name, $this->_elements)) {
+            return $this->_elements[$name];
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve all elements
+     *
+     * @return array
+     */
+    public function getElements()
+    {
+        return $this->_elements;
+    }
+
+    /**
+     * Remove element
+     *
+     * @param  string $name
+     * @return boolean
+     */
+    public function removeElement($name)
+    {
+        $name = (string) $name;
+        if (isset($this->_elements[$name])) {
+            unset($this->_elements[$name]);
+            if (array_key_exists($name, $this->_order)) {
+                unset($this->_order[$name]);
+                $this->_orderUpdated = true;
+            } else {
+                foreach ($this->_displayGroups as $group) {
+                    if (null !== $group->getElement($name)) {
+                        $group->removeElement($name);
+                    }
+                }
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove all form elements
+     *
+     * @return Zend_Form
+     */
+    public function clearElements()
+    {
+        foreach (array_keys($this->_elements) as $key) {
+            if (array_key_exists($key, $this->_order)) {
+                unset($this->_order[$key]);
+            }
+        }
+        $this->_elements     = array();
+        $this->_orderUpdated = true;
+        return $this;
+    }
+
+    /**
+     * Set default values for elements
+     *
+     * Sets values for all elements specified in the array of $defaults.
+     *
+     * @param  array $defaults
+     * @return Zend_Form
+     */
+    public function setDefaults(array $defaults)
+    {
+        $eBelongTo = null;
+
+        if ($this->isArray()) {
+            $eBelongTo = $this->getElementsBelongTo();
+            $defaults = $this->_dissolveArrayValue($defaults, $eBelongTo);
+        }
+        foreach ($this->getElements() as $name => $element) {
+            $check = $defaults;
+            if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
+                $check = $this->_dissolveArrayValue($defaults, $belongsTo);
+            }
+            if (array_key_exists($name, $check)) {
+                $this->setDefault($name, $check[$name]);
+                $defaults = $this->_dissolveArrayUnsetKey($defaults, $belongsTo, $name);
+            }
+        }
+        foreach ($this->getSubForms() as $name => $form) {
+            if (!$form->isArray() && array_key_exists($name, $defaults)) {
+                $form->setDefaults($defaults[$name]);
+            } else {
+                $form->setDefaults($defaults);
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Set default value for an element
+     *
+     * @param  string $name
+     * @param  mixed $value
+     * @return Zend_Form
+     */
+    public function setDefault($name, $value)
+    {
+        $name = (string) $name;
+        if ($element = $this->getElement($name)) {
+            $element->setValue($value);
+        } else {
+            if (is_scalar($value)) {
+                foreach ($this->getSubForms() as $subForm) {
+                    $subForm->setDefault($name, $value);
+                }
+            } elseif (is_array($value) && ($subForm = $this->getSubForm($name))) {
+                $subForm->setDefaults($value);
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Retrieve value for single element
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getValue($name)
+    {
+        if ($element = $this->getElement($name)) {
+            return $element->getValue();
+        }
+
+        if ($subForm = $this->getSubForm($name)) {
+            return $subForm->getValues(true);
+        }
+
+        foreach ($this->getSubForms() as $subForm) {
+            if ($name == $subForm->getElementsBelongTo()) {
+                return $subForm->getValues(true);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve all form element values
+     *
+     * @param  bool $suppressArrayNotation
+     * @return array
+     */
+    public function getValues($suppressArrayNotation = false)
+    {
+        $values = array();
+        $eBelongTo = null;
+
+        if ($this->isArray()) {
+            $eBelongTo = $this->getElementsBelongTo();
+        }
+
+        foreach ($this->getElements() as $key => $element) {
+            if (!$element->getIgnore()) {
+                $merge = array();
+                if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
+                    if ('' !== (string)$belongsTo) {
+                        $key = $belongsTo . '[' . $key . ']';
+                    }
+                }
+                $merge = $this->_attachToArray($element->getValue(), $key);
+                $values = $this->_array_replace_recursive($values, $merge);
+            }
+        }
+        foreach ($this->getSubForms() as $key => $subForm) {
+            $merge = array();
+            if (!$subForm->isArray()) {
+                $merge[$key] = $subForm->getValues();
+            } else {
+                $merge = $this->_attachToArray($subForm->getValues(true),
+                                               $subForm->getElementsBelongTo());
+            }
+            $values = $this->_array_replace_recursive($values, $merge);
+        }
+
+        if (!$suppressArrayNotation &&
+            $this->isArray() &&
+            !$this->_getIsRendered()) {
+            $values = $this->_attachToArray($values, $this->getElementsBelongTo());
+        }
+
+        return $values;
+    }
+
+    /**
+     * Returns only the valid values from the given form input.
+     *
+     * For models that can be saved in a partially valid state, for example when following the builder,
+     * prototype or state patterns it is particularly interessting to retrieve all the current valid
+     * values to persist them.
+     *
+     * @param  array $data
+     * @param  bool $suppressArrayNotation
+     * @return array
+     */
+    public function getValidValues($data, $suppressArrayNotation = false)
+    {
+        $values = array();
+        $eBelongTo = null;
+
+        if ($this->isArray()) {
+            $eBelongTo = $this->getElementsBelongTo();
+            $data = $this->_dissolveArrayValue($data, $eBelongTo);
+        }
+        $context = $data;
+        foreach ($this->getElements() as $key => $element) {
+            if (!$element->getIgnore()) {
+                $check = $data;
+                if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
+                    $check = $this->_dissolveArrayValue($data, $belongsTo);
+                }
+                if (isset($check[$key])) {
+                    if($element->isValid($check[$key], $context)) {
+                        $merge = array();
+                        if ($belongsTo !== $eBelongTo && '' !== (string)$belongsTo) {
+                            $key = $belongsTo . '[' . $key . ']';
+                        }
+                        $merge = $this->_attachToArray($element->getValue(), $key);
+                        $values = $this->_array_replace_recursive($values, $merge);
+                    }
+                    $data = $this->_dissolveArrayUnsetKey($data, $belongsTo, $key);
+                }
+            }
+        }
+        foreach ($this->getSubForms() as $key => $form) {
+            $merge = array();
+            if (isset($data[$key]) && !$form->isArray()) {
+                $tmp = $form->getValidValues($data[$key]);
+                if (!empty($tmp)) {
+                    $merge[$key] = $tmp;
+                }
+            } else {
+                $tmp = $form->getValidValues($data, true);
+                if (!empty($tmp)) {
+                    $merge = $this->_attachToArray($tmp, $form->getElementsBelongTo());
+                }
+            }
+            $values = $this->_array_replace_recursive($values, $merge);
+        }
+        if (!$suppressArrayNotation &&
+            $this->isArray() &&
+            !empty($values) &&
+            !$this->_getIsRendered()) {
+            $values = $this->_attachToArray($values, $this->getElementsBelongTo());
+        }
+
+        return $values;
+    }
+
+    /**
+     * Get unfiltered element value
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getUnfilteredValue($name)
+    {
+        if ($element = $this->getElement($name)) {
+            return $element->getUnfilteredValue();
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve all unfiltered element values
+     *
+     * @return array
+     */
+    public function getUnfilteredValues()
+    {
+        $values = array();
+        foreach ($this->getElements() as $key => $element) {
+            $values[$key] = $element->getUnfilteredValue();
+        }
+
+        return $values;
+    }
+
+    /**
+     * Set all elements' filters
+     *
+     * @param  array $filters
+     * @return Zend_Form
+     */
+    public function setElementFilters(array $filters)
+    {
+        foreach ($this->getElements() as $element) {
+            $element->setFilters($filters);
+        }
+        return $this;
+    }
+
+    /**
+     * Set name of array elements belong to
+     *
+     * @param  string $array
+     * @return Zend_Form
+     */
+    public function setElementsBelongTo($array)
+    {
+        $origName = $this->getElementsBelongTo();
+        $name = $this->filterName($array, true);
+        if ('' === $name) {
+            $name = null;
+        }
+        $this->_elementsBelongTo = $name;
+
+        if (null === $name) {
+            $this->setIsArray(false);
+            if (null !== $origName) {
+                $this->_setElementsBelongTo();
+            }
+        } else {
+            $this->setIsArray(true);
+            $this->_setElementsBelongTo();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set array to which elements belong
+     *
+     * @param  string $name Element name
+     * @return void
+     */
+    protected function _setElementsBelongTo($name = null)
+    {
+        $array = $this->getElementsBelongTo();
+
+        if (null === $array) {
+            return;
+        }
+
+        if (null === $name) {
+            foreach ($this->getElements() as $element) {
+                $element->setBelongsTo($array);
+            }
+        } else {
+            if (null !== ($element = $this->getElement($name))) {
+                $element->setBelongsTo($array);
+            }
+        }
+    }
+
+    /**
+     * Get name of array elements belong to
+     *
+     * @return string|null
+     */
+    public function getElementsBelongTo()
+    {
+        if ((null === $this->_elementsBelongTo) && $this->isArray()) {
+            $name = $this->getName();
+            if ('' !== (string)$name) {
+                return $name;
+            }
+        }
+        return $this->_elementsBelongTo;
+    }
+
+    /**
+     * Set flag indicating elements belong to array
+     *
+     * @param  bool $flag Value of flag
+     * @return Zend_Form
+     */
+    public function setIsArray($flag)
+    {
+        $this->_isArray = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Get flag indicating if elements belong to an array
+     *
+     * @return bool
+     */
+    public function isArray()
+    {
+        return $this->_isArray;
+    }
+
+    // Element groups:
+
+    /**
+     * Add a form group/subform
+     *
+     * @param  Zend_Form $form
+     * @param  string $name
+     * @param  int $order
+     * @return Zend_Form
+     */
+    public function addSubForm(Zend_Form $form, $name, $order = null)
+    {
+        $name = (string) $name;
+        foreach ($this->_loaders as $type => $loader) {
+            $loaderPaths = $loader->getPaths();
+            foreach ($loaderPaths as $prefix => $paths) {
+                foreach ($paths as $path) {
+                    $form->addPrefixPath($prefix, $path, $type);
+                }
+            }
+        }
+
+        if (!empty($this->_elementPrefixPaths)) {
+            foreach ($this->_elementPrefixPaths as $spec) {
+                list($prefix, $path, $type) = array_values($spec);
+                $form->addElementPrefixPath($prefix, $path, $type);
+            }
+        }
+
+        if (!empty($this->_displayGroupPrefixPaths)) {
+            foreach ($this->_displayGroupPrefixPaths as $spec) {
+                list($prefix, $path) = array_values($spec);
+                $form->addDisplayGroupPrefixPath($prefix, $path);
+            }
+        }
+
+        if (null !== $order) {
+            $form->setOrder($order);
+        }
+
+        if (($oldName = $form->getName()) &&
+            $oldName !== $name &&
+            $oldName === $form->getElementsBelongTo()) {
+            $form->setElementsBelongTo($name);
+        }
+
+        $form->setName($name);
+        $this->_subForms[$name] = $form;
+        $this->_order[$name]    = $order;
+        $this->_orderUpdated    = true;
+        return $this;
+    }
+
+    /**
+     * Add multiple form subForms/subforms at once
+     *
+     * @param  array $subForms
+     * @return Zend_Form
+     */
+    public function addSubForms(array $subForms)
+    {
+        foreach ($subForms as $key => $spec) {
+            $name = null;
+            if (!is_numeric($key)) {
+                $name = $key;
+            }
+
+            if ($spec instanceof Zend_Form) {
+                $this->addSubForm($spec, $name);
+                continue;
+            }
+
+            if (is_array($spec)) {
+                $argc  = count($spec);
+                $order = null;
+                switch ($argc) {
+                    case 0:
+                        continue;
+                    case (1 <= $argc):
+                        $subForm = array_shift($spec);
+                    case (2 <= $argc):
+                        $name  = array_shift($spec);
+                    case (3 <= $argc):
+                        $order = array_shift($spec);
+                    default:
+                        $this->addSubForm($subForm, $name, $order);
+                }
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Set multiple form subForms/subforms (overwrites)
+     *
+     * @param  array $subForms
+     * @return Zend_Form
+     */
+    public function setSubForms(array $subForms)
+    {
+        $this->clearSubForms();
+        return $this->addSubForms($subForms);
+    }
+
+    /**
+     * Retrieve a form subForm/subform
+     *
+     * @param  string $name
+     * @return Zend_Form|null
+     */
+    public function getSubForm($name)
+    {
+        $name = (string) $name;
+        if (isset($this->_subForms[$name])) {
+            return $this->_subForms[$name];
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve all form subForms/subforms
+     *
+     * @return array
+     */
+    public function getSubForms()
+    {
+        return $this->_subForms;
+    }
+
+    /**
+     * Remove form subForm/subform
+     *
+     * @param  string $name
+     * @return boolean
+     */
+    public function removeSubForm($name)
+    {
+        $name = (string) $name;
+        if (array_key_exists($name, $this->_subForms)) {
+            unset($this->_subForms[$name]);
+            if (array_key_exists($name, $this->_order)) {
+                unset($this->_order[$name]);
+                $this->_orderUpdated = true;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove all form subForms/subforms
+     *
+     * @return Zend_Form
+     */
+    public function clearSubForms()
+    {
+        foreach (array_keys($this->_subForms) as $key) {
+            if (array_key_exists($key, $this->_order)) {
+                unset($this->_order[$key]);
+            }
+        }
+        $this->_subForms     = array();
+        $this->_orderUpdated = true;
+        return $this;
+    }
+
+
+    // Display groups:
+
+    /**
+     * Set default display group class
+     *
+     * @param  string $class
+     * @return Zend_Form
+     */
+    public function setDefaultDisplayGroupClass($class)
+    {
+        $this->_defaultDisplayGroupClass = (string) $class;
+        return $this;
+    }
+
+    /**
+     * Retrieve default display group class
+     *
+     * @return string
+     */
+    public function getDefaultDisplayGroupClass()
+    {
+        return $this->_defaultDisplayGroupClass;
+    }
+
+    /**
+     * Add a display group
+     *
+     * Groups named elements for display purposes.
+     *
+     * If a referenced element does not yet exist in the form, it is omitted.
+     *
+     * @param  array $elements
+     * @param  string $name
+     * @param  array|Zend_Config $options
+     * @return Zend_Form
+     * @throws Zend_Form_Exception if no valid elements provided
+     */
+    public function addDisplayGroup(array $elements, $name, $options = null)
+    {
+        $group = array();
+        foreach ($elements as $element) {
+            if($element instanceof Zend_Form_Element) {
+                $element = $element->getId();
+            }
+
+            if (isset($this->_elements[$element])) {
+                $add = $this->getElement($element);
+                if (null !== $add) {
+                    $group[] = $add;
+                }
+            }
+        }
+        if (empty($group)) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('No valid elements specified for display group');
+        }
+
+        $name = (string) $name;
+
+        if (is_array($options)) {
+            $options['form']     = $this;
+            $options['elements'] = $group;
+        } elseif ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+            $options['form']     = $this;
+            $options['elements'] = $group;
+        } else {
+            $options = array(
+                'form'     => $this,
+                'elements' => $group,
+            );
+        }
+
+        if (isset($options['displayGroupClass'])) {
+            $class = $options['displayGroupClass'];
+            unset($options['displayGroupClass']);
+        } else {
+            $class = $this->getDefaultDisplayGroupClass();
+        }
+
+        if (!class_exists($class)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($class);
+        }
+        $this->_displayGroups[$name] = new $class(
+            $name,
+            $this->getPluginLoader(self::DECORATOR),
+            $options
+        );
+
+        if (!empty($this->_displayGroupPrefixPaths)) {
+            $this->_displayGroups[$name]->addPrefixPaths($this->_displayGroupPrefixPaths);
+        }
+
+        $this->_order[$name] = $this->_displayGroups[$name]->getOrder();
+        $this->_orderUpdated = true;
+        return $this;
+    }
+
+    /**
+     * Add a display group object (used with cloning)
+     *
+     * @param  Zend_Form_DisplayGroup $group
+     * @param  string|null $name
+     * @return Zend_Form
+     */
+    protected function _addDisplayGroupObject(Zend_Form_DisplayGroup $group, $name = null)
+    {
+        if (null === $name) {
+            $name = $group->getName();
+            if ('' === (string)$name) {
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception('Invalid display group added; requires name');
+            }
+        }
+
+        $this->_displayGroups[$name] = $group;
+        $group->setForm($this);
+
+        if (!empty($this->_displayGroupPrefixPaths)) {
+            $this->_displayGroups[$name]->addPrefixPaths($this->_displayGroupPrefixPaths);
+        }
+
+        $this->_order[$name] = $this->_displayGroups[$name]->getOrder();
+        $this->_orderUpdated = true;
+        return $this;
+    }
+
+    /**
+     * Add multiple display groups at once
+     *
+     * @param  array $groups
+     * @return Zend_Form
+     */
+    public function addDisplayGroups(array $groups)
+    {
+        foreach ($groups as $key => $spec) {
+            $name = null;
+            if (!is_numeric($key)) {
+                $name = $key;
+            }
+
+            if ($spec instanceof Zend_Form_DisplayGroup) {
+                $this->_addDisplayGroupObject($spec);
+            }
+
+            if (!is_array($spec) || empty($spec)) {
+                continue;
+            }
+
+            $argc    = count($spec);
+            $options = array();
+
+            if (isset($spec['elements'])) {
+                $elements = $spec['elements'];
+                if (isset($spec['name'])) {
+                    $name = $spec['name'];
+                }
+                if (isset($spec['options'])) {
+                    $options = $spec['options'];
+                }
+                $this->addDisplayGroup($elements, $name, $options);
+            } else {
+                switch ($argc) {
+                    case (1 <= $argc):
+                        $elements = array_shift($spec);
+                        if (!is_array($elements) && (null !== $name)) {
+                            $elements = array_merge((array) $elements, $spec);
+                            $this->addDisplayGroup($elements, $name);
+                            break;
+                        }
+                    case (2 <= $argc):
+                        if (null !== $name) {
+                            $options = array_shift($spec);
+                            $this->addDisplayGroup($elements, $name, $options);
+                            break;
+                        }
+                        $name = array_shift($spec);
+                    case (3 <= $argc):
+                        $options = array_shift($spec);
+                    default:
+                        $this->addDisplayGroup($elements, $name, $options);
+                }
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Add multiple display groups (overwrites)
+     *
+     * @param  array $groups
+     * @return Zend_Form
+     */
+    public function setDisplayGroups(array $groups)
+    {
+        return $this->clearDisplayGroups()
+                    ->addDisplayGroups($groups);
+    }
+
+    /**
+     * Return a display group
+     *
+     * @param  string $name
+     * @return Zend_Form_DisplayGroup|null
+     */
+    public function getDisplayGroup($name)
+    {
+        $name = (string) $name;
+        if (isset($this->_displayGroups[$name])) {
+            return $this->_displayGroups[$name];
+        }
+
+        return null;
+    }
+
+    /**
+     * Return all display groups
+     *
+     * @return array
+     */
+    public function getDisplayGroups()
+    {
+        return $this->_displayGroups;
+    }
+
+    /**
+     * Remove a display group by name
+     *
+     * @param  string $name
+     * @return boolean
+     */
+    public function removeDisplayGroup($name)
+    {
+        $name = (string) $name;
+        if (array_key_exists($name, $this->_displayGroups)) {
+            foreach ($this->_displayGroups[$name] as $key => $element) {
+                if (array_key_exists($key, $this->_elements)) {
+                    $this->_order[$key]  = $element->getOrder();
+                    $this->_orderUpdated = true;
+                }
+            }
+            unset($this->_displayGroups[$name]);
+
+            if (array_key_exists($name, $this->_order)) {
+                unset($this->_order[$name]);
+                $this->_orderUpdated = true;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove all display groups
+     *
+     * @return Zend_Form
+     */
+    public function clearDisplayGroups()
+    {
+        foreach ($this->_displayGroups as $key => $group) {
+            if (array_key_exists($key, $this->_order)) {
+                unset($this->_order[$key]);
+            }
+            foreach ($group as $name => $element) {
+                if (isset($this->_elements[$name])) {
+                    $this->_order[$name] = $element->getOrder();
+                }
+                $this->_order[$name] = $element->getOrder();
+            }
+        }
+        $this->_displayGroups = array();
+        $this->_orderUpdated  = true;
+        return $this;
+    }
+
+
+    // Processing
+
+    /**
+     * Populate form
+     *
+     * Proxies to {@link setDefaults()}
+     *
+     * @param  array $values
+     * @return Zend_Form
+     */
+    public function populate(array $values)
+    {
+        return $this->setDefaults($values);
+    }
+
+    /**
+     * Determine array key name from given value
+     *
+     * Given a value such as foo[bar][baz], returns the last element (in this case, 'baz').
+     *
+     * @param  string $value
+     * @return string
+     */
+    protected function _getArrayName($value)
+    {
+        if (!is_string($value) || '' === $value) {
+            return $value;
+        }
+
+        if (!strstr($value, '[')) {
+            return $value;
+        }
+
+        $endPos = strlen($value) - 1;
+        if (']' != $value[$endPos]) {
+            return $value;
+        }
+
+        $start = strrpos($value, '[') + 1;
+        $name = substr($value, $start, $endPos - $start);
+        return $name;
+    }
+
+    /**
+     * Extract the value by walking the array using given array path.
+     *
+     * Given an array path such as foo[bar][baz], returns the value of the last
+     * element (in this case, 'baz').
+     *
+     * @param  array $value Array to walk
+     * @param  string $arrayPath Array notation path of the part to extract
+     * @return string
+     */
+    protected function _dissolveArrayValue($value, $arrayPath)
+    {
+        // As long as we have more levels
+        while ($arrayPos = strpos($arrayPath, '[')) {
+            // Get the next key in the path
+            $arrayKey = trim(substr($arrayPath, 0, $arrayPos), ']');
+
+            // Set the potentially final value or the next search point in the array
+            if (isset($value[$arrayKey])) {
+                $value = $value[$arrayKey];
+            }
+
+            // Set the next search point in the path
+            $arrayPath = trim(substr($arrayPath, $arrayPos + 1), ']');
+        }
+
+        if (isset($value[$arrayPath])) {
+            $value = $value[$arrayPath];
+        }
+
+        return $value;
+    }
+
+    /**
+     * Given an array, an optional arrayPath and a key this method
+     * dissolves the arrayPath and unsets the key within the array
+     * if it exists.
+     *
+     * @param array $array
+     * @param string|null $arrayPath
+     * @param string $key
+     * @return array
+     */
+    protected function _dissolveArrayUnsetKey($array, $arrayPath, $key)
+    {
+        $unset =& $array;
+        $path  = trim(strtr((string)$arrayPath, array('[' => '/', ']' => '')), '/');
+        $segs  = ('' !== $path) ? explode('/', $path) : array();
+
+        foreach ($segs as $seg) {
+            if (!array_key_exists($seg, (array)$unset)) {
+                return $array;
+            }
+            $unset =& $unset[$seg];
+        }
+        if (array_key_exists($key, (array)$unset)) {
+            unset($unset[$key]);
+        }
+        return $array;
+    }
+
+    /**
+     * Converts given arrayPath to an array and attaches given value at the end of it.
+     *
+     * @param  mixed $value The value to attach
+     * @param  string $arrayPath Given array path to convert and attach to.
+     * @return array
+     */
+    protected function _attachToArray($value, $arrayPath)
+    {
+        // As long as we have more levels
+        while ($arrayPos = strrpos($arrayPath, '[')) {
+            // Get the next key in the path
+            $arrayKey = trim(substr($arrayPath, $arrayPos + 1), ']');
+
+            // Attach
+            $value = array($arrayKey => $value);
+
+            // Set the next search point in the path
+            $arrayPath = trim(substr($arrayPath, 0, $arrayPos), ']');
+        }
+
+        $value = array($arrayPath => $value);
+
+        return $value;
+    }
+
+    /**
+     * Returns a one dimensional numerical indexed array with the
+     * Elements, SubForms and Elements from DisplayGroups as Values.
+     *
+     * Subitems are inserted based on their order Setting if set,
+     * otherwise they are appended, the resulting numerical index
+     * may differ from the order value.
+     *
+     * @access protected
+     * @return array
+     */
+    public function getElementsAndSubFormsOrdered()
+    {
+        $ordered = array();
+        foreach ($this->_order as $name => $order) {
+            $order = isset($order) ? $order : count($ordered);
+            if ($this->$name instanceof Zend_Form_Element ||
+                $this->$name instanceof Zend_Form) {
+                array_splice($ordered, $order, 0, array($this->$name));
+            } else if ($this->$name instanceof Zend_Form_DisplayGroup) {
+                $subordered = array();
+                foreach ($this->$name->getElements() as $element) {
+                    $suborder = $element->getOrder();
+                    $suborder = (null !== $suborder) ? $suborder : count($subordered);
+                    array_splice($subordered, $suborder, 0, array($element));
+                }
+                if (!empty($subordered)) {
+                    array_splice($ordered, $order, 0, $subordered);
+                }
+            }
+        }
+        return $ordered;
+    }
+
+    /**
+     * This is a helper function until php 5.3 is widespreaded
+     *
+     * @param array $into
+     * @access protected
+     * @return void
+     */
+    protected function _array_replace_recursive(array $into)
+    {
+        $fromArrays = array_slice(func_get_args(),1);
+
+        foreach ($fromArrays as $from) {
+            foreach ($from as $key => $value) {
+                if (is_array($value)) {
+                    if (!isset($into[$key])) {
+                        $into[$key] = array();
+                    }
+                    $into[$key] = $this->_array_replace_recursive($into[$key], $from[$key]);
+                } else {
+                    $into[$key] = $value;
+                }
+            }
+        }
+        return $into;
+    }
+
+    /**
+     * Validate the form
+     *
+     * @param  array $data
+     * @return boolean
+     */
+    public function isValid($data)
+    {
+        if (!is_array($data)) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception(__METHOD__ . ' expects an array');
+        }
+        $translator = $this->getTranslator();
+        $valid      = true;
+        $eBelongTo  = null;
+
+        if ($this->isArray()) {
+            $eBelongTo = $this->getElementsBelongTo();
+            $data = $this->_dissolveArrayValue($data, $eBelongTo);
+        }
+        $context = $data;
+        foreach ($this->getElements() as $key => $element) {
+            if (null !== $translator && $this->hasTranslator()
+                    && !$element->hasTranslator()) {
+                $element->setTranslator($translator);
+            }
+            $check = $data;
+            if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
+                $check = $this->_dissolveArrayValue($data, $belongsTo);
+            }
+            if (!isset($check[$key])) {
+                $valid = $element->isValid(null, $context) && $valid;
+            } else {
+                $valid = $element->isValid($check[$key], $context) && $valid;
+                $data = $this->_dissolveArrayUnsetKey($data, $belongsTo, $key);
+            }
+        }
+        foreach ($this->getSubForms() as $key => $form) {
+            if (null !== $translator && !$form->hasTranslator()) {
+                $form->setTranslator($translator);
+            }
+            if (isset($data[$key]) && !$form->isArray()) {
+                $valid = $form->isValid($data[$key]) && $valid;
+            } else {
+                $valid = $form->isValid($data) && $valid;
+            }
+        }
+
+        $this->_errorsExist = !$valid;
+
+        // If manually flagged as an error, return invalid status
+        if ($this->_errorsForced) {
+            return false;
+        }
+
+        return $valid;
+    }
+
+    /**
+     * Validate a partial form
+     *
+     * Does not check for required flags.
+     *
+     * @param  array $data
+     * @return boolean
+     */
+    public function isValidPartial(array $data)
+    {
+        $eBelongTo  = null;
+
+        if ($this->isArray()) {
+            $eBelongTo = $this->getElementsBelongTo();
+            $data = $this->_dissolveArrayValue($data, $eBelongTo);
+        }
+
+        $translator = $this->getTranslator();
+        $valid      = true;
+        $context    = $data;
+
+        foreach ($this->getElements() as $key => $element) {
+            $check = $data;
+            if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
+                $check = $this->_dissolveArrayValue($data, $belongsTo);
+            }
+            if (isset($check[$key])) {
+                if (null !== $translator && !$element->hasTranslator()) {
+                    $element->setTranslator($translator);
+                }
+                $valid = $element->isValid($check[$key], $context) && $valid;
+                $data = $this->_dissolveArrayUnsetKey($data, $belongsTo, $key);
+            }
+        }
+        foreach ($this->getSubForms() as $key => $form) {
+            if (null !== $translator && !$form->hasTranslator()) {
+                $form->setTranslator($translator);
+            }
+            if (isset($data[$key]) && !$form->isArray()) {
+                $valid = $form->isValidPartial($data[$key]) && $valid;
+            } else {
+                $valid = $form->isValidPartial($data) && $valid;
+            }
+        }
+
+        $this->_errorsExist = !$valid;
+        return $valid;
+    }
+
+    /**
+     * Process submitted AJAX data
+     *
+     * Checks if provided $data is valid, via {@link isValidPartial()}. If so,
+     * it returns JSON-encoded boolean true. If not, it returns JSON-encoded
+     * error messages (as returned by {@link getMessages()}).
+     *
+     * @param  array $data
+     * @return string JSON-encoded boolean true or error messages
+     */
+    public function processAjax(array $data)
+    {
+        require_once 'Zend/Json.php';
+        if ($this->isValidPartial($data)) {
+            return Zend_Json::encode(true);
+        }
+        $messages = $this->getMessages();
+        return Zend_Json::encode($messages);
+    }
+
+    /**
+     * Add a custom error message to return in the event of failed validation
+     *
+     * @param  string $message
+     * @return Zend_Form
+     */
+    public function addErrorMessage($message)
+    {
+        $this->_errorMessages[] = (string) $message;
+        return $this;
+    }
+
+    /**
+     * Add multiple custom error messages to return in the event of failed validation
+     *
+     * @param  array $messages
+     * @return Zend_Form
+     */
+    public function addErrorMessages(array $messages)
+    {
+        foreach ($messages as $message) {
+            $this->addErrorMessage($message);
+        }
+        return $this;
+    }
+
+    /**
+     * Same as addErrorMessages(), but clears custom error message stack first
+     *
+     * @param  array $messages
+     * @return Zend_Form
+     */
+    public function setErrorMessages(array $messages)
+    {
+        $this->clearErrorMessages();
+        return $this->addErrorMessages($messages);
+    }
+
+    /**
+     * Retrieve custom error messages
+     *
+     * @return array
+     */
+    public function getErrorMessages()
+    {
+        return $this->_errorMessages;
+    }
+
+    /**
+     * Clear custom error messages stack
+     *
+     * @return Zend_Form
+     */
+    public function clearErrorMessages()
+    {
+        $this->_errorMessages = array();
+        return $this;
+    }
+
+    /**
+     * Mark the element as being in a failed validation state
+     *
+     * @return Zend_Form
+     */
+    public function markAsError()
+    {
+        $this->_errorsExist  = true;
+        $this->_errorsForced = true;
+        return $this;
+    }
+
+    /**
+     * Add an error message and mark element as failed validation
+     *
+     * @param  string $message
+     * @return Zend_Form
+     */
+    public function addError($message)
+    {
+        $this->addErrorMessage($message);
+        $this->markAsError();
+        return $this;
+    }
+
+    /**
+     * Add multiple error messages and flag element as failed validation
+     *
+     * @param  array $messages
+     * @return Zend_Form
+     */
+    public function addErrors(array $messages)
+    {
+        foreach ($messages as $message) {
+            $this->addError($message);
+        }
+        return $this;
+    }
+
+    /**
+     * Overwrite any previously set error messages and flag as failed validation
+     *
+     * @param  array $messages
+     * @return Zend_Form
+     */
+    public function setErrors(array $messages)
+    {
+        $this->clearErrorMessages();
+        return $this->addErrors($messages);
+    }
+
+
+    public function persistData()
+    {
+    }
+
+    /**
+     * Are there errors in the form?
+     *
+     * @return bool
+     */
+    public function isErrors()
+    {
+        return $this->_errorsExist;
+    }
+
+    /**
+     * Get error codes for all elements failing validation
+     *
+     * @param  string $name
+     * @return array
+     */
+    public function getErrors($name = null, $suppressArrayNotation = false)
+    {
+        $errors = array();
+        if (null !== $name) {
+            if (isset($this->_elements[$name])) {
+                return $this->getElement($name)->getErrors();
+            } else if (isset($this->_subForms[$name])) {
+                return $this->getSubForm($name)->getErrors(null, true);
+            }
+        }
+
+        foreach ($this->_elements as $key => $element) {
+            $errors[$key] = $element->getErrors();
+        }
+        foreach ($this->getSubForms() as $key => $subForm) {
+            $merge = array();
+            if (!$subForm->isArray()) {
+                $merge[$key] = $subForm->getErrors();
+            } else {
+                $merge = $this->_attachToArray($subForm->getErrors(null, true),
+                                               $subForm->getElementsBelongTo());
+            }
+            $errors = $this->_array_replace_recursive($errors, $merge);
+        }
+
+        if (!$suppressArrayNotation &&
+            $this->isArray() &&
+            !$this->_getIsRendered()) {
+            $errors = $this->_attachToArray($errors, $this->getElementsBelongTo());
+        }
+
+        return $errors;
+    }
+
+    /**
+     * Retrieve error messages from elements failing validations
+     *
+     * @param  string $name
+     * @param  bool $suppressArrayNotation
+     * @return array
+     */
+    public function getMessages($name = null, $suppressArrayNotation = false)
+    {
+        if (null !== $name) {
+            if (isset($this->_elements[$name])) {
+                return $this->getElement($name)->getMessages();
+            } else if (isset($this->_subForms[$name])) {
+                return $this->getSubForm($name)->getMessages(null, true);
+            }
+            foreach ($this->getSubForms() as $key => $subForm) {
+                if ($subForm->isArray()) {
+                    $belongTo = $subForm->getElementsBelongTo();
+                    if ($name == $this->_getArrayName($belongTo)) {
+                        return $subForm->getMessages(null, true);
+                    }
+                }
+            }
+        }
+
+        $customMessages = $this->_getErrorMessages();
+        if ($this->isErrors() && !empty($customMessages)) {
+            return $customMessages;
+        }
+
+        $messages = array();
+
+        foreach ($this->getElements() as $name => $element) {
+            $eMessages = $element->getMessages();
+            if (!empty($eMessages)) {
+                $messages[$name] = $eMessages;
+            }
+        }
+
+        foreach ($this->getSubForms() as $key => $subForm) {
+            $merge = $subForm->getMessages(null, true);
+            if (!empty($merge)) {
+                if (!$subForm->isArray()) {
+                    $merge = array($key => $merge);
+                } else {
+                    $merge = $this->_attachToArray($merge,
+                                                   $subForm->getElementsBelongTo());
+                }
+                $messages = $this->_array_replace_recursive($messages, $merge);
+            }
+        }
+
+        if (!$suppressArrayNotation &&
+            $this->isArray() &&
+            !$this->_getIsRendered()) {
+            $messages = $this->_attachToArray($messages, $this->getElementsBelongTo());
+        }
+
+        return $messages;
+    }
+
+    /**
+     * Retrieve translated custom error messages
+     * Proxies to {@link _getErrorMessages()}.
+     *
+     * @return array
+     */
+    public function getCustomMessages()
+    {
+        return $this->_getErrorMessages();
+    }
+
+
+    // Rendering
+
+    /**
+     * Set view object
+     *
+     * @param  Zend_View_Interface $view
+     * @return Zend_Form
+     */
+    public function setView(Zend_View_Interface $view = null)
+    {
+        $this->_view = $view;
+        return $this;
+    }
+
+    /**
+     * Retrieve view object
+     *
+     * If none registered, attempts to pull from ViewRenderer.
+     *
+     * @return Zend_View_Interface|null
+     */
+    public function getView()
+    {
+        if (null === $this->_view) {
+            require_once 'Zend/Controller/Action/HelperBroker.php';
+            $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+            $this->setView($viewRenderer->view);
+        }
+
+        return $this->_view;
+    }
+
+    /**
+     * Instantiate a decorator based on class name or class name fragment
+     *
+     * @param  string $name
+     * @param  null|array $options
+     * @return Zend_Form_Decorator_Interface
+     */
+    protected function _getDecorator($name, $options)
+    {
+        $class = $this->getPluginLoader(self::DECORATOR)->load($name);
+        if (null === $options) {
+            $decorator = new $class;
+        } else {
+            $decorator = new $class($options);
+        }
+
+        return $decorator;
+    }
+
+    /**
+     * Add a decorator for rendering the element
+     *
+     * @param  string|Zend_Form_Decorator_Interface $decorator
+     * @param  array|Zend_Config $options Options with which to initialize decorator
+     * @return Zend_Form
+     */
+    public function addDecorator($decorator, $options = null)
+    {
+        if ($decorator instanceof Zend_Form_Decorator_Interface) {
+            $name = get_class($decorator);
+        } elseif (is_string($decorator)) {
+            $name      = $decorator;
+            $decorator = array(
+                'decorator' => $name,
+                'options'   => $options,
+            );
+        } elseif (is_array($decorator)) {
+            foreach ($decorator as $name => $spec) {
+                break;
+            }
+            if (is_numeric($name)) {
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception('Invalid alias provided to addDecorator; must be alphanumeric string');
+            }
+            if (is_string($spec)) {
+                $decorator = array(
+                    'decorator' => $spec,
+                    'options'   => $options,
+                );
+            } elseif ($spec instanceof Zend_Form_Decorator_Interface) {
+                $decorator = $spec;
+            }
+        } else {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Invalid decorator provided to addDecorator; must be string or Zend_Form_Decorator_Interface');
+        }
+
+        $this->_decorators[$name] = $decorator;
+
+        return $this;
+    }
+
+    /**
+     * Add many decorators at once
+     *
+     * @param  array $decorators
+     * @return Zend_Form
+     */
+    public function addDecorators(array $decorators)
+    {
+        foreach ($decorators as $decoratorName => $decoratorInfo) {
+            if (is_string($decoratorInfo) ||
+                $decoratorInfo instanceof Zend_Form_Decorator_Interface) {
+                if (!is_numeric($decoratorName)) {
+                    $this->addDecorator(array($decoratorName => $decoratorInfo));
+                } else {
+                    $this->addDecorator($decoratorInfo);
+                }
+            } elseif (is_array($decoratorInfo)) {
+                $argc    = count($decoratorInfo);
+                $options = array();
+                if (isset($decoratorInfo['decorator'])) {
+                    $decorator = $decoratorInfo['decorator'];
+                    if (isset($decoratorInfo['options'])) {
+                        $options = $decoratorInfo['options'];
+                    }
+                    $this->addDecorator($decorator, $options);
+                } else {
+                    switch (true) {
+                        case (0 == $argc):
+                            break;
+                        case (1 <= $argc):
+                            $decorator  = array_shift($decoratorInfo);
+                        case (2 <= $argc):
+                            $options = array_shift($decoratorInfo);
+                        default:
+                            $this->addDecorator($decorator, $options);
+                            break;
+                    }
+                }
+            } else {
+                require_once 'Zend/Form/Exception.php';
+                throw new Zend_Form_Exception('Invalid decorator passed to addDecorators()');
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Overwrite all decorators
+     *
+     * @param  array $decorators
+     * @return Zend_Form
+     */
+    public function setDecorators(array $decorators)
+    {
+        $this->clearDecorators();
+        return $this->addDecorators($decorators);
+    }
+
+    /**
+     * Retrieve a registered decorator
+     *
+     * @param  string $name
+     * @return false|Zend_Form_Decorator_Abstract
+     */
+    public function getDecorator($name)
+    {
+        if (!isset($this->_decorators[$name])) {
+            $len = strlen($name);
+            foreach ($this->_decorators as $localName => $decorator) {
+                if ($len > strlen($localName)) {
+                    continue;
+                }
+
+                if (0 === substr_compare($localName, $name, -$len, $len, true)) {
+                    if (is_array($decorator)) {
+                        return $this->_loadDecorator($decorator, $localName);
+                    }
+                    return $decorator;
+                }
+            }
+            return false;
+        }
+
+        if (is_array($this->_decorators[$name])) {
+            return $this->_loadDecorator($this->_decorators[$name], $name);
+        }
+
+        return $this->_decorators[$name];
+    }
+
+    /**
+     * Retrieve all decorators
+     *
+     * @return array
+     */
+    public function getDecorators()
+    {
+        foreach ($this->_decorators as $key => $value) {
+            if (is_array($value)) {
+                $this->_loadDecorator($value, $key);
+            }
+        }
+        return $this->_decorators;
+    }
+
+    /**
+     * Remove a single decorator
+     *
+     * @param  string $name
+     * @return bool
+     */
+    public function removeDecorator($name)
+    {
+        $decorator = $this->getDecorator($name);
+        if ($decorator) {
+            if (array_key_exists($name, $this->_decorators)) {
+                unset($this->_decorators[$name]);
+            } else {
+                $class = get_class($decorator);
+                if (!array_key_exists($class, $this->_decorators)) {
+                    return false;
+                }
+                unset($this->_decorators[$class]);
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Clear all decorators
+     *
+     * @return Zend_Form
+     */
+    public function clearDecorators()
+    {
+        $this->_decorators = array();
+        return $this;
+    }
+
+    /**
+     * Set all element decorators as specified
+     *
+     * @param  array $decorators
+     * @param  array|null $elements Specific elements to decorate or exclude from decoration
+     * @param  bool $include Whether $elements is an inclusion or exclusion list
+     * @return Zend_Form
+     */
+    public function setElementDecorators(array $decorators, array $elements = null, $include = true)
+    {
+        if (is_array($elements)) {
+            if ($include) {
+                $elementObjs = array();
+                foreach ($elements as $name) {
+                    if (null !== ($element = $this->getElement($name))) {
+                        $elementObjs[] = $element;
+                    }
+                }
+            } else {
+                $elementObjs = $this->getElements();
+                foreach ($elements as $name) {
+                    if (array_key_exists($name, $elementObjs)) {
+                        unset($elementObjs[$name]);
+                    }
+                }
+            }
+        } else {
+            $elementObjs = $this->getElements();
+        }
+
+        foreach ($elementObjs as $element) {
+            $element->setDecorators($decorators);
+        }
+
+        $this->_elementDecorators = $decorators;
+
+        return $this;
+    }
+
+    /**
+     * Set all display group decorators as specified
+     *
+     * @param  array $decorators
+     * @return Zend_Form
+     */
+    public function setDisplayGroupDecorators(array $decorators)
+    {
+        foreach ($this->getDisplayGroups() as $group) {
+            $group->setDecorators($decorators);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set all subform decorators as specified
+     *
+     * @param  array $decorators
+     * @return Zend_Form
+     */
+    public function setSubFormDecorators(array $decorators)
+    {
+        foreach ($this->getSubForms() as $form) {
+            $form->setDecorators($decorators);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Render form
+     *
+     * @param  Zend_View_Interface $view
+     * @return string
+     */
+    public function render(Zend_View_Interface $view = null)
+    {
+        if (null !== $view) {
+            $this->setView($view);
+        }
+
+        $content = '';
+        foreach ($this->getDecorators() as $decorator) {
+            $decorator->setElement($this);
+            $content = $decorator->render($content);
+        }
+        $this->_setIsRendered();
+        return $content;
+    }
+
+    /**
+     * Serialize as string
+     *
+     * Proxies to {@link render()}.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        try {
+            $return = $this->render();
+            return $return;
+        } catch (Exception $e) {
+            $message = "Exception caught by form: " . $e->getMessage()
+                     . "\nStack Trace:\n" . $e->getTraceAsString();
+            trigger_error($message, E_USER_WARNING);
+            return '';
+        }
+    }
+
+
+    // Localization:
+
+    /**
+     * Set translator object
+     *
+     * @param  Zend_Translate|Zend_Translate_Adapter|null $translator
+     * @return Zend_Form
+     */
+    public function setTranslator($translator = null)
+    {
+        if (null === $translator) {
+            $this->_translator = null;
+        } elseif ($translator instanceof Zend_Translate_Adapter) {
+            $this->_translator = $translator;
+        } elseif ($translator instanceof Zend_Translate) {
+            $this->_translator = $translator->getAdapter();
+        } else {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Invalid translator specified');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set global default translator object
+     *
+     * @param  Zend_Translate|Zend_Translate_Adapter|null $translator
+     * @return void
+     */
+    public static function setDefaultTranslator($translator = null)
+    {
+        if (null === $translator) {
+            self::$_translatorDefault = null;
+        } elseif ($translator instanceof Zend_Translate_Adapter) {
+            self::$_translatorDefault = $translator;
+        } elseif ($translator instanceof Zend_Translate) {
+            self::$_translatorDefault = $translator->getAdapter();
+        } else {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception('Invalid translator specified');
+        }
+    }
+
+    /**
+     * Retrieve translator object
+     *
+     * @return Zend_Translate|null
+     */
+    public function getTranslator()
+    {
+        if ($this->translatorIsDisabled()) {
+            return null;
+        }
+
+        if (null === $this->_translator) {
+            return self::getDefaultTranslator();
+        }
+
+        return $this->_translator;
+    }
+
+    /**
+     * Does this form have its own specific translator?
+     *
+     * @return bool
+     */
+    public function hasTranslator()
+    {
+        return (bool)$this->_translator;
+    }
+
+    /**
+     * Get global default translator object
+     *
+     * @return null|Zend_Translate
+     */
+    public static function getDefaultTranslator()
+    {
+        if (null === self::$_translatorDefault) {
+            require_once 'Zend/Registry.php';
+            if (Zend_Registry::isRegistered('Zend_Translate')) {
+                $translator = Zend_Registry::get('Zend_Translate');
+                if ($translator instanceof Zend_Translate_Adapter) {
+                    return $translator;
+                } elseif ($translator instanceof Zend_Translate) {
+                    return $translator->getAdapter();
+                }
+            }
+        }
+        return self::$_translatorDefault;
+    }
+
+    /**
+     * Is there a default translation object set?
+     *
+     * @return boolean
+     */
+    public static function hasDefaultTranslator()
+    {
+        return (bool)self::$_translatorDefault;
+    }
+
+    /**
+     * Indicate whether or not translation should be disabled
+     *
+     * @param  bool $flag
+     * @return Zend_Form
+     */
+    public function setDisableTranslator($flag)
+    {
+        $this->_translatorDisabled = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Is translation disabled?
+     *
+     * @return bool
+     */
+    public function translatorIsDisabled()
+    {
+        return $this->_translatorDisabled;
+    }
+
+    /**
+     * Overloading: access to elements, form groups, and display groups
+     *
+     * @param  string $name
+     * @return Zend_Form_Element|Zend_Form|null
+     */
+    public function __get($name)
+    {
+        if (isset($this->_elements[$name])) {
+            return $this->_elements[$name];
+        } elseif (isset($this->_subForms[$name])) {
+            return $this->_subForms[$name];
+        } elseif (isset($this->_displayGroups[$name])) {
+            return $this->_displayGroups[$name];
+        }
+
+        return null;
+    }
+
+    /**
+     * Overloading: access to elements, form groups, and display groups
+     *
+     * @param  string $name
+     * @param  Zend_Form_Element|Zend_Form $value
+     * @return void
+     * @throws Zend_Form_Exception for invalid $value
+     */
+    public function __set($name, $value)
+    {
+        if ($value instanceof Zend_Form_Element) {
+            $this->addElement($value, $name);
+            return;
+        } elseif ($value instanceof Zend_Form) {
+            $this->addSubForm($value, $name);
+            return;
+        } elseif (is_array($value)) {
+            $this->addDisplayGroup($value, $name);
+            return;
+        }
+
+        require_once 'Zend/Form/Exception.php';
+        if (is_object($value)) {
+            $type = get_class($value);
+        } else {
+            $type = gettype($value);
+        }
+        throw new Zend_Form_Exception('Only form elements and groups may be overloaded; variable of type "' . $type . '" provided');
+    }
+
+    /**
+     * Overloading: access to elements, form groups, and display groups
+     *
+     * @param  string $name
+     * @return boolean
+     */
+    public function __isset($name)
+    {
+        if (isset($this->_elements[$name])
+            || isset($this->_subForms[$name])
+            || isset($this->_displayGroups[$name]))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Overloading: access to elements, form groups, and display groups
+     *
+     * @param  string $name
+     * @return void
+     */
+    public function __unset($name)
+    {
+        if (isset($this->_elements[$name])) {
+            unset($this->_elements[$name]);
+        } elseif (isset($this->_subForms[$name])) {
+            unset($this->_subForms[$name]);
+        } elseif (isset($this->_displayGroups[$name])) {
+            unset($this->_displayGroups[$name]);
+        }
+    }
+
+    /**
+     * Overloading: allow rendering specific decorators
+     *
+     * Call renderDecoratorName() to render a specific decorator.
+     *
+     * @param  string $method
+     * @param  array $args
+     * @return string
+     * @throws Zend_Form_Exception for invalid decorator or invalid method call
+     */
+    public function __call($method, $args)
+    {
+        if ('render' == substr($method, 0, 6)) {
+            $decoratorName = substr($method, 6);
+            if (false !== ($decorator = $this->getDecorator($decoratorName))) {
+                $decorator->setElement($this);
+                $seed = '';
+                if (0 < count($args)) {
+                    $seed = array_shift($args);
+                }
+                if ($decoratorName === 'FormElements' ||
+                    $decoratorName === 'PrepareElements') {
+                        $this->_setIsRendered();
+                }
+                return $decorator->render($seed);
+            }
+
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception(sprintf('Decorator by name %s does not exist', $decoratorName));
+        }
+
+        require_once 'Zend/Form/Exception.php';
+        throw new Zend_Form_Exception(sprintf('Method %s does not exist', $method));
+    }
+
+    // Interfaces: Iterator, Countable
+
+    /**
+     * Current element/subform/display group
+     *
+     * @return Zend_Form_Element|Zend_Form_DisplayGroup|Zend_Form
+     */
+    public function current()
+    {
+        $this->_sort();
+        current($this->_order);
+        $key = key($this->_order);
+
+        if (isset($this->_elements[$key])) {
+            return $this->getElement($key);
+        } elseif (isset($this->_subForms[$key])) {
+            return $this->getSubForm($key);
+        } elseif (isset($this->_displayGroups[$key])) {
+            return $this->getDisplayGroup($key);
+        } else {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception(sprintf('Corruption detected in form; invalid key ("%s") found in internal iterator', (string) $key));
+        }
+    }
+
+    /**
+     * Current element/subform/display group name
+     *
+     * @return string
+     */
+    public function key()
+    {
+        $this->_sort();
+        return key($this->_order);
+    }
+
+    /**
+     * Move pointer to next element/subform/display group
+     *
+     * @return void
+     */
+    public function next()
+    {
+        $this->_sort();
+        next($this->_order);
+    }
+
+    /**
+     * Move pointer to beginning of element/subform/display group loop
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        $this->_sort();
+        reset($this->_order);
+    }
+
+    /**
+     * Determine if current element/subform/display group is valid
+     *
+     * @return bool
+     */
+    public function valid()
+    {
+        $this->_sort();
+        return (current($this->_order) !== false);
+    }
+
+    /**
+     * Count of elements/subforms that are iterable
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_order);
+    }
+
+    /**
+     * Set flag to disable loading default decorators
+     *
+     * @param  bool $flag
+     * @return Zend_Form
+     */
+    public function setDisableLoadDefaultDecorators($flag)
+    {
+        $this->_disableLoadDefaultDecorators = (bool) $flag;
+        return $this;
+    }
+
+    /**
+     * Should we load the default decorators?
+     *
+     * @return bool
+     */
+    public function loadDefaultDecoratorsIsDisabled()
+    {
+        return $this->_disableLoadDefaultDecorators;
+    }
+
+    /**
+     * Load the default decorators
+     *
+     * @return void
+     */
+    public function loadDefaultDecorators()
+    {
+        if ($this->loadDefaultDecoratorsIsDisabled()) {
+            return $this;
+        }
+
+        $decorators = $this->getDecorators();
+        if (empty($decorators)) {
+            $this->addDecorator('FormElements')
+                 ->addDecorator('HtmlTag', array('tag' => 'dl', 'class' => 'zend_form'))
+                 ->addDecorator('Form');
+        }
+        return $this;
+    }
+
+    /**
+     * Remove an element from iteration
+     *
+     * @param  string $name Element/group/form name
+     * @return void
+     */
+    public function removeFromIteration($name)
+    {
+        if (array_key_exists($name, $this->_order)) {
+            unset($this->_order[$name]);
+            $this->_orderUpdated = true;
+        }
+    }
+
+    /**
+     * Sort items according to their order
+     *
+     * @return void
+     */
+    protected function _sort()
+    {
+        if ($this->_orderUpdated) {
+            $items = array();
+            $index = 0;
+            foreach ($this->_order as $key => $order) {
+                if (null === $order) {
+                    if (null === ($order = $this->{$key}->getOrder())) {
+                        while (array_search($index, $this->_order, true)) {
+                            ++$index;
+                        }
+                        $items[$index] = $key;
+                        ++$index;
+                    } else {
+                        $items[$order] = $key;
+                    }
+                } else {
+                    $items[$order] = $key;
+                }
+            }
+
+            $items = array_flip($items);
+            asort($items);
+            $this->_order = $items;
+            $this->_orderUpdated = false;
+        }
+    }
+
+    /**
+     * Lazy-load a decorator
+     *
+     * @param  array $decorator Decorator type and options
+     * @param  mixed $name Decorator name or alias
+     * @return Zend_Form_Decorator_Interface
+     */
+    protected function _loadDecorator(array $decorator, $name)
+    {
+        $sameName = false;
+        if ($name == $decorator['decorator']) {
+            $sameName = true;
+        }
+
+        $instance = $this->_getDecorator($decorator['decorator'], $decorator['options']);
+        if ($sameName) {
+            $newName            = get_class($instance);
+            $decoratorNames     = array_keys($this->_decorators);
+            $order              = array_flip($decoratorNames);
+            $order[$newName]    = $order[$name];
+            $decoratorsExchange = array();
+            unset($order[$name]);
+            asort($order);
+            foreach ($order as $key => $index) {
+                if ($key == $newName) {
+                    $decoratorsExchange[$key] = $instance;
+                    continue;
+                }
+                $decoratorsExchange[$key] = $this->_decorators[$key];
+            }
+            $this->_decorators = $decoratorsExchange;
+        } else {
+            $this->_decorators[$name] = $instance;
+        }
+
+        return $instance;
+    }
+
+    /**
+     * Retrieve optionally translated custom error messages
+     *
+     * @return array
+     */
+    protected function _getErrorMessages()
+    {
+        $messages   = $this->getErrorMessages();
+        $translator = $this->getTranslator();
+        if (null !== $translator) {
+            foreach ($messages as $key => $message) {
+                $messages[$key] = $translator->translate($message);
+            }
+        }
+        return $messages;
+    }
+}

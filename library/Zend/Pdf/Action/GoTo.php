@@ -1,116 +1,116 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php GoTophp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: GoTo.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Destinationphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Destination.php';
 
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-
-
-php/php*php*php Zendphp_Pdfphp_Actionphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Actionphp.phpphp'php;
-
-php/php*php*
-php php*php PDFphp php'Gophp tophp'php action
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Actionphp_GoTophp extendsphp Zendphp_Pdfphp_Action
-php{
-php php php php php/php*php*
-php php php php php php*php GoTophp Actionphp destination
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_Destination
-php php php php php php*php/
-php php php php protectedphp php$php_destinationphp;
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Name.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Dictionaryphp php$dictionary
-php php php php php php*php php@paramphp SplObjectStoragephp php php php php php php php php php php php php$processedActionsphp php listphp ofphp alreadyphp processedphp actionphp dictionariesphp,php usedphp tophp avoidphp cyclicphp references
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_Elementphp php$dictionaryphp,php SplObjectStoragephp php$processedActionsphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$dictionaryphp,php php$processedActionsphp)php;
+/** Zend_Pdf_Action */
+require_once 'Zend/Pdf/Action.php';
 
-php php php php php php php php php$thisphp-php>php_destinationphp php=php Zendphp_Pdfphp_Destinationphp:php:loadphp(php$dictionaryphp-php>Dphp)php;
-php php php php php}
+/**
+ * PDF 'Go to' action
+ *
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Action_GoTo extends Zend_Pdf_Action
+{
+    /**
+     * GoTo Action destination
+     *
+     * @var Zend_Pdf_Destination
+     */
+    protected $_destination;
 
-php php php php php/php*php*
-php php php php php php*php Createphp newphp Zendphp_Pdfphp_Actionphp_GoTophp objectphp usingphp specifiedphp destination
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Destinationphp|stringphp php$destination
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_GoTo
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createphp(php$destinationphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$destinationphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Destinationphp/Namedphp.phpphp'php;
-php php php php php php php php php php php php php$destinationphp php=php Zendphp_Pdfphp_Destinationphp_Namedphp:php:createphp(php$destinationphp)php;
-php php php php php php php php php}
 
-php php php php php php php php ifphp php(php!php$destinationphp instanceofphp Zendphp_Pdfphp_Destinationphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'php$destinationphp parameterphp mustphp bephp aphp Zendphp_Pdfphp_Destinationphp objectphp orphp stringphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * Object constructor
+     *
+     * @param Zend_Pdf_Element_Dictionary $dictionary
+     * @param SplObjectStorage            $processedActions  list of already processed action dictionaries, used to avoid cyclic references
+     */
+    public function __construct(Zend_Pdf_Element $dictionary, SplObjectStorage $processedActions)
+    {
+        parent::__construct($dictionary, $processedActions);
 
-php php php php php php php php php$dictionaryphp php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php$dictionaryphp-php>Typephp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Actionphp'php)php;
-php php php php php php php php php$dictionaryphp-php>Sphp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'GoTophp'php)php;
-php php php php php php php php php$dictionaryphp-php>Nextphp php=php nullphp;
-php php php php php php php php php$dictionaryphp-php>Dphp php php php php=php php$destinationphp-php>getResourcephp(php)php;
+        $this->_destination = Zend_Pdf_Destination::load($dictionary->D);
+    }
 
-php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_GoTophp(php$dictionaryphp,php newphp SplObjectStoragephp(php)php)php;
-php php php php php}
+    /**
+     * Create new Zend_Pdf_Action_GoTo object using specified destination
+     *
+     * @param Zend_Pdf_Destination|string $destination
+     * @return Zend_Pdf_Action_GoTo
+     */
+    public static function create($destination)
+    {
+        if (is_string($destination)) {
+            require_once 'Zend/Pdf/Destination/Named.php';
+            $destination = Zend_Pdf_Destination_Named::create($destination);
+        }
 
-php php php php php/php*php*
-php php php php php php*php Setphp gotophp actionphp destination
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Destinationphp|stringphp php$destination
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_GoTo
-php php php php php php*php/
-php php php php publicphp functionphp setDestinationphp(Zendphp_Pdfphp_Destinationphp php$destinationphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_destinationphp php=php php$destinationphp;
+        if (!$destination instanceof Zend_Pdf_Destination) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('$destination parameter must be a Zend_Pdf_Destination object or string.');
+        }
 
-php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>touchphp(php)php;
-php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>Dphp php=php php$destinationphp-php>getResourcephp(php)php;
+        $dictionary = new Zend_Pdf_Element_Dictionary();
+        $dictionary->Type = new Zend_Pdf_Element_Name('Action');
+        $dictionary->S    = new Zend_Pdf_Element_Name('GoTo');
+        $dictionary->Next = null;
+        $dictionary->D    = $destination->getResource();
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return new Zend_Pdf_Action_GoTo($dictionary, new SplObjectStorage());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp gotophp actionphp destination
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Destination
-php php php php php php*php/
-php php php php publicphp functionphp getDestinationphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_destinationphp;
-php php php php php}
-php}
+    /**
+     * Set goto action destination
+     *
+     * @param Zend_Pdf_Destination|string $destination
+     * @return Zend_Pdf_Action_GoTo
+     */
+    public function setDestination(Zend_Pdf_Destination $destination)
+    {
+        $this->_destination = $destination;
+
+        $this->_actionDictionary->touch();
+        $this->_actionDictionary->D = $destination->getResource();
+
+        return $this;
+    }
+
+    /**
+     * Get goto action destination
+     *
+     * @return Zend_Pdf_Destination
+     */
+    public function getDestination()
+    {
+        return $this->_destination;
+    }
+}

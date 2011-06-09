@@ -1,90 +1,90 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Measure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Molephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Measure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Mole.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Implementphp neededphp classes
-php php*php/
-requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/**
+ * Implement needed classes
+ */
+require_once 'Zend/Measure/Abstract.php';
+require_once 'Zend/Locale.php';
 
-php/php*php*
-php php*php Classphp forphp handlingphp flowphp molephp conversions
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Measure
-php php*php php@subpackagephp Zendphp_Measurephp_Flowphp_Mole
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Measurephp_Flowphp_Molephp extendsphp Zendphp_Measurephp_Abstract
-php{
-php php php php constphp STANDARDphp php=php php'MOLEphp_PERphp_SECONDphp'php;
+/**
+ * Class for handling flow mole conversions
+ *
+ * @category   Zend
+ * @package    Zend_Measure
+ * @subpackage Zend_Measure_Flow_Mole
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Measure_Flow_Mole extends Zend_Measure_Abstract
+{
+    const STANDARD = 'MOLE_PER_SECOND';
 
-php php php php constphp CENTIMOLEphp_PERphp_DAYphp php php php php=php php'CENTIMOLEphp_PERphp_DAYphp'php;
-php php php php constphp CENTIMOLEphp_PERphp_HOURphp php php php=php php'CENTIMOLEphp_PERphp_HOURphp'php;
-php php php php constphp CENTIMOLEphp_PERphp_MINUTEphp php=php php'CENTIMOLEphp_PERphp_MINUTEphp'php;
-php php php php constphp CENTIMOLEphp_PERphp_SECONDphp php=php php'CENTIMOLEphp_PERphp_SECONDphp'php;
-php php php php constphp MEGAMOLEphp_PERphp_DAYphp php php php php php=php php'MEGAMOLEphp_PERphp_DAYphp'php;
-php php php php constphp MEGAMOLEphp_PERphp_HOURphp php php php php=php php'MEGAMOLEphp_PERphp_HOURphp'php;
-php php php php constphp MEGAMOLEphp_PERphp_MINUTEphp php php=php php'MEGAMOLEphp_PERphp_MINUTEphp'php;
-php php php php constphp MEGAMOLEphp_PERphp_SECONDphp php php=php php'MEGAMOLEphp_PERphp_SECONDphp'php;
-php php php php constphp MICROMOLEphp_PERphp_DAYphp php php php php=php php'MICROMOLEphp_PERphp_DAYphp'php;
-php php php php constphp MICROMOLEphp_PERphp_HOURphp php php php=php php'MICROMOLEphp_PERphp_HOURphp'php;
-php php php php constphp MICROMOLEphp_PERphp_MINUTEphp php=php php'MICROMOLEphp_PERphp_MINUTEphp'php;
-php php php php constphp MICROMOLEphp_PERphp_SECONDphp php=php php'MICROMOLEphp_PERphp_SECONDphp'php;
-php php php php constphp MILLIMOLEphp_PERphp_DAYphp php php php php=php php'MILLIMOLEphp_PERphp_DAYphp'php;
-php php php php constphp MILLIMOLEphp_PERphp_HOURphp php php php=php php'MILLIMOLEphp_PERphp_HOURphp'php;
-php php php php constphp MILLIMOLEphp_PERphp_MINUTEphp php=php php'MILLIMOLEphp_PERphp_MINUTEphp'php;
-php php php php constphp MILLIMOLEphp_PERphp_SECONDphp php=php php'MILLIMOLEphp_PERphp_SECONDphp'php;
-php php php php constphp MOLEphp_PERphp_DAYphp php php php php php php php php php=php php'MOLEphp_PERphp_DAYphp'php;
-php php php php constphp MOLEphp_PERphp_HOURphp php php php php php php php php=php php'MOLEphp_PERphp_HOURphp'php;
-php php php php constphp MOLEphp_PERphp_MINUTEphp php php php php php php=php php'MOLEphp_PERphp_MINUTEphp'php;
-php php php php constphp MOLEphp_PERphp_SECONDphp php php php php php php=php php'MOLEphp_PERphp_SECONDphp'php;
+    const CENTIMOLE_PER_DAY    = 'CENTIMOLE_PER_DAY';
+    const CENTIMOLE_PER_HOUR   = 'CENTIMOLE_PER_HOUR';
+    const CENTIMOLE_PER_MINUTE = 'CENTIMOLE_PER_MINUTE';
+    const CENTIMOLE_PER_SECOND = 'CENTIMOLE_PER_SECOND';
+    const MEGAMOLE_PER_DAY     = 'MEGAMOLE_PER_DAY';
+    const MEGAMOLE_PER_HOUR    = 'MEGAMOLE_PER_HOUR';
+    const MEGAMOLE_PER_MINUTE  = 'MEGAMOLE_PER_MINUTE';
+    const MEGAMOLE_PER_SECOND  = 'MEGAMOLE_PER_SECOND';
+    const MICROMOLE_PER_DAY    = 'MICROMOLE_PER_DAY';
+    const MICROMOLE_PER_HOUR   = 'MICROMOLE_PER_HOUR';
+    const MICROMOLE_PER_MINUTE = 'MICROMOLE_PER_MINUTE';
+    const MICROMOLE_PER_SECOND = 'MICROMOLE_PER_SECOND';
+    const MILLIMOLE_PER_DAY    = 'MILLIMOLE_PER_DAY';
+    const MILLIMOLE_PER_HOUR   = 'MILLIMOLE_PER_HOUR';
+    const MILLIMOLE_PER_MINUTE = 'MILLIMOLE_PER_MINUTE';
+    const MILLIMOLE_PER_SECOND = 'MILLIMOLE_PER_SECOND';
+    const MOLE_PER_DAY         = 'MOLE_PER_DAY';
+    const MOLE_PER_HOUR        = 'MOLE_PER_HOUR';
+    const MOLE_PER_MINUTE      = 'MOLE_PER_MINUTE';
+    const MOLE_PER_SECOND      = 'MOLE_PER_SECOND';
 
-php php php php php/php*php*
-php php php php php php*php Calculationsphp forphp allphp flowphp molephp units
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_unitsphp php=php arrayphp(
-php php php php php php php php php'CENTIMOLEphp_PERphp_DAYphp'php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php1php'php,php php'php/php'php php=php>php php'php8php6php4php0php0php'php)php,php php php php php php'cmolphp/dayphp'php)php,
-php php php php php php php php php'CENTIMOLEphp_PERphp_HOURphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php1php'php,php php'php/php'php php=php>php php'php3php6php0php0php'php)php,php php php php php php php'cmolphp/hphp'php)php,
-php php php php php php php php php'CENTIMOLEphp_PERphp_MINUTEphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php1php'php,php php'php/php'php php=php>php php'php6php0php'php)php,php php php php php php php php php'cmolphp/mphp'php)php,
-php php php php php php php php php'CENTIMOLEphp_PERphp_SECONDphp'php php=php>php arrayphp(php'php0php.php0php1php'php,php php php php php php'cmolphp/sphp'php)php,
-php php php php php php php php php'MEGAMOLEphp_PERphp_DAYphp'php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php0php0php0php0php0php0php'php,php php'php/php'php php=php>php php'php8php6php4php0php0php'php)php,php php php'Mmolphp/dayphp'php)php,
-php php php php php php php php php'MEGAMOLEphp_PERphp_HOURphp'php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php0php0php0php0php0php0php'php,php php'php/php'php php=php>php php'php3php6php0php0php'php)php,php php php php'Mmolphp/hphp'php)php,
-php php php php php php php php php'MEGAMOLEphp_PERphp_MINUTEphp'php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php0php0php0php0php0php0php'php,php php'php/php'php php=php>php php'php6php0php'php)php,php php php php php php'Mmolphp/mphp'php)php,
-php php php php php php php php php'MEGAMOLEphp_PERphp_SECONDphp'php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php'Mmolphp/sphp'php)php,
-php php php php php php php php php'MICROMOLEphp_PERphp_DAYphp'php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php0php0php0php1php'php,php php'php/php'php php=php>php php'php8php6php4php0php0php'php)php,php php'phpµmolphp/dayphp'php)php,
-php php php php php php php php php'MICROMOLEphp_PERphp_HOURphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php0php0php0php1php'php,php php'php/php'php php=php>php php'php3php6php0php0php'php)php,php php php'phpµmolphp/hphp'php)php,
-php php php php php php php php php'MICROMOLEphp_PERphp_MINUTEphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php0php0php0php1php'php,php php'php/php'php php=php>php php'php6php0php'php)php,php php php php php'phpµmolphp/mphp'php)php,
-php php php php php php php php php'MICROMOLEphp_PERphp_SECONDphp'php php=php>php arrayphp(php'php0php.php0php0php0php0php0php1php'php,php php'phpµmolphp/sphp'php)php,
-php php php php php php php php php'MILLIMOLEphp_PERphp_DAYphp'php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php1php'php,php php'php/php'php php=php>php php'php8php6php4php0php0php'php)php,php php php php php'mmolphp/dayphp'php)php,
-php php php php php php php php php'MILLIMOLEphp_PERphp_HOURphp'php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php1php'php,php php'php/php'php php=php>php php'php3php6php0php0php'php)php,php php php php php php'mmolphp/hphp'php)php,
-php php php php php php php php php'MILLIMOLEphp_PERphp_MINUTEphp'php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php0php.php0php0php1php'php,php php'php/php'php php=php>php php'php6php0php'php)php,php php php php php php php php'mmolphp/mphp'php)php,
-php php php php php php php php php'MILLIMOLEphp_PERphp_SECONDphp'php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php'mmolphp/sphp'php)php,
-php php php php php php php php php'MOLEphp_PERphp_DAYphp'php php php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php'php,php php'php/php'php php=php>php php'php8php6php4php0php0php'php)php,php php php php php php php php php'molphp/dayphp'php)php,
-php php php php php php php php php'MOLEphp_PERphp_HOURphp'php php php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php'php,php php'php/php'php php=php>php php'php3php6php0php0php'php)php,php php php php php php php php php php'molphp/hphp'php)php,
-php php php php php php php php php'MOLEphp_PERphp_MINUTEphp'php php php php php php php=php>php arrayphp(arrayphp(php'php'php php=php>php php'php1php'php,php php'php/php'php php=php>php php'php6php0php'php)php,php php php php php php php php php php php php'molphp/mphp'php)php,
-php php php php php php php php php'MOLEphp_PERphp_SECONDphp'php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php'molphp/sphp'php)php,
-php php php php php php php php php'STANDARDphp'php php php php php php php php php php php php php php=php>php php'MOLEphp_PERphp_SECONDphp'
-php php php php php)php;
-php}
+    /**
+     * Calculations for all flow mole units
+     *
+     * @var array
+     */
+    protected $_units = array(
+        'CENTIMOLE_PER_DAY'    => array(array('' => '0.01', '/' => '86400'),     'cmol/day'),
+        'CENTIMOLE_PER_HOUR'   => array(array('' => '0.01', '/' => '3600'),      'cmol/h'),
+        'CENTIMOLE_PER_MINUTE' => array(array('' => '0.01', '/' => '60'),        'cmol/m'),
+        'CENTIMOLE_PER_SECOND' => array('0.01',     'cmol/s'),
+        'MEGAMOLE_PER_DAY'     => array(array('' => '1000000', '/' => '86400'),  'Mmol/day'),
+        'MEGAMOLE_PER_HOUR'    => array(array('' => '1000000', '/' => '3600'),   'Mmol/h'),
+        'MEGAMOLE_PER_MINUTE'  => array(array('' => '1000000', '/' => '60'),     'Mmol/m'),
+        'MEGAMOLE_PER_SECOND'  => array('1000000',  'Mmol/s'),
+        'MICROMOLE_PER_DAY'    => array(array('' => '0.000001', '/' => '86400'), 'µmol/day'),
+        'MICROMOLE_PER_HOUR'   => array(array('' => '0.000001', '/' => '3600'),  'µmol/h'),
+        'MICROMOLE_PER_MINUTE' => array(array('' => '0.000001', '/' => '60'),    'µmol/m'),
+        'MICROMOLE_PER_SECOND' => array('0.000001', 'µmol/s'),
+        'MILLIMOLE_PER_DAY'    => array(array('' => '0.001', '/' => '86400'),    'mmol/day'),
+        'MILLIMOLE_PER_HOUR'   => array(array('' => '0.001', '/' => '3600'),     'mmol/h'),
+        'MILLIMOLE_PER_MINUTE' => array(array('' => '0.001', '/' => '60'),       'mmol/m'),
+        'MILLIMOLE_PER_SECOND' => array('0.001',    'mmol/s'),
+        'MOLE_PER_DAY'         => array(array('' => '1', '/' => '86400'),        'mol/day'),
+        'MOLE_PER_HOUR'        => array(array('' => '1', '/' => '3600'),         'mol/h'),
+        'MOLE_PER_MINUTE'      => array(array('' => '1', '/' => '60'),           'mol/m'),
+        'MOLE_PER_SECOND'      => array('1',        'mol/s'),
+        'STANDARD'             => 'MOLE_PER_SECOND'
+    );
+}

@@ -1,544 +1,544 @@
-<php?php
-
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@versionphp php php php php$Idphp:php Socketphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Uriphp_Http
-php php*php/
-requirephp_oncephp php'Zendphp/Uriphp/Httpphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Interfacephp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Stream
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Streamphp.phpphp'php;
-
-php/php*php*
-php php*php Aphp socketsphp basedphp php(streamphp_socketphp_clientphp)php adapterphp classphp forphp Zendphp_Httpphp_Clientphp.php Canphp bephp used
-php php*php onphp almostphp everyphp PHPphp environmentphp,php andphp doesphp notphp requirephp anyphp specialphp extensionsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Httpphp_Clientphp_Adapterphp_Socketphp implementsphp Zendphp_Httpphp_Clientphp_Adapterphp_Interfacephp,php Zendphp_Httpphp_Clientphp_Adapterphp_Stream
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp socketphp forphp serverphp connection
-php php php php php php*
-php php php php php php*php php@varphp resourcephp|null
-php php php php php php*php/
-php php php php protectedphp php$socketphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Whatphp hostphp/portphp arephp wephp connectedphp tophp?
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$connectedphp_tophp php=php arrayphp(nullphp,php nullphp)php;
-
-php php php php php/php*php*
-php php php php php php*php Streamphp forphp storingphp output
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$outphp_streamphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Parametersphp array
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$configphp php=php arrayphp(
-php php php php php php php php php'persistentphp'php php php php php=php>php falsephp,
-php php php php php php php php php'ssltransportphp'php php php=php>php php'sslphp'php,
-php php php php php php php php php'sslcertphp'php php php php php php php php=php>php nullphp,
-php php php php php php php php php'sslpassphrasephp'php php=php>php nullphp,
-php php php php php php php php php'sslusecontextphp'php php=php>php false
-php php php php php)php;
-
-php php php php php/php*php*
-php php php php php php*php Requestphp methodphp php-php willphp bephp setphp byphp writephp(php)php andphp mightphp bephp usedphp byphp readphp(php)
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$methodphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Streamphp context
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_contextphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Adapterphp constructorphp,php currentlyphp emptyphp.php Configphp isphp setphp usingphp setConfigphp(php)
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp configurationphp arrayphp forphp thephp adapter
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Configphp php|php arrayphp php$config
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(php$configphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
-
-php php php php php php php php php}php elseifphp php(php!php isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Arrayphp orphp Zendphp_Configphp objectphp expectedphp,php gotphp php'php php.php gettypephp(php$configphp)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$configphp asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php php$thisphp-php>configphp[strtolowerphp(php$kphp)php]php php=php php$vphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php php*php Retrievephp thephp arrayphp ofphp allphp configurationphp options
-php php php php php php php*
-php php php php php php php*php php@returnphp array
-php php php php php php php*php/
-php php php php php publicphp functionphp getConfigphp(php)
-php php php php php php{
-php php php php php php php php php returnphp php$thisphp-php>configphp;
-php php php php php php}
-
-php php php php php php/php*php*
-php php php php php php*php Setphp thephp streamphp contextphp forphp thephp TCPphp connectionphp tophp thephp server
-php php php php php php*
-php php php php php php*php Canphp acceptphp eitherphp aphp prephp-existingphp streamphp contextphp resourcephp,php orphp anphp array
-php php php php php php*php ofphp streamphp optionsphp,php similarphp tophp thephp optionsphp arrayphp passedphp tophp the
-php php php php php php*php streamphp_contextphp_createphp(php)php PHPphp functionphp.php Inphp suchphp casephp aphp newphp streamphp context
-php php php php php php*php willphp bephp createdphp usingphp thephp passedphp optionsphp.
-php php php php php php*
-php php php php php php*php php@sincephp php Zendphp Frameworkphp php1php.php9
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$contextphp Streamphp contextphp orphp arrayphp ofphp contextphp options
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Socket
-php php php php php php*php/
-php php php php publicphp functionphp setStreamContextphp(php$contextphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_resourcephp(php$contextphp)php php&php&php getphp_resourcephp_typephp(php$contextphp)php php=php=php php'streamphp-contextphp'php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_contextphp php=php php$contextphp;
-
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_contextphp php=php streamphp_contextphp_createphp(php$contextphp)php;
-
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Invalidphp parameter
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Expectingphp eitherphp aphp streamphp contextphp resourcephp orphp arrayphp,php gotphp php"php php.php gettypephp(php$contextphp)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp streamphp contextphp forphp thephp TCPphp connectionphp tophp thephp serverphp.
-php php php php php php*
-php php php php php php*php Ifphp nophp streamphp contextphp isphp setphp,php willphp createphp aphp defaultphp onephp.
-php php php php php php*
-php php php php php php*php php@returnphp resource
-php php php php php php*php/
-php php php php publicphp functionphp getStreamContextphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php php$thisphp-php>php_contextphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_contextphp php=php streamphp_contextphp_createphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_contextphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Connectphp tophp thephp remotephp server
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$host
-php php php php php php*php php@paramphp intphp php php php php php$port
-php php php php php php*php php@paramphp booleanphp php$secure
-php php php php php php*php/
-php php php php publicphp functionphp connectphp(php$hostphp,php php$portphp php=php php8php0php,php php$securephp php=php falsephp)
-php php php php php{
-php php php php php php php php php/php/php Ifphp thephp URIphp shouldphp bephp accessedphp viaphp SSLphp,php prependphp thephp Hostnamephp withphp sslphp:php/php/
-php php php php php php php php php$hostphp php=php php(php$securephp php?php php$thisphp-php>configphp[php'ssltransportphp'php]php php:php php'tcpphp'php)php php.php php'php:php/php/php'php php.php php$hostphp;
-
-php php php php php php php php php/php/php Ifphp wephp arephp connectedphp tophp thephp wrongphp hostphp,php disconnectphp first
-php php php php php php php php ifphp php(php(php$thisphp-php>connectedphp_tophp[php0php]php php!php=php php$hostphp php|php|php php$thisphp-php>connectedphp_tophp[php1php]php php!php=php php$portphp)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>socketphp)php)php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Nowphp,php ifphp wephp arephp notphp connectedphp,php connect
-php php php php php php php php ifphp php(php!php isphp_resourcephp(php$thisphp-php>socketphp)php php|php|php php!php php$thisphp-php>configphp[php'keepalivephp'php]php)php php{
-php php php php php php php php php php php php php$contextphp php=php php$thisphp-php>getStreamContextphp(php)php;
-php php php php php php php php php php php php ifphp php(php$securephp php|php|php php$thisphp-php>configphp[php'sslusecontextphp'php]php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'sslcertphp'php]php php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!php streamphp_contextphp_setphp_optionphp(php$contextphp,php php'sslphp'php,php php'localphp_certphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>configphp[php'sslcertphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Unablephp tophp setphp sslcertphp optionphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'sslpassphrasephp'php]php php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!php streamphp_contextphp_setphp_optionphp(php$contextphp,php php'sslphp'php,php php'passphrasephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>configphp[php'sslpassphrasephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Unablephp tophp setphp sslpassphrasephp optionphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$flagsphp php=php STREAMphp_CLIENTphp_CONNECTphp;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>configphp[php'persistentphp'php]php)php php$flagsphp php|php=php STREAMphp_CLIENTphp_PERSISTENTphp;
-
-php php php php php php php php php php php php php$thisphp-php>socketphp php=php php@streamphp_socketphp_clientphp(php$hostphp php.php php'php:php'php php.php php$portphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$errnophp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$errstrphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(intphp)php php$thisphp-php>configphp[php'timeoutphp'php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$flagsphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$contextphp)php;
-
-php php php php php php php php php php php php ifphp php(php!php php$thisphp-php>socketphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Unablephp tophp Connectphp tophp php'php php.php php$hostphp php.php php'php:php'php php.php php$portphp php.php php'php.php Errorphp php#php'php php.php php$errnophp php.php php'php:php php'php php.php php$errstrphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Setphp thephp streamphp timeout
-php php php php php php php php php php php php ifphp php(php!php streamphp_setphp_timeoutphp(php$thisphp-php>socketphp,php php(intphp)php php$thisphp-php>configphp[php'timeoutphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Unablephp tophp setphp thephp connectionphp timeoutphp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Updatephp connectedphp_to
-php php php php php php php php php php php php php$thisphp-php>connectedphp_tophp php=php arrayphp(php$hostphp,php php$portphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Sendphp requestphp tophp thephp remotephp server
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php php php php php php$method
-php php php php php php*php php@paramphp Zendphp_Uriphp_Httpphp php$uri
-php php php php php php*php php@paramphp stringphp php php php php php php php php$httpphp_ver
-php php php php php php*php php@paramphp arrayphp php php php php php php php php php$headers
-php php php php php php*php php@paramphp stringphp php php php php php php php php$body
-php php php php php php*php php@returnphp stringphp Requestphp asphp string
-php php php php php php*php/
-php php php php publicphp functionphp writephp(php$methodphp,php php$uriphp,php php$httpphp_verphp php=php php'php1php.php1php'php,php php$headersphp php=php arrayphp(php)php,php php$bodyphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php/php/php Makephp surephp wephp'rephp properlyphp connected
-php php php php php php php php ifphp php(php!php php$thisphp-php>socketphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Tryingphp tophp writephp butphp wephp arephp notphp connectedphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$hostphp php=php php$uriphp-php>getHostphp(php)php;
-php php php php php php php php php$hostphp php=php php(strtolowerphp(php$uriphp-php>getSchemephp(php)php)php php=php=php php'httpsphp'php php?php php$thisphp-php>configphp[php'ssltransportphp'php]php php:php php'tcpphp'php)php php.php php'php:php/php/php'php php.php php$hostphp;
-php php php php php php php php ifphp php(php$thisphp-php>connectedphp_tophp[php0php]php php!php=php php$hostphp php|php|php php$thisphp-php>connectedphp_tophp[php1php]php php!php=php php$uriphp-php>getPortphp(php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Tryingphp tophp writephp butphp wephp arephp connectedphp tophp thephp wrongphp hostphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Savephp requestphp methodphp forphp later
-php php php php php php php php php$thisphp-php>methodphp php=php php$methodphp;
-
-php php php php php php php php php/php/php Buildphp requestphp headers
-php php php php php php php php php$pathphp php=php php$uriphp-php>getPathphp(php)php;
-php php php php php php php php ifphp php(php$uriphp-php>getQueryphp(php)php)php php$pathphp php.php=php php'php?php'php php.php php$uriphp-php>getQueryphp(php)php;
-php php php php php php php php php$requestphp php=php php"php{php$methodphp}php php{php$pathphp}php HTTPphp/php{php$httpphp_verphp}php\rphp\nphp"php;
-php php php php php php php php foreachphp php(php$headersphp asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$kphp)php)php php$vphp php=php ucfirstphp(php$kphp)php php.php php"php:php php$vphp"php;
-php php php php php php php php php php php php php$requestphp php.php=php php"php$vphp\rphp\nphp"php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php php$requestphp php.php=php php"php\rphp\nphp"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Addphp thephp requestphp body
-php php php php php php php php php php php php php$requestphp php.php=php php"php\rphp\nphp"php php.php php$bodyphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Sendphp thephp request
-php php php php php php php php ifphp php(php!php php@fwritephp(php$thisphp-php>socketphp,php php$requestphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Errorphp writingphp requestphp tophp serverphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php ifphp(streamphp_copyphp_tophp_streamphp(php$bodyphp,php php$thisphp-php>socketphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Errorphp writingphp requestphp tophp serverphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$requestphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Readphp responsephp fromphp server
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp readphp(php)
-php php php php php{
-php php php php php php php php php/php/php Firstphp,php readphp headersphp only
-php php php php php php php php php$responsephp php=php php'php'php;
-php php php php php php php php php$gotStatusphp php=php falsephp;
-php php php php php php php php php$streamphp php=php php!emptyphp(php$thisphp-php>configphp[php'streamphp'php]php)php;
-
-php php php php php php php php whilephp php(php(php$linephp php=php php@fgetsphp(php$thisphp-php>socketphp)php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php$gotStatusphp php=php php$gotStatusphp php|php|php php(strposphp(php$linephp,php php'HTTPphp'php)php php!php=php=php falsephp)php;
-php php php php php php php php php php php php ifphp php(php$gotStatusphp)php php{
-php php php php php php php php php php php php php php php php php$responsephp php.php=php php$linephp;
-php php php php php php php php php php php php php php php php ifphp php(rtrimphp(php$linephp)php php=php=php=php php'php'php)php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-
-php php php php php php php php php$statusCodephp php=php Zendphp_Httpphp_Responsephp:php:extractCodephp(php$responsephp)php;
-
-php php php php php php php php php/php/php Handlephp php1php0php0php andphp php1php0php1php responsesphp internallyphp byphp restartingphp thephp readphp again
-php php php php php php php php ifphp php(php$statusCodephp php=php=php php1php0php0php php|php|php php$statusCodephp php=php=php php1php0php1php)php returnphp php$thisphp-php>readphp(php)php;
-
-php php php php php php php php php/php/php Checkphp headersphp tophp seephp whatphp kindphp ofphp connectionphp php/php transferphp encodingphp wephp have
-php php php php php php php php php$headersphp php=php Zendphp_Httpphp_Responsephp:php:extractHeadersphp(php$responsephp)php;
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Responsesphp tophp HEADphp requestsphp andphp php2php0php4php orphp php3php0php4php responsesphp arephp notphp expected
-php php php php php php php php php php*php tophp havephp aphp bodyphp php-php stopphp readingphp here
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(php$statusCodephp php=php=php php3php0php4php php|php|php php$statusCodephp php=php=php php2php0php4php php|php|
-php php php php php php php php php php php php php$thisphp-php>methodphp php=php=php Zendphp_Httpphp_Clientphp:php:HEADphp)php php{
-
-php php php php php php php php php php php php php/php/php Closephp thephp connectionphp ifphp requestedphp tophp dophp sophp byphp thephp server
-php php php php php php php php php php php php ifphp php(issetphp(php$headersphp[php'connectionphp'php]php)php php&php&php php$headersphp[php'connectionphp'php]php php=php=php php'closephp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$responsephp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Ifphp wephp gotphp aphp php'transferphp-encodingphp:php chunkedphp'php header
-php php php php php php php php ifphp php(issetphp(php$headersphp[php'transferphp-encodingphp'php]php)php)php php{
-
-php php php php php php php php php php php php ifphp php(strtolowerphp(php$headersphp[php'transferphp-encodingphp'php]php)php php=php=php php'chunkedphp'php)php php{
-
-php php php php php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php php php php php php$linephp php php=php php@fgetsphp(php$thisphp-php>socketphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php php$chunkphp php=php php$linephp;
-
-php php php php php php php php php php php php php php php php php php php php php/php/php Figurephp outphp thephp nextphp chunkphp size
-php php php php php php php php php php php php php php php php php php php php php$chunksizephp php=php trimphp(php$linephp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!php ctypephp_xdigitphp(php$chunksizephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Invalidphp chunkphp sizephp php"php'php php.
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$chunksizephp php.php php'php"php unablephp tophp readphp chunkedphp bodyphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php/php/php Convertphp thephp hexadecimalphp valuephp tophp plainphp integer
-php php php php php php php php php php php php php php php php php php php php php$chunksizephp php=php hexdecphp(php$chunksizephp)php;
-
-php php php php php php php php php php php php php php php php php php php php php/php/php Readphp nextphp chunk
-php php php php php php php php php php php php php php php php php php php php php$readphp_tophp php=php ftellphp(php$thisphp-php>socketphp)php php+php php$chunksizephp;
-
-php php php php php php php php php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$currentphp_posphp php=php ftellphp(php$thisphp-php>socketphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$currentphp_posphp php>php=php php$readphp_tophp)php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp(streamphp_copyphp_tophp_streamphp(php$thisphp-php>socketphp,php php$thisphp-php>outphp_streamphp,php php$readphp_tophp php-php php$currentphp_posphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$linephp php=php php@freadphp(php$thisphp-php>socketphp,php php$readphp_tophp php-php php$currentphp_posphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$linephp php=php=php=php falsephp php|php|php strlenphp(php$linephp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$chunkphp php.php=php php$linephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}php whilephp php(php!php feofphp(php$thisphp-php>socketphp)php)php;
-
-php php php php php php php php php php php php php php php php php php php php php$chunkphp php.php=php php@fgetsphp(php$thisphp-php>socketphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php ifphp(php!php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$responsephp php.php=php php$chunkphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php whilephp php(php$chunksizephp php>php php0php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Cannotphp handlephp php"php'php php.
-php php php php php php php php php php php php php php php php php php php php php$headersphp[php'transferphp-encodingphp'php]php php.php php'php"php transferphp encodingphp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Wephp automaticallyphp decodephp chunkedphp-messagesphp whenphp writingphp tophp aphp stream
-php php php php php php php php php php php php php/php/php thisphp meansphp wephp havephp tophp disallowphp thephp Zendphp_Httpphp_Responsephp tophp dophp itphp again
-php php php php php php php php php php php php ifphp php(php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php php php php php$responsephp php=php strphp_ireplacephp(php"Transferphp-Encodingphp:php chunkedphp\rphp\nphp"php,php php'php'php,php php$responsephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php/php/php Elsephp,php ifphp wephp gotphp thephp contentphp-lengthphp headerphp,php readphp thisphp numberphp ofphp bytes
-php php php php php php php php php}php elseifphp php(issetphp(php$headersphp[php'contentphp-lengthphp'php]php)php)php php{
-
-php php php php php php php php php php php php php/php/php Ifphp wephp gotphp morephp thanphp onephp Contentphp-Lengthphp headerphp php(seephp ZFphp-php9php4php0php4php)php use
-php php php php php php php php php php php php php/php/php thephp lastphp valuephp sent
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$headersphp[php'contentphp-lengthphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$contentLengthphp php=php php$headersphp[php'contentphp-lengthphp'php]php[countphp(php$headersphp[php'contentphp-lengthphp'php]php)php php-php php1php]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$contentLengthphp php=php php$headersphp[php'contentphp-lengthphp'php]php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$currentphp_posphp php=php ftellphp(php$thisphp-php>socketphp)php;
-php php php php php php php php php php php php php$chunkphp php=php php'php'php;
-
-php php php php php php php php php php php php forphp php(php$readphp_tophp php=php php$currentphp_posphp php+php php$contentLengthphp;
-php php php php php php php php php php php php php php php php php php$readphp_tophp php>php php$currentphp_posphp;
-php php php php php php php php php php php php php php php php php php$currentphp_posphp php=php ftellphp(php$thisphp-php>socketphp)php)php php{
-
-php php php php php php php php php php php php php php php php php ifphp(php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php php php php php php php php php ifphp(php@streamphp_copyphp_tophp_streamphp(php$thisphp-php>socketphp,php php$thisphp-php>outphp_streamphp,php php$readphp_tophp php-php php$currentphp_posphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$chunkphp php=php php@freadphp(php$thisphp-php>socketphp,php php$readphp_tophp php-php php$currentphp_posphp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$chunkphp php=php=php=php falsephp php|php|php strlenphp(php$chunkphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$responsephp php.php=php php$chunkphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php/php/php Breakphp ifphp thephp connectionphp endedphp prematurely
-php php php php php php php php php php php php php php php php ifphp php(feofphp(php$thisphp-php>socketphp)php)php breakphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php/php/php Fallbackphp:php justphp readphp thephp responsephp untilphp EOF
-php php php php php php php php php}php elsephp php{
-
-php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php ifphp(php$thisphp-php>outphp_streamphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp(php@streamphp_copyphp_tophp_streamphp(php$thisphp-php>socketphp,php php$thisphp-php>outphp_streamphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$buffphp php=php php@freadphp(php$thisphp-php>socketphp,php php8php1php9php2php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$buffphp php=php=php=php falsephp php|php|php strlenphp(php$buffphp)php php=php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkSocketReadTimeoutphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$responsephp php.php=php php$buffphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php}php whilephp php(feofphp(php$thisphp-php>socketphp)php php=php=php=php falsephp)php;
-
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Closephp thephp connectionphp ifphp requestedphp tophp dophp sophp byphp thephp server
-php php php php php php php php ifphp php(issetphp(php$headersphp[php'connectionphp'php]php)php php&php&php php$headersphp[php'connectionphp'php]php php=php=php php'closephp'php)php php{
-php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$responsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Closephp thephp connectionphp tophp thephp server
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>socketphp)php)php php@fclosephp(php$thisphp-php>socketphp)php;
-php php php php php php php php php$thisphp-php>socketphp php=php nullphp;
-php php php php php php php php php$thisphp-php>connectedphp_tophp php=php arrayphp(nullphp,php nullphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp thephp socketphp hasphp timedphp outphp php-php ifphp sophp closephp connectionphp andphp throw
-php php php php php php*php anphp exception
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp withphp READphp_TIMEOUTphp code
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkSocketReadTimeoutphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>socketphp)php php{
-php php php php php php php php php php php php php$infophp php=php streamphp_getphp_metaphp_dataphp(php$thisphp-php>socketphp)php;
-php php php php php php php php php php php php php$timedoutphp php=php php$infophp[php'timedphp_outphp'php]php;
-php php php php php php php php php php php php ifphp php(php$timedoutphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php"Readphp timedphp outphp afterphp php{php$thisphp-php>configphp[php'timeoutphp'php]php}php secondsphp"php,
-php php php php php php php php php php php php php php php php php php php php Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp:php:READphp_TIMEOUT
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp outputphp streamphp forphp thephp response
-php php php php php php*
-php php php php php php*php php@paramphp resourcephp php$stream
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Adapterphp_Socket
-php php php php php php*php/
-php php php php publicphp functionphp setOutputStreamphp(php$streamphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>outphp_streamphp php=php php$streamphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Destructorphp:php makephp surephp thephp socketphp isphp disconnected
-php php php php php php*
-php php php php php php*php Ifphp wephp arephp inphp persistentphp TCPphp modephp,php willphp notphp closephp thephp connection
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php php$thisphp-php>configphp[php'persistentphp'php]php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>socketphp)php php$thisphp-php>closephp(php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+<?php
+
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @version    $Id: Socket.php 23486 2010-12-10 04:05:30Z mjh_ca $
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/**
+ * @see Zend_Uri_Http
+ */
+require_once 'Zend/Uri/Http.php';
+/**
+ * @see Zend_Http_Client_Adapter_Interface
+ */
+require_once 'Zend/Http/Client/Adapter/Interface.php';
+/**
+ * @see Zend_Http_Client_Adapter_Stream
+ */
+require_once 'Zend/Http/Client/Adapter/Stream.php';
+
+/**
+ * A sockets based (stream_socket_client) adapter class for Zend_Http_Client. Can be used
+ * on almost every PHP environment, and does not require any special extensions.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interface, Zend_Http_Client_Adapter_Stream
+{
+    /**
+     * The socket for server connection
+     *
+     * @var resource|null
+     */
+    protected $socket = null;
+
+    /**
+     * What host/port are we connected to?
+     *
+     * @var array
+     */
+    protected $connected_to = array(null, null);
+
+    /**
+     * Stream for storing output
+     *
+     * @var resource
+     */
+    protected $out_stream = null;
+
+    /**
+     * Parameters array
+     *
+     * @var array
+     */
+    protected $config = array(
+        'persistent'    => false,
+        'ssltransport'  => 'ssl',
+        'sslcert'       => null,
+        'sslpassphrase' => null,
+        'sslusecontext' => false
+    );
+
+    /**
+     * Request method - will be set by write() and might be used by read()
+     *
+     * @var string
+     */
+    protected $method = null;
+
+    /**
+     * Stream context
+     *
+     * @var resource
+     */
+    protected $_context = null;
+
+    /**
+     * Adapter constructor, currently empty. Config is set using setConfig()
+     *
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Set the configuration array for the adapter
+     *
+     * @param Zend_Config | array $config
+     */
+    public function setConfig($config = array())
+    {
+        if ($config instanceof Zend_Config) {
+            $config = $config->toArray();
+
+        } elseif (! is_array($config)) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception(
+                'Array or Zend_Config object expected, got ' . gettype($config)
+            );
+        }
+
+        foreach ($config as $k => $v) {
+            $this->config[strtolower($k)] = $v;
+        }
+    }
+
+    /**
+      * Retrieve the array of all configuration options
+      *
+      * @return array
+      */
+     public function getConfig()
+     {
+         return $this->config;
+     }
+
+     /**
+     * Set the stream context for the TCP connection to the server
+     *
+     * Can accept either a pre-existing stream context resource, or an array
+     * of stream options, similar to the options array passed to the
+     * stream_context_create() PHP function. In such case a new stream context
+     * will be created using the passed options.
+     *
+     * @since  Zend Framework 1.9
+     *
+     * @param  mixed $context Stream context or array of context options
+     * @return Zend_Http_Client_Adapter_Socket
+     */
+    public function setStreamContext($context)
+    {
+        if (is_resource($context) && get_resource_type($context) == 'stream-context') {
+            $this->_context = $context;
+
+        } elseif (is_array($context)) {
+            $this->_context = stream_context_create($context);
+
+        } else {
+            // Invalid parameter
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception(
+                "Expecting either a stream context resource or array, got " . gettype($context)
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the stream context for the TCP connection to the server.
+     *
+     * If no stream context is set, will create a default one.
+     *
+     * @return resource
+     */
+    public function getStreamContext()
+    {
+        if (! $this->_context) {
+            $this->_context = stream_context_create();
+        }
+
+        return $this->_context;
+    }
+
+    /**
+     * Connect to the remote server
+     *
+     * @param string  $host
+     * @param int     $port
+     * @param boolean $secure
+     */
+    public function connect($host, $port = 80, $secure = false)
+    {
+        // If the URI should be accessed via SSL, prepend the Hostname with ssl://
+        $host = ($secure ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
+
+        // If we are connected to the wrong host, disconnect first
+        if (($this->connected_to[0] != $host || $this->connected_to[1] != $port)) {
+            if (is_resource($this->socket)) $this->close();
+        }
+
+        // Now, if we are not connected, connect
+        if (! is_resource($this->socket) || ! $this->config['keepalive']) {
+            $context = $this->getStreamContext();
+            if ($secure || $this->config['sslusecontext']) {
+                if ($this->config['sslcert'] !== null) {
+                    if (! stream_context_set_option($context, 'ssl', 'local_cert',
+                                                    $this->config['sslcert'])) {
+                        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                        throw new Zend_Http_Client_Adapter_Exception('Unable to set sslcert option');
+                    }
+                }
+                if ($this->config['sslpassphrase'] !== null) {
+                    if (! stream_context_set_option($context, 'ssl', 'passphrase',
+                                                    $this->config['sslpassphrase'])) {
+                        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                        throw new Zend_Http_Client_Adapter_Exception('Unable to set sslpassphrase option');
+                    }
+                }
+            }
+
+            $flags = STREAM_CLIENT_CONNECT;
+            if ($this->config['persistent']) $flags |= STREAM_CLIENT_PERSISTENT;
+
+            $this->socket = @stream_socket_client($host . ':' . $port,
+                                                  $errno,
+                                                  $errstr,
+                                                  (int) $this->config['timeout'],
+                                                  $flags,
+                                                  $context);
+
+            if (! $this->socket) {
+                $this->close();
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception(
+                    'Unable to Connect to ' . $host . ':' . $port . '. Error #' . $errno . ': ' . $errstr);
+            }
+
+            // Set the stream timeout
+            if (! stream_set_timeout($this->socket, (int) $this->config['timeout'])) {
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception('Unable to set the connection timeout');
+            }
+
+            // Update connected_to
+            $this->connected_to = array($host, $port);
+        }
+    }
+
+    /**
+     * Send request to the remote server
+     *
+     * @param string        $method
+     * @param Zend_Uri_Http $uri
+     * @param string        $http_ver
+     * @param array         $headers
+     * @param string        $body
+     * @return string Request as string
+     */
+    public function write($method, $uri, $http_ver = '1.1', $headers = array(), $body = '')
+    {
+        // Make sure we're properly connected
+        if (! $this->socket) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception('Trying to write but we are not connected');
+        }
+
+        $host = $uri->getHost();
+        $host = (strtolower($uri->getScheme()) == 'https' ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
+        if ($this->connected_to[0] != $host || $this->connected_to[1] != $uri->getPort()) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception('Trying to write but we are connected to the wrong host');
+        }
+
+        // Save request method for later
+        $this->method = $method;
+
+        // Build request headers
+        $path = $uri->getPath();
+        if ($uri->getQuery()) $path .= '?' . $uri->getQuery();
+        $request = "{$method} {$path} HTTP/{$http_ver}\r\n";
+        foreach ($headers as $k => $v) {
+            if (is_string($k)) $v = ucfirst($k) . ": $v";
+            $request .= "$v\r\n";
+        }
+
+        if(is_resource($body)) {
+            $request .= "\r\n";
+        } else {
+            // Add the request body
+            $request .= "\r\n" . $body;
+        }
+
+        // Send the request
+        if (! @fwrite($this->socket, $request)) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception('Error writing request to server');
+        }
+
+        if(is_resource($body)) {
+            if(stream_copy_to_stream($body, $this->socket) == 0) {
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception('Error writing request to server');
+            }
+        }
+
+        return $request;
+    }
+
+    /**
+     * Read response from server
+     *
+     * @return string
+     */
+    public function read()
+    {
+        // First, read headers only
+        $response = '';
+        $gotStatus = false;
+        $stream = !empty($this->config['stream']);
+
+        while (($line = @fgets($this->socket)) !== false) {
+            $gotStatus = $gotStatus || (strpos($line, 'HTTP') !== false);
+            if ($gotStatus) {
+                $response .= $line;
+                if (rtrim($line) === '') break;
+            }
+        }
+
+        $this->_checkSocketReadTimeout();
+
+        $statusCode = Zend_Http_Response::extractCode($response);
+
+        // Handle 100 and 101 responses internally by restarting the read again
+        if ($statusCode == 100 || $statusCode == 101) return $this->read();
+
+        // Check headers to see what kind of connection / transfer encoding we have
+        $headers = Zend_Http_Response::extractHeaders($response);
+
+        /**
+         * Responses to HEAD requests and 204 or 304 responses are not expected
+         * to have a body - stop reading here
+         */
+        if ($statusCode == 304 || $statusCode == 204 ||
+            $this->method == Zend_Http_Client::HEAD) {
+
+            // Close the connection if requested to do so by the server
+            if (isset($headers['connection']) && $headers['connection'] == 'close') {
+                $this->close();
+            }
+            return $response;
+        }
+
+        // If we got a 'transfer-encoding: chunked' header
+        if (isset($headers['transfer-encoding'])) {
+
+            if (strtolower($headers['transfer-encoding']) == 'chunked') {
+
+                do {
+                    $line  = @fgets($this->socket);
+                    $this->_checkSocketReadTimeout();
+
+                    $chunk = $line;
+
+                    // Figure out the next chunk size
+                    $chunksize = trim($line);
+                    if (! ctype_xdigit($chunksize)) {
+                        $this->close();
+                        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                        throw new Zend_Http_Client_Adapter_Exception('Invalid chunk size "' .
+                            $chunksize . '" unable to read chunked body');
+                    }
+
+                    // Convert the hexadecimal value to plain integer
+                    $chunksize = hexdec($chunksize);
+
+                    // Read next chunk
+                    $read_to = ftell($this->socket) + $chunksize;
+
+                    do {
+                        $current_pos = ftell($this->socket);
+                        if ($current_pos >= $read_to) break;
+
+                        if($this->out_stream) {
+                            if(stream_copy_to_stream($this->socket, $this->out_stream, $read_to - $current_pos) == 0) {
+                              $this->_checkSocketReadTimeout();
+                              break;
+                             }
+                        } else {
+                            $line = @fread($this->socket, $read_to - $current_pos);
+                            if ($line === false || strlen($line) === 0) {
+                                $this->_checkSocketReadTimeout();
+                                break;
+                            }
+                                    $chunk .= $line;
+                        }
+                    } while (! feof($this->socket));
+
+                    $chunk .= @fgets($this->socket);
+                    $this->_checkSocketReadTimeout();
+
+                    if(!$this->out_stream) {
+                        $response .= $chunk;
+                    }
+                } while ($chunksize > 0);
+            } else {
+                $this->close();
+        require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception('Cannot handle "' .
+                    $headers['transfer-encoding'] . '" transfer encoding');
+            }
+
+            // We automatically decode chunked-messages when writing to a stream
+            // this means we have to disallow the Zend_Http_Response to do it again
+            if ($this->out_stream) {
+                $response = str_ireplace("Transfer-Encoding: chunked\r\n", '', $response);
+            }
+        // Else, if we got the content-length header, read this number of bytes
+        } elseif (isset($headers['content-length'])) {
+
+            // If we got more than one Content-Length header (see ZF-9404) use
+            // the last value sent
+            if (is_array($headers['content-length'])) {
+                $contentLength = $headers['content-length'][count($headers['content-length']) - 1];
+            } else {
+                $contentLength = $headers['content-length'];
+            }
+
+            $current_pos = ftell($this->socket);
+            $chunk = '';
+
+            for ($read_to = $current_pos + $contentLength;
+                 $read_to > $current_pos;
+                 $current_pos = ftell($this->socket)) {
+
+                 if($this->out_stream) {
+                     if(@stream_copy_to_stream($this->socket, $this->out_stream, $read_to - $current_pos) == 0) {
+                          $this->_checkSocketReadTimeout();
+                          break;
+                     }
+                 } else {
+                    $chunk = @fread($this->socket, $read_to - $current_pos);
+                    if ($chunk === false || strlen($chunk) === 0) {
+                        $this->_checkSocketReadTimeout();
+                        break;
+                    }
+
+                    $response .= $chunk;
+                }
+
+                // Break if the connection ended prematurely
+                if (feof($this->socket)) break;
+            }
+
+        // Fallback: just read the response until EOF
+        } else {
+
+            do {
+                if($this->out_stream) {
+                    if(@stream_copy_to_stream($this->socket, $this->out_stream) == 0) {
+                          $this->_checkSocketReadTimeout();
+                          break;
+                     }
+                }  else {
+                    $buff = @fread($this->socket, 8192);
+                    if ($buff === false || strlen($buff) === 0) {
+                        $this->_checkSocketReadTimeout();
+                        break;
+                    } else {
+                        $response .= $buff;
+                    }
+                }
+
+            } while (feof($this->socket) === false);
+
+            $this->close();
+        }
+
+        // Close the connection if requested to do so by the server
+        if (isset($headers['connection']) && $headers['connection'] == 'close') {
+            $this->close();
+        }
+
+        return $response;
+    }
+
+    /**
+     * Close the connection to the server
+     *
+     */
+    public function close()
+    {
+        if (is_resource($this->socket)) @fclose($this->socket);
+        $this->socket = null;
+        $this->connected_to = array(null, null);
+    }
+
+    /**
+     * Check if the socket has timed out - if so close connection and throw
+     * an exception
+     *
+     * @throws Zend_Http_Client_Adapter_Exception with READ_TIMEOUT code
+     */
+    protected function _checkSocketReadTimeout()
+    {
+        if ($this->socket) {
+            $info = stream_get_meta_data($this->socket);
+            $timedout = $info['timed_out'];
+            if ($timedout) {
+                $this->close();
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception(
+                    "Read timed out after {$this->config['timeout']} seconds",
+                    Zend_Http_Client_Adapter_Exception::READ_TIMEOUT
+                );
+            }
+        }
+    }
+
+    /**
+     * Set output stream for the response
+     *
+     * @param resource $stream
+     * @return Zend_Http_Client_Adapter_Socket
+     */
+    public function setOutputStream($stream)
+    {
+        $this->out_stream = $stream;
+        return $this;
+    }
+
+    /**
+     * Destructor: make sure the socket is disconnected
+     *
+     * If we are in persistent TCP mode, will not close the connection
+     *
+     */
+    public function __destruct()
+    {
+        if (! $this->config['persistent']) {
+            if ($this->socket) $this->close();
+        }
+    }
+}

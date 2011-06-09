@@ -1,382 +1,382 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@subpackagephp Renderer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Imagephp.phpphp php2php0php3php6php6php php2php0php1php0php-php0php1php-php1php8php php0php3php:php5php6php:php5php2Zphp ralphphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @subpackage Renderer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Image.php 20366 2010-01-18 03:56:52Z ralph $
+ */
 
-php/php*php*php php@seephp Zendphp_Barcodephp_Rendererphp_RendererAbstractphp*php/
-requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/RendererAbstractphp.phpphp'php;
+/** @see Zend_Barcode_Renderer_RendererAbstract*/
+require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
 
-php/php*php*
-php php*php Classphp forphp renderingphp thephp barcodephp asphp svg
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Barcodephp_Rendererphp_Svgphp extendsphp Zendphp_Barcodephp_Rendererphp_RendererAbstract
-php{
+/**
+ * Class for rendering the barcode as svg
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
+{
 
-php php php php php/php*php*
-php php php php php php*php Resourcephp forphp thephp image
-php php php php php php*php php@varphp DOMDocument
-php php php php php php*php/
-php php php php protectedphp php$php_resourcephp php=php nullphp;
+    /**
+     * Resource for the image
+     * @var DOMDocument
+     */
+    protected $_resource = null;
 
-php php php php php/php*php*
-php php php php php php*php Rootphp elementphp ofphp thephp XMLphp structure
-php php php php php php*php php@varphp DOMElement
-php php php php php php*php/
-php php php php protectedphp php$php_rootElementphp php=php nullphp;
+    /**
+     * Root element of the XML structure
+     * @var DOMElement
+     */
+    protected $_rootElement = null;
 
-php php php php php/php*php*
-php php php php php php*php Heightphp ofphp thephp renderedphp imagephp wantedphp byphp user
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_userHeightphp php=php php0php;
+    /**
+     * Height of the rendered image wanted by user
+     * @var integer
+     */
+    protected $_userHeight = 0;
 
-php php php php php/php*php*
-php php php php php php*php Widthphp ofphp thephp renderedphp imagephp wantedphp byphp user
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_userWidthphp php=php php0php;
+    /**
+     * Width of the rendered image wanted by user
+     * @var integer
+     */
+    protected $_userWidth = 0;
 
-php php php php php/php*php*
-php php php php php php*php Setphp heightphp ofphp thephp resultphp image
-php php php php php php*php php@paramphp nullphp|integerphp php$value
-php php php php php php*php php@returnphp Zendphp_Imagephp_Barcodephp_Abstract
-php php php php php php*php php@throwphp Zendphp_Imagephp_Barcodephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setHeightphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php php|php|php intvalphp(php$valuephp)php <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Svgphp heightphp mustphp bephp greaterphp thanphp orphp equalsphp php0php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_userHeightphp php=php intvalphp(php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set height of the result image
+     * @param null|integer $value
+     * @return Zend_Image_Barcode_Abstract
+     * @throw Zend_Image_Barcode_Exception
+     */
+    public function setHeight($value)
+    {
+        if (!is_numeric($value) || intval($value) < 0) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Svg height must be greater than or equals 0'
+            );
+        }
+        $this->_userHeight = intval($value);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp barcodephp height
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getHeightphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_userHeightphp;
-php php php php php}
+    /**
+     * Get barcode height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->_userHeight;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp barcodephp width
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setWidthphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_numericphp(php$valuephp)php php|php|php intvalphp(php$valuephp)php <php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Svgphp widthphp mustphp bephp greaterphp thanphp orphp equalsphp php0php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_userWidthphp php=php intvalphp(php$valuephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set barcode width
+     *
+     * @param mixed $value
+     * @return void
+     */
+    public function setWidth($value)
+    {
+        if (!is_numeric($value) || intval($value) < 0) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Svg width must be greater than or equals 0'
+            );
+        }
+        $this->_userWidth = intval($value);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp barcodephp width
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getWidthphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_userWidthphp;
-php php php php php}
+    /**
+     * Get barcode width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->_userWidth;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp imagephp resourcephp tophp drawphp thephp barcodephp inside
-php php php php php php*
-php php php php php php*php php@paramphp DOMDocumentphp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setResourcephp(php$svgphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$svgphp instanceofphp DOMDocumentphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Invalidphp DOMDocumentphp resourcephp providedphp tophp setResourcephp(php)php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_resourcephp php=php php$svgphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set an image resource to draw the barcode inside
+     *
+     * @param DOMDocument $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setResource($svg)
+    {
+        if (!$svg instanceof DOMDocument) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Invalid DOMDocument resource provided to setResource()'
+            );
+        }
+        $this->_resource = $svg;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp thephp imagephp resource
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_initRendererphp(php)
-php php php php php{
-php php php php php php php php php$barcodeWidthphp php php=php php$thisphp-php>php_barcodephp-php>getWidthphp(truephp)php;
-php php php php php php php php php$barcodeHeightphp php=php php$thisphp-php>php_barcodephp-php>getHeightphp(truephp)php;
+    /**
+     * Initialize the image resource
+     *
+     * @return void
+     */
+    protected function _initRenderer()
+    {
+        $barcodeWidth  = $this->_barcode->getWidth(true);
+        $barcodeHeight = $this->_barcode->getHeight(true);
 
-php php php php php php php php php$backgroundColorphp php=php php$thisphp-php>php_barcodephp-php>getBackgroundColorphp(php)php;
-php php php php php php php php php$imageBackgroundColorphp php=php php'rgbphp(php'php php.php implodephp(php'php,php php'php,php arrayphp(php(php$backgroundColorphp php&php php0xFFphp0php0php0php0php)php php>php>php php1php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$backgroundColorphp php&php php0xphp0php0FFphp0php0php)php php>php>php php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$backgroundColorphp php&php php0xphp0php0php0php0FFphp)php)php)php php.php php'php)php'php;
+        $backgroundColor = $this->_barcode->getBackgroundColor();
+        $imageBackgroundColor = 'rgb(' . implode(', ', array(($backgroundColor & 0xFF0000) >> 16,
+                                                             ($backgroundColor & 0x00FF00) >> 8,
+                                                             ($backgroundColor & 0x0000FF))) . ')';
 
-php php php php php php php php php$widthphp php=php php$barcodeWidthphp;
-php php php php php php php php php$heightphp php=php php$barcodeHeightphp;
-php php php php php php php php ifphp php(php$thisphp-php>php_userWidthphp php&php&php php$thisphp-php>php_barcodephp-php>getTypephp(php)php php!php=php php'errorphp'php)php php{
-php php php php php php php php php php php php php$widthphp php=php php$thisphp-php>php_userWidthphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_userHeightphp php&php&php php$thisphp-php>php_barcodephp-php>getTypephp(php)php php!php=php php'errorphp'php)php php{
-php php php php php php php php php php php php php$heightphp php=php php$thisphp-php>php_userHeightphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_resourcephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php'utfphp-php8php'php)php;
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp-php>formatOutputphp php=php truephp;
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp php=php php$thisphp-php>php_resourcephp-php>createElementphp(php'svgphp'php)php;
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp-php>setAttributephp(php'xmlnsphp'php,php php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php0php/svgphp"php)php;
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp-php>setAttributephp(php'versionphp'php,php php'php1php.php1php'php)php;
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp-php>setAttributephp(php'widthphp'php,php php$widthphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp-php>setAttributephp(php'heightphp'php,php php$heightphp)php;
+        $width = $barcodeWidth;
+        $height = $barcodeHeight;
+        if ($this->_userWidth && $this->_barcode->getType() != 'error') {
+            $width = $this->_userWidth;
+        }
+        if ($this->_userHeight && $this->_barcode->getType() != 'error') {
+            $height = $this->_userHeight;
+        }
+        if ($this->_resource === null) {
+            $this->_resource = new DOMDocument('1.0', 'utf-8');
+            $this->_resource->formatOutput = true;
+            $this->_rootElement = $this->_resource->createElement('svg');
+            $this->_rootElement->setAttribute('xmlns', "http://www.w3.org/2000/svg");
+            $this->_rootElement->setAttribute('version', '1.1');
+            $this->_rootElement->setAttribute('width', $width);
+            $this->_rootElement->setAttribute('height', $height);
 
-php php php php php php php php php php php php php$thisphp-php>php_appendRootElementphp(php'titlephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php"Barcodephp php"php php.php strtoupperphp(php$thisphp-php>php_barcodephp-php>getTypephp(php)php)php php.php php"php php"php php.php php$thisphp-php>php_barcodephp-php>getTextphp(php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_readRootElementphp(php)php;
-php php php php php php php php php php php php php$widthphp php=php php$thisphp-php>php_rootElementphp-php>getAttributephp(php'widthphp'php)php;
-php php php php php php php php php php php php php$heightphp php=php php$thisphp-php>php_rootElementphp-php>getAttributephp(php'heightphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_adjustPositionphp(php$heightphp,php php$widthphp)php;
+            $this->_appendRootElement('title',
+                                      array(),
+                                      "Barcode " . strtoupper($this->_barcode->getType()) . " " . $this->_barcode->getText());
+        } else {
+            $this->_readRootElement();
+            $width = $this->_rootElement->getAttribute('width');
+            $height = $this->_rootElement->getAttribute('height');
+        }
+        $this->_adjustPosition($height, $width);
 
-php php php php php php php php php$thisphp-php>php_appendRootElementphp(php'rectphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php'xphp'php php=php>php php$thisphp-php>php_leftOffsetphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'yphp'php php=php>php php$thisphp-php>php_topOffsetphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'widthphp'php php=php>php php(php$thisphp-php>php_leftOffsetphp php+php php$barcodeWidthphp php-php php1php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'heightphp'php php=php>php php(php$thisphp-php>php_topOffsetphp php+php php$barcodeHeightphp php-php php1php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'fillphp'php php=php>php php$imageBackgroundColorphp)php)php;
-php php php php php}
+        $this->_appendRootElement('rect',
+                          array('x' => $this->_leftOffset,
+                                'y' => $this->_topOffset,
+                                'width' => ($this->_leftOffset + $barcodeWidth - 1),
+                                'height' => ($this->_topOffset + $barcodeHeight - 1),
+                                'fill' => $imageBackgroundColor));
+    }
 
-php php php php protectedphp functionphp php_readRootElementphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_resourcephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_rootElementphp php=php php$thisphp-php>php_resourcephp-php>documentElementphp;
-php php php php php php php php php}
-php php php php php}
+    protected function _readRootElement()
+    {
+        if ($this->_resource !== null) {
+            $this->_rootElement = $this->_resource->documentElement;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Appendphp aphp newphp DOMElementphp tophp thephp rootphp element
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$tagName
-php php php php php php*php php@paramphp arrayphp php$attributes
-php php php php php php*php php@paramphp stringphp php$textContent
-php php php php php php*php/
-php php php php protectedphp functionphp php_appendRootElementphp(php$tagNamephp,php php$attributesphp php=php arrayphp(php)php,php php$textContentphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$newElementphp php=php php$thisphp-php>php_createElementphp(php$tagNamephp,php php$attributesphp,php php$textContentphp)php;
-php php php php php php php php php$thisphp-php>php_rootElementphp-php>appendChildphp(php$newElementphp)php;
-php php php php php}
+    /**
+     * Append a new DOMElement to the root element
+     *
+     * @param string $tagName
+     * @param array $attributes
+     * @param string $textContent
+     */
+    protected function _appendRootElement($tagName, $attributes = array(), $textContent = null)
+    {
+        $newElement = $this->_createElement($tagName, $attributes, $textContent);
+        $this->_rootElement->appendChild($newElement);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp DOMElement
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$tagName
-php php php php php php*php php@paramphp arrayphp php$attributes
-php php php php php php*php php@paramphp stringphp php$textContent
-php php php php php php*php php@returnphp DOMElement
-php php php php php php*php/
-php php php php protectedphp functionphp php_createElementphp(php$tagNamephp,php php$attributesphp php=php arrayphp(php)php,php php$textContentphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$elementphp php=php php$thisphp-php>php_resourcephp-php>createElementphp(php$tagNamephp)php;
-php php php php php php php php foreachphp php(php$attributesphp asphp php$kphp php=php>php$vphp)php php{
-php php php php php php php php php php php php php$elementphp-php>setAttributephp(php$kphp,php php$vphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$textContentphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$elementphp-php>appendChildphp(newphp DOMTextphp(php(stringphp)php php$textContentphp)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$elementphp;
-php php php php php}
+    /**
+     * Create DOMElement
+     *
+     * @param string $tagName
+     * @param array $attributes
+     * @param string $textContent
+     * @return DOMElement
+     */
+    protected function _createElement($tagName, $attributes = array(), $textContent = null)
+    {
+        $element = $this->_resource->createElement($tagName);
+        foreach ($attributes as $k =>$v) {
+            $element->setAttribute($k, $v);
+        }
+        if ($textContent !== null) {
+            $element->appendChild(new DOMText((string) $textContent));
+        }
+        return $element;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp barcodephp parameters
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkParamsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_checkDimensionsphp(php)php;
-php php php php php}
+    /**
+     * Check barcode parameters
+     *
+     * @return void
+     */
+    protected function _checkParams()
+    {
+        $this->_checkDimensions();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp barcodephp dimensions
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkDimensionsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_resourcephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_readRootElementphp(php)php;
-php php php php php php php php php php php php php$heightphp php=php php(floatphp)php php$thisphp-php>php_rootElementphp-php>getAttributephp(php'heightphp'php)php;
-php php php php php php php php php php php php ifphp php(php$heightphp <php php$thisphp-php>php_barcodephp-php>getHeightphp(truephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Barcodephp isphp definephp outsidephp thephp imagephp php(heightphp)php'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_userHeightphp)php php{
-php php php php php php php php php php php php php php php php php$heightphp php=php php$thisphp-php>php_barcodephp-php>getHeightphp(truephp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_userHeightphp <php php$heightphp)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(sprintfphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Barcodephp isphp definephp outsidephp thephp imagephp php(calculatedphp:php php'php%dphp'php,php providedphp:php php'php%dphp'php)php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$heightphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_userHeight
-php php php php php php php php php php php php php php php php php php php php php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_resourcephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_readRootElementphp(php)php;
-php php php php php php php php php php php php php$widthphp php=php php$thisphp-php>php_rootElementphp-php>getAttributephp(php'widthphp'php)php;
-php php php php php php php php php php php php ifphp php(php$widthphp <php php$thisphp-php>php_barcodephp-php>getWidthphp(truephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Barcodephp isphp definephp outsidephp thephp imagephp php(widthphp)php'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_userWidthphp)php php{
-php php php php php php php php php php php php php php php php php$widthphp php=php php(floatphp)php php$thisphp-php>php_barcodephp-php>getWidthphp(truephp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_userWidthphp <php php$widthphp)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(sprintfphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Barcodephp isphp definephp outsidephp thephp imagephp php(calculatedphp:php php'php%dphp'php,php providedphp:php php'php%dphp'php)php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$widthphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_userWidth
-php php php php php php php php php php php php php php php php php php php php php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Check barcode dimensions
+     *
+     * @return void
+     */
+    protected function _checkDimensions()
+    {
+        if ($this->_resource !== null) {
+            $this->_readRootElement();
+            $height = (float) $this->_rootElement->getAttribute('height');
+            if ($height < $this->_barcode->getHeight(true)) {
+                require_once 'Zend/Barcode/Renderer/Exception.php';
+                throw new Zend_Barcode_Renderer_Exception(
+                    'Barcode is define outside the image (height)'
+                );
+            }
+        } else {
+            if ($this->_userHeight) {
+                $height = $this->_barcode->getHeight(true);
+                if ($this->_userHeight < $height) {
+                    require_once 'Zend/Barcode/Renderer/Exception.php';
+                    throw new Zend_Barcode_Renderer_Exception(sprintf(
+                        "Barcode is define outside the image (calculated: '%d', provided: '%d')",
+                        $height,
+                        $this->_userHeight
+                    ));
+                }
+            }
+        }
+        if ($this->_resource !== null) {
+            $this->_readRootElement();
+            $width = $this->_rootElement->getAttribute('width');
+            if ($width < $this->_barcode->getWidth(true)) {
+                require_once 'Zend/Barcode/Renderer/Exception.php';
+                throw new Zend_Barcode_Renderer_Exception(
+                    'Barcode is define outside the image (width)'
+                );
+            }
+        } else {
+            if ($this->_userWidth) {
+                $width = (float) $this->_barcode->getWidth(true);
+                if ($this->_userWidth < $width) {
+                    require_once 'Zend/Barcode/Renderer/Exception.php';
+                    throw new Zend_Barcode_Renderer_Exception(sprintf(
+                        "Barcode is define outside the image (calculated: '%d', provided: '%d')",
+                        $width,
+                        $this->_userWidth
+                    ));
+                }
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp thephp barcodephp inphp thephp renderingphp resource
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp drawphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:drawphp(php)php;
-php php php php php php php php php$thisphp-php>php_resourcephp-php>appendChildphp(php$thisphp-php>php_rootElementphp)php;
-php php php php php php php php returnphp php$thisphp-php>php_resourcephp;
-php php php php php}
+    /**
+     * Draw the barcode in the rendering resource
+     * @return mixed
+     */
+    public function draw()
+    {
+        parent::draw();
+        $this->_resource->appendChild($this->_rootElement);
+        return $this->_resource;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp andphp renderphp thephp barcodephp withphp correctphp headers
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>drawphp(php)php;
-php php php php php php php php headerphp(php"Contentphp-Typephp:php imagephp/svgphp+xmlphp"php)php;
-php php php php php php php php echophp php$thisphp-php>php_resourcephp-php>saveXMLphp(php)php;
-php php php php php}
+    /**
+     * Draw and render the barcode with correct headers
+     *
+     * @return mixed
+     */
+    public function render()
+    {
+        $this->draw();
+        header("Content-Type: image/svg+xml");
+        echo $this->_resource->saveXML();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp polygonphp inphp thephp svgphp resource
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$points
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp booleanphp php$filled
-php php php php php php*php/
-php php php php protectedphp functionphp php_drawPolygonphp(php$pointsphp,php php$colorphp,php php$filledphp php=php truephp)
-php php php php php{
-php php php php php php php php php$colorphp php=php php'rgbphp(php'php php.php implodephp(php'php,php php'php,php arrayphp(php(php$colorphp php&php php0xFFphp0php0php0php0php)php php>php>php php1php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0FFphp0php0php)php php>php>php php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0php0php0FFphp)php)php)php php.php php'php)php'php;
-php php php php php php php php php$orientationphp php=php php$thisphp-php>getBarcodephp(php)php-php>getOrientationphp(php)php;
-php php php php php php php php php$newPointsphp php=php arrayphp(
-php php php php php php php php php php php php php$pointsphp[php0php]php[php0php]php php+php php$thisphp-php>php_leftOffsetphp,
-php php php php php php php php php php php php php$pointsphp[php0php]php[php1php]php php+php php$thisphp-php>php_topOffsetphp,
-php php php php php php php php php php php php php$pointsphp[php1php]php[php0php]php php+php php$thisphp-php>php_leftOffsetphp,
-php php php php php php php php php php php php php$pointsphp[php1php]php[php1php]php php+php php$thisphp-php>php_topOffsetphp,
-php php php php php php php php php php php php php$pointsphp[php2php]php[php0php]php php+php php$thisphp-php>php_leftOffsetphp php+php cosphp(php-php$orientationphp)php,
-php php php php php php php php php php php php php$pointsphp[php2php]php[php1php]php php+php php$thisphp-php>php_topOffsetphp php-php sinphp(php$orientationphp)php,
-php php php php php php php php php php php php php$pointsphp[php3php]php[php0php]php php+php php$thisphp-php>php_leftOffsetphp php+php cosphp(php-php$orientationphp)php,
-php php php php php php php php php php php php php$pointsphp[php3php]php[php1php]php php+php php$thisphp-php>php_topOffsetphp php-php sinphp(php$orientationphp)php,
-php php php php php php php php php)php;
-php php php php php php php php php$newPointsphp php=php implodephp(php'php php'php,php php$newPointsphp)php;
-php php php php php php php php php$attributesphp[php'pointsphp'php]php php=php php$newPointsphp;
-php php php php php php php php php$attributesphp[php'fillphp'php]php php=php php$colorphp;
-php php php php php php php php php$thisphp-php>php_appendRootElementphp(php'polygonphp'php,php php$attributesphp)php;
-php php php php php}
+    /**
+     * Draw a polygon in the svg resource
+     *
+     * @param array $points
+     * @param integer $color
+     * @param boolean $filled
+     */
+    protected function _drawPolygon($points, $color, $filled = true)
+    {
+        $color = 'rgb(' . implode(', ', array(($color & 0xFF0000) >> 16,
+                                              ($color & 0x00FF00) >> 8,
+                                              ($color & 0x0000FF))) . ')';
+        $orientation = $this->getBarcode()->getOrientation();
+        $newPoints = array(
+            $points[0][0] + $this->_leftOffset,
+            $points[0][1] + $this->_topOffset,
+            $points[1][0] + $this->_leftOffset,
+            $points[1][1] + $this->_topOffset,
+            $points[2][0] + $this->_leftOffset + cos(-$orientation),
+            $points[2][1] + $this->_topOffset - sin($orientation),
+            $points[3][0] + $this->_leftOffset + cos(-$orientation),
+            $points[3][1] + $this->_topOffset - sin($orientation),
+        );
+        $newPoints = implode(' ', $newPoints);
+        $attributes['points'] = $newPoints;
+        $attributes['fill'] = $color;
+        $this->_appendRootElement('polygon', $attributes);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp polygonphp inphp thephp svgphp resource
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*php php@paramphp floatphp php$size
-php php php php php php*php php@paramphp arrayphp php$position
-php php php php php php*php php@paramphp stringphp php$font
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp stringphp php$alignment
-php php php php php php*php php@paramphp floatphp php$orientation
-php php php php php php*php/
-php php php php protectedphp functionphp php_drawTextphp(php$textphp,php php$sizephp,php php$positionphp,php php$fontphp,php php$colorphp,php php$alignmentphp php=php php'centerphp'php,php php$orientationphp php=php php0php)
-php php php php php{
-php php php php php php php php php$colorphp php=php php'rgbphp(php'php php.php implodephp(php'php,php php'php,php arrayphp(php(php$colorphp php&php php0xFFphp0php0php0php0php)php php>php>php php1php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0FFphp0php0php)php php>php>php php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0php0php0FFphp)php)php)php php.php php'php)php'php;
-php php php php php php php php php$attributesphp[php'xphp'php]php php=php php$positionphp[php0php]php php+php php$thisphp-php>php_leftOffsetphp;
-php php php php php php php php php$attributesphp[php'yphp'php]php php=php php$positionphp[php1php]php php+php php$thisphp-php>php_topOffsetphp;
-php php php php php php php php php/php/php$attributesphp[php'fontphp-familyphp'php]php php=php php$fontphp;
-php php php php php php php php php$attributesphp[php'colorphp'php]php php=php php$colorphp;
-php php php php php php php php php$attributesphp[php'fontphp-sizephp'php]php php=php php$sizephp php*php php1php.php2php;
-php php php php php php php php switchphp php(php$alignmentphp)php php{
-php php php php php php php php php php php php casephp php'leftphp'php:
-php php php php php php php php php php php php php php php php php$textAnchorphp php=php php'startphp'php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'rightphp'php:
-php php php php php php php php php php php php php php php php php$textAnchorphp php=php php'endphp'php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'centerphp'php:
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php$textAnchorphp php=php php'middlephp'php;
-php php php php php php php php php}
-php php php php php php php php php$attributesphp[php'stylephp'php]php php=php php'textphp-anchorphp:php php'php php.php php$textAnchorphp;
-php php php php php php php php php$attributesphp[php'transformphp'php]php php=php php'rotatephp(php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php-php php$orientationphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php,php php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php$positionphp[php0php]php php+php php$thisphp-php>php_leftOffsetphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php,php php'php php.php php(php$positionphp[php1php]php php+php php$thisphp-php>php_topOffsetphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php)php'php;
-php php php php php php php php php$thisphp-php>php_appendRootElementphp(php'textphp'php,php php$attributesphp,php php$textphp)php;
-php php php php php}
-php}
+    /**
+     * Draw a polygon in the svg resource
+     *
+     * @param string $text
+     * @param float $size
+     * @param array $position
+     * @param string $font
+     * @param integer $color
+     * @param string $alignment
+     * @param float $orientation
+     */
+    protected function _drawText($text, $size, $position, $font, $color, $alignment = 'center', $orientation = 0)
+    {
+        $color = 'rgb(' . implode(', ', array(($color & 0xFF0000) >> 16,
+                                              ($color & 0x00FF00) >> 8,
+                                              ($color & 0x0000FF))) . ')';
+        $attributes['x'] = $position[0] + $this->_leftOffset;
+        $attributes['y'] = $position[1] + $this->_topOffset;
+        //$attributes['font-family'] = $font;
+        $attributes['color'] = $color;
+        $attributes['font-size'] = $size * 1.2;
+        switch ($alignment) {
+            case 'left':
+                $textAnchor = 'start';
+                break;
+            case 'right':
+                $textAnchor = 'end';
+                break;
+            case 'center':
+            default:
+                $textAnchor = 'middle';
+        }
+        $attributes['style'] = 'text-anchor: ' . $textAnchor;
+        $attributes['transform'] = 'rotate('
+                                 . (- $orientation)
+                                 . ', '
+                                 . ($position[0] + $this->_leftOffset)
+                                 . ', ' . ($position[1] + $this->_topOffset)
+                                 . ')';
+        $this->_appendRootElement('text', $attributes, $text);
+    }
+}

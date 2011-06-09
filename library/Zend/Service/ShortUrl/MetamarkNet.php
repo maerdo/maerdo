@@ -1,85 +1,85 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_ShortUrl
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_ShortUrl
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_ShortUrlphp_AbstractShortener
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/ShortUrlphp/AbstractShortenerphp.phpphp'php;
+/**
+ * @see Zend_Service_ShortUrl_AbstractShortener
+ */
+require_once 'Zend/Service/ShortUrl/AbstractShortener.php';
 
-php/php*php*
-php php*php Metamarkphp.netphp APIphp implementation
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_ShortUrl
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_ShortUrlphp_MetamarkNetphp extendsphp Zendphp_Servicephp_ShortUrlphp_AbstractShortener
-php{
-php php php php php/php*php*
-php php php php php php*php Basephp URIphp ofphp thephp service
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_baseUriphp php=php php'httpphp:php/php/xrlphp.usphp/php'php;
+/**
+ * Metamark.net API implementation
+ *
+ * @category   Zend
+ * @package    Zend_Service_ShortUrl
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_ShortUrl_MetamarkNet extends Zend_Service_ShortUrl_AbstractShortener
+{
+    /**
+     * Base URI of the service
+     *
+     * @var string
+     */
+    protected $_baseUri = 'http://xrl.us/';
 
-php php php php protectedphp php$php_apiUriphp php=php php'httpphp:php/php/metamarkphp.netphp/apiphp/restphp/simplephp'php;
+    protected $_apiUri = 'http://metamark.net/api/rest/simple';
 
-php php php php php/php*php*
-php php php php php php*php Thisphp functionphp shortensphp longphp url
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$urlphp URLphp tophp Shorten
-php php php php php php*php php@throwsphp Zendphp_Servicephp_ShortUrlphp_Exceptionphp Whenphp URLphp isphp notphp valid
-php php php php php php*php php@returnphp stringphp Newphp URL
-php php php php php php*php/
-php php php php publicphp functionphp shortenphp(php$urlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_validateUriphp(php$urlphp)php;
+    /**
+     * This function shortens long url
+     *
+     * @param string $url URL to Shorten
+     * @throws Zend_Service_ShortUrl_Exception When URL is not valid
+     * @return string New URL
+     */
+    public function shorten($url)
+    {
+        $this->_validateUri($url);
 
-php php php php php php php php php$thisphp-php>getHttpClientphp(php)php-php>setUriphp(php$thisphp-php>php_apiUriphp)php;
-php php php php php php php php php$thisphp-php>getHttpClientphp(php)php-php>setParameterGetphp(php'longphp_urlphp'php,php php$urlphp)php;
+        $this->getHttpClient()->setUri($this->_apiUri);
+        $this->getHttpClient()->setParameterGet('long_url', $url);
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>getHttpClientphp(php)php-php>requestphp(php)php;
+        $response = $this->getHttpClient()->request();
 
-php php php php php php php php returnphp php$responsephp-php>getBodyphp(php)php;
-php php php php php}
+        return $response->getBody();
+    }
 
-php php php php/php*php*
-php php php php php php*php Revealsphp targetphp forphp shortphp URL
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$shortenedUrlphp URLphp tophp revealphp targetphp of
-php php php php php php*php php@throwsphp Zendphp_Servicephp_ShortUrlphp_Exceptionphp Whenphp URLphp isphp notphp validphp orphp isphp notphp shortenedphp byphp thisphp service
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp unshortenphp(php$shortenedUrlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_validateUriphp(php$shortenedUrlphp)php;
+   /**
+     * Reveals target for short URL
+     *
+     * @param string $shortenedUrl URL to reveal target of
+     * @throws Zend_Service_ShortUrl_Exception When URL is not valid or is not shortened by this service
+     * @return string
+     */
+    public function unshorten($shortenedUrl)
+    {
+        $this->_validateUri($shortenedUrl);
 
-php php php php php php php php php$thisphp-php>php_verifyBaseUriphp(php$shortenedUrlphp)php;
+        $this->_verifyBaseUri($shortenedUrl);
 
-php php php php php php php php php$thisphp-php>getHttpClientphp(php)php-php>setUriphp(php$thisphp-php>php_apiUriphp)php;
-php php php php php php php php php$thisphp-php>getHttpClientphp(php)php-php>setParameterGetphp(php'shortphp_urlphp'php,php php$shortenedUrlphp)php;
+        $this->getHttpClient()->setUri($this->_apiUri);
+        $this->getHttpClient()->setParameterGet('short_url', $shortenedUrl);
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>getHttpClientphp(php)php-php>requestphp(php)php;
+        $response = $this->getHttpClient()->request();
 
-php php php php php php php php returnphp php$responsephp-php>getBodyphp(php)php;
-php php php php php}
-php}
+        return $response->getBody();
+    }
+}

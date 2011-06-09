@@ -1,79 +1,79 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@versionphp php php php php$Idphp:php Fieldsetphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: Fieldset.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Viewphp_Helperphp_FormElementphp php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/FormElementphp.phpphp'php;
+/** Zend_View_Helper_FormElement */
+require_once 'Zend/View/Helper/FormElement.php';
 
-php/php*php*
-php php*php Helperphp forphp renderingphp fieldsets
-php php*
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Viewphp_Helperphp_Fieldsetphp extendsphp Zendphp_Viewphp_Helperphp_FormElement
-php{
-php php php php php/php*php*
-php php php php php php*php Renderphp HTMLphp form
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp Formphp name
-php php php php php php*php php@paramphp php stringphp php$contentphp Formphp content
-php php php php php php*php php@paramphp php arrayphp php$attribsphp HTMLphp formphp attributes
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp fieldsetphp(php$namephp,php php$contentphp,php php$attribsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$infophp php=php php$thisphp-php>php_getInfophp(php$namephp,php php$contentphp,php php$attribsphp)php;
-php php php php php php php php extractphp(php$infophp)php;
+/**
+ * Helper for rendering fieldsets
+ *
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_View_Helper_Fieldset extends Zend_View_Helper_FormElement
+{
+    /**
+     * Render HTML form
+     *
+     * @param  string $name Form name
+     * @param  string $content Form content
+     * @param  array $attribs HTML form attributes
+     * @return string
+     */
+    public function fieldset($name, $content, $attribs = null)
+    {
+        $info = $this->_getInfo($name, $content, $attribs);
+        extract($info);
 
-php php php php php php php php php/php/php getphp legend
-php php php php php php php php php$legendphp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$attribsphp[php'legendphp'php]php)php)php php{
-php php php php php php php php php php php php php$legendStringphp php=php trimphp(php$attribsphp[php'legendphp'php]php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$legendStringphp)php)php php{
-php php php php php php php php php php php php php php php php php$legendphp php=php php'php<legendphp>php'
-php php php php php php php php php php php php php php php php php php php php php php php php php.php php(php(php$escapephp)php php?php php$thisphp-php>viewphp-php>escapephp(php$legendStringphp)php php:php php$legendStringphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php.php php'<php/legendphp>php'php php.php PHPphp_EOLphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$attribsphp[php'legendphp'php]php)php;
-php php php php php php php php php}
+        // get legend
+        $legend = '';
+        if (isset($attribs['legend'])) {
+            $legendString = trim($attribs['legend']);
+            if (!empty($legendString)) {
+                $legend = '<legend>'
+                        . (($escape) ? $this->view->escape($legendString) : $legendString)
+                        . '</legend>' . PHP_EOL;
+            }
+            unset($attribs['legend']);
+        }
 
-php php php php php php php php php/php/php getphp id
-php php php php php php php php ifphp php(php!emptyphp(php$idphp)php)php php{
-php php php php php php php php php php php php php$idphp php=php php'php idphp=php"php'php php.php php$thisphp-php>viewphp-php>escapephp(php$idphp)php php.php php'php"php'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$idphp php=php php'php'php;
-php php php php php php php php php}
+        // get id
+        if (!empty($id)) {
+            $id = ' id="' . $this->view->escape($id) . '"';
+        } else {
+            $id = '';
+        }
 
-php php php php php php php php php/php/php renderphp fieldset
-php php php php php php php php php$xhtmlphp php=php php'php<fieldsetphp'
-php php php php php php php php php php php php php php php php.php php$id
-php php php php php php php php php php php php php php php php.php php$thisphp-php>php_htmlAttribsphp(php$attribsphp)
-php php php php php php php php php php php php php php php php.php php'php>php'
-php php php php php php php php php php php php php php php php.php php$legend
-php php php php php php php php php php php php php php php php.php php$content
-php php php php php php php php php php php php php php php php.php php'<php/fieldsetphp>php'php;
+        // render fieldset
+        $xhtml = '<fieldset'
+               . $id
+               . $this->_htmlAttribs($attribs)
+               . '>'
+               . $legend
+               . $content
+               . '</fieldset>';
 
-php php php php php php php php returnphp php$xhtmlphp;
-php php php php php}
-php}
+        return $xhtml;
+    }
+}

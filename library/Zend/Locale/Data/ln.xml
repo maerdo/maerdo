@@ -1,485 +1,485 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php5php0php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"lnphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"afphp"php>afrikánsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"afhphp"php>afríhili<php/languagephp>
-php	php	php	php<languagephp typephp=php"akphp"php>akan<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>liamariki<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>liarabu<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>liasame<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>liazerbayani<php/languagephp>
-php	php	php	php<languagephp typephp=php"baiphp"php>nkótáphp yaphp Bamileke<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>belarusi<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>kibulgaria<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>libiyari<php/languagephp>
-php	php	php	php<languagephp typephp=php"bmphp"php>bambara<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>bengali<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>breton<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>libosinia<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>katalani<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>litshɛki<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>liwelesi<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>lidanemark<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>lialemani<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>ligreki<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>lingɛlɛphṕsa<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_CAphp"php>lingɛlɛphṕsaphp php(CAphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>lisipelanto<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>lispanyola<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>liestonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>libaske<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>lipɛrsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>lifilandi<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>litagalog<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>lifarose<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>lifalansé<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp_CAphp"php>lifalanséphp php(CAphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>lifrisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>lirlande<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>ligaeliki<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>ligalicia<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>ligwarani<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>liguzarati<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>liyuda<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>lihindi<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>likroasia<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>liungaria<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>liarmenya<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>interlingua<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>lindonesi<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>interlingue<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>lislanda<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>litaliano<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>liyapani<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>lizava<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>lizorzi<php/languagephp>
-php	php	php	php<languagephp typephp=php"kgphp"php>kikɔphṕngɔ<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>likambodia<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>kanada<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>likorea<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>likurdi<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>kirgizi<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>kilatini<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>lingála<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>lilao<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>lituani<php/languagephp>
-php	php	php	php<languagephp typephp=php"luaphp"php>ciluba<php/languagephp>
-php	php	php	php<languagephp typephp=php"lunphp"php>lunda<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>lilativa<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>limasedonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>limalayalami<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>limongoli<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>limarati<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>limalasi<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>limalta<php/languagephp>
-php	php	php	php<languagephp typephp=php"mulphp"php>nkótáphp míngi<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>linepali<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>lifalamá<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>linoveziphp-nynorsk<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>linovezi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>liosita<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>oriya<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>lipunzabi<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>lipoloni<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>pashto<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>lipulutugɛphṕsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>lipulutugɛphṕsiphp php(Brazilphp)<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>lirumani<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>lirusi<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>induphp-yaphp-kala<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>lisindi<php/languagephp>
-php	php	php	php<languagephp typephp=php"sgphp"php>sango<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>liserbokroata<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>lisinalɛphṕsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>lisolovaki<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>lisoloveni<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>lisomali<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>lialbania<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>liserbia<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>Sothophp yaphp Sidi<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>lisundanɛphṕsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>liswédwa<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>kiswahili<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>tamili<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>litelegu<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>thai<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>tigirinya<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>turkmen<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>kilingoni<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>turk<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>twi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>uighur<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>liukrenia<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>lokótáphp eyébámíphp tɛphṕ<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>liurdu<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>liusibeki<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>livietnami<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>xhosa<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>yiddish<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>zulu<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>arabu<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>latɛphṕ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>ekomíphp tɛphṕ<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>bokomiphp boyébámíphp tɛphṕ<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php0php1php"php>mokiliphp mobimba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php2php"php>Afríka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php5php"php>Ameríkaphp yaphp Sídi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php1php"php>Afríkaphp yaphp límbe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php5php"php>Afríkaphp yaphp Nola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php8php"php>Afríkaphp yaphp Sídi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php2php"php>Azía<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php0php"php>Erópa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php4php"php>Erópaphp yaphp Nola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php5php"php>Erópaphp yaphp límbe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>Andora<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Afganistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Antiguaphp mpéphp Barbuda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angóla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>Argentina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AXphp"php>Albania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Bosniaphp naphp Erzegovina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Bángaladɛphṕsi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Bɛphṕljika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp Faso<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>Bulgaria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>Burundi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Bresíli<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>Butáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>Bielorusia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kanadá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>Kongóphp-Kinsásá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>Santrafríka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>Kongóphp-Brazzaville<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Swisi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Kamerun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Sína<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Republikiphp Sheki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Alémani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Djibuti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>Aljeria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Ejipti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>Saharaphp yaphp límbe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Espania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Etiopya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Finilanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Falansia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Ingɛlɛphṕtɛlɛ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Ghana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Gibraltar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Gambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Gine<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Gresi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>Ginephp-Bisau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Kroasia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Ungri<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Indoneziá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Irlandí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>Ɛndɛ<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Islandi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Italia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Zordaní<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Yapan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Kenya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>Kirghizistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>KI<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Korephp yaphp Nola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Korephp yaphp Sidi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Kazakstáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Liban<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Liberia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>Litwani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Luksamburg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Letoni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Libíya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Masedoni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Mali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>Mongolí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>Makau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Madívi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Mozambíki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namibia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>Nijé<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Nijeria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Holanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Norvej<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>Nepáli<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Pakistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Poloni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Pulutugal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Rumania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Rusí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Rwanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Sudani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Swési<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>Santuphp Helena<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>Santuphp Marino<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Somalia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"STphp"php>Sǎophp Toméphp naphp Principe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Sirí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Togo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>Tazikistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>Turkmenistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Tunizia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Turkí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Trinidadphp mpéphp Tobago<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>Taiwan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Etazíni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>Uzbekistáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Vatikáni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Vietnami<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Yeméni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Sidafríka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Zambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Zimbabwe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Esíkáphp eyébámíphp tɛphṕ<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>manáka<php/keyphp>
-php	php	php	php<keyphp typephp=php"collationphp"php>elandiseli<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>mbɔphṕngɔ<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>manákaphp yaphp Gregor<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>naphp mɛphṕtɛlɛ<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>naphp míli<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp âphp ǎphp bphp-ephp éphp êphp ěphp ɛphp php{ɛphp\uphp0php3php0php1php}php php{ɛphp\uphp0php3php0php2php}php php{ɛphp\uphp0php3php0Cphp}php fphp gphp php{gbphp}php hphp iphp íphp îphp ǐphp kphp-mphp php{mbphp}php php{mpphp}php nphp php{ndphp}php php{ngphp}php php{nkphp}php php{nsphp}php php{ntphp}php php{nzphp}php ophp óphp ôphp ǒphp ɔphp php{ɔphp\uphp0php3php0php1php}php php{ɔphp\uphp0php3php0php2php}php php{ɔphp\uphp0php3php0Cphp}php pphp rphp-uphp úphp ûphp ǔphp vphp wphp yphp zphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[jphp qphp xphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[cphp fphp Fphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php«<php/quotationStartphp>
-php	php	php<quotationEndphp>php»<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php“<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php”<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>sphp1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>sphp2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>sphp3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>sphp4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>sphp5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>sphp6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>sphp7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>sphp8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>sphp9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>sphp1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>sphp1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>sphp1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>sánzáphp yaphp yambo<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>sánzáphp yaphp míbalé<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>sánzáphp yaphp mísáto<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>sánzáphp yaphp mínei<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>sánzáphp yaphp mítáno<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>sánzáphp yaphp motóbá<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>sánzáphp yaphp nsambo<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>sánzáphp yaphp mwambe<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>sánzáphp yaphp libwa<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>sánzáphp yaphp zómi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>sánzáphp yaphp zómiphp naphp mɔphp̌kɔphṕ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>sánzáphp yaphp zómiphp naphp míbalé<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>eye<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>mphp1<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>mphp2<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>mphp3<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>mphp4<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>mphp5<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>mps<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>eyenga<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>mokɔlɔphp yaphp libosó<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>mokɔlɔphp yaphp míbalé<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>mokɔlɔphp yaphp mísáto<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>mokɔlɔphp yaphp mínéi<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>mokɔlɔphp yaphp mítáno<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>mpɔphṕsɔ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>php1<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>php2<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>php3<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>php4<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>php5<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>php6<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>php7<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>SMphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>SMphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>SMphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>SMphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>sánzáphp mísátophp yaphp yambo<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>sánzáphp mísátophp yaphp míbalé<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>sánzáphp mísátophp yaphp mísáto<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>sánzáphp mísátophp yaphp mínei<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>AM<php/amphp>
-php	php	php	php	php<pmphp>PM<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>libosóphp yaphp Yphp.php-Kphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>nsimaphp yaphp Yphp.php-Kphp.<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>libosóphp yaphp Yphp.php-Kphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>nsimaphp yaphp Yphp.php-Kphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yyphp/MMphp/dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>mokɔlɔ<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>lɛlɔphṕ<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Africaphp/Kinshasaphp"php>
-php	php	php	php	php<exemplarCityphp>Kinsásá<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Africaphp/Banguiphp"php>
-php	php	php	php	php<exemplarCityphp>Santrafríka<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	<php/symbolsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"BEFphp"php>
-php	php	php	php	php<displayNamephp>falángaphp yaphp Bɛphṕljika<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BIFphp"php>
-php	php	php	php	php<displayNamephp>falángaphp yaphp Burundi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CDFphp"php>
-php	php	php	php	php<displayNamephp>falángaphp kongolé<php/displayNamephp>
-php	php	php	php	php<symbolphp>F<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CHFphp"php>
-php	php	php	php	php<displayNamephp>Falángaphp yaphp Swisi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FRFphp"php>
-php	php	php	php	php<displayNamephp>Falángaphp yaphp Falansia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XOFphp"php>
-php	php	php	php	php<displayNamephp>Falángaphp CFAphp BCEAO<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XPFphp"php>
-php	php	php	php	php<displayNamephp>Falángaphp CFP<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XXXphp"php>
-php	php	php	php	php<displayNamephp>mbɔphṕngɔphp eyébámíphp tɛphṕ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.50 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="ln"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="af">afrikánsi</language>
+			<language type="afh">afríhili</language>
+			<language type="ak">akan</language>
+			<language type="am">liamariki</language>
+			<language type="ar">liarabu</language>
+			<language type="as">liasame</language>
+			<language type="az">liazerbayani</language>
+			<language type="bai">nkótá ya Bamileke</language>
+			<language type="be">belarusi</language>
+			<language type="bg">kibulgaria</language>
+			<language type="bh">libiyari</language>
+			<language type="bm">bambara</language>
+			<language type="bn">bengali</language>
+			<language type="br">breton</language>
+			<language type="bs">libosinia</language>
+			<language type="ca">katalani</language>
+			<language type="cs">litshɛki</language>
+			<language type="cy">liwelesi</language>
+			<language type="da">lidanemark</language>
+			<language type="de">lialemani</language>
+			<language type="el">ligreki</language>
+			<language type="en">lingɛlɛ́sa</language>
+			<language type="en_CA">lingɛlɛ́sa (CA)</language>
+			<language type="eo">lisipelanto</language>
+			<language type="es">lispanyola</language>
+			<language type="et">liestonia</language>
+			<language type="eu">libaske</language>
+			<language type="fa">lipɛrsi</language>
+			<language type="fi">lifilandi</language>
+			<language type="fil">litagalog</language>
+			<language type="fo">lifarose</language>
+			<language type="fr">lifalansé</language>
+			<language type="fr_CA">lifalansé (CA)</language>
+			<language type="fy">lifrisi</language>
+			<language type="ga">lirlande</language>
+			<language type="gd">ligaeliki</language>
+			<language type="gl">ligalicia</language>
+			<language type="gn">ligwarani</language>
+			<language type="gu">liguzarati</language>
+			<language type="he">liyuda</language>
+			<language type="hi">lihindi</language>
+			<language type="hr">likroasia</language>
+			<language type="hu">liungaria</language>
+			<language type="hy">liarmenya</language>
+			<language type="ia">interlingua</language>
+			<language type="id">lindonesi</language>
+			<language type="ie">interlingue</language>
+			<language type="is">lislanda</language>
+			<language type="it">litaliano</language>
+			<language type="ja">liyapani</language>
+			<language type="jv">lizava</language>
+			<language type="ka">lizorzi</language>
+			<language type="kg">kikɔ́ngɔ</language>
+			<language type="km">likambodia</language>
+			<language type="kn">kanada</language>
+			<language type="ko">likorea</language>
+			<language type="ku">likurdi</language>
+			<language type="ky">kirgizi</language>
+			<language type="la">kilatini</language>
+			<language type="ln">lingála</language>
+			<language type="lo">lilao</language>
+			<language type="lt">lituani</language>
+			<language type="lua">ciluba</language>
+			<language type="lun">lunda</language>
+			<language type="lv">lilativa</language>
+			<language type="mk">limasedonia</language>
+			<language type="ml">limalayalami</language>
+			<language type="mn">limongoli</language>
+			<language type="mr">limarati</language>
+			<language type="ms">limalasi</language>
+			<language type="mt">limalta</language>
+			<language type="mul">nkótá míngi</language>
+			<language type="ne">linepali</language>
+			<language type="nl">lifalamá</language>
+			<language type="nn">linovezi-nynorsk</language>
+			<language type="no">linovezi</language>
+			<language type="oc">liosita</language>
+			<language type="or">oriya</language>
+			<language type="pa">lipunzabi</language>
+			<language type="pl">lipoloni</language>
+			<language type="ps">pashto</language>
+			<language type="pt">lipulutugɛ́si</language>
+			<language type="pt_BR">lipulutugɛ́si (Brazil)</language>
+			<language type="ro">lirumani</language>
+			<language type="ru">lirusi</language>
+			<language type="sa">indu-ya-kala</language>
+			<language type="sd">lisindi</language>
+			<language type="sg">sango</language>
+			<language type="sh">liserbokroata</language>
+			<language type="si">lisinalɛ́si</language>
+			<language type="sk">lisolovaki</language>
+			<language type="sl">lisoloveni</language>
+			<language type="so">lisomali</language>
+			<language type="sq">lialbania</language>
+			<language type="sr">liserbia</language>
+			<language type="st">Sotho ya Sidi</language>
+			<language type="su">lisundanɛ́si</language>
+			<language type="sv">liswédwa</language>
+			<language type="sw">kiswahili</language>
+			<language type="ta">tamili</language>
+			<language type="te">litelegu</language>
+			<language type="th">thai</language>
+			<language type="ti">tigirinya</language>
+			<language type="tk">turkmen</language>
+			<language type="tlh">kilingoni</language>
+			<language type="tr">turk</language>
+			<language type="tw">twi</language>
+			<language type="ug">uighur</language>
+			<language type="uk">liukrenia</language>
+			<language type="und">lokótá eyébámí tɛ́</language>
+			<language type="ur">liurdu</language>
+			<language type="uz">liusibeki</language>
+			<language type="vi">livietnami</language>
+			<language type="xh">xhosa</language>
+			<language type="yi">yiddish</language>
+			<language type="zu">zulu</language>
+		</languages>
+		<scripts>
+			<script type="Arab">arabu</script>
+			<script type="Latn">latɛ́</script>
+			<script type="Zxxx">ekomí tɛ́</script>
+			<script type="Zzzz">bokomi boyébámí tɛ́</script>
+		</scripts>
+		<territories>
+			<territory type="001">mokili mobimba</territory>
+			<territory type="002">Afríka</territory>
+			<territory type="005">Ameríka ya Sídi</territory>
+			<territory type="011">Afríka ya límbe</territory>
+			<territory type="015">Afríka ya Nola</territory>
+			<territory type="018">Afríka ya Sídi</territory>
+			<territory type="142">Azía</territory>
+			<territory type="150">Erópa</territory>
+			<territory type="154">Erópa ya Nola</territory>
+			<territory type="155">Erópa ya límbe</territory>
+			<territory type="AD">Andora</territory>
+			<territory type="AF">Afganistáni</territory>
+			<territory type="AG">Antigua mpé Barbuda</territory>
+			<territory type="AO">Angóla</territory>
+			<territory type="AR">Argentina</territory>
+			<territory type="AX">Albania</territory>
+			<territory type="BA">Bosnia na Erzegovina</territory>
+			<territory type="BD">Bángaladɛ́si</territory>
+			<territory type="BE">Bɛ́ljika</territory>
+			<territory type="BF">Burkina Faso</territory>
+			<territory type="BG">Bulgaria</territory>
+			<territory type="BI">Burundi</territory>
+			<territory type="BR">Bresíli</territory>
+			<territory type="BT">Butáni</territory>
+			<territory type="BW">Botswana</territory>
+			<territory type="BY">Bielorusia</territory>
+			<territory type="CA">Kanadá</territory>
+			<territory type="CD">Kongó-Kinsásá</territory>
+			<territory type="CF">Santrafríka</territory>
+			<territory type="CG">Kongó-Brazzaville</territory>
+			<territory type="CH">Swisi</territory>
+			<territory type="CM">Kamerun</territory>
+			<territory type="CN">Sína</territory>
+			<territory type="CZ">Republiki Sheki</territory>
+			<territory type="DE">Alémani</territory>
+			<territory type="DJ">Djibuti</territory>
+			<territory type="DZ">Aljeria</territory>
+			<territory type="EG">Ejipti</territory>
+			<territory type="EH">Sahara ya límbe</territory>
+			<territory type="ES">Espania</territory>
+			<territory type="ET">Etiopya</territory>
+			<territory type="FI">Finilanda</territory>
+			<territory type="FR">Falansia</territory>
+			<territory type="GB">Ingɛlɛ́tɛlɛ</territory>
+			<territory type="GH">Ghana</territory>
+			<territory type="GI">Gibraltar</territory>
+			<territory type="GM">Gambia</territory>
+			<territory type="GN">Gine</territory>
+			<territory type="GR">Gresi</territory>
+			<territory type="GW">Gine-Bisau</territory>
+			<territory type="HR">Kroasia</territory>
+			<territory type="HU">Ungri</territory>
+			<territory type="ID">Indoneziá</territory>
+			<territory type="IE">Irlandí</territory>
+			<territory type="IN">Ɛndɛ</territory>
+			<territory type="IS">Islandi</territory>
+			<territory type="IT">Italia</territory>
+			<territory type="JO">Zordaní</territory>
+			<territory type="JP">Yapan</territory>
+			<territory type="KE">Kenya</territory>
+			<territory type="KG">Kirghizistáni</territory>
+			<territory type="KI">KI</territory>
+			<territory type="KP">Kore ya Nola</territory>
+			<territory type="KR">Kore ya Sidi</territory>
+			<territory type="KZ">Kazakstáni</territory>
+			<territory type="LB">Liban</territory>
+			<territory type="LR">Liberia</territory>
+			<territory type="LT">Litwani</territory>
+			<territory type="LU">Luksamburg</territory>
+			<territory type="LV">Letoni</territory>
+			<territory type="LY">Libíya</territory>
+			<territory type="MK">Masedoni</territory>
+			<territory type="ML">Mali</territory>
+			<territory type="MN">Mongolí</territory>
+			<territory type="MO">Makau</territory>
+			<territory type="MV">Madívi</territory>
+			<territory type="MZ">Mozambíki</territory>
+			<territory type="NA">Namibia</territory>
+			<territory type="NE">Nijé</territory>
+			<territory type="NG">Nijeria</territory>
+			<territory type="NL">Holanda</territory>
+			<territory type="NO">Norvej</territory>
+			<territory type="NP">Nepáli</territory>
+			<territory type="PK">Pakistáni</territory>
+			<territory type="PL">Poloni</territory>
+			<territory type="PT">Pulutugal</territory>
+			<territory type="RO">Rumania</territory>
+			<territory type="RU">Rusí</territory>
+			<territory type="RW">Rwanda</territory>
+			<territory type="SD">Sudani</territory>
+			<territory type="SE">Swési</territory>
+			<territory type="SH">Santu Helena</territory>
+			<territory type="SM">Santu Marino</territory>
+			<territory type="SO">Somalia</territory>
+			<territory type="ST">Sǎo Tomé na Principe</territory>
+			<territory type="SY">Sirí</territory>
+			<territory type="TG">Togo</territory>
+			<territory type="TJ">Tazikistáni</territory>
+			<territory type="TM">Turkmenistáni</territory>
+			<territory type="TN">Tunizia</territory>
+			<territory type="TR">Turkí</territory>
+			<territory type="TT">Trinidad mpé Tobago</territory>
+			<territory type="TW">Taiwan</territory>
+			<territory type="US">Etazíni</territory>
+			<territory type="UZ">Uzbekistáni</territory>
+			<territory type="VA">Vatikáni</territory>
+			<territory type="VN">Vietnami</territory>
+			<territory type="YE">Yeméni</territory>
+			<territory type="ZA">Sidafríka</territory>
+			<territory type="ZM">Zambia</territory>
+			<territory type="ZW">Zimbabwe</territory>
+			<territory type="ZZ">Esíká eyébámí tɛ́</territory>
+		</territories>
+		<keys>
+			<key type="calendar">manáka</key>
+			<key type="collation">elandiseli</key>
+			<key type="currency">mbɔ́ngɔ</key>
+		</keys>
+		<types>
+			<type type="gregorian" key="calendar">manáka ya Gregor</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">na mɛ́tɛlɛ</measurementSystemName>
+			<measurementSystemName type="US">na míli</measurementSystemName>
+		</measurementSystemNames>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a á â ǎ b-e é ê ě ɛ {ɛ\u0301} {ɛ\u0302} {ɛ\u030C} f g {gb} h i í î ǐ k-m {mb} {mp} n {nd} {ng} {nk} {ns} {nt} {nz} o ó ô ǒ ɔ {ɔ\u0301} {ɔ\u0302} {ɔ\u030C} p r-u ú û ǔ v w y z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[j q x]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[c f F]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>«</quotationStart>
+		<quotationEnd>»</quotationEnd>
+		<alternateQuotationStart>“</alternateQuotationStart>
+		<alternateQuotationEnd>”</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">s1</month>
+							<month type="2">s2</month>
+							<month type="3">s3</month>
+							<month type="4">s4</month>
+							<month type="5">s5</month>
+							<month type="6">s6</month>
+							<month type="7">s7</month>
+							<month type="8">s8</month>
+							<month type="9">s9</month>
+							<month type="10">s10</month>
+							<month type="11">s11</month>
+							<month type="12">s12</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">sánzá ya yambo</month>
+							<month type="2">sánzá ya míbalé</month>
+							<month type="3">sánzá ya mísáto</month>
+							<month type="4">sánzá ya mínei</month>
+							<month type="5">sánzá ya mítáno</month>
+							<month type="6">sánzá ya motóbá</month>
+							<month type="7">sánzá ya nsambo</month>
+							<month type="8">sánzá ya mwambe</month>
+							<month type="9">sánzá ya libwa</month>
+							<month type="10">sánzá ya zómi</month>
+							<month type="11">sánzá ya zómi na mɔ̌kɔ́</month>
+							<month type="12">sánzá ya zómi na míbalé</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">1</month>
+							<month type="2">2</month>
+							<month type="3">3</month>
+							<month type="4">4</month>
+							<month type="5">5</month>
+							<month type="6">6</month>
+							<month type="7">7</month>
+							<month type="8">8</month>
+							<month type="9">9</month>
+							<month type="10">10</month>
+							<month type="11">11</month>
+							<month type="12">12</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">eye</day>
+							<day type="mon">m1</day>
+							<day type="tue">m2</day>
+							<day type="wed">m3</day>
+							<day type="thu">m4</day>
+							<day type="fri">m5</day>
+							<day type="sat">mps</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">eyenga</day>
+							<day type="mon">mokɔlɔ ya libosó</day>
+							<day type="tue">mokɔlɔ ya míbalé</day>
+							<day type="wed">mokɔlɔ ya mísáto</day>
+							<day type="thu">mokɔlɔ ya mínéi</day>
+							<day type="fri">mokɔlɔ ya mítáno</day>
+							<day type="sat">mpɔ́sɔ</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">1</day>
+							<day type="mon">2</day>
+							<day type="tue">3</day>
+							<day type="wed">4</day>
+							<day type="thu">5</day>
+							<day type="fri">6</day>
+							<day type="sat">7</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">SM1</quarter>
+							<quarter type="2">SM2</quarter>
+							<quarter type="3">SM3</quarter>
+							<quarter type="4">SM4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">sánzá mísáto ya yambo</quarter>
+							<quarter type="2">sánzá mísáto ya míbalé</quarter>
+							<quarter type="3">sánzá mísáto ya mísáto</quarter>
+							<quarter type="4">sánzá mísáto ya mínei</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>AM</am>
+				<pm>PM</pm>
+				<eras>
+					<eraNames>
+						<era type="0">libosó ya Y.-K.</era>
+						<era type="1">nsima ya Y.-K.</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">libosó ya Y.-K.</era>
+						<era type="1">nsima ya Y.-K.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, y MMMM dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>y MMMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>y MMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>yy/MM/dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>HH:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="day">
+						<displayName>mokɔlɔ</displayName>
+						<relative type="0">lɛlɔ́</relative>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Africa/Kinshasa">
+				<exemplarCity>Kinsásá</exemplarCity>
+			</zone>
+			<zone type="Africa/Bangui">
+				<exemplarCity>Santrafríka</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+		</symbols>
+		<currencies>
+			<currency type="BEF">
+				<displayName>falánga ya Bɛ́ljika</displayName>
+			</currency>
+			<currency type="BIF">
+				<displayName>falánga ya Burundi</displayName>
+			</currency>
+			<currency type="CDF">
+				<displayName>falánga kongolé</displayName>
+				<symbol>F</symbol>
+			</currency>
+			<currency type="CHF">
+				<displayName>Falánga ya Swisi</displayName>
+			</currency>
+			<currency type="FRF">
+				<displayName>Falánga ya Falansia</displayName>
+			</currency>
+			<currency type="XOF">
+				<displayName>Falánga CFA BCEAO</displayName>
+			</currency>
+			<currency type="XPF">
+				<displayName>Falánga CFP</displayName>
+			</currency>
+			<currency type="XXX">
+				<displayName>mbɔ́ngɔ eyébámí tɛ́</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+</ldml>
 

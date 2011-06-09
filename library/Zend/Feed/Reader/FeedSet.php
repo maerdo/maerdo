@@ -1,148 +1,148 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php FeedSetphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: FeedSet.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Reader
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader
+ */
+require_once 'Zend/Feed/Reader.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Uri
-php php*php/
-requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
+/**
+ * @see Zend_Uri
+ */
+require_once 'Zend/Uri.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Readerphp_FeedSetphp extendsphp ArrayObject
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader_FeedSet extends ArrayObject
+{
 
-php php php php publicphp php$rssphp php=php nullphp;
+    public $rss = null;
 
-php php php php publicphp php$rdfphp php=php nullphp;
+    public $rdf = null;
 
-php php php php publicphp php$atomphp php=php nullphp;
+    public $atom = null;
 
-php php php php php/php*php*
-php php php php php php*php Importphp aphp DOMNodeListphp fromphp anyphp documentphp containingphp aphp setphp ofphp links
-php php php php php php*php forphp alternatephp versionsphp ofphp aphp documentphp,php whichphp willphp normallyphp referphp to
-php php php php php php*php RSSphp/RDFphp/Atomphp feedsphp forphp thephp currentphp documentphp.
-php php php php php php*
-php php php php php php*php Allphp suchphp linksphp arephp storedphp internallyphp,php howeverphp thephp firstphp instancephp of
-php php php php php php*php eachphp RSSphp,php RDFphp orphp Atomphp typephp hasphp itsphp URIphp storedphp asphp aphp publicphp property
-php php php php php php*php asphp aphp shortcutphp wherephp thephp usephp casephp isphp simplyphp tophp getphp aphp quickphp feedphp refphp.
-php php php php php php*
-php php php php php php*php Notephp thatphp feedsphp arephp notphp loadedphp atphp thisphp pointphp,php butphp willphp bephp lazy
-php php php php php php*php loadedphp automaticallyphp whenphp eachphp linksphp php'feedphp'php arrayphp keyphp isphp accessedphp.
-php php php php php php*
-php php php php php php*php php@paramphp DOMNodeListphp php$links
-php php php php php php*php php@paramphp stringphp php$uri
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp addLinksphp(DOMNodeListphp php$linksphp,php php$uriphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$linksphp asphp php$linkphp)php php{
-php php php php php php php php php php php php ifphp php(strtolowerphp(php$linkphp-php>getAttributephp(php'relphp'php)php)php php!php=php=php php'alternatephp'
-php php php php php php php php php php php php php php php php php|php|php php!php$linkphp-php>getAttributephp(php'typephp'php)php php|php|php php!php$linkphp-php>getAttributephp(php'hrefphp'php)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>rssphp)php php&php&php php$linkphp-php>getAttributephp(php'typephp'php)php php=php=php php'applicationphp/rssphp+xmlphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>rssphp php=php php$thisphp-php>php_absolutiseUriphp(trimphp(php$linkphp-php>getAttributephp(php'hrefphp'php)php)php,php php$uriphp)php;
-php php php php php php php php php php php php php}php elseifphp(php!issetphp(php$thisphp-php>atomphp)php php&php&php php$linkphp-php>getAttributephp(php'typephp'php)php php=php=php php'applicationphp/atomphp+xmlphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>atomphp php=php php$thisphp-php>php_absolutiseUriphp(trimphp(php$linkphp-php>getAttributephp(php'hrefphp'php)php)php,php php$uriphp)php;
-php php php php php php php php php php php php php}php elseifphp(php!issetphp(php$thisphp-php>rdfphp)php php&php&php php$linkphp-php>getAttributephp(php'typephp'php)php php=php=php php'applicationphp/rdfphp+xmlphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>rdfphp php=php php$thisphp-php>php_absolutiseUriphp(trimphp(php$linkphp-php>getAttributephp(php'hrefphp'php)php)php,php php$uriphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp[php]php php=php newphp selfphp(arrayphp(
-php php php php php php php php php php php php php php php php php'relphp'php php=php>php php'alternatephp'php,
-php php php php php php php php php php php php php php php php php'typephp'php php=php>php php$linkphp-php>getAttributephp(php'typephp'php)php,
-php php php php php php php php php php php php php php php php php'hrefphp'php php=php>php php$thisphp-php>php_absolutiseUriphp(trimphp(php$linkphp-php>getAttributephp(php'hrefphp'php)php)php,php php$uriphp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Import a DOMNodeList from any document containing a set of links
+     * for alternate versions of a document, which will normally refer to
+     * RSS/RDF/Atom feeds for the current document.
+     *
+     * All such links are stored internally, however the first instance of
+     * each RSS, RDF or Atom type has its URI stored as a public property
+     * as a shortcut where the use case is simply to get a quick feed ref.
+     *
+     * Note that feeds are not loaded at this point, but will be lazy
+     * loaded automatically when each links 'feed' array key is accessed.
+     *
+     * @param DOMNodeList $links
+     * @param string $uri
+     * @return void
+     */
+    public function addLinks(DOMNodeList $links, $uri)
+    {
+        foreach ($links as $link) {
+            if (strtolower($link->getAttribute('rel')) !== 'alternate'
+                || !$link->getAttribute('type') || !$link->getAttribute('href')) {
+                continue;
+            }
+            if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {
+                $this->rss = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
+            } elseif(!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
+                $this->atom = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
+            } elseif(!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
+                $this->rdf = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
+            }
+            $this[] = new self(array(
+                'rel' => 'alternate',
+                'type' => $link->getAttribute('type'),
+                'href' => $this->_absolutiseUri(trim($link->getAttribute('href')), $uri),
+            ));
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php php Attemptphp tophp turnphp aphp relativephp URIphp intophp anphp absolutephp URI
-php php php php php php*php/
-php php php php protectedphp functionphp php_absolutiseUriphp(php$linkphp,php php$uriphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$linkphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$uriphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$uriphp php=php Zendphp_Uriphp:php:factoryphp(php$uriphp)php;
+    /**
+     *  Attempt to turn a relative URI into an absolute URI
+     */
+    protected function _absolutiseUri($link, $uri = null)
+    {
+        if (!Zend_Uri::check($link)) {
+            if ($uri !== null) {
+                $uri = Zend_Uri::factory($uri);
 
-php php php php php php php php php php php php php php php php ifphp php(php$linkphp[php0php]php php!php=php=php php'php/php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php$linkphp php=php php$uriphp-php>getPathphp(php)php php.php php'php/php'php php.php php$linkphp;
-php php php php php php php php php php php php php php php php php}
+                if ($link[0] !== '/') {
+                    $link = $uri->getPath() . '/' . $link;
+                }
 
-php php php php php php php php php php php php php php php php php$linkphp php=php php$uriphp-php>getSchemephp(php)php php.php php'php:php/php/php'php php.php php$uriphp-php>getHostphp(php)php php.php php'php/php'php php.php php$thisphp-php>php_canonicalizePathphp(php$linkphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$linkphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$linkphp php=php nullphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$linkphp;
-php php php php php}
+                $link = $uri->getScheme() . '://' . $uri->getHost() . '/' . $this->_canonicalizePath($link);
+                if (!Zend_Uri::check($link)) {
+                    $link = null;
+                }
+            }
+        }
+        return $link;
+    }
 
-php php php php php/php*php*
-php php php php php php*php php Canonicalizephp relativephp path
-php php php php php php*php/
-php php php php protectedphp functionphp php_canonicalizePathphp(php$pathphp)
-php php php php php{
-php php php php php php php php php$partsphp php=php arrayphp_filterphp(explodephp(php'php/php'php,php php$pathphp)php)php;
-php php php php php php php php php$absolutesphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$partsphp asphp php$partphp)php php{
-php php php php php php php php php php php php ifphp php(php'php.php'php php=php=php php$partphp)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php'php.php.php'php php=php=php php$partphp)php php{
-php php php php php php php php php php php php php php php php arrayphp_popphp(php$absolutesphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$absolutesphp[php]php php=php php$partphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp implodephp(php'php/php'php,php php$absolutesphp)php;
-php php php php php}
+    /**
+     *  Canonicalize relative path
+     */
+    protected function _canonicalizePath($path)
+    {
+        $parts = array_filter(explode('/', $path));
+        $absolutes = array();
+        foreach ($parts as $part) {
+            if ('.' == $part) {
+                continue;
+            }
+            if ('..' == $part) {
+                array_pop($absolutes);
+            } else {
+                $absolutes[] = $part;
+            }
+        }
+        return implode('/', $absolutes);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Supportsphp lazyphp loadingphp ofphp feedsphp usingphp Zendphp_Feedphp_Readerphp:php:importphp(php)php but
-php php php php php php*php delegatesphp anyphp otherphp operationsphp tophp thephp parentphp classphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$offset
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@usesphp Zendphp_Feedphp_Reader
-php php php php php php*php/
-php php php php publicphp functionphp offsetGetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php ifphp php(php$offsetphp php=php=php php'feedphp'php php&php&php php!php$thisphp-php>offsetExistsphp(php'feedphp'php)php)php php{
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>offsetExistsphp(php'hrefphp'php)php)php php{
-php php php php php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$feedphp php=php Zendphp_Feedphp_Readerphp:php:importphp(php$thisphp-php>offsetGetphp(php'hrefphp'php)php)php;
-php php php php php php php php php php php php php$thisphp-php>offsetSetphp(php'feedphp'php,php php$feedphp)php;
-php php php php php php php php php php php php returnphp php$feedphp;
-php php php php php php php php php}
-php php php php php php php php returnphp parentphp:php:offsetGetphp(php$offsetphp)php;
-php php php php php}
+    /**
+     * Supports lazy loading of feeds using Zend_Feed_Reader::import() but
+     * delegates any other operations to the parent class.
+     *
+     * @param string $offset
+     * @return mixed
+     * @uses Zend_Feed_Reader
+     */
+    public function offsetGet($offset)
+    {
+        if ($offset == 'feed' && !$this->offsetExists('feed')) {
+            if (!$this->offsetExists('href')) {
+                return null;
+            }
+            $feed = Zend_Feed_Reader::import($this->offsetGet('href'));
+            $this->offsetSet('feed', $feed);
+            return $feed;
+        }
+        return parent::offsetGet($offset);
+    }
 
-php}
+}

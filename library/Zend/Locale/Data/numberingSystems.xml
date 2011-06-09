@@ -1,41 +1,41 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<supplementalDataphp>
-php php php php php<versionphp numberphp=php"php$Revisionphp:php php1php.php9php php$php"php/php>
-php php php php php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php1php5php:php5php7php php$php"php/php>
-php php php php php<numberingSystemsphp>
-php php php php php php php php php<numberingSystemphp idphp=php"arabphp"php typephp=php"numericphp"php digitsphp=php"php٠php١php٢php٣php٤php٥php٦php٧php٨php٩php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"arabextphp"php typephp=php"numericphp"php digitsphp=php"php۰php۱php۲php۳php۴php۵php۶php۷php۸php۹php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"armnphp"php typephp=php"algorithmicphp"php rulesphp=php"armenianphp-upperphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"armnlowphp"php typephp=php"algorithmicphp"php rulesphp=php"armenianphp-lowerphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"bengphp"php typephp=php"numericphp"php digitsphp=php"php০php১php২php৩php৪php৫php৬php৭php৮php৯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"devaphp"php typephp=php"numericphp"php digitsphp=php"php०php१php२php३php४php५php६php७php८php९php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"ethiphp"php typephp=php"algorithmicphp"php rulesphp=php"ethiopicphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"fullwidephp"php typephp=php"numericphp"php digitsphp=php"php０php１php２php３php４php５php６php７php８php９php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"georphp"php typephp=php"algorithmicphp"php rulesphp=php"georgianphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"grekphp"php typephp=php"algorithmicphp"php rulesphp=php"greekphp-upperphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"greklowphp"php typephp=php"algorithmicphp"php rulesphp=php"greekphp-lowerphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"gujrphp"php typephp=php"numericphp"php digitsphp=php"php૦php૧php૨php૩php૪php૫php૬php૭php૮php૯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"guruphp"php typephp=php"numericphp"php digitsphp=php"php੦php੧php੨php੩php੪php੫php੬php੭php੮php੯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"hansphp"php typephp=php"algorithmicphp"php rulesphp=php"zhphp/SpelloutRulesphp/spelloutphp-cardinalphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"hansfinphp"php typephp=php"algorithmicphp"php rulesphp=php"zhphp/SpelloutRulesphp/spelloutphp-cardinalphp-financialphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"hantphp"php typephp=php"algorithmicphp"php rulesphp=php"zhphp_Hantphp/SpelloutRulesphp/spelloutphp-cardinalphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"hantfinphp"php typephp=php"algorithmicphp"php rulesphp=php"zhphp_Hantphp/SpelloutRulesphp/spelloutphp-cardinalphp-financialphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"hebrphp"php typephp=php"algorithmicphp"php rulesphp=php"hebrewphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"jpanphp"php typephp=php"algorithmicphp"php rulesphp=php"japhp/SpelloutRulesphp/spelloutphp-cardinalphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"jpanfinphp"php typephp=php"algorithmicphp"php rulesphp=php"japhp/SpelloutRulesphp/spelloutphp-cardinalphp-financialphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"khmrphp"php typephp=php"numericphp"php digitsphp=php"php០php១php២php៣php៤php៥php៦php៧php៨php៩php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"kndaphp"php typephp=php"numericphp"php digitsphp=php"php೦php೧php೨php೩php೪php೫php೬php೭php೮php೯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"laoophp"php typephp=php"numericphp"php digitsphp=php"php໐php໑php໒php໓php໔php໕php໖php໗php໘php໙php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"latnphp"php typephp=php"numericphp"php digitsphp=php"php0php1php2php3php4php5php6php7php8php9php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"mlymphp"php typephp=php"numericphp"php digitsphp=php"php൦php൧php൨php൩php൪php൫php൬php൭php൮php൯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"mongphp"php typephp=php"numericphp"php digitsphp=php"php᠐php᠑php᠒php᠓php᠔php᠕php᠖php᠗php᠘php᠙php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"mymrphp"php typephp=php"numericphp"php digitsphp=php"php၀php၁php၂php၃php၄php၅php၆php၇php၈php၉php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"oryaphp"php typephp=php"numericphp"php digitsphp=php"php୦php୧php୨php୩php୪php୫php୬php୭php୮php୯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"romanphp"php typephp=php"algorithmicphp"php rulesphp=php"romanphp-upperphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"romanlowphp"php typephp=php"algorithmicphp"php rulesphp=php"romanphp-lowerphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"tamlphp"php typephp=php"algorithmicphp"php rulesphp=php"tamilphp"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"teluphp"php typephp=php"numericphp"php digitsphp=php"php౦php౧php౨php౩php౪php౫php౬php౭php౮php౯php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"thaiphp"php typephp=php"numericphp"php digitsphp=php"php๐php๑php๒php๓php๔php๕php๖php๗php๘php๙php"php/php>
-php php php php php php php php php<numberingSystemphp idphp=php"tibtphp"php typephp=php"numericphp"php digitsphp=php"php༠php༡php༢php༣php༤php༥php༦php༧php༨php༩php"php/php>
-php php php php <php/numberingSystemsphp>
-<php/supplementalDataphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<supplementalData>
+    <version number="$Revision: 1.9 $"/>
+    <generation date="$Date: 2009/05/05 23:15:57 $"/>
+    <numberingSystems>
+        <numberingSystem id="arab" type="numeric" digits="٠١٢٣٤٥٦٧٨٩"/>
+        <numberingSystem id="arabext" type="numeric" digits="۰۱۲۳۴۵۶۷۸۹"/>
+        <numberingSystem id="armn" type="algorithmic" rules="armenian-upper"/>
+        <numberingSystem id="armnlow" type="algorithmic" rules="armenian-lower"/>
+        <numberingSystem id="beng" type="numeric" digits="০১২৩৪৫৬৭৮৯"/>
+        <numberingSystem id="deva" type="numeric" digits="०१२३४५६७८९"/>
+        <numberingSystem id="ethi" type="algorithmic" rules="ethiopic"/>
+        <numberingSystem id="fullwide" type="numeric" digits="０１２３４５６７８９"/>
+        <numberingSystem id="geor" type="algorithmic" rules="georgian"/>
+        <numberingSystem id="grek" type="algorithmic" rules="greek-upper"/>
+        <numberingSystem id="greklow" type="algorithmic" rules="greek-lower"/>
+        <numberingSystem id="gujr" type="numeric" digits="૦૧૨૩૪૫૬૭૮૯"/>
+        <numberingSystem id="guru" type="numeric" digits="੦੧੨੩੪੫੬੭੮੯"/>
+        <numberingSystem id="hans" type="algorithmic" rules="zh/SpelloutRules/spellout-cardinal"/>
+        <numberingSystem id="hansfin" type="algorithmic" rules="zh/SpelloutRules/spellout-cardinal-financial"/>
+        <numberingSystem id="hant" type="algorithmic" rules="zh_Hant/SpelloutRules/spellout-cardinal"/>
+        <numberingSystem id="hantfin" type="algorithmic" rules="zh_Hant/SpelloutRules/spellout-cardinal-financial"/>
+        <numberingSystem id="hebr" type="algorithmic" rules="hebrew"/>
+        <numberingSystem id="jpan" type="algorithmic" rules="ja/SpelloutRules/spellout-cardinal"/>
+        <numberingSystem id="jpanfin" type="algorithmic" rules="ja/SpelloutRules/spellout-cardinal-financial"/>
+        <numberingSystem id="khmr" type="numeric" digits="០១២៣៤៥៦៧៨៩"/>
+        <numberingSystem id="knda" type="numeric" digits="೦೧೨೩೪೫೬೭೮೯"/>
+        <numberingSystem id="laoo" type="numeric" digits="໐໑໒໓໔໕໖໗໘໙"/>
+        <numberingSystem id="latn" type="numeric" digits="0123456789"/>
+        <numberingSystem id="mlym" type="numeric" digits="൦൧൨൩൪൫൬൭൮൯"/>
+        <numberingSystem id="mong" type="numeric" digits="᠐᠑᠒᠓᠔᠕᠖᠗᠘᠙"/>
+        <numberingSystem id="mymr" type="numeric" digits="၀၁၂၃၄၅၆၇၈၉"/>
+        <numberingSystem id="orya" type="numeric" digits="୦୧୨୩୪୫୬୭୮୯"/>
+        <numberingSystem id="roman" type="algorithmic" rules="roman-upper"/>
+        <numberingSystem id="romanlow" type="algorithmic" rules="roman-lower"/>
+        <numberingSystem id="taml" type="algorithmic" rules="tamil"/>
+        <numberingSystem id="telu" type="numeric" digits="౦౧౨౩౪౫౬౭౮౯"/>
+        <numberingSystem id="thai" type="numeric" digits="๐๑๒๓๔๕๖๗๘๙"/>
+        <numberingSystem id="tibt" type="numeric" digits="༠༡༢༣༤༥༦༧༨༩"/>
+    </numberingSystems>
+</supplementalData>

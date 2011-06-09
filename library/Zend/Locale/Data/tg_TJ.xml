@@ -1,10 +1,10 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php6php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php4php0php php$php"php/php>
-php	php	php<languagephp typephp=php"tgphp"php/php>
-php	php	php<territoryphp typephp=php"TJphp"php/php>
-php	<php/identityphp>
-php	php<aliasphp sourcephp=php"tgphp_Cyrlphp_TJphp"php pathphp=php"php/php/ldmlphp"php/php>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.16 $"/>
+		<generation date="$Date: 2009/05/05 23:06:40 $"/>
+		<language type="tg"/>
+		<territory type="TJ"/>
+	</identity>
+	<alias source="tg_Cyrl_TJ" path="//ldml"/>
+</ldml>

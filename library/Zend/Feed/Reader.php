@@ -1,721 +1,721 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Readerphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Feed
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Feedphp_Rss
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Feedphp/Rssphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Feedphp_Atom
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Feedphp/Atomphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_FeedSet
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/FeedSetphp.phpphp'php;
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Reader
-php{
-php php php php php/php*php*
-php php php php php php*php Namespacephp constants
-php php php php php php*php/
-php php php php constphp NAMESPACEphp_ATOMphp_php0php3php php php=php php'httpphp:php/php/purlphp.orgphp/atomphp/nsphp#php'php;
-php php php php constphp NAMESPACEphp_ATOMphp_php1php0php php php=php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php5php/Atomphp'php;
-php php php php constphp NAMESPACEphp_RDFphp php php php php php php=php php'httpphp:php/php/wwwphp.wphp3php.orgphp/php1php9php9php9php/php0php2php/php2php2php-rdfphp-syntaxphp-nsphp#php'php;
-php php php php constphp NAMESPACEphp_RSSphp_php0php9php0php php php=php php'httpphp:php/php/myphp.netscapephp.comphp/rdfphp/simplephp/php0php.php9php/php'php;
-php php php php constphp NAMESPACEphp_RSSphp_php1php0php php php php=php php'httpphp:php/php/purlphp.orgphp/rssphp/php1php.php0php/php'php;
-
-php php php php php/php*php*
-php php php php php php*php Feedphp typephp constants
-php php php php php php*php/
-php php php php constphp TYPEphp_ANYphp php php php php php php php php php php php php php php=php php'anyphp'php;
-php php php php constphp TYPEphp_ATOMphp_php0php3php php php php php php php php php php php=php php'atomphp-php0php3php'php;
-php php php php constphp TYPEphp_ATOMphp_php1php0php php php php php php php php php php php=php php'atomphp-php1php0php'php;
-php php php php constphp TYPEphp_ATOMphp_php1php0php_ENTRYphp php php php php=php php'atomphp-php1php0php-entryphp'php;
-php php php php constphp TYPEphp_ATOMphp_ANYphp php php php php php php php php php=php php'atomphp'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php0php php php php php php php php php php php=php php'rssphp-php0php9php0php'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php1php php php php php php php php php php php=php php'rssphp-php0php9php1php'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php1php_NETSCAPEphp php=php php'rssphp-php0php9php1nphp'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php1php_USERLANDphp php=php php'rssphp-php0php9php1uphp'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php2php php php php php php php php php php php=php php'rssphp-php0php9php2php'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php3php php php php php php php php php php php=php php'rssphp-php0php9php3php'php;
-php php php php constphp TYPEphp_RSSphp_php0php9php4php php php php php php php php php php php=php php'rssphp-php0php9php4php'php;
-php php php php constphp TYPEphp_RSSphp_php1php0php php php php php php php php php php php php=php php'rssphp-php1php0php'php;
-php php php php constphp TYPEphp_RSSphp_php2php0php php php php php php php php php php php php=php php'rssphp-php2php0php'php;
-php php php php constphp TYPEphp_RSSphp_ANYphp php php php php php php php php php php=php php'rssphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Cachephp instance
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_cachephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php HTTPphp clientphp objectphp tophp usephp forphp retrievingphp feeds
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_httpClientphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Overridephp HTTPphp PUTphp andphp DELETEphp requestphp methodsphp?
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_httpMethodOverridephp php=php falsephp;
-
-php php php php protectedphp staticphp php$php_httpConditionalGetphp php=php falsephp;
-
-php php php php protectedphp staticphp php$php_pluginLoaderphp php=php nullphp;
-
-php php php php protectedphp staticphp php$php_prefixPathsphp php=php arrayphp(php)php;
-
-php php php php protectedphp staticphp php$php_extensionsphp php=php arrayphp(
-php php php php php php php php php'feedphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php'DublinCorephp_Feedphp'php,
-php php php php php php php php php php php php php'Atomphp_Feedphp'
-php php php php php php php php php)php,
-php php php php php php php php php'entryphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php'Contentphp_Entryphp'php,
-php php php php php php php php php php php php php'DublinCorephp_Entryphp'php,
-php php php php php php php php php php php php php'Atomphp_Entryphp'
-php php php php php php php php php)php,
-php php php php php php php php php'corephp'php php=php>php arrayphp(
-php php php php php php php php php php php php php'DublinCorephp_Feedphp'php,
-php php php php php php php php php php php php php'Atomphp_Feedphp'php,
-php php php php php php php php php php php php php'Contentphp_Entryphp'php,
-php php php php php php php php php php php php php'DublinCorephp_Entryphp'php,
-php php php php php php php php php php php php php'Atomphp_Entryphp'
-php php php php php php php php php)
-php php php php php)php;
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp Feedphp cache
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getCachephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_cachephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp feedphp cache
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Cachephp_Corephp php$cache
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setCachephp(Zendphp_Cachephp_Corephp php$cachephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php=php php$cachephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp HTTPphp clientphp instance
-php php php php php php*
-php php php php php php*php Setsphp thephp HTTPphp clientphp objectphp tophp usephp forphp retrievingphp thephp feedsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Clientphp php$httpClient
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setHttpClientphp(Zendphp_Httpphp_Clientphp php$httpClientphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_httpClientphp php=php php$httpClientphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp HTTPphp clientphp objectphp.php Ifphp nonephp isphp setphp,php aphp newphp Zendphp_Httpphp_Clientphp willphp bephp usedphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp_Abstract
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getHttpClientphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!selfphp:php:php$php_httpClientphp instanceofphp Zendphp_Httpphp_Clientphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Httpphp_Client
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_httpClientphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp selfphp:php:php$php_httpClientphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Togglephp usingphp POSTphp insteadphp ofphp PUTphp andphp DELETEphp HTTPphp methods
-php php php php php php*
-php php php php php php*php Somephp feedphp implementationsphp dophp notphp acceptphp PUTphp andphp DELETEphp HTTP
-php php php php php php*php methodsphp,php orphp theyphp canphp'tphp bephp usedphp becausephp ofphp proxiesphp orphp other
-php php php php php php*php measuresphp.php Thisphp allowsphp turningphp onphp usingphp POSTphp wherephp PUTphp and
-php php php php php php*php DELETEphp wouldphp normallyphp bephp usedphp;php inphp additionphp,php an
-php php php php php php*php Xphp-Methodphp-Overridephp headerphp willphp bephp sentphp withphp aphp valuephp ofphp PUTphp or
-php php php php php php*php DELETEphp asphp appropriatephp.
-php php php php php php*
-php php php php php php*php php@paramphp php booleanphp php$overridephp Whetherphp tophp overridephp PUTphp andphp DELETEphp.
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setHttpMethodOverridephp(php$overridephp php=php truephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_httpMethodOverridephp php=php php$overridephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp HTTPphp overridephp state
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getHttpMethodOverridephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_httpMethodOverridephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp flagphp indicatingphp whetherphp orphp notphp tophp usephp HTTPphp conditionalphp GET
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$bool
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp useHttpConditionalGetphp(php$boolphp php=php truephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_httpConditionalGetphp php=php php$boolphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Importphp aphp feedphp byphp providingphp aphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$urlphp Thephp URLphp tophp thephp feed
-php php php php php php*php php@paramphp php stringphp php$etagphp OPTIONALphp Lastphp receivedphp ETagphp forphp thisphp resource
-php php php php php php*php php@paramphp php stringphp php$lastModifiedphp OPTIONALphp Lastphp-Modifiedphp valuephp forphp thisphp resource
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_FeedInterface
-php php php php php php*php/
-php php php php publicphp staticphp functionphp importphp(php$uriphp,php php$etagphp php=php nullphp,php php$lastModifiedphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$cachephp php php php php php php php=php selfphp:php:getCachephp(php)php;
-php php php php php php php php php$feedphp php php php php php php php php=php nullphp;
-php php php php php php php php php$responseXmlphp php=php php'php'php;
-php php php php php php php php php$clientphp php php php php php php=php selfphp:php:getHttpClientphp(php)php;
-php php php php php php php php php$clientphp-php>resetParametersphp(php)php;
-php php php php php php php php php$clientphp-php>setHeadersphp(php'Ifphp-Nonephp-Matchphp'php,php nullphp)php;
-php php php php php php php php php$clientphp-php>setHeadersphp(php'Ifphp-Modifiedphp-Sincephp'php,php nullphp)php;
-php php php php php php php php php$clientphp-php>setUriphp(php$uriphp)php;
-php php php php php php php php php$cacheIdphp php=php php'Zendphp_Feedphp_Readerphp_php'php php.php mdphp5php(php$uriphp)php;
-
-php php php php php php php php ifphp php(selfphp:php:php$php_httpConditionalGetphp php&php&php php$cachephp)php php{
-php php php php php php php php php php php php php$dataphp php=php php$cachephp-php>loadphp(php$cacheIdphp)php;
-php php php php php php php php php php php php ifphp php(php$dataphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$etagphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$etagphp php=php php$cachephp-php>loadphp(php$cacheIdphp.php'php_etagphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$lastModifiedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$lastModifiedphp php=php php$cachephp-php>loadphp(php$cacheIdphp.php'php_lastmodifiedphp'php)php;php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$etagphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$clientphp-php>setHeadersphp(php'Ifphp-Nonephp-Matchphp'php,php php$etagphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$lastModifiedphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$clientphp-php>setHeadersphp(php'Ifphp-Modifiedphp-Sincephp'php,php php$lastModifiedphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'GETphp'php)php;
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php0php php&php&php php$responsephp-php>getStatusphp(php)php php!php=php=php php3php0php4php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Feedphp failedphp tophp loadphp,php gotphp responsephp codephp php'php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php=php=php php3php0php4php)php php{
-php php php php php php php php php php php php php php php php php$responseXmlphp php=php php$dataphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$responseXmlphp php=php php$responsephp-php>getBodyphp(php)php;
-php php php php php php php php php php php php php php php php php$cachephp-php>savephp(php$responseXmlphp,php php$cacheIdphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$responsephp-php>getHeaderphp(php'ETagphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$cachephp-php>savephp(php$responsephp-php>getHeaderphp(php'ETagphp'php)php,php php$cacheIdphp.php'php_etagphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$responsephp-php>getHeaderphp(php'Lastphp-Modifiedphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$cachephp-php>savephp(php$responsephp-php>getHeaderphp(php'Lastphp-Modifiedphp'php)php,php php$cacheIdphp.php'php_lastmodifiedphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp selfphp:php:importStringphp(php$responseXmlphp)php;
-php php php php php php php php php}php elseifphp php(php$cachephp)php php{
-php php php php php php php php php php php php php$dataphp php=php php$cachephp-php>loadphp(php$cacheIdphp)php;
-php php php php php php php php php php php php ifphp php(php$dataphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php returnphp selfphp:php:importStringphp(php$dataphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'GETphp'php)php;
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Feedphp failedphp tophp loadphp,php gotphp responsephp codephp php'php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$responseXmlphp php=php php$responsephp-php>getBodyphp(php)php;
-php php php php php php php php php php php php php$cachephp-php>savephp(php$responseXmlphp,php php$cacheIdphp)php;
-php php php php php php php php php php php php returnphp selfphp:php:importStringphp(php$responseXmlphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'GETphp'php)php;
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Feedphp failedphp tophp loadphp,php gotphp responsephp codephp php'php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$readerphp php=php selfphp:php:importStringphp(php$responsephp-php>getBodyphp(php)php)php;
-php php php php php php php php php php php php php$readerphp-php>setOriginalSourceUriphp(php$uriphp)php;
-php php php php php php php php php php php php returnphp php$readerphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Importphp aphp feedphp byphp providingphp aphp Zendphp_Feedphp_Abstractphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Feedphp_Abstractphp php$feedphp Aphp fullyphp instantiatedphp Zendphp_Feedphp object
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_FeedInterface
-php php php php php php*php/
-php php php php publicphp staticphp functionphp importFeedphp(Zendphp_Feedphp_Abstractphp php$feedphp)
-php php php php php{
-php php php php php php php php php$domphp php php=php php$feedphp-php>getDOMphp(php)php-php>ownerDocumentphp;
-php php php php php php php php php$typephp php=php selfphp:php:detectTypephp(php$domphp)php;
-php php php php php php php php selfphp:php:php_registerCoreExtensionsphp(php)php;
-php php php php php php php php ifphp php(substrphp(php$typephp,php php0php,php php3php)php php=php=php php'rssphp'php)php php{
-php php php php php php php php php php php php php$readerphp php=php newphp Zendphp_Feedphp_Readerphp_Feedphp_Rssphp(php$domphp,php php$typephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$readerphp php=php newphp Zendphp_Feedphp_Readerphp_Feedphp_Atomphp(php$domphp,php php$typephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$readerphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Importphp aphp feedphp fromaphp string
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$string
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_FeedInterface
-php php php php php php*php/
-php php php php publicphp staticphp functionphp importStringphp(php$stringphp)
-php php php php php{
-php php php php php php php php php$libxmlphp_errflagphp php=php libxmlphp_usephp_internalphp_errorsphp(truephp)php;
-php php php php php php php php php$domphp php=php newphp DOMDocumentphp;
-php php php php php php php php php$statusphp php=php php$domphp-php>loadXMLphp(php$stringphp)php;
-php php php php php php php php libxmlphp_usephp_internalphp_errorsphp(php$libxmlphp_errflagphp)php;
-
-php php php php php php php php ifphp php(php!php$statusphp)php php{
-php php php php php php php php php php php php php/php/php Buildphp errorphp message
-php php php php php php php php php php php php php$errorphp php=php libxmlphp_getphp_lastphp_errorphp(php)php;
-php php php php php php php php php php php php ifphp php(php$errorphp php&php&php php$errorphp-php>messagephp)php php{
-php php php php php php php php php php php php php php php php php$errormsgphp php=php php"DOMDocumentphp cannotphp parsephp XMLphp:php php{php$errorphp-php>messagephp}php"php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$errormsgphp php=php php"DOMDocumentphp cannotphp parsephp XMLphp:php Pleasephp checkphp thephp XMLphp documentphp'sphp validityphp"php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php$errormsgphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$typephp php=php selfphp:php:detectTypephp(php$domphp)php;
-
-php php php php php php php php selfphp:php:php_registerCoreExtensionsphp(php)php;
-
-php php php php php php php php ifphp php(substrphp(php$typephp,php php0php,php php3php)php php=php=php php'rssphp'php)php php{
-php php php php php php php php php php php php php$readerphp php=php newphp Zendphp_Feedphp_Readerphp_Feedphp_Rssphp(php$domphp,php php$typephp)php;
-php php php php php php php php php}php elseifphp php(substrphp(php$typephp,php php8php,php php5php)php php=php=php php'entryphp'php)php php{
-php php php php php php php php php php php php php$readerphp php=php newphp Zendphp_Feedphp_Readerphp_Entryphp_Atomphp(php$domphp-php>documentElementphp,php php0php,php Zendphp_Feedphp_Readerphp:php:TYPEphp_ATOMphp_php1php0php)php;
-php php php php php php php php php}php elseifphp php(substrphp(php$typephp,php php0php,php php4php)php php=php=php php'atomphp'php)php php{
-php php php php php php php php php php php php php$readerphp php=php newphp Zendphp_Feedphp_Readerphp_Feedphp_Atomphp(php$domphp,php php$typephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Thephp URIphp usedphp doesphp notphp pointphp tophp aphp php'
-php php php php php php php php php php php php php.php php'validphp Atomphp,php RSSphp orphp RDFphp feedphp thatphp Zendphp_Feedphp_Readerphp canphp parsephp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$readerphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Importsphp aphp feedphp fromphp aphp filephp locatedphp atphp php$filenamephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exception
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_FeedInterface
-php php php php php php*php/
-php php php php publicphp staticphp functionphp importFilephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php@iniphp_setphp(php'trackphp_errorsphp'php,php php1php)php;
-php php php php php php php php php$feedphp php=php php@filephp_getphp_contentsphp(php$filenamephp)php;
-php php php php php php php php php@iniphp_restorephp(php'trackphp_errorsphp'php)php;
-php php php php php php php php ifphp php(php$feedphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php"Filephp couldphp notphp bephp loadedphp:php php$phpphp_errormsgphp"php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp selfphp:php:importStringphp(php$feedphp)php;
-php php php php php}
-
-php php php php publicphp staticphp functionphp findFeedLinksphp(php$uriphp)
-php php php php php{
-php php php php php php php php php/php/php Getphp thephp HTTPphp responsephp fromphp php$uriphp andphp savephp thephp contents
-php php php php php php php php php$clientphp php=php selfphp:php:getHttpClientphp(php)php;
-php php php php php php php php php$clientphp-php>setUriphp(php$uriphp)php;
-php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php)php;
-php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php0php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php"Failedphp tophp accessphp php$uriphp,php gotphp responsephp codephp php"php php.php php$responsephp-php>getStatusphp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php php$responseHtmlphp php=php php$responsephp-php>getBodyphp(php)php;
-php php php php php php php php php$libxmlphp_errflagphp php=php libxmlphp_usephp_internalphp_errorsphp(truephp)php;
-php php php php php php php php php$domphp php=php newphp DOMDocumentphp;
-php php php php php php php php php$statusphp php=php php$domphp-php>loadHTMLphp(php$responseHtmlphp)php;
-php php php php php php php php libxmlphp_usephp_internalphp_errorsphp(php$libxmlphp_errflagphp)php;
-php php php php php php php php ifphp php(php!php$statusphp)php php{
-php php php php php php php php php php php php php/php/php Buildphp errorphp message
-php php php php php php php php php php php php php$errorphp php=php libxmlphp_getphp_lastphp_errorphp(php)php;
-php php php php php php php php php php php php ifphp php(php$errorphp php&php&php php$errorphp-php>messagephp)php php{
-php php php php php php php php php php php php php php php php php$errormsgphp php=php php"DOMDocumentphp cannotphp parsephp HTMLphp:php php{php$errorphp-php>messagephp}php"php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$errormsgphp php=php php"DOMDocumentphp cannotphp parsephp HTMLphp:php Pleasephp checkphp thephp XMLphp documentphp'sphp validityphp"php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php$errormsgphp)php;
-php php php php php php php php php}
-php php php php php php php php php$feedSetphp php=php newphp Zendphp_Feedphp_Readerphp_FeedSetphp;
-php php php php php php php php php$linksphp php=php php$domphp-php>getElementsByTagNamephp(php'linkphp'php)php;
-php php php php php php php php php$feedSetphp-php>addLinksphp(php$linksphp,php php$uriphp)php;
-php php php php php php php php returnphp php$feedSetphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Detectphp thephp feedphp typephp ofphp thephp providedphp feed
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Feedphp_Abstractphp|DOMDocumentphp|stringphp php$feed
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp staticphp functionphp detectTypephp(php$feedphp,php php$specOnlyphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$feedphp instanceofphp Zendphp_Feedphp_Readerphp_FeedInterfacephp)php php{
-php php php php php php php php php php php php php$domphp php=php php$feedphp-php>getDomDocumentphp(php)php;
-php php php php php php php php php}php elseifphp(php$feedphp instanceofphp DOMDocumentphp)php php{
-php php php php php php php php php php php php php$domphp php=php php$feedphp;
-php php php php php php php php php}php elseifphp(isphp_stringphp(php$feedphp)php php&php&php php!emptyphp(php$feedphp)php)php php{
-php php php php php php php php php php php php php@iniphp_setphp(php'trackphp_errorsphp'php,php php1php)php;
-php php php php php php php php php php php php php$domphp php=php newphp DOMDocumentphp;
-php php php php php php php php php php php php php$statusphp php=php php@php$domphp-php>loadXMLphp(php$feedphp)php;
-php php php php php php php php php php php php php@iniphp_restorephp(php'trackphp_errorsphp'php)php;
-php php php php php php php php php php php php ifphp php(php!php$statusphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$phpphp_errormsgphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(functionphp_existsphp(php'xdebugphp_isphp_enabledphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp,php whenphp XDebugphp isphp runningphp)php'php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp)php'php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php"DOMDocumentphp cannotphp parsephp XMLphp:php php$phpphp_errormsgphp"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Invalidphp objectphp/scalarphp providedphp:php mustphp'
-php php php php php php php php php php php php php.php php'php bephp ofphp typephp Zendphp_Feedphp_Readerphp_FeedInterfacephp,php DomDocumentphp orphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$domphp)php;
-
-php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/rssphp'php)php-php>lengthphp)php php{
-php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_ANYphp;
-php php php php php php php php php php php php php$versionphp php=php php$xpathphp-php>evaluatephp(php'stringphp(php/rssphp/php@versionphp)php'php)php;
-
-php php php php php php php php php php php php ifphp php(strlenphp(php$versionphp)php php>php php0php)php php{
-php php php php php php php php php php php php php php php php switchphp(php$versionphp)php php{
-php php php php php php php php php php php php php php php php php php php php casephp php'php2php.php0php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_php2php0php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php casephp php'php0php.php9php4php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_php0php9php4php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php casephp php'php0php.php9php3php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_php0php9php3php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php casephp php'php0php.php9php2php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_php0php9php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php casephp php'php0php.php9php1php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_RSSphp_php0php9php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$typephp;
-php php php php php php php php php}
-
-php php php php php php php php php$xpathphp-php>registerNamespacephp(php'rdfphp'php,php selfphp:php:NAMESPACEphp_RDFphp)php;
-
-php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp'php)php-php>lengthphp)php php{
-php php php php php php php php php php php php php$xpathphp-php>registerNamespacephp(php'rssphp'php,php selfphp:php:NAMESPACEphp_RSSphp_php1php0php)php;
-
-php php php php php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:channelphp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:imagephp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:itemphp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:textinputphp'php)php-php>length
-php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_RSSphp_php1php0php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$xpathphp-php>registerNamespacephp(php'rssphp'php,php selfphp:php:NAMESPACEphp_RSSphp_php0php9php0php)php;
-
-php php php php php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:channelphp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:imagephp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:itemphp'php)php-php>length
-php php php php php php php php php php php php php php php php php|php|php php$xpathphp-php>queryphp(php'php/rdfphp:RDFphp/rssphp:textinputphp'php)php-php>length
-php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_RSSphp_php0php9php0php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$typephp php=php selfphp:php:TYPEphp_ATOMphp_ANYphp;
-php php php php php php php php php$xpathphp-php>registerNamespacephp(php'atomphp'php,php selfphp:php:NAMESPACEphp_ATOMphp_php1php0php)php;
-
-php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/php/atomphp:feedphp'php)php-php>lengthphp)php php{
-php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_ATOMphp_php1php0php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/php/atomphp:entryphp'php)php-php>lengthphp)php php{
-php php php php php php php php php php php php ifphp php(php$specOnlyphp php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_ATOMphp_php1php0php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_ATOMphp_php1php0php_ENTRYphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$xpathphp-php>registerNamespacephp(php'atomphp'php,php selfphp:php:NAMESPACEphp_ATOMphp_php0php3php)php;
-
-php php php php php php php php ifphp php(php$xpathphp-php>queryphp(php'php/php/atomphp:feedphp'php)php-php>lengthphp)php php{
-php php php php php php php php php php php php returnphp selfphp:php:TYPEphp_ATOMphp_php0php3php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp selfphp:php:TYPEphp_ANYphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp pluginphp loaderphp forphp usephp withphp Extensions
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setPluginLoaderphp(Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loaderphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_pluginLoaderphp php=php php$loaderphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp pluginphp loaderphp forphp usephp withphp Extensions
-php php php php php php*
-php php php php php php*php php@returnphp php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php$loader
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getPluginLoaderphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(selfphp:php:php$php_pluginLoaderphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_pluginLoaderphp php=php newphp Zendphp_Loaderphp_PluginLoaderphp(arrayphp(
-php php php php php php php php php php php php php php php php php'Zendphp_Feedphp_Readerphp_Extensionphp_php'php php=php>php php'Zendphp/Feedphp/Readerphp/Extensionphp/php'php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp selfphp:php:php$php_pluginLoaderphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp loadingphp Extensions
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp)
-php php php php php{
-php php php php php php php php php$prefixphp php=php rtrimphp(php$prefixphp,php php'php_php'php)php;
-php php php php php php php php php$pathphp php php php=php rtrimphp(php$pathphp,php DIRECTORYphp_SEPARATORphp)php;
-php php php php php php php php selfphp:php:getPluginLoaderphp(php)php-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp Extensionphp prefixphp pathsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$spec
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp addPrefixPathsphp(arrayphp php$specphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$specphp[php'prefixphp'php]php)php php&php&php issetphp(php$specphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php selfphp:php:addPrefixPathphp(php$specphp[php'prefixphp'php]php,php php$specphp[php'pathphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$specphp asphp php$prefixPathphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$prefixPathphp[php'prefixphp'php]php)php php&php&php issetphp(php$prefixPathphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php selfphp:php:addPrefixPathphp(php$prefixPathphp[php'prefixphp'php]php,php php$prefixPathphp[php'pathphp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Registerphp anphp Extensionphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exceptionphp ifphp unablephp tophp resolvephp Extensionphp class
-php php php php php php*php/
-php php php php publicphp staticphp functionphp registerExtensionphp(php$namephp)
-php php php php php{
-php php php php php php php php php$feedNamephp php php=php php$namephp php.php php'php_Feedphp'php;
-php php php php php php php php php$entryNamephp php=php php$namephp php.php php'php_Entryphp'php;
-php php php php php php php php ifphp php(selfphp:php:isRegisteredphp(php$namephp)php)php php{
-php php php php php php php php php php php php ifphp php(selfphp:php:getPluginLoaderphp(php)php-php>isLoadedphp(php$feedNamephp)php php|php|
-php php php php php php php php php php php php php php php php selfphp:php:getPluginLoaderphp(php)php-php>isLoadedphp(php$entryNamephp)php)php php{
-php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php selfphp:php:getPluginLoaderphp(php)php-php>loadphp(php$feedNamephp)php;
-php php php php php php php php php php php php selfphp:php:php$php_extensionsphp[php'feedphp'php]php[php]php php=php php$feedNamephp;
-php php php php php php php php php}php catchphp php(Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php}
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php selfphp:php:getPluginLoaderphp(php)php-php>loadphp(php$entryNamephp)php;
-php php php php php php php php php php php php selfphp:php:php$php_extensionsphp[php'entryphp'php]php[php]php php=php php$entryNamephp;
-php php php php php php php php php}php catchphp php(Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!selfphp:php:getPluginLoaderphp(php)php-php>isLoadedphp(php$feedNamephp)
-php php php php php php php php php php php php php&php&php php!selfphp:php:getPluginLoaderphp(php)php-php>isLoadedphp(php$entryNamephp)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Couldphp notphp loadphp extensionphp:php php'php php.php php$name
-php php php php php php php php php php php php php php php php php.php php'usingphp Pluginphp Loaderphp.php Checkphp prefixphp pathsphp arephp configuredphp andphp extensionphp existsphp.php'php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp namedphp Extensionphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$extensionName
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp isRegisteredphp(php$extensionNamephp)
-php php php php php{
-php php php php php php php php php$feedNamephp php php=php php$extensionNamephp php.php php'php_Feedphp'php;
-php php php php php php php php php$entryNamephp php=php php$extensionNamephp php.php php'php_Entryphp'php;
-php php php php php php php php ifphp php(inphp_arrayphp(php$feedNamephp,php selfphp:php:php$php_extensionsphp[php'feedphp'php]php)
-php php php php php php php php php php php php php|php|php inphp_arrayphp(php$entryNamephp,php selfphp:php:php$php_extensionsphp[php'entryphp'php]php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp aphp listphp ofphp extensions
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getExtensionsphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_extensionsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Resetphp classphp statephp tophp defaults
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp resetphp(php)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php php php php php php php php php php php php php php=php nullphp;
-php php php php php php php php selfphp:php:php$php_httpClientphp php php php php php php php php php=php nullphp;
-php php php php php php php php selfphp:php:php$php_httpMethodOverridephp php=php falsephp;
-php php php php php php php php selfphp:php:php$php_httpConditionalGetphp php=php falsephp;
-php php php php php php php php selfphp:php:php$php_pluginLoaderphp php php php php php php php=php nullphp;
-php php php php php php php php selfphp:php:php$php_prefixPathsphp php php php php php php php php=php arrayphp(php)php;
-php php php php php php php php selfphp:php:php$php_extensionsphp php php php php php php php php php=php arrayphp(
-php php php php php php php php php php php php php'feedphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php php php php php'DublinCorephp_Feedphp'php,
-php php php php php php php php php php php php php php php php php'Atomphp_Feedphp'
-php php php php php php php php php php php php php)php,
-php php php php php php php php php php php php php'entryphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php php php php php'Contentphp_Entryphp'php,
-php php php php php php php php php php php php php php php php php'DublinCorephp_Entryphp'php,
-php php php php php php php php php php php php php php php php php'Atomphp_Entryphp'
-php php php php php php php php php php php php php)php,
-php php php php php php php php php php php php php'corephp'php php=php>php arrayphp(
-php php php php php php php php php php php php php php php php php'DublinCorephp_Feedphp'php,
-php php php php php php php php php php php php php php php php php'Atomphp_Feedphp'php,
-php php php php php php php php php php php php php php php php php'Contentphp_Entryphp'php,
-php php php php php php php php php php php php php php php php php'DublinCorephp_Entryphp'php,
-php php php php php php php php php php php php php php php php php'Atomphp_Entryphp'
-php php php php php php php php php php php php php)
-php php php php php php php php php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Registerphp corephp php(defaultphp)php extensions
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_registerCoreExtensionsphp(php)
-php php php php php{
-php php php php php php php php selfphp:php:registerExtensionphp(php'DublinCorephp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'Contentphp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'Atomphp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'Slashphp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'WellFormedWebphp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'Threadphp'php)php;
-php php php php php php php php selfphp:php:registerExtensionphp(php'Podcastphp'php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Utilityphp methodphp tophp applyphp arrayphp_uniquephp operationphp tophp aphp multidimensional
-php php php php php php*php arrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp array
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp staticphp functionphp arrayUniquephp(arrayphp php$arrayphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$arrayphp asphp php&php$valuephp)php php{
-php php php php php php php php php php php php php$valuephp php=php serializephp(php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php php$arrayphp php=php arrayphp_uniquephp(php$arrayphp)php;
-php php php php php php php php foreachphp php(php$arrayphp asphp php&php$valuephp)php php{
-php php php php php php php php php php php php php$valuephp php=php unserializephp(php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$arrayphp;
-php php php php php}
-
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Reader.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
+
+/**
+ * @see Zend_Feed
+ */
+require_once 'Zend/Feed.php';
+
+/**
+ * @see Zend_Feed_Reader_Feed_Rss
+ */
+require_once 'Zend/Feed/Reader/Feed/Rss.php';
+
+/**
+ * @see Zend_Feed_Reader_Feed_Atom
+ */
+require_once 'Zend/Feed/Reader/Feed/Atom.php';
+
+/**
+ * @see Zend_Feed_Reader_FeedSet
+ */
+require_once 'Zend/Feed/Reader/FeedSet.php';
+
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader
+{
+    /**
+     * Namespace constants
+     */
+    const NAMESPACE_ATOM_03  = 'http://purl.org/atom/ns#';
+    const NAMESPACE_ATOM_10  = 'http://www.w3.org/2005/Atom';
+    const NAMESPACE_RDF      = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+    const NAMESPACE_RSS_090  = 'http://my.netscape.com/rdf/simple/0.9/';
+    const NAMESPACE_RSS_10   = 'http://purl.org/rss/1.0/';
+
+    /**
+     * Feed type constants
+     */
+    const TYPE_ANY              = 'any';
+    const TYPE_ATOM_03          = 'atom-03';
+    const TYPE_ATOM_10          = 'atom-10';
+    const TYPE_ATOM_10_ENTRY    = 'atom-10-entry';
+    const TYPE_ATOM_ANY         = 'atom';
+    const TYPE_RSS_090          = 'rss-090';
+    const TYPE_RSS_091          = 'rss-091';
+    const TYPE_RSS_091_NETSCAPE = 'rss-091n';
+    const TYPE_RSS_091_USERLAND = 'rss-091u';
+    const TYPE_RSS_092          = 'rss-092';
+    const TYPE_RSS_093          = 'rss-093';
+    const TYPE_RSS_094          = 'rss-094';
+    const TYPE_RSS_10           = 'rss-10';
+    const TYPE_RSS_20           = 'rss-20';
+    const TYPE_RSS_ANY          = 'rss';
+
+    /**
+     * Cache instance
+     *
+     * @var Zend_Cache_Core
+     */
+    protected static $_cache = null;
+
+    /**
+     * HTTP client object to use for retrieving feeds
+     *
+     * @var Zend_Http_Client
+     */
+    protected static $_httpClient = null;
+
+    /**
+     * Override HTTP PUT and DELETE request methods?
+     *
+     * @var boolean
+     */
+    protected static $_httpMethodOverride = false;
+
+    protected static $_httpConditionalGet = false;
+
+    protected static $_pluginLoader = null;
+
+    protected static $_prefixPaths = array();
+
+    protected static $_extensions = array(
+        'feed' => array(
+            'DublinCore_Feed',
+            'Atom_Feed'
+        ),
+        'entry' => array(
+            'Content_Entry',
+            'DublinCore_Entry',
+            'Atom_Entry'
+        ),
+        'core' => array(
+            'DublinCore_Feed',
+            'Atom_Feed',
+            'Content_Entry',
+            'DublinCore_Entry',
+            'Atom_Entry'
+        )
+    );
+
+    /**
+     * Get the Feed cache
+     *
+     * @return Zend_Cache_Core
+     */
+    public static function getCache()
+    {
+        return self::$_cache;
+    }
+
+    /**
+     * Set the feed cache
+     *
+     * @param Zend_Cache_Core $cache
+     * @return void
+     */
+    public static function setCache(Zend_Cache_Core $cache)
+    {
+        self::$_cache = $cache;
+    }
+
+    /**
+     * Set the HTTP client instance
+     *
+     * Sets the HTTP client object to use for retrieving the feeds.
+     *
+     * @param  Zend_Http_Client $httpClient
+     * @return void
+     */
+    public static function setHttpClient(Zend_Http_Client $httpClient)
+    {
+        self::$_httpClient = $httpClient;
+    }
+
+
+    /**
+     * Gets the HTTP client object. If none is set, a new Zend_Http_Client will be used.
+     *
+     * @return Zend_Http_Client_Abstract
+     */
+    public static function getHttpClient()
+    {
+        if (!self::$_httpClient instanceof Zend_Http_Client) {
+            /**
+             * @see Zend_Http_Client
+             */
+            require_once 'Zend/Http/Client.php';
+            self::$_httpClient = new Zend_Http_Client();
+        }
+
+        return self::$_httpClient;
+    }
+
+    /**
+     * Toggle using POST instead of PUT and DELETE HTTP methods
+     *
+     * Some feed implementations do not accept PUT and DELETE HTTP
+     * methods, or they can't be used because of proxies or other
+     * measures. This allows turning on using POST where PUT and
+     * DELETE would normally be used; in addition, an
+     * X-Method-Override header will be sent with a value of PUT or
+     * DELETE as appropriate.
+     *
+     * @param  boolean $override Whether to override PUT and DELETE.
+     * @return void
+     */
+    public static function setHttpMethodOverride($override = true)
+    {
+        self::$_httpMethodOverride = $override;
+    }
+
+    /**
+     * Get the HTTP override state
+     *
+     * @return boolean
+     */
+    public static function getHttpMethodOverride()
+    {
+        return self::$_httpMethodOverride;
+    }
+
+    /**
+     * Set the flag indicating whether or not to use HTTP conditional GET
+     *
+     * @param  bool $bool
+     * @return void
+     */
+    public static function useHttpConditionalGet($bool = true)
+    {
+        self::$_httpConditionalGet = $bool;
+    }
+
+    /**
+     * Import a feed by providing a URL
+     *
+     * @param  string $url The URL to the feed
+     * @param  string $etag OPTIONAL Last received ETag for this resource
+     * @param  string $lastModified OPTIONAL Last-Modified value for this resource
+     * @return Zend_Feed_Reader_FeedInterface
+     */
+    public static function import($uri, $etag = null, $lastModified = null)
+    {
+        $cache       = self::getCache();
+        $feed        = null;
+        $responseXml = '';
+        $client      = self::getHttpClient();
+        $client->resetParameters();
+        $client->setHeaders('If-None-Match', null);
+        $client->setHeaders('If-Modified-Since', null);
+        $client->setUri($uri);
+        $cacheId = 'Zend_Feed_Reader_' . md5($uri);
+
+        if (self::$_httpConditionalGet && $cache) {
+            $data = $cache->load($cacheId);
+            if ($data) {
+                if ($etag === null) {
+                    $etag = $cache->load($cacheId.'_etag');
+                }
+                if ($lastModified === null) {
+                    $lastModified = $cache->load($cacheId.'_lastmodified');;
+                }
+                if ($etag) {
+                    $client->setHeaders('If-None-Match', $etag);
+                }
+                if ($lastModified) {
+                    $client->setHeaders('If-Modified-Since', $lastModified);
+                }
+            }
+            $response = $client->request('GET');
+            if ($response->getStatus() !== 200 && $response->getStatus() !== 304) {
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Feed failed to load, got response code ' . $response->getStatus());
+            }
+            if ($response->getStatus() == 304) {
+                $responseXml = $data;
+            } else {
+                $responseXml = $response->getBody();
+                $cache->save($responseXml, $cacheId);
+                if ($response->getHeader('ETag')) {
+                    $cache->save($response->getHeader('ETag'), $cacheId.'_etag');
+                }
+                if ($response->getHeader('Last-Modified')) {
+                    $cache->save($response->getHeader('Last-Modified'), $cacheId.'_lastmodified');
+                }
+            }
+            return self::importString($responseXml);
+        } elseif ($cache) {
+            $data = $cache->load($cacheId);
+            if ($data !== false) {
+                return self::importString($data);
+            }
+            $response = $client->request('GET');
+            if ($response->getStatus() !== 200) {
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Feed failed to load, got response code ' . $response->getStatus());
+            }
+            $responseXml = $response->getBody();
+            $cache->save($responseXml, $cacheId);
+            return self::importString($responseXml);
+        } else {
+            $response = $client->request('GET');
+            if ($response->getStatus() !== 200) {
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception('Feed failed to load, got response code ' . $response->getStatus());
+            }
+            $reader = self::importString($response->getBody());
+            $reader->setOriginalSourceUri($uri);
+            return $reader;
+        }
+    }
+
+    /**
+     * Import a feed by providing a Zend_Feed_Abstract object
+     *
+     * @param  Zend_Feed_Abstract $feed A fully instantiated Zend_Feed object
+     * @return Zend_Feed_Reader_FeedInterface
+     */
+    public static function importFeed(Zend_Feed_Abstract $feed)
+    {
+        $dom  = $feed->getDOM()->ownerDocument;
+        $type = self::detectType($dom);
+        self::_registerCoreExtensions();
+        if (substr($type, 0, 3) == 'rss') {
+            $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
+        } else {
+            $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
+        }
+
+        return $reader;
+    }
+
+    /**
+     * Import a feed froma string
+     *
+     * @param  string $string
+     * @return Zend_Feed_Reader_FeedInterface
+     */
+    public static function importString($string)
+    {
+        $libxml_errflag = libxml_use_internal_errors(true);
+        $dom = new DOMDocument;
+        $status = $dom->loadXML($string);
+        libxml_use_internal_errors($libxml_errflag);
+
+        if (!$status) {
+            // Build error message
+            $error = libxml_get_last_error();
+            if ($error && $error->message) {
+                $errormsg = "DOMDocument cannot parse XML: {$error->message}";
+            } else {
+                $errormsg = "DOMDocument cannot parse XML: Please check the XML document's validity";
+            }
+
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception($errormsg);
+        }
+
+        $type = self::detectType($dom);
+
+        self::_registerCoreExtensions();
+
+        if (substr($type, 0, 3) == 'rss') {
+            $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
+        } elseif (substr($type, 8, 5) == 'entry') {
+            $reader = new Zend_Feed_Reader_Entry_Atom($dom->documentElement, 0, Zend_Feed_Reader::TYPE_ATOM_10);
+        } elseif (substr($type, 0, 4) == 'atom') {
+            $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
+        } else {
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('The URI used does not point to a '
+            . 'valid Atom, RSS or RDF feed that Zend_Feed_Reader can parse.');
+        }
+        return $reader;
+    }
+
+    /**
+     * Imports a feed from a file located at $filename.
+     *
+     * @param  string $filename
+     * @throws Zend_Feed_Exception
+     * @return Zend_Feed_Reader_FeedInterface
+     */
+    public static function importFile($filename)
+    {
+        @ini_set('track_errors', 1);
+        $feed = @file_get_contents($filename);
+        @ini_restore('track_errors');
+        if ($feed === false) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception("File could not be loaded: $php_errormsg");
+        }
+        return self::importString($feed);
+    }
+
+    public static function findFeedLinks($uri)
+    {
+        // Get the HTTP response from $uri and save the contents
+        $client = self::getHttpClient();
+        $client->setUri($uri);
+        $response = $client->request();
+        if ($response->getStatus() !== 200) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception("Failed to access $uri, got response code " . $response->getStatus());
+        }
+        $responseHtml = $response->getBody();
+        $libxml_errflag = libxml_use_internal_errors(true);
+        $dom = new DOMDocument;
+        $status = $dom->loadHTML($responseHtml);
+        libxml_use_internal_errors($libxml_errflag);
+        if (!$status) {
+            // Build error message
+            $error = libxml_get_last_error();
+            if ($error && $error->message) {
+                $errormsg = "DOMDocument cannot parse HTML: {$error->message}";
+            } else {
+                $errormsg = "DOMDocument cannot parse HTML: Please check the XML document's validity";
+            }
+
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception($errormsg);
+        }
+        $feedSet = new Zend_Feed_Reader_FeedSet;
+        $links = $dom->getElementsByTagName('link');
+        $feedSet->addLinks($links, $uri);
+        return $feedSet;
+    }
+
+    /**
+     * Detect the feed type of the provided feed
+     *
+     * @param  Zend_Feed_Abstract|DOMDocument|string $feed
+     * @return string
+     */
+    public static function detectType($feed, $specOnly = false)
+    {
+        if ($feed instanceof Zend_Feed_Reader_FeedInterface) {
+            $dom = $feed->getDomDocument();
+        } elseif($feed instanceof DOMDocument) {
+            $dom = $feed;
+        } elseif(is_string($feed) && !empty($feed)) {
+            @ini_set('track_errors', 1);
+            $dom = new DOMDocument;
+            $status = @$dom->loadXML($feed);
+            @ini_restore('track_errors');
+            if (!$status) {
+                if (!isset($php_errormsg)) {
+                    if (function_exists('xdebug_is_enabled')) {
+                        $php_errormsg = '(error message not available, when XDebug is running)';
+                    } else {
+                        $php_errormsg = '(error message not available)';
+                    }
+                }
+                require_once 'Zend/Feed/Exception.php';
+                throw new Zend_Feed_Exception("DOMDocument cannot parse XML: $php_errormsg");
+            }
+        } else {
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('Invalid object/scalar provided: must'
+            . ' be of type Zend_Feed_Reader_FeedInterface, DomDocument or string');
+        }
+        $xpath = new DOMXPath($dom);
+
+        if ($xpath->query('/rss')->length) {
+            $type = self::TYPE_RSS_ANY;
+            $version = $xpath->evaluate('string(/rss/@version)');
+
+            if (strlen($version) > 0) {
+                switch($version) {
+                    case '2.0':
+                        $type = self::TYPE_RSS_20;
+                        break;
+
+                    case '0.94':
+                        $type = self::TYPE_RSS_094;
+                        break;
+
+                    case '0.93':
+                        $type = self::TYPE_RSS_093;
+                        break;
+
+                    case '0.92':
+                        $type = self::TYPE_RSS_092;
+                        break;
+
+                    case '0.91':
+                        $type = self::TYPE_RSS_091;
+                        break;
+                }
+            }
+
+            return $type;
+        }
+
+        $xpath->registerNamespace('rdf', self::NAMESPACE_RDF);
+
+        if ($xpath->query('/rdf:RDF')->length) {
+            $xpath->registerNamespace('rss', self::NAMESPACE_RSS_10);
+
+            if ($xpath->query('/rdf:RDF/rss:channel')->length
+                || $xpath->query('/rdf:RDF/rss:image')->length
+                || $xpath->query('/rdf:RDF/rss:item')->length
+                || $xpath->query('/rdf:RDF/rss:textinput')->length
+            ) {
+                return self::TYPE_RSS_10;
+            }
+
+            $xpath->registerNamespace('rss', self::NAMESPACE_RSS_090);
+
+            if ($xpath->query('/rdf:RDF/rss:channel')->length
+                || $xpath->query('/rdf:RDF/rss:image')->length
+                || $xpath->query('/rdf:RDF/rss:item')->length
+                || $xpath->query('/rdf:RDF/rss:textinput')->length
+            ) {
+                return self::TYPE_RSS_090;
+            }
+        }
+
+        $type = self::TYPE_ATOM_ANY;
+        $xpath->registerNamespace('atom', self::NAMESPACE_ATOM_10);
+
+        if ($xpath->query('//atom:feed')->length) {
+            return self::TYPE_ATOM_10;
+        }
+
+        if ($xpath->query('//atom:entry')->length) {
+            if ($specOnly == true) {
+                return self::TYPE_ATOM_10;
+            } else {
+                return self::TYPE_ATOM_10_ENTRY;
+            }
+        }
+
+        $xpath->registerNamespace('atom', self::NAMESPACE_ATOM_03);
+
+        if ($xpath->query('//atom:feed')->length) {
+            return self::TYPE_ATOM_03;
+        }
+
+        return self::TYPE_ANY;
+    }
+
+    /**
+     * Set plugin loader for use with Extensions
+     *
+     * @param  Zend_Loader_PluginLoader_Interface $loader
+     */
+    public static function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader)
+    {
+        self::$_pluginLoader = $loader;
+    }
+
+    /**
+     * Get plugin loader for use with Extensions
+     *
+     * @return  Zend_Loader_PluginLoader_Interface $loader
+     */
+    public static function getPluginLoader()
+    {
+        if (!isset(self::$_pluginLoader)) {
+            require_once 'Zend/Loader/PluginLoader.php';
+            self::$_pluginLoader = new Zend_Loader_PluginLoader(array(
+                'Zend_Feed_Reader_Extension_' => 'Zend/Feed/Reader/Extension/',
+            ));
+        }
+        return self::$_pluginLoader;
+    }
+
+    /**
+     * Add prefix path for loading Extensions
+     *
+     * @param  string $prefix
+     * @param  string $path
+     * @return void
+     */
+    public static function addPrefixPath($prefix, $path)
+    {
+        $prefix = rtrim($prefix, '_');
+        $path   = rtrim($path, DIRECTORY_SEPARATOR);
+        self::getPluginLoader()->addPrefixPath($prefix, $path);
+    }
+
+    /**
+     * Add multiple Extension prefix paths at once
+     *
+     * @param  array $spec
+     * @return void
+     */
+    public static function addPrefixPaths(array $spec)
+    {
+        if (isset($spec['prefix']) && isset($spec['path'])) {
+            self::addPrefixPath($spec['prefix'], $spec['path']);
+        }
+        foreach ($spec as $prefixPath) {
+            if (isset($prefixPath['prefix']) && isset($prefixPath['path'])) {
+                self::addPrefixPath($prefixPath['prefix'], $prefixPath['path']);
+            }
+        }
+    }
+
+    /**
+     * Register an Extension by name
+     *
+     * @param  string $name
+     * @return void
+     * @throws Zend_Feed_Exception if unable to resolve Extension class
+     */
+    public static function registerExtension($name)
+    {
+        $feedName  = $name . '_Feed';
+        $entryName = $name . '_Entry';
+        if (self::isRegistered($name)) {
+            if (self::getPluginLoader()->isLoaded($feedName) ||
+                self::getPluginLoader()->isLoaded($entryName)) {
+                return;
+            }
+        }
+        try {
+            self::getPluginLoader()->load($feedName);
+            self::$_extensions['feed'][] = $feedName;
+        } catch (Zend_Loader_PluginLoader_Exception $e) {
+        }
+        try {
+            self::getPluginLoader()->load($entryName);
+            self::$_extensions['entry'][] = $entryName;
+        } catch (Zend_Loader_PluginLoader_Exception $e) {
+        }
+        if (!self::getPluginLoader()->isLoaded($feedName)
+            && !self::getPluginLoader()->isLoaded($entryName)
+        ) {
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('Could not load extension: ' . $name
+                . 'using Plugin Loader. Check prefix paths are configured and extension exists.');
+        }
+    }
+
+    /**
+     * Is a given named Extension registered?
+     *
+     * @param  string $extensionName
+     * @return boolean
+     */
+    public static function isRegistered($extensionName)
+    {
+        $feedName  = $extensionName . '_Feed';
+        $entryName = $extensionName . '_Entry';
+        if (in_array($feedName, self::$_extensions['feed'])
+            || in_array($entryName, self::$_extensions['entry'])
+        ) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Get a list of extensions
+     *
+     * @return array
+     */
+    public static function getExtensions()
+    {
+        return self::$_extensions;
+    }
+
+    /**
+     * Reset class state to defaults
+     *
+     * @return void
+     */
+    public static function reset()
+    {
+        self::$_cache              = null;
+        self::$_httpClient         = null;
+        self::$_httpMethodOverride = false;
+        self::$_httpConditionalGet = false;
+        self::$_pluginLoader       = null;
+        self::$_prefixPaths        = array();
+        self::$_extensions         = array(
+            'feed' => array(
+                'DublinCore_Feed',
+                'Atom_Feed'
+            ),
+            'entry' => array(
+                'Content_Entry',
+                'DublinCore_Entry',
+                'Atom_Entry'
+            ),
+            'core' => array(
+                'DublinCore_Feed',
+                'Atom_Feed',
+                'Content_Entry',
+                'DublinCore_Entry',
+                'Atom_Entry'
+            )
+        );
+    }
+
+    /**
+     * Register core (default) extensions
+     *
+     * @return void
+     */
+    protected static function _registerCoreExtensions()
+    {
+        self::registerExtension('DublinCore');
+        self::registerExtension('Content');
+        self::registerExtension('Atom');
+        self::registerExtension('Slash');
+        self::registerExtension('WellFormedWeb');
+        self::registerExtension('Thread');
+        self::registerExtension('Podcast');
+    }
+
+    /**
+     * Utility method to apply array_unique operation to a multidimensional
+     * array.
+     *
+     * @param array
+     * @return array
+     */
+    public static function arrayUnique(array $array)
+    {
+        foreach ($array as &$value) {
+            $value = serialize($value);
+        }
+        $array = array_unique($array);
+        foreach ($array as &$value) {
+            $value = unserialize($value);
+        }
+        return $array;
+    }
+
+}

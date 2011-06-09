@@ -1,484 +1,484 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Config
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Configphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Config
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Config.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Config
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Configphp implementsphp Countablephp,php Iterator
-php{
-php php php php php/php*php*
-php php php php php php*php Whetherphp inphp-memoryphp modificationsphp tophp configurationphp dataphp arephp allowed
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_allowModificationsphp;
+/**
+ * @category   Zend
+ * @package    Zend_Config
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Config implements Countable, Iterator
+{
+    /**
+     * Whether in-memory modifications to configuration data are allowed
+     *
+     * @var boolean
+     */
+    protected $_allowModifications;
 
-php php php php php/php*php*
-php php php php php php*php Iterationphp index
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_indexphp;
+    /**
+     * Iteration index
+     *
+     * @var integer
+     */
+    protected $_index;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp elementsphp inphp configurationphp data
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_countphp;
+    /**
+     * Number of elements in configuration data
+     *
+     * @var integer
+     */
+    protected $_count;
 
-php php php php php/php*php*
-php php php php php php*php Containsphp arrayphp ofphp configurationphp data
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_dataphp;
+    /**
+     * Contains array of configuration data
+     *
+     * @var array
+     */
+    protected $_data;
 
-php php php php php/php*php*
-php php php php php php*php Usedphp whenphp unsettingphp valuesphp duringphp iterationphp tophp ensurephp wephp dophp notphp skip
-php php php php php php*php thephp nextphp element
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_skipNextIterationphp;
+    /**
+     * Used when unsetting values during iteration to ensure we do not skip
+     * the next element
+     *
+     * @var boolean
+     */
+    protected $_skipNextIteration;
 
-php php php php php/php*php*
-php php php php php php*php Containsphp whichphp configphp filephp sectionsphp werephp loadedphp.php Thisphp isphp null
-php php php php php php*php ifphp allphp sectionsphp werephp loadedphp,php aphp stringphp namephp ifphp onephp sectionphp isphp loaded
-php php php php php php*php andphp anphp arrayphp ofphp stringphp namesphp ifphp multiplephp sectionsphp werephp loadedphp.
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_loadedSectionphp;
+    /**
+     * Contains which config file sections were loaded. This is null
+     * if all sections were loaded, a string name if one section is loaded
+     * and an array of string names if multiple sections were loaded.
+     *
+     * @var mixed
+     */
+    protected $_loadedSection;
 
-php php php php php/php*php*
-php php php php php php*php Thisphp isphp usedphp tophp trackphp sectionphp inheritancephp.php Thephp keysphp arephp namesphp ofphp sectionsphp that
-php php php php php php*php extendphp otherphp sectionsphp,php andphp thephp valuesphp arephp thephp extendedphp sectionsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_extendsphp php=php arrayphp(php)php;
+    /**
+     * This is used to track section inheritance. The keys are names of sections that
+     * extend other sections, and the values are the extended sections.
+     *
+     * @var array
+     */
+    protected $_extends = array();
 
-php php php php php/php*php*
-php php php php php php*php Loadphp filephp errorphp stringphp.
-php php php php php php*
-php php php php php php*php Isphp nullphp ifphp therephp wasphp nophp errorphp whilephp filephp loading
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_loadFileErrorStrphp php=php nullphp;
+    /**
+     * Load file error string.
+     *
+     * Is null if there was no error while file loading
+     *
+     * @var string
+     */
+    protected $_loadFileErrorStr = null;
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Configphp providesphp aphp propertyphp basedphp interfacephp to
-php php php php php php*php anphp arrayphp.php Thephp dataphp arephp readphp-onlyphp unlessphp php$allowModifications
-php php php php php php*php isphp setphp tophp truephp onphp constructionphp.
-php php php php php php*
-php php php php php php*php Zendphp_Configphp alsophp implementsphp Countablephp andphp Iteratorphp to
-php php php php php php*php facilitatephp easyphp accessphp tophp thephp dataphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php php$array
-php php php php php php*php php@paramphp php booleanphp php$allowModifications
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$arrayphp,php php$allowModificationsphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_allowModificationsphp php=php php(booleanphp)php php$allowModificationsphp;
-php php php php php php php php php$thisphp-php>php_loadedSectionphp php=php nullphp;
-php php php php php php php php php$thisphp-php>php_indexphp php=php php0php;
-php php php php php php php php php$thisphp-php>php_dataphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$arrayphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$keyphp]php php=php newphp selfphp(php$valuephp,php php$thisphp-php>php_allowModificationsphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_countphp php=php countphp(php$thisphp-php>php_dataphp)php;
-php php php php php}
+    /**
+     * Zend_Config provides a property based interface to
+     * an array. The data are read-only unless $allowModifications
+     * is set to true on construction.
+     *
+     * Zend_Config also implements Countable and Iterator to
+     * facilitate easy access to the data.
+     *
+     * @param  array   $array
+     * @param  boolean $allowModifications
+     * @return void
+     */
+    public function __construct(array $array, $allowModifications = false)
+    {
+        $this->_allowModifications = (boolean) $allowModifications;
+        $this->_loadedSection = null;
+        $this->_index = 0;
+        $this->_data = array();
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $this->_data[$key] = new self($value, $this->_allowModifications);
+            } else {
+                $this->_data[$key] = $value;
+            }
+        }
+        $this->_count = count($this->_data);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp valuephp andphp returnphp php$defaultphp ifphp therephp isphp nophp elementphp setphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@paramphp mixedphp php$default
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getphp(php$namephp,php php$defaultphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php php$defaultphp;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_dataphp[php$namephp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
+    /**
+     * Retrieve a value and return $default if there is no element set.
+     *
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get($name, $default = null)
+    {
+        $result = $default;
+        if (array_key_exists($name, $this->_data)) {
+            $result = $this->_data[$name];
+        }
+        return $result;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Magicphp functionphp sophp thatphp php$objphp-php>valuephp willphp workphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getphp(php$namephp)php;
-php php php php php}
+    /**
+     * Magic function so that $obj->value will work.
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Onlyphp allowphp settingphp ofphp aphp propertyphp ifphp php$allowModifications
-php php php php php php*php wasphp setphp tophp truephp onphp constructionphp.php Otherwisephp,php throwphp anphp exceptionphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php mixedphp php php$value
-php php php php php php*php php@throwsphp Zendphp_Configphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_allowModificationsphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$namephp]php php=php newphp selfphp(php$valuephp,php truephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_countphp php=php countphp(php$thisphp-php>php_dataphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Configphp_Exceptionphp php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Zendphp_Configphp isphp readphp onlyphp'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Only allow setting of a property if $allowModifications
+     * was set to true on construction. Otherwise, throw an exception.
+     *
+     * @param  string $name
+     * @param  mixed  $value
+     * @throws Zend_Config_Exception
+     * @return void
+     */
+    public function __set($name, $value)
+    {
+        if ($this->_allowModifications) {
+            if (is_array($value)) {
+                $this->_data[$name] = new self($value, true);
+            } else {
+                $this->_data[$name] = $value;
+            }
+            $this->_count = count($this->_data);
+        } else {
+            /** @see Zend_Config_Exception */
+            require_once 'Zend/Config/Exception.php';
+            throw new Zend_Config_Exception('Zend_Config is read only');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deepphp clonephp ofphp thisphp instancephp tophp ensurephp thatphp nestedphp Zendphp_Configs
-php php php php php php*php arephp alsophp clonedphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_clonephp(php)
-php php php php php{
-php php php php php php php$arrayphp php=php arrayphp(php)php;
-php php php php php php foreachphp php(php$thisphp-php>php_dataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php$arrayphp[php$keyphp]php php=php clonephp php$valuephp;
-php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php$arrayphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php}
-php php php php php php php}
-php php php php php php php$thisphp-php>php_dataphp php=php php$arrayphp;
-php php php php php}
+    /**
+     * Deep clone of this instance to ensure that nested Zend_Configs
+     * are also cloned.
+     *
+     * @return void
+     */
+    public function __clone()
+    {
+      $array = array();
+      foreach ($this->_data as $key => $value) {
+          if ($value instanceof Zend_Config) {
+              $array[$key] = clone $value;
+          } else {
+              $array[$key] = $value;
+          }
+      }
+      $this->_data = $array;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp associativephp arrayphp ofphp thephp storedphp dataphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php$arrayphp php=php arrayphp(php)php;
-php php php php php php php php php$dataphp php=php php$thisphp-php>php_dataphp;
-php php php php php php php php foreachphp php(php$dataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php$arrayphp[php$keyphp]php php=php php$valuephp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$arrayphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$arrayphp;
-php php php php php}
+    /**
+     * Return an associative array of the stored data.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $array = array();
+        $data = $this->_data;
+        foreach ($data as $key => $value) {
+            if ($value instanceof Zend_Config) {
+                $array[$key] = $value->toArray();
+            } else {
+                $array[$key] = $value;
+            }
+        }
+        return $array;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Supportphp issetphp(php)php overloadingphp onphp PHPphp php5php.php1
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_dataphp[php$namephp]php)php;
-php php php php php}
+    /**
+     * Support isset() overloading on PHP 5.1
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function __isset($name)
+    {
+        return isset($this->_data[$name]);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Supportphp unsetphp(php)php overloadingphp onphp PHPphp php5php.php1
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@throwsphp Zendphp_Configphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_unsetphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_allowModificationsphp)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_dataphp[php$namephp]php)php;
-php php php php php php php php php php php php php$thisphp-php>php_countphp php=php countphp(php$thisphp-php>php_dataphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_skipNextIterationphp php=php truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Configphp_Exceptionphp php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Zendphp_Configphp isphp readphp onlyphp'php)php;
-php php php php php php php php php}
+    /**
+     * Support unset() overloading on PHP 5.1
+     *
+     * @param  string $name
+     * @throws Zend_Config_Exception
+     * @return void
+     */
+    public function __unset($name)
+    {
+        if ($this->_allowModifications) {
+            unset($this->_data[$name]);
+            $this->_count = count($this->_data);
+            $this->_skipNextIteration = true;
+        } else {
+            /** @see Zend_Config_Exception */
+            require_once 'Zend/Config/Exception.php';
+            throw new Zend_Config_Exception('Zend_Config is read only');
+        }
 
-php php php php php}
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Countablephp interface
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_countphp;
-php php php php php}
+    /**
+     * Defined by Countable interface
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->_count;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Iteratorphp interface
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_skipNextIterationphp php=php falsephp;
-php php php php php php php php returnphp currentphp(php$thisphp-php>php_dataphp)php;
-php php php php php}
+    /**
+     * Defined by Iterator interface
+     *
+     * @return mixed
+     */
+    public function current()
+    {
+        $this->_skipNextIteration = false;
+        return current($this->_data);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Iteratorphp interface
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp keyphp(php$thisphp-php>php_dataphp)php;
-php php php php php}
+    /**
+     * Defined by Iterator interface
+     *
+     * @return mixed
+     */
+    public function key()
+    {
+        return key($this->_data);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Iteratorphp interface
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_skipNextIterationphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_skipNextIterationphp php=php falsephp;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php nextphp(php$thisphp-php>php_dataphp)php;
-php php php php php php php php php$thisphp-php>php_indexphp+php+php;
-php php php php php}
+    /**
+     * Defined by Iterator interface
+     *
+     */
+    public function next()
+    {
+        if ($this->_skipNextIteration) {
+            $this->_skipNextIteration = false;
+            return;
+        }
+        next($this->_data);
+        $this->_index++;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Iteratorphp interface
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_skipNextIterationphp php=php falsephp;
-php php php php php php php php resetphp(php$thisphp-php>php_dataphp)php;
-php php php php php php php php php$thisphp-php>php_indexphp php=php php0php;
-php php php php php}
+    /**
+     * Defined by Iterator interface
+     *
+     */
+    public function rewind()
+    {
+        $this->_skipNextIteration = false;
+        reset($this->_data);
+        $this->_index = 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Iteratorphp interface
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_indexphp <php php$thisphp-php>php_countphp;
-php php php php php}
+    /**
+     * Defined by Iterator interface
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        return $this->_index < $this->_count;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp sectionphp namephp(sphp)php loadedphp.
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getSectionNamephp(php)
-php php php php php{
-php php php php php php php php ifphp(isphp_arrayphp(php$thisphp-php>php_loadedSectionphp)php php&php&php countphp(php$thisphp-php>php_loadedSectionphp)php php=php=php php1php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadedSectionphp php=php php$thisphp-php>php_loadedSectionphp[php0php]php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_loadedSectionphp;
-php php php php php}
+    /**
+     * Returns the section name(s) loaded.
+     *
+     * @return mixed
+     */
+    public function getSectionName()
+    {
+        if(is_array($this->_loadedSection) && count($this->_loadedSection) == 1) {
+            $this->_loadedSection = $this->_loadedSection[0];
+        }
+        return $this->_loadedSection;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp allphp sectionsphp werephp loaded
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp areAllSectionsLoadedphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_loadedSectionphp php=php=php=php nullphp;
-php php php php php}
+    /**
+     * Returns true if all sections were loaded
+     *
+     * @return boolean
+     */
+    public function areAllSectionsLoaded()
+    {
+        return $this->_loadedSection === null;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Mergephp anotherphp Zendphp_Configphp withphp thisphp onephp.php Thephp items
-php php php php php php*php inphp php$mergephp willphp overridephp thephp samephp namedphp itemsphp in
-php php php php php php*php thephp currentphp configphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Configphp php$merge
-php php php php php php*php php@returnphp Zendphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp mergephp(Zendphp_Configphp php$mergephp)
-php php php php php{
-php php php php php php php php foreachphp(php$mergephp asphp php$keyphp php=php>php php$itemphp)php php{
-php php php php php php php php php php php php ifphp(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp(php$itemphp instanceofphp Zendphp_Configphp php&php&php php$thisphp-php>php$keyphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php$thisphp-php>php$keyphp-php>mergephp(newphp Zendphp_Configphp(php$itemphp-php>toArrayphp(php)php,php php!php$thisphp-php>readOnlyphp(php)php)php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php$itemphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php ifphp(php$itemphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php newphp Zendphp_Configphp(php$itemphp-php>toArrayphp(php)php,php php!php$thisphp-php>readOnlyphp(php)php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php$keyphp php=php php$itemphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Merge another Zend_Config with this one. The items
+     * in $merge will override the same named items in
+     * the current config.
+     *
+     * @param Zend_Config $merge
+     * @return Zend_Config
+     */
+    public function merge(Zend_Config $merge)
+    {
+        foreach($merge as $key => $item) {
+            if(array_key_exists($key, $this->_data)) {
+                if($item instanceof Zend_Config && $this->$key instanceof Zend_Config) {
+                    $this->$key = $this->$key->merge(new Zend_Config($item->toArray(), !$this->readOnly()));
+                } else {
+                    $this->$key = $item;
+                }
+            } else {
+                if($item instanceof Zend_Config) {
+                    $this->$key = new Zend_Config($item->toArray(), !$this->readOnly());
+                } else {
+                    $this->$key = $item;
+                }
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Preventphp anyphp morephp modificationsphp beingphp madephp tophp thisphp instancephp.php Useful
-php php php php php php*php afterphp mergephp(php)php hasphp beenphp usedphp tophp mergephp multiplephp Zendphp_Configphp objects
-php php php php php php*php intophp onephp objectphp whichphp shouldphp thenphp notphp bephp modifiedphp againphp.
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp setReadOnlyphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_allowModificationsphp php=php falsephp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_dataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php$valuephp-php>setReadOnlyphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Prevent any more modifications being made to this instance. Useful
+     * after merge() has been used to merge multiple Zend_Config objects
+     * into one object which should then not be modified again.
+     *
+     */
+    public function setReadOnly()
+    {
+        $this->_allowModifications = false;
+        foreach ($this->_data as $key => $value) {
+            if ($value instanceof Zend_Config) {
+                $value->setReadOnly();
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp ifphp thisphp Zendphp_Configphp objectphp isphp readphp onlyphp orphp notphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp readOnlyphp(php)
-php php php php php{
-php php php php php php php php returnphp php!php$thisphp-php>php_allowModificationsphp;
-php php php php php}
+    /**
+     * Returns if this Zend_Config object is read only or not.
+     *
+     * @return boolean
+     */
+    public function readOnly()
+    {
+        return !$this->_allowModifications;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp currentphp extends
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getExtendsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_extendsphp;
-php php php php php}
+    /**
+     * Get the current extends
+     *
+     * @return array
+     */
+    public function getExtends()
+    {
+        return $this->_extends;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp extendphp forphp Zendphp_Configphp_Writer
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$extendingSection
-php php php php php php*php php@paramphp php stringphp php$extendedSection
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setExtendphp(php$extendingSectionphp,php php$extendedSectionphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$extendedSectionphp php=php=php=php nullphp php&php&php issetphp(php$thisphp-php>php_extendsphp[php$extendingSectionphp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_extendsphp[php$extendingSectionphp]php)php;
-php php php php php php php php php}php elsephp ifphp php(php$extendedSectionphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_extendsphp[php$extendingSectionphp]php php=php php$extendedSectionphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Set an extend for Zend_Config_Writer
+     *
+     * @param  string $extendingSection
+     * @param  string $extendedSection
+     * @return void
+     */
+    public function setExtend($extendingSection, $extendedSection = null)
+    {
+        if ($extendedSection === null && isset($this->_extends[$extendingSection])) {
+            unset($this->_extends[$extendingSection]);
+        } else if ($extendedSection !== null) {
+            $this->_extends[$extendingSection] = $extendedSection;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Throwsphp anphp exceptionphp ifphp php$extendingSectionphp mayphp notphp extendphp php$extendedSectionphp,
-php php php php php php*php andphp tracksphp thephp sectionphp extensionphp ifphp itphp isphp validphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$extendingSection
-php php php php php php*php php@paramphp php stringphp php$extendedSection
-php php php php php php*php php@throwsphp Zendphp_Configphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_assertValidExtendphp(php$extendingSectionphp,php php$extendedSectionphp)
-php php php php php{
-php php php php php php php php php/php/php detectphp circularphp sectionphp inheritance
-php php php php php php php php php$extendedSectionCurrentphp php=php php$extendedSectionphp;
-php php php php php php php php whilephp php(arrayphp_keyphp_existsphp(php$extendedSectionCurrentphp,php php$thisphp-php>php_extendsphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_extendsphp[php$extendedSectionCurrentphp]php php=php=php php$extendingSectionphp)php php{
-php php php php php php php php php php php php php php php php php/php*php*php php@seephp Zendphp_Configphp_Exceptionphp php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Configphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Configphp_Exceptionphp(php'Illegalphp circularphp inheritancephp detectedphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$extendedSectionCurrentphp php=php php$thisphp-php>php_extendsphp[php$extendedSectionCurrentphp]php;
-php php php php php php php php php}
-php php php php php php php php php/php/php rememberphp thatphp thisphp sectionphp extendsphp anotherphp section
-php php php php php php php php php$thisphp-php>php_extendsphp[php$extendingSectionphp]php php=php php$extendedSectionphp;
-php php php php php}
+    /**
+     * Throws an exception if $extendingSection may not extend $extendedSection,
+     * and tracks the section extension if it is valid.
+     *
+     * @param  string $extendingSection
+     * @param  string $extendedSection
+     * @throws Zend_Config_Exception
+     * @return void
+     */
+    protected function _assertValidExtend($extendingSection, $extendedSection)
+    {
+        // detect circular section inheritance
+        $extendedSectionCurrent = $extendedSection;
+        while (array_key_exists($extendedSectionCurrent, $this->_extends)) {
+            if ($this->_extends[$extendedSectionCurrent] == $extendingSection) {
+                /** @see Zend_Config_Exception */
+                require_once 'Zend/Config/Exception.php';
+                throw new Zend_Config_Exception('Illegal circular inheritance detected');
+            }
+            $extendedSectionCurrent = $this->_extends[$extendedSectionCurrent];
+        }
+        // remember that this section extends another section
+        $this->_extends[$extendingSection] = $extendedSection;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Handlephp anyphp errorsphp fromphp simplexmlphp_loadphp_filephp orphp parsephp_iniphp_file
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$errno
-php php php php php php*php php@paramphp stringphp php$errstr
-php php php php php php*php php@paramphp stringphp php$errfile
-php php php php php php*php php@paramphp integerphp php$errline
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadFileErrorHandlerphp(php$errnophp,php php$errstrphp,php php$errfilephp,php php$errlinephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_loadFileErrorStrphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadFileErrorStrphp php=php php$errstrphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_loadFileErrorStrphp php.php=php php(PHPphp_EOLphp php.php php$errstrphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Handle any errors from simplexml_load_file or parse_ini_file
+     *
+     * @param integer $errno
+     * @param string $errstr
+     * @param string $errfile
+     * @param integer $errline
+     */
+    protected function _loadFileErrorHandler($errno, $errstr, $errfile, $errline)
+    {
+        if ($this->_loadFileErrorStr === null) {
+            $this->_loadFileErrorStr = $errstr;
+        } else {
+            $this->_loadFileErrorStr .= (PHP_EOL . $errstr);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mergephp twophp arraysphp recursivelyphp,php overwritingphp keysphp ofphp thephp samephp name
-php php php php php php*php inphp php$firstArrayphp withphp thephp valuephp inphp php$secondArrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$firstArrayphp php Firstphp array
-php php php php php php*php php@paramphp php mixedphp php$secondArrayphp Secondphp arrayphp tophp mergephp intophp firstphp array
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_arrayMergeRecursivephp(php$firstArrayphp,php php$secondArrayphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$firstArrayphp)php php&php&php isphp_arrayphp(php$secondArrayphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$secondArrayphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$firstArrayphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$firstArrayphp[php$keyphp]php php=php php$thisphp-php>php_arrayMergeRecursivephp(php$firstArrayphp[php$keyphp]php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php ifphp(php$keyphp php=php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$firstArrayphp=php arrayphp(php0php=php>php$thisphp-php>php_arrayMergeRecursivephp(php$firstArrayphp,php php$valuephp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$firstArrayphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$firstArrayphp php=php php$secondArrayphp;
-php php php php php php php php php}
+    /**
+     * Merge two arrays recursively, overwriting keys of the same name
+     * in $firstArray with the value in $secondArray.
+     *
+     * @param  mixed $firstArray  First array
+     * @param  mixed $secondArray Second array to merge into first array
+     * @return array
+     */
+    protected function _arrayMergeRecursive($firstArray, $secondArray)
+    {
+        if (is_array($firstArray) && is_array($secondArray)) {
+            foreach ($secondArray as $key => $value) {
+                if (isset($firstArray[$key])) {
+                    $firstArray[$key] = $this->_arrayMergeRecursive($firstArray[$key], $value);
+                } else {
+                    if($key === 0) {
+                        $firstArray= array(0=>$this->_arrayMergeRecursive($firstArray, $value));
+                    } else {
+                        $firstArray[$key] = $value;
+                    }
+                }
+            }
+        } else {
+            $firstArray = $secondArray;
+        }
 
-php php php php php php php php returnphp php$firstArrayphp;
-php php php php php}
-php}
+        return $firstArray;
+    }
+}

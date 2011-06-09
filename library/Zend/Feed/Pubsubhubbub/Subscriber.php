@@ -1,860 +1,860 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Subscriberphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Pubsubhubbub
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Subscriber.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Pubsubhubbub
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp.phpphp'php;
+/**
+ * @see Zend_Feed_Pubsubhubbub
+ */
+require_once 'Zend/Feed/Pubsubhubbub.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Date
-php php*php/
-requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
+/**
+ * @see Zend_Date
+ */
+require_once 'Zend/Date.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php{
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp URLsphp forphp allphp Hubphp Serversphp tophp subscribephp/unsubscribephp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_hubUrlsphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Pubsubhubbub
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Pubsubhubbub_Subscriber
+{
+    /**
+     * An array of URLs for all Hub Servers to subscribe/unsubscribe.
+     *
+     * @var array
+     */
+    protected $_hubUrls = array();
 
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp optionalphp parametersphp tophp bephp includedphp inphp any
-php php php php php php*php php(unphp)subscribephp requestsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_parametersphp php=php arrayphp(php)php;
+    /**
+     * An array of optional parameters to be included in any
+     * (un)subscribe requests.
+     *
+     * @var array
+     */
+    protected $_parameters = array();
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp ofphp thephp topicphp php(Rssphp orphp Atomphp feedphp)php whichphp isphp thephp subjectphp of
-php php php php php php*php ourphp currentphp intentphp tophp subscribephp tophp/unsubscribephp fromphp updatesphp from
-php php php php php php*php thephp currentlyphp configuredphp Hubphp Serversphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_topicUrlphp php=php php'php'php;
+    /**
+     * The URL of the topic (Rss or Atom feed) which is the subject of
+     * our current intent to subscribe to/unsubscribe from updates from
+     * the currently configured Hub Servers.
+     *
+     * @var string
+     */
+    protected $_topicUrl = '';
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp Hubphp Serversphp mustphp usephp whenphp communicatingphp withphp thisphp Subscriber
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_callbackUrlphp php=php php'php'php;
+    /**
+     * The URL Hub Servers must use when communicating with this Subscriber
+     *
+     * @var string
+     */
+    protected $_callbackUrl = '';
 
-php php php php php/php*php*
-php php php php php php*php Thephp numberphp ofphp secondsphp forphp whichphp thephp subscriberphp wouldphp likephp tophp havephp the
-php php php php php php*php subscriptionphp activephp.php Defaultsphp tophp nullphp,php iphp.ephp.php notphp sentphp,php tophp setupphp a
-php php php php php php*php permanentphp subscriptionphp ifphp possiblephp.
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_leaseSecondsphp php=php nullphp;
+    /**
+     * The number of seconds for which the subscriber would like to have the
+     * subscription active. Defaults to null, i.e. not sent, to setup a
+     * permanent subscription if possible.
+     *
+     * @var int
+     */
+    protected $_leaseSeconds = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp preferredphp verificationphp modephp php(syncphp orphp asyncphp)php.php Byphp defaultphp,php this
-php php php php php php*php Subscriberphp prefersphp synchronousphp verificationphp,php butphp isphp considered
-php php php php php php*php desireablephp tophp supportphp asynchronousphp verificationphp ifphp possiblephp.
-php php php php php php*
-php php php php php php*php Zendphp_Feedphp_Pubsubhubbubphp_Subscriberphp willphp alwaysphp sendphp bothphp modesphp,php whose
-php php php php php php*php orderphp ofphp occurancephp inphp thephp parameterphp listphp determinesphp thisphp preferencephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_preferredVerificationMode
-php php php php php php php php php=php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNCphp;
+    /**
+     * The preferred verification mode (sync or async). By default, this
+     * Subscriber prefers synchronous verification, but is considered
+     * desireable to support asynchronous verification if possible.
+     *
+     * Zend_Feed_Pubsubhubbub_Subscriber will always send both modes, whose
+     * order of occurance in the parameter list determines this preference.
+     *
+     * @var string
+     */
+    protected $_preferredVerificationMode
+        = Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC;
 
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp anyphp errorsphp includingphp keysphp forphp php'responsephp'php,php php'hubUrlphp'php.
-php php php php php php*php Thephp responsephp isphp thephp actualphp Zendphp_Httpphp_Responsephp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_errorsphp php=php arrayphp(php)php;
+    /**
+     * An array of any errors including keys for 'response', 'hubUrl'.
+     * The response is the actual Zend_Http_Response object.
+     *
+     * @var array
+     */
+    protected $_errors = array();
 
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp Hubphp Serverphp URLsphp forphp Hubsphp operatingphp atphp thisphp timephp in
-php php php php php php*php asynchronousphp verificationphp modephp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_asyncHubsphp php=php arrayphp(php)php;
+    /**
+     * An array of Hub Server URLs for Hubs operating at this time in
+     * asynchronous verification mode.
+     *
+     * @var array
+     */
+    protected $_asyncHubs = array();
 
-php php php php php/php*php*
-php php php php php php*php Anphp instancephp ofphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterfacephp usedphp tophp background
-php php php php php php*php savephp anyphp verificationphp tokensphp associatedphp withphp aphp subscriptionphp orphp otherphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterface
-php php php php php php*php/
-php php php php protectedphp php$php_storagephp php=php nullphp;
+    /**
+     * An instance of Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface used to background
+     * save any verification tokens associated with a subscription or other.
+     *
+     * @var Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+     */
+    protected $_storage = null;
 
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp authenticationphp credentialsphp forphp HTTPphp Basicphp Authentication
-php php php php php php*php ifphp requiredphp byphp specificphp Hubsphp.php Thephp arrayphp isphp indexedphp byphp Hubphp Endpointphp URI
-php php php php php php*php andphp thephp valuephp isphp aphp simplephp arrayphp ofphp thephp usernamephp andphp passwordphp tophp applyphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_authenticationsphp php=php arrayphp(php)php;
+    /**
+     * An array of authentication credentials for HTTP Basic Authentication
+     * if required by specific Hubs. The array is indexed by Hub Endpoint URI
+     * and the value is a simple array of the username and password to apply.
+     *
+     * @var array
+     */
+    protected $_authentications = array();
 
-php php php php php/php*php*
-php php php php php php*php Tellsphp thephp Subscriberphp tophp appendphp anyphp subscriptionphp identifierphp tophp thephp path
-php php php php php php*php ofphp thephp basephp Callbackphp URLphp.php Ephp.gphp.php anphp identifierphp php"subkeyphp1php"php wouldphp bephp added
-php php php php php php*php tophp thephp callbackphp URLphp php"httpphp:php/php/wwwphp.examplephp.comphp/callbackphp"php tophp createphp aphp subscription
-php php php php php php*php specificphp Callbackphp URLphp ofphp php"httpphp:php/php/wwwphp.examplephp.comphp/callbackphp/subkeyphp1php"php.
-php php php php php php*
-php php php php php php*php Thisphp isphp requiredphp forphp allphp Hubsphp usingphp thephp Pubsubhubbubphp php0php.php1php Specificationphp.
-php php php php php php*php Itphp shouldphp bephp manuallyphp interceptedphp andphp passedphp tophp thephp Callbackphp classphp using
-php php php php php php*php Zendphp_Feedphp_Pubsubhubbubphp_Subscriberphp_Callbackphp:php:setSubscriptionKeyphp(php)php.php Will
-php php php php php php*php requirephp aphp routephp inphp thephp formphp php"callbackphp/php:subkeyphp"php tophp allowphp thephp parameterphp be
-php php php php php php*php retrievedphp fromphp anphp actionphp usingphp thephp Zendphp_Controllerphp_Actionphp:php:php_getParamphp(php)
-php php php php php php*php methodphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_usePathParameterphp php=php falsephp;
+    /**
+     * Tells the Subscriber to append any subscription identifier to the path
+     * of the base Callback URL. E.g. an identifier "subkey1" would be added
+     * to the callback URL "http://www.example.com/callback" to create a subscription
+     * specific Callback URL of "http://www.example.com/callback/subkey1".
+     *
+     * This is required for all Hubs using the Pubsubhubbub 0.1 Specification.
+     * It should be manually intercepted and passed to the Callback class using
+     * Zend_Feed_Pubsubhubbub_Subscriber_Callback::setSubscriptionKey(). Will
+     * require a route in the form "callback/:subkey" to allow the parameter be
+     * retrieved from an action using the Zend_Controller_Action::_getParam()
+     * method.
+     *
+     * @var string
+     */
+    protected $_usePathParameter = false;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp;php acceptsphp anphp arrayphp orphp Zendphp_Configphp instancephp tophp preset
-php php php php php php*php optionsphp forphp thephp Subscriberphp withoutphp callingphp allphp supportedphp setter
-php php php php php php*php methodsphp inphp turnphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp arrayphp orphp Zendphp_Configphp instance
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$configphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setConfigphp(php$configphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor; accepts an array or Zend_Config instance to preset
+     * options for the Subscriber without calling all supported setter
+     * methods in turn.
+     *
+     * @param  array|Zend_Config $options Options array or Zend_Config instance
+     * @return void
+     */
+    public function __construct($config = null)
+    {
+        if ($config !== null) {
+            $this->setConfig($config);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Processphp anyphp injectedphp configurationphp options
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$optionsphp Optionsphp arrayphp orphp Zendphp_Configphp instance
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setConfigphp(php$configphp)
-php php php php php{
-php php php php php php php php ifphp php(php$configphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$configphp php=php php$configphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Arrayphp orphp Zendphp_Configphp objectphp'
-php php php php php php php php php php php php php php php php php.php php'php expectedphp,php gotphp php'php php.php gettypephp(php$configphp)php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'hubUrlsphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addHubUrlsphp(php$configphp[php'hubUrlsphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'callbackUrlphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setCallbackUrlphp(php$configphp[php'callbackUrlphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'topicUrlphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setTopicUrlphp(php$configphp[php'topicUrlphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'storagephp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setStoragephp(php$configphp[php'storagephp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'leaseSecondsphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setLeaseSecondsphp(php$configphp[php'leaseSecondsphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'parametersphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setParametersphp(php$configphp[php'parametersphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'authenticationsphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addAuthenticationsphp(php$configphp[php'authenticationsphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'usePathParameterphp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>usePathParameterphp(php$configphp[php'usePathParameterphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'preferredVerificationModephp'php,php php$configphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setPreferredVerificationModephp(
-php php php php php php php php php php php php php php php php php$configphp[php'preferredVerificationModephp'php]
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Process any injected configuration options
+     *
+     * @param  array|Zend_Config $options Options array or Zend_Config instance
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setConfig($config)
+    {
+        if ($config instanceof Zend_Config) {
+            $config = $config->toArray();
+        } elseif (!is_array($config)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
+                . ' expected, got ' . gettype($config));
+        }
+        if (array_key_exists('hubUrls', $config)) {
+            $this->addHubUrls($config['hubUrls']);
+        }
+        if (array_key_exists('callbackUrl', $config)) {
+            $this->setCallbackUrl($config['callbackUrl']);
+        }
+        if (array_key_exists('topicUrl', $config)) {
+            $this->setTopicUrl($config['topicUrl']);
+        }
+        if (array_key_exists('storage', $config)) {
+            $this->setStorage($config['storage']);
+        }
+        if (array_key_exists('leaseSeconds', $config)) {
+            $this->setLeaseSeconds($config['leaseSeconds']);
+        }
+        if (array_key_exists('parameters', $config)) {
+            $this->setParameters($config['parameters']);
+        }
+        if (array_key_exists('authentications', $config)) {
+            $this->addAuthentications($config['authentications']);
+        }
+        if (array_key_exists('usePathParameter', $config)) {
+            $this->usePathParameter($config['usePathParameter']);
+        }
+        if (array_key_exists('preferredVerificationMode', $config)) {
+            $this->setPreferredVerificationMode(
+                $config['preferredVerificationMode']
+            );
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp topicphp URLphp php(RSSphp orphp Atomphp feedphp)php tophp whichphp thephp intendedphp php(unphp)subscribe
-php php php php php php*php eventphp willphp relate
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setTopicUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
-php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
-php php php php php php php php php php php php php php php php php.php'php URLphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_topicUrlphp php=php php$urlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the topic URL (RSS or Atom feed) to which the intended (un)subscribe
+     * event will relate
+     *
+     * @param  string $url
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setTopicUrl($url)
+    {
+        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
+                .' of "' . $url . '" must be a non-empty string and a valid'
+                .' URL');
+        }
+        $this->_topicUrl = $url;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp topicphp URLphp php(RSSphp orphp Atomphp feedphp)php tophp whichphp thephp intendedphp php(unphp)subscribe
-php php php php php php*php eventphp willphp relate
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTopicUrlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_topicUrlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Aphp validphp Topicphp php(RSSphp orphp Atomphp'
-php php php php php php php php php php php php php php php php php.php php'php feedphp)php URLphp MUSTphp bephp setphp beforephp attemptingphp anyphp operationphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_topicUrlphp;
-php php php php php}
+    /**
+     * Set the topic URL (RSS or Atom feed) to which the intended (un)subscribe
+     * event will relate
+     *
+     * @return string
+     */
+    public function getTopicUrl()
+    {
+        if (empty($this->_topicUrl)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('A valid Topic (RSS or Atom'
+                . ' feed) URL MUST be set before attempting any operation');
+        }
+        return $this->_topicUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp numberphp ofphp secondsphp forphp whichphp anyphp subscriptionphp willphp remainphp valid
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$seconds
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setLeaseSecondsphp(php$secondsphp)
-php php php php php{
-php php php php php php php php php$secondsphp php=php intvalphp(php$secondsphp)php;
-php php php php php php php php ifphp php(php$secondsphp <php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Expectedphp leasephp secondsphp'
-php php php php php php php php php php php php php php php php php.php php'php mustphp bephp anphp integerphp greaterphp thanphp zerophp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_leaseSecondsphp php=php php$secondsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the number of seconds for which any subscription will remain valid
+     *
+     * @param  int $seconds
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setLeaseSeconds($seconds)
+    {
+        $seconds = intval($seconds);
+        if ($seconds <= 0) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Expected lease seconds'
+                . ' must be an integer greater than zero');
+        }
+        $this->_leaseSeconds = $seconds;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp numberphp ofphp leasephp secondsphp onphp subscriptions
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getLeaseSecondsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_leaseSecondsphp;
-php php php php php}
+    /**
+     * Get the number of lease seconds on subscriptions
+     *
+     * @return int
+     */
+    public function getLeaseSeconds()
+    {
+        return $this->_leaseSeconds;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp callbackphp URLphp tophp bephp usedphp byphp Hubphp Serversphp whenphp communicatingphp with
-php php php php php php*php thisphp Subscriber
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setCallbackUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
-php php php php php php php php php php php php php php php php php.php php'php URLphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_callbackUrlphp php=php php$urlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the callback URL to be used by Hub Servers when communicating with
+     * this Subscriber
+     *
+     * @param  string $url
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setCallbackUrl($url)
+    {
+        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . ' URL');
+        }
+        $this->_callbackUrl = $url;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp callbackphp URLphp tophp bephp usedphp byphp Hubphp Serversphp whenphp communicatingphp with
-php php php php php php*php thisphp Subscriber
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getCallbackUrlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_callbackUrlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Aphp validphp Callbackphp URLphp MUSTphp bephp'
-php php php php php php php php php php php php php php php php php.php php'php setphp beforephp attemptingphp anyphp operationphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_callbackUrlphp;
-php php php php php}
+    /**
+     * Get the callback URL to be used by Hub Servers when communicating with
+     * this Subscriber
+     *
+     * @return string
+     */
+    public function getCallbackUrl()
+    {
+        if (empty($this->_callbackUrl)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('A valid Callback URL MUST be'
+                . ' set before attempting any operation');
+        }
+        return $this->_callbackUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp preferredphp verificationphp modephp php(syncphp orphp asyncphp)php.php Byphp defaultphp,php this
-php php php php php php*php Subscriberphp prefersphp synchronousphp verificationphp,php butphp doesphp support
-php php php php php php*php asynchronousphp ifphp thatphp'sphp thephp Hubphp Serverphp'sphp utilisedphp modephp.
-php php php php php php*
-php php php php php php*php Zendphp_Feedphp_Pubsubhubbubphp_Subscriberphp willphp alwaysphp sendphp bothphp modesphp,php whose
-php php php php php php*php orderphp ofphp occurancephp inphp thephp parameterphp listphp determinesphp thisphp preferencephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$modephp Shouldphp bephp php'syncphp'php orphp php'asyncphp'
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setPreferredVerificationModephp(php$modephp)
-php php php php php{
-php php php php php php php php ifphp php(php$modephp php!php=php=php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNC
-php php php php php php php php php&php&php php$modephp php!php=php=php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_ASYNCphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp preferredphp'
-php php php php php php php php php php php php php php php php php.php php'php modephp specifiedphp:php php"php'php php.php php$modephp php.php php'php"php butphp shouldphp bephp onephp ofphp'
-php php php php php php php php php php php php php php php php php.php php'php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNCphp orphp'
-php php php php php php php php php php php php php php php php php.php php'php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_ASYNCphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_preferredVerificationModephp php=php php$modephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set preferred verification mode (sync or async). By default, this
+     * Subscriber prefers synchronous verification, but does support
+     * asynchronous if that's the Hub Server's utilised mode.
+     *
+     * Zend_Feed_Pubsubhubbub_Subscriber will always send both modes, whose
+     * order of occurance in the parameter list determines this preference.
+     *
+     * @param  string $mode Should be 'sync' or 'async'
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setPreferredVerificationMode($mode)
+    {
+        if ($mode !== Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC
+        && $mode !== Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_ASYNC) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid preferred'
+                . ' mode specified: "' . $mode . '" but should be one of'
+                . ' Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC or'
+                . ' Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_ASYNC');
+        }
+        $this->_preferredVerificationMode = $mode;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp preferredphp verificationphp modephp php(syncphp orphp asyncphp)php.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPreferredVerificationModephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_preferredVerificationModephp;
-php php php php php}
+    /**
+     * Get preferred verification mode (sync or async).
+     *
+     * @return string
+     */
+    public function getPreferredVerificationMode()
+    {
+        return $this->_preferredVerificationMode;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp Hubphp Serverphp URLphp supportedphp byphp Publisher
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp addHubUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
-php php php php php php php php php php php php php php php php php.php php'php URLphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_hubUrlsphp[php]php php=php php$urlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add a Hub Server URL supported by Publisher
+     *
+     * @param  string $url
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function addHubUrl($url)
+    {
+        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . ' URL');
+        }
+        $this->_hubUrls[] = $url;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp anphp arrayphp ofphp Hubphp Serverphp URLsphp supportedphp byphp Publisher
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$urls
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp addHubUrlsphp(arrayphp php$urlsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addHubUrlphp(php$urlphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add an array of Hub Server URLs supported by Publisher
+     *
+     * @param  array $urls
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function addHubUrls(array $urls)
+    {
+        foreach ($urls as $url) {
+            $this->addHubUrl($url);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp Hubphp Serverphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp removeHubUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$urlphp,php php$thisphp-php>getHubUrlsphp(php)php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php php$keyphp php=php arrayphp_searchphp(php$urlphp,php php$thisphp-php>php_hubUrlsphp)php;
-php php php php php php php php unsetphp(php$thisphp-php>php_hubUrlsphp[php$keyphp]php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a Hub Server URL
+     *
+     * @param  string $url
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function removeHubUrl($url)
+    {
+        if (!in_array($url, $this->getHubUrls())) {
+            return $this;
+        }
+        $key = array_search($url, $this->_hubUrls);
+        unset($this->_hubUrls[$key]);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp uniquephp Hubphp Serverphp URLsphp currentlyphp available
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getHubUrlsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_hubUrlsphp php=php arrayphp_uniquephp(php$thisphp-php>php_hubUrlsphp)php;
-php php php php php php php php returnphp php$thisphp-php>php_hubUrlsphp;
-php php php php php}
+    /**
+     * Return an array of unique Hub Server URLs currently available
+     *
+     * @return array
+     */
+    public function getHubUrls()
+    {
+        $this->_hubUrls = array_unique($this->_hubUrls);
+        return $this->_hubUrls;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp authenticationphp credentialsphp forphp aphp givenphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@paramphp php arrayphp php$authentication
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp addAuthenticationphp(php$urlphp,php arrayphp php$authenticationphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$urlphp)php php|php|php php!isphp_stringphp(php$urlphp)php php|php|php php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"urlphp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$urlphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp andphp aphp validphp'
-php php php php php php php php php php php php php php php php php.php php'php URLphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_authenticationsphp[php$urlphp]php php=php php$authenticationphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add authentication credentials for a given URL
+     *
+     * @param  string $url
+     * @param  array $authentication
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function addAuthentication($url, array $authentication)
+    {
+        if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . ' URL');
+        }
+        $this->_authentications[$url] = $authentication;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp authenticationphp credentialsphp forphp hubphp URLs
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$authentications
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp addAuthenticationsphp(arrayphp php$authenticationsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$authenticationsphp asphp php$urlphp php=php>php php$authenticationphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addAuthenticationphp(php$urlphp,php php$authenticationphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add authentication credentials for hub URLs
+     *
+     * @param  array $authentications
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function addAuthentications(array $authentications)
+    {
+        foreach ($authentications as $url => $authentication) {
+            $this->addAuthentication($url, $authentication);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp hubphp URLphp authenticationphp credentials
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAuthenticationsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_authenticationsphp;
-php php php php php}
+    /**
+     * Get all hub URL authentication credentials
+     *
+     * @return array
+     */
+    public function getAuthentications()
+    {
+        return $this->_authentications;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp flagphp indicatingphp whetherphp orphp notphp tophp usephp aphp pathphp parameter
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$bool
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp usePathParameterphp(php$boolphp php=php truephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_usePathParameterphp php=php php$boolphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set flag indicating whether or not to use a path parameter
+     *
+     * @param  bool $bool
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function usePathParameter($bool = true)
+    {
+        $this->_usePathParameter = $bool;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp anphp optionalphp parameterphp tophp thephp php(unphp)subscribephp requests
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php stringphp|nullphp php$value
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setParameterphp(php$namephp,php php$valuephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$namephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setParametersphp(php$namephp)php;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$namephp)php php|php|php php!isphp_stringphp(php$namephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"namephp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$namephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$valuephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>removeParameterphp(php$namephp)php;
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$valuephp)php php|php|php php(php!isphp_stringphp(php$valuephp)php php&php&php php$valuephp php!php=php=php nullphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"valuephp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$valuephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parametersphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add an optional parameter to the (un)subscribe requests
+     *
+     * @param  string $name
+     * @param  string|null $value
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setParameter($name, $value = null)
+    {
+        if (is_array($name)) {
+            $this->setParameters($name);
+            return $this;
+        }
+        if (empty($name) || !is_string($name)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
+                . ' of "' . $name . '" must be a non-empty string');
+        }
+        if ($value === null) {
+            $this->removeParameter($name);
+            return $this;
+        }
+        if (empty($value) || (!is_string($value) && $value !== null)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "value"'
+                . ' of "' . $value . '" must be a non-empty string');
+        }
+        $this->_parameters[$name] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp anphp optionalphp parameterphp tophp thephp php(unphp)subscribephp requests
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php stringphp|nullphp php$value
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setParametersphp(arrayphp php$parametersphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$parametersphp asphp php$namephp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setParameterphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add an optional parameter to the (un)subscribe requests
+     *
+     * @param  string $name
+     * @param  string|null $value
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setParameters(array $parameters)
+    {
+        foreach ($parameters as $name => $value) {
+            $this->setParameter($name, $value);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp anphp optionalphp parameterphp forphp thephp php(unphp)subscribephp requests
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp removeParameterphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$namephp)php php|php|php php!isphp_stringphp(php$namephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"namephp"php'
-php php php php php php php php php php php php php php php php php.php php'php ofphp php"php'php php.php php$namephp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_parametersphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_parametersphp[php$namephp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove an optional parameter for the (un)subscribe requests
+     *
+     * @param  string $name
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function removeParameter($name)
+    {
+        if (empty($name) || !is_string($name)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
+                . ' of "' . $name . '" must be a non-empty string');
+        }
+        if (array_key_exists($name, $this->_parameters)) {
+            unset($this->_parameters[$name]);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp optionalphp parametersphp forphp php(unphp)subscribephp requests
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getParametersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_parametersphp;
-php php php php php}
+    /**
+     * Return an array of optional parameters for (un)subscribe requests
+     *
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->_parameters;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp anphp instancephp ofphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterfacephp usedphp tophp background
-php php php php php php*php savephp anyphp verificationphp tokensphp associatedphp withphp aphp subscriptionphp orphp otherphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterfacephp php$storage
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Subscriber
-php php php php php php*php/
-php php php php publicphp functionphp setStoragephp(Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterfacephp php$storagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_storagephp php=php php$storagephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets an instance of Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface used to background
+     * save any verification tokens associated with a subscription or other.
+     *
+     * @param  Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface $storage
+     * @return Zend_Feed_Pubsubhubbub_Subscriber
+     */
+    public function setStorage(Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface $storage)
+    {
+        $this->_storage = $storage;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getsphp anphp instancephp ofphp Zendphp_Feedphp_Pubsubhubbubphp_Storagephp_StorageInterfacephp used
-php php php php php php*php tophp backgroundphp savephp anyphp verificationphp tokensphp associatedphp withphp aphp subscription
-php php php php php php*php orphp otherphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterface
-php php php php php php*php/
-php php php php publicphp functionphp getStoragephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_storagephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Nophp storagephp vehiclephp php'
-php php php php php php php php php php php php php php php php php.php php'hasphp beenphp setphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_storagephp;
-php php php php php}
+    /**
+     * Gets an instance of Zend_Feed_Pubsubhubbub_Storage_StorageInterface used
+     * to background save any verification tokens associated with a subscription
+     * or other.
+     *
+     * @return Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+     */
+    public function getStorage()
+    {
+        if ($this->_storage === null) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('No storage vehicle '
+                . 'has been set.');
+        }
+        return $this->_storage;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Subscribephp tophp onephp orphp morephp Hubphp Serversphp usingphp thephp storedphp Hubphp URLs
-php php php php php php*php forphp thephp givenphp Topicphp URLphp php(RSSphp orphp Atomphp feedphp)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp subscribeAllphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_doRequestphp(php'subscribephp'php)php;
-php php php php php}
+    /**
+     * Subscribe to one or more Hub Servers using the stored Hub URLs
+     * for the given Topic URL (RSS or Atom feed)
+     *
+     * @return void
+     */
+    public function subscribeAll()
+    {
+        return $this->_doRequest('subscribe');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Unsubscribephp fromphp onephp orphp morephp Hubphp Serversphp usingphp thephp storedphp Hubphp URLs
-php php php php php php*php forphp thephp givenphp Topicphp URLphp php(RSSphp orphp Atomphp feedphp)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp unsubscribeAllphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_doRequestphp(php'unsubscribephp'php)php;
-php php php php php}
+    /**
+     * Unsubscribe from one or more Hub Servers using the stored Hub URLs
+     * for the given Topic URL (RSS or Atom feed)
+     *
+     * @return void
+     */
+    public function unsubscribeAll()
+    {
+        return $this->_doRequest('unsubscribe');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp booleanphp indicatorphp ofphp whetherphp thephp notificationsphp tophp Hub
-php php php php php php*php Serversphp werephp ALLphp successfulphp.php Ifphp evenphp onephp failedphp,php FALSEphp isphp returnedphp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isSuccessphp(php)
-php php php php php{
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_errorsphp)php php>php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Returns a boolean indicator of whether the notifications to Hub
+     * Servers were ALL successful. If even one failed, FALSE is returned.
+     *
+     * @return bool
+     */
+    public function isSuccess()
+    {
+        if (count($this->_errors) > 0) {
+            return false;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp errorsphp metphp fromphp anyphp failuresphp,php includingphp keysphp:
-php php php php php php*php php'responsephp'php php=php>php thephp Zendphp_Httpphp_Responsephp objectphp fromphp thephp failure
-php php php php php php*php php'hubUrlphp'php php=php>php thephp URLphp ofphp thephp Hubphp Serverphp whosephp notificationphp failed
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getErrorsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_errorsphp;
-php php php php php}
+    /**
+     * Return an array of errors met from any failures, including keys:
+     * 'response' => the Zend_Http_Response object from the failure
+     * 'hubUrl' => the URL of the Hub Server whose notification failed
+     *
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->_errors;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp arrayphp ofphp Hubphp Serverphp URLsphp whophp returnedphp aphp responsephp indicating
-php php php php php php*php operationphp inphp Asynchronousphp Verificationphp Modephp,php iphp.ephp.php theyphp willphp notphp confirm
-php php php php php php*php anyphp php(unphp)subscriptionphp immediatelyphp butphp atphp aphp laterphp timephp php(Hubsphp mayphp be
-php php php php php php*php doingphp thisphp asphp aphp batchphp processphp whenphp loadphp balancingphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAsyncHubsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_asyncHubsphp;
-php php php php php}
+    /**
+     * Return an array of Hub Server URLs who returned a response indicating
+     * operation in Asynchronous Verification Mode, i.e. they will not confirm
+     * any (un)subscription immediately but at a later time (Hubs may be
+     * doing this as a batch process when load balancing)
+     *
+     * @return array
+     */
+    public function getAsyncHubs()
+    {
+        return $this->_asyncHubs;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Executesphp anphp php(unphp)subscribephp request
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$mode
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_doRequestphp(php$modephp)
-php php php php php{
-php php php php php php php php php$clientphp php=php php$thisphp-php>php_getHttpClientphp(php)php;
-php php php php php php php php php$hubsphp php php php=php php$thisphp-php>getHubUrlsphp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$hubsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Nophp Hubphp Serverphp URLsphp'
-php php php php php php php php php php php php php php php php php.php php'php havephp beenphp setphp sophp nophp subscriptionsphp canphp bephp attemptedphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_errorsphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_asyncHubsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$hubsphp asphp php$urlphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$urlphp,php php$thisphp-php>php_authenticationsphp)php)php php{
-php php php php php php php php php php php php php php php php php$authphp php=php php$thisphp-php>php_authenticationsphp[php$urlphp]php;
-php php php php php php php php php php php php php php php php php$clientphp-php>setAuthphp(php$authphp[php0php]php,php php$authphp[php1php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$clientphp-php>setUriphp(php$urlphp)php;
-php php php php php php php php php php php php php$clientphp-php>setRawDataphp(
-php php php php php php php php php php php php php php php php php$thisphp-php>php_getRequestParametersphp(php$urlphp,php php$modephp)php,
-php php php php php php php php php php php php php php php php php'applicationphp/xphp-wwwphp-formphp-urlencodedphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php)php;
-php php php php php php php php php php php php ifphp php(php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php4
-php php php php php php php php php php php php php php php php php&php&php php$responsephp-php>getStatusphp(php)php php!php=php=php php2php0php2
-php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_errorsphp[php]php php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'responsephp'php php=php>php php$responsephp,
-php php php php php php php php php php php php php php php php php php php php php'hubUrlphp'php php php php=php>php php$urlphp,
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Atphp firstphp Iphp thoughtphp itphp wasphp neededphp,php butphp thephp backendphp storagephp will
-php php php php php php php php php php php php php php*php allowphp trackingphp asyncphp withoutphp anyphp userphp interferencephp.php Itphp'sphp left
-php php php php php php php php php php php php php php*php herephp inphp casephp thephp userphp isphp interestedphp inphp knowingphp whatphp Hubs
-php php php php php php php php php php php php php php*php arephp usingphp asyncphp verificationphp modesphp sophp theyphp mayphp updatephp Modelsphp and
-php php php php php php php php php php php php php php*php movephp thesephp tophp asynchronousphp processesphp.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php}php elseifphp php(php$responsephp-php>getStatusphp(php)php php=php=php php2php0php2php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_asyncHubsphp[php]php php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'responsephp'php php=php>php php$responsephp,
-php php php php php php php php php php php php php php php php php php php php php'hubUrlphp'php php php php=php>php php$urlphp,
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Executes an (un)subscribe request
+     *
+     * @param  string $mode
+     * @return void
+     */
+    protected function _doRequest($mode)
+    {
+        $client = $this->_getHttpClient();
+        $hubs   = $this->getHubUrls();
+        if (empty($hubs)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('No Hub Server URLs'
+                . ' have been set so no subscriptions can be attempted');
+        }
+        $this->_errors = array();
+        $this->_asyncHubs = array();
+        foreach ($hubs as $url) {
+            if (array_key_exists($url, $this->_authentications)) {
+                $auth = $this->_authentications[$url];
+                $client->setAuth($auth[0], $auth[1]);
+            }
+            $client->setUri($url);
+            $client->setRawData(
+                $this->_getRequestParameters($url, $mode),
+                'application/x-www-form-urlencoded'
+            );
+            $response = $client->request();
+            if ($response->getStatus() !== 204
+                && $response->getStatus() !== 202
+            ) {
+                $this->_errors[] = array(
+                    'response' => $response,
+                    'hubUrl'   => $url,
+                );
+            /**
+             * At first I thought it was needed, but the backend storage will
+             * allow tracking async without any user interference. It's left
+             * here in case the user is interested in knowing what Hubs
+             * are using async verification modes so they may update Models and
+             * move these to asynchronous processes.
+             */
+            } elseif ($response->getStatus() == 202) {
+                $this->_asyncHubs[] = array(
+                    'response' => $response,
+                    'hubUrl'   => $url,
+                );
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp basicphp preparedphp HTTPphp clientphp forphp use
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$modephp Mustphp bephp php"subscribephp"php orphp php"unsubscribephp"
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp functionphp php_getHttpClientphp(php)
-php php php php php{
-php php php php php php php php php$clientphp php=php Zendphp_Feedphp_Pubsubhubbubphp:php:getHttpClientphp(php)php;
-php php php php php php php php php$clientphp-php>setMethodphp(Zendphp_Httpphp_Clientphp:php:POSTphp)php;
-php php php php php php php php php$clientphp-php>setConfigphp(arrayphp(php'useragentphp'php php=php>php php'Zendphp_Feedphp_Pubsubhubbubphp_Subscriberphp/php'
-php php php php php php php php php php php php php.php Zendphp_Versionphp:php:VERSIONphp)php)php;
-php php php php php php php php returnphp php$clientphp;
-php php php php php}
+    /**
+     * Get a basic prepared HTTP client for use
+     *
+     * @param  string $mode Must be "subscribe" or "unsubscribe"
+     * @return Zend_Http_Client
+     */
+    protected function _getHttpClient()
+    {
+        $client = Zend_Feed_Pubsubhubbub::getHttpClient();
+        $client->setMethod(Zend_Http_Client::POST);
+        $client->setConfig(array('useragent' => 'Zend_Feed_Pubsubhubbub_Subscriber/'
+            . Zend_Version::VERSION));
+        return $client;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp listphp ofphp standardphp protocolphp/optionalphp parametersphp forphp additionphp to
-php php php php php php*php clientphp'sphp POSTphp bodyphp thatphp arephp specificphp tophp thephp currentphp Hubphp Serverphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hubUrl
-php php php php php php*php php@paramphp php modephp php$hubUrl
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_getRequestParametersphp(php$hubUrlphp,php php$modephp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$modephp,php arrayphp(php'subscribephp'php,php php'unsubscribephp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp modephp specifiedphp:php php"php'
-php php php php php php php php php php php php php php php php php.php php$modephp php.php php'php"php whichphp shouldphp havephp beenphp php"subscribephp"php orphp php"unsubscribephp"php'php)php;
-php php php php php php php php php}
+    /**
+     * Return a list of standard protocol/optional parameters for addition to
+     * client's POST body that are specific to the current Hub Server URL
+     *
+     * @param  string $hubUrl
+     * @param  mode $hubUrl
+     * @return string
+     */
+    protected function _getRequestParameters($hubUrl, $mode)
+    {
+        if (!in_array($mode, array('subscribe', 'unsubscribe'))) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid mode specified: "'
+                . $mode . '" which should have been "subscribe" or "unsubscribe"');
+        }
 
-php php php php php php php php php$paramsphp php=php arrayphp(
-php php php php php php php php php php php php php'hubphp.modephp'php php php=php>php php$modephp,
-php php php php php php php php php php php php php'hubphp.topicphp'php php=php>php php$thisphp-php>getTopicUrlphp(php)php,
-php php php php php php php php php)php;
+        $params = array(
+            'hub.mode'  => $mode,
+            'hub.topic' => $this->getTopicUrl(),
+        );
 
-php php php php php php php php ifphp php(php$thisphp-php>getPreferredVerificationModephp(php)
-php php php php php php php php php php php php php php php php php=php=php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNC
-php php php php php php php php php)php php{
-php php php php php php php php php php php php php$vmodesphp php=php arrayphp(
-php php php php php php php php php php php php php php php php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNCphp,
-php php php php php php php php php php php php php php php php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_ASYNCphp,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$vmodesphp php=php arrayphp(
-php php php php php php php php php php php php php php php php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_ASYNCphp,
-php php php php php php php php php php php php php php php php Zendphp_Feedphp_Pubsubhubbubphp:php:VERIFICATIONphp_MODEphp_SYNCphp,
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$paramsphp[php'hubphp.verifyphp'php]php php=php arrayphp(php)php;
-php php php php php php php php foreachphp(php$vmodesphp asphp php$vmodephp)php php{
-php php php php php php php php php php php php php$paramsphp[php'hubphp.verifyphp'php]php[php]php php=php php$vmodephp;
-php php php php php php php php php}
+        if ($this->getPreferredVerificationMode()
+                == Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC
+        ) {
+            $vmodes = array(
+                Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC,
+                Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_ASYNC,
+            );
+        } else {
+            $vmodes = array(
+                Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_ASYNC,
+                Zend_Feed_Pubsubhubbub::VERIFICATION_MODE_SYNC,
+            );
+        }
+        $params['hub.verify'] = array();
+        foreach($vmodes as $vmode) {
+            $params['hub.verify'][] = $vmode;
+        }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Establishphp aphp persistentphp verifyphp_tokenphp andphp attachphp keyphp tophp callback
-php php php php php php php php php php*php URLphp'sphp pathphp/querystring
-php php php php php php php php php php*php/
-php php php php php php php php php$keyphp php php php=php php$thisphp-php>php_generateSubscriptionKeyphp(php$paramsphp,php php$hubUrlphp)php;
-php php php php php php php php php$tokenphp php=php php$thisphp-php>php_generateVerifyTokenphp(php)php;
-php php php php php php php php php$paramsphp[php'hubphp.verifyphp_tokenphp'php]php php=php php$tokenphp;
+        /**
+         * Establish a persistent verify_token and attach key to callback
+         * URL's path/querystring
+         */
+        $key   = $this->_generateSubscriptionKey($params, $hubUrl);
+        $token = $this->_generateVerifyToken();
+        $params['hub.verify_token'] = $token;
 
-php php php php php php php php php/php/php Notephp:php queryphp stringphp onlyphp usablephp withphp PuSHphp php0php.php2php Hubs
-php php php php php php php php ifphp php(php!php$thisphp-php>php_usePathParameterphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'hubphp.callbackphp'php]php php=php php$thisphp-php>getCallbackUrlphp(php)
-php php php php php php php php php php php php php php php php php.php php'php?xhubphp.subscriptionphp=php'php php.php Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$keyphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$paramsphp[php'hubphp.callbackphp'php]php php=php rtrimphp(php$thisphp-php>getCallbackUrlphp(php)php,php php'php/php'php)
-php php php php php php php php php php php php php php php php php.php php'php/php'php php.php Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$keyphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$modephp php=php=php php'subscribephp'php php&php&php php$thisphp-php>getLeaseSecondsphp(php)php php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'hubphp.leasephp_secondsphp'php]php php=php php$thisphp-php>getLeaseSecondsphp(php)php;
-php php php php php php php php php}
+        // Note: query string only usable with PuSH 0.2 Hubs
+        if (!$this->_usePathParameter) {
+            $params['hub.callback'] = $this->getCallbackUrl()
+                . '?xhub.subscription=' . Zend_Feed_Pubsubhubbub::urlencode($key);
+        } else {
+            $params['hub.callback'] = rtrim($this->getCallbackUrl(), '/')
+                . '/' . Zend_Feed_Pubsubhubbub::urlencode($key);
+        }
+        if ($mode == 'subscribe' && $this->getLeaseSeconds() !== null) {
+            $params['hub.lease_seconds'] = $this->getLeaseSeconds();
+        }
 
-php php php php php php php php php/php/php hubphp.secretphp notphp currentlyphp supported
-php php php php php php php php php$optParamsphp php=php php$thisphp-php>getParametersphp(php)php;
-php php php php php php php php foreachphp php(php$optParamsphp asphp php$namephp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$paramsphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php php}
+        // hub.secret not currently supported
+        $optParams = $this->getParameters();
+        foreach ($optParams as $name => $value) {
+            $params[$name] = $value;
+        }
 
-php php php php php php php php php/php/php storephp subscriptionphp tophp storage
-php php php php php php php php php$nowphp php=php newphp Zendphp_Datephp;
-php php php php php php php php php$expiresphp php=php nullphp;
-php php php php php php php php ifphp php(issetphp(php$paramsphp[php'hubphp.leasephp_secondsphp'php]php)php)php php{
-php php php php php php php php php php php php php$expiresphp php=php php$nowphp-php>addphp(php$paramsphp[php'hubphp.leasephp_secondsphp'php]php,php Zendphp_Datephp:php:SECONDphp)
-php php php php php php php php php php php php php php php php php-php>getphp(php'yyyyphp-MMphp-ddphp HHphp:mmphp:ssphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$dataphp php=php arrayphp(
-php php php php php php php php php php php php php'idphp'php php php php php php php php php php php php php php php php php php=php>php php$keyphp,
-php php php php php php php php php php php php php'topicphp_urlphp'php php php php php php php php php php php=php>php php$paramsphp[php'hubphp.topicphp'php]php,
-php php php php php php php php php php php php php'hubphp_urlphp'php php php php php php php php php php php php php=php>php php$hubUrlphp,
-php php php php php php php php php php php php php'createdphp_timephp'php php php php php php php php=php>php php$nowphp-php>getphp(php'yyyyphp-MMphp-ddphp HHphp:mmphp:ssphp'php)php,
-php php php php php php php php php php php php php'leasephp_secondsphp'php php php php php php php=php>php php$expiresphp,
-php php php php php php php php php php php php php'verifyphp_tokenphp'php php php php php php php php=php>php hashphp(php'shaphp2php5php6php'php,php php$paramsphp[php'hubphp.verifyphp_tokenphp'php]php)php,
-php php php php php php php php php php php php php'secretphp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php php php php php'expirationphp_timephp'php php php php php=php>php php$expiresphp,
-php php php php php php php php php php php php php'subscriptionphp_statephp'php php=php>php Zendphp_Feedphp_Pubsubhubbubphp:php:SUBSCRIPTIONphp_NOTVERIFIEDphp,
-php php php php php php php php php)php;
-php php php php php php php php php$thisphp-php>getStoragephp(php)php-php>setSubscriptionphp(php$dataphp)php;
+        // store subscription to storage
+        $now = new Zend_Date;
+        $expires = null;
+        if (isset($params['hub.lease_seconds'])) {
+            $expires = $now->add($params['hub.lease_seconds'], Zend_Date::SECOND)
+                ->get('yyyy-MM-dd HH:mm:ss');
+        }
+        $data = array(
+            'id'                 => $key,
+            'topic_url'          => $params['hub.topic'],
+            'hub_url'            => $hubUrl,
+            'created_time'       => $now->get('yyyy-MM-dd HH:mm:ss'),
+            'lease_seconds'      => $expires,
+            'verify_token'       => hash('sha256', $params['hub.verify_token']),
+            'secret'             => null,
+            'expiration_time'    => $expires,
+            'subscription_state' => Zend_Feed_Pubsubhubbub::SUBSCRIPTION_NOTVERIFIED,
+        );
+        $this->getStorage()->setSubscription($data);
 
-php php php php php php php php returnphp php$thisphp-php>php_toByteValueOrderedStringphp(
-php php php php php php php php php php php php php$thisphp-php>php_urlEncodephp(php$paramsphp)
-php php php php php php php php php)php;
-php php php php php}
+        return $this->_toByteValueOrderedString(
+            $this->_urlEncode($params)
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Simplephp helperphp tophp generatephp aphp verificationphp tokenphp usedphp inphp php(unphp)subscribe
-php php php php php php*php requestsphp tophp aphp Hubphp Serverphp.php Followsphp nophp particularphp methodphp,php whichphp means
-php php php php php php*php itphp mightphp bephp improvedphp/changedphp inphp futurephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hubUrlphp Thephp Hubphp Serverphp URLphp forphp whichphp thisphp tokenphp willphp apply
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_generateVerifyTokenphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_testStaticTokenphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_testStaticTokenphp;
-php php php php php php php php php}
-php php php php php php php php returnphp uniqidphp(randphp(php)php,php truephp)php php.php timephp(php)php;
-php php php php php}
+    /**
+     * Simple helper to generate a verification token used in (un)subscribe
+     * requests to a Hub Server. Follows no particular method, which means
+     * it might be improved/changed in future.
+     *
+     * @param  string $hubUrl The Hub Server URL for which this token will apply
+     * @return string
+     */
+    protected function _generateVerifyToken()
+    {
+        if (!empty($this->_testStaticToken)) {
+            return $this->_testStaticToken;
+        }
+        return uniqid(rand(), true) . time();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Simplephp helperphp tophp generatephp aphp verificationphp tokenphp usedphp inphp php(unphp)subscribe
-php php php php php php*php requestsphp tophp aphp Hubphp Serverphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$hubUrlphp Thephp Hubphp Serverphp URLphp forphp whichphp thisphp tokenphp willphp apply
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_generateSubscriptionKeyphp(arrayphp php$paramsphp,php php$hubUrlphp)
-php php php php php{
-php php php php php php php php php$keyBasephp php=php php$paramsphp[php'hubphp.topicphp'php]php php.php php$hubUrlphp;
-php php php php php php php php php$keyphp php php php php php=php mdphp5php(php$keyBasephp)php;
-php php php php php php php php returnphp php$keyphp;
-php php php php php}
+    /**
+     * Simple helper to generate a verification token used in (un)subscribe
+     * requests to a Hub Server.
+     *
+     * @param  string $hubUrl The Hub Server URL for which this token will apply
+     * @return string
+     */
+    protected function _generateSubscriptionKey(array $params, $hubUrl)
+    {
+        $keyBase = $params['hub.topic'] . $hubUrl;
+        $key     = md5($keyBase);
+        return $key;
+    }
 
-php php php php php/php*php*
-php php php php php php*php URLphp Encodephp anphp arrayphp ofphp parameters
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_urlEncodephp(arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php php$encodedphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$ekeyphp php=php Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$keyphp)php;
-php php php php php php php php php php php php php php php php php$encodedphp[php$ekeyphp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$duplicateKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$encodedphp[php$ekeyphp]php[php]
-php php php php php php php php php php php php php php php php php php php php php php php php php=php Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$duplicateKeyphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$encodedphp[Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$keyphp)php]
-php php php php php php php php php php php php php php php php php php php php php=php Zendphp_Feedphp_Pubsubhubbubphp:php:urlencodephp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$encodedphp;
-php php php php php}
+    /**
+     * URL Encode an array of parameters
+     *
+     * @param  array $params
+     * @return array
+     */
+    protected function _urlEncode(array $params)
+    {
+        $encoded = array();
+        foreach ($params as $key => $value) {
+            if (is_array($value)) {
+                $ekey = Zend_Feed_Pubsubhubbub::urlencode($key);
+                $encoded[$ekey] = array();
+                foreach ($value as $duplicateKey) {
+                    $encoded[$ekey][]
+                        = Zend_Feed_Pubsubhubbub::urlencode($duplicateKey);
+                }
+            } else {
+                $encoded[Zend_Feed_Pubsubhubbub::urlencode($key)]
+                    = Zend_Feed_Pubsubhubbub::urlencode($value);
+            }
+        }
+        return $encoded;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Orderphp outgoingphp parameters
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_toByteValueOrderedStringphp(arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php uksortphp(php$paramsphp,php php'strnatcmpphp'php)php;
-php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$keyduplicatephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$keyphp php.php php'php=php'php php.php php$keyduplicatephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$keyphp php.php php'php=php'php php.php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp implodephp(php'php&php'php,php php$returnphp)php;
-php php php php php}
+    /**
+     * Order outgoing parameters
+     *
+     * @param  array $params
+     * @return array
+     */
+    protected function _toByteValueOrderedString(array $params)
+    {
+        $return = array();
+        uksort($params, 'strnatcmp');
+        foreach ($params as $key => $value) {
+            if (is_array($value)) {
+                foreach ($value as $keyduplicate) {
+                    $return[] = $key . '=' . $keyduplicate;
+                }
+            } else {
+                $return[] = $key . '=' . $value;
+            }
+        }
+        return implode('&', $return);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Thisphp isphp STRICTLYphp forphp testingphp purposesphp onlyphp.php.php.
-php php php php php php*php/
-php php php php protectedphp php$php_testStaticTokenphp php=php nullphp;
+    /**
+     * This is STRICTLY for testing purposes only...
+     */
+    protected $_testStaticToken = null;
 
-php php php php finalphp publicphp functionphp setTestStaticTokenphp(php$tokenphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_testStaticTokenphp php=php php(stringphp)php php$tokenphp;
-php php php php php}
-php}
+    final public function setTestStaticToken($token)
+    {
+        $this->_testStaticToken = (string) $token;
+    }
+}

@@ -1,65 +1,65 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php TableInstancephp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: TableInstance.php 23584 2010-12-28 19:51:49Z matthew $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Exception
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Exceptionphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Exception
+ */
+require_once 'Zend/Service/WindowsAzure/Exception.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_StorageEntityAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/StorageEntityAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*
-php php*php php@propertyphp stringphp php php$Idphp php php php php php php php php php php php php php Id
-php php*php php@propertyphp stringphp php php$Namephp php php php php php php php php php php php Name
-php php*php php@propertyphp stringphp php php$Hrefphp php php php php php php php php php php php Href
-php php*php php@propertyphp stringphp php php$Updatedphp php php php php php php php php Updated
-php php*php/
-classphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_TableInstance
-php php php php extendsphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_StorageEntityAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$idphp php php php php php php php php php php php php php Id
-php php php php php php*php php@paramphp stringphp php php$namephp php php php php php php php php php php php Name
-php php php php php php*php php@paramphp stringphp php php$hrefphp php php php php php php php php php php php Href
-php php php php php php*php php@paramphp stringphp php php$updatedphp php php php php php php php php Updated
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$idphp,php php$namephp,php php$hrefphp,php php$updatedphp)
-php php php php php{php	
-php php php php php php php php php$thisphp-php>php_dataphp php=php arrayphp(
-php php php php php php php php php php php php php'idphp'php php php php php php php php php php php php php php php php=php>php php$idphp,
-php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php php=php>php php$namephp,
-php php php php php php php php php php php php php'hrefphp'php php php php php php php php php php php php php php=php>php php$hrefphp,
-php php php php php php php php php php php php php'updatedphp'php php php php php php php php php php php=php>php php$updated
-php php php php php php php php php)php;
-php php php php php}
-php}
+/**
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @property string  $Id              Id
+ * @property string  $Name            Name
+ * @property string  $Href            Href
+ * @property string  $Updated         Updated
+ */
+class Zend_Service_WindowsAzure_Storage_TableInstance
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+{
+    /**
+     * Constructor
+     *
+     * @param string  $id              Id
+     * @param string  $name            Name
+     * @param string  $href            Href
+     * @param string  $updated         Updated
+     */
+    public function __construct($id, $name, $href, $updated)
+    {	
+        $this->_data = array(
+            'id'               => $id,
+            'name'             => $name,
+            'href'             => $href,
+            'updated'          => $updated
+        );
+    }
+}

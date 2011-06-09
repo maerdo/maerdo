@@ -1,185 +1,185 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Session
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php php@sincephp php php php php php Previewphp Releasephp php0php.php2
-php php*php/
-
-
-php/php*php*
-php php*php Zendphp_Sessionphp_Abstract
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Session
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Sessionphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp sessionphp permitsphp writingphp php(modificationphp ofphp php$php_SESSIONphp[php]php)
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_writablephp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp sessionphp permitsphp readingphp php(readingphp dataphp inphp php$php_SESSIONphp[php]php)
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_readablephp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Sincephp expiringphp dataphp isphp handledphp atphp startupphp tophp avoidphp php_php_destructphp difficultiesphp,
-php php php php php php*php thephp dataphp thatphp willphp bephp expiringphp atphp endphp ofphp thisphp requestphp isphp heldphp here
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_expiringDataphp php=php arrayphp(php)php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Session
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @since      Preview Release 0.2
+ */
 
 
-php php php php php/php*php*
-php php php php php php*php Errorphp messagephp thrownphp whenphp anphp actionphp requiresphp modificationphp,
-php php php php php php*php butphp currentphp Zendphp_Sessionphp hasphp beenphp markedphp asphp readphp-onlyphp.
-php php php php php php*php/
-php php php php constphp php_THROWphp_NOTphp_WRITABLEphp_MSGphp php=php php'Zendphp_Sessionphp isphp currentlyphp markedphp asphp readphp-onlyphp.php'php;
+/**
+ * Zend_Session_Abstract
+ *
+ * @category   Zend
+ * @package    Zend_Session
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Session_Abstract
+{
+    /**
+     * Whether or not session permits writing (modification of $_SESSION[])
+     *
+     * @var bool
+     */
+    protected static $_writable = false;
+
+    /**
+     * Whether or not session permits reading (reading data in $_SESSION[])
+     *
+     * @var bool
+     */
+    protected static $_readable = false;
+
+    /**
+     * Since expiring data is handled at startup to avoid __destruct difficulties,
+     * the data that will be expiring at end of this request is held here
+     *
+     * @var array
+     */
+    protected static $_expiringData = array();
 
 
-php php php php php/php*php*
-php php php php php php*php Errorphp messagephp thrownphp whenphp anphp actionphp requiresphp readingphp sessionphp dataphp,
-php php php php php php*php butphp currentphp Zendphp_Sessionphp isphp notphp markedphp asphp readablephp.
-php php php php php php*php/
-php php php php constphp php_THROWphp_NOTphp_READABLEphp_MSGphp php=php php'Zendphp_Sessionphp isphp notphp markedphp asphp readablephp.php'php;
+    /**
+     * Error message thrown when an action requires modification,
+     * but current Zend_Session has been marked as read-only.
+     */
+    const _THROW_NOT_WRITABLE_MSG = 'Zend_Session is currently marked as read-only.';
 
 
-php php php php php/php*php*
-php php php php php php*php namespaceIssetphp(php)php php-php checkphp tophp seephp ifphp aphp namespacephp orphp aphp variablephp withinphp aphp namespacephp isphp set
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namespace
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_namespaceIssetphp(php$namespacephp,php php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_readablephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(selfphp:php:php_THROWphp_NOTphp_READABLEphp_MSGphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$namephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php(php issetphp(php$php_SESSIONphp[php$namespacephp]php)php php|php|php issetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php(php issetphp(php$php_SESSIONphp[php$namespacephp]php[php$namephp]php)php php|php|php issetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php[php$namephp]php)php php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Error message thrown when an action requires reading session data,
+     * but current Zend_Session is not marked as readable.
+     */
+    const _THROW_NOT_READABLE_MSG = 'Zend_Session is not marked as readable.';
 
 
-php php php php php/php*php*
-php php php php php php*php namespaceUnsetphp(php)php php-php unsetphp aphp namespacephp orphp aphp variablephp withinphp aphp namespace
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namespace
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@throwsphp Zendphp_Sessionphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_namespaceUnsetphp(php$namespacephp,php php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_writablephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(selfphp:php:php_THROWphp_NOTphp_WRITABLEphp_MSGphp)php;
-php php php php php php php php php}
+    /**
+     * namespaceIsset() - check to see if a namespace or a variable within a namespace is set
+     *
+     * @param  string $namespace
+     * @param  string $name
+     * @return bool
+     */
+    protected static function _namespaceIsset($namespace, $name = null)
+    {
+        if (self::$_readable === false) {
+            /**
+             * @see Zend_Session_Exception
+             */
+            require_once 'Zend/Session/Exception.php';
+            throw new Zend_Session_Exception(self::_THROW_NOT_READABLE_MSG);
+        }
 
-php php php php php php php php php$namephp php=php php(stringphp)php php$namephp;
-
-php php php php php php php php php/php/php checkphp tophp seephp ifphp thephp apiphp wantedphp tophp removephp aphp varphp fromphp aphp namespacephp orphp aphp namespace
-php php php php php php php php ifphp php(php$namephp php=php=php=php php'php'php)php php{
-php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php$namespacephp]php)php;
-php php php php php php php php php php php php unsetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php$namespacephp]php[php$namephp]php)php;
-php php php php php php php php php php php php unsetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php ifphp wephp removephp thephp lastphp valuephp,php removephp namespacephp.
-php php php php php php php php ifphp php(emptyphp(php$php_SESSIONphp[php$namespacephp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$php_SESSIONphp[php$namespacephp]php)php;
-php php php php php php php php php}
-php php php php php}
+        if ($name === null) {
+            return ( isset($_SESSION[$namespace]) || isset(self::$_expiringData[$namespace]) );
+        } else {
+            return ( isset($_SESSION[$namespace][$name]) || isset(self::$_expiringData[$namespace][$name]) );
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php namespaceGetphp(php)php php-php Getphp php$namephp variablephp fromphp php$namespacephp,php returningphp byphp referencephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namespace
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php&php php_namespaceGetphp(php$namespacephp,php php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_readablephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Sessionphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Sessionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Sessionphp_Exceptionphp(selfphp:php:php_THROWphp_NOTphp_READABLEphp_MSGphp)php;
-php php php php php php php php php}
+    /**
+     * namespaceUnset() - unset a namespace or a variable within a namespace
+     *
+     * @param  string $namespace
+     * @param  string $name
+     * @throws Zend_Session_Exception
+     * @return void
+     */
+    protected static function _namespaceUnset($namespace, $name = null)
+    {
+        if (self::$_writable === false) {
+            /**
+             * @see Zend_Session_Exception
+             */
+            require_once 'Zend/Session/Exception.php';
+            throw new Zend_Session_Exception(self::_THROW_NOT_WRITABLE_MSG);
+        }
 
-php php php php php php php php ifphp php(php$namephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php$namespacephp]php)php)php php{php php/php/php checkphp sessionphp firstphp forphp dataphp requested
-php php php php php php php php php php php php php php php php returnphp php$php_SESSIONphp[php$namespacephp]php;
-php php php php php php php php php php php php php}php elseifphp php(issetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php)php php{php php/php/php checkphp expiringphp dataphp forphp dataphp reqeusted
-php php php php php php php php php php php php php php php php returnphp selfphp:php:php$php_expiringDataphp[php$namespacephp]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php$php_SESSIONphp[php$namespacephp]php;php php/php/php satisfyphp returnphp byphp reference
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp[php$namespacephp]php[php$namephp]php)php)php php{php php/php/php checkphp sessionphp first
-php php php php php php php php php php php php php php php php returnphp php$php_SESSIONphp[php$namespacephp]php[php$namephp]php;
-php php php php php php php php php php php php php}php elseifphp php(issetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php[php$namephp]php)php)php php{php php/php/php checkphp expiringphp data
-php php php php php php php php php php php php php php php php returnphp selfphp:php:php$php_expiringDataphp[php$namespacephp]php[php$namephp]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php$php_SESSIONphp[php$namespacephp]php[php$namephp]php;php php/php/php satisfyphp returnphp byphp reference
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+        $name = (string) $name;
+
+        // check to see if the api wanted to remove a var from a namespace or a namespace
+        if ($name === '') {
+            unset($_SESSION[$namespace]);
+            unset(self::$_expiringData[$namespace]);
+        } else {
+            unset($_SESSION[$namespace][$name]);
+            unset(self::$_expiringData[$namespace]);
+        }
+
+        // if we remove the last value, remove namespace.
+        if (empty($_SESSION[$namespace])) {
+            unset($_SESSION[$namespace]);
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php namespaceGetAllphp(php)php php-php Getphp anphp arrayphp containingphp php$namespacephp,php includingphp expiringphp dataphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namespace
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_namespaceGetAllphp(php$namespacephp)
-php php php php php{
-php php php php php php php php php$currentDataphp php php=php php(issetphp(php$php_SESSIONphp[php$namespacephp]php)php php&php&php isphp_arrayphp(php$php_SESSIONphp[php$namespacephp]php)php)php php?
-php php php php php php php php php php php php php$php_SESSIONphp[php$namespacephp]php php:php arrayphp(php)php;
-php php php php php php php php php$expiringDataphp php=php php(issetphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php php&php&php isphp_arrayphp(selfphp:php:php$php_expiringDataphp[php$namespacephp]php)php)php php?
-php php php php php php php php php php php php selfphp:php:php$php_expiringDataphp[php$namespacephp]php php:php arrayphp(php)php;
-php php php php php php php php returnphp arrayphp_mergephp(php$currentDataphp,php php$expiringDataphp)php;
-php php php php php}
-php}
+    /**
+     * namespaceGet() - Get $name variable from $namespace, returning by reference.
+     *
+     * @param  string $namespace
+     * @param  string $name
+     * @return mixed
+     */
+    protected static function & _namespaceGet($namespace, $name = null)
+    {
+        if (self::$_readable === false) {
+            /**
+             * @see Zend_Session_Exception
+             */
+            require_once 'Zend/Session/Exception.php';
+            throw new Zend_Session_Exception(self::_THROW_NOT_READABLE_MSG);
+        }
+
+        if ($name === null) {
+            if (isset($_SESSION[$namespace])) { // check session first for data requested
+                return $_SESSION[$namespace];
+            } elseif (isset(self::$_expiringData[$namespace])) { // check expiring data for data reqeusted
+                return self::$_expiringData[$namespace];
+            } else {
+                return $_SESSION[$namespace]; // satisfy return by reference
+            }
+        } else {
+            if (isset($_SESSION[$namespace][$name])) { // check session first
+                return $_SESSION[$namespace][$name];
+            } elseif (isset(self::$_expiringData[$namespace][$name])) { // check expiring data
+                return self::$_expiringData[$namespace][$name];
+            } else {
+                return $_SESSION[$namespace][$name]; // satisfy return by reference
+            }
+        }
+    }
+
+
+    /**
+     * namespaceGetAll() - Get an array containing $namespace, including expiring data.
+     *
+     * @param string $namespace
+     * @param string $name
+     * @return mixed
+     */
+    protected static function _namespaceGetAll($namespace)
+    {
+        $currentData  = (isset($_SESSION[$namespace]) && is_array($_SESSION[$namespace])) ?
+            $_SESSION[$namespace] : array();
+        $expiringData = (isset(self::$_expiringData[$namespace]) && is_array(self::$_expiringData[$namespace])) ?
+            self::$_expiringData[$namespace] : array();
+        return array_merge($currentData, $expiringData);
+    }
+}

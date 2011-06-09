@@ -1,970 +1,970 @@
-<php?php
-php/php*php*
-php php*php Zendphp_Consolephp_Getoptphp isphp aphp classphp tophp parsephp optionsphp forphp commandphp-line
-php php*php applicationsphp.
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Consolephp_Getopt
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Getoptphp.phpphp php2php2php1php9php1php php2php0php1php0php-php0php5php-php1php7php php2php1php:php5php0php:php1php4Zphp janphp php$
-php php*php/
+<?php
+/**
+ * Zend_Console_Getopt is a class to parse options for command-line
+ * applications.
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Console_Getopt
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Getopt.php 22191 2010-05-17 21:50:14Z jan $
+ */
 
-php/php*php*
-php php*php Zendphp_Consolephp_Getoptphp isphp aphp classphp tophp parsephp optionsphp forphp commandphp-line
-php php*php applicationsphp.
-php php*
-php php*php Terminologyphp:
-php php*php Argumentphp:php anphp elementphp ofphp thephp argvphp arrayphp.php php Thisphp mayphp bephp partphp ofphp anphp optionphp,
-php php*php php php orphp itphp mayphp bephp aphp nonphp-optionphp commandphp-linephp argumentphp.
-php php*php Flagphp:php thephp letterphp orphp wordphp setphp offphp byphp aphp php'php-php'php orphp php'php-php-php'php.php php Examplephp:php inphp php'php-php-outputphp filenamephp'php,
-php php*php php php php'php-php-outputphp'php isphp thephp flagphp.
-php php*php Parameterphp:php thephp additionalphp argumentphp thatphp isphp associatedphp withphp thephp optionphp.
-php php*php php php Examplephp:php inphp php'php-php-outputphp filenamephp'php,php thephp php'filenamephp'php isphp thephp parameterphp.
-php php*php Optionphp:php thephp combinationphp ofphp aphp flagphp andphp itsphp parameterphp,php ifphp anyphp.
-php php*php php php Examplephp:php inphp php'php-php-outputphp filenamephp'php,php thephp wholephp thingphp isphp thephp optionphp.
-php php*
-php php*php Thephp followingphp featuresphp arephp supportedphp:
-php php*
-php php*php php-php Shortphp flagsphp likephp php'php-aphp'php.php php Shortphp flagsphp arephp precededphp byphp aphp single
-php php*php php php dashphp.php php Shortphp flagsphp mayphp bephp clusteredphp ephp.gphp.php php'php-abcphp'php,php whichphp isphp the
-php php*php php php samephp asphp php'php-aphp'php php'php-bphp'php php'php-cphp'php.
-php php*php php-php Longphp flagsphp likephp php'php-php-verbosephp'php.php php Longphp flagsphp arephp precededphp byphp a
-php php*php php php doublephp dashphp.php php Longphp flagsphp mayphp notphp bephp clusteredphp.
-php php*php php-php Optionsphp mayphp havephp aphp parameterphp,php ephp.gphp.php php'php-php-outputphp filenamephp'php.
-php php*php php-php Parametersphp forphp longphp flagsphp mayphp alsophp bephp setphp offphp withphp anphp equalsphp signphp,
-php php*php php php ephp.gphp.php php'php-php-outputphp=filenamephp'php.
-php php*php php-php Parametersphp forphp longphp flagsphp mayphp bephp checkedphp asphp stringphp,php wordphp,php orphp integerphp.
-php php*php php-php Automaticphp generationphp ofphp aphp helpfulphp usagephp messagephp.
-php php*php php-php Signalphp endphp ofphp optionsphp withphp php'php-php-php'php;php subsequentphp argumentsphp arephp treated
-php php*php php php asphp nonphp-optionphp argumentsphp,php evenphp ifphp theyphp beginphp withphp php'php-php'php.
-php php*php php-php Raisephp exceptionphp Zendphp_Consolephp_Getoptphp_Exceptionphp inphp severalphp cases
-php php*php php php whenphp invalidphp flagsphp orphp parametersphp arephp givenphp.php php Usagephp messagephp is
-php php*php php php returnedphp inphp thephp exceptionphp objectphp.
-php php*
-php php*php Thephp formatphp forphp specifyingphp optionsphp usesphp aphp PHPphp associativephp arrayphp.
-php php*php Thephp keyphp isphp hasphp thephp formatphp ofphp aphp listphp ofphp pipephp-separatedphp flagphp namesphp,
-php php*php followedphp byphp anphp optionalphp php'php=php'php tophp indicatephp aphp requiredphp parameterphp or
-php php*php php'php-php'php tophp indicatephp anphp optionalphp parameterphp.php php Followingphp thatphp,php thephp type
-php php*php ofphp parameterphp mayphp bephp specifiedphp asphp php'sphp'php forphp stringphp,php php'wphp'php forphp wordphp,
-php php*php orphp php'iphp'php forphp integerphp.
-php php*
-php php*php Examplesphp:
-php php*php php-php php'userphp|usernamephp|uphp=sphp'php php thisphp meansphp php'php-php-userphp'php orphp php'php-php-usernamephp'php orphp php'php-uphp'
-php php*php php php arephp synonymsphp,php andphp thephp optionphp requiresphp aphp stringphp parameterphp.
-php php*php php-php php'pphp=iphp'php php thisphp meansphp php'php-pphp'php requiresphp anphp integerphp parameterphp.php php Nophp synonymsphp.
-php php*php php-php php'verbosephp|vphp-iphp'php php thisphp meansphp php'php-php-verbosephp'php orphp php'php-vphp'php arephp synonymsphp,php and
-php php*php php php theyphp takephp anphp optionalphp integerphp parameterphp.
-php php*php php-php php'helpphp|hphp'php php thisphp meansphp php'php-php-helpphp'php orphp php'php-hphp'php arephp synonymsphp,php and
-php php*php php php theyphp takephp nophp parameterphp.
-php php*
-php php*php Thephp valuesphp inphp thephp associativephp arrayphp arephp stringsphp thatphp arephp usedphp as
-php php*php briefphp descriptionsphp ofphp thephp optionsphp whenphp printingphp aphp usagephp messagephp.
-php php*
-php php*php Thephp simplerphp formatphp forphp specifyingphp optionsphp usedphp byphp PHPphp'sphp getoptphp(php)
-php php*php functionphp isphp alsophp supportedphp.php php Thisphp isphp similarphp tophp GNUphp getoptphp andphp shell
-php php*php getoptphp formatphp.
-php php*
-php php*php Examplephp:php php php'abcphp:php'php meansphp optionsphp php'php-aphp'php,php php'php-bphp'php,php andphp php'php-cphp'
-php php*php arephp legalphp,php andphp thephp latterphp requiresphp aphp stringphp parameterphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Consolephp_Getopt
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php Releasephp:php php@packagephp_versionphp@
-php php*php php@sincephp php php php php php Classphp availablephp sincephp Releasephp php0php.php6php.php0
-php php*
-php php*php php@todophp php Handlephp paramsphp withphp multiplephp valuesphp,php ephp.gphp.php php-php-colorsphp=redphp,greenphp,blue
-php php*php php php php php php php php Setphp valuephp ofphp parameterphp tophp thephp arrayphp ofphp valuesphp.php php Allowphp userphp tophp specify
-php php*php php php php php php php php thephp separatorphp withphp Zendphp_Consolephp_Getoptphp:php:CONFIGphp_PARAMETERphp_SEPARATORphp.
-php php*php php php php php php php php Ifphp thisphp configphp valuephp isphp nullphp orphp emptyphp stringphp,php dophp notphp splitphp values
-php php*php php php php php php php php intophp arraysphp.php php Defaultphp separatorphp isphp commaphp php(php'php,php'php)php.
-php php*
-php php*php php@todophp php Handlephp paramsphp withphp multiplephp valuesphp specifiedphp withphp separatephp options
-php php*php php php php php php php php ephp.gphp.php php-php-colorsphp redphp php-php-colorsphp greenphp php-php-colorsphp bluephp shouldphp givephp one
-php php*php php php php php php php php optionphp withphp anphp arrayphp(redphp,php greenphp,php bluephp)php.
-php php*php php php php php php php php Enablephp withphp Zendphp_Consolephp_Getoptphp:php:CONFIGphp_CUMULATIVEphp_PARAMETERSphp.
-php php*php php php php php php php php Defaultphp isphp thatphp subsequentphp optionsphp overwritephp thephp parameterphp valuephp.
-php php*
-php php*php php@todophp php Handlephp flagsphp occurringphp multiplephp timesphp,php ephp.gphp.php php-vphp php-vphp php-v
-php php*php php php php php php php php Setphp valuephp ofphp thephp optionphp'sphp parameterphp tophp thephp integerphp countphp ofphp instances
-php php*php php php php php php php php insteadphp ofphp aphp booleanphp.
-php php*php php php php php php php php Enablephp withphp Zendphp_Consolephp_Getoptphp:php:CONFIGphp_CUMULATIVEphp_FLAGSphp.
-php php*php php php php php php php php Defaultphp isphp thatphp thephp valuephp isphp simplyphp booleanphp truephp regardlessphp of
-php php*php php php php php php php php howphp manyphp instancesphp ofphp thephp flagphp appearphp.
-php php*
-php php*php php@todophp php Handlephp flagsphp thatphp implicitlyphp printphp usagephp messagephp,php ephp.gphp.php php-php-help
-php php*
-php php*php php@todophp php Handlephp freeformphp optionsphp,php ephp.gphp.php php-php-setphp-variable
-php php*php php php php php php php php Enablephp withphp Zendphp_Consolephp_Getoptphp:php:CONFIGphp_FREEFORMphp_FLAGS
-php php*php php php php php php php php Allphp flagphp-likephp syntaxphp isphp recognizedphp,php nophp flagphp generatesphp anphp exceptionphp.
-php php*
-php php*php php@todophp php Handlephp numericphp optionsphp,php ephp.gphp.php php-php1php,php php-php2php,php php-php3php,php php-php1php0php0php0
-php php*php php php php php php php php Enablephp withphp Zendphp_Consolephp_Getoptphp:php:CONFIGphp_NUMERICphp_FLAGS
-php php*php php php php php php php php Thephp rulephp mustphp specifyphp aphp namedphp flagphp andphp thephp php'php#php'php symbolphp asphp the
-php php*php php php php php php php php parameterphp typephp.php ephp.gphp.php,php php php'linesphp=php#php'
-php php*
-php php*php php@todophp php Enablephp userphp tophp specifyphp headerphp andphp footerphp contentphp inphp thephp helpphp messagephp.
-php php*
-php php*php php@todophp php Featurephp requestphp tophp handlephp optionphp interdependenciesphp.
-php php*php php php php php php php php ephp.gphp.php ifphp php-bphp isphp specifiedphp,php php-aphp mustphp bephp specifiedphp orphp elsephp the
-php php*php php php php php php php php usagephp isphp invalidphp.
-php php*
-php php*php php@todophp php Featurephp requestphp tophp implementphp callbacksphp.
-php php*php php php php php php php php ephp.gphp.php ifphp php-aphp isphp specifiedphp,php runphp functionphp php'handleOptionAphp'php(php)php.
-php php*php/
-classphp Zendphp_Consolephp_Getopt
-php{
+/**
+ * Zend_Console_Getopt is a class to parse options for command-line
+ * applications.
+ *
+ * Terminology:
+ * Argument: an element of the argv array.  This may be part of an option,
+ *   or it may be a non-option command-line argument.
+ * Flag: the letter or word set off by a '-' or '--'.  Example: in '--output filename',
+ *   '--output' is the flag.
+ * Parameter: the additional argument that is associated with the option.
+ *   Example: in '--output filename', the 'filename' is the parameter.
+ * Option: the combination of a flag and its parameter, if any.
+ *   Example: in '--output filename', the whole thing is the option.
+ *
+ * The following features are supported:
+ *
+ * - Short flags like '-a'.  Short flags are preceded by a single
+ *   dash.  Short flags may be clustered e.g. '-abc', which is the
+ *   same as '-a' '-b' '-c'.
+ * - Long flags like '--verbose'.  Long flags are preceded by a
+ *   double dash.  Long flags may not be clustered.
+ * - Options may have a parameter, e.g. '--output filename'.
+ * - Parameters for long flags may also be set off with an equals sign,
+ *   e.g. '--output=filename'.
+ * - Parameters for long flags may be checked as string, word, or integer.
+ * - Automatic generation of a helpful usage message.
+ * - Signal end of options with '--'; subsequent arguments are treated
+ *   as non-option arguments, even if they begin with '-'.
+ * - Raise exception Zend_Console_Getopt_Exception in several cases
+ *   when invalid flags or parameters are given.  Usage message is
+ *   returned in the exception object.
+ *
+ * The format for specifying options uses a PHP associative array.
+ * The key is has the format of a list of pipe-separated flag names,
+ * followed by an optional '=' to indicate a required parameter or
+ * '-' to indicate an optional parameter.  Following that, the type
+ * of parameter may be specified as 's' for string, 'w' for word,
+ * or 'i' for integer.
+ *
+ * Examples:
+ * - 'user|username|u=s'  this means '--user' or '--username' or '-u'
+ *   are synonyms, and the option requires a string parameter.
+ * - 'p=i'  this means '-p' requires an integer parameter.  No synonyms.
+ * - 'verbose|v-i'  this means '--verbose' or '-v' are synonyms, and
+ *   they take an optional integer parameter.
+ * - 'help|h'  this means '--help' or '-h' are synonyms, and
+ *   they take no parameter.
+ *
+ * The values in the associative array are strings that are used as
+ * brief descriptions of the options when printing a usage message.
+ *
+ * The simpler format for specifying options used by PHP's getopt()
+ * function is also supported.  This is similar to GNU getopt and shell
+ * getopt format.
+ *
+ * Example:  'abc:' means options '-a', '-b', and '-c'
+ * are legal, and the latter requires a string parameter.
+ *
+ * @category   Zend
+ * @package    Zend_Console_Getopt
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    Release: @package_version@
+ * @since      Class available since Release 0.6.0
+ *
+ * @todo  Handle params with multiple values, e.g. --colors=red,green,blue
+ *        Set value of parameter to the array of values.  Allow user to specify
+ *        the separator with Zend_Console_Getopt::CONFIG_PARAMETER_SEPARATOR.
+ *        If this config value is null or empty string, do not split values
+ *        into arrays.  Default separator is comma (',').
+ *
+ * @todo  Handle params with multiple values specified with separate options
+ *        e.g. --colors red --colors green --colors blue should give one
+ *        option with an array(red, green, blue).
+ *        Enable with Zend_Console_Getopt::CONFIG_CUMULATIVE_PARAMETERS.
+ *        Default is that subsequent options overwrite the parameter value.
+ *
+ * @todo  Handle flags occurring multiple times, e.g. -v -v -v
+ *        Set value of the option's parameter to the integer count of instances
+ *        instead of a boolean.
+ *        Enable with Zend_Console_Getopt::CONFIG_CUMULATIVE_FLAGS.
+ *        Default is that the value is simply boolean true regardless of
+ *        how many instances of the flag appear.
+ *
+ * @todo  Handle flags that implicitly print usage message, e.g. --help
+ *
+ * @todo  Handle freeform options, e.g. --set-variable
+ *        Enable with Zend_Console_Getopt::CONFIG_FREEFORM_FLAGS
+ *        All flag-like syntax is recognized, no flag generates an exception.
+ *
+ * @todo  Handle numeric options, e.g. -1, -2, -3, -1000
+ *        Enable with Zend_Console_Getopt::CONFIG_NUMERIC_FLAGS
+ *        The rule must specify a named flag and the '#' symbol as the
+ *        parameter type. e.g.,  'lines=#'
+ *
+ * @todo  Enable user to specify header and footer content in the help message.
+ *
+ * @todo  Feature request to handle option interdependencies.
+ *        e.g. if -b is specified, -a must be specified or else the
+ *        usage is invalid.
+ *
+ * @todo  Feature request to implement callbacks.
+ *        e.g. if -a is specified, run function 'handleOptionA'().
+ */
+class Zend_Console_Getopt
+{
 
-php php php php php/php*php*
-php php php php php php*php Thephp optionsphp forphp aphp givenphp applicationphp canphp bephp inphp multiplephp formatsphp.
-php php php php php php*php modeGnuphp isphp forphp traditionalphp php'abphp:cphp:php'php stylephp getoptphp formatphp.
-php php php php php php*php modeZendphp isphp forphp aphp morephp structuredphp formatphp.
-php php php php php php*php/
-php php php php constphp MODEphp_ZENDphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'zendphp'php;
-php php php php constphp MODEphp_GNUphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'gnuphp'php;
+    /**
+     * The options for a given application can be in multiple formats.
+     * modeGnu is for traditional 'ab:c:' style getopt format.
+     * modeZend is for a more structured format.
+     */
+    const MODE_ZEND                         = 'zend';
+    const MODE_GNU                          = 'gnu';
 
-php php php php php/php*php*
-php php php php php php*php Constantphp tokensphp forphp variousphp symbolsphp usedphp inphp thephp modephp_zend
-php php php php php php*php rulephp formatphp.
-php php php php php php*php/
-php php php php constphp PARAMphp_REQUIREDphp php php php php php php php php php php php php php php php php php php php php=php php'php=php'php;
-php php php php constphp PARAMphp_OPTIONALphp php php php php php php php php php php php php php php php php php php php php=php php'php-php'php;
-php php php php constphp TYPEphp_STRINGphp php php php php php php php php php php php php php php php php php php php php php php php=php php'sphp'php;
-php php php php constphp TYPEphp_WORDphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'wphp'php;
-php php php php constphp TYPEphp_INTEGERphp php php php php php php php php php php php php php php php php php php php php php php=php php'iphp'php;
+    /**
+     * Constant tokens for various symbols used in the mode_zend
+     * rule format.
+     */
+    const PARAM_REQUIRED                    = '=';
+    const PARAM_OPTIONAL                    = '-';
+    const TYPE_STRING                       = 's';
+    const TYPE_WORD                         = 'w';
+    const TYPE_INTEGER                      = 'i';
 
-php php php php php/php*php*
-php php php php php php*php Thesephp arephp constantsphp forphp optionalphp behaviorphp ofphp thisphp classphp.
-php php php php php php*php ruleModephp isphp eitherphp php'zendphp'php orphp php'gnuphp'php orphp aphp userphp-definedphp modephp.
-php php php php php php*php dashDashphp isphp truephp ifphp php'php-php-php'php signifiesphp thephp endphp ofphp commandphp-linephp optionsphp.
-php php php php php php*php ignoreCasephp isphp truephp ifphp php'php-php-optphp'php andphp php'php-php-OPTphp'php arephp implicitlyphp synonymsphp.
-php php php php php php*php parseAllphp isphp truephp ifphp allphp optionsphp onphp thephp commandphp linephp shouldphp bephp parsedphp,php regardlessphp of
-php php php php php php*php whetherphp anphp argumentphp appearsphp beforephp themphp.
-php php php php php php*php/
-php php php php constphp CONFIGphp_RULEMODEphp php php php php php php php php php php php php php php php php php php php=php php'ruleModephp'php;
-php php php php constphp CONFIGphp_DASHDASHphp php php php php php php php php php php php php php php php php php php php=php php'dashDashphp'php;
-php php php php constphp CONFIGphp_IGNORECASEphp php php php php php php php php php php php php php php php php php=php php'ignoreCasephp'php;
-php php php php constphp CONFIGphp_PARSEALLphp php php php php php php php php php php php php php php php php php php php=php php'parseAllphp'php;
+    /**
+     * These are constants for optional behavior of this class.
+     * ruleMode is either 'zend' or 'gnu' or a user-defined mode.
+     * dashDash is true if '--' signifies the end of command-line options.
+     * ignoreCase is true if '--opt' and '--OPT' are implicitly synonyms.
+     * parseAll is true if all options on the command line should be parsed, regardless of
+     * whether an argument appears before them.
+     */
+    const CONFIG_RULEMODE                   = 'ruleMode';
+    const CONFIG_DASHDASH                   = 'dashDash';
+    const CONFIG_IGNORECASE                 = 'ignoreCase';
+    const CONFIG_PARSEALL                   = 'parseAll';
 
-php php php php php/php*php*
-php php php php php php*php Defaultsphp forphp getoptphp configurationphp arephp:
-php php php php php php*php ruleModephp isphp php'zendphp'php formatphp,
-php php php php php php*php dashDashphp php(php-php-php)php tokenphp isphp enabledphp,
-php php php php php php*php ignoreCasephp isphp notphp enabledphp,
-php php php php php php*php parseAllphp isphp enabledphp.
-php php php php php php*php/
-php php php php protectedphp php$php_getoptConfigphp php=php arrayphp(
-php php php php php php php php selfphp:php:CONFIGphp_RULEMODEphp php php php=php>php selfphp:php:MODEphp_ZENDphp,
-php php php php php php php php selfphp:php:CONFIGphp_DASHDASHphp php php php=php>php truephp,
-php php php php php php php php selfphp:php:CONFIGphp_IGNORECASEphp php=php>php falsephp,
-php php php php php php php php selfphp:php:CONFIGphp_PARSEALLphp php php php=php>php truephp,
-php php php php php)php;
+    /**
+     * Defaults for getopt configuration are:
+     * ruleMode is 'zend' format,
+     * dashDash (--) token is enabled,
+     * ignoreCase is not enabled,
+     * parseAll is enabled.
+     */
+    protected $_getoptConfig = array(
+        self::CONFIG_RULEMODE   => self::MODE_ZEND,
+        self::CONFIG_DASHDASH   => true,
+        self::CONFIG_IGNORECASE => false,
+        self::CONFIG_PARSEALL   => true,
+    );
 
-php php php php php/php*php*
-php php php php php php*php Storesphp thephp commandphp-linephp argumentsphp forphp thephp callingphp applicaionphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_argvphp php=php arrayphp(php)php;
+    /**
+     * Stores the command-line arguments for the calling applicaion.
+     *
+     * @var array
+     */
+    protected $_argv = array();
 
-php php php php php/php*php*
-php php php php php php*php Storesphp thephp namephp ofphp thephp callingphp applicaionphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_prognamephp php=php php'php'php;
+    /**
+     * Stores the name of the calling applicaion.
+     *
+     * @var string
+     */
+    protected $_progname = '';
 
-php php php php php/php*php*
-php php php php php php*php Storesphp thephp listphp ofphp legalphp optionsphp forphp thisphp applicationphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_rulesphp php=php arrayphp(php)php;
+    /**
+     * Stores the list of legal options for this application.
+     *
+     * @var array
+     */
+    protected $_rules = array();
 
-php php php php php/php*php*
-php php php php php php*php Storesphp alternatephp spellingsphp ofphp legalphp optionsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_ruleMapphp php=php arrayphp(php)php;
+    /**
+     * Stores alternate spellings of legal options.
+     *
+     * @var array
+     */
+    protected $_ruleMap = array();
 
-php php php php php/php*php*
-php php php php php php*php Storesphp optionsphp givenphp byphp thephp userphp inphp thephp currentphp invocation
-php php php php php php*php ofphp thephp applicationphp,php asphp wellphp asphp parametersphp givenphp inphp optionsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
+    /**
+     * Stores options given by the user in the current invocation
+     * of the application, as well as parameters given in options.
+     *
+     * @var array
+     */
+    protected $_options = array();
 
-php php php php php/php*php*
-php php php php php php*php Storesphp thephp commandphp-linephp argumentsphp otherphp thanphp optionsphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_remainingArgsphp php=php arrayphp(php)php;
+    /**
+     * Stores the command-line arguments other than options.
+     *
+     * @var array
+     */
+    protected $_remainingArgs = array();
 
-php php php php php/php*php*
-php php php php php php*php Statephp ofphp thephp optionsphp:php parsedphp orphp notphp yetphp parsedphp?
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_parsedphp php=php falsephp;
+    /**
+     * State of the options: parsed or not yet parsed?
+     *
+     * @var boolean
+     */
+    protected $_parsed = false;
 
-php php php php php/php*php*
-php php php php php php*php Thephp constructorphp takesphp onephp tophp threephp parametersphp.
-php php php php php php*
-php php php php php php*php Thephp firstphp parameterphp isphp php$rulesphp,php whichphp mayphp bephp aphp stringphp for
-php php php php php php*php gnuphp-stylephp formatphp,php orphp aphp structuredphp arrayphp forphp Zendphp-stylephp formatphp.
-php php php php php php*
-php php php php php php*php Thephp secondphp parameterphp isphp php$argvphp,php andphp itphp isphp optionalphp.php php Ifphp not
-php php php php php php*php specifiedphp,php php$argvphp isphp inferredphp fromphp thephp globalphp argvphp.
-php php php php php php*
-php php php php php php*php Thephp thirdphp parameterphp isphp anphp arrayphp ofphp configurationphp parameters
-php php php php php php*php tophp controlphp thephp behaviorphp ofphp thisphp instancephp ofphp Getoptphp;php itphp isphp optionalphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$rules
-php php php php php php*php php@paramphp php arrayphp php$argv
-php php php php php php*php php@paramphp php arrayphp php$getoptConfig
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$rulesphp,php php$argvphp php=php nullphp,php php$getoptConfigphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$php_SERVERphp[php'argvphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(iniphp_getphp(php'registerphp_argcphp_argvphp'php)php php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php"argvphp isphp notphp availablephp,php becausephp iniphp optionphp php'registerphp_argcphp_argvphp'php isphp setphp Offphp"
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'php$php_SERVERphp[php"argvphp"php]php isphp notphp setphp,php butphp Zendphp_Consolephp_Getoptphp cannotphp workphp withoutphp thisphp informationphp.php'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * The constructor takes one to three parameters.
+     *
+     * The first parameter is $rules, which may be a string for
+     * gnu-style format, or a structured array for Zend-style format.
+     *
+     * The second parameter is $argv, and it is optional.  If not
+     * specified, $argv is inferred from the global argv.
+     *
+     * The third parameter is an array of configuration parameters
+     * to control the behavior of this instance of Getopt; it is optional.
+     *
+     * @param  array $rules
+     * @param  array $argv
+     * @param  array $getoptConfig
+     * @return void
+     */
+    public function __construct($rules, $argv = null, $getoptConfig = array())
+    {
+        if (!isset($_SERVER['argv'])) {
+            require_once 'Zend/Console/Getopt/Exception.php';
+            if (ini_get('register_argc_argv') == false) {
+                throw new Zend_Console_Getopt_Exception(
+                    "argv is not available, because ini option 'register_argc_argv' is set Off"
+                );
+            } else {
+                throw new Zend_Console_Getopt_Exception(
+                    '$_SERVER["argv"] is not set, but Zend_Console_Getopt cannot work without this information.'
+                );
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_prognamephp php=php php$php_SERVERphp[php'argvphp'php]php[php0php]php;
-php php php php php php php php php$thisphp-php>setOptionsphp(php$getoptConfigphp)php;
-php php php php php php php php php$thisphp-php>addRulesphp(php$rulesphp)php;
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$argvphp)php)php php{
-php php php php php php php php php php php php php$argvphp php=php arrayphp_slicephp(php$php_SERVERphp[php'argvphp'php]php,php php1php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$argvphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addArgumentsphp(php(arrayphp)php$argvphp)php;
-php php php php php php php php php}
-php php php php php}
+        $this->_progname = $_SERVER['argv'][0];
+        $this->setOptions($getoptConfig);
+        $this->addRules($rules);
+        if (!is_array($argv)) {
+            $argv = array_slice($_SERVER['argv'], 1);
+        }
+        if (isset($argv)) {
+            $this->addArguments((array)$argv);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp statephp ofphp thephp optionphp seenphp onphp thephp commandphp linephp ofphp the
-php php php php php php*php currentphp applicationphp invocationphp.php php Thisphp functionphp returnsphp truephp,php orphp the
-php php php php php php*php parameterphp tophp thephp optionphp,php ifphp anyphp.php php Ifphp thephp optionphp wasphp notphp givenphp,
-php php php php php php*php thisphp functionphp returnsphp nullphp.
-php php php php php php*
-php php php php php php*php Thephp magicphp php_php_getphp methodphp worksphp inphp thephp contextphp ofphp namingphp thephp option
-php php php php php php*php asphp aphp virtualphp memberphp ofphp thisphp classphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$keyphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getOptionphp(php$keyphp)php;
-php php php php php}
+    /**
+     * Return the state of the option seen on the command line of the
+     * current application invocation.  This function returns true, or the
+     * parameter to the option, if any.  If the option was not given,
+     * this function returns null.
+     *
+     * The magic __get method works in the context of naming the option
+     * as a virtual member of this class.
+     *
+     * @param  string $key
+     * @return string
+     */
+    public function __get($key)
+    {
+        return $this->getOption($key);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp whetherphp aphp givenphp optionphp hasphp beenphp seenphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_ruleMapphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>php_ruleMapphp[php$keyphp]php;
-php php php php php php php php php php php php returnphp issetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Test whether a given option has been seen.
+     *
+     * @param  string $key
+     * @return boolean
+     */
+    public function __isset($key)
+    {
+        $this->parse();
+        if (isset($this->_ruleMap[$key])) {
+            $key = $this->_ruleMap[$key];
+            return isset($this->_options[$key]);
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp valuephp forphp aphp givenphp optionphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_ruleMapphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>php_ruleMapphp[php$keyphp]php;
-php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Set the value for a given option.
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        $this->parse();
+        if (isset($this->_ruleMap[$key])) {
+            $key = $this->_ruleMap[$key];
+            $this->_options[$key] = $value;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp setphp ofphp optionsphp andphp parametersphp seenphp asphp aphp stringphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>toStringphp(php)php;
-php php php php php}
+    /**
+     * Return the current set of options and parameters seen as a string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Unsetphp anphp optionphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_unsetphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_ruleMapphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php$keyphp php=php php$thisphp-php>php_ruleMapphp[php$keyphp]php;
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_optionsphp[php$keyphp]php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Unset an option.
+     *
+     * @param  string $key
+     * @return void
+     */
+    public function __unset($key)
+    {
+        $this->parse();
+        if (isset($this->_ruleMap[$key])) {
+            $key = $this->_ruleMap[$key];
+            unset($this->_options[$key]);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp additionalphp commandphp-linephp argumentsphp.
-php php php php php php*php Thesephp arephp appendedphp tophp thosephp definedphp whenphp thephp constructorphp wasphp calledphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$argv
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exceptionphp Whenphp notphp givenphp anphp arrayphp asphp parameter
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp addArgumentsphp(php$argvphp)
-php php php php php{
-php php php php php php php php ifphp(php!isphp_arrayphp(php$argvphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Parameterphp php#php1php tophp addArgumentsphp shouldphp bephp anphp arrayphp"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_argvphp php=php arrayphp_mergephp(php$thisphp-php>php_argvphp,php php$argvphp)php;
-php php php php php php php php php$thisphp-php>php_parsedphp php=php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define additional command-line arguments.
+     * These are appended to those defined when the constructor was called.
+     *
+     * @param  array $argv
+     * @throws Zend_Console_Getopt_Exception When not given an array as parameter
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function addArguments($argv)
+    {
+        if(!is_array($argv)) {
+            require_once 'Zend/Console/Getopt/Exception.php';
+            throw new Zend_Console_Getopt_Exception(
+                "Parameter #1 to addArguments should be an array");
+        }
+        $this->_argv = array_merge($this->_argv, $argv);
+        $this->_parsed = false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp fullphp setphp ofphp commandphp-linephp argumentsphp.
-php php php php php php*php Thesephp replacephp anyphp currentlyphp definedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$argv
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exceptionphp Whenphp notphp givenphp anphp arrayphp asphp parameter
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setArgumentsphp(php$argvphp)
-php php php php php{
-php php php php php php php php ifphp(php!isphp_arrayphp(php$argvphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Parameterphp php#php1php tophp setArgumentsphp shouldphp bephp anphp arrayphp"php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_argvphp php=php php$argvphp;
-php php php php php php php php php$thisphp-php>php_parsedphp php=php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define full set of command-line arguments.
+     * These replace any currently defined.
+     *
+     * @param  array $argv
+     * @throws Zend_Console_Getopt_Exception When not given an array as parameter
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function setArguments($argv)
+    {
+        if(!is_array($argv)) {
+            require_once 'Zend/Console/Getopt/Exception.php';
+            throw new Zend_Console_Getopt_Exception(
+                "Parameter #1 to setArguments should be an array");
+        }
+        $this->_argv = $argv;
+        $this->_parsed = false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp multiplephp configurationphp optionsphp fromphp anphp associativephp arrayphp.
-php php php php php php*php Thesephp arephp notphp programphp optionsphp,php butphp propertiesphp tophp configure
-php php php php php php*php thephp behaviorphp ofphp Zendphp_Consolephp_Getoptphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$getoptConfig
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(php$getoptConfigphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$getoptConfigphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$getoptConfigphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define multiple configuration options from an associative array.
+     * These are not program options, but properties to configure
+     * the behavior of Zend_Console_Getopt.
+     *
+     * @param  array $getoptConfig
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function setOptions($getoptConfig)
+    {
+        if (isset($getoptConfig)) {
+            foreach ($getoptConfig as $key => $value) {
+                $this->setOption($key, $value);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp onephp configurationphp optionphp asphp aphp keyphp/valuephp pairphp.
-php php php php php php*php Thesephp arephp notphp programphp optionsphp,php butphp propertiesphp tophp configure
-php php php php php php*php thephp behaviorphp ofphp Zendphp_Consolephp_Getoptphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$configKey
-php php php php php php*php php@paramphp php stringphp php$configValue
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setOptionphp(php$configKeyphp,php php$configValuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$configKeyphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_getoptConfigphp[php$configKeyphp]php php=php php$configValuephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define one configuration option as a key/value pair.
+     * These are not program options, but properties to configure
+     * the behavior of Zend_Console_Getopt.
+     *
+     * @param  string $configKey
+     * @param  string $configValue
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function setOption($configKey, $configValue)
+    {
+        if ($configKey !== null) {
+            $this->_getoptConfig[$configKey] = $configValue;
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp additionalphp optionphp rulesphp.
-php php php php php php*php Thesephp arephp appendedphp tophp thephp rulesphp definedphp whenphp thephp constructorphp wasphp calledphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$rules
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp addRulesphp(php$rulesphp)
-php php php php php{
-php php php php php php php php php$ruleModephp php=php php$thisphp-php>php_getoptConfigphp[php'ruleModephp'php]php;
-php php php php php php php php switchphp php(php$thisphp-php>php_getoptConfigphp[php'ruleModephp'php]php)php php{
-php php php php php php php php php php php php casephp selfphp:php:MODEphp_ZENDphp:
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$rulesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_addRulesModeZendphp(php$rulesphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php/php/php intentionalphp fallthrough
-php php php php php php php php php php php php casephp selfphp:php:MODEphp_GNUphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_addRulesModeGnuphp(php$rulesphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php Callphp addRulesModeFoophp(php)php forphp ruleModephp php'foophp'php.
-php php php php php php php php php php php php php php php php php php*php Thephp developerphp shouldphp subclassphp Getoptphp and
-php php php php php php php php php php php php php php php php php php*php providephp thisphp methodphp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$methodphp php=php php'php_addRulesModephp'php php.php ucfirstphp(php$ruleModephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$rulesphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parsedphp php=php falsephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define additional option rules.
+     * These are appended to the rules defined when the constructor was called.
+     *
+     * @param  array $rules
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function addRules($rules)
+    {
+        $ruleMode = $this->_getoptConfig['ruleMode'];
+        switch ($this->_getoptConfig['ruleMode']) {
+            case self::MODE_ZEND:
+                if (is_array($rules)) {
+                    $this->_addRulesModeZend($rules);
+                    break;
+                }
+                // intentional fallthrough
+            case self::MODE_GNU:
+                $this->_addRulesModeGnu($rules);
+                break;
+            default:
+                /**
+                 * Call addRulesModeFoo() for ruleMode 'foo'.
+                 * The developer should subclass Getopt and
+                 * provide this method.
+                 */
+                $method = '_addRulesMode' . ucfirst($ruleMode);
+                $this->$method($rules);
+        }
+        $this->_parsed = false;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp setphp ofphp optionsphp andphp parametersphp seenphp asphp aphp stringphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php php$sphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp asphp php$flagphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$sphp[php]php php=php php$flagphp php.php php'php=php'php php.php php(php$valuephp php=php=php=php truephp php?php php'truephp'php php:php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp implodephp(php'php php'php,php php$sphp)php;
-php php php php php}
+    /**
+     * Return the current set of options and parameters seen as a string.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        $this->parse();
+        $s = array();
+        foreach ($this->_options as $flag => $value) {
+            $s[] = $flag . '=' . ($value === true ? 'true' : $value);
+        }
+        return implode(' ', $s);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp setphp ofphp optionsphp andphp parametersphp seen
-php php php php php php*php asphp anphp arrayphp ofphp canonicalphp optionsphp andphp parametersphp.
-php php php php php php*
-php php php php php php*php Clustersphp havephp beenphp expandedphp,php andphp optionphp aliases
-php php php php php php*php havephp beenphp mappedphp tophp theirphp primaryphp optionphp namesphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php php$sphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp asphp php$flagphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$sphp[php]php php=php php$flagphp;
-php php php php php php php php php php php php ifphp php(php$valuephp php!php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$sphp[php]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$sphp;
-php php php php php}
+    /**
+     * Return the current set of options and parameters seen
+     * as an array of canonical options and parameters.
+     *
+     * Clusters have been expanded, and option aliases
+     * have been mapped to their primary option names.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $this->parse();
+        $s = array();
+        foreach ($this->_options as $flag => $value) {
+            $s[] = $flag;
+            if ($value !== true) {
+                $s[] = $value;
+            }
+        }
+        return $s;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp setphp ofphp optionsphp andphp parametersphp seenphp inphp Jsonphp formatphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toJsonphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php php$jphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp asphp php$flagphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$jphp[php'optionsphp'php]php[php]php php=php arrayphp(
-php php php php php php php php php php php php php php php php php'optionphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'flagphp'php php=php>php php$flagphp,
-php php php php php php php php php php php php php php php php php php php php php'parameterphp'php php=php>php php$value
-php php php php php php php php php php php php php php php php php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * Return the current set of options and parameters seen in Json format.
+     *
+     * @return string
+     */
+    public function toJson()
+    {
+        $this->parse();
+        $j = array();
+        foreach ($this->_options as $flag => $value) {
+            $j['options'][] = array(
+                'option' => array(
+                    'flag' => $flag,
+                    'parameter' => $value
+                )
+            );
+        }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php php@seephp Zendphp_Json
-php php php php php php php php php php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php php$jsonphp php=php Zendphp_Jsonphp:php:encodephp(php$jphp)php;
+        /**
+         * @see Zend_Json
+         */
+        require_once 'Zend/Json.php';
+        $json = Zend_Json::encode($j);
 
-php php php php php php php php returnphp php$jsonphp;
-php php php php php}
+        return $json;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp setphp ofphp optionsphp andphp parametersphp seenphp inphp XMLphp formatphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toXmlphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php php$docphp php=php newphp DomDocumentphp(php'php1php.php0php'php,php php'utfphp-php8php'php)php;
-php php php php php php php php php$optionsNodephp php=php php$docphp-php>createElementphp(php'optionsphp'php)php;
-php php php php php php php php php$docphp-php>appendChildphp(php$optionsNodephp)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_optionsphp asphp php$flagphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$optionNodephp php=php php$docphp-php>createElementphp(php'optionphp'php)php;
-php php php php php php php php php php php php php$optionNodephp-php>setAttributephp(php'flagphp'php,php utfphp8php_encodephp(php$flagphp)php)php;
-php php php php php php php php php php php php ifphp php(php$valuephp php!php=php=php truephp)php php{
-php php php php php php php php php php php php php php php php php$optionNodephp-php>setAttributephp(php'parameterphp'php,php utfphp8php_encodephp(php$valuephp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$optionsNodephp-php>appendChildphp(php$optionNodephp)php;
-php php php php php php php php php}
-php php php php php php php php php$xmlphp php=php php$docphp-php>saveXMLphp(php)php;
-php php php php php php php php returnphp php$xmlphp;
-php php php php php}
+    /**
+     * Return the current set of options and parameters seen in XML format.
+     *
+     * @return string
+     */
+    public function toXml()
+    {
+        $this->parse();
+        $doc = new DomDocument('1.0', 'utf-8');
+        $optionsNode = $doc->createElement('options');
+        $doc->appendChild($optionsNode);
+        foreach ($this->_options as $flag => $value) {
+            $optionNode = $doc->createElement('option');
+            $optionNode->setAttribute('flag', utf8_encode($flag));
+            if ($value !== true) {
+                $optionNode->setAttribute('parameter', utf8_encode($value));
+            }
+            $optionsNode->appendChild($optionNode);
+        }
+        $xml = $doc->saveXML();
+        return $xml;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp listphp ofphp optionsphp thatphp havephp beenphp seenphp inphp thephp currentphp argvphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getOptionsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php returnphp arrayphp_keysphp(php$thisphp-php>php_optionsphp)php;
-php php php php php}
+    /**
+     * Return a list of options that have been seen in the current argv.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        $this->parse();
+        return array_keys($this->_options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp statephp ofphp thephp optionphp seenphp onphp thephp commandphp linephp ofphp the
-php php php php php php*php currentphp applicationphp invocationphp.
-php php php php php php*
-php php php php php php*php Thisphp functionphp returnsphp truephp,php orphp thephp parameterphp valuephp tophp thephp optionphp,php ifphp anyphp.
-php php php php php php*php Ifphp thephp optionphp wasphp notphp givenphp,php thisphp functionphp returnsphp falsephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$flag
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getOptionphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_IGNORECASEphp]php)php php{
-php php php php php php php php php php php php php$flagphp php=php strtolowerphp(php$flagphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php$flagphp php=php php$thisphp-php>php_ruleMapphp[php$flagphp]php;
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_optionsphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$flagphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Return the state of the option seen on the command line of the
+     * current application invocation.
+     *
+     * This function returns true, or the parameter value to the option, if any.
+     * If the option was not given, this function returns false.
+     *
+     * @param  string $flag
+     * @return mixed
+     */
+    public function getOption($flag)
+    {
+        $this->parse();
+        if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
+            $flag = strtolower($flag);
+        }
+        if (isset($this->_ruleMap[$flag])) {
+            $flag = $this->_ruleMap[$flag];
+            if (isset($this->_options[$flag])) {
+                return $this->_options[$flag];
+            }
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp argumentsphp fromphp thephp commandphp-linephp followingphp allphp optionsphp foundphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getRemainingArgsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>parsephp(php)php;
-php php php php php php php php returnphp php$thisphp-php>php_remainingArgsphp;
-php php php php php}
+    /**
+     * Return the arguments from the command-line following all options found.
+     *
+     * @return array
+     */
+    public function getRemainingArgs()
+    {
+        $this->parse();
+        return $this->_remainingArgs;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp usefulphp optionphp referencephp,php formattedphp forphp displayphp inphp an
-php php php php php php*php errorphp messagephp.
-php php php php php php*
-php php php php php php*php Notephp thatphp thisphp usagephp informationphp isphp providedphp inphp mostphp Exceptions
-php php php php php php*php generatedphp byphp thisphp classphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getUsageMessagephp(php)
-php php php php php{
-php php php php php php php php php$usagephp php=php php"Usagephp:php php{php$thisphp-php>php_prognamephp}php php[php optionsphp php]php\nphp"php;
-php php php php php php php php php$maxLenphp php=php php2php0php;
-php php php php php php php php php$linesphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_rulesphp asphp php$rulephp)php php{
-php php php php php php php php php php php php php$flagsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$rulephp[php'aliasphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$rulephp[php'aliasphp'php]php asphp php$flagphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$flagsphp[php]php php=php php(strlenphp(php$flagphp)php php=php=php php1php php?php php'php-php'php php:php php'php-php-php'php)php php.php php$flagphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$linepartphp[php'namephp'php]php php=php implodephp(php'php|php'php,php php$flagsphp)php;
-php php php php php php php php php php php php ifphp php(issetphp(php$rulephp[php'paramphp'php]php)php php&php&php php$rulephp[php'paramphp'php]php php!php=php php'nonephp'php)php php{
-php php php php php php php php php php php php php php php php php$linepartphp[php'namephp'php]php php.php=php php'php php'php;
-php php php php php php php php php php php php php php php php switchphp php(php$rulephp[php'paramphp'php]php)php php{
-php php php php php php php php php php php php php php php php php php php php casephp php'optionalphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$linepartphp[php'namephp'php]php php.php=php php"php[php <php{php$rulephp[php'paramTypephp'php]php}php>php php]php"php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'requiredphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$linepartphp[php'namephp'php]php php.php=php php"<php{php$rulephp[php'paramTypephp'php]php}php>php"php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(strlenphp(php$linepartphp[php'namephp'php]php)php php>php php$maxLenphp)php php{
-php php php php php php php php php php php php php php php php php$maxLenphp php=php strlenphp(php$linepartphp[php'namephp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$linepartphp[php'helpphp'php]php php=php php'php'php;
-php php php php php php php php php php php php ifphp php(issetphp(php$rulephp[php'helpphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$linepartphp[php'helpphp'php]php php.php=php php$rulephp[php'helpphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$linesphp[php]php php=php php$linepartphp;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$linesphp asphp php$linepartphp)php php{
-php php php php php php php php php php php php php$usagephp php.php=php sprintfphp(php"php%sphp php%sphp\nphp"php,
-php php php php php php php php php php php php strphp_padphp(php$linepartphp[php'namephp'php]php,php php$maxLenphp)php,
-php php php php php php php php php php php php php$linepartphp[php'helpphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$usagephp;
-php php php php php}
+    /**
+     * Return a useful option reference, formatted for display in an
+     * error message.
+     *
+     * Note that this usage information is provided in most Exceptions
+     * generated by this class.
+     *
+     * @return string
+     */
+    public function getUsageMessage()
+    {
+        $usage = "Usage: {$this->_progname} [ options ]\n";
+        $maxLen = 20;
+        $lines = array();
+        foreach ($this->_rules as $rule) {
+            $flags = array();
+            if (is_array($rule['alias'])) {
+                foreach ($rule['alias'] as $flag) {
+                    $flags[] = (strlen($flag) == 1 ? '-' : '--') . $flag;
+                }
+            }
+            $linepart['name'] = implode('|', $flags);
+            if (isset($rule['param']) && $rule['param'] != 'none') {
+                $linepart['name'] .= ' ';
+                switch ($rule['param']) {
+                    case 'optional':
+                        $linepart['name'] .= "[ <{$rule['paramType']}> ]";
+                        break;
+                    case 'required':
+                        $linepart['name'] .= "<{$rule['paramType']}>";
+                        break;
+                }
+            }
+            if (strlen($linepart['name']) > $maxLen) {
+                $maxLen = strlen($linepart['name']);
+            }
+            $linepart['help'] = '';
+            if (isset($rule['help'])) {
+                $linepart['help'] .= $rule['help'];
+            }
+            $lines[] = $linepart;
+        }
+        foreach ($lines as $linepart) {
+            $usage .= sprintf("%s %s\n",
+            str_pad($linepart['name'], $maxLen),
+            $linepart['help']);
+        }
+        return $usage;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp aliasesphp forphp optionsphp.
-php php php php php php*
-php php php php php php*php Thephp parameterphp php$aliasMapphp isphp anphp associativephp array
-php php php php php php*php mappingphp optionphp namephp php(shortphp orphp longphp)php tophp anphp aliasphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$aliasMap
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exception
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setAliasesphp(php$aliasMapphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$aliasMapphp asphp php$flagphp php=php>php php$aliasphp)
-php php php php php php php php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_IGNORECASEphp]php)php php{
-php php php php php php php php php php php php php php php php php$flagphp php=php strtolowerphp(php$flagphp)php;
-php php php php php php php php php php php php php php php php php$aliasphp php=php strtolowerphp(php$aliasphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$flagphp php=php php$thisphp-php>php_ruleMapphp[php$flagphp]php;
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_rulesphp[php$aliasphp]php)php php|php|php issetphp(php$thisphp-php>php_ruleMapphp[php$aliasphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$ophp php=php php(strlenphp(php$aliasphp)php php=php=php php1php php?php php'php-php'php php:php php'php-php-php'php)php php.php php$aliasphp;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php$ophp\php"php isphp beingphp definedphp morephp thanphp oncephp.php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_rulesphp[php$flagphp]php[php'aliasphp'php]php[php]php php=php php$aliasphp;
-php php php php php php php php php php php php php$thisphp-php>php_ruleMapphp[php$aliasphp]php php=php php$flagphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define aliases for options.
+     *
+     * The parameter $aliasMap is an associative array
+     * mapping option name (short or long) to an alias.
+     *
+     * @param  array $aliasMap
+     * @throws Zend_Console_Getopt_Exception
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function setAliases($aliasMap)
+    {
+        foreach ($aliasMap as $flag => $alias)
+        {
+            if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
+                $flag = strtolower($flag);
+                $alias = strtolower($alias);
+            }
+            if (!isset($this->_ruleMap[$flag])) {
+                continue;
+            }
+            $flag = $this->_ruleMap[$flag];
+            if (isset($this->_rules[$alias]) || isset($this->_ruleMap[$alias])) {
+                $o = (strlen($alias) == 1 ? '-' : '--') . $alias;
+                require_once 'Zend/Console/Getopt/Exception.php';
+                throw new Zend_Console_Getopt_Exception(
+                    "Option \"$o\" is being defined more than once.");
+            }
+            $this->_rules[$flag]['alias'][] = $alias;
+            $this->_ruleMap[$alias] = $flag;
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp helpphp messagesphp forphp optionsphp.
-php php php php php php*
-php php php php php php*php Thephp parameterphp php$helpphp_mapphp isphp anphp associativephp array
-php php php php php php*php mappingphp optionphp namephp php(shortphp orphp longphp)php tophp thephp helpphp stringphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$helpMap
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setHelpphp(php$helpMapphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$helpMapphp asphp php$flagphp php=php>php php$helpphp)
-php php php php php php php php php{
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$flagphp php=php php$thisphp-php>php_ruleMapphp[php$flagphp]php;
-php php php php php php php php php php php php php$thisphp-php>php_rulesphp[php$flagphp]php[php'helpphp'php]php php=php php$helpphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Define help messages for options.
+     *
+     * The parameter $help_map is an associative array
+     * mapping option name (short or long) to the help string.
+     *
+     * @param  array $helpMap
+     * @return Zend_Console_Getopt Provides a fluent interface
+     */
+    public function setHelp($helpMap)
+    {
+        foreach ($helpMap as $flag => $help)
+        {
+            if (!isset($this->_ruleMap[$flag])) {
+                continue;
+            }
+            $flag = $this->_ruleMap[$flag];
+            $this->_rules[$flag]['help'] = $help;
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp commandphp-linephp argumentsphp andphp findphp bothphp longphp andphp short
-php php php php php php*php optionsphp.
-php php php php php php*
-php php php php php php*php Alsophp findphp optionphp parametersphp,php andphp remainingphp argumentsphp after
-php php php php php php*php allphp optionsphp havephp beenphp parsedphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Consolephp_Getoptphp|nullphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp parsephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_parsedphp php=php=php=php truephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$argvphp php=php php$thisphp-php>php_argvphp;
-php php php php php php php php php$thisphp-php>php_optionsphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_remainingArgsphp php=php arrayphp(php)php;
-php php php php php php php php whilephp php(countphp(php$argvphp)php php>php php0php)php php{
-php php php php php php php php php php php php ifphp php(php$argvphp[php0php]php php=php=php php'php-php-php'php)php php{
-php php php php php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_DASHDASHphp]php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_remainingArgsphp php=php arrayphp_mergephp(php$thisphp-php>php_remainingArgsphp,php php$argvphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(substrphp(php$argvphp[php0php]php,php php0php,php php2php)php php=php=php php'php-php-php'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_parseLongOptionphp(php$argvphp)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(substrphp(php$argvphp[php0php]php,php php0php,php php1php)php php=php=php php'php-php'php php&php&php php(php'php-php'php php!php=php php$argvphp[php0php]php php|php|php countphp(php$argvphp)php php>php1php)php)php php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_parseShortOptionClusterphp(php$argvphp)php;
-php php php php php php php php php php php php php}php elsephp ifphp(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_PARSEALLphp]php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_remainingArgsphp[php]php php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php*
-php php php php php php php php php php php php php php php php php php*php Wephp shouldphp putphp allphp otherphp argumentsphp inphp php_remainingArgsphp andphp stopphp parsing
-php php php php php php php php php php php php php php php php php php*php sincephp CONFIGphp_PARSEALLphp isphp falsephp.
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php$thisphp-php>php_remainingArgsphp php=php arrayphp_mergephp(php$thisphp-php>php_remainingArgsphp,php php$argvphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parsedphp php=php truephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Parse command-line arguments and find both long and short
+     * options.
+     *
+     * Also find option parameters, and remaining arguments after
+     * all options have been parsed.
+     *
+     * @return Zend_Console_Getopt|null Provides a fluent interface
+     */
+    public function parse()
+    {
+        if ($this->_parsed === true) {
+            return;
+        }
+        $argv = $this->_argv;
+        $this->_options = array();
+        $this->_remainingArgs = array();
+        while (count($argv) > 0) {
+            if ($argv[0] == '--') {
+                array_shift($argv);
+                if ($this->_getoptConfig[self::CONFIG_DASHDASH]) {
+                    $this->_remainingArgs = array_merge($this->_remainingArgs, $argv);
+                    break;
+                }
+            }
+            if (substr($argv[0], 0, 2) == '--') {
+                $this->_parseLongOption($argv);
+            } else if (substr($argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) >1))  {
+                $this->_parseShortOptionCluster($argv);
+            } else if($this->_getoptConfig[self::CONFIG_PARSEALL]) {
+                $this->_remainingArgs[] = array_shift($argv);
+            } else {
+                /*
+                 * We should put all other arguments in _remainingArgs and stop parsing
+                 * since CONFIG_PARSEALL is false.
+                 */
+                $this->_remainingArgs = array_merge($this->_remainingArgs, $argv);
+                break;
+            }
+        }
+        $this->_parsed = true;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp commandphp-linephp argumentsphp forphp aphp singlephp longphp optionphp.
-php php php php php php*php Aphp longphp optionphp isphp precededphp byphp aphp doublephp php'php-php-php'php characterphp.
-php php php php php php*php Longphp optionsphp mayphp notphp bephp clusteredphp.
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php&php$argv
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseLongOptionphp(php&php$argvphp)
-php php php php php{
-php php php php php php php php php$optionWithParamphp php=php ltrimphp(arrayphp_shiftphp(php$argvphp)php,php php'php-php'php)php;
-php php php php php php php php php$lphp php=php explodephp(php'php=php'php,php php$optionWithParamphp,php php2php)php;
-php php php php php php php php php$flagphp php=php arrayphp_shiftphp(php$lphp)php;
-php php php php php php php php php$paramphp php=php arrayphp_shiftphp(php$lphp)php;
-php php php php php php php php ifphp php(issetphp(php$paramphp)php)php php{
-php php php php php php php php php php php php arrayphp_unshiftphp(php$argvphp,php php$paramphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_parseSingleOptionphp(php$flagphp,php php$argvphp)php;
-php php php php php}
+    /**
+     * Parse command-line arguments for a single long option.
+     * A long option is preceded by a double '--' character.
+     * Long options may not be clustered.
+     *
+     * @param  mixed &$argv
+     * @return void
+     */
+    protected function _parseLongOption(&$argv)
+    {
+        $optionWithParam = ltrim(array_shift($argv), '-');
+        $l = explode('=', $optionWithParam, 2);
+        $flag = array_shift($l);
+        $param = array_shift($l);
+        if (isset($param)) {
+            array_unshift($argv, $param);
+        }
+        $this->_parseSingleOption($flag, $argv);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp commandphp-linephp argumentsphp forphp shortphp optionsphp.
-php php php php php php*php Shortphp optionsphp arephp thosephp precededphp byphp aphp singlephp php'php-php'php characterphp.
-php php php php php php*php Shortphp optionsphp mayphp bephp clusteredphp.
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php&php$argv
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseShortOptionClusterphp(php&php$argvphp)
-php php php php php{
-php php php php php php php php php$flagClusterphp php=php ltrimphp(arrayphp_shiftphp(php$argvphp)php,php php'php-php'php)php;
-php php php php php php php php foreachphp php(strphp_splitphp(php$flagClusterphp)php asphp php$flagphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_parseSingleOptionphp(php$flagphp,php php$argvphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Parse command-line arguments for short options.
+     * Short options are those preceded by a single '-' character.
+     * Short options may be clustered.
+     *
+     * @param  mixed &$argv
+     * @return void
+     */
+    protected function _parseShortOptionCluster(&$argv)
+    {
+        $flagCluster = ltrim(array_shift($argv), '-');
+        foreach (str_split($flagCluster) as $flag) {
+            $this->_parseSingleOption($flag, $argv);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp commandphp-linephp argumentsphp forphp aphp singlephp optionphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$flag
-php php php php php php*php php@paramphp php mixedphp php php$argv
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseSingleOptionphp(php$flagphp,php php&php$argvphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_IGNORECASEphp]php)php php{
-php php php php php php php php php php php php php$flagphp php=php strtolowerphp(php$flagphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php"Optionphp php\php"php$flagphp\php"php isphp notphp recognizedphp.php"php,
-php php php php php php php php php php php php php php php php php$thisphp-php>getUsageMessagephp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php php$realFlagphp php=php php$thisphp-php>php_ruleMapphp[php$flagphp]php;
-php php php php php php php php switchphp php(php$thisphp-php>php_rulesphp[php$realFlagphp]php[php'paramphp'php]php)php php{
-php php php php php php php php php php php php casephp php'requiredphp'php:
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$argvphp)php php>php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$paramphp php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkParameterTypephp(php$realFlagphp,php php$paramphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php$flagphp\php"php requiresphp aphp parameterphp.php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getUsageMessagephp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'optionalphp'php:
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$argvphp)php php>php php0php php&php&php substrphp(php$argvphp[php0php]php,php php0php,php php1php)php php!php=php php'php-php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php$paramphp php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_checkParameterTypephp(php$realFlagphp,php php$paramphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$paramphp php=php truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php$paramphp php=php truephp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_optionsphp[php$realFlagphp]php php=php php$paramphp;
-php php php php php}
+    /**
+     * Parse command-line arguments for a single option.
+     *
+     * @param  string $flag
+     * @param  mixed  $argv
+     * @throws Zend_Console_Getopt_Exception
+     * @return void
+     */
+    protected function _parseSingleOption($flag, &$argv)
+    {
+        if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
+            $flag = strtolower($flag);
+        }
+        if (!isset($this->_ruleMap[$flag])) {
+            require_once 'Zend/Console/Getopt/Exception.php';
+            throw new Zend_Console_Getopt_Exception(
+                "Option \"$flag\" is not recognized.",
+                $this->getUsageMessage());
+        }
+        $realFlag = $this->_ruleMap[$flag];
+        switch ($this->_rules[$realFlag]['param']) {
+            case 'required':
+                if (count($argv) > 0) {
+                    $param = array_shift($argv);
+                    $this->_checkParameterType($realFlag, $param);
+                } else {
+                    require_once 'Zend/Console/Getopt/Exception.php';
+                    throw new Zend_Console_Getopt_Exception(
+                        "Option \"$flag\" requires a parameter.",
+                        $this->getUsageMessage());
+                }
+                break;
+            case 'optional':
+                if (count($argv) > 0 && substr($argv[0], 0, 1) != '-') {
+                    $param = array_shift($argv);
+                    $this->_checkParameterType($realFlag, $param);
+                } else {
+                    $param = true;
+                }
+                break;
+            default:
+                $param = true;
+        }
+        $this->_options[$realFlag] = $param;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp truephp ifphp thephp parameterphp isphp inphp aphp validphp formatphp for
-php php php php php php*php thephp optionphp php$flagphp.
-php php php php php php*php Throwphp anphp exceptionphp inphp mostphp otherphp casesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$flag
-php php php php php php*php php@paramphp php stringphp php$param
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exception
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkParameterTypephp(php$flagphp,php php$paramphp)
-php php php php php{
-php php php php php php php php php$typephp php=php php'stringphp'php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_rulesphp[php$flagphp]php[php'paramTypephp'php]php)php)php php{
-php php php php php php php php php php php php php$typephp php=php php$thisphp-php>php_rulesphp[php$flagphp]php[php'paramTypephp'php]php;
-php php php php php php php php php}
-php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php casephp php'wordphp'php:
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\Wphp/php'php,php php$paramphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php$flagphp\php"php requiresphp aphp singlephp-wordphp parameterphp,php butphp wasphp givenphp php\php"php$paramphp\php"php.php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getUsageMessagephp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'integerphp'php:
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php\Dphp/php'php,php php$paramphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php$flagphp\php"php requiresphp anphp integerphp parameterphp,php butphp wasphp givenphp php\php"php$paramphp\php"php.php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getUsageMessagephp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'stringphp'php:
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Return true if the parameter is in a valid format for
+     * the option $flag.
+     * Throw an exception in most other cases.
+     *
+     * @param  string $flag
+     * @param  string $param
+     * @throws Zend_Console_Getopt_Exception
+     * @return bool
+     */
+    protected function _checkParameterType($flag, $param)
+    {
+        $type = 'string';
+        if (isset($this->_rules[$flag]['paramType'])) {
+            $type = $this->_rules[$flag]['paramType'];
+        }
+        switch ($type) {
+            case 'word':
+                if (preg_match('/\W/', $param)) {
+                    require_once 'Zend/Console/Getopt/Exception.php';
+                    throw new Zend_Console_Getopt_Exception(
+                        "Option \"$flag\" requires a single-word parameter, but was given \"$param\".",
+                        $this->getUsageMessage());
+                }
+                break;
+            case 'integer':
+                if (preg_match('/\D/', $param)) {
+                    require_once 'Zend/Console/Getopt/Exception.php';
+                    throw new Zend_Console_Getopt_Exception(
+                        "Option \"$flag\" requires an integer parameter, but was given \"$param\".",
+                        $this->getUsageMessage());
+                }
+                break;
+            case 'string':
+            default:
+                break;
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp legalphp optionsphp usingphp thephp gnuphp-stylephp formatphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$rules
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_addRulesModeGnuphp(php$rulesphp)
-php php php php php{
-php php php php php php php php php$ruleArrayphp php=php arrayphp(php)php;
+    /**
+     * Define legal options using the gnu-style format.
+     *
+     * @param  string $rules
+     * @return void
+     */
+    protected function _addRulesModeGnu($rules)
+    {
+        $ruleArray = array();
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Optionsphp mayphp bephp singlephp alphanumericphp charactersphp.
-php php php php php php php php php php*php Optionsphp mayphp havephp aphp php'php:php'php whichphp indicatesphp aphp requiredphp stringphp parameterphp.
-php php php php php php php php php php*php Nophp longphp optionsphp orphp optionphp aliasesphp arephp supportedphp inphp GNUphp stylephp.
-php php php php php php php php php php*php/
-php php php php php php php php pregphp_matchphp_allphp(php'php/php(php[aphp-zAphp-Zphp0php-php9php]php:php?php)php/php'php,php php$rulesphp,php php$ruleArrayphp)php;
-php php php php php php php php foreachphp php(php$ruleArrayphp[php1php]php asphp php$rulephp)php php{
-php php php php php php php php php php php php php$rphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$flagphp php=php substrphp(php$rulephp,php php0php,php php1php)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_IGNORECASEphp]php)php php{
-php php php php php php php php php php php php php php php php php$flagphp php=php strtolowerphp(php$flagphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$rphp[php'aliasphp'php]php[php]php php=php php$flagphp;
-php php php php php php php php php php php php ifphp php(substrphp(php$rulephp,php php1php,php php1php)php php=php=php php'php:php'php)php php{
-php php php php php php php php php php php php php php php php php$rphp[php'paramphp'php]php php=php php'requiredphp'php;
-php php php php php php php php php php php php php php php php php$rphp[php'paramTypephp'php]php php=php php'stringphp'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$rphp[php'paramphp'php]php php=php php'nonephp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_rulesphp[php$flagphp]php php=php php$rphp;
-php php php php php php php php php php php php php$thisphp-php>php_ruleMapphp[php$flagphp]php php=php php$flagphp;
-php php php php php php php php php}
-php php php php php}
+        /**
+         * Options may be single alphanumeric characters.
+         * Options may have a ':' which indicates a required string parameter.
+         * No long options or option aliases are supported in GNU style.
+         */
+        preg_match_all('/([a-zA-Z0-9]:?)/', $rules, $ruleArray);
+        foreach ($ruleArray[1] as $rule) {
+            $r = array();
+            $flag = substr($rule, 0, 1);
+            if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
+                $flag = strtolower($flag);
+            }
+            $r['alias'][] = $flag;
+            if (substr($rule, 1, 1) == ':') {
+                $r['param'] = 'required';
+                $r['paramType'] = 'string';
+            } else {
+                $r['param'] = 'none';
+            }
+            $this->_rules[$flag] = $r;
+            $this->_ruleMap[$flag] = $flag;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definephp legalphp optionsphp usingphp thephp Zendphp-stylephp formatphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$rules
-php php php php php php*php php@throwsphp Zendphp_Consolephp_Getoptphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_addRulesModeZendphp(php$rulesphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$rulesphp asphp php$ruleCodephp php=php>php php$helpMessagephp)
-php php php php php php php php php{
-php php php php php php php php php php php php php/php/php thisphp mayphp havephp tophp translatephp thephp longphp parmphp typephp ifphp there
-php php php php php php php php php php php php php/php/php arephp anyphp complaintsphp thatphp php=stringphp willphp notphp workphp php(evenphp thoughphp thatphp use
-php php php php php php php php php php php php php/php/php casephp isphp notphp documentedphp)
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(substrphp(php$ruleCodephp,php php-php2php,php php1php)php,php arrayphp(php'php-php'php,php php'php=php'php)php)php)php php{
-php php php php php php php php php php php php php php php php php$flagListphp php php=php substrphp(php$ruleCodephp,php php0php,php php-php2php)php;
-php php php php php php php php php php php php php php php php php$delimiterphp php=php substrphp(php$ruleCodephp,php php-php2php,php php1php)php;
-php php php php php php php php php php php php php php php php php$paramTypephp php=php substrphp(php$ruleCodephp,php php-php1php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$flagListphp php=php php$ruleCodephp;
-php php php php php php php php php php php php php php php php php$delimiterphp php=php php$paramTypephp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_getoptConfigphp[selfphp:php:CONFIGphp_IGNORECASEphp]php)php php{
-php php php php php php php php php php php php php php php php php$flagListphp php=php strtolowerphp(php$flagListphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$flagsphp php=php explodephp(php'php|php'php,php php$flagListphp)php;
-php php php php php php php php php php php php php$rulephp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$mainFlagphp php=php php$flagsphp[php0php]php;
-php php php php php php php php php php php php foreachphp php(php$flagsphp asphp php$flagphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$flagphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"Blankphp flagphp notphp allowedphp inphp rulephp php\php"php$ruleCodephp\php"php.php"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(strlenphp(php$flagphp)php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php-php$flagphp\php"php isphp beingphp definedphp morephp thanphp oncephp.php"php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_ruleMapphp[php$flagphp]php php=php php$mainFlagphp;
-php php php php php php php php php php php php php php php php php php php php php$rulephp[php'aliasphp'php]php[php]php php=php php$flagphp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_rulesphp[php$flagphp]php)php php|php|php issetphp(php$thisphp-php>php_ruleMapphp[php$flagphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Consolephp/Getoptphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Consolephp_Getoptphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php"Optionphp php\php"php-php-php$flagphp\php"php isphp beingphp definedphp morephp thanphp oncephp.php"php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_ruleMapphp[php$flagphp]php php=php php$mainFlagphp;
-php php php php php php php php php php php php php php php php php php php php php$rulephp[php'aliasphp'php]php[php]php php=php php$flagphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$delimiterphp)php)php php{
-php php php php php php php php php php php php php php php php switchphp php(php$delimiterphp)php php{
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:PARAMphp_REQUIREDphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$rulephp[php'paramphp'php]php php=php php'requiredphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:PARAMphp_OPTIONALphp:
-php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$rulephp[php'paramphp'php]php php=php php'optionalphp'php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php switchphp php(substrphp(php$paramTypephp,php php0php,php php1php)php)php php{
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:TYPEphp_WORDphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$rulephp[php'paramTypephp'php]php php=php php'wordphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:TYPEphp_INTEGERphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$rulephp[php'paramTypephp'php]php php=php php'integerphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp selfphp:php:TYPEphp_STRINGphp:
-php php php php php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php$rulephp[php'paramTypephp'php]php php=php php'stringphp'php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$rulephp[php'paramphp'php]php php=php php'nonephp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$rulephp[php'helpphp'php]php php=php php$helpMessagephp;
-php php php php php php php php php php php php php$thisphp-php>php_rulesphp[php$mainFlagphp]php php=php php$rulephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Define legal options using the Zend-style format.
+     *
+     * @param  array $rules
+     * @throws Zend_Console_Getopt_Exception
+     * @return void
+     */
+    protected function _addRulesModeZend($rules)
+    {
+        foreach ($rules as $ruleCode => $helpMessage)
+        {
+            // this may have to translate the long parm type if there
+            // are any complaints that =string will not work (even though that use
+            // case is not documented)
+            if (in_array(substr($ruleCode, -2, 1), array('-', '='))) {
+                $flagList  = substr($ruleCode, 0, -2);
+                $delimiter = substr($ruleCode, -2, 1);
+                $paramType = substr($ruleCode, -1);
+            } else {
+                $flagList = $ruleCode;
+                $delimiter = $paramType = null;
+            }
+            if ($this->_getoptConfig[self::CONFIG_IGNORECASE]) {
+                $flagList = strtolower($flagList);
+            }
+            $flags = explode('|', $flagList);
+            $rule = array();
+            $mainFlag = $flags[0];
+            foreach ($flags as $flag) {
+                if (empty($flag)) {
+                    require_once 'Zend/Console/Getopt/Exception.php';
+                    throw new Zend_Console_Getopt_Exception(
+                        "Blank flag not allowed in rule \"$ruleCode\".");
+                }
+                if (strlen($flag) == 1) {
+                    if (isset($this->_ruleMap[$flag])) {
+                        require_once 'Zend/Console/Getopt/Exception.php';
+                        throw new Zend_Console_Getopt_Exception(
+                            "Option \"-$flag\" is being defined more than once.");
+                    }
+                    $this->_ruleMap[$flag] = $mainFlag;
+                    $rule['alias'][] = $flag;
+                } else {
+                    if (isset($this->_rules[$flag]) || isset($this->_ruleMap[$flag])) {
+                        require_once 'Zend/Console/Getopt/Exception.php';
+                        throw new Zend_Console_Getopt_Exception(
+                            "Option \"--$flag\" is being defined more than once.");
+                    }
+                    $this->_ruleMap[$flag] = $mainFlag;
+                    $rule['alias'][] = $flag;
+                }
+            }
+            if (isset($delimiter)) {
+                switch ($delimiter) {
+                    case self::PARAM_REQUIRED:
+                        $rule['param'] = 'required';
+                        break;
+                    case self::PARAM_OPTIONAL:
+                    default:
+                        $rule['param'] = 'optional';
+                }
+                switch (substr($paramType, 0, 1)) {
+                    case self::TYPE_WORD:
+                        $rule['paramType'] = 'word';
+                        break;
+                    case self::TYPE_INTEGER:
+                        $rule['paramType'] = 'integer';
+                        break;
+                    case self::TYPE_STRING:
+                    default:
+                        $rule['paramType'] = 'string';
+                }
+            } else {
+                $rule['param'] = 'none';
+            }
+            $rule['help'] = $helpMessage;
+            $this->_rules[$mainFlag] = $rule;
+        }
+    }
 
-php}
+}

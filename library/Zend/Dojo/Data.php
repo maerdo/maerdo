@@ -1,563 +1,563 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dataphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Data.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php dojophp.dataphp supportphp forphp Zendphp Framework
-php php*
-php php*php php@usesphp php php php php php php ArrayAccess
-php php*php php@usesphp php php php php php php Iterator
-php php*php php@usesphp php php php php php php Countable
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dojophp_Dataphp implementsphp ArrayAccessphp,Iteratorphp,Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Identifierphp fieldphp ofphp item
-php php php php php php*php php@varphp stringphp|int
-php php php php php php*php/
-php php php php protectedphp php$php_identifierphp;
+/**
+ * dojo.data support for Zend Framework
+ *
+ * @uses       ArrayAccess
+ * @uses       Iterator
+ * @uses       Countable
+ * @package    Zend_Dojo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
+{
+    /**
+     * Identifier field of item
+     * @var string|int
+     */
+    protected $_identifier;
 
-php php php php php/php*php*
-php php php php php php*php Collectedphp items
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_itemsphp php=php arrayphp(php)php;
+    /**
+     * Collected items
+     * @var array
+     */
+    protected $_items = array();
 
-php php php php php/php*php*
-php php php php php php*php Labelphp fieldphp ofphp item
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_labelphp;
+    /**
+     * Label field of item
+     * @var string
+     */
+    protected $_label;
 
-php php php php php/php*php*
-php php php php php php*php Dataphp containerphp metadata
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_metadataphp php=php arrayphp(php)php;
+    /**
+     * Data container metadata
+     * @var array
+     */
+    protected $_metadata = array();
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|nullphp php$identifier
-php php php php php php*php php@paramphp php arrayphp|Traversablephp|nullphp php$items
-php php php php php php*php php@paramphp php stringphp|nullphp php$label
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$identifierphp php=php nullphp,php php$itemsphp php=php nullphp,php php$labelphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$identifierphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setIdentifierphp(php$identifierphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(nullphp php!php=php=php php$itemsphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setItemsphp(php$itemsphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(nullphp php!php=php=php php$labelphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setLabelphp(php$labelphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  string|null $identifier
+     * @param  array|Traversable|null $items
+     * @param  string|null $label
+     * @return void
+     */
+    public function __construct($identifier = null, $items = null, $label = null)
+    {
+        if (null !== $identifier) {
+            $this->setIdentifier($identifier);
+        }
+        if (null !== $items) {
+            $this->setItems($items);
+        }
+        if (null !== $label) {
+            $this->setLabel($label);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp itemsphp tophp collect
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|Traversablephp php$items
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp setItemsphp(php$itemsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearItemsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addItemsphp(php$itemsphp)php;
-php php php php php}
+    /**
+     * Set the items to collect
+     *
+     * @param array|Traversable $items
+     * @return Zend_Dojo_Data
+     */
+    public function setItems($items)
+    {
+        $this->clearItems();
+        return $this->addItems($items);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp individualphp itemphp,php optionallyphp byphp identifierphp php(overwritesphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|objectphp php$item
-php php php php php php*php php@paramphp php stringphp|nullphp php$identifier
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp setItemphp(php$itemphp,php php$idphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$itemphp php=php php$thisphp-php>php_normalizeItemphp(php$itemphp,php php$idphp)php;
-php php php php php php php php php$thisphp-php>php_itemsphp[php$itemphp[php'idphp'php]php]php php=php php$itemphp[php'dataphp'php]php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set an individual item, optionally by identifier (overwrites)
+     *
+     * @param  array|object $item
+     * @param  string|null $identifier
+     * @return Zend_Dojo_Data
+     */
+    public function setItem($item, $id = null)
+    {
+        $item = $this->_normalizeItem($item, $id);
+        $this->_items[$item['id']] = $item['data'];
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp anphp individualphp itemphp,php optionallyphp byphp identifier
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|objectphp php$item
-php php php php php php*php php@paramphp php stringphp|nullphp php$id
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp addItemphp(php$itemphp,php php$idphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$itemphp php=php php$thisphp-php>php_normalizeItemphp(php$itemphp,php php$idphp)php;
+    /**
+     * Add an individual item, optionally by identifier
+     *
+     * @param  array|object $item
+     * @param  string|null $id
+     * @return Zend_Dojo_Data
+     */
+    public function addItem($item, $id = null)
+    {
+        $item = $this->_normalizeItem($item, $id);
 
-php php php php php php php php ifphp php(php$thisphp-php>hasItemphp(php$itemphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Overwritingphp itemsphp usingphp addItemphp(php)php isphp notphp allowedphp'php)php;
-php php php php php php php php php}
+        if ($this->hasItem($item['id'])) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Overwriting items using addItem() is not allowed');
+        }
 
-php php php php php php php php php$thisphp-php>php_itemsphp[php$itemphp[php'idphp'php]php]php php=php php$itemphp[php'dataphp'php]php;
+        $this->_items[$item['id']] = $item['data'];
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp itemsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Traversablephp php$items
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp addItemsphp(php$itemsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$itemsphp)php php&php&php php(php!isphp_objectphp(php$itemsphp)php php|php|php php!php(php$itemsphp instanceofphp Traversablephp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Onlyphp arraysphp andphp Traversablephp objectsphp mayphp bephp addedphp tophp php'php php.php php_php_CLASSphp_php_php)php;
-php php php php php php php php php}
+    /**
+     * Add multiple items at once
+     *
+     * @param  array|Traversable $items
+     * @return Zend_Dojo_Data
+     */
+    public function addItems($items)
+    {
+        if (!is_array($items) && (!is_object($items) || !($items instanceof Traversable))) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Only arrays and Traversable objects may be added to ' . __CLASS__);
+        }
 
-php php php php php php php php foreachphp php(php$itemsphp asphp php$itemphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addItemphp(php$itemphp)php;
-php php php php php php php php php}
+        foreach ($items as $item) {
+            $this->addItem($item);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp itemsphp asphp anphp array
-php php php php php php*
-php php php php php php*php Serializesphp itemsphp tophp arraysphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getItemsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_itemsphp;
-php php php php php}
+    /**
+     * Get all items as an array
+     *
+     * Serializes items to arrays.
+     *
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->_items;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Doesphp anphp itemphp withphp thephp givenphp identifierphp existphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$id
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasItemphp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$idphp,php php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * Does an item with the given identifier exist?
+     *
+     * @param  string|int $id
+     * @return bool
+     */
+    public function hasItem($id)
+    {
+        return array_key_exists($id, $this->_items);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp anphp itemphp byphp identifier
-php php php php php php*
-php php php php php php*php Itemphp retrievedphp willphp bephp flattenedphp tophp anphp arrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$id
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getItemphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasItemphp(php$idphp)php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
+    /**
+     * Retrieve an item by identifier
+     *
+     * Item retrieved will be flattened to an array.
+     *
+     * @param  string $id
+     * @return array
+     */
+    public function getItem($id)
+    {
+        if (!$this->hasItem($id)) {
+            return null;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_itemsphp[php$idphp]php;
-php php php php php}
+        return $this->_items[$id];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp itemphp byphp identifier
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$id
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp removeItemphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasItemphp(php$idphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_itemsphp[php$idphp]php)php;
-php php php php php php php php php}
+    /**
+     * Remove item by identifier
+     *
+     * @param  string $id
+     * @return Zend_Dojo_Data
+     */
+    public function removeItem($id)
+    {
+        if ($this->hasItem($id)) {
+            unset($this->_items[$id]);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp allphp itemsphp atphp once
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp clearItemsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_itemsphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Setphp identifierphp forphp itemphp lookups
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp|nullphp php$identifier
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp setIdentifierphp(php$identifierphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$identifierphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_identifierphp php=php nullphp;
-php php php php php php php php php}php elseifphp php(isphp_stringphp(php$identifierphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_identifierphp php=php php$identifierphp;
-php php php php php php php php php}php elseifphp php(isphp_numericphp(php$identifierphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_identifierphp php=php php(intphp)php php$identifierphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Invalidphp identifierphp;php pleasephp usephp aphp stringphp orphp integerphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp currentphp itemphp identifier
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|intphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getIdentifierphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_identifierphp;
-php php php php php}
+    /**
+     * Remove all items at once
+     *
+     * @return Zend_Dojo_Data
+     */
+    public function clearItems()
+    {
+        $this->_items = array();
+        return $this;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Setphp labelphp tophp usephp forphp displayingphp itemphp associations
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|nullphp php$label
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp setLabelphp(php$labelphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$labelphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_labelphp php=php nullphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_labelphp php=php php(stringphp)php php$labelphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set identifier for item lookups
+     *
+     * @param  string|int|null $identifier
+     * @return Zend_Dojo_Data
+     */
+    public function setIdentifier($identifier)
+    {
+        if (null === $identifier) {
+            $this->_identifier = null;
+        } elseif (is_string($identifier)) {
+            $this->_identifier = $identifier;
+        } elseif (is_numeric($identifier)) {
+            $this->_identifier = (int) $identifier;
+        } else {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Invalid identifier; please use a string or integer');
+        }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp itemphp associationphp label
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getLabelphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_labelphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp metadataphp byphp keyphp orphp enphp masse
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$spec
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp setMetadataphp(php$specphp,php php$valuephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$specphp)php php&php&php php(nullphp php!php=php=php php$valuephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_metadataphp[php$specphp]php php=php php$valuephp;
-php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$specphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$specphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setMetadataphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Retrieve current item identifier
+     *
+     * @return string|int|null
+     */
+    public function getIdentifier()
+    {
+        return $this->_identifier;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp metadataphp itemphp orphp allphp metadata
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp php$keyphp Metadataphp keyphp whenphp pullingphp singlephp metadataphp item
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getMetadataphp(php$keyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$keyphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_metadataphp;
-php php php php php php php php php}
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_metadataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_metadataphp[php$keyphp]php;
-php php php php php php php php php}
+    /**
+     * Set label to use for displaying item associations
+     *
+     * @param  string|null $label
+     * @return Zend_Dojo_Data
+     */
+    public function setLabel($label)
+    {
+        if (null === $label) {
+            $this->_label = null;
+        } else {
+            $this->_label = (string) $label;
+        }
+        return $this;
+    }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Retrieve item association label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->_label;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp individualphp orphp allphp metadataphp itemphp(sphp)
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp php$key
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp clearMetadataphp(php$keyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$keyphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_metadataphp php=php arrayphp(php)php;
-php php php php php php php php php}php elseifphp php(arrayphp_keyphp_existsphp(php$keyphp,php php$thisphp-php>php_metadataphp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_metadataphp[php$keyphp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set metadata by key or en masse
+     *
+     * @param  string|array $spec
+     * @param  mixed $value
+     * @return Zend_Dojo_Data
+     */
+    public function setMetadata($spec, $value = null)
+    {
+        if (is_string($spec) && (null !== $value)) {
+            $this->_metadata[$spec] = $value;
+        } elseif (is_array($spec)) {
+            foreach ($spec as $key => $value) {
+                $this->setMetadata($key, $value);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp objectphp fromphp array
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp fromArrayphp(arrayphp php$dataphp)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'identifierphp'php,php php$dataphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setIdentifierphp(php$dataphp[php'identifierphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'labelphp'php,php php$dataphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setLabelphp(php$dataphp[php'labelphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'itemsphp'php,php php$dataphp)php php&php&php isphp_arrayphp(php$dataphp[php'itemsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setItemsphp(php$dataphp[php'itemsphp'php]php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>clearItemsphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Get metadata item or all metadata
+     *
+     * @param  null|string $key Metadata key when pulling single metadata item
+     * @return mixed
+     */
+    public function getMetadata($key = null)
+    {
+        if (null === $key) {
+            return $this->_metadata;
+        }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp objectphp fromphp JSON
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$json
-php php php php php php*php php@returnphp Zendphp_Dojophp_Data
-php php php php php php*php/
-php php php php publicphp functionphp fromJsonphp(php$jsonphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$jsonphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'fromJsonphp(php)php expectsphp JSONphp inputphp'php)php;
-php php php php php php php php php}
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php php$dataphp php=php Zendphp_Jsonphp:php:decodephp(php$jsonphp)php;
-php php php php php php php php returnphp php$thisphp-php>fromArrayphp(php$dataphp)php;
-php php php php php}
+        if (array_key_exists($key, $this->_metadata)) {
+            return $this->_metadata[$key];
+        }
 
-php php php php php/php*php*
-php php php php php php*php Seralizephp entirephp dataphp structurephp,php includingphp identifierphp andphp labelphp,php tophp array
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php(php$identifierphp php=php php$thisphp-php>getIdentifierphp(php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Serializationphp requiresphp thatphp anphp identifierphp bephp presentphp inphp thephp objectphp;php firstphp callphp setIdentifierphp(php)php'php)php;
-php php php php php php php php php}
+        return null;
+    }
 
-php php php php php php php php php$arrayphp php=php arrayphp(
-php php php php php php php php php php php php php'identifierphp'php php=php>php php$identifierphp,
-php php php php php php php php php php php php php'itemsphp'php php php php php php php=php>php arrayphp_valuesphp(php$thisphp-php>getItemsphp(php)php)php,
-php php php php php php php php php)php;
+    /**
+     * Clear individual or all metadata item(s)
+     *
+     * @param  null|string $key
+     * @return Zend_Dojo_Data
+     */
+    public function clearMetadata($key = null)
+    {
+        if (null === $key) {
+            $this->_metadata = array();
+        } elseif (array_key_exists($key, $this->_metadata)) {
+            unset($this->_metadata[$key]);
+        }
+        return $this;
+    }
 
-php php php php php php php php php$metadataphp php=php php$thisphp-php>getMetadataphp(php)php;
-php php php php php php php php ifphp php(php!emptyphp(php$metadataphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$metadataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php$arrayphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Load object from array
+     *
+     * @param  array $data
+     * @return Zend_Dojo_Data
+     */
+    public function fromArray(array $data)
+    {
+        if (array_key_exists('identifier', $data)) {
+            $this->setIdentifier($data['identifier']);
+        }
+        if (array_key_exists('label', $data)) {
+            $this->setLabel($data['label']);
+        }
+        if (array_key_exists('items', $data) && is_array($data['items'])) {
+            $this->setItems($data['items']);
+        } else {
+            $this->clearItems();
+        }
+        return $this;
+    }
 
-php php php php php php php php ifphp php(nullphp php!php=php=php php(php$labelphp php=php php$thisphp-php>getLabelphp(php)php)php)php php{
-php php php php php php php php php php php php php$arrayphp[php'labelphp'php]php php=php php$labelphp;
-php php php php php php php php php}
+    /**
+     * Load object from JSON
+     *
+     * @param  string $json
+     * @return Zend_Dojo_Data
+     */
+    public function fromJson($json)
+    {
+        if (!is_string($json)) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('fromJson() expects JSON input');
+        }
+        require_once 'Zend/Json.php';
+        $data = Zend_Json::decode($json);
+        return $this->fromArray($data);
+    }
 
-php php php php php php php php returnphp php$arrayphp;
-php php php php php}
+    /**
+     * Seralize entire data structure, including identifier and label, to array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        if (null === ($identifier = $this->getIdentifier())) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Serialization requires that an identifier be present in the object; first call setIdentifier()');
+        }
 
-php php php php php/php*php*
-php php php php php php*php Serializephp tophp JSONphp php(dojophp.dataphp formatphp)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toJsonphp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php returnphp Zendphp_Jsonphp:php:encodephp(php$thisphp-php>toArrayphp(php)php)php;
-php php php php php}
+        $array = array(
+            'identifier' => $identifier,
+            'items'      => array_values($this->getItems()),
+        );
 
-php php php php php/php*php*
-php php php php php php*php Serializephp tophp stringphp php(proxyphp tophp php{php@linkphp toJsonphp(php)php}php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>toJsonphp(php)php;
-php php php php php}
+        $metadata = $this->getMetadata();
+        if (!empty($metadata)) {
+            foreach ($metadata as $key => $value) {
+                $array[$key] = $value;
+            }
+        }
 
-php php php php php/php*php*
-php php php php php php*php ArrayAccessphp:php doesphp offsetphp existphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$offset
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp offsetExistsphp(php$offsetphp)
-php php php php php{
-php php php php php php php php returnphp php(nullphp php!php=php=php php$thisphp-php>getItemphp(php$offsetphp)php)php;
-php php php php php}
+        if (null !== ($label = $this->getLabel())) {
+            $array['label'] = $label;
+        }
 
-php php php php php/php*php*
-php php php php php php*php ArrayAccessphp:php retrievephp byphp offset
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$offset
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp offsetGetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getItemphp(php$offsetphp)php;
-php php php php php}
+        return $array;
+    }
 
-php php php php php/php*php*
-php php php php php php*php ArrayAccessphp:php setphp valuephp byphp offset
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$offset
-php php php php php php*php php@paramphp php arrayphp|objectphp|nullphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp offsetSetphp(php$offsetphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setItemphp(php$valuephp,php php$offsetphp)php;
-php php php php php}
+    /**
+     * Serialize to JSON (dojo.data format)
+     *
+     * @return string
+     */
+    public function toJson()
+    {
+        require_once 'Zend/Json.php';
+        return Zend_Json::encode($this->toArray());
+    }
 
-php php php php php/php*php*
-php php php php php php*php ArrayAccessphp:php unsetphp valuephp byphp offset
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$offset
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp offsetUnsetphp(php$offsetphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>removeItemphp(php$offsetphp)php;
-php php php php php}
+    /**
+     * Serialize to string (proxy to {@link toJson()})
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toJson();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp:php getphp currentphp value
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php returnphp currentphp(php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * ArrayAccess: does offset exist?
+     *
+     * @param  string|int $offset
+     * @return bool
+     */
+    public function offsetExists($offset)
+    {
+        return (null !== $this->getItem($offset));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp:php getphp currentphp key
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|int
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp keyphp(php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * ArrayAccess: retrieve by offset
+     *
+     * @param  string|int $offset
+     * @return array
+     */
+    public function offsetGet($offset)
+    {
+        return $this->getItem($offset);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp:php getphp nextphp item
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php returnphp nextphp(php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * ArrayAccess: set value by offset
+     *
+     * @param  string $offset
+     * @param  array|object|null $value
+     * @return void
+     */
+    public function offsetSet($offset, $value)
+    {
+        $this->setItem($value, $offset);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp:php rewindphp tophp firstphp valuephp inphp collection
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php returnphp resetphp(php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * ArrayAccess: unset value by offset
+     *
+     * @param  string $offset
+     * @return void
+     */
+    public function offsetUnset($offset)
+    {
+        $this->removeItem($offset);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Iteratorphp:php isphp itemphp validphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php(boolphp)php php$thisphp-php>currentphp(php)php;
-php php php php php}
+    /**
+     * Iterator: get current value
+     *
+     * @return array
+     */
+    public function current()
+    {
+        return current($this->_items);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Countablephp:php howphp manyphp itemsphp arephp present
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_itemsphp)php;
-php php php php php}
+    /**
+     * Iterator: get current key
+     *
+     * @return string|int
+     */
+    public function key()
+    {
+        return key($this->_items);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Normalizephp anphp itemphp tophp attachphp tophp thephp collection
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|objectphp php$item
-php php php php php php*php php@paramphp php stringphp|intphp|nullphp php$id
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_normalizeItemphp(php$itemphp,php php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php(php$identifierphp php=php php$thisphp-php>getIdentifierphp(php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Youphp mustphp setphp anphp identifierphp priorphp tophp addingphp itemsphp'php)php;
-php php php php php php php php php}
+    /**
+     * Iterator: get next item
+     *
+     * @return void
+     */
+    public function next()
+    {
+        return next($this->_items);
+    }
 
-php php php php php php php php ifphp php(php!isphp_objectphp(php$itemphp)php php&php&php php!isphp_arrayphp(php$itemphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Onlyphp arraysphp andphp objectsphp mayphp bephp attachedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Iterator: rewind to first value in collection
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        return reset($this->_items);
+    }
 
-php php php php php php php php ifphp php(isphp_objectphp(php$itemphp)php)php php{
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$itemphp,php php'toArrayphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$itemphp php=php php$itemphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$itemphp php=php getphp_objectphp_varsphp(php$itemphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Iterator: is item valid?
+     *
+     * @return bool
+     */
+    public function valid()
+    {
+        return (bool) $this->current();
+    }
 
-php php php php php php php php ifphp php(php(nullphp php=php=php=php php$idphp)php php&php&php php!arrayphp_keyphp_existsphp(php$identifierphp,php php$itemphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Itemphp mustphp containphp aphp columnphp matchingphp thephp currentlyphp setphp identifierphp'php)php;
-php php php php php php php php php}php elseifphp php(nullphp php=php=php=php php$idphp)php php{
-php php php php php php php php php php php php php$idphp php=php php$itemphp[php$identifierphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$itemphp[php$identifierphp]php php=php php$idphp;
-php php php php php php php php php}
+    /**
+     * Countable: how many items are present
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_items);
+    }
 
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'idphp'php php php php=php>php php$idphp,
-php php php php php php php php php php php php php'dataphp'php php=php>php php$itemphp,
-php php php php php php php php php)php;
-php php php php php}
-php}
+    /**
+     * Normalize an item to attach to the collection
+     *
+     * @param  array|object $item
+     * @param  string|int|null $id
+     * @return array
+     */
+    protected function _normalizeItem($item, $id)
+    {
+        if (null === ($identifier = $this->getIdentifier())) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('You must set an identifier prior to adding items');
+        }
+
+        if (!is_object($item) && !is_array($item)) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Only arrays and objects may be attached');
+        }
+
+        if (is_object($item)) {
+            if (method_exists($item, 'toArray')) {
+                $item = $item->toArray();
+            } else {
+                $item = get_object_vars($item);
+            }
+        }
+
+        if ((null === $id) && !array_key_exists($identifier, $item)) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Item must contain a column matching the currently set identifier');
+        } elseif (null === $id) {
+            $id = $item[$identifier];
+        } else {
+            $item[$identifier] = $id;
+        }
+
+        return array(
+            'id'   => $id,
+            'data' => $item,
+        );
+    }
+}

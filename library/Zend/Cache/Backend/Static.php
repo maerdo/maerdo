@@ -1,559 +1,559 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Staticphp.phpphp php2php2php9php5php0php php2php0php1php0php-php0php9php-php1php6php php1php9php:php3php3php:php0php0Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Static.php 22950 2010-09-16 19:33:00Z mabe $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backendphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend_Interface
+ */
+require_once 'Zend/Cache/Backend/Interface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Backend
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Backendphp.phpphp'php;
+/**
+ * @see Zend_Cache_Backend
+ */
+require_once 'Zend/Cache/Backend.php';
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Backend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Backendphp_Static
-php php php php extendsphp Zendphp_Cachephp_Backend
-php php php php implementsphp Zendphp_Cachephp_Backendphp_Interface
-php{
-php php php php constphp INNERphp_CACHEphp_NAMEphp php=php php'zendphp_cachephp_backendphp_staticphp_tagcachephp'php;
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Backend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Backend_Static
+    extends Zend_Cache_Backend
+    implements Zend_Cache_Backend_Interface
+{
+    const INNER_CACHE_NAME = 'zend_cache_backend_static_tagcache';
 
-php php php php php/php*php*
-php php php php php php*php Staticphp backendphp options
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(
-php php php php php php php php php'publicphp_dirphp'php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'subphp_dirphp'php php php php php php php php php php php php php php php php=php>php php'htmlphp'php,
-php php php php php php php php php'filephp_extensionphp'php php php php php php php php php=php>php php'php.htmlphp'php,
-php php php php php php php php php'indexphp_filenamephp'php php php php php php php php php=php>php php'indexphp'php,
-php php php php php php php php php'filephp_lockingphp'php php php php php php php php php php php=php>php truephp,
-php php php php php php php php php'cachephp_filephp_umaskphp'php php php php php php php=php>php php0php6php0php0php,
-php php php php php php php php php'cachephp_directoryphp_umaskphp'php php=php>php php0php7php0php0php,
-php php php php php php php php php'debugphp_headerphp'php php php php php php php php php php php=php>php falsephp,
-php php php php php php php php php'tagphp_cachephp'php php php php php php php php php php php php php php=php>php nullphp,
-php php php php php php php php php'disablephp_cachingphp'php php php php php php php php=php>php false
-php php php php php)php;
+    /**
+     * Static backend options
+     * @var array
+     */
+    protected $_options = array(
+        'public_dir'            => null,
+        'sub_dir'               => 'html',
+        'file_extension'        => '.html',
+        'index_filename'        => 'index',
+        'file_locking'          => true,
+        'cache_file_umask'      => 0600,
+        'cache_directory_umask' => 0700,
+        'debug_header'          => false,
+        'tag_cache'             => null,
+        'disable_caching'       => false
+    );
 
-php php php php php/php*php*
-php php php php php php*php Cachephp forphp handlingphp tags
-php php php php php php*php php@varphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php protectedphp php$php_tagCachephp php=php nullphp;
+    /**
+     * Cache for handling tags
+     * @var Zend_Cache_Core
+     */
+    protected $_tagCache = null;
 
-php php php php php/php*php*
-php php php php php php*php Taggedphp items
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_taggedphp php=php nullphp;
+    /**
+     * Tagged items
+     * @var array
+     */
+    protected $_tagged = null;
 
-php php php php php/php*php*
-php php php php php php*php Interceptorphp childphp methodphp tophp handlephp thephp casephp wherephp anphp Inner
-php php php php php php*php Cachephp objectphp isphp beingphp setphp sincephp itphp'sphp notphp supportedphp byphp the
-php php php php php php*php standardphp backendphp interface
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp Zendphp_Cachephp_Backendphp_Static
-php php php php php php*php/
-php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$namephp php=php=php php'tagphp_cachephp'php)php php{
-php php php php php php php php php php php php php$thisphp-php>setInnerCachephp(php$valuephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php parentphp:php:setOptionphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Interceptor child method to handle the case where an Inner
+     * Cache object is being set since it's not supported by the
+     * standard backend interface
+     *
+     * @param  string $name
+     * @param  mixed $value
+     * @return Zend_Cache_Backend_Static
+     */
+    public function setOption($name, $value)
+    {
+        if ($name == 'tag_cache') {
+            $this->setInnerCache($value);
+        } else {
+            parent::setOption($name, $value);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp anyphp optionphp viaphp interceptionphp ofphp thephp parentphp'sphp staticallyphp held
-php php php php php php*php optionsphp includingphp thephp localphp optionphp forphp aphp tagphp cachephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getOptionphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php$namephp php=php=php php'tagphp_cachephp'php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>getInnerCachephp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$namephp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$namephp php=php=php php'lifetimephp'php)php php{
-php php php php php php php php php php php php php php php php returnphp parentphp:php:getLifetimephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Retrieve any option via interception of the parent's statically held
+     * options including the local option for a tag cache.
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getOption($name)
+    {
+        if ($name == 'tag_cache') {
+            return $this->getInnerCache();
+        } else {
+            if (in_array($name, $this->_options)) {
+                return $this->_options[$name];
+            }
+            if ($name == 'lifetime') {
+                return parent::getLifetime();
+            }
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp forphp thephp givenphp idphp andphp php(ifphp yesphp)php returnphp itphp php(falsephp elsephp)
-php php php php php php*
-php php php php php php*php Notephp php:php returnphp valuephp isphp alwaysphp php"stringphp"php php(unserializationphp isphp donephp byphp thephp corephp notphp byphp thephp backendphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
-php php php php php php*php php@returnphp stringphp|falsephp cachedphp datas
-php php php php php php*php/
-php php php php publicphp functionphp loadphp(php$idphp,php php$doNotTestCacheValidityphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$idphp)php)php php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_detectIdphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_decodeIdphp(php$idphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$thisphp-php>php_verifyPathphp(php$idphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp cachephp idphp:php doesphp notphp matchphp expectedphp publicphp_dirphp pathphp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$doNotTestCacheValidityphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_logphp(php"Zendphp_Cachephp_Backendphp_Staticphp:php:loadphp(php)php php:php php\php$doNotTestCacheValidityphp=truephp isphp unsupportedphp byphp thephp Staticphp backendphp"php)php;
-php php php php php php php php php}
+    /**
+     * Test if a cache is available for the given id and (if yes) return it (false else)
+     *
+     * Note : return value is always "string" (unserialization is done by the core not by the backend)
+     *
+     * @param  string  $id                     Cache id
+     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
+     * @return string|false cached datas
+     */
+    public function load($id, $doNotTestCacheValidity = false)
+    {
+        if (empty($id)) {
+            $id = $this->_detectId();
+        } else {
+            $id = $this->_decodeId($id);
+        }
+        if (!$this->_verifyPath($id)) {
+            Zend_Cache::throwException('Invalid cache id: does not match expected public_dir path');
+        }
+        if ($doNotTestCacheValidity) {
+            $this->_log("Zend_Cache_Backend_Static::load() : \$doNotTestCacheValidity=true is unsupported by the Static backend");
+        }
 
-php php php php php php php php php$fileNamephp php=php basenamephp(php$idphp)php;
-php php php php php php php php ifphp php(emptyphp(php$fileNamephp)php)php php{
-php php php php php php php php php php php php php$fileNamephp php=php php$thisphp-php>php_optionsphp[php'indexphp_filenamephp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$pathNamephp php=php php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php php.php dirnamephp(php$idphp)php;
-php php php php php php php php php$filephp php php php php php=php rtrimphp(php$pathNamephp,php php'php/php'php)php php.php php'php/php'php php.php php$fileNamephp php.php php$thisphp-php>php_optionsphp[php'filephp_extensionphp'php]php;
-php php php php php php php php ifphp php(filephp_existsphp(php$filephp)php)php php{
-php php php php php php php php php php php php php$contentphp php=php filephp_getphp_contentsphp(php$filephp)php;
-php php php php php php php php php php php php returnphp php$contentphp;
-php php php php php php php php php}
+        $fileName = basename($id);
+        if (empty($fileName)) {
+            $fileName = $this->_options['index_filename'];
+        }
+        $pathName = $this->_options['public_dir'] . dirname($id);
+        $file     = rtrim($pathName, '/') . '/' . $fileName . $this->_options['file_extension'];
+        if (file_exists($file)) {
+            $content = file_get_contents($file);
+            return $content;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Testphp ifphp aphp cachephp isphp availablephp orphp notphp php(forphp thephp givenphp idphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp cachephp id
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp testphp(php$idphp)
-php php php php php{
-php php php php php php php php php$idphp php=php php$thisphp-php>php_decodeIdphp(php$idphp)php;
-php php php php php php php php ifphp php(php!php$thisphp-php>php_verifyPathphp(php$idphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp cachephp idphp:php doesphp notphp matchphp expectedphp publicphp_dirphp pathphp'php)php;
-php php php php php php php php php}
+    /**
+     * Test if a cache is available or not (for the given id)
+     *
+     * @param  string $id cache id
+     * @return bool
+     */
+    public function test($id)
+    {
+        $id = $this->_decodeId($id);
+        if (!$this->_verifyPath($id)) {
+            Zend_Cache::throwException('Invalid cache id: does not match expected public_dir path');
+        }
 
-php php php php php php php php php$fileNamephp php=php basenamephp(php$idphp)php;
-php php php php php php php php ifphp php(emptyphp(php$fileNamephp)php)php php{
-php php php php php php php php php php php php php$fileNamephp php=php php$thisphp-php>php_optionsphp[php'indexphp_filenamephp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php&php&php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php}php elseifphp php(php!php$thisphp-php>php_taggedphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php php$pathNamephp php=php php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php php.php dirnamephp(php$idphp)php;
+        $fileName = basename($id);
+        if (empty($fileName)) {
+            $fileName = $this->_options['index_filename'];
+        }
+        if ($this->_tagged === null && $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME)) {
+            $this->_tagged = $tagged;
+        } elseif (!$this->_tagged) {
+            return false;
+        }
+        $pathName = $this->_options['public_dir'] . dirname($id);
 
-php php php php php php php php php/php/php Switchphp extensionphp ifphp needed
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_taggedphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php$extensionphp php=php php$thisphp-php>php_taggedphp[php$idphp]php[php'extensionphp'php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$extensionphp php=php php$thisphp-php>php_optionsphp[php'filephp_extensionphp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$filephp php php php php php=php php$pathNamephp php.php php'php/php'php php.php php$fileNamephp php.php php$extensionphp;
-php php php php php php php php ifphp php(filephp_existsphp(php$filephp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        // Switch extension if needed
+        if (isset($this->_tagged[$id])) {
+            $extension = $this->_tagged[$id]['extension'];
+        } else {
+            $extension = $this->_options['file_extension'];
+        }
+        $file     = $pathName . '/' . $fileName . $extension;
+        if (file_exists($file)) {
+            return true;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Savephp somephp stringphp datasphp intophp aphp cachephp record
-php php php php php php*
-php php php php php php*php Notephp php:php php$dataphp isphp alwaysphp php"stringphp"php php(serializationphp isphp donephp byphp the
-php php php php php php*php corephp notphp byphp thephp backendphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$dataphp php php php php php php php php php php php Datasphp tophp cache
-php php php php php php*php php@paramphp php stringphp php$idphp php php php php php php php php php php php php php Cachephp id
-php php php php php php*php php@paramphp php arrayphp php$tagsphp php php php php php php php php php php php php Arrayphp ofphp stringsphp,php thephp cachephp recordphp willphp bephp taggedphp byphp eachphp stringphp entry
-php php php php php php*php php@paramphp php intphp php php php$specificLifetimephp Ifphp php!php=php falsephp,php setphp aphp specificphp lifetimephp forphp thisphp cachephp recordphp php(nullphp php=php>php infinitephp lifetimephp)
-php php php php php php*php php@returnphp booleanphp truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp savephp(php$dataphp,php php$idphp,php php$tagsphp php=php arrayphp(php)php,php php$specificLifetimephp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'disablephp_cachingphp'php]php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php php$extensionphp php=php nullphp;
-php php php php php php php php ifphp php(php$thisphp-php>php_isSerializedphp(php$dataphp)php)php php{
-php php php php php php php php php php php php php$dataphp php=php unserializephp(php$dataphp)php;
-php php php php php php php php php php php php php$extensionphp php=php php'php.php'php php.php ltrimphp(php$dataphp[php1php]php,php php'php.php'php)php;
-php php php php php php php php php php php php php$dataphp php=php php$dataphp[php0php]php;
-php php php php php php php php php}
+    /**
+     * Save some string datas into a cache record
+     *
+     * Note : $data is always "string" (serialization is done by the
+     * core not by the backend)
+     *
+     * @param  string $data            Datas to cache
+     * @param  string $id              Cache id
+     * @param  array $tags             Array of strings, the cache record will be tagged by each string entry
+     * @param  int   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @return boolean true if no problem
+     */
+    public function save($data, $id, $tags = array(), $specificLifetime = false)
+    {
+        if ($this->_options['disable_caching']) {
+            return true;
+        }
+        $extension = null;
+        if ($this->_isSerialized($data)) {
+            $data = unserialize($data);
+            $extension = '.' . ltrim($data[1], '.');
+            $data = $data[0];
+        }
 
-php php php php php php php php clearstatcachephp(php)php;
-php php php php php php php php ifphp php(php$idphp php=php=php=php nullphp php|php|php strlenphp(php$idphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_detectIdphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_decodeIdphp(php$idphp)php;
-php php php php php php php php php}
+        clearstatcache();
+        if ($id === null || strlen($id) == 0) {
+            $id = $this->_detectId();
+        } else {
+            $id = $this->_decodeId($id);
+        }
 
-php php php php php php php php php$fileNamephp php=php basenamephp(php$idphp)php;
-php php php php php php php php ifphp php(emptyphp(php$fileNamephp)php)php php{
-php php php php php php php php php php php php php$fileNamephp php=php php$thisphp-php>php_optionsphp[php'indexphp_filenamephp'php]php;
-php php php php php php php php php}
+        $fileName = basename($id);
+        if (empty($fileName)) {
+            $fileName = $this->_options['index_filename'];
+        }
 
-php php php php php php php php php$pathNamephp php=php realpathphp(php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php)php php.php dirnamephp(php$idphp)php;
-php php php php php php php php php$thisphp-php>php_createDirectoriesForphp(php$pathNamephp)php;
+        $pathName = realpath($this->_options['public_dir']) . dirname($id);
+        $this->_createDirectoriesFor($pathName);
 
-php php php php php php php php ifphp php(php$idphp php=php=php=php nullphp php|php|php strlenphp(php$idphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php$dataUnserializedphp php=php unserializephp(php$dataphp)php;
-php php php php php php php php php php php php php$dataphp php=php php$dataUnserializedphp[php'dataphp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$extphp php=php php$thisphp-php>php_optionsphp[php'filephp_extensionphp'php]php;
-php php php php php php php php ifphp php(php$extensionphp)php php$extphp php=php php$extensionphp;
-php php php php php php php php php$filephp php=php rtrimphp(php$pathNamephp,php php'php/php'php)php php.php php'php/php'php php.php php$fileNamephp php.php php$extphp;
-php php php php php php php php ifphp php(php$thisphp-php>php_optionsphp[php'filephp_lockingphp'php]php)php php{
-php php php php php php php php php php php php php$resultphp php=php filephp_putphp_contentsphp(php$filephp,php php$dataphp,php LOCKphp_EXphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$resultphp php=php filephp_putphp_contentsphp(php$filephp,php php$dataphp)php;
-php php php php php php php php php}
-php php php php php php php php php@chmodphp(php$filephp,php php$thisphp-php>php_octdecphp(php$thisphp-php>php_optionsphp[php'cachephp_filephp_umaskphp'php]php)php)php;
+        if ($id === null || strlen($id) == 0) {
+            $dataUnserialized = unserialize($data);
+            $data = $dataUnserialized['data'];
+        }
+        $ext = $this->_options['file_extension'];
+        if ($extension) $ext = $extension;
+        $file = rtrim($pathName, '/') . '/' . $fileName . $ext;
+        if ($this->_options['file_locking']) {
+            $result = file_put_contents($file, $data, LOCK_EX);
+        } else {
+            $result = file_put_contents($file, $data);
+        }
+        @chmod($file, $this->_octdec($this->_options['cache_file_umask']));
 
-php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php&php&php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php}php elseifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_taggedphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp[php$idphp]php php=php arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_taggedphp[php$idphp]php[php'tagsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp[php$idphp]php[php'tagsphp'php]php php=php arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_taggedphp[php$idphp]php[php'tagsphp'php]php php=php arrayphp_uniquephp(arrayphp_mergephp(php$thisphp-php>php_taggedphp[php$idphp]php[php'tagsphp'php]php,php php$tagsphp)php)php;
-php php php php php php php php php$thisphp-php>php_taggedphp[php$idphp]php[php'extensionphp'php]php php=php php$extphp;
-php php php php php php php php php$thisphp-php>getInnerCachephp(php)php-php>savephp(php$thisphp-php>php_taggedphp,php selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php returnphp php(boolphp)php php$resultphp;
-php php php php php}
+        if ($this->_tagged === null && $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME)) {
+            $this->_tagged = $tagged;
+        } elseif ($this->_tagged === null) {
+            $this->_tagged = array();
+        }
+        if (!isset($this->_tagged[$id])) {
+            $this->_tagged[$id] = array();
+        }
+        if (!isset($this->_tagged[$id]['tags'])) {
+            $this->_tagged[$id]['tags'] = array();
+        }
+        $this->_tagged[$id]['tags'] = array_unique(array_merge($this->_tagged[$id]['tags'], $tags));
+        $this->_tagged[$id]['extension'] = $ext;
+        $this->getInnerCache()->save($this->_tagged, self::INNER_CACHE_NAME);
+        return (bool) $result;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Recursivelyphp createphp thephp directoriesphp neededphp tophp writephp thephp staticphp file
-php php php php php php*php/
-php php php php protectedphp functionphp php_createDirectoriesForphp(php$pathphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_dirphp(php$pathphp)php)php php{
-php php php php php php php php php php php php php$oldUmaskphp php=php umaskphp(php0php)php;
-php php php php php php php php php php php php ifphp php(php php!php@mkdirphp(php$pathphp,php php$thisphp-php>php_octdecphp(php$thisphp-php>php_optionsphp[php'cachephp_directoryphp_umaskphp'php]php)php,php truephp)php)php php{
-php php php php php php php php php php php php php php php php php$lastErrphp php=php errorphp_getphp_lastphp(php)php;
-php php php php php php php php php php php php php php php php umaskphp(php$oldUmaskphp)php;
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Canphp'tphp createphp directoryphp:php php{php$lastErrphp[php'messagephp'php]php}php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php umaskphp(php$oldUmaskphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Recursively create the directories needed to write the static file
+     */
+    protected function _createDirectoriesFor($path)
+    {
+        if (!is_dir($path)) {
+            $oldUmask = umask(0);
+            if ( !@mkdir($path, $this->_octdec($this->_options['cache_directory_umask']), true)) {
+                $lastErr = error_get_last();
+                umask($oldUmask);
+                Zend_Cache::throwException("Can't create directory: {$lastErr['message']}");
+            }
+            umask($oldUmask);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Detectphp serializationphp ofphp dataphp php(cannotphp predictphp sincephp thisphp isphp thephp onlyphp way
-php php php php php php*php tophp obeyphp thephp interfacephp yetphp passphp inphp anotherphp parameterphp)php.
-php php php php php php*
-php php php php php php*php Inphp futurephp,php ZFphp php2php.php0php,php checkphp ifphp wephp canphp justphp avoidphp thephp interfacephp restraintsphp.
-php php php php php php*
-php php php php php php*php Thisphp formatphp isphp thephp onlyphp validphp onephp possiblephp forphp thephp classphp,php sophp itphp'sphp simple
-php php php php php php*php tophp justphp runphp aphp regularphp expressionphp forphp thephp startingphp serializedphp formatphp.
-php php php php php php*php/
-php php php php protectedphp functionphp php_isSerializedphp(php$dataphp)
-php php php php php{
-php php php php php php php php returnphp pregphp_matchphp(php"php/aphp:php2php:php\php{iphp:php0php;sphp:php\dphp+php:php\php"php/php"php,php php$dataphp)php;
-php php php php php}
+    /**
+     * Detect serialization of data (cannot predict since this is the only way
+     * to obey the interface yet pass in another parameter).
+     *
+     * In future, ZF 2.0, check if we can just avoid the interface restraints.
+     *
+     * This format is the only valid one possible for the class, so it's simple
+     * to just run a regular expression for the starting serialized format.
+     */
+    protected function _isSerialized($data)
+    {
+        return preg_match("/a:2:\{i:0;s:\d+:\"/", $data);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp cachephp record
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp removephp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_verifyPathphp(php$idphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp cachephp idphp:php doesphp notphp matchphp expectedphp publicphp_dirphp pathphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$fileNamephp php=php basenamephp(php$idphp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php&php&php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php}php elseifphp php(php!php$thisphp-php>php_taggedphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_taggedphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php$extensionphp php=php php$thisphp-php>php_taggedphp[php$idphp]php[php'extensionphp'php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$extensionphp php=php php$thisphp-php>php_optionsphp[php'filephp_extensionphp'php]php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$fileNamephp)php)php php{
-php php php php php php php php php php php php php$fileNamephp php=php php$thisphp-php>php_optionsphp[php'indexphp_filenamephp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$pathNamephp php=php php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php php.php dirnamephp(php$idphp)php;
-php php php php php php php php php$filephp php php php php php=php realpathphp(php$pathNamephp)php php.php php'php/php'php php.php php$fileNamephp php.php php$extensionphp;
-php php php php php php php php ifphp php(php!filephp_existsphp(php$filephp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp unlinkphp(php$filephp)php;
-php php php php php}
+    /**
+     * Remove a cache record
+     *
+     * @param  string $id Cache id
+     * @return boolean True if no problem
+     */
+    public function remove($id)
+    {
+        if (!$this->_verifyPath($id)) {
+            Zend_Cache::throwException('Invalid cache id: does not match expected public_dir path');
+        }
+        $fileName = basename($id);
+        if ($this->_tagged === null && $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME)) {
+            $this->_tagged = $tagged;
+        } elseif (!$this->_tagged) {
+            return false;
+        }
+        if (isset($this->_tagged[$id])) {
+            $extension = $this->_tagged[$id]['extension'];
+        } else {
+            $extension = $this->_options['file_extension'];
+        }
+        if (empty($fileName)) {
+            $fileName = $this->_options['index_filename'];
+        }
+        $pathName = $this->_options['public_dir'] . dirname($id);
+        $file     = realpath($pathName) . '/' . $fileName . $extension;
+        if (!file_exists($file)) {
+            return false;
+        }
+        return unlink($file);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp cachephp recordphp recursivelyphp forphp thephp givenphp directoryphp matchingphp a
-php php php php php php*php REQUESTphp_URIphp basedphp relativephp pathphp php(deletesphp thephp actualphp filephp matchingphp this
-php php php php php php*php inphp additionphp tophp thephp matchingphp directoryphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$idphp Cachephp id
-php php php php php php*php php@returnphp booleanphp Truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp removeRecursivelyphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_verifyPathphp(php$idphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp cachephp idphp:php doesphp notphp matchphp expectedphp publicphp_dirphp pathphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$fileNamephp php=php basenamephp(php$idphp)php;
-php php php php php php php php ifphp php(emptyphp(php$fileNamephp)php)php php{
-php php php php php php php php php php php php php$fileNamephp php=php php$thisphp-php>php_optionsphp[php'indexphp_filenamephp'php]php;
-php php php php php php php php php}
-php php php php php php php php php$pathNamephp php php=php php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php php.php dirnamephp(php$idphp)php;
-php php php php php php php php php$filephp php php php php php php=php php$pathNamephp php.php php'php/php'php php.php php$fileNamephp php.php php$thisphp-php>php_optionsphp[php'filephp_extensionphp'php]php;
-php php php php php php php php php$directoryphp php=php php$pathNamephp php.php php'php/php'php php.php php$fileNamephp;
-php php php php php php php php ifphp php(filephp_existsphp(php$directoryphp)php)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_writablephp(php$directoryphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php foreachphp php(newphp DirectoryIteratorphp(php$directoryphp)php asphp php$filephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(truephp php=php=php=php php$filephp-php>isFilephp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(falsephp php=php=php=php unlinkphp(php$filephp-php>getPathNamephp(php)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php rmdirphp(dirnamephp(php$pathphp)php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(filephp_existsphp(php$filephp)php)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_writablephp(php$filephp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp unlinkphp(php$filephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Remove a cache record recursively for the given directory matching a
+     * REQUEST_URI based relative path (deletes the actual file matching this
+     * in addition to the matching directory)
+     *
+     * @param  string $id Cache id
+     * @return boolean True if no problem
+     */
+    public function removeRecursively($id)
+    {
+        if (!$this->_verifyPath($id)) {
+            Zend_Cache::throwException('Invalid cache id: does not match expected public_dir path');
+        }
+        $fileName = basename($id);
+        if (empty($fileName)) {
+            $fileName = $this->_options['index_filename'];
+        }
+        $pathName  = $this->_options['public_dir'] . dirname($id);
+        $file      = $pathName . '/' . $fileName . $this->_options['file_extension'];
+        $directory = $pathName . '/' . $fileName;
+        if (file_exists($directory)) {
+            if (!is_writable($directory)) {
+                return false;
+            }
+            foreach (new DirectoryIterator($directory) as $file) {
+                if (true === $file->isFile()) {
+                    if (false === unlink($file->getPathName())) {
+                        return false;
+                    }
+                }
+            }
+            rmdir(dirname($path));
+        }
+        if (file_exists($file)) {
+            if (!is_writable($file)) {
+                return false;
+            }
+            return unlink($file);
+        }
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Cleanphp somephp cachephp records
-php php php php php php*
-php php php php php php*php Availablephp modesphp arephp php:
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp php(defaultphp)php php php php php=php>php removephp allphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp php php php php php php php php php php php php php php=php>php removephp toophp oldphp cachephp entriesphp php(php$tagsphp isphp notphp usedphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp php php php php php=php>php removephp cachephp entriesphp matchingphp allphp givenphp tags
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp php=php>php removephp cachephp entriesphp notphp php{matchingphp onephp ofphp thephp givenphp tagsphp}
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
-php php php php php php*php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp php=php>php removephp cachephp entriesphp matchingphp anyphp givenphp tags
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$tagsphp canphp bephp anphp arrayphp ofphp stringsphp orphp aphp singlephp stringphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$modephp Cleanphp mode
-php php php php php php*php php@paramphp php arrayphp php php$tagsphp Arrayphp ofphp tags
-php php php php php php*php php@returnphp booleanphp truephp ifphp nophp problem
-php php php php php php*php/
-php php php php publicphp functionphp cleanphp(php$modephp php=php Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp,php php$tagsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$resultphp php=php falsephp;
-php php php php php php php php switchphp php(php$modephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_TAGphp:
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_MATCHINGphp_ANYphp_TAGphp:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tagsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Exceptionphp(php'Cannotphp usephp tagphp matchingphp modesphp asphp nophp tagsphp werephp definedphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php&php&php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php php php php php php php php php}php elseifphp php(php!php$thisphp-php>php_taggedphp)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php foreachphp php(php$tagsphp asphp php$tagphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$urlsphp php=php arrayphp_keysphp(php$thisphp-php>php_taggedphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_taggedphp[php$urlphp]php[php'tagsphp'php]php)php php&php&php inphp_arrayphp(php$tagphp,php php$thisphp-php>php_taggedphp[php$urlphp]php[php'tagsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>removephp(php$urlphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_taggedphp[php$urlphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>getInnerCachephp(php)php-php>savephp(php$thisphp-php>php_taggedphp,php selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php php php php php php php php php php$resultphp php=php truephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_ALLphp:
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php|php|php emptyphp(php$thisphp-php>php_taggedphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$urlsphp php=php arrayphp_keysphp(php$thisphp-php>php_taggedphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>removephp(php$urlphp)php;
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_taggedphp[php$urlphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>getInnerCachephp(php)php-php>savephp(php$thisphp-php>php_taggedphp,php selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php php php php php php php php php php$resultphp php=php truephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_OLDphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_logphp(php"Zendphp_Cachephp_Backendphp_Staticphp php:php Selectedphp Cleaningphp Modephp Currentlyphp Unsupportedphp Byphp Thisphp Backendphp"php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Cachephp:php:CLEANINGphp_MODEphp_NOTphp_MATCHINGphp_TAGphp:
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$tagsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Exceptionphp(php'Cannotphp usephp tagphp matchingphp modesphp asphp nophp tagsphp werephp definedphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$taggedphp php=php php$thisphp-php>getInnerCachephp(php)php-php>loadphp(selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_taggedphp php=php php$taggedphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_taggedphp php=php=php=php nullphp php|php|php emptyphp(php$thisphp-php>php_taggedphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$urlsphp php=php arrayphp_keysphp(php$thisphp-php>php_taggedphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$urlsphp asphp php$urlphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$differencephp php=php arrayphp_diffphp(php$tagsphp,php php$thisphp-php>php_taggedphp[php$urlphp]php[php'tagsphp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(countphp(php$tagsphp)php php=php=php countphp(php$differencephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>removephp(php$urlphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_taggedphp[php$urlphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>getInnerCachephp(php)php-php>savephp(php$thisphp-php>php_taggedphp,php selfphp:php:INNERphp_CACHEphp_NAMEphp)php;
-php php php php php php php php php php php php php php php php php$resultphp php=php truephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp modephp forphp cleanphp(php)php methodphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
+    /**
+     * Clean some cache records
+     *
+     * Available modes are :
+     * Zend_Cache::CLEANING_MODE_ALL (default)    => remove all cache entries ($tags is not used)
+     * Zend_Cache::CLEANING_MODE_OLD              => remove too old cache entries ($tags is not used)
+     * Zend_Cache::CLEANING_MODE_MATCHING_TAG     => remove cache entries matching all given tags
+     *                                               ($tags can be an array of strings or a single string)
+     * Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG => remove cache entries not {matching one of the given tags}
+     *                                               ($tags can be an array of strings or a single string)
+     * Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG => remove cache entries matching any given tags
+     *                                               ($tags can be an array of strings or a single string)
+     *
+     * @param  string $mode Clean mode
+     * @param  array  $tags Array of tags
+     * @return boolean true if no problem
+     */
+    public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
+    {
+        $result = false;
+        switch ($mode) {
+            case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
+            case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
+                if (empty($tags)) {
+                    throw new Zend_Exception('Cannot use tag matching modes as no tags were defined');
+                }
+                if ($this->_tagged === null && $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME)) {
+                    $this->_tagged = $tagged;
+                } elseif (!$this->_tagged) {
+                    return true;
+                }
+                foreach ($tags as $tag) {
+                    $urls = array_keys($this->_tagged);
+                    foreach ($urls as $url) {
+                        if (isset($this->_tagged[$url]['tags']) && in_array($tag, $this->_tagged[$url]['tags'])) {
+                            $this->remove($url);
+                            unset($this->_tagged[$url]);
+                        }
+                    }
+                }
+                $this->getInnerCache()->save($this->_tagged, self::INNER_CACHE_NAME);
+                $result = true;
+                break;
+            case Zend_Cache::CLEANING_MODE_ALL:
+                if ($this->_tagged === null) {
+                    $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME);
+                    $this->_tagged = $tagged;
+                }
+                if ($this->_tagged === null || empty($this->_tagged)) {
+                    return true;
+                }
+                $urls = array_keys($this->_tagged);
+                foreach ($urls as $url) {
+                    $this->remove($url);
+                    unset($this->_tagged[$url]);
+                }
+                $this->getInnerCache()->save($this->_tagged, self::INNER_CACHE_NAME);
+                $result = true;
+                break;
+            case Zend_Cache::CLEANING_MODE_OLD:
+                $this->_log("Zend_Cache_Backend_Static : Selected Cleaning Mode Currently Unsupported By This Backend");
+                break;
+            case Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG:
+                if (empty($tags)) {
+                    throw new Zend_Exception('Cannot use tag matching modes as no tags were defined');
+                }
+                if ($this->_tagged === null) {
+                    $tagged = $this->getInnerCache()->load(self::INNER_CACHE_NAME);
+                    $this->_tagged = $tagged;
+                }
+                if ($this->_tagged === null || empty($this->_tagged)) {
+                    return true;
+                }
+                $urls = array_keys($this->_tagged);
+                foreach ($urls as $url) {
+                    $difference = array_diff($tags, $this->_tagged[$url]['tags']);
+                    if (count($tags) == count($difference)) {
+                        $this->remove($url);
+                        unset($this->_tagged[$url]);
+                    }
+                }
+                $this->getInnerCache()->save($this->_tagged, self::INNER_CACHE_NAME);
+                $result = true;
+                break;
+            default:
+                Zend_Cache::throwException('Invalid mode for clean() method');
+                break;
+        }
+        return $result;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp Innerphp Cachephp,php usedphp herephp primarilyphp tophp storephp Tagsphp associated
-php php php php php php*php withphp cachesphp createdphp byphp thisphp backendphp.php Notephp:php Ifphp Tagsphp arephp lostphp,php thephp cache
-php php php php php php*php shouldphp bephp completelyphp cleanedphp asphp thephp mappingphp ofphp tagsphp tophp cachesphp will
-php php php php php php*php havephp beenphp irrevocablyphp lostphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Cachephp_Core
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setInnerCachephp(Zendphp_Cachephp_Corephp php$cachephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tagCachephp php=php php$cachephp;
-php php php php php php php php php$thisphp-php>php_optionsphp[php'tagphp_cachephp'php]php php=php php$cachephp;
-php php php php php}
+    /**
+     * Set an Inner Cache, used here primarily to store Tags associated
+     * with caches created by this backend. Note: If Tags are lost, the cache
+     * should be completely cleaned as the mapping of tags to caches will
+     * have been irrevocably lost.
+     *
+     * @param  Zend_Cache_Core
+     * @return void
+     */
+    public function setInnerCache(Zend_Cache_Core $cache)
+    {
+        $this->_tagCache = $cache;
+        $this->_options['tag_cache'] = $cache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp Innerphp Cachephp ifphp set
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php publicphp functionphp getInnerCachephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_tagCachephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Anphp Innerphp Cachephp hasphp notphp beenphp setphp;php usephp setInnerCachephp(php)php'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_tagCachephp;
-php php php php php}
+    /**
+     * Get the Inner Cache if set
+     *
+     * @return Zend_Cache_Core
+     */
+    public function getInnerCache()
+    {
+        if ($this->_tagCache === null) {
+            Zend_Cache::throwException('An Inner Cache has not been set; use setInnerCache()');
+        }
+        return $this->_tagCache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Verifyphp pathphp existsphp andphp isphp nonphp-empty
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_verifyPathphp(php$pathphp)
-php php php php php{
-php php php php php php php php php$pathphp php=php realpathphp(php$pathphp)php;
-php php php php php php php php php$basephp php=php realpathphp(php$thisphp-php>php_optionsphp[php'publicphp_dirphp'php]php)php;
-php php php php php php php php returnphp strncmpphp(php$pathphp,php php$basephp,php strlenphp(php$basephp)php)php php!php=php=php php0php;
-php php php php php}
+    /**
+     * Verify path exists and is non-empty
+     *
+     * @param  string $path
+     * @return bool
+     */
+    protected function _verifyPath($path)
+    {
+        $path = realpath($path);
+        $base = realpath($this->_options['public_dir']);
+        return strncmp($path, $base, strlen($base)) !== 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinephp thephp pagephp tophp savephp fromphp thephp request
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_detectIdphp(php)
-php php php php php{
-php php php php php php php php returnphp php$php_SERVERphp[php'REQUESTphp_URIphp'php]php;
-php php php php php}
+    /**
+     * Determine the page to save from the request
+     *
+     * @return string
+     */
+    protected function _detectId()
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Validatephp aphp cachephp idphp orphp aphp tagphp php(securityphp,php reliablephp filenamesphp,php reservedphp prefixesphp.php.php.php)
-php php php php php php*
-php php php php php php*php Throwphp anphp exceptionphp ifphp aphp problemphp isphp found
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$stringphp Cachephp idphp orphp tag
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php php@deprecatedphp Notphp usablephp untilphp perhapsphp ZFphp php2php.php0
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_validateIdOrTagphp(php$stringphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$stringphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'Invalidphp idphp orphp tagphp php:php mustphp bephp aphp stringphp'php)php;
-php php php php php php php php php}
+    /**
+     * Validate a cache id or a tag (security, reliable filenames, reserved prefixes...)
+     *
+     * Throw an exception if a problem is found
+     *
+     * @param  string $string Cache id or tag
+     * @throws Zend_Cache_Exception
+     * @return void
+     * @deprecated Not usable until perhaps ZF 2.0
+     */
+    protected static function _validateIdOrTag($string)
+    {
+        if (!is_string($string)) {
+            Zend_Cache::throwException('Invalid id or tag : must be a string');
+        }
 
-php php php php php php php php php/php/php Internalphp onlyphp checkedphp inphp Frontendphp php-php notphp herephp!
-php php php php php php php php ifphp php(substrphp(php$stringphp,php php0php,php php9php)php php=php=php php'internalphp-php'php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        // Internal only checked in Frontend - not here!
+        if (substr($string, 0, 9) == 'internal-') {
+            return;
+        }
 
-php php php php php php php php php/php/php Validationphp assumesphp nophp queryphp stringphp,php fragmentsphp orphp schemephp includedphp php-php onlyphp thephp path
-php php php php php php php php ifphp php(php!pregphp_matchphp(
-php php php php php php php php php php php php php php php php php'php/php^php(php?php:php\php/php(php?php:php(php?php:php%php[php[php:xdigitphp:php]php]php{php2php}php|php[Aphp-Zaphp-zphp0php-php9php-php_php.php!php~php*php\php'php(php)php\php[php\php]php:php@php&php=php+php$php,php;php]php)php*php)php?php)php+php$php/php'php,
-php php php php php php php php php php php php php php php php php$string
-php php php php php php php php php php php php php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"Invalidphp idphp orphp tagphp php'php$stringphp'php php:php mustphp bephp aphp validphp URLphp pathphp"php)php;
-php php php php php php php php php}
-php php php php php}
+        // Validation assumes no query string, fragments or scheme included - only the path
+        if (!preg_match(
+                '/^(?:\/(?:(?:%[[:xdigit:]]{2}|[A-Za-z0-9-_.!~*\'()\[\]:@&=+$,;])*)?)+$/',
+                $string
+            )
+        ) {
+            Zend_Cache::throwException("Invalid id or tag '$string' : must be a valid URL path");
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Detectphp anphp octalphp stringphp andphp returnphp itsphp octalphp valuephp forphp filephp permissionphp ops
-php php php php php php*php otherwisephp returnphp thephp nonphp-stringphp php(assumedphp octalphp orphp decimalphp intphp alreadyphp)
-php php php php php php*
-php php php php php php*php php@paramphp php$valphp Thephp potentialphp octalphp inphp needphp ofphp conversion
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php protectedphp functionphp php_octdecphp(php$valphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$valphp)php php&php&php decoctphp(octdecphp(php$valphp)php)php php=php=php php$valphp)php php{
-php php php php php php php php php php php php returnphp octdecphp(php$valphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$valphp;
-php php php php php}
+    /**
+     * Detect an octal string and return its octal value for file permission ops
+     * otherwise return the non-string (assumed octal or decimal int already)
+     *
+     * @param $val The potential octal in need of conversion
+     * @return int
+     */
+    protected function _octdec($val)
+    {
+        if (is_string($val) && decoct(octdec($val)) == $val) {
+            return octdec($val);
+        }
+        return $val;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Decodephp aphp requestphp URIphp fromphp thephp providedphp ID
-php php php php php php*php/
-php php php php protectedphp functionphp php_decodeIdphp(php$idphp)
-php php php php php{
-php php php php php php php php returnphp packphp(php'Hphp*php'php,php php$idphp)php;php;
-php php php php php}
-php}
+    /**
+     * Decode a request URI from the provided ID
+     */
+    protected function _decodeId($id)
+    {
+        return pack('H*', $id);;
+    }
+}

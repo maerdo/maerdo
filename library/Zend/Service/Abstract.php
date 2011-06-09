@@ -1,71 +1,71 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
+/**
+ * Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Servicephp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php HTTPphp Clientphp usedphp tophp queryphp allphp webphp services
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_httpClientphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Service_Abstract
+{
+    /**
+     * HTTP Client used to query all web services
+     *
+     * @var Zend_Http_Client
+     */
+    protected static $_httpClient = null;
 
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp HTTPphp clientphp objectphp tophp usephp forphp retrievingphp thephp feedsphp.php php Ifphp none
-php php php php php php*php isphp setphp,php thephp defaultphp Zendphp_Httpphp_Clientphp willphp bephp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Httpphp_Clientphp php$httpClient
-php php php php php php*php/
-php php php php finalphp publicphp staticphp functionphp setHttpClientphp(Zendphp_Httpphp_Clientphp php$httpClientphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_httpClientphp php=php php$httpClientphp;
-php php php php php}
+    /**
+     * Sets the HTTP client object to use for retrieving the feeds.  If none
+     * is set, the default Zend_Http_Client will be used.
+     *
+     * @param Zend_Http_Client $httpClient
+     */
+    final public static function setHttpClient(Zend_Http_Client $httpClient)
+    {
+        self::$_httpClient = $httpClient;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp HTTPphp clientphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php finalphp publicphp staticphp functionphp getHttpClientphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!selfphp:php:php$php_httpClientphp instanceofphp Zendphp_Httpphp_Clientphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_httpClientphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
-php php php php php php php php php}
+    /**
+     * Gets the HTTP client object.
+     *
+     * @return Zend_Http_Client
+     */
+    final public static function getHttpClient()
+    {
+        if (!self::$_httpClient instanceof Zend_Http_Client) {
+            self::$_httpClient = new Zend_Http_Client();
+        }
 
-php php php php php php php php returnphp selfphp:php:php$php_httpClientphp;
-php php php php php}
-php}
+        return self::$_httpClient;
+    }
+}
 

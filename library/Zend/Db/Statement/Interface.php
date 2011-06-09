@@ -1,203 +1,203 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Statement
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Statement
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Emulatesphp aphp PDOStatementphp forphp nativephp databasephp adaptersphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Statement
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Dbphp_Statementphp_Interface
-php{
+/**
+ * Emulates a PDOStatement for native database adapters.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Statement
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Db_Statement_Interface
+{
 
-php php php php php/php*php*
-php php php php php php*php Bindphp aphp columnphp ofphp thephp statementphp resultphp setphp tophp aphp PHPphp variablephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$columnphp Namephp thephp columnphp inphp thephp resultphp setphp,php eitherphp by
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php positionphp orphp byphp namephp.
-php php php php php php*php php@paramphp mixedphp php php$paramphp php Referencephp tophp thephp PHPphp variablephp containingphp thephp valuephp.
-php php php php php php*php php@paramphp mixedphp php php$typephp php php OPTIONAL
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp bindColumnphp(php$columnphp,php php&php$paramphp,php php$typephp php=php nullphp)php;
+    /**
+     * Bind a column of the statement result set to a PHP variable.
+     *
+     * @param string $column Name the column in the result set, either by
+     *                       position or by name.
+     * @param mixed  $param  Reference to the PHP variable containing the value.
+     * @param mixed  $type   OPTIONAL
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function bindColumn($column, &$param, $type = null);
 
-php php php php php/php*php*
-php php php php php php*php Bindsphp aphp parameterphp tophp thephp specifiedphp variablephp namephp.
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
-php php php php php php*php php@paramphp mixedphp php$variablephp php Referencephp tophp PHPphp variablephp containingphp thephp valuephp.
-php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp SQLphp parameterphp.
-php php php php php php*php php@paramphp mixedphp php$lengthphp php php php OPTIONALphp Lengthphp ofphp SQLphp parameterphp.
-php php php php php php*php php@paramphp mixedphp php$optionsphp php php OPTIONALphp Otherphp optionsphp.
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp bindParamphp(php$parameterphp,php php&php$variablephp,php php$typephp php=php nullphp,php php$lengthphp php=php nullphp,php php$optionsphp php=php nullphp)php;
+    /**
+     * Binds a parameter to the specified variable name.
+     *
+     * @param mixed $parameter Name the parameter, either integer or string.
+     * @param mixed $variable  Reference to PHP variable containing the value.
+     * @param mixed $type      OPTIONAL Datatype of SQL parameter.
+     * @param mixed $length    OPTIONAL Length of SQL parameter.
+     * @param mixed $options   OPTIONAL Other options.
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function bindParam($parameter, &$variable, $type = null, $length = null, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Bindsphp aphp valuephp tophp aphp parameterphp.
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$parameterphp Namephp thephp parameterphp,php eitherphp integerphp orphp stringphp.
-php php php php php php*php php@paramphp mixedphp php$valuephp php php php php Scalarphp valuephp tophp bindphp tophp thephp parameterphp.
-php php php php php php*php php@paramphp mixedphp php$typephp php php php php php OPTIONALphp Datatypephp ofphp thephp parameterphp.
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp bindValuephp(php$parameterphp,php php$valuephp,php php$typephp php=php nullphp)php;
+    /**
+     * Binds a value to a parameter.
+     *
+     * @param mixed $parameter Name the parameter, either integer or string.
+     * @param mixed $value     Scalar value to bind to the parameter.
+     * @param mixed $type      OPTIONAL Datatype of the parameter.
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function bindValue($parameter, $value, $type = null);
 
-php php php php php/php*php*
-php php php php php php*php Closesphp thephp cursorphp,php allowingphp thephp statementphp tophp bephp executedphp againphp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp closeCursorphp(php)php;
+    /**
+     * Closes the cursor, allowing the statement to be executed again.
+     *
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function closeCursor();
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp columnsphp inphp thephp resultphp setphp.
-php php php php php php*php Returnsphp nullphp ifphp thephp statementphp hasphp nophp resultphp setphp metadataphp.
-php php php php php php*
-php php php php php php*php php@returnphp intphp Thephp numberphp ofphp columnsphp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp columnCountphp(php)php;
+    /**
+     * Returns the number of columns in the result set.
+     * Returns null if the statement has no result set metadata.
+     *
+     * @return int The number of columns.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function columnCount();
 
-php php php php php/php*php*
-php php php php php php*php Retrievesphp thephp errorphp codephp,php ifphp anyphp,php associatedphp withphp thephp lastphp operationphp on
-php php php php php php*php thephp statementphp handlephp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp errorphp codephp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp errorCodephp(php)php;
+    /**
+     * Retrieves the error code, if any, associated with the last operation on
+     * the statement handle.
+     *
+     * @return string error code.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function errorCode();
 
-php php php php php/php*php*
-php php php php php php*php Retrievesphp anphp arrayphp ofphp errorphp informationphp,php ifphp anyphp,php associatedphp withphp the
-php php php php php php*php lastphp operationphp onphp thephp statementphp handlephp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp errorInfophp(php)php;
+    /**
+     * Retrieves an array of error information, if any, associated with the
+     * last operation on the statement handle.
+     *
+     * @return array
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function errorInfo();
 
-php php php php php/php*php*
-php php php php php php*php Executesphp aphp preparedphp statementphp.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$paramsphp OPTIONALphp Valuesphp tophp bindphp tophp parameterphp placeholdersphp.
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp executephp(arrayphp php$paramsphp php=php arrayphp(php)php)php;
+    /**
+     * Executes a prepared statement.
+     *
+     * @param array $params OPTIONAL Values to bind to parameter placeholders.
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function execute(array $params = array());
 
-php php php php php/php*php*
-php php php php php php*php Fetchesphp aphp rowphp fromphp thephp resultphp setphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$stylephp php OPTIONALphp Fetchphp modephp forphp thisphp fetchphp operationphp.
-php php php php php php*php php@paramphp intphp php$cursorphp OPTIONALphp Absolutephp,php relativephp,php orphp otherphp.
-php php php php php php*php php@paramphp intphp php$offsetphp OPTIONALphp Numberphp forphp absolutephp orphp relativephp cursorsphp.
-php php php php php php*php php@returnphp mixedphp Arrayphp,php objectphp,php orphp scalarphp dependingphp onphp fetchphp modephp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp fetchphp(php$stylephp php=php nullphp,php php$cursorphp php=php nullphp,php php$offsetphp php=php nullphp)php;
+    /**
+     * Fetches a row from the result set.
+     *
+     * @param int $style  OPTIONAL Fetch mode for this fetch operation.
+     * @param int $cursor OPTIONAL Absolute, relative, or other.
+     * @param int $offset OPTIONAL Number for absolute or relative cursors.
+     * @return mixed Array, object, or scalar depending on fetch mode.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function fetch($style = null, $cursor = null, $offset = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp containingphp allphp ofphp thephp resultphp setphp rowsphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$stylephp OPTIONALphp Fetchphp modephp.
-php php php php php php*php php@paramphp intphp php$colphp php php OPTIONALphp Columnphp numberphp,php ifphp fetchphp modephp isphp byphp columnphp.
-php php php php php php*php php@returnphp arrayphp Collectionphp ofphp rowsphp,php eachphp inphp aphp formatphp byphp thephp fetchphp modephp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp fetchAllphp(php$stylephp php=php nullphp,php php$colphp php=php nullphp)php;
+    /**
+     * Returns an array containing all of the result set rows.
+     *
+     * @param int $style OPTIONAL Fetch mode.
+     * @param int $col   OPTIONAL Column number, if fetch mode is by column.
+     * @return array Collection of rows, each in a format by the fetch mode.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function fetchAll($style = null, $col = null);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp singlephp columnphp fromphp thephp nextphp rowphp ofphp aphp resultphp setphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$colphp OPTIONALphp Positionphp ofphp thephp columnphp tophp fetchphp.
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp fetchColumnphp(php$colphp php=php php0php)php;
+    /**
+     * Returns a single column from the next row of a result set.
+     *
+     * @param int $col OPTIONAL Position of the column to fetch.
+     * @return string
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function fetchColumn($col = 0);
 
-php php php php php/php*php*
-php php php php php php*php Fetchesphp thephp nextphp rowphp andphp returnsphp itphp asphp anphp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$classphp php OPTIONALphp Namephp ofphp thephp classphp tophp createphp.
-php php php php php php*php php@paramphp arrayphp php php$configphp OPTIONALphp Constructorphp argumentsphp forphp thephp classphp.
-php php php php php php*php php@returnphp mixedphp Onephp objectphp instancephp ofphp thephp specifiedphp classphp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp fetchObjectphp(php$classphp php=php php'stdClassphp'php,php arrayphp php$configphp php=php arrayphp(php)php)php;
+    /**
+     * Fetches the next row and returns it as an object.
+     *
+     * @param string $class  OPTIONAL Name of the class to create.
+     * @param array  $config OPTIONAL Constructor arguments for the class.
+     * @return mixed One object instance of the specified class.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function fetchObject($class = 'stdClass', array $config = array());
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp statementphp attributephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$keyphp Attributephp namephp.
-php php php php php php*php php@returnphp mixedphp php php php php php Attributephp valuephp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getAttributephp(php$keyphp)php;
+    /**
+     * Retrieve a statement attribute.
+     *
+     * @param string $key Attribute name.
+     * @return mixed      Attribute value.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function getAttribute($key);
 
-php php php php php/php*php*
-php php php php php php*php Retrievesphp thephp nextphp rowsetphp php(resultphp setphp)php forphp aphp SQLphp statementphp thatphp has
-php php php php php php*php multiplephp resultphp setsphp.php php Anphp examplephp isphp aphp storedphp procedurephp thatphp returns
-php php php php php php*php thephp resultsphp ofphp multiplephp queriesphp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp nextRowsetphp(php)php;
+    /**
+     * Retrieves the next rowset (result set) for a SQL statement that has
+     * multiple result sets.  An example is a stored procedure that returns
+     * the results of multiple queries.
+     *
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function nextRowset();
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp rowsphp affectedphp byphp thephp executionphp ofphp the
-php php php php php php*php lastphp INSERTphp,php DELETEphp,php orphp UPDATEphp statementphp executedphp byphp this
-php php php php php php*php statementphp objectphp.
-php php php php php php*
-php php php php php php*php php@returnphp intphp php php php php Thephp numberphp ofphp rowsphp affectedphp.
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp rowCountphp(php)php;
+    /**
+     * Returns the number of rows affected by the execution of the
+     * last INSERT, DELETE, or UPDATE statement executed by this
+     * statement object.
+     *
+     * @return int     The number of rows affected.
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function rowCount();
 
-php php php php php/php*php*
-php php php php php php*php Setphp aphp statementphp attributephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$keyphp Attributephp namephp.
-php php php php php php*php php@paramphp mixedphp php php$valphp Attributephp valuephp.
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setAttributephp(php$keyphp,php php$valphp)php;
+    /**
+     * Set a statement attribute.
+     *
+     * @param string $key Attribute name.
+     * @param mixed  $val Attribute value.
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function setAttribute($key, $val);
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp fetchphp modephp forphp thisphp statementphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php php php$modephp Thephp fetchphp modephp.
-php php php php php php*php php@returnphp bool
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Statementphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setFetchModephp(php$modephp)php;
+    /**
+     * Set the default fetch mode for this statement.
+     *
+     * @param int   $mode The fetch mode.
+     * @return bool
+     * @throws Zend_Db_Statement_Exception
+     */
+    public function setFetchMode($mode);
 
-php}
+}

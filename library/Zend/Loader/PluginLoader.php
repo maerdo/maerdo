@@ -1,484 +1,484 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Loader
-php php*php php@subpackagephp PluginLoader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php PluginLoaderphp.phpphp php2php2php6php0php3php php2php0php1php0php-php0php7php-php1php7php php0php0php:php0php2php:php1php0Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Loader
+ * @subpackage PluginLoader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: PluginLoader.php 22603 2010-07-17 00:02:10Z ramon $
+ */
 
-php/php*php*php Zendphp_Loaderphp_PluginLoaderphp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Interfacephp.phpphp'php;
+/** Zend_Loader_PluginLoader_Interface */
+require_once 'Zend/Loader/PluginLoader/Interface.php';
 
-php/php*php*php Zendphp_Loaderphp php*php/
-requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
+/** Zend_Loader */
+require_once 'Zend/Loader.php';
 
-php/php*php*
-php php*php Genericphp pluginphp classphp loader
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Loader
-php php*php php@subpackagephp PluginLoader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Loaderphp_PluginLoaderphp implementsphp Zendphp_Loaderphp_PluginLoaderphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Classphp mapphp cachephp file
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_includeFileCachephp;
+/**
+ * Generic plugin class loader
+ *
+ * @category   Zend
+ * @package    Zend_Loader
+ * @subpackage PluginLoader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
+{
+    /**
+     * Class map cache file
+     * @var string
+     */
+    protected static $_includeFileCache;
 
-php php php php php/php*php*
-php php php php php php*php Instancephp loadedphp pluginphp paths
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_loadedPluginPathsphp php=php arrayphp(php)php;
+    /**
+     * Instance loaded plugin paths
+     *
+     * @var array
+     */
+    protected $_loadedPluginPaths = array();
 
-php php php php php/php*php*
-php php php php php php*php Instancephp loadedphp plugins
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_loadedPluginsphp php=php arrayphp(php)php;
+    /**
+     * Instance loaded plugins
+     *
+     * @var array
+     */
+    protected $_loadedPlugins = array();
 
-php php php php php/php*php*
-php php php php php php*php Instancephp registryphp property
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_prefixToPathsphp php=php arrayphp(php)php;
+    /**
+     * Instance registry property
+     *
+     * @var array
+     */
+    protected $_prefixToPaths = array();
 
-php php php php php/php*php*
-php php php php php php*php Staticallyphp loadedphp pluginphp pathphp mappings
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_staticLoadedPluginPathsphp php=php arrayphp(php)php;
+    /**
+     * Statically loaded plugin path mappings
+     *
+     * @var array
+     */
+    protected static $_staticLoadedPluginPaths = array();
 
-php php php php php/php*php*
-php php php php php php*php Staticallyphp loadedphp plugins
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_staticLoadedPluginsphp php=php arrayphp(php)php;
+    /**
+     * Statically loaded plugins
+     *
+     * @var array
+     */
+    protected static $_staticLoadedPlugins = array();
 
-php php php php php/php*php*
-php php php php php php*php Staticphp registryphp property
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_staticPrefixToPathsphp php=php arrayphp(php)php;
+    /**
+     * Static registry property
+     *
+     * @var array
+     */
+    protected static $_staticPrefixToPaths = array();
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp tophp usephp aphp staticallyphp namedphp registryphp forphp loadingphp plugins
-php php php php php php*
-php php php php php php*php php@varphp stringphp|null
-php php php php php php*php/
-php php php php protectedphp php$php_useStaticRegistryphp php=php nullphp;
+    /**
+     * Whether to use a statically named registry for loading plugins
+     *
+     * @var string|null
+     */
+    protected $_useStaticRegistry = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$prefixToPaths
-php php php php php php*php php@paramphp stringphp php$staticRegistryNamephp OPTIONAL
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Arrayphp php$prefixToPathsphp php=php arrayphp(php)php,php php$staticRegistryNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$staticRegistryNamephp)php php&php&php php!emptyphp(php$staticRegistryNamephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_useStaticRegistryphp php=php php$staticRegistryNamephp;
-php php php php php php php php php php php php ifphp(php!issetphp(selfphp:php:php$php_staticPrefixToPathsphp[php$staticRegistryNamephp]php)php)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_staticPrefixToPathsphp[php$staticRegistryNamephp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp(php!issetphp(selfphp:php:php$php_staticLoadedPluginsphp[php$staticRegistryNamephp]php)php)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_staticLoadedPluginsphp[php$staticRegistryNamephp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Constructor
+     *
+     * @param array $prefixToPaths
+     * @param string $staticRegistryName OPTIONAL
+     */
+    public function __construct(Array $prefixToPaths = array(), $staticRegistryName = null)
+    {
+        if (is_string($staticRegistryName) && !empty($staticRegistryName)) {
+            $this->_useStaticRegistry = $staticRegistryName;
+            if(!isset(self::$_staticPrefixToPaths[$staticRegistryName])) {
+                self::$_staticPrefixToPaths[$staticRegistryName] = array();
+            }
+            if(!isset(self::$_staticLoadedPlugins[$staticRegistryName])) {
+                self::$_staticLoadedPlugins[$staticRegistryName] = array();
+            }
+        }
 
-php php php php php php php php foreachphp php(php$prefixToPathsphp asphp php$prefixphp php=php>php php$pathphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php}
-php php php php php}
+        foreach ($prefixToPaths as $prefix => $path) {
+            $this->addPrefixPath($prefix, $path);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Formatphp prefixphp forphp internalphp use
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_formatPrefixphp(php$prefixphp)
-php php php php php{
-php php php php php php php php ifphp(php$prefixphp php=php=php php"php"php)php php{
-php php php php php php php php php php php php returnphp php$prefixphp;
-php php php php php php php php php}
+    /**
+     * Format prefix for internal use
+     *
+     * @param  string $prefix
+     * @return string
+     */
+    protected function _formatPrefix($prefix)
+    {
+        if($prefix == "") {
+            return $prefix;
+        }
 
-php php php php php php php php php$lastphp php=php strlenphp(php$prefixphp)php php-php php1php;
-php php php php php php php php ifphp php(php$prefixphp{php$lastphp}php php=php=php php'php\php\php'php)php php{
-php php php php php php php php php php php php returnphp php$prefixphp;
-php php php php php php php php php}
+        $last = strlen($prefix) - 1;
+        if ($prefix{$last} == '\\') {
+            return $prefix;
+        }
 
-php php php php php php php php returnphp rtrimphp(php$prefixphp,php php'php_php'php)php php.php php'php_php'php;
-php php php php php}
+        return rtrim($prefix, '_') . '_';
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp prefixedphp pathsphp tophp thephp registryphp ofphp paths
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$prefix
-php php php php php php*php php@paramphp stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$prefixphp)php php|php|php php!isphp_stringphp(php$pathphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Zendphp_Loaderphp_PluginLoaderphp:php:addPrefixPathphp(php)php methodphp onlyphp takesphp stringsphp forphp prefixphp andphp pathphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * Add prefixed paths to the registry of paths
+     *
+     * @param string $prefix
+     * @param string $path
+     * @return Zend_Loader_PluginLoader
+     */
+    public function addPrefixPath($prefix, $path)
+    {
+        if (!is_string($prefix) || !is_string($path)) {
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception('Zend_Loader_PluginLoader::addPrefixPath() method only takes strings for prefix and path.');
+        }
 
-php php php php php php php php php$prefixphp php=php php$thisphp-php>php_formatPrefixphp(php$prefixphp)php;
-php php php php php php php php php$pathphp php php php=php rtrimphp(php$pathphp,php php'php/php\php\php'php)php php.php php'php/php'php;
+        $prefix = $this->_formatPrefix($prefix);
+        $path   = rtrim($path, '/\\') . '/';
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$prefixphp]php[php]php php=php php$pathphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$pathphp,php php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php[php]php php=php php$pathphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        if ($this->_useStaticRegistry) {
+            self::$_staticPrefixToPaths[$this->_useStaticRegistry][$prefix][] = $path;
+        } else {
+            if (!isset($this->_prefixToPaths[$prefix])) {
+                $this->_prefixToPaths[$prefix] = array();
+            }
+            if (!in_array($path, $this->_prefixToPaths[$prefix])) {
+                $this->_prefixToPaths[$prefix][] = $path;
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp pathphp stack
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@returnphp falsephp|arrayphp Falsephp ifphp prefixphp doesphp notphp existphp,php arrayphp otherwise
-php php php php php php*php/
-php php php php publicphp functionphp getPathsphp(php$prefixphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php(nullphp php!php=php=php php$prefixphp)php php&php&php isphp_stringphp(php$prefixphp)php)php php{
-php php php php php php php php php php php php php$prefixphp php=php php$thisphp-php>php_formatPrefixphp(php$prefixphp)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$prefixphp]php;
-php php php php php php php php php php php php php php php php php}
+    /**
+     * Get path stack
+     *
+     * @param  string $prefix
+     * @return false|array False if prefix does not exist, array otherwise
+     */
+    public function getPaths($prefix = null)
+    {
+        if ((null !== $prefix) && is_string($prefix)) {
+            $prefix = $this->_formatPrefix($prefix);
+            if ($this->_useStaticRegistry) {
+                if (isset(self::$_staticPrefixToPaths[$this->_useStaticRegistry][$prefix])) {
+                    return self::$_staticPrefixToPaths[$this->_useStaticRegistry][$prefix];
+                }
 
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
+                return false;
+            }
 
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php;
-php php php php php php php php php php php php php}
+            if (isset($this->_prefixToPaths[$prefix])) {
+                return $this->_prefixToPaths[$prefix];
+            }
 
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+            return false;
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php returnphp selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php;
-php php php php php php php php php}
+        if ($this->_useStaticRegistry) {
+            return self::$_staticPrefixToPaths[$this->_useStaticRegistry];
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_prefixToPathsphp;
-php php php php php}
+        return $this->_prefixToPaths;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp pathphp stack
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@returnphp boolphp Falsephp onlyphp ifphp php$prefixphp doesphp notphp exist
-php php php php php php*php/
-php php php php publicphp functionphp clearPathsphp(php$prefixphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php(nullphp php!php=php=php php$prefixphp)php php&php&php isphp_stringphp(php$prefixphp)php)php php{
-php php php php php php php php php php php php php$prefixphp php=php php$thisphp-php>php_formatPrefixphp(php$prefixphp)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(issetphp(selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php unsetphp(selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$prefixphp]php)php;
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php}
+    /**
+     * Clear path stack
+     *
+     * @param  string $prefix
+     * @return bool False only if $prefix does not exist
+     */
+    public function clearPaths($prefix = null)
+    {
+        if ((null !== $prefix) && is_string($prefix)) {
+            $prefix = $this->_formatPrefix($prefix);
+            if ($this->_useStaticRegistry) {
+                if (isset(self::$_staticPrefixToPaths[$this->_useStaticRegistry][$prefix])) {
+                    unset(self::$_staticPrefixToPaths[$this->_useStaticRegistry][$prefix]);
+                    return true;
+                }
 
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
+                return false;
+            }
 
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_prefixToPathsphp[php$prefixphp]php)php;
-php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php}
+            if (isset($this->_prefixToPaths[$prefix])) {
+                unset($this->_prefixToPaths[$prefix]);
+                return true;
+            }
 
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+            return false;
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php php=php arrayphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_prefixToPathsphp php=php arrayphp(php)php;
-php php php php php php php php php}
+        if ($this->_useStaticRegistry) {
+            self::$_staticPrefixToPaths[$this->_useStaticRegistry] = array();
+        } else {
+            $this->_prefixToPaths = array();
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp prefixphp php(orphp prefixedphp-pathphp)php fromphp thephp registry
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$prefix
-php php php php php php*php php@paramphp stringphp php$pathphp OPTIONAL
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp removePrefixPathphp(php$prefixphp,php php$pathphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$prefixphp php=php php$thisphp-php>php_formatPrefixphp(php$prefixphp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php php$registryphp php=php&php selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$registryphp php=php&php php$thisphp-php>php_prefixToPathsphp;
-php php php php php php php php php}
+    /**
+     * Remove a prefix (or prefixed-path) from the registry
+     *
+     * @param string $prefix
+     * @param string $path OPTIONAL
+     * @return Zend_Loader_PluginLoader
+     */
+    public function removePrefixPath($prefix, $path = null)
+    {
+        $prefix = $this->_formatPrefix($prefix);
+        if ($this->_useStaticRegistry) {
+            $registry =& self::$_staticPrefixToPaths[$this->_useStaticRegistry];
+        } else {
+            $registry =& $this->_prefixToPaths;
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$registryphp[php$prefixphp]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Prefixphp php'php php.php php$prefixphp php.php php'php wasphp notphp foundphp inphp thephp PluginLoaderphp.php'php)php;
-php php php php php php php php php}
+        if (!isset($registry[$prefix])) {
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception('Prefix ' . $prefix . ' was not found in the PluginLoader.');
+        }
 
-php php php php php php php php ifphp php(php$pathphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$posphp php=php arrayphp_searchphp(php$pathphp,php php$registryphp[php$prefixphp]php)php;
-php php php php php php php php php php php php ifphp php(falsephp php=php=php=php php$posphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Prefixphp php'php php.php php$prefixphp php.php php'php php/php Pathphp php'php php.php php$pathphp php.php php'php wasphp notphp foundphp inphp thephp PluginLoaderphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$registryphp[php$prefixphp]php[php$posphp]php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php unsetphp(php$registryphp[php$prefixphp]php)php;
-php php php php php php php php php}
+        if ($path != null) {
+            $pos = array_search($path, $registry[$prefix]);
+            if (false === $pos) {
+                require_once 'Zend/Loader/PluginLoader/Exception.php';
+                throw new Zend_Loader_PluginLoader_Exception('Prefix ' . $prefix . ' / Path ' . $path . ' was not found in the PluginLoader.');
+            }
+            unset($registry[$prefix][$pos]);
+        } else {
+            unset($registry[$prefix]);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Normalizephp pluginphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_formatNamephp(php$namephp)
-php php php php php{
-php php php php php php php php returnphp ucfirstphp(php(stringphp)php php$namephp)php;
-php php php php php}
+    /**
+     * Normalize plugin name
+     *
+     * @param  string $name
+     * @return string
+     */
+    protected function _formatName($name)
+    {
+        return ucfirst((string) $name);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp aphp Pluginphp byphp aphp specificphp namephp isphp loaded
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php/
-php php php php publicphp functionphp isLoadedphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$thisphp-php>php_formatNamephp(php$namephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php returnphp issetphp(selfphp:php:php$php_staticLoadedPluginsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php)php;
-php php php php php php php php php}
+    /**
+     * Whether or not a Plugin by a specific name is loaded
+     *
+     * @param string $name
+     * @return Zend_Loader_PluginLoader
+     */
+    public function isLoaded($name)
+    {
+        $name = $this->_formatName($name);
+        if ($this->_useStaticRegistry) {
+            return isset(self::$_staticLoadedPlugins[$this->_useStaticRegistry][$name]);
+        }
 
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_loadedPluginsphp[php$namephp]php)php;
-php php php php php}
+        return isset($this->_loadedPlugins[$name]);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp fullphp classphp namephp forphp aphp namedphp plugin
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp stringphp|falsephp Falsephp ifphp classphp notphp foundphp,php classphp namephp otherwise
-php php php php php php*php/
-php php php php publicphp functionphp getClassNamephp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$thisphp-php>php_formatNamephp(php$namephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistry
-php php php php php php php php php php php php php&php&php issetphp(selfphp:php:php$php_staticLoadedPluginsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php returnphp selfphp:php:php$php_staticLoadedPluginsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php;
-php php php php php php php php php}php elseifphp php(issetphp(php$thisphp-php>php_loadedPluginsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadedPluginsphp[php$namephp]php;
-php php php php php php php php php}
+    /**
+     * Return full class name for a named plugin
+     *
+     * @param string $name
+     * @return string|false False if class not found, class name otherwise
+     */
+    public function getClassName($name)
+    {
+        $name = $this->_formatName($name);
+        if ($this->_useStaticRegistry
+            && isset(self::$_staticLoadedPlugins[$this->_useStaticRegistry][$name])
+        ) {
+            return self::$_staticLoadedPlugins[$this->_useStaticRegistry][$name];
+        } elseif (isset($this->_loadedPlugins[$name])) {
+            return $this->_loadedPlugins[$name];
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp pathphp tophp pluginphp class
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$name
-php php php php php php*php php@returnphp stringphp|falsephp Falsephp ifphp notphp found
-php php php php php php*php/
-php php php php publicphp functionphp getClassPathphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$thisphp-php>php_formatNamephp(php$namephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistry
-php php php php php php php php php php php php php&php&php php!emptyphp(selfphp:php:php$php_staticLoadedPluginPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php returnphp selfphp:php:php$php_staticLoadedPluginPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php;
-php php php php php php php php php}php elseifphp php(php!emptyphp(php$thisphp-php>php_loadedPluginPathsphp[php$namephp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadedPluginPathsphp[php$namephp]php;
-php php php php php php php php php}
+    /**
+     * Get path to plugin class
+     *
+     * @param  mixed $name
+     * @return string|false False if not found
+     */
+    public function getClassPath($name)
+    {
+        $name = $this->_formatName($name);
+        if ($this->_useStaticRegistry
+            && !empty(self::$_staticLoadedPluginPaths[$this->_useStaticRegistry][$name])
+        ) {
+            return self::$_staticLoadedPluginPaths[$this->_useStaticRegistry][$name];
+        } elseif (!empty($this->_loadedPluginPaths[$name])) {
+            return $this->_loadedPluginPaths[$name];
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>isLoadedphp(php$namephp)php)php php{
-php php php php php php php php php php php php php$classphp php=php php$thisphp-php>getClassNamephp(php$namephp)php;
-php php php php php php php php php php php php php$rphp php php php php php=php newphp ReflectionClassphp(php$classphp)php;
-php php php php php php php php php php php php php$pathphp php php=php php$rphp-php>getFileNamephp(php)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_staticLoadedPluginPathsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php php=php php$pathphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loadedPluginPathsphp[php$namephp]php php=php php$pathphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$pathphp;
-php php php php php php php php php}
+        if ($this->isLoaded($name)) {
+            $class = $this->getClassName($name);
+            $r     = new ReflectionClass($class);
+            $path  = $r->getFileName();
+            if ($this->_useStaticRegistry) {
+                self::$_staticLoadedPluginPaths[$this->_useStaticRegistry][$name] = $path;
+            } else {
+                $this->_loadedPluginPaths[$name] = $path;
+            }
+            return $path;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp aphp pluginphp viaphp thephp namephp provided
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php boolphp php$throwExceptionsphp Whetherphp orphp notphp tophp throwphp exceptionsphp ifphp the
-php php php php php php*php classphp isphp notphp resolved
-php php php php php php*php php@returnphp stringphp|falsephp Classphp namephp ofphp loadedphp classphp;php falsephp ifphp php$throwExceptions
-php php php php php php*php ifphp falsephp andphp nophp classphp found
-php php php php php php*php php@throwsphp Zendphp_Loaderphp_Exceptionphp ifphp classphp notphp found
-php php php php php php*php/
-php php php php publicphp functionphp loadphp(php$namephp,php php$throwExceptionsphp php=php truephp)
-php php php php php{
-php php php php php php php php php$namephp php=php php$thisphp-php>php_formatNamephp(php$namephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>isLoadedphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>getClassNamephp(php$namephp)php;
-php php php php php php php php php}
+    /**
+     * Load a plugin via the name provided
+     *
+     * @param  string $name
+     * @param  bool $throwExceptions Whether or not to throw exceptions if the
+     * class is not resolved
+     * @return string|false Class name of loaded class; false if $throwExceptions
+     * if false and no class found
+     * @throws Zend_Loader_Exception if class not found
+     */
+    public function load($name, $throwExceptions = true)
+    {
+        $name = $this->_formatName($name);
+        if ($this->isLoaded($name)) {
+            return $this->getClassName($name);
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php php$registryphp php=php selfphp:php:php$php_staticPrefixToPathsphp[php$thisphp-php>php_useStaticRegistryphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$registryphp php=php php$thisphp-php>php_prefixToPathsphp;
-php php php php php php php php php}
+        if ($this->_useStaticRegistry) {
+            $registry = self::$_staticPrefixToPaths[$this->_useStaticRegistry];
+        } else {
+            $registry = $this->_prefixToPaths;
+        }
 
-php php php php php php php php php$registryphp php php=php arrayphp_reversephp(php$registryphp,php truephp)php;
-php php php php php php php php php$foundphp php php php php php=php falsephp;
-php php php php php php php php php$classFilephp php=php strphp_replacephp(php'php_php'php,php DIRECTORYphp_SEPARATORphp,php php$namephp)php php.php php'php.phpphp'php;
-php php php php php php php php php$incFilephp php php php=php selfphp:php:getIncludeFileCachephp(php)php;
-php php php php php php php php foreachphp php(php$registryphp asphp php$prefixphp php=php>php php$pathsphp)php php{
-php php php php php php php php php php php php php$classNamephp php=php php$prefixphp php.php php$namephp;
+        $registry  = array_reverse($registry, true);
+        $found     = false;
+        $classFile = str_replace('_', DIRECTORY_SEPARATOR, $name) . '.php';
+        $incFile   = self::getIncludeFileCache();
+        foreach ($registry as $prefix => $paths) {
+            $className = $prefix . $name;
 
-php php php php php php php php php php php php ifphp php(classphp_existsphp(php$classNamephp,php falsephp)php)php php{
-php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
+            if (class_exists($className, false)) {
+                $found = true;
+                break;
+            }
 
-php php php php php php php php php php php php php$pathsphp php php php php php=php arrayphp_reversephp(php$pathsphp,php truephp)php;
+            $paths     = array_reverse($paths, true);
 
-php php php php php php php php php php php php foreachphp php(php$pathsphp asphp php$pathphp)php php{
-php php php php php php php php php php php php php php php php php$loadFilephp php=php php$pathphp php.php php$classFilephp;
-php php php php php php php php php php php php php php php php ifphp php(Zendphp_Loaderphp:php:isReadablephp(php$loadFilephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php includephp_oncephp php$loadFilephp;
-php php php php php php php php php php php php php php php php php php php php ifphp php(classphp_existsphp(php$classNamephp,php falsephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$incFilephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php selfphp:php:php_appendIncFilephp(php$loadFilephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$foundphp php=php truephp;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp php2php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            foreach ($paths as $path) {
+                $loadFile = $path . $classFile;
+                if (Zend_Loader::isReadable($loadFile)) {
+                    include_once $loadFile;
+                    if (class_exists($className, false)) {
+                        if (null !== $incFile) {
+                            self::_appendIncFile($loadFile);
+                        }
+                        $found = true;
+                        break 2;
+                    }
+                }
+            }
+        }
 
-php php php php php php php php ifphp php(php!php$foundphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$throwExceptionsphp)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
+        if (!$found) {
+            if (!$throwExceptions) {
+                return false;
+            }
 
-php php php php php php php php php php php php php$messagephp php=php php"Pluginphp byphp namephp php'php$namephp'php wasphp notphp foundphp inphp thephp registryphp;php usedphp pathsphp:php"php;
-php php php php php php php php php php php php foreachphp php(php$registryphp asphp php$prefixphp php=php>php php$pathsphp)php php{
-php php php php php php php php php php php php php php php php php$messagephp php.php=php php"php\nphp$prefixphp:php php"php php.php implodephp(PATHphp_SEPARATORphp,php php$pathsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php$messagephp)php;
-php php php php php php php php}
+            $message = "Plugin by name '$name' was not found in the registry; used paths:";
+            foreach ($registry as $prefix => $paths) {
+                $message .= "\n$prefix: " . implode(PATH_SEPARATOR, $paths);
+            }
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception($message);
+       }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useStaticRegistryphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_staticLoadedPluginsphp[php$thisphp-php>php_useStaticRegistryphp]php[php$namephp]php php php php php php=php php$classNamephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_loadedPluginsphp[php$namephp]php php php php php php=php php$classNamephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$classNamephp;
-php php php php php}
+        if ($this->_useStaticRegistry) {
+            self::$_staticLoadedPlugins[$this->_useStaticRegistry][$name]     = $className;
+        } else {
+            $this->_loadedPlugins[$name]     = $className;
+        }
+        return $className;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp pathphp tophp classphp filephp cache
-php php php php php php*
-php php php php php php*php Specifyphp aphp pathphp tophp aphp filephp thatphp willphp addphp includephp_oncephp statementsphp forphp each
-php php php php php php*php pluginphp classphp loadedphp.php Thisphp isphp anphp optphp-inphp featurephp forphp performancephp purposesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$file
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp ifphp filephp isphp notphp writeablephp orphp pathphp doesphp notphp exist
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setIncludeFileCachephp(php$filephp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$filephp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_includeFileCachephp php=php nullphp;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * Set path to class file cache
+     *
+     * Specify a path to a file that will add include_once statements for each
+     * plugin class loaded. This is an opt-in feature for performance purposes.
+     *
+     * @param  string $file
+     * @return void
+     * @throws Zend_Loader_PluginLoader_Exception if file is not writeable or path does not exist
+     */
+    public static function setIncludeFileCache($file)
+    {
+        if (null === $file) {
+            self::$_includeFileCache = null;
+            return;
+        }
 
-php php php php php php php php ifphp php(php!filephp_existsphp(php$filephp)php php&php&php php!filephp_existsphp(dirnamephp(php$filephp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Specifiedphp filephp doesphp notphp existphp andphp/orphp directoryphp doesphp notphp existphp php(php'php php.php php$filephp php.php php'php)php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(filephp_existsphp(php$filephp)php php&php&php php!isphp_writablephp(php$filephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Specifiedphp filephp isphp notphp writeablephp php(php'php php.php php$filephp php.php php'php)php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!filephp_existsphp(php$filephp)php php&php&php filephp_existsphp(dirnamephp(php$filephp)php)php php&php&php php!isphp_writablephp(dirnamephp(php$filephp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Loaderphp_PluginLoaderphp_Exceptionphp(php'Specifiedphp filephp isphp notphp writeablephp php(php'php php.php php$filephp php.php php'php)php'php)php;
-php php php php php php php php php}
+        if (!file_exists($file) && !file_exists(dirname($file))) {
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception('Specified file does not exist and/or directory does not exist (' . $file . ')');
+        }
+        if (file_exists($file) && !is_writable($file)) {
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception('Specified file is not writeable (' . $file . ')');
+        }
+        if (!file_exists($file) && file_exists(dirname($file)) && !is_writable(dirname($file))) {
+            require_once 'Zend/Loader/PluginLoader/Exception.php';
+            throw new Zend_Loader_PluginLoader_Exception('Specified file is not writeable (' . $file . ')');
+        }
 
-php php php php php php php php selfphp:php:php$php_includeFileCachephp php=php php$filephp;
-php php php php php}
+        self::$_includeFileCache = $file;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp classphp filephp cachephp path
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getIncludeFileCachephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_includeFileCachephp;
-php php php php php}
+    /**
+     * Retrieve class file cache path
+     *
+     * @return string|null
+     */
+    public static function getIncludeFileCache()
+    {
+        return self::$_includeFileCache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Appendphp anphp includephp_oncephp statementphp tophp thephp classphp filephp cache
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$incFile
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_appendIncFilephp(php$incFilephp)
-php php php php php{
-php php php php php php php php ifphp php(php!filephp_existsphp(selfphp:php:php$php_includeFileCachephp)php)php php{
-php php php php php php php php php php php php php$filephp php=php php'<php?phpphp'php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$filephp php=php filephp_getphp_contentsphp(selfphp:php:php$php_includeFileCachephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!strstrphp(php$filephp,php php$incFilephp)php)php php{
-php php php php php php php php php php php php php$filephp php.php=php php"php\nincludephp_oncephp php'php$incFilephp'php;php"php;
-php php php php php php php php php php php php filephp_putphp_contentsphp(selfphp:php:php$php_includeFileCachephp,php php$filephp)php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Append an include_once statement to the class file cache
+     *
+     * @param  string $incFile
+     * @return void
+     */
+    protected static function _appendIncFile($incFile)
+    {
+        if (!file_exists(self::$_includeFileCache)) {
+            $file = '<?php';
+        } else {
+            $file = file_get_contents(self::$_includeFileCache);
+        }
+        if (!strstr($file, $incFile)) {
+            $file .= "\ninclude_once '$incFile';";
+            file_put_contents(self::$_includeFileCache, $file);
+        }
+    }
+}

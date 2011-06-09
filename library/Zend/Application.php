@@ -1,413 +1,413 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Application
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Applicationphp.phpphp php2php3php1php6php3php php2php0php1php0php-php1php0php-php1php9php php1php6php:php3php0php:php2php6Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Application
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Application.php 23163 2010-10-19 16:30:26Z matthew $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Application
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Application
-php{
-php php php php php/php*php*
-php php php php php php*php Autoloaderphp tophp use
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Loaderphp_Autoloader
-php php php php php php*php/
-php php php php protectedphp php$php_autoloaderphp;
+/**
+ * @category   Zend
+ * @package    Zend_Application
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Application
+{
+    /**
+     * Autoloader to use
+     *
+     * @var Zend_Loader_Autoloader
+     */
+    protected $_autoloader;
 
-php php php php php/php*php*
-php php php php php php*php Bootstrap
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Applicationphp_Bootstrapphp_BootstrapAbstract
-php php php php php php*php/
-php php php php protectedphp php$php_bootstrapphp;
+    /**
+     * Bootstrap
+     *
+     * @var Zend_Application_Bootstrap_BootstrapAbstract
+     */
+    protected $_bootstrap;
 
-php php php php php/php*php*
-php php php php php php*php Applicationphp environment
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_environmentphp;
+    /**
+     * Application environment
+     *
+     * @var string
+     */
+    protected $_environment;
 
-php php php php php/php*php*
-php php php php php php*php Flattenedphp php(lowercasephp)php optionphp keys
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionKeysphp php=php arrayphp(php)php;
+    /**
+     * Flattened (lowercase) option keys
+     *
+     * @var array
+     */
+    protected $_optionKeys = array();
 
-php php php php php/php*php*
-php php php php php php*php Optionsphp forphp Zendphp_Application
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
+    /**
+     * Options for Zend_Application
+     *
+     * @var array
+     */
+    protected $_options = array();
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Initializephp applicationphp.php Potentiallyphp initializesphp includephp_pathsphp,php PHP
-php php php php php php*php settingsphp,php andphp bootstrapphp classphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php php php php php php php php php php php php php php php$environment
-php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$optionsphp Stringphp pathphp tophp configurationphp filephp,php orphp arrayphp/Zendphp_Configphp ofphp configurationphp options
-php php php php php php*php php@throwsphp Zendphp_Applicationphp_Exceptionphp Whenphp invalidphp optionsphp arephp provided
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$environmentphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_environmentphp php=php php(stringphp)php php$environmentphp;
+    /**
+     * Constructor
+     *
+     * Initialize application. Potentially initializes include_paths, PHP
+     * settings, and bootstrap class.
+     *
+     * @param  string                   $environment
+     * @param  string|array|Zend_Config $options String path to configuration file, or array/Zend_Config of configuration options
+     * @throws Zend_Application_Exception When invalid options are provided
+     * @return void
+     */
+    public function __construct($environment, $options = null)
+    {
+        $this->_environment = (string) $environment;
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/Autoloaderphp.phpphp'php;
-php php php php php php php php php$thisphp-php>php_autoloaderphp php=php Zendphp_Loaderphp_Autoloaderphp:php:getInstancephp(php)php;
+        require_once 'Zend/Loader/Autoloader.php';
+        $this->_autoloader = Zend_Loader_Autoloader::getInstance();
 
-php php php php php php php php ifphp php(nullphp php!php=php=php php$optionsphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>php_loadConfigphp(php$optionsphp)php;
-php php php php php php php php php php php php php}php elseifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Invalidphp optionsphp providedphp;php mustphp bephp locationphp ofphp configphp filephp,php aphp configphp objectphp,php orphp anphp arrayphp'php)php;
-php php php php php php php php php php php php php}
+        if (null !== $options) {
+            if (is_string($options)) {
+                $options = $this->_loadConfig($options);
+            } elseif ($options instanceof Zend_Config) {
+                $options = $options->toArray();
+            } elseif (!is_array($options)) {
+                throw new Zend_Application_Exception('Invalid options provided; must be location of config file, a config object, or an array');
+            }
 
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp currentphp environment
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getEnvironmentphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_environmentphp;
-php php php php php}
+    /**
+     * Retrieve current environment
+     *
+     * @return string
+     */
+    public function getEnvironment()
+    {
+        return $this->_environment;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp autoloaderphp instance
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Loaderphp_Autoloader
-php php php php php php*php/
-php php php php publicphp functionphp getAutoloaderphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_autoloaderphp;
-php php php php php}
+    /**
+     * Retrieve autoloader instance
+     *
+     * @return Zend_Loader_Autoloader
+     */
+    public function getAutoloader()
+    {
+        return $this->_autoloader;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp applicationphp options
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@throwsphp Zendphp_Applicationphp_Exceptionphp Whenphp nophp bootstrapphp pathphp isphp provided
-php php php php php php*php php@throwsphp Zendphp_Applicationphp_Exceptionphp Whenphp invalidphp bootstrapphp informationphp arephp provided
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'configphp'php]php)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp[php'configphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$php_optionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$optionsphp[php'configphp'php]php asphp php$tmpphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$php_optionsphp php=php php$thisphp-php>mergeOptionsphp(php$php_optionsphp,php php$thisphp-php>php_loadConfigphp(php$tmpphp)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>mergeOptionsphp(php$php_optionsphp,php php$optionsphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>mergeOptionsphp(php$thisphp-php>php_loadConfigphp(php$optionsphp[php'configphp'php]php)php,php php$optionsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Set application options
+     *
+     * @param  array $options
+     * @throws Zend_Application_Exception When no bootstrap path is provided
+     * @throws Zend_Application_Exception When invalid bootstrap information are provided
+     * @return Zend_Application
+     */
+    public function setOptions(array $options)
+    {
+        if (!empty($options['config'])) {
+            if (is_array($options['config'])) {
+                $_options = array();
+                foreach ($options['config'] as $tmp) {
+                    $_options = $this->mergeOptions($_options, $this->_loadConfig($tmp));
+                }
+                $options = $this->mergeOptions($_options, $options);
+            } else {
+                $options = $this->mergeOptions($this->_loadConfig($options['config']), $options);
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_optionsphp php=php php$optionsphp;
+        $this->_options = $options;
 
-php php php php php php php php php$optionsphp php=php arrayphp_changephp_keyphp_casephp(php$optionsphp,php CASEphp_LOWERphp)php;
+        $options = array_change_key_case($options, CASE_LOWER);
 
-php php php php php php php php php$thisphp-php>php_optionKeysphp php=php arrayphp_keysphp(php$optionsphp)php;
+        $this->_optionKeys = array_keys($options);
 
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'phpsettingsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setPhpSettingsphp(php$optionsphp[php'phpsettingsphp'php]php)php;
-php php php php php php php php php}
+        if (!empty($options['phpsettings'])) {
+            $this->setPhpSettings($options['phpsettings']);
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'includepathsphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setIncludePathsphp(php$optionsphp[php'includepathsphp'php]php)php;
-php php php php php php php php php}
+        if (!empty($options['includepaths'])) {
+            $this->setIncludePaths($options['includepaths']);
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'autoloadernamespacesphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setAutoloaderNamespacesphp(php$optionsphp[php'autoloadernamespacesphp'php]php)php;
-php php php php php php php php php}
+        if (!empty($options['autoloadernamespaces'])) {
+            $this->setAutoloaderNamespaces($options['autoloadernamespaces']);
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'autoloaderzfpathphp'php]php)php)php php{
-php php php php php php php php php php php php php$autoloaderphp php=php php$thisphp-php>getAutoloaderphp(php)php;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$autoloaderphp,php php'setZfPathphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$zfPathphp php php php php=php php$optionsphp[php'autoloaderzfpathphp'php]php;
-php php php php php php php php php php php php php php php php php$zfVersionphp php=php php!emptyphp(php$optionsphp[php'autoloaderzfversionphp'php]php)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php?php php$optionsphp[php'autoloaderzfversionphp'php]
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php:php php'latestphp'php;
-php php php php php php php php php php php php php php php php php$autoloaderphp-php>setZfPathphp(php$zfPathphp,php php$zfVersionphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (!empty($options['autoloaderzfpath'])) {
+            $autoloader = $this->getAutoloader();
+            if (method_exists($autoloader, 'setZfPath')) {
+                $zfPath    = $options['autoloaderzfpath'];
+                $zfVersion = !empty($options['autoloaderzfversion'])
+                           ? $options['autoloaderzfversion']
+                           : 'latest';
+                $autoloader->setZfPath($zfPath, $zfVersion);
+            }
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$optionsphp[php'bootstrapphp'php]php)php)php php{
-php php php php php php php php php php php php php$bootstrapphp php=php php$optionsphp[php'bootstrapphp'php]php;
+        if (!empty($options['bootstrap'])) {
+            $bootstrap = $options['bootstrap'];
 
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$bootstrapphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setBootstrapphp(php$bootstrapphp)php;
-php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$bootstrapphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(emptyphp(php$bootstrapphp[php'pathphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Nophp bootstrapphp pathphp providedphp'php)php;
-php php php php php php php php php php php php php php php php php}
+            if (is_string($bootstrap)) {
+                $this->setBootstrap($bootstrap);
+            } elseif (is_array($bootstrap)) {
+                if (empty($bootstrap['path'])) {
+                    throw new Zend_Application_Exception('No bootstrap path provided');
+                }
 
-php php php php php php php php php php php php php php php php php$pathphp php php=php php$bootstrapphp[php'pathphp'php]php;
-php php php php php php php php php php php php php php php php php$classphp php=php nullphp;
+                $path  = $bootstrap['path'];
+                $class = null;
 
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$bootstrapphp[php'classphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$classphp php=php php$bootstrapphp[php'classphp'php]php;
-php php php php php php php php php php php php php php php php php}
+                if (!empty($bootstrap['class'])) {
+                    $class = $bootstrap['class'];
+                }
 
-php php php php php php php php php php php php php php php php php$thisphp-php>setBootstrapphp(php$pathphp,php php$classphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Invalidphp bootstrapphp informationphp providedphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                $this->setBootstrap($path, $class);
+            } else {
+                throw new Zend_Application_Exception('Invalid bootstrap information provided');
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp applicationphp optionsphp php(forphp cachingphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getOptionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_optionsphp;
-php php php php php}
+    /**
+     * Retrieve application options (for caching)
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->_options;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp anphp optionphp presentphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasOptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php returnphp inphp_arrayphp(strtolowerphp(php$keyphp)php,php php$thisphp-php>php_optionKeysphp)php;
-php php php php php}
+    /**
+     * Is an option present?
+     *
+     * @param  string $key
+     * @return bool
+     */
+    public function hasOption($key)
+    {
+        return in_array(strtolower($key), $this->_optionKeys);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp option
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getOptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasOptionphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$thisphp-php>getOptionsphp(php)php;
-php php php php php php php php php php php php php$optionsphp php=php arrayphp_changephp_keyphp_casephp(php$optionsphp,php CASEphp_LOWERphp)php;
-php php php php php php php php php php php php returnphp php$optionsphp[strtolowerphp(php$keyphp)php]php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Retrieve a single option
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function getOption($key)
+    {
+        if ($this->hasOption($key)) {
+            $options = $this->getOptions();
+            $options = array_change_key_case($options, CASE_LOWER);
+            return $options[strtolower($key)];
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mergephp optionsphp recursively
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$arrayphp1
-php php php php php php*php php@paramphp php mixedphp php$arrayphp2
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp mergeOptionsphp(arrayphp php$arrayphp1php,php php$arrayphp2php php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$arrayphp2php)php)php php{
-php php php php php php php php php php php php foreachphp php(php$arrayphp2php asphp php$keyphp php=php>php php$valphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$arrayphp2php[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$arrayphp1php[php$keyphp]php php=php php(arrayphp_keyphp_existsphp(php$keyphp,php php$arrayphp1php)php php&php&php isphp_arrayphp(php$arrayphp1php[php$keyphp]php)php)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php?php php$thisphp-php>mergeOptionsphp(php$arrayphp1php[php$keyphp]php,php php$arrayphp2php[php$keyphp]php)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php:php php$arrayphp2php[php$keyphp]php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$arrayphp1php[php$keyphp]php php=php php$valphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$arrayphp1php;
-php php php php php}
+    /**
+     * Merge options recursively
+     *
+     * @param  array $array1
+     * @param  mixed $array2
+     * @return array
+     */
+    public function mergeOptions(array $array1, $array2 = null)
+    {
+        if (is_array($array2)) {
+            foreach ($array2 as $key => $val) {
+                if (is_array($array2[$key])) {
+                    $array1[$key] = (array_key_exists($key, $array1) && is_array($array1[$key]))
+                                  ? $this->mergeOptions($array1[$key], $array2[$key])
+                                  : $array2[$key];
+                } else {
+                    $array1[$key] = $val;
+                }
+            }
+        }
+        return $array1;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp PHPphp configurationphp settings
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$settings
-php php php php php php*php php@paramphp php stringphp php$prefixphp Keyphp prefixphp tophp prependphp tophp arrayphp valuesphp php(usedphp tophp mapphp php.php separatedphp INIphp valuesphp)
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp setPhpSettingsphp(arrayphp php$settingsphp,php php$prefixphp php=php php'php'php)
-php php php php php{
-php php php php php php php php foreachphp php(php$settingsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$keyphp php=php emptyphp(php$prefixphp)php php?php php$keyphp php:php php$prefixphp php.php php$keyphp;
-php php php php php php php php php php php php ifphp php(isphp_scalarphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php iniphp_setphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setPhpSettingsphp(php$valuephp,php php$keyphp php.php php'php.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Set PHP configuration settings
+     *
+     * @param  array $settings
+     * @param  string $prefix Key prefix to prepend to array values (used to map . separated INI values)
+     * @return Zend_Application
+     */
+    public function setPhpSettings(array $settings, $prefix = '')
+    {
+        foreach ($settings as $key => $value) {
+            $key = empty($prefix) ? $key : $prefix . $key;
+            if (is_scalar($value)) {
+                ini_set($key, $value);
+            } elseif (is_array($value)) {
+                $this->setPhpSettings($value, $key . '.');
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp includephp path
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$paths
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp setIncludePathsphp(arrayphp php$pathsphp)
-php php php php php{
-php php php php php php php php php$pathphp php=php implodephp(PATHphp_SEPARATORphp,php php$pathsphp)php;
-php php php php php php php php setphp_includephp_pathphp(php$pathphp php.php PATHphp_SEPARATORphp php.php getphp_includephp_pathphp(php)php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set include path
+     *
+     * @param  array $paths
+     * @return Zend_Application
+     */
+    public function setIncludePaths(array $paths)
+    {
+        $path = implode(PATH_SEPARATOR, $paths);
+        set_include_path($path . PATH_SEPARATOR . get_include_path());
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp autoloaderphp namespaces
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$namespaces
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp setAutoloaderNamespacesphp(arrayphp php$namespacesphp)
-php php php php php{
-php php php php php php php php php$autoloaderphp php=php php$thisphp-php>getAutoloaderphp(php)php;
+    /**
+     * Set autoloader namespaces
+     *
+     * @param  array $namespaces
+     * @return Zend_Application
+     */
+    public function setAutoloaderNamespaces(array $namespaces)
+    {
+        $autoloader = $this->getAutoloader();
 
-php php php php php php php php foreachphp php(php$namespacesphp asphp php$namespacephp)php php{
-php php php php php php php php php php php php php$autoloaderphp-php>registerNamespacephp(php$namespacephp)php;
-php php php php php php php php php}
+        foreach ($namespaces as $namespace) {
+            $autoloader->registerNamespace($namespace);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp bootstrapphp pathphp/class
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$class
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp setBootstrapphp(php$pathphp,php php$classphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php setOptionsphp(php)php canphp potentiallyphp sendphp aphp nullphp valuephp;php specifyphp default
-php php php php php php php php php/php/php here
-php php php php php php php php ifphp php(nullphp php=php=php=php php$classphp)php php{
-php php php php php php php php php php php php php$classphp php=php php'Bootstrapphp'php;
-php php php php php php php php php}
+    /**
+     * Set bootstrap path/class
+     *
+     * @param  string $path
+     * @param  string $class
+     * @return Zend_Application
+     */
+    public function setBootstrap($path, $class = null)
+    {
+        // setOptions() can potentially send a null value; specify default
+        // here
+        if (null === $class) {
+            $class = 'Bootstrap';
+        }
 
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp,php falsephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php$pathphp;
-php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$classphp,php falsephp)php)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Bootstrapphp classphp notphp foundphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_bootstrapphp php=php newphp php$classphp(php$thisphp)php;
+        if (!class_exists($class, false)) {
+            require_once $path;
+            if (!class_exists($class, false)) {
+                throw new Zend_Application_Exception('Bootstrap class not found');
+            }
+        }
+        $this->_bootstrap = new $class($this);
 
-php php php php php php php php ifphp php(php!php$thisphp-php>php_bootstrapphp instanceofphp Zendphp_Applicationphp_Bootstrapphp_Bootstrapperphp)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Bootstrapphp classphp doesphp notphp implementphp Zendphp_Applicationphp_Bootstrapphp_Bootstrapperphp'php)php;
-php php php php php php php php php}
+        if (!$this->_bootstrap instanceof Zend_Application_Bootstrap_Bootstrapper) {
+            throw new Zend_Application_Exception('Bootstrap class does not implement Zend_Application_Bootstrap_Bootstrapper');
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp bootstrapphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Applicationphp_Bootstrapphp_BootstrapAbstract
-php php php php php php*php/
-php php php php publicphp functionphp getBootstrapphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_bootstrapphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_bootstrapphp php=php newphp Zendphp_Applicationphp_Bootstrapphp_Bootstrapphp(php$thisphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_bootstrapphp;
-php php php php php}
+    /**
+     * Get bootstrap object
+     *
+     * @return Zend_Application_Bootstrap_BootstrapAbstract
+     */
+    public function getBootstrap()
+    {
+        if (null === $this->_bootstrap) {
+            $this->_bootstrap = new Zend_Application_Bootstrap_Bootstrap($this);
+        }
+        return $this->_bootstrap;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Bootstrapphp application
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|stringphp|arrayphp php$resource
-php php php php php php*php php@returnphp Zendphp_Application
-php php php php php php*php/
-php php php php publicphp functionphp bootstrapphp(php$resourcephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getBootstrapphp(php)php-php>bootstrapphp(php$resourcephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Bootstrap application
+     *
+     * @param  null|string|array $resource
+     * @return Zend_Application
+     */
+    public function bootstrap($resource = null)
+    {
+        $this->getBootstrap()->bootstrap($resource);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Runphp thephp application
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp runphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>getBootstrapphp(php)php-php>runphp(php)php;
-php php php php php}
+    /**
+     * Run the application
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->getBootstrap()->run();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp configurationphp filephp ofphp options
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$file
-php php php php php php*php php@throwsphp Zendphp_Applicationphp_Exceptionphp Whenphp invalidphp configurationphp filephp isphp provided
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadConfigphp(php$filephp)
-php php php php php{
-php php php php php php php php php$environmentphp php=php php$thisphp-php>getEnvironmentphp(php)php;
-php php php php php php php php php$suffixphp php php php php php php=php strtolowerphp(pathinfophp(php$filephp,php PATHINFOphp_EXTENSIONphp)php)php;
+    /**
+     * Load configuration file of options
+     *
+     * @param  string $file
+     * @throws Zend_Application_Exception When invalid configuration file is provided
+     * @return array
+     */
+    protected function _loadConfig($file)
+    {
+        $environment = $this->getEnvironment();
+        $suffix      = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
-php php php php php php php php switchphp php(php$suffixphp)php php{
-php php php php php php php php php php php php casephp php'iniphp'php:
-php php php php php php php php php php php php php php php php php$configphp php=php newphp Zendphp_Configphp_Iniphp(php$filephp,php php$environmentphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+        switch ($suffix) {
+            case 'ini':
+                $config = new Zend_Config_Ini($file, $environment);
+                break;
 
-php php php php php php php php php php php php casephp php'xmlphp'php:
-php php php php php php php php php php php php php php php php php$configphp php=php newphp Zendphp_Configphp_Xmlphp(php$filephp,php php$environmentphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'xml':
+                $config = new Zend_Config_Xml($file, $environment);
+                break;
 
-php php php php php php php php php php php php casephp php'jsonphp'php:
-php php php php php php php php php php php php php php php php php$configphp php=php newphp Zendphp_Configphp_Jsonphp(php$filephp,php php$environmentphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'json':
+                $config = new Zend_Config_Json($file, $environment);
+                break;
 
-php php php php php php php php php php php php casephp php'yamlphp'php:
-php php php php php php php php php php php php php php php php php$configphp php=php newphp Zendphp_Configphp_Yamlphp(php$filephp,php php$environmentphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'yaml':
+                $config = new Zend_Config_Yaml($file, $environment);
+                break;
 
-php php php php php php php php php php php php casephp php'phpphp'php:
-php php php php php php php php php php php php casephp php'incphp'php:
-php php php php php php php php php php php php php php php php php$configphp php=php includephp php$filephp;
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$configphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Invalidphp configurationphp filephp providedphp;php PHPphp filephp doesphp notphp returnphp arrayphp valuephp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php returnphp php$configphp;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'php':
+            case 'inc':
+                $config = include $file;
+                if (!is_array($config)) {
+                    throw new Zend_Application_Exception('Invalid configuration file provided; PHP file does not return array value');
+                }
+                return $config;
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Applicationphp_Exceptionphp(php'Invalidphp configurationphp filephp providedphp;php unknownphp configphp typephp'php)php;
-php php php php php php php php php}
+            default:
+                throw new Zend_Application_Exception('Invalid configuration file provided; unknown config type');
+        }
 
-php php php php php php php php returnphp php$configphp-php>toArrayphp(php)php;
-php php php php php}
-php}
+        return $config->toArray();
+    }
+}

@@ -1,551 +1,551 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Similarityphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Similarity.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarity
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp Similarityphp implementationphp usedphp byphp defaultphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarity
-php php php php php php*php/
-php php php php privatephp staticphp php$php_defaultImplphp;
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Search_Lucene_Search_Similarity
+{
+    /**
+     * The Similarity implementation used by default.
+     *
+     * @var Zend_Search_Lucene_Search_Similarity
+     */
+    private static $_defaultImpl;
 
-php php php php php/php*php*
-php php php php php php*php Cachephp ofphp decodedphp bytesphp.
-php php php php php php*php Arrayphp ofphp floats
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp staticphp php$php_normTablephp php=php arrayphp(php php0php php php php=php>php php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php php php php=php>php php5php.php8php2php0php7php6php6Ephp-php1php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php php php php=php>php php6php.php9php8php4php9php1php9php3Ephp-php1php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php php php php=php>php php8php.php1php4php9php0php7php2php5Ephp-php1php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php php php php=php>php php9php.php3php1php3php2php2php6Ephp-php1php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php php php php=php>php php1php.php1php6php4php1php5php3php2Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php php php php=php>php php1php.php3php9php6php9php8php3php9Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php php php php=php>php php1php.php6php2php9php8php1php4php5Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php php php php=php>php php1php.php8php6php2php6php4php5php1Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php php php php=php>php php2php.php3php2php8php3php0php6php4Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php php php=php>php php2php.php7php9php3php9php6php7php7Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php php php=php>php php3php.php2php5php9php6php2php9Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php php php=php>php php3php.php7php2php5php2php9php0php3Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php php php=php>php php4php.php6php5php6php6php1php3Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php php php=php>php php5php.php5php8php7php9php3php5php4Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php php php=php>php php6php.php5php1php9php2php5php8Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php php php=php>php php7php.php4php5php0php5php8php0php6Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php php php=php>php php9php.php3php1php3php2php2php6Ephp-php9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php php php=php>php php1php.php1php1php7php5php8php7php1Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php php php=php>php php1php.php3php0php3php8php5php1php6Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php php php=php>php php1php.php4php9php0php1php1php6php1Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php php php=php>php php1php.php8php6php2php6php4php5php1Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php php php=php>php php2php.php2php3php5php1php7php4php2Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php php php=php>php php2php.php6php0php7php7php0php3php2Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php php php=php>php php2php.php9php8php0php2php3php2php2Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php php php=php>php php3php.php7php2php5php2php9php0php3Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php6php php php=php>php php4php.php4php7php0php3php4php8php4Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php7php php php=php>php php5php.php2php1php5php4php0php6php4Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php8php php php=php>php php5php.php9php6php0php4php6php4php5Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php9php php php=php>php php7php.php4php5php0php5php8php0php6Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php0php php php=php>php php8php.php9php4php0php6php9php7Ephp-php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php1php php php=php>php php1php.php0php4php3php0php8php1php3Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php2php php php=php>php php1php.php1php9php2php0php9php2php9Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php3php php php=php>php php1php.php4php9php0php1php1php6php1Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php4php php php=php>php php1php.php7php8php8php1php3php9php3Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php5php php php=php>php php2php.php0php8php6php1php6php2php6Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php6php php php=php>php php2php.php3php8php4php1php8php5php8Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php7php php php=php>php php2php.php9php8php0php2php3php2php2Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php8php php php=php>php php3php.php5php7php6php2php7php8php7Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php3php9php php php=php>php php4php.php1php7php2php3php2php5Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php0php php php=php>php php4php.php7php6php8php3php7php1php6Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php1php php php=php>php php5php.php9php6php0php4php6php4php5Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php2php php php=php>php php7php.php1php5php2php5php5php7php4Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php3php php php=php>php php8php.php3php4php4php6php5Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php4php php php=php>php php9php.php5php3php6php7php4php3Ephp-php7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php5php php php=php>php php1php.php1php9php2php0php9php2php9Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php6php php php=php>php php1php.php4php3php0php5php1php1php5Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php7php php php=php>php php1php.php6php6php8php9php3Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php8php php php=php>php php1php.php9php0php7php3php4php8php6Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php4php9php php php=php>php php2php.php3php8php4php1php8php5php8Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php0php php php=php>php php2php.php8php6php1php0php2php3Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php1php php php=php>php php3php.php3php3php7php8php6Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php2php php php=php>php php3php.php8php1php4php6php9php7php3Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php3php php php=php>php php4php.php7php6php8php3php7php1php6Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php4php php php=php>php php5php.php7php2php2php0php4php6Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php5php php php=php>php php6php.php6php7php5php7php2Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php6php php php=php>php php7php.php6php2php9php3php9php4php5Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php7php php php=php>php php9php.php5php3php6php7php4php3Ephp-php6php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php8php php php=php>php php1php.php1php4php4php4php0php9php2Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php5php9php php php=php>php php1php.php3php3php5php1php4php4Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php0php php php=php>php php1php.php5php2php5php8php7php8php9Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php1php php php=php>php php1php.php9php0php7php3php4php8php6Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php2php php php=php>php php2php.php2php8php8php8php1php8php4Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php3php php php=php>php php2php.php6php7php0php2php8php8Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php4php php php=php>php php3php.php0php5php1php7php5php7php8Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php5php php php=php>php php3php.php8php1php4php6php9php7php3Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php6php php php=php>php php4php.php5php7php7php6php3php6php7Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php7php php php=php>php php5php.php3php4php0php5php7php6Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php8php php php=php>php php6php.php1php0php3php5php1php5php6Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php6php9php php php=php>php php7php.php6php2php9php3php9php4php5Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php0php php php=php>php php9php.php1php5php5php2php7php3php4Ephp-php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php1php php php=php>php php1php.php0php6php8php1php1php5php2Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php2php php php=php>php php1php.php2php2php0php7php0php3php1Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php3php php php=php>php php1php.php5php2php5php8php7php8php9Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php4php php php=php>php php1php.php8php3php1php0php5php4php7Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php5php php php=php>php php2php.php1php3php6php2php3php0php5Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php6php php php=php>php php2php.php4php4php1php4php0php6php2Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php7php php php=php>php php3php.php0php5php1php7php5php7php8Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php8php php php=php>php php3php.php6php6php2php1php0php9php4Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php7php9php php php=php>php php4php.php2php7php2php4php6php1Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php0php php php=php>php php4php.php8php8php2php8php1php2php5Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php1php php php=php>php php6php.php1php0php3php5php1php5php6Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php2php php php=php>php php7php.php3php2php4php2php1php9Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php3php php php=php>php php8php.php5php4php4php9php2php2Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php4php php php=php>php php9php.php7php6php5php6php2php5Ephp-php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php5php php php=php>php php0php.php0php0php1php2php2php0php7php0php3php1php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php6php php php=php>php php0php.php0php0php1php4php6php4php8php4php3php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php7php php php=php>php php0php.php0php0php1php7php0php8php9php8php4php4php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php8php php php=php>php php0php.php0php0php1php9php5php3php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php8php9php php php=php>php php0php.php0php0php2php4php4php1php4php0php6php2php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php0php php php=php>php php0php.php0php0php2php9php2php9php6php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php1php php php=php>php php0php.php0php0php3php4php1php7php9php6php8php8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php2php php php=php>php php0php.php0php0php3php9php0php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php3php php php=php>php php0php.php0php0php4php8php8php2php8php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php4php php php=php>php php0php.php0php0php5php8php5php9php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php5php php php=php>php php0php.php0php0php6php8php3php5php9php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php6php php php=php>php php0php.php0php0php7php8php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php7php php php=php>php php0php.php0php0php9php7php6php5php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php8php php php=php>php php0php.php0php1php1php7php1php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php9php9php php php=php>php php0php.php0php1php3php6php7php1php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php0php php=php>php php0php.php0php1php5php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php1php php=php>php php0php.php0php1php9php5php3php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php2php php=php>php php0php.php0php2php3php4php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php3php php=php>php php0php.php0php2php7php3php4php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php4php php=php>php php0php.php0php3php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php5php php=php>php php0php.php0php3php9php0php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php6php php=php>php php0php.php0php4php6php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php7php php=php>php php0php.php0php5php4php6php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php8php php=php>php php0php.php0php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php0php9php php=php>php php0php.php0php7php8php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php0php php=php>php php0php.php0php9php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php1php php=php>php php0php.php1php0php9php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php2php php=php>php php0php.php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php3php php=php>php php0php.php1php5php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php4php php=php>php php0php.php1php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php5php php=php>php php0php.php2php1php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php6php php=php>php php0php.php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php7php php=php>php php0php.php3php1php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php8php php=php>php php0php.php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php1php9php php=php>php php0php.php4php3php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php0php php=php>php php0php.php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php1php php=php>php php0php.php6php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php2php php=php>php php0php.php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php3php php=php>php php0php.php8php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php4php php=php>php php1php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php5php php=php>php php1php.php2php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php6php php=php>php php1php.php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php7php php=php>php php1php.php7php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php8php php=php>php php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php2php9php php=php>php php2php.php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php0php php=php>php php3php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php1php php=php>php php3php.php5php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php2php php=php>php php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php3php php=php>php php5php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php4php php=php>php php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php5php php=php>php php7php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php6php php=php>php php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php7php php=php>php php1php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php8php php=php>php php1php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php3php9php php=php>php php1php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php0php php=php>php php1php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php1php php=php>php php2php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php2php php=php>php php2php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php3php php=php>php php2php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php4php php=php>php php3php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php5php php=php>php php4php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php6php php=php>php php4php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php7php php=php>php php5php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php8php php=php>php php6php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php4php9php php=php>php php8php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php0php php=php>php php9php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php1php php=php>php php1php1php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php2php php=php>php php1php2php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php3php php=php>php php1php6php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php4php php=php>php php1php9php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php5php php=php>php php2php2php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php6php php=php>php php2php5php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php7php php=php>php php3php2php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php8php php=php>php php3php8php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php5php9php php=php>php php4php4php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php0php php=php>php php5php1php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php1php php=php>php php6php4php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php2php php=php>php php7php6php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php3php php=php>php php8php9php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php4php php=php>php php1php0php2php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php5php php=php>php php1php2php8php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php6php php=php>php php1php5php3php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php7php php=php>php php1php7php9php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php8php php=php>php php2php0php4php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php6php9php php=php>php php2php5php6php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php0php php=php>php php3php0php7php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php1php php=php>php php3php5php8php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php2php php=php>php php4php0php9php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php3php php=php>php php5php1php2php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php4php php=php>php php6php1php4php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php5php php=php>php php7php1php6php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php6php php=php>php php8php1php9php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php7php php=php>php php1php0php2php4php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php8php php=php>php php1php2php2php8php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php7php9php php=php>php php1php4php3php3php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php0php php=php>php php1php6php3php8php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php1php php=php>php php2php0php4php8php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php2php php=php>php php2php4php5php7php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php3php php=php>php php2php8php6php7php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php4php php=php>php php3php2php7php6php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php5php php=php>php php4php0php9php6php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php6php php=php>php php4php9php1php5php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php7php php=php>php php5php7php3php4php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php8php php=php>php php6php5php5php3php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php8php9php php=php>php php8php1php9php2php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php0php php=php>php php9php8php3php0php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php1php php=php>php php1php1php4php6php8php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php2php php=php>php php1php3php1php0php7php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php3php php=php>php php1php6php3php8php4php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php4php php=php>php php1php9php6php6php0php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php5php php=php>php php2php2php9php3php7php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php6php php=php>php php2php6php2php1php4php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php7php php=php>php php3php2php7php6php8php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php8php php=php>php php3php9php3php2php1php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php1php9php9php php=php>php php4php5php8php7php5php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php0php php=php>php php5php2php4php2php8php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php1php php=php>php php6php5php5php3php6php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php2php php=php>php php7php8php6php4php3php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php3php php=php>php php9php1php7php5php0php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php4php php=php>php php1php0php4php8php5php7php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php5php php=php>php php1php3php1php0php7php2php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php6php php=php>php php1php5php7php2php8php6php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php7php php=php>php php1php8php3php5php0php0php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php8php php=php>php php2php0php9php7php1php5php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php0php9php php=php>php php2php6php2php1php4php4php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php0php php=php>php php3php1php4php5php7php2php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php1php php=php>php php3php6php7php0php0php1php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php2php php=php>php php4php1php9php4php3php0php4php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php3php php=php>php php5php2php4php2php8php8php0php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php4php php=php>php php6php2php9php1php4php5php6php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php5php php=php>php php7php3php4php0php0php3php2php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php6php php=php>php php8php3php8php8php6php0php8php.php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php7php php=php>php php1php.php0php4php8php5php7php6Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php8php php=php>php php1php.php2php5php8php2php9php1php2Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php1php9php php=php>php php1php.php4php6php8php0php0php6php4Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php0php php=php>php php1php.php6php7php7php7php2php1php6Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php1php php=php>php php2php.php0php9php7php1php5php2Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php2php php=php>php php2php.php5php1php6php5php8php2php4Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php3php php=php>php php2php.php9php3php6php0php1php2php8Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php4php php=php>php php3php.php3php5php5php4php4php3php2Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php5php php=php>php php4php.php1php9php4php3php0php4Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php6php php=php>php php5php.php0php3php3php1php6php4php8Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php7php php=php>php php5php.php8php7php2php0php2php5php6Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php8php php=php>php php6php.php7php1php0php8php8php6php4Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php2php9php php=php>php php8php.php3php8php8php6php0php8Ephp7php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php0php php=php>php php1php.php0php0php6php6php3php2php9php6Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php1php php=php>php php1php.php1php7php4php4php0php5php1php2Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php2php php=php>php php1php.php3php4php2php1php7php7php2php8Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php3php php=php>php php1php.php6php7php7php7php2php1php6Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php4php php=php>php php2php.php0php1php3php2php6php5php9php2Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php5php php=php>php php2php.php3php4php8php8php1php0php2php4Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php6php php=php>php php2php.php6php8php4php3php5php4php5php6Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php7php php=php>php php3php.php3php5php5php4php4php3php2Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php8php php=php>php php4php.php0php2php6php5php3php1php8php4Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php3php9php php=php>php php4php.php6php9php7php6php2php0php4php8Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php0php php=php>php php5php.php3php6php8php7php0php9php1Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php1php php=php>php php6php.php7php1php0php8php8php6php4Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php2php php=php>php php8php.php0php5php3php0php6php3php7Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php3php php=php>php php9php.php3php9php5php2php4php1Ephp8php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php4php php=php>php php1php.php0php7php3php7php4php1php8php2Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php5php php=php>php php1php.php3php4php2php1php7php7php2php8Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php6php php=php>php php1php.php6php1php0php6php1php2php7php4Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php7php php=php>php php1php.php8php7php9php0php4php8php1php9Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php8php php=php>php php2php.php1php4php7php4php8php3php6php5Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php4php9php php=php>php php2php.php6php8php4php3php5php4php5php6Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php0php php=php>php php3php.php2php2php1php2php2php5php4php7Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php1php php=php>php php3php.php7php5php8php0php9php6php3php8Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php2php php=php>php php4php.php2php9php4php9php6php7php3Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php3php php=php>php php5php.php3php6php8php7php0php9php1Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php4php php=php>php php6php.php4php4php2php4php5php0php9Ephp9php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php2php5php5php php=php>php php7php.php5php1php6php1php9php2php8Ephp9php php)php;
-
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp Similarityphp implementationphp usedphp byphp indexingphp andphp search
-php php php php php php*php codephp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp php$similarity
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setDefaultphp(Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp php$similarityphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_defaultImplphp php=php php$similarityphp;
-php php php php php}
+    /**
+     * Cache of decoded bytes.
+     * Array of floats
+     *
+     * @var array
+     */
+    private static $_normTable = array( 0   => 0.0,
+                                        1   => 5.820766E-10,
+                                        2   => 6.9849193E-10,
+                                        3   => 8.1490725E-10,
+                                        4   => 9.313226E-10,
+                                        5   => 1.1641532E-9,
+                                        6   => 1.3969839E-9,
+                                        7   => 1.6298145E-9,
+                                        8   => 1.8626451E-9,
+                                        9   => 2.3283064E-9,
+                                        10  => 2.7939677E-9,
+                                        11  => 3.259629E-9,
+                                        12  => 3.7252903E-9,
+                                        13  => 4.656613E-9,
+                                        14  => 5.5879354E-9,
+                                        15  => 6.519258E-9,
+                                        16  => 7.4505806E-9,
+                                        17  => 9.313226E-9,
+                                        18  => 1.1175871E-8,
+                                        19  => 1.3038516E-8,
+                                        20  => 1.4901161E-8,
+                                        21  => 1.8626451E-8,
+                                        22  => 2.2351742E-8,
+                                        23  => 2.6077032E-8,
+                                        24  => 2.9802322E-8,
+                                        25  => 3.7252903E-8,
+                                        26  => 4.4703484E-8,
+                                        27  => 5.2154064E-8,
+                                        28  => 5.9604645E-8,
+                                        29  => 7.4505806E-8,
+                                        30  => 8.940697E-8,
+                                        31  => 1.0430813E-7,
+                                        32  => 1.1920929E-7,
+                                        33  => 1.4901161E-7,
+                                        34  => 1.7881393E-7,
+                                        35  => 2.0861626E-7,
+                                        36  => 2.3841858E-7,
+                                        37  => 2.9802322E-7,
+                                        38  => 3.5762787E-7,
+                                        39  => 4.172325E-7,
+                                        40  => 4.7683716E-7,
+                                        41  => 5.9604645E-7,
+                                        42  => 7.1525574E-7,
+                                        43  => 8.34465E-7,
+                                        44  => 9.536743E-7,
+                                        45  => 1.1920929E-6,
+                                        46  => 1.4305115E-6,
+                                        47  => 1.66893E-6,
+                                        48  => 1.9073486E-6,
+                                        49  => 2.3841858E-6,
+                                        50  => 2.861023E-6,
+                                        51  => 3.33786E-6,
+                                        52  => 3.8146973E-6,
+                                        53  => 4.7683716E-6,
+                                        54  => 5.722046E-6,
+                                        55  => 6.67572E-6,
+                                        56  => 7.6293945E-6,
+                                        57  => 9.536743E-6,
+                                        58  => 1.1444092E-5,
+                                        59  => 1.335144E-5,
+                                        60  => 1.5258789E-5,
+                                        61  => 1.9073486E-5,
+                                        62  => 2.2888184E-5,
+                                        63  => 2.670288E-5,
+                                        64  => 3.0517578E-5,
+                                        65  => 3.8146973E-5,
+                                        66  => 4.5776367E-5,
+                                        67  => 5.340576E-5,
+                                        68  => 6.1035156E-5,
+                                        69  => 7.6293945E-5,
+                                        70  => 9.1552734E-5,
+                                        71  => 1.0681152E-4,
+                                        72  => 1.2207031E-4,
+                                        73  => 1.5258789E-4,
+                                        74  => 1.8310547E-4,
+                                        75  => 2.1362305E-4,
+                                        76  => 2.4414062E-4,
+                                        77  => 3.0517578E-4,
+                                        78  => 3.6621094E-4,
+                                        79  => 4.272461E-4,
+                                        80  => 4.8828125E-4,
+                                        81  => 6.1035156E-4,
+                                        82  => 7.324219E-4,
+                                        83  => 8.544922E-4,
+                                        84  => 9.765625E-4,
+                                        85  => 0.0012207031,
+                                        86  => 0.0014648438,
+                                        87  => 0.0017089844,
+                                        88  => 0.001953125,
+                                        89  => 0.0024414062,
+                                        90  => 0.0029296875,
+                                        91  => 0.0034179688,
+                                        92  => 0.00390625,
+                                        93  => 0.0048828125,
+                                        94  => 0.005859375,
+                                        95  => 0.0068359375,
+                                        96  => 0.0078125,
+                                        97  => 0.009765625,
+                                        98  => 0.01171875,
+                                        99  => 0.013671875,
+                                        100 => 0.015625,
+                                        101 => 0.01953125,
+                                        102 => 0.0234375,
+                                        103 => 0.02734375,
+                                        104 => 0.03125,
+                                        105 => 0.0390625,
+                                        106 => 0.046875,
+                                        107 => 0.0546875,
+                                        108 => 0.0625,
+                                        109 => 0.078125,
+                                        110 => 0.09375,
+                                        111 => 0.109375,
+                                        112 => 0.125,
+                                        113 => 0.15625,
+                                        114 => 0.1875,
+                                        115 => 0.21875,
+                                        116 => 0.25,
+                                        117 => 0.3125,
+                                        118 => 0.375,
+                                        119 => 0.4375,
+                                        120 => 0.5,
+                                        121 => 0.625,
+                                        122 => 0.75,
+                                        123 => 0.875,
+                                        124 => 1.0,
+                                        125 => 1.25,
+                                        126 => 1.5,
+                                        127 => 1.75,
+                                        128 => 2.0,
+                                        129 => 2.5,
+                                        130 => 3.0,
+                                        131 => 3.5,
+                                        132 => 4.0,
+                                        133 => 5.0,
+                                        134 => 6.0,
+                                        135 => 7.0,
+                                        136 => 8.0,
+                                        137 => 10.0,
+                                        138 => 12.0,
+                                        139 => 14.0,
+                                        140 => 16.0,
+                                        141 => 20.0,
+                                        142 => 24.0,
+                                        143 => 28.0,
+                                        144 => 32.0,
+                                        145 => 40.0,
+                                        146 => 48.0,
+                                        147 => 56.0,
+                                        148 => 64.0,
+                                        149 => 80.0,
+                                        150 => 96.0,
+                                        151 => 112.0,
+                                        152 => 128.0,
+                                        153 => 160.0,
+                                        154 => 192.0,
+                                        155 => 224.0,
+                                        156 => 256.0,
+                                        157 => 320.0,
+                                        158 => 384.0,
+                                        159 => 448.0,
+                                        160 => 512.0,
+                                        161 => 640.0,
+                                        162 => 768.0,
+                                        163 => 896.0,
+                                        164 => 1024.0,
+                                        165 => 1280.0,
+                                        166 => 1536.0,
+                                        167 => 1792.0,
+                                        168 => 2048.0,
+                                        169 => 2560.0,
+                                        170 => 3072.0,
+                                        171 => 3584.0,
+                                        172 => 4096.0,
+                                        173 => 5120.0,
+                                        174 => 6144.0,
+                                        175 => 7168.0,
+                                        176 => 8192.0,
+                                        177 => 10240.0,
+                                        178 => 12288.0,
+                                        179 => 14336.0,
+                                        180 => 16384.0,
+                                        181 => 20480.0,
+                                        182 => 24576.0,
+                                        183 => 28672.0,
+                                        184 => 32768.0,
+                                        185 => 40960.0,
+                                        186 => 49152.0,
+                                        187 => 57344.0,
+                                        188 => 65536.0,
+                                        189 => 81920.0,
+                                        190 => 98304.0,
+                                        191 => 114688.0,
+                                        192 => 131072.0,
+                                        193 => 163840.0,
+                                        194 => 196608.0,
+                                        195 => 229376.0,
+                                        196 => 262144.0,
+                                        197 => 327680.0,
+                                        198 => 393216.0,
+                                        199 => 458752.0,
+                                        200 => 524288.0,
+                                        201 => 655360.0,
+                                        202 => 786432.0,
+                                        203 => 917504.0,
+                                        204 => 1048576.0,
+                                        205 => 1310720.0,
+                                        206 => 1572864.0,
+                                        207 => 1835008.0,
+                                        208 => 2097152.0,
+                                        209 => 2621440.0,
+                                        210 => 3145728.0,
+                                        211 => 3670016.0,
+                                        212 => 4194304.0,
+                                        213 => 5242880.0,
+                                        214 => 6291456.0,
+                                        215 => 7340032.0,
+                                        216 => 8388608.0,
+                                        217 => 1.048576E7,
+                                        218 => 1.2582912E7,
+                                        219 => 1.4680064E7,
+                                        220 => 1.6777216E7,
+                                        221 => 2.097152E7,
+                                        222 => 2.5165824E7,
+                                        223 => 2.9360128E7,
+                                        224 => 3.3554432E7,
+                                        225 => 4.194304E7,
+                                        226 => 5.0331648E7,
+                                        227 => 5.8720256E7,
+                                        228 => 6.7108864E7,
+                                        229 => 8.388608E7,
+                                        230 => 1.00663296E8,
+                                        231 => 1.17440512E8,
+                                        232 => 1.34217728E8,
+                                        233 => 1.6777216E8,
+                                        234 => 2.01326592E8,
+                                        235 => 2.34881024E8,
+                                        236 => 2.68435456E8,
+                                        237 => 3.3554432E8,
+                                        238 => 4.02653184E8,
+                                        239 => 4.69762048E8,
+                                        240 => 5.3687091E8,
+                                        241 => 6.7108864E8,
+                                        242 => 8.0530637E8,
+                                        243 => 9.395241E8,
+                                        244 => 1.07374182E9,
+                                        245 => 1.34217728E9,
+                                        246 => 1.61061274E9,
+                                        247 => 1.87904819E9,
+                                        248 => 2.14748365E9,
+                                        249 => 2.68435456E9,
+                                        250 => 3.22122547E9,
+                                        251 => 3.75809638E9,
+                                        252 => 4.2949673E9,
+                                        253 => 5.3687091E9,
+                                        254 => 6.4424509E9,
+                                        255 => 7.5161928E9 );
 
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp defaultphp Similarityphp implementationphp usedphp byphp indexingphp andphp search
-php php php php php php*php codephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarity
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getDefaultphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!selfphp:php:php$php_defaultImplphp instanceofphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Similarityphp/Defaultphp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_defaultImplphp php=php newphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp_Defaultphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp selfphp:php:php$php_defaultImplphp;
-php php php php php}
+    /**
+     * Set the default Similarity implementation used by indexing and search
+     * code.
+     *
+     * @param Zend_Search_Lucene_Search_Similarity $similarity
+     */
+    public static function setDefault(Zend_Search_Lucene_Search_Similarity $similarity)
+    {
+        self::$_defaultImpl = $similarity;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Computesphp thephp normalizationphp valuephp forphp aphp fieldphp givenphp thephp totalphp numberphp of
-php php php php php php*php termsphp containedphp inphp aphp fieldphp.php php Thesephp valuesphp,php togetherphp withphp fieldphp boostsphp,php are
-php php php php php php*php storedphp inphp anphp indexphp andphp multipledphp intophp scoresphp forphp hitsphp onphp eachphp fieldphp byphp the
-php php php php php php*php searchphp codephp.
-php php php php php php*
-php php php php php php*php Matchesphp inphp longerphp fieldsphp arephp lessphp precisephp,php sophp implemenationsphp ofphp this
-php php php php php php*php methodphp usuallyphp returnphp smallerphp valuesphp whenphp php'numTokensphp'php isphp largephp,
-php php php php php php*php andphp largerphp valuesphp whenphp php'numTokensphp'php isphp smallphp.
-php php php php php php*
-php php php php php php*php Thatphp thesephp valuesphp arephp computedphp under
-php php php php php php*php IndexWriterphp:php:addDocumentphp(Documentphp)php andphp storedphp thenphp using
-php php php php php php*php encodeNormphp(floatphp)php.php php Thusphp theyphp havephp limitedphp precisionphp,php andphp documents
-php php php php php php*php mustphp bephp rephp-indexedphp ifphp thisphp methodphp isphp alteredphp.
-php php php php php php*
-php php php php php php*php fieldNamephp php-php namephp ofphp field
-php php php php php php*php numTokensphp php-php thephp totalphp numberphp ofphp tokensphp containedphp inphp fieldsphp named
-php php php php php php*php php php php php php php php php php php php php php'fieldNamephp'php ofphp php'docphp'php.
-php php php php php php*php Returnsphp aphp normalizationphp factorphp forphp hitsphp onphp thisphp fieldphp ofphp thisphp document
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$fieldName
-php php php php php php*php php@paramphp integerphp php$numTokens
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp lengthNormphp(php$fieldNamephp,php php$numTokensphp)php;
+    /**
+     * Return the default Similarity implementation used by indexing and search
+     * code.
+     *
+     * @return Zend_Search_Lucene_Search_Similarity
+     */
+    public static function getDefault()
+    {
+        if (!self::$_defaultImpl instanceof Zend_Search_Lucene_Search_Similarity) {
+            require_once 'Zend/Search/Lucene/Search/Similarity/Default.php';
+            self::$_defaultImpl = new Zend_Search_Lucene_Search_Similarity_Default();
+        }
 
-php php php php php/php*php*
-php php php php php php*php Computesphp thephp normalizationphp valuephp forphp aphp queryphp givenphp thephp sumphp ofphp thephp squared
-php php php php php php*php weightsphp ofphp eachphp ofphp thephp queryphp termsphp.php php Thisphp valuephp isphp thenphp multipledphp intophp the
-php php php php php php*php weightphp ofphp eachphp queryphp termphp.
-php php php php php php*
-php php php php php php*php Thisphp doesphp notphp affectphp rankingphp,php butphp ratherphp justphp attemptsphp tophp makephp scores
-php php php php php php*php fromphp differentphp queriesphp comparablephp.
-php php php php php php*
-php php php php php php*php sumOfSquaredWeightsphp php-php thephp sumphp ofphp thephp squaresphp ofphp queryphp termphp weights
-php php php php php php*php Returnsphp aphp normalizationphp factorphp forphp queryphp weights
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$sumOfSquaredWeights
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp queryNormphp(php$sumOfSquaredWeightsphp)php;
+        return self::$_defaultImpl;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php php Decodesphp aphp normalizationphp factorphp storedphp inphp anphp indexphp.
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$byte
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp staticphp functionphp decodeNormphp(php$bytephp)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_normTablephp[php$bytephp php&php php0xFFphp]php;
-php php php php php}
+    /**
+     * Computes the normalization value for a field given the total number of
+     * terms contained in a field.  These values, together with field boosts, are
+     * stored in an index and multipled into scores for hits on each field by the
+     * search code.
+     *
+     * Matches in longer fields are less precise, so implemenations of this
+     * method usually return smaller values when 'numTokens' is large,
+     * and larger values when 'numTokens' is small.
+     *
+     * That these values are computed under
+     * IndexWriter::addDocument(Document) and stored then using
+     * encodeNorm(float).  Thus they have limited precision, and documents
+     * must be re-indexed if this method is altered.
+     *
+     * fieldName - name of field
+     * numTokens - the total number of tokens contained in fields named
+     *             'fieldName' of 'doc'.
+     * Returns a normalization factor for hits on this field of this document
+     *
+     * @param string $fieldName
+     * @param integer $numTokens
+     * @return float
+     */
+    abstract public function lengthNorm($fieldName, $numTokens);
+
+    /**
+     * Computes the normalization value for a query given the sum of the squared
+     * weights of each of the query terms.  This value is then multipled into the
+     * weight of each query term.
+     *
+     * This does not affect ranking, but rather just attempts to make scores
+     * from different queries comparable.
+     *
+     * sumOfSquaredWeights - the sum of the squares of query term weights
+     * Returns a normalization factor for query weights
+     *
+     * @param float $sumOfSquaredWeights
+     * @return float
+     */
+    abstract public function queryNorm($sumOfSquaredWeights);
 
 
-php php php php php/php*php*
-php php php php php php*php Encodesphp aphp normalizationphp factorphp forphp storagephp inphp anphp indexphp.
-php php php php php php*
-php php php php php php*php Thephp encodingphp usesphp aphp fivephp-bitphp exponentphp andphp threephp-bitphp mantissaphp,php thus
-php php php php php php*php representingphp valuesphp fromphp aroundphp php7xphp1php0php^php9php tophp php2xphp1php0php^php-php9php withphp aboutphp one
-php php php php php php*php significantphp decimalphp digitphp ofphp accuracyphp.php php Zerophp isphp alsophp representedphp.
-php php php php php php*php Negativephp numbersphp arephp roundedphp upphp tophp zerophp.php php Valuesphp toophp largephp tophp represent
-php php php php php php*php arephp roundedphp downphp tophp thephp largestphp representablephp valuephp.php php Positivephp valuesphp too
-php php php php php php*php smallphp tophp representphp arephp roundedphp upphp tophp thephp smallestphp positivephp representable
-php php php php php php*php valuephp.
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$f
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php staticphp functionphp encodeNormphp(php$fphp)
-php php php php php{
-php php php php php php returnphp selfphp:php:php_floatToBytephp(php$fphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Floatphp tophp bytephp conversion
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$b
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php privatephp staticphp functionphp php_floatToBytephp(php$fphp)
-php php php php php{
-php php php php php php php php php/php/php roundphp negativesphp upphp tophp zero
-php php php php php php php php ifphp php(php$fphp <php=php php0php.php0php)php php{
-php php php php php php php php php php php php returnphp php0php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php searchphp forphp appropriatephp value
-php php php php php php php php php$lowIndexphp php=php php0php;
-php php php php php php php php php$highIndexphp php=php php2php5php5php;
-php php php php php php php php whilephp php(php$highIndexphp php>php=php php$lowIndexphp)php php{
-php php php php php php php php php php php php php/php/php php$midphp php=php php(php$highIndexphp php-php php$lowIndexphp)php/php2php;
-php php php php php php php php php php php php php$midphp php=php php(php$highIndexphp php+php php$lowIndexphp)php php>php>php php1php;
-php php php php php php php php php php php php php$deltaphp php=php php$fphp php-php selfphp:php:php$php_normTablephp[php$midphp]php;
-
-php php php php php php php php php php php php ifphp php(php$deltaphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$highIndexphp php=php php$midphp-php1php;
-php php php php php php php php php php php php php}php elseifphp php(php$deltaphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php$lowIndexphp php php=php php$midphp+php1php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php$midphp;php php/php/php Wephp gotphp itphp!
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php roundphp tophp closestphp value
-php php php php php php php php ifphp php(php$highIndexphp php!php=php php2php5php5php php&php&
-php php php php php php php php php php php php php$fphp php-php selfphp:php:php$php_normTablephp[php$highIndexphp]php php>php selfphp:php:php$php_normTablephp[php$highIndexphp+php1php]php php-php php$fphp php)php php{
-php php php php php php php php php php php php returnphp php$highIndexphp php+php php1php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$highIndexphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     *  Decodes a normalization factor stored in an index.
+     *
+     * @param integer $byte
+     * @return float
+     */
+    public static function decodeNorm($byte)
+    {
+        return self::$_normTable[$byte & 0xFF];
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Computesphp aphp scorephp factorphp basedphp onphp aphp termphp orphp phrasephp'sphp frequencyphp inphp a
-php php php php php php*php documentphp.php php Thisphp valuephp isphp multipliedphp byphp thephp idfphp(Termphp,php Searcherphp)
-php php php php php php*php factorphp forphp eachphp termphp inphp thephp queryphp andphp thesephp productsphp arephp thenphp summedphp to
-php php php php php php*php formphp thephp initialphp scorephp forphp aphp documentphp.
-php php php php php php*
-php php php php php php*php Termsphp andphp phrasesphp repeatedphp inphp aphp documentphp indicatephp thephp topicphp ofphp the
-php php php php php php*php documentphp,php sophp implementationsphp ofphp thisphp methodphp usuallyphp returnphp largerphp values
-php php php php php php*php whenphp php'freqphp'php isphp largephp,php andphp smallerphp valuesphp whenphp php'freqphp'
-php php php php php php*php isphp smallphp.
-php php php php php php*
-php php php php php php*php freqphp php-php thephp frequencyphp ofphp aphp termphp withinphp aphp document
-php php php php php php*php Returnsphp aphp scorephp factorphp basedphp onphp aphp termphp'sphp withinphp-documentphp frequency
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$freq
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp tfphp(php$freqphp)php;
+    /**
+     * Encodes a normalization factor for storage in an index.
+     *
+     * The encoding uses a five-bit exponent and three-bit mantissa, thus
+     * representing values from around 7x10^9 to 2x10^-9 with about one
+     * significant decimal digit of accuracy.  Zero is also represented.
+     * Negative numbers are rounded up to zero.  Values too large to represent
+     * are rounded down to the largest representable value.  Positive values too
+     * small to represent are rounded up to the smallest positive representable
+     * value.
+     *
+     * @param float $f
+     * @return integer
+     */
+    static function encodeNorm($f)
+    {
+      return self::_floatToByte($f);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Computesphp thephp amountphp ofphp aphp sloppyphp phrasephp matchphp,php basedphp onphp anphp editphp distancephp.
-php php php php php php*php Thisphp valuephp isphp summedphp forphp eachphp sloppyphp phrasephp matchphp inphp aphp documentphp tophp form
-php php php php php php*php thephp frequencyphp thatphp isphp passedphp tophp tfphp(floatphp)php.
-php php php php php php*
-php php php php php php*php Aphp phrasephp matchphp withphp aphp smallphp editphp distancephp tophp aphp documentphp passagephp more
-php php php php php php*php closelyphp matchesphp thephp documentphp,php sophp implementationsphp ofphp thisphp methodphp usually
-php php php php php php*php returnphp largerphp valuesphp whenphp thephp editphp distancephp isphp smallphp andphp smallerphp values
-php php php php php php*php whenphp itphp isphp largephp.
-php php php php php php*
-php php php php php php*php distancephp php-php thephp editphp distancephp ofphp thisphp sloppyphp phrasephp match
-php php php php php php*php Returnsphp thephp frequencyphp incrementphp forphp thisphp match
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$distance
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp sloppyFreqphp(php$distancephp)php;
+    /**
+     * Float to byte conversion
+     *
+     * @param integer $b
+     * @return float
+     */
+    private static function _floatToByte($f)
+    {
+        // round negatives up to zero
+        if ($f <= 0.0) {
+            return 0;
+        }
+
+        // search for appropriate value
+        $lowIndex = 0;
+        $highIndex = 255;
+        while ($highIndex >= $lowIndex) {
+            // $mid = ($highIndex - $lowIndex)/2;
+            $mid = ($highIndex + $lowIndex) >> 1;
+            $delta = $f - self::$_normTable[$mid];
+
+            if ($delta < 0) {
+                $highIndex = $mid-1;
+            } elseif ($delta > 0) {
+                $lowIndex  = $mid+1;
+            } else {
+                return $mid; // We got it!
+            }
+        }
+
+        // round to closest value
+        if ($highIndex != 255 &&
+            $f - self::$_normTable[$highIndex] > self::$_normTable[$highIndex+1] - $f ) {
+            return $highIndex + 1;
+        } else {
+            return $highIndex;
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Computesphp aphp scorephp factorphp forphp aphp simplephp termphp orphp aphp phrasephp.
-php php php php php php*
-php php php php php php*php Thephp defaultphp implementationphp isphp:
-php php php php php php*php php php returnphp idfFreqphp(searcherphp.docFreqphp(termphp)php,php searcherphp.maxDocphp(php)php)php;
-php php php php php php*
-php php php php php php*php inputphp php-php thephp termphp inphp questionphp orphp arrayphp ofphp terms
-php php php php php php*php readerphp php-php readerphp thephp documentphp collectionphp beingphp searched
-php php php php php php*php Returnsphp aphp scorephp factorphp forphp thephp term
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$input
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp aphp scorephp factorphp forphp thephp term
-php php php php php php*php/
-php php php php publicphp functionphp idfphp(php$inputphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$inputphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>idfFreqphp(php$readerphp-php>docFreqphp(php$inputphp)php,php php$readerphp-php>countphp(php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$idfphp php=php php0php.php0php;
-php php php php php php php php php php php php foreachphp php(php$inputphp asphp php$termphp)php php{
-php php php php php php php php php php php php php php php php php$idfphp php+php=php php$thisphp-php>idfFreqphp(php$readerphp-php>docFreqphp(php$termphp)php,php php$readerphp-php>countphp(php)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$idfphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Computes a score factor based on a term or phrase's frequency in a
+     * document.  This value is multiplied by the idf(Term, Searcher)
+     * factor for each term in the query and these products are then summed to
+     * form the initial score for a document.
+     *
+     * Terms and phrases repeated in a document indicate the topic of the
+     * document, so implementations of this method usually return larger values
+     * when 'freq' is large, and smaller values when 'freq'
+     * is small.
+     *
+     * freq - the frequency of a term within a document
+     * Returns a score factor based on a term's within-document frequency
+     *
+     * @param float $freq
+     * @return float
+     */
+    abstract public function tf($freq);
 
-php php php php php/php*php*
-php php php php php php*php Computesphp aphp scorephp factorphp basedphp onphp aphp termphp'sphp documentphp frequencyphp php(thephp number
-php php php php php php*php ofphp documentsphp whichphp containphp thephp termphp)php.php php Thisphp valuephp isphp multipliedphp byphp the
-php php php php php php*php tfphp(intphp)php factorphp forphp eachphp termphp inphp thephp queryphp andphp thesephp productsphp are
-php php php php php php*php thenphp summedphp tophp formphp thephp initialphp scorephp forphp aphp documentphp.
-php php php php php php*
-php php php php php php*php Termsphp thatphp occurphp inphp fewerphp documentsphp arephp betterphp indicatorsphp ofphp topicphp,php so
-php php php php php php*php implemenationsphp ofphp thisphp methodphp usuallyphp returnphp largerphp valuesphp forphp rarephp termsphp,
-php php php php php php*php andphp smallerphp valuesphp forphp commonphp termsphp.
-php php php php php php*
-php php php php php php*php docFreqphp php-php thephp numberphp ofphp documentsphp whichphp containphp thephp term
-php php php php php php*php numDocsphp php-php thephp totalphp numberphp ofphp documentsphp inphp thephp collection
-php php php php php php*php Returnsphp aphp scorephp factorphp basedphp onphp thephp termphp'sphp documentphp frequency
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docFreq
-php php php php php php*php php@paramphp integerphp php$numDocs
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp idfFreqphp(php$docFreqphp,php php$numDocsphp)php;
+    /**
+     * Computes the amount of a sloppy phrase match, based on an edit distance.
+     * This value is summed for each sloppy phrase match in a document to form
+     * the frequency that is passed to tf(float).
+     *
+     * A phrase match with a small edit distance to a document passage more
+     * closely matches the document, so implementations of this method usually
+     * return larger values when the edit distance is small and smaller values
+     * when it is large.
+     *
+     * distance - the edit distance of this sloppy phrase match
+     * Returns the frequency increment for this match
+     *
+     * @param integer $distance
+     * @return float
+     */
+    abstract public function sloppyFreq($distance);
 
-php php php php php/php*php*
-php php php php php php*php Computesphp aphp scorephp factorphp basedphp onphp thephp fractionphp ofphp allphp queryphp termsphp thatphp a
-php php php php php php*php documentphp containsphp.php php Thisphp valuephp isphp multipliedphp intophp scoresphp.
-php php php php php php*
-php php php php php php*php Thephp presencephp ofphp aphp largephp portionphp ofphp thephp queryphp termsphp indicatesphp aphp better
-php php php php php php*php matchphp withphp thephp queryphp,php sophp implemenationsphp ofphp thisphp methodphp usuallyphp return
-php php php php php php*php largerphp valuesphp whenphp thephp ratiophp betweenphp thesephp parametersphp isphp largephp andphp smaller
-php php php php php php*php valuesphp whenphp thephp ratiophp betweenphp themphp isphp smallphp.
-php php php php php php*
-php php php php php php*php overlapphp php-php thephp numberphp ofphp queryphp termsphp matchedphp inphp thephp document
-php php php php php php*php maxOverlapphp php-php thephp totalphp numberphp ofphp termsphp inphp thephp query
-php php php php php php*php Returnsphp aphp scorephp factorphp basedphp onphp termphp overlapphp withphp thephp query
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$overlap
-php php php php php php*php php@paramphp integerphp php$maxOverlap
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp coordphp(php$overlapphp,php php$maxOverlapphp)php;
-php}
+
+    /**
+     * Computes a score factor for a simple term or a phrase.
+     *
+     * The default implementation is:
+     *   return idfFreq(searcher.docFreq(term), searcher.maxDoc());
+     *
+     * input - the term in question or array of terms
+     * reader - reader the document collection being searched
+     * Returns a score factor for the term
+     *
+     * @param mixed $input
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return a score factor for the term
+     */
+    public function idf($input, Zend_Search_Lucene_Interface $reader)
+    {
+        if (!is_array($input)) {
+            return $this->idfFreq($reader->docFreq($input), $reader->count());
+        } else {
+            $idf = 0.0;
+            foreach ($input as $term) {
+                $idf += $this->idfFreq($reader->docFreq($term), $reader->count());
+            }
+            return $idf;
+        }
+    }
+
+    /**
+     * Computes a score factor based on a term's document frequency (the number
+     * of documents which contain the term).  This value is multiplied by the
+     * tf(int) factor for each term in the query and these products are
+     * then summed to form the initial score for a document.
+     *
+     * Terms that occur in fewer documents are better indicators of topic, so
+     * implemenations of this method usually return larger values for rare terms,
+     * and smaller values for common terms.
+     *
+     * docFreq - the number of documents which contain the term
+     * numDocs - the total number of documents in the collection
+     * Returns a score factor based on the term's document frequency
+     *
+     * @param integer $docFreq
+     * @param integer $numDocs
+     * @return float
+     */
+    abstract public function idfFreq($docFreq, $numDocs);
+
+    /**
+     * Computes a score factor based on the fraction of all query terms that a
+     * document contains.  This value is multiplied into scores.
+     *
+     * The presence of a large portion of the query terms indicates a better
+     * match with the query, so implemenations of this method usually return
+     * larger values when the ratio between these parameters is large and smaller
+     * values when the ratio between them is small.
+     *
+     * overlap - the number of query terms matched in the document
+     * maxOverlap - the total number of terms in the query
+     * Returns a score factor based on term overlap with the query
+     *
+     * @param integer $overlap
+     * @param integer $maxOverlap
+     * @return float
+     */
+    abstract public function coord($overlap, $maxOverlap);
+}
 

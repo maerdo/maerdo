@@ -1,428 +1,428 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Queue
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Memcacheqphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Queue
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Memcacheq.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Queuephp_Adapterphp_AdapterAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Queuephp/Adapterphp/AdapterAbstractphp.phpphp'php;
+/**
+ * @see Zend_Queue_Adapter_AdapterAbstract
+ */
+require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
 
-php/php*php*
-php php*php Classphp forphp usingphp connectingphp tophp aphp Zendphp_Cachephp-basedphp queuingphp system
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Queue
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Queuephp_Adapterphp_Memcacheqphp extendsphp Zendphp_Queuephp_Adapterphp_AdapterAbstract
-php{
-php php php php constphp DEFAULTphp_HOSTphp php=php php'php1php2php7php.php0php.php0php.php1php'php;
-php php php php constphp DEFAULTphp_PORTphp php=php php2php2php2php0php1php;
-php php php php constphp EOLphp php php php php php php php php php php=php php"php\rphp\nphp"php;
+/**
+ * Class for using connecting to a Zend_Cache-based queuing system
+ *
+ * @category   Zend
+ * @package    Zend_Queue
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
+{
+    const DEFAULT_HOST = '127.0.0.1';
+    const DEFAULT_PORT = 22201;
+    const EOL          = "\r\n";
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Memcache
-php php php php php php*php/
-php php php php protectedphp php$php_cachephp php=php nullphp;
+    /**
+     * @var Memcache
+     */
+    protected $_cache = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_hostphp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_host = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_portphp php=php nullphp;
+    /**
+     * @var integer
+     */
+    protected $_port = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_socketphp php=php nullphp;
+    /**
+     * @var resource
+     */
+    protected $_socket = null;
 
-php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
-php php php php php*php Constructorphp php/php Destructor
-php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
+    /********************************************************************
+    * Constructor / Destructor
+     *********************************************************************/
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@paramphp php nullphp|Zendphp_Queuephp php$queue
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp,php Zendphp_Queuephp php$queuephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!extensionphp_loadedphp(php'memcachephp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'Memcachephp extensionphp doesphp notphp appearphp tophp bephp loadedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array|Zend_Config $options
+     * @param  null|Zend_Queue $queue
+     * @return void
+     */
+    public function __construct($options, Zend_Queue $queue = null)
+    {
+        if (!extension_loaded('memcache')) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception('Memcache extension does not appear to be loaded');
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp,php php$queuephp)php;
+        parent::__construct($options, $queue);
 
-php php php php php php php php php$optionsphp php=php php&php$thisphp-php>php_optionsphp[php'driverOptionsphp'php]php;
+        $options = &$this->_options['driverOptions'];
 
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'hostphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'hostphp'php]php php=php selfphp:php:DEFAULTphp_HOSTphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'portphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'portphp'php]php php=php selfphp:php:DEFAULTphp_PORTphp;
-php php php php php php php php php}
+        if (!array_key_exists('host', $options)) {
+            $options['host'] = self::DEFAULT_HOST;
+        }
+        if (!array_key_exists('port', $options)) {
+            $options['port'] = self::DEFAULT_PORT;
+        }
 
-php php php php php php php php php$thisphp-php>php_cachephp php=php newphp Memcachephp(php)php;
+        $this->_cache = new Memcache();
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_cachephp-php>connectphp(php$optionsphp[php'hostphp'php]php,php php$optionsphp[php'portphp'php]php)php;
+        $result = $this->_cache->connect($options['host'], $options['port']);
 
-php php php php php php php php ifphp php(php$resultphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'Couldphp notphp connectphp tophp MemcacheQphp'php)php;
-php php php php php php php php php}
+        if ($result === false) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception('Could not connect to MemcacheQ');
+        }
 
-php php php php php php php php php$thisphp-php>php_hostphp php=php php$optionsphp[php'hostphp'php]php;
-php php php php php php php php php$thisphp-php>php_portphp php=php php(intphp)php$optionsphp[php'portphp'php]php;
-php php php php php}
+        $this->_host = $options['host'];
+        $this->_port = (int)$options['port'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Destructor
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_cachephp instanceofphp Memcachephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_cachephp-php>closephp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_socketphp)php)php php{
-php php php php php php php php php php php php php$cmdphp php=php php'quitphp'php php.php selfphp:php:EOLphp;
-php php php php php php php php php php php php fwritephp(php$thisphp-php>php_socketphp,php php$cmdphp)php;
-php php php php php php php php php php php php fclosephp(php$thisphp-php>php_socketphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Destructor
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        if ($this->_cache instanceof Memcache) {
+            $this->_cache->close();
+        }
+        if (is_resource($this->_socket)) {
+            $cmd = 'quit' . self::EOL;
+            fwrite($this->_socket, $cmd);
+            fclose($this->_socket);
+        }
+    }
 
-php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
-php php php php php php*php Queuephp managementphp functions
-php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
+    /********************************************************************
+     * Queue management functions
+     *********************************************************************/
 
-php php php php php/php*php*
-php php php php php php*php Doesphp aphp queuephp alreadyphp existphp?
-php php php php php php*
-php php php php php php*php Throwsphp anphp exceptionphp ifphp thephp adapterphp cannotphp determinephp ifphp aphp queuephp existsphp.
-php php php php php php*php usephp isSupportedphp(php'isExistsphp'php)php tophp determinephp ifphp anphp adapterphp canphp testphp for
-php php php php php php*php queuephp existancephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp isExistsphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_queuesphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>getQueuesphp(php)php;
-php php php php php php php php php}
+    /**
+     * Does a queue already exist?
+     *
+     * Throws an exception if the adapter cannot determine if a queue exists.
+     * use isSupported('isExists') to determine if an adapter can test for
+     * queue existance.
+     *
+     * @param  string $name
+     * @return boolean
+     * @throws Zend_Queue_Exception
+     */
+    public function isExists($name)
+    {
+        if (empty($this->_queues)) {
+            $this->getQueues();
+        }
 
-php php php php php php php php returnphp inphp_arrayphp(php$namephp,php php$thisphp-php>php_queuesphp)php;
-php php php php php}
+        return in_array($name, $this->_queues);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp queue
-php php php php php php*
-php php php php php php*php Visibilityphp timeoutphp isphp howphp longphp aphp messagephp isphp leftphp inphp thephp queuephp php"invisiblephp"
-php php php php php php*php tophp otherphp readersphp.php php Ifphp thephp messagephp isphp acknowlegedphp php(deletedphp)php beforephp the
-php php php php php php*php timeoutphp,php thenphp thephp messagephp isphp deletedphp.php php Howeverphp,php ifphp thephp timeoutphp expires
-php php php php php php*php thenphp thephp messagephp willphp bephp madephp availablephp tophp otherphp queuephp readersphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$namephp php php php queuephp name
-php php php php php php*php php@paramphp php integerphp php$timeoutphp defaultphp visibilityphp timeout
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp createphp(php$namephp,php php$timeoutphp=nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>isExistsphp(php$namephp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$timeoutphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$timeoutphp php=php selfphp:php:CREATEphp_TIMEOUTphp_DEFAULTphp;
-php php php php php php php php php}
+    /**
+     * Create a new queue
+     *
+     * Visibility timeout is how long a message is left in the queue "invisible"
+     * to other readers.  If the message is acknowleged (deleted) before the
+     * timeout, then the message is deleted.  However, if the timeout expires
+     * then the message will be made available to other queue readers.
+     *
+     * @param  string  $name    queue name
+     * @param  integer $timeout default visibility timeout
+     * @return boolean
+     * @throws Zend_Queue_Exception
+     */
+    public function create($name, $timeout=null)
+    {
+        if ($this->isExists($name)) {
+            return false;
+        }
+        if ($timeout === null) {
+            $timeout = self::CREATE_TIMEOUT_DEFAULT;
+        }
 
-php php php php php php php php php/php/php MemcacheQphp doesphp notphp havephp aphp methodphp tophp php"createphp"php aphp queue
-php php php php php php php php php/php/php queuesphp arephp createdphp uponphp sendingphp aphp packetphp.
-php php php php php php php php php/php/php Wephp cannotphp usephp thephp sendphp(php)php andphp receivephp(php)php functionsphp becausephp those
-php php php php php php php php php/php/php dependphp onphp thephp currentphp namephp.
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_cachephp-php>setphp(php$namephp,php php'creatingphp queuephp'php,php php0php,php php1php5php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_cachephp-php>getphp(php$namephp)php;
+        // MemcacheQ does not have a method to "create" a queue
+        // queues are created upon sending a packet.
+        // We cannot use the send() and receive() functions because those
+        // depend on the current name.
+        $result = $this->_cache->set($name, 'creating queue', 0, 15);
+        $result = $this->_cache->get($name);
 
-php php php php php php php php php$thisphp-php>php_queuesphp[php]php php=php php$namephp;
+        $this->_queues[] = $name;
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp queuephp andphp allphp ofphp itphp'sphp messages
-php php php php php php*
-php php php php php php*php Returnsphp falsephp ifphp thephp queuephp isphp notphp foundphp,php truephp ifphp thephp queuephp exists
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$namephp queuephp name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp deletephp(php$namephp)
-php php php php php{
-php php php php php php php php php$responsephp php=php php$thisphp-php>php_sendCommandphp(php'deletephp php'php php.php php$namephp,php arrayphp(php'DELETEDphp'php,php php'NOTphp_FOUNDphp'php)php,php truephp)php;
+    /**
+     * Delete a queue and all of it's messages
+     *
+     * Returns false if the queue is not found, true if the queue exists
+     *
+     * @param  string  $name queue name
+     * @return boolean
+     * @throws Zend_Queue_Exception
+     */
+    public function delete($name)
+    {
+        $response = $this->_sendCommand('delete ' . $name, array('DELETED', 'NOT_FOUND'), true);
 
-php php php php php php php php ifphp php(inphp_arrayphp(php'DELETEDphp'php,php php$responsephp)php)php php{
-php php php php php php php php php php php php php$keyphp php=php arrayphp_searchphp(php$namephp,php php$thisphp-php>php_queuesphp)php;
+        if (in_array('DELETED', $response)) {
+            $key = array_search($name, $this->_queues);
 
-php php php php php php php php php php php php ifphp php(php$keyphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_queuesphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+            if ($key !== false) {
+                unset($this->_queues[$key]);
+            }
+            return true;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp anphp arrayphp ofphp allphp availablephp queues
-php php php php php php*
-php php php php php php*php Notphp allphp adaptersphp supportphp getQueuesphp(php)php,php usephp isSupportedphp(php'getQueuesphp'php)
-php php php php php php*php tophp determinephp ifphp thephp adapterphp supportsphp thisphp featurephp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getQueuesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_queuesphp php=php arrayphp(php)php;
+    /**
+     * Get an array of all available queues
+     *
+     * Not all adapters support getQueues(), use isSupported('getQueues')
+     * to determine if the adapter supports this feature.
+     *
+     * @return array
+     * @throws Zend_Queue_Exception
+     */
+    public function getQueues()
+    {
+        $this->_queues = array();
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>php_sendCommandphp(php'statsphp queuephp'php,php arrayphp(php'ENDphp'php)php)php;
+        $response = $this->_sendCommand('stats queue', array('END'));
 
-php php php php php php php php foreachphp php(php$responsephp asphp php$iphp php=php>php php$linephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_queuesphp[php]php php=php strphp_replacephp(php'STATphp php'php,php php'php'php,php php$linephp)php;
-php php php php php php php php php}
+        foreach ($response as $i => $line) {
+            $this->_queues[] = str_replace('STAT ', '', $line);
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_queuesphp;
-php php php php php}
+        return $this->_queues;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp approximatephp numberphp ofphp messagesphp inphp thephp queue
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Queuephp php$queue
-php php php php php php*php php@returnphp integer
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exceptionphp php(notphp supportedphp)
-php php php php php php*php/
-php php php php publicphp functionphp countphp(Zendphp_Queuephp php$queuephp=nullphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'countphp(php)php isphp notphp supportedphp inphp thisphp adapterphp'php)php;
-php php php php php}
+    /**
+     * Return the approximate number of messages in the queue
+     *
+     * @param  Zend_Queue $queue
+     * @return integer
+     * @throws Zend_Queue_Exception (not supported)
+     */
+    public function count(Zend_Queue $queue=null)
+    {
+        require_once 'Zend/Queue/Exception.php';
+        throw new Zend_Queue_Exception('count() is not supported in this adapter');
+    }
 
-php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
-php php php php php php*php Messsagephp managementphp functions
-php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
+    /********************************************************************
+     * Messsage management functions
+     *********************************************************************/
 
-php php php php php/php*php*
-php php php php php php*php Sendphp aphp messagephp tophp thephp queue
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php php php php$messagephp Messagephp tophp sendphp tophp thephp activephp queue
-php php php php php php*php php@paramphp php Zendphp_Queuephp php$queue
-php php php php php php*php php@returnphp Zendphp_Queuephp_Message
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp sendphp(php$messagephp,php Zendphp_Queuephp php$queuephp=nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$queuephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$queuephp php=php php$thisphp-php>php_queuephp;
-php php php php php php php php php}
+    /**
+     * Send a message to the queue
+     *
+     * @param  string     $message Message to send to the active queue
+     * @param  Zend_Queue $queue
+     * @return Zend_Queue_Message
+     * @throws Zend_Queue_Exception
+     */
+    public function send($message, Zend_Queue $queue=null)
+    {
+        if ($queue === null) {
+            $queue = $this->_queue;
+        }
 
-php php php php php php php php ifphp php(php!php$thisphp-php>isExistsphp(php$queuephp-php>getNamephp(php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'Queuephp doesphp notphp existphp:php'php php.php php$queuephp-php>getNamephp(php)php)php;
-php php php php php php php php php}
+        if (!$this->isExists($queue->getName())) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception('Queue does not exist:' . $queue->getName());
+        }
 
-php php php php php php php php php$messagephp php=php php(stringphp)php php$messagephp;
-php php php php php php php php php$dataphp php php php php=php arrayphp(
-php php php php php php php php php php php php php'messagephp_idphp'php php=php>php mdphp5php(uniqidphp(randphp(php)php,php truephp)php)php,
-php php php php php php php php php php php php php'handlephp'php php php php php php=php>php nullphp,
-php php php php php php php php php php php php php'bodyphp'php php php php php php php php=php>php php$messagephp,
-php php php php php php php php php php php php php'mdphp5php'php php php php php php php php php=php>php mdphp5php(php$messagephp)php,
-php php php php php php php php php)php;
+        $message = (string) $message;
+        $data    = array(
+            'message_id' => md5(uniqid(rand(), true)),
+            'handle'     => null,
+            'body'       => $message,
+            'md5'        => md5($message),
+        );
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_cachephp-php>setphp(php$queuephp-php>getNamephp(php)php,php php$messagephp,php php0php,php php0php)php;
-php php php php php php php php ifphp php(php$resultphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'failedphp tophp insertphp messagephp intophp queuephp:php'php php.php php$queuephp-php>getNamephp(php)php)php;
-php php php php php php php php php}
+        $result = $this->_cache->set($queue->getName(), $message, 0, 0);
+        if ($result === false) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception('failed to insert message into queue:' . $queue->getName());
+        }
 
-php php php php php php php php php$optionsphp php=php arrayphp(
-php php php php php php php php php php php php php'queuephp'php php=php>php php$queuephp,
-php php php php php php php php php php php php php'dataphp'php php php=php>php php$dataphp,
-php php php php php php php php php)php;
+        $options = array(
+            'queue' => $queue,
+            'data'  => $data,
+        );
 
-php php php php php php php php php$classnamephp php=php php$queuephp-php>getMessageClassphp(php)php;
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classnamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classnamephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp newphp php$classnamephp(php$optionsphp)php;
-php php php php php}
+        $classname = $queue->getMessageClass();
+        if (!class_exists($classname)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($classname);
+        }
+        return new $classname($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp messagesphp inphp thephp queue
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php php php php$maxMessagesphp php Maximumphp numberphp ofphp messagesphp tophp return
-php php php php php php*php php@paramphp php integerphp php php php php$timeoutphp php php php php php Visibilityphp timeoutphp forphp thesephp messages
-php php php php php php*php php@paramphp php Zendphp_Queuephp php$queue
-php php php php php php*php php@returnphp Zendphp_Queuephp_Messagephp_Iterator
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp receivephp(php$maxMessagesphp=nullphp,php php$timeoutphp=nullphp,php Zendphp_Queuephp php$queuephp=nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$maxMessagesphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$maxMessagesphp php=php php1php;
-php php php php php php php php php}
+    /**
+     * Get messages in the queue
+     *
+     * @param  integer    $maxMessages  Maximum number of messages to return
+     * @param  integer    $timeout      Visibility timeout for these messages
+     * @param  Zend_Queue $queue
+     * @return Zend_Queue_Message_Iterator
+     * @throws Zend_Queue_Exception
+     */
+    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    {
+        if ($maxMessages === null) {
+            $maxMessages = 1;
+        }
 
-php php php php php php php php ifphp php(php$timeoutphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$timeoutphp php=php selfphp:php:RECEIVEphp_TIMEOUTphp_DEFAULTphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$queuephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$queuephp php=php php$thisphp-php>php_queuephp;
-php php php php php php php php php}
+        if ($timeout === null) {
+            $timeout = self::RECEIVE_TIMEOUT_DEFAULT;
+        }
+        if ($queue === null) {
+            $queue = $this->_queue;
+        }
 
-php php php php php php php php php$msgsphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php$maxMessagesphp php>php php0php php)php php{
-php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$maxMessagesphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$dataphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'handlephp'php php=php>php mdphp5php(uniqidphp(randphp(php)php,php truephp)php)php,
-php php php php php php php php php php php php php php php php php php php php php'bodyphp'php php php php=php>php php$thisphp-php>php_cachephp-php>getphp(php$queuephp-php>getNamephp(php)php)php,
-php php php php php php php php php php php php php php php php php)php;
+        $msgs = array();
+        if ($maxMessages > 0 ) {
+            for ($i = 0; $i < $maxMessages; $i++) {
+                $data = array(
+                    'handle' => md5(uniqid(rand(), true)),
+                    'body'   => $this->_cache->get($queue->getName()),
+                );
 
-php php php php php php php php php php php php php php php php php$msgsphp[php]php php=php php$dataphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                $msgs[] = $data;
+            }
+        }
 
-php php php php php php php php php$optionsphp php=php arrayphp(
-php php php php php php php php php php php php php'queuephp'php php php php php php php php php=php>php php$queuephp,
-php php php php php php php php php php php php php'dataphp'php php php php php php php php php php=php>php php$msgsphp,
-php php php php php php php php php php php php php'messageClassphp'php php=php>php php$queuephp-php>getMessageClassphp(php)php,
-php php php php php php php php php)php;
+        $options = array(
+            'queue'        => $queue,
+            'data'         => $msgs,
+            'messageClass' => $queue->getMessageClass(),
+        );
 
-php php php php php php php php php$classnamephp php=php php$queuephp-php>getMessageSetClassphp(php)php;
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classnamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classnamephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp newphp php$classnamephp(php$optionsphp)php;
-php php php php php}
+        $classname = $queue->getMessageSetClass();
+        if (!class_exists($classname)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($classname);
+        }
+        return new $classname($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp messagephp fromphp thephp queue
-php php php php php php*
-php php php php php php*php Returnsphp truephp ifphp thephp messagephp isphp deletedphp,php falsephp ifphp thephp deletionphp is
-php php php php php php*php unsuccessfulphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Queuephp_Messagephp php$message
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exceptionphp php(unsupportedphp)
-php php php php php php*php/
-php php php php publicphp functionphp deleteMessagephp(Zendphp_Queuephp_Messagephp php$messagephp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'deleteMessagephp(php)php isphp notphp supportedphp inphp php php'php php.php getphp_classphp(php$thisphp)php)php;
-php php php php php}
+    /**
+     * Delete a message from the queue
+     *
+     * Returns true if the message is deleted, false if the deletion is
+     * unsuccessful.
+     *
+     * @param  Zend_Queue_Message $message
+     * @return boolean
+     * @throws Zend_Queue_Exception (unsupported)
+     */
+    public function deleteMessage(Zend_Queue_Message $message)
+    {
+        require_once 'Zend/Queue/Exception.php';
+        throw new Zend_Queue_Exception('deleteMessage() is not supported in  ' . get_class($this));
+    }
 
-php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
-php php php php php php*php Supportingphp functions
-php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
+    /********************************************************************
+     * Supporting functions
+     *********************************************************************/
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp listphp ofphp queuephp capabilitiesphp functions
-php php php php php php*
-php php php php php php*php php$arrayphp[php'functionphp namephp'php]php php=php truephp orphp false
-php php php php php php*php truephp isphp supportedphp,php falsephp isphp notphp supportedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getCapabilitiesphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(
-php php php php php php php php php php php php php'createphp'php php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'deletephp'php php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'sendphp'php php php php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'receivephp'php php php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'deleteMessagephp'php php=php>php falsephp,
-php php php php php php php php php php php php php'getQueuesphp'php php php php php php=php>php truephp,
-php php php php php php php php php php php php php'countphp'php php php php php php php php php php=php>php falsephp,
-php php php php php php php php php php php php php'isExistsphp'php php php php php php php=php>php truephp,
-php php php php php php php php php)php;
-php php php php php}
+    /**
+     * Return a list of queue capabilities functions
+     *
+     * $array['function name'] = true or false
+     * true is supported, false is not supported.
+     *
+     * @param  string $name
+     * @return array
+     */
+    public function getCapabilities()
+    {
+        return array(
+            'create'        => true,
+            'delete'        => true,
+            'send'          => true,
+            'receive'       => true,
+            'deleteMessage' => false,
+            'getQueues'     => true,
+            'count'         => false,
+            'isExists'      => true,
+        );
+    }
 
-php php php php php/php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*
-php php php php php php*php Functionsphp thatphp arephp notphp partphp ofphp thephp Zendphp_Queuephp_Adapterphp_Abstract
-php php php php php php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php*php/
+    /********************************************************************
+     * Functions that are not part of the Zend_Queue_Adapter_Abstract
+     *********************************************************************/
 
-php php php php php/php*php*
-php php php php php php*php sendsphp aphp commandphp tophp MemcacheQ
-php php php php php php*
-php php php php php php*php Thephp memcachephp functionsphp byphp phpphp cannotphp handlephp allphp typesphp ofphp requests
-php php php php php php*php supportedphp byphp MemcacheQ
-php php php php php php*php Nonphp-standardphp requestsphp arephp handledphp byphp thisphp functionphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$commandphp php-php commandphp tophp sendphp tophp memcacheQ
-php php php php php php*php php@paramphp php arrayphp php php php$terminatorphp php-php stringsphp tophp indicatephp endphp ofphp memcacheQphp response
-php php php php php php*php php@paramphp php booleanphp php$includephp_termphp php-php includephp terminatorphp inphp response
-php php php php php php*php php@returnphp array
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exceptionphp ifphp connectionphp cannotphp bephp opened
-php php php php php php*php/
-php php php php protectedphp functionphp php_sendCommandphp(php$commandphp,php arrayphp php$terminatorphp,php php$includephp_termphp=falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_resourcephp(php$thisphp-php>php_socketphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_socketphp php=php fsockopenphp(php$thisphp-php>php_hostphp,php php$thisphp-php>php_portphp,php php$errnophp,php php$errstrphp,php php1php0php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_socketphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php"Couldphp notphp openphp aphp connectionphp tophp php$thisphp-php>php_hostphp:php$thisphp-php>php_portphp errnophp=php$errnophp php:php php$errstrphp"php)php;
-php php php php php php php php php}
+    /**
+     * sends a command to MemcacheQ
+     *
+     * The memcache functions by php cannot handle all types of requests
+     * supported by MemcacheQ
+     * Non-standard requests are handled by this function.
+     *
+     * @param  string  $command - command to send to memcacheQ
+     * @param  array   $terminator - strings to indicate end of memcacheQ response
+     * @param  boolean $include_term - include terminator in response
+     * @return array
+     * @throws Zend_Queue_Exception if connection cannot be opened
+     */
+    protected function _sendCommand($command, array $terminator, $include_term=false)
+    {
+        if (!is_resource($this->_socket)) {
+            $this->_socket = fsockopen($this->_host, $this->_port, $errno, $errstr, 10);
+        }
+        if ($this->_socket === false) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception("Could not open a connection to $this->_host:$this->_port errno=$errno : $errstr");
+        }
 
-php php php php php php php php php$responsephp php=php arrayphp(php)php;
+        $response = array();
 
-php php php php php php php php php$cmdphp php=php php$commandphp php.php selfphp:php:EOLphp;
-php php php php php php php php fwritephp(php$thisphp-php>php_socketphp,php php$cmdphp)php;
+        $cmd = $command . self::EOL;
+        fwrite($this->_socket, $cmd);
 
-php php php php php php php php php$continuephp_readingphp php=php truephp;
-php php php php php php php php whilephp php(php!feofphp(php$thisphp-php>php_socketphp)php php&php&php php$continuephp_readingphp)php php{
-php php php php php php php php php php php php php$respphp php=php trimphp(fgetsphp(php$thisphp-php>php_socketphp,php php1php0php2php4php)php)php;
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$respphp,php php$terminatorphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$includephp_termphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$responsephp[php]php php=php php$respphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$continuephp_readingphp php=php falsephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$responsephp[php]php php=php php$respphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $continue_reading = true;
+        while (!feof($this->_socket) && $continue_reading) {
+            $resp = trim(fgets($this->_socket, 1024));
+            if (in_array($resp, $terminator)) {
+                if ($include_term) {
+                    $response[] = $resp;
+                }
+                $continue_reading = false;
+            } else {
+                $response[] = $resp;
+            }
+        }
 
-php php php php php php php php returnphp php$responsephp;
-php php php php php}
-php}
+        return $response;
+    }
+}

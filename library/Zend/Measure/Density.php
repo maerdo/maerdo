@@ -1,206 +1,206 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Measure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Densityphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Measure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Density.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Implementphp neededphp classes
-php php*php/
-requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/**
+ * Implement needed classes
+ */
+require_once 'Zend/Measure/Abstract.php';
+require_once 'Zend/Locale.php';
 
-php/php*php*
-php php*php Classphp forphp handlingphp densityphp conversions
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Measure
-php php*php php@subpackagephp Zendphp_Measurephp_Density
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Measurephp_Densityphp extendsphp Zendphp_Measurephp_Abstract
-php{
-php php php php constphp STANDARDphp php=php php'KILOGRAMphp_PERphp_CUBICphp_METERphp'php;
+/**
+ * Class for handling density conversions
+ *
+ * @category   Zend
+ * @package    Zend_Measure
+ * @subpackage Zend_Measure_Density
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Measure_Density extends Zend_Measure_Abstract
+{
+    const STANDARD = 'KILOGRAM_PER_CUBIC_METER';
 
-php php php php constphp ALUMINIUMphp php php php php php php php php php php php php php php php php php php php php php php=php php'ALUMINIUMphp'php;
-php php php php constphp COPPERphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'COPPERphp'php;
-php php php php constphp GOLDphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'GOLDphp'php;
-php php php php constphp GRAINphp_PERphp_CUBICphp_FOOTphp php php php php php php php php php php php=php php'GRAINphp_PERphp_CUBICphp_FOOTphp'php;
-php php php php constphp GRAINphp_PERphp_CUBICphp_INCHphp php php php php php php php php php php php=php php'GRAINphp_PERphp_CUBICphp_INCHphp'php;
-php php php php constphp GRAINphp_PERphp_CUBICphp_YARDphp php php php php php php php php php php php=php php'GRAINphp_PERphp_CUBICphp_YARDphp'php;
-php php php php constphp GRAINphp_PERphp_GALLONphp php php php php php php php php php php php php php php php=php php'GRAINphp_PERphp_GALLONphp'php;
-php php php php constphp GRAINphp_PERphp_GALLONphp_USphp php php php php php php php php php php php php=php php'GRAINphp_PERphp_GALLONphp_USphp'php;
-php php php php constphp GRAMphp_PERphp_CUBICphp_CENTIMETERphp php php php php php php=php php'GRAMphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp GRAMphp_PERphp_CUBICphp_DECIMETERphp php php php php php php php=php php'GRAMphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp GRAMphp_PERphp_CUBICphp_METERphp php php php php php php php php php php php=php php'GRAMphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp GRAMphp_PERphp_LITERphp php php php php php php php php php php php php php php php php php=php php'GRAMphp_PERphp_LITERphp'php;
-php php php php constphp GRAMphp_PERphp_MILLILITERphp php php php php php php php php php php php php=php php'GRAMphp_PERphp_MILLILITERphp'php;
-php php php php constphp IRONphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'IRONphp'php;
-php php php php constphp KILOGRAMphp_PERphp_CUBICphp_CENTIMETERphp php php=php php'KILOGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp KILOGRAMphp_PERphp_CUBICphp_DECIMETERphp php php php=php php'KILOGRAMphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp KILOGRAMphp_PERphp_CUBICphp_METERphp php php php php php php php=php php'KILOGRAMphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp KILOGRAMphp_PERphp_CUBICphp_MILLIMETERphp php php=php php'KILOGRAMphp_PERphp_CUBICphp_MILLIMETERphp'php;
-php php php php constphp KILOGRAMphp_PERphp_LITERphp php php php php php php php php php php php php php=php php'KILOGRAMphp_PERphp_LITERphp'php;
-php php php php constphp KILOGRAMphp_PERphp_MILLILITERphp php php php php php php php php=php php'KILOGRAMphp_PERphp_MILLILITERphp'php;
-php php php php constphp LEADphp php php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'LEADphp'php;
-php php php php constphp MEGAGRAMphp_PERphp_CUBICphp_CENTIMETERphp php php=php php'MEGAGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp MEGAGRAMphp_PERphp_CUBICphp_DECIMETERphp php php php=php php'MEGAGRAMphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp MEGAGRAMphp_PERphp_CUBICphp_METERphp php php php php php php php=php php'MEGAGRAMphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp MEGAGRAMphp_PERphp_LITERphp php php php php php php php php php php php php php=php php'MEGAGRAMphp_PERphp_LITERphp'php;
-php php php php constphp MEGAGRAMphp_PERphp_MILLILITERphp php php php php php php php php=php php'MEGAGRAMphp_PERphp_MILLILITERphp'php;
-php php php php constphp MICROGRAMphp_PERphp_CUBICphp_CENTIMETERphp php=php php'MICROGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp MICROGRAMphp_PERphp_CUBICphp_DECIMETERphp php php=php php'MICROGRAMphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp MICROGRAMphp_PERphp_CUBICphp_METERphp php php php php php php=php php'MICROGRAMphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp MICROGRAMphp_PERphp_LITERphp php php php php php php php php php php php php=php php'MICROGRAMphp_PERphp_LITERphp'php;
-php php php php constphp MICROGRAMphp_PERphp_MILLILITERphp php php php php php php php=php php'MICROGRAMphp_PERphp_MILLILITERphp'php;
-php php php php constphp MILLIGRAMphp_PERphp_CUBICphp_CENTIMETERphp php=php php'MILLIGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp MILLIGRAMphp_PERphp_CUBICphp_DECIMETERphp php php=php php'MILLIGRAMphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp MILLIGRAMphp_PERphp_CUBICphp_METERphp php php php php php php=php php'MILLIGRAMphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp MILLIGRAMphp_PERphp_LITERphp php php php php php php php php php php php php=php php'MILLIGRAMphp_PERphp_LITERphp'php;
-php php php php constphp MILLIGRAMphp_PERphp_MILLILITERphp php php php php php php php=php php'MILLIGRAMphp_PERphp_MILLILITERphp'php;
-php php php php constphp OUNCEphp_PERphp_CUBICphp_FOOTphp php php php php php php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_FOOTphp'php;
-php php php php constphp OUNCRphp_PERphp_CUBICphp_FOOTphp_TROYphp php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_FOOTphp_TROYphp'php;
-php php php php constphp OUNCEphp_PERphp_CUBICphp_INCHphp php php php php php php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_INCHphp'php;
-php php php php constphp OUNCEphp_PERphp_CUBICphp_INCHphp_TROYphp php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_INCHphp_TROYphp'php;
-php php php php constphp OUNCEphp_PERphp_CUBICphp_YARDphp php php php php php php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_YARDphp'php;
-php php php php constphp OUNCEphp_PERphp_CUBICphp_YARDphp_TROYphp php php php php php php=php php'OUNCEphp_PERphp_CUBICphp_YARDphp_TROYphp'php;
-php php php php constphp OUNCEphp_PERphp_GALLONphp php php php php php php php php php php php php php php php=php php'OUNCEphp_PERphp_GALLONphp'php;
-php php php php constphp OUNCEphp_PERphp_GALLONphp_USphp php php php php php php php php php php php php=php php'OUNCEphp_PERphp_GALLONphp_USphp'php;
-php php php php constphp OUNCEphp_PERphp_GALLONphp_TROYphp php php php php php php php php php php=php php'OUNCEphp_PERphp_GALLONphp_TROYphp'php;
-php php php php constphp OUNCEphp_PERphp_GALLONphp_USphp_TROYphp php php php php php php php=php php'OUNCEphp_PERphp_GALLONphp_USphp_TROYphp'php;
-php php php php constphp POUNDphp_PERphp_CIRCULARphp_MILphp_FOOTphp php php php php=php php'POUNDphp_PERphp_CIRCULARphp_MILphp_FOOTphp'php;
-php php php php constphp POUNDphp_PERphp_CUBICphp_FOOTphp php php php php php php php php php php php=php php'POUNDphp_PERphp_CUBICphp_FOOTphp'php;
-php php php php constphp POUNDphp_PERphp_CUBICphp_INCHphp php php php php php php php php php php php=php php'POUNDphp_PERphp_CUBICphp_INCHphp'php;
-php php php php constphp POUNDphp_PERphp_CUBICphp_YARDphp php php php php php php php php php php php=php php'POUNDphp_PERphp_CUBICphp_YARDphp'php;
-php php php php constphp POUNDphp_PERphp_GALLONphp php php php php php php php php php php php php php php php=php php'POUNDphp_PERphp_GALLONphp'php;
-php php php php constphp POUNDphp_PERphp_KILOGALLONphp php php php php php php php php php php php=php php'POUNDphp_PERphp_KILOGALLONphp'php;
-php php php php constphp POUNDphp_PERphp_MEGAGALLONphp php php php php php php php php php php php=php php'POUNDphp_PERphp_MEGAGALLONphp'php;
-php php php php constphp POUNDphp_PERphp_GALLONphp_USphp php php php php php php php php php php php php=php php'POUNDphp_PERphp_GALLONphp_USphp'php;
-php php php php constphp POUNDphp_PERphp_KILOGALLONphp_USphp php php php php php php php php=php php'POUNDphp_PERphp_KILOGALLONphp_USphp'php;
-php php php php constphp POUNDphp_PERphp_MEGAGALLONphp_USphp php php php php php php php php=php php'POUNDphp_PERphp_MEGAGALLONphp_USphp'php;
-php php php php constphp SILVERphp php php php php php php php php php php php php php php php php php php php php php php php php php=php php'SILVERphp'php;
-php php php php constphp SLUGphp_PERphp_CUBICphp_FOOTphp php php php php php php php php php php php php=php php'SLUGphp_PERphp_CUBICphp_FOOTphp'php;
-php php php php constphp SLUGphp_PERphp_CUBICphp_INCHphp php php php php php php php php php php php php=php php'SLUGphp_PERphp_CUBICphp_INCHphp'php;
-php php php php constphp SLUGphp_PERphp_CUBICphp_YARDphp php php php php php php php php php php php php=php php'SLUGphp_PERphp_CUBICphp_YARDphp'php;
-php php php php constphp SLUGphp_PERphp_GALLONphp php php php php php php php php php php php php php php php php=php php'SLUGphp_PERphp_GALLONphp'php;
-php php php php constphp SLUGphp_PERphp_GALLONphp_USphp php php php php php php php php php php php php php=php php'SLUGphp_PERphp_GALLONphp_USphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_FOOTphp_LONGphp php php php php php php php php=php php'TONphp_PERphp_CUBICphp_FOOTphp_LONGphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_FOOTphp php php php php php php php php php php php php php=php php'TONphp_PERphp_CUBICphp_FOOTphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_INCHphp_LONGphp php php php php php php php php=php php'TONphp_PERphp_CUBICphp_INCHphp_LONGphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_INCHphp php php php php php php php php php php php php php=php php'TONphp_PERphp_CUBICphp_INCHphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_YARDphp_LONGphp php php php php php php php php=php php'TONphp_PERphp_CUBICphp_YARDphp_LONGphp'php;
-php php php php constphp TONphp_PERphp_CUBICphp_YARDphp php php php php php php php php php php php php php=php php'TONphp_PERphp_CUBICphp_YARDphp'php;
-php php php php constphp TONphp_PERphp_GALLONphp_LONGphp php php php php php php php php php php php php=php php'TONphp_PERphp_GALLONphp_LONGphp'php;
-php php php php constphp TONphp_PERphp_GALLONphp_USphp_LONGphp php php php php php php php php php=php php'TONphp_PERphp_GALLONphp_USphp_LONGphp'php;
-php php php php constphp TONphp_PERphp_GALLONphp php php php php php php php php php php php php php php php php php=php php'TONphp_PERphp_GALLONphp'php;
-php php php php constphp TONphp_PERphp_GALLONphp_USphp php php php php php php php php php php php php php php=php php'TONphp_PERphp_GALLONphp_USphp'php;
-php php php php constphp TONNEphp_PERphp_CUBICphp_CENTIMETERphp php php php php php=php php'TONNEphp_PERphp_CUBICphp_CENTIMETERphp'php;
-php php php php constphp TONNEphp_PERphp_CUBICphp_DECIMETERphp php php php php php php=php php'TONNEphp_PERphp_CUBICphp_DECIMETERphp'php;
-php php php php constphp TONNEphp_PERphp_CUBICphp_METERphp php php php php php php php php php php=php php'TONNEphp_PERphp_CUBICphp_METERphp'php;
-php php php php constphp TONNEphp_PERphp_LITERphp php php php php php php php php php php php php php php php php=php php'TONNEphp_PERphp_LITERphp'php;
-php php php php constphp TONNEphp_PERphp_MILLILITERphp php php php php php php php php php php php=php php'TONNEphp_PERphp_MILLILITERphp'php;
-php php php php constphp WATERphp php php php php php php php php php php php php php php php php php php php php php php php php php php=php php'WATERphp'php;
+    const ALUMINIUM                      = 'ALUMINIUM';
+    const COPPER                         = 'COPPER';
+    const GOLD                           = 'GOLD';
+    const GRAIN_PER_CUBIC_FOOT           = 'GRAIN_PER_CUBIC_FOOT';
+    const GRAIN_PER_CUBIC_INCH           = 'GRAIN_PER_CUBIC_INCH';
+    const GRAIN_PER_CUBIC_YARD           = 'GRAIN_PER_CUBIC_YARD';
+    const GRAIN_PER_GALLON               = 'GRAIN_PER_GALLON';
+    const GRAIN_PER_GALLON_US            = 'GRAIN_PER_GALLON_US';
+    const GRAM_PER_CUBIC_CENTIMETER      = 'GRAM_PER_CUBIC_CENTIMETER';
+    const GRAM_PER_CUBIC_DECIMETER       = 'GRAM_PER_CUBIC_DECIMETER';
+    const GRAM_PER_CUBIC_METER           = 'GRAM_PER_CUBIC_METER';
+    const GRAM_PER_LITER                 = 'GRAM_PER_LITER';
+    const GRAM_PER_MILLILITER            = 'GRAM_PER_MILLILITER';
+    const IRON                           = 'IRON';
+    const KILOGRAM_PER_CUBIC_CENTIMETER  = 'KILOGRAM_PER_CUBIC_CENTIMETER';
+    const KILOGRAM_PER_CUBIC_DECIMETER   = 'KILOGRAM_PER_CUBIC_DECIMETER';
+    const KILOGRAM_PER_CUBIC_METER       = 'KILOGRAM_PER_CUBIC_METER';
+    const KILOGRAM_PER_CUBIC_MILLIMETER  = 'KILOGRAM_PER_CUBIC_MILLIMETER';
+    const KILOGRAM_PER_LITER             = 'KILOGRAM_PER_LITER';
+    const KILOGRAM_PER_MILLILITER        = 'KILOGRAM_PER_MILLILITER';
+    const LEAD                           = 'LEAD';
+    const MEGAGRAM_PER_CUBIC_CENTIMETER  = 'MEGAGRAM_PER_CUBIC_CENTIMETER';
+    const MEGAGRAM_PER_CUBIC_DECIMETER   = 'MEGAGRAM_PER_CUBIC_DECIMETER';
+    const MEGAGRAM_PER_CUBIC_METER       = 'MEGAGRAM_PER_CUBIC_METER';
+    const MEGAGRAM_PER_LITER             = 'MEGAGRAM_PER_LITER';
+    const MEGAGRAM_PER_MILLILITER        = 'MEGAGRAM_PER_MILLILITER';
+    const MICROGRAM_PER_CUBIC_CENTIMETER = 'MICROGRAM_PER_CUBIC_CENTIMETER';
+    const MICROGRAM_PER_CUBIC_DECIMETER  = 'MICROGRAM_PER_CUBIC_DECIMETER';
+    const MICROGRAM_PER_CUBIC_METER      = 'MICROGRAM_PER_CUBIC_METER';
+    const MICROGRAM_PER_LITER            = 'MICROGRAM_PER_LITER';
+    const MICROGRAM_PER_MILLILITER       = 'MICROGRAM_PER_MILLILITER';
+    const MILLIGRAM_PER_CUBIC_CENTIMETER = 'MILLIGRAM_PER_CUBIC_CENTIMETER';
+    const MILLIGRAM_PER_CUBIC_DECIMETER  = 'MILLIGRAM_PER_CUBIC_DECIMETER';
+    const MILLIGRAM_PER_CUBIC_METER      = 'MILLIGRAM_PER_CUBIC_METER';
+    const MILLIGRAM_PER_LITER            = 'MILLIGRAM_PER_LITER';
+    const MILLIGRAM_PER_MILLILITER       = 'MILLIGRAM_PER_MILLILITER';
+    const OUNCE_PER_CUBIC_FOOT           = 'OUNCE_PER_CUBIC_FOOT';
+    const OUNCR_PER_CUBIC_FOOT_TROY      = 'OUNCE_PER_CUBIC_FOOT_TROY';
+    const OUNCE_PER_CUBIC_INCH           = 'OUNCE_PER_CUBIC_INCH';
+    const OUNCE_PER_CUBIC_INCH_TROY      = 'OUNCE_PER_CUBIC_INCH_TROY';
+    const OUNCE_PER_CUBIC_YARD           = 'OUNCE_PER_CUBIC_YARD';
+    const OUNCE_PER_CUBIC_YARD_TROY      = 'OUNCE_PER_CUBIC_YARD_TROY';
+    const OUNCE_PER_GALLON               = 'OUNCE_PER_GALLON';
+    const OUNCE_PER_GALLON_US            = 'OUNCE_PER_GALLON_US';
+    const OUNCE_PER_GALLON_TROY          = 'OUNCE_PER_GALLON_TROY';
+    const OUNCE_PER_GALLON_US_TROY       = 'OUNCE_PER_GALLON_US_TROY';
+    const POUND_PER_CIRCULAR_MIL_FOOT    = 'POUND_PER_CIRCULAR_MIL_FOOT';
+    const POUND_PER_CUBIC_FOOT           = 'POUND_PER_CUBIC_FOOT';
+    const POUND_PER_CUBIC_INCH           = 'POUND_PER_CUBIC_INCH';
+    const POUND_PER_CUBIC_YARD           = 'POUND_PER_CUBIC_YARD';
+    const POUND_PER_GALLON               = 'POUND_PER_GALLON';
+    const POUND_PER_KILOGALLON           = 'POUND_PER_KILOGALLON';
+    const POUND_PER_MEGAGALLON           = 'POUND_PER_MEGAGALLON';
+    const POUND_PER_GALLON_US            = 'POUND_PER_GALLON_US';
+    const POUND_PER_KILOGALLON_US        = 'POUND_PER_KILOGALLON_US';
+    const POUND_PER_MEGAGALLON_US        = 'POUND_PER_MEGAGALLON_US';
+    const SILVER                         = 'SILVER';
+    const SLUG_PER_CUBIC_FOOT            = 'SLUG_PER_CUBIC_FOOT';
+    const SLUG_PER_CUBIC_INCH            = 'SLUG_PER_CUBIC_INCH';
+    const SLUG_PER_CUBIC_YARD            = 'SLUG_PER_CUBIC_YARD';
+    const SLUG_PER_GALLON                = 'SLUG_PER_GALLON';
+    const SLUG_PER_GALLON_US             = 'SLUG_PER_GALLON_US';
+    const TON_PER_CUBIC_FOOT_LONG        = 'TON_PER_CUBIC_FOOT_LONG';
+    const TON_PER_CUBIC_FOOT             = 'TON_PER_CUBIC_FOOT';
+    const TON_PER_CUBIC_INCH_LONG        = 'TON_PER_CUBIC_INCH_LONG';
+    const TON_PER_CUBIC_INCH             = 'TON_PER_CUBIC_INCH';
+    const TON_PER_CUBIC_YARD_LONG        = 'TON_PER_CUBIC_YARD_LONG';
+    const TON_PER_CUBIC_YARD             = 'TON_PER_CUBIC_YARD';
+    const TON_PER_GALLON_LONG            = 'TON_PER_GALLON_LONG';
+    const TON_PER_GALLON_US_LONG         = 'TON_PER_GALLON_US_LONG';
+    const TON_PER_GALLON                 = 'TON_PER_GALLON';
+    const TON_PER_GALLON_US              = 'TON_PER_GALLON_US';
+    const TONNE_PER_CUBIC_CENTIMETER     = 'TONNE_PER_CUBIC_CENTIMETER';
+    const TONNE_PER_CUBIC_DECIMETER      = 'TONNE_PER_CUBIC_DECIMETER';
+    const TONNE_PER_CUBIC_METER          = 'TONNE_PER_CUBIC_METER';
+    const TONNE_PER_LITER                = 'TONNE_PER_LITER';
+    const TONNE_PER_MILLILITER           = 'TONNE_PER_MILLILITER';
+    const WATER                          = 'WATER';
 
-php php php php php/php*php*
-php php php php php php*php Calculationsphp forphp allphp densityphp units
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_unitsphp php=php arrayphp(
-php php php php php php php php php'ALUMINIUMphp'php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php2php6php4php3php'php,php php php php php php php php php php php php'aluminiumphp'php)php,
-php php php php php php php php php'COPPERphp'php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php8php9php0php6php'php,php php php php php php php php php php php php'copperphp'php)php,
-php php php php php php php php php'GOLDphp'php php php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php9php3php0php0php'php,php php php php php php php php php php php'goldphp'php)php,
-php php php php php php php php php'GRAINphp_PERphp_CUBICphp_FOOTphp'php php php php php php php=php>php arrayphp(php'php0php.php0php0php2php2php8php8php3php5php1php9php'php,php php php php'grphp/ftphp³php'php)php,
-php php php php php php php php php'GRAINphp_PERphp_CUBICphp_INCHphp'php php php php php php php=php>php arrayphp(php'php3php.php9php5php4php2php7php2php1php'php,php php php php php php php'grphp/inphp³php'php)php,
-php php php php php php php php php'GRAINphp_PERphp_CUBICphp_YARDphp'php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php8php4php7php5php3php7php7php4php'php,php php'grphp/ydphp³php'php)php,
-php php php php php php php php php'GRAINphp_PERphp_GALLONphp'php php php php php php php php php php php=php>php arrayphp(php'php0php.php0php1php4php2php5php3php7php6php8php'php,php php php php php'grphp/galphp'php)php,
-php php php php php php php php php'GRAINphp_PERphp_GALLONphp_USphp'php php php php php php php php=php>php arrayphp(php'php0php.php0php1php7php1php1php8php0php6php1php'php,php php php php php'grphp/galphp'php)php,
-php php php php php php php php php'GRAMphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'gphp/cmphp³php'php)php,
-php php php php php php php php php'GRAMphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php php php'gphp/dmphp³php'php)php,
-php php php php php php php php php'GRAMphp_PERphp_CUBICphp_METERphp'php php php php php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php php php php php php'gphp/mphp³php'php)php,
-php php php php php php php php php'GRAMphp_PERphp_LITERphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php php php'gphp/lphp'php)php,
-php php php php php php php php php'GRAMphp_PERphp_MILLILITERphp'php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'gphp/mlphp'php)php,
-php php php php php php php php php'IRONphp'php php php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php7php6php5php8php'php,php php php php php php php php php php php php'ironphp'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php'kgphp/cmphp³php'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php'kgphp/dmphp³php'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_CUBICphp_METERphp'php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php php php'kgphp/mphp³php'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_CUBICphp_MILLIMETERphp'php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php'php,php php'kgphp/lphp'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_LITERphp'php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'kgphp/mlphp'php)php,
-php php php php php php php php php'KILOGRAMphp_PERphp_MILLILITERphp'php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php php php'kgphp/mlphp'php)php,
-php php php php php php php php php'LEADphp'php php php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php1php3php7php0php'php,php php php php php php php php php php php'leadphp'php)php,
-php php php php php php php php php'MEGAGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php php'Mgphp/cmphp³php'php)php,
-php php php php php php php php php'MEGAGRAMphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php'Mgphp/dmphp³php'php)php,
-php php php php php php php php php'MEGAGRAMphp_PERphp_CUBICphp_METERphp'php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'Mgphp/mphp³php'php)php,
-php php php php php php php php php'MEGAGRAMphp_PERphp_LITERphp'php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php php php'Mgphp/lphp'php)php,
-php php php php php php php php php'MEGAGRAMphp_PERphp_MILLILITERphp'php php php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php php php php php php'Mgphp/mlphp'php)php,
-php php php php php php php php php'MICROGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php'phpµgphp/cmphp³php'php)php,
-php php php php php php php php php'MICROGRAMphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php1php.php0ephp-php6php'php,php php php php php'phpµgphp/dmphp³php'php)php,
-php php php php php php php php php'MICROGRAMphp_PERphp_CUBICphp_METERphp'php php=php>php arrayphp(php'php1php.php0ephp-php9php'php,php php php php php php php php php php'phpµgphp/mphp³php'php)php,
-php php php php php php php php php'MICROGRAMphp_PERphp_LITERphp'php php php php php php php php=php>php arrayphp(php'php1php.php0ephp-php6php'php,php php php php php php php php php php'phpµgphp/lphp'php)php,
-php php php php php php php php php'MICROGRAMphp_PERphp_MILLILITERphp'php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php php php php php php'phpµgphp/mlphp'php)php,
-php php php php php php php php php'MILLIGRAMphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php'mgphp/cmphp³php'php)php,
-php php php php php php php php php'MILLIGRAMphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php'mgphp/dmphp³php'php)php,
-php php php php php php php php php'MILLIGRAMphp_PERphp_CUBICphp_METERphp'php php=php>php arrayphp(php'php0php.php0php0php0php0php0php1php'php,php php php php php php php php'mgphp/mphp³php'php)php,
-php php php php php php php php php'MILLIGRAMphp_PERphp_LITERphp'php php php php php php php php=php>php arrayphp(php'php0php.php0php0php1php'php,php php php php php php php php php php php'mgphp/lphp'php)php,
-php php php php php php php php php'MILLIGRAMphp_PERphp_MILLILITERphp'php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php php php'mgphp/mlphp'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_FOOTphp'php php php php php php php=php>php arrayphp(php'php1php.php0php0php1php1php5php4php'php,php php php php php php php php'ozphp/ftphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_FOOTphp_TROYphp'php php=php>php arrayphp(php'php1php.php0php9php8php4php0php8php9php'php,php php php php php php php'ozphp/ftphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_INCHphp'php php php php php php php=php>php arrayphp(php'php1php7php2php9php.php9php9php4php'php,php php php php php php php php'ozphp/inphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_INCHphp_TROYphp'php php=php>php arrayphp(php'php1php8php9php8php.php0php5php0php6php'php,php php php php php php php'ozphp/inphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_YARDphp'php php php php php php php=php>php arrayphp(php'php0php.php0php3php7php0php7php9php7php7php6php'php,php php php php php'ozphp/ydphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_CUBICphp_YARDphp_TROYphp'php php=php>php arrayphp(php'php0php.php0php4php0php6php8php1php8php1php2php'php,php php php php php'ozphp/ydphp³php'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_GALLONphp'php php php php php php php php php php php=php>php arrayphp(php'php6php.php2php3php6php0php2php3php3php'php,php php php php php php php'ozphp/galphp'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_GALLONphp_USphp'php php php php php php php php=php>php arrayphp(php'php7php.php4php8php9php1php5php1php7php'php,php php php php php php php'ozphp/galphp'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_GALLONphp_TROYphp'php php php php php php=php>php arrayphp(php'php6php.php8php4php1php8php0php8php4php'php,php php php php php php php'ozphp/galphp'php)php,
-php php php php php php php php php'OUNCEphp_PERphp_GALLONphp_USphp_TROYphp'php php php=php>php arrayphp(php'php8php.php2php1php6php6php6php9php3php'php,php php php php php php php'ozphp/galphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_CIRCULARphp_MILphp_FOOTphp'php php=php>php arrayphp(php'php2php.php9php3php6php9php2php9php1php'php,php php php php php'lbphp/cmilphp ftphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_CUBICphp_FOOTphp'php php php php php php php=php>php arrayphp(php'php1php6php.php0php1php8php4php6php3php'php,php php php php php php php'lbphp/inphp³php'php)php,
-php php php php php php php php php'POUNDphp_PERphp_CUBICphp_INCHphp'php php php php php php php=php>php arrayphp(php'php2php7php6php7php9php.php9php0php5php'php,php php php php php php php'lbphp/inphp³php'php)php,
-php php php php php php php php php'POUNDphp_PERphp_CUBICphp_YARDphp'php php php php php php php=php>php arrayphp(php'php0php.php5php9php3php2php7php6php4php2php'php,php php php php php php'lbphp/ydphp³php'php)php,
-php php php php php php php php php'POUNDphp_PERphp_GALLONphp'php php php php php php php php php php php=php>php arrayphp(php'php9php9php.php7php7php6php3php7php3php'php,php php php php php php php'lbphp/galphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_KILOGALLONphp'php php php php php php php=php>php arrayphp(php'php0php.php0php9php9php7php7php6php3php7php3php'php,php php php php php'lbphp/kgalphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_MEGAGALLONphp'php php php php php php php=php>php arrayphp(php'php0php.php0php0php0php0php9php9php7php7php6php3php7php3php'php,php php'lbphp/Mgalphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_GALLONphp_USphp'php php php php php php php php=php>php arrayphp(php'php1php1php9php.php8php2php6php4php3php'php,php php php php php php php'lbphp/galphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_KILOGALLONphp_USphp'php php php php=php>php arrayphp(php'php0php.php1php1php9php8php2php6php4php3php'php,php php php php php php'lbphp/kgalphp'php)php,
-php php php php php php php php php'POUNDphp_PERphp_MEGAGALLONphp_USphp'php php php php=php>php arrayphp(php'php0php.php0php0php0php1php1php9php8php2php6php4php3php'php,php php php'lbphp/Mgalphp'php)php,
-php php php php php php php php php'SILVERphp'php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php5php1php0php'php,php php php php php php php php php php php'silverphp'php)php,
-php php php php php php php php php'SLUGphp_PERphp_CUBICphp_FOOTphp'php php php php php php php php=php>php arrayphp(php'php5php1php5php.php3php7php8php8php2php'php,php php php php php php php'slugphp/ftphp³php'php)php,
-php php php php php php php php php'SLUGphp_PERphp_CUBICphp_INCHphp'php php php php php php php php=php>php arrayphp(php'php8php9php0php5php7php4php.php6php'php,php php php php php php php php'slugphp/inphp³php'php)php,
-php php php php php php php php php'SLUGphp_PERphp_CUBICphp_YARDphp'php php php php php php php php=php>php arrayphp(php'php1php9php.php0php8php8php1php0php4php'php,php php php php php php php'slugphp/ydphp³php'php)php,
-php php php php php php php php php'SLUGphp_PERphp_GALLONphp'php php php php php php php php php php php php=php>php arrayphp(php'php3php2php1php0php.php2php0php9php9php'php,php php php php php php php'slugphp/galphp'php)php,
-php php php php php php php php php'SLUGphp_PERphp_GALLONphp_USphp'php php php php php php php php php=php>php arrayphp(php'php3php8php5php5php.php3php0php1php3php'php,php php php php php php php'slugphp/galphp'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_FOOTphp_LONGphp'php php php php=php>php arrayphp(php'php3php5php8php8php1php.php3php5php8php'php,php php php php php php php'tphp/ftphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_FOOTphp'php php php php php php php php php=php>php arrayphp(php'php3php2php0php3php6php.php9php2php7php'php,php php php php php php php'tphp/ftphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_INCHphp_LONGphp'php php php php=php>php arrayphp(php'php6php.php2php2php0php2php9php8php7ephp+php7php'php,php php php php'tphp/inphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_INCHphp'php php php php php php php php php=php>php arrayphp(php'php5php.php5php3php5php9php8php0php9ephp+php7php'php,php php php php'tphp/inphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_YARDphp_LONGphp'php php php php=php>php arrayphp(php'php1php3php2php8php.php9php3php9php2php'php,php php php php php php php'tphp/ydphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_CUBICphp_YARDphp'php php php php php php php php php=php>php arrayphp(php'php1php1php8php6php.php5php5php2php8php'php,php php php php php php php'tphp/ydphp³php'php)php,
-php php php php php php php php php'TONphp_PERphp_GALLONphp_LONGphp'php php php php php php php php=php>php arrayphp(php'php2php2php3php4php9php9php.php0php7php'php,php php php php php php php'tphp/galphp'php)php,
-php php php php php php php php php'TONphp_PERphp_GALLONphp_USphp_LONGphp'php php php php php=php>php arrayphp(php'php2php6php8php4php1php1php.php2php'php,php php php php php php php php'tphp/galphp'php)php,
-php php php php php php php php php'TONphp_PERphp_GALLONphp'php php php php php php php php php php php php php=php>php arrayphp(php'php1php9php9php5php2php2php.php7php5php'php,php php php php php php php'tphp/galphp'php)php,
-php php php php php php php php php'TONphp_PERphp_GALLONphp_USphp'php php php php php php php php php php=php>php arrayphp(php'php2php3php9php6php5php2php.php8php5php'php,php php php php php php php'tphp/galphp'php)php,
-php php php php php php php php php'TONNEphp_PERphp_CUBICphp_CENTIMETERphp'php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php php php php php'tphp/cmphp³php'php)php,
-php php php php php php php php php'TONNEphp_PERphp_CUBICphp_DECIMETERphp'php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php php'tphp/dmphp³php'php)php,
-php php php php php php php php php'TONNEphp_PERphp_CUBICphp_METERphp'php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'tphp/mphp³php'php)php,
-php php php php php php php php php'TONNEphp_PERphp_LITERphp'php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php php php'tphp/lphp'php)php,
-php php php php php php php php php'TONNEphp_PERphp_MILLILITERphp'php php php php php php php=php>php arrayphp(php'php1php.php0ephp+php9php'php,php php php php php php php php php php'tphp/mlphp'php)php,
-php php php php php php php php php'WATERphp'php php php php php php php php php php php php php php php php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php'waterphp'php)php,
-php php php php php php php php php'STANDARDphp'php php php php php php php php php php php php php php php php php php php=php>php php'KILOGRAMphp_PERphp_CUBICphp_METERphp'
-php php php php php)php;
-php}
+    /**
+     * Calculations for all density units
+     *
+     * @var array
+     */
+    protected $_units = array(
+        'ALUMINIUM'                 => array('2643',           'aluminium'),
+        'COPPER'                    => array('8906',           'copper'),
+        'GOLD'                      => array('19300',          'gold'),
+        'GRAIN_PER_CUBIC_FOOT'      => array('0.0022883519',   'gr/ft³'),
+        'GRAIN_PER_CUBIC_INCH'      => array('3.9542721',      'gr/in³'),
+        'GRAIN_PER_CUBIC_YARD'      => array('0.000084753774', 'gr/yd³'),
+        'GRAIN_PER_GALLON'          => array('0.014253768',    'gr/gal'),
+        'GRAIN_PER_GALLON_US'       => array('0.017118061',    'gr/gal'),
+        'GRAM_PER_CUBIC_CENTIMETER' => array('1000',           'g/cm³'),
+        'GRAM_PER_CUBIC_DECIMETER'  => array('1',              'g/dm³'),
+        'GRAM_PER_CUBIC_METER'      => array('0.001',          'g/m³'),
+        'GRAM_PER_LITER'            => array('1',              'g/l'),
+        'GRAM_PER_MILLILITER'       => array('1000',           'g/ml'),
+        'IRON'                      => array('7658',           'iron'),
+        'KILOGRAM_PER_CUBIC_CENTIMETER' => array('1000000',    'kg/cm³'),
+        'KILOGRAM_PER_CUBIC_DECIMETER'  => array('1000',       'kg/dm³'),
+        'KILOGRAM_PER_CUBIC_METER'  => array('1',              'kg/m³'),
+        'KILOGRAM_PER_CUBIC_MILLIMETER' => array('1000000000', 'kg/l'),
+        'KILOGRAM_PER_LITER'        => array('1000',           'kg/ml'),
+        'KILOGRAM_PER_MILLILITER'   => array('1000000',        'kg/ml'),
+        'LEAD'                      => array('11370',          'lead'),
+        'MEGAGRAM_PER_CUBIC_CENTIMETER' => array('1.0e+9',     'Mg/cm³'),
+        'MEGAGRAM_PER_CUBIC_DECIMETER'  => array('1000000',    'Mg/dm³'),
+        'MEGAGRAM_PER_CUBIC_METER'  => array('1000',           'Mg/m³'),
+        'MEGAGRAM_PER_LITER'        => array('1000000',        'Mg/l'),
+        'MEGAGRAM_PER_MILLILITER'   => array('1.0e+9',         'Mg/ml'),
+        'MICROGRAM_PER_CUBIC_CENTIMETER' => array('0.001',     'µg/cm³'),
+        'MICROGRAM_PER_CUBIC_DECIMETER'  => array('1.0e-6',    'µg/dm³'),
+        'MICROGRAM_PER_CUBIC_METER' => array('1.0e-9',         'µg/m³'),
+        'MICROGRAM_PER_LITER'       => array('1.0e-6',         'µg/l'),
+        'MICROGRAM_PER_MILLILITER'  => array('0.001',          'µg/ml'),
+        'MILLIGRAM_PER_CUBIC_CENTIMETER' => array('1',         'mg/cm³'),
+        'MILLIGRAM_PER_CUBIC_DECIMETER'  => array('0.001',     'mg/dm³'),
+        'MILLIGRAM_PER_CUBIC_METER' => array('0.000001',       'mg/m³'),
+        'MILLIGRAM_PER_LITER'       => array('0.001',          'mg/l'),
+        'MILLIGRAM_PER_MILLILITER'  => array('1',              'mg/ml'),
+        'OUNCE_PER_CUBIC_FOOT'      => array('1.001154',       'oz/ft³'),
+        'OUNCE_PER_CUBIC_FOOT_TROY' => array('1.0984089',      'oz/ft³'),
+        'OUNCE_PER_CUBIC_INCH'      => array('1729.994',       'oz/in³'),
+        'OUNCE_PER_CUBIC_INCH_TROY' => array('1898.0506',      'oz/in³'),
+        'OUNCE_PER_CUBIC_YARD'      => array('0.037079776',    'oz/yd³'),
+        'OUNCE_PER_CUBIC_YARD_TROY' => array('0.040681812',    'oz/yd³'),
+        'OUNCE_PER_GALLON'          => array('6.2360233',      'oz/gal'),
+        'OUNCE_PER_GALLON_US'       => array('7.4891517',      'oz/gal'),
+        'OUNCE_PER_GALLON_TROY'     => array('6.8418084',      'oz/gal'),
+        'OUNCE_PER_GALLON_US_TROY'  => array('8.2166693',      'oz/gal'),
+        'POUND_PER_CIRCULAR_MIL_FOOT' => array('2.9369291',    'lb/cmil ft'),
+        'POUND_PER_CUBIC_FOOT'      => array('16.018463',      'lb/in³'),
+        'POUND_PER_CUBIC_INCH'      => array('27679.905',      'lb/in³'),
+        'POUND_PER_CUBIC_YARD'      => array('0.59327642',     'lb/yd³'),
+        'POUND_PER_GALLON'          => array('99.776373',      'lb/gal'),
+        'POUND_PER_KILOGALLON'      => array('0.099776373',    'lb/kgal'),
+        'POUND_PER_MEGAGALLON'      => array('0.000099776373', 'lb/Mgal'),
+        'POUND_PER_GALLON_US'       => array('119.82643',      'lb/gal'),
+        'POUND_PER_KILOGALLON_US'   => array('0.11982643',     'lb/kgal'),
+        'POUND_PER_MEGAGALLON_US'   => array('0.00011982643',  'lb/Mgal'),
+        'SILVER'                    => array('10510',          'silver'),
+        'SLUG_PER_CUBIC_FOOT'       => array('515.37882',      'slug/ft³'),
+        'SLUG_PER_CUBIC_INCH'       => array('890574.6',       'slug/in³'),
+        'SLUG_PER_CUBIC_YARD'       => array('19.088104',      'slug/yd³'),
+        'SLUG_PER_GALLON'           => array('3210.2099',      'slug/gal'),
+        'SLUG_PER_GALLON_US'        => array('3855.3013',      'slug/gal'),
+        'TON_PER_CUBIC_FOOT_LONG'   => array('35881.358',      't/ft³'),
+        'TON_PER_CUBIC_FOOT'        => array('32036.927',      't/ft³'),
+        'TON_PER_CUBIC_INCH_LONG'   => array('6.2202987e+7',   't/in³'),
+        'TON_PER_CUBIC_INCH'        => array('5.5359809e+7',   't/in³'),
+        'TON_PER_CUBIC_YARD_LONG'   => array('1328.9392',      't/yd³'),
+        'TON_PER_CUBIC_YARD'        => array('1186.5528',      't/yd³'),
+        'TON_PER_GALLON_LONG'       => array('223499.07',      't/gal'),
+        'TON_PER_GALLON_US_LONG'    => array('268411.2',       't/gal'),
+        'TON_PER_GALLON'            => array('199522.75',      't/gal'),
+        'TON_PER_GALLON_US'         => array('239652.85',      't/gal'),
+        'TONNE_PER_CUBIC_CENTIMETER' => array('1.0e+9',        't/cm³'),
+        'TONNE_PER_CUBIC_DECIMETER'  => array('1000000',       't/dm³'),
+        'TONNE_PER_CUBIC_METER'     => array('1000',           't/m³'),
+        'TONNE_PER_LITER'           => array('1000000',        't/l'),
+        'TONNE_PER_MILLILITER'      => array('1.0e+9',         't/ml'),
+        'WATER'                     => array('1000',           'water'),
+        'STANDARD'                  => 'KILOGRAM_PER_CUBIC_METER'
+    );
+}

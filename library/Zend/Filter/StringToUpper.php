@@ -1,121 +1,121 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php StringToUpperphp.phpphp php2php2php7php9php0php php2php0php1php0php-php0php8php-php0php3php php1php9php:php1php6php:php3php3Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: StringToUpper.php 22790 2010-08-03 19:16:33Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_StringToUpperphp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Encodingphp forphp thephp inputphp string
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_encodingphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_StringToUpper implements Zend_Filter_Interface
+{
+    /**
+     * Encoding for the input string
+     *
+     * @var string
+     */
+    protected $_encoding = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$optionsphp OPTIONAL
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php php php php php php$tempphp php php php php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$tempphp[php'encodingphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
-php php php php php php php php php}
+    /**
+     * Constructor
+     *
+     * @param string|array $options OPTIONAL
+     */
+    public function __construct($options = null)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } else if (!is_array($options)) {
+            $options = func_get_args();
+            $temp    = array();
+            if (!empty($options)) {
+                $temp['encoding'] = array_shift($options);
+            }
+            $options = $temp;
+        }
 
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'encodingphp'php,php php$optionsphp)php php&php&php functionphp_existsphp(php'mbphp_internalphp_encodingphp'php)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'encodingphp'php]php php=php mbphp_internalphp_encodingphp(php)php;
-php php php php php php php php php}
+        if (!array_key_exists('encoding', $options) && function_exists('mb_internal_encoding')) {
+            $options['encoding'] = mb_internal_encoding();
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'encodingphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setEncodingphp(php$optionsphp[php'encodingphp'php]php)php;
-php php php php php php php php php}
-php php php php php}
+        if (array_key_exists('encoding', $options)) {
+            $this->setEncoding($options['encoding']);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp encoding
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getEncodingphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_encodingphp;
-php php php php php}
+    /**
+     * Returns the set encoding
+     *
+     * @return string
+     */
+    public function getEncoding()
+    {
+        return $this->_encoding;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp inputphp encodingphp forphp thephp givenphp string
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$encoding
-php php php php php php*php php@returnphp Zendphp_Filterphp_StringToUpperphp Providesphp aphp fluentphp interface
-php php php php php php*php php@throwsphp Zendphp_Filterphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setEncodingphp(php$encodingphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$encodingphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php!functionphp_existsphp(php'mbphp_strtoupperphp'php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'mbstringphp isphp requiredphp forphp thisphp featurephp'php)php;
-php php php php php php php php php php php php php}
+    /**
+     * Set the input encoding for the given string
+     *
+     * @param  string $encoding
+     * @return Zend_Filter_StringToUpper Provides a fluent interface
+     * @throws Zend_Filter_Exception
+     */
+    public function setEncoding($encoding = null)
+    {
+        if ($encoding !== null) {
+            if (!function_exists('mb_strtoupper')) {
+                require_once 'Zend/Filter/Exception.php';
+                throw new Zend_Filter_Exception('mbstring is required for this feature');
+            }
 
-php php php php php php php php php php php php php$encodingphp php=php php(stringphp)php php$encodingphp;
-php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(strtolowerphp(php$encodingphp)php,php arrayphp_mapphp(php'strtolowerphp'php,php mbphp_listphp_encodingsphp(php)php)php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php"Thephp givenphp encodingphp php'php$encodingphp'php isphp notphp supportedphp byphp mbstringphp"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            $encoding = (string) $encoding;
+            if (!in_array(strtolower($encoding), array_map('strtolower', mb_list_encodings()))) {
+                require_once 'Zend/Filter/Exception.php';
+                throw new Zend_Filter_Exception("The given encoding '$encoding' is not supported by mbstring");
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_encodingphp php=php php$encodingphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_encoding = $encoding;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Returnsphp thephp stringphp php$valuephp,php convertingphp charactersphp tophp uppercasephp asphp necessary
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_encodingphp)php php{
-php php php php php php php php php php php php returnphp mbphp_strtoupperphp(php(stringphp)php php$valuephp,php php$thisphp-php>php_encodingphp)php;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Returns the string $value, converting characters to uppercase as necessary
+     *
+     * @param  string $value
+     * @return string
+     */
+    public function filter($value)
+    {
+        if ($this->_encoding) {
+            return mb_strtoupper((string) $value, $this->_encoding);
+        }
 
-php php php php php php php php returnphp strtoupperphp(php(stringphp)php php$valuephp)php;
-php php php php php}
-php}
+        return strtoupper((string) $value);
+    }
+}

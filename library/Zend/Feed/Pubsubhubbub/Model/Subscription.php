@@ -1,135 +1,135 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
-php php*php php@subpackagephp Entity
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Subscriptionphp.phpphp php2php2php5php0php7php php2php0php1php0php-php0php6php-php3php0php php1php9php:php1php1php:php2php7Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Pubsubhubbub
+ * @subpackage Entity
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Subscription.php 22507 2010-06-30 19:11:27Z ramon $
+ */
 
-php/php*php*php php@seephp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_ModelAbstractphp php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Modelphp/ModelAbstractphp.phpphp'php;
+/** @see Zend_Feed_Pubsubhubbub_Model_ModelAbstract */
+require_once 'Zend/Feed/Pubsubhubbub/Model/ModelAbstract.php';
 
-php/php*php*php php@seephp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterfacephp php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Modelphp/SubscriptionInterfacephp.phpphp'php;
+/** @see Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface */
+require_once 'Zend/Feed/Pubsubhubbub/Model/SubscriptionInterface.php';
 
-php/php*php*php php@seephp Zendphp_Datephp php*php/
-requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
+/** @see Zend_Date */
+require_once 'Zend/Date.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Pubsubhubbub
-php php*php php@subpackagephp Entity
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_Subscription
-php php php php extendsphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_ModelAbstract
-php php php php implementsphp Zendphp_Feedphp_Pubsubhubbubphp_Modelphp_SubscriptionInterface
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Pubsubhubbub
+ * @subpackage Entity
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Pubsubhubbub_Model_Subscription
+    extends Zend_Feed_Pubsubhubbub_Model_ModelAbstract
+    implements Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+{
 
-php php php php php/php*php*
-php php php php php php*php Savephp subscriptionphp tophp RDMBS
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$data
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp setSubscriptionphp(arrayphp php$dataphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$dataphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'IDphp mustphp bephp setphp beforephp attemptingphp aphp savephp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_dbphp-php>findphp(php$dataphp[php'idphp'php]php)php;
-php php php php php php php php ifphp php(countphp(php$resultphp)php)php php{
-php php php php php php php php php php php php php$dataphp[php'createdphp_timephp'php]php php=php php$resultphp-php>currentphp(php)php-php>createdphp_timephp;
-php php php php php php php php php php php php php$nowphp php=php newphp Zendphp_Datephp;
-php php php php php php php php php php php php ifphp php(issetphp(php$dataphp[php'leasephp_secondsphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$dataphp[php'expirationphp_timephp'php]php php=php php$nowphp-php>addphp(php$dataphp[php'leasephp_secondsphp'php]php,php Zendphp_Datephp:php:SECONDphp)
-php php php php php php php php php php php php php php php php php-php>getphp(php'yyyyphp-MMphp-ddphp HHphp:mmphp:ssphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>updatephp(
-php php php php php php php php php php php php php php php php php$dataphp,
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>getAdapterphp(php)php-php>quoteIntophp(php'idphp php=php php?php'php,php php$dataphp[php'idphp'php]php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Save subscription to RDMBS
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function setSubscription(array $data)
+    {
+        if (!isset($data['id'])) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception(
+                'ID must be set before attempting a save'
+            );
+        }
+        $result = $this->_db->find($data['id']);
+        if (count($result)) {
+            $data['created_time'] = $result->current()->created_time;
+            $now = new Zend_Date;
+            if (isset($data['lease_seconds'])) {
+                $data['expiration_time'] = $now->add($data['lease_seconds'], Zend_Date::SECOND)
+                ->get('yyyy-MM-dd HH:mm:ss');
+            }
+            $this->_db->update(
+                $data,
+                $this->_db->getAdapter()->quoteInto('id = ?', $data['id'])
+            );
+            return false;
+        }
 
-php php php php php php php php php$thisphp-php>php_dbphp-php>insertphp(php$dataphp)php;
-php php php php php php php php returnphp truephp;
-php php php php php}
+        $this->_db->insert($data);
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp subscriptionphp byphp IDphp/key
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getSubscriptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$keyphp)php php|php|php php!isphp_stringphp(php$keyphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"keyphp"php'
-php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$keyphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_dbphp-php>findphp(php$keyphp)php;
-php php php php php php php php ifphp php(countphp(php$resultphp)php)php php{
-php php php php php php php php php php php php returnphp php$resultphp-php>currentphp(php)php-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Get subscription by ID/key
+     *
+     * @param  string $key
+     * @return array
+     */
+    public function getSubscription($key)
+    {
+        if (empty($key) || !is_string($key)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
+                .' of "' . $key . '" must be a non-empty string');
+        }
+        $result = $this->_db->find($key);
+        if (count($result)) {
+            return $result->current()->toArray();
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinephp ifphp aphp subscriptionphp matchingphp thephp keyphp exists
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasSubscriptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$keyphp)php php|php|php php!isphp_stringphp(php$keyphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Pubsubhubbubphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Pubsubhubbubphp_Exceptionphp(php'Invalidphp parameterphp php"keyphp"php'
-php php php php php php php php php php php php php php php php php.php'php ofphp php"php'php php.php php$keyphp php.php php'php"php mustphp bephp aphp nonphp-emptyphp stringphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_dbphp-php>findphp(php$keyphp)php;
-php php php php php php php php ifphp php(countphp(php$resultphp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Determine if a subscription matching the key exists
+     *
+     * @param  string $key
+     * @return bool
+     */
+    public function hasSubscription($key)
+    {
+        if (empty($key) || !is_string($key)) {
+            require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
+            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
+                .' of "' . $key . '" must be a non-empty string');
+        }
+        $result = $this->_db->find($key);
+        if (count($result)) {
+            return true;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp subscription
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp deleteSubscriptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_dbphp-php>findphp(php$keyphp)php;
-php php php php php php php php ifphp php(countphp(php$resultphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>deletephp(
-php php php php php php php php php php php php php php php php php$thisphp-php>php_dbphp-php>getAdapterphp(php)php-php>quoteIntophp(php'idphp php=php php?php'php,php php$keyphp)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Delete a subscription
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function deleteSubscription($key)
+    {
+        $result = $this->_db->find($key);
+        if (count($result)) {
+            $this->_db->delete(
+                $this->_db->getAdapter()->quoteInto('id = ?', $key)
+            );
+            return true;
+        }
+        return false;
+    }
 
-php}
+}

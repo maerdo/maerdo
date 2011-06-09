@@ -1,61 +1,61 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Entryphp.phpphp php2php2php3php0php0php php2php0php1php0php-php0php5php-php2php6php php1php0php:php1php3php:php3php4Zphp padraicphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Entry.php 22300 2010-05-26 10:13:34Z padraic $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Reader
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader
+ */
+require_once 'Zend/Feed/Reader.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Entryphp_EntryAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Extensionphp/EntryAbstractphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader_Entry_EntryAbstract
+ */
+require_once 'Zend/Feed/Reader/Extension/EntryAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Readerphp_Extensionphp_Contentphp_Entry
-php php php php extendsphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader_Extension_Content_Entry
+    extends Zend_Feed_Reader_Extension_EntryAbstract
+{
 
-php php php php publicphp functionphp getContentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>getTypephp(php)php php!php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_RSSphp_php1php0
-php php php php php php php php php php php php php&php&php php$thisphp-php>getTypephp(php)php php!php=php=php Zendphp_Feedphp_Readerphp:php:TYPEphp_RSSphp_php0php9php0
-php php php php php php php php php)php php{
-php php php php php php php php php php php php php$contentphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php.php$thisphp-php>getXpathPrefixphp(php)php.php'php/contentphp:encodedphp)php'php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$contentphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php.php$thisphp-php>getXpathPrefixphp(php)php.php'php/contentphp:encodedphp)php'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
+    public function getContent()
+    {
+        if ($this->getType() !== Zend_Feed_Reader::TYPE_RSS_10
+            && $this->getType() !== Zend_Feed_Reader::TYPE_RSS_090
+        ) {
+            $content = $this->_xpath->evaluate('string('.$this->getXpathPrefix().'/content:encoded)');
+        } else {
+            $content = $this->_xpath->evaluate('string('.$this->getXpathPrefix().'/content:encoded)');
+        }
+        return $content;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Registerphp RSSphp Contentphp Modulephp namespace
-php php php php php php*php/
-php php php php protectedphp functionphp php_registerNamespacesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'contentphp'php,php php'httpphp:php/php/purlphp.orgphp/rssphp/php1php.php0php/modulesphp/contentphp/php'php)php;
-php php php php php}
-php}
+    /**
+     * Register RSS Content Module namespace
+     */
+    protected function _registerNamespaces()
+    {
+        $this->_xpath->registerNamespace('content', 'http://purl.org/rss/1.0/modules/content/');
+    }
+}

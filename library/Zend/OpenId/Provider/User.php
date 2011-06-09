@@ -1,57 +1,57 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_OpenId
-php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Userphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_OpenId
+ * @subpackage Zend_OpenId_Provider
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: User.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Abstractphp classphp tophp getphp/storephp informationphp aboutphp loggedphp inphp userphp inphp Webphp Browser
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_OpenId
-php php*php php@subpackagephp Zendphp_OpenIdphp_Provider
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_OpenIdphp_Providerphp_User
-php{
+/**
+ * Abstract class to get/store information about logged in user in Web Browser
+ *
+ * @category   Zend
+ * @package    Zend_OpenId
+ * @subpackage Zend_OpenId_Provider
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_OpenId_Provider_User
+{
 
-php php php php php/php*php*
-php php php php php php*php Storesphp informationphp aboutphp loggedphp inphp user
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp userphp identityphp URL
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp setLoggedInUserphp(php$idphp)php;
+    /**
+     * Stores information about logged in user
+     *
+     * @param string $id user identity URL
+     * @return bool
+     */
+    abstract public function setLoggedInUser($id);
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp identityphp URLphp ofphp loggedphp inphp userphp orphp false
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp getLoggedInUserphp(php)php;
+    /**
+     * Returns identity URL of logged in user or false
+     *
+     * @return mixed
+     */
+    abstract public function getLoggedInUser();
 
-php php php php php/php*php*
-php php php php php php*php Performsphp logoutphp.php Clearsphp informationphp aboutphp loggedphp inphp userphp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp delLoggedInUserphp(php)php;
-php}
+    /**
+     * Performs logout. Clears information about logged in user.
+     *
+     * @return bool
+     */
+    abstract public function delLoggedInUser();
+}

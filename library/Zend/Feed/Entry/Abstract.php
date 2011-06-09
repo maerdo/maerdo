@@ -1,124 +1,124 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Abstractphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Feed
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Element
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Elementphp.phpphp'php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Zendphp_Feedphp_Entryphp_Abstractphp representsphp aphp singlephp entryphp inphp anphp Atomphp orphp RSS
-php php*php feedphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Feedphp_Entryphp_Abstractphp extendsphp Zendphp_Feedphp_Element
-php{
-php php php php php/php*php*
-php php php php php php*php Rootphp XMLphp elementphp forphp entriesphp.php Subclassesphp mustphp definephp thisphp tophp a
-php php php php php php*php nonphp-nullphp valuephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootElementphp;
+/**
+ * @see Zend_Feed
+ */
+require_once 'Zend/Feed.php';
 
-php php php php php/php*php*
-php php php php php php*php Rootphp namespacephp forphp entriesphp.php Subclassesphp mayphp definephp thisphp tophp a
-php php php php php php*php nonphp-nullphp valuephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootNamespacephp php=php nullphp;
+/**
+ * @see Zend_Feed_Element
+ */
+require_once 'Zend/Feed/Element.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Feedphp_Entryphp_Abstractphp constructor
-php php php php php php*
-php php php php php php*php Thephp Zendphp_Feedphp_Entryphp_Abstractphp constructorphp takesphp thephp URIphp ofphp thephp feedphp thephp entry
-php php php php php php*php isphp partphp ofphp,php andphp optionallyphp anphp XMLphp constructphp php(usuallyphp a
-php php php php php php*php SimpleXMLElementphp,php butphp itphp canphp bephp anphp XMLphp stringphp orphp aphp DOMNodephp as
-php php php php php php*php wellphp)php thatphp containsphp thephp contentsphp ofphp thephp entryphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$uri
-php php php php php php*php php@paramphp php SimpleXMLElementphp|DOMNodephp|stringphp php php$element
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$uriphp php=php nullphp,php php$elementphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php(php$elementphp instanceofphp DOMElementphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$elementphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Loadphp thephp feedphp asphp anphp XMLphp DOMDocumentphp object
-php php php php php php php php php php php php php php php php php@iniphp_setphp(php'trackphp_errorsphp'php,php php1php)php;
-php php php php php php php php php php php php php php php php php$docphp php=php newphp DOMDocumentphp(php)php;
-php php php php php php php php php php php php php php php php php$statusphp php=php php@php$docphp-php>loadXMLphp(php$elementphp)php;
-php php php php php php php php php php php php php php php php php@iniphp_restorephp(php'trackphp_errorsphp'php)php;
+/**
+ * Zend_Feed_Entry_Abstract represents a single entry in an Atom or RSS
+ * feed.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Feed_Entry_Abstract extends Zend_Feed_Element
+{
+    /**
+     * Root XML element for entries. Subclasses must define this to a
+     * non-null value.
+     *
+     * @var string
+     */
+    protected $_rootElement;
 
-php php php php php php php php php php php php php php php php ifphp php(php!php$statusphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php preventphp thephp classphp tophp generatephp anphp undefinedphp variablephp noticephp php(ZFphp-php2php5php9php0php)
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$phpphp_errormsgphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(functionphp_existsphp(php'xdebugphp_isphp_enabledphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp,php whenphp XDebugphp isphp runningphp)php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$phpphp_errormsgphp php=php php'php(errorphp messagephp notphp availablephp)php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
+    /**
+     * Root namespace for entries. Subclasses may define this to a
+     * non-null value.
+     *
+     * @var string
+     */
+    protected $_rootNamespace = null;
 
-php php php php php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php"DOMDocumentphp cannotphp parsephp XMLphp:php php$phpphp_errormsgphp"php)php;
-php php php php php php php php php php php php php php php php php}
 
-php php php php php php php php php php php php php php php php php$elementphp php=php php$docphp-php>getElementsByTagNamephp(php$thisphp-php>php_rootElementphp)php-php>itemphp(php0php)php;
-php php php php php php php php php php php php php php php php ifphp php(php!php$elementphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Nophp rootphp <php'php php.php php$thisphp-php>php_rootElementphp php.php php'php>php elementphp foundphp,php cannotphp parsephp feedphp.php'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$docphp php=php newphp DOMDocumentphp(php'php1php.php0php'php,php php'utfphp-php8php'php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_rootNamespacephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$elementphp php=php php$docphp-php>createElementNSphp(Zendphp_Feedphp:php:lookupNamespacephp(php$thisphp-php>php_rootNamespacephp)php,php php$thisphp-php>php_rootElementphp)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$elementphp php=php php$docphp-php>createElementphp(php$thisphp-php>php_rootElementphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Zend_Feed_Entry_Abstract constructor
+     *
+     * The Zend_Feed_Entry_Abstract constructor takes the URI of the feed the entry
+     * is part of, and optionally an XML construct (usually a
+     * SimpleXMLElement, but it can be an XML string or a DOMNode as
+     * well) that contains the contents of the entry.
+     *
+     * @param  string $uri
+     * @param  SimpleXMLElement|DOMNode|string  $element
+     * @return void
+     * @throws Zend_Feed_Exception
+     */
+    public function __construct($uri = null, $element = null)
+    {
+        if (!($element instanceof DOMElement)) {
+            if ($element) {
+                // Load the feed as an XML DOMDocument object
+                @ini_set('track_errors', 1);
+                $doc = new DOMDocument();
+                $status = @$doc->loadXML($element);
+                @ini_restore('track_errors');
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$elementphp)php;
-php php php php php}
+                if (!$status) {
+                    // prevent the class to generate an undefined variable notice (ZF-2590)
+                    if (!isset($php_errormsg)) {
+                        if (function_exists('xdebug_is_enabled')) {
+                            $php_errormsg = '(error message not available, when XDebug is running)';
+                        } else {
+                            $php_errormsg = '(error message not available)';
+                        }
+                    }
 
-php}
+                    /**
+                     * @see Zend_Feed_Exception
+                     */
+                    require_once 'Zend/Feed/Exception.php';
+                    throw new Zend_Feed_Exception("DOMDocument cannot parse XML: $php_errormsg");
+                }
+
+                $element = $doc->getElementsByTagName($this->_rootElement)->item(0);
+                if (!$element) {
+                    /**
+                     * @see Zend_Feed_Exception
+                     */
+                    require_once 'Zend/Feed/Exception.php';
+                    throw new Zend_Feed_Exception('No root <' . $this->_rootElement . '> element found, cannot parse feed.');
+                }
+            } else {
+                $doc = new DOMDocument('1.0', 'utf-8');
+                if ($this->_rootNamespace !== null) {
+                    $element = $doc->createElementNS(Zend_Feed::lookupNamespace($this->_rootNamespace), $this->_rootElement);
+                } else {
+                    $element = $doc->createElement($this->_rootElement);
+                }
+            }
+        }
+
+        parent::__construct($element);
+    }
+
+}

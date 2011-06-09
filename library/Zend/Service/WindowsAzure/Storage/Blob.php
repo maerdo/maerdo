@@ -1,2001 +1,2001 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/todophp php php php php namephp_todo
-php php*php php@versionphp php php php php$Idphp:php Blobphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp_SharedKey
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/SharedKeyphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedAccessSignature
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Credentialsphp/SharedAccessSignaturephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/RetryPolicyphp/RetryPolicyAbstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Response
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Responsephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storage
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobContainer
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/BlobContainerphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstance
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/BlobInstancephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_PageRegionInstance
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/PageRegionInstancephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_LeaseInstance
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/LeaseInstancephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_SignedIdentifier
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/SignedIdentifierphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Exception
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Exceptionphp.phpphp'php;
-
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_WindowsAzure
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp extendsphp Zendphp_Servicephp_WindowsAzurephp_Storage
-php{
-php	php/php*php*
-php	php php*php ACLphp php-php Privatephp access
-php	php php*php/
-php	constphp ACLphp_PRIVATEphp php=php nullphp;
-
-php	php/php*php*
-php	php php*php ACLphp php-php Publicphp accessphp php(readphp allphp blobsphp)
-php	php php*
-php	php php*php php@deprecatedphp Usephp ACLphp_PUBLICphp_CONTAINERphp orphp ACLphp_PUBLICphp_BLOBphp insteadphp.
-php	php php*php/
-php	constphp ACLphp_PUBLICphp php=php php'containerphp'php;
-php	
-php	php/php*php*
-php	php php*php ACLphp php-php Blobphp Publicphp accessphp php(readphp allphp blobsphp)
-php	php php*php/
-php	constphp ACLphp_PUBLICphp_BLOBphp php=php php'blobphp'php;
-
-php	php/php*php*
-php	php php*php ACLphp php-php Containerphp Publicphp accessphp php(enumeratephp andphp readphp allphp blobsphp)
-php	php php*php/
-php	constphp ACLphp_PUBLICphp_CONTAINERphp php=php php'containerphp'php;
-
-php	php/php*php*
-php	php php*php Blobphp leasephp constants
-php	php php*php/
-php	constphp LEASEphp_ACQUIREphp php=php php'acquirephp'php;
-php	constphp LEASEphp_RENEWphp php php php=php php'renewphp'php;
-php	constphp LEASEphp_RELEASEphp php=php php'releasephp'php;
-php	constphp LEASEphp_BREAKphp php php php=php php'breakphp'php;
-
-php	php/php*php*
-php	php php*php Maximalphp blobphp sizephp php(inphp bytesphp)
-php	php php*php/
-php	constphp MAXphp_BLOBphp_SIZEphp php=php php6php7php1php0php8php8php6php4php;
-
-php	php/php*php*
-php	php php*php Maximalphp blobphp transferphp sizephp php(inphp bytesphp)
-php	php php*php/
-php	constphp MAXphp_BLOBphp_TRANSFERphp_SIZEphp php=php php4php1php9php4php3php0php4php;
-
-php	php/php*php*
-php	php php*php Blobphp types
-php	php php*php/
-php	constphp BLOBTYPEphp_BLOCKphp php=php php'BlockBlobphp'php;
-php	constphp BLOBTYPEphp_PAGEphp php php=php php'PageBlobphp'php;
-
-php	php/php*php*
-php	php php*php Putphp pagephp writephp options
-php	php php*php/
-php	constphp PAGEphp_WRITEphp_UPDATEphp php=php php'updatephp'php;
-php	constphp PAGEphp_WRITEphp_CLEARphp php php=php php'clearphp'php;
-
-php	php/php*php*
-php	php php*php Streamphp wrapperphp clients
-php	php php*
-php	php php*php php@varphp array
-php	php php*php/
-php	protectedphp staticphp php$php_wrapperClientsphp php=php arrayphp(php)php;
-
-php	php/php*php*
-php	php php*php SharedAccessSignaturephp credentials
-php	php php*
-php	php php*php php@varphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedAccessSignature
-php	php php*php/
-php	privatephp php$php_sharedAccessSignatureCredentialsphp php=php nullphp;
-
-php	php/php*php*
-php	php php*php Createsphp aphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp instance
-php	php php*
-php	php php*php php@paramphp stringphp php$hostphp Storagephp hostphp name
-php	php php*php php@paramphp stringphp php$accountNamephp Accountphp namephp forphp Windowsphp Azure
-php	php php*php php@paramphp stringphp php$accountKeyphp Accountphp keyphp forphp Windowsphp Azure
-php	php php*php php@paramphp booleanphp php$usePathStyleUriphp Usephp pathphp-stylephp URIphp's
-php	php php*php php@paramphp Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp Retryphp policyphp tophp usephp whenphp makingphp requests
-php	php php*php/
-php	publicphp functionphp php_php_constructphp(php$hostphp php=php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:URLphp_DEVphp_BLOBphp,php php$accountNamephp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_ACCOUNTphp,php php$accountKeyphp php=php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:DEVSTOREphp_KEYphp,php php$usePathStyleUriphp php=php falsephp,php Zendphp_Servicephp_WindowsAzurephp_RetryPolicyphp_RetryPolicyAbstractphp php$retryPolicyphp php=php nullphp)
-php	php{
-php	php	parentphp:php:php_php_constructphp(php$hostphp,php php$accountNamephp,php php$accountKeyphp,php php$usePathStyleUriphp,php php$retryPolicyphp)php;
-
-php	php	php/php/php APIphp version
-php	php	php$thisphp-php>php_apiVersionphp php=php php'php2php0php0php9php-php0php9php-php1php9php'php;
-
-php	php	php/php/php SharedAccessSignaturephp credentials
-php	php	php$thisphp-php>php_sharedAccessSignatureCredentialsphp php=php newphp Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_SharedAccessSignaturephp(php$accountNamephp,php php$accountKeyphp,php php$usePathStyleUriphp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Checkphp ifphp aphp blobphp exists
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php Snapshotphp identifier
-php	php php*php php@returnphp boolean
-php	php php*php/
-php	publicphp functionphp blobExistsphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Getphp blobphp instance
-php	php	tryphp php{
-php	php	php	php$thisphp-php>getBlobInstancephp(php$containerNamephp,php php$blobNamephp,php php$snapshotIdphp)php;
-php	php	php}php catchphp php(Zendphp_Servicephp_WindowsAzurephp_Exceptionphp php$ephp)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	returnphp truephp;
-php	php}
-
-php	php/php*php*
-php	php php*php Checkphp ifphp aphp containerphp exists
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@returnphp boolean
-php	php php*php/
-php	publicphp functionphp containerExistsphp(php$containerNamephp php=php php'php'php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Listphp containers
-php	php	php$containersphp php=php php$thisphp-php>listContainersphp(php$containerNamephp,php php1php)php;
-php	php	foreachphp php(php$containersphp asphp php$containerphp)php php{
-php	php	php	ifphp php(php$containerphp-php>Namephp php=php=php php$containerNamephp)php php{
-php	php	php	php	returnphp truephp;
-php	php	php	php}
-php	php	php}
-
-php	php	returnphp falsephp;
-php	php}
-
-php	php/php*php*
-php	php php*php Createphp container
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@returnphp objectphp Containerphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp createContainerphp(php$containerNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!isphp_arrayphp(php$metadataphp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Metaphp dataphp shouldphp bephp anphp arrayphp ofphp keyphp andphp valuephp pairsphp.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobContainerphp(
-php	php	php	php$containerNamephp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp containerphp ACL
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp boolphp php php php$signedIdentifiersphp Displayphp onlyphp privatephp/blobphp/containerphp orphp displayphp signedphp identifiersphp?
-php	php php*php php@returnphp stringphp Aclphp,php tophp bephp comparedphp withphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp:php:ACLphp_php*
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getContainerAclphp(php$containerNamephp php=php php'php'php,php php$signedIdentifiersphp php=php falsephp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp&compphp=aclphp'php,php Zendphp_Httpphp_Clientphp:php:GETphp,php arrayphp(php)php,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	ifphp php(php$signedIdentifiersphp php=php=php falsephp)php php php{
-php	php	php	php	php/php/php Onlyphp privatephp/blobphp/container
-php	php	php	php	php$accessTypephp php=php php$responsephp-php>getHeaderphp(Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'blobphp-publicphp-accessphp'php)php;
-php	php	php	php	ifphp php(strtolowerphp(php$accessTypephp)php php=php=php php'truephp'php)php php{
-php	php	php	php	php	php$accessTypephp php=php selfphp:php:ACLphp_PUBLICphp_CONTAINERphp;
-php	php	php	php	php}
-php	php	php	php	returnphp php$accessTypephp;
-php	php	php	php}php elsephp php{
-php	php	php	php	php/php/php Parsephp result
-php	php	php	php	php$resultphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
-php	php	php	php	ifphp php(php!php$resultphp)php php{
-php	php	php	php	php	returnphp arrayphp(php)php;
-php	php	php	php	php}
-
-php	php	php	php	php$entriesphp php=php nullphp;
-php	php	php	php	ifphp php(php$resultphp-php>SignedIdentifierphp)php php{
-php	php	php	php	php	ifphp php(countphp(php$resultphp-php>SignedIdentifierphp)php php>php php1php)php php{
-php	php	php	php	php	php	php$entriesphp php=php php$resultphp-php>SignedIdentifierphp;
-php	php	php	php	php	php}php elsephp php{
-php	php	php	php	php	php	php$entriesphp php=php arrayphp(php$resultphp-php>SignedIdentifierphp)php;
-php	php	php	php	php	php}
-php	php	php	php	php}
-
-php	php	php	php	php/php/php Returnphp value
-php	php	php	php	php$returnValuephp php=php arrayphp(php)php;
-php	php	php	php	foreachphp php(php$entriesphp asphp php$entryphp)php php{
-php	php	php	php	php	php$returnValuephp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_SignedIdentifierphp(
-php	php	php	php	php	php$entryphp-php>Idphp,
-php	php	php	php	php	php$entryphp-php>AccessPolicyphp php?php php$entryphp-php>AccessPolicyphp-php>Startphp php?php php$entryphp-php>AccessPolicyphp-php>Startphp php:php php'php'php php:php php'php'php,
-php	php	php	php	php	php$entryphp-php>AccessPolicyphp php?php php$entryphp-php>AccessPolicyphp-php>Expiryphp php?php php$entryphp-php>AccessPolicyphp-php>Expiryphp php:php php'php'php php:php php'php'php,
-php	php	php	php	php	php$entryphp-php>AccessPolicyphp php?php php$entryphp-php>AccessPolicyphp-php>Permissionphp php?php php$entryphp-php>AccessPolicyphp-php>Permissionphp php:php php'php'php php:php php'php'
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-
-php	php	php	php	php/php/php Return
-php	php	php	php	returnphp php$returnValuephp;
-php	php	php	php}
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Setphp containerphp ACL
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp boolphp php$aclphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp:php:ACLphp_php*
-php	php php*php php@paramphp arrayphp php$signedIdentifiersphp Signedphp identifiers
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp setContainerAclphp(php$containerNamephp php=php php'php'php,php php$aclphp php=php selfphp:php:ACLphp_PRIVATEphp,php php$signedIdentifiersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Headers
-php	php	php$headersphp php=php arrayphp(php)php;
-
-php	php	php/php/php Aclphp specifiedphp?
-php	php	ifphp php(php$aclphp php!php=php selfphp:php:ACLphp_PRIVATEphp php&php&php php$aclphp php!php=php=php nullphp php&php&php php$aclphp php!php=php php'php'php)php php{
-php	php	php	php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'blobphp-publicphp-accessphp'php]php php=php php$aclphp;
-php	php	php}
-
-php	php	php/php/php Policies
-php	php	php$policiesphp php=php nullphp;
-php	php	ifphp php(isphp_arrayphp(php$signedIdentifiersphp)php php&php&php countphp(php$signedIdentifiersphp)php php>php php0php)php php{
-php	php	php	php$policiesphp php php=php php'php'php;
-php	php	php	php$policiesphp php.php=php php'<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"utfphp-php8php"php?php>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php$policiesphp php.php=php php'php<SignedIdentifiersphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	foreachphp php(php$signedIdentifiersphp asphp php$signedIdentifierphp)php php{
-php	php	php	php	php$policiesphp php.php=php php'php php php<SignedIdentifierphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	php$policiesphp php.php=php php'php php php php php<Idphp>php'php php.php php$signedIdentifierphp-php>Idphp php.php php'<php/Idphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	php$policiesphp php.php=php php'php php php php php<AccessPolicyphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	ifphp php(php$signedIdentifierphp-php>Startphp php!php=php php'php'php)
-php	php	php	php	php$policiesphp php.php=php php'php php php php php php php<Startphp>php'php php.php php$signedIdentifierphp-php>Startphp php.php php'<php/Startphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	ifphp php(php$signedIdentifierphp-php>Expiryphp php!php=php php'php'php)
-php	php	php	php	php$policiesphp php.php=php php'php php php php php php php<Expiryphp>php'php php.php php$signedIdentifierphp-php>Expiryphp php.php php'<php/Expiryphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	ifphp php(php$signedIdentifierphp-php>Permissionsphp php!php=php php'php'php)
-php	php	php	php	php$policiesphp php.php=php php'php php php php php php php<Permissionphp>php'php php.php php$signedIdentifierphp-php>Permissionsphp php.php php'<php/Permissionphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	php$policiesphp php.php=php php'php php php php <php/AccessPolicyphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php	php$policiesphp php.php=php php'php php <php/SignedIdentifierphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php	php}
-php	php	php	php$policiesphp php.php=php php'<php/SignedIdentifiersphp>php'php php.php php"php\rphp\nphp"php;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp&compphp=aclphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php$policiesphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp container
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php Containerphp name
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobContainer
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getContainerphp(php$containerNamephp php=php php'php'php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp'php,php Zendphp_Httpphp_Clientphp:php:GETphp,php arrayphp(php)php,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php/php/php Parsephp metadata
-php	php	php	php$metadataphp php=php php$thisphp-php>php_parseMetadataHeadersphp(php$responsephp-php>getHeadersphp(php)php)php;
-
-php	php	php	php/php/php Returnphp container
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobContainerphp(
-php	php	php	php$containerNamephp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp containerphp metadata
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php Containerphp name
-php	php php*php php@returnphp arrayphp Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getContainerMetadataphp(php$containerNamephp php=php php'php'php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-
-php	php	returnphp php$thisphp-php>getContainerphp(php$containerNamephp)php-php>Metadataphp;
-php	php}
-
-php	php/php*php*
-php	php php*php Setphp containerphp metadata
-php	php php*
-php	php php*php Callingphp thephp Setphp Containerphp Metadataphp operationphp overwritesphp allphp existingphp metadataphp thatphp isphp associatedphp withphp thephp containerphp.php Itphp'sphp notphp possiblephp tophp modifyphp anphp individualphp namephp/valuephp pairphp.
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp setContainerMetadataphp(php$containerNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!isphp_arrayphp(php$metadataphp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Metaphp dataphp shouldphp bephp anphp arrayphp ofphp keyphp andphp valuephp pairsphp.php'php)php;
-php	php	php}
-php	php	ifphp php(countphp(php$metadataphp)php php=php=php php0php)php php{
-php	php	php	returnphp;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp&compphp=metadataphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Deletephp container
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp deleteContainerphp(php$containerNamephp php=php php'php'php,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php'php?restypephp=containerphp'php,php Zendphp_Httpphp_Clientphp:php:DELETEphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Listphp containers
-php	php php*
-php	php php*php php@paramphp stringphp php$prefixphp php php php php Optionalphp.php Filtersphp thephp resultsphp tophp returnphp onlyphp containersphp whosephp namephp beginsphp withphp thephp specifiedphp prefixphp.
-php	php php*php php@paramphp intphp php php php php$maxResultsphp Optionalphp.php Specifiesphp thephp maximumphp numberphp ofphp containersphp tophp returnphp perphp callphp tophp Azurephp storagephp.php Thisphp doesphp NOTphp affectphp listphp sizephp returnedphp byphp thisphp functionphp.php php(maximumphp:php php5php0php0php0php)
-php	php php*php php@paramphp stringphp php$markerphp php php php php Optionalphp stringphp valuephp thatphp identifiesphp thephp portionphp ofphp thephp listphp tophp bephp returnedphp withphp thephp nextphp listphp operationphp.
-php	php php*php php@paramphp stringphp php$includephp php php php Optionalphp.php Includephp thisphp parameterphp tophp specifyphp thatphp thephp containerphp'sphp metadataphp bephp returnedphp asphp partphp ofphp thephp responsephp bodyphp.php php(allowedphp valuesphp:php php'php'php,php php'metadataphp'php)
-php	php php*php php@paramphp intphp php php php php$currentResultCountphp Currentphp resultphp countphp php(internalphp usephp)
-php	php php*php php@returnphp array
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp listContainersphp(php$prefixphp php=php nullphp,php php$maxResultsphp php=php nullphp,php php$markerphp php=php nullphp,php php$includephp php=php nullphp,php php$currentResultCountphp php=php php0php)
-php	php{
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php'compphp=listphp'php)php;
-php	php	ifphp php(php$prefixphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'prefixphp=php'php php.php php$prefixphp;
-php	php	php}
-php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'maxresultsphp=php'php php.php php$maxResultsphp;
-php	php	php}
-php	php	ifphp php(php$markerphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'markerphp=php'php php.php php$markerphp;
-php	php	php}
-php	php	ifphp php(php$includephp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'includephp=php'php php.php php$includephp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-php	php	
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php'php'php,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp,php arrayphp(php)php,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_CONTAINERphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_LISTphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php$xmlContainersphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>Containersphp-php>Containerphp;
-php	php	php	php$xmlMarkerphp php=php php(stringphp)php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>NextMarkerphp;
-
-php	php	php	php$containersphp php=php arrayphp(php)php;
-php	php	php	ifphp php(php$xmlContainersphp php!php=php=php nullphp)php php{
-php	php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlContainersphp)php;php php$iphp+php+php)php php{
-php	php	php	php	php	php$containersphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobContainerphp(
-php	php	php	php	php	php(stringphp)php$xmlContainersphp[php$iphp]php-php>Namephp,
-php	php	php	php	php	php(stringphp)php$xmlContainersphp[php$iphp]php-php>Etagphp,
-php	php	php	php	php	php(stringphp)php$xmlContainersphp[php$iphp]php-php>LastModifiedphp,
-php	php	php	php	php	php$thisphp-php>php_parseMetadataElementphp(php$xmlContainersphp[php$iphp]php)
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	php$currentResultCountphp php=php php$currentResultCountphp php+php countphp(php$containersphp)php;
-php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php php$currentResultCountphp <php php$maxResultsphp)php php{
-php	php	php	php	ifphp php(php$xmlMarkerphp php!php=php=php nullphp php&php&php php$xmlMarkerphp php!php=php php'php'php)php php{
-php	php	php	php	php	php$containersphp php=php arrayphp_mergephp(php$containersphp,php php$thisphp-php>listContainersphp(php$prefixphp,php php$maxResultsphp,php php$xmlMarkerphp,php php$includephp,php php$currentResultCountphp)php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php countphp(php$containersphp)php php>php php$maxResultsphp)php php{
-php	php	php	php	php$containersphp php=php arrayphp_slicephp(php$containersphp,php php0php,php php$maxResultsphp)php;
-php	php	php	php}
-php	php	php	
-php	php	php	returnphp php$containersphp;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$localFileNamephp php php php php php Localphp filephp namephp tophp bephp uploaded
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp objectphp Partialphp blobphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$localFileNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$localFileNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Localphp filephp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!filephp_existsphp(php$localFileNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Localphp filephp notphp foundphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Checkphp filephp size
-php	php	ifphp php(filesizephp(php$localFileNamephp)php php>php=php selfphp:php:MAXphp_BLOBphp_SIZEphp)php php{
-php	php	php	returnphp php$thisphp-php>putLargeBlobphp(php$containerNamephp,php php$blobNamephp,php php$localFileNamephp,php php$metadataphp,php php$leaseIdphp)php;
-php	php	php}
-
-php	php	php/php/php Putphp thephp dataphp tophp Windowsphp Azurephp Storage
-php	php	returnphp php$thisphp-php>putBlobDataphp(php$containerNamephp,php php$blobNamephp,php filephp_getphp_contentsphp(php$localFileNamephp)php,php php$metadataphp,php php$leaseIdphp,php php$additionalHeadersphp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp blobphp data
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp mixedphp php php$dataphp php php php php php php	php	php Dataphp tophp store
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp objectphp Partialphp blobphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putBlobDataphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$dataphp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Specifyphp blobphp type
-php	php	php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'blobphp-typephp'php]php php=php selfphp:php:BLOBTYPEphp_BLOCKphp;
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php$dataphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php$containerNamephp,
-php	php	php	php$blobNamephp,
-php	php	php	nullphp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$thisphp-php>getBaseUrlphp(php)php php.php php'php/php'php php.php php$containerNamephp php.php php'php/php'php php.php php$blobNamephp,
-php	php	php	strlenphp(php$dataphp)php,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	falsephp,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp largephp blobphp php(php>php php6php4php MBphp)
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp Blobphp name
-php	php php*php php@paramphp stringphp php$localFileNamephp Localphp filephp namephp tophp bephp uploaded
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php Leasephp identifier
-php	php php*php php@returnphp objectphp Partialphp blobphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putLargeBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$localFileNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$localFileNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Localphp filephp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!filephp_existsphp(php$localFileNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Localphp filephp notphp foundphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Checkphp filephp size
-php	php	ifphp php(filesizephp(php$localFileNamephp)php <php selfphp:php:MAXphp_BLOBphp_SIZEphp)php php{
-php	php	php	returnphp php$thisphp-php>putBlobphp(php$containerNamephp,php php$blobNamephp,php php$localFileNamephp,php php$metadataphp)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Determinephp numberphp ofphp parts
-php	php	php$numberOfPartsphp php=php ceilphp(php filesizephp(php$localFileNamephp)php php/php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp php)php;
-
-php	php	php/php/php Generatephp blockphp idphp's
-php	php	php$blockIdentifiersphp php=php arrayphp(php)php;
-php	php	forphp php(php$iphp php=php php0php;php php$iphp <php php$numberOfPartsphp;php php$iphp+php+php)php php{
-php	php	php	php$blockIdentifiersphp[php]php php=php php$thisphp-php>php_generateBlockIdphp(php$iphp)php;
-php	php	php}
-
-php	php	php/php/php Openphp file
-php	php	php$fpphp php=php fopenphp(php$localFileNamephp,php php'rphp'php)php;
-php	php	ifphp php(php$fpphp php=php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Couldphp notphp openphp localphp filephp.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Uploadphp parts
-php	php	forphp php(php$iphp php=php php0php;php php$iphp <php php$numberOfPartsphp;php php$iphp+php+php)php php{
-php	php	php	php/php/php Seekphp positionphp inphp file
-php	php	php	fseekphp(php$fpphp,php php$iphp php*php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp)php;
-php	php	php	php	
-php	php	php	php/php/php Readphp contents
-php	php	php	php$fileContentsphp php=php freadphp(php$fpphp,php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp)php;
-php	php	php	php	
-php	php	php	php/php/php Putphp block
-php	php	php	php$thisphp-php>putBlockphp(php$containerNamephp,php php$blobNamephp,php php$blockIdentifiersphp[php$iphp]php,php php$fileContentsphp,php php$leaseIdphp)php;
-php	php	php	php	
-php	php	php	php/php/php Disposephp filephp contents
-php	php	php	php$fileContentsphp php=php nullphp;
-php	php	php	unsetphp(php$fileContentsphp)php;
-php	php	php}
-
-php	php	php/php/php Closephp file
-php	php	fclosephp(php$fpphp)php;
-
-php	php	php/php/php Putphp blockphp list
-php	php	php$thisphp-php>putBlockListphp(php$containerNamephp,php php$blobNamephp,php php$blockIdentifiersphp,php php$metadataphp,php php$leaseIdphp)php;
-
-php	php	php/php/php Returnphp informationphp ofphp thephp blob
-php	php	returnphp php$thisphp-php>getBlobInstancephp(php$containerNamephp,php php$blobNamephp,php nullphp,php php$leaseIdphp)php;
-php	php}
-php	php	
-php	php/php*php*
-php	php php*php Putphp largephp blobphp block
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$identifierphp php php php Blockphp ID
-php	php php*php php@paramphp arrayphp php php$contentsphp php php php php php Contentsphp ofphp thephp block
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php Leasephp identifier
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putBlockphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$identifierphp php=php php'php'php,php php$contentsphp php=php php'php'php,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$identifierphp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blockphp identifierphp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(strlenphp(php$contentsphp)php php>php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blockphp sizephp isphp toophp bigphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	php	
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Upload
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=blockphp&blockidphp=php'php php.php basephp6php4php_encodephp(php$identifierphp)php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php$contentsphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp blockphp list
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp arrayphp php$blockListphp php php php php php php php php php php Arrayphp ofphp blockphp identifiers
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putBlockListphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$blockListphp php=php arrayphp(php)php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(countphp(php$blockListphp)php php=php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blockphp listphp doesphp notphp containphp anyphp elementsphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Generatephp blockphp list
-php	php	php$blocksphp php=php php'php'php;
-php	php	foreachphp php(php$blockListphp asphp php$blockphp)php php{
-php	php	php	php$blocksphp php.php=php php'php php php<Latestphp>php'php php.php basephp6php4php_encodephp(php$blockphp)php php.php php'<php/Latestphp>php'php php.php php"php\nphp"php;
-php	php	php}
-
-php	php	php/php/php Generatephp blockphp listphp request
-php	php	php$fileContentsphp php=php utfphp8php_encodephp(implodephp(php"php\nphp"php,php arrayphp(
-php	php	php	php'<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"utfphp-php8php"php?php>php'php,
-php	php	php	php'php<BlockListphp>php'php,
-php	php	php$blocksphp,
-php	php	php	php'<php/BlockListphp>php'
-php	php	php	php)php)php)php;
-
-php	php	php	php/php/php Createphp metadataphp headers
-php	php	php	php$headersphp php=php arrayphp(php)php;
-php	php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php	php}
-php	php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php	php/php/php Additionalphp headersphp?
-php	php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php	php}
-
-php	php	php	php/php/php Resourcephp name
-php	php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php	php/php/php Performphp request
-php	php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=blocklistphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php$fileContentsphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blockphp list
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php Leasephp identifier
-php	php php*php php@paramphp integerphp php$typephp php php php php php php php php Typephp ofphp blockphp listphp tophp retrievephp.php php0php php=php allphp,php php1php php=php committedphp,php php2php php=php uncommitted
-php	php php*php php@returnphp array
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlockListphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp,php php$typephp php=php php0php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$typephp <php php0php php|php|php php$typephp php>php php2php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Invalidphp typephp ofphp blockphp listphp tophp retrievephp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Setphp php$blockListType
-php	php	php$blockListTypephp php=php php'allphp'php;
-php	php	ifphp php(php$typephp php=php=php php1php)php php{
-php	php	php	php$blockListTypephp php=php php'committedphp'php;
-php	php	php}
-php	php	ifphp php(php$typephp php=php=php php2php)php php{
-php	php	php	php$blockListTypephp php=php php'uncommittedphp'php;
-php	php	php}
-
-php	php	php/php/php Headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php'compphp=blocklistphp'php,php php'blocklisttypephp=php'php php.php php$blockListTypephp)php;
-php	php	ifphp php(php$snapshotIdphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'snapshotphp=php'php php.php php$snapshotIdphp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-php	php	php	
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php/php/php Parsephp response
-php	php	php	php$blockListphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
-
-php	php	php	php/php/php Createphp returnphp value
-php	php	php	php$returnValuephp php=php arrayphp(php)php;
-php	php	php	ifphp php(php$blockListphp-php>CommittedBlocksphp)php php{
-php	php	php	php	foreachphp php(php$blockListphp-php>CommittedBlocksphp-php>Blockphp asphp php$blockphp)php php{
-php	php	php	php	php	php$returnValuephp[php'CommittedBlocksphp'php]php[php]php php=php php(objectphp)arrayphp(
-php	php	php	php php php php php php php php php php php php php'Namephp'php php=php>php php(stringphp)php$blockphp-php>Namephp,
-php	php	php	php php php php php php php php php php php php php'Sizephp'php php=php>php php(stringphp)php$blockphp-php>Size
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	ifphp php(php$blockListphp-php>UncommittedBlocksphp)php php php{
-php	php	php	php	foreachphp php(php$blockListphp-php>UncommittedBlocksphp-php>Blockphp asphp php$blockphp)php php{
-php	php	php	php	php	php$returnValuephp[php'UncommittedBlocksphp'php]php[php]php php=php php(objectphp)arrayphp(
-php	php	php	php php php php php php php php php php php php php'Namephp'php php=php>php php(stringphp)php$blockphp-php>Namephp,
-php	php	php	php php php php php php php php php php php php php'Sizephp'php php=php>php php(stringphp)php$blockphp-php>Size
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-php	php	php	php}
-
-php	php	php	returnphp php$returnValuephp;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Createphp pagephp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp intphp php php php php$sizephp php php php php php php	php	php Sizephp ofphp thephp pagephp blobphp inphp bytes
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp objectphp Partialphp blobphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp createPageBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$sizephp php=php php0php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(php$sizephp <php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Pagephp blobphp sizephp mustphp bephp specifiedphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Specifyphp blobphp typephp php&php blobphp length
-php	php	php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'blobphp-typephp'php]php php=php selfphp:php:BLOBTYPEphp_PAGEphp;
-php	php	php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'blobphp-contentphp-lengthphp'php]php php=php php$sizephp;
-php	php	php$headersphp[php'Contentphp-Lengthphp'php]php php=php php0php;
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php'php'php,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php$containerNamephp,
-php	php	php	php$blobNamephp,
-php	php	php	nullphp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$thisphp-php>getBaseUrlphp(php)php php.php php'php/php'php php.php php$containerNamephp php.php php'php/php'php php.php php$blobNamephp,
-php	php	php	php$sizephp,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	falsephp,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp pagephp inphp pagephp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp intphp php php php php$startByteOffsetphp php php php Startphp bytephp offset
-php	php php*php php@paramphp intphp php php php php$endByteOffsetphp php php php php php Endphp bytephp offset
-php	php php*php php@paramphp mixedphp php php$contentsphp	php	php	php Pagephp contents
-php	php php*php php@paramphp stringphp php$writeMethodphp php php php php php php php Writephp methodphp php(Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp:php:PAGEphp_WRITEphp_php*php)
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp putPagephp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$startByteOffsetphp php=php php0php,php php$endByteOffsetphp php=php php0php,php php$contentsphp php=php php'php'php,php php$writeMethodphp php=php selfphp:php:PAGEphp_WRITEphp_UPDATEphp,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(php$startByteOffsetphp php%php php5php1php2php php!php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Startphp bytephp offsetphp mustphp bephp aphp modulusphp ofphp php5php1php2php.php'php)php;
-php	php	php}
-php	php	ifphp php(php(php$endByteOffsetphp php+php php1php)php php%php php5php1php2php php!php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Endphp bytephp offsetphp mustphp bephp aphp modulusphp ofphp php5php1php2php minusphp php1php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Determinephp size
-php	php	php$sizephp php=php strlenphp(php$contentsphp)php;
-php	php	ifphp php(php$sizephp php>php=php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Pagephp blobphp sizephp mustphp notphp bephp largerphp thanphp php'php php+php selfphp:php:MAXphp_BLOBphp_TRANSFERphp_SIZEphp php.php php'php bytesphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Specifyphp range
-php	php	php$headersphp[php'Rangephp'php]php php=php php'bytesphp=php'php php.php php$startByteOffsetphp php.php php'php-php'php php.php php$endByteOffsetphp;
-
-php	php	php/php/php Writephp method
-php	php	php$headersphp[Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:PREFIXphp_STORAGEphp_HEADERphp php.php php'pagephp-writephp'php]php php=php php$writeMethodphp;
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=pagephp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php php$contentsphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Putphp pagephp inphp pagephp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp intphp php php php php$startByteOffsetphp php php php Startphp bytephp offset
-php	php php*php php@paramphp intphp php php php php$endByteOffsetphp php php php php php Endphp bytephp offset
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@returnphp arrayphp Arrayphp ofphp pagephp ranges
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getPageRegionsphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$startByteOffsetphp php=php php0php,php php$endByteOffsetphp php=php php0php,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(php$startByteOffsetphp php%php php5php1php2php php!php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Startphp bytephp offsetphp mustphp bephp aphp modulusphp ofphp php5php1php2php.php'php)php;
-php	php	php}
-php	php	ifphp php(php$endByteOffsetphp php>php php0php php&php&php php(php$endByteOffsetphp php+php php1php)php php%php php5php1php2php php!php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Endphp bytephp offsetphp mustphp bephp aphp modulusphp ofphp php5php1php2php minusphp php1php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-
-php	php	php/php/php Specifyphp rangephp?
-php	php	ifphp php(php$endByteOffsetphp php>php php0php)php php{
-php	php	php	php$headersphp[php'Rangephp'php]php php=php php'bytesphp=php'php php.php php$startByteOffsetphp php.php php'php-php'php php.php php$endByteOffsetphp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=pagelistphp'php,php Zendphp_Httpphp_Clientphp:php:GETphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php$resultphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
-php	php	php	php$xmlRangesphp php=php nullphp;
-php	php	php	ifphp php(countphp(php$resultphp-php>PageRangephp)php php>php php1php)php php{
-php	php	php	php	php$xmlRangesphp php=php php$resultphp-php>PageRangephp;
-php	php	php	php}php elsephp php{
-php	php	php	php	php$xmlRangesphp php=php arrayphp(php$resultphp-php>PageRangephp)php;
-php	php	php	php}
-
-php	php	php	php$rangesphp php=php arrayphp(php)php;
-php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlRangesphp)php;php php$iphp+php+php)php php{
-php	php	php	php	php$rangesphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_PageRegionInstancephp(
-php	php	php	php	php(intphp)php$xmlRangesphp[php$iphp]php-php>Startphp,
-php	php	php	php	php(intphp)php$xmlRangesphp[php$iphp]php-php>End
-php	php	php	php	php)php;
-php	php	php	php}
-php	php	php	
-php	php	php	returnphp php$rangesphp;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-php	php	
-php	php/php*php*
-php	php php*php Copyphp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$sourceContainerNamephp php php php php php php Sourcephp containerphp name
-php	php php*php php@paramphp stringphp php$sourceBlobNamephp php php php php php php php php php php php Sourcephp blobphp name
-php	php php*php php@paramphp stringphp php$destinationContainerNamephp php Destinationphp containerphp name
-php	php php*php php@paramphp stringphp php$destinationBlobNamephp php php php php php php Destinationphp blobphp name
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$sourceSnapshotIdphp php php php php php php php php php Sourcephp snapshotphp identifier
-php	php php*php php@paramphp stringphp php$destinationLeaseIdphp php php php php php php php Destinationphp leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php php php php php php php php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp8php9php4php0php3php7php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp objectphp Partialphp blobphp properties
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp copyBlobphp(php$sourceContainerNamephp php=php php'php'php,php php$sourceBlobNamephp php=php php'php'php,php php$destinationContainerNamephp php=php php'php'php,php php$destinationBlobNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$sourceSnapshotIdphp php=php nullphp,php php$destinationLeaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$sourceContainerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Sourcephp containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$sourceContainerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Sourcephp containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$sourceBlobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Sourcephp blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$destinationContainerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Destinationphp containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$destinationContainerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Destinationphp containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$destinationBlobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Destinationphp blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$sourceContainerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$sourceBlobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(php$destinationContainerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$destinationBlobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$destinationLeaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$destinationLeaseIdphp;
-php	php	php}
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Resourcephp names
-php	php	php$sourceResourceNamephp php=php selfphp:php:createResourceNamephp(php$sourceContainerNamephp,php php$sourceBlobNamephp)php;
-php	php	ifphp php(php$sourceSnapshotIdphp php!php=php=php nullphp)php php{
-php	php	php	php$sourceResourceNamephp php.php=php php'php?snapshotphp=php'php php.php php$sourceSnapshotIdphp;
-php	php	php}
-php	php	php$destinationResourceNamephp php=php selfphp:php:createResourceNamephp(php$destinationContainerNamephp,php php$destinationBlobNamephp)php;
-
-php	php	php/php/php Setphp sourcephp blob
-php	php	php$headersphp[php"xphp-msphp-copyphp-sourcephp"php]php php=php php'php/php'php php.php php$thisphp-php>php_accountNamephp php.php php'php/php'php php.php php$sourceResourceNamephp;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$destinationResourceNamephp,php php'php'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php$destinationContainerNamephp,
-php	php	php	php$destinationBlobNamephp,
-php	php	php	nullphp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$thisphp-php>getBaseUrlphp(php)php php.php php'php/php'php php.php php$destinationContainerNamephp php.php php'php/php'php php.php php$destinationBlobNamephp,
-php	php	php	php0php,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	php	php'php'php,
-php	php	php	falsephp,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$localFileNamephp php php php php php Localphp filephp namephp tophp storephp downloadedphp blob
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$localFileNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$localFileNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Localphp filephp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Fetchphp data
-php	php	filephp_putphp_contentsphp(php$localFileNamephp,php php$thisphp-php>getBlobDataphp(php$containerNamephp,php php$blobNamephp,php php$snapshotIdphp,php php$leaseIdphp,php php$additionalHeadersphp)php)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blobphp data
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp mixedphp Blobphp contents
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlobDataphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php)php;
-php	php	ifphp php(php$snapshotIdphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'snapshotphp=php'php php.php php$snapshotIdphp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp php$responsephp-php>getBodyphp(php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blobphp instance
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstance
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlobInstancephp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php)php;
-php	php	ifphp php(php$snapshotIdphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'snapshotphp=php'php php.php php$snapshotIdphp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-php	php	
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:HEADphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_READphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php/php/php Parsephp metadata
-php	php	php	php$metadataphp php=php php$thisphp-php>php_parseMetadataHeadersphp(php$responsephp-php>getHeadersphp(php)php)php;
-
-php	php	php	php/php/php Returnphp blob
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php$containerNamephp,
-php	php	php	php$blobNamephp,
-php	php	php	php$snapshotIdphp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Etagphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Lastphp-modifiedphp'php)php,
-php	php	php	php$thisphp-php>getBaseUrlphp(php)php php.php php'php/php'php php.php php$containerNamephp php.php php'php/php'php php.php php$blobNamephp,
-php	php	php	php$responsephp-php>getHeaderphp(php'Contentphp-Lengthphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Contentphp-Typephp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Contentphp-Encodingphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Contentphp-Languagephp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'Cachephp-Controlphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'xphp-msphp-blobphp-typephp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'xphp-msphp-leasephp-statusphp'php)php,
-php	php	php	falsephp,
-php	php	php	php$metadata
-php	php	php	php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blobphp metadata
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php Leasephp identifier
-php	php php*php php@returnphp arrayphp Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlobMetadataphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	returnphp php$thisphp-php>getBlobInstancephp(php$containerNamephp,php php$blobNamephp,php php$snapshotIdphp,php php$leaseIdphp)php-php>Metadataphp;
-php	php}
-
-php	php/php*php*
-php	php php*php Setphp blobphp metadata
-php	php php*
-php	php php*php Callingphp thephp Setphp Blobphp Metadataphp operationphp overwritesphp allphp existingphp metadataphp thatphp isphp associatedphp withphp thephp blobphp.php Itphp'sphp notphp possiblephp tophp modifyphp anphp individualphp namephp/valuephp pairphp.
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp setBlobMetadataphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(countphp(php$metadataphp)php php=php=php php0php)php php{
-php	php	php	returnphp;
-php	php	php}
-
-php	php	php/php/php Createphp metadataphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	php$headersphp php=php arrayphp_mergephp(php$headersphp,php php$thisphp-php>php_generateMetadataHeadersphp(php$metadataphp)php)php;
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp php.php php'php/php'php php.php php$blobNamephp,php php'php?compphp=metadataphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Setphp blobphp properties
-php	php php*
-php	php php*php Allphp availablephp propertiesphp arephp listedphp atphp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/eephp6php9php1php9php6php6php.aspxphp andphp shouldphp bephp providedphp inphp thephp php$additionalHeadersphp parameterphp.
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp setBlobPropertiesphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-php	php	ifphp php(countphp(php$additionalHeadersphp)php php=php=php php0php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Nophp additionalphp headersphp arephp specifiedphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Createphp headers
-php	php	php$headersphp php=php arrayphp(php)php;
-
-php	php	php/php/php Leasephp setphp?
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp php.php php'php/php'php php.php php$blobNamephp,php php'php?compphp=propertiesphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp blobphp properties
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstance
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp getBlobPropertiesphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	returnphp php$thisphp-php>getBlobInstancephp(php$containerNamephp,php php$blobNamephp,php php$snapshotIdphp,php php$leaseIdphp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Deletephp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php Snapshotphp identifier
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifier
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp deleteBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$snapshotIdphp php=php nullphp,php php$leaseIdphp php=php nullphp,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php)php;
-php	php	ifphp php(php$snapshotIdphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'snapshotphp=php'php php.php php$snapshotIdphp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-php	php	php	
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:DELETEphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php!php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Snapshotphp blob
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp arrayphp php php$metadataphp php php php php php php php php php php Keyphp/valuephp pairsphp ofphp metaphp data
-php	php php*php php@paramphp arrayphp php php$additionalHeadersphp php Additionalphp headersphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php7php9php3php7php1php.aspxphp forphp morephp informationphp.
-php	php php*php php@returnphp stringphp Datephp/Timephp valuephp representingphp thephp snapshotphp identifierphp.
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp snapshotBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$metadataphp php=php arrayphp(php)php,php php$additionalHeadersphp php=php arrayphp(php)php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	foreachphp php(php$additionalHeadersphp asphp php$keyphp php=php>php php$valuephp)php php{
-php	php	php	php$headersphp[php$keyphp]php php=php php$valuephp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=snapshotphp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp php$responsephp-php>getHeaderphp(php'xphp-msphp-snapshotphp'php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Leasephp blobphp php-php Seephp php(httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/eephp6php9php1php9php7php2php.aspxphp)
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php php php php php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$leaseActionphp php php php php php php php Leasephp actionphp php(Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp:php:LEASEphp_php*php)
-php	php php*php php@paramphp stringphp php$leaseIdphp php php php php php php php php php php php Leasephp identifierphp,php requiredphp tophp renewphp thephp leasephp orphp tophp releasephp thephp leasephp.
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_LeaseInstancephp Leasephp instance
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp leaseBlobphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$leaseActionphp php=php selfphp:php:LEASEphp_ACQUIREphp,php php$leaseIdphp php=php nullphp)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php$rootphp'php php&php&php strposphp(php$blobNamephp,php php'php/php'php)php php!php=php=php falsephp)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Blobsphp storedphp inphp thephp rootphp containerphp canphp notphp havephp aphp namephp containingphp aphp forwardphp slashphp php(php/php)php.php'php)php;
-php	php	php}
-
-php	php	php/php/php Additionalphp headersphp?
-php	php	php$headersphp php=php arrayphp(php)php;
-php	php	php$headersphp[php'xphp-msphp-leasephp-actionphp'php]php php=php strtolowerphp(php$leaseActionphp)php;
-php	php	ifphp php(php$leaseIdphp php!php=php=php nullphp)php php{
-php	php	php	php$headersphp[php'xphp-msphp-leasephp-idphp'php]php php=php php$leaseIdphp;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$resourceNamephp,php php'php?compphp=leasephp'php,php Zendphp_Httpphp_Clientphp:php:PUTphp,php php$headersphp,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_WRITEphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	returnphp newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_LeaseInstancephp(
-php	php	php	php$containerNamephp,
-php	php	php	php$blobNamephp,
-php	php	php	php$responsephp-php>getHeaderphp(php'xphp-msphp-leasephp-idphp'php)php,
-php	php	php	php$responsephp-php>getHeaderphp(php'xphp-msphp-leasephp-timephp'php)php)php;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Listphp blobs
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@paramphp stringphp php$prefixphp php php php php Optionalphp.php Filtersphp thephp resultsphp tophp returnphp onlyphp blobsphp whosephp namephp beginsphp withphp thephp specifiedphp prefixphp.
-php	php php*php php@paramphp stringphp php$delimiterphp php Optionalphp.php Delimiterphp,php iphp.ephp.php php'php/php'php,php forphp specifyingphp folderphp hierarchy
-php	php php*php php@paramphp intphp php php php php$maxResultsphp Optionalphp.php Specifiesphp thephp maximumphp numberphp ofphp blobsphp tophp returnphp perphp callphp tophp Azurephp storagephp.php Thisphp doesphp NOTphp affectphp listphp sizephp returnedphp byphp thisphp functionphp.php php(maximumphp:php php5php0php0php0php)
-php	php php*php php@paramphp stringphp php$markerphp php php php php Optionalphp stringphp valuephp thatphp identifiesphp thephp portionphp ofphp thephp listphp tophp bephp returnedphp withphp thephp nextphp listphp operationphp.
-php	php php*php php@paramphp stringphp php$includephp php php php Optionalphp.php Specifiesphp thatphp thephp responsephp shouldphp includephp onephp orphp morephp ofphp thephp followingphp subsetsphp:php php'php'php,php php'metadataphp'php,php php'snapshotsphp'php,php php'uncommittedblobsphp'php)php.php Multiplephp valuesphp canphp bephp addedphp separatedphp withphp aphp commaphp php(php,php)
-php	php php*php php@paramphp intphp php php php php$currentResultCountphp Currentphp resultphp countphp php(internalphp usephp)
-php	php php*php php@returnphp array
-php	php php*php php@throwsphp Zendphp_Servicephp_WindowsAzurephp_Exception
-php	php php*php/
-php	publicphp functionphp listBlobsphp(php$containerNamephp php=php php'php'php,php php$prefixphp php=php php'php'php,php php$delimiterphp php=php php'php'php,php php$maxResultsphp php=php nullphp,php php$markerphp php=php nullphp,php php$includephp php=php nullphp,php php$currentResultCountphp php=php php0php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-php	php	php	
-php	php	php/php/php Buildphp queryphp string
-php	php	php$queryStringphp php=php arrayphp(php'restypephp=containerphp'php,php php'compphp=listphp'php)php;
-php	php	ifphp php(php$prefixphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'prefixphp=php'php php.php php$prefixphp;
-php	php	php}
-php	php	ifphp php(php$delimiterphp php!php=php=php php'php'php)php php{
-php	php	php	php$queryStringphp[php]php php=php php'delimiterphp=php'php php.php php$delimiterphp;
-php	php	php}
-php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'maxresultsphp=php'php php.php php$maxResultsphp;
-php	php	php}
-php	php	ifphp php(php$markerphp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'markerphp=php'php php.php php$markerphp;
-php	php	php}
-php	php	ifphp php(php$includephp php!php=php=php nullphp)php php{
-php	php	php	php$queryStringphp[php]php php=php php'includephp=php'php php.php php$includephp;
-php	php	php}
-php	php	php$queryStringphp php=php selfphp:php:createQueryStringFromArrayphp(php$queryStringphp)php;
-
-php	php	php/php/php Performphp request
-php	php	php$responsephp php=php php$thisphp-php>php_performRequestphp(php$containerNamephp,php php$queryStringphp,php Zendphp_Httpphp_Clientphp:php:GETphp,php arrayphp(php)php,php falsephp,php nullphp,php Zendphp_Servicephp_WindowsAzurephp_Storagephp:php:RESOURCEphp_BLOBphp,php Zendphp_Servicephp_WindowsAzurephp_Credentialsphp_CredentialsAbstractphp:php:PERMISSIONphp_LISTphp)php;
-php	php	ifphp php(php$responsephp-php>isSuccessfulphp(php)php)php php{
-php	php	php	php/php/php Returnphp value
-php	php	php	php$blobsphp php=php arrayphp(php)php;
-
-php	php	php	php/php/php Blobs
-php	php	php	php$xmlBlobsphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>Blobsphp-php>Blobphp;
-php	php	php	ifphp php(php$xmlBlobsphp php!php=php=php nullphp)php php{
-php	php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlBlobsphp)php;php php$iphp+php+php)php php{
-php	php	php	php	php	php$propertiesphp php=php php(arrayphp)php$xmlBlobsphp[php$iphp]php-php>Propertiesphp;
-php	php	php	php	php	php	
-php	php	php	php	php	php$blobsphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php	php	php$containerNamephp,
-php	php	php	php	php	php(stringphp)php$xmlBlobsphp[php$iphp]php-php>Namephp,
-php	php	php	php	php	php(stringphp)php$xmlBlobsphp[php$iphp]php-php>Snapshotphp,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Etagphp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Lastphp-Modifiedphp'php]php,
-php	php	php	php	php	php(stringphp)php$xmlBlobsphp[php$iphp]php-php>Urlphp,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Contentphp-Lengthphp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Contentphp-Typephp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Contentphp-Encodingphp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Contentphp-Languagephp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'Cachephp-Controlphp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'BlobTypephp'php]php,
-php	php	php	php	php	php(stringphp)php$propertiesphp[php'LeaseStatusphp'php]php,
-php	php	php	php	php	falsephp,
-php	php	php	php	php	php$thisphp-php>php_parseMetadataElementphp(php$xmlBlobsphp[php$iphp]php)
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	php	
-php	php	php	php/php/php Blobphp prefixesphp php(foldersphp)
-php	php	php	php$xmlBlobsphp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>Blobsphp-php>BlobPrefixphp;
-php	php	php	php	
-php	php	php	ifphp php(php$xmlBlobsphp php!php=php=php nullphp)php php{
-php	php	php	php	forphp php(php$iphp php=php php0php;php php$iphp <php countphp(php$xmlBlobsphp)php;php php$iphp+php+php)php php{
-php	php	php	php	php	php$blobsphp[php]php php=php newphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_BlobInstancephp(
-php	php	php	php	php	php$containerNamephp,
-php	php	php	php	php	php(stringphp)php$xmlBlobsphp[php$iphp]php-php>Namephp,
-php	php	php	php	php	nullphp,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php0php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	php	php'php'php,
-php	php	php	php	php	truephp,
-php	php	php	php	php	php$thisphp-php>php_parseMetadataElementphp(php$xmlBlobsphp[php$iphp]php)
-php	php	php	php	php	php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	php	
-php	php	php	php/php/php Morephp blobsphp?
-php	php	php	php$xmlMarkerphp php=php php(stringphp)php$thisphp-php>php_parseResponsephp(php$responsephp)php-php>NextMarkerphp;
-php	php	php	php$currentResultCountphp php=php php$currentResultCountphp php+php countphp(php$blobsphp)php;
-php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php php$currentResultCountphp <php php$maxResultsphp)php php{
-php	php	php	php	ifphp php(php$xmlMarkerphp php!php=php=php nullphp php&php&php php$xmlMarkerphp php!php=php php'php'php)php php{
-php	php	php	php	php	php$blobsphp php=php arrayphp_mergephp(php$blobsphp,php php$thisphp-php>listBlobsphp(php$containerNamephp,php php$prefixphp,php php$delimiterphp,php php$maxResultsphp,php php$markerphp,php php$includephp,php php$currentResultCountphp)php)php;
-php	php	php	php	php}
-php	php	php	php}
-php	php	php	ifphp php(php$maxResultsphp php!php=php=php nullphp php&php&php countphp(php$blobsphp)php php>php php$maxResultsphp)php php{
-php	php	php	php	php$blobsphp php=php arrayphp_slicephp(php$blobsphp,php php0php,php php$maxResultsphp)php;
-php	php	php	php}
-php	php	php	php	
-php	php	php	returnphp php$blobsphp;
-php	php	php}php elsephp php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php$thisphp-php>php_getErrorMessagephp(php$responsephp,php php'Resourcephp couldphp notphp bephp accessedphp.php'php)php)php;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Generatephp sharedphp accessphp URL
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp php php php php php php Blobphp name
-php	php php*php php@paramphp stringphp php$resourcephp php php php php php php Signedphp resourcephp php-php containerphp php(cphp)php php-php blobphp php(bphp)
-php	php php*php php@paramphp stringphp php$permissionsphp php php php Signedphp permissionsphp php-php readphp php(rphp)php,php writephp php(wphp)php,php deletephp php(dphp)php andphp listphp php(lphp)
-php	php php*php php@paramphp stringphp php$startphp php php php php php php php php php Thephp timephp atphp whichphp thephp Sharedphp Accessphp Signaturephp becomesphp validphp.
-php	php php*php php@paramphp stringphp php$expiryphp php php php php php php php php Thephp timephp atphp whichphp thephp Sharedphp Accessphp Signaturephp becomesphp invalidphp.
-php	php php*php php@paramphp stringphp php$identifierphp php php php php Signedphp identifier
-php	php php*php php@returnphp string
-php	php php*php/
-php	publicphp functionphp generateSharedAccessUrlphp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php,php php$resourcephp php=php php'bphp'php,php php$permissionsphp php=php php'rphp'php,php php$startphp php=php php'php'php,php php$expiryphp php=php php'php'php,php php$identifierphp php=php php'php'php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp isphp notphp specifiedphp.php'php)php;
-php	php	php}
-php	php	ifphp php(php!selfphp:php:isValidContainerNamephp(php$containerNamephp)php)php php{
-php	php	php	throwphp newphp Zendphp_Servicephp_WindowsAzurephp_Exceptionphp(php'Containerphp namephp doesphp notphp adherephp tophp containerphp namingphp conventionsphp.php Seephp httpphp:php/php/msdnphp.microsoftphp.comphp/enphp-usphp/libraryphp/ddphp1php3php5php7php1php5php.aspxphp forphp morephp informationphp.php'php)php;
-php	php	php}
-
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php selfphp:php:createResourceNamephp(php$containerNamephp php,php php$blobNamephp)php;
-
-php	php	php/php/php Generatephp URL
-php	php	returnphp php$thisphp-php>getBaseUrlphp(php)php php.php php'php/php'php php.php php$resourceNamephp php.php php'php?php'php php.
-php	php	php$thisphp-php>php_sharedAccessSignatureCredentialsphp-php>createSignedQueryStringphp(
-php	php	php$resourceNamephp,
-php	php	php php php php php php php php php'php'php,
-php	php	php$resourcephp,
-php	php	php$permissionsphp,
-php	php	php$startphp,
-php	php	php$expiryphp,
-php	php	php$identifierphp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Registerphp thisphp objectphp asphp streamphp wrapperphp client
-php	php php*
-php	php php*php php@paramphp php stringphp php$namephp Protocolphp name
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
-php	php php*php/
-php	publicphp functionphp registerAsClientphp(php$namephp)
-php	php{
-php	php	selfphp:php:php$php_wrapperClientsphp[php$namephp]php php=php php$thisphp;
-php	php	returnphp php$thisphp;
-php	php}
-
-php	php/php*php*
-php	php php*php Unregisterphp thisphp objectphp asphp streamphp wrapperphp client
-php	php php*
-php	php php*php php@paramphp php stringphp php$namephp Protocolphp name
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
-php	php php*php/
-php	publicphp functionphp unregisterAsClientphp(php$namephp)
-php	php{
-php	php	unsetphp(selfphp:php:php$php_wrapperClientsphp[php$namephp]php)php;
-php	php	returnphp php$thisphp;
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp wrapperphp clientphp forphp streamphp type
-php	php php*
-php	php php*php php@paramphp php stringphp php$namephp Protocolphp name
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
-php	php php*php/
-php	publicphp staticphp functionphp getWrapperClientphp(php$namephp)
-php	php{
-php	php	returnphp selfphp:php:php$php_wrapperClientsphp[php$namephp]php;
-php	php}
-
-php	php/php*php*
-php	php php*php Registerphp thisphp objectphp asphp streamphp wrapper
-php	php php*
-php	php php*php php@paramphp php stringphp php$namephp Protocolphp name
-php	php php*php/
-php	publicphp functionphp registerStreamWrapperphp(php$namephp php=php php'azurephp'php)
-php	php{
-php	php	php/php*php*
-php	php	php php*php php@seephp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp_Stream
-php	php	php php*php/
-php	php	requirephp_oncephp php'Zendphp/Servicephp/WindowsAzurephp/Storagephp/Blobphp/Streamphp.phpphp'php;
-
-php	php	streamphp_registerphp_wrapperphp(php$namephp,php php'Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blobphp_Streamphp'php)php;
-php	php	php$thisphp-php>registerAsClientphp(php$namephp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Unregisterphp thisphp objectphp asphp streamphp wrapper
-php	php php*
-php	php php*php php@paramphp php stringphp php$namephp Protocolphp name
-php	php php*php php@returnphp Zendphp_Servicephp_WindowsAzurephp_Storagephp_Blob
-php	php php*php/
-php	publicphp functionphp unregisterStreamWrapperphp(php$namephp php=php php'azurephp'php)
-php	php{
-php	php	streamphp_wrapperphp_unregisterphp(php$namephp)php;
-php	php	php$thisphp-php>unregisterAsClientphp(php$namephp)php;
-php	php}
-
-php	php/php*php*
-php	php php*php Createphp resourcephp name
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp php Containerphp name
-php	php php*php php@paramphp stringphp php$blobNamephp Blobphp name
-php	php php*php php@returnphp string
-php	php php*php/
-php	publicphp staticphp functionphp createResourceNamephp(php$containerNamephp php=php php'php'php,php php$blobNamephp php=php php'php'php)
-php	php{
-php	php	php/php/php Resourcephp name
-php	php	php$resourceNamephp php=php php$containerNamephp php.php php'php/php'php php.php php$blobNamephp;
-php	php	ifphp php(php$containerNamephp php=php=php=php php'php'php php|php|php php$containerNamephp php=php=php=php php'php$rootphp'php)php php{
-php	php	php	php$resourceNamephp php=php php$blobNamephp;
-php	php	php}
-php	php	ifphp php(php$blobNamephp php=php=php=php php'php'php)php php{
-php	php	php	php$resourceNamephp php=php php$containerNamephp;
-php	php	php}
-
-php	php	returnphp php$resourceNamephp;
-php	php}
-
-php	php/php*php*
-php	php php*php Isphp validphp containerphp namephp?
-php	php php*
-php	php php*php php@paramphp stringphp php$containerNamephp Containerphp name
-php	php php*php php@returnphp boolean
-php	php php*php/
-php	publicphp staticphp functionphp isValidContainerNamephp(php$containerNamephp php=php php'php'php)
-php	php{
-php	php	ifphp php(php$containerNamephp php=php=php php'php$rootphp'php)php php{
-php	php	php	returnphp truephp;
-php	php	php}
-
-php	php	ifphp php(pregphp_matchphp(php"php/php^php[aphp-zphp0php-php9php]php[aphp-zphp0php-php9php-php]php*php$php/php"php,php php$containerNamephp)php php=php=php=php php0php)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	ifphp php(strposphp(php$containerNamephp,php php'php-php-php'php)php php!php=php=php falsephp)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	ifphp php(strtolowerphp(php$containerNamephp)php php!php=php php$containerNamephp)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	ifphp php(strlenphp(php$containerNamephp)php <php php3php php|php|php strlenphp(php$containerNamephp)php php>php php6php3php)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	ifphp php(substrphp(php$containerNamephp,php php-php1php)php php=php=php php'php-php'php)php php{
-php	php	php	returnphp falsephp;
-php	php	php}
-
-php	php	returnphp truephp;
-php	php}
-
-php	php/php*php*
-php	php php*php Getphp errorphp messagephp fromphp Zendphp_Httpphp_Response
-php	php php*
-php	php php*php php@paramphp Zendphp_Httpphp_Responsephp php$responsephp Repsonse
-php	php php*php php@paramphp stringphp php$alternativeErrorphp Alternativephp errorphp message
-php	php php*php php@returnphp string
-php	php php*php/
-php	protectedphp functionphp php_getErrorMessagephp(Zendphp_Httpphp_Responsephp php$responsephp,php php$alternativeErrorphp php=php php'Unknownphp errorphp.php'php)
-php	php{
-php	php	php$responsephp php=php php$thisphp-php>php_parseResponsephp(php$responsephp)php;
-php	php	ifphp php(php$responsephp php&php&php php$responsephp-php>Messagephp)php php{
-php	php	php	returnphp php(stringphp)php$responsephp-php>Messagephp;
-php	php	php}php elsephp php{
-php	php	php	returnphp php$alternativeErrorphp;
-php	php	php}
-php	php}
-
-php	php/php*php*
-php	php php*php Generatephp blockphp id
-php	php php*
-php	php php*php php@paramphp intphp php$partphp Blockphp number
-php	php php*php php@returnphp stringphp Windowsphp Azurephp Blobphp Storagephp blockphp number
-php	php php*php/
-php	protectedphp functionphp php_generateBlockIdphp(php$partphp php=php php0php)
-php	php{
-php	php	php$returnValuephp php=php php$partphp;
-php	php	whilephp php(strlenphp(php$returnValuephp)php <php php6php4php)php php{
-php	php	php	php$returnValuephp php=php php'php0php'php php.php php$returnValuephp;
-php	php	php}
-
-php	php	returnphp php$returnValuephp;
-php	php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://todo     name_todo
+ * @version    $Id: Blob.php 23584 2010-12-28 19:51:49Z matthew $
+ */
+
+/**
+ * @see Zend_Service_WindowsAzure_Credentials_CredentialsAbstract_SharedKey
+ */
+require_once 'Zend/Service/WindowsAzure/Credentials/SharedKey.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Credentials_SharedAccessSignature
+ */
+require_once 'Zend/Service/WindowsAzure/Credentials/SharedAccessSignature.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
+ */
+require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
+
+/**
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
+
+/**
+ * @see Zend_Http_Response
+ */
+require_once 'Zend/Http/Response.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage
+ */
+require_once 'Zend/Service/WindowsAzure/Storage.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage_BlobContainer
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/BlobContainer.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage_BlobInstance
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/BlobInstance.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage_PageRegionInstance
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/PageRegionInstance.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage_LeaseInstance
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/LeaseInstance.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Storage_SignedIdentifier
+ */
+require_once 'Zend/Service/WindowsAzure/Storage/SignedIdentifier.php';
+
+/**
+ * @see Zend_Service_WindowsAzure_Exception
+ */
+require_once 'Zend/Service/WindowsAzure/Exception.php';
+
+
+/**
+ * @category   Zend
+ * @package    Zend_Service_WindowsAzure
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_Storage
+{
+	/**
+	 * ACL - Private access
+	 */
+	const ACL_PRIVATE = null;
+
+	/**
+	 * ACL - Public access (read all blobs)
+	 *
+	 * @deprecated Use ACL_PUBLIC_CONTAINER or ACL_PUBLIC_BLOB instead.
+	 */
+	const ACL_PUBLIC = 'container';
+	
+	/**
+	 * ACL - Blob Public access (read all blobs)
+	 */
+	const ACL_PUBLIC_BLOB = 'blob';
+
+	/**
+	 * ACL - Container Public access (enumerate and read all blobs)
+	 */
+	const ACL_PUBLIC_CONTAINER = 'container';
+
+	/**
+	 * Blob lease constants
+	 */
+	const LEASE_ACQUIRE = 'acquire';
+	const LEASE_RENEW   = 'renew';
+	const LEASE_RELEASE = 'release';
+	const LEASE_BREAK   = 'break';
+
+	/**
+	 * Maximal blob size (in bytes)
+	 */
+	const MAX_BLOB_SIZE = 67108864;
+
+	/**
+	 * Maximal blob transfer size (in bytes)
+	 */
+	const MAX_BLOB_TRANSFER_SIZE = 4194304;
+
+	/**
+	 * Blob types
+	 */
+	const BLOBTYPE_BLOCK = 'BlockBlob';
+	const BLOBTYPE_PAGE  = 'PageBlob';
+
+	/**
+	 * Put page write options
+	 */
+	const PAGE_WRITE_UPDATE = 'update';
+	const PAGE_WRITE_CLEAR  = 'clear';
+
+	/**
+	 * Stream wrapper clients
+	 *
+	 * @var array
+	 */
+	protected static $_wrapperClients = array();
+
+	/**
+	 * SharedAccessSignature credentials
+	 *
+	 * @var Zend_Service_WindowsAzure_Credentials_SharedAccessSignature
+	 */
+	private $_sharedAccessSignatureCredentials = null;
+
+	/**
+	 * Creates a new Zend_Service_WindowsAzure_Storage_Blob instance
+	 *
+	 * @param string $host Storage host name
+	 * @param string $accountName Account name for Windows Azure
+	 * @param string $accountKey Account key for Windows Azure
+	 * @param boolean $usePathStyleUri Use path-style URI's
+	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
+	 */
+	public function __construct($host = Zend_Service_WindowsAzure_Storage::URL_DEV_BLOB, $accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT, $accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY, $usePathStyleUri = false, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
+	{
+		parent::__construct($host, $accountName, $accountKey, $usePathStyleUri, $retryPolicy);
+
+		// API version
+		$this->_apiVersion = '2009-09-19';
+
+		// SharedAccessSignature credentials
+		$this->_sharedAccessSignatureCredentials = new Zend_Service_WindowsAzure_Credentials_SharedAccessSignature($accountName, $accountKey, $usePathStyleUri);
+	}
+
+	/**
+	 * Check if a blob exists
+	 *
+	 * @param string $containerName Container name
+	 * @param string $blobName      Blob name
+	 * @param string $snapshotId    Snapshot identifier
+	 * @return boolean
+	 */
+	public function blobExists($containerName = '', $blobName = '', $snapshotId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+
+		// Get blob instance
+		try {
+			$this->getBlobInstance($containerName, $blobName, $snapshotId);
+		} catch (Zend_Service_WindowsAzure_Exception $e) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if a container exists
+	 *
+	 * @param string $containerName Container name
+	 * @return boolean
+	 */
+	public function containerExists($containerName = '')
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+			
+		// List containers
+		$containers = $this->listContainers($containerName, 1);
+		foreach ($containers as $container) {
+			if ($container->Name == $containerName) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Create container
+	 *
+	 * @param string $containerName Container name
+	 * @param array  $metadata      Key/value pairs of meta data
+	 * @return object Container properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function createContainer($containerName = '', $metadata = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if (!is_array($metadata)) {
+			throw new Zend_Service_WindowsAzure_Exception('Meta data should be an array of key and value pairs.');
+		}
+			
+		// Create metadata headers
+		$headers = array();
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return new Zend_Service_WindowsAzure_Storage_BlobContainer(
+			$containerName,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get container ACL
+	 *
+	 * @param string $containerName Container name
+	 * @param bool   $signedIdentifiers Display only private/blob/container or display signed identifiers?
+	 * @return string Acl, to be compared with Zend_Service_WindowsAzure_Storage_Blob::ACL_*
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getContainerAcl($containerName = '', $signedIdentifiers = false)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container&comp=acl', Zend_Http_Client::GET, array(), false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ);
+		if ($response->isSuccessful()) {
+			if ($signedIdentifiers == false)  {
+				// Only private/blob/container
+				$accessType = $response->getHeader(Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-public-access');
+				if (strtolower($accessType) == 'true') {
+					$accessType = self::ACL_PUBLIC_CONTAINER;
+				}
+				return $accessType;
+			} else {
+				// Parse result
+				$result = $this->_parseResponse($response);
+				if (!$result) {
+					return array();
+				}
+
+				$entries = null;
+				if ($result->SignedIdentifier) {
+					if (count($result->SignedIdentifier) > 1) {
+						$entries = $result->SignedIdentifier;
+					} else {
+						$entries = array($result->SignedIdentifier);
+					}
+				}
+
+				// Return value
+				$returnValue = array();
+				foreach ($entries as $entry) {
+					$returnValue[] = new Zend_Service_WindowsAzure_Storage_SignedIdentifier(
+					$entry->Id,
+					$entry->AccessPolicy ? $entry->AccessPolicy->Start ? $entry->AccessPolicy->Start : '' : '',
+					$entry->AccessPolicy ? $entry->AccessPolicy->Expiry ? $entry->AccessPolicy->Expiry : '' : '',
+					$entry->AccessPolicy ? $entry->AccessPolicy->Permission ? $entry->AccessPolicy->Permission : '' : ''
+					);
+				}
+
+				// Return
+				return $returnValue;
+			}
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Set container ACL
+	 *
+	 * @param string $containerName Container name
+	 * @param bool $acl Zend_Service_WindowsAzure_Storage_Blob::ACL_*
+	 * @param array $signedIdentifiers Signed identifiers
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function setContainerAcl($containerName = '', $acl = self::ACL_PRIVATE, $signedIdentifiers = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+
+		// Headers
+		$headers = array();
+
+		// Acl specified?
+		if ($acl != self::ACL_PRIVATE && $acl !== null && $acl != '') {
+			$headers[Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-public-access'] = $acl;
+		}
+
+		// Policies
+		$policies = null;
+		if (is_array($signedIdentifiers) && count($signedIdentifiers) > 0) {
+			$policies  = '';
+			$policies .= '<?xml version="1.0" encoding="utf-8"?>' . "\r\n";
+			$policies .= '<SignedIdentifiers>' . "\r\n";
+			foreach ($signedIdentifiers as $signedIdentifier) {
+				$policies .= '  <SignedIdentifier>' . "\r\n";
+				$policies .= '    <Id>' . $signedIdentifier->Id . '</Id>' . "\r\n";
+				$policies .= '    <AccessPolicy>' . "\r\n";
+				if ($signedIdentifier->Start != '')
+				$policies .= '      <Start>' . $signedIdentifier->Start . '</Start>' . "\r\n";
+				if ($signedIdentifier->Expiry != '')
+				$policies .= '      <Expiry>' . $signedIdentifier->Expiry . '</Expiry>' . "\r\n";
+				if ($signedIdentifier->Permissions != '')
+				$policies .= '      <Permission>' . $signedIdentifier->Permissions . '</Permission>' . "\r\n";
+				$policies .= '    </AccessPolicy>' . "\r\n";
+				$policies .= '  </SignedIdentifier>' . "\r\n";
+			}
+			$policies .= '</SignedIdentifiers>' . "\r\n";
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container&comp=acl', Zend_Http_Client::PUT, $headers, false, $policies, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get container
+	 *
+	 * @param string $containerName  Container name
+	 * @return Zend_Service_WindowsAzure_Storage_BlobContainer
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getContainer($containerName = '')
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container', Zend_Http_Client::GET, array(), false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ);
+		if ($response->isSuccessful()) {
+			// Parse metadata
+			$metadata = $this->_parseMetadataHeaders($response->getHeaders());
+
+			// Return container
+			return new Zend_Service_WindowsAzure_Storage_BlobContainer(
+			$containerName,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get container metadata
+	 *
+	 * @param string $containerName  Container name
+	 * @return array Key/value pairs of meta data
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getContainerMetadata($containerName = '')
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+
+		return $this->getContainer($containerName)->Metadata;
+	}
+
+	/**
+	 * Set container metadata
+	 *
+	 * Calling the Set Container Metadata operation overwrites all existing metadata that is associated with the container. It's not possible to modify an individual name/value pair.
+	 *
+	 * @param string $containerName      Container name
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function setContainerMetadata($containerName = '', $metadata = array(), $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if (!is_array($metadata)) {
+			throw new Zend_Service_WindowsAzure_Exception('Meta data should be an array of key and value pairs.');
+		}
+		if (count($metadata) == 0) {
+			return;
+		}
+
+		// Create metadata headers
+		$headers = array();
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container&comp=metadata', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Delete container
+	 *
+	 * @param string $containerName      Container name
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function deleteContainer($containerName = '', $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+			
+		// Additional headers?
+		$headers = array();
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName, '?restype=container', Zend_Http_Client::DELETE, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * List containers
+	 *
+	 * @param string $prefix     Optional. Filters the results to return only containers whose name begins with the specified prefix.
+	 * @param int    $maxResults Optional. Specifies the maximum number of containers to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
+	 * @param string $marker     Optional string value that identifies the portion of the list to be returned with the next list operation.
+	 * @param string $include    Optional. Include this parameter to specify that the container's metadata be returned as part of the response body. (allowed values: '', 'metadata')
+	 * @param int    $currentResultCount Current result count (internal use)
+	 * @return array
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function listContainers($prefix = null, $maxResults = null, $marker = null, $include = null, $currentResultCount = 0)
+	{
+		// Build query string
+		$queryString = array('comp=list');
+		if ($prefix !== null) {
+			$queryString[] = 'prefix=' . $prefix;
+		}
+		if ($maxResults !== null) {
+			$queryString[] = 'maxresults=' . $maxResults;
+		}
+		if ($marker !== null) {
+			$queryString[] = 'marker=' . $marker;
+		}
+		if ($include !== null) {
+			$queryString[] = 'include=' . $include;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+		
+		// Perform request
+		$response = $this->_performRequest('', $queryString, Zend_Http_Client::GET, array(), false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_CONTAINER, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_LIST);
+		if ($response->isSuccessful()) {
+			$xmlContainers = $this->_parseResponse($response)->Containers->Container;
+			$xmlMarker = (string)$this->_parseResponse($response)->NextMarker;
+
+			$containers = array();
+			if ($xmlContainers !== null) {
+				for ($i = 0; $i < count($xmlContainers); $i++) {
+					$containers[] = new Zend_Service_WindowsAzure_Storage_BlobContainer(
+					(string)$xmlContainers[$i]->Name,
+					(string)$xmlContainers[$i]->Etag,
+					(string)$xmlContainers[$i]->LastModified,
+					$this->_parseMetadataElement($xmlContainers[$i])
+					);
+				}
+			}
+			$currentResultCount = $currentResultCount + count($containers);
+			if ($maxResults !== null && $currentResultCount < $maxResults) {
+				if ($xmlMarker !== null && $xmlMarker != '') {
+					$containers = array_merge($containers, $this->listContainers($prefix, $maxResults, $xmlMarker, $include, $currentResultCount));
+				}
+			}
+			if ($maxResults !== null && count($containers) > $maxResults) {
+				$containers = array_slice($containers, 0, $maxResults);
+			}
+			
+			return $containers;
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Put blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $localFileName      Local file name to be uploaded
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return object Partial blob properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putBlob($containerName = '', $blobName = '', $localFileName = '', $metadata = array(), $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($localFileName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Local file name is not specified.');
+		}
+		if (!file_exists($localFileName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Local file not found.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+			
+		// Check file size
+		if (filesize($localFileName) >= self::MAX_BLOB_SIZE) {
+			return $this->putLargeBlob($containerName, $blobName, $localFileName, $metadata, $leaseId);
+		}
+
+		// Put the data to Windows Azure Storage
+		return $this->putBlobData($containerName, $blobName, file_get_contents($localFileName), $metadata, $leaseId, $additionalHeaders);
+	}
+
+	/**
+	 * Put blob data
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param mixed  $data      		 Data to store
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return object Partial blob properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putBlobData($containerName = '', $blobName = '', $data = '', $metadata = array(), $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Specify blob type
+		$headers[Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-type'] = self::BLOBTYPE_BLOCK;
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '', Zend_Http_Client::PUT, $headers, false, $data, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return new Zend_Service_WindowsAzure_Storage_BlobInstance(
+			$containerName,
+			$blobName,
+			null,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$this->getBaseUrl() . '/' . $containerName . '/' . $blobName,
+			strlen($data),
+				'',
+				'',
+				'',
+			false,
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Put large blob (> 64 MB)
+	 *
+	 * @param string $containerName Container name
+	 * @param string $blobName Blob name
+	 * @param string $localFileName Local file name to be uploaded
+	 * @param array  $metadata      Key/value pairs of meta data
+	 * @param string $leaseId       Lease identifier
+	 * @return object Partial blob properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putLargeBlob($containerName = '', $blobName = '', $localFileName = '', $metadata = array(), $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($localFileName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Local file name is not specified.');
+		}
+		if (!file_exists($localFileName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Local file not found.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+			
+		// Check file size
+		if (filesize($localFileName) < self::MAX_BLOB_SIZE) {
+			return $this->putBlob($containerName, $blobName, $localFileName, $metadata);
+		}
+			
+		// Determine number of parts
+		$numberOfParts = ceil( filesize($localFileName) / self::MAX_BLOB_TRANSFER_SIZE );
+
+		// Generate block id's
+		$blockIdentifiers = array();
+		for ($i = 0; $i < $numberOfParts; $i++) {
+			$blockIdentifiers[] = $this->_generateBlockId($i);
+		}
+
+		// Open file
+		$fp = fopen($localFileName, 'r');
+		if ($fp === false) {
+			throw new Zend_Service_WindowsAzure_Exception('Could not open local file.');
+		}
+			
+		// Upload parts
+		for ($i = 0; $i < $numberOfParts; $i++) {
+			// Seek position in file
+			fseek($fp, $i * self::MAX_BLOB_TRANSFER_SIZE);
+				
+			// Read contents
+			$fileContents = fread($fp, self::MAX_BLOB_TRANSFER_SIZE);
+				
+			// Put block
+			$this->putBlock($containerName, $blobName, $blockIdentifiers[$i], $fileContents, $leaseId);
+				
+			// Dispose file contents
+			$fileContents = null;
+			unset($fileContents);
+		}
+
+		// Close file
+		fclose($fp);
+
+		// Put block list
+		$this->putBlockList($containerName, $blobName, $blockIdentifiers, $metadata, $leaseId);
+
+		// Return information of the blob
+		return $this->getBlobInstance($containerName, $blobName, null, $leaseId);
+	}
+		
+	/**
+	 * Put large blob block
+	 *
+	 * @param string $containerName Container name
+	 * @param string $blobName      Blob name
+	 * @param string $identifier    Block ID
+	 * @param array  $contents      Contents of the block
+	 * @param string $leaseId       Lease identifier
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putBlock($containerName = '', $blobName = '', $identifier = '', $contents = '', $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($identifier === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Block identifier is not specified.');
+		}
+		if (strlen($contents) > self::MAX_BLOB_TRANSFER_SIZE) {
+			throw new Zend_Service_WindowsAzure_Exception('Block size is too big.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+			
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Upload
+		$response = $this->_performRequest($resourceName, '?comp=block&blockid=' . base64_encode($identifier), Zend_Http_Client::PUT, $headers, false, $contents, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Put block list
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param array $blockList           Array of block identifiers
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putBlockList($containerName = '', $blobName = '', $blockList = array(), $metadata = array(), $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if (count($blockList) == 0) {
+			throw new Zend_Service_WindowsAzure_Exception('Block list does not contain any elements.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Generate block list
+		$blocks = '';
+		foreach ($blockList as $block) {
+			$blocks .= '  <Latest>' . base64_encode($block) . '</Latest>' . "\n";
+		}
+
+		// Generate block list request
+		$fileContents = utf8_encode(implode("\n", array(
+			'<?xml version="1.0" encoding="utf-8"?>',
+			'<BlockList>',
+		$blocks,
+			'</BlockList>'
+			)));
+
+			// Create metadata headers
+			$headers = array();
+			if ($leaseId !== null) {
+				$headers['x-ms-lease-id'] = $leaseId;
+			}
+			$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+			// Additional headers?
+			foreach ($additionalHeaders as $key => $value) {
+				$headers[$key] = $value;
+			}
+
+			// Resource name
+			$resourceName = self::createResourceName($containerName , $blobName);
+
+			// Perform request
+			$response = $this->_performRequest($resourceName, '?comp=blocklist', Zend_Http_Client::PUT, $headers, false, $fileContents, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+			if (!$response->isSuccessful()) {
+				throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+			}
+	}
+
+	/**
+	 * Get block list
+	 *
+	 * @param string $containerName Container name
+	 * @param string $blobName      Blob name
+	 * @param string $snapshotId    Snapshot identifier
+	 * @param string $leaseId       Lease identifier
+	 * @param integer $type         Type of block list to retrieve. 0 = all, 1 = committed, 2 = uncommitted
+	 * @return array
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlockList($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null, $type = 0)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($type < 0 || $type > 2) {
+			throw new Zend_Service_WindowsAzure_Exception('Invalid type of block list to retrieve.');
+		}
+
+		// Set $blockListType
+		$blockListType = 'all';
+		if ($type == 1) {
+			$blockListType = 'committed';
+		}
+		if ($type == 2) {
+			$blockListType = 'uncommitted';
+		}
+
+		// Headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+
+		// Build query string
+		$queryString = array('comp=blocklist', 'blocklisttype=' . $blockListType);
+		if ($snapshotId !== null) {
+			$queryString[] = 'snapshot=' . $snapshotId;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+			
+		// Perform request
+		$response = $this->_performRequest($resourceName, $queryString, Zend_Http_Client::GET, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ);
+		if ($response->isSuccessful()) {
+			// Parse response
+			$blockList = $this->_parseResponse($response);
+
+			// Create return value
+			$returnValue = array();
+			if ($blockList->CommittedBlocks) {
+				foreach ($blockList->CommittedBlocks->Block as $block) {
+					$returnValue['CommittedBlocks'][] = (object)array(
+			            'Name' => (string)$block->Name,
+			            'Size' => (string)$block->Size
+					);
+				}
+			}
+			if ($blockList->UncommittedBlocks)  {
+				foreach ($blockList->UncommittedBlocks->Block as $block) {
+					$returnValue['UncommittedBlocks'][] = (object)array(
+			            'Name' => (string)$block->Name,
+			            'Size' => (string)$block->Size
+					);
+				}
+			}
+
+			return $returnValue;
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Create page blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param int    $size      		 Size of the page blob in bytes
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return object Partial blob properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function createPageBlob($containerName = '', $blobName = '', $size = 0, $metadata = array(), $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if ($size <= 0) {
+			throw new Zend_Service_WindowsAzure_Exception('Page blob size must be specified.');
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Specify blob type & blob length
+		$headers[Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-type'] = self::BLOBTYPE_PAGE;
+		$headers[Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-content-length'] = $size;
+		$headers['Content-Length'] = 0;
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '', Zend_Http_Client::PUT, $headers, false, '', Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return new Zend_Service_WindowsAzure_Storage_BlobInstance(
+			$containerName,
+			$blobName,
+			null,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$this->getBaseUrl() . '/' . $containerName . '/' . $blobName,
+			$size,
+				'',
+				'',
+				'',
+			false,
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Put page in page blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param int    $startByteOffset    Start byte offset
+	 * @param int    $endByteOffset      End byte offset
+	 * @param mixed  $contents			 Page contents
+	 * @param string $writeMethod        Write method (Zend_Service_WindowsAzure_Storage_Blob::PAGE_WRITE_*)
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function putPage($containerName = '', $blobName = '', $startByteOffset = 0, $endByteOffset = 0, $contents = '', $writeMethod = self::PAGE_WRITE_UPDATE, $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if ($startByteOffset % 512 != 0) {
+			throw new Zend_Service_WindowsAzure_Exception('Start byte offset must be a modulus of 512.');
+		}
+		if (($endByteOffset + 1) % 512 != 0) {
+			throw new Zend_Service_WindowsAzure_Exception('End byte offset must be a modulus of 512 minus 1.');
+		}
+
+		// Determine size
+		$size = strlen($contents);
+		if ($size >= self::MAX_BLOB_TRANSFER_SIZE) {
+			throw new Zend_Service_WindowsAzure_Exception('Page blob size must not be larger than ' + self::MAX_BLOB_TRANSFER_SIZE . ' bytes.');
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Specify range
+		$headers['Range'] = 'bytes=' . $startByteOffset . '-' . $endByteOffset;
+
+		// Write method
+		$headers[Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'page-write'] = $writeMethod;
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '?comp=page', Zend_Http_Client::PUT, $headers, false, $contents, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Put page in page blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param int    $startByteOffset    Start byte offset
+	 * @param int    $endByteOffset      End byte offset
+	 * @param string $leaseId            Lease identifier
+	 * @return array Array of page ranges
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getPageRegions($containerName = '', $blobName = '', $startByteOffset = 0, $endByteOffset = 0, $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if ($startByteOffset % 512 != 0) {
+			throw new Zend_Service_WindowsAzure_Exception('Start byte offset must be a modulus of 512.');
+		}
+		if ($endByteOffset > 0 && ($endByteOffset + 1) % 512 != 0) {
+			throw new Zend_Service_WindowsAzure_Exception('End byte offset must be a modulus of 512 minus 1.');
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+
+		// Specify range?
+		if ($endByteOffset > 0) {
+			$headers['Range'] = 'bytes=' . $startByteOffset . '-' . $endByteOffset;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '?comp=pagelist', Zend_Http_Client::GET, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			$result = $this->_parseResponse($response);
+			$xmlRanges = null;
+			if (count($result->PageRange) > 1) {
+				$xmlRanges = $result->PageRange;
+			} else {
+				$xmlRanges = array($result->PageRange);
+			}
+
+			$ranges = array();
+			for ($i = 0; $i < count($xmlRanges); $i++) {
+				$ranges[] = new Zend_Service_WindowsAzure_Storage_PageRegionInstance(
+				(int)$xmlRanges[$i]->Start,
+				(int)$xmlRanges[$i]->End
+				);
+			}
+			
+			return $ranges;
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+		
+	/**
+	 * Copy blob
+	 *
+	 * @param string $sourceContainerName       Source container name
+	 * @param string $sourceBlobName            Source blob name
+	 * @param string $destinationContainerName  Destination container name
+	 * @param string $destinationBlobName       Destination blob name
+	 * @param array  $metadata                  Key/value pairs of meta data
+	 * @param string $sourceSnapshotId          Source snapshot identifier
+	 * @param string $destinationLeaseId        Destination lease identifier
+	 * @param array  $additionalHeaders         Additional headers. See http://msdn.microsoft.com/en-us/library/dd894037.aspx for more information.
+	 * @return object Partial blob properties
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function copyBlob($sourceContainerName = '', $sourceBlobName = '', $destinationContainerName = '', $destinationBlobName = '', $metadata = array(), $sourceSnapshotId = null, $destinationLeaseId = null, $additionalHeaders = array())
+	{
+		if ($sourceContainerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Source container name is not specified.');
+		}
+		if (!self::isValidContainerName($sourceContainerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Source container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($sourceBlobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Source blob name is not specified.');
+		}
+		if ($destinationContainerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Destination container name is not specified.');
+		}
+		if (!self::isValidContainerName($destinationContainerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Destination container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($destinationBlobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Destination blob name is not specified.');
+		}
+		if ($sourceContainerName === '$root' && strpos($sourceBlobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if ($destinationContainerName === '$root' && strpos($destinationBlobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($destinationLeaseId !== null) {
+			$headers['x-ms-lease-id'] = $destinationLeaseId;
+		}
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Resource names
+		$sourceResourceName = self::createResourceName($sourceContainerName, $sourceBlobName);
+		if ($sourceSnapshotId !== null) {
+			$sourceResourceName .= '?snapshot=' . $sourceSnapshotId;
+		}
+		$destinationResourceName = self::createResourceName($destinationContainerName, $destinationBlobName);
+
+		// Set source blob
+		$headers["x-ms-copy-source"] = '/' . $this->_accountName . '/' . $sourceResourceName;
+
+		// Perform request
+		$response = $this->_performRequest($destinationResourceName, '', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return new Zend_Service_WindowsAzure_Storage_BlobInstance(
+			$destinationContainerName,
+			$destinationBlobName,
+			null,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$this->getBaseUrl() . '/' . $destinationContainerName . '/' . $destinationBlobName,
+			0,
+				'',
+				'',
+				'',
+			false,
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $localFileName      Local file name to store downloaded blob
+	 * @param string $snapshotId         Snapshot identifier
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlob($containerName = '', $blobName = '', $localFileName = '', $snapshotId = null, $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($localFileName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Local file name is not specified.');
+		}
+
+		// Fetch data
+		file_put_contents($localFileName, $this->getBlobData($containerName, $blobName, $snapshotId, $leaseId, $additionalHeaders));
+	}
+
+	/**
+	 * Get blob data
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $snapshotId         Snapshot identifier
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return mixed Blob contents
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlobData($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+
+		// Build query string
+		$queryString = array();
+		if ($snapshotId !== null) {
+			$queryString[] = 'snapshot=' . $snapshotId;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+
+		// Additional headers?
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, $queryString, Zend_Http_Client::GET, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ);
+		if ($response->isSuccessful()) {
+			return $response->getBody();
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get blob instance
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $snapshotId         Snapshot identifier
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return Zend_Service_WindowsAzure_Storage_BlobInstance
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlobInstance($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Build query string
+		$queryString = array();
+		if ($snapshotId !== null) {
+			$queryString[] = 'snapshot=' . $snapshotId;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+		
+		// Additional headers?
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, $queryString, Zend_Http_Client::HEAD, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_READ);
+		if ($response->isSuccessful()) {
+			// Parse metadata
+			$metadata = $this->_parseMetadataHeaders($response->getHeaders());
+
+			// Return blob
+			return new Zend_Service_WindowsAzure_Storage_BlobInstance(
+			$containerName,
+			$blobName,
+			$snapshotId,
+			$response->getHeader('Etag'),
+			$response->getHeader('Last-modified'),
+			$this->getBaseUrl() . '/' . $containerName . '/' . $blobName,
+			$response->getHeader('Content-Length'),
+			$response->getHeader('Content-Type'),
+			$response->getHeader('Content-Encoding'),
+			$response->getHeader('Content-Language'),
+			$response->getHeader('Cache-Control'),
+			$response->getHeader('x-ms-blob-type'),
+			$response->getHeader('x-ms-lease-status'),
+			false,
+			$metadata
+			);
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get blob metadata
+	 *
+	 * @param string $containerName  Container name
+	 * @param string $blobName       Blob name
+	 * @param string $snapshotId     Snapshot identifier
+	 * @param string $leaseId        Lease identifier
+	 * @return array Key/value pairs of meta data
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlobMetadata($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		return $this->getBlobInstance($containerName, $blobName, $snapshotId, $leaseId)->Metadata;
+	}
+
+	/**
+	 * Set blob metadata
+	 *
+	 * Calling the Set Blob Metadata operation overwrites all existing metadata that is associated with the blob. It's not possible to modify an individual name/value pair.
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function setBlobMetadata($containerName = '', $blobName = '', $metadata = array(), $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if (count($metadata) == 0) {
+			return;
+		}
+
+		// Create metadata headers
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		$headers = array_merge($headers, $this->_generateMetadataHeaders($metadata));
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName . '/' . $blobName, '?comp=metadata', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Set blob properties
+	 *
+	 * All available properties are listed at http://msdn.microsoft.com/en-us/library/ee691966.aspx and should be provided in the $additionalHeaders parameter.
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function setBlobProperties($containerName = '', $blobName = '', $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+		if (count($additionalHeaders) == 0) {
+			throw new Zend_Service_WindowsAzure_Exception('No additional headers are specified.');
+		}
+
+		// Create headers
+		$headers = array();
+
+		// Lease set?
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+
+		// Additional headers?
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Perform request
+		$response = $this->_performRequest($containerName . '/' . $blobName, '?comp=properties', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Get blob properties
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $snapshotId         Snapshot identifier
+	 * @param string $leaseId            Lease identifier
+	 * @return Zend_Service_WindowsAzure_Storage_BlobInstance
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function getBlobProperties($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		return $this->getBlobInstance($containerName, $blobName, $snapshotId, $leaseId);
+	}
+
+	/**
+	 * Delete blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $snapshotId         Snapshot identifier
+	 * @param string $leaseId            Lease identifier
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function deleteBlob($containerName = '', $blobName = '', $snapshotId = null, $leaseId = null, $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Build query string
+		$queryString = array();
+		if ($snapshotId !== null) {
+			$queryString[] = 'snapshot=' . $snapshotId;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+			
+		// Additional headers?
+		$headers = array();
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, $queryString, Zend_Http_Client::DELETE, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if (!$response->isSuccessful()) {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Snapshot blob
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param array  $metadata           Key/value pairs of meta data
+	 * @param array  $additionalHeaders  Additional headers. See http://msdn.microsoft.com/en-us/library/dd179371.aspx for more information.
+	 * @return string Date/Time value representing the snapshot identifier.
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function snapshotBlob($containerName = '', $blobName = '', $metadata = array(), $additionalHeaders = array())
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Additional headers?
+		$headers = array();
+		foreach ($additionalHeaders as $key => $value) {
+			$headers[$key] = $value;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '?comp=snapshot', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return $response->getHeader('x-ms-snapshot');
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Lease blob - See (http://msdn.microsoft.com/en-us/library/ee691972.aspx)
+	 *
+	 * @param string $containerName      Container name
+	 * @param string $blobName           Blob name
+	 * @param string $leaseAction        Lease action (Zend_Service_WindowsAzure_Storage_Blob::LEASE_*)
+	 * @param string $leaseId            Lease identifier, required to renew the lease or to release the lease.
+	 * @return Zend_Service_WindowsAzure_Storage_LeaseInstance Lease instance
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function leaseBlob($containerName = '', $blobName = '', $leaseAction = self::LEASE_ACQUIRE, $leaseId = null)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+		if ($blobName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Blob name is not specified.');
+		}
+		if ($containerName === '$root' && strpos($blobName, '/') !== false) {
+			throw new Zend_Service_WindowsAzure_Exception('Blobs stored in the root container can not have a name containing a forward slash (/).');
+		}
+
+		// Additional headers?
+		$headers = array();
+		$headers['x-ms-lease-action'] = strtolower($leaseAction);
+		if ($leaseId !== null) {
+			$headers['x-ms-lease-id'] = $leaseId;
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Perform request
+		$response = $this->_performRequest($resourceName, '?comp=lease', Zend_Http_Client::PUT, $headers, false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_WRITE);
+		if ($response->isSuccessful()) {
+			return new Zend_Service_WindowsAzure_Storage_LeaseInstance(
+			$containerName,
+			$blobName,
+			$response->getHeader('x-ms-lease-id'),
+			$response->getHeader('x-ms-lease-time'));
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * List blobs
+	 *
+	 * @param string $containerName Container name
+	 * @param string $prefix     Optional. Filters the results to return only blobs whose name begins with the specified prefix.
+	 * @param string $delimiter  Optional. Delimiter, i.e. '/', for specifying folder hierarchy
+	 * @param int    $maxResults Optional. Specifies the maximum number of blobs to return per call to Azure storage. This does NOT affect list size returned by this function. (maximum: 5000)
+	 * @param string $marker     Optional string value that identifies the portion of the list to be returned with the next list operation.
+	 * @param string $include    Optional. Specifies that the response should include one or more of the following subsets: '', 'metadata', 'snapshots', 'uncommittedblobs'). Multiple values can be added separated with a comma (,)
+	 * @param int    $currentResultCount Current result count (internal use)
+	 * @return array
+	 * @throws Zend_Service_WindowsAzure_Exception
+	 */
+	public function listBlobs($containerName = '', $prefix = '', $delimiter = '', $maxResults = null, $marker = null, $include = null, $currentResultCount = 0)
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+			
+		// Build query string
+		$queryString = array('restype=container', 'comp=list');
+		if ($prefix !== null) {
+			$queryString[] = 'prefix=' . $prefix;
+		}
+		if ($delimiter !== '') {
+			$queryString[] = 'delimiter=' . $delimiter;
+		}
+		if ($maxResults !== null) {
+			$queryString[] = 'maxresults=' . $maxResults;
+		}
+		if ($marker !== null) {
+			$queryString[] = 'marker=' . $marker;
+		}
+		if ($include !== null) {
+			$queryString[] = 'include=' . $include;
+		}
+		$queryString = self::createQueryStringFromArray($queryString);
+
+		// Perform request
+		$response = $this->_performRequest($containerName, $queryString, Zend_Http_Client::GET, array(), false, null, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB, Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::PERMISSION_LIST);
+		if ($response->isSuccessful()) {
+			// Return value
+			$blobs = array();
+
+			// Blobs
+			$xmlBlobs = $this->_parseResponse($response)->Blobs->Blob;
+			if ($xmlBlobs !== null) {
+				for ($i = 0; $i < count($xmlBlobs); $i++) {
+					$properties = (array)$xmlBlobs[$i]->Properties;
+						
+					$blobs[] = new Zend_Service_WindowsAzure_Storage_BlobInstance(
+					$containerName,
+					(string)$xmlBlobs[$i]->Name,
+					(string)$xmlBlobs[$i]->Snapshot,
+					(string)$properties['Etag'],
+					(string)$properties['Last-Modified'],
+					(string)$xmlBlobs[$i]->Url,
+					(string)$properties['Content-Length'],
+					(string)$properties['Content-Type'],
+					(string)$properties['Content-Encoding'],
+					(string)$properties['Content-Language'],
+					(string)$properties['Cache-Control'],
+					(string)$properties['BlobType'],
+					(string)$properties['LeaseStatus'],
+					false,
+					$this->_parseMetadataElement($xmlBlobs[$i])
+					);
+				}
+			}
+				
+			// Blob prefixes (folders)
+			$xmlBlobs = $this->_parseResponse($response)->Blobs->BlobPrefix;
+				
+			if ($xmlBlobs !== null) {
+				for ($i = 0; $i < count($xmlBlobs); $i++) {
+					$blobs[] = new Zend_Service_WindowsAzure_Storage_BlobInstance(
+					$containerName,
+					(string)$xmlBlobs[$i]->Name,
+					null,
+						'',
+						'',
+						'',
+					0,
+						'',
+						'',
+						'',
+						'',
+						'',
+						'',
+					true,
+					$this->_parseMetadataElement($xmlBlobs[$i])
+					);
+				}
+			}
+				
+			// More blobs?
+			$xmlMarker = (string)$this->_parseResponse($response)->NextMarker;
+			$currentResultCount = $currentResultCount + count($blobs);
+			if ($maxResults !== null && $currentResultCount < $maxResults) {
+				if ($xmlMarker !== null && $xmlMarker != '') {
+					$blobs = array_merge($blobs, $this->listBlobs($containerName, $prefix, $delimiter, $maxResults, $marker, $include, $currentResultCount));
+				}
+			}
+			if ($maxResults !== null && count($blobs) > $maxResults) {
+				$blobs = array_slice($blobs, 0, $maxResults);
+			}
+				
+			return $blobs;
+		} else {
+			throw new Zend_Service_WindowsAzure_Exception($this->_getErrorMessage($response, 'Resource could not be accessed.'));
+		}
+	}
+
+	/**
+	 * Generate shared access URL
+	 *
+	 * @param string $containerName  Container name
+	 * @param string $blobName       Blob name
+	 * @param string $resource       Signed resource - container (c) - blob (b)
+	 * @param string $permissions    Signed permissions - read (r), write (w), delete (d) and list (l)
+	 * @param string $start          The time at which the Shared Access Signature becomes valid.
+	 * @param string $expiry         The time at which the Shared Access Signature becomes invalid.
+	 * @param string $identifier     Signed identifier
+	 * @return string
+	 */
+	public function generateSharedAccessUrl($containerName = '', $blobName = '', $resource = 'b', $permissions = 'r', $start = '', $expiry = '', $identifier = '')
+	{
+		if ($containerName === '') {
+			throw new Zend_Service_WindowsAzure_Exception('Container name is not specified.');
+		}
+		if (!self::isValidContainerName($containerName)) {
+			throw new Zend_Service_WindowsAzure_Exception('Container name does not adhere to container naming conventions. See http://msdn.microsoft.com/en-us/library/dd135715.aspx for more information.');
+		}
+
+		// Resource name
+		$resourceName = self::createResourceName($containerName , $blobName);
+
+		// Generate URL
+		return $this->getBaseUrl() . '/' . $resourceName . '?' .
+		$this->_sharedAccessSignatureCredentials->createSignedQueryString(
+		$resourceName,
+		        '',
+		$resource,
+		$permissions,
+		$start,
+		$expiry,
+		$identifier);
+	}
+
+	/**
+	 * Register this object as stream wrapper client
+	 *
+	 * @param  string $name Protocol name
+	 * @return Zend_Service_WindowsAzure_Storage_Blob
+	 */
+	public function registerAsClient($name)
+	{
+		self::$_wrapperClients[$name] = $this;
+		return $this;
+	}
+
+	/**
+	 * Unregister this object as stream wrapper client
+	 *
+	 * @param  string $name Protocol name
+	 * @return Zend_Service_WindowsAzure_Storage_Blob
+	 */
+	public function unregisterAsClient($name)
+	{
+		unset(self::$_wrapperClients[$name]);
+		return $this;
+	}
+
+	/**
+	 * Get wrapper client for stream type
+	 *
+	 * @param  string $name Protocol name
+	 * @return Zend_Service_WindowsAzure_Storage_Blob
+	 */
+	public static function getWrapperClient($name)
+	{
+		return self::$_wrapperClients[$name];
+	}
+
+	/**
+	 * Register this object as stream wrapper
+	 *
+	 * @param  string $name Protocol name
+	 */
+	public function registerStreamWrapper($name = 'azure')
+	{
+		/**
+		 * @see Zend_Service_WindowsAzure_Storage_Blob_Stream
+		 */
+		require_once 'Zend/Service/WindowsAzure/Storage/Blob/Stream.php';
+
+		stream_register_wrapper($name, 'Zend_Service_WindowsAzure_Storage_Blob_Stream');
+		$this->registerAsClient($name);
+	}
+
+	/**
+	 * Unregister this object as stream wrapper
+	 *
+	 * @param  string $name Protocol name
+	 * @return Zend_Service_WindowsAzure_Storage_Blob
+	 */
+	public function unregisterStreamWrapper($name = 'azure')
+	{
+		stream_wrapper_unregister($name);
+		$this->unregisterAsClient($name);
+	}
+
+	/**
+	 * Create resource name
+	 *
+	 * @param string $containerName  Container name
+	 * @param string $blobName Blob name
+	 * @return string
+	 */
+	public static function createResourceName($containerName = '', $blobName = '')
+	{
+		// Resource name
+		$resourceName = $containerName . '/' . $blobName;
+		if ($containerName === '' || $containerName === '$root') {
+			$resourceName = $blobName;
+		}
+		if ($blobName === '') {
+			$resourceName = $containerName;
+		}
+
+		return $resourceName;
+	}
+
+	/**
+	 * Is valid container name?
+	 *
+	 * @param string $containerName Container name
+	 * @return boolean
+	 */
+	public static function isValidContainerName($containerName = '')
+	{
+		if ($containerName == '$root') {
+			return true;
+		}
+
+		if (preg_match("/^[a-z0-9][a-z0-9-]*$/", $containerName) === 0) {
+			return false;
+		}
+
+		if (strpos($containerName, '--') !== false) {
+			return false;
+		}
+
+		if (strtolower($containerName) != $containerName) {
+			return false;
+		}
+
+		if (strlen($containerName) < 3 || strlen($containerName) > 63) {
+			return false;
+		}
+
+		if (substr($containerName, -1) == '-') {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Get error message from Zend_Http_Response
+	 *
+	 * @param Zend_Http_Response $response Repsonse
+	 * @param string $alternativeError Alternative error message
+	 * @return string
+	 */
+	protected function _getErrorMessage(Zend_Http_Response $response, $alternativeError = 'Unknown error.')
+	{
+		$response = $this->_parseResponse($response);
+		if ($response && $response->Message) {
+			return (string)$response->Message;
+		} else {
+			return $alternativeError;
+		}
+	}
+
+	/**
+	 * Generate block id
+	 *
+	 * @param int $part Block number
+	 * @return string Windows Azure Blob Storage block number
+	 */
+	protected function _generateBlockId($part = 0)
+	{
+		$returnValue = $part;
+		while (strlen($returnValue) < 64) {
+			$returnValue = '0' . $returnValue;
+		}
+
+		return $returnValue;
+	}
+}

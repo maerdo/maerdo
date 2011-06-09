@@ -1,35 +1,35 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp versionphp php1php.php0php ofphp thephp Zendphp Framework
-php php*php licensephp,php thatphp isphp bundledphp withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp,php and
-php php*php isphp availablephp throughphp thephp worldphp-widephp-webphp atphp thephp followingphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp.php Ifphp youphp didphp notphp receive
-php php*php aphp copyphp ofphp thephp Zendphp Frameworkphp licensephp andphp arephp unablephp tophp obtainphp it
-php php*php throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp aphp notephp tophp licensephp@zendphp.com
-php php*php sophp wephp canphp mailphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Exceptionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to version 1.0 of the Zend Framework
+ * license, that is bundled with this package in the file LICENSE.txt, and
+ * is available through the world-wide-web at the following URL:
+ * http://framework.zend.com/license/new-bsd. If you did not receive
+ * a copy of the Zend Framework license and are unable to obtain it
+ * through the world-wide-web, please send a note to license@zend.com
+ * so we can mail you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Exception.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php php@seephp Zendphp_Barcodephp_Exceptionphp php*php/
-requirephp_oncephp php'Zendphp/Barcodephp/Exceptionphp.phpphp'php;
+/** @see Zend_Barcode_Exception */
+require_once 'Zend/Barcode/Exception.php';
 
-php/php*php*
-php php*php Zendphp_Barcodephp_Rendererphp_Exception
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Barcodephp_Rendererphp_Exceptionphp extendsphp Zendphp_Barcodephp_Exception
-php{
-php}
+/**
+ * Zend_Barcode_Renderer_Exception
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Barcode_Renderer_Exception extends Zend_Barcode_Exception
+{
+}

@@ -1,514 +1,514 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Server
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php Zendphp_Serverphp_Reflectionphp_Node
-php php*php/
-requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Nodephp.phpphp'php;
+/**
+ * Zend_Server_Reflection_Node
+ */
+require_once 'Zend/Server/Reflection/Node.php';
 
-php/php*php*
-php php*php Zendphp_Serverphp_Reflectionphp_Parameter
-php php*php/
-requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Parameterphp.phpphp'php;
+/**
+ * Zend_Server_Reflection_Parameter
+ */
+require_once 'Zend/Server/Reflection/Parameter.php';
 
-php/php*php*
-php php*php Zendphp_Serverphp_Reflectionphp_Prototype
-php php*php/
-requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Prototypephp.phpphp'php;
+/**
+ * Zend_Server_Reflection_Prototype
+ */
+require_once 'Zend/Server/Reflection/Prototype.php';
 
-php/php*php*
-php php*php Functionphp/Methodphp Reflection
-php php*
-php php*php Decoratesphp aphp ReflectionFunctionphp.php Allowsphp settingphp andphp retrievingphp anphp alternate
-php php*php php'servicephp'php namephp php(iphp.ephp.php,php thephp namephp tophp bephp usedphp whenphp callingphp viaphp aphp servicephp)php,
-php php*php settingphp andphp retrievingphp thephp descriptionphp php(originallyphp setphp usingphp thephp docblock
-php php*php contentsphp)php,php retrievingphp thephp callbackphp andphp callbackphp typephp,php retrievingphp additional
-php php*php methodphp invocationphp argumentsphp,php andphp retrievingphp the
-php php*php methodphp php{php@linkphp Zendphp_Serverphp_Reflectionphp_Prototypephp prototypesphp}php.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Server
-php php*php php@subpackagephp Reflection
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php$Idphp:php Abstractphp.phpphp php2php3php3php2php0php php2php0php1php0php-php1php1php-php1php2php php2php1php:php5php7php:php2php9Zphp alexanderphp php$
-php php*php/
-abstractphp classphp Zendphp_Serverphp_Reflectionphp_Functionphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp ReflectionFunction
-php php php php php php*php/
-php php php php protectedphp php$php_reflectionphp;
+/**
+ * Function/Method Reflection
+ *
+ * Decorates a ReflectionFunction. Allows setting and retrieving an alternate
+ * 'service' name (i.e., the name to be used when calling via a service),
+ * setting and retrieving the description (originally set using the docblock
+ * contents), retrieving the callback and callback type, retrieving additional
+ * method invocation arguments, and retrieving the
+ * method {@link Zend_Server_Reflection_Prototype prototypes}.
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @subpackage Reflection
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version $Id: Abstract.php 23320 2010-11-12 21:57:29Z alexander $
+ */
+abstract class Zend_Server_Reflection_Function_Abstract
+{
+    /**
+     * @var ReflectionFunction
+     */
+    protected $_reflection;
 
-php php php php php/php*php*
-php php php php php php*php Additionalphp argumentsphp tophp passphp tophp methodphp onphp invocation
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_argvphp php=php arrayphp(php)php;
+    /**
+     * Additional arguments to pass to method on invocation
+     * @var array
+     */
+    protected $_argv = array();
 
-php php php php php/php*php*
-php php php php php php*php Usedphp tophp storephp extraphp configurationphp forphp thephp methodphp php(typicallyphp donephp byphp the
-php php php php php php*php serverphp classphp,php ephp.gphp.php,php tophp indicatephp whetherphp orphp notphp tophp instantiatephp aphp classphp)php.
-php php php php php php*php Associativephp arrayphp;php accessphp isphp asphp propertiesphp viaphp php{php@linkphp php_php_getphp(php)php}php and
-php php php php php php*php php{php@linkphp php_php_setphp(php)php}
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_configphp php=php arrayphp(php)php;
+    /**
+     * Used to store extra configuration for the method (typically done by the
+     * server class, e.g., to indicate whether or not to instantiate a class).
+     * Associative array; access is as properties via {@link __get()} and
+     * {@link __set()}
+     * @var array
+     */
+    protected $_config = array();
 
-php php php php php/php*php*
-php php php php php php*php Declaringphp classphp php(neededphp forphp whenphp serializationphp occursphp)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_classphp;
+    /**
+     * Declaring class (needed for when serialization occurs)
+     * @var string
+     */
+    protected $_class;
 
-php php php php php/php*php*
-php php php php php php*php Functionphp/methodphp description
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_descriptionphp php=php php'php'php;
+    /**
+     * Function/method description
+     * @var string
+     */
+    protected $_description = '';
 
-php php php php php/php*php*
-php php php php php php*php Namespacephp withphp whichphp tophp prefixphp functionphp/methodphp name
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_namespacephp;
+    /**
+     * Namespace with which to prefix function/method name
+     * @var string
+     */
+    protected $_namespace;
 
-php php php php php/php*php*
-php php php php php php*php Prototypes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_prototypesphp php=php arrayphp(php)php;
+    /**
+     * Prototypes
+     * @var array
+     */
+    protected $_prototypes = array();
 
-php php php php privatephp php$php_returnphp;
-php php php php privatephp php$php_returnDescphp;
-php php php php privatephp php$php_paramDescphp;
-php php php php privatephp php$php_sigParamsphp;
-php php php php privatephp php$php_sigParamsDepthphp;
+    private $_return;
+    private $_returnDesc;
+    private $_paramDesc;
+    private $_sigParams;
+    private $_sigParamsDepth;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp ReflectionFunctionphp php$r
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Reflectorphp php$rphp,php php$namespacephp php=php nullphp,php php$argvphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php/php/php Inphp PHPphp php5php.php1php.xphp,php ReflectionMethodphp extendsphp ReflectionFunctionphp.php Inphp php5php.php2php.xphp,
-php php php php php php php php php/php/php bothphp extendphp ReflectionFunctionAbstractphp.php Sophp,php wephp canphp'tphp dophp normalphp type
-php php php php php php php php php/php/php hintingphp inphp thephp prototypephp,php butphp insteadphp needphp tophp dophp somephp explicit
-php php php php php php php php php/php/php testingphp herephp.
-php php php php php php php php ifphp php(php(php!php$rphp instanceofphp ReflectionFunctionphp)
-php php php php php php php php php php php php php&php&php php(php!php$rphp instanceofphp ReflectionMethodphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_reflectionphp php=php php$rphp;
+    /**
+     * Constructor
+     *
+     * @param ReflectionFunction $r
+     */
+    public function __construct(Reflector $r, $namespace = null, $argv = array())
+    {
+        // In PHP 5.1.x, ReflectionMethod extends ReflectionFunction. In 5.2.x,
+        // both extend ReflectionFunctionAbstract. So, we can't do normal type
+        // hinting in the prototype, but instead need to do some explicit
+        // testing here.
+        if ((!$r instanceof ReflectionFunction)
+            && (!$r instanceof ReflectionMethod)) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception('Invalid reflection class');
+        }
+        $this->_reflection = $r;
 
-php php php php php php php php php/php/php Determinephp namespace
-php php php php php php php php ifphp php(nullphp php!php=php=php php$namespacephp)php{
-php php php php php php php php php php php php php$thisphp-php>setNamespacephp(php$namespacephp)php;
-php php php php php php php php php}
+        // Determine namespace
+        if (null !== $namespace){
+            $this->setNamespace($namespace);
+        }
 
-php php php php php php php php php/php/php Determinephp arguments
-php php php php php php php php ifphp php(isphp_arrayphp(php$argvphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_argvphp php=php php$argvphp;
-php php php php php php php php php}
+        // Determine arguments
+        if (is_array($argv)) {
+            $this->_argv = $argv;
+        }
 
-php php php php php php php php php/php/php Ifphp methodphp callphp,php needphp tophp storephp somephp infophp onphp thephp class
-php php php php php php php php ifphp php(php$rphp instanceofphp ReflectionMethodphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_classphp php=php php$rphp-php>getDeclaringClassphp(php)php-php>getNamephp(php)php;
-php php php php php php php php php}
+        // If method call, need to store some info on the class
+        if ($r instanceof ReflectionMethod) {
+            $this->_class = $r->getDeclaringClass()->getName();
+        }
 
-php php php php php php php php php/php/php Performphp somephp introspection
-php php php php php php php php php$thisphp-php>php_reflectphp(php)php;
-php php php php php}
+        // Perform some introspection
+        $this->_reflect();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp signaturephp nodephp tree
-php php php php php php*
-php php php php php php*php Recursivephp methodphp tophp buildphp thephp signaturephp nodephp treephp.php Incrementsphp through
-php php php php php php*php eachphp arrayphp inphp php{php@linkphp php$php_sigParamsphp}php,php addingphp everyphp valuephp ofphp thephp nextphp level
-php php php php php php*php tophp thephp currentphp valuephp php(unlessphp thephp currentphp valuephp isphp nullphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Serverphp_Reflectionphp_Nodephp php$parent
-php php php php php php*php php@paramphp intphp php$level
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_addTreephp(Zendphp_Serverphp_Reflectionphp_Nodephp php$parentphp,php php$levelphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php$levelphp php>php=php php$thisphp-php>php_sigParamsDepthphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * Create signature node tree
+     *
+     * Recursive method to build the signature node tree. Increments through
+     * each array in {@link $_sigParams}, adding every value of the next level
+     * to the current value (unless the current value is null).
+     *
+     * @param Zend_Server_Reflection_Node $parent
+     * @param int $level
+     * @return void
+     */
+    protected function _addTree(Zend_Server_Reflection_Node $parent, $level = 0)
+    {
+        if ($level >= $this->_sigParamsDepth) {
+            return;
+        }
 
-php php php php php php php php foreachphp php(php$thisphp-php>php_sigParamsphp[php$levelphp]php asphp php$valuephp)php php{
-php php php php php php php php php php php php php$nodephp php=php newphp Zendphp_Serverphp_Reflectionphp_Nodephp(php$valuephp,php php$parentphp)php;
-php php php php php php php php php php php php ifphp php(php(nullphp php!php=php=php php$valuephp)php php&php&php php(php$thisphp-php>php_sigParamsDepthphp php>php php$levelphp php+php php1php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_addTreephp(php$nodephp,php php$levelphp php+php php1php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+        foreach ($this->_sigParams[$level] as $value) {
+            $node = new Zend_Server_Reflection_Node($value, $parent);
+            if ((null !== $value) && ($this->_sigParamsDepth > $level + 1)) {
+                $this->_addTree($node, $level + 1);
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Buildphp thephp signaturephp tree
-php php php php php php*
-php php php php php php*php Buildsphp aphp signaturephp treephp startingphp atphp thephp returnphp valuesphp andphp descending
-php php php php php php*php throughphp eachphp methodphp argumentphp.php Returnsphp anphp arrayphp of
-php php php php php php*php php{php@linkphp Zendphp_Serverphp_Reflectionphp_Nodephp}sphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_buildTreephp(php)
-php php php php php{
-php php php php php php php php php$returnTreephp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php(arrayphp)php php$thisphp-php>php_returnphp asphp php$valuephp)php php{
-php php php php php php php php php php php php php$nodephp php=php newphp Zendphp_Serverphp_Reflectionphp_Nodephp(php$valuephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_addTreephp(php$nodephp)php;
-php php php php php php php php php php php php php$returnTreephp[php]php php=php php$nodephp;
-php php php php php php php php php}
+    /**
+     * Build the signature tree
+     *
+     * Builds a signature tree starting at the return values and descending
+     * through each method argument. Returns an array of
+     * {@link Zend_Server_Reflection_Node}s.
+     *
+     * @return array
+     */
+    protected function _buildTree()
+    {
+        $returnTree = array();
+        foreach ((array) $this->_return as $value) {
+            $node = new Zend_Server_Reflection_Node($value);
+            $this->_addTree($node);
+            $returnTree[] = $node;
+        }
 
-php php php php php php php php returnphp php$returnTreephp;
-php php php php php}
+        return $returnTree;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Buildphp methodphp signatures
-php php php php php php*
-php php php php php php*php Buildsphp methodphp signaturesphp usingphp thephp arrayphp ofphp returnphp typesphp andphp thephp arrayphp of
-php php php php php php*php parametersphp types
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$returnphp Arrayphp ofphp returnphp types
-php php php php php php*php php@paramphp stringphp php$returnDescphp Returnphp valuephp description
-php php php php php php*php php@paramphp arrayphp php$paramsphp Arrayphp ofphp argumentsphp php(eachphp anphp arrayphp ofphp typesphp)
-php php php php php php*php php@paramphp arrayphp php$paramDescphp Arrayphp ofphp parameterphp descriptions
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_buildSignaturesphp(php$returnphp,php php$returnDescphp,php php$paramTypesphp,php php$paramDescphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_returnphp php php php php php php php php php=php php$returnphp;
-php php php php php php php php php$thisphp-php>php_returnDescphp php php php php php=php php$returnDescphp;
-php php php php php php php php php$thisphp-php>php_paramDescphp php php php php php php=php php$paramDescphp;
-php php php php php php php php php$thisphp-php>php_sigParamsphp php php php php php php=php php$paramTypesphp;
-php php php php php php php php php$thisphp-php>php_sigParamsDepthphp php=php countphp(php$paramTypesphp)php;
-php php php php php php php php php$signatureTreesphp php php php php php php php php=php php$thisphp-php>php_buildTreephp(php)php;
-php php php php php php php php php$signaturesphp php php php php php php php php php php php php=php arrayphp(php)php;
+    /**
+     * Build method signatures
+     *
+     * Builds method signatures using the array of return types and the array of
+     * parameters types
+     *
+     * @param array $return Array of return types
+     * @param string $returnDesc Return value description
+     * @param array $params Array of arguments (each an array of types)
+     * @param array $paramDesc Array of parameter descriptions
+     * @return array
+     */
+    protected function _buildSignatures($return, $returnDesc, $paramTypes, $paramDesc)
+    {
+        $this->_return         = $return;
+        $this->_returnDesc     = $returnDesc;
+        $this->_paramDesc      = $paramDesc;
+        $this->_sigParams      = $paramTypes;
+        $this->_sigParamsDepth = count($paramTypes);
+        $signatureTrees        = $this->_buildTree();
+        $signatures            = array();
 
-php php php php php php php php php$endPointsphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$signatureTreesphp asphp php$rootphp)php php{
-php php php php php php php php php php php php php$tmpphp php=php php$rootphp-php>getEndPointsphp(php)php;
-php php php php php php php php php php php php ifphp php(emptyphp(php$tmpphp)php)php php{
-php php php php php php php php php php php php php php php php php$endPointsphp php=php arrayphp_mergephp(php$endPointsphp,php arrayphp(php$rootphp)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$endPointsphp php=php arrayphp_mergephp(php$endPointsphp,php php$tmpphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $endPoints = array();
+        foreach ($signatureTrees as $root) {
+            $tmp = $root->getEndPoints();
+            if (empty($tmp)) {
+                $endPoints = array_merge($endPoints, array($root));
+            } else {
+                $endPoints = array_merge($endPoints, $tmp);
+            }
+        }
 
-php php php php php php php php foreachphp php(php$endPointsphp asphp php$nodephp)php php{
-php php php php php php php php php php php php ifphp php(php!php$nodephp instanceofphp Zendphp_Serverphp_Reflectionphp_Nodephp)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+        foreach ($endPoints as $node) {
+            if (!$node instanceof Zend_Server_Reflection_Node) {
+                continue;
+            }
 
-php php php php php php php php php php php php php$signaturephp php=php arrayphp(php)php;
-php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php arrayphp_unshiftphp(php$signaturephp,php php$nodephp-php>getValuephp(php)php)php;
-php php php php php php php php php php php php php php php php php$nodephp php=php php$nodephp-php>getParentphp(php)php;
-php php php php php php php php php php php php php}php whilephp php(php$nodephp instanceofphp Zendphp_Serverphp_Reflectionphp_Nodephp)php;
+            $signature = array();
+            do {
+                array_unshift($signature, $node->getValue());
+                $node = $node->getParent();
+            } while ($node instanceof Zend_Server_Reflection_Node);
 
-php php php php php php php php php php php php php$signaturesphp[php]php php=php php$signaturephp;
-php php php php php php php php php}
+            $signatures[] = $signature;
+        }
 
-php php php php php php php php php/php/php Buildphp prototypes
-php php php php php php php php php$paramsphp php=php php$thisphp-php>php_reflectionphp-php>getParametersphp(php)php;
-php php php php php php php php foreachphp php(php$signaturesphp asphp php$signaturephp)php php{
-php php php php php php php php php php php php php$returnphp php=php newphp Zendphp_Serverphp_Reflectionphp_ReturnValuephp(arrayphp_shiftphp(php$signaturephp)php,php php$thisphp-php>php_returnDescphp)php;
-php php php php php php php php php php php php php$tmpphp php php php php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$signaturephp asphp php$keyphp php=php>php php$typephp)php php{
-php php php php php php php php php php php php php php php php php$paramphp php=php newphp Zendphp_Serverphp_Reflectionphp_Parameterphp(php$paramsphp[php$keyphp]php,php php$typephp,php php(issetphp(php$thisphp-php>php_paramDescphp[php$keyphp]php)php php?php php$thisphp-php>php_paramDescphp[php$keyphp]php php:php nullphp)php)php;
-php php php php php php php php php php php php php php php php php$paramphp-php>setPositionphp(php$keyphp)php;
-php php php php php php php php php php php php php php php php php$tmpphp[php]php php=php php$paramphp;
-php php php php php php php php php php php php php}
+        // Build prototypes
+        $params = $this->_reflection->getParameters();
+        foreach ($signatures as $signature) {
+            $return = new Zend_Server_Reflection_ReturnValue(array_shift($signature), $this->_returnDesc);
+            $tmp    = array();
+            foreach ($signature as $key => $type) {
+                $param = new Zend_Server_Reflection_Parameter($params[$key], $type, (isset($this->_paramDesc[$key]) ? $this->_paramDesc[$key] : null));
+                $param->setPosition($key);
+                $tmp[] = $param;
+            }
 
-php php php php php php php php php php php php php$thisphp-php>php_prototypesphp[php]php php=php newphp Zendphp_Serverphp_Reflectionphp_Prototypephp(php$returnphp,php php$tmpphp)php;
-php php php php php php php php php}
-php php php php php}
+            $this->_prototypes[] = new Zend_Server_Reflection_Prototype($return, $tmp);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Usephp codephp reflectionphp tophp createphp methodphp signatures
-php php php php php php*
-php php php php php php*php Determinesphp thephp methodphp helpphp/descriptionphp textphp fromphp thephp functionphp DocBlock
-php php php php php php*php commentphp.php Determinesphp methodphp signaturesphp usingphp aphp combinationphp of
-php php php php php php*php ReflectionFunctionphp andphp parsingphp ofphp DocBlockphp php@paramphp andphp php@returnphp valuesphp.
-php php php php php php*
-php php php php php php*php php@paramphp ReflectionFunctionphp php$function
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_reflectphp(php)
-php php php php php{
-php php php php php php php php php$functionphp php php php php php php php php php php php=php php$thisphp-php>php_reflectionphp;
-php php php php php php php php php$helpTextphp php php php php php php php php php php php=php php'php'php;
-php php php php php php php php php$signaturesphp php php php php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$returnDescphp php php php php php php php php php=php php'php'php;
-php php php php php php php php php$paramCountphp php php php php php php php php php=php php$functionphp-php>getNumberOfParametersphp(php)php;
-php php php php php php php php php$paramCountRequiredphp php=php php$functionphp-php>getNumberOfRequiredParametersphp(php)php;
-php php php php php php php php php$parametersphp php php php php php php php php php=php php$functionphp-php>getParametersphp(php)php;
-php php php php php php php php php$docBlockphp php php php php php php php php php php php=php php$functionphp-php>getDocCommentphp(php)php;
+    /**
+     * Use code reflection to create method signatures
+     *
+     * Determines the method help/description text from the function DocBlock
+     * comment. Determines method signatures using a combination of
+     * ReflectionFunction and parsing of DocBlock @param and @return values.
+     *
+     * @param ReflectionFunction $function
+     * @return array
+     */
+    protected function _reflect()
+    {
+        $function           = $this->_reflection;
+        $helpText           = '';
+        $signatures         = array();
+        $returnDesc         = '';
+        $paramCount         = $function->getNumberOfParameters();
+        $paramCountRequired = $function->getNumberOfRequiredParameters();
+        $parameters         = $function->getParameters();
+        $docBlock           = $function->getDocComment();
 
-php php php php php php php php ifphp php(php!emptyphp(php$docBlockphp)php)php php{
-php php php php php php php php php php php php php/php/php Getphp helpphp text
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php:php/php\php*php\php*php\sphp*php\rphp?php\nphp\sphp*php\php*php\sphp(php.php*php?php)php\rphp?php\nphp\sphp*php\php*php(php\sphp@php|php/php)php:sphp'php,php php$docBlockphp,php php$matchesphp)php)
-php php php php php php php php php php php php php{
-php php php php php php php php php php php php php php php php php$helpTextphp php=php php$matchesphp[php1php]php;
-php php php php php php php php php php php php php php php php php$helpTextphp php=php pregphp_replacephp(php'php/php(php^php\sphp*php\php*php\sphp)php/mphp'php,php php'php'php,php php$helpTextphp)php;
-php php php php php php php php php php php php php php php php php$helpTextphp php=php pregphp_replacephp(php'php/php\rphp?php\nphp\sphp*php\php*php\sphp*php(php\rphp?php\nphp)php*php/sphp'php,php php"php\nphp"php,php php$helpTextphp)php;
-php php php php php php php php php php php php php php php php php$helpTextphp php=php trimphp(php$helpTextphp)php;
-php php php php php php php php php php php php php}
+        if (!empty($docBlock)) {
+            // Get help text
+            if (preg_match(':/\*\*\s*\r?\n\s*\*\s(.*?)\r?\n\s*\*(\s@|/):s', $docBlock, $matches))
+            {
+                $helpText = $matches[1];
+                $helpText = preg_replace('/(^\s*\*\s)/m', '', $helpText);
+                $helpText = preg_replace('/\r?\n\s*\*\s*(\r?\n)*/s', "\n", $helpText);
+                $helpText = trim($helpText);
+            }
 
-php php php php php php php php php php php php php/php/php Getphp returnphp typephp(sphp)php andphp description
-php php php php php php php php php php php php php$returnphp php php php php php=php php'voidphp'php;
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php@returnphp\sphp+php(php\Sphp+php)php/php'php,php php$docBlockphp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php php php php php$returnphp php=php explodephp(php'php|php'php,php php$matchesphp[php1php]php)php;
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp(php'php/php@returnphp\sphp+php\Sphp+php\sphp+php(php.php*php?php)php(php@php|php\php*php\php/php)php/sphp'php,php php$docBlockphp,php php$matchesphp)php)
-php php php php php php php php php php php php php php php php php{
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$matchesphp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php pregphp_replacephp(php'php/php\sphp?php\php*php\sphp/mphp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php pregphp_replacephp(php'php/php\sphp{php2php,php}php/php'php,php php'php php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php$returnDescphp php=php trimphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+            // Get return type(s) and description
+            $return     = 'void';
+            if (preg_match('/@return\s+(\S+)/', $docBlock, $matches)) {
+                $return = explode('|', $matches[1]);
+                if (preg_match('/@return\s+\S+\s+(.*?)(@|\*\/)/s', $docBlock, $matches))
+                {
+                    $value = $matches[1];
+                    $value = preg_replace('/\s?\*\s/m', '', $value);
+                    $value = preg_replace('/\s{2,}/', ' ', $value);
+                    $returnDesc = trim($value);
+                }
+            }
 
-php php php php php php php php php php php php php/php/php Getphp paramphp typesphp andphp description
-php php php php php php php php php php php php ifphp php(pregphp_matchphp_allphp(php'php/php@paramphp\sphp+php(php[php^php\sphp]php+php)php/mphp'php,php php$docBlockphp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php php php php php$paramTypesTmpphp php=php php$matchesphp[php1php]php;
-php php php php php php php php php php php php php php php php ifphp php(pregphp_matchphp_allphp(php'php/php@paramphp\sphp+php\Sphp+php\sphp+php(php\php$php\Sphp+php)php\sphp+php(php.php*php?php)php(php?php=php@php|php\php*php\php/php)php/sphp'php,php php$docBlockphp,php php$matchesphp)php)
-php php php php php php php php php php php php php php php php php{
-php php php php php php php php php php php php php php php php php php php php php$paramDescphp php=php php$matchesphp[php2php]php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$paramDescphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php pregphp_replacephp(php'php/php\sphp?php\php*php\sphp/mphp'php,php php'php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php pregphp_replacephp(php'php/php\sphp{php2php,php}php/php'php,php php'php php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$paramDescphp[php$keyphp]php php=php trimphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$helpTextphp php=php php$functionphp-php>getNamephp(php)php;
-php php php php php php php php php php php php php$returnphp php php php=php php'voidphp'php;
+            // Get param types and description
+            if (preg_match_all('/@param\s+([^\s]+)/m', $docBlock, $matches)) {
+                $paramTypesTmp = $matches[1];
+                if (preg_match_all('/@param\s+\S+\s+(\$\S+)\s+(.*?)(?=@|\*\/)/s', $docBlock, $matches))
+                {
+                    $paramDesc = $matches[2];
+                    foreach ($paramDesc as $key => $value) {
+                        $value = preg_replace('/\s?\*\s/m', '', $value);
+                        $value = preg_replace('/\s{2,}/', ' ', $value);
+                        $paramDesc[$key] = trim($value);
+                    }
+                }
+            }
+        } else {
+            $helpText = $function->getName();
+            $return   = 'void';
 
-php php php php php php php php php php php php php/php/php Tryphp andphp autophp-determinephp typephp,php basedphp onphp reflection
-php php php php php php php php php php php php php$paramTypesTmpphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp php(php$parametersphp asphp php$iphp php=php>php php$paramphp)php php{
-php php php php php php php php php php php php php php php php php$paramTypephp php=php php'mixedphp'php;
-php php php php php php php php php php php php php php php php ifphp php(php$paramphp-php>isArrayphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$paramTypephp php=php php'arrayphp'php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$paramTypesTmpphp[php$iphp]php php=php php$paramTypephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            // Try and auto-determine type, based on reflection
+            $paramTypesTmp = array();
+            foreach ($parameters as $i => $param) {
+                $paramType = 'mixed';
+                if ($param->isArray()) {
+                    $paramType = 'array';
+                }
+                $paramTypesTmp[$i] = $paramType;
+            }
+        }
 
-php php php php php php php php php/php/php Setphp methodphp description
-php php php php php php php php php$thisphp-php>setDescriptionphp(php$helpTextphp)php;
+        // Set method description
+        $this->setDescription($helpText);
 
-php php php php php php php php php/php/php Getphp allphp paramphp typesphp asphp arrays
-php php php php php php php php ifphp php(php!issetphp(php$paramTypesTmpphp)php php&php&php php(php0php <php php$paramCountphp)php)php php{
-php php php php php php php php php php php php php$paramTypesTmpphp php=php arrayphp_fillphp(php0php,php php$paramCountphp,php php'mixedphp'php)php;
-php php php php php php php php php}php elseifphp php(php!issetphp(php$paramTypesTmpphp)php)php php{
-php php php php php php php php php php php php php$paramTypesTmpphp php=php arrayphp(php)php;
-php php php php php php php php php}php elseifphp php(countphp(php$paramTypesTmpphp)php <php php$paramCountphp)php php{
-php php php php php php php php php php php php php$startphp php=php php$paramCountphp php-php countphp(php$paramTypesTmpphp)php;
-php php php php php php php php php php php php forphp php(php$iphp php=php php$startphp;php php$iphp <php php$paramCountphp;php php+php+php$iphp)php php{
-php php php php php php php php php php php php php php php php php$paramTypesTmpphp[php$iphp]php php=php php'mixedphp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // Get all param types as arrays
+        if (!isset($paramTypesTmp) && (0 < $paramCount)) {
+            $paramTypesTmp = array_fill(0, $paramCount, 'mixed');
+        } elseif (!isset($paramTypesTmp)) {
+            $paramTypesTmp = array();
+        } elseif (count($paramTypesTmp) < $paramCount) {
+            $start = $paramCount - count($paramTypesTmp);
+            for ($i = $start; $i < $paramCount; ++$i) {
+                $paramTypesTmp[$i] = 'mixed';
+            }
+        }
 
-php php php php php php php php php/php/php Getphp allphp paramphp descriptionsphp asphp arrays
-php php php php php php php php ifphp php(php!issetphp(php$paramDescphp)php php&php&php php(php0php <php php$paramCountphp)php)php php{
-php php php php php php php php php php php php php$paramDescphp php=php arrayphp_fillphp(php0php,php php$paramCountphp,php php'php'php)php;
-php php php php php php php php php}php elseifphp php(php!issetphp(php$paramDescphp)php)php php{
-php php php php php php php php php php php php php$paramDescphp php=php arrayphp(php)php;
-php php php php php php php php php}php elseifphp php(countphp(php$paramDescphp)php <php php$paramCountphp)php php{
-php php php php php php php php php php php php php$startphp php=php php$paramCountphp php-php countphp(php$paramDescphp)php;
-php php php php php php php php php php php php forphp php(php$iphp php=php php$startphp;php php$iphp <php php$paramCountphp;php php+php+php$iphp)php php{
-php php php php php php php php php php php php php php php php php$paramDescphp[php$iphp]php php=php php'php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // Get all param descriptions as arrays
+        if (!isset($paramDesc) && (0 < $paramCount)) {
+            $paramDesc = array_fill(0, $paramCount, '');
+        } elseif (!isset($paramDesc)) {
+            $paramDesc = array();
+        } elseif (count($paramDesc) < $paramCount) {
+            $start = $paramCount - count($paramDesc);
+            for ($i = $start; $i < $paramCount; ++$i) {
+                $paramDesc[$i] = '';
+            }
+        }
 
-php php php php php php php php ifphp php(countphp(php$paramTypesTmpphp)php php!php=php php$paramCountphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(
-php php php php php php php php php php php php php php php php'Variablephp numberphp ofphp argumentsphp isphp notphp supportedphp forphp servicesphp php(exceptphp optionalphp parametersphp)php.php php'
-php php php php php php php php php php php php php php.php php'Numberphp ofphp functionphp argumentsphp inphp php'php php.php php$functionphp-php>getDeclaringClassphp(php)php-php>getNamephp(php)php php.php php'php:php:php'
-php php php php php php php php php php php php php php.php php$functionphp-php>getNamephp(php)php php.php php'php(php)php mustphp correspondphp tophp actualphp numberphp ofphp argumentsphp describedphp inphp thephp php'
-php php php php php php php php php php php php php php.php php'docblockphp.php'php)php;
-php php php php php php php php php}
+        if (count($paramTypesTmp) != $paramCount) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception(
+               'Variable number of arguments is not supported for services (except optional parameters). '
+             . 'Number of function arguments in ' . $function->getDeclaringClass()->getName() . '::'
+             . $function->getName() . '() must correspond to actual number of arguments described in the '
+             . 'docblock.');
+        }
 
-php php php php php php php php php$paramTypesphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$paramTypesTmpphp asphp php$iphp php=php>php php$paramphp)php php{
-php php php php php php php php php php php php php$tmpphp php=php explodephp(php'php|php'php,php php$paramphp)php;
-php php php php php php php php php php php php ifphp php(php$parametersphp[php$iphp]php-php>isOptionalphp(php)php)php php{
-php php php php php php php php php php php php php php php php arrayphp_unshiftphp(php$tmpphp,php nullphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$paramTypesphp[php]php php=php php$tmpphp;
-php php php php php php php php php}
+        $paramTypes = array();
+        foreach ($paramTypesTmp as $i => $param) {
+            $tmp = explode('|', $param);
+            if ($parameters[$i]->isOptional()) {
+                array_unshift($tmp, null);
+            }
+            $paramTypes[] = $tmp;
+        }
 
-php php php php php php php php php$thisphp-php>php_buildSignaturesphp(php$returnphp,php php$returnDescphp,php php$paramTypesphp,php php$paramDescphp)php;
-php php php php php}
+        $this->_buildSignatures($return, $returnDesc, $paramTypes, $paramDesc);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Proxyphp reflectionphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$method
-php php php php php php*php php@paramphp arrayphp php$args
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php,php php$argsphp)php;
-php php php php php php php php php}
+    /**
+     * Proxy reflection calls
+     *
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (method_exists($this->_reflection, $method)) {
+            return call_user_func_array(array($this->_reflection, $method), $args);
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp methodphp php(php"php'php php.php$methodphp.php php'php"php)php'php)php;
-php php php php php}
+        require_once 'Zend/Server/Reflection/Exception.php';
+        throw new Zend_Server_Reflection_Exception('Invalid reflection method ("' .$method. '")');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp configurationphp parameters
-php php php php php php*
-php php php php php php*php Valuesphp arephp retrievedphp byphp keyphp fromphp php{php@linkphp php$php_configphp}php.php Returnsphp nullphp ifphp no
-php php php php php php*php valuephp foundphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_configphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_configphp[php$keyphp]php;
-php php php php php php php php php}
+    /**
+     * Retrieve configuration parameters
+     *
+     * Values are retrieved by key from {@link $_config}. Returns null if no
+     * value found.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        if (isset($this->_config[$key])) {
+            return $this->_config[$key];
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp configurationphp parameters
-php php php php php php*
-php php php php php php*php Valuesphp arephp storedphp byphp php$keyphp inphp php{php@linkphp php$php_configphp}php.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@paramphp mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_configphp[php$keyphp]php php=php php$valuephp;
-php php php php php}
+    /**
+     * Set configuration parameters
+     *
+     * Values are stored by $key in {@link $_config}.
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        $this->_config[$key] = $value;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp methodphp'sphp namespace
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namespace
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setNamespacephp(php$namespacephp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$namespacephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_namespacephp php=php php'php'php;
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * Set method's namespace
+     *
+     * @param string $namespace
+     * @return void
+     */
+    public function setNamespace($namespace)
+    {
+        if (empty($namespace)) {
+            $this->_namespace = '';
+            return;
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$namespacephp)php php|php|php php!pregphp_matchphp(php'php/php[aphp-zphp0php-php9php_php\php.php]php+php/iphp'php,php php$namespacephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp namespacephp'php)php;
-php php php php php php php php php}
+        if (!is_string($namespace) || !preg_match('/[a-z0-9_\.]+/i', $namespace)) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception('Invalid namespace');
+        }
 
-php php php php php php php php php$thisphp-php>php_namespacephp php=php php$namespacephp;
-php php php php php}
+        $this->_namespace = $namespace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp methodphp'sphp namespace
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamespacephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_namespacephp;
-php php php php php}
+    /**
+     * Return method's namespace
+     *
+     * @return string
+     */
+    public function getNamespace()
+    {
+        return $this->_namespace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp description
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$string
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setDescriptionphp(php$stringphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$stringphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp descriptionphp'php)php;
-php php php php php php php php php}
+    /**
+     * Set the description
+     *
+     * @param string $string
+     * @return void
+     */
+    public function setDescription($string)
+    {
+        if (!is_string($string)) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception('Invalid description');
+        }
 
-php php php php php php php php php$thisphp-php>php_descriptionphp php=php php$stringphp;
-php php php php php}
+        $this->_description = $string;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thephp description
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
-php php php php php}
+    /**
+     * Retrieve the description
+     *
+     * @return void
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp allphp prototypesphp asphp arrayphp of
-php php php php php php*php php{php@linkphp Zendphp_Serverphp_Reflectionphp_Prototypephp Zendphp_Serverphp_Reflectionphp_Prototypesphp}
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getPrototypesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_prototypesphp;
-php php php php php}
+    /**
+     * Retrieve all prototypes as array of
+     * {@link Zend_Server_Reflection_Prototype Zend_Server_Reflection_Prototypes}
+     *
+     * @return array
+     */
+    public function getPrototypes()
+    {
+        return $this->_prototypes;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp additionalphp invocationphp arguments
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getInvokeArgumentsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_argvphp;
-php php php php php}
+    /**
+     * Retrieve additional invocation arguments
+     *
+     * @return array
+     */
+    public function getInvokeArguments()
+    {
+        return $this->_argv;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Wakeupphp fromphp serialization
-php php php php php php*
-php php php php php php*php Reflectionphp needsphp explicitphp instantiationphp tophp workphp correctlyphp.php Rephp-instantiate
-php php php php php php*php reflectionphp objectphp onphp wakeupphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_reflectionphp instanceofphp ReflectionMethodphp)php php{
-php php php php php php php php php php php php php$classphp php=php newphp ReflectionClassphp(php$thisphp-php>php_classphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_reflectionphp php=php newphp ReflectionMethodphp(php$classphp-php>newInstancephp(php)php,php php$thisphp-php>getNamephp(php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_reflectionphp php=php newphp ReflectionFunctionphp(php$thisphp-php>getNamephp(php)php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Wakeup from serialization
+     *
+     * Reflection needs explicit instantiation to work correctly. Re-instantiate
+     * reflection object on wakeup.
+     *
+     * @return void
+     */
+    public function __wakeup()
+    {
+        if ($this->_reflection instanceof ReflectionMethod) {
+            $class = new ReflectionClass($this->_class);
+            $this->_reflection = new ReflectionMethod($class->newInstance(), $this->getName());
+        } else {
+            $this->_reflection = new ReflectionFunction($this->getName());
+        }
+    }
+}

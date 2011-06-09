@@ -1,415 +1,415 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp LiveDocx
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php LiveDocxphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage LiveDocx
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: LiveDocx.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp LiveDocx
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@sincephp php php php php php LiveDocxphp php1php.php0
-php php*php/
-classphp Zendphp_Servicephp_LiveDocx
-php{
-php php php php php/php*php*
-php php php php php php*php LiveDocxphp servicephp version
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php constphp VERSIONphp php=php php'php2php.php0php'php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage LiveDocx
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @since      LiveDocx 1.0
+ */
+class Zend_Service_LiveDocx
+{
+    /**
+     * LiveDocx service version
+     * @since LiveDocx 1.0
+     */
+    const VERSION = '2.0';
 
-php php php php php/php*php*
-php php php php php php*php SOAPphp clientphp usedphp tophp connectphp tophp LiveDocxphp service
-php php php php php php*php php@varphp php php Zendphp_Soapphp_Client
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php protectedphp php$php_soapClientphp;
+    /**
+     * SOAP client used to connect to LiveDocx service
+     * @var   Zend_Soap_Client
+     * @since LiveDocx 1.0
+     */
+    protected $_soapClient;
 
-php php php php php/php*php*
-php php php php php php*php WSDLphp ofphp LiveDocxphp webphp service
-php php php php php php*php php@varphp php php string
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php protectedphp php$php_wsdlphp;
+    /**
+     * WSDL of LiveDocx web service
+     * @var   string
+     * @since LiveDocx 1.0
+     */
+    protected $_wsdl;
 
-php php php php php/php*php*
-php php php php php php*php Arrayphp ofphp credentialsphp php(usernamephp andphp passwordphp)php tophp logphp intophp backendphp server
-php php php php php php*php php@varphp php php array
-php php php php php php*php php@sincephp LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php protectedphp php$php_credentialsphp;
+    /**
+     * Array of credentials (username and password) to log into backend server
+     * @var   array
+     * @since LiveDocx 1.2
+     */
+    protected $_credentials;
 
-php php php php php/php*php*
-php php php php php php*php Setphp tophp truephp,php whenphp sessionphp isphp loggedphp intophp backendphp server
-php php php php php php*php php@varphp php php boolean
-php php php php php php*php php@sincephp LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php protectedphp php$php_loggedInphp;
+    /**
+     * Set to true, when session is logged into backend server
+     * @var   boolean
+     * @since LiveDocx 1.2
+     */
+    protected $_loggedIn;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Optionallyphp,php passphp anphp arrayphp ofphp optionsphp php(orphp Zendphp_Configphp objectphp)php.
-php php php php php php*
-php php php php php php*php Ifphp anphp optionphp withphp thephp keyphp php'soapClientphp'php isphp providedphp,php thatphp valuephp willphp be
-php php php php php php*php usedphp tophp setphp thephp internalphp SOAPphp clientphp usedphp tophp connectphp tophp thephp LiveDocx
-php php php php php php*php servicephp.
-php php php php php php*
-php php php php php php*php Usephp php'soapClientphp'php inphp thephp casephp thatphp youphp havephp aphp dedicatedphp orphp php(locally
-php php php php php php*php installedphp)php licensedphp LiveDocxphp serverphp.php Forphp examplephp:
-php php php php php php*
-php php php php php php*php php{codephp}
-php php php php php php*php php$phpLiveDocxphp php=php newphp Zendphp_Servicephp_LiveDocxphp_MailMergephp(
-php php php php php php*php php php php php arrayphp php(
-php php php php php php*php php php php php php php php php php'usernamephp'php php php php=php>php php'myUsernamephp'php,
-php php php php php php*php php php php php php php php php php'passwordphp'php php php php=php>php php'myPasswordphp'php,
-php php php php php php*php php php php php php php php php php'soapClientphp'php php=php>php newphp Zendphp_Soapphp_Clientphp(php'httpsphp:php/php/apiphp.examplephp.comphp/pathphp/mailmergephp.asmxphp?WSDLphp'php)
-php php php php php php*php php php php php php)
-php php php php php php*php php)php;
-php php php php php php*php php{codephp}
-php php php php php php*
-php php php php php php*php Replacephp thephp URIphp ofphp thephp WSDLphp inphp thephp constructorphp ofphp Zendphp_Soapphp_Clientphp with
-php php php php php php*php thatphp ofphp yourphp dedicatedphp orphp licensedphp LiveDocxphp serverphp.
-php php php php php php*
-php php php php php php*php Ifphp youphp arephp usingphp thephp publicphp LiveDocxphp serverphp,php simplyphp passphp php'usernamephp'php and
-php php php php php php*php php'passwordphp'php.php Forphp examplephp:
-php php php php php php*
-php php php php php php*php php{codephp}
-php php php php php php*php php$phpLiveDocxphp php=php newphp Zendphp_Servicephp_LiveDocxphp_MailMergephp(
-php php php php php php*php php php php php arrayphp php(
-php php php php php php*php php php php php php php php php php'usernamephp'php php=php>php php'myUsernamephp'php,
-php php php php php php*php php php php php php php php php php'passwordphp'php php=php>php php'myPasswordphp'
-php php php php php php*php php php php php php)
-php php php php php php*php php)php;
-php php php php php php*php php{codephp}
-php php php php php php*
-php php php php php php*php Ifphp youphp preferphp tophp notphp passphp thephp usernamephp andphp passwordphp throughphp the
-php php php php php php*php constructorphp,php youphp canphp alsophp callphp thephp followingphp methodsphp:
-php php php php php php*
-php php php php php php*php php{codephp}
-php php php php php php*php php$phpLiveDocxphp php=php newphp Zendphp_Servicephp_LiveDocxphp_MailMergephp(php)php;
-php php php php php php*
-php php php php php php*php php$phpLiveDocxphp-php>setUsernamephp(php'myUsernamephp'php)
-php php php php php php*php php php php php php php php php php php php php php-php>setPasswordphp(php'myPasswordphp'php)php;
-php php php php php php*php php{php/codephp}
-php php php php php php*
-php php php php php php*php Orphp,php ifphp youphp wantphp tophp specifyphp yourphp ownphp SoapClientphp:
-php php php php php php*
-php php php php php php*php php{codephp}
-php php php php php php*php php$phpLiveDocxphp php=php newphp Zendphp_Servicephp_LiveDocxphp_MailMergephp(php)php;
-php php php php php php*
-php php php php php php*php php$phpLiveDocxphp-php>setUsernamephp(php'myUsernamephp'php)
-php php php php php php*php php php php php php php php php php php php php php-php>setPasswordphp(php'myPasswordphp'php)php;
-php php php php php php*
-php php php php php php*php php$phpLiveDocxphp-php>setSoapClientphp(
-php php php php php php*php php php php php newphp Zendphp_Soapphp_Clientphp(php'httpsphp:php/php/apiphp.examplephp.comphp/pathphp/mailmergephp.asmxphp?WSDLphp'php)
-php php php php php php*php php)php;
-php php php php php php*php php{php/codephp}
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_credentialsphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_loggedInphp php=php falsephp;
+    /**
+     * Constructor
+     *
+     * Optionally, pass an array of options (or Zend_Config object).
+     *
+     * If an option with the key 'soapClient' is provided, that value will be
+     * used to set the internal SOAP client used to connect to the LiveDocx
+     * service.
+     *
+     * Use 'soapClient' in the case that you have a dedicated or (locally
+     * installed) licensed LiveDocx server. For example:
+     *
+     * {code}
+     * $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge(
+     *     array (
+     *         'username'   => 'myUsername',
+     *         'password'   => 'myPassword',
+     *         'soapClient' => new Zend_Soap_Client('https://api.example.com/path/mailmerge.asmx?WSDL')
+     *     )
+     * );
+     * {code}
+     *
+     * Replace the URI of the WSDL in the constructor of Zend_Soap_Client with
+     * that of your dedicated or licensed LiveDocx server.
+     *
+     * If you are using the public LiveDocx server, simply pass 'username' and
+     * 'password'. For example:
+     *
+     * {code}
+     * $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge(
+     *     array (
+     *         'username' => 'myUsername',
+     *         'password' => 'myPassword'
+     *     )
+     * );
+     * {code}
+     *
+     * If you prefer to not pass the username and password through the
+     * constructor, you can also call the following methods:
+     *
+     * {code}
+     * $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+     *
+     * $phpLiveDocx->setUsername('myUsername')
+     *             ->setPassword('myPassword');
+     * {/code}
+     *
+     * Or, if you want to specify your own SoapClient:
+     *
+     * {code}
+     * $phpLiveDocx = new Zend_Service_LiveDocx_MailMerge();
+     *
+     * $phpLiveDocx->setUsername('myUsername')
+     *             ->setPassword('myPassword');
+     *
+     * $phpLiveDocx->setSoapClient(
+     *     new Zend_Soap_Client('https://api.example.com/path/mailmerge.asmx?WSDL')
+     * );
+     * {/code}
+     *
+     * @param  array|Zend_Config $options
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function __construct($options = null)
+    {
+        $this->_credentials = array();
+        $this->_loggedIn = false;
 
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+        if (is_array($options)) {
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp options
-php php php php php php*php Onephp orphp morephp ofphp usernamephp,php passwordphp,php soapClient
-php php php php php php*
-php php php php php php*php php@paramphp php php$options
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php php$keyphp;
-php php php php php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Set options
+     * One or more of username, password, soapClient
+     *
+     * @param  $options
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.2
+     */
+    public function setOptions(array $options)
+    {
+        foreach ($options as $key => $value) {
+            $method = 'set' . $key;
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Cleanphp upphp andphp logphp outphp ofphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>logOutphp(php)php;
-php php php php php}
+    /**
+     * Clean up and log out of LiveDocx service
+     *
+     * @return boolean
+     * @since  LiveDocx 1.0
+     */
+    public function __destruct()
+    {
+        return $this->logOut();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initphp Soapphp clientphp php-php connectphp tophp SOAPphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$endpoint
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php protectedphp functionphp php_initSoapClientphp(php$endpointphp)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Soapphp/Clientphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_soapClientphp php=php newphp Zendphp_Soapphp_Clientphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_soapClientphp-php>setWsdlphp(php$endpointphp)php;
-php php php php php php php php php}php catchphp php(Zendphp_Soapphp_Clientphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(php'Cannotphp connectphp tophp LiveDocxphp servicephp atphp php'php php.php php$endpointphp,php php0php,php php$ephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Init Soap client - connect to SOAP service
+     *
+     * @param  string $endpoint
+     * @throws Zend_Service_LiveDocx_Exception
+     * @return void
+     * @since  LiveDocx 1.2
+     */
+    protected function _initSoapClient($endpoint)
+    {
+        try {
+            require_once 'Zend/Soap/Client.php';
+            $this->_soapClient = new Zend_Soap_Client();
+            $this->_soapClient->setWsdl($endpoint);
+        } catch (Zend_Soap_Client_Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception('Cannot connect to LiveDocx service at ' . $endpoint, 0, $e);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp SOAPphp client
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Soapphp_Client
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getSoapClientphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_soapClientphp;
-php php php php php}
+    /**
+     * Get SOAP client
+     *
+     * @return Zend_Soap_Client
+     * @since  LiveDocx 1.2
+     */
+    public function getSoapClient()
+    {
+        return $this->_soapClient;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp SOAPphp client
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Soapphp_Clientphp php$soapClient
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp setSoapClientphp(Zendphp_Soapphp_Clientphp php$soapClientphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_soapClientphp php=php php$soapClientphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set SOAP client
+     *
+     * @param  Zend_Soap_Client $soapClient
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.2
+     */
+    public function setSoapClient(Zend_Soap_Client $soapClient)
+    {
+        $this->_soapClient = $soapClient;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Logphp inphp tophp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$username
-php php php php php php*php php@paramphp stringphp php$password
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp logInphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>isLoggedInphp(php)php)php php{
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>getUsernamephp(php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Usernamephp hasphp notphp beenphp setphp.php Tophp setphp usernamephp specifyphp thephp optionsphp arrayphp inphp thephp constructorphp orphp callphp setUsernamephp(php$usernamephp)php afterphp instantiationphp'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
+    /**
+     * Log in to LiveDocx service
+     *
+     * @param string $username
+     * @param string $password
+     *
+     * @throws Zend_Service_LiveDocx_Exception
+     * @return boolean
+     * @since  LiveDocx 1.2
+     */
+    public function logIn()
+    {
+        if (!$this->isLoggedIn()) {
+            if (null === $this->getUsername()) {
+                require_once 'Zend/Service/LiveDocx/Exception.php';
+                throw new Zend_Service_LiveDocx_Exception(
+                    'Username has not been set. To set username specify the options array in the constructor or call setUsername($username) after instantiation'
+                );
+            }
 
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>getPasswordphp(php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Passwordphp hasphp notphp beenphp setphp.php Tophp setphp passwordphp specifyphp thephp optionsphp arrayphp inphp thephp constructorphp orphp callphp setPasswordphp(php$passwordphp)php afterphp instantiationphp'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
+            if (null === $this->getPassword()) {
+                require_once 'Zend/Service/LiveDocx/Exception.php';
+                throw new Zend_Service_LiveDocx_Exception(
+                    'Password has not been set. To set password specify the options array in the constructor or call setPassword($password) after instantiation'
+                );
+            }
 
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>getSoapClientphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_initSoapClientphp(php$thisphp-php>php_wsdlphp)php;
-php php php php php php php php php php php php php}
+            if (null === $this->getSoapClient()) {
+                $this->_initSoapClient($this->_wsdl);
+            }
 
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>LogInphp(arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'usernamephp'php php=php>php php$thisphp-php>getUsernamephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php'passwordphp'php php=php>php php$thisphp-php>getPasswordphp(php)php,
-php php php php php php php php php php php php php php php php php)php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loggedInphp php=php truephp;
-php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Cannotphp loginphp intophp LiveDocxphp servicephp php-php usernamephp andphp/orphp passwordphp arephp invalidphp'php,php php0php,php php$e
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            try {
+                $this->getSoapClient()->LogIn(array(
+                    'username' => $this->getUsername(),
+                    'password' => $this->getPassword(),
+                ));
+                $this->_loggedIn = true;
+            } catch (Exception $e) {
+                require_once 'Zend/Service/LiveDocx/Exception.php';
+                throw new Zend_Service_LiveDocx_Exception(
+                    'Cannot login into LiveDocx service - username and/or password are invalid', 0, $e
+                );
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_loggedInphp;
-php php php php php}
+        return $this->_loggedIn;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Logphp outphp ofphp thephp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp logOutphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>isLoggedInphp(php)php)php php{
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>LogOutphp(php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loggedInphp php=php falsephp;
-php php php php php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Cannotphp logphp outphp ofphp LiveDocxphp servicephp'php,php php0php,php php$e
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Log out of the LiveDocx service
+     *
+     * @throws Zend_Service_LiveDocx_Exception
+     * @return boolean
+     * @since  LiveDocx 1.2
+     */
+    public function logOut()
+    {
+        if ($this->isLoggedIn()) {
+            try {
+                $this->getSoapClient()->LogOut();
+                $this->_loggedIn = false;
+            } catch (Exception $e) {
+                require_once 'Zend/Service/LiveDocx/Exception.php';
+                throw new Zend_Service_LiveDocx_Exception(
+                    'Cannot log out of LiveDocx service', 0, $e
+                );
+            }
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_loggedInphp;
-php php php php php}
+        return $this->_loggedIn;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp truephp,php ifphp sessionphp isphp currentlyphp loggedphp intophp thephp backendphp server
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp isLoggedInphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_loggedInphp;
-php php php php php}
+    /**
+     * Return true, if session is currently logged into the backend server
+     *
+     * @return boolean
+     * @since  LiveDocx 1.2
+     */
+    public function isLoggedIn()
+    {
+        return $this->_loggedIn;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp username
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setUsernamephp(php$usernamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_credentialsphp[php'usernamephp'php]php php=php php$usernamephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set username
+     *
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.0
+     */
+    public function setUsername($username)
+    {
+        $this->_credentials['username'] = $username;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp password
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setPasswordphp(php$passwordphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_credentialsphp[php'passwordphp'php]php php=php php$passwordphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set password
+     *
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.0
+     */
+    public function setPassword($password)
+    {
+        $this->_credentials['password'] = $password;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp WSDLphp ofphp LiveDocxphp webphp service
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setWsdlphp(php$wsdlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_wsdlphp php=php php$wsdlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set WSDL of LiveDocx web service
+     *
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.0
+     */
+    public function setWsdl($wsdl)
+    {
+        $this->_wsdl = $wsdl;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp currentphp username
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getUsernamephp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_credentialsphp[php'usernamephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_credentialsphp[php'usernamephp'php]php;
-php php php php php php php php php}
+    /**
+     * Return current username
+     *
+     * @return string|null
+     * @since  LiveDocx 1.0
+     */
+    public function getUsername()
+    {
+        if (isset($this->_credentials['username'])) {
+            return $this->_credentials['username'];
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp currentphp password
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getPasswordphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_credentialsphp[php'passwordphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_credentialsphp[php'passwordphp'php]php;
-php php php php php php php php php}
+    /**
+     * Return current password
+     *
+     * @return string|null
+     * @since  LiveDocx 1.0
+     */
+    public function getPassword()
+    {
+        if (isset($this->_credentials['password'])) {
+            return $this->_credentials['password'];
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp WSDLphp ofphp LiveDocxphp webphp service
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocx
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getWsdlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_wsdlphp;
-php php php php php}
+    /**
+     * Return WSDL of LiveDocx web service
+     *
+     * @return Zend_Service_LiveDocx
+     * @since  LiveDocx 1.0
+     */
+    public function getWsdl()
+    {
+        return $this->_wsdl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp documentphp formatphp php(extensionphp)php ofphp aphp filename
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp string
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getFormatphp(php$filenamephp)
-php php php php php{
-php php php php php php php php returnphp strtolowerphp(substrphp(strrchrphp(php$filenamephp,php php'php.php'php)php,php php1php)php)php;
-php php php php php}
+    /**
+     * Return the document format (extension) of a filename
+     *
+     * @param  string $filename
+     * @return string
+     * @since  LiveDocx 1.0
+     */
+    public function getFormat($filename)
+    {
+        return strtolower(substr(strrchr($filename, '.'), 1));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp APIphp version
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:VERSIONphp;
-php php php php php}
+    /**
+     * Return the current API version
+     *
+     * @return string
+     * @since  LiveDocx 1.0
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Comparephp thephp currentphp APIphp versionphp withphp anotherphp version
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$versionphp php(STRINGphp NOTphp FLOATphp)
-php php php php php php*php php@returnphp intphp php-php1php php(versionphp isphp lessphp thanphp APIphp versionphp)php,php php0php php(versionsphp arephp equalphp)php,php orphp php1php php(versionphp isphp greaterphp thanphp APIphp versionphp)
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp compareVersionphp(php$versionphp)
-php php php php php{
-php php php php php php php php returnphp versionphp_comparephp(php$versionphp,php php$thisphp-php>getVersionphp(php)php)php;
-php php php php php}
-php}
+    /**
+     * Compare the current API version with another version
+     *
+     * @param  string $version (STRING NOT FLOAT)
+     * @return int -1 (version is less than API version), 0 (versions are equal), or 1 (version is greater than API version)
+     * @since  LiveDocx 1.0
+     */
+    public function compareVersion($version)
+    {
+        return version_compare($version, $this->getVersion());
+    }
+}

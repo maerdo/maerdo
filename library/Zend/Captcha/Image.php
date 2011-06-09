@@ -1,605 +1,605 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Imagephp.phpphp php2php2php5php8php9php php2php0php1php0php-php0php7php-php1php6php php2php0php:php5php1php:php5php1Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Image.php 22589 2010-07-16 20:51:51Z mikaelkael $
+ */
 
-php/php*php*php php@seephp Zendphp_Captchaphp_Wordphp php*php/
-requirephp_oncephp php'Zendphp/Captchaphp/Wordphp.phpphp'php;
+/** @see Zend_Captcha_Word */
+require_once 'Zend/Captcha/Word.php';
 
-php/php*php*
-php php*php Imagephp-basedphp captchaphp element
-php php*
-php php*php Generatesphp imagephp displayingphp randomphp word
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Captchaphp_Imagephp extendsphp Zendphp_Captchaphp_Word
-php{
-php php php php php/php*php*
-php php php php php php*php Directoryphp forphp generatedphp images
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_imgDirphp php=php php"php.php/imagesphp/captchaphp/php"php;
+/**
+ * Image-based captcha element
+ *
+ * Generates image displaying random word
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Captcha_Image extends Zend_Captcha_Word
+{
+    /**
+     * Directory for generated images
+     *
+     * @var string
+     */
+    protected $_imgDir = "./images/captcha/";
 
-php php php php php/php*php*
-php php php php php php*php URLphp forphp accessingphp images
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_imgUrlphp php=php php"php/imagesphp/captchaphp/php"php;
+    /**
+     * URL for accessing images
+     *
+     * @var string
+     */
+    protected $_imgUrl = "/images/captcha/";
 
-php php php php php/php*php*
-php php php php php php*php Imagephp'sphp altphp tagphp content
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_imgAltphp php=php php"php"php;
+    /**
+     * Image's alt tag content
+     *
+     * @var string
+     */
+    protected $_imgAlt = "";
 
-php php php php php/php*php*
-php php php php php php*php Imagephp suffixphp php(includingphp dotphp)
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_suffixphp php=php php"php.pngphp"php;
+    /**
+     * Image suffix (including dot)
+     *
+     * @var string
+     */
+    protected $_suffix = ".png";
 
-php php php php php/php*php*
-php php php php php php*php Imagephp width
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_widthphp php=php php2php0php0php;
+    /**
+     * Image width
+     *
+     * @var int
+     */
+    protected $_width = 200;
 
-php php php php php/php*php*
-php php php php php php*php Imagephp height
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_heightphp php=php php5php0php;
+    /**
+     * Image height
+     *
+     * @var int
+     */
+    protected $_height = 50;
 
-php php php php php/php*php*
-php php php php php php*php Fontphp size
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_fsizephp php=php php2php4php;
+    /**
+     * Font size
+     *
+     * @var int
+     */
+    protected $_fsize = 24;
 
-php php php php php/php*php*
-php php php php php php*php Imagephp fontphp file
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_fontphp;
+    /**
+     * Image font file
+     *
+     * @var string
+     */
+    protected $_font;
 
-php php php php php/php*php*
-php php php php php php*php Imagephp tophp usephp asphp startingphp point
-php php php php php php*php Defaultphp isphp blankphp imagephp.php Ifphp providedphp,php shouldphp bephp PNGphp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_startImagephp;
-php php php php php/php*php*
-php php php php php php*php Howphp frequentlyphp tophp executephp garbagephp collection
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_gcFreqphp php=php php1php0php;
+    /**
+     * Image to use as starting point
+     * Default is blank image. If provided, should be PNG image.
+     *
+     * @var string
+     */
+    protected $_startImage;
+    /**
+     * How frequently to execute garbage collection
+     *
+     * @var int
+     */
+    protected $_gcFreq = 10;
 
-php php php php php/php*php*
-php php php php php php*php Howphp longphp tophp keepphp generatedphp images
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_expirationphp php=php php6php0php0php;
+    /**
+     * How long to keep generated images
+     *
+     * @var int
+     */
+    protected $_expiration = 600;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp noisephp dotsphp onphp image
-php php php php php php*php Usedphp twicephp php-php beforephp andphp afterphp transform
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_dotNoiseLevelphp php=php php1php0php0php;
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp noisephp linesphp onphp image
-php php php php php php*php Usedphp twicephp php-php beforephp andphp afterphp transform
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_lineNoiseLevelphp php=php php5php;
-php php php php php/php*php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getImgAltphp php(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_imgAltphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getStartImagephp php(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_startImagephp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getDotNoiseLevelphp php(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_dotNoiseLevelphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getLineNoiseLevelphp php(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lineNoiseLevelphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp expiration
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getExpirationphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_expirationphp;
-php php php php php}
+    /**
+     * Number of noise dots on image
+     * Used twice - before and after transform
+     *
+     * @var int
+     */
+    protected $_dotNoiseLevel = 100;
+    /**
+     * Number of noise lines on image
+     * Used twice - before and after transform
+     *
+     * @var int
+     */
+    protected $_lineNoiseLevel = 5;
+    /**
+     * @return string
+     */
+    public function getImgAlt ()
+    {
+        return $this->_imgAlt;
+    }
+    /**
+     * @return string
+     */
+    public function getStartImage ()
+    {
+        return $this->_startImage;
+    }
+    /**
+     * @return int
+     */
+    public function getDotNoiseLevel ()
+    {
+        return $this->_dotNoiseLevel;
+    }
+    /**
+     * @return int
+     */
+    public function getLineNoiseLevel ()
+    {
+        return $this->_lineNoiseLevel;
+    }
+    /**
+     * Get captcha expiration
+     *
+     * @return int
+     */
+    public function getExpiration()
+    {
+        return $this->_expiration;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp garbagephp collectionphp frequency
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getGcFreqphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_gcFreqphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php Getphp fontphp tophp usephp whenphp generatingphp captcha
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getFontphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_fontphp;
-php php php php php}
+    /**
+     * Get garbage collection frequency
+     *
+     * @return int
+     */
+    public function getGcFreq()
+    {
+        return $this->_gcFreq;
+    }
+    /**
+     * Get font to use when generating captcha
+     *
+     * @return string
+     */
+    public function getFont()
+    {
+        return $this->_font;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp fontphp size
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getFontSizephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_fsizephp;
-php php php php php}
+    /**
+     * Get font size
+     *
+     * @return int
+     */
+    public function getFontSize()
+    {
+        return $this->_fsize;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp imagephp height
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getHeightphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_heightphp;
-php php php php php}
+    /**
+     * Get captcha image height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->_height;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp imagephp directory
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getImgDirphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_imgDirphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp imagephp basephp URL
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getImgUrlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_imgUrlphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp imagephp filephp suffix
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSuffixphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_suffixphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp imagephp width
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getWidthphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_widthphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$startImage
-php php php php php php*php/
-php php php php publicphp functionphp setStartImagephp php(php$startImagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_startImagephp php=php php$startImagephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@paramphp intphp php$dotNoiseLevel
-php php php php php php*php/
-php php php php publicphp functionphp setDotNoiseLevelphp php(php$dotNoiseLevelphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dotNoiseLevelphp php=php php$dotNoiseLevelphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php php php php/php*php*
-php php php php php php*php php@paramphp intphp php$lineNoiseLevel
-php php php php php php*php/
-php php php php publicphp functionphp setLineNoiseLevelphp php(php$lineNoiseLevelphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_lineNoiseLevelphp php=php php$lineNoiseLevelphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Get captcha image directory
+     *
+     * @return string
+     */
+    public function getImgDir()
+    {
+        return $this->_imgDir;
+    }
+    /**
+     * Get captcha image base URL
+     *
+     * @return string
+     */
+    public function getImgUrl()
+    {
+        return $this->_imgUrl;
+    }
+    /**
+     * Get captcha image file suffix
+     *
+     * @return string
+     */
+    public function getSuffix()
+    {
+        return $this->_suffix;
+    }
+    /**
+     * Get captcha image width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->_width;
+    }
+    /**
+     * @param string $startImage
+     */
+    public function setStartImage ($startImage)
+    {
+        $this->_startImage = $startImage;
+        return $this;
+    }
+    /**
+     * @param int $dotNoiseLevel
+     */
+    public function setDotNoiseLevel ($dotNoiseLevel)
+    {
+        $this->_dotNoiseLevel = $dotNoiseLevel;
+        return $this;
+    }
+   /**
+     * @param int $lineNoiseLevel
+     */
+    public function setLineNoiseLevel ($lineNoiseLevel)
+    {
+        $this->_lineNoiseLevel = $lineNoiseLevel;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp expiration
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$expiration
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setExpirationphp(php$expirationphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_expirationphp php=php php$expirationphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha expiration
+     *
+     * @param int $expiration
+     * @return Zend_Captcha_Image
+     */
+    public function setExpiration($expiration)
+    {
+        $this->_expiration = $expiration;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp garbagephp collectionphp frequency
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$gcFreq
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setGcFreqphp(php$gcFreqphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_gcFreqphp php=php php$gcFreqphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set garbage collection frequency
+     *
+     * @param int $gcFreq
+     * @return Zend_Captcha_Image
+     */
+    public function setGcFreq($gcFreq)
+    {
+        $this->_gcFreq = $gcFreq;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp font
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$font
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setFontphp(php$fontphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_fontphp php=php php$fontphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha font
+     *
+     * @param  string $font
+     * @return Zend_Captcha_Image
+     */
+    public function setFont($font)
+    {
+        $this->_font = $font;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp fontphp size
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$fsize
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setFontSizephp(php$fsizephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_fsizephp php=php php$fsizephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha font size
+     *
+     * @param  int $fsize
+     * @return Zend_Captcha_Image
+     */
+    public function setFontSize($fsize)
+    {
+        $this->_fsize = $fsize;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp imagephp height
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$height
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setHeightphp(php$heightphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_heightphp php=php php$heightphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha image height
+     *
+     * @param  int $height
+     * @return Zend_Captcha_Image
+     */
+    public function setHeight($height)
+    {
+        $this->_height = $height;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp imagephp storagephp directory
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$imgDir
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setImgDirphp(php$imgDirphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_imgDirphp php=php rtrimphp(php$imgDirphp,php php"php/php\php\php"php)php php.php php'php/php'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha image storage directory
+     *
+     * @param  string $imgDir
+     * @return Zend_Captcha_Image
+     */
+    public function setImgDir($imgDir)
+    {
+        $this->_imgDir = rtrim($imgDir, "/\\") . '/';
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp imagephp basephp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$imgUrl
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setImgUrlphp(php$imgUrlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_imgUrlphp php=php rtrimphp(php$imgUrlphp,php php"php/php\php\php"php)php php.php php'php/php'php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$imgAlt
-php php php php php php*php/
-php php php php publicphp functionphp setImgAltphp php(php$imgAltphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_imgAltphp php=php php$imgAltphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha image base URL
+     *
+     * @param  string $imgUrl
+     * @return Zend_Captcha_Image
+     */
+    public function setImgUrl($imgUrl)
+    {
+        $this->_imgUrl = rtrim($imgUrl, "/\\") . '/';
+        return $this;
+    }
+    /**
+     * @param string $imgAlt
+     */
+    public function setImgAlt ($imgAlt)
+    {
+        $this->_imgAlt = $imgAlt;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchphp imagephp filenamephp suffix
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$suffix
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setSuffixphp(php$suffixphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_suffixphp php=php php$suffixphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captch image filename suffix
+     *
+     * @param  string $suffix
+     * @return Zend_Captcha_Image
+     */
+    public function setSuffix($suffix)
+    {
+        $this->_suffix = $suffix;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp imagephp width
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$width
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Image
-php php php php php php*php/
-php php php php publicphp functionphp setWidthphp(php$widthphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_widthphp php=php php$widthphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha image width
+     *
+     * @param  int $width
+     * @return Zend_Captcha_Image
+     */
+    public function setWidth($width)
+    {
+        $this->_width = $width;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp randomphp frequency
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php protectedphp functionphp php_randomFreqphp(php)
-php php php php php{
-php php php php php php php php returnphp mtphp_randphp(php7php0php0php0php0php0php,php php1php0php0php0php0php0php0php)php php/php php1php5php0php0php0php0php0php0php;
-php php php php php}
+    /**
+     * Generate random frequency
+     *
+     * @return float
+     */
+    protected function _randomFreq()
+    {
+        return mt_rand(700000, 1000000) / 15000000;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp randomphp phase
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php protectedphp functionphp php_randomPhasephp(php)
-php php php php php{
-php php php php php php php php php/php/php randomphp phasephp fromphp php0php tophp pi
-php php php php php php php php returnphp mtphp_randphp(php0php,php php3php1php4php1php5php9php2php)php php/php php1php0php0php0php0php0php0php;
-php php php php php}
+    /**
+     * Generate random phase
+     *
+     * @return float
+     */
+    protected function _randomPhase()
+    {
+        // random phase from 0 to pi
+        return mt_rand(0, 3141592) / 1000000;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp randomphp characterphp size
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php protectedphp functionphp php_randomSizephp(php)
-php php php php php{
-php php php php php php php php returnphp mtphp_randphp(php3php0php0php,php php7php0php0php)php php/php php1php0php0php;
-php php php php php}
+    /**
+     * Generate random character size
+     *
+     * @return int
+     */
+    protected function _randomSize()
+    {
+        return mt_rand(300, 700) / 100;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp captcha
-php php php php php php*
-php php php php php php*php php@returnphp stringphp captchaphp ID
-php php php php php php*php/
-php php php php publicphp functionphp generatephp(php)
-php php php php php{
-php php php php php php php php php$idphp php=php parentphp:php:generatephp(php)php;
-php php php php php php php php php$triesphp php=php php5php;
-php php php php php php php php php/php/php Ifphp therephp'sphp alreadyphp suchphp filephp,php tryphp creatingphp aphp newphp ID
-php php php php php php php php whilephp(php$triesphp-php-php php&php&php filephp_existsphp(php$thisphp-php>getImgDirphp(php)php php.php php$idphp php.php php$thisphp-php>getSuffixphp(php)php)php)php php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_generateRandomIdphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_setIdphp(php$idphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_generateImagephp(php$idphp,php php$thisphp-php>getWordphp(php)php)php;
+    /**
+     * Generate captcha
+     *
+     * @return string captcha ID
+     */
+    public function generate()
+    {
+        $id = parent::generate();
+        $tries = 5;
+        // If there's already such file, try creating a new ID
+        while($tries-- && file_exists($this->getImgDir() . $id . $this->getSuffix())) {
+            $id = $this->_generateRandomId();
+            $this->_setId($id);
+        }
+        $this->_generateImage($id, $this->getWord());
 
-php php php php php php php php ifphp php(mtphp_randphp(php1php,php php$thisphp-php>getGcFreqphp(php)php)php php=php=php php1php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_gcphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$idphp;
-php php php php php}
+        if (mt_rand(1, $this->getGcFreq()) == 1) {
+            $this->_gc();
+        }
+        return $id;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp imagephp captcha
-php php php php php php*
-php php php php php php*php Overridephp thisphp functionphp ifphp youphp wantphp differentphp imagephp generator
-php php php php php php*php Wavephp transformphp fromphp httpphp:php/php/wwwphp.captchaphp.ruphp/captchasphp/multiwavephp/
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$idphp Captchaphp ID
-php php php php php php*php php@paramphp stringphp php$wordphp Captchaphp word
-php php php php php php*php/
-php php php php protectedphp functionphp php_generateImagephp(php$idphp,php php$wordphp)
-php php php php php{
-php php php php php php php php ifphp php(php!extensionphp_loadedphp(php"gdphp"php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Captchaphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Captchaphp_Exceptionphp(php"Imagephp CAPTCHAphp requiresphp GDphp extensionphp"php)php;
-php php php php php php php php php}
+    /**
+     * Generate image captcha
+     *
+     * Override this function if you want different image generator
+     * Wave transform from http://www.captcha.ru/captchas/multiwave/
+     *
+     * @param string $id Captcha ID
+     * @param string $word Captcha word
+     */
+    protected function _generateImage($id, $word)
+    {
+        if (!extension_loaded("gd")) {
+            require_once 'Zend/Captcha/Exception.php';
+            throw new Zend_Captcha_Exception("Image CAPTCHA requires GD extension");
+        }
 
-php php php php php php php php ifphp php(php!functionphp_existsphp(php"imagepngphp"php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Captchaphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Captchaphp_Exceptionphp(php"Imagephp CAPTCHAphp requiresphp PNGphp supportphp"php)php;
-php php php php php php php php php}
+        if (!function_exists("imagepng")) {
+            require_once 'Zend/Captcha/Exception.php';
+            throw new Zend_Captcha_Exception("Image CAPTCHA requires PNG support");
+        }
 
-php php php php php php php php ifphp php(php!functionphp_existsphp(php"imageftbboxphp"php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Captchaphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Captchaphp_Exceptionphp(php"Imagephp CAPTCHAphp requiresphp FTphp fontsphp supportphp"php)php;
-php php php php php php php php php}
+        if (!function_exists("imageftbbox")) {
+            require_once 'Zend/Captcha/Exception.php';
+            throw new Zend_Captcha_Exception("Image CAPTCHA requires FT fonts support");
+        }
 
-php php php php php php php php php$fontphp php=php php$thisphp-php>getFontphp(php)php;
+        $font = $this->getFont();
 
-php php php php php php php php ifphp php(emptyphp(php$fontphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Captchaphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Captchaphp_Exceptionphp(php"Imagephp CAPTCHAphp requiresphp fontphp"php)php;
-php php php php php php php php php}
+        if (empty($font)) {
+            require_once 'Zend/Captcha/Exception.php';
+            throw new Zend_Captcha_Exception("Image CAPTCHA requires font");
+        }
 
-php php php php php php php php php$wphp php php php php php=php php$thisphp-php>getWidthphp(php)php;
-php php php php php php php php php$hphp php php php php php=php php$thisphp-php>getHeightphp(php)php;
-php php php php php php php php php$fsizephp php=php php$thisphp-php>getFontSizephp(php)php;
+        $w     = $this->getWidth();
+        $h     = $this->getHeight();
+        $fsize = $this->getFontSize();
 
-php php php php php php php php php$imgphp_filephp php php php=php php$thisphp-php>getImgDirphp(php)php php.php php$idphp php.php php$thisphp-php>getSuffixphp(php)php;
-php php php php php php php php ifphp(emptyphp(php$thisphp-php>php_startImagephp)php)php php{
-php php php php php php php php php php php php php$imgphp php php php php php php php php=php imagecreatetruecolorphp(php$wphp,php php$hphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$imgphp php=php imagecreatefrompngphp(php$thisphp-php>php_startImagephp)php;
-php php php php php php php php php php php php ifphp(php!php$imgphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Captchaphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Captchaphp_Exceptionphp(php"Canphp notphp loadphp startphp imagephp"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$wphp php=php imagesxphp(php$imgphp)php;
-php php php php php php php php php php php php php$hphp php=php imagesyphp(php$imgphp)php;
-php php php php php php php php php}
-php php php php php php php php php$textphp_colorphp php=php imagecolorallocatephp(php$imgphp,php php0php,php php0php,php php0php)php;
-php php php php php php php php php$bgphp_colorphp php php php=php imagecolorallocatephp(php$imgphp,php php2php5php5php,php php2php5php5php,php php2php5php5php)php;
-php php php php php php php php imagefilledrectanglephp(php$imgphp,php php0php,php php0php,php php$wphp-php1php,php php$hphp-php1php,php php$bgphp_colorphp)php;
-php php php php php php php php php$textboxphp php=php imageftbboxphp(php$fsizephp,php php0php,php php$fontphp,php php$wordphp)php;
-php php php php php php php php php$xphp php=php php(php$wphp php-php php(php$textboxphp[php2php]php php-php php$textboxphp[php0php]php)php)php php/php php2php;
-php php php php php php php php php$yphp php=php php(php$hphp php-php php(php$textboxphp[php7php]php php-php php$textboxphp[php1php]php)php)php php/php php2php;
-php php php php php php php php imagefttextphp(php$imgphp,php php$fsizephp,php php0php,php php$xphp,php php$yphp,php php$textphp_colorphp,php php$fontphp,php php$wordphp)php;
+        $img_file   = $this->getImgDir() . $id . $this->getSuffix();
+        if(empty($this->_startImage)) {
+            $img        = imagecreatetruecolor($w, $h);
+        } else {
+            $img = imagecreatefrompng($this->_startImage);
+            if(!$img) {
+                require_once 'Zend/Captcha/Exception.php';
+                throw new Zend_Captcha_Exception("Can not load start image");
+            }
+            $w = imagesx($img);
+            $h = imagesy($img);
+        }
+        $text_color = imagecolorallocate($img, 0, 0, 0);
+        $bg_color   = imagecolorallocate($img, 255, 255, 255);
+        imagefilledrectangle($img, 0, 0, $w-1, $h-1, $bg_color);
+        $textbox = imageftbbox($fsize, 0, $font, $word);
+        $x = ($w - ($textbox[2] - $textbox[0])) / 2;
+        $y = ($h - ($textbox[7] - $textbox[1])) / 2;
+        imagefttext($img, $fsize, 0, $x, $y, $text_color, $font, $word);
 
-php php php php php php php php/php/php generatephp noise
-php php php php php php php php forphp php(php$iphp=php0php;php php$i<php$thisphp-php>php_dotNoiseLevelphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php imagefilledellipsephp(php$imgphp,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php php2php,php php2php,php php$textphp_colorphp)php;
-php php php php php php php php php}
-php php php php php php php php forphp(php$iphp=php0php;php php$i<php$thisphp-php>php_lineNoiseLevelphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php imagelinephp(php$imgphp,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php php$textphp_colorphp)php;
-php php php php php php php php php}
+       // generate noise
+        for ($i=0; $i<$this->_dotNoiseLevel; $i++) {
+           imagefilledellipse($img, mt_rand(0,$w), mt_rand(0,$h), 2, 2, $text_color);
+        }
+        for($i=0; $i<$this->_lineNoiseLevel; $i++) {
+           imageline($img, mt_rand(0,$w), mt_rand(0,$h), mt_rand(0,$w), mt_rand(0,$h), $text_color);
+        }
 
-php php php php php php php php php/php/php transformedphp image
-php php php php php php php php php$imgphp2php php php php php php=php imagecreatetruecolorphp(php$wphp,php php$hphp)php;
-php php php php php php php php php$bgphp_colorphp php=php imagecolorallocatephp(php$imgphp2php,php php2php5php5php,php php2php5php5php,php php2php5php5php)php;
-php php php php php php php php imagefilledrectanglephp(php$imgphp2php,php php0php,php php0php,php php$wphp-php1php,php php$hphp-php1php,php php$bgphp_colorphp)php;
-php php php php php php php php php/php/php applyphp wavephp transforms
-php php php php php php php php php$freqphp1php php=php php$thisphp-php>php_randomFreqphp(php)php;
-php php php php php php php php php$freqphp2php php=php php$thisphp-php>php_randomFreqphp(php)php;
-php php php php php php php php php$freqphp3php php=php php$thisphp-php>php_randomFreqphp(php)php;
-php php php php php php php php php$freqphp4php php=php php$thisphp-php>php_randomFreqphp(php)php;
+        // transformed image
+        $img2     = imagecreatetruecolor($w, $h);
+        $bg_color = imagecolorallocate($img2, 255, 255, 255);
+        imagefilledrectangle($img2, 0, 0, $w-1, $h-1, $bg_color);
+        // apply wave transforms
+        $freq1 = $this->_randomFreq();
+        $freq2 = $this->_randomFreq();
+        $freq3 = $this->_randomFreq();
+        $freq4 = $this->_randomFreq();
 
-php php php php php php php php php$phphp1php php=php php$thisphp-php>php_randomPhasephp(php)php;
-php php php php php php php php php$phphp2php php=php php$thisphp-php>php_randomPhasephp(php)php;
-php php php php php php php php php$phphp3php php=php php$thisphp-php>php_randomPhasephp(php)php;
-php php php php php php php php php$phphp4php php=php php$thisphp-php>php_randomPhasephp(php)php;
+        $ph1 = $this->_randomPhase();
+        $ph2 = $this->_randomPhase();
+        $ph3 = $this->_randomPhase();
+        $ph4 = $this->_randomPhase();
 
-php php php php php php php php php$szxphp php=php php$thisphp-php>php_randomSizephp(php)php;
-php php php php php php php php php$szyphp php=php php$thisphp-php>php_randomSizephp(php)php;
+        $szx = $this->_randomSize();
+        $szy = $this->_randomSize();
 
-php php php php php php php php forphp php(php$xphp php=php php0php;php php$xphp <php php$wphp;php php$xphp+php+php)php php{
-php php php php php php php php php php php php forphp php(php$yphp php=php php0php;php php$yphp <php php$hphp;php php$yphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$sxphp php=php php$xphp php+php php(sinphp(php$xphp*php$freqphp1php php+php php$phphp1php)php php+php sinphp(php$yphp*php$freqphp3php php+php php$phphp3php)php)php php*php php$szxphp;
-php php php php php php php php php php php php php php php php php$syphp php=php php$yphp php+php php(sinphp(php$xphp*php$freqphp2php php+php php$phphp2php)php php+php sinphp(php$yphp*php$freqphp4php php+php php$phphp4php)php)php php*php php$szyphp;
+        for ($x = 0; $x < $w; $x++) {
+            for ($y = 0; $y < $h; $y++) {
+                $sx = $x + (sin($x*$freq1 + $ph1) + sin($y*$freq3 + $ph3)) * $szx;
+                $sy = $y + (sin($x*$freq2 + $ph2) + sin($y*$freq4 + $ph4)) * $szy;
 
-php php php php php php php php php php php php php php php php ifphp php(php$sxphp <php php0php php|php|php php$syphp <php php0php php|php|php php$sxphp php>php=php php$wphp php-php php1php php|php|php php$syphp php>php=php php$hphp php-php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$colorphp php php php php=php php(imagecoloratphp(php$imgphp,php php$sxphp,php php$syphp)php php>php>php php1php6php)php php php php php php php php php php&php php0xFFphp;
-php php php php php php php php php php php php php php php php php php php php php$colorphp_xphp php php=php php(imagecoloratphp(php$imgphp,php php$sxphp php+php php1php,php php$syphp)php php>php>php php1php6php)php php php php php php&php php0xFFphp;
-php php php php php php php php php php php php php php php php php php php php php$colorphp_yphp php php=php php(imagecoloratphp(php$imgphp,php php$sxphp,php php$syphp php+php php1php)php php>php>php php1php6php)php php php php php php&php php0xFFphp;
-php php php php php php php php php php php php php php php php php php php php php$colorphp_xyphp php=php php(imagecoloratphp(php$imgphp,php php$sxphp php+php php1php,php php$syphp php+php php1php)php php>php>php php1php6php)php php&php php0xFFphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$colorphp php=php=php php2php5php5php php&php&php php$colorphp_xphp php=php=php php2php5php5php php&php&php php$colorphp_yphp php=php=php php2php5php5php php&php&php php$colorphp_xyphp php=php=php php2php5php5php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php ignorephp background
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}php elseifphp php(php$colorphp php=php=php php0php php&php&php php$colorphp_xphp php=php=php php0php php&php&php php$colorphp_yphp php=php=php php0php php&php&php php$colorphp_xyphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php transferphp insidephp ofphp thephp imagephp asphp-is
-php php php php php php php php php php php php php php php php php php php php php$newcolorphp php=php php0php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php dophp antialiasingphp forphp borderphp items
-php php php php php php php php php php php php php php php php php php php php php$fracphp_xphp php php=php php$sxphp-floorphp(php$sxphp)php;
-php php php php php php php php php php php php php php php php php php php php php$fracphp_yphp php php=php php$syphp-floorphp(php$syphp)php;
-php php php php php php php php php php php php php php php php php php php php php$fracphp_xphp1php php=php php1php-php$fracphp_xphp;
-php php php php php php php php php php php php php php php php php php php php php$fracphp_yphp1php php=php php1php-php$fracphp_yphp;
+                if ($sx < 0 || $sy < 0 || $sx >= $w - 1 || $sy >= $h - 1) {
+                    continue;
+                } else {
+                    $color    = (imagecolorat($img, $sx, $sy) >> 16)         & 0xFF;
+                    $color_x  = (imagecolorat($img, $sx + 1, $sy) >> 16)     & 0xFF;
+                    $color_y  = (imagecolorat($img, $sx, $sy + 1) >> 16)     & 0xFF;
+                    $color_xy = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
+                }
+                if ($color == 255 && $color_x == 255 && $color_y == 255 && $color_xy == 255) {
+                    // ignore background
+                    continue;
+                } elseif ($color == 0 && $color_x == 0 && $color_y == 0 && $color_xy == 0) {
+                    // transfer inside of the image as-is
+                    $newcolor = 0;
+                } else {
+                    // do antialiasing for border items
+                    $frac_x  = $sx-floor($sx);
+                    $frac_y  = $sy-floor($sy);
+                    $frac_x1 = 1-$frac_x;
+                    $frac_y1 = 1-$frac_y;
 
-php php php php php php php php php php php php php php php php php php php php php$newcolorphp php=php php$colorphp php php php php*php php$fracphp_xphp1php php*php php$fracphp_yphp1
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php+php php$colorphp_xphp php php*php php$fracphp_xphp php php*php php$fracphp_yphp1
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php+php php$colorphp_yphp php php*php php$fracphp_xphp1php php*php php$fracphp_y
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php+php php$colorphp_xyphp php*php php$fracphp_xphp php php*php php$fracphp_yphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php imagesetpixelphp(php$imgphp2php,php php$xphp,php php$yphp,php imagecolorallocatephp(php$imgphp2php,php php$newcolorphp,php php$newcolorphp,php php$newcolorphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                    $newcolor = $color    * $frac_x1 * $frac_y1
+                              + $color_x  * $frac_x  * $frac_y1
+                              + $color_y  * $frac_x1 * $frac_y
+                              + $color_xy * $frac_x  * $frac_y;
+                }
+                imagesetpixel($img2, $x, $y, imagecolorallocate($img2, $newcolor, $newcolor, $newcolor));
+            }
+        }
 
-php php php php php php php php php/php/php generatephp noise
-php php php php php php php php forphp php(php$iphp=php0php;php php$i<php$thisphp-php>php_dotNoiseLevelphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php php imagefilledellipsephp(php$imgphp2php,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php php2php,php php2php,php php$textphp_colorphp)php;
-php php php php php php php php php}
-php php php php php php php php forphp php(php$iphp=php0php;php php$i<php$thisphp-php>php_lineNoiseLevelphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php imagelinephp(php$imgphp2php,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php mtphp_randphp(php0php,php$wphp)php,php mtphp_randphp(php0php,php$hphp)php,php php$textphp_colorphp)php;
-php php php php php php php php php}
+        // generate noise
+        for ($i=0; $i<$this->_dotNoiseLevel; $i++) {
+            imagefilledellipse($img2, mt_rand(0,$w), mt_rand(0,$h), 2, 2, $text_color);
+        }
+        for ($i=0; $i<$this->_lineNoiseLevel; $i++) {
+           imageline($img2, mt_rand(0,$w), mt_rand(0,$h), mt_rand(0,$w), mt_rand(0,$h), $text_color);
+        }
 
-php php php php php php php php imagepngphp(php$imgphp2php,php php$imgphp_filephp)php;
-php php php php php php php php imagedestroyphp(php$imgphp)php;
-php php php php php php php php imagedestroyphp(php$imgphp2php)php;
-php php php php php}
+        imagepng($img2, $img_file);
+        imagedestroy($img);
+        imagedestroy($img2);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp oldphp filesphp fromphp imagephp directory
-php php php php php php*
-php php php php php php*php/
-php php php php protectedphp functionphp php_gcphp(php)
-php php php php php{
-php php php php php php php php php$expirephp php=php timephp(php)php php-php php$thisphp-php>getExpirationphp(php)php;
-php php php php php php php php php$imgdirphp php=php php$thisphp-php>getImgDirphp(php)php;
-php php php php php php php php ifphp(php!php$imgdirphp php|php|php strlenphp(php$imgdirphp)php <php php2php)php php{
-php php php php php php php php php php php php php/php/php safetyphp guard
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$suffixLengthphp php=php strlenphp(php$thisphp-php>php_suffixphp)php;
-php php php php php php php php foreachphp php(newphp DirectoryIteratorphp(php$imgdirphp)php asphp php$filephp)php php{
-php php php php php php php php php php php php ifphp php(php!php$filephp-php>isDotphp(php)php php&php&php php!php$filephp-php>isDirphp(php)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$filephp-php>getMTimephp(php)php <php php$expirephp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php onlyphp deletesphp filesphp endingphp withphp php$thisphp-php>php_suffix
-php php php php php php php php php php php php php php php php php php php php ifphp php(substrphp(php$filephp-php>getFilenamephp(php)php,php php-php(php$suffixLengthphp)php)php php=php=php php$thisphp-php>php_suffixphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php unlinkphp(php$filephp-php>getPathnamephp(php)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Remove old files from image directory
+     *
+     */
+    protected function _gc()
+    {
+        $expire = time() - $this->getExpiration();
+        $imgdir = $this->getImgDir();
+        if(!$imgdir || strlen($imgdir) < 2) {
+            // safety guard
+            return;
+        }
+        $suffixLength = strlen($this->_suffix);
+        foreach (new DirectoryIterator($imgdir) as $file) {
+            if (!$file->isDot() && !$file->isDir()) {
+                if ($file->getMTime() < $expire) {
+                    // only deletes files ending with $this->_suffix
+                    if (substr($file->getFilename(), -($suffixLength)) == $this->_suffix) {
+                        unlink($file->getPathname());
+                    }
+                }
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Displayphp thephp captcha
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@paramphp mixedphp php$element
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp,php php$elementphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php'php<imgphp widthphp=php"php'php php.php php$thisphp-php>getWidthphp(php)php php.php php'php"php heightphp=php"php'php php.php php$thisphp-php>getHeightphp(php)php php.php php'php"php altphp=php"php'php php.php php$thisphp-php>getImgAltphp(php)
-php php php php php php php php php php php php php php.php php'php"php srcphp=php"php'php php.php php$thisphp-php>getImgUrlphp(php)php php.php php$thisphp-php>getIdphp(php)php php.php php$thisphp-php>getSuffixphp(php)php php.php php'php"php php/php>php'php;
-php php php php php}
-php}
+    /**
+     * Display the captcha
+     *
+     * @param Zend_View_Interface $view
+     * @param mixed $element
+     * @return string
+     */
+    public function render(Zend_View_Interface $view = null, $element = null)
+    {
+        return '<img width="' . $this->getWidth() . '" height="' . $this->getHeight() . '" alt="' . $this->getImgAlt()
+             . '" src="' . $this->getImgUrl() . $this->getId() . $this->getSuffix() . '" />';
+    }
+}

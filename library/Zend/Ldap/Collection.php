@@ -1,239 +1,239 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Collectionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Collection.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_Ldapphp_Collectionphp wrapsphp aphp listphp ofphp LDAPphp entriesphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Ldap
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Ldapphp_Collectionphp implementsphp Iteratorphp,php Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Iterator
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Ldapphp_Collectionphp_Iteratorphp_Default
-php php php php php php*php/
-php php php php protectedphp php$php_iteratorphp php=php nullphp;
+/**
+ * Zend_Ldap_Collection wraps a list of LDAP entries.
+ *
+ * @category   Zend
+ * @package    Zend_Ldap
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Ldap_Collection implements Iterator, Countable
+{
+    /**
+     * Iterator
+     *
+     * @var Zend_Ldap_Collection_Iterator_Default
+     */
+    protected $_iterator = null;
 
-php php php php php/php*php*
-php php php php php php*php Currentphp itemphp number
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_currentphp php=php php-php1php;
+    /**
+     * Current item number
+     *
+     * @var integer
+     */
+    protected $_current = -1;
 
-php php php php php/php*php*
-php php php php php php*php Containerphp forphp itemphp cachingphp tophp speedphp upphp multiplephp iterations
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_cachephp php=php arrayphp(php)php;
+    /**
+     * Container for item caching to speed up multiple iterations
+     *
+     * @var array
+     */
+    protected $_cache = array();
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp php$iterator
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Ldapphp_Collectionphp_Iteratorphp_Defaultphp php$iteratorphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_iteratorphp php=php php$iteratorphp;
-php php php php php}
+    /**
+     * Constructor.
+     *
+     * @param Zend_Ldap_Collection_Iterator_Default $iterator
+     */
+    public function __construct(Zend_Ldap_Collection_Iterator_Default $iterator)
+    {
+        $this->_iterator = $iterator;
+    }
 
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>closephp(php)php;
-php php php php php}
+    public function __destruct()
+    {
+        $this->close();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closesphp thephp currentphp resultphp set
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_iteratorphp-php>closephp(php)php;
-php php php php php}
+    /**
+     * Closes the current result set
+     *
+     * @return boolean
+     */
+    public function close()
+    {
+        return $this->_iterator->close();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp entriesphp asphp anphp array
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php$dataphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp asphp php$itemphp)php php{
-php php php php php php php php php php php php php$dataphp[php]php php=php php$itemphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$dataphp;
-php php php php php}
+    /**
+     * Get all entries as an array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $data = array();
+        foreach ($this as $item) {
+            $data[] = $item;
+        }
+        return $data;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp firstphp entry
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getFirstphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>countphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php php php php returnphp php$thisphp-php>currentphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Get first entry
+     *
+     * @return array
+     */
+    public function getFirst()
+    {
+        if ($this->count() > 0) {
+            $this->rewind();
+            return $this->current();
+        } else {
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp underlyingphp iterator
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Ldapphp_Collectionphp_Iteratorphp_Default
-php php php php php php*php/
-php php php php publicphp functionphp getInnerIteratorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_iteratorphp;
-php php php php php}
+    /**
+     * Returns the underlying iterator
+     *
+     * @return Zend_Ldap_Collection_Iterator_Default
+     */
+    public function getInnerIterator()
+    {
+        return $this->_iterator;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp itemsphp inphp currentphp result
-php php php php php php*php Implementsphp Countable
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_iteratorphp-php>countphp(php)php;
-php php php php php}
+    /**
+     * Returns the number of items in current result
+     * Implements Countable
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->_iterator->count();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp|null
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>countphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_currentphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$thisphp-php>php_currentphp,php php$thisphp-php>php_cachephp)php)php php{
-php php php php php php php php php php php php php php php php php$currentphp php=php php$thisphp-php>php_iteratorphp-php>currentphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$currentphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$thisphp-php>php_cachephp[php$thisphp-php>php_currentphp]php php=php php$thisphp-php>php_createEntryphp(php$currentphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$thisphp-php>php_cachephp[php$thisphp-php>php_currentphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return the current result item
+     * Implements Iterator
+     *
+     * @return array|null
+     * @throws Zend_Ldap_Exception
+     */
+    public function current()
+    {
+        if ($this->count() > 0) {
+            if ($this->_current < 0) {
+                $this->rewind();
+            }
+            if (!array_key_exists($this->_current, $this->_cache)) {
+                $current = $this->_iterator->current();
+                if ($current === null) {
+                    return null;
+                }
+                $this->_cache[$this->_current] = $this->_createEntry($current);
+            }
+            return $this->_cache[$this->_current];
+        } else {
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createsphp thephp dataphp structurephp forphp thephp givenphp entryphp data
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$data
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_createEntryphp(arrayphp php$dataphp)
-php php php php php{
-php php php php php php php php returnphp php$dataphp;
-php php php php php}
+    /**
+     * Creates the data structure for the given entry data
+     *
+     * @param  array $data
+     * @return array
+     */
+    protected function _createEntry(array $data)
+    {
+        return $data;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp resultphp itemphp DN
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp dnphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>countphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_currentphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$thisphp-php>php_iteratorphp-php>keyphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return the current result item DN
+     *
+     * @return string|null
+     */
+    public function dn()
+    {
+        if ($this->count() > 0) {
+            if ($this->_current < 0) {
+                $this->rewind();
+            }
+            return $this->_iterator->key();
+        } else {
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp resultphp itemphp key
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp intphp|null
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>countphp(php)php php>php php0php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_currentphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>rewindphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$thisphp-php>php_currentphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return the current result item key
+     * Implements Iterator
+     *
+     * @return int|null
+     */
+    public function key()
+    {
+        if ($this->count() > 0) {
+            if ($this->_current < 0) {
+                $this->rewind();
+            }
+            return $this->_current;
+        } else {
+            return null;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movephp forwardphp tophp nextphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_iteratorphp-php>nextphp(php)php;
-php php php php php php php php php$thisphp-php>php_currentphp+php+php;
-php php php php php}
+    /**
+     * Move forward to next result item
+     * Implements Iterator
+     *
+     * @throws Zend_Ldap_Exception
+     */
+    public function next()
+    {
+        $this->_iterator->next();
+        $this->_current++;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp resultphp item
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Ldapphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_iteratorphp-php>rewindphp(php)php;
-php php php php php php php php php$thisphp-php>php_currentphp php=php php0php;
-php php php php php}
+    /**
+     * Rewind the Iterator to the first result item
+     * Implements Iterator
+     *
+     * @throws Zend_Ldap_Exception
+     */
+    public function rewind()
+    {
+        $this->_iterator->rewind();
+        $this->_current = 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp resultphp item
-php php php php php php*php afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)
-php php php php php php*php Implementsphp Iterator
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_cachephp[php$thisphp-php>php_currentphp]php)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_iteratorphp-php>validphp(php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Check if there is a current result item
+     * after calls to rewind() or next()
+     * Implements Iterator
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        if (isset($this->_cache[$this->_current])) {
+            return true;
+        } else {
+            return $this->_iterator->valid();
+        }
+    }
+}

@@ -1,285 +1,285 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Tokenphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Token.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*php Zendphp_Oauthphp_Httpphp_Utilityphp php*php/
-requirephp_oncephp php'Zendphp/Oauthphp/Httpphp/Utilityphp.phpphp'php;
+/** Zend_Oauth_Http_Utility */
+require_once 'Zend/Oauth/Http/Utility.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Oauthphp_Token
-php{
-php php php php php/php*php*php@php+
-php php php php php php*php Tokenphp constants
-php php php php php php*php/
-php php php php constphp TOKENphp_PARAMphp_KEYphp php php php php php php php php php php php php php php php php=php php'oauthphp_tokenphp'php;
-php php php php constphp TOKENphp_SECRETphp_PARAMphp_KEYphp php php php php php php php php php=php php'oauthphp_tokenphp_secretphp'php;
-php php php php constphp TOKENphp_PARAMphp_CALLBACKphp_CONFIRMEDphp php=php php'oauthphp_callbackphp_confirmedphp'php;
-php php php php php/php*php*php@php-php*php/
+/**
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Oauth_Token
+{
+    /**@+
+     * Token constants
+     */
+    const TOKEN_PARAM_KEY                = 'oauth_token';
+    const TOKEN_SECRET_PARAM_KEY         = 'oauth_token_secret';
+    const TOKEN_PARAM_CALLBACK_CONFIRMED = 'oauth_callback_confirmed';
+    /**@-*/
 
-php php php php php/php*php*
-php php php php php php*php Tokenphp parameters
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_paramsphp php=php arrayphp(php)php;
+    /**
+     * Token parameters
+     *
+     * @var array
+     */
+    protected $_params = array();
 
-php php php php php/php*php*
-php php php php php php*php OAuthphp responsephp object
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Httpphp_Response
-php php php php php php*php/
-php php php php protectedphp php$php_responsephp php=php nullphp;
+    /**
+     * OAuth response object
+     *
+     * @var Zend_Http_Response
+     */
+    protected $_response = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Oauthphp_Httpphp_Utility
-php php php php php php*php/
-php php php php protectedphp php$php_httpUtilityphp php=php nullphp;
+    /**
+     * @var Zend_Oauth_Http_Utility
+     */
+    protected $_httpUtility = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp;php basicphp setupphp forphp anyphp Tokenphp subclassphp.
-php php php php php php*
-php php php php php php*php php@paramphp php nullphp|Zendphp_Httpphp_Responsephp php$response
-php php php php php php*php php@paramphp php nullphp|Zendphp_Oauthphp_Httpphp_Utilityphp php$utility
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(
-php php php php php php php php Zendphp_Httpphp_Responsephp php$responsephp php=php nullphp,
-php php php php php php php php Zendphp_Oauthphp_Httpphp_Utilityphp php$utilityphp php=php null
-php php php php php)php php{
-php php php php php php php php ifphp php(php$responsephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_responsephp php=php php$responsephp;
-php php php php php php php php php php php php php$paramsphp php=php php$thisphp-php>php_parseParametersphp(php$responsephp)php;
-php php php php php php php php php php php php ifphp php(countphp(php$paramsphp)php php>php php0php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setParamsphp(php$paramsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$utilityphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp php=php php$utilityphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp php=php newphp Zendphp_Oauthphp_Httpphp_Utilityphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor; basic setup for any Token subclass.
+     *
+     * @param  null|Zend_Http_Response $response
+     * @param  null|Zend_Oauth_Http_Utility $utility
+     * @return void
+     */
+    public function __construct(
+        Zend_Http_Response $response = null,
+        Zend_Oauth_Http_Utility $utility = null
+    ) {
+        if ($response !== null) {
+            $this->_response = $response;
+            $params = $this->_parseParameters($response);
+            if (count($params) > 0) {
+                $this->setParams($params);
+            }
+        }
+        if ($utility !== null) {
+            $this->_httpUtility = $utility;
+        } else {
+            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Attemptsphp tophp validatephp thephp Tokenphp parsedphp fromphp thephp HTTPphp responsephp php-php really
-php php php php php php*php itphp'sphp justphp veryphp basicphp existencephp checksphp whichphp arephp minimalphp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_paramsphp[selfphp:php:TOKENphp_PARAMphp_KEYphp]php)
-php php php php php php php php php php php php php&php&php php!emptyphp(php$thisphp-php>php_paramsphp[selfphp:php:TOKENphp_PARAMphp_KEYphp]php)
-php php php php php php php php php php php php php&php&php issetphp(php$thisphp-php>php_paramsphp[selfphp:php:TOKENphp_SECRETphp_PARAMphp_KEYphp]php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Attempts to validate the Token parsed from the HTTP response - really
+     * it's just very basic existence checks which are minimal.
+     *
+     * @return bool
+     */
+    public function isValid()
+    {
+        if (isset($this->_params[self::TOKEN_PARAM_KEY])
+            && !empty($this->_params[self::TOKEN_PARAM_KEY])
+            && isset($this->_params[self::TOKEN_SECRET_PARAM_KEY])
+        ) {
+            return true;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp HTTPphp responsephp objectphp usedphp tophp initialisephp thisphp instancephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Response
-php php php php php php*php/
-php php php php publicphp functionphp getResponsephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_responsephp;
-php php php php php}
+    /**
+     * Return the HTTP response object used to initialise this instance.
+     *
+     * @return Zend_Http_Response
+     */
+    public function getResponse()
+    {
+        return $this->_response;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp valuephp forphp thephp thisphp Tokenphp'sphp secretphp whichphp mayphp bephp usedphp whenphp signing
-php php php php php php*php requestsphp withphp thisphp Tokenphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$secret
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php publicphp functionphp setTokenSecretphp(php$secretphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setParamphp(selfphp:php:TOKENphp_SECRETphp_PARAMphp_KEYphp,php php$secretphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the value for the this Token's secret which may be used when signing
+     * requests with this Token.
+     *
+     * @param  string $secret
+     * @return Zend_Oauth_Token
+     */
+    public function setTokenSecret($secret)
+    {
+        $this->setParam(self::TOKEN_SECRET_PARAM_KEY, $secret);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp thisphp Tokenphp'sphp secretphp whichphp mayphp bephp usedphp whenphp signing
-php php php php php php*php requestsphp withphp thisphp Tokenphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTokenSecretphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getParamphp(selfphp:php:TOKENphp_SECRETphp_PARAMphp_KEYphp)php;
-php php php php php}
+    /**
+     * Retrieve this Token's secret which may be used when signing
+     * requests with this Token.
+     *
+     * @return string
+     */
+    public function getTokenSecret()
+    {
+        return $this->getParam(self::TOKEN_SECRET_PARAM_KEY);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp valuephp forphp aphp parameterphp php(ephp.gphp.php tokenphp secretphp orphp otherphp)php andphp run
-php php php php php php*php aphp simplephp filterphp tophp removephp anyphp trailingphp newlinesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php publicphp functionphp setParamphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_paramsphp[php$keyphp]php php=php trimphp(php$valuephp,php php"php\nphp"php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the value for a parameter (e.g. token secret or other) and run
+     * a simple filter to remove any trailing newlines.
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return Zend_Oauth_Token
+     */
+    public function setParam($key, $value)
+    {
+        $this->_params[$key] = trim($value, "\n");
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp valuephp forphp somephp parametersphp php(ephp.gphp.php tokenphp secretphp orphp otherphp)php andphp run
-php php php php php php*php aphp simplephp filterphp tophp removephp anyphp trailingphp newlinesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp=php>php$valuephp)php php{
-php php php php php php php php php php php php php$thisphp-php>setParamphp(php$keyphp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the value for some parameters (e.g. token secret or other) and run
+     * a simple filter to remove any trailing newlines.
+     *
+     * @param  array $params
+     * @return Zend_Oauth_Token
+     */
+    public function setParams(array $params)
+    {
+        foreach ($params as $key=>$value) {
+            $this->setParam($key, $value);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp valuephp forphp aphp parameterphp php(ephp.gphp.php tokenphp secretphp orphp otherphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getParamphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_paramsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_paramsphp[php$keyphp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Get the value for a parameter (e.g. token secret or other).
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function getParam($key)
+    {
+        if (isset($this->_params[$key])) {
+            return $this->_params[$key];
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp valuephp forphp aphp Tokenphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$token
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php publicphp functionphp setTokenphp(php$tokenphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setParamphp(selfphp:php:TOKENphp_PARAMphp_KEYphp,php php$tokenphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the value for a Token.
+     *
+     * @param  string $token
+     * @return Zend_Oauth_Token
+     */
+    public function setToken($token)
+    {
+        $this->setParam(self::TOKEN_PARAM_KEY, $token);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp valuephp forphp aphp Tokenphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTokenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getParamphp(selfphp:php:TOKENphp_PARAMphp_KEYphp)php;
-php php php php php}
+    /**
+     * Gets the value for a Token.
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->getParam(self::TOKEN_PARAM_KEY);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Genericphp accessorphp tophp enablephp accessphp asphp publicphp propertiesphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$keyphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getParamphp(php$keyphp)php;
-php php php php php}
+    /**
+     * Generic accessor to enable access as public properties.
+     *
+     * @return string
+     */
+    public function __get($key)
+    {
+        return $this->getParam($key);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Genericphp mutatorphp tophp enablephp accessphp asphp publicphp propertiesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setParamphp(php$keyphp,php php$valuephp)php;
-php php php php php}
+    /**
+     * Generic mutator to enable access as public properties.
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        $this->setParam($key, $value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Convertphp Tokenphp tophp aphp stringphp,php specificallyphp aphp rawphp encodedphp queryphp stringphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_httpUtilityphp-php>toEncodedQueryStringphp(php$thisphp-php>php_paramsphp)php;
-php php php php php}
+    /**
+     * Convert Token to a string, specifically a raw encoded query string.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return $this->_httpUtility->toEncodedQueryString($this->_params);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Convertphp Tokenphp tophp aphp stringphp,php specificallyphp aphp rawphp encodedphp queryphp stringphp.
-php php php php php php*php Aliasesphp tophp selfphp:php:toStringphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>toStringphp(php)php;
-php php php php php}
+    /**
+     * Convert Token to a string, specifically a raw encoded query string.
+     * Aliases to self::toString()
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toString();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp aphp HTTPphp responsephp bodyphp andphp collectphp returnedphp parameters
-php php php php php php*php asphp rawphp urlphp decodedphp keyphp-valuephp pairsphp inphp anphp associativephp arrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Responsephp php$response
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseParametersphp(Zendphp_Httpphp_Responsephp php$responsephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$bodyphp php php php=php php$responsephp-php>getBodyphp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$bodyphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * Parse a HTTP response body and collect returned parameters
+     * as raw url decoded key-value pairs in an associative array.
+     *
+     * @param  Zend_Http_Response $response
+     * @return array
+     */
+    protected function _parseParameters(Zend_Http_Response $response)
+    {
+        $params = array();
+        $body   = $response->getBody();
+        if (empty($body)) {
+            return;
+        }
 
-php php php php php php php php php/php/php validatephp bodyphp basedphp onphp acceptablephp charactersphp.php.php.todo
-php php php php php php php php php$partsphp php=php explodephp(php'php&php'php,php php$bodyphp)php;
-php php php php php php php php foreachphp php(php$partsphp asphp php$kvpairphp)php php{
-php php php php php php php php php php php php php$pairphp php=php explodephp(php'php=php'php,php php$kvpairphp)php;
-php php php php php php php php php php php php php$paramsphp[rawurldecodephp(php$pairphp[php0php]php)php]php php=php rawurldecodephp(php$pairphp[php1php]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$paramsphp;
-php php php php php}
+        // validate body based on acceptable characters...todo
+        $parts = explode('&', $body);
+        foreach ($parts as $kvpair) {
+            $pair = explode('=', $kvpair);
+            $params[rawurldecode($pair[0])] = rawurldecode($pair[1]);
+        }
+        return $params;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Limitphp serialisationphp storedphp dataphp tophp thephp parameters
-php php php php php php*php/
-php php php php publicphp functionphp php_php_sleepphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php'php_paramsphp'php)php;
-php php php php php}
+    /**
+     * Limit serialisation stored data to the parameters
+     */
+    public function __sleep()
+    {
+        return array('_params');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Afterphp serialisationphp,php rephp-instantiatephp aphp HTTPphp utilityphp classphp forphp use
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_httpUtilityphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp php=php newphp Zendphp_Oauthphp_Httpphp_Utilityphp;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * After serialisation, re-instantiate a HTTP utility class for use
+     */
+    public function __wakeup()
+    {
+        if ($this->_httpUtility === null) {
+            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+        }
+    }
+}

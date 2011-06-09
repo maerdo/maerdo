@@ -1,65 +1,65 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php4php8php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php0php6php:php3php4php php$php"php/php>
-php	php	php<languagephp typephp=php"arphp"php/php>
-php	php	php<territoryphp typephp=php"JOphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Italphp"php>phpاphpلphpلphpأphpيphpطphpاphpلphpيphpةphp phpاphpلphpقphpدphpيphpمphpة<php/scriptphp>
-php	php	<php/scriptsphp>
-php	<php/localeDisplayNamesphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpكphpاphpنphpوphpنphp phpاphpلphpثphpاphpنphpي<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpشphpبphpاphpط<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpآphpذphpاphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpنphpيphpسphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpأphpيphpاphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpحphpزphpيphpرphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpتphpمphpوphpز<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpآphpب<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpأphpيphpلphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpتphpشphpرphpيphpنphp phpاphpلphpأphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpتphpشphpرphpيphpنphp phpاphpلphpثphpاphpنphpي<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpكphpاphpنphpوphpنphp phpاphpلphpأphpوphpل<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpكphpاphpنphpوphpنphp phpاphpلphpثphpاphpنphpي<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpشphpبphpاphpط<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpآphpذphpاphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpنphpيphpسphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpأphpيphpاphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpحphpزphpيphpرphpاphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpتphpمphpوphpز<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpآphpب<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpأphpيphpلphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpتphpشphpرphpيphpنphp phpاphpلphpأphpوphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpتphpشphpرphpيphpنphp phpاphpلphpثphpاphpنphpي<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpكphpاphpنphpوphpنphp phpاphpلphpأphpوphpل<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpاphpلphpأphpحphpد<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpاphpلphpاphpثphpنphpيphpن<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpاphpلphpثphpلphpاphpثphpاphpء<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpاphpلphpأphpرphpبphpعphpاphpء<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpاphpلphpخphpمphpيphpس<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpاphpلphpجphpمphpعphpة<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpاphpلphpسphpبphpت<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.48 $"/>
+		<generation date="$Date: 2009/05/05 23:06:34 $"/>
+		<language type="ar"/>
+		<territory type="JO"/>
+	</identity>
+	<localeDisplayNames>
+		<scripts>
+			<script type="Ital">اللأيطالية القديمة</script>
+		</scripts>
+	</localeDisplayNames>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">كانون الثاني</month>
+							<month type="2">شباط</month>
+							<month type="3">آذار</month>
+							<month type="4">نيسان</month>
+							<month type="5">أيار</month>
+							<month type="6">حزيران</month>
+							<month type="7">تموز</month>
+							<month type="8">آب</month>
+							<month type="9">أيلول</month>
+							<month type="10">تشرين الأول</month>
+							<month type="11">تشرين الثاني</month>
+							<month type="12">كانون الأول</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">كانون الثاني</month>
+							<month type="2">شباط</month>
+							<month type="3">آذار</month>
+							<month type="4">نيسان</month>
+							<month type="5">أيار</month>
+							<month type="6">حزيران</month>
+							<month type="7">تموز</month>
+							<month type="8">آب</month>
+							<month type="9">أيلول</month>
+							<month type="10">تشرين الأول</month>
+							<month type="11">تشرين الثاني</month>
+							<month type="12">كانون الأول</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">الأحد</day>
+							<day type="mon">الاثنين</day>
+							<day type="tue">الثلاثاء</day>
+							<day type="wed">الأربعاء</day>
+							<day type="thu">الخميس</day>
+							<day type="fri">الجمعة</day>
+							<day type="sat">السبت</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+			</calendar>
+		</calendars>
+	</dates>
+</ldml>

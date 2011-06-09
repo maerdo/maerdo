@@ -1,207 +1,207 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Cachephp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Cache.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServerphp_Cache
-php{
-php php php php php/php*php*
-php php php php php php*php arrayphp withphp storedphp tokens
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_storedTokenphp php=php arrayphp(
-php php php php php php php php php'securityTokenphp'php php=php>php nullphp,
-php php php php php php php php php'getTokensphp'php php=php>php null
-php php php php php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_SecurityTokenServer_Cache
+{
+    /**
+     * array with stored tokens
+     *
+     * @var array
+     */
+    protected static $_storedToken = array(
+        'securityToken' => null,
+        'getTokens' => null
+    );
 
-php php php php php/php*php*
-php php php php php php*php Internalphp cachephp forphp tokenphp values
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cachephp_Core
-php php php php php php*php php@accessphp private
-php php php php php php*php/
-php php php php privatephp staticphp php$php_cachephp php=php nullphp;
+    /**
+     * Internal cache for token values
+     *
+     * @var Zend_Cache_Core
+     * @access private
+     */
+    private static $_cache = null;
 
-php php php php php/php*php*
-php php php php php php*php PHPphp SOAPphp wsdlphp cachephp constant
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp staticphp php$php_wsdlCachephp php=php nullphp;
+    /**
+     * PHP SOAP wsdl cache constant
+     *
+     * @var integer
+     */
+    private static $_wsdlCache = null;
 
-php/php/php php@codeCoverageIgnoreStart
-php php php php php/php*php*
-php php php php php php*php Constructorphp overridingphp php-php makephp surephp thatphp aphp developerphp cannotphp instantiate
-php php php php php php*php/
-php php php php protectedphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php}
-php/php/php php@codeCoverageIgnoreEnd
+// @codeCoverageIgnoreStart
+    /**
+     * Constructor overriding - make sure that a developer cannot instantiate
+     */
+    protected function __construct()
+    {
+    }
+// @codeCoverageIgnoreEnd
 
-php php php php php/php*php*
-php php php php php php*php returnsphp storedphp tokenphp fromphp cachephp orphp null
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$tokenId
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Interfacephp|null
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getTokenFromCachephp(php$tokenIdphp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$tokenIdphp,php selfphp:php:php$php_storedTokenphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'tokenIDphp php'php php.php php$tokenIdphp php.php php'php unknownphp.php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * returns stored token from cache or null
+     *
+     * @param string $tokenId
+     * @throws Zend_Service_DeveloperGarden_Exception
+     * @return Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface|null
+     */
+    public static function getTokenFromCache($tokenId)
+    {
+        if (!array_key_exists($tokenId, self::$_storedToken)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception(
+                'tokenID ' . $tokenId . ' unknown.'
+            );
+        }
 
-php php php php php php php php ifphp php(selfphp:php:hasCachephp(php)php php&php&php selfphp:php:php$php_storedTokenphp[php$tokenIdphp]php php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$cachephp php=php selfphp:php:getCachephp(php)php;
-php php php php php php php php php php php php php$tokenphp php=php php$cachephp-php>loadphp(mdphp5php(php$tokenIdphp)php)php;
-php php php php php php php php php php php php ifphp php(php$tokenphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_storedTokenphp[php$tokenIdphp]php php=php php$tokenphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (self::hasCache() && self::$_storedToken[$tokenId] === null) {
+            $cache = self::getCache();
+            $token = $cache->load(md5($tokenId));
+            if ($token !== false) {
+                self::$_storedToken[$tokenId] = $token;
+            }
+        }
 
-php php php php php php php php returnphp selfphp:php:php$php_storedTokenphp[php$tokenIdphp]php;
-php php php php php}
+        return self::$_storedToken[$tokenId];
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp newphp valuephp forphp thephp givenphp tokenId
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$tokenId
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Exception
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Interfacephp php$tokenValue
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setTokenToCachephp(php$tokenIdphp,
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_Responsephp_SecurityTokenServerphp_Interfacephp php$tokenValue
-php php php php php)php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$tokenIdphp,php selfphp:php:php$php_storedTokenphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'tokenIDphp php'php php.php php$tokenIdphp php.php php'php unknownphp.php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * set new value for the given tokenId
+     *
+     * @param string $tokenId
+     * @throws Zend_Service_DeveloperGarden_Exception
+     * @param Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface $tokenValue
+     * @return void
+     */
+    public static function setTokenToCache($tokenId,
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface $tokenValue
+    ) {
+        if (!array_key_exists($tokenId, self::$_storedToken)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception(
+                'tokenID ' . $tokenId . ' unknown.'
+            );
+        }
 
-php php php php php php php php ifphp php(selfphp:php:hasCachephp(php)php)php php{
-php php php php php php php php php php php php php$cachephp php=php selfphp:php:getCachephp(php)php;
-php php php php php php php php php php php php php$cachephp-php>savephp(php$tokenValuephp,php mdphp5php(php$tokenIdphp)php)php;
-php php php php php php php php php}
+        if (self::hasCache()) {
+            $cache = self::getCache();
+            $cache->save($tokenValue, md5($tokenId));
+        }
 
-php php php php php php php php selfphp:php:php$php_storedTokenphp[php$tokenIdphp]php php=php php$tokenValuephp;
-php php php php php}
+        self::$_storedToken[$tokenId] = $tokenValue;
+    }
 
-php php php php php/php*php*
-php php php php php php*php resetphp thephp internalphp cachephp structure
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp resetTokenCachephp(php)
-php php php php php{
-php php php php php php php php foreachphp php(selfphp:php:php$php_storedTokenphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$valuephp php=php nullphp;
-php php php php php php php php php php php php selfphp:php:php$php_storedTokenphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * reset the internal cache structure
+     *
+     * @return void
+     */
+    public static function resetTokenCache()
+    {
+        foreach (self::$_storedToken as $key => $value) {
+            $value = null;
+            self::$_storedToken[$key] = $value;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp cache
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getCachephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_cachephp;
-php php php php php}
+    /**
+     * Returns the cache
+     *
+     * @return Zend_Cache_Core
+     */
+    public static function getCache()
+    {
+        return self::$_cache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp aphp cachephp forphp token
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Cachephp_Corephp php$cachephp Aphp cachephp frontend
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setCachephp(Zendphp_Cachephp_Corephp php$cachephp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php=php php$cachephp;
-php php php php php}
+    /**
+     * Set a cache for token
+     *
+     * @param Zend_Cache_Core $cache A cache frontend
+     */
+    public static function setCache(Zend_Cache_Core $cache)
+    {
+        self::$_cache = $cache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp whenphp aphp cachephp isphp set
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp staticphp functionphp hasCachephp(php)
-php php php php php{
-php php php php php php php php returnphp php(selfphp:php:php$php_cachephp php!php=php=php nullphp)php;
-php php php php php}
+    /**
+     * Returns true when a cache is set
+     *
+     * @return boolean
+     */
+    public static function hasCache()
+    {
+        return (self::$_cache !== null);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removesphp anyphp cache
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp removeCachephp(php)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_cachephp php=php nullphp;
-php php php php php}
+    /**
+     * Removes any cache
+     *
+     * @return void
+     */
+    public static function removeCache()
+    {
+        self::$_cache = null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearsphp allphp cachephp data
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp clearCachephp(php)
-php php php php php{
-php php php php php php php php php$cachephp php=php selfphp:php:getCachephp(php)php;
-php php php php php php php php ifphp php(methodphp_existsphp(php$cachephp,php php'cleanphp'php)php)php php{
-php php php php php php php php php php php php php$cachephp-php>cleanphp(php)php;
-php php php php php php php php php}
-php php php php php php php php selfphp:php:php$php_wsdlCachephp php=php nullphp;
-php php php php php}
+    /**
+     * Clears all cache data
+     *
+     * @return void
+     */
+    public static function clearCache()
+    {
+        $cache = self::getCache();
+        if (method_exists($cache, 'clean')) {
+            $cache->clean();
+        }
+        self::$_wsdlCache = null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp wsdlphp cache
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getWsdlCachephp(php)
-php php php php php{
-php php php php php php php php returnphp selfphp:php:php$php_wsdlCachephp;
-php php php php php}
+    /**
+     * Returns the wsdl cache
+     *
+     * @return integer
+     */
+    public static function getWsdlCache()
+    {
+        return self::$_wsdlCache;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp aphp cachephp forphp wsdlphp file
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$cache
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setWsdlCachephp(php$cachephp php=php nullphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_wsdlCachephp php=php php$cachephp;
-php php php php php}
-php}
+    /**
+     * Set a cache for wsdl file
+     *
+     * @param integer $cache
+     * @return void
+     */
+    public static function setWsdlCache($cache = null)
+    {
+        self::$_wsdlCache = $cache;
+    }
+}

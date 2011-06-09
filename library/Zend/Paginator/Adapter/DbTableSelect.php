@@ -1,48 +1,48 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Paginator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php DbTableSelectphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Paginator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: DbTableSelect.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Paginatorphp_Adapterphp_DbSelect
-php php*php/
-requirephp_oncephp php'Zendphp/Paginatorphp/Adapterphp/DbSelectphp.phpphp'php;
+/**
+ * @see Zend_Paginator_Adapter_DbSelect
+ */
+require_once 'Zend/Paginator/Adapter/DbSelect.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Paginator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Paginatorphp_Adapterphp_DbTableSelectphp extendsphp Zendphp_Paginatorphp_Adapterphp_DbSelect
-php{
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstractphp ofphp itemsphp forphp aphp pagephp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$offsetphp Pagephp offset
-php php php php php php*php php@paramphp php integerphp php$itemCountPerPagephp Numberphp ofphp itemsphp perphp page
-php php php php php php*php php@returnphp Zendphp_Dbphp_Tablephp_Rowsetphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp getItemsphp(php$offsetphp,php php$itemCountPerPagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_selectphp-php>limitphp(php$itemCountPerPagephp,php php$offsetphp)php;
+/**
+ * @category   Zend
+ * @package    Zend_Paginator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Paginator_Adapter_DbTableSelect extends Zend_Paginator_Adapter_DbSelect
+{
+    /**
+     * Returns a Zend_Db_Table_Rowset_Abstract of items for a page.
+     *
+     * @param  integer $offset Page offset
+     * @param  integer $itemCountPerPage Number of items per page
+     * @return Zend_Db_Table_Rowset_Abstract
+     */
+    public function getItems($offset, $itemCountPerPage)
+    {
+        $this->_select->limit($itemCountPerPage, $offset);
 
-php php php php php php php php returnphp php$thisphp-php>php_selectphp-php>getTablephp(php)php-php>fetchAllphp(php$thisphp-php>php_selectphp)php;
-php php php php php}
-php}
+        return $this->_select->getTable()->fetchAll($this->_select);
+    }
+}

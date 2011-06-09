@@ -1,320 +1,320 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Feedphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Feed.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Writerphp_Extensionphp_RendererAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Writerphp/Extensionphp/RendererAbstractphp.phpphp'php;
+/**
+ * @see Zend_Feed_Writer_Extension_RendererAbstract
+ */
+require_once 'Zend/Feed/Writer/Extension/RendererAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Writerphp_Extensionphp_ITunesphp_Rendererphp_Feed
-php php php php extendsphp Zendphp_Feedphp_Writerphp_Extensionphp_RendererAbstract
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Writer_Extension_ITunes_Renderer_Feed
+    extends Zend_Feed_Writer_Extension_RendererAbstract
+{
 
-php php php php php/php*php*
-php php php php php php*php Setphp tophp TRUEphp ifphp aphp renderingphp methodphp actuallyphp rendersphp somethingphp.php This
-php php php php php php*php isphp usedphp tophp preventphp prematurephp appendingphp ofphp aphp XMLphp namespacephp declaration
-php php php php php php*php untilphp anphp elementphp whichphp requiresphp itphp isphp actuallyphp appendedphp.
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_calledphp php=php falsephp;
+    /**
+     * Set to TRUE if a rendering method actually renders something. This
+     * is used to prevent premature appending of a XML namespace declaration
+     * until an element which requires it is actually appended.
+     *
+     * @var bool
+     */
+    protected $_called = false;
 
-php php php php php/php*php*
-php php php php php php*php Renderphp feed
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_setAuthorsphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setBlockphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setCategoriesphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setImagephp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setDurationphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setExplicitphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setKeywordsphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setNewFeedUrlphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setOwnersphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setSubtitlephp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php php$thisphp-php>php_setSummaryphp(php$thisphp-php>php_domphp,php php$thisphp-php>php_basephp)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_calledphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_appendNamespacesphp(php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Render feed
+     *
+     * @return void
+     */
+    public function render()
+    {
+        $this->_setAuthors($this->_dom, $this->_base);
+        $this->_setBlock($this->_dom, $this->_base);
+        $this->_setCategories($this->_dom, $this->_base);
+        $this->_setImage($this->_dom, $this->_base);
+        $this->_setDuration($this->_dom, $this->_base);
+        $this->_setExplicit($this->_dom, $this->_base);
+        $this->_setKeywords($this->_dom, $this->_base);
+        $this->_setNewFeedUrl($this->_dom, $this->_base);
+        $this->_setOwners($this->_dom, $this->_base);
+        $this->_setSubtitle($this->_dom, $this->_base);
+        $this->_setSummary($this->_dom, $this->_base);
+        if ($this->_called) {
+            $this->_appendNamespaces();
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Appendphp feedphp namespaces
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_appendNamespacesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>getRootElementphp(php)php-php>setAttributephp(php'xmlnsphp:itunesphp'php,
-php php php php php php php php php php php php php'httpphp:php/php/wwwphp.itunesphp.comphp/dtdsphp/podcastphp-php1php.php0php.dtdphp'php)php;
-php php php php php}
+    /**
+     * Append feed namespaces
+     *
+     * @return void
+     */
+    protected function _appendNamespaces()
+    {
+        $this->getRootElement()->setAttribute('xmlns:itunes',
+            'http://www.itunes.com/dtds/podcast-1.0.dtd');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp authors
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setAuthorsphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$authorsphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesAuthorsphp(php)php;
-php php php php php php php php ifphp php(php!php$authorsphp php|php|php emptyphp(php$authorsphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$authorsphp asphp php$authorphp)php php{
-php php php php php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:authorphp'php)php;
-php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$authorphp)php;
-php php php php php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed authors
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setAuthors(DOMDocument $dom, DOMElement $root)
+    {
+        $authors = $this->getDataContainer()->getItunesAuthors();
+        if (!$authors || empty($authors)) {
+            return;
+        }
+        foreach ($authors as $author) {
+            $el = $dom->createElement('itunes:author');
+            $text = $dom->createTextNode($author);
+            $el->appendChild($text);
+            $root->appendChild($el);
+        }
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp itunesphp block
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setBlockphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$blockphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesBlockphp(php)php;
-php php php php php php php php ifphp php(php$blockphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:blockphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$blockphp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed itunes block
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setBlock(DOMDocument $dom, DOMElement $root)
+    {
+        $block = $this->getDataContainer()->getItunesBlock();
+        if ($block === null) {
+            return;
+        }
+        $el = $dom->createElement('itunes:block');
+        $text = $dom->createTextNode($block);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp categories
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setCategoriesphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$catsphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesCategoriesphp(php)php;
-php php php php php php php php ifphp php(php!php$catsphp php|php|php emptyphp(php$catsphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$catsphp asphp php$keyphp=php>php$catphp)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$catphp)php)php php{
-php php php php php php php php php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php$elphp-php>setAttributephp(php'textphp'php,php php$catphp)php;
-php php php php php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php$elphp-php>setAttributephp(php'textphp'php,php php$keyphp)php;
-php php php php php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$catphp asphp php$subcatphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$elphp2php php=php php$domphp-php>createElementphp(php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$elphp2php-php>setAttributephp(php'textphp'php,php php$subcatphp)php;
-php php php php php php php php php php php php php php php php php php php php php$elphp-php>appendChildphp(php$elphp2php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed categories
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setCategories(DOMDocument $dom, DOMElement $root)
+    {
+        $cats = $this->getDataContainer()->getItunesCategories();
+        if (!$cats || empty($cats)) {
+            return;
+        }
+        foreach ($cats as $key=>$cat) {
+            if (!is_array($cat)) {
+                $el = $dom->createElement('itunes:category');
+                $el->setAttribute('text', $cat);
+                $root->appendChild($el);
+            } else {
+                $el = $dom->createElement('itunes:category');
+                $el->setAttribute('text', $key);
+                $root->appendChild($el);
+                foreach ($cat as $subcat) {
+                    $el2 = $dom->createElement('itunes:category');
+                    $el2->setAttribute('text', $subcat);
+                    $el->appendChild($el2);
+                }
+            }
+        }
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp imagephp php(iconphp)
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setImagephp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$imagephp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesImagephp(php)php;
-php php php php php php php php ifphp php(php!php$imagephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:imagephp'php)php;
-php php php php php php php php php$elphp-php>setAttributephp(php'hrefphp'php,php php$imagephp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed image (icon)
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setImage(DOMDocument $dom, DOMElement $root)
+    {
+        $image = $this->getDataContainer()->getItunesImage();
+        if (!$image) {
+            return;
+        }
+        $el = $dom->createElement('itunes:image');
+        $el->setAttribute('href', $image);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp cumulativephp duration
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setDurationphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$durationphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesDurationphp(php)php;
-php php php php php php php php ifphp php(php!php$durationphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:durationphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$durationphp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed cumulative duration
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setDuration(DOMDocument $dom, DOMElement $root)
+    {
+        $duration = $this->getDataContainer()->getItunesDuration();
+        if (!$duration) {
+            return;
+        }
+        $el = $dom->createElement('itunes:duration');
+        $text = $dom->createTextNode($duration);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp explicitphp flag
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setExplicitphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$explicitphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesExplicitphp(php)php;
-php php php php php php php php ifphp php(php$explicitphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:explicitphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$explicitphp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set explicit flag
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setExplicit(DOMDocument $dom, DOMElement $root)
+    {
+        $explicit = $this->getDataContainer()->getItunesExplicit();
+        if ($explicit === null) {
+            return;
+        }
+        $el = $dom->createElement('itunes:explicit');
+        $text = $dom->createTextNode($explicit);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp keywords
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setKeywordsphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$keywordsphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesKeywordsphp(php)php;
-php php php php php php php php ifphp php(php!php$keywordsphp php|php|php emptyphp(php$keywordsphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:keywordsphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(implodephp(php'php,php'php,php php$keywordsphp)php)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed keywords
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setKeywords(DOMDocument $dom, DOMElement $root)
+    {
+        $keywords = $this->getDataContainer()->getItunesKeywords();
+        if (!$keywords || empty($keywords)) {
+            return;
+        }
+        $el = $dom->createElement('itunes:keywords');
+        $text = $dom->createTextNode(implode(',', $keywords));
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp'sphp newphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setNewFeedUrlphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$urlphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesNewFeedUrlphp(php)php;
-php php php php php php php php ifphp php(php!php$urlphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:newphp-feedphp-urlphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$urlphp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed's new URL
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setNewFeedUrl(DOMDocument $dom, DOMElement $root)
+    {
+        $url = $this->getDataContainer()->getItunesNewFeedUrl();
+        if (!$url) {
+            return;
+        }
+        $el = $dom->createElement('itunes:new-feed-url');
+        $text = $dom->createTextNode($url);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp owners
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setOwnersphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$ownersphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesOwnersphp(php)php;
-php php php php php php php php ifphp php(php!php$ownersphp php|php|php emptyphp(php$ownersphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$ownersphp asphp php$ownerphp)php php{
-php php php php php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:ownerphp'php)php;
-php php php php php php php php php php php php php$namephp php=php php$domphp-php>createElementphp(php'itunesphp:namephp'php)php;
-php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$ownerphp[php'namephp'php]php)php;
-php php php php php php php php php php php php php$namephp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php php php php php$emailphp php=php php$domphp-php>createElementphp(php'itunesphp:emailphp'php)php;
-php php php php php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$ownerphp[php'emailphp'php]php)php;
-php php php php php php php php php php php php php$emailphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php php php php php$elphp-php>appendChildphp(php$namephp)php;
-php php php php php php php php php php php php php$elphp-php>appendChildphp(php$emailphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed owners
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setOwners(DOMDocument $dom, DOMElement $root)
+    {
+        $owners = $this->getDataContainer()->getItunesOwners();
+        if (!$owners || empty($owners)) {
+            return;
+        }
+        foreach ($owners as $owner) {
+            $el = $dom->createElement('itunes:owner');
+            $name = $dom->createElement('itunes:name');
+            $text = $dom->createTextNode($owner['name']);
+            $name->appendChild($text);
+            $email = $dom->createElement('itunes:email');
+            $text = $dom->createTextNode($owner['email']);
+            $email->appendChild($text);
+            $root->appendChild($el);
+            $el->appendChild($name);
+            $el->appendChild($email);
+        }
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp subtitle
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setSubtitlephp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$subtitlephp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesSubtitlephp(php)php;
-php php php php php php php php ifphp php(php!php$subtitlephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:subtitlephp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$subtitlephp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
+    /**
+     * Set feed subtitle
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setSubtitle(DOMDocument $dom, DOMElement $root)
+    {
+        $subtitle = $this->getDataContainer()->getItunesSubtitle();
+        if (!$subtitle) {
+            return;
+        }
+        $el = $dom->createElement('itunes:subtitle');
+        $text = $dom->createTextNode($subtitle);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp feedphp summary
-php php php php php php*
-php php php php php php*php php@paramphp php DOMDocumentphp php$dom
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setSummaryphp(DOMDocumentphp php$domphp,php DOMElementphp php$rootphp)
-php php php php php{
-php php php php php php php php php$summaryphp php=php php$thisphp-php>getDataContainerphp(php)php-php>getItunesSummaryphp(php)php;
-php php php php php php php php ifphp php(php!php$summaryphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$elphp php=php php$domphp-php>createElementphp(php'itunesphp:summaryphp'php)php;
-php php php php php php php php php$textphp php=php php$domphp-php>createTextNodephp(php$summaryphp)php;
-php php php php php php php php php$elphp-php>appendChildphp(php$textphp)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$elphp)php;
-php php php php php php php php php$thisphp-php>php_calledphp php=php truephp;
-php php php php php}
-php}
+    /**
+     * Set feed summary
+     *
+     * @param  DOMDocument $dom
+     * @param  DOMElement $root
+     * @return void
+     */
+    protected function _setSummary(DOMDocument $dom, DOMElement $root)
+    {
+        $summary = $this->getDataContainer()->getItunesSummary();
+        if (!$summary) {
+            return;
+        }
+        $el = $dom->createElement('itunes:summary');
+        $text = $dom->createTextNode($summary);
+        $el->appendChild($text);
+        $root->appendChild($el);
+        $this->_called = true;
+    }
+}

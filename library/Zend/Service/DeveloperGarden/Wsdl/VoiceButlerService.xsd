@@ -1,264 +1,264 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>php
-php
-php
-php<xsdphp:schemaphp xmlnsphp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp"php
-php	xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php targetNamespacephp=php"httpphp:php/php/webservicephp.voicebutlerphp.odgphp.tonlinephp.dephp"php
-php	elementFormDefaultphp=php"unqualifiedphp"php attributeFormDefaultphp=php"unqualifiedphp"php
-php	versionphp=php"php1php.php1php"php>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"EnvironmentTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:intphp"php>php
-php	php	php	php<xsdphp:minInclusivephp valuephp=php"php1php"php php/php>php
-php	php	php	php<xsdphp:maxInclusivephp valuephp=php"php3php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"NumberTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:stringphp"php>php
-php	php	php	php<xsdphp:minLengthphp valuephp=php"php7php"php php/php>php
-php	php	php	php<xsdphp:maxLengthphp valuephp=php"php2php4php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"SessionIDTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:stringphp"php>php
-php	php	php	php<xsdphp:patternphp valuephp=php"php[php0php-php9Aphp-Zphp]php{php8php}php\php-php[php0php-php9Aphp-Zphp]php{php1php6php}php\php-php[php0php-php9Aphp-Zphp]php{php8php}php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"KeepAliveTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:intphp"php>php
-php	php	php	php<xsdphp:minInclusivephp valuephp=php"php0php"php php/php>php
-php	php	php	php<xsdphp:maxInclusivephp valuephp=php"php1php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"MaxDurationTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:intphp"php>php
-php	php	php	php<xsdphp:minInclusivephp valuephp=php"php0php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:simpleTypephp namephp=php"ExpirationTypephp"php>php
-php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:intphp"php>php
-php	php	php	php<xsdphp:minInclusivephp valuephp=php"php0php"php php/php>php
-php	php	<php/xsdphp:restrictionphp>php
-php	<php/xsdphp:simpleTypephp>php
-php
-php	php<xsdphp:elementphp namephp=php"callStatusphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"requestphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerCallStatusRequestphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php php php<xsdphp:elementphp namephp=php"callStatusphp2php"php>php
-php php php php php<xsdphp:complexTypephp>php
-php php php php php php php<xsdphp:sequencephp>php
-php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"requestphp"php nillablephp=php"falsephp"php
-php php php php php php php php php php typephp=php"VoiceButlerCallStatusRequestphp"php php/php>php
-php php php php php php <php/xsdphp:sequencephp>php
-php php php php <php/xsdphp:complexTypephp>php
-php php <php/xsdphp:elementphp>php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerCallStatusRequestphp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerRequestphp"php>php
-php	php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php namephp=php"keepAlivephp"php
-php	php	php	php	php	php	nillablephp=php"falsephp"php typephp=php"KeepAliveTypephp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php namephp=php"sessionIdphp"php
-php	php	php	php	php	php	nillablephp=php"falsephp"php typephp=php"SessionIDTypephp"php php/php>php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-php
-php
-php	php<xsdphp:elementphp namephp=php"newCallphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"requestphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerNewCallRequestphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerNewCallRequestphp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerNewCallRequestBasephp"php>php
-php	php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php
-php	php	php	php	php	php	namephp=php"bNumberphp"php nillablephp=php"falsephp"php typephp=php"NumberTypephp"php php/php>php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-php	<php!php-php-php newCallphp php{php php-php-php>php
-php	php<xsdphp:elementphp namephp=php"newCallSequencedphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"requestphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerNewCallSequencedRequestphp"php php/php>php
-php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"newCallSequencedResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"returnphp"php typephp=php"VoiceButlerResultphp"php><php/xsdphp:elementphp>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	<php!php-php-php newCallphp php}php php-php-php>php
-php
-php	php<xsdphp:elementphp namephp=php"tearDownCallphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"requestphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerTeardownCallRequestphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerTeardownCallRequestphp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerRequestphp"php>php
-php	php	php	php	php<xsdphp:sequencephp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php>php
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"sessionIdphp"php typephp=php"SessionIDTypephp"php php/php>php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-php
-php	php<xsdphp:elementphp namephp=php"callStatusResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"returnphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerCallStatusResultphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerCallStatusResultphp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerResultphp"php>php
-php	php	php	php	php<xsdphp:sequencephp minOccursphp=php"php0php"php maxOccursphp=php"php1php"php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"connectiontimeaphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"connectiontimebphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"descriptionaphp"php
-php	php	php	php	php	php	nillablephp=php"truephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"descriptionbphp"php
-php	php	php	php	php	php	nillablephp=php"truephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"reasonaphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"reasonbphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"stateaphp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"statebphp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-php
-php php php php php<xsdphp:elementphp namephp=php"callStatusphp2Responsephp"php>php
-php php php php php php php<xsdphp:complexTypephp>php
-php php php php php php php php php<xsdphp:sequencephp>php
-php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"returnphp"php nillablephp=php"falsephp"php
-php php php php php php php php php php php php typephp=php"VoiceButlerCallStatusphp2Resultphp"php php/php>php
-php php php php php php php php <php/xsdphp:sequencephp>php
-php php php php php php <php/xsdphp:complexTypephp>php
-php php php php <php/xsdphp:elementphp>php
-php php php php php<xsdphp:complexTypephp namephp=php"VoiceButlerCallStatusphp2Resultphp"php>php
-php php php php php php php<xsdphp:complexContentphp>php
-php php php php php php php php php<xsdphp:extensionphp basephp=php"VoiceButlerResultphp"php>php
-php php php php php php php php php php php<xsdphp:sequencephp minOccursphp=php"php0php"php maxOccursphp=php"php1php"php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"connectiontimeaphp"php typephp=php"xsdphp:intphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"connectiontimebphp"php typephp=php"xsdphp:intphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"descriptionaphp"php
-php php php php php php php php php php php php php php nillablephp=php"truephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"descriptionbphp"php
-php php php php php php php php php php php php php php nillablephp=php"truephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"reasonaphp"php typephp=php"xsdphp:intphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"reasonbphp"php typephp=php"xsdphp:intphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"stateaphp"php typephp=php"xsdphp:stringphp"php php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"statebphp"php typephp=php"xsdphp:stringphp"php php/php>php
-php php php php php php php php php php php php php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"bephp1php6php4php"php typephp=php"xsdphp:stringphp"php php
-php php php php php php php php php php php php php php nillablephp=php"truephp"php/php>php
-php php php php php php php php php php php php php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"bindexphp"php typephp=php"xsdphp:intphp"php php
-php php php php php php php php php php php php php php nillablephp=php"truephp"php/php>php
-php php php php php php php php php php <php/xsdphp:sequencephp>php
-php php php php php php php php <php/xsdphp:extensionphp>php
-php php php php php php <php/xsdphp:complexContentphp>php
-php php php php <php/xsdphp:complexTypephp>php
-php	php<xsdphp:elementphp namephp=php"newCallResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"returnphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerResultphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php
-php	php<xsdphp:elementphp namephp=php"tearDownCallResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php namephp=php"returnphp"php nillablephp=php"falsephp"php
-php	php	php	php	php	typephp=php"VoiceButlerResultphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerRequestphp"php>php
-php	php	php<xsdphp:sequencephp>php
-php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php namephp=php"environmentphp"php
-php	php	php	php	nillablephp=php"falsephp"php typephp=php"EnvironmentTypephp"php php/php>php
-php	php	<php/xsdphp:sequencephp>php
-php	<php/xsdphp:complexTypephp>php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerResultphp"php>php
-php	php	php<xsdphp:sequencephp>php
-php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"errphp_msgphp"php nillablephp=php"truephp"php
-php	php	php	php	typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php<xsdphp:elementphp minOccursphp=php"php0php"php namephp=php"sessionIdphp"php nillablephp=php"truephp"php
-php	php	php	php	typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php namephp=php"statusphp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	<php/xsdphp:sequencephp>php
-php	<php/xsdphp:complexTypephp>php
-php
-php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerNewCallSequencedRequestphp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerNewCallRequestBasephp"php>php
-php	php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"unboundedphp"php
-php	php	php	php	php	php	namephp=php"bNumberphp"php nillablephp=php"falsephp"php typephp=php"NumberTypephp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"maxWaitphp"php typephp=php"xsdphp:intphp"php maxOccursphp=php"php1php"php minOccursphp=php"php1php"php><php/xsdphp:elementphp>php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-php
-php	php<xsdphp:complexTypephp namephp=php"VoiceButlerNewCallRequestBasephp"php>php
-php	php	php<xsdphp:complexContentphp>php
-php	php	php	php<xsdphp:extensionphp basephp=php"VoiceButlerRequestphp"php>php
-php	php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php
-php	php	php	php	php	php	namephp=php"aNumberphp"php nillablephp=php"falsephp"php typephp=php"NumberTypephp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php
-php	php	php	php	php	php	namephp=php"expirationphp"php nillablephp=php"falsephp"php typephp=php"ExpirationTypephp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp minOccursphp=php"php1php"php maxOccursphp=php"php1php"php
-php	php	php	php	php	php	namephp=php"maxDurationphp"php nillablephp=php"falsephp"php typephp=php"MaxDurationTypephp"php php/php>php
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"accountphp"php typephp=php"xsdphp:stringphp"php
-php	php	php	php	php	php	maxOccursphp=php"php1php"php minOccursphp=php"php0php"php>php
-php	php	php	php	php	<php/xsdphp:elementphp>php
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"privacyAphp"php typephp=php"xsdphp:booleanphp"php
-php	php	php	php	php	php	maxOccursphp=php"php1php"php minOccursphp=php"php0php"php>php
-php	php	php	php	php	<php/xsdphp:elementphp>php
-php php php php php php php php php php php php php php php php php php php php php<xsdphp:elementphp namephp=php"privacyBphp"php typephp=php"xsdphp:booleanphp"php maxOccursphp=php"php1php"php minOccursphp=php"php0php"php><php/xsdphp:elementphp>php
-php php php php php php php php php php php php php php php php php php php php php<xsdphp:elementphp namephp=php"greeterphp"php typephp=php"xsdphp:stringphp"php
-php	php	php	php	php	php	maxOccursphp=php"php1php"php minOccursphp=php"php0php"php>php
-php	php	php	php	php	<php/xsdphp:elementphp>php
-php
-php	php	php	php	<php/xsdphp:sequencephp>php
-php	php	php	<php/xsdphp:extensionphp>php
-php	php	<php/xsdphp:complexContentphp>php
-php	<php/xsdphp:complexTypephp>php
-<php/xsdphp:schemaphp>php
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xsd:schema xmlns="http://webservice.voicebutler.odg.tonline.de"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservice.voicebutler.odg.tonline.de"
+	elementFormDefault="unqualified" attributeFormDefault="unqualified"
+	version="1.1">
+
+	<xsd:simpleType name="EnvironmentType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="1" />
+			<xsd:maxInclusive value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="7" />
+			<xsd:maxLength value="24" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="SessionIDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9A-Z]{8}\-[0-9A-Z]{16}\-[0-9A-Z]{8}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="KeepAliveType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="MaxDurationType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ExpirationType">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="callStatus">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="request" nillable="false"
+					type="VoiceButlerCallStatusRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+  <xsd:element name="callStatus2">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="request" nillable="false"
+          type="VoiceButlerCallStatusRequest" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+	<xsd:complexType name="VoiceButlerCallStatusRequest">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="keepAlive"
+						nillable="false" type="KeepAliveType" />
+					<xsd:element minOccurs="1" maxOccurs="1" name="sessionId"
+						nillable="false" type="SessionIDType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:element name="newCall">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="request" nillable="false"
+					type="VoiceButlerNewCallRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="VoiceButlerNewCallRequest">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerNewCallRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1"
+						name="bNumber" nillable="false" type="NumberType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- newCall { -->
+	<xsd:element name="newCallSequenced">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="request" nillable="false"
+					type="VoiceButlerNewCallSequencedRequest" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="newCallSequencedResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="return" type="VoiceButlerResult"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- newCall } -->
+
+	<xsd:element name="tearDownCall">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="request" nillable="false"
+					type="VoiceButlerTeardownCallRequest" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="VoiceButlerTeardownCallRequest">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerRequest">
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element name="sessionId" type="SessionIDType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="callStatusResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="return" nillable="false"
+					type="VoiceButlerCallStatusResult" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="VoiceButlerCallStatusResult">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerResult">
+				<xsd:sequence minOccurs="0" maxOccurs="1">
+					<xsd:element minOccurs="0" name="connectiontimea" type="xsd:int" />
+					<xsd:element minOccurs="0" name="connectiontimeb" type="xsd:int" />
+					<xsd:element minOccurs="0" name="descriptiona"
+						nillable="true" type="xsd:string" />
+					<xsd:element minOccurs="0" name="descriptionb"
+						nillable="true" type="xsd:string" />
+					<xsd:element minOccurs="0" name="reasona" type="xsd:int" />
+					<xsd:element minOccurs="0" name="reasonb" type="xsd:int" />
+					<xsd:element minOccurs="0" name="statea" type="xsd:string" />
+					<xsd:element minOccurs="0" name="stateb" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="callStatus2Response">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" nillable="false"
+            type="VoiceButlerCallStatus2Result" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="VoiceButlerCallStatus2Result">
+      <xsd:complexContent>
+        <xsd:extension base="VoiceButlerResult">
+          <xsd:sequence minOccurs="0" maxOccurs="1">
+            <xsd:element minOccurs="0" name="connectiontimea" type="xsd:int" />
+            <xsd:element minOccurs="0" name="connectiontimeb" type="xsd:int" />
+            <xsd:element minOccurs="0" name="descriptiona"
+              nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="0" name="descriptionb"
+              nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="0" name="reasona" type="xsd:int" />
+            <xsd:element minOccurs="0" name="reasonb" type="xsd:int" />
+            <xsd:element minOccurs="0" name="statea" type="xsd:string" />
+            <xsd:element minOccurs="0" name="stateb" type="xsd:string" />
+            
+            <xsd:element minOccurs="0" name="be164" type="xsd:string" 
+              nillable="true"/>
+            <xsd:element minOccurs="0" name="bindex" type="xsd:int" 
+              nillable="true"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+	<xsd:element name="newCallResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="return" nillable="false"
+					type="VoiceButlerResult" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="tearDownCallResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" name="return" nillable="false"
+					type="VoiceButlerResult" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="VoiceButlerRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="environment"
+				nillable="false" type="EnvironmentType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="VoiceButlerResult">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="err_msg" nillable="true"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="sessionId" nillable="true"
+				type="xsd:string" />
+			<xsd:element minOccurs="1" name="status" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="VoiceButlerNewCallSequencedRequest">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerNewCallRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="unbounded"
+						name="bNumber" nillable="false" type="NumberType" />
+					<xsd:element name="maxWait" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="VoiceButlerNewCallRequestBase">
+		<xsd:complexContent>
+			<xsd:extension base="VoiceButlerRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1"
+						name="aNumber" nillable="false" type="NumberType" />
+					<xsd:element minOccurs="1" maxOccurs="1"
+						name="expiration" nillable="false" type="ExpirationType" />
+					<xsd:element minOccurs="1" maxOccurs="1"
+						name="maxDuration" nillable="false" type="MaxDurationType" />
+					<xsd:element name="account" type="xsd:string"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+					<xsd:element name="privacyA" type="xsd:boolean"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+                    <xsd:element name="privacyB" type="xsd:boolean" maxOccurs="1" minOccurs="0"></xsd:element>
+                    <xsd:element name="greeter" type="xsd:string"
+						maxOccurs="1" minOccurs="0">
+					</xsd:element>
+
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

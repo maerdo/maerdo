@@ -1,503 +1,503 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Navigation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Containerphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Navigation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Container.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php Zendphp_Navigationphp_Container
-php php*
-php php*php Containerphp classphp forphp Zendphp_Navigationphp_Pagephp classesphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Navigation
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Navigationphp_Containerphp implementsphp RecursiveIteratorphp,php Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Containsphp subphp pages
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_pagesphp php=php arrayphp(php)php;
+/**
+ * Zend_Navigation_Container
+ *
+ * Container class for Zend_Navigation_Page classes.
+ *
+ * @category  Zend
+ * @package   Zend_Navigation
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
+{
+    /**
+     * Contains sub pages
+     *
+     * @var array
+     */
+    protected $_pages = array();
 
-php php php php php/php*php*
-php php php php php php*php Anphp indexphp thatphp containsphp thephp orderphp inphp whichphp tophp iteratephp pages
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_indexphp php=php arrayphp(php)php;
+    /**
+     * An index that contains the order in which to iterate pages
+     *
+     * @var array
+     */
+    protected $_index = array();
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp indexphp isphp dirtyphp andphp needsphp tophp bephp rephp-arranged
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_dirtyIndexphp php=php falsephp;
+    /**
+     * Whether index is dirty and needs to be re-arranged
+     *
+     * @var bool
+     */
+    protected $_dirtyIndex = false;
 
-php php php php php/php/php Internalphp methodsphp:
+    // Internal methods:
 
-php php php php php/php*php*
-php php php php php php*php Sortsphp thephp pagephp indexphp accordingphp tophp pagephp order
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_sortphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_dirtyIndexphp)php php{
-php php php php php php php php php php php php php$newIndexphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$indexphp php=php php0php;
+    /**
+     * Sorts the page index according to page order
+     *
+     * @return void
+     */
+    protected function _sort()
+    {
+        if ($this->_dirtyIndex) {
+            $newIndex = array();
+            $index = 0;
 
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_pagesphp asphp php$hashphp php=php>php php$pagephp)php php{
-php php php php php php php php php php php php php php php php php$orderphp php=php php$pagephp-php>getOrderphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$orderphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$newIndexphp[php$hashphp]php php=php php$indexphp;
-php php php php php php php php php php php php php php php php php php php php php$indexphp+php+php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$newIndexphp[php$hashphp]php php=php php$orderphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+            foreach ($this->_pages as $hash => $page) {
+                $order = $page->getOrder();
+                if ($order === null) {
+                    $newIndex[$hash] = $index;
+                    $index++;
+                } else {
+                    $newIndex[$hash] = $order;
+                }
+            }
 
-php php php php php php php php php php php php asortphp(php$newIndexphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_indexphp php=php php$newIndexphp;
-php php php php php php php php php php php php php$thisphp-php>php_dirtyIndexphp php=php falsephp;
-php php php php php php php php php}
-php php php php php}
+            asort($newIndex);
+            $this->_index = $newIndex;
+            $this->_dirtyIndex = false;
+        }
+    }
 
-php php php php php/php/php Publicphp methodsphp:
+    // Public methods:
 
-php php php php php/php*php*
-php php php php php php*php Notifiesphp containerphp thatphp thephp orderphp ofphp pagesphp arephp updated
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp notifyOrderUpdatedphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dirtyIndexphp php=php truephp;
-php php php php php}
+    /**
+     * Notifies container that the order of pages are updated
+     *
+     * @return void
+     */
+    public function notifyOrderUpdated()
+    {
+        $this->_dirtyIndex = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp pagephp tophp thephp container
-php php php php php php*
-php php php php php php*php Thisphp methodphp willphp injectphp thephp containerphp asphp thephp givenphp pagephp'sphp parentphp by
-php php php php php php*php callingphp php{php@linkphp Zendphp_Navigationphp_Pagephp:php:setParentphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp|arrayphp|Zendphp_Configphp php$pagephp php pagephp tophp add
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php php php php php php php php php php php php php php php php php php php php fluentphp interfacephp,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php php php php php php php php php php php php php php php php php php php php ifphp pagephp isphp invalid
-php php php php php php*php/
-php php php php publicphp functionphp addPagephp(php$pagephp)
-php php php php php{
-php php php php php php php php ifphp php(php$pagephp php=php=php=php php$thisphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Aphp pagephp cannotphp havephp itselfphp asphp aphp parentphp'php)php;
-php php php php php php php php php}
+    /**
+     * Adds a page to the container
+     *
+     * This method will inject the container as the given page's parent by
+     * calling {@link Zend_Navigation_Page::setParent()}.
+     *
+     * @param  Zend_Navigation_Page|array|Zend_Config $page  page to add
+     * @return Zend_Navigation_Container                     fluent interface,
+     *                                                       returns self
+     * @throws Zend_Navigation_Exception                     if page is invalid
+     */
+    public function addPage($page)
+    {
+        if ($page === $this) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                'A page cannot have itself as a parent');
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$pagephp)php php|php|php php$pagephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Pagephp.phpphp'php;
-php php php php php php php php php php php php php$pagephp php=php Zendphp_Navigationphp_Pagephp:php:factoryphp(php$pagephp)php;
-php php php php php php php php php}php elseifphp php(php!php$pagephp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$pagephp mustphp bephp anphp instancephp ofphp php'php php.
-php php php php php php php php php php php php php php php php php php php php php'Zendphp_Navigationphp_Pagephp orphp Zendphp_Configphp,php orphp anphp arrayphp'php)php;
-php php php php php php php php php}
+        if (is_array($page) || $page instanceof Zend_Config) {
+            require_once 'Zend/Navigation/Page.php';
+            $page = Zend_Navigation_Page::factory($page);
+        } elseif (!$page instanceof Zend_Navigation_Page) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $page must be an instance of ' .
+                    'Zend_Navigation_Page or Zend_Config, or an array');
+        }
 
-php php php php php php php php php$hashphp php=php php$pagephp-php>hashCodephp(php)php;
+        $hash = $page->hashCode();
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$hashphp,php php$thisphp-php>php_indexphp)php)php php{
-php php php php php php php php php php php php php/php/php pagephp isphp alreadyphp inphp container
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+        if (array_key_exists($hash, $this->_index)) {
+            // page is already in container
+            return $this;
+        }
 
-php php php php php php php php php/php/php addsphp pagephp tophp containerphp andphp setsphp dirtyphp flag
-php php php php php php php php php$thisphp-php>php_pagesphp[php$hashphp]php php=php php$pagephp;
-php php php php php php php php php$thisphp-php>php_indexphp[php$hashphp]php php=php php$pagephp-php>getOrderphp(php)php;
-php php php php php php php php php$thisphp-php>php_dirtyIndexphp php=php truephp;
+        // adds page to container and sets dirty flag
+        $this->_pages[$hash] = $page;
+        $this->_index[$hash] = $page->getOrder();
+        $this->_dirtyIndex = true;
 
-php php php php php php php php php/php/php injectphp selfphp asphp pagephp parent
-php php php php php php php php php$pagephp-php>setParentphp(php$thisphp)php;
+        // inject self as page parent
+        $page->setParent($this);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp severalphp pagesphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$pagesphp php php pagesphp tophp add
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php fluentphp interfacephp,php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp php$pagesphp isphp notphp arrayphp orphp Zendphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp addPagesphp(php$pagesphp)
-php php php php php{
-php php php php php php php php ifphp php(php$pagesphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$pagesphp php=php php$pagesphp-php>toArrayphp(php)php;
-php php php php php php php php php}
+    /**
+     * Adds several pages at once
+     *
+     * @param  array|Zend_Config $pages   pages to add
+     * @return Zend_Navigation_Container  fluent interface, returns self
+     * @throws Zend_Navigation_Exception  if $pages is not array or Zend_Config
+     */
+    public function addPages($pages)
+    {
+        if ($pages instanceof Zend_Config) {
+            $pages = $pages->toArray();
+        }
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$pagesphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$pagesphp mustphp bephp anphp arrayphp orphp anphp php'php php.
-php php php php php php php php php php php php php php php php php php php php php'instancephp ofphp Zendphp_Configphp'php)php;
-php php php php php php php php php}
+        if (!is_array($pages)) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $pages must be an array or an ' .
+                    'instance of Zend_Config');
+        }
 
-php php php php php php php php foreachphp php(php$pagesphp asphp php$pagephp)php php{
-php php php php php php php php php php php php php$thisphp-php>addPagephp(php$pagephp)php;
-php php php php php php php php php}
+        foreach ($pages as $page) {
+            $this->addPage($page);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp pagesphp thisphp containerphp shouldphp havephp,php removingphp existingphp pages
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$pagesphp php php php php php php php php php php php php php php pagesphp tophp set
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php fluentphp interfacephp,php returnsphp self
-php php php php php php*php/
-php php php php publicphp functionphp setPagesphp(arrayphp php$pagesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>removePagesphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addPagesphp(php$pagesphp)php;
-php php php php php}
+    /**
+     * Sets pages this container should have, removing existing pages
+     *
+     * @param  array $pages               pages to set
+     * @return Zend_Navigation_Container  fluent interface, returns self
+     */
+    public function setPages(array $pages)
+    {
+        $this->removePages();
+        return $this->addPages($pages);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp pagesphp inphp thephp container
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp php arrayphp ofphp Zendphp_Navigationphp_Pagephp instances
-php php php php php php*php/
-php php php php publicphp functionphp getPagesphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pagesphp;
-php php php php php}
+    /**
+     * Returns pages in the container
+     *
+     * @return array  array of Zend_Navigation_Page instances
+     */
+    public function getPages()
+    {
+        return $this->_pages;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removesphp thephp givenphp pagephp fromphp thephp container
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp|intphp php$pagephp php pagephp tophp removephp,php eitherphp aphp page
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php instancephp orphp aphp specificphp pagephp order
-php php php php php php*php php@returnphp boolphp php php php php php php php php php php php php php php php php php php php php php php php php php php php whetherphp thephp removalphp was
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php successful
-php php php php php php*php/
-php php php php publicphp functionphp removePagephp(php$pagephp)
-php php php php php{
-php php php php php php php php ifphp php(php$pagephp instanceofphp Zendphp_Navigationphp_Pagephp)php php{
-php php php php php php php php php php php php php$hashphp php=php php$pagephp-php>hashCodephp(php)php;
-php php php php php php php php php}php elseifphp php(isphp_intphp(php$pagephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php php php php php ifphp php(php!php$hashphp php=php arrayphp_searchphp(php$pagephp,php php$thisphp-php>php_indexphp)php)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Removes the given page from the container
+     *
+     * @param  Zend_Navigation_Page|int $page  page to remove, either a page
+     *                                         instance or a specific page order
+     * @return bool                            whether the removal was
+     *                                         successful
+     */
+    public function removePage($page)
+    {
+        if ($page instanceof Zend_Navigation_Page) {
+            $hash = $page->hashCode();
+        } elseif (is_int($page)) {
+            $this->_sort();
+            if (!$hash = array_search($page, $this->_index)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_pagesphp[php$hashphp]php)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_pagesphp[php$hashphp]php)php;
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_indexphp[php$hashphp]php)php;
-php php php php php php php php php php php php php$thisphp-php>php_dirtyIndexphp php=php truephp;
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+        if (isset($this->_pages[$hash])) {
+            unset($this->_pages[$hash]);
+            unset($this->_index[$hash]);
+            $this->_dirtyIndex = true;
+            return true;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removesphp allphp pagesphp inphp container
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Containerphp php fluentphp interfacephp,php returnsphp self
-php php php php php php*php/
-php php php php publicphp functionphp removePagesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pagesphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_indexphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Removes all pages in container
+     *
+     * @return Zend_Navigation_Container  fluent interface, returns self
+     */
+    public function removePages()
+    {
+        $this->_pages = array();
+        $this->_index = array();
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp thephp containerphp hasphp thephp givenphp page
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Navigationphp_Pagephp php$pagephp php php php php php php pagephp tophp lookphp for
-php php php php php php*php php@paramphp php boolphp php php php php php php php php php php php php php php php php php$recursivephp php php[optionalphp]php whetherphp tophp search
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php recursivelyphp.php Defaultphp isphp falsephp.
-php php php php php php*php php@returnphp boolphp php php php php php php php php php php php php php php php php php php php php php php php php php php php php whetherphp pagephp isphp inphp container
-php php php php php php*php/
-php php php php publicphp functionphp hasPagephp(Zendphp_Navigationphp_Pagephp php$pagephp,php php$recursivephp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$pagephp-php>hashCodephp(php)php,php php$thisphp-php>php_indexphp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}php elseifphp php(php$recursivephp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_pagesphp asphp php$childPagephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$childPagephp-php>hasPagephp(php$pagephp,php truephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Checks if the container has the given page
+     *
+     * @param  Zend_Navigation_Page $page       page to look for
+     * @param  bool                 $recursive  [optional] whether to search
+     *                                          recursively. Default is false.
+     * @return bool                             whether page is in container
+     */
+    public function hasPage(Zend_Navigation_Page $page, $recursive = false)
+    {
+        if (array_key_exists($page->hashCode(), $this->_index)) {
+            return true;
+        } elseif ($recursive) {
+            foreach ($this->_pages as $childPage) {
+                if ($childPage->hasPage($page, true)) {
+                    return true;
+                }
+            }
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp containerphp containsphp anyphp pages
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp containerphp hasphp anyphp pages
-php php php php php php*php/
-php php php php publicphp functionphp hasPagesphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_indexphp)php php>php php0php;
-php php php php php}
+    /**
+     * Returns true if container contains any pages
+     *
+     * @return bool  whether container has any pages
+     */
+    public function hasPages()
+    {
+        return count($this->_index) > 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp childphp pagephp matchingphp php$propertyphp php=php=php php$valuephp,php orphp nullphp ifphp notphp found
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$propertyphp php php php php php php php php php php namephp ofphp propertyphp tophp matchphp against
-php php php php php php*php php@paramphp php mixedphp php php$valuephp php php php php php php php php php php php php php valuephp tophp matchphp propertyphp against
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php matchingphp pagephp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp findOneByphp(php$propertyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(php$thisphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+    /**
+     * Returns a child page matching $property == $value, or null if not found
+     *
+     * @param  string $property           name of property to match against
+     * @param  mixed  $value              value to match property against
+     * @return Zend_Navigation_Page|null  matching page or null
+     */
+    public function findOneBy($property, $value)
+    {
+        $iterator = new RecursiveIteratorIterator($this,
+                            RecursiveIteratorIterator::SELF_FIRST);
 
-php php php php php php php php foreachphp php(php$iteratorphp asphp php$pagephp)php php{
-php php php php php php php php php php php php ifphp php(php$pagephp-php>getphp(php$propertyphp)php php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php returnphp php$pagephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($iterator as $page) {
+            if ($page->get($property) == $value) {
+                return $page;
+            }
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp allphp childphp pagesphp matchingphp php$propertyphp php=php=php php$valuephp,php orphp anphp emptyphp array
-php php php php php php*php ifphp nophp pagesphp arephp found
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$propertyphp php namephp ofphp propertyphp tophp matchphp against
-php php php php php php*php php@paramphp php mixedphp php php$valuephp php php php php valuephp tophp matchphp propertyphp against
-php php php php php php*php php@returnphp arrayphp php php php php php php php php php php php php arrayphp containingphp onlyphp Zendphp_Navigationphp_Page
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php instances
-php php php php php php*php/
-php php php php publicphp functionphp findAllByphp(php$propertyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$foundphp php=php arrayphp(php)php;
+    /**
+     * Returns all child pages matching $property == $value, or an empty array
+     * if no pages are found
+     *
+     * @param  string $property  name of property to match against
+     * @param  mixed  $value     value to match property against
+     * @return array             array containing only Zend_Navigation_Page
+     *                           instances
+     */
+    public function findAllBy($property, $value)
+    {
+        $found = array();
 
-php php php php php php php php php$iteratorphp php=php newphp RecursiveIteratorIteratorphp(php$thisphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+        $iterator = new RecursiveIteratorIterator($this,
+                            RecursiveIteratorIterator::SELF_FIRST);
 
-php php php php php php php php foreachphp php(php$iteratorphp asphp php$pagephp)php php{
-php php php php php php php php php php php php ifphp php(php$pagephp-php>getphp(php$propertyphp)php php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php$foundphp[php]php php=php php$pagephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($iterator as $page) {
+            if ($page->get($property) == $value) {
+                $found[] = $page;
+            }
+        }
 
-php php php php php php php php returnphp php$foundphp;
-php php php php php}
+        return $found;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp pagephp(sphp)php matchingphp php$propertyphp php=php=php php$value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$propertyphp php namephp ofphp propertyphp tophp matchphp against
-php php php php php php*php php@paramphp php mixedphp php php$valuephp php php php php valuephp tophp matchphp propertyphp against
-php php php php php php*php php@paramphp php boolphp php php php$allphp php php php php php php php[optionalphp]php whetherphp anphp arrayphp ofphp allphp matching
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php pagesphp shouldphp bephp returnedphp,php orphp onlyphp thephp firstphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php Ifphp truephp,php anphp arrayphp willphp bephp returnedphp,php evenphp ifphp not
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php matchingphp pagesphp arephp foundphp.php Ifphp falsephp,php nullphp will
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php bephp returnedphp ifphp nophp matchingphp pagephp isphp foundphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php Defaultphp isphp falsephp.
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|nullphp php matchingphp pagephp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp findByphp(php$propertyphp,php php$valuephp,php php$allphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$allphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>findAllByphp(php$propertyphp,php php$valuephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$thisphp-php>findOneByphp(php$propertyphp,php php$valuephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Returns page(s) matching $property == $value
+     *
+     * @param  string $property  name of property to match against
+     * @param  mixed  $value     value to match property against
+     * @param  bool   $all       [optional] whether an array of all matching
+     *                           pages should be returned, or only the first.
+     *                           If true, an array will be returned, even if not
+     *                           matching pages are found. If false, null will
+     *                           be returned if no matching page is found.
+     *                           Default is false.
+     * @return Zend_Navigation_Page|null  matching page or null
+     */
+    public function findBy($property, $value, $all = false)
+    {
+        if ($all) {
+            return $this->findAllBy($property, $value);
+        } else {
+            return $this->findOneBy($property, $value);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Magicphp overloadphp:php Proxyphp callsphp tophp finderphp methods
-php php php php php php*
-php php php php php php*php Examplesphp ofphp finderphp callsphp:
-php php php php php php*php php<codephp>
-php php php php php php*php php/php/php METHODphp php php php php php php php php php php php php php php php php php php php php/php/php SAMEphp AS
-php php php php php php*php php$navphp-php>findByLabelphp(php'foophp'php)php;php php php php php/php/php php$navphp-php>findOneByphp(php'labelphp'php,php php'foophp'php)php;
-php php php php php php*php php$navphp-php>findOneByLabelphp(php'foophp'php)php;php php/php/php php$navphp-php>findOneByphp(php'labelphp'php,php php'foophp'php)php;
-php php php php php php*php php$navphp-php>findAllByClassphp(php'foophp'php)php;php php/php/php php$navphp-php>findAllByphp(php'classphp'php,php php'foophp'php)php;
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$methodphp php php php php php php php php php php php php methodphp name
-php php php php php php*php php@paramphp php arrayphp php php$argumentsphp php php php php php php php php php methodphp arguments
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp methodphp doesphp notphp exist
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argumentsphp)
-php php php php php{
-php php php php php php php php ifphp php(php@pregphp_matchphp(php'php/php(findphp(php?php:Onephp|Allphp)php?Byphp)php(php.php+php)php/php'php,php php$methodphp,php php$matchphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php{php$matchphp[php1php]php}php(php$matchphp[php2php]php,php php$argumentsphp[php0php]php)php;
-php php php php php php php php php}
+    /**
+     * Magic overload: Proxy calls to finder methods
+     *
+     * Examples of finder calls:
+     * <code>
+     * // METHOD                    // SAME AS
+     * $nav->findByLabel('foo');    // $nav->findOneBy('label', 'foo');
+     * $nav->findOneByLabel('foo'); // $nav->findOneBy('label', 'foo');
+     * $nav->findAllByClass('foo'); // $nav->findAllBy('class', 'foo');
+     * </code>
+     *
+     * @param  string $method             method name
+     * @param  array  $arguments          method arguments
+     * @throws Zend_Navigation_Exception  if method does not exist
+     */
+    public function __call($method, $arguments)
+    {
+        if (@preg_match('/(find(?:One|All)?By)(.+)/', $method, $match)) {
+            return $this->{$match[1]}($match[2], $arguments[0]);
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(sprintfphp(
-php php php php php php php php php php php php php php php php php'Badphp methodphp callphp:php Unknownphp methodphp php%sphp:php:php%sphp'php,
-php php php php php php php php php php php php php php php php getphp_classphp(php$thisphp)php,
-php php php php php php php php php php php php php php php php php$methodphp)php)php;
-php php php php php}
+        require_once 'Zend/Navigation/Exception.php';
+        throw new Zend_Navigation_Exception(sprintf(
+                'Bad method call: Unknown method %s::%s',
+                get_class($this),
+                $method));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp representationphp ofphp allphp pagesphp inphp container
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php$pagesphp php=php arrayphp(php)php;
+    /**
+     * Returns an array representation of all pages in container
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $pages = array();
 
-php php php php php php php php php$thisphp-php>php_dirtyIndexphp php=php truephp;
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php php$indexesphp php=php arrayphp_keysphp(php$thisphp-php>php_indexphp)php;
-php php php php php php php php foreachphp php(php$indexesphp asphp php$hashphp)php php{
-php php php php php php php php php php php php php$pagesphp[php]php php=php php$thisphp-php>php_pagesphp[php$hashphp]php-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$pagesphp;
-php php php php php}
+        $this->_dirtyIndex = true;
+        $this->_sort();
+        $indexes = array_keys($this->_index);
+        foreach ($indexes as $hash) {
+            $pages[] = $this->_pages[$hash]->toArray();
+        }
+        return $pages;
+    }
 
-php php php php php/php/php RecursiveIteratorphp interfacephp:
+    // RecursiveIterator interface:
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp currentphp page
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp php php php php php php currentphp pagephp orphp null
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp thephp indexphp isphp invalid
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php currentphp(php$thisphp-php>php_indexphp)php;
-php php php php php php php php php$hashphp php=php keyphp(php$thisphp-php>php_indexphp)php;
+    /**
+     * Returns current page
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return Zend_Navigation_Page       current page or null
+     * @throws Zend_Navigation_Exception  if the index is invalid
+     */
+    public function current()
+    {
+        $this->_sort();
+        current($this->_index);
+        $hash = key($this->_index);
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_pagesphp[php$hashphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_pagesphp[php$hashphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Corruptionphp detectedphp inphp containerphp;php php'php php.
-php php php php php php php php php php php php php php php php php php php php php'invalidphp keyphp foundphp inphp internalphp iteratorphp'php)php;
-php php php php php php php php php}
-php php php php php}
+        if (isset($this->_pages[$hash])) {
+            return $this->_pages[$hash];
+        } else {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Corruption detected in container; ' .
+                    'invalid key found in internal iterator');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp hashphp codephp ofphp currentphp page
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp php hashphp codephp ofphp currentphp page
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php returnphp keyphp(php$thisphp-php>php_indexphp)php;
-php php php php php}
+    /**
+     * Returns hash code of current page
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return string  hash code of current page
+     */
+    public function key()
+    {
+        $this->_sort();
+        return key($this->_index);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movesphp indexphp pointerphp tophp nextphp pagephp inphp thephp container
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php nextphp(php$thisphp-php>php_indexphp)php;
-php php php php php}
+    /**
+     * Moves index pointer to next page in the container
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return void
+     */
+    public function next()
+    {
+        $this->_sort();
+        next($this->_index);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp indexphp pointerphp tophp firstphp pagephp inphp thephp container
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php resetphp(php$thisphp-php>php_indexphp)php;
-php php php php php}
+    /**
+     * Sets index pointer to first page in the container
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        $this->_sort();
+        reset($this->_index);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checksphp ifphp containerphp indexphp isphp valid
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sortphp(php)php;
-php php php php php php php php returnphp currentphp(php$thisphp-php>php_indexphp)php php!php=php=php falsephp;
-php php php php php}
+    /**
+     * Checks if container index is valid
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return bool
+     */
+    public function valid()
+    {
+        $this->_sort();
+        return current($this->_index) !== false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Proxyphp tophp hasPagesphp(php)
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp containerphp hasphp anyphp pages
-php php php php php php*php/
-php php php php publicphp functionphp hasChildrenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>hasPagesphp(php)php;
-php php php php php}
+    /**
+     * Proxy to hasPages()
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return bool  whether container has any pages
+     */
+    public function hasChildren()
+    {
+        return $this->hasPages();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp childphp containerphp.
-php php php php php php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getChildrenphp(php)
-php php php php php{
-php php php php php php php php php$hashphp php=php keyphp(php$thisphp-php>php_indexphp)php;
+    /**
+     * Returns the child container.
+     *
+     * Implements RecursiveIterator interface.
+     *
+     * @return Zend_Navigation_Page|null
+     */
+    public function getChildren()
+    {
+        $hash = key($this->_index);
 
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_pagesphp[php$hashphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_pagesphp[php$hashphp]php;
-php php php php php php php php php}
+        if (isset($this->_pages[$hash])) {
+            return $this->_pages[$hash];
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php/php Countablephp interfacephp:
+    // Countable interface:
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp numberphp ofphp pagesphp inphp container
-php php php php php php*
-php php php php php php*php Implementsphp Countablephp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp intphp php numberphp ofphp pagesphp inphp thephp container
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_indexphp)php;
-php php php php php}
-php}
+    /**
+     * Returns number of pages in container
+     *
+     * Implements Countable interface.
+     *
+     * @return int  number of pages in the container
+     */
+    public function count()
+    {
+        return count($this->_index);
+    }
+}

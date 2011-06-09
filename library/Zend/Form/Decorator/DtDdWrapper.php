@@ -1,70 +1,70 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Decorator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Decorator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Formphp_Decoratorphp_Abstractphp php*php/
-requirephp_oncephp php'Zendphp/Formphp/Decoratorphp/Abstractphp.phpphp'php;
+/** Zend_Form_Decorator_Abstract */
+require_once 'Zend/Form/Decorator/Abstract.php';
 
-php/php*php*
-php php*php Zendphp_Formphp_Decoratorphp_DtDdWrapper
-php php*
-php php*php Createsphp anphp emptyphp php<dtphp>php itemphp,php andphp wrapsphp thephp contentphp inphp aphp php<ddphp>php.php Usedphp asphp a
-php php*php defaultphp decoratorphp forphp subformsphp andphp displayphp groupsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Decorator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php DtDdWrapperphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
-classphp Zendphp_Formphp_Decoratorphp_DtDdWrapperphp extendsphp Zendphp_Formphp_Decoratorphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Defaultphp placementphp:php surroundphp content
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_placementphp php=php nullphp;
+/**
+ * Zend_Form_Decorator_DtDdWrapper
+ *
+ * Creates an empty <dt> item, and wraps the content in a <dd>. Used as a
+ * default decorator for subforms and display groups.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Decorator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: DtDdWrapper.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
+class Zend_Form_Decorator_DtDdWrapper extends Zend_Form_Decorator_Abstract
+{
+    /**
+     * Default placement: surround content
+     * @var string
+     */
+    protected $_placement = null;
 
-php php php php php/php*php*
-php php php php php php*php Render
-php php php php php php*
-php php php php php php*php Rendersphp asphp thephp followingphp:
-php php php php php php*php php<dtphp>php$dtLabel<php/dtphp>
-php php php php php php*php php<ddphp>php$content<php/ddphp>
-php php php php php php*
-php php php php php php*php php$dtLabelphp canphp bephp setphp viaphp php'dtLabelphp'php optionphp,php defaultsphp tophp php'php\php&php#php1php6php0php;php'
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$content
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php$contentphp)
-php php php php php{
-php php php php php php php php php$elementNamephp php=php php$thisphp-php>getElementphp(php)php-php>getNamephp(php)php;
+    /**
+     * Render
+     *
+     * Renders as the following:
+     * <dt>$dtLabel</dt>
+     * <dd>$content</dd>
+     *
+     * $dtLabel can be set via 'dtLabel' option, defaults to '\&#160;'
+     *
+     * @param  string $content
+     * @return string
+     */
+    public function render($content)
+    {
+        $elementName = $this->getElement()->getName();
 
-php php php php php php php php php$dtLabelphp php=php php$thisphp-php>getOptionphp(php'dtLabelphp'php)php;
-php php php php php php php php ifphp(php nullphp php=php=php=php php$dtLabelphp php)php php{
-php php php php php php php php php php php php php$dtLabelphp php=php php'php&php#php1php6php0php;php'php;
-php php php php php php php php php}
+        $dtLabel = $this->getOption('dtLabel');
+        if( null === $dtLabel ) {
+            $dtLabel = '&#160;';
+        }
 
-php php php php php php php php returnphp php'php<dtphp idphp=php"php'php php.php php$elementNamephp php.php php'php-labelphp"php>php'php php.php php$dtLabelphp php.php php'<php/dtphp>php'php php.
-php php php php php php php php php php php php php php php php'php<ddphp idphp=php"php'php php.php php$elementNamephp php.php php'php-elementphp"php>php'php php.php php$contentphp php.php php'<php/ddphp>php'php;
-php php php php php}
-php}
+        return '<dt id="' . $elementName . '-label">' . $dtLabel . '</dt>' .
+               '<dd id="' . $elementName . '-element">' . $content . '</dd>';
+    }
+}

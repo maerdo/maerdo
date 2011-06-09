@@ -1,430 +1,430 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ClientAbstractphp.phpphp php2php2php6php6php2php php2php0php1php0php-php0php7php-php2php4php php1php7php:php3php7php:php3php6Zphp mabephp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ClientAbstract.php 22662 2010-07-24 17:37:36Z mabe $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Soapphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Client_Soap
+ */
+require_once 'Zend/Service/DeveloperGarden/Client/Soap.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Credentialphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Credential
+ */
+require_once 'Zend/Service/DeveloperGarden/Credential.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServer
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/SecurityTokenServerphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_SecurityTokenServer
+ */
+require_once 'Zend/Service/DeveloperGarden/SecurityTokenServer.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php constantsphp forphp usingphp withphp thephp odgphp api
-php php php php php php*php/
-php php php php constphp ENVphp_PRODUCTIONphp php=php php1php;php php/php/php Productionphp Environment
-php php php php constphp ENVphp_SANDBOXphp php php php php=php php2php;php php/php/php Sandboxphp Environmentphp,php limitedphp accessphp tophp thephp api
-php php php php constphp ENVphp_MOCKphp php php php php php php php=php php3php;php php/php/php Apiphp callsphp arephp withoutphp anyphp functionality
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Service_DeveloperGarden_Client_ClientAbstract
+{
+    /**
+     * constants for using with the odg api
+     */
+    const ENV_PRODUCTION = 1; // Production Environment
+    const ENV_SANDBOX    = 2; // Sandbox Environment, limited access to the api
+    const ENV_MOCK       = 3; // Api calls are without any functionality
 
-php php php php constphp PARTICIPANTphp_MUTEphp_OFFphp php=php php0php;php php/php/php removesphp mutephp fromphp participantphp inphp aphp conference
-php php php php constphp PARTICIPANTphp_MUTEphp_ONphp php php=php php1php;php php/php/php mutephp participantphp inphp aphp conference
-php php php php constphp PARTICIPANTphp_RECALLphp php php php=php php2php;php php/php/php recallsphp thephp participantphp inphp aphp conference
+    const PARTICIPANT_MUTE_OFF = 0; // removes mute from participant in a conference
+    const PARTICIPANT_MUTE_ON  = 1; // mute participant in a conference
+    const PARTICIPANT_RECALL   = 2; // recalls the participant in a conference
 
-php php php php php/php*php*
-php php php php php php*php arrayphp ofphp allphp possiblephp envphp types
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php staticphp protectedphp php$php_constsphp php=php nullphp;
+    /**
+     * array of all possible env types
+     *
+     * @var int
+     */
+    static protected $_consts = null;
 
-php php php php php/php*php*
-php php php php php php*php Availablephp options
-php php php php php php*
-php php php php php php*php php@varphp arrayphp availablephp options
-php php php php php php*php/
-php php php php protectedphp php$php_optionsphp php=php arrayphp(php)php;
+    /**
+     * Available options
+     *
+     * @var array available options
+     */
+    protected $_options = array();
 
-php php php php php/php*php*
-php php php php php php*php Thephp servicephp idphp tophp generatephp thephp authphp servicephp token
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_serviceAuthIdphp php=php php'httpsphp:php/php/odgphp.tphp-onlinephp.dephp'php;
+    /**
+     * The service id to generate the auth service token
+     *
+     * @var string
+     */
+    protected $_serviceAuthId = 'https://odg.t-online.de';
 
-php php php php php/php*php*
-php php php php php php*php Variablephp thatphp holdsphp thephp Zendphp_Servicephp_DeveloperGardenphp envphp value
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_serviceEnvironmentphp php=php Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstractphp:php:ENVphp_PRODUCTIONphp;
+    /**
+     * Variable that holds the Zend_Service_DeveloperGarden env value
+     *
+     * @var int
+     */
+    protected $_serviceEnvironment = Zend_Service_DeveloperGarden_Client_ClientAbstract::ENV_PRODUCTION;
 
-php php php php php/php*php*
-php php php php php php*php wsdlphp file
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_wsdlFilephp php=php nullphp;
+    /**
+     * wsdl file
+     *
+     * @var string
+     */
+    protected $_wsdlFile = null;
 
-php php php php php/php*php*
-php php php php php php*php thephp localphp wsdlFile
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_wsdlFileLocalphp php=php nullphp;
+    /**
+     * the local wsdlFile
+     *
+     * @var string
+     */
+    protected $_wsdlFileLocal = null;
 
-php php php php php/php*php*
-php php php php php php*php shouldphp wephp usephp thephp localphp wsdlphp filephp?
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_useLocalWsdlphp php=php truephp;
+    /**
+     * should we use the local wsdl file?
+     *
+     * @var boolean
+     */
+    protected $_useLocalWsdl = true;
 
-php php php php php/php*php*
-php php php php php php*php classphp withphp credentials
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php php php php php*php/
-php php php php protectedphp php$php_credentialphp php=php nullphp;
+    /**
+     * class with credentials
+     *
+     * @var Zend_Service_DeveloperGarden_Credential
+     */
+    protected $_credential = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp internalphp Soapphp Client
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Soapphp_Client
-php php php php php php*php/
-php php php php protectedphp php$php_soapClientphp php=php nullphp;
+    /**
+     * The internal Soap Client
+     *
+     * @var Zend_Soap_Client
+     */
+    protected $_soapClient = null;
 
-php php php php php/php*php*
-php php php php php php*php arrayphp withphp optionsphp forphp classmapping
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_classMapphp php=php arrayphp(php)php;
+    /**
+     * array with options for classmapping
+     *
+     * @var array
+     */
+    protected $_classMap = array();
 
-php php php php php/php*php*
-php php php php php php*php constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$optionsphp Associativephp arrayphp ofphp options
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_credentialphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Credentialphp(php)php;
+    /**
+     * constructor
+     *
+     * @param array $options Associative array of options
+     */
+    public function __construct(array $options = array())
+    {
+        $this->_credential = new Zend_Service_DeveloperGarden_Credential();
 
-php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php switchphp php(ucfirstphp(php$namephp)php)php php{
-php php php php php php php php php php php php php php php php casephp php'Usernamephp'php php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_credentialphp-php>setUsernamephp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'Passwordphp'php php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_credentialphp-php>setPasswordphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'Realmphp'php php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_credentialphp-php>setRealmphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'Environmentphp'php php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setEnvironmentphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        while (list($name, $value) = each($options)) {
+            switch (ucfirst($name)) {
+                case 'Username' :
+                    $this->_credential->setUsername($value);
+                    break;
+                case 'Password' :
+                    $this->_credential->setPassword($value);
+                    break;
+                case 'Realm' :
+                    $this->_credential->setRealm($value);
+                    break;
+                case 'Environment' :
+                    $this->setEnvironment($value);
+            }
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_wsdlFilephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php'php_wsdlFilephp notphp setphp forphp thisphp servicephp.php'php)php;
-php php php php php php php php php}
+        if (empty($this->_wsdlFile)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception('_wsdlFile not set for this service.');
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_wsdlFileLocalphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_wsdlFileLocalphp php=php realpathphp(dirnamephp(php_php_FILEphp_php_php)php php.php php'php/php.php.php/php'php php.php php$thisphp-php>php_wsdlFileLocalphp)php;
-php php php php php php php php php}
+        if (!empty($this->_wsdlFileLocal)) {
+            $this->_wsdlFileLocal = realpath(dirname(__FILE__) . '/../' . $this->_wsdlFileLocal);
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_wsdlFileLocalphp)php php|php|php php$thisphp-php>php_wsdlFileLocalphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php'php_wsdlFileLocalphp notphp setphp forphp thisphp servicephp.php'php)php;
-php php php php php php php php php}
-php php php php php}
+        if (empty($this->_wsdlFileLocal) || $this->_wsdlFileLocal === false) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception('_wsdlFileLocal not set for this service.');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp option
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setOptionphp(php$namephp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$namephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Incorrectphp optionphp namephp:php php'php php.php php$namephp)php;
-php php php php php php php php php}
-php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_optionsphp[php$namephp]php php=php php$valuephp;
-php php php php php php php php php}
+    /**
+     * Set an option
+     *
+     * @param  string $name
+     * @param  mixed $value
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setOption($name, $value)
+    {
+        if (!is_string($name)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Incorrect option name: ' . $name);
+        }
+        $name = strtolower($name);
+        if (array_key_exists($name, $this->_options)) {
+            $this->_options[$name] = $value;
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getphp anphp optionphp valuephp fromphp thephp internalphp optionsphp object
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getOptionphp(php$namephp)
-php php php php php{
-php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$namephp,php php$thisphp-php>php_optionsphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_optionsphp[php$namephp]php;
-php php php php php php php php php}
+    /**
+     * get an option value from the internal options object
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getOption($name)
+    {
+        $name = strtolower($name);
+        if (array_key_exists($name, $this->_options)) {
+            return $this->_options[$name];
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp internalphp soapphp client
-php php php php php php*php ifphp notphp allreadyphp existsphp wephp createphp anphp instancephp of
-php php php php php php*php Zendphp_Soapphp_Client
-php php php php php php*
-php php php php php php*php php@final
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soap
-php php php php php php*php/
-php php php php finalphp publicphp functionphp getSoapClientphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_soapClientphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php initphp thephp soapClient
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_soapClientphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Soapphp(
-php php php php php php php php php php php php php php php php php$thisphp-php>getWsdlphp(php)php,
-php php php php php php php php php php php php php php php php php$thisphp-php>getClientOptionsphp(php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$thisphp-php>php_soapClientphp-php>setCredentialphp(php$thisphp-php>php_credentialphp)php;
-php php php php php php php php php php php php php$tokenServicephp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServerphp(
-php php php php php php php php php php php php php php php php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'usernamephp'php php php php php=php>php php$thisphp-php>php_credentialphp-php>getUsernamephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php'passwordphp'php php php php php=php>php php$thisphp-php>php_credentialphp-php>getPasswordphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php'environmentphp'php php=php>php php$thisphp-php>getEnvironmentphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php'realmphp'php php php php php php php php=php>php php$thisphp-php>php_credentialphp-php>getRealmphp(php)php,
-php php php php php php php php php php php php php php php php php)
-php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$thisphp-php>php_soapClientphp-php>setTokenServicephp(php$tokenServicephp)php;
-php php php php php php php php php}
+    /**
+     * returns the internal soap client
+     * if not allready exists we create an instance of
+     * Zend_Soap_Client
+     *
+     * @final
+     * @return Zend_Service_DeveloperGarden_Client_Soap
+     */
+    final public function getSoapClient()
+    {
+        if ($this->_soapClient === null) {
+            /**
+             * init the soapClient
+             */
+            $this->_soapClient = new Zend_Service_DeveloperGarden_Client_Soap(
+                $this->getWsdl(),
+                $this->getClientOptions()
+            );
+            $this->_soapClient->setCredential($this->_credential);
+            $tokenService = new Zend_Service_DeveloperGarden_SecurityTokenServer(
+                array(
+                    'username'    => $this->_credential->getUsername(),
+                    'password'    => $this->_credential->getPassword(),
+                    'environment' => $this->getEnvironment(),
+                    'realm'       => $this->_credential->getRealm(),
+                )
+            );
+            $this->_soapClient->setTokenService($tokenService);
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_soapClientphp;
-php php php php php}
+        return $this->_soapClient;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp environment
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$environment
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setEnvironmentphp(php$environmentphp)
-php php php php php{
-php php php php php php php php selfphp:php:checkEnvironmentphp(php$environmentphp)php;
-php php php php php php php php php$thisphp-php>php_serviceEnvironmentphp php=php php$environmentphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets new environment
+     *
+     * @param int $environment
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setEnvironment($environment)
+    {
+        self::checkEnvironment($environment);
+        $this->_serviceEnvironment = $environment;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp currentphp configuredphp environemnt
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getEnvironmentphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_serviceEnvironmentphp;
-php php php php php}
+    /**
+     * returns the current configured environemnt
+     *
+     * @return int
+     */
+    public function getEnvironment()
+    {
+        return $this->_serviceEnvironment;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp wsdlphp filephp pathphp,php aphp uriphp orphp thephp localphp path
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getWsdlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_useLocalWsdlphp)php php{
-php php php php php php php php php php php php php$retValphp php=php php$thisphp-php>php_wsdlFileLocalphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$retValphp php=php php$thisphp-php>php_wsdlFilephp;
-php php php php php php php php php}
+    /**
+     * returns the wsdl file path, a uri or the local path
+     *
+     * @return string
+     */
+    public function getWsdl()
+    {
+        if ($this->_useLocalWsdl) {
+            $retVal = $this->_wsdlFileLocal;
+        } else {
+            $retVal = $this->_wsdlFile;
+        }
 
-php php php php php php php php returnphp php$retValphp;
-php php php php php}
+        return $retVal;
+    }
 
-php php php php php/php*php*
-php php php php php php*php switchphp tophp thephp localphp wsdlphp filephp usage
-php php php php php php*
-php php php php php php*php php@paramphp boolenphp php$use
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setUseLocalWsdlphp(php$usephp php=php truephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_useLocalWsdlphp php=php php(booleanphp)php php$usephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * switch to the local wsdl file usage
+     *
+     * @param boolen $use
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setUseLocalWsdl($use = true)
+    {
+        $this->_useLocalWsdl = (boolean) $use;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp newphp wsdlphp file
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$wsdlFile
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setWsdlphp(php$wsdlFilephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$wsdlFilephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php'php_wsdlFilephp notphp setphp forphp thisphp servicephp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_wsdlFilephp php=php php$wsdlFilephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a new wsdl file
+     *
+     * @param string $wsdlFile
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setWsdl($wsdlFile = null)
+    {
+        if (empty($wsdlFile)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception('_wsdlFile not set for this service.');
+        }
+        $this->_wsdlFile = $wsdlFile;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp aphp newphp localphp wsdlphp file
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$wsdlFile
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setLocalWsdlphp(php$wsdlFilephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$wsdlFilephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Exceptionphp(php'php_wsdlFileLocalphp notphp setphp forphp thisphp servicephp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_wsdlFileLocalphp php=php php$wsdlFilephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets a new local wsdl file
+     *
+     * @param string $wsdlFile
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setLocalWsdl($wsdlFile = null)
+    {
+        if (empty($wsdlFile)) {
+            require_once 'Zend/Service/DeveloperGarden/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Exception('_wsdlFileLocal not set for this service.');
+        }
+        $this->_wsdlFileLocal = $wsdlFile;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp anphp arrayphp withphp configuredphp optionsphp forphp thisphp client
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getClientOptionsphp(php)
-php php php php php{
-php php php php php php php php php$optionsphp php=php arrayphp(
-php php php php php php php php php php php php php'soapphp_versionphp'php php=php>php SOAPphp_php1php_php1php,
-php php php php php php php php php)php;
-php php php php php php php php ifphp php(php!emptyphp(php$thisphp-php>php_classMapphp)php)php php{
-php php php php php php php php php php php php php$optionsphp[php'classmapphp'php]php php=php php$thisphp-php>php_classMapphp;
-php php php php php php php php php}
-php php php php php php php php php$wsdlCachephp php=php Zendphp_Servicephp_DeveloperGardenphp_SecurityTokenServerphp_Cachephp:php:getWsdlCachephp(php)php;
-php php php php php php php php ifphp php(php$wsdlCachephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$optionsphp[php'cachephp_wsdlphp'php]php php=php php$wsdlCachephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$optionsphp;
-php php php php php}
+    /**
+     * returns an array with configured options for this client
+     *
+     * @return array
+     */
+    public function getClientOptions()
+    {
+        $options = array(
+            'soap_version' => SOAP_1_1,
+        );
+        if (!empty($this->_classMap)) {
+            $options['classmap'] = $this->_classMap;
+        }
+        $wsdlCache = Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::getWsdlCache();
+        if ($wsdlCache !== null) {
+            $options['cache_wsdl'] = $wsdlCache;
+        }
+        return $options;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp internalphp credentialphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php php php php php*php/
-php php php php publicphp functionphp getCredentialphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_credentialphp;
-php php php php php}
+    /**
+     * returns the internal credential object
+     *
+     * @return Zend_Service_DeveloperGarden_Credential
+     */
+    public function getCredential()
+    {
+        return $this->_credential;
+    }
 
-php php php php php/php*php*
-php php php php php php*php helperphp methodphp tophp createphp constphp arrays
-php php php php php php*php php@returnphp null
-php php php php php php*php/
-php php php php staticphp protectedphp functionphp php_buildConstArrayphp(php)
-php php php php php{
-php php php php php php php php php$rphp php=php newphp ReflectionClassphp(php_php_CLASSphp_php_php)php;
-php php php php php php php php foreachphp php(php$rphp-php>getConstantsphp(php)php asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php php$sphp php=php explodephp(php'php_php'php,php php$kphp,php php2php)php;
-php php php php php php php php php php php php ifphp php(php!issetphp(selfphp:php:php$php_constsphp[php$sphp[php0php]php]php)php)php php{
-php php php php php php php php php php php php php php php php selfphp:php:php$php_constsphp[php$sphp[php0php]php]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php selfphp:php:php$php_constsphp[php$sphp[php0php]php]php[php$vphp]php php=php php$kphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * helper method to create const arrays
+     * @return null
+     */
+    static protected function _buildConstArray()
+    {
+        $r = new ReflectionClass(__CLASS__);
+        foreach ($r->getConstants() as $k => $v) {
+            $s = explode('_', $k, 2);
+            if (!isset(self::$_consts[$s[0]])) {
+                self::$_consts[$s[0]] = array();
+            }
+            self::$_consts[$s[0]][$v] = $k;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp anphp arrayphp ofphp allphp availablephp environments
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php staticphp publicphp functionphp getParticipantActionsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(selfphp:php:php$php_constsphp)php)php php{
-php php php php php php php php php php php php selfphp:php:php_buildConstArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp selfphp:php:php$php_constsphp[php'PARTICIPANTphp'php]php;
-php php php php php}
+    /**
+     * returns an array of all available environments
+     *
+     * @return array
+     */
+    static public function getParticipantActions()
+    {
+        if (empty(self::$_consts)) {
+            self::_buildConstArray();
+        }
+        return self::$_consts['PARTICIPANT'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php checksphp ifphp thephp givenphp actionphp isphp valid
-php php php php php php*php otherwisephp itphp php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Exception
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$action
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php staticphp publicphp functionphp checkParticipantActionphp(php$actionphp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$actionphp,php selfphp:php:getParticipantActionsphp(php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Wrongphp Participantphp Actionphp php'php php.php php$actionphp php.php php'php suppliedphp.php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * checks if the given action is valid
+     * otherwise it @throws Zend_Service_DeveloperGarden_Exception
+     *
+     * @param int $action
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return void
+     */
+    static public function checkParticipantAction($action)
+    {
+        if (!array_key_exists($action, self::getParticipantActions())) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                'Wrong Participant Action ' . $action . ' supplied.'
+            );
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp anphp arrayphp ofphp allphp availablephp environments
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php staticphp publicphp functionphp getEnvironmentsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(selfphp:php:php$php_constsphp)php)php php{
-php php php php php php php php php php php php selfphp:php:php_buildConstArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp selfphp:php:php$php_constsphp[php'ENVphp'php]php;
-php php php php php}
+    /**
+     * returns an array of all available environments
+     *
+     * @return array
+     */
+    static public function getEnvironments()
+    {
+        if (empty(self::$_consts)) {
+            self::_buildConstArray();
+        }
+        return self::$_consts['ENV'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php checksphp ifphp thephp givenphp environemntphp isphp valid
-php php php php php php*php otherwisephp itphp php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$environment
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php staticphp publicphp functionphp checkEnvironmentphp(php$environmentphp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$environmentphp,php selfphp:php:getEnvironmentsphp(php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Wrongphp environmentphp php'php php.php php$environmentphp php.php php'php suppliedphp.php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * checks if the given environemnt is valid
+     * otherwise it @throws Zend_Service_DeveloperGarden_Client_Exception
+     *
+     * @param int $environment
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return void
+     */
+    static public function checkEnvironment($environment)
+    {
+        if (!array_key_exists($environment, self::getEnvironments())) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                'Wrong environment ' . $environment . ' supplied.'
+            );
+        }
+    }
+}

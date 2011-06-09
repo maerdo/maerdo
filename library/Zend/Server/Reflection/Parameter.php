@@ -1,161 +1,161 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Server
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php Parameterphp Reflection
-php php*
-php php*php Decoratesphp aphp ReflectionParameterphp tophp allowphp settingphp thephp parameterphp type
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Server
-php php*php php@subpackagephp Reflection
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php$Idphp:php Parameterphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Serverphp_Reflectionphp_Parameter
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp ReflectionParameter
-php php php php php php*php/
-php php php php protectedphp php$php_reflectionphp;
+/**
+ * Parameter Reflection
+ *
+ * Decorates a ReflectionParameter to allow setting the parameter type
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @subpackage Reflection
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version $Id: Parameter.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Server_Reflection_Parameter
+{
+    /**
+     * @var ReflectionParameter
+     */
+    protected $_reflection;
 
-php php php php php/php*php*
-php php php php php php*php Parameterphp position
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_positionphp;
+    /**
+     * Parameter position
+     * @var int
+     */
+    protected $_position;
 
-php php php php php/php*php*
-php php php php php php*php Parameterphp type
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_typephp;
+    /**
+     * Parameter type
+     * @var string
+     */
+    protected $_type;
 
-php php php php php/php*php*
-php php php php php php*php Parameterphp description
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_descriptionphp;
+    /**
+     * Parameter description
+     * @var string
+     */
+    protected $_description;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp ReflectionParameterphp php$r
-php php php php php php*php php@paramphp stringphp php$typephp Parameterphp type
-php php php php php php*php php@paramphp stringphp php$descriptionphp Parameterphp description
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(ReflectionParameterphp php$rphp,php php$typephp php=php php'mixedphp'php,php php$descriptionphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_reflectionphp php=php php$rphp;
-php php php php php php php php php$thisphp-php>setTypephp(php$typephp)php;
-php php php php php php php php php$thisphp-php>setDescriptionphp(php$descriptionphp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param ReflectionParameter $r
+     * @param string $type Parameter type
+     * @param string $description Parameter description
+     */
+    public function __construct(ReflectionParameter $r, $type = 'mixed', $description = '')
+    {
+        $this->_reflection = $r;
+        $this->setType($type);
+        $this->setDescription($description);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Proxyphp reflectionphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$method
-php php php php php php*php php@paramphp arrayphp php$args
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(methodphp_existsphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php)php php{
-php php php php php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_reflectionphp,php php$methodphp)php,php php$argsphp)php;
-php php php php php php php php php}
+    /**
+     * Proxy reflection calls
+     *
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (method_exists($this->_reflection, $method)) {
+            return call_user_func_array(array($this->_reflection, $method), $args);
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp methodphp'php)php;
-php php php php php}
+        require_once 'Zend/Server/Reflection/Exception.php';
+        throw new Zend_Server_Reflection_Exception('Invalid reflection method');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp parameterphp type
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTypephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_typephp;
-php php php php php}
+    /**
+     * Retrieve parameter type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp parameterphp type
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|nullphp php$type
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setTypephp(php$typephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$typephp)php php&php&php php(nullphp php!php=php=php php$typephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp parameterphp typephp'php)php;
-php php php php php php php php php}
+    /**
+     * Set parameter type
+     *
+     * @param string|null $type
+     * @return void
+     */
+    public function setType($type)
+    {
+        if (!is_string($type) && (null !== $type)) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception('Invalid parameter type');
+        }
 
-php php php php php php php php php$thisphp-php>php_typephp php=php php$typephp;
-php php php php php}
+        $this->_type = $type;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp parameterphp description
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
-php php php php php}
+    /**
+     * Retrieve parameter description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp parameterphp description
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|nullphp php$description
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setDescriptionphp(php$descriptionphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$descriptionphp)php php&php&php php(nullphp php!php=php=php php$descriptionphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Serverphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Serverphp_Reflectionphp_Exceptionphp(php'Invalidphp parameterphp descriptionphp'php)php;
-php php php php php php php php php}
+    /**
+     * Set parameter description
+     *
+     * @param string|null $description
+     * @return void
+     */
+    public function setDescription($description)
+    {
+        if (!is_string($description) && (null !== $description)) {
+            require_once 'Zend/Server/Reflection/Exception.php';
+            throw new Zend_Server_Reflection_Exception('Invalid parameter description');
+        }
 
-php php php php php php php php php$thisphp-php>php_descriptionphp php=php php$descriptionphp;
-php php php php php}
+        $this->_description = $description;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp parameterphp position
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$index
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setPositionphp(php$indexphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_positionphp php=php php(intphp)php php$indexphp;
-php php php php php}
+    /**
+     * Set parameter position
+     *
+     * @param int $index
+     * @return void
+     */
+    public function setPosition($index)
+    {
+        $this->_position = (int) $index;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp parameterphp position
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getPositionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_positionphp;
-php php php php php}
-php}
+    /**
+     * Return parameter position
+     *
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->_position;
+    }
+}

@@ -1,191 +1,191 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Simpy
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Watchlistphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Simpyphp_WatchlistFilterSet
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Simpyphp/WatchlistFilterSetphp.phpphp'php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Simpy
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Watchlist.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Simpy
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Simpyphp_Watchlist
-php{
-php php php php php/php*php*
-php php php php php php*php Identifierphp forphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_idphp;
+/**
+ * @see Zend_Service_Simpy_WatchlistFilterSet
+ */
+require_once 'Zend/Service/Simpy/WatchlistFilterSet.php';
 
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_namephp;
 
-php php php php php/php*php*
-php php php php php php*php Descriptionphp ofphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_descriptionphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Simpy
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Simpy_Watchlist
+{
+    /**
+     * Identifier for the watchlist
+     *
+     * @var int
+     */
+    protected $_id;
 
-php php php php php/php*php*
-php php php php php php*php Timestampphp forphp whenphp thephp watchlistphp wasphp added
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_addDatephp;
+    /**
+     * Name of the watchlist
+     *
+     * @var string
+     */
+    protected $_name;
 
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp newphp linksphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp int
-php php php php php php*php/
-php php php php protectedphp php$php_newLinksphp;
+    /**
+     * Description of the watchlist
+     *
+     * @var string
+     */
+    protected $_description;
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp usernamesphp forphp usersphp includedphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_usersphp;
+    /**
+     * Timestamp for when the watchlist was added
+     *
+     * @var string
+     */
+    protected $_addDate;
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp filtersphp includedphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Simpyphp_WatchlistFilterSet
-php php php php php php*php/
-php php php php protectedphp php$php_filtersphp;
+    /**
+     * Number of new links in the watchlist
+     *
+     * @var int
+     */
+    protected $_newLinks;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp tophp initializephp thephp objectphp withphp data
-php php php php php php*
-php php php php php php*php php@paramphp php DOMNodephp php$nodephp Individualphp php<watchlistphp>php nodephp fromphp aphp parsed
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php responsephp fromphp aphp GetWatchlistsphp orphp GetWatchlist
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php operation
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$nodephp)
-php php php php php{
-php php php php php php php php php$mapphp php=php&php php$nodephp-php>attributesphp;
+    /**
+     * List of usernames for users included in the watchlist
+     *
+     * @var array
+     */
+    protected $_users;
 
-php php php php php php php php php$thisphp-php>php_idphp php=php php$mapphp-php>getNamedItemphp(php'idphp'php)php-php>nodeValuephp;
-php php php php php php php php php$thisphp-php>php_namephp php=php php$mapphp-php>getNamedItemphp(php'namephp'php)php-php>nodeValuephp;
-php php php php php php php php php$thisphp-php>php_descriptionphp php=php php$mapphp-php>getNamedItemphp(php'descriptionphp'php)php-php>nodeValuephp;
-php php php php php php php php php$thisphp-php>php_addDatephp php=php php$mapphp-php>getNamedItemphp(php'addDatephp'php)php-php>nodeValuephp;
-php php php php php php php php php$thisphp-php>php_newLinksphp php=php php$mapphp-php>getNamedItemphp(php'newLinksphp'php)php-php>nodeValuephp;
+    /**
+     * List of filters included in the watchlist
+     *
+     * @var Zend_Service_Simpy_WatchlistFilterSet
+     */
+    protected $_filters;
 
-php php php php php php php php php$thisphp-php>php_usersphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_filtersphp php=php newphp Zendphp_Servicephp_Simpyphp_WatchlistFilterSetphp(php)php;
+    /**
+     * Constructor to initialize the object with data
+     *
+     * @param  DOMNode $node Individual <watchlist> node from a parsed
+     *                       response from a GetWatchlists or GetWatchlist
+     *                       operation
+     * @return void
+     */
+    public function __construct($node)
+    {
+        $map =& $node->attributes;
 
-php php php php php php php php php$childNodephp php=php php$nodephp-php>firstChildphp;
-php php php php php php php php whilephp php(php$childNodephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php$childNodephp-php>nodeNamephp php=php=php php'userphp'php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_usersphp[php]php php=php php$childNodephp-php>attributesphp-php>getNamedItemphp(php'usernamephp'php)php-php>nodeValuephp;
-php php php php php php php php php php php php php}php elseifphp php(php$childNodephp-php>nodeNamephp php=php=php php'filterphp'php)php php{
-php php php php php php php php php php php php php php php php php$filterphp php=php newphp Zendphp_Servicephp_Simpyphp_WatchlistFilterphp(php$childNodephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_filtersphp-php>addphp(php$filterphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$childNodephp php=php php$childNodephp-php>nextSiblingphp;
-php php php php php php php php php}
-php php php php php}
+        $this->_id = $map->getNamedItem('id')->nodeValue;
+        $this->_name = $map->getNamedItem('name')->nodeValue;
+        $this->_description = $map->getNamedItem('description')->nodeValue;
+        $this->_addDate = $map->getNamedItem('addDate')->nodeValue;
+        $this->_newLinks = $map->getNamedItem('newLinks')->nodeValue;
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp identifierphp forphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_idphp;
-php php php php php}
+        $this->_users = array();
+        $this->_filters = new Zend_Service_Simpy_WatchlistFilterSet();
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp namephp ofphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_namephp;
-php php php php php}
+        $childNode = $node->firstChild;
+        while ($childNode !== null) {
+            if ($childNode->nodeName == 'user') {
+                $this->_users[] = $childNode->attributes->getNamedItem('username')->nodeValue;
+            } elseif ($childNode->nodeName == 'filter') {
+                $filter = new Zend_Service_Simpy_WatchlistFilter($childNode);
+                $this->_filters->add($filter);
+            }
+            $childNode = $childNode->nextSibling;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp descriptionphp ofphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_descriptionphp;
-php php php php php}
+    /**
+     * Returns the identifier for the watchlist
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp timestampphp forphp whenphp thephp watchlistphp wasphp added
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getAddDatephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_addDatephp;
-php php php php php}
+    /**
+     * Returns the name of the watchlist
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_name;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp newphp linksphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getNewLinksphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_newLinksphp;
-php php php php php}
+    /**
+     * Returns the description of the watchlist
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp listphp ofphp usernamesphp forphp usersphp includedphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getUsersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_usersphp;
-php php php php php}
+    /**
+     * Returns a timestamp for when the watchlist was added
+     *
+     * @return string
+     */
+    public function getAddDate()
+    {
+        return $this->_addDate;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp listphp ofphp filtersphp includedphp inphp thephp watchlist
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_Simpyphp_WatchlistFilterSet
-php php php php php php*php/
-php php php php publicphp functionphp getFiltersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_filtersphp;
-php php php php php}
-php}
+    /**
+     * Returns the number of new links in the watchlist
+     *
+     * @return int
+     */
+    public function getNewLinks()
+    {
+        return $this->_newLinks;
+    }
+
+    /**
+     * Returns a list of usernames for users included in the watchlist
+     *
+     * @return array
+     */
+    public function getUsers()
+    {
+        return $this->_users;
+    }
+
+    /**
+     * Returns a list of filters included in the watchlist
+     *
+     * @return Zend_Service_Simpy_WatchlistFilterSet
+     */
+    public function getFilters()
+    {
+        return $this->_filters;
+    }
+}

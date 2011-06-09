@@ -1,14 +1,14 @@
-<php!DOCTYPEphp htmlphp PUBLICphp php"php-php/php/Wphp3Cphp/php/DTDphp XHTMLphp php1php.php0php Strictphp/php/ENphp"
-php php php php php"httpphp:php/php/wwwphp.wphp3php.orgphp/TRphp/xhtmlphp1php/DTDphp/xhtmlphp1php-strictphp.dtdphp"php>
-php<htmlphp xmlnsphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php1php9php9php9php/xhtmlphp"php>
-php php php php php<headphp>
-php php php php php php php php php<metaphp httpphp-equivphp=php"contentphp-typephp"php contentphp=php"textphp/htmlphp;php charsetphp=utfphp-php8php"php php/php>
-php php php php php php php php <php?phpphp echophp php$thisphp-php>headTitlephp(php)php;php?php>
-php php php php <php/headphp>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <?php echo $this->headTitle();?>
+    </head>
 
-php php php php php<bodyphp>
-php php php php php php php php php<divphp idphp=php"contentphp"php>php php php php php php php php php php php php php php 
-php php php php php php php php php php php php <php?phpphp echophp php$thisphp-php>layoutphp(php)php-php>contentphp;php?php>php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php 
-php php php php php php php php <php/divphp>
-php php php php <php/bodyphp>
-<php/htmlphp>
+    <body>
+        <div id="content">              
+            <?php echo $this->layout()->content;?>                                      
+        </div>
+    </body>
+</html>

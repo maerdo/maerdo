@@ -1,226 +1,226 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php VoiceCallphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: VoiceCall.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/ClientAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Client_ClientAbstract
+ */
+require_once 'Zend/Service/DeveloperGarden/Client/ClientAbstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_NewCall
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/VoiceButlerphp/NewCallphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/NewCall.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_NewCallSequenced
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/VoiceButlerphp/NewCallSequencedphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/NewCallSequenced.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_TearDownCall
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/VoiceButlerphp/TearDownCallphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/TearDownCall.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_CallStatus
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/VoiceButlerphp/CallStatusphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/CallStatus.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallResponse
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/NewCallResponsephp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallResponse
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/NewCallResponse.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallSequencedResponse
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/NewCallSequencedResponsephp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallSequencedResponse
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/NewCallSequencedResponse.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_TearDownCallResponse
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/TearDownCallResponsephp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_TearDownCallResponse
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/TearDownCallResponse.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusResponse
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/CallStatusResponsephp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/CallStatusResponse.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusphp2Response
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Responsephp/VoiceButlerphp/CallStatusphp2Responsephp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatus2Response
+ */
+require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/CallStatus2Response.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_VoiceCall
-php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php wsdlphp file
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_wsdlFilephp php=php php'httpsphp:php/php/gatewayphp.developerphp.telekomphp.comphp/pphp3gwphp-modphp-odgphp-voicebutlerphp/servicesphp/VoiceButlerServicephp?wsdlphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_VoiceCall
+    extends Zend_Service_DeveloperGarden_Client_ClientAbstract
+{
+    /**
+     * wsdl file
+     *
+     * @var string
+     */
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-voicebutler/services/VoiceButlerService?wsdl';
 
-php php php php php/php*php*
-php php php php php php*php wsdlphp filephp local
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_wsdlFileLocalphp php=php php'Wsdlphp/VoiceButlerServicephp.wsdlphp'php;
+    /**
+     * wsdl file local
+     *
+     * @var string
+     */
+    protected $_wsdlFileLocal = 'Wsdl/VoiceButlerService.wsdl';
 
-php php php php php/php*php*
-php php php php php php*php Responsephp,php Requestphp Classmapping
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*
-php php php php php php*php/
-php php php php protectedphp php$php_classMapphp php=php arrayphp(
-php php php php php php php php php'newCallResponsephp'php php php php php php php php php php php=php>php php'Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallResponsephp'php,
-php php php php php php php php php'newCallSequencedResponsephp'php php=php>php php'Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallSequencedResponsephp'php,
-php php php php php php php php php'tearDownCallResponsephp'php php php php php php=php>php php'Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_TearDownCallResponsephp'php,
-php php php php php php php php php'callStatusResponsephp'php php php php php php php php=php>php php'Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusResponsephp'php,
-php php php php php php php php php'callStatusphp2Responsephp'php php php php php php php=php>php php'Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusphp2Responsephp'
-php php php php php)php;
+    /**
+     * Response, Request Classmapping
+     *
+     * @var array
+     *
+     */
+    protected $_classMap = array(
+        'newCallResponse'          => 'Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallResponse',
+        'newCallSequencedResponse' => 'Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallSequencedResponse',
+        'tearDownCallResponse'     => 'Zend_Service_DeveloperGarden_Response_VoiceButler_TearDownCallResponse',
+        'callStatusResponse'       => 'Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse',
+        'callStatus2Response'      => 'Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatus2Response'
+    );
 
-php php php php php/php*php*
-php php php php php php*php initphp aphp newphp callphp withphp thephp givenphp params
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$aNumber
-php php php php php php*php php@paramphp stringphp php$bNumber
-php php php php php php*php php@paramphp integerphp php$expiration
-php php php php php php*php php@paramphp integerphp php$maxDuration
-php php php php php php*php php@paramphp integerphp php$account
-php php php php php php*php php@paramphp booleanphp php$privacyA
-php php php php php php*php php@paramphp booleanphp php$privacyB
-php php php php php php*php php@paramphp stringphp php$greeter
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallResponse
-php php php php php php*php/
-php php php php publicphp functionphp newCallphp(php$aNumberphp,php php$bNumberphp,php php$expirationphp,php php$maxDurationphp,
-php php php php php php php php php$accountphp php=php nullphp,php php$privacyAphp php=php nullphp,php php$privacyBphp php=php nullphp,php php$greeterphp php=php null
-php php php php php)php php{
-php php php php php php php php php$requestphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_NewCallphp(
-php php php php php php php php php php php php php php php php php$thisphp-php>getEnvironmentphp(php)
-php php php php php php php php php)php;
-php php php php php php php php php$requestphp-php>setANumberphp(php$aNumberphp)
-php php php php php php php php php php php php php php php php php-php>setBNumberphp(php$bNumberphp)
-php php php php php php php php php php php php php php php php php-php>setPrivacyAphp(php$privacyAphp)
-php php php php php php php php php php php php php php php php php-php>setPrivacyBphp(php$privacyBphp)
-php php php php php php php php php php php php php php php php php-php>setExpirationphp(php$expirationphp)
-php php php php php php php php php php php php php php php php php-php>setMaxDurationphp(php$maxDurationphp)
-php php php php php php php php php php php php php php php php php-php>setGreeterphp(php$greeterphp)
-php php php php php php php php php php php php php php php php php-php>setAccountphp(php$accountphp)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>newCallphp(arrayphp(
-php php php php php php php php php php php php php'requestphp'php php=php>php php$request
-php php php php php php php php php)php)php;
+    /**
+     * init a new call with the given params
+     *
+     * @param string $aNumber
+     * @param string $bNumber
+     * @param integer $expiration
+     * @param integer $maxDuration
+     * @param integer $account
+     * @param boolean $privacyA
+     * @param boolean $privacyB
+     * @param string $greeter
+     * @return Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallResponse
+     */
+    public function newCall($aNumber, $bNumber, $expiration, $maxDuration,
+        $account = null, $privacyA = null, $privacyB = null, $greeter = null
+    ) {
+        $request = new Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall(
+                $this->getEnvironment()
+        );
+        $request->setANumber($aNumber)
+                ->setBNumber($bNumber)
+                ->setPrivacyA($privacyA)
+                ->setPrivacyB($privacyB)
+                ->setExpiration($expiration)
+                ->setMaxDuration($maxDuration)
+                ->setGreeter($greeter)
+                ->setAccount($account);
+        $result = $this->getSoapClient()->newCall(array(
+            'request' => $request
+        ));
 
-php php php php php php php php returnphp php$resultphp-php>parsephp(php)php;
-php php php php php}
+        return $result->parse();
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php initphp aphp newphp callphp withphp thephp givenphp paramsphp butphp speciallyphp herephp,
-php php php php php php*php youphp canphp definephp aphp setphp ofphp numbersphp tophp bephp calledphp ifphp thephp firstphp number
-php php php php php php*php isntphp reachablephp php(iephp:php bNumberphp php=php php+php4php9php3php0php-php1php1php1php1php1php1php,php+php4php9php3php0php-php2php2php2php2php2php2php,php+php4php9php3php0php-php3php3php3php3php3php3php)
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@paramphp stringphp php$aNumber
-php php php php php php*php php@paramphp arrayphp php$bNumber
-php php php php php php*php php@paramphp integerphp php$expiration
-php php php php php php*php php@paramphp integerphp php$maxDuration
-php php php php php php*php php@paramphp integerphp php$maxWait
-php php php php php php*php php@paramphp integerphp php$account
-php php php php php php*php php@paramphp booleanphp php$privacyA
-php php php php php php*php php@paramphp booleanphp php$privacyB
-php php php php php php*php php@paramphp stringphp php$greeter
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_NewCallSequencedResponse
-php php php php php php*php/
-php php php php publicphp functionphp newCallSequencedphp(php$aNumberphp,php php$bNumberphp,php php$expirationphp,php php$maxDurationphp,
-php php php php php php php php php$maxWaitphp,php php$accountphp php=php nullphp,php php$privacyAphp php=php nullphp,php php$privacyBphp php=php nullphp,php php$greeterphp php=php null
-php php php php php)php php{
-php php php php php php php php php$requestphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_NewCallSequencedphp(
-php php php php php php php php php php php php php php php php php$thisphp-php>getEnvironmentphp(php)
-php php php php php php php php php)php;
-php php php php php php php php php$requestphp-php>setANumberphp(php$aNumberphp)
-php php php php php php php php php php php php php php php php php-php>setBNumberphp(php$bNumberphp)
-php php php php php php php php php php php php php php php php php-php>setPrivacyAphp(php$privacyAphp)
-php php php php php php php php php php php php php php php php php-php>setPrivacyBphp(php$privacyBphp)
-php php php php php php php php php php php php php php php php php-php>setExpirationphp(php$expirationphp)
-php php php php php php php php php php php php php php php php php-php>setMaxDurationphp(php$maxDurationphp)
-php php php php php php php php php php php php php php php php php-php>setMaxWaitphp(php$maxWaitphp)
-php php php php php php php php php php php php php php php php php-php>setGreeterphp(php$greeterphp)
-php php php php php php php php php php php php php php php php php-php>setAccountphp(php$accountphp)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>newCallSequencedphp(arrayphp(
-php php php php php php php php php php php php php'requestphp'php php=php>php php$request
-php php php php php php php php php)php)php;
+    /**
+     * init a new call with the given params but specially here,
+     * you can define a set of numbers to be called if the first number
+     * isnt reachable (ie: bNumber = +4930-111111,+4930-222222,+4930-333333)
+     *
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @param string $aNumber
+     * @param array $bNumber
+     * @param integer $expiration
+     * @param integer $maxDuration
+     * @param integer $maxWait
+     * @param integer $account
+     * @param boolean $privacyA
+     * @param boolean $privacyB
+     * @param string $greeter
+     * @return Zend_Service_DeveloperGarden_Response_VoiceButler_NewCallSequencedResponse
+     */
+    public function newCallSequenced($aNumber, $bNumber, $expiration, $maxDuration,
+        $maxWait, $account = null, $privacyA = null, $privacyB = null, $greeter = null
+    ) {
+        $request = new Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced(
+                $this->getEnvironment()
+        );
+        $request->setANumber($aNumber)
+                ->setBNumber($bNumber)
+                ->setPrivacyA($privacyA)
+                ->setPrivacyB($privacyB)
+                ->setExpiration($expiration)
+                ->setMaxDuration($maxDuration)
+                ->setMaxWait($maxWait)
+                ->setGreeter($greeter)
+                ->setAccount($account);
+        $result = $this->getSoapClient()->newCallSequenced(array(
+            'request' => $request
+        ));
 
-php php php php php php php php returnphp php$resultphp-php>parsephp(php)php;
-php php php php php}
+        return $result->parse();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Thisphp tearphp downphp thephp callphp withphp thephp givenphp sessionId
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$sessionId
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_TearDownCallResponse
-php php php php php php*php/
-php php php php publicphp functionphp tearDownCallphp(php$sessionIdphp)
-php php php php php{
-php php php php php php php php php$requestphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_TearDownCallphp(
-php php php php php php php php php php php php php$thisphp-php>getEnvironmentphp(php)php,
-php php php php php php php php php php php php php$sessionId
-php php php php php php php php php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>tearDownCallphp(arrayphp(
-php php php php php php php php php php php php php'requestphp'php php=php>php php$request
-php php php php php php php php php)php)php;
+    /**
+     * This tear down the call with the given sessionId
+     *
+     * @param string $sessionId
+     * @return Zend_Service_DeveloperGarden_Response_VoiceButler_TearDownCallResponse
+     */
+    public function tearDownCall($sessionId)
+    {
+        $request = new Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall(
+            $this->getEnvironment(),
+            $sessionId
+        );
+        $result = $this->getSoapClient()->tearDownCall(array(
+            'request' => $request
+        ));
 
-php php php php php php php php returnphp php$resultphp-php>parsephp(php)php;
-php php php php php}
+        return $result->parse();
+    }
 
-php php php php php/php*php*
-php php php php php php*php checksphp thephp callStatusphp andphp updatesphp thephp keepAlivephp ifphp provided
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$sessionId
-php php php php php php*php php@paramphp integerphp php$keepAlive
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Responsephp_VoiceButlerphp_CallStatusResponse
-php php php php php php*php/
-php php php php publicphp functionphp callStatusphp(php$sessionIdphp,php php$keepAlivephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$requestphp php=php newphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_VoiceButlerphp_CallStatusphp(
-php php php php php php php php php php php php php$thisphp-php>getEnvironmentphp(php)php,
-php php php php php php php php php php php php php$sessionIdphp,
-php php php php php php php php php php php php php$keepAlive
-php php php php php php php php php)php;
+    /**
+     * checks the callStatus and updates the keepAlive if provided
+     *
+     * @param string $sessionId
+     * @param integer $keepAlive
+     * @return Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
+     */
+    public function callStatus($sessionId, $keepAlive = null)
+    {
+        $request = new Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus(
+            $this->getEnvironment(),
+            $sessionId,
+            $keepAlive
+        );
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>callStatusphp2php(arrayphp(
-php php php php php php php php php php php php php'requestphp'php php=php>php php$request
-php php php php php php php php php)php)php;
+        $result = $this->getSoapClient()->callStatus2(array(
+            'request' => $request
+        ));
 
-php php php php php php php php returnphp php$resultphp-php>parsephp(php)php;
-php php php php php}
-php}
+        return $result->parse();
+    }
+}

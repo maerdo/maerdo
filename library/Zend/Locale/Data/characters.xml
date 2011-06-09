@@ -1,489 +1,489 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<supplementalDataphp>
-php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php9php php$php"php/php>
-php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php5php/php0php5php php2php3php:php1php5php:php5php7php php$php"php/php>
-php	php<charactersphp>
-php	php	php<characterphp-fallbackphp>
-php	php	php	php<characterphp valuephp php=php php"php©php"php>
-php	php	php	php	php<substitutephp>php(Cphp)<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php«php"php>
-php	php	php	php	php<substitutephp>php&ltphp;php&ltphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php­php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php®php"php>
-php	php	php	php	php<substitutephp>php(Rphp)<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php»php"php>
-php	php	php	php	php<substitutephp>php&gtphp;php&gtphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php¼php"php>
-php	php	php	php	php<substitutephp>php php1php/php4<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php½php"php>
-php	php	php	php	php<substitutephp>php php1php/php2<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php¾php"php>
-php	php	php	php	php<substitutephp>php php3php/php4<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"Æphp"php>
-php	php	php	php	php<substitutephp>AE<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"ßphp"php>
-php	php	php	php	php<substitutephp>ss<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"æphp"php>
-php	php	php	php	php<substitutephp>ae<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"ŉphp"php>
-php	php	php	php	php<substitutephp>php&aposphp;n<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"Œphp"php>
-php	php	php	php	php<substitutephp>OE<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"œphp"php>
-php	php	php	php	php<substitutephp>oe<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"Șphp"php>
-php	php	php	php	php<substitutephp>Ş<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"șphp"php>
-php	php	php	php	php<substitutephp>ş<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"Țphp"php>
-php	php	php	php	php<substitutephp>Ţ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"țphp"php>
-php	php	php	php	php<substitutephp>ţ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp=php"php־php"php>
-php	php	php	php	php<substitutephp>php‐<php/substitutephp>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp=php"php׳php"php>
-php	php	php	php	php<substitutephp>php&aposphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp=php"php״php"php>
-php	php	php	php	php<substitutephp>php&quotphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php٫php"php>
-php	php	php	php	php<substitutephp>php,<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php٬php"php>
-php	php	php	php	php<substitutephp>php&aposphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‐php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‑php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‒php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php–php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php—php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php―php"php>
-php	php	php	php	php<substitutephp>php—<php/substitutephp>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‘php"php>
-php	php	php	php	php<substitutephp>php&aposphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php’php"php>
-php	php	php	php	php<substitutephp>php&aposphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‚php"php>
-php	php	php	php	php<substitutephp>php,<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‛php"php>
-php	php	php	php	php<substitutephp>php&aposphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php“php"php>
-php	php	php	php	php<substitutephp>php&quotphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php”php"php>
-php	php	php	php	php<substitutephp>php&quotphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php„php"php>
-php	php	php	php	php<substitutephp>php,php,<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‟php"php>
-php	php	php	php	php<substitutephp>php&quotphp;<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php•php"php>
-php	php	php	php	php<substitutephp>php·<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php‧php"php>
-php	php	php	php	php<substitutephp>php·<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⁄php"php>
-php	php	php	php	php<substitutephp>php/<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₠php"php>
-php	php	php	php	php<substitutephp>CE<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₡php"php>
-php	php	php	php	php<substitutephp>CRC<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₵php"php>
-php	php	php	php	php<substitutephp>php¢<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₢php"php>
-php	php	php	php	php<substitutephp>Cr<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₣php"php>
-php	php	php	php	php<substitutephp>Frphp.<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₤php"php>
-php	php	php	php	php<substitutephp>Lphp.<php/substitutephp>
-php	php	php	php	php<substitutephp>php£<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₦php"php>
-php	php	php	php	php<substitutephp>NGN<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₧php"php>
-php	php	php	php	php<substitutephp>Pts<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₩php"php>
-php	php	php	php	php<substitutephp>KRW<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₪php"php>
-php	php	php	php	php<substitutephp>phpשphpח<php/substitutephp>
-php	php	php	php	php<substitutephp>ILS<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₫php"php>
-php	php	php	php	php<substitutephp>đ<php/substitutephp>
-php	php	php	php	php<substitutephp>VND<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php€php"php>
-php	php	php	php	php<substitutephp>EUR<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₭php"php>
-php	php	php	php	php<substitutephp>LAK<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₮php"php>
-php	php	php	php	php<substitutephp>MNT<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₯php"php>
-php	php	php	php	php<substitutephp>GRD<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₱php"php>
-php	php	php	php	php<substitutephp>PHP<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₲php"php>
-php	php	php	php	php<substitutephp>PYG<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php₵php"php>
-php	php	php	php	php<substitutephp>phpȻ<php/substitutephp>
-php	php	php	php	php<substitutephp>GHS<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php℞php"php>
-php	php	php	php	php<substitutephp>Rx<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅓php"php>
-php	php	php	php	php<substitutephp>php php1php/php3<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅔php"php>
-php	php	php	php	php<substitutephp>php php2php/php3<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅕php"php>
-php	php	php	php	php<substitutephp>php php1php/php5<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅖php"php>
-php	php	php	php	php<substitutephp>php php2php/php5<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅗php"php>
-php	php	php	php	php<substitutephp>php php3php/php5<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅘php"php>
-php	php	php	php	php<substitutephp>php php4php/php5<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅙php"php>
-php	php	php	php	php<substitutephp>php php1php/php6<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅚php"php>
-php	php	php	php	php<substitutephp>php php5php/php6<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅛php"php>
-php	php	php	php	php<substitutephp>php php1php/php8<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅜php"php>
-php	php	php	php	php<substitutephp>php php3php/php8<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅝php"php>
-php	php	php	php	php<substitutephp>php php5php/php8<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅞php"php>
-php	php	php	php	php<substitutephp>php php7php/php8<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php⅟php"php>
-php	php	php	php	php<substitutephp>php php1php/<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∏php"php>
-php	php	php	php	php<substitutephp>phpΠ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∑php"php>
-php	php	php	php	php<substitutephp>phpΣ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php−php"php>
-php	php	php	php	php<substitutephp>php-<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∕php"php>
-php	php	php	php	php<substitutephp>php/<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∖php"php>
-php	php	php	php	php<substitutephp>php\<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∣php"php>
-php	php	php	php	php<substitutephp>php|<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php∥php"php>
-php	php	php	php	php<substitutephp>php‖<php/substitutephp>
-php	php	php	php	php<substitutephp>php|php|<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php　php"php>
-php	php	php	php	php<substitutephp>php php <php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㍸php"php>
-php	php	php	php	php<substitutephp>dmphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㍹php"php>
-php	php	php	php	php<substitutephp>dmphp³<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎟php"php>
-php	php	php	php	php<substitutephp>mmphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎠php"php>
-php	php	php	php	php<substitutephp>cmphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎡php"php>
-php	php	php	php	php<substitutephp>mphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎢php"php>
-php	php	php	php	php<substitutephp>kmphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎣php"php>
-php	php	php	php	php<substitutephp>mmphp³<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎤php"php>
-php	php	php	php	php<substitutephp>cmphp³<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎥php"php>
-php	php	php	php	php<substitutephp>mphp³<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎦php"php>
-php	php	php	php	php<substitutephp>kmphp³<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎧php"php>
-php	php	php	php	php<substitutephp>mphp/s<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎨php"php>
-php	php	php	php	php<substitutephp>mphp∕sphp²<php/substitutephp>
-php	php	php	php	php<substitutephp>mphp/sphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎮php"php>
-php	php	php	php	php<substitutephp>radphp/s<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㎯php"php>
-php	php	php	php	php<substitutephp>radphp∕sphp²<php/substitutephp>
-php	php	php	php	php<substitutephp>radphp/sphp²<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㏄php"php>
-php	php	php	php	php<substitutephp>CC<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㏆php"php>
-php	php	php	php	php<substitutephp>Cphp/kg<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㏗php"php>
-php	php	php	php	php<substitutephp>pH<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㏞php"php>
-php	php	php	php	php<substitutephp>Vphp/m<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php㏟php"php>
-php	php	php	php	php<substitutephp>Aphp/m<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﬅphp"php>
-php	php	php	php	php<substitutephp>ſt<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php｟php"php>
-php	php	php	php	php<substitutephp>php(php(<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php｠php"php>
-php	php	php	php	php<substitutephp>php)php)<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾞphp"php>
-php	php	php	php	php<substitutephp>php゛<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾟphp"php>
-php	php	php	php	php<substitutephp>php゜<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾠphp"php>
-php	php	php	php	php<substitutephp>phpㅤ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾡphp"php>
-php	php	php	php	php<substitutephp>phpㄱ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾢphp"php>
-php	php	php	php	php<substitutephp>phpㄲ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾣphp"php>
-php	php	php	php	php<substitutephp>phpㄳ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾤphp"php>
-php	php	php	php	php<substitutephp>phpㄴ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾥphp"php>
-php	php	php	php	php<substitutephp>phpㄵ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾦphp"php>
-php	php	php	php	php<substitutephp>phpㄶ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾧphp"php>
-php	php	php	php	php<substitutephp>phpㄷ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾨphp"php>
-php	php	php	php	php<substitutephp>phpㄸ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾩphp"php>
-php	php	php	php	php<substitutephp>phpㄹ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾪphp"php>
-php	php	php	php	php<substitutephp>phpㄺ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾫphp"php>
-php	php	php	php	php<substitutephp>phpㄻ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾬphp"php>
-php	php	php	php	php<substitutephp>phpㄼ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾭphp"php>
-php	php	php	php	php<substitutephp>phpㄽ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾮphp"php>
-php	php	php	php	php<substitutephp>phpㄾ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾯphp"php>
-php	php	php	php	php<substitutephp>phpㄿ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾰphp"php>
-php	php	php	php	php<substitutephp>phpㅀ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾱphp"php>
-php	php	php	php	php<substitutephp>phpㅁ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾲphp"php>
-php	php	php	php	php<substitutephp>phpㅂ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾳphp"php>
-php	php	php	php	php<substitutephp>phpㅃ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾴphp"php>
-php	php	php	php	php<substitutephp>phpㅄ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾵphp"php>
-php	php	php	php	php<substitutephp>phpㅅ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾶphp"php>
-php	php	php	php	php<substitutephp>phpㅆ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾷphp"php>
-php	php	php	php	php<substitutephp>phpㅇ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾸphp"php>
-php	php	php	php	php<substitutephp>phpㅈ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾹphp"php>
-php	php	php	php	php<substitutephp>phpㅉ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾺphp"php>
-php	php	php	php	php<substitutephp>phpㅊ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾻphp"php>
-php	php	php	php	php<substitutephp>phpㅋ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾼphp"php>
-php	php	php	php	php<substitutephp>phpㅌ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾽphp"php>
-php	php	php	php	php<substitutephp>phpㅍ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpﾾphp"php>
-php	php	php	php	php<substitutephp>phpㅎ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￂphp"php>
-php	php	php	php	php<substitutephp>phpㅏ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￃphp"php>
-php	php	php	php	php<substitutephp>phpㅐ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￄphp"php>
-php	php	php	php	php<substitutephp>phpㅑ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￅphp"php>
-php	php	php	php	php<substitutephp>phpㅒ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￆphp"php>
-php	php	php	php	php<substitutephp>phpㅓ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￇphp"php>
-php	php	php	php	php<substitutephp>phpㅔ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￊphp"php>
-php	php	php	php	php<substitutephp>phpㅕ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￋphp"php>
-php	php	php	php	php<substitutephp>phpㅖ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￌphp"php>
-php	php	php	php	php<substitutephp>phpㅗ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￍphp"php>
-php	php	php	php	php<substitutephp>phpㅘ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￎphp"php>
-php	php	php	php	php<substitutephp>phpㅙ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￏphp"php>
-php	php	php	php	php<substitutephp>phpㅚ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￒphp"php>
-php	php	php	php	php<substitutephp>phpㅛ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￓphp"php>
-php	php	php	php	php<substitutephp>phpㅜ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￔphp"php>
-php	php	php	php	php<substitutephp>phpㅝ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￕphp"php>
-php	php	php	php	php<substitutephp>phpㅞ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￖphp"php>
-php	php	php	php	php<substitutephp>phpㅟ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￗphp"php>
-php	php	php	php	php<substitutephp>phpㅠ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￚphp"php>
-php	php	php	php	php<substitutephp>phpㅡ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￛphp"php>
-php	php	php	php	php<substitutephp>phpㅢ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"phpￜphp"php>
-php	php	php	php	php<substitutephp>phpㅣ<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	php	php<characterphp valuephp php=php php"php￣php"php>
-php	php	php	php	php<substitutephp>php¯<php/substitutephp>
-php	php	php	<php/characterphp>
-php	php	<php/characterphp-fallbackphp>
-php	<php/charactersphp>
-<php/supplementalDataphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<supplementalData>
+	<version number="$Revision: 1.19 $"/>
+	<generation date="$Date: 2009/05/05 23:15:57 $"/>
+	<characters>
+		<character-fallback>
+			<character value = "©">
+				<substitute>(C)</substitute>
+			</character>
+			<character value = "«">
+				<substitute>&lt;&lt;</substitute>
+			</character>
+			<character value = "­">
+				<substitute>-</substitute>
+			</character>
+			<character value = "®">
+				<substitute>(R)</substitute>
+			</character>
+			<character value = "»">
+				<substitute>&gt;&gt;</substitute>
+			</character>
+			<character value = "¼">
+				<substitute> 1/4</substitute>
+			</character>
+			<character value = "½">
+				<substitute> 1/2</substitute>
+			</character>
+			<character value = "¾">
+				<substitute> 3/4</substitute>
+			</character>
+			<character value = "Æ">
+				<substitute>AE</substitute>
+			</character>
+			<character value = "ß">
+				<substitute>ss</substitute>
+			</character>
+			<character value = "æ">
+				<substitute>ae</substitute>
+			</character>
+			<character value = "ŉ">
+				<substitute>&apos;n</substitute>
+			</character>
+			<character value = "Œ">
+				<substitute>OE</substitute>
+			</character>
+			<character value = "œ">
+				<substitute>oe</substitute>
+			</character>
+			<character value = "Ș">
+				<substitute>Ş</substitute>
+			</character>
+			<character value = "ș">
+				<substitute>ş</substitute>
+			</character>
+			<character value = "Ț">
+				<substitute>Ţ</substitute>
+			</character>
+			<character value = "ț">
+				<substitute>ţ</substitute>
+			</character>
+			<character value="־">
+				<substitute>‐</substitute>
+				<substitute>-</substitute>
+			</character>
+			<character value="׳">
+				<substitute>&apos;</substitute>
+			</character>
+			<character value="״">
+				<substitute>&quot;</substitute>
+			</character>
+			<character value = "٫">
+				<substitute>,</substitute>
+			</character>
+			<character value = "٬">
+				<substitute>&apos;</substitute>
+			</character>
+			<character value = "‐">
+				<substitute>-</substitute>
+			</character>
+			<character value = "‑">
+				<substitute>-</substitute>
+			</character>
+			<character value = "‒">
+				<substitute>-</substitute>
+			</character>
+			<character value = "–">
+				<substitute>-</substitute>
+			</character>
+			<character value = "—">
+				<substitute>-</substitute>
+			</character>
+			<character value = "―">
+				<substitute>—</substitute>
+				<substitute>-</substitute>
+			</character>
+			<character value = "‘">
+				<substitute>&apos;</substitute>
+			</character>
+			<character value = "’">
+				<substitute>&apos;</substitute>
+			</character>
+			<character value = "‚">
+				<substitute>,</substitute>
+			</character>
+			<character value = "‛">
+				<substitute>&apos;</substitute>
+			</character>
+			<character value = "“">
+				<substitute>&quot;</substitute>
+			</character>
+			<character value = "”">
+				<substitute>&quot;</substitute>
+			</character>
+			<character value = "„">
+				<substitute>,,</substitute>
+			</character>
+			<character value = "‟">
+				<substitute>&quot;</substitute>
+			</character>
+			<character value = "•">
+				<substitute>·</substitute>
+			</character>
+			<character value = "‧">
+				<substitute>·</substitute>
+			</character>
+			<character value = "⁄">
+				<substitute>/</substitute>
+			</character>
+			<character value = "₠">
+				<substitute>CE</substitute>
+			</character>
+			<character value = "₡">
+				<substitute>CRC</substitute>
+			</character>
+			<character value = "₵">
+				<substitute>¢</substitute>
+			</character>
+			<character value = "₢">
+				<substitute>Cr</substitute>
+			</character>
+			<character value = "₣">
+				<substitute>Fr.</substitute>
+			</character>
+			<character value = "₤">
+				<substitute>L.</substitute>
+				<substitute>£</substitute>
+			</character>
+			<character value = "₦">
+				<substitute>NGN</substitute>
+			</character>
+			<character value = "₧">
+				<substitute>Pts</substitute>
+			</character>
+			<character value = "₩">
+				<substitute>KRW</substitute>
+			</character>
+			<character value = "₪">
+				<substitute>שח</substitute>
+				<substitute>ILS</substitute>
+			</character>
+			<character value = "₫">
+				<substitute>đ</substitute>
+				<substitute>VND</substitute>
+			</character>
+			<character value = "€">
+				<substitute>EUR</substitute>
+			</character>
+			<character value = "₭">
+				<substitute>LAK</substitute>
+			</character>
+			<character value = "₮">
+				<substitute>MNT</substitute>
+			</character>
+			<character value = "₯">
+				<substitute>GRD</substitute>
+			</character>
+			<character value = "₱">
+				<substitute>PHP</substitute>
+			</character>
+			<character value = "₲">
+				<substitute>PYG</substitute>
+			</character>
+			<character value = "₵">
+				<substitute>Ȼ</substitute>
+				<substitute>GHS</substitute>
+			</character>
+			<character value = "℞">
+				<substitute>Rx</substitute>
+			</character>
+			<character value = "⅓">
+				<substitute> 1/3</substitute>
+			</character>
+			<character value = "⅔">
+				<substitute> 2/3</substitute>
+			</character>
+			<character value = "⅕">
+				<substitute> 1/5</substitute>
+			</character>
+			<character value = "⅖">
+				<substitute> 2/5</substitute>
+			</character>
+			<character value = "⅗">
+				<substitute> 3/5</substitute>
+			</character>
+			<character value = "⅘">
+				<substitute> 4/5</substitute>
+			</character>
+			<character value = "⅙">
+				<substitute> 1/6</substitute>
+			</character>
+			<character value = "⅚">
+				<substitute> 5/6</substitute>
+			</character>
+			<character value = "⅛">
+				<substitute> 1/8</substitute>
+			</character>
+			<character value = "⅜">
+				<substitute> 3/8</substitute>
+			</character>
+			<character value = "⅝">
+				<substitute> 5/8</substitute>
+			</character>
+			<character value = "⅞">
+				<substitute> 7/8</substitute>
+			</character>
+			<character value = "⅟">
+				<substitute> 1/</substitute>
+			</character>
+			<character value = "∏">
+				<substitute>Π</substitute>
+			</character>
+			<character value = "∑">
+				<substitute>Σ</substitute>
+			</character>
+			<character value = "−">
+				<substitute>-</substitute>
+			</character>
+			<character value = "∕">
+				<substitute>/</substitute>
+			</character>
+			<character value = "∖">
+				<substitute>\</substitute>
+			</character>
+			<character value = "∣">
+				<substitute>|</substitute>
+			</character>
+			<character value = "∥">
+				<substitute>‖</substitute>
+				<substitute>||</substitute>
+			</character>
+			<character value = "　">
+				<substitute>  </substitute>
+			</character>
+			<character value = "㍸">
+				<substitute>dm²</substitute>
+			</character>
+			<character value = "㍹">
+				<substitute>dm³</substitute>
+			</character>
+			<character value = "㎟">
+				<substitute>mm²</substitute>
+			</character>
+			<character value = "㎠">
+				<substitute>cm²</substitute>
+			</character>
+			<character value = "㎡">
+				<substitute>m²</substitute>
+			</character>
+			<character value = "㎢">
+				<substitute>km²</substitute>
+			</character>
+			<character value = "㎣">
+				<substitute>mm³</substitute>
+			</character>
+			<character value = "㎤">
+				<substitute>cm³</substitute>
+			</character>
+			<character value = "㎥">
+				<substitute>m³</substitute>
+			</character>
+			<character value = "㎦">
+				<substitute>km³</substitute>
+			</character>
+			<character value = "㎧">
+				<substitute>m/s</substitute>
+			</character>
+			<character value = "㎨">
+				<substitute>m∕s²</substitute>
+				<substitute>m/s²</substitute>
+			</character>
+			<character value = "㎮">
+				<substitute>rad/s</substitute>
+			</character>
+			<character value = "㎯">
+				<substitute>rad∕s²</substitute>
+				<substitute>rad/s²</substitute>
+			</character>
+			<character value = "㏄">
+				<substitute>CC</substitute>
+			</character>
+			<character value = "㏆">
+				<substitute>C/kg</substitute>
+			</character>
+			<character value = "㏗">
+				<substitute>pH</substitute>
+			</character>
+			<character value = "㏞">
+				<substitute>V/m</substitute>
+			</character>
+			<character value = "㏟">
+				<substitute>A/m</substitute>
+			</character>
+			<character value = "ﬅ">
+				<substitute>ſt</substitute>
+			</character>
+			<character value = "｟">
+				<substitute>((</substitute>
+			</character>
+			<character value = "｠">
+				<substitute>))</substitute>
+			</character>
+			<character value = "ﾞ">
+				<substitute>゛</substitute>
+			</character>
+			<character value = "ﾟ">
+				<substitute>゜</substitute>
+			</character>
+			<character value = "ﾠ">
+				<substitute>ㅤ</substitute>
+			</character>
+			<character value = "ﾡ">
+				<substitute>ㄱ</substitute>
+			</character>
+			<character value = "ﾢ">
+				<substitute>ㄲ</substitute>
+			</character>
+			<character value = "ﾣ">
+				<substitute>ㄳ</substitute>
+			</character>
+			<character value = "ﾤ">
+				<substitute>ㄴ</substitute>
+			</character>
+			<character value = "ﾥ">
+				<substitute>ㄵ</substitute>
+			</character>
+			<character value = "ﾦ">
+				<substitute>ㄶ</substitute>
+			</character>
+			<character value = "ﾧ">
+				<substitute>ㄷ</substitute>
+			</character>
+			<character value = "ﾨ">
+				<substitute>ㄸ</substitute>
+			</character>
+			<character value = "ﾩ">
+				<substitute>ㄹ</substitute>
+			</character>
+			<character value = "ﾪ">
+				<substitute>ㄺ</substitute>
+			</character>
+			<character value = "ﾫ">
+				<substitute>ㄻ</substitute>
+			</character>
+			<character value = "ﾬ">
+				<substitute>ㄼ</substitute>
+			</character>
+			<character value = "ﾭ">
+				<substitute>ㄽ</substitute>
+			</character>
+			<character value = "ﾮ">
+				<substitute>ㄾ</substitute>
+			</character>
+			<character value = "ﾯ">
+				<substitute>ㄿ</substitute>
+			</character>
+			<character value = "ﾰ">
+				<substitute>ㅀ</substitute>
+			</character>
+			<character value = "ﾱ">
+				<substitute>ㅁ</substitute>
+			</character>
+			<character value = "ﾲ">
+				<substitute>ㅂ</substitute>
+			</character>
+			<character value = "ﾳ">
+				<substitute>ㅃ</substitute>
+			</character>
+			<character value = "ﾴ">
+				<substitute>ㅄ</substitute>
+			</character>
+			<character value = "ﾵ">
+				<substitute>ㅅ</substitute>
+			</character>
+			<character value = "ﾶ">
+				<substitute>ㅆ</substitute>
+			</character>
+			<character value = "ﾷ">
+				<substitute>ㅇ</substitute>
+			</character>
+			<character value = "ﾸ">
+				<substitute>ㅈ</substitute>
+			</character>
+			<character value = "ﾹ">
+				<substitute>ㅉ</substitute>
+			</character>
+			<character value = "ﾺ">
+				<substitute>ㅊ</substitute>
+			</character>
+			<character value = "ﾻ">
+				<substitute>ㅋ</substitute>
+			</character>
+			<character value = "ﾼ">
+				<substitute>ㅌ</substitute>
+			</character>
+			<character value = "ﾽ">
+				<substitute>ㅍ</substitute>
+			</character>
+			<character value = "ﾾ">
+				<substitute>ㅎ</substitute>
+			</character>
+			<character value = "ￂ">
+				<substitute>ㅏ</substitute>
+			</character>
+			<character value = "ￃ">
+				<substitute>ㅐ</substitute>
+			</character>
+			<character value = "ￄ">
+				<substitute>ㅑ</substitute>
+			</character>
+			<character value = "ￅ">
+				<substitute>ㅒ</substitute>
+			</character>
+			<character value = "ￆ">
+				<substitute>ㅓ</substitute>
+			</character>
+			<character value = "ￇ">
+				<substitute>ㅔ</substitute>
+			</character>
+			<character value = "ￊ">
+				<substitute>ㅕ</substitute>
+			</character>
+			<character value = "ￋ">
+				<substitute>ㅖ</substitute>
+			</character>
+			<character value = "ￌ">
+				<substitute>ㅗ</substitute>
+			</character>
+			<character value = "ￍ">
+				<substitute>ㅘ</substitute>
+			</character>
+			<character value = "ￎ">
+				<substitute>ㅙ</substitute>
+			</character>
+			<character value = "ￏ">
+				<substitute>ㅚ</substitute>
+			</character>
+			<character value = "ￒ">
+				<substitute>ㅛ</substitute>
+			</character>
+			<character value = "ￓ">
+				<substitute>ㅜ</substitute>
+			</character>
+			<character value = "ￔ">
+				<substitute>ㅝ</substitute>
+			</character>
+			<character value = "ￕ">
+				<substitute>ㅞ</substitute>
+			</character>
+			<character value = "ￖ">
+				<substitute>ㅟ</substitute>
+			</character>
+			<character value = "ￗ">
+				<substitute>ㅠ</substitute>
+			</character>
+			<character value = "ￚ">
+				<substitute>ㅡ</substitute>
+			</character>
+			<character value = "ￛ">
+				<substitute>ㅢ</substitute>
+			</character>
+			<character value = "ￜ">
+				<substitute>ㅣ</substitute>
+			</character>
+			<character value = "￣">
+				<substitute>¯</substitute>
+			</character>
+		</character-fallback>
+	</characters>
+</supplementalData>

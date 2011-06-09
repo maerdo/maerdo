@@ -1,336 +1,336 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Cmapphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Cmap.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php Abstractphp helperphp classphp forphp php{php@linkphp Zendphp_Pdfphp_Resourcephp_Fontphp}php whichphp managesphp font
-php php*php characterphp mapsphp.
-php php*
-php php*php Definesphp thephp publicphp interfacephp forphp concretephp subclassesphp whichphp arephp responsible
-php php*php forphp mappingphp Unicodephp charactersphp tophp thephp fontphp'sphp glyphphp numbersphp.php Alsophp provides
-php php*php sharedphp utilityphp methodsphp.
-php php*
-php php*php Cmapphp objectsphp shouldphp ordinarilyphp bephp obtainedphp throughphp thephp factoryphp method
-php php*php php{php@linkphp cmapWithTypeDataphp(php)php}php.
-php php*
-php php*php Thephp supportedphp characterphp mapphp typesphp arephp thosephp foundphp inphp thephp OpenTypephp specphp.php For
-php php*php additionalphp detailphp onphp thephp internalphp binaryphp formatphp ofphp thesephp tablesphp,php seephp:
-php php*php php<ulphp>
-php php*php php php<liphp>php{php@linkphp httpphp:php/php/developerphp.applephp.comphp/textfontsphp/TTRefManphp/RMphp0php6php/Chapphp6cmapphp.htmlphp}
-php php*php php php<liphp>php{php@linkphp httpphp:php/php/wwwphp.microsoftphp.comphp/OpenTypephp/OTSpecphp/cmapphp.htmphp}
-php php*php php php<liphp>php{php@linkphp httpphp:php/php/partnersphp.adobephp.comphp/publicphp/developerphp/opentypephp/indexphp_cmapphp.htmlphp}
-php php*php <php/ulphp>
-php php*
-php php*php php@todophp Writephp codephp forphp Zendphp_Pdfphp_FontCmapphp_HighByteMappingphp classphp.
-php php*php php@todophp Writephp codephp forphp Zendphp_Pdfphp_FontCmapphp_MixedCoveragephp classphp.
-php php*php php@todophp Writephp codephp forphp Zendphp_Pdfphp_FontCmapphp_TrimmedArrayphp classphp.
-php php*php php@todophp Writephp codephp forphp Zendphp_Pdfphp_FontCmapphp_SegmentedCoveragephp classphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Pdfphp_Cmap
-php{
-php php php/php*php*php*php*php Classphp Constantsphp php*php*php*php*php/
+/**
+ * Abstract helper class for {@link Zend_Pdf_Resource_Font} which manages font
+ * character maps.
+ *
+ * Defines the public interface for concrete subclasses which are responsible
+ * for mapping Unicode characters to the font's glyph numbers. Also provides
+ * shared utility methods.
+ *
+ * Cmap objects should ordinarily be obtained through the factory method
+ * {@link cmapWithTypeData()}.
+ *
+ * The supported character map types are those found in the OpenType spec. For
+ * additional detail on the internal binary format of these tables, see:
+ * <ul>
+ *  <li>{@link http://developer.apple.com/textfonts/TTRefMan/RM06/Chap6cmap.html}
+ *  <li>{@link http://www.microsoft.com/OpenType/OTSpec/cmap.htm}
+ *  <li>{@link http://partners.adobe.com/public/developer/opentype/index_cmap.html}
+ * </ul>
+ *
+ * @todo Write code for Zend_Pdf_FontCmap_HighByteMapping class.
+ * @todo Write code for Zend_Pdf_FontCmap_MixedCoverage class.
+ * @todo Write code for Zend_Pdf_FontCmap_TrimmedArray class.
+ * @todo Write code for Zend_Pdf_FontCmap_SegmentedCoverage class.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Pdf_Cmap
+{
+  /**** Class Constants ****/
 
 
-php php php/php*php Cmapphp Tablephp Typesphp php*php/
+  /* Cmap Table Types */
 
-php php php php php/php*php*
-php php php php php php*php Bytephp Encodingphp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_BYTEphp_ENCODINGphp php=php php0xphp0php0php;
+    /**
+     * Byte Encoding character map table type.
+     */
+    const TYPE_BYTE_ENCODING = 0x00;
 
-php php php php php/php*php*
-php php php php php php*php Highphp Bytephp Mappingphp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_HIGHphp_BYTEphp_MAPPINGphp php=php php0xphp0php2php;
+    /**
+     * High Byte Mapping character map table type.
+     */
+    const TYPE_HIGH_BYTE_MAPPING = 0x02;
 
-php php php php php/php*php*
-php php php php php php*php Segmentphp Valuephp tophp Deltaphp Mappingphp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_SEGMENTphp_TOphp_DELTAphp php=php php0xphp0php4php;
+    /**
+     * Segment Value to Delta Mapping character map table type.
+     */
+    const TYPE_SEGMENT_TO_DELTA = 0x04;
 
-php php php php php/php*php*
-php php php php php php*php Trimmedphp Tablephp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_TRIMMEDphp_TABLEphp php=php php0xphp0php6php;
+    /**
+     * Trimmed Table character map table type.
+     */
+    const TYPE_TRIMMED_TABLE = 0x06;
 
-php php php php php/php*php*
-php php php php php php*php Mixedphp Coveragephp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_MIXEDphp_COVERAGEphp php=php php0xphp0php8php;
+    /**
+     * Mixed Coverage character map table type.
+     */
+    const TYPE_MIXED_COVERAGE = 0x08;
 
-php php php php php/php*php*
-php php php php php php*php Trimmedphp Arrayphp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_TRIMMEDphp_ARRAYphp php=php php0xphp0aphp;
+    /**
+     * Trimmed Array character map table type.
+     */
+    const TYPE_TRIMMED_ARRAY = 0x0a;
 
-php php php php php/php*php*
-php php php php php php*php Segmentedphp Coveragephp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_SEGMENTEDphp_COVERAGEphp php=php php0xphp0cphp;
+    /**
+     * Segmented Coverage character map table type.
+     */
+    const TYPE_SEGMENTED_COVERAGE = 0x0c;
 
-php php php php php/php*php*
-php php php php php php*php Staticphp Bytephp Encodingphp characterphp mapphp tablephp typephp.php Variantphp of
-php php php php php php*php php{php@linkphp TYPEphp_BYTEENCODINGphp}php.
-php php php php php php*php/
-php php php php constphp TYPEphp_BYTEphp_ENCODINGphp_STATICphp php=php php0xfphp1php;
+    /**
+     * Static Byte Encoding character map table type. Variant of
+     * {@link TYPE_BYTEENCODING}.
+     */
+    const TYPE_BYTE_ENCODING_STATIC = 0xf1;
 
-php php php php php/php*php*
-php php php php php php*php Unknownphp characterphp mapphp tablephp typephp.
-php php php php php php*php/
-php php php php constphp TYPEphp_UNKNOWNphp php=php php0xffphp;
-
-
-php php php/php*php Specialphp Glyphphp Namesphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Glyphphp representingphp missingphp charactersphp.
-php php php php php php*php/
-php php php php constphp MISSINGphp_CHARACTERphp_GLYPHphp php=php php0xphp0php0php;
+    /**
+     * Unknown character map table type.
+     */
+    const TYPE_UNKNOWN = 0xff;
 
 
+  /* Special Glyph Names */
 
-php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
-
-
-php php php/php*php Factoryphp Methodsphp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Instantiatesphp thephp appropriatephp concretephp subclassphp basedphp onphp thephp typephp ofphp cmap
-php php php php php php*php tablephp andphp returnsphp thephp instancephp.
-php php php php php php*
-php php php php php php*php Thephp cmapphp typephp mustphp bephp onephp ofphp thephp followingphp valuesphp:
-php php php php php php*php php<ulphp>
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_BYTEphp_ENCODINGphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_BYTEphp_ENCODINGphp_STATICphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_HIGHphp_BYTEphp_MAPPINGphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_SEGMENTphp_TOphp_DELTAphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_TRIMMEDphp_TABLEphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_MIXEDphp_COVERAGEphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_TRIMMEDphp_ARRAYphp}
-php php php php php php*php php php<liphp>php{php@linkphp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_SEGMENTEDphp_COVERAGEphp}
-php php php php php php*php <php/ulphp>
-php php php php php php*
-php php php php php php*php Throwsphp anphp exceptionphp ifphp thephp tablephp typephp isphp invalidphp orphp thephp cmapphp tablephp data
-php php php php php php*php cannotphp bephp validatedphp.
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$cmapTypephp Typephp ofphp cmapphp.
-php php php php php php*php php@paramphp mixedphp php$cmapDataphp Cmapphp tablephp dataphp.php Usuallyphp aphp stringphp orphp arrayphp.
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Cmap
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp cmapWithTypeDataphp(php$cmapTypephp,php php$cmapDataphp)
-php php php php php{
-php php php php php php php php switchphp php(php$cmapTypephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_BYTEphp_ENCODINGphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp/ByteEncodingphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Cmapphp_ByteEncodingphp(php$cmapDataphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_BYTEphp_ENCODINGphp_STATICphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp/ByteEncodingphp/Staticphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Cmapphp_ByteEncodingphp_Staticphp(php$cmapDataphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_HIGHphp_BYTEphp_MAPPINGphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Highphp bytephp mappingphp cmapphp currentlyphp unsupportedphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_TYPEphp_UNSUPPORTEDphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_SEGMENTphp_TOphp_DELTAphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp/SegmentToDeltaphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Cmapphp_SegmentToDeltaphp(php$cmapDataphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_TRIMMEDphp_TABLEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp/TrimmedTablephp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Cmapphp_TrimmedTablephp(php$cmapDataphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_MIXEDphp_COVERAGEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Mixedphp coveragephp cmapphp currentlyphp unsupportedphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_TYPEphp_UNSUPPORTEDphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_TRIMMEDphp_ARRAYphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Trimmedphp arrayphp cmapphp currentlyphp unsupportedphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_TYPEphp_UNSUPPORTEDphp)php;
-
-php php php php php php php php php php php php casephp Zendphp_Pdfphp_Cmapphp:php:TYPEphp_SEGMENTEDphp_COVERAGEphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Segmentedphp coveragephp cmapphp currentlyphp unsupportedphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_TYPEphp_UNSUPPORTEDphp)php;
-
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Unknownphp cmapphp typephp:php php$cmapTypephp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:CMAPphp_UNKNOWNphp_TYPEphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Glyph representing missing characters.
+     */
+    const MISSING_CHARACTER_GLYPH = 0x00;
 
 
-php php php/php*php Abstractphp Methodsphp php*php/
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php Parsesphp thephp rawphp binaryphp tablephp dataphp.php Throwsphp anphp exceptionphp ifphp thephp tablephp is
-php php php php php php*php malformedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$cmapDataphp Rawphp binaryphp cmapphp tablephp dataphp.
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp php_php_constructphp(php$cmapDataphp)php;
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp ofphp glyphphp numbersphp correspondingphp tophp thephp Unicodephp charactersphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
-php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
-php php php php php php*
-php php php php php php*php Seephp alsophp php{php@linkphp glyphNumberForCharacterphp(php)php}php.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$characterCodesphp Arrayphp ofphp Unicodephp characterphp codesphp php(codephp pointsphp)php.
-php php php php php php*php php@returnphp arrayphp Arrayphp ofphp glyphphp numbersphp.
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp glyphNumbersForCharactersphp(php$characterCodesphp)php;
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp glyphphp numberphp correspondingphp tophp thephp Unicodephp characterphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp particularphp characterphp doesnphp'tphp existphp inphp thisphp fontphp,php thephp specialphp php'missing
-php php php php php php*php characterphp glyphphp'php willphp bephp substitutedphp.
-php php php php php php*
-php php php php php php*php Seephp alsophp php{php@linkphp glyphNumbersForCharactersphp(php)php}php whichphp isphp optimizedphp forphp bulk
-php php php php php php*php operationsphp.
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$characterCodephp Unicodephp characterphp codephp php(codephp pointphp)php.
-php php php php php php*php php@returnphp integerphp Glyphphp numberphp.
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp glyphNumberForCharacterphp(php$characterCodephp)php;
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp containingphp thephp Unicodephp charactersphp thatphp havephp entriesphp in
-php php php php php php*php thisphp characterphp mapphp.
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp Unicodephp characterphp codesphp.
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp getCoveredCharactersphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp containingphp thephp glyphsphp numbersphp thatphp havephp entriesphp inphp thisphp characterphp mapphp.
-php php php php php php*php Keysphp arephp Unicodephp characterphp codesphp php(integersphp)
-php php php php php php*
-php php php php php php*php Thisphp functionalityphp isphp partiallyphp coveredphp byphp glyphNumbersForCharactersphp(getCoveredCharactersphp(php)php)
-php php php php php php*php callphp,php butphp thisphp methodphp dophp itphp inphp morephp effectivephp wayphp php(preparephp completephp listphp insteadphp ofphp searching
-php php php php php php*php glyphphp forphp eachphp characterphp codephp)php.
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@returnphp arrayphp Arrayphp representingphp php<Unicodephp characterphp codephp>php php=php>php php<glyphphp numberphp>php pairsphp.
-php php php php php php*php/
-php php php php abstractphp publicphp functionphp getCoveredCharactersGlyphsphp(php)php;
+  /**** Public Interface ****/
 
 
-php php php/php*php*php*php*php Internalphp Methodsphp php*php*php*php*php/
+  /* Factory Methods */
+
+    /**
+     * Instantiates the appropriate concrete subclass based on the type of cmap
+     * table and returns the instance.
+     *
+     * The cmap type must be one of the following values:
+     * <ul>
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_BYTE_ENCODING}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_BYTE_ENCODING_STATIC}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_HIGH_BYTE_MAPPING}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_SEGMENT_TO_DELTA}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_TRIMMED_TABLE}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_MIXED_COVERAGE}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_TRIMMED_ARRAY}
+     *  <li>{@link Zend_Pdf_Cmap::TYPE_SEGMENTED_COVERAGE}
+     * </ul>
+     *
+     * Throws an exception if the table type is invalid or the cmap table data
+     * cannot be validated.
+     *
+     * @param integer $cmapType Type of cmap.
+     * @param mixed $cmapData Cmap table data. Usually a string or array.
+     * @return Zend_Pdf_Cmap
+     * @throws Zend_Pdf_Exception
+     */
+    public static function cmapWithTypeData($cmapType, $cmapData)
+    {
+        switch ($cmapType) {
+            case Zend_Pdf_Cmap::TYPE_BYTE_ENCODING:
+                require_once 'Zend/Pdf/Cmap/ByteEncoding.php';
+                return new Zend_Pdf_Cmap_ByteEncoding($cmapData);
+
+            case Zend_Pdf_Cmap::TYPE_BYTE_ENCODING_STATIC:
+                require_once 'Zend/Pdf/Cmap/ByteEncoding/Static.php';
+                return new Zend_Pdf_Cmap_ByteEncoding_Static($cmapData);
+
+            case Zend_Pdf_Cmap::TYPE_HIGH_BYTE_MAPPING:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('High byte mapping cmap currently unsupported',
+                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+
+            case Zend_Pdf_Cmap::TYPE_SEGMENT_TO_DELTA:
+                require_once 'Zend/Pdf/Cmap/SegmentToDelta.php';
+                return new Zend_Pdf_Cmap_SegmentToDelta($cmapData);
+
+            case Zend_Pdf_Cmap::TYPE_TRIMMED_TABLE:
+                require_once 'Zend/Pdf/Cmap/TrimmedTable.php';
+                return new Zend_Pdf_Cmap_TrimmedTable($cmapData);
+
+            case Zend_Pdf_Cmap::TYPE_MIXED_COVERAGE:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Mixed coverage cmap currently unsupported',
+                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+
+            case Zend_Pdf_Cmap::TYPE_TRIMMED_ARRAY:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Trimmed array cmap currently unsupported',
+                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+
+            case Zend_Pdf_Cmap::TYPE_SEGMENTED_COVERAGE:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Segmented coverage cmap currently unsupported',
+                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+
+            default:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception("Unknown cmap type: $cmapType",
+                                             Zend_Pdf_Exception::CMAP_UNKNOWN_TYPE);
+        }
+    }
 
 
-php php php/php*php Internalphp Utilityphp Methodsphp php*php/
+  /* Abstract Methods */
 
-php php php php php/php*php*
-php php php php php php*php Extractsphp aphp signedphp php2php-bytephp integerphp fromphp aphp stringphp.
-php php php php php php*
-php php php php php php*php Integersphp arephp alwaysphp bigphp-endianphp.php Throwsphp anphp exceptionphp ifphp thephp indexphp isphp out
-php php php php php php*php ofphp rangephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php&php$data
-php php php php php php*php php@paramphp integerphp php$indexphp Positionphp inphp stringphp ofphp integerphp.
-php php php php php php*php php@returnphp integer
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_extractIntphp2php(php&php$dataphp,php php$indexphp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$indexphp <php php0php)php php|php php(php(php$indexphp php+php php1php)php php>php strlenphp(php$dataphp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Indexphp outphp ofphp rangephp:php php$indexphp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INDEXphp_OUTphp_OFphp_RANGEphp)php;
-php php php php php php php php php}
-php php php php php php php php php$numberphp php=php ordphp(php$dataphp[php$indexphp]php)php;
-php php php php php php php php ifphp php(php(php$numberphp php&php php0xphp8php0php)php php=php=php php0xphp8php0php)php php{php php php php php/php/php negative
-php php php php php php php php php php php php php$numberphp php=php php~php(php(php(php(php~php php$numberphp)php php&php php0xffphp)php <php<php php8php)php php|php php(php(php~php ordphp(php$dataphp[php+php+php$indexphp]php)php)php php&php php0xffphp)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$numberphp php=php php(php$numberphp <php<php php8php)php php|php ordphp(php$dataphp[php+php+php$indexphp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$numberphp;
-php php php php php}
+    /**
+     * Object constructor
+     *
+     * Parses the raw binary table data. Throws an exception if the table is
+     * malformed.
+     *
+     * @param string $cmapData Raw binary cmap table data.
+     * @throws Zend_Pdf_Exception
+     */
+    abstract public function __construct($cmapData);
 
-php php php php php/php*php*
-php php php php php php*php Extractsphp anphp unsignedphp php2php-bytephp integerphp fromphp aphp stringphp.
-php php php php php php*
-php php php php php php*php Integersphp arephp alwaysphp bigphp-endianphp.php Throwsphp anphp exceptionphp ifphp thephp indexphp isphp out
-php php php php php php*php ofphp rangephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php&php$data
-php php php php php php*php php@paramphp integerphp php$indexphp Positionphp inphp stringphp ofphp integerphp.
-php php php php php php*php php@returnphp integer
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_extractUIntphp2php(php&php$dataphp,php php$indexphp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$indexphp <php php0php)php php|php php(php(php$indexphp php+php php1php)php php>php strlenphp(php$dataphp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Indexphp outphp ofphp rangephp:php php$indexphp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INDEXphp_OUTphp_OFphp_RANGEphp)php;
-php php php php php php php php php}
-php php php php php php php php php$numberphp php=php php(ordphp(php$dataphp[php$indexphp]php)php <php<php php8php)php php|php ordphp(php$dataphp[php+php+php$indexphp]php)php;
-php php php php php php php php returnphp php$numberphp;
-php php php php php}
+    /**
+     * Returns an array of glyph numbers corresponding to the Unicode characters.
+     *
+     * If a particular character doesn't exist in this font, the special 'missing
+     * character glyph' will be substituted.
+     *
+     * See also {@link glyphNumberForCharacter()}.
+     *
+     * @param array $characterCodes Array of Unicode character codes (code points).
+     * @return array Array of glyph numbers.
+     */
+    abstract public function glyphNumbersForCharacters($characterCodes);
 
-php php php php php/php*php*
-php php php php php php*php Extractsphp anphp unsignedphp php4php-bytephp integerphp fromphp aphp stringphp.
-php php php php php php*
-php php php php php php*php Integersphp arephp alwaysphp bigphp-endianphp.php Throwsphp anphp exceptionphp ifphp thephp indexphp isphp out
-php php php php php php*php ofphp rangephp.
-php php php php php php*
-php php php php php php*php NOTEphp:php Ifphp youphp askphp forphp aphp php4php-bytephp unsignedphp integerphp onphp aphp php3php2php-bitphp machinephp,php the
-php php php php php php*php resultingphp valuephp WILLphp BEphp SIGNEDphp becausephp PHPphp usesphp signedphp integersphp internally
-php php php php php php*php forphp everythingphp.php Tophp guaranteephp portabilityphp,php bephp surephp tophp usephp bitwisephp or
-php php php php php php*php similarphp operatorsphp onphp largephp integersphp!
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php&php$data
-php php php php php php*php php@paramphp integerphp php$indexphp Positionphp inphp stringphp ofphp integerphp.
-php php php php php php*php php@returnphp integer
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_extractUIntphp4php(php&php$dataphp,php php$indexphp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$indexphp <php php0php)php php|php php(php(php$indexphp php+php php3php)php php>php strlenphp(php$dataphp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php"Indexphp outphp ofphp rangephp:php php$indexphp"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Exceptionphp:php:INDEXphp_OUTphp_OFphp_RANGEphp)php;
-php php php php php php php php php}
-php php php php php php php php php$numberphp php=php php(ordphp(php$dataphp[php$indexphp]php)php <php<php php2php4php)php php|php php(ordphp(php$dataphp[php+php+php$indexphp]php)php <php<php php1php6php)php php|
-php php php php php php php php php php php php php php php php php php php(ordphp(php$dataphp[php+php+php$indexphp]php)php <php<php php8php)php php|php ordphp(php$dataphp[php+php+php$indexphp]php)php;
-php php php php php php php php returnphp php$numberphp;
-php php php php php}
+    /**
+     * Returns the glyph number corresponding to the Unicode character.
+     *
+     * If a particular character doesn't exist in this font, the special 'missing
+     * character glyph' will be substituted.
+     *
+     * See also {@link glyphNumbersForCharacters()} which is optimized for bulk
+     * operations.
+     *
+     * @param integer $characterCode Unicode character code (code point).
+     * @return integer Glyph number.
+     */
+    abstract public function glyphNumberForCharacter($characterCode);
 
-php}
+    /**
+     * Returns an array containing the Unicode characters that have entries in
+     * this character map.
+     *
+     * @return array Unicode character codes.
+     */
+    abstract public function getCoveredCharacters();
+
+    /**
+     * Returns an array containing the glyphs numbers that have entries in this character map.
+     * Keys are Unicode character codes (integers)
+     *
+     * This functionality is partially covered by glyphNumbersForCharacters(getCoveredCharacters())
+     * call, but this method do it in more effective way (prepare complete list instead of searching
+     * glyph for each character code).
+     *
+     * @internal
+     * @return array Array representing <Unicode character code> => <glyph number> pairs.
+     */
+    abstract public function getCoveredCharactersGlyphs();
+
+
+  /**** Internal Methods ****/
+
+
+  /* Internal Utility Methods */
+
+    /**
+     * Extracts a signed 2-byte integer from a string.
+     *
+     * Integers are always big-endian. Throws an exception if the index is out
+     * of range.
+     *
+     * @param string &$data
+     * @param integer $index Position in string of integer.
+     * @return integer
+     * @throws Zend_Pdf_Exception
+     */
+    protected function _extractInt2(&$data, $index)
+    {
+        if (($index < 0) | (($index + 1) > strlen($data))) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception("Index out of range: $index",
+                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+        }
+        $number = ord($data[$index]);
+        if (($number & 0x80) == 0x80) {    // negative
+            $number = ~((((~ $number) & 0xff) << 8) | ((~ ord($data[++$index])) & 0xff));
+        } else {
+            $number = ($number << 8) | ord($data[++$index]);
+        }
+        return $number;
+    }
+
+    /**
+     * Extracts an unsigned 2-byte integer from a string.
+     *
+     * Integers are always big-endian. Throws an exception if the index is out
+     * of range.
+     *
+     * @param string &$data
+     * @param integer $index Position in string of integer.
+     * @return integer
+     * @throws Zend_Pdf_Exception
+     */
+    protected function _extractUInt2(&$data, $index)
+    {
+        if (($index < 0) | (($index + 1) > strlen($data))) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception("Index out of range: $index",
+                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+        }
+        $number = (ord($data[$index]) << 8) | ord($data[++$index]);
+        return $number;
+    }
+
+    /**
+     * Extracts an unsigned 4-byte integer from a string.
+     *
+     * Integers are always big-endian. Throws an exception if the index is out
+     * of range.
+     *
+     * NOTE: If you ask for a 4-byte unsigned integer on a 32-bit machine, the
+     * resulting value WILL BE SIGNED because PHP uses signed integers internally
+     * for everything. To guarantee portability, be sure to use bitwise or
+     * similar operators on large integers!
+     *
+     * @param string &$data
+     * @param integer $index Position in string of integer.
+     * @return integer
+     * @throws Zend_Pdf_Exception
+     */
+    protected function _extractUInt4(&$data, $index)
+    {
+        if (($index < 0) | (($index + 3) > strlen($data))) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception("Index out of range: $index",
+                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+        }
+        $number = (ord($data[$index]) << 24) | (ord($data[++$index]) << 16) |
+                  (ord($data[++$index]) << 8) | ord($data[++$index]);
+        return $number;
+    }
+
+}

@@ -1,138 +1,138 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Emptyphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Empty.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Queryphp.phpphp'php;
+/** Zend_Search_Lucene_Search_Query */
+require_once 'Zend/Search/Lucene/Search/Query.php';
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Search
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Searchphp_Queryphp_Emptyphp extendsphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php{
-php php php php php/php*php*
-php php php php php php*php Rephp-writephp queryphp intophp primitivephp queriesphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp rewritephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Search
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Search_Query_Empty extends Zend_Search_Lucene_Search_Query
+{
+    /**
+     * Re-write query into primitive queries in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function rewrite(Zend_Search_Lucene_Interface $index)
+    {
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Optimizephp queryphp inphp thephp contextphp ofphp specifiedphp index
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$index
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Query
-php php php php php php*php/
-php php php php publicphp functionphp optimizephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$indexphp)
-php php php php php{
-php php php php php php php php php/php/php php"Emptyphp"php queryphp isphp aphp primitivephp queryphp andphp donphp'tphp needphp tophp bephp optimized
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Optimize query in the context of specified index
+     *
+     * @param Zend_Search_Lucene_Interface $index
+     * @return Zend_Search_Lucene_Search_Query
+     */
+    public function optimize(Zend_Search_Lucene_Interface $index)
+    {
+        // "Empty" query is a primitive query and don't need to be optimized
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Constructsphp anphp appropriatephp Weightphp implementationphp forphp thisphp queryphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Weight
-php php php php php php*php/
-php php php php publicphp functionphp createWeightphp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Weightphp/Emptyphp.phpphp'php;
-php php php php php php php php returnphp newphp Zendphp_Searchphp_Lucenephp_Searchphp_Weightphp_Emptyphp(php)php;
-php php php php php}
+    /**
+     * Constructs an appropriate Weight implementation for this query.
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return Zend_Search_Lucene_Search_Weight
+     */
+    public function createWeight(Zend_Search_Lucene_Interface $reader)
+    {
+        require_once 'Zend/Search/Lucene/Search/Weight/Empty.php';
+        return new Zend_Search_Lucene_Search_Weight_Empty();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Executephp queryphp inphp contextphp ofphp indexphp reader
-php php php php php php*php Itphp alsophp initializesphp necessaryphp internalphp structures
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php/
-php php php php publicphp functionphp executephp(Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php Dophp nothing
-php php php php php}
+    /**
+     * Execute query in context of index reader
+     * It also initializes necessary internal structures
+     *
+     * @param Zend_Search_Lucene_Interface $reader
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     */
+    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
+    {
+        // Do nothing
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp documentphp idsphp likelyphp matchingphp thephp query
-php php php php php php*
-php php php php php php*php Itphp'sphp anphp arrayphp withphp documentphp idsphp asphp keysphp php(performancephp considerationsphp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp matchedDocsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Get document ids likely matching the query
+     *
+     * It's an array with document ids as keys (performance considerations)
+     *
+     * @return array
+     */
+    public function matchedDocs()
+    {
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Scorephp specifiedphp document
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$docId
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Interfacephp php$reader
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp scorephp(php$docIdphp,php Zendphp_Searchphp_Lucenephp_Interfacephp php$readerphp)
-php php php php php{
-php php php php php php php php returnphp php0php;
-php php php php php}
+    /**
+     * Score specified document
+     *
+     * @param integer $docId
+     * @param Zend_Search_Lucene_Interface $reader
+     * @return float
+     */
+    public function score($docId, Zend_Search_Lucene_Interface $reader)
+    {
+        return 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp queryphp terms
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getQueryTermsphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php)php;
-php php php php php}
+    /**
+     * Return query terms
+     *
+     * @return array
+     */
+    public function getQueryTerms()
+    {
+        return array();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Queryphp specificphp matchesphp highlighting
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp php Highlighterphp objectphp php(alsophp containsphp docphp forphp highlightingphp)
-php php php php php php*php/
-php php php php protectedphp functionphp php_highlightMatchesphp(Zendphp_Searchphp_Lucenephp_Searchphp_Highlighterphp_Interfacephp php$highlighterphp)
-php php php php php{
-php php php php php php php php php/php/php Dophp nothing
-php php php php php}
+    /**
+     * Query specific matches highlighting
+     *
+     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
+     */
+    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
+    {
+        // Do nothing
+    }
 
-php php php php php/php*php*
-php php php php php php*php Printphp aphp query
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php'php<EmptyQueryphp>php'php;
-php php php php php}
-php}
+    /**
+     * Print a query
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return '<EmptyQuery>';
+    }
+}
 

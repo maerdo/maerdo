@@ -1,202 +1,202 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Entryphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Entry.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Reader
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader
+ */
+require_once 'Zend/Feed/Reader.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Extensionphp/EntryAbstractphp.phpphp'php;
+/**
+ * @see Zend_Feed_Reader_Extension_EntryAbstract
+ */
+require_once 'Zend/Feed/Reader/Extension/EntryAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Readerphp_Extensionphp_Podcastphp_Entryphp extendsphp Zendphp_Feedphp_Readerphp_Extensionphp_EntryAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp author
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getCastAuthorphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'authorphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorphp'php]php;
-php php php php php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader_Extension_Podcast_Entry extends Zend_Feed_Reader_Extension_EntryAbstract
+{
+    /**
+     * Get the entry author
+     *
+     * @return string
+     */
+    public function getCastAuthor()
+    {
+        if (isset($this->_data['author'])) {
+            return $this->_data['author'];
+        }
 
-php php php php php php php php php$authorphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:authorphp)php'php)php;
+        $author = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:author)');
 
-php php php php php php php php ifphp php(php!php$authorphp)php php{
-php php php php php php php php php php php php php$authorphp php=php nullphp;
-php php php php php php php php php}
+        if (!$author) {
+            $author = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'authorphp'php]php php=php php$authorphp;
+        $this->_data['author'] = $author;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorphp'php]php;
-php php php php php}
+        return $this->_data['author'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp block
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getBlockphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'blockphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'blockphp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry block
+     *
+     * @return string
+     */
+    public function getBlock()
+    {
+        if (isset($this->_data['block'])) {
+            return $this->_data['block'];
+        }
 
-php php php php php php php php php$blockphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:blockphp)php'php)php;
+        $block = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:block)');
 
-php php php php php php php php ifphp php(php!php$blockphp)php php{
-php php php php php php php php php php php php php$blockphp php=php nullphp;
-php php php php php php php php php}
+        if (!$block) {
+            $block = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'blockphp'php]php php=php php$blockphp;
+        $this->_data['block'] = $block;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'blockphp'php]php;
-php php php php php}
+        return $this->_data['block'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp duration
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDurationphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'durationphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'durationphp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        if (isset($this->_data['duration'])) {
+            return $this->_data['duration'];
+        }
 
-php php php php php php php php php$durationphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:durationphp)php'php)php;
+        $duration = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:duration)');
 
-php php php php php php php php ifphp php(php!php$durationphp)php php{
-php php php php php php php php php php php php php$durationphp php=php nullphp;
-php php php php php php php php php}
+        if (!$duration) {
+            $duration = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'durationphp'php]php php=php php$durationphp;
+        $this->_data['duration'] = $duration;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'durationphp'php]php;
-php php php php php}
+        return $this->_data['duration'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp explicit
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getExplicitphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'explicitphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'explicitphp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry explicit
+     *
+     * @return string
+     */
+    public function getExplicit()
+    {
+        if (isset($this->_data['explicit'])) {
+            return $this->_data['explicit'];
+        }
 
-php php php php php php php php php$explicitphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:explicitphp)php'php)php;
+        $explicit = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:explicit)');
 
-php php php php php php php php ifphp php(php!php$explicitphp)php php{
-php php php php php php php php php php php php php$explicitphp php=php nullphp;
-php php php php php php php php php}
+        if (!$explicit) {
+            $explicit = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'explicitphp'php]php php=php php$explicitphp;
+        $this->_data['explicit'] = $explicit;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'explicitphp'php]php;
-php php php php php}
+        return $this->_data['explicit'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp keywords
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getKeywordsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'keywordsphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'keywordsphp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry keywords
+     *
+     * @return string
+     */
+    public function getKeywords()
+    {
+        if (isset($this->_data['keywords'])) {
+            return $this->_data['keywords'];
+        }
 
-php php php php php php php php php$keywordsphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:keywordsphp)php'php)php;
+        $keywords = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:keywords)');
 
-php php php php php php php php ifphp php(php!php$keywordsphp)php php{
-php php php php php php php php php php php php php$keywordsphp php=php nullphp;
-php php php php php php php php php}
+        if (!$keywords) {
+            $keywords = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'keywordsphp'php]php php=php php$keywordsphp;
+        $this->_data['keywords'] = $keywords;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'keywordsphp'php]php;
-php php php php php}
+        return $this->_data['keywords'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp subtitle
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSubtitlephp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'subtitlephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'subtitlephp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry subtitle
+     *
+     * @return string
+     */
+    public function getSubtitle()
+    {
+        if (isset($this->_data['subtitle'])) {
+            return $this->_data['subtitle'];
+        }
 
-php php php php php php php php php$subtitlephp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:subtitlephp)php'php)php;
+        $subtitle = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:subtitle)');
 
-php php php php php php php php ifphp php(php!php$subtitlephp)php php{
-php php php php php php php php php php php php php$subtitlephp php=php nullphp;
-php php php php php php php php php}
+        if (!$subtitle) {
+            $subtitle = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'subtitlephp'php]php php=php php$subtitlephp;
+        $this->_data['subtitle'] = $subtitle;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'subtitlephp'php]php;
-php php php php php}
+        return $this->_data['subtitle'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp summary
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSummaryphp(php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'summaryphp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'summaryphp'php]php;
-php php php php php php php php php}
+    /**
+     * Get the entry summary
+     *
+     * @return string
+     */
+    public function getSummary()
+    {
+        if (isset($this->_data['summary'])) {
+            return $this->_data['summary'];
+        }
 
-php php php php php php php php php$summaryphp php=php php$thisphp-php>php_xpathphp-php>evaluatephp(php'stringphp(php'php php.php php$thisphp-php>getXpathPrefixphp(php)php php.php php'php/itunesphp:summaryphp)php'php)php;
+        $summary = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:summary)');
 
-php php php php php php php php ifphp php(php!php$summaryphp)php php{
-php php php php php php php php php php php php php$summaryphp php=php nullphp;
-php php php php php php php php php}
+        if (!$summary) {
+            $summary = null;
+        }
 
-php php php php php php php php php$thisphp-php>php_dataphp[php'summaryphp'php]php php=php php$summaryphp;
+        $this->_data['summary'] = $summary;
 
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'summaryphp'php]php;
-php php php php php}
+        return $this->_data['summary'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Registerphp iTunesphp namespace
-php php php php php php*
-php php php php php php*php/
-php php php php protectedphp functionphp php_registerNamespacesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xpathphp-php>registerNamespacephp(php'itunesphp'php,php php'httpphp:php/php/wwwphp.itunesphp.comphp/dtdsphp/podcastphp-php1php.php0php.dtdphp'php)php;
-php php php php php}
-php}
+    /**
+     * Register iTunes namespace
+     *
+     */
+    protected function _registerNamespaces()
+    {
+        $this->_xpath->registerNamespace('itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd');
+    }
+}

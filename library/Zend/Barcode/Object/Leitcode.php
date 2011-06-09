@@ -1,64 +1,64 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@subpackagephp Object
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Leitcodephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @subpackage Object
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Leitcode.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Barcodephp_Objectphp_Identcode
-php php*php/
-requirephp_oncephp php'Zendphp/Barcodephp/Objectphp/Identcodephp.phpphp'php;
+/**
+ * @see Zend_Barcode_Object_Identcode
+ */
+require_once 'Zend/Barcode/Object/Identcode.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Barcode
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Barcodephp.phpphp'php;
+/**
+ * @see Zend_Validate_Barcode
+ */
+require_once 'Zend/Validate/Barcode.php';
 
-php/php*php*
-php php*php Classphp forphp generatephp Identcodephp barcode
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Barcodephp_Objectphp_Leitcodephp extendsphp Zendphp_Barcodephp_Objectphp_Identcode
-php{
+/**
+ * Class for generate Identcode barcode
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Barcode_Object_Leitcode extends Zend_Barcode_Object_Identcode
+{
 
-php php php php php/php*php*
-php php php php php php*php Defaultphp optionsphp forphp Leitcodephp barcode
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_getDefaultOptionsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_barcodeLengthphp php=php php1php4php;
-php php php php php php php php php$thisphp-php>php_mandatoryChecksumphp php=php truephp;
-php php php php php}
+    /**
+     * Default options for Leitcode barcode
+     * @return void
+     */
+    protected function _getDefaultOptions()
+    {
+        $this->_barcodeLength = 14;
+        $this->_mandatoryChecksum = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp textphp tophp display
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTextToDisplayphp(php)
-php php php php php{
-php php php php php php php php returnphp pregphp_replacephp(php'php/php(php[php0php-php9php]php{php5php}php)php(php[php0php-php9php]php{php3php}php)php(php[php0php-php9php]php{php3php}php)php(php[php0php-php9php]php{php2php}php)php(php[php0php-php9php]php)php/php'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php$php1php.php$php2php.php$php3php.php$php4php php$php5php'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getTextphp(php)php)php;
-php php php php php}
-php}
+    /**
+     * Retrieve text to display
+     * @return string
+     */
+    public function getTextToDisplay()
+    {
+        return preg_replace('/([0-9]{5})([0-9]{3})([0-9]{3})([0-9]{2})([0-9])/',
+                            '$1.$2.$3.$4 $5',
+                            $this->getText());
+    }
+}

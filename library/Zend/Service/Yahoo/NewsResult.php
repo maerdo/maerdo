@@ -1,112 +1,112 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Yahoo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php NewsResultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Yahoophp_Result
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Yahoophp/Resultphp.phpphp'php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Yahoo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: NewsResult.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Yahoo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Yahoophp_NewsResultphp extendsphp Zendphp_Servicephp_Yahoophp_Result
-php{
-php php php php php/php*php*
-php php php php php php*php Sumamryphp textphp associatedphp withphp thephp resultphp article
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$Summaryphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp companyphp whophp distributedphp thephp article
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$NewsSourcephp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp forphp thephp companyphp whophp distributedphp thephp article
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$NewsSourceUrlphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp languagephp thephp articlephp isphp in
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$Languagephp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp datephp thephp articlephp wasphp publishedphp php(inphp unixphp timestampphp formatphp)
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$PublishDatephp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp datephp thephp articlephp wasphp modifiedphp php(inphp unixphp timestampphp formatphp)
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$ModificationDatephp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp thubmnailphp imagephp forphp thephp articlephp,php ifphp itphp exists
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Yahoophp_Image
-php php php php php php*php/
-php php php php publicphp php$Thumbnailphp;
-
-php php php php php/php*php*
-php php php php php php*php Newsphp resultphp namespace
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_namespacephp php=php php'urnphp:yahoophp:ynphp'php;
+/**
+ * @see Zend_Service_Yahoo_Result
+ */
+require_once 'Zend/Service/Yahoo/Result.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Initializesphp thephp newsphp result
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php$result
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$resultphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_fieldsphp php=php arrayphp(php'Summaryphp'php,php php'NewsSourcephp'php,php php'NewsSourceUrlphp'php,php php'Languagephp'php,php php'PublishDatephp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'ModificationDatephp'php,php php'Thumbnailphp'php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Yahoo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Yahoo_NewsResult extends Zend_Service_Yahoo_Result
+{
+    /**
+     * Sumamry text associated with the result article
+     *
+     * @var string
+     */
+    public $Summary;
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$resultphp)php;
+    /**
+     * The company who distributed the article
+     *
+     * @var string
+     */
+    public $NewsSource;
 
-php php php php php php php php php$thisphp-php>php_setThumbnailphp(php)php;
-php php php php php}
-php}
+    /**
+     * The URL for the company who distributed the article
+     *
+     * @var string
+     */
+    public $NewsSourceUrl;
+
+    /**
+     * The language the article is in
+     *
+     * @var string
+     */
+    public $Language;
+
+    /**
+     * The date the article was published (in unix timestamp format)
+     *
+     * @var string
+     */
+    public $PublishDate;
+
+    /**
+     * The date the article was modified (in unix timestamp format)
+     *
+     * @var string
+     */
+    public $ModificationDate;
+
+    /**
+     * The thubmnail image for the article, if it exists
+     *
+     * @var Zend_Service_Yahoo_Image
+     */
+    public $Thumbnail;
+
+    /**
+     * News result namespace
+     *
+     * @var string
+     */
+    protected $_namespace = 'urn:yahoo:yn';
+
+
+    /**
+     * Initializes the news result
+     *
+     * @param  DOMElement $result
+     * @return void
+     */
+    public function __construct(DOMElement $result)
+    {
+        $this->_fields = array('Summary', 'NewsSource', 'NewsSourceUrl', 'Language', 'PublishDate',
+                               'ModificationDate', 'Thumbnail');
+
+        parent::__construct($result);
+
+        $this->_setThumbnail();
+    }
+}

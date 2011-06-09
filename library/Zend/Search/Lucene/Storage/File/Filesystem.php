@@ -1,231 +1,231 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Filesystemphp.phpphp php2php3php3php9php5php php2php0php1php0php-php1php1php-php1php9php php1php5php:php3php0php:php4php7Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Filesystem.php 23395 2010-11-19 15:30:47Z alexander $
+ */
 
-php/php*php*php Zendphp_Searchphp_Lucenephp_Storagephp_Filephp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Storagephp/Filephp.phpphp'php;
+/** Zend_Search_Lucene_Storage_File */
+require_once 'Zend/Search/Lucene/Storage/File.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Storagephp_Filephp_Filesystemphp extendsphp Zendphp_Searchphp_Lucenephp_Storagephp_File
-php{
-php php php php php/php*php*
-php php php php php php*php Resourcephp ofphp thephp openphp file
-php php php php php php*
-php php php php php php*php php@varphp resource
-php php php php php php*php/
-php php php php protectedphp php$php_fileHandlephp;
-
-
-php php php php php/php*php*
-php php php php php php*php Classphp constructorphp.php php Openphp thephp filephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$filename
-php php php php php php*php php@paramphp stringphp php$mode
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$filenamephp,php php$modephp=php'rphp+bphp'php)
-php php php php php{
-php php php php php php php php globalphp php$phpphp_errormsgphp;
-
-php php php php php php php php ifphp php(strposphp(php$modephp,php php'wphp'php)php php=php=php=php falsephp php php&php&php php php!isphp_readablephp(php$filenamephp)php)php php{
-php php php php php php php php php php php php php/php/php openingphp forphp readingphp nonphp-readablephp file
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Filephp php\php'php'php php.php php$filenamephp php.php php'php\php'php isphp notphp readablephp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$trackErrorsphp php=php iniphp_getphp(php'trackphp_errorsphp'php)php;
-php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php'php1php'php)php;
-
-php php php php php php php php php$thisphp-php>php_fileHandlephp php=php php@fopenphp(php$filenamephp,php php$modephp)php;
-
-php php php php php php php php ifphp php(php$thisphp-php>php_fileHandlephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php$phpphp_errormsgphp)php;
-php php php php php php php php php}
-
-php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp filephp positionphp indicatorphp andphp advancesphp thephp filephp pointerphp.
-php php php php php php*php Thephp newphp positionphp,php measuredphp inphp bytesphp fromphp thephp beginningphp ofphp thephp filephp,
-php php php php php php*php isphp obtainedphp byphp addingphp offsetphp tophp thephp positionphp specifiedphp byphp whencephp,
-php php php php php php*php whosephp valuesphp arephp definedphp asphp followsphp:
-php php php php php php*php SEEKphp_SETphp php-php Setphp positionphp equalphp tophp offsetphp bytesphp.
-php php php php php php*php SEEKphp_CURphp php-php Setphp positionphp tophp currentphp locationphp plusphp offsetphp.
-php php php php php php*php SEEKphp_ENDphp php-php Setphp positionphp tophp endphp-ofphp-filephp plusphp offsetphp.php php(Tophp movephp to
-php php php php php php*php aphp positionphp beforephp thephp endphp-ofphp-filephp,php youphp needphp tophp passphp aphp negativephp value
-php php php php php php*php inphp offsetphp.php)
-php php php php php php*php SEEKphp_CURphp isphp thephp onlyphp supportedphp offsetphp typephp forphp compoundphp files
-php php php php php php*
-php php php php php php*php Uponphp successphp,php returnsphp php0php;php otherwisephp,php returnsphp php-php1
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$offset
-php php php php php php*php php@paramphp integerphp php$whence
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp seekphp(php$offsetphp,php php$whencephp=SEEKphp_SETphp)
-php php php php php{
-php php php php php php php php returnphp fseekphp(php$thisphp-php>php_fileHandlephp,php php$offsetphp,php php$whencephp)php;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Storage_File_Filesystem extends Zend_Search_Lucene_Storage_File
+{
+    /**
+     * Resource of the open file
+     *
+     * @var resource
+     */
+    protected $_fileHandle;
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp filephp positionphp.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp tellphp(php)
-php php php php php{
-php php php php php php php php returnphp ftellphp(php$thisphp-php>php_fileHandlephp)php;
-php php php php php}
+    /**
+     * Class constructor.  Open the file.
+     *
+     * @param string $filename
+     * @param string $mode
+     */
+    public function __construct($filename, $mode='r+b')
+    {
+        global $php_errormsg;
 
-php php php php php/php*php*
-php php php php php php*php Flushphp outputphp.
-php php php php php php*
-php php php php php php*php Returnsphp truephp onphp successphp orphp falsephp onphp failurephp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp flushphp(php)
-php php php php php{
-php php php php php php php php returnphp fflushphp(php$thisphp-php>php_fileHandlephp)php;
-php php php php php}
+        if (strpos($mode, 'w') === false  &&  !is_readable($filename)) {
+            // opening for reading non-readable file
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('File \'' . $filename . '\' is not readable.');
+        }
 
-php php php php php/php*php*
-php php php php php php*php Closephp Filephp object
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_fileHandlephp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php@fclosephp(php$thisphp-php>php_fileHandlephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_fileHandlephp php=php nullphp;
-php php php php php php php php php}
-php php php php php}
+        $trackErrors = ini_get('track_errors');
+        ini_set('track_errors', '1');
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp sizephp ofphp thephp alreadyphp openedphp file
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp sizephp(php)
-php php php php php{
-php php php php php php php php php$positionphp php=php ftellphp(php$thisphp-php>php_fileHandlephp)php;
-php php php php php php php php fseekphp(php$thisphp-php>php_fileHandlephp,php php0php,php SEEKphp_ENDphp)php;
-php php php php php php php php php$sizephp php=php ftellphp(php$thisphp-php>php_fileHandlephp)php;
-php php php php php php php php fseekphp(php$thisphp-php>php_fileHandlephp,php$positionphp)php;
+        $this->_fileHandle = @fopen($filename, $mode);
 
-php php php php php php php php returnphp php$sizephp;
-php php php php php}
+        if ($this->_fileHandle === false) {
+            ini_set('track_errors', $trackErrors);
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception($php_errormsg);
+        }
 
-php php php php php/php*php*
-php php php php php php*php Readphp aphp php$lengthphp bytesphp fromphp thephp filephp andphp advancephp thephp filephp pointerphp.
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$length
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_freadphp(php$lengthphp=php1php)
-php php php php php{
-php php php php php php php php ifphp php(php$lengthphp php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
+        ini_set('track_errors', $trackErrors);
+    }
 
-php php php php php php php php ifphp php(php$lengthphp <php php1php0php2php4php)php php{
-php php php php php php php php php php php php returnphp freadphp(php$thisphp-php>php_fileHandlephp,php php$lengthphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$dataphp php=php php'php'php;
-php php php php php php php php whilephp php(php$lengthphp php>php php0php php&php&php php!feofphp(php$thisphp-php>php_fileHandlephp)php)php php{
-php php php php php php php php php php php php php$nextBlockphp php=php freadphp(php$thisphp-php>php_fileHandlephp,php php$lengthphp)php;
-php php php php php php php php php php php php ifphp php(php$nextBlockphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php php"Errorphp occuredphp whilephp filephp readingphp.php"php php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$dataphp php.php=php php$nextBlockphp;
-php php php php php php php php php php php php php$lengthphp php-php=php strlenphp(php$nextBlockphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$lengthphp php!php=php php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php php"Errorphp occuredphp whilephp filephp readingphp.php"php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$dataphp;
-php php php php php}
+    /**
+     * Sets the file position indicator and advances the file pointer.
+     * The new position, measured in bytes from the beginning of the file,
+     * is obtained by adding offset to the position specified by whence,
+     * whose values are defined as follows:
+     * SEEK_SET - Set position equal to offset bytes.
+     * SEEK_CUR - Set position to current location plus offset.
+     * SEEK_END - Set position to end-of-file plus offset. (To move to
+     * a position before the end-of-file, you need to pass a negative value
+     * in offset.)
+     * SEEK_CUR is the only supported offset type for compound files
+     *
+     * Upon success, returns 0; otherwise, returns -1
+     *
+     * @param integer $offset
+     * @param integer $whence
+     * @return integer
+     */
+    public function seek($offset, $whence=SEEK_SET)
+    {
+        return fseek($this->_fileHandle, $offset, $whence);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Writesphp php$lengthphp numberphp ofphp bytesphp php(allphp,php ifphp php$lengthphp=php=php=nullphp)php tophp thephp end
-php php php php php php*php ofphp thephp filephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@paramphp integerphp php$length
-php php php php php php*php/
-php php php php protectedphp functionphp php_fwritephp(php$dataphp,php php$lengthphp=nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$lengthphp php=php=php=php nullphp php)php php{
-php php php php php php php php php php php php fwritephp(php$thisphp-php>php_fileHandlephp,php php$dataphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php fwritephp(php$thisphp-php>php_fileHandlephp,php php$dataphp,php php$lengthphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Get file position.
+     *
+     * @return integer
+     */
+    public function tell()
+    {
+        return ftell($this->_fileHandle);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Lockphp file
-php php php php php php*
-php php php php php php*php Lockphp typephp mayphp bephp aphp LOCKphp_SHphp php(sharedphp lockphp)php orphp aphp LOCKphp_EXphp php(exclusivephp lockphp)
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$lockType
-php php php php php php*php php@paramphp booleanphp php$nonBlockingLock
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp lockphp(php$lockTypephp,php php$nonBlockingLockphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$nonBlockingLockphp)php php{
-php php php php php php php php php php php php returnphp flockphp(php$thisphp-php>php_fileHandlephp,php php$lockTypephp php|php LOCKphp_NBphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp flockphp(php$thisphp-php>php_fileHandlephp,php php$lockTypephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Flush output.
+     *
+     * Returns true on success or false on failure.
+     *
+     * @return boolean
+     */
+    public function flush()
+    {
+        return fflush($this->_fileHandle);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Unlockphp file
-php php php php php php*
-php php php php php php*php Returnsphp truephp onphp success
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp unlockphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_fileHandlephp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php returnphp flockphp(php$thisphp-php>php_fileHandlephp,php LOCKphp_UNphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * Close File object
+     */
+    public function close()
+    {
+        if ($this->_fileHandle !== null ) {
+            @fclose($this->_fileHandle);
+            $this->_fileHandle = null;
+        }
+    }
+
+    /**
+     * Get the size of the already opened file
+     *
+     * @return integer
+     */
+    public function size()
+    {
+        $position = ftell($this->_fileHandle);
+        fseek($this->_fileHandle, 0, SEEK_END);
+        $size = ftell($this->_fileHandle);
+        fseek($this->_fileHandle,$position);
+
+        return $size;
+    }
+
+    /**
+     * Read a $length bytes from the file and advance the file pointer.
+     *
+     * @param integer $length
+     * @return string
+     */
+    protected function _fread($length=1)
+    {
+        if ($length == 0) {
+            return '';
+        }
+
+        if ($length < 1024) {
+            return fread($this->_fileHandle, $length);
+        }
+
+        $data = '';
+        while ($length > 0 && !feof($this->_fileHandle)) {
+            $nextBlock = fread($this->_fileHandle, $length);
+            if ($nextBlock === false) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception( "Error occured while file reading." );
+            }
+
+            $data .= $nextBlock;
+            $length -= strlen($nextBlock);
+        }
+        if ($length != 0) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception( "Error occured while file reading." );
+        }
+
+        return $data;
+    }
+
+
+    /**
+     * Writes $length number of bytes (all, if $length===null) to the end
+     * of the file.
+     *
+     * @param string $data
+     * @param integer $length
+     */
+    protected function _fwrite($data, $length=null)
+    {
+        if ($length === null ) {
+            fwrite($this->_fileHandle, $data);
+        } else {
+            fwrite($this->_fileHandle, $data, $length);
+        }
+    }
+
+    /**
+     * Lock file
+     *
+     * Lock type may be a LOCK_SH (shared lock) or a LOCK_EX (exclusive lock)
+     *
+     * @param integer $lockType
+     * @param boolean $nonBlockingLock
+     * @return boolean
+     */
+    public function lock($lockType, $nonBlockingLock = false)
+    {
+        if ($nonBlockingLock) {
+            return flock($this->_fileHandle, $lockType | LOCK_NB);
+        } else {
+            return flock($this->_fileHandle, $lockType);
+        }
+    }
+
+    /**
+     * Unlock file
+     *
+     * Returns true on success
+     *
+     * @return boolean
+     */
+    public function unlock()
+    {
+        if ($this->_fileHandle !== null ) {
+            return flock($this->_fileHandle, LOCK_UN);
+        } else {
+            return true;
+        }
+    }
+}
 

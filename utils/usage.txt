@@ -1,40 +1,40 @@
 
 
-Usagephp:php Maerdophp.phpphp updatephp php[optionsphp]php=php<sectionphp>
+Usage: Maerdo.php update [options]=<section>
 
-php<sectionphp>php isphp equalphp tophp php'allphp'php ifphp isphp empty
+<section> is equal to 'all' if is empty
 
-php	Optionsphp php:
-php	php	translatephp=php<sectionphp>php php Updatephp Translatephp Data
-php php php php php php php php php	Sectionsphp php:
-php	php	php php php php php php php php php php php php php php confphp:php createphp languagephp configsphp files
-php	php	php php php php php php php php php php php php php php buildcsvfilesphp php:php Buildphp languephp cvsphp file
-php	php	php php php php php php php php php php php php php php allphp php:php Buildphp allphp languephp dataphp\n
-php	php	php php php php php php php php php php php php php php 
-php	php	pagephp=php<sectionphp>php php Updatephp pagesphp Data
-php	php	php php php php Sectionsphp php:
-php	php	php php php php php php php php php php php php php php modulephp php:php createphp newphp modules
-php	php	php php php php php php php php php php php php php php controllerphp php:php createphp newphp controllers
-php	php	php php php php php php php php php php php php php php actionphp php:php createphp newphp actions
-php	php	php php php php php php php php php php php php php php routephp php:php updatephp routes
-php	php	php php php php php php php php php php php php php php aclphp php:php updatephp ACL
-php	php	php php php php php php php php php php php php php php headerphp php:php createphp headerphp	php	php	php	php	php	
-php	php	php php php php php php php php php php php php php php allphp php:php Buildphp allphp pagephp dataphp\n
-php	php	php php php php php php php php php php php php php php 
-php	php	databasephp=php<sectionphp>php php Updatephp databasephp Data
-php	php	php php php php Sectionsphp php:
-php	php	php php php php php php php php php php php php php php buildmodelsphp php:php Buildphp DBphp models
-php	php	php php php php php php php php php php php php php php confphp php:php createphp php databasesphp configsphp files
-php	php	php php php php php php php php php php php php php php allphp php:php Buildphp allphp databasephp dataphp	
-php	php	php php php php php php php php php php php php php php 
-php	php	cachephp=php<sectionphp>php php Updatephp cache
-php	php	php php php php Sectionsphp php:
-php	php	php php php php php php php php php php php php php php confphp php:php createphp cachephp configphp filephp	
-php	php	authphp=php<sectionphp>php php Updatephp cache
-php	php	php php php php Sectionsphp php:
-php	php	php php php php php php php php php php php php php php confphp php:php createphp authentificationphp configphp filephp	
-php	php	php php php php php php php php php php php php php php 
-php	php php php php php php php php formsphp=php<sectionphp>php Createphp formsphp configphp file
-php	php php php php php php php	php php php php Sectionsphp php:
-php	php php php php php	php php php	php php php php php php inifilesphp php:php Createphp formsphp configphp filephp	php	php php php php php php php php php php php php php php php	php	php php php php php php php php php php php php php php php	php	php	
-php	php	
+	Options :
+		translate=<section>  Update Translate Data
+        	Sections :
+		              conf: create language configs files
+		              buildcsvfiles : Build langue cvs file
+		              all : Build all langue data\n
+		              
+		page=<section>  Update pages Data
+		    Sections :
+		              module : create new modules
+		              controller : create new controllers
+		              action : create new actions
+		              route : update routes
+		              acl : update ACL
+		              header : create header						
+		              all : Build all page data\n
+		              
+		database=<section>  Update database Data
+		    Sections :
+		              buildmodels : Build DB models
+		              conf : create  databases configs files
+		              all : Build all database data	
+		              
+		cache=<section>  Update cache
+		    Sections :
+		              conf : create cache config file	
+		auth=<section>  Update cache
+		    Sections :
+		              conf : create authentification config file	
+		              
+	        forms=<section> Create forms config file
+	      	    Sections :
+	    	  	      inifiles : Create forms config file		              		              			
+		

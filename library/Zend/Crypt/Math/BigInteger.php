@@ -1,117 +1,117 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@subpackagephp Math
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php BigIntegerphp.phpphp php2php3php4php3php9php php2php0php1php0php-php1php1php-php2php3php php2php1php:php1php0php:php1php4Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @subpackage Math
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: BigInteger.php 23439 2010-11-23 21:10:14Z alexander $
+ */
 
-php/php*php*
-php php*php Supportphp forphp arbitraryphp precisionphp mathematicsphp inphp PHPphp.
-php php*
-php php*php Zendphp_Cryptphp_Mathphp_BigIntegerphp isphp aphp wrapperphp acrossphp threephp PHPphp extensionsphp:php bcmathphp,php gmp
-php php*php andphp bigphp_intphp.php Sincephp eachphp offerphp similarphp functionalityphp,php butphp availabilityphp of
-php php*php eachphp differsphp acrossphp installationsphp ofphp PHPphp,php thisphp wrapperphp attemptsphp tophp select
-php php*php thephp fastestphp optionphp availablephp andphp encapsulatephp aphp subsetphp ofphp itsphp functionality
-php php*php whichphp allphp extensionsphp sharephp inphp commonphp.
-php php*
-php php*php Thisphp classphp requiresphp onephp ofphp thephp threephp extensionsphp tophp bephp availablephp.php BCMATH
-php php*php whilephp thephp slowestphp,php isphp availablephp byphp defaultphp underphp Windowsphp,php andphp underphp Unix
-php php*php ifphp PHPphp isphp compiledphp withphp thephp flagphp php"php-php-enablephp-bcmathphp"php.php GMPphp requiresphp thephp gmp
-php php*php libraryphp fromphp httpphp:php/php/wwwphp.swoxphp.comphp/gmpphp/php andphp PHPphp compiledphp withphp thephp php"php-php-withphp-gmpphp"
-php php*php flagphp.php BIGphp_INTphp supportphp isphp availablephp fromphp aphp bigphp_intphp PHPphp libraryphp availablephp from
-php php*php onlyphp fromphp PECLphp php(aphp Windowsphp portphp isphp notphp availablephp)php.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cryptphp_Mathphp_BigInteger
-php{
+/**
+ * Support for arbitrary precision mathematics in PHP.
+ *
+ * Zend_Crypt_Math_BigInteger is a wrapper across three PHP extensions: bcmath, gmp
+ * and big_int. Since each offer similar functionality, but availability of
+ * each differs across installations of PHP, this wrapper attempts to select
+ * the fastest option available and encapsulate a subset of its functionality
+ * which all extensions share in common.
+ *
+ * This class requires one of the three extensions to be available. BCMATH
+ * while the slowest, is available by default under Windows, and under Unix
+ * if PHP is compiled with the flag "--enable-bcmath". GMP requires the gmp
+ * library from http://www.swox.com/gmp/ and PHP compiled with the "--with-gmp"
+ * flag. BIG_INT support is available from a big_int PHP library available from
+ * only from PECL (a Windows port is not available).
+ *
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Crypt_Math_BigInteger
+{
 
-php php php php php/php*php*
-php php php php php php*php Holdsphp anphp instancephp ofphp onephp ofphp thephp threephp arbitraryphp precisionphp wrappersphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_mathphp php=php nullphp;
+    /**
+     * Holds an instance of one of the three arbitrary precision wrappers.
+     *
+     * @var Zend_Crypt_Math_BigInteger_Interface
+     */
+    protected $_math = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp;php aphp Factoryphp whichphp detectsphp aphp suitablephp PHPphp extensionphp for
-php php php php php php*php arbitraryphp precisionphp mathphp andphp instantiatesphp thephp suitablephp wrapper
-php php php php php php*php objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$extension
-php php php php php php*php php@throwsphp php Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$extensionphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$extensionphp php!php=php=php nullphp php&php&php php!inphp_arrayphp(php$extensionphp,php arrayphp(php'bcmathphp'php,php php'gmpphp'php,php php'bigintphp'php)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp(php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Exceptionphp.phpphp'php)php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exceptionphp(php'Invalidphp extensionphp typephp;php pleasephp usephp onephp ofphp bcmathphp,php gmpphp orphp bigintphp'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_loadAdapterphp(php$extensionphp)php;
-php php php php php}
+    /**
+     * Constructor; a Factory which detects a suitable PHP extension for
+     * arbitrary precision math and instantiates the suitable wrapper
+     * object.
+     *
+     * @param string $extension
+     * @throws  Zend_Crypt_Math_BigInteger_Exception
+     */
+    public function __construct($extension = null)
+    {
+        if ($extension !== null && !in_array($extension, array('bcmath', 'gmp', 'bigint'))) {
+            require_once('Zend/Crypt/Math/BigInteger/Exception.php');
+            throw new Zend_Crypt_Math_BigInteger_Exception('Invalid extension type; please use one of bcmath, gmp or bigint');
+        }
+        $this->_loadAdapter($extension);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Redirectphp allphp publicphp methodphp callsphp tophp thephp wrappedphp extensionphp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp php php stringphp php$methodName
-php php php php php php*php php@paramphp php php arrayphp php$args
-php php php php php php*php php@throwsphp php Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodNamephp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp(php!methodphp_existsphp(php$thisphp-php>php_mathphp,php php$methodNamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exceptionphp(php'invalidphp methodphp callphp:php php'php php.php getphp_classphp(php$thisphp-php>php_mathphp)php php.php php'php:php:php'php php.php php$methodNamephp php.php php'php(php)php doesphp notphp existphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp callphp_userphp_funcphp_arrayphp(arrayphp(php$thisphp-php>php_mathphp,php php$methodNamephp)php,php php$argsphp)php;
-php php php php php}
+    /**
+     * Redirect all public method calls to the wrapped extension object.
+     *
+     * @param   string $methodName
+     * @param   array $args
+     * @throws  Zend_Crypt_Math_BigInteger_Exception
+     */
+    public function __call($methodName, $args)
+    {
+        if(!method_exists($this->_math, $methodName)) {
+            require_once 'Zend/Crypt/Math/BigInteger/Exception.php';
+            throw new Zend_Crypt_Math_BigInteger_Exception('invalid method call: ' . get_class($this->_math) . '::' . $methodName . '() does not exist');
+        }
+        return call_user_func_array(array($this->_math, $methodName), $args);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$extension
-php php php php php php*php php@throwsphp php Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_loadAdapterphp(php$extensionphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$extensionphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'gmpphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$extensionphp php=php php'gmpphp'php;
-php php php php php php php php php php php php php/php/php}php elseifphp php(extensionphp_loadedphp(php'bigphp_intphp'php)php)php php{
-php php php php php php php php php php php php php/php/php php php php php$extensionphp php=php php'bigphp_intphp'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$extensionphp php=php php'bcmathphp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp(php$extensionphp php=php=php php'gmpphp'php php&php&php extensionphp_loadedphp(php'gmpphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Gmpphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_mathphp php=php newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Gmpphp(php)php;
-php php php php php php php php php/php/php}php elseifphp(php$extensionphp php=php=php php'bigintphp'php php&php&php extensionphp_loadedphp(php'bigphp_intphp'php)php)php php{
-php php php php php php php php php/php/php php php php requirephp_oncephp php'Zendphp/Cryptphp_Mathphp/BigIntegerphp/Bigintphp.phpphp'php;
-php php php php php php php php php/php/php php php php php$thisphp-php>php_mathphp php=php newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Bigintphp(php)php;
-php php php php php php php php php}php elseifphp php(php$extensionphp php=php=php php'bcmathphp'php php&php&php extensionphp_loadedphp(php'bcmathphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Bcmathphp.phpphp'php;
-php php php php php php php php php php php php php$thisphp-php>php_mathphp php=php newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Bcmathphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Exceptionphp(php$extensionphp php.php php'php bigphp integerphp precisionphp mathphp supportphp notphp detectedphp'php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * @param string $extension
+     * @throws  Zend_Crypt_Math_BigInteger_Exception
+     */
+    protected function _loadAdapter($extension = null)
+    {
+        if ($extension === null) {
+            if (extension_loaded('gmp')) {
+                $extension = 'gmp';
+            //} elseif (extension_loaded('big_int')) {
+            //    $extension = 'big_int';
+            } else {
+                $extension = 'bcmath';
+            }
+        }
+        if($extension == 'gmp' && extension_loaded('gmp')) {
+            require_once 'Zend/Crypt/Math/BigInteger/Gmp.php';
+            $this->_math = new Zend_Crypt_Math_BigInteger_Gmp();
+        //} elseif($extension == 'bigint' && extension_loaded('big_int')) {
+        //    require_once 'Zend/Crypt_Math/BigInteger/Bigint.php';
+        //    $this->_math = new Zend_Crypt_Math_BigInteger_Bigint();
+        } elseif ($extension == 'bcmath' && extension_loaded('bcmath')) {
+            require_once 'Zend/Crypt/Math/BigInteger/Bcmath.php';
+            $this->_math = new Zend_Crypt_Math_BigInteger_Bcmath();
+        } else {
+            require_once 'Zend/Crypt/Math/BigInteger/Exception.php';
+            throw new Zend_Crypt_Math_BigInteger_Exception($extension . ' big integer precision math support not detected');
+        }
+    }
 
-php}
+}

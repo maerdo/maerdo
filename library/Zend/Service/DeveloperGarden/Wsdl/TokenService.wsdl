@@ -1,353 +1,353 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>
-php<wsdlphp:definitionsphp xmlnsphp:schemaphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/schemaphp/php"php xmlnsphp:soapphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp/php"php xmlnsphp:spphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp"php xmlnsphp:tnsphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/php"php xmlnsphp:wsdlphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/php"php xmlnsphp:wspphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php4php/php0php9php/policyphp"php xmlnsphp:wsuphp=php"httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-wssecurityphp-utilityphp-php1php.php0php.xsdphp"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php namephp=php"stsphp"php targetNamespacephp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/php"php>
-php	php<wsdlphp:typesphp>
-php	php	php<xsdphp:schemaphp attributeFormDefaultphp=php"qualifiedphp"php elementFormDefaultphp=php"qualifiedphp"php targetNamespacephp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/schemaphp/php"php versionphp=php"php0php.php1php"php xmlnsphp:tnsphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/schemaphp/php"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php>
-php	php	php	php<xsdphp:complexTypephp namephp=php"FaultResponsephp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"codephp"php nillablephp=php"falsephp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"msgphp"php nillablephp=php"falsephp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"lockedUntilphp"php nillablephp=php"truephp"php typephp=php"xsdphp:dateTimephp"php/php>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:simpleTypephp namephp=php"SecurityTokenFormatIdphp"php>
-php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php<xsdphp:documentationphp>
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:schema="http://sts.idm.telekom.com/schema/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:tns="http://sts.idm.telekom.com/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="sts" targetNamespace="http://sts.idm.telekom.com/wsdl/">
+	<wsdl:types>
+		<xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sts.idm.telekom.com/schema/" version="0.1" xmlns:tns="http://sts.idm.telekom.com/schema/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:complexType name="FaultResponse">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="code" nillable="false" type="xsd:string"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="msg" nillable="false" type="xsd:string"/>
+					<xsd:element maxOccurs="1" minOccurs="0" name="lockedUntil" nillable="true" type="xsd:dateTime"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:simpleType name="SecurityTokenFormatId">
+				<xsd:annotation>
+					<xsd:documentation>
 
-php	php	php	php	php	Telekomphp specificphp formatphp idphp,php ephp.gphp.php therephp willphp bephp multiple
-php	php	php	php	php	differentphp tokenphp formatsphp derivedphp fromphp SAMLphp php2php.php0php Assertions
-php	php	php	php	php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:stringphp"php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"samlphp2php0php"php/php>
-php	php	php	php	<php/xsdphp:restrictionphp>
-php	php	php	<php/xsdphp:simpleTypephp>
-php	php	php	php<xsdphp:simpleTypephp namephp=php"SecurityTokenEncodingIdphp"php>
-php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php<xsdphp:documentationphp>
+					Telekom specific format id, e.g. there will be multiple
+					different token formats derived from SAML 2.0 Assertions
+				     </xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="saml20"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="SecurityTokenEncodingId">
+				<xsd:annotation>
+					<xsd:documentation>
 
-php	php	php	php	php	Telekomphp specificphp encodingphp idphp php-php therephp canphp bephp different
-php	php	php	php	php	encodingphp formatsphp forphp thephp samephp tokenphp formatphp,php ephp.gphp.php SAML
-php	php	php	php	php	Assertionsphp canphp bephp encodedphp asphp plainphp XMLphp orphp in
-php	php	php	php	php	basephp6php4php-encoding
-php	php	php	php	php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:stringphp"php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"textphp/xmlphp"php/php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"textphp/basephp6php4php"php/php>
-php	php	php	php	<php/xsdphp:restrictionphp>
-php	php	php	<php/xsdphp:simpleTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"SecurityTokenResponsephp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"tokenFormatphp"php typephp=php"tnsphp:SecurityTokenFormatIdphp"php>
-php	php	php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php	php	php<xsdphp:documentationphp>
+					Telekom specific encoding id - there can be different
+					encoding formats for the same token format, e.g. SAML
+					Assertions can be encoded as plain XML or in
+					base64-encoding
+				     </xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="text/xml"/>
+					<xsd:enumeration value="text/base64"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="SecurityTokenResponse">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="tokenFormat" type="tns:SecurityTokenFormatId">
+						<xsd:annotation>
+							<xsd:documentation>
 
-php	php	php	php	php	php	php	formatphp ofphp thephp tokenphp carriedphp byphp thephp responsephp,
-php	php	php	php	php	php	php	determinesphp syntaxphp andphp processingphp rulesphp forphp token
-php	php	php	php	php	php	php php php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php	<php/xsdphp:elementphp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php0php"php namephp=php"tokenEncodingphp"php typephp=php"tnsphp:SecurityTokenEncodingIdphp"php>
-php	php	php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php	php	php<xsdphp:documentationphp>
+							format of the token carried by the response,
+							determines syntax and processing rules for token
+						       </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="0" name="tokenEncoding" type="tns:SecurityTokenEncodingId">
+						<xsd:annotation>
+							<xsd:documentation>
 
-php	php	php	php	php	php	php	encodingphp ofphp thephp tokenphp carriedphp byphp thephp responsephp,
-php	php	php	php	php	php	php	determinesphp syntaxphp andphp processingphp rulesphp forphp token
-php	php	php	php	php	php	php php php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php	<php/xsdphp:elementphp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"tokenDataphp"php typephp=php"xsdphp:stringphp"php>
-php	php	php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php	php	php<xsdphp:documentationphp>
+							encoding of the token carried by the response,
+							determines syntax and processing rules for token
+						       </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="tokenData" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
 
-php	php	php	php	php	php	php	containsphp thephp stringphp representationphp ofphp the
-php	php	php	php	php	php	php	securityphp tokenphp php-php nophp furtherphp tokenphp formatphp identifier
-php	php	php	php	php	php	php php php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php	<php/xsdphp:elementphp>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"loginphp"php>
-php	php	php	php	php<xsdphp:sequencephp/php>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"getTokensphp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php namephp=php"serviceIdphp"php typephp=php"xsdphp:stringphp"php>
+							contains the string representation of the
+							security token - no further token format identifier
+						       </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="login">
+				<xsd:sequence/>
+			</xsd:complexType>
+			<xsd:complexType name="getTokens">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="serviceId" type="xsd:string">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"getTokensResponsephp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php namephp=php"securityTokenphp"php typephp=php"tnsphp:SecurityTokenResponsephp"php>
+				     </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getTokensResponse">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="securityToken" type="tns:SecurityTokenResponse">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"getTokensForSessionphp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php namephp=php"serviceIdphp"php typephp=php"xsdphp:stringphp"php>
+				     </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getTokensForSession">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="serviceId" type="xsd:string">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"ssidphp"php typephp=php"xsdphp:stringphp"php>
-php	php	php	php	php	php	php<xsdphp:annotationphp>
-php	php	php	php	php	php	php	php<xsdphp:documentationphp>
+				     </xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="ssid" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
 
-php	php	php	php	php	php	php	validphp SAMphp Sessionphp Id
-php	php	php	php	php	php	php php php php php php php <php/xsdphp:documentationphp>
-php	php	php	php	php	php	<php/xsdphp:annotationphp>
-php	php	php	php	php	<php/xsdphp:elementphp>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:simpleTypephp namephp=php"IDTypephp"php>
-php	php	php	php	php<xsdphp:restrictionphp basephp=php"xsdphp:stringphp"php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"guidphp"php/php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"anidphp"php/php>
-php	php	php	php	php	php<xsdphp:enumerationphp valuephp=php"aliaphp"php/php>
-php	php	php	php	<php/xsdphp:restrictionphp>
-php	php	php	<php/xsdphp:simpleTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"getTokensForUserIdphp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php namephp=php"serviceIdphp"php typephp=php"xsdphp:stringphp"php>
+							valid SAM Session Id
+						       </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:simpleType name="IDType">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="guid"/>
+					<xsd:enumeration value="anid"/>
+					<xsd:enumeration value="alia"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:complexType name="getTokensForUserId">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="serviceId" type="xsd:string">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"uidphp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"idxphp"php typephp=php"tnsphp:IDTypephp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php0php"php namephp=php"authnphp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:complexTypephp namephp=php"getTokensForUserIdAndProfilephp"php>
-php	php	php	php	php<xsdphp:sequencephp>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php namephp=php"serviceIdphp"php typephp=php"xsdphp:stringphp"php>
+				     </xsd:element>
+					<xsd:element name="uid" type="xsd:string"/>
+					<xsd:element name="idx" type="tns:IDType"/>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="authn" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getTokensForUserIdAndProfile">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="serviceId" type="xsd:string">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"uidphp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp namephp=php"idxphp"php typephp=php"tnsphp:IDTypephp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"unboundedphp"php minOccursphp=php"php0php"php namephp=php"authnphp"php typephp=php"xsdphp:stringphp"php/php>
-php	php	php	php	php	php<xsdphp:elementphp maxOccursphp=php"php1php"php minOccursphp=php"php1php"php namephp=php"profileIdphp"php typephp=php"xsdphp:stringphp"php>
+				     </xsd:element>
+					<xsd:element name="uid" type="xsd:string"/>
+					<xsd:element name="idx" type="tns:IDType"/>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="authn" type="xsd:string"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="profileId" type="xsd:string">
 
-php	php	php	php	php php php php php <php/xsdphp:elementphp>
-php	php	php	php	<php/xsdphp:sequencephp>
-php	php	php	<php/xsdphp:complexTypephp>
-php	php	php	php<xsdphp:elementphp namephp=php"FaultResponsephp"php typephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"loginphp"php typephp=php"tnsphp:loginphp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"loginResponsephp"php typephp=php"tnsphp:SecurityTokenResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensphp"php typephp=php"tnsphp:getTokensphp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensResponsephp"php typephp=php"tnsphp:getTokensResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForSessionResponsephp"php typephp=php"tnsphp:getTokensResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForUserIdResponsephp"php typephp=php"tnsphp:getTokensResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForUserIdAndProfileResponsephp"php typephp=php"tnsphp:getTokensResponsephp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForSessionphp"php typephp=php"tnsphp:getTokensForSessionphp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForUserIdphp"php typephp=php"tnsphp:getTokensForUserIdphp"php/php>
-php	php	php	php<xsdphp:elementphp namephp=php"getTokensForUserIdAndProfilephp"php typephp=php"tnsphp:getTokensForUserIdAndProfilephp"php/php>
-php	php	<php/xsdphp:schemaphp>
-php	<php/wsdlphp:typesphp>
-php	php<wsdlphp:messagephp namephp=php"FaultResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"faultphp"php elementphp=php"schemaphp:FaultResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"loginRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:loginphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"loginResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:loginResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getTokensphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"getTokensResponsephp"php elementphp=php"schemaphp:getTokensResponsephp"php>
+				     </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="FaultResponse" type="tns:FaultResponse"/>
+			<xsd:element name="login" type="tns:login"/>
+			<xsd:element name="loginResponse" type="tns:SecurityTokenResponse"/>
+			<xsd:element name="getTokens" type="tns:getTokens"/>
+			<xsd:element name="getTokensResponse" type="tns:getTokensResponse"/>
+			<xsd:element name="getTokensForSessionResponse" type="tns:getTokensResponse"/>
+			<xsd:element name="getTokensForUserIdResponse" type="tns:getTokensResponse"/>
+			<xsd:element name="getTokensForUserIdAndProfileResponse" type="tns:getTokensResponse"/>
+			<xsd:element name="getTokensForSession" type="tns:getTokensForSession"/>
+			<xsd:element name="getTokensForUserId" type="tns:getTokensForUserId"/>
+			<xsd:element name="getTokensForUserIdAndProfile" type="tns:getTokensForUserIdAndProfile"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="FaultResponse">
+		<wsdl:part name="fault" element="schema:FaultResponse"/>
+	</wsdl:message>
+	<wsdl:message name="loginRequest">
+		<wsdl:part name="parameters" element="schema:login"/>
+	</wsdl:message>
+	<wsdl:message name="loginResponse">
+		<wsdl:part name="parameters" element="schema:loginResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getTokensRequest">
+		<wsdl:part name="parameters" element="schema:getTokens"/>
+	</wsdl:message>
+	<wsdl:message name="getTokensResponse">
+		<wsdl:part name="getTokensResponse" element="schema:getTokensResponse">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForSessionRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getTokensForSessionphp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForSessionRequest">
+		<wsdl:part name="parameters" element="schema:getTokensForSession">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForSessionResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"getTokensForSessionResponsephp"php elementphp=php"schemaphp:getTokensForSessionResponsephp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForSessionResponse">
+		<wsdl:part name="getTokensForSessionResponse" element="schema:getTokensForSessionResponse">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForUserIdRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getTokensForUserIdphp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForUserIdRequest">
+		<wsdl:part name="parameters" element="schema:getTokensForUserId">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForUserIdResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"getTokensForUserIdResponsephp"php elementphp=php"schemaphp:getTokensForUserIdResponsephp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForUserIdResponse">
+		<wsdl:part name="getTokensForUserIdResponse" element="schema:getTokensForUserIdResponse">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForUserIdAndProfileRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getTokensForUserIdAndProfilephp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForUserIdAndProfileRequest">
+		<wsdl:part name="parameters" element="schema:getTokensForUserIdAndProfile">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getTokensForUserIdAndProfileResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"getTokensForUserIdAndProfileResponsephp"php elementphp=php"schemaphp:getTokensForUserIdAndProfileResponsephp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getTokensForUserIdAndProfileResponse">
+		<wsdl:part name="getTokensForUserIdAndProfileResponse" element="schema:getTokensForUserIdAndProfileResponse">
 
-php php php php php php <php/wsdlphp:partphp>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:portTypephp namephp=php"SecurityTokenServiceWSphp"php>
-php	php	php<wsdlphp:operationphp namephp=php"loginphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:loginRequestphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:loginResponsephp"php/php>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php messagephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getTokensRequestphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getTokensResponsephp"php/php>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php messagephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForSessionphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getTokensForSessionRequestphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getTokensForSessionResponsephp"php/php>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php messagephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForUserIdphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getTokensForUserIdRequestphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getTokensForUserIdResponsephp"php/php>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php messagephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForUserIdAndProfilephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getTokensForUserIdAndProfileRequestphp"php>
+      </wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="SecurityTokenServiceWS">
+		<wsdl:operation name="login">
+			<wsdl:input message="tns:loginRequest"/>
+			<wsdl:output message="tns:loginResponse"/>
+			<wsdl:fault name="fault" message="tns:FaultResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getTokens">
+			<wsdl:input message="tns:getTokensRequest"/>
+			<wsdl:output message="tns:getTokensResponse"/>
+			<wsdl:fault name="fault" message="tns:FaultResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForSession">
+			<wsdl:input message="tns:getTokensForSessionRequest"/>
+			<wsdl:output message="tns:getTokensForSessionResponse"/>
+			<wsdl:fault name="fault" message="tns:FaultResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForUserId">
+			<wsdl:input message="tns:getTokensForUserIdRequest"/>
+			<wsdl:output message="tns:getTokensForUserIdResponse"/>
+			<wsdl:fault name="fault" message="tns:FaultResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForUserIdAndProfile">
+			<wsdl:input message="tns:getTokensForUserIdAndProfileRequest">
 
-php php php php php php php php php <php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getTokensForUserIdAndProfileResponsephp"php/php>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php messagephp=php"tnsphp:FaultResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:portTypephp>
-php	php<wsdlphp:bindingphp namephp=php"SecurityTokenServiceSOAPBindingphp"php typephp=php"tnsphp:SecurityTokenServiceWSphp"php>
-php	php	php<soapphp:bindingphp transportphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/httpphp"php/php>
-php	php	php<wspphp:PolicyReferencephp URIphp=php"php#TransportBindingPolicyphp"php/php>
-php	php	php<wsdlphp:operationphp namephp=php"loginphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/loginphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#UsernameTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php>
-php	php	php	php	php<soapphp:faultphp namephp=php"faultphp"php usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:faultphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/getTokensphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#SAMLTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php>
-php	php	php	php	php<soapphp:faultphp namephp=php"faultphp"php usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:faultphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForSessionphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/getTokensForSessionphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#SAMLTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php>
-php	php	php	php	php<soapphp:faultphp namephp=php"faultphp"php usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:faultphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForUserIdphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/getTokensForUserIdphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#SAMLTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php>
-php	php	php	php	php<soapphp:faultphp namephp=php"faultphp"php usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:faultphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getTokensForUserIdAndProfilephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/stsphp.idmphp.telekomphp.comphp/wsdlphp/getTokensForUserIdAndProfilephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#SAMLTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	php	php<wsdlphp:faultphp namephp=php"faultphp"php>
-php	php	php	php	php<soapphp:faultphp namephp=php"faultphp"php usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:faultphp>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:bindingphp>
-php	php<wsdlphp:servicephp namephp=php"SecurityTokenServicephp"php>
-php	php	php<wsdlphp:portphp namephp=php"TokenServicephp"php bindingphp=php"tnsphp:SecurityTokenServiceSOAPBindingphp"php>
-php	php	php	php<soapphp:addressphp locationphp=php"httpsphp:php/php/stsphp.idmphp.telekomphp.comphp/TokenServicephp"php/php>
-php	php	<php/wsdlphp:portphp>
-php	<php/wsdlphp:servicephp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"TransportBindingPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<wsawsphp:UsingAddressingphp xmlnsphp:wsawsphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php6php/php0php5php/addressingphp/wsdlphp"php/php>
-php	php	php	php	php<spphp:TransportBindingphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:TransportTokenphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:HttpsTokenphp RequireClientCertificatephp=php"falsephp"php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:TransportTokenphp>
-php	php	php	php	php	php	php<spphp:Layoutphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Strictphp/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:Layoutphp>
-php	php	php	php	php	php	php<spphp:IncludeTimestampphp/php>
-php	php	php	php	php	php	php<spphp:AlgorithmSuitephp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Basicphp2php5php6php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:AlgorithmSuitephp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:TransportBindingphp>
-php	php	php	php	php<spphp:Wssphp1php1php/php>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"UsernameTokenPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<spphp:SupportingTokensphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:UsernameTokenphp spphp:IncludeTokenphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp/IncludeTokenphp/AlwaysToRecipientphp"php>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:WssUsernameTokenphp1php1php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:UsernameTokenphp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:SupportingTokensphp>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"SAMLTokenPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<spphp:SupportingTokensphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:SamlTokenphp spphp:IncludeTokenphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp/IncludeTokenphp/AlwaysToRecipientphp"php>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:WssSamlVphp2php0Tokenphp1php1php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:SamlTokenphp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:SupportingTokensphp>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-<php/wsdlphp:definitionsphp>
+         </wsdl:input>
+			<wsdl:output message="tns:getTokensForUserIdAndProfileResponse"/>
+			<wsdl:fault name="fault" message="tns:FaultResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SecurityTokenServiceSOAPBinding" type="tns:SecurityTokenServiceWS">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsp:PolicyReference URI="#TransportBindingPolicy"/>
+		<wsdl:operation name="login">
+			<soap:operation soapAction="http://sts.idm.telekom.com/wsdl/login"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#UsernameTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTokens">
+			<soap:operation soapAction="http://sts.idm.telekom.com/wsdl/getTokens"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#SAMLTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForSession">
+			<soap:operation soapAction="http://sts.idm.telekom.com/wsdl/getTokensForSession"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#SAMLTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForUserId">
+			<soap:operation soapAction="http://sts.idm.telekom.com/wsdl/getTokensForUserId"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#SAMLTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTokensForUserIdAndProfile">
+			<soap:operation soapAction="http://sts.idm.telekom.com/wsdl/getTokensForUserIdAndProfile"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#SAMLTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SecurityTokenService">
+		<wsdl:port name="TokenService" binding="tns:SecurityTokenServiceSOAPBinding">
+			<soap:address location="https://sts.idm.telekom.com/TokenService"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsp:Policy wsu:Id="TransportBindingPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsaws:UsingAddressing xmlns:wsaws="http://www.w3.org/2006/05/addressing/wsdl"/>
+				<sp:TransportBinding>
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken RequireClientCertificate="false"/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+						<sp:IncludeTimestamp/>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<sp:Wss11/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsp:Policy wsu:Id="UsernameTokenPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:SupportingTokens>
+					<wsp:Policy>
+						<sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssUsernameToken11/>
+							</wsp:Policy>
+						</sp:UsernameToken>
+					</wsp:Policy>
+				</sp:SupportingTokens>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsp:Policy wsu:Id="SAMLTokenPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:SupportingTokens>
+					<wsp:Policy>
+						<sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssSamlV20Token11/>
+							</wsp:Policy>
+						</sp:SamlToken>
+					</wsp:Policy>
+				</sp:SupportingTokens>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+</wsdl:definitions>

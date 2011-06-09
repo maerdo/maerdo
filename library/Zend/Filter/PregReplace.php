@@ -1,174 +1,174 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php PregReplacephp.phpphp php2php1php0php8php5php php2php0php1php0php-php0php2php-php1php8php php2php1php:php0php8php:php3php9Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: PregReplace.php 21085 2010-02-18 21:08:39Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_PregReplacephp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Patternphp tophp match
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_matchPatternphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_PregReplace implements Zend_Filter_Interface
+{
+    /**
+     * Pattern to match
+     * @var mixed
+     */
+    protected $_matchPattern = null;
 
-php php php php php/php*php*
-php php php php php php*php Replacementphp pattern
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php protectedphp php$php_replacementphp php=php php'php'php;
+    /**
+     * Replacement pattern
+     * @var mixed
+     */
+    protected $_replacement = '';
 
-php php php php php/php*php*
-php php php php php php*php Isphp unicodephp enabledphp?
-php php php php php php*
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php staticphp protectedphp php$php_unicodeSupportEnabledphp php=php nullphp;
+    /**
+     * Is unicode enabled?
+     *
+     * @var bool
+     */
+    static protected $_unicodeSupportEnabled = null;
 
-php php php php php/php*php*
-php php php php php php*php Isphp Unicodephp Supportphp Enabledphp Utilityphp function
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php staticphp publicphp functionphp isUnicodeSupportEnabledphp(php)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:php$php_unicodeSupportEnabledphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php selfphp:php:php_determineUnicodeSupportphp(php)php;
-php php php php php php php php php}
+    /**
+     * Is Unicode Support Enabled Utility function
+     *
+     * @return bool
+     */
+    static public function isUnicodeSupportEnabled()
+    {
+        if (self::$_unicodeSupportEnabled === null) {
+            self::_determineUnicodeSupport();
+        }
 
-php php php php php php php php returnphp selfphp:php:php$php_unicodeSupportEnabledphp;
-php php php php php}
+        return self::$_unicodeSupportEnabled;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Methodphp tophp cachephp thephp regexphp neededphp tophp determinephp ifphp unicodephp supportphp isphp available
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php staticphp protectedphp functionphp php_determineUnicodeSupportphp(php)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_unicodeSupportEnabledphp php=php php(php@pregphp_matchphp(php'php/php\pLphp/uphp'php,php php'aphp'php)php)php php?php truephp php:php falsephp;
-php php php php php}
+    /**
+     * Method to cache the regex needed to determine if unicode support is available
+     *
+     * @return bool
+     */
+    static protected function _determineUnicodeSupport()
+    {
+        self::$_unicodeSupportEnabled = (@preg_match('/\pL/u', 'a')) ? true : false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*php Supportedphp optionsphp are
-php php php php php php*php php php php php php'matchphp'php php php php=php>php matchingphp pattern
-php php php php php php*php php php php php php'replacephp'php php=php>php replacephp withphp this
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php php php php php php$tempphp php php php php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$tempphp[php'matchphp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
-php php php php php php php php php php php php php}
+    /**
+     * Constructor
+     * Supported options are
+     *     'match'   => matching pattern
+     *     'replace' => replace with this
+     *
+     * @param  string|array $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } else if (!is_array($options)) {
+            $options = func_get_args();
+            $temp    = array();
+            if (!empty($options)) {
+                $temp['match'] = array_shift($options);
+            }
 
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$tempphp[php'replacephp'php]php php=php arrayphp_shiftphp(php$optionsphp)php;
-php php php php php php php php php php php php php}
+            if (!empty($options)) {
+                $temp['replace'] = array_shift($options);
+            }
 
-php php php php php php php php php php php php php$optionsphp php=php php$tempphp;
-php php php php php php php php php}
+            $options = $temp;
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'matchphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setMatchPatternphp(php$optionsphp[php'matchphp'php]php)php;
-php php php php php php php php php}
+        if (array_key_exists('match', $options)) {
+            $this->setMatchPattern($options['match']);
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'replacephp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setReplacementphp(php$optionsphp[php'replacephp'php]php)php;
-php php php php php php php php php}
-php php php php php}
+        if (array_key_exists('replace', $options)) {
+            $this->setReplacement($options['replace']);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp matchphp patternphp forphp thephp regexphp beingphp calledphp withinphp filterphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$matchphp php-php samephp asphp thephp firstphp argumentphp ofphp pregphp_replace
-php php php php php php*php php@returnphp Zendphp_Filterphp_PregReplace
-php php php php php php*php/
-php php php php publicphp functionphp setMatchPatternphp(php$matchphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_matchPatternphp php=php php$matchphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the match pattern for the regex being called within filter()
+     *
+     * @param mixed $match - same as the first argument of preg_replace
+     * @return Zend_Filter_PregReplace
+     */
+    public function setMatchPattern($match)
+    {
+        $this->_matchPattern = $match;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp currentlyphp setphp matchphp pattern
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getMatchPatternphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_matchPatternphp;
-php php php php php}
+    /**
+     * Get currently set match pattern
+     *
+     * @return string
+     */
+    public function getMatchPattern()
+    {
+        return $this->_matchPattern;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp Replacementphp patternphp/stringphp forphp thephp pregphp_replacephp calledphp inphp filter
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$replacementphp php-php samephp asphp thephp secondphp argumentphp ofphp pregphp_replace
-php php php php php php*php php@returnphp Zendphp_Filterphp_PregReplace
-php php php php php php*php/
-php php php php publicphp functionphp setReplacementphp(php$replacementphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_replacementphp php=php php$replacementphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the Replacement pattern/string for the preg_replace called in filter
+     *
+     * @param mixed $replacement - same as the second argument of preg_replace
+     * @return Zend_Filter_PregReplace
+     */
+    public function setReplacement($replacement)
+    {
+        $this->_replacement = $replacement;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp currentlyphp setphp replacementphp value
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getReplacementphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_replacementphp;
-php php php php php}
+    /**
+     * Get currently set replacement value
+     *
+     * @return string
+     */
+    public function getReplacement()
+    {
+        return $this->_replacement;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Performphp regexpphp replacementphp asphp filter
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_matchPatternphp php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(getphp_classphp(php$thisphp)php php.php php'php doesphp notphp havephp aphp validphp MatchPatternphp setphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * Perform regexp replacement as filter
+     *
+     * @param  string $value
+     * @return string
+     */
+    public function filter($value)
+    {
+        if ($this->_matchPattern == null) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception(get_class($this) . ' does not have a valid MatchPattern set.');
+        }
 
-php php php php php php php php returnphp pregphp_replacephp(php$thisphp-php>php_matchPatternphp,php php$thisphp-php>php_replacementphp,php php$valuephp)php;
-php php php php php}
+        return preg_replace($this->_matchPattern, $this->_replacement, $value);
+    }
 
-php}
+}

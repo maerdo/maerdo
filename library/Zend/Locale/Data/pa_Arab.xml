@@ -1,133 +1,133 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php2php5php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php4php:php1php5php:php3php3php php$php"php/php>
-php	php	php<languagephp typephp=php"paphp"php/php>
-php	php	php<scriptphp typephp=php"Arabphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"paphp"php>phpپphpنphpجphpاphpب<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>phpاphpلphpعphpرphpبphpيphpة<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Guruphp"php>phpگphpُphpرphpمphpُphpکphpھphpی<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>phpپphpکphpسphpتphpاphpن<php/territoryphp>
-php	php	<php/territoriesphp>
-php	<php/localeDisplayNamesphp>
-php	php<layoutphp>
-php	php	php<orientationphp charactersphp=php"rightphp-tophp-leftphp"php/php>
-php	<php/layoutphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[php\uphp0php6php4Fphp phpءphp phpآphp phpؤphp phpئphp-phpبphp phpپphp phpتphp phpثphp phpٹphp phpجphp phpچphp phpحphp-phpذphp phpڈphp phpرphp phpزphp phpڑphp phpژphp phpسphp-phpغphp phpفphp phpقphp phpکphp phpگphp phpلphp-phpنphp phpںphp phpهphp phpھphp phpہphp phpوphp phpیphp phpےphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[phpأphp phpٻphp phpةphp phpٺphp phpټphp phpٽphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>phpجphpنphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>phpفphpرphpوphpرphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>phpمphpاphpرphpچ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpاphpپphpرphpیphpل<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>phpمphpئ<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>phpجphpوphpن<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>phpجphpوphpلphpاphpئphpی<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpاphpگphpسphpت<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>phpسphpتphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpاphpکphpتphpوphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>phpنphpوphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>phpدphpسphpمphpبphpر<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>phpاphpتphpوphpاphpر<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>phpپphpیphpر<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>phpمphpنphpگphpل<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>phpبphpُphpدphpھ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>phpجphpمphpعphpرphpاphpت<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>phpجphpمphpعphpہ<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>phpہphpفphpتphpہ<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>phpچphpوphpتphpھphpاphpيphp phpپphpہphpلphpاphpں<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>phpچphpوphpتphpھphpاphpيphp phpدphpوphpجphpا<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>phpچphpوphpتphpھphpاphpيphp phpتphpيphpجphpا<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>phpچphpوphpتphpھphpاphpيphp phpچphpوphpتphpھphpا<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>phpاphpيphpسphpاphpپphpوphpرphpو<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>phpسphpں<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpوphpرphpھphpا<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpمphpہphpيphpنphpا<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpہphpفphpتphpہ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpدphpئphpن<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpہphpفphpتphpےphp phpدphpاphp phpدphpن<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpگphpھphpنphpٹphpا<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpمphpنphpٹ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>phpٹphpپphpہ<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<defaultNumberingSystemphp>arab<php/defaultNumberingSystemphp>
-php	php	php<symbolsphp>
-php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
-php	php	<php/symbolsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>phpيphpوphpرphpو<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>phpرphpوphpپphpئphpیphpہphp php[INRphp]<php/displayNamephp>
-php	php	php	php	php<symbolphp>phpرphp php[INRphp]<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PKRphp"php>
-php	php	php	php	php<displayNamephp>phpرphpوphpپphpئphpیphpہ<php/displayNamephp>
-php	php	php	php	php<symbolphp>phpر<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>phpہphpاphpں<php/yesstrphp>
-php	php	php	php<nostrphp>phpنphpہphpيphpں<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.25 $"/>
+		<generation date="$Date: 2009/06/15 04:15:33 $"/>
+		<language type="pa"/>
+		<script type="Arab"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="pa">پنجاب</language>
+		</languages>
+		<scripts>
+			<script type="Arab">العربية</script>
+			<script type="Guru">گُرمُکھی</script>
+		</scripts>
+		<territories>
+			<territory type="PK">پکستان</territory>
+		</territories>
+	</localeDisplayNames>
+	<layout>
+		<orientation characters="right-to-left"/>
+	</layout>
+	<characters>
+		<exemplarCharacters>[\u064F ء آ ؤ ئ-ب پ ت ث ٹ ج چ ح-ذ ڈ ر ز ڑ ژ س-غ ف ق ک گ ل-ن ں ه ھ ہ و ی ے]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[أ ٻ ة ٺ ټ ٽ]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="wide">
+							<month type="1">جنوری</month>
+							<month type="2">فروری</month>
+							<month type="3">مارچ</month>
+							<month type="4">اپریل</month>
+							<month type="5">مئ</month>
+							<month type="6">جون</month>
+							<month type="7">جولائی</month>
+							<month type="8">اگست</month>
+							<month type="9">ستمبر</month>
+							<month type="10">اکتوبر</month>
+							<month type="11">نومبر</month>
+							<month type="12">دسمبر</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="wide">
+							<day type="sun">اتوار</day>
+							<day type="mon">پیر</day>
+							<day type="tue">منگل</day>
+							<day type="wed">بُدھ</day>
+							<day type="thu">جمعرات</day>
+							<day type="fri">جمعہ</day>
+							<day type="sat">ہفتہ</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="wide">
+							<quarter type="1">چوتھاي پہلاں</quarter>
+							<quarter type="2">چوتھاي دوجا</quarter>
+							<quarter type="3">چوتھاي تيجا</quarter>
+							<quarter type="4">چوتھاي چوتھا</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<eras>
+					<eraNames>
+						<era type="0">ايساپورو</era>
+						<era type="1">سں</era>
+					</eraNames>
+				</eras>
+				<fields>
+					<field type="year">
+						<displayName>ورھا</displayName>
+					</field>
+					<field type="month">
+						<displayName>مہينا</displayName>
+					</field>
+					<field type="week">
+						<displayName>ہفتہ</displayName>
+					</field>
+					<field type="day">
+						<displayName>دئن</displayName>
+					</field>
+					<field type="weekday">
+						<displayName>ہفتے دا دن</displayName>
+					</field>
+					<field type="hour">
+						<displayName>گھنٹا</displayName>
+					</field>
+					<field type="minute">
+						<displayName>منٹ</displayName>
+					</field>
+					<field type="zone">
+						<displayName>ٹپہ</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+	</dates>
+	<numbers>
+		<defaultNumberingSystem>arab</defaultNumberingSystem>
+		<symbols>
+			<nativeZeroDigit>0</nativeZeroDigit>
+		</symbols>
+		<currencies>
+			<currency type="EUR">
+				<displayName>يورو</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>روپئیہ [INR]</displayName>
+				<symbol>ر [INR]</symbol>
+			</currency>
+			<currency type="PKR">
+				<displayName>روپئیہ</displayName>
+				<symbol>ر</symbol>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>ہاں</yesstr>
+			<nostr>نہيں</nostr>
+		</messages>
+	</posix>
+</ldml>
 

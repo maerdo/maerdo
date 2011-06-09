@@ -1,453 +1,453 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Streamphp.phpphp php2php2php9php0php9php php2php0php1php0php-php0php8php-php2php7php php1php9php:php5php7php:php4php8Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Stream.php 22909 2010-08-27 19:57:48Z alexander $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Streamphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Dictionaryphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Stream.php';
+require_once 'Zend/Pdf/Element/Dictionary.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Elementphp_Objectphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Objectphp.phpphp'php;
+/** Zend_Pdf_Element_Object */
+require_once 'Zend/Pdf/Element/Object.php';
 
-php/php*php*
-php php*php PDFphp filephp php'streamphp objectphp'php elementphp implementation
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Elementphp_Objectphp_Streamphp extendsphp Zendphp_Pdfphp_Elementphp_Object
-php{
-php php php php php/php*php*
-php php php php php php*php StreamObjectphp dictionary
-php php php php php php*php Requiredphp enriesphp:
-php php php php php php*php Length
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_Elementphp_Dictionary
-php php php php php php*php/
-php php php php privatephp php$php_dictionaryphp;
+/**
+ * PDF file 'stream object' element implementation
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Element_Object_Stream extends Zend_Pdf_Element_Object
+{
+    /**
+     * StreamObject dictionary
+     * Required enries:
+     * Length
+     *
+     * @var Zend_Pdf_Element_Dictionary
+     */
+    private $_dictionary;
 
-php php php php php/php*php*
-php php php php php php*php Flagphp whichphp signalsphp,php thatphp streamphp isphp decoded
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp php$php_streamDecodedphp;
+    /**
+     * Flag which signals, that stream is decoded
+     *
+     * @var boolean
+     */
+    private $_streamDecoded;
 
-php php php php php/php*php*
-php php php php php php*php Storedphp originalphp streamphp objectphp dictionaryphp.
-php php php php php php*php Usedphp tophp decodephp streamphp atphp accessphp timephp.
-php php php php php php*
-php php php php php php*php Thephp onlyphp propertiesphp affectingphp decodingphp arephp soredphp herephp.
-php php php php php php*
-php php php php php php*php php@varphp arrayphp|null
-php php php php php php*php/
-php php php php privatephp php$php_initialDictionaryDataphp php=php nullphp;
+    /**
+     * Stored original stream object dictionary.
+     * Used to decode stream at access time.
+     *
+     * The only properties affecting decoding are sored here.
+     *
+     * @var array|null
+     */
+    private $_initialDictionaryData = null;
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$val
-php php php php php php*php php@paramphp integerphp php$objNum
-php php php php php php*php php@paramphp integerphp php$genNum
-php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factory
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Dictionaryphp|nullphp php$dictionary
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$valphp,php php$objNumphp,php php$genNumphp,php Zendphp_Pdfphp_ElementFactoryphp php$factoryphp,php php$dictionaryphp php=php nullphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(newphp Zendphp_Pdfphp_Elementphp_Streamphp(php$valphp)php,php php$objNumphp,php php$genNumphp,php php$factoryphp)php;
+    /**
+     * Object constructor
+     *
+     * @param mixed $val
+     * @param integer $objNum
+     * @param integer $genNum
+     * @param Zend_Pdf_ElementFactory $factory
+     * @param Zend_Pdf_Element_Dictionary|null $dictionary
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct($val, $objNum, $genNum, Zend_Pdf_ElementFactory $factory, $dictionary = null)
+    {
+        parent::__construct(new Zend_Pdf_Element_Stream($val), $objNum, $genNum, $factory);
 
-php php php php php php php php ifphp php(php$dictionaryphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp php php php php=php newphp Zendphp_Pdfphp_Elementphp_Dictionaryphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>Lengthphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(strlenphp(php php$valphp php)php)php;
-php php php php php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp php php php php=php php$dictionaryphp;
-php php php php php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php falsephp;
-php php php php php php php php php}
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Extractphp dictionaryphp dataphp whichphp arephp usedphp tophp storephp informationphp andphp tophp normalizephp filters
-php php php php php php*php informationphp beforephp defilteringphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php privatephp functionphp php_extractDictionaryDataphp(php)
-php php php php php{
-php php php php php php php php php$dictionaryArrayphp php=php arrayphp(php)php;
-
-php php php php php php php php php$dictionaryArrayphp[php'Filterphp'php]php php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$dictionaryArrayphp[php'DecodeParmsphp'php]php php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>Filterphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Dophp nothingphp.
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_dictionaryphp-php>Filterphp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_ARRAYphp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>Filterphp-php>itemsphp asphp php$idphp php=php>php php$filterphp)php php{
-php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'Filterphp'php]php[php$idphp]php php php php php php php=php php$filterphp-php>valuephp;
-php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'DecodeParmsphp'php]php[php$idphp]php php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>itemsphp[php$idphp]php php!php=php=php nullphp php&php&
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>itemsphp[php$idphp]php-php>valuephp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>itemsphp[php$idphp]php-php>getKeysphp(php)php asphp php$paramKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'DecodeParmsphp'php]php[php$idphp]php[php$paramKeyphp]php php=
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>itemsphp[php$idphp]php-php>php$paramKeyphp-php>valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_dictionaryphp-php>Filterphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_NULLphp)php php{
-php php php php php php php php php php php php php$dictionaryArrayphp[php'Filterphp'php]php[php0php]php php php php php php php=php php$thisphp-php>php_dictionaryphp-php>Filterphp-php>valuephp;
-php php php php php php php php php php php php php$dictionaryArrayphp[php'DecodeParmsphp'php]php[php0php]php php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>getKeysphp(php)php asphp php$paramKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'DecodeParmsphp'php]php[php0php]php[php$paramKeyphp]php php=
-php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>DecodeParmsphp-php>php$paramKeyphp-php>valuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>Fphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$dictionaryArrayphp[php'Fphp'php]php php=php php$thisphp-php>php_dictionaryphp-php>Fphp-php>valuephp;
-php php php php php php php php php}
-
-php php php php php php php php php$dictionaryArrayphp[php'FFilterphp'php]php php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$dictionaryArrayphp[php'FDecodeParmsphp'php]php php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>FFilterphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Dophp nothingphp.
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_dictionaryphp-php>FFilterphp-php>getTypephp(php)php php=php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_ARRAYphp)php php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>FFilterphp-php>itemsphp asphp php$idphp php=php>php php$filterphp)php php{
-php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'FFilterphp'php]php[php$idphp]php php php php php php php=php php$filterphp-php>valuephp;
-php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'FDecodeParmsphp'php]php[php$idphp]php php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>itemsphp[php$idphp]php php!php=php=php nullphp php&php&
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>itemsphp[php$idphp]php-php>valuephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>itemsphp[php$idphp]php-php>getKeysphp(php)php asphp php$paramKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'FDecodeParmsphp'php]php[php$idphp]php[php$paramKeyphp]php php=
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>itemsphp[php$idphp]php-php>itemsphp[php$paramKeyphp]php-php>valuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$dictionaryArrayphp[php'FFilterphp'php]php[php0php]php php php php php php php=php php$thisphp-php>php_dictionaryphp-php>FFilterphp-php>valuephp;
-php php php php php php php php php php php php php$dictionaryArrayphp[php'FDecodeParmsphp'php]php[php0php]php php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp php!php=php=php nullphp php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>getKeysphp(php)php asphp php$paramKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$dictionaryArrayphp[php'FDecodeParmsphp'php]php[php0php]php[php$paramKeyphp]php php=
-php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_dictionaryphp-php>FDecodeParmsphp-php>itemsphp[php$paramKeyphp]php-php>valuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$dictionaryArrayphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Decodephp stream
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_decodeStreamphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_initialDictionaryDataphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp php=php php$thisphp-php>php_extractDictionaryDataphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Allphp appliedphp streamphp filtersphp mustphp bephp processedphp tophp decodephp streamphp.
-php php php php php php php php php php*php Ifphp wephp donphp'tphp recognizephp anyphp ofphp appliedphp filetrsphp anphp exceptionphp shouldphp bephp thrownphp here
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_initialDictionaryDataphp[php'Fphp'php]php)php)php php{
-php php php php php php php php php php php php php/php*php*php php@todophp Checkphp,php howphp externalphp filesphp canphp bephp processedphp.php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Externalphp filtersphp arephp notphp supportedphp nowphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php foreachphp php(php$thisphp-php>php_initialDictionaryDataphp[php'Filterphp'php]php asphp php$idphp php=php>php php$filterNamephp php)php php{
-php php php php php php php php php php php php php$valueRefphp php=php php&php$thisphp-php>php_valuephp-php>valuephp-php>getRefphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_valuephp-php>valuephp-php>touchphp(php)php;
-php php php php php php php php php php php php switchphp php(php$filterNamephp)php php{
-php php php php php php php php php php php php php php php php casephp php'ASCIIHexDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/AsciiHexphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_AsciiHexphp:php:decodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'ASCIIphp8php5Decodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Asciiphp8php5php.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Asciiphp8php5php:php:decodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'FlateDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Compressionphp/Flatephp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Compressionphp_Flatephp:php:decodephp(php$valueRefphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp[php'DecodeParmsphp'php]php[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'LZWDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Compressionphp/Lzwphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Compressionphp_Lzwphp:php:decodephp(php$valueRefphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp[php'DecodeParmsphp'php]php[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'RunLengthDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/RunLengthphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_RunLengthphp:php:decodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp streamphp filterphp:php php\php'php'php php.php php$filterNamephp php.php php'php\php'php.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php truephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Encodephp stream
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_encodeStreamphp(php)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Allphp appliedphp streamphp filtersphp mustphp bephp processedphp tophp encodephp streamphp.
-php php php php php php php php php php*php Ifphp wephp donphp'tphp recognizephp anyphp ofphp appliedphp filetrsphp anphp exceptionphp shouldphp bephp thrownphp here
-php php php php php php php php php php*php/
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_initialDictionaryDataphp[php'Fphp'php]php)php)php php{
-php php php php php php php php php php php php php/php*php*php php@todophp Checkphp,php howphp externalphp filesphp canphp bephp processedphp.php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Externalphp filtersphp arephp notphp supportedphp nowphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$filtersphp php=php arrayphp_reversephp(php$thisphp-php>php_initialDictionaryDataphp[php'Filterphp'php]php,php truephp)php;
-
-php php php php php php php php foreachphp php(php$filtersphp asphp php$idphp php=php>php php$filterNamephp php)php php{
-php php php php php php php php php php php php php$valueRefphp php=php php&php$thisphp-php>php_valuephp-php>valuephp-php>getRefphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_valuephp-php>valuephp-php>touchphp(php)php;
-php php php php php php php php php php php php switchphp php(php$filterNamephp)php php{
-php php php php php php php php php php php php php php php php casephp php'ASCIIHexDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/AsciiHexphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_AsciiHexphp:php:encodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'ASCIIphp8php5Decodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Asciiphp8php5php.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Asciiphp8php5php:php:encodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'FlateDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Compressionphp/Flatephp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Compressionphp_Flatephp:php:encodephp(php$valueRefphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp[php'DecodeParmsphp'php]php[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php casephp php'LZWDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Compressionphp/Lzwphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_Compressionphp_Lzwphp:php:encodephp(php$valueRefphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp[php'DecodeParmsphp'php]php[php$idphp]php)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php casephp php'RunLengthDecodephp'php:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/RunLengthphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$valueRefphp php=php Zendphp_Pdfphp_Filterphp_RunLengthphp:php:encodephp(php$valueRefphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp streamphp filterphp:php php\php'php'php php.php php$filterNamephp php.php php'php\php'php.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp handler
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$property
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$propertyphp)
-php php php php php{
-php php php php php php php php ifphp php(php$propertyphp php=php=php php'dictionaryphp'php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Ifphp streamphp isphp notphp decodedphp yetphp,php thenphp storephp originalphp decodingphp optionsphp php(dophp itphp onlyphp oncephp)php.
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php ifphp php(php(php php!php$thisphp-php>php_streamDecodedphp php)php php&php&php php(php$thisphp-php>php_initialDictionaryDataphp php=php=php=php nullphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp php=php php$thisphp-php>php_extractDictionaryDataphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dictionaryphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$propertyphp php=php=php php'valuephp'php)php php{
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_streamDecodedphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_decodeStreamphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$thisphp-php>php_valuephp-php>valuephp-php>getRefphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp streamphp objectphp propertyphp requestedphp.php'php)php;
-php php php php php}
+        if ($dictionary === null) {
+            $this->_dictionary    = new Zend_Pdf_Element_Dictionary();
+            $this->_dictionary->Length = new Zend_Pdf_Element_Numeric(strlen( $val ));
+            $this->_streamDecoded = true;
+        } else {
+            $this->_dictionary    = $dictionary;
+            $this->_streamDecoded = false;
+        }
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Setphp handler
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$property
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php/
-php php php php publicphp functionphp php_php_setphp(php$propertyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php$propertyphp php=php=php php'valuephp'php)php php{
-php php php php php php php php php php php php php$valueRefphp php=php php&php$thisphp-php>php_valuephp-php>valuephp-php>getRefphp(php)php;
-php php php php php php php php php php php php php$valueRefphp php=php php$valuephp;
-php php php php php php php php php php php php php$thisphp-php>php_valuephp-php>valuephp-php>touchphp(php)php;
+    /**
+     * Extract dictionary data which are used to store information and to normalize filters
+     * information before defiltering.
+     *
+     * @return array
+     */
+    private function _extractDictionaryData()
+    {
+        $dictionaryArray = array();
 
-php php php php php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php truephp;
+        $dictionaryArray['Filter']      = array();
+        $dictionaryArray['DecodeParms'] = array();
+        if ($this->_dictionary->Filter === null) {
+            // Do nothing.
+        } else if ($this->_dictionary->Filter->getType() == Zend_Pdf_Element::TYPE_ARRAY) {
+            foreach ($this->_dictionary->Filter->items as $id => $filter) {
+                $dictionaryArray['Filter'][$id]      = $filter->value;
+                $dictionaryArray['DecodeParms'][$id] = array();
 
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+                if ($this->_dictionary->DecodeParms !== null ) {
+                    if ($this->_dictionary->DecodeParms->items[$id] !== null &&
+                        $this->_dictionary->DecodeParms->items[$id]->value !== null ) {
+                        foreach ($this->_dictionary->DecodeParms->items[$id]->getKeys() as $paramKey) {
+                            $dictionaryArray['DecodeParms'][$id][$paramKey] =
+                                  $this->_dictionary->DecodeParms->items[$id]->$paramKey->value;
+                        }
+                    }
+                }
+            }
+        } else if ($this->_dictionary->Filter->getType() != Zend_Pdf_Element::TYPE_NULL) {
+            $dictionaryArray['Filter'][0]      = $this->_dictionary->Filter->value;
+            $dictionaryArray['DecodeParms'][0] = array();
+            if ($this->_dictionary->DecodeParms !== null ) {
+                foreach ($this->_dictionary->DecodeParms->getKeys() as $paramKey) {
+                    $dictionaryArray['DecodeParms'][0][$paramKey] =
+                          $this->_dictionary->DecodeParms->$paramKey->value;
+                }
+            }
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unknownphp streamphp objectphp propertyphp:php php\php'php'php php.php php$propertyphp php.php php'php\php'php.php'php)php;
-php php php php php}
+        if ($this->_dictionary->F !== null) {
+            $dictionaryArray['F'] = $this->_dictionary->F->value;
+        }
+
+        $dictionaryArray['FFilter']      = array();
+        $dictionaryArray['FDecodeParms'] = array();
+        if ($this->_dictionary->FFilter === null) {
+            // Do nothing.
+        } else if ($this->_dictionary->FFilter->getType() == Zend_Pdf_Element::TYPE_ARRAY) {
+            foreach ($this->_dictionary->FFilter->items as $id => $filter) {
+                $dictionaryArray['FFilter'][$id]      = $filter->value;
+                $dictionaryArray['FDecodeParms'][$id] = array();
+
+                if ($this->_dictionary->FDecodeParms !== null ) {
+                    if ($this->_dictionary->FDecodeParms->items[$id] !== null &&
+                        $this->_dictionary->FDecodeParms->items[$id]->value !== null) {
+                        foreach ($this->_dictionary->FDecodeParms->items[$id]->getKeys() as $paramKey) {
+                            $dictionaryArray['FDecodeParms'][$id][$paramKey] =
+                                  $this->_dictionary->FDecodeParms->items[$id]->items[$paramKey]->value;
+                        }
+                    }
+                }
+            }
+        } else {
+            $dictionaryArray['FFilter'][0]      = $this->_dictionary->FFilter->value;
+            $dictionaryArray['FDecodeParms'][0] = array();
+            if ($this->_dictionary->FDecodeParms !== null ) {
+                foreach ($this->_dictionary->FDecodeParms->getKeys() as $paramKey) {
+                    $dictionaryArray['FDecodeParms'][0][$paramKey] =
+                          $this->_dictionary->FDecodeParms->items[$paramKey]->value;
+                }
+            }
+        }
+
+        return $dictionaryArray;
+    }
+
+    /**
+     * Decode stream
+     *
+     * @throws Zend_Pdf_Exception
+     */
+    private function _decodeStream()
+    {
+        if ($this->_initialDictionaryData === null) {
+            $this->_initialDictionaryData = $this->_extractDictionaryData();
+        }
+
+        /**
+         * All applied stream filters must be processed to decode stream.
+         * If we don't recognize any of applied filetrs an exception should be thrown here
+         */
+        if (isset($this->_initialDictionaryData['F'])) {
+            /** @todo Check, how external files can be processed. */
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('External filters are not supported now.');
+        }
+
+        foreach ($this->_initialDictionaryData['Filter'] as $id => $filterName ) {
+            $valueRef = &$this->_value->value->getRef();
+            $this->_value->value->touch();
+            switch ($filterName) {
+                case 'ASCIIHexDecode':
+                    require_once 'Zend/Pdf/Filter/AsciiHex.php';
+                    $valueRef = Zend_Pdf_Filter_AsciiHex::decode($valueRef);
+                    break;
+
+                case 'ASCII85Decode':
+                    require_once 'Zend/Pdf/Filter/Ascii85.php';
+                    $valueRef = Zend_Pdf_Filter_Ascii85::decode($valueRef);
+                    break;
+
+                case 'FlateDecode':
+                    require_once 'Zend/Pdf/Filter/Compression/Flate.php';
+                    $valueRef = Zend_Pdf_Filter_Compression_Flate::decode($valueRef,
+                                                                          $this->_initialDictionaryData['DecodeParms'][$id]);
+                    break;
+
+                case 'LZWDecode':
+                    require_once 'Zend/Pdf/Filter/Compression/Lzw.php';
+                    $valueRef = Zend_Pdf_Filter_Compression_Lzw::decode($valueRef,
+                                                                        $this->_initialDictionaryData['DecodeParms'][$id]);
+                    break;
+
+                case 'RunLengthDecode':
+                    require_once 'Zend/Pdf/Filter/RunLength.php';
+                    $valueRef = Zend_Pdf_Filter_RunLength::decode($valueRef);
+                    break;
+
+                default:
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception('Unknown stream filter: \'' . $filterName . '\'.');
+            }
+        }
+
+        $this->_streamDecoded = true;
+    }
+
+    /**
+     * Encode stream
+     *
+     * @throws Zend_Pdf_Exception
+     */
+    private function _encodeStream()
+    {
+        /**
+         * All applied stream filters must be processed to encode stream.
+         * If we don't recognize any of applied filetrs an exception should be thrown here
+         */
+        if (isset($this->_initialDictionaryData['F'])) {
+            /** @todo Check, how external files can be processed. */
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('External filters are not supported now.');
+        }
+
+        $filters = array_reverse($this->_initialDictionaryData['Filter'], true);
+
+        foreach ($filters as $id => $filterName ) {
+            $valueRef = &$this->_value->value->getRef();
+            $this->_value->value->touch();
+            switch ($filterName) {
+                case 'ASCIIHexDecode':
+                    require_once 'Zend/Pdf/Filter/AsciiHex.php';
+                    $valueRef = Zend_Pdf_Filter_AsciiHex::encode($valueRef);
+                    break;
+
+                case 'ASCII85Decode':
+                    require_once 'Zend/Pdf/Filter/Ascii85.php';
+                    $valueRef = Zend_Pdf_Filter_Ascii85::encode($valueRef);
+                    break;
+
+                case 'FlateDecode':
+                    require_once 'Zend/Pdf/Filter/Compression/Flate.php';
+                    $valueRef = Zend_Pdf_Filter_Compression_Flate::encode($valueRef,
+                                                                          $this->_initialDictionaryData['DecodeParms'][$id]);
+                    break;
+
+                case 'LZWDecode':
+                    require_once 'Zend/Pdf/Filter/Compression/Lzw.php';
+                    $valueRef = Zend_Pdf_Filter_Compression_Lzw::encode($valueRef,
+                                                                        $this->_initialDictionaryData['DecodeParms'][$id]);
+                    break;
+
+                 case 'RunLengthDecode':
+                    require_once 'Zend/Pdf/Filter/RunLength.php';
+                    $valueRef = Zend_Pdf_Filter_RunLength::encode($valueRef);
+                    break;
+
+               default:
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception('Unknown stream filter: \'' . $filterName . '\'.');
+            }
+        }
+
+        $this->_streamDecoded = false;
+    }
+
+    /**
+     * Get handler
+     *
+     * @param string $property
+     * @return mixed
+     * @throws Zend_Pdf_Exception
+     */
+    public function __get($property)
+    {
+        if ($property == 'dictionary') {
+            /**
+             * If stream is not decoded yet, then store original decoding options (do it only once).
+             */
+            if (( !$this->_streamDecoded ) && ($this->_initialDictionaryData === null)) {
+                $this->_initialDictionaryData = $this->_extractDictionaryData();
+            }
+
+            return $this->_dictionary;
+        }
+
+        if ($property == 'value') {
+            if (!$this->_streamDecoded) {
+                $this->_decodeStream();
+            }
+
+            return $this->_value->value->getRef();
+        }
+
+        require_once 'Zend/Pdf/Exception.php';
+        throw new Zend_Pdf_Exception('Unknown stream object property requested.');
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Treatphp streamphp dataphp asphp alreadyphp encoded
-php php php php php php*php/
-php php php php publicphp functionphp skipFiltersphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_streamDecodedphp php=php falsephp;
-php php php php php}
+    /**
+     * Set handler
+     *
+     * @param string $property
+     * @param  mixed $value
+     */
+    public function __set($property, $value)
+    {
+        if ($property == 'value') {
+            $valueRef = &$this->_value->value->getRef();
+            $valueRef = $value;
+            $this->_value->value->touch();
+
+            $this->_streamDecoded = true;
+
+            return;
+        }
+
+        require_once 'Zend/Pdf/Exception.php';
+        throw new Zend_Pdf_Exception('Unknown stream object property: \'' . $property . '\'.');
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Callphp handler
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$method
-php php php php php php*php php@paramphp arrayphp php php$args
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_streamDecodedphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_decodeStreamphp(php)php;
-php php php php php php php php php}
+    /**
+     * Treat stream data as already encoded
+     */
+    public function skipFilters()
+    {
+        $this->_streamDecoded = false;
+    }
 
-php php php php php php php php switchphp php(countphp(php$argsphp)php)php php{
-php php php php php php php php php php php php casephp php0php:
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_valuephp-php>php$methodphp(php)php;
-php php php php php php php php php php php php casephp php1php:
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_valuephp-php>php$methodphp(php$argsphp[php0php]php)php;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Unsupportedphp numberphp ofphp argumentsphp'php)php;
-php php php php php php php php php}
-php php php php php}
 
-php php php php php/php*php*
-php php php php php php*php Detachphp PDFphp objectphp fromphp thephp factoryphp php(ifphp applicablephp)php,php clonephp itphp andphp attachphp tophp newphp factoryphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factoryphp php Thephp factoryphp tophp attach
-php php php php php php*php php@paramphp arrayphp php&php$processedphp php Listphp ofphp alreadyphp processedphp indirectphp objectsphp,php usedphp tophp avoidphp objectsphp duplication
-php php php php php php*php php@paramphp integerphp php$modephp php Cloningphp modephp php(definesphp filterphp forphp objectsphp cloningphp)
-php php php php php php*php php@returnsphp Zendphp_Pdfphp_Element
-php php php php php php*php/
-php php php php publicphp functionphp makeClonephp(Zendphp_Pdfphp_ElementFactoryphp php$factoryphp,php arrayphp php&php$processedphp,php php$modephp)
-php php php php php{
-php php php php php php php php php$idphp php=php splphp_objectphp_hashphp(php$thisphp)php;
-php php php php php php php php ifphp php(issetphp(php$processedphp[php$idphp]php)php)php php{
-php php php php php php php php php php php php php/php/php Dophp nothingphp ifphp objectphp isphp alreadyphp processed
-php php php php php php php php php php php php php/php/php returnphp it
-php php php php php php php php php php php php returnphp php$processedphp[php$idphp]php;
-php php php php php php php php php}
+    /**
+     * Call handler
+     *
+     * @param string $method
+     * @param array  $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (!$this->_streamDecoded) {
+            $this->_decodeStream();
+        }
 
-php php php php php php php php php$streamValuephp php php php php php php=php php$thisphp-php>php_valuephp;
-php php php php php php php php php$streamDictionaryphp php=php php$thisphp-php>php_dictionaryphp-php>makeClonephp(php$factoryphp,php php$processedphp,php php$modephp)php;
+        switch (count($args)) {
+            case 0:
+                return $this->_value->$method();
+            case 1:
+                return $this->_value->$method($args[0]);
+            default:
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('Unsupported number of arguments');
+        }
+    }
 
-php php php php php php php php php/php/php Makephp newphp emptyphp instancephp ofphp streamphp objectphp andphp registerphp itphp inphp php$processedphp container
-php php php php php php php php php$processedphp[php$idphp]php php=php php$clonedObjectphp php=php php$factoryphp-php>newStreamObjectphp(php'php'php)php;
+    /**
+     * Detach PDF object from the factory (if applicable), clone it and attach to new factory.
+     *
+     * @param Zend_Pdf_ElementFactory $factory  The factory to attach
+     * @param array &$processed  List of already processed indirect objects, used to avoid objects duplication
+     * @param integer $mode  Cloning mode (defines filter for objects cloning)
+     * @returns Zend_Pdf_Element
+     */
+    public function makeClone(Zend_Pdf_ElementFactory $factory, array &$processed, $mode)
+    {
+        $id = spl_object_hash($this);
+        if (isset($processed[$id])) {
+            // Do nothing if object is already processed
+            // return it
+            return $processed[$id];
+        }
 
-php php php php php php php php php/php/php Copyphp currentphp objectphp dataphp andphp state
-php php php php php php php php php$clonedObjectphp-php>php_dictionaryphp php php php php php php php php php php php php=php php$thisphp-php>php_dictionaryphp-php>makeClonephp(php$factoryphp,php php$processedphp,php php$modephp)php;
-php php php php php php php php php$clonedObjectphp-php>php_valuephp php php php php php php php php php php php php php php php php php=php php$thisphp-php>php_valuephp-php>makeClonephp(php$factoryphp,php php$processedphp,php php$modephp)php;
-php php php php php php php php php$clonedObjectphp-php>php_initialDictionaryDataphp php=php php$thisphp-php>php_initialDictionaryDataphp;
-php php php php php php php php php$clonedObjectphp-php>php_streamDecodedphp php php php php php php php php php=php php$thisphp-php>php_streamDecodedphp;
+        $streamValue      = $this->_value;
+        $streamDictionary = $this->_dictionary->makeClone($factory, $processed, $mode);
 
-php php php php php php php php returnphp php php$clonedObjectphp;
-php php php php php}
+        // Make new empty instance of stream object and register it in $processed container
+        $processed[$id] = $clonedObject = $factory->newStreamObject('');
 
-php php php php php/php*php*
-php php php php php php*php Dumpphp objectphp tophp aphp stringphp tophp savephp withinphp PDFphp file
-php php php php php php*
-php php php php php php*php php$factoryphp parameterphp definesphp operationphp contextphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factory
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp dumpphp(Zendphp_Pdfphp_ElementFactoryphp php$factoryphp)
-php php php php php{
-php php php php php php php php php$shiftphp php=php php$factoryphp-php>getEnumerationShiftphp(php$thisphp-php>php_factoryphp)php;
+        // Copy current object data and state
+        $clonedObject->_dictionary            = $this->_dictionary->makeClone($factory, $processed, $mode);
+        $clonedObject->_value                 = $this->_value->makeClone($factory, $processed, $mode);
+        $clonedObject->_initialDictionaryData = $this->_initialDictionaryData;
+        $clonedObject->_streamDecoded         = $this->_streamDecoded;
 
-php php php php php php php php ifphp php(php$thisphp-php>php_streamDecodedphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp php=php php$thisphp-php>php_extractDictionaryDataphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_encodeStreamphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_initialDictionaryDataphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$newDictionaryphp php php php=php php$thisphp-php>php_extractDictionaryDataphp(php)php;
+        return  $clonedObject;
+    }
 
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_initialDictionaryDataphp php!php=php=php php$newDictionaryphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_decodeStreamphp(php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_initialDictionaryDataphp php=php php$newDictionaryphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_encodeStreamphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Dump object to a string to save within PDF file
+     *
+     * $factory parameter defines operation context.
+     *
+     * @param Zend_Pdf_ElementFactory $factory
+     * @return string
+     */
+    public function dump(Zend_Pdf_ElementFactory $factory)
+    {
+        $shift = $factory->getEnumerationShift($this->_factory);
 
-php php php php php php php php php/php/php Updatephp streamphp length
-php php php php php php php php php$thisphp-php>dictionaryphp-php>Lengthphp-php>valuephp php=php php$thisphp-php>php_valuephp-php>lengthphp(php)php;
+        if ($this->_streamDecoded) {
+            $this->_initialDictionaryData = $this->_extractDictionaryData();
+            $this->_encodeStream();
+        } else if ($this->_initialDictionaryData != null) {
+            $newDictionary   = $this->_extractDictionaryData();
 
-php php php php php php php php returnphp php php$thisphp-php>php_objNumphp php+php php$shiftphp php.php php"php php"php php.php php$thisphp-php>php_genNumphp php.php php"php objphp php\nphp"
-php php php php php php php php php php php php php php.php php php$thisphp-php>dictionaryphp-php>toStringphp(php$factoryphp)php php.php php"php\nphp"
-php php php php php php php php php php php php php php.php php php$thisphp-php>php_valuephp-php>toStringphp(php$factoryphp)php php.php php"php\nphp"
-php php php php php php php php php php php php php php.php php"endobjphp\nphp"php;
-php php php php php}
+            if ($this->_initialDictionaryData !== $newDictionary) {
+                $this->_decodeStream();
+                $this->_initialDictionaryData = $newDictionary;
+                $this->_encodeStream();
+            }
+        }
 
-php php php php php/php*php*
-php php php php php php*php Cleanphp upphp resourcesphp,php usedphp byphp object
-php php php php php php*php/
-php php php php publicphp functionphp cleanUpphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dictionaryphp php=php nullphp;
-php php php php php php php php php$thisphp-php>php_valuephp php php php php php php=php nullphp;
-php php php php php}
-php}
+        // Update stream length
+        $this->dictionary->Length->value = $this->_value->length();
+
+        return  $this->_objNum + $shift . " " . $this->_genNum . " obj \n"
+             .  $this->dictionary->toString($factory) . "\n"
+             .  $this->_value->toString($factory) . "\n"
+             . "endobj\n";
+    }
+
+    /**
+     * Clean up resources, used by object
+     */
+    public function cleanUp()
+    {
+        $this->_dictionary = null;
+        $this->_value      = null;
+    }
+}

@@ -1,1138 +1,1138 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp LiveDocx
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php MailMergephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
-
-php/php*php*php Zendphp_Datephp php*php*php/
-requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
-
-php/php*php*php Zendphp_Servicephp_LiveDocxphp php*php*php/
-requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp.phpphp'php;
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp LiveDocx
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@sincephp php php php php php LiveDocxphp php1php.php0
-php php*php/
-classphp Zendphp_Servicephp_LiveDocxphp_MailMergephp extendsphp Zendphp_Servicephp_LiveDocx
-php{
-php php php php php/php*php*
-php php php php php php*php URIphp ofphp LiveDocxphp.MailMergephp WSDL
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php php/php/constphp WSDLphp php=php php'httpsphp:php/php/apiphp.livedocxphp.comphp/php1php.php2php/mailmergephp.asmxphp?WSDLphp'php;
-php php php php constphp WSDLphp php=php php'httpsphp:php/php/apiphp.livedocxphp.comphp/php2php.php0php/mailmergephp.asmxphp?WSDLphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Fieldphp values
-php php php php php php*
-php php php php php php*php php@varphp php php array
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php protectedphp php$php_fieldValuesphp;
-
-php php php php php/php*php*
-php php php php php php*php Blockphp fieldphp values
-php php php php php php*
-php php php php php php*php php@varphp php php array
-php php php php php php*php php@sincephp LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php protectedphp php$php_blockFieldValuesphp;
-
-php php php php php/php*php*
-php php php php php php*php Constructorphp php(LiveDocxphp.MailMergephp SOAPphp Servicephp)
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@returnphp throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_wsdlphp php php php php php php php php php php php php php=php selfphp:php:WSDLphp;
-php php php php php php php php php$thisphp-php>php_fieldValuesphp php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_blockFieldValuesphp php=php arrayphp(php)php;
-
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp filenamephp ofphp aphp LOCALphp template
-php php php php php php*php php(iphp.ephp.php aphp templatephp storedphp locallyphp onphp YOURphp serverphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setLocalTemplatephp(php$filenamephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_readablephp(php$filenamephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp readphp localphp templatephp fromphp diskphp.php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetLocalTemplatephp(arrayphp(
-php php php php php php php php php php php php php php php php php'templatephp'php php=php>php basephp6php4php_encodephp(filephp_getphp_contentsphp(php$filenamephp)php)php,
-php php php php php php php php php php php php php php php php php'formatphp'php php php php=php>php selfphp:php:getFormatphp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp localphp templatephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp filenamephp ofphp aphp REMOTEphp template
-php php php php php php*php php(iphp.ephp.php aphp templatephp storedphp remotelyphp onphp thephp LIVEDOCXphp serverphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setRemoteTemplatephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetRemoteTemplatephp(arrayphp(
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php php$filenamephp,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp remotephp templatephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp anphp associativephp orphp multiphp-associativephp arrayphp ofphp keysphp andphp valuesphp pairs
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$values
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setFieldValuesphp(php$valuesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php foreachphp php(php$valuesphp asphp php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$methodphp php=php php'multiAssocArrayToArrayOfArrayOfStringphp'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$methodphp php=php php'assocArrayToArrayOfArrayOfStringphp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetFieldValuesphp(arrayphp(
-php php php php php php php php php php php php php php php php php'fieldValuesphp'php php=php>php selfphp:php:php$methodphp(php$valuesphp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp fieldphp valuesphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp anphp arrayphp ofphp keyphp andphp valuephp orphp arrayphp ofphp values
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$field
-php php php php php php*php php@paramphp arrayphp|stringphp php$value
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setFieldValuephp(php$fieldphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_fieldValuesphp[php$fieldphp]php php=php php$valuephp;
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp blockphp fieldphp values
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$blockName
-php php php php php php*php php@paramphp arrayphp php$blockFieldValues
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp setBlockFieldValuesphp(php$blockNamephp,php php$blockFieldValuesphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetBlockFieldValuesphp(arrayphp(
-php php php php php php php php php php php php php php php php php'blockNamephp'php php php php php php php php php=php>php php$blockNamephp,
-php php php php php php php php php php php php php php php php php'blockFieldValuesphp'php php=php>php selfphp:php:multiAssocArrayToArrayOfArrayOfStringphp(php$blockFieldValuesphp)
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp blockphp fieldphp valuesphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Assignphp valuesphp tophp templatephp fields
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|stringphp php$field
-php php php php php php*php php@paramphp arrayphp|stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp assignphp(php$fieldphp,php php$valuephp php=php nullphp)
-php php php php php{
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$fieldphp)php php&php&php php(nullphp php=php=php=php php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$fieldphp asphp php$fieldNamephp php=php>php php$fieldValuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setFieldValuephp(php$fieldNamephp,php php$fieldValuephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elseifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setBlockFieldValuesphp(php$fieldphp,php php$valuephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setFieldValuephp(php$fieldphp,php php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp assignphp dataphp tophp templatephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp aphp passwordphp tophp openphp tophp document
-php php php php php php*
-php php php php php php*php Thisphp methodphp canphp onlyphp bephp usedphp forphp PDFphp documents
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$password
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2php Premium
-php php php php php php*php/
-php php php php publicphp functionphp setDocumentPasswordphp(php$passwordphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetDocumentPasswordphp(arrayphp(
-php php php php php php php php php php php php php php php php php'passwordphp'php php=php>php php$password
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp documentphp passwordphp.php Thisphp methodphp canphp bephp usedphp onphp PDFphp filesphp onlyphp.php'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp aphp masterphp passwordphp forphp documentphp andphp determinephp whichphp securityphp features
-php php php php php php*php arephp accessiblephp withoutphp usingphp thephp masterphp passwordphp.
-php php php php php php*
-php php php php php php*php Asphp defaultphp,php nothingphp isphp allowedphp.php Tophp allowphp aphp securityphp settingphp,
-php php php php php php*php explicativelyphp setphp itphp usingphp onephp ofphp hephp DOCUMENTphp_ACCESSphp_PERMISSIONphp_php*php class
-php php php php php php*php constantsphp.
-php php php php php php*
-php php php php php php*php php{codephp}
-php php php php php php*php php$phpLiveDocxphp-php>setDocumentAccessPermissionsphp(
-php php php php php php*php php php php php arrayphp php(
-php php php php php php*php php php php php php php php php Zendphp_Servicephp_LiveDocxphp_MailMergephp:php:DOCUMENTphp_ACCESSphp_PERMISSIONphp_ALLOWphp_PRINTINGphp_HIGHphp_LEVELphp,
-php php php php php php*php php php php php php php php php Zendphp_Servicephp_LiveDocxphp_MailMergephp:php:DOCUMENTphp_ACCESSphp_PERMISSIONphp_ALLOWphp_EXTRACTphp_CONTENTS
-php php php php php php*php php php php php php)php,
-php php php php php php*php php php php php php'myDocumentAccessPasswordphp'
-php php php php php php*php php)php;
-php php php php php php*php php{codephp}
-php php php php php php*
-php php php php php php*php Thisphp methodphp canphp onlyphp bephp usedphp forphp PDFphp documents
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php$permissions
-php php php php php php*php php@paramphp php stringphp php$password
-php php php php php php*php php@returnphp Zendphp_Servicephp_LiveDocxphp_MailMerge
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2php Premium
-php php php php php php*php/
-php php php php publicphp functionphp setDocumentAccessPermissionsphp(php$permissionsphp,php php$passwordphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>SetDocumentAccessPermissionsphp(arrayphp(
-php php php php php php php php php php php php php php php php php'permissionsphp'php php=php>php php$permissionsphp,
-php php php php php php php php php php php php php php php php php'passwordphp'php php php php php=php>php php$password
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp documentphp accessphp permissionsphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Mergephp assignedphp dataphp withphp templatephp tophp generatephp document
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Excpetion
-php php php php php php*php php@returnphp void
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp createDocumentphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_fieldValuesphp)php php>php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>setFieldValuesphp(php$thisphp-php>php_fieldValuesphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_fieldValuesphp php php php php php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_blockFieldValuesphp php=php arrayphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>CreateDocumentphp(php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp createphp documentphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievephp documentphp inphp specifiedphp format
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$format
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@returnphp binary
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp retrieveDocumentphp(php$formatphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$formatphp php=php strtolowerphp(php$formatphp)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>RetrieveDocumentphp(arrayphp(
-php php php php php php php php php php php php php php php php php'formatphp'php php=php>php php$formatphp,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp retrievephp documentphp php-php callphp setLocalTemplatephp(php)php orphp setRemoteTemplatephp(php)php firstphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp basephp6php4php_decodephp(php$resultphp-php>RetrieveDocumentResultphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp WMFphp php(akaphp Windowsphp metafilephp)php dataphp forphp specifiedphp pagephp rangephp ofphp createdphp document
-php php php php php php*php Returnphp arrayphp containsphp WMFphp dataphp php(binaryphp)php php-php arrayphp keyphp isphp pagephp number
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$fromPage
-php php php php php php*php php@paramphp php integerphp php$toPage
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getMetafilesphp(php$fromPagephp,php php$toPagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetMetafilesphp(arrayphp(
-php php php php php php php php php php php php php'fromPagephp'php php=php>php php(integerphp)php php$fromPagephp,
-php php php php php php php php php php php php php'toPagephp'php php php php=php>php php(integerphp)php php$toPagephp,
-php php php php php php php php php)php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetMetafilesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$pageCounterphp php=php php(integerphp)php php$fromPagephp;
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetMetafilesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$resultphp-php>GetMetafilesResultphp-php>stringphp asphp php$stringphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$stringphp)php;
-php php php php php php php php php php php php php php php php php php php php php$pageCounterphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$resultphp-php>GetMetafilesResultphp-php>stringphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp WMFphp php(akaphp Windowsphp metafilephp)php dataphp forphp pagesphp ofphp createdphp document
-php php php php php php*php Returnphp arrayphp containsphp WMFphp dataphp php(binaryphp)php php-php arrayphp keyphp isphp pagephp number
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getAllMetafilesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetAllMetafilesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetAllMetafilesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$pageCounterphp php=php php1php;
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetAllMetafilesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$resultphp-php>GetAllMetafilesResultphp-php>stringphp asphp php$stringphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$stringphp)php;
-php php php php php php php php php php php php php php php php php php php php php$pageCounterphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$resultphp-php>GetAllMetafilesResultphp-php>stringphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp graphicalphp bitmapphp dataphp forphp specifiedphp pagephp rangephp ofphp createdphp document
-php php php php php php*php Returnphp arrayphp containsphp bitmapphp dataphp php(binaryphp)php php-php arrayphp keyphp isphp pagephp number
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$fromPage
-php php php php php php*php php@paramphp php integerphp php$toPage
-php php php php php php*php php@paramphp php integerphp php$zoomFactor
-php php php php php php*php php@paramphp php stringphp php php$format
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getBitmapsphp(php$fromPagephp,php php$toPagephp,php php$zoomFactorphp,php php$formatphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php=php arrayphp(php)php;
-
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetBitmapsphp(arrayphp(
-php php php php php php php php php php php php php'fromPagephp'php php php php=php>php php(integerphp)php php$fromPagephp,
-php php php php php php php php php php php php php'toPagephp'php php php php php php=php>php php(integerphp)php php$toPagephp,
-php php php php php php php php php php php php php'zoomFactorphp'php php=php>php php(integerphp)php php$zoomFactorphp,
-php php php php php php php php php php php php php'formatphp'php php php php php php=php>php php(stringphp)php php php$formatphp,
-php php php php php php php php php)php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetBitmapsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$pageCounterphp php=php php(integerphp)php php$fromPagephp;
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetBitmapsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$resultphp-php>GetBitmapsResultphp-php>stringphp asphp php$stringphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$stringphp)php;
-php php php php php php php php php php php php php php php php php php php php php$pageCounterphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$resultphp-php>GetBitmapsResultphp-php>stringphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp graphicalphp bitmapphp dataphp forphp allphp pagesphp ofphp createdphp document
-php php php php php php*php Returnphp arrayphp containsphp bitmapphp dataphp php(binaryphp)php php-php arrayphp keyphp isphp pagephp number
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$zoomFactor
-php php php php php php*php php@paramphp php stringphp php php$format
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getAllBitmapsphp(php$zoomFactorphp,php php$formatphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetAllBitmapsphp(arrayphp(
-php php php php php php php php php php php php php'zoomFactorphp'php php=php>php php(integerphp)php php$zoomFactorphp,
-php php php php php php php php php php php php php'formatphp'php php php php php php=php>php php(stringphp)php php php$formatphp,
-php php php php php php php php php)php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetAllBitmapsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$pageCounterphp php=php php1php;
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetAllBitmapsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$resultphp-php>GetAllBitmapsResultphp-php>stringphp asphp php$stringphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$stringphp)php;
-php php php php php php php php php php php php php php php php php php php php php$pageCounterphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php$retphp[php$pageCounterphp]php php=php basephp6php4php_decodephp(php$resultphp-php>GetAllBitmapsResultphp-php>stringphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp allphp thephp fieldsphp inphp thephp template
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getFieldNamesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetFieldNamesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetFieldNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetFieldNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetFieldNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$retphp[php]php php=php php$resultphp-php>GetFieldNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp allphp thephp blockphp fieldsphp inphp thephp template
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$blockName
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getBlockFieldNamesphp(php$blockNamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetBlockFieldNamesphp(arrayphp(
-php php php php php php php php php php php php php'blockNamephp'php php=php>php php$blockName
-php php php php php php php php php)php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetBlockFieldNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetBlockFieldNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetBlockFieldNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$retphp[php]php php=php php$resultphp-php>GetBlockFieldNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp allphp thephp blockphp fieldsphp inphp thephp template
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getBlockNamesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetBlockNamesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetBlockNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$resultphp-php>GetBlockNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetBlockNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$retphp[php]php php=php php$resultphp-php>GetBlockNamesResultphp-php>stringphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Uploadphp aphp templatephp filephp tophp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp uploadTemplatephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>UploadTemplatephp(arrayphp(
-php php php php php php php php php php php php php php php php php'templatephp'php php=php>php basephp6php4php_encodephp(filephp_getphp_contentsphp(php$filenamephp)php)php,
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp uploadphp templatephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Downloadphp templatephp filephp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp binary
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp downloadTemplatephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>DownloadTemplatephp(arrayphp(
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp downloadphp templatephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp basephp6php4php_decodephp(php$resultphp-php>DownloadTemplateResultphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp templatephp filephp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp deleteTemplatephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>DeleteTemplatephp(arrayphp(
-php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php)php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Listphp allphp templatesphp storedphp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp listTemplatesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>ListTemplatesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>ListTemplatesResultphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$thisphp-php>php_backendListArrayToMultiAssocArrayphp(php$resultphp-php>ListTemplatesResultphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp whetherphp aphp templatephp filephp isphp availablephp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp templateExistsphp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>TemplateExistsphp(arrayphp(
-php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php)php)php;
-
-php php php php php php php php returnphp php(booleanphp)php php$resultphp-php>TemplateExistsResultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Sharephp aphp documentphp php-php iphp.ephp.php thephp documentphp isphp availablephp tophp allphp overphp thephp Internet
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp shareDocumentphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php nullphp;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>ShareDocumentphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>ShareDocumentResultphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php(stringphp)php php$resultphp-php>ShareDocumentResultphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Listphp allphp sharedphp documentsphp storedphp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp listSharedDocumentsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>ListSharedDocumentsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>ListSharedDocumentsResultphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$thisphp-php>php_backendListArrayToMultiAssocArrayphp(
-php php php php php php php php php php php php php php php php php$resultphp-php>ListSharedDocumentsResult
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp sharedphp documentphp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp deleteSharedDocumentphp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>DeleteSharedDocumentphp(arrayphp(
-php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php)php)php;
-php php php php php}
-
-php php php php php/php*
-php php php php php php*php Downloadphp aphp sharedphp documentphp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp binary
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp downloadSharedDocumentphp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>DownloadSharedDocumentphp(arrayphp(
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp downloadphp sharedphp documentphp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp basephp6php4php_decodephp(php$resultphp-php>DownloadSharedDocumentResultphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp whetherphp aphp sharedphp documentphp isphp availablephp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp sharedDocumentExistsphp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php php php php php php php php php php=php falsephp;
-php php php php php php php php php$sharedDocumentsphp php=php php$thisphp-php>listSharedDocumentsphp(php)php;
-php php php php php php php php foreachphp php(php$sharedDocumentsphp asphp php$shareDocumentphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$shareDocumentphp[php'filenamephp'php]php)
-php php php php php php php php php php php php php php php php php&php&php php(basenamephp(php$filenamephp)php php=php=php=php php$shareDocumentphp[php'filenamephp'php]php)
-php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$retphp php=php truephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp supportedphp templatephp formatsphp php(lowercasephp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getTemplateFormatsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetTemplateFormatsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetTemplateFormatsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetTemplateFormatsResultphp-php>stringphp;
-php php php php php php php php php php php php php$retphp php=php arrayphp_mapphp(php'strtolowerphp'php,php php$retphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp supportedphp documentphp formatsphp php(lowercasephp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php1
-php php php php php php*php/
-php php php php publicphp functionphp getDocumentFormatsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetDocumentFormatsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetDocumentFormatsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetDocumentFormatsResultphp-php>stringphp;
-php php php php php php php php php php php php php$retphp php=php arrayphp_mapphp(php'strtolowerphp'php,php php$retphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp namesphp ofphp allphp fontsphp thatphp arephp installedphp onphp backendphp server
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php/
-php php php php publicphp functionphp getFontNamesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetFontNamesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetFontNamesResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetFontNamesResultphp-php>stringphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp supportedphp documentphp accessphp options
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2php Premium
-php php php php php php*php/
-php php php php publicphp functionphp getDocumentAccessOptionsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetDocumentAccessOptionsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetDocumentAccessOptionsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetDocumentAccessOptionsResultphp-php>stringphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp supportedphp imagephp formatsphp fromphp whichphp canphp bephp importedphp php(lowercasephp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getImageImportFormatsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetImageImportFormatsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetImageImportFormatsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetImageImportFormatsResultphp-php>stringphp;
-php php php php php php php php php php php php php$retphp php=php arrayphp_mapphp(php'strtolowerphp'php,php php$retphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp supportedphp imagephp formatsphp tophp whichphp canphp bephp exportedphp php(lowercasephp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getImageExportFormatsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>GetImageExportFormatsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>GetImageExportFormatsResultphp-php>stringphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$resultphp-php>GetImageExportFormatsResultphp-php>stringphp;
-php php php php php php php php php php php php php$retphp php=php arrayphp_mapphp(php'strtolowerphp'php,php php$retphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*
-php php php php php php*php Returnphp supportedphp imagephp formatsphp php(lowercasephp)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php2
-php php php php php php*php php@deprecatedphp sincephp LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp getImageFormatsphp(php)
-php php php php php{
-php php php php php php php php php$replacementphp php=php php'getImageExportFormatsphp'php;
-
-php php php php php php php php php/php*
-php php php php php php php php php$errorMessagephp php=php sprintfphp(
-php php php php php php php php php php php php php php php php php php php php php php php php php"php%sphp:php:php%sphp isphp deprecatedphp asphp ofphp LiveDocxphp php2php.php0php.php php"
-php php php php php php php php php php php php php php php php php php php php php php php.php php"Itphp hasphp beenphp replacedphp byphp php%sphp:php:php%sphp(php)php php(dropphp inphp replacementphp)php"php,
-php php php php php php php php php php php php php php php php php php php php php php php php php_php_CLASSphp_php_php,php php_php_FUNCTIONphp_php_php,php php_php_CLASSphp_php_php,php php$replacementphp)php;
-
-php php php php php php php php triggerphp_errorphp(php$errorMessagephp,php Ephp_USERphp_NOTICEphp)php;
-php php php php php php php php php*php/
-
-php php php php php php php php returnphp php$thisphp-php>php$replacementphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Uploadphp anphp imagephp filephp tophp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp uploadImagephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>UploadImagephp(arrayphp(
-php php php php php php php php php php php php php php php php php'imagephp'php php php php php=php>php basephp6php4php_encodephp(filephp_getphp_contentsphp(php$filenamephp)php)php,
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp uploadphp imagephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Downloadphp anphp imagephp filephp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp downloadImagephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>DownloadImagephp(arrayphp(
-php php php php php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php php php php php)php)php;
-php php php php php php php php php}php catchphp php(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/LiveDocxphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_LiveDocxphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp downloadphp imagephp'php,php php0php,php php$e
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp basephp6php4php_decodephp(php$resultphp-php>DownloadImageResultphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Listphp allphp imagesphp storedphp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp listImagesphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php php php php=php arrayphp(php)php;
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>ListImagesphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$resultphp-php>ListImagesResultphp)php)php php{
-php php php php php php php php php php php php php$retphp php=php php$thisphp-php>php_backendListArrayToMultiAssocArrayphp(php$resultphp-php>ListImagesResultphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Deletephp anphp imagephp filephp fromphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Servicephp_LiveDocxphp_Exception
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp deleteImagephp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$thisphp-php>getSoapClientphp(php)php-php>DeleteImagephp(arrayphp(
-php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php)php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp whetherphp anphp imagephp filephp isphp availablephp onphp LiveDocxphp service
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filename
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@sincephp php LiveDocxphp php2php.php0
-php php php php php php*php/
-php php php php publicphp functionphp imageExistsphp(php$filenamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$resultphp php=php php$thisphp-php>getSoapClientphp(php)php-php>ImageExistsphp(arrayphp(
-php php php php php php php php php php php php php'filenamephp'php php=php>php basenamephp(php$filenamephp)php,
-php php php php php php php php php)php)php;
-
-php php php php php php php php returnphp php(booleanphp)php php$resultphp-php>ImageExistsResultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertphp LiveDocxphp servicephp returnphp valuephp fromphp listphp methodsphp tophp consistentphp PHPphp array
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$list
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php protectedphp functionphp php_backendListArrayToMultiAssocArrayphp(php$listphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>logInphp(php)php;
-
-php php php php php php php php php$retphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(issetphp(php$listphp-php>ArrayOfStringphp)php)php php{
-php php php php php php php php php php php foreachphp php(php$listphp-php>ArrayOfStringphp asphp php$aphp)php php{
-php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$aphp)php)php php{php php php php php php php/php/php php1php templatephp only
-php php php php php php php php php php php php php php php php php php php php$ophp php=php newphp stdClassphp(php)php;
-php php php php php php php php php php php php php php php php php php php php$ophp-php>stringphp php=php php$aphp;
-php php php php php php php php php php php php php php php php}php elsephp php{php php php php php php php php php php php php php php php php php php/php/php php2php orphp morephp templates
-php php php php php php php php php php php php php php php php php php php php$ophp php=php php$aphp;
-php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php unsetphp(php$aphp)php;
-
-php php php php php php php php php php php php php php php ifphp php(issetphp(php$ophp-php>stringphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php$datephp1php php=php newphp Zendphp_Datephp(php$ophp-php>stringphp[php3php]php,php Zendphp_Datephp:php:RFCphp_php1php1php2php3php)php;
-php php php php php php php php php php php php php php php php php php php php$datephp2php php=php newphp Zendphp_Datephp(php$ophp-php>stringphp[php1php]php,php Zendphp_Datephp:php:RFCphp_php1php1php2php3php)php;
-
-php php php php php php php php php php php php php php php php php php php php$retphp[php]php php=php arrayphp php(
-php php php php php php php php php php php php php php php php php php php php php php php php php'filenamephp'php php php php=php>php php$ophp-php>stringphp[php0php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'fileSizephp'php php php php=php>php php(integerphp)php php$ophp-php>stringphp[php2php]php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'createTimephp'php php=php>php php(integerphp)php php$datephp1php-php>getphp(Zendphp_Datephp:php:TIMESTAMPphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'modifyTimephp'php php=php>php php(integerphp)php php$datephp2php-php>getphp(Zendphp_Datephp:php:TIMESTAMPphp)php,
-php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertphp assocphp arrayphp tophp requiredphp SOAPphp type
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$assoc
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp staticphp functionphp assocArrayToArrayOfArrayOfStringphp(php$assocphp)
-php php php php php{
-php php php php php php php php php$arrayKeysphp php php php=php arrayphp_keysphp(php$assocphp)php;
-php php php php php php php php php$arrayValuesphp php=php arrayphp_valuesphp(php$assocphp)php;
-
-php php php php php php php php returnphp arrayphp(php$arrayKeysphp,php php$arrayValuesphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertphp multiphp assocphp arrayphp tophp requiredphp SOAPphp type
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$multi
-php php php php php php*php php@returnphp array
-php php php php php php*php php@sincephp php LiveDocxphp php1php.php0
-php php php php php php*php/
-php php php php publicphp staticphp functionphp multiAssocArrayToArrayOfArrayOfStringphp(php$multiphp)
-php php php php php{
-php php php php php php php php php$arrayKeysphp php php php=php arrayphp_keysphp(php$multiphp[php0php]php)php;
-php php php php php php php php php$arrayValuesphp php=php arrayphp(php)php;
-
-php php php php php php php php foreachphp php(php$multiphp asphp php$vphp)php php{
-php php php php php php php php php php php php php$arrayValuesphp[php]php php=php arrayphp_valuesphp(php$vphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$arrayKeysphp php=php arrayphp(php$arrayKeysphp)php;
-
-php php php php php php php php returnphp arrayphp_mergephp(php$arrayKeysphp,php php$arrayValuesphp)php;
-php php php php php}
-
-php php php php php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage LiveDocx
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: MailMerge.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
+
+/** Zend_Date **/
+require_once 'Zend/Date.php';
+
+/** Zend_Service_LiveDocx **/
+require_once 'Zend/Service/LiveDocx.php';
+
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage LiveDocx
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @since      LiveDocx 1.0
+ */
+class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
+{
+    /**
+     * URI of LiveDocx.MailMerge WSDL
+     * @since LiveDocx 1.0
+     */
+    //const WSDL = 'https://api.livedocx.com/1.2/mailmerge.asmx?WSDL';
+    const WSDL = 'https://api.livedocx.com/2.0/mailmerge.asmx?WSDL';
+
+    /**
+     * Field values
+     *
+     * @var   array
+     * @since LiveDocx 1.0
+     */
+    protected $_fieldValues;
+
+    /**
+     * Block field values
+     *
+     * @var   array
+     * @since LiveDocx 1.0
+     */
+    protected $_blockFieldValues;
+
+    /**
+     * Constructor (LiveDocx.MailMerge SOAP Service)
+     *
+     * @return void
+     * @return throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function __construct($options = null)
+    {
+        $this->_wsdl             = self::WSDL;
+        $this->_fieldValues      = array();
+        $this->_blockFieldValues = array();
+
+        parent::__construct($options);
+    }
+
+    /**
+     * Set the filename of a LOCAL template
+     * (i.e. a template stored locally on YOUR server)
+     *
+     * @param  string $filename
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function setLocalTemplate($filename)
+    {
+        if (!is_readable($filename)) {
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot read local template from disk.'
+            );
+        }
+
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->SetLocalTemplate(array(
+                'template' => base64_encode(file_get_contents($filename)),
+                'format'   => self::getFormat($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set local template', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set the filename of a REMOTE template
+     * (i.e. a template stored remotely on the LIVEDOCX server)
+     *
+     * @param  string $filename
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function setRemoteTemplate($filename)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->SetRemoteTemplate(array(
+                'filename' => $filename,
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set remote template', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set an associative or multi-associative array of keys and values pairs
+     *
+     * @param  array $values
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function setFieldValues($values)
+    {
+        $this->logIn();
+
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $method = 'multiAssocArrayToArrayOfArrayOfString';
+            } else {
+                $method = 'assocArrayToArrayOfArrayOfString';
+            }
+            break;
+        }
+
+        try {
+            $this->getSoapClient()->SetFieldValues(array(
+                'fieldValues' => self::$method($values),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set field values', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set an array of key and value or array of values
+     *
+     * @param string $field
+     * @param array|string $value
+     *
+     * @throws Zend_Service_LiveDocx_Exception
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @since  LiveDocx 1.0
+     */
+    public function setFieldValue($field, $value)
+    {
+        $this->_fieldValues[$field] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Set block field values
+     *
+     * @param string $blockName
+     * @param array $blockFieldValues
+     *
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function setBlockFieldValues($blockName, $blockFieldValues)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->SetBlockFieldValues(array(
+                'blockName'        => $blockName,
+                'blockFieldValues' => self::multiAssocArrayToArrayOfArrayOfString($blockFieldValues)
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set block field values', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Assign values to template fields
+     *
+     * @param array|string $field
+     * @param array|string $value
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function assign($field, $value = null)
+    {
+        try {
+            if (is_array($field) && (null === $value)) {
+                foreach ($field as $fieldName => $fieldValue) {
+                    $this->setFieldValue($fieldName, $fieldValue);
+                }
+            } elseif (is_array($value)) {
+                $this->setBlockFieldValues($field, $value);
+            } else {
+                $this->setFieldValue($field, $value);
+            }
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot assign data to template', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set a password to open to document
+     *
+     * This method can only be used for PDF documents
+     *
+     * @param  string  $password
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.2 Premium
+     */
+    public function setDocumentPassword($password)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->SetDocumentPassword(array(
+                'password' => $password
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set document password. This method can be used on PDF files only.', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set a master password for document and determine which security features
+     * are accessible without using the master password.
+     *
+     * As default, nothing is allowed. To allow a security setting,
+     * explicatively set it using one of he DOCUMENT_ACCESS_PERMISSION_* class
+     * constants.
+     *
+     * {code}
+     * $phpLiveDocx->setDocumentAccessPermissions(
+     *     array (
+     *         Zend_Service_LiveDocx_MailMerge::DOCUMENT_ACCESS_PERMISSION_ALLOW_PRINTING_HIGH_LEVEL,
+     *         Zend_Service_LiveDocx_MailMerge::DOCUMENT_ACCESS_PERMISSION_ALLOW_EXTRACT_CONTENTS
+     *     ),
+     *     'myDocumentAccessPassword'
+     * );
+     * {code}
+     *
+     * This method can only be used for PDF documents
+     *
+     * @param  array  $permissions
+     * @param  string $password
+     * @return Zend_Service_LiveDocx_MailMerge
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.2 Premium
+     */
+    public function setDocumentAccessPermissions($permissions, $password)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->SetDocumentAccessPermissions(array(
+                'permissions' => $permissions,
+                'password'    => $password
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot set document access permissions', 0, $e
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Merge assigned data with template to generate document
+     *
+     * @throws Zend_Service_LiveDocx_Excpetion
+     * @return void
+     * @since  LiveDocx 1.0
+     */
+    public function createDocument()
+    {
+        $this->logIn();
+
+        if (count($this->_fieldValues) > 0) {
+            $this->setFieldValues($this->_fieldValues);
+        }
+
+        $this->_fieldValues      = array();
+        $this->_blockFieldValues = array();
+
+        try {
+            $this->getSoapClient()->CreateDocument();
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot create document', 0, $e
+            );
+        }
+    }
+
+    /**
+     * Retrieve document in specified format
+     *
+     * @param string $format
+     *
+     * @throws Zend_Service_LiveDocx_Exception
+     * @return binary
+     * @since  LiveDocx 1.0
+     */
+    public function retrieveDocument($format)
+    {
+        $this->logIn();
+
+        $format = strtolower($format);
+
+        try {
+            $result = $this->getSoapClient()->RetrieveDocument(array(
+                'format' => $format,
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot retrieve document - call setLocalTemplate() or setRemoteTemplate() first', 0, $e
+            );
+        }
+
+        return base64_decode($result->RetrieveDocumentResult);
+    }
+
+    /**
+     * Return WMF (aka Windows metafile) data for specified page range of created document
+     * Return array contains WMF data (binary) - array key is page number
+     *
+     * @param  integer $fromPage
+     * @param  integer $toPage
+     * @return array
+     * @since  LiveDocx 1.2
+     */
+    public function getMetafiles($fromPage, $toPage)
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetMetafiles(array(
+            'fromPage' => (integer) $fromPage,
+            'toPage'   => (integer) $toPage,
+        ));
+
+        if (isset($result->GetMetafilesResult->string)) {
+            $pageCounter = (integer) $fromPage;
+            if (is_array($result->GetMetafilesResult->string)) {
+                foreach ($result->GetMetafilesResult->string as $string) {
+                    $ret[$pageCounter] = base64_decode($string);
+                    $pageCounter++;
+                }
+            } else {
+               $ret[$pageCounter] = base64_decode($result->GetMetafilesResult->string);
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return WMF (aka Windows metafile) data for pages of created document
+     * Return array contains WMF data (binary) - array key is page number
+     *
+     * @return array
+     * @since  LiveDocx 1.2
+     */
+    public function getAllMetafiles()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetAllMetafiles();
+
+        if (isset($result->GetAllMetafilesResult->string)) {
+            $pageCounter = 1;
+            if (is_array($result->GetAllMetafilesResult->string)) {
+                foreach ($result->GetAllMetafilesResult->string as $string) {
+                    $ret[$pageCounter] = base64_decode($string);
+                    $pageCounter++;
+                }
+            } else {
+               $ret[$pageCounter] = base64_decode($result->GetAllMetafilesResult->string);
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return graphical bitmap data for specified page range of created document
+     * Return array contains bitmap data (binary) - array key is page number
+     *
+     * @param  integer $fromPage
+     * @param  integer $toPage
+     * @param  integer $zoomFactor
+     * @param  string  $format
+     * @return array
+     * @since  LiveDocx 1.2
+     */
+    public function getBitmaps($fromPage, $toPage, $zoomFactor, $format)
+    {
+        $this->logIn();
+
+        $ret = array();
+
+        $result = $this->getSoapClient()->GetBitmaps(array(
+            'fromPage'   => (integer) $fromPage,
+            'toPage'     => (integer) $toPage,
+            'zoomFactor' => (integer) $zoomFactor,
+            'format'     => (string)  $format,
+        ));
+
+        if (isset($result->GetBitmapsResult->string)) {
+            $pageCounter = (integer) $fromPage;
+            if (is_array($result->GetBitmapsResult->string)) {
+                foreach ($result->GetBitmapsResult->string as $string) {
+                    $ret[$pageCounter] = base64_decode($string);
+                    $pageCounter++;
+                }
+            } else {
+               $ret[$pageCounter] = base64_decode($result->GetBitmapsResult->string);
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return graphical bitmap data for all pages of created document
+     * Return array contains bitmap data (binary) - array key is page number
+     *
+     * @param  integer $zoomFactor
+     * @param  string  $format
+     * @return array
+     * @since  LiveDocx 1.2
+     */
+    public function getAllBitmaps($zoomFactor, $format)
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetAllBitmaps(array(
+            'zoomFactor' => (integer) $zoomFactor,
+            'format'     => (string)  $format,
+        ));
+
+        if (isset($result->GetAllBitmapsResult->string)) {
+            $pageCounter = 1;
+            if (is_array($result->GetAllBitmapsResult->string)) {
+                foreach ($result->GetAllBitmapsResult->string as $string) {
+                    $ret[$pageCounter] = base64_decode($string);
+                    $pageCounter++;
+                }
+            } else {
+               $ret[$pageCounter] = base64_decode($result->GetAllBitmapsResult->string);
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return all the fields in the template
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function getFieldNames()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetFieldNames();
+
+        if (isset($result->GetFieldNamesResult->string)) {
+            if (is_array($result->GetFieldNamesResult->string)) {
+                $ret = $result->GetFieldNamesResult->string;
+            } else {
+                $ret[] = $result->GetFieldNamesResult->string;
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return all the block fields in the template
+     *
+     * @param  string $blockName
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function getBlockFieldNames($blockName)
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetBlockFieldNames(array(
+            'blockName' => $blockName
+        ));
+
+        if (isset($result->GetBlockFieldNamesResult->string)) {
+            if (is_array($result->GetBlockFieldNamesResult->string)) {
+                $ret = $result->GetBlockFieldNamesResult->string;
+            } else {
+                $ret[] = $result->GetBlockFieldNamesResult->string;
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return all the block fields in the template
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function getBlockNames()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetBlockNames();
+
+        if (isset($result->GetBlockNamesResult->string)) {
+            if (is_array($result->GetBlockNamesResult->string)) {
+                $ret = $result->GetBlockNamesResult->string;
+            } else {
+                $ret[] = $result->GetBlockNamesResult->string;
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Upload a template file to LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function uploadTemplate($filename)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->UploadTemplate(array(
+                'template' => base64_encode(file_get_contents($filename)),
+                'filename' => basename($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot upload template', 0, $e
+            );
+        }
+    }
+
+    /**
+     * Download template file from LiveDocx service
+     *
+     * @param  string $filename
+     * @return binary
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function downloadTemplate($filename)
+    {
+        $this->logIn();
+
+        try {
+            $result = $this->getSoapClient()->DownloadTemplate(array(
+                'filename' => basename($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot download template', 0, $e
+            );
+        }
+
+        return base64_decode($result->DownloadTemplateResult);
+    }
+
+    /**
+     * Delete a template file from LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function deleteTemplate($filename)
+    {
+        $this->logIn();
+
+        $this->getSoapClient()->DeleteTemplate(array(
+            'filename' => basename($filename),
+        ));
+    }
+
+    /**
+     * List all templates stored on LiveDocx service
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function listTemplates()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->ListTemplates();
+
+        if (isset($result->ListTemplatesResult)) {
+            $ret = $this->_backendListArrayToMultiAssocArray($result->ListTemplatesResult);
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Check whether a template file is available on LiveDocx service
+     *
+     * @param  string $filename
+     * @return boolean
+     * @since  LiveDocx 1.0
+     */
+    public function templateExists($filename)
+    {
+        $this->logIn();
+
+        $result = $this->getSoapClient()->TemplateExists(array(
+            'filename' => basename($filename),
+        ));
+
+        return (boolean) $result->TemplateExistsResult;
+    }
+
+    /**
+     * Share a document - i.e. the document is available to all over the Internet
+     *
+     * @return string
+     * @since  LiveDocx 1.0
+     */
+    public function shareDocument()
+    {
+        $this->logIn();
+
+        $ret    = null;
+        $result = $this->getSoapClient()->ShareDocument();
+
+        if (isset($result->ShareDocumentResult)) {
+            $ret = (string) $result->ShareDocumentResult;
+        }
+
+        return $ret;
+    }
+
+    /**
+     * List all shared documents stored on LiveDocx service
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function listSharedDocuments()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->ListSharedDocuments();
+
+        if (isset($result->ListSharedDocumentsResult)) {
+            $ret = $this->_backendListArrayToMultiAssocArray(
+                $result->ListSharedDocumentsResult
+            );
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Delete a shared document from LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @since  LiveDocx 1.0
+     */
+    public function deleteSharedDocument($filename)
+    {
+        $this->logIn();
+
+        $this->getSoapClient()->DeleteSharedDocument(array(
+            'filename' => basename($filename),
+        ));
+    }
+
+    /*
+     * Download a shared document from LiveDocx service
+     *
+     * @param  string $filename
+     * @return binary
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 1.0
+     */
+    public function downloadSharedDocument($filename)
+    {
+        $this->logIn();
+
+        try {
+            $result = $this->getSoapClient()->DownloadSharedDocument(array(
+                'filename' => basename($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot download shared document', 0, $e
+            );
+        }
+
+        return base64_decode($result->DownloadSharedDocumentResult);
+    }
+
+    /**
+     * Check whether a shared document is available on LiveDocx service
+     *
+     * @param  string $filename
+     * @return boolean
+     * @since  LiveDocx 1.0
+     */
+    public function sharedDocumentExists($filename)
+    {
+        $this->logIn();
+
+        $ret             = false;
+        $sharedDocuments = $this->listSharedDocuments();
+        foreach ($sharedDocuments as $shareDocument) {
+            if (isset($shareDocument['filename'])
+                && (basename($filename) === $shareDocument['filename'])
+            ) {
+                $ret = true;
+                break;
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return supported template formats (lowercase)
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public function getTemplateFormats()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetTemplateFormats();
+
+        if (isset($result->GetTemplateFormatsResult->string)) {
+            $ret = $result->GetTemplateFormatsResult->string;
+            $ret = array_map('strtolower', $ret);
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return supported document formats (lowercase)
+     *
+     * @return array
+     * @since  LiveDocx 1.1
+     */
+    public function getDocumentFormats()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetDocumentFormats();
+
+        if (isset($result->GetDocumentFormatsResult->string)) {
+            $ret = $result->GetDocumentFormatsResult->string;
+            $ret = array_map('strtolower', $ret);
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return the names of all fonts that are installed on backend server
+     *
+     * @return array
+     * @since  LiveDocx 1.2
+     */
+    public function getFontNames()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetFontNames();
+
+        if (isset($result->GetFontNamesResult->string)) {
+            $ret = $result->GetFontNamesResult->string;
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return supported document access options
+     *
+     * @return array
+     * @since  LiveDocx 1.2 Premium
+     */
+    public function getDocumentAccessOptions()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetDocumentAccessOptions();
+
+        if (isset($result->GetDocumentAccessOptionsResult->string)) {
+            $ret = $result->GetDocumentAccessOptionsResult->string;
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return supported image formats from which can be imported (lowercase)
+     *
+     * @return array
+     * @since  LiveDocx 2.0
+     */
+    public function getImageImportFormats()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetImageImportFormats();
+
+        if (isset($result->GetImageImportFormatsResult->string)) {
+            $ret = $result->GetImageImportFormatsResult->string;
+            $ret = array_map('strtolower', $ret);
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return supported image formats to which can be exported (lowercase)
+     *
+     * @return array
+     * @since  LiveDocx 2.0
+     */
+    public function getImageExportFormats()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->GetImageExportFormats();
+
+        if (isset($result->GetImageExportFormatsResult->string)) {
+            $ret = $result->GetImageExportFormatsResult->string;
+            $ret = array_map('strtolower', $ret);
+        }
+
+        return $ret;
+    }
+
+    /*
+     * Return supported image formats (lowercase)
+     *
+     * @return array
+     * @since  LiveDocx 1.2
+     * @deprecated since LiveDocx 2.0
+     */
+    public function getImageFormats()
+    {
+        $replacement = 'getImageExportFormats';
+
+        /*
+        $errorMessage = sprintf(
+                        "%s::%s is deprecated as of LiveDocx 2.0. "
+                      . "It has been replaced by %s::%s() (drop in replacement)",
+                        __CLASS__, __FUNCTION__, __CLASS__, $replacement);
+
+        trigger_error($errorMessage, E_USER_NOTICE);
+        */
+
+        return $this->$replacement();
+    }
+
+    /**
+     * Upload an image file to LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 2.0
+     */
+    public function uploadImage($filename)
+    {
+        $this->logIn();
+
+        try {
+            $this->getSoapClient()->UploadImage(array(
+                'image'    => base64_encode(file_get_contents($filename)),
+                'filename' => basename($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot upload image', 0, $e
+            );
+        }
+    }
+
+    /**
+     * Download an image file from LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 2.0
+     */
+    public function downloadImage($filename)
+    {
+        $this->logIn();
+
+        try {
+            $result = $this->getSoapClient()->DownloadImage(array(
+                'filename' => basename($filename),
+            ));
+        } catch (Exception $e) {
+            require_once 'Zend/Service/LiveDocx/Exception.php';
+            throw new Zend_Service_LiveDocx_Exception(
+                'Cannot download image', 0, $e
+            );
+        }
+
+        return base64_decode($result->DownloadImageResult);
+    }
+
+    /**
+     * List all images stored on LiveDocx service
+     *
+     * @return array
+     * @since  LiveDocx 2.0
+     */
+    public function listImages()
+    {
+        $this->logIn();
+
+        $ret    = array();
+        $result = $this->getSoapClient()->ListImages();
+
+        if (isset($result->ListImagesResult)) {
+            $ret = $this->_backendListArrayToMultiAssocArray($result->ListImagesResult);
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Delete an image file from LiveDocx service
+     *
+     * @param  string $filename
+     * @return void
+     * @throws Zend_Service_LiveDocx_Exception
+     * @since  LiveDocx 2.0
+     */
+    public function deleteImage($filename)
+    {
+        $this->logIn();
+
+        $this->getSoapClient()->DeleteImage(array(
+            'filename' => basename($filename),
+        ));
+    }
+
+    /**
+     * Check whether an image file is available on LiveDocx service
+     *
+     * @param  string $filename
+     * @return boolean
+     * @since  LiveDocx 2.0
+     */
+    public function imageExists($filename)
+    {
+        $this->logIn();
+
+        $result = $this->getSoapClient()->ImageExists(array(
+            'filename' => basename($filename),
+        ));
+
+        return (boolean) $result->ImageExistsResult;
+    }
+
+    /**
+     * Convert LiveDocx service return value from list methods to consistent PHP array
+     *
+     * @param  array $list
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    protected function _backendListArrayToMultiAssocArray($list)
+    {
+        $this->logIn();
+
+        $ret = array();
+        if (isset($list->ArrayOfString)) {
+           foreach ($list->ArrayOfString as $a) {
+               if (is_array($a)) {      // 1 template only
+                   $o = new stdClass();
+                   $o->string = $a;
+               } else {                 // 2 or more templates
+                   $o = $a;
+               }
+               unset($a);
+
+               if (isset($o->string)) {
+                   $date1 = new Zend_Date($o->string[3], Zend_Date::RFC_1123);
+                   $date2 = new Zend_Date($o->string[1], Zend_Date::RFC_1123);
+
+                   $ret[] = array (
+                        'filename'   => $o->string[0],
+                        'fileSize'   => (integer) $o->string[2],
+                        'createTime' => (integer) $date1->get(Zend_Date::TIMESTAMP),
+                        'modifyTime' => (integer) $date2->get(Zend_Date::TIMESTAMP),
+                   );
+               }
+           }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Convert assoc array to required SOAP type
+     *
+     * @param array $assoc
+     *
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public static function assocArrayToArrayOfArrayOfString($assoc)
+    {
+        $arrayKeys   = array_keys($assoc);
+        $arrayValues = array_values($assoc);
+
+        return array($arrayKeys, $arrayValues);
+    }
+
+    /**
+     * Convert multi assoc array to required SOAP type
+     *
+     * @param  array $multi
+     * @return array
+     * @since  LiveDocx 1.0
+     */
+    public static function multiAssocArrayToArrayOfArrayOfString($multi)
+    {
+        $arrayKeys   = array_keys($multi[0]);
+        $arrayValues = array();
+
+        foreach ($multi as $v) {
+            $arrayValues[] = array_values($v);
+        }
+
+        $arrayKeys = array($arrayKeys);
+
+        return array_merge($arrayKeys, $arrayValues);
+    }
+
+    // -------------------------------------------------------------------------
+
+}

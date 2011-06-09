@@ -1,242 +1,242 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@subpackagephp Renderer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Pdfphp.phpphp php2php2php4php1php8php php2php0php1php0php-php0php6php-php1php1php php1php6php:php2php7php:php2php2Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @subpackage Renderer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Pdf.php 22418 2010-06-11 16:27:22Z mikaelkael $
+ */
 
-php/php*php*php php@seephp Zendphp_Barcodephp_Rendererphp_RendererAbstractphp php*php/
-requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/RendererAbstractphp.phpphp'php;
+/** @see Zend_Barcode_Renderer_RendererAbstract */
+require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
 
-php/php*php*php php@seephp Zendphp_Pdfphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp.phpphp'php;
+/** @see Zend_Pdf */
+require_once 'Zend/Pdf.php';
 
-php/php*php*php php@seephp Zendphp_Pdfphp_Pagephp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Pagephp.phpphp'php;
+/** @see Zend_Pdf_Page */
+require_once 'Zend/Pdf/Page.php';
 
-php/php*php*php php@seephp Zendphp_Pdfphp_Colorphp_Rgbphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Colorphp/Rgbphp.phpphp'php;
+/** @see Zend_Pdf_Color_Rgb */
+require_once 'Zend/Pdf/Color/Rgb.php';
 
-php/php*php*
-php php*php Classphp forphp renderingphp thephp barcodephp inphp PDFphp resource
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Barcode
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Barcodephp_Rendererphp_Pdfphp extendsphp Zendphp_Barcodephp_Rendererphp_RendererAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php PDFphp resource
-php php php php php php*php php@varphp Zendphp_Pdf
-php php php php php php*php/
-php php php php protectedphp php$php_resourcephp php=php nullphp;
+/**
+ * Class for rendering the barcode in PDF resource
+ *
+ * @category   Zend
+ * @package    Zend_Barcode
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
+{
+    /**
+     * PDF resource
+     * @var Zend_Pdf
+     */
+    protected $_resource = null;
 
-php php php php php/php*php*
-php php php php php php*php Pagephp numberphp inphp PDFphp resource
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_pagephp php=php php0php;
+    /**
+     * Page number in PDF resource
+     * @var integer
+     */
+    protected $_page = 0;
 
-php php php php php/php*php*
-php php php php php php*php Modulephp sizephp rendering
-php php php php php php*php php@varphp float
-php php php php php php*php/
-php php php php protectedphp php$php_moduleSizephp php=php php0php.php5php;
+    /**
+     * Module size rendering
+     * @var float
+     */
+    protected $_moduleSize = 0.5;
 
-php php php php php/php*php*
-php php php php php php*php Setphp anphp imagephp resourcephp tophp drawphp thephp barcodephp inside
-php php php php php php*php php@paramphp resourcephp php$value
-php php php php php php*php php@returnphp Zendphp_Barcodephp_Renderer
-php php php php php php*php php@throwphp Zendphp_Barcodephp_Rendererphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setResourcephp(php$pdfphp,php php$pagephp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$pdfphp instanceofphp Zendphp_Pdfphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Barcodephp/Rendererphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Barcodephp_Rendererphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Invalidphp Zendphp_Pdfphp resourcephp providedphp tophp setResourcephp(php)php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * Set an image resource to draw the barcode inside
+     * @param resource $value
+     * @return Zend_Barcode_Renderer
+     * @throw Zend_Barcode_Renderer_Exception
+     */
+    public function setResource($pdf, $page = 0)
+    {
+        if (!$pdf instanceof Zend_Pdf) {
+            require_once 'Zend/Barcode/Renderer/Exception.php';
+            throw new Zend_Barcode_Renderer_Exception(
+                'Invalid Zend_Pdf resource provided to setResource()'
+            );
+        }
 
-php php php php php php php php php$thisphp-php>php_resourcephp php=php php$pdfphp;
-php php php php php php php php php$thisphp-php>php_pagephp php php php php php=php intvalphp(php$pagephp)php;
+        $this->_resource = $pdf;
+        $this->_page     = intval($page);
 
-php php php php php php php php ifphp php(php!countphp(php$thisphp-php>php_resourcephp-php>pagesphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_pagephp php=php php0php;
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp-php>pagesphp[php]php php=php newphp Zendphp_Pdfphp_Pagephp(
-php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Pagephp:php:SIZEphp_Aphp4
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        if (!count($this->_resource->pages)) {
+            $this->_page = 0;
+            $this->_resource->pages[] = new Zend_Pdf_Page(
+                Zend_Pdf_Page::SIZE_A4
+            );
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp rendererphp parameters
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkParamsphp(php)
-php php php php php{
-php php php php php}
+    /**
+     * Check renderer parameters
+     *
+     * @return void
+     */
+    protected function _checkParams()
+    {
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp thephp barcodephp inphp thephp PDFphp,php sendphp headersphp andphp thephp PDF
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>drawphp(php)php;
-php php php php php php php php headerphp(php"Contentphp-Typephp:php applicationphp/pdfphp"php)php;
-php php php php php php php php echophp php$thisphp-php>php_resourcephp-php>renderphp(php)php;
-php php php php php}
+    /**
+     * Draw the barcode in the PDF, send headers and the PDF
+     * @return mixed
+     */
+    public function render()
+    {
+        $this->draw();
+        header("Content-Type: application/pdf");
+        echo $this->_resource->render();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Initializephp thephp PDFphp resource
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_initRendererphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_resourcephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp php=php newphp Zendphp_Pdfphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_resourcephp-php>pagesphp[php]php php=php newphp Zendphp_Pdfphp_Pagephp(
-php php php php php php php php php php php php php php php php Zendphp_Pdfphp_Pagephp:php:SIZEphp_Aphp4
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+    /**
+     * Initialize the PDF resource
+     * @return void
+     */
+    protected function _initRenderer()
+    {
+        if ($this->_resource === null) {
+            $this->_resource = new Zend_Pdf();
+            $this->_resource->pages[] = new Zend_Pdf_Page(
+                Zend_Pdf_Page::SIZE_A4
+            );
+        }
 
-php php php php php php php php php$pdfPagephp php=php php$thisphp-php>php_resourcephp-php>pagesphp[php$thisphp-php>php_pagephp]php;
-php php php php php php php php php$thisphp-php>php_adjustPositionphp(php$pdfPagephp-php>getHeightphp(php)php,php php$pdfPagephp-php>getWidthphp(php)php)php;
-php php php php php}
+        $pdfPage = $this->_resource->pages[$this->_page];
+        $this->_adjustPosition($pdfPage->getHeight(), $pdfPage->getWidth());
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp polygonphp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp arrayphp php$points
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp booleanphp php$filled
-php php php php php php*php/
-php php php php protectedphp functionphp php_drawPolygonphp(php$pointsphp,php php$colorphp,php php$filledphp php=php truephp)
-php php php php php{
-php php php php php php php php php$pagephp php=php php$thisphp-php>php_resourcephp-php>pagesphp[php$thisphp-php>php_pagephp]php;
-php php php php php php php php foreachphp php(php$pointsphp asphp php$pointphp)php php{
-php php php php php php php php php php php php php$xphp[php]php php=php php$pointphp[php0php]php php*php php$thisphp-php>php_moduleSizephp php+php php$thisphp-php>php_leftOffsetphp;
-php php php php php php php php php php php php php$yphp[php]php php=php php$pagephp-php>getHeightphp(php)php php-php php$pointphp[php1php]php php*php php$thisphp-php>php_moduleSizephp php-php php$thisphp-php>php_topOffsetphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(countphp(php$yphp)php php=php=php php4php)php php{
-php php php php php php php php php php php php ifphp php(php$xphp[php0php]php php!php=php php$xphp[php3php]php php&php&php php$yphp[php0php]php php=php=php php$yphp[php3php]php)php php{
-php php php php php php php php php php php php php php php php php$yphp[php0php]php php-php=php php(php$thisphp-php>php_moduleSizephp php/php php2php)php;
-php php php php php php php php php php php php php php php php php$yphp[php3php]php php-php=php php(php$thisphp-php>php_moduleSizephp php/php php2php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$xphp[php1php]php php!php=php php$xphp[php2php]php php&php&php php$yphp[php1php]php php=php=php php$yphp[php2php]php)php php{
-php php php php php php php php php php php php php php php php php$yphp[php1php]php php+php=php php(php$thisphp-php>php_moduleSizephp php/php php2php)php;
-php php php php php php php php php php php php php php php php php$yphp[php2php]php php+php=php php(php$thisphp-php>php_moduleSizephp php/php php2php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Draw a polygon in the rendering resource
+     * @param array $points
+     * @param integer $color
+     * @param boolean $filled
+     */
+    protected function _drawPolygon($points, $color, $filled = true)
+    {
+        $page = $this->_resource->pages[$this->_page];
+        foreach ($points as $point) {
+            $x[] = $point[0] * $this->_moduleSize + $this->_leftOffset;
+            $y[] = $page->getHeight() - $point[1] * $this->_moduleSize - $this->_topOffset;
+        }
+        if (count($y) == 4) {
+            if ($x[0] != $x[3] && $y[0] == $y[3]) {
+                $y[0] -= ($this->_moduleSize / 2);
+                $y[3] -= ($this->_moduleSize / 2);
+            }
+            if ($x[1] != $x[2] && $y[1] == $y[2]) {
+                $y[1] += ($this->_moduleSize / 2);
+                $y[2] += ($this->_moduleSize / 2);
+            }
+        }
 
-php php php php php php php php php$colorphp php=php newphp Zendphp_Pdfphp_Colorphp_Rgbphp(
-php php php php php php php php php php php php php(php(php$colorphp php&php php0xFFphp0php0php0php0php)php php>php>php php1php6php)php php/php php2php5php5php.php0php,
-php php php php php php php php php php php php php(php(php$colorphp php&php php0xphp0php0FFphp0php0php)php php>php>php php8php)php php/php php2php5php5php.php0php,
-php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0php0php0FFphp)php php/php php2php5php5php.php0
-php php php php php php php php php)php;
+        $color = new Zend_Pdf_Color_Rgb(
+            (($color & 0xFF0000) >> 16) / 255.0,
+            (($color & 0x00FF00) >> 8) / 255.0,
+            ($color & 0x0000FF) / 255.0
+        );
 
-php php php php php php php php php$pagephp-php>setLineColorphp(php$colorphp)php;
-php php php php php php php php php$pagephp-php>setFillColorphp(php$colorphp)php;
-php php php php php php php php php$pagephp-php>setLineWidthphp(php$thisphp-php>php_moduleSizephp)php;
+        $page->setLineColor($color);
+        $page->setFillColor($color);
+        $page->setLineWidth($this->_moduleSize);
 
-php php php php php php php php php$fillTypephp php=php php(php$filledphp)
-php php php php php php php php php php php php php php php php php php php?php Zendphp_Pdfphp_Pagephp:php:SHAPEphp_DRAWphp_FILLphp_ANDphp_STROKE
-php php php php php php php php php php php php php php php php php php php:php Zendphp_Pdfphp_Pagephp:php:SHAPEphp_DRAWphp_STROKEphp;
+        $fillType = ($filled)
+                  ? Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE
+                  : Zend_Pdf_Page::SHAPE_DRAW_STROKE;
 
-php php php php php php php php php$pagephp-php>drawPolygonphp(php$xphp,php php$yphp,php php$fillTypephp)php;
-php php php php php}
+        $page->drawPolygon($x, $y, $fillType);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Drawphp aphp textphp inphp thephp renderingphp resource
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*php php@paramphp floatphp php$size
-php php php php php php*php php@paramphp arrayphp php$position
-php php php php php php*php php@paramphp stringphp php$font
-php php php php php php*php php@paramphp integerphp php$color
-php php php php php php*php php@paramphp stringphp php$alignment
-php php php php php php*php php@paramphp floatphp php$orientation
-php php php php php php*php/
-php php php php protectedphp functionphp php_drawTextphp(
-php php php php php php php php php$textphp,
-php php php php php php php php php$sizephp,
-php php php php php php php php php$positionphp,
-php php php php php php php php php$fontphp,
-php php php php php php php php php$colorphp,
-php php php php php php php php php$alignmentphp php=php php'centerphp'php,
-php php php php php php php php php$orientationphp php=php php0
-php php php php php)php php{
-php php php php php php php php php$pagephp php php=php php$thisphp-php>php_resourcephp-php>pagesphp[php$thisphp-php>php_pagephp]php;
-php php php php php php php php php$colorphp php=php newphp Zendphp_Pdfphp_Colorphp_Rgbphp(
-php php php php php php php php php php php php php(php(php$colorphp php&php php0xFFphp0php0php0php0php)php php>php>php php1php6php)php php/php php2php5php5php.php0php,
-php php php php php php php php php php php php php(php(php$colorphp php&php php0xphp0php0FFphp0php0php)php php>php>php php8php)php php/php php2php5php5php.php0php,
-php php php php php php php php php php php php php(php$colorphp php&php php0xphp0php0php0php0FFphp)php php/php php2php5php5php.php0
-php php php php php php php php php)php;
+    /**
+     * Draw a text in the rendering resource
+     * @param string $text
+     * @param float $size
+     * @param array $position
+     * @param string $font
+     * @param integer $color
+     * @param string $alignment
+     * @param float $orientation
+     */
+    protected function _drawText(
+        $text,
+        $size,
+        $position,
+        $font,
+        $color,
+        $alignment = 'center',
+        $orientation = 0
+    ) {
+        $page  = $this->_resource->pages[$this->_page];
+        $color = new Zend_Pdf_Color_Rgb(
+            (($color & 0xFF0000) >> 16) / 255.0,
+            (($color & 0x00FF00) >> 8) / 255.0,
+            ($color & 0x0000FF) / 255.0
+        );
 
-php php php php php php php php php$pagephp-php>setLineColorphp(php$colorphp)php;
-php php php php php php php php php$pagephp-php>setFillColorphp(php$colorphp)php;
-php php php php php php php php php$pagephp-php>setFontphp(Zendphp_Pdfphp_Fontphp:php:fontWithPathphp(php$fontphp)php,php php$sizephp php*php php$thisphp-php>php_moduleSizephp php*php php1php.php2php)php;
+        $page->setLineColor($color);
+        $page->setFillColor($color);
+        $page->setFont(Zend_Pdf_Font::fontWithPath($font), $size * $this->_moduleSize * 1.2);
 
-php php php php php php php php php$widthphp php=php php$thisphp-php>widthForStringUsingFontSizephp(
-php php php php php php php php php php php php php$textphp,
-php php php php php php php php php php php php Zendphp_Pdfphp_Fontphp:php:fontWithPathphp(php$fontphp)php,
-php php php php php php php php php php php php php$sizephp php*php php$thisphp-php>php_moduleSize
-php php php php php php php php php)php;
+        $width = $this->widthForStringUsingFontSize(
+            $text,
+            Zend_Pdf_Font::fontWithPath($font),
+            $size * $this->_moduleSize
+        );
 
-php php php php php php php php php$anglephp php=php piphp(php)php php*php php$orientationphp php/php php1php8php0php;
-php php php php php php php php php$leftphp php=php php$positionphp[php0php]php php*php php$thisphp-php>php_moduleSizephp php+php php$thisphp-php>php_leftOffsetphp;
-php php php php php php php php php$topphp php php=php php$pagephp-php>getHeightphp(php)php php-php php$positionphp[php1php]php php*php php$thisphp-php>php_moduleSizephp php-php php$thisphp-php>php_topOffsetphp;
+        $angle = pi() * $orientation / 180;
+        $left = $position[0] * $this->_moduleSize + $this->_leftOffset;
+        $top  = $page->getHeight() - $position[1] * $this->_moduleSize - $this->_topOffset;
 
-php php php php php php php php switchphp php(php$alignmentphp)php php{
-php php php php php php php php php php php php casephp php'centerphp'php:
-php php php php php php php php php php php php php php php php php$leftphp php-php=php php(php$widthphp php/php php2php)php php*php cosphp(php$anglephp)php;
-php php php php php php php php php php php php php php php php php$topphp php php-php=php php(php$widthphp php/php php2php)php php*php sinphp(php$anglephp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'rightphp'php:
-php php php php php php php php php php php php php php php php php$leftphp php-php=php php$widthphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php php php php php$pagephp-php>rotatephp(php$leftphp,php php$topphp,php php$anglephp)php;
-php php php php php php php php php$pagephp-php>drawTextphp(php$textphp,php php$leftphp,php php$topphp)php;
-php php php php php php php php php$pagephp-php>rotatephp(php$leftphp,php php$topphp,php php-php php$anglephp)php;
-php php php php php}
+        switch ($alignment) {
+            case 'center':
+                $left -= ($width / 2) * cos($angle);
+                $top  -= ($width / 2) * sin($angle);
+                break;
+            case 'right':
+                $left -= $width;
+                break;
+        }
+        $page->rotate($left, $top, $angle);
+        $page->drawText($text, $left, $top);
+        $page->rotate($left, $top, - $angle);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Calculatephp thephp widthphp ofphp aphp stringphp:
-php php php php php php*php inphp casephp ofphp usingphp alignmentphp parameterphp inphp drawText
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Fontphp php$font
-php php php php php php*php php@paramphp floatphp php$fontSize
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp widthForStringUsingFontSizephp(php$textphp,php php$fontphp,php php$fontSizephp)
-php php php php php{
-php php php php php php php php php$drawingStringphp php=php iconvphp(php'UTFphp-php8php'php,php php'UTFphp-php1php6BEphp/php/IGNOREphp'php,php php$textphp)php;
-php php php php php php php php php$charactersphp php php php php=php arrayphp(php)php;
-php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php strlenphp(php$drawingStringphp)php;php php$iphp php+php+php)php php{
-php php php php php php php php php php php php php$charactersphp[php]php php=php php(ordphp(php$drawingStringphp[php$iphp php+php+php]php)php <php<php php8php)php php|php ordphp(php$drawingStringphp[php$iphp]php)php;
-php php php php php php php php php}
-php php php php php php php php php$glyphsphp php=php php$fontphp-php>glyphNumbersForCharactersphp(php$charactersphp)php;
-php php php php php php php php php$widthsphp php=php php$fontphp-php>widthsForGlyphsphp(php$glyphsphp)php;
-php php php php php php php php php$stringWidthphp php=php php(arrayphp_sumphp(php$widthsphp)php php/php php$fontphp-php>getUnitsPerEmphp(php)php)php php*php php$fontSizephp;
-php php php php php php php php returnphp php$stringWidthphp;
-php php php php php}
-php}
+    /**
+     * Calculate the width of a string:
+     * in case of using alignment parameter in drawText
+     * @param string $text
+     * @param Zend_Pdf_Font $font
+     * @param float $fontSize
+     * @return float
+     */
+    public function widthForStringUsingFontSize($text, $font, $fontSize)
+    {
+        $drawingString = iconv('UTF-8', 'UTF-16BE//IGNORE', $text);
+        $characters    = array();
+        for ($i = 0; $i < strlen($drawingString); $i ++) {
+            $characters[] = (ord($drawingString[$i ++]) << 8) | ord($drawingString[$i]);
+        }
+        $glyphs = $font->glyphNumbersForCharacters($characters);
+        $widths = $font->widthsForGlyphs($glyphs);
+        $stringWidth = (array_sum($widths) / $font->getUnitsPerEm()) * $fontSize;
+        return $stringWidth;
+    }
+}

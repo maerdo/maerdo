@@ -1,236 +1,236 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Rest
-php php*php php@subpackagephp Client
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Resultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Rest
+ * @subpackage Client
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Result.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Rest
-php php*php php@subpackagephp Client
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Restphp_Clientphp_Resultphp implementsphp IteratorAggregatephp php{
-php php php php php/php*php*
-php php php php php php*php php@varphp SimpleXMLElement
-php php php php php php*php/
-php php php php protectedphp php$php_sxmlphp;
+/**
+ * @category   Zend
+ * @package    Zend_Rest
+ * @subpackage Client
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Rest_Client_Result implements IteratorAggregate {
+    /**
+     * @var SimpleXMLElement
+     */
+    protected $_sxml;
 
-php php php php php/php*php*
-php php php php php php*php errorphp information
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_errstrphp;
+    /**
+     * error information
+     * @var string
+     */
+    protected $_errstr;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$dataphp XMLphp Result
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$dataphp)
-php php php php php{
-php php php php php php php php setphp_errorphp_handlerphp(arrayphp(php$thisphp,php php'handleXmlErrorsphp'php)php)php;
-php php php php php php php php php$thisphp-php>php_sxmlphp php=php simplexmlphp_loadphp_stringphp(php$dataphp)php;
-php php php php php php php php restorephp_errorphp_handlerphp(php)php;
-php php php php php php php php ifphp(php$thisphp-php>php_sxmlphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_errstrphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php"Anphp errorphp occuredphp whilephp parsingphp thephp RESTphp responsephp withphp simplexmlphp.php"php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php"RESTphp Responsephp Errorphp:php php"php php.php php$thisphp-php>php_errstrphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_errstrphp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php requirephp_oncephp php"Zendphp/Restphp/Clientphp/Resultphp/Exceptionphp.phpphp"php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Restphp_Clientphp_Resultphp_Exceptionphp(php$messagephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param string $data XML Result
+     * @return void
+     */
+    public function __construct($data)
+    {
+        set_error_handler(array($this, 'handleXmlErrors'));
+        $this->_sxml = simplexml_load_string($data);
+        restore_error_handler();
+        if($this->_sxml === false) {
+            if ($this->_errstr === null) {
+                $message = "An error occured while parsing the REST response with simplexml.";
+            } else {
+                $message = "REST Response Error: " . $this->_errstr;
+                $this->_errstr = null;
+            }
+            require_once "Zend/Rest/Client/Result/Exception.php";
+            throw new Zend_Rest_Client_Result_Exception($message);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Temporaryphp errorphp handlerphp forphp parsingphp RESTphp responsesphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php php php php$errno
-php php php php php php*php php@paramphp stringphp php$errstr
-php php php php php php*php php@paramphp stringphp php$errfile
-php php php php php php*php php@paramphp stringphp php$errline
-php php php php php php*php php@paramphp arrayphp php php$errcontext
-php php php php php php*php php@returnphp true
-php php php php php php*php/
-php php php php publicphp functionphp handleXmlErrorsphp(php$errnophp,php php$errstrphp,php php$errfilephp php=php nullphp,php php$errlinephp php=php nullphp,php arrayphp php$errcontextphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_errstrphp php=php php$errstrphp;
-php php php php php php php php returnphp truephp;
-php php php php php}
+    /**
+     * Temporary error handler for parsing REST responses.
+     *
+     * @param int    $errno
+     * @param string $errstr
+     * @param string $errfile
+     * @param string $errline
+     * @param array  $errcontext
+     * @return true
+     */
+    public function handleXmlErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)
+    {
+        $this->_errstr = $errstr;
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Castsphp aphp SimpleXMLElementphp tophp itsphp appropriatephp PHPphp value
-php php php php php php*
-php php php php php php*php php@paramphp SimpleXMLElementphp php$value
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp toValuephp(SimpleXMLElementphp php$valuephp)
-php php php php php{
-php php php php php php php php php$nodephp php=php domphp_importphp_simplexmlphp(php$valuephp)php;
-php php php php php php php php returnphp php$nodephp-php>nodeValuephp;
-php php php php php}
+    /**
+     * Casts a SimpleXMLElement to its appropriate PHP value
+     *
+     * @param SimpleXMLElement $value
+     * @return mixed
+     */
+    public function toValue(SimpleXMLElement $value)
+    {
+        $node = dom_import_simplexml($value);
+        return $node->nodeValue;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp Propertyphp Overload
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp nullphp|SimpleXMLElementphp|arrayphp Nullphp ifphp notphp foundphp,php SimpleXMLElementphp ifphp onlyphp onephp valuephp foundphp,php arrayphp ofphp Zendphp_Restphp_Clientphp_Resultphp objectsphp otherwise
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_sxmlphp-php>php{php$namephp}php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_sxmlphp-php>php{php$namephp}php;
-php php php php php php php php php}
+    /**
+     * Get Property Overload
+     *
+     * @param string $name
+     * @return null|SimpleXMLElement|array Null if not found, SimpleXMLElement if only one value found, array of Zend_Rest_Client_Result objects otherwise
+     */
+    public function __get($name)
+    {
+        if (isset($this->_sxml->{$name})) {
+            return $this->_sxml->{$name};
+        }
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_sxmlphp-php>xpathphp(php"php/php/php$namephp"php)php;
-php php php php php php php php php$countphp php php=php countphp(php$resultphp)php;
+        $result = $this->_sxml->xpath("//$name");
+        $count  = count($result);
 
-php php php php php php php php ifphp php(php$countphp php=php=php php0php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}php elseifphp php(php$countphp php=php=php php1php)php php{
-php php php php php php php php php php php php returnphp php$resultphp[php0php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$resultphp;
-php php php php php php php php php}
-php php php php php}
+        if ($count == 0) {
+            return null;
+        } elseif ($count == 1) {
+            return $result[0];
+        } else {
+            return $result;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Castphp propertiesphp tophp PHPphp values
-php php php php php php*
-php php php php php php*php Forphp arraysphp,php loopsphp throughphp eachphp elementphp andphp castsphp tophp aphp valuephp asphp wellphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$method
-php php php php php php*php php@paramphp arrayphp php$args
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php(php$valuephp php=php php$thisphp-php>php_php_getphp(php$methodphp)php)php)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>toValuephp(php$valuephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$valuephp asphp php$elementphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$thisphp-php>toValuephp(php$elementphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php returnphp php$returnphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Cast properties to PHP values
+     *
+     * For arrays, loops through each element and casts to a value as well.
+     *
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (null !== ($value = $this->__get($method))) {
+            if (!is_array($value)) {
+                return $this->toValue($value);
+            } else {
+                $return = array();
+                foreach ($value as $element) {
+                    $return[] = $this->toValue($element);
+                }
+                return $return;
+            }
+        }
 
-php php php php php php php php returnphp nullphp;
-php php php php php}
+        return null;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Issetphp Overload
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_sxmlphp-php>php{php$namephp}php)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+    /**
+     * Isset Overload
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function __isset($name)
+    {
+        if (isset($this->_sxml->{$name})) {
+            return true;
+        }
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_sxmlphp-php>xpathphp(php"php/php/php$namephp"php)php;
+        $result = $this->_sxml->xpath("//$name");
 
-php php php php php php php php ifphp php(sizeofphp(php$resultphp)php php>php php0php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+        if (sizeof($result) > 0) {
+            return true;
+        }
 
-php php php php php php php php returnphp falsephp;
-php php php php php}
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Implementphp IteratorAggregatephp:php:getIteratorphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp SimpleXMLIterator
-php php php php php php*php/
-php php php php publicphp functionphp getIteratorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_sxmlphp;
-php php php php php}
+    /**
+     * Implement IteratorAggregate::getIterator()
+     *
+     * @return SimpleXMLIterator
+     */
+    public function getIterator()
+    {
+        return $this->_sxml;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp Requestphp Status
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp getStatusphp(php)
-php php php php php{
-php php php php php php php php php$statusphp php=php php$thisphp-php>php_sxmlphp-php>xpathphp(php'php/php/statusphp/textphp(php)php'php)php;
+    /**
+     * Get Request Status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        $status = $this->_sxml->xpath('//status/text()');
 
-php php php php php php php php php$statusphp php=php strtolowerphp(php$statusphp[php0php]php)php;
+        $status = strtolower($status[0]);
 
-php php php php php php php php ifphp php(ctypephp_alphaphp(php$statusphp)php php&php&php php$statusphp php=php=php php'successphp'php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}php elseifphp php(ctypephp_alphaphp(php$statusphp)php php&php&php php$statusphp php!php=php php'successphp'php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php(boolphp)php php$statusphp;
-php php php php php php php php php}
-php php php php php}
+        if (ctype_alpha($status) && $status == 'success') {
+            return true;
+        } elseif (ctype_alpha($status) && $status != 'success') {
+            return false;
+        } else {
+            return (bool) $status;
+        }
+    }
 
-php php php php publicphp functionphp isErrorphp(php)
-php php php php php{
-php php php php php php php php php$statusphp php=php php$thisphp-php>getStatusphp(php)php;
-php php php php php php php php ifphp php(php$statusphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php}
+    public function isError()
+    {
+        $status = $this->getStatus();
+        if ($status) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-php php php php publicphp functionphp isSuccessphp(php)
-php php php php php{
-php php php php php php php php php$statusphp php=php php$thisphp-php>getStatusphp(php)php;
-php php php php php php php php ifphp php(php$statusphp)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php}
+    public function isSuccess()
+    {
+        $status = $this->getStatus();
+        if ($status) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php toStringphp overload
-php php php php php php*
-php php php php php php*php Bephp surephp tophp onlyphp callphp thisphp whenphp thephp resultphp isphp aphp singlephp valuephp!
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>getStatusphp(php)php)php php{
-php php php php php php php php php php php php php$messagephp php=php php$thisphp-php>php_sxmlphp-php>xpathphp(php'php/php/messagephp'php)php;
-php php php php php php php php php php php php returnphp php(stringphp)php php$messagephp[php0php]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$resultphp php=php php$thisphp-php>php_sxmlphp-php>xpathphp(php'php/php/responsephp'php)php;
-php php php php php php php php php php php php ifphp php(sizeofphp(php$resultphp)php php>php php1php)php php{
-php php php php php php php php php php php php php php php php returnphp php(stringphp)php php"Anphp errorphp occuredphp.php"php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp php(stringphp)php php$resultphp[php0php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-php}
+    /**
+     * toString overload
+     *
+     * Be sure to only call this when the result is a single value!
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        if (!$this->getStatus()) {
+            $message = $this->_sxml->xpath('//message');
+            return (string) $message[0];
+        } else {
+            $result = $this->_sxml->xpath('//response');
+            if (sizeof($result) > 1) {
+                return (string) "An error occured.";
+            } else {
+                return (string) $result[0];
+            }
+        }
+    }
+}

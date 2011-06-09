@@ -1,128 +1,128 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_CodeGenerator
-php php*php php@subpackagephp PHP
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Paramphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_CodeGenerator
+ * @subpackage PHP
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Param.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tag
-php php*php/
-requirephp_oncephp php'Zendphp/CodeGeneratorphp/Phpphp/Docblockphp/Tagphp.phpphp'php;
+/**
+ * @see Zend_CodeGenerator_Php_Docblock_Tag
+ */
+require_once 'Zend/CodeGenerator/Php/Docblock/Tag.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_CodeGenerator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_Paramphp extendsphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tag
-php{
+/**
+ * @category   Zend
+ * @package    Zend_CodeGenerator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_CodeGenerator_Php_Docblock_Tag_Param extends Zend_CodeGenerator_Php_Docblock_Tag
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_datatypephp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_datatype = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_paramNamephp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_paramName = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_descriptionphp php=php nullphp;
+    /**
+     * @var string
+     */
+    protected $_description = null;
 
-php php php php php/php*php*
-php php php php php php*php fromReflectionphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Reflectionphp_Docblockphp_Tagphp php$reflectionTagParam
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_Param
-php php php php php php*php/
-php php php php publicphp staticphp functionphp fromReflectionphp(Zendphp_Reflectionphp_Docblockphp_Tagphp php$reflectionTagParamphp)
-php php php php php{
-php php php php php php php php php$paramTagphp php=php newphp selfphp(php)php;
+    /**
+     * fromReflection()
+     *
+     * @param Zend_Reflection_Docblock_Tag $reflectionTagParam
+     * @return Zend_CodeGenerator_Php_Docblock_Tag_Param
+     */
+    public static function fromReflection(Zend_Reflection_Docblock_Tag $reflectionTagParam)
+    {
+        $paramTag = new self();
 
-php php php php php php php php php$paramTagphp-php>setNamephp(php'paramphp'php)php;
-php php php php php php php php php$paramTagphp-php>setDatatypephp(php$reflectionTagParamphp-php>getTypephp(php)php)php;php php/php/php php@todophp rename
-php php php php php php php php php$paramTagphp-php>setParamNamephp(php$reflectionTagParamphp-php>getVariableNamephp(php)php)php;
-php php php php php php php php php$paramTagphp-php>setDescriptionphp(php$reflectionTagParamphp-php>getDescriptionphp(php)php)php;
+        $paramTag->setName('param');
+        $paramTag->setDatatype($reflectionTagParam->getType()); // @todo rename
+        $paramTag->setParamName($reflectionTagParam->getVariableName());
+        $paramTag->setDescription($reflectionTagParam->getDescription());
 
-php php php php php php php php returnphp php$paramTagphp;
-php php php php php}
+        return $paramTag;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setDatatypephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$datatype
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_Param
-php php php php php php*php/
-php php php php publicphp functionphp setDatatypephp(php$datatypephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_datatypephp php=php php$datatypephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setDatatype()
+     *
+     * @param string $datatype
+     * @return Zend_CodeGenerator_Php_Docblock_Tag_Param
+     */
+    public function setDatatype($datatype)
+    {
+        $this->_datatype = $datatype;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getDatatype
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDatatypephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_datatypephp;
-php php php php php}
+    /**
+     * getDatatype
+     *
+     * @return string
+     */
+    public function getDatatype()
+    {
+        return $this->_datatype;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setParamNamephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$paramName
-php php php php php php*php php@returnphp Zendphp_CodeGeneratorphp_Phpphp_Docblockphp_Tagphp_Param
-php php php php php php*php/
-php php php php publicphp functionphp setParamNamephp(php$paramNamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_paramNamephp php=php php$paramNamephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setParamName()
+     *
+     * @param string $paramName
+     * @return Zend_CodeGenerator_Php_Docblock_Tag_Param
+     */
+    public function setParamName($paramName)
+    {
+        $this->_paramName = $paramName;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getParamNamephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getParamNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_paramNamephp;
-php php php php php}
+    /**
+     * getParamName()
+     *
+     * @return string
+     */
+    public function getParamName()
+    {
+        return $this->_paramName;
+    }
 
-php php php php php/php*php*
-php php php php php php*php generatephp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp generatephp(php)
-php php php php php{
-php php php php php php php php php$outputphp php=php php'php@paramphp php'
-php php php php php php php php php php php php php.php php(php(php$thisphp-php>php_datatypephp php php!php=php nullphp)php php?php php$thisphp-php>php_datatypephp php:php php'unknownphp'php)
-php php php php php php php php php php php php php.php php(php(php$thisphp-php>php_paramNamephp php!php=php nullphp)php php?php php'php php$php'php php.php php$thisphp-php>php_paramNamephp php:php php'php'php)
-php php php php php php php php php php php php php.php php(php(php$thisphp-php>php_descriptionphp php!php=php nullphp)php php?php php'php php'php php.php php$thisphp-php>php_descriptionphp php:php php'php'php)php;
-php php php php php php php php returnphp php$outputphp;
-php php php php php}
+    /**
+     * generate()
+     *
+     * @return string
+     */
+    public function generate()
+    {
+        $output = '@param '
+            . (($this->_datatype  != null) ? $this->_datatype : 'unknown')
+            . (($this->_paramName != null) ? ' $' . $this->_paramName : '')
+            . (($this->_description != null) ? ' ' . $this->_description : '');
+        return $output;
+    }
 
-php}
+}

@@ -1,49 +1,49 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CamelCaseToSeparatorphp.phpphp php2php1php0php8php8php php2php0php1php0php-php0php2php-php1php9php php0php6php:php4php7php:php4php8Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CamelCaseToSeparator.php 21088 2010-02-19 06:47:48Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_PregReplace
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Wordphp/Separatorphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Filter_PregReplace
+ */
+require_once 'Zend/Filter/Word/Separator/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Wordphp_CamelCaseToSeparatorphp extendsphp Zendphp_Filterphp_Wordphp_Separatorphp_Abstract
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_Word_CamelCaseToSeparator extends Zend_Filter_Word_Separator_Abstract
+{
 
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(selfphp:php:isUnicodeSupportEnabledphp(php)php)php php{
-php php php php php php php php php php php php parentphp:php:setMatchPatternphp(arrayphp(php'php#php(php?<php=php(php?php:php\pphp{Luphp}php)php)php(php\pphp{Luphp}php\pphp{Llphp}php)php#php'php,php'php#php(php?<php=php(php?php:php\pphp{Llphp}php|php\pphp{Ndphp}php)php)php(php\pphp{Luphp}php)php#php'php)php)php;
-php php php php php php php php php php php php parentphp:php:setReplacementphp(arrayphp(php$thisphp-php>php_separatorphp php.php php'php\php1php'php,php php$thisphp-php>php_separatorphp php.php php'php\php1php'php)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php parentphp:php:setMatchPatternphp(arrayphp(php'php#php(php?<php=php(php?php:php[Aphp-Zphp]php)php)php(php[Aphp-Zphp]php+php)php(php[Aphp-Zphp]php[Aphp-zphp]php)php#php'php,php php'php#php(php?<php=php(php?php:php[aphp-zphp0php-php9php]php)php)php(php[Aphp-Zphp]php)php#php'php)php)php;
-php php php php php php php php php php php php parentphp:php:setReplacementphp(arrayphp(php'php\php1php'php php.php php$thisphp-php>php_separatorphp php.php php'php\php2php'php,php php$thisphp-php>php_separatorphp php.php php'php\php1php'php)php)php;
-php php php php php php php php php}
+    public function filter($value)
+    {
+        if (self::isUnicodeSupportEnabled()) {
+            parent::setMatchPattern(array('#(?<=(?:\p{Lu}))(\p{Lu}\p{Ll})#','#(?<=(?:\p{Ll}|\p{Nd}))(\p{Lu})#'));
+            parent::setReplacement(array($this->_separator . '\1', $this->_separator . '\1'));
+        } else {
+            parent::setMatchPattern(array('#(?<=(?:[A-Z]))([A-Z]+)([A-Z][A-z])#', '#(?<=(?:[a-z0-9]))([A-Z])#'));
+            parent::setReplacement(array('\1' . $this->_separator . '\2', $this->_separator . '\1'));
+        }
 
-php php php php php php php php returnphp parentphp:php:filterphp(php$valuephp)php;
-php php php php php}
+        return parent::filter($value);
+    }
 
-php}
+}

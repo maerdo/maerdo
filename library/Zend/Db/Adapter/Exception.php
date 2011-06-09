@@ -1,57 +1,57 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Exceptionphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Exception.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_Dbphp_Exception
-php php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Exceptionphp.phpphp'php;
+/**
+ * Zend_Db_Exception
+ */
+require_once 'Zend/Db/Exception.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dbphp_Adapterphp_Exceptionphp extendsphp Zendphp_Dbphp_Exception
-php{
-php php php php protectedphp php$php_chainedExceptionphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Db_Adapter_Exception extends Zend_Db_Exception
+{
+    protected $_chainedException = null;
 
-php php php php publicphp functionphp php_php_constructphp(php$messagephp php=php php'php'php,php php$codephp php=php php0php,php Exceptionphp php$ephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$ephp php&php&php php(php0php php=php=php=php php$codephp)php)php php{
-php php php php php php php php php php php php php$codephp php=php php$ephp-php>getCodephp(php)php;
-php php php php php php php php php}
-php php php php php php php php parentphp:php:php_php_constructphp(php$messagephp,php php$codephp,php php$ephp)php;
-php php php php php}
+    public function __construct($message = '', $code = 0, Exception $e = null)
+    {
+        if ($e && (0 === $code)) {
+            $code = $e->getCode();
+        }
+        parent::__construct($message, $code, $e);
+    }
 
-php php php php publicphp functionphp hasChainedExceptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php(php$thisphp-php>php_previousphp php!php=php=php nullphp)php;
-php php php php php}
+    public function hasChainedException()
+    {
+        return ($this->_previous !== null);
+    }
 
-php php php php publicphp functionphp getChainedExceptionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getPreviousphp(php)php;
-php php php php php}
+    public function getChainedException()
+    {
+        return $this->getPrevious();
+    }
 
-php}
+}

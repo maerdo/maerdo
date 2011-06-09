@@ -1,296 +1,296 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php CourierBoldphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: CourierBold.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Name.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Resourcephp/Fontphp/Simplephp/Standardphp.phpphp'php;
+/** Zend_Pdf_Resource_Font_Simple_Standard */
+require_once 'Zend/Pdf/Resource/Font/Simple/Standard.php';
 
-php/php*php*
-php php*php Implementationphp forphp thephp standardphp PDFphp fontphp Courierphp-Boldphp.
-php php*
-php php*php Thisphp classphp wasphp generatedphp automaticallyphp usingphp thephp fontphp informationphp andphp metric
-php php*php dataphp containedphp inphp thephp Adobephp Fontphp Metricphp php(AFMphp)php filesphp,php availablephp herephp:
-php php*php php{php@linkphp httpphp:php/php/partnersphp.adobephp.comphp/publicphp/developerphp/enphp/pdfphp/Corephp1php4php_AFMsphp.zipphp}
-php php*
-php php*php Thephp PHPphp scriptphp usedphp tophp generatephp thisphp classphp canphp bephp foundphp inphp thephp php/tools
-php php*php directoryphp ofphp thephp frameworkphp distributionphp.php Ifphp youphp needphp tophp makephp modificationsphp to
-php php*php thisphp classphp,php chancesphp arephp thephp samephp modificationsphp arephp neededphp forphp thephp restphp ofphp the
-php php*php standardphp fontsphp.php Youphp shouldphp modifyphp thephp scriptphp andphp regeneratephp thephp classes
-php php*php insteadphp ofphp changingphp thisphp classphp filephp byphp handphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Fonts
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standardphp_CourierBoldphp extendsphp Zendphp_Pdfphp_Resourcephp_Fontphp_Simplephp_Standard
-php{
-php php php/php*php*php*php*php Publicphp Interfacephp php*php*php*php*php/
-
-
-php php php/php*php Objectphp Lifecyclephp php*php/
-
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php)php;
+/**
+ * Implementation for the standard PDF font Courier-Bold.
+ *
+ * This class was generated automatically using the font information and metric
+ * data contained in the Adobe Font Metric (AFM) files, available here:
+ * {@link http://partners.adobe.com/public/developer/en/pdf/Core14_AFMs.zip}
+ *
+ * The PHP script used to generate this class can be found in the /tools
+ * directory of the framework distribution. If you need to make modifications to
+ * this class, chances are the same modifications are needed for the rest of the
+ * standard fonts. You should modify the script and regenerate the classes
+ * instead of changing this class file by hand.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Fonts
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Resource_Font_Simple_Standard_CourierBold extends Zend_Pdf_Resource_Font_Simple_Standard
+{
+  /**** Public Interface ****/
 
 
-php php php php php php php php php/php*php Objectphp propertiesphp php*php/
+  /* Object Lifecycle */
 
-php php php php php php php php php/php*php Thephp fontphp namesphp arephp storedphp internallyphp asphp Unicodephp UTFphp-php1php6BEphp-encoded
-php php php php php php php php php php*php stringsphp.php Sincephp thisphp informationphp isphp staticphp,php savephp unnecessaryphp trips
-php php php php php php php php php php*php throughphp iconvphp(php)php andphp justphp usephp prephp-encodedphp hexidecimalphp stringsphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_COPYRIGHTphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp4php3php\xphp0php0php\xphp6fphp\xphp0php0php\xphp7php0php\xphp0php0php\xphp7php9php\xphp0php0php\xphp7php2php\xphp0php0php\xphp6php9php\xphp0php0php\xphp6php7php\xphp0php0php\xphp6php8php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp7php4php\xphp0php0php\xphp2php0php\xphp0php0php\xphp2php8php\xphp0php0php\xphp6php3php\xphp0php0php\xphp2php9php\xphp0php0php\xphp2php0php\xphp0php0php\xphp3php1php\xphp0php0php\xphp3php9php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp3php8php\xphp0php0php\xphp3php9php\xphp0php0php\xphp2cphp\xphp0php0php\xphp2php0php\xphp0php0php\xphp3php1php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php0php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp2cphp\xphp0php0php\xphp2php0php\xphp0php0php\xphp3php1php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php1php\xphp0php0php\xphp2cphp\xphp0php0php\xphp2php0php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp3php1php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php9php\xphp0php0php\xphp3php3php\xphp0php0php\xphp2cphp\xphp0php0php\xphp2php0php\xphp0php0php\xphp3php1php\xphp0php0php\xphp3php9php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp3php9php\xphp0php0php\xphp3php7php\xphp0php0php\xphp2php0php\xphp0php0php\xphp4php1php\xphp0php0php\xphp6php4php\xphp0php0php\xphp6fphp\xphp0php0php\xphp6php2php\xphp0php0php\xphp6php5php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp2php0php\xphp0php0php\xphp5php3php\xphp0php0php\xphp7php9php\xphp0php0php\xphp7php3php\xphp0php0php\xphp7php4php\xphp0php0php\xphp6php5php\xphp0php0php\xphp6dphp\xphp0php0php\xphp7php3php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp2php0php\xphp0php0php\xphp4php9php\xphp0php0php\xphp6ephp\xphp0php0php\xphp6php3php\xphp0php0php\xphp6fphp\xphp0php0php\xphp7php2php\xphp0php0php\xphp7php0php\xphp0php0php\xphp6fphp\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp7php2php\xphp0php0php\xphp6php1php\xphp0php0php\xphp7php4php\xphp0php0php\xphp6php5php\xphp0php0php\xphp6php4php\xphp0php0php\xphp2ephp\xphp0php0php\xphp2php0php\xphp0php0php\xphp2php0php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp4php1php\xphp0php0php\xphp6cphp\xphp0php0php\xphp6cphp\xphp0php0php\xphp2php0php\xphp0php0php\xphp5php2php\xphp0php0php\xphp6php9php\xphp0php0php\xphp6php7php\xphp0php0php\xphp6php8php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp7php4php\xphp0php0php\xphp7php3php\xphp0php0php\xphp2php0php\xphp0php0php\xphp5php2php\xphp0php0php\xphp6php5php\xphp0php0php\xphp7php3php\xphp0php0php\xphp6php5php\xphp0php0php\xphp7php2php\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp7php6php\xphp0php0php\xphp6php5php\xphp0php0php\xphp6php4php\xphp0php0php\xphp2ephp"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_FAMILYphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp4php3php\xphp0php0php\xphp6fphp\xphp0php0php\xphp7php5php\xphp0php0php\xphp7php2php\xphp0php0php\xphp6php9php\xphp0php0php\xphp6php5php\xphp0php0php\xphp7php2php"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_STYLEphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp4php2php\xphp0php0php\xphp6fphp\xphp0php0php\xphp6cphp\xphp0php0php\xphp6php4php"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_IDphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp3php4php\xphp0php0php\xphp3php3php\xphp0php0php\xphp3php0php\xphp0php0php\xphp3php4php\xphp0php0php\xphp3php8php"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_FULLphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp4php3php\xphp0php0php\xphp6fphp\xphp0php0php\xphp7php5php\xphp0php0php\xphp7php2php\xphp0php0php\xphp6php9php\xphp0php0php\xphp6php5php\xphp0php0php\xphp7php2php\xphp0php0php\xphp2dphp\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp4php2php\xphp0php0php\xphp6fphp\xphp0php0php\xphp6cphp\xphp0php0php\xphp6php4php\xphp0php0php\xphp2php0php\xphp0php0php\xphp4php2php\xphp0php0php\xphp6fphp\xphp0php0php\xphp6cphp\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp6php4php"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_VERSIONphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp3php0php\xphp0php0php\xphp3php0php\xphp0php0php\xphp3php3php\xphp0php0php\xphp2ephp\xphp0php0php\xphp3php0php\xphp0php0php\xphp3php0php\xphp0php0php\xphp3php0php"php;
-php php php php php php php php php$thisphp-php>php_fontNamesphp[Zendphp_Pdfphp_Fontphp:php:NAMEphp_POSTSCRIPTphp]php[php'enphp'php]php php=
-php php php php php php php php php php php"php\xphp0php0php\xphp4php3php\xphp0php0php\xphp6fphp\xphp0php0php\xphp7php5php\xphp0php0php\xphp7php2php\xphp0php0php\xphp6php9php\xphp0php0php\xphp6php5php\xphp0php0php\xphp7php2php\xphp0php0php\xphp2dphp\xphp0php0php"
-php php php php php php php php php php php.php php"php\xphp4php2php\xphp0php0php\xphp6fphp\xphp0php0php\xphp6cphp\xphp0php0php\xphp6php4php"php;
-
-php php php php php php php php php$thisphp-php>php_isBoldphp php=php truephp;
-php php php php php php php php php$thisphp-php>php_isItalicphp php=php falsephp;
-php php php php php php php php php$thisphp-php>php_isMonospacedphp php=php truephp;
-
-php php php php php php php php php$thisphp-php>php_underlinePositionphp php=php php-php1php0php0php;
-php php php php php php php php php$thisphp-php>php_underlineThicknessphp php=php php5php0php;
-php php php php php php php php php$thisphp-php>php_strikePositionphp php=php php2php2php5php;
-php php php php php php php php php$thisphp-php>php_strikeThicknessphp php=php php5php0php;
-
-php php php php php php php php php$thisphp-php>php_unitsPerEmphp php=php php1php0php0php0php;
-
-php php php php php php php php php$thisphp-php>php_ascentphp php php=php php6php2php9php;
-php php php php php php php php php$thisphp-php>php_descentphp php=php php-php1php5php7php;
-php php php php php php php php php$thisphp-php>php_lineGapphp php=php php4php1php4php;
-
-php php php php php php php php php/php*php Thephp glyphphp numbersphp assignedphp herephp arephp syntheticphp;php theyphp dophp notphp matchphp the
-php php php php php php php php php php*php actualphp glyphphp numbersphp usedphp byphp thephp fontphp.php Thisphp isphp notphp aphp bigphp dealphp though
-php php php php php php php php php php*php sincephp thisphp dataphp neverphp makesphp itphp tophp thephp PDFphp filephp.php Itphp isphp onlyphp used
-php php php php php php php php php php*php internallyphp forphp layoutphp calculationsphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$thisphp-php>php_glyphWidthsphp php=php arrayphp(
-php php php php php php php php php php php php php0xphp0php0php php=php>php php0xphp0php1fphp4php,php php php php0xphp0php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp0php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp0php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp0php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp0aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp0bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp0cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp0dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp0ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp0fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp1php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp1php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp1php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp1php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp1aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp1bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp1cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp1dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp1ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp1fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp2php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp2php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp2php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp2php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp2aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp2bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp2cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp2dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp2ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp2fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp3php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp3php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp3php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp3php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp3aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp3bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp3cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp3dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp3ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp3fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp4php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp4php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp4php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp4php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp4aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp4bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp4cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp4dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp4ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp4fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp5php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp5php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp5php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp5php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp5aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp5bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp5cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp5dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp5ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp5fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp6php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp6php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp6php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp6php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp6aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp6bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp6cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp6dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp6ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp6fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp7php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp7php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp7php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp7php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp7aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp7bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp7cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp7dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp7ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp7fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp8php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp8php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp8php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp8php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp8aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp8bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp8cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp8dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp8ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp8fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp9php0php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php1php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php2php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp9php4php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php5php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php6php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp9php8php php=php>php php0xphp0php2php5php8php,php php php php0xphp9php9php php=php>php php0xphp0php2php5php8php,php php php php0xphp9aphp php=php>php php0xphp0php2php5php8php,php php php php0xphp9bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xphp9cphp php=php>php php0xphp0php2php5php8php,php php php php0xphp9dphp php=php>php php0xphp0php2php5php8php,php php php php0xphp9ephp php=php>php php0xphp0php2php5php8php,php php php php0xphp9fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xaphp0php php=php>php php0xphp0php2php5php8php,php php php php0xaphp1php php=php>php php0xphp0php2php5php8php,php php php php0xaphp2php php=php>php php0xphp0php2php5php8php,php php php php0xaphp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xaphp4php php=php>php php0xphp0php2php5php8php,php php php php0xaphp5php php=php>php php0xphp0php2php5php8php,php php php php0xaphp6php php=php>php php0xphp0php2php5php8php,php php php php0xaphp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xaphp8php php=php>php php0xphp0php2php5php8php,php php php php0xaphp9php php=php>php php0xphp0php2php5php8php,php php php php0xaaphp php=php>php php0xphp0php2php5php8php,php php php php0xabphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xacphp php=php>php php0xphp0php2php5php8php,php php php php0xadphp php=php>php php0xphp0php2php5php8php,php php php php0xaephp php=php>php php0xphp0php2php5php8php,php php php php0xafphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xbphp0php php=php>php php0xphp0php2php5php8php,php php php php0xbphp1php php=php>php php0xphp0php2php5php8php,php php php php0xbphp2php php=php>php php0xphp0php2php5php8php,php php php php0xbphp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xbphp4php php=php>php php0xphp0php2php5php8php,php php php php0xbphp5php php=php>php php0xphp0php2php5php8php,php php php php0xbphp6php php=php>php php0xphp0php2php5php8php,php php php php0xbphp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xbphp8php php=php>php php0xphp0php2php5php8php,php php php php0xbphp9php php=php>php php0xphp0php2php5php8php,php php php php0xbaphp php=php>php php0xphp0php2php5php8php,php php php php0xbbphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xbcphp php=php>php php0xphp0php2php5php8php,php php php php0xbdphp php=php>php php0xphp0php2php5php8php,php php php php0xbephp php=php>php php0xphp0php2php5php8php,php php php php0xbfphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xcphp0php php=php>php php0xphp0php2php5php8php,php php php php0xcphp1php php=php>php php0xphp0php2php5php8php,php php php php0xcphp2php php=php>php php0xphp0php2php5php8php,php php php php0xcphp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xcphp4php php=php>php php0xphp0php2php5php8php,php php php php0xcphp5php php=php>php php0xphp0php2php5php8php,php php php php0xcphp6php php=php>php php0xphp0php2php5php8php,php php php php0xcphp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xcphp8php php=php>php php0xphp0php2php5php8php,php php php php0xcphp9php php=php>php php0xphp0php2php5php8php,php php php php0xcaphp php=php>php php0xphp0php2php5php8php,php php php php0xcbphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xccphp php=php>php php0xphp0php2php5php8php,php php php php0xcdphp php=php>php php0xphp0php2php5php8php,php php php php0xcephp php=php>php php0xphp0php2php5php8php,php php php php0xcfphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xdphp0php php=php>php php0xphp0php2php5php8php,php php php php0xdphp1php php=php>php php0xphp0php2php5php8php,php php php php0xdphp2php php=php>php php0xphp0php2php5php8php,php php php php0xdphp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xdphp4php php=php>php php0xphp0php2php5php8php,php php php php0xdphp5php php=php>php php0xphp0php2php5php8php,php php php php0xdphp6php php=php>php php0xphp0php2php5php8php,php php php php0xdphp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xdphp8php php=php>php php0xphp0php2php5php8php,php php php php0xdphp9php php=php>php php0xphp0php2php5php8php,php php php php0xdaphp php=php>php php0xphp0php2php5php8php,php php php php0xdbphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xdcphp php=php>php php0xphp0php2php5php8php,php php php php0xddphp php=php>php php0xphp0php2php5php8php,php php php php0xdephp php=php>php php0xphp0php2php5php8php,php php php php0xdfphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xephp0php php=php>php php0xphp0php2php5php8php,php php php php0xephp1php php=php>php php0xphp0php2php5php8php,php php php php0xephp2php php=php>php php0xphp0php2php5php8php,php php php php0xephp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xephp4php php=php>php php0xphp0php2php5php8php,php php php php0xephp5php php=php>php php0xphp0php2php5php8php,php php php php0xephp6php php=php>php php0xphp0php2php5php8php,php php php php0xephp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xephp8php php=php>php php0xphp0php2php5php8php,php php php php0xephp9php php=php>php php0xphp0php2php5php8php,php php php php0xeaphp php=php>php php0xphp0php2php5php8php,php php php php0xebphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xecphp php=php>php php0xphp0php2php5php8php,php php php php0xedphp php=php>php php0xphp0php2php5php8php,php php php php0xeephp php=php>php php0xphp0php2php5php8php,php php php php0xefphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xfphp0php php=php>php php0xphp0php2php5php8php,php php php php0xfphp1php php=php>php php0xphp0php2php5php8php,php php php php0xfphp2php php=php>php php0xphp0php2php5php8php,php php php php0xfphp3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xfphp4php php=php>php php0xphp0php2php5php8php,php php php php0xfphp5php php=php>php php0xphp0php2php5php8php,php php php php0xfphp6php php=php>php php0xphp0php2php5php8php,php php php php0xfphp7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xfphp8php php=php>php php0xphp0php2php5php8php,php php php php0xfphp9php php=php>php php0xphp0php2php5php8php,php php php php0xfaphp php=php>php php0xphp0php2php5php8php,php php php php0xfbphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php php php0xfcphp php=php>php php0xphp0php2php5php8php,php php php php0xfdphp php=php>php php0xphp0php2php5php8php,php php php php0xfephp php=php>php php0xphp0php2php5php8php,php php php php0xffphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php0php0php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php1php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php2php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php0php4php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php5php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php6php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php0php8php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0php9php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0aphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php0cphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0dphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0ephp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php0fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php1php0php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php1php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php2php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php1php4php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php5php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php6php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php1php8php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1php9php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1aphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php1cphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1dphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1ephp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php1fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php2php0php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php1php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php2php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php2php4php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php5php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php6php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php2php8php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2php9php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2aphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php2cphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2dphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2ephp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php2fphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php3php0php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php1php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php2php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php3php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php3php4php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php5php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php6php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php7php php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php php php0xphp0php1php3php8php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3php9php php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3aphp php=php>php php0xphp0php2php5php8php,php php0xphp0php1php3bphp php=php>php php0xphp0php2php5php8php,
-php php php php php php php php php)php;
-
-php php php php php php php php php/php*php Thephp cmapphp tablephp isphp similarlyphp synthesizedphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$cmapDataphp php=php arrayphp(
-php php php php php php php php php php php php php0xphp2php0php php=php>php php php php0xphp0php1php,php php php php0xphp2php1php php=php>php php php php0xphp0php2php,php php php php0xphp2php2php php=php>php php php php0xphp0php3php,php php php php0xphp2php3php php=php>php php php php0xphp0php4php,
-php php php php php php php php php php php php php0xphp2php4php php=php>php php php php0xphp0php5php,php php php php0xphp2php5php php=php>php php php php0xphp0php6php,php php php php0xphp2php6php php=php>php php php php0xphp0php7php,php php0xphp2php0php1php9php php=php>php php php php0xphp0php8php,
-php php php php php php php php php php php php php0xphp2php8php php=php>php php php php0xphp0php9php,php php php php0xphp2php9php php=php>php php php php0xphp0aphp,php php php php0xphp2aphp php=php>php php php php0xphp0bphp,php php php php0xphp2bphp php=php>php php php php0xphp0cphp,
-php php php php php php php php php php php php php0xphp2cphp php=php>php php php php0xphp0dphp,php php php php0xphp2dphp php=php>php php php php0xphp0ephp,php php php php0xphp2ephp php=php>php php php php0xphp0fphp,php php php php0xphp2fphp php=php>php php php php0xphp1php0php,
-php php php php php php php php php php php php php0xphp3php0php php=php>php php php php0xphp1php1php,php php php php0xphp3php1php php=php>php php php php0xphp1php2php,php php php php0xphp3php2php php=php>php php php php0xphp1php3php,php php php php0xphp3php3php php=php>php php php php0xphp1php4php,
-php php php php php php php php php php php php php0xphp3php4php php=php>php php php php0xphp1php5php,php php php php0xphp3php5php php=php>php php php php0xphp1php6php,php php php php0xphp3php6php php=php>php php php php0xphp1php7php,php php php php0xphp3php7php php=php>php php php php0xphp1php8php,
-php php php php php php php php php php php php php0xphp3php8php php=php>php php php php0xphp1php9php,php php php php0xphp3php9php php=php>php php php php0xphp1aphp,php php php php0xphp3aphp php=php>php php php php0xphp1bphp,php php php php0xphp3bphp php=php>php php php php0xphp1cphp,
-php php php php php php php php php php php php php0xphp3cphp php=php>php php php php0xphp1dphp,php php php php0xphp3dphp php=php>php php php php0xphp1ephp,php php php php0xphp3ephp php=php>php php php php0xphp1fphp,php php php php0xphp3fphp php=php>php php php php0xphp2php0php,
-php php php php php php php php php php php php php0xphp4php0php php=php>php php php php0xphp2php1php,php php php php0xphp4php1php php=php>php php php php0xphp2php2php,php php php php0xphp4php2php php=php>php php php php0xphp2php3php,php php php php0xphp4php3php php=php>php php php php0xphp2php4php,
-php php php php php php php php php php php php php0xphp4php4php php=php>php php php php0xphp2php5php,php php php php0xphp4php5php php=php>php php php php0xphp2php6php,php php php php0xphp4php6php php=php>php php php php0xphp2php7php,php php php php0xphp4php7php php=php>php php php php0xphp2php8php,
-php php php php php php php php php php php php php0xphp4php8php php=php>php php php php0xphp2php9php,php php php php0xphp4php9php php=php>php php php php0xphp2aphp,php php php php0xphp4aphp php=php>php php php php0xphp2bphp,php php php php0xphp4bphp php=php>php php php php0xphp2cphp,
-php php php php php php php php php php php php php0xphp4cphp php=php>php php php php0xphp2dphp,php php php php0xphp4dphp php=php>php php php php0xphp2ephp,php php php php0xphp4ephp php=php>php php php php0xphp2fphp,php php php php0xphp4fphp php=php>php php php php0xphp3php0php,
-php php php php php php php php php php php php php0xphp5php0php php=php>php php php php0xphp3php1php,php php php php0xphp5php1php php=php>php php php php0xphp3php2php,php php php php0xphp5php2php php=php>php php php php0xphp3php3php,php php php php0xphp5php3php php=php>php php php php0xphp3php4php,
-php php php php php php php php php php php php php0xphp5php4php php=php>php php php php0xphp3php5php,php php php php0xphp5php5php php=php>php php php php0xphp3php6php,php php php php0xphp5php6php php=php>php php php php0xphp3php7php,php php php php0xphp5php7php php=php>php php php php0xphp3php8php,
-php php php php php php php php php php php php php0xphp5php8php php=php>php php php php0xphp3php9php,php php php php0xphp5php9php php=php>php php php php0xphp3aphp,php php php php0xphp5aphp php=php>php php php php0xphp3bphp,php php php php0xphp5bphp php=php>php php php php0xphp3cphp,
-php php php php php php php php php php php php php0xphp5cphp php=php>php php php php0xphp3dphp,php php php php0xphp5dphp php=php>php php php php0xphp3ephp,php php php php0xphp5ephp php=php>php php php php0xphp3fphp,php php php php0xphp5fphp php=php>php php php php0xphp4php0php,
-php php php php php php php php php php php0xphp2php0php1php8php php=php>php php php php0xphp4php1php,php php php php0xphp6php1php php=php>php php php php0xphp4php2php,php php php php0xphp6php2php php=php>php php php php0xphp4php3php,php php php php0xphp6php3php php=php>php php php php0xphp4php4php,
-php php php php php php php php php php php php php0xphp6php4php php=php>php php php php0xphp4php5php,php php php php0xphp6php5php php=php>php php php php0xphp4php6php,php php php php0xphp6php6php php=php>php php php php0xphp4php7php,php php php php0xphp6php7php php=php>php php php php0xphp4php8php,
-php php php php php php php php php php php php php0xphp6php8php php=php>php php php php0xphp4php9php,php php php php0xphp6php9php php=php>php php php php0xphp4aphp,php php php php0xphp6aphp php=php>php php php php0xphp4bphp,php php php php0xphp6bphp php=php>php php php php0xphp4cphp,
-php php php php php php php php php php php php php0xphp6cphp php=php>php php php php0xphp4dphp,php php php php0xphp6dphp php=php>php php php php0xphp4ephp,php php php php0xphp6ephp php=php>php php php php0xphp4fphp,php php php php0xphp6fphp php=php>php php php php0xphp5php0php,
-php php php php php php php php php php php php php0xphp7php0php php=php>php php php php0xphp5php1php,php php php php0xphp7php1php php=php>php php php php0xphp5php2php,php php php php0xphp7php2php php=php>php php php php0xphp5php3php,php php php php0xphp7php3php php=php>php php php php0xphp5php4php,
-php php php php php php php php php php php php php0xphp7php4php php=php>php php php php0xphp5php5php,php php php php0xphp7php5php php=php>php php php php0xphp5php6php,php php php php0xphp7php6php php=php>php php php php0xphp5php7php,php php php php0xphp7php7php php=php>php php php php0xphp5php8php,
-php php php php php php php php php php php php php0xphp7php8php php=php>php php php php0xphp5php9php,php php php php0xphp7php9php php=php>php php php php0xphp5aphp,php php php php0xphp7aphp php=php>php php php php0xphp5bphp,php php php php0xphp7bphp php=php>php php php php0xphp5cphp,
-php php php php php php php php php php php php php0xphp7cphp php=php>php php php php0xphp5dphp,php php php php0xphp7dphp php=php>php php php php0xphp5ephp,php php php php0xphp7ephp php=php>php php php php0xphp5fphp,php php php php0xaphp1php php=php>php php php php0xphp6php0php,
-php php php php php php php php php php php php php0xaphp2php php=php>php php php php0xphp6php1php,php php php php0xaphp3php php=php>php php php php0xphp6php2php,php php0xphp2php0php4php4php php=php>php php php php0xphp6php3php,php php php php0xaphp5php php=php>php php php php0xphp6php4php,
-php php php php php php php php php php php0xphp0php1php9php2php php=php>php php php php0xphp6php5php,php php php php0xaphp7php php=php>php php php php0xphp6php6php,php php php php0xaphp4php php=php>php php php php0xphp6php7php,php php php php0xphp2php7php php=php>php php php php0xphp6php8php,
-php php php php php php php php php php php0xphp2php0php1cphp php=php>php php php php0xphp6php9php,php php php php0xabphp php=php>php php php php0xphp6aphp,php php0xphp2php0php3php9php php=php>php php php php0xphp6bphp,php php0xphp2php0php3aphp php=php>php php php php0xphp6cphp,
-php php php php php php php php php php php0xfbphp0php1php php=php>php php php php0xphp6dphp,php php0xfbphp0php2php php=php>php php php php0xphp6ephp,php php0xphp2php0php1php3php php=php>php php php php0xphp6fphp,php php0xphp2php0php2php0php php=php>php php php php0xphp7php0php,
-php php php php php php php php php php php0xphp2php0php2php1php php=php>php php php php0xphp7php1php,php php php php0xbphp7php php=php>php php php php0xphp7php2php,php php php php0xbphp6php php=php>php php php php0xphp7php3php,php php0xphp2php0php2php2php php=php>php php php php0xphp7php4php,
-php php php php php php php php php php php0xphp2php0php1aphp php=php>php php php php0xphp7php5php,php php0xphp2php0php1ephp php=php>php php php php0xphp7php6php,php php0xphp2php0php1dphp php=php>php php php php0xphp7php7php,php php php php0xbbphp php=php>php php php php0xphp7php8php,
-php php php php php php php php php php php0xphp2php0php2php6php php=php>php php php php0xphp7php9php,php php0xphp2php0php3php0php php=php>php php php php0xphp7aphp,php php php php0xbfphp php=php>php php php php0xphp7bphp,php php php php0xphp6php0php php=php>php php php php0xphp7cphp,
-php php php php php php php php php php php php php0xbphp4php php=php>php php php php0xphp7dphp,php php0xphp0php2cphp6php php=php>php php php php0xphp7ephp,php php0xphp0php2dcphp php=php>php php php php0xphp7fphp,php php php php0xafphp php=php>php php php php0xphp8php0php,
-php php php php php php php php php php php0xphp0php2dphp8php php=php>php php php php0xphp8php1php,php php0xphp0php2dphp9php php=php>php php php php0xphp8php2php,php php php php0xaphp8php php=php>php php php php0xphp8php3php,php php0xphp0php2daphp php=php>php php php php0xphp8php4php,
-php php php php php php php php php php php php php0xbphp8php php=php>php php php php0xphp8php5php,php php0xphp0php2ddphp php=php>php php php php0xphp8php6php,php php0xphp0php2dbphp php=php>php php php php0xphp8php7php,php php0xphp0php2cphp7php php=php>php php php php0xphp8php8php,
-php php php php php php php php php php php0xphp2php0php1php4php php=php>php php php php0xphp8php9php,php php php php0xcphp6php php=php>php php php php0xphp8aphp,php php php php0xaaphp php=php>php php php php0xphp8bphp,php php0xphp0php1php4php1php php=php>php php php php0xphp8cphp,
-php php php php php php php php php php php php php0xdphp8php php=php>php php php php0xphp8dphp,php php0xphp0php1php5php2php php=php>php php php php0xphp8ephp,php php php php0xbaphp php=php>php php php php0xphp8fphp,php php php php0xephp6php php=php>php php php php0xphp9php0php,
-php php php php php php php php php php php0xphp0php1php3php1php php=php>php php php php0xphp9php1php,php php0xphp0php1php4php2php php=php>php php php php0xphp9php2php,php php php php0xfphp8php php=php>php php php php0xphp9php3php,php php0xphp0php1php5php3php php=php>php php php php0xphp9php4php,
-php php php php php php php php php php php php php0xdfphp php=php>php php php php0xphp9php5php,php php php php0xcfphp php=php>php php php php0xphp9php6php,php php php php0xephp9php php=php>php php php php0xphp9php7php,php php0xphp0php1php0php3php php=php>php php php php0xphp9php8php,
-php php php php php php php php php php php0xphp0php1php7php1php php=php>php php php php0xphp9php9php,php php0xphp0php1php1bphp php=php>php php php php0xphp9aphp,php php0xphp0php1php7php8php php=php>php php php php0xphp9bphp,php php php php0xfphp7php php=php>php php php php0xphp9cphp,
-php php php php php php php php php php php php php0xddphp php=php>php php php php0xphp9dphp,php php php php0xcphp2php php=php>php php php php0xphp9ephp,php php php php0xephp1php php=php>php php php php0xphp9fphp,php php php php0xdbphp php=php>php php php php0xaphp0php,
-php php php php php php php php php php php php php0xfdphp php=php>php php php php0xaphp1php,php php0xphp0php2php1php9php php=php>php php php php0xaphp2php,php php php php0xeaphp php=php>php php php php0xaphp3php,php php0xphp0php1php6ephp php=php>php php php php0xaphp4php,
-php php php php php php php php php php php php php0xdcphp php=php>php php php php0xaphp5php,php php0xphp0php1php0php5php php=php>php php php php0xaphp6php,php php php php0xdaphp php=php>php php php php0xaphp7php,php php0xphp0php1php7php3php php=php>php php php php0xaphp8php,
-php php php php php php php php php php php php php0xcbphp php=php>php php php php0xaphp9php,php php0xphp0php1php1php0php php=php>php php php php0xaaphp,php php0xfphp6cphp3php php=php>php php php php0xabphp,php php php php0xaphp9php php=php>php php php php0xacphp,
-php php php php php php php php php php php0xphp0php1php1php2php php=php>php php php php0xadphp,php php0xphp0php1php0dphp php=php>php php php php0xaephp,php php php php0xephp5php php=php>php php php php0xafphp,php php0xphp0php1php4php5php php=php>php php php php0xbphp0php,
-php php php php php php php php php php php0xphp0php1php3aphp php=php>php php php php0xbphp1php,php php php php0xephp0php php=php>php php php php0xbphp2php,php php0xphp0php1php6php2php php=php>php php php php0xbphp3php,php php0xphp0php1php0php6php php=php>php php php php0xbphp4php,
-php php php php php php php php php php php php php0xephp3php php=php>php php php php0xbphp5php,php php0xphp0php1php1php6php php=php>php php php php0xbphp6php,php php0xphp0php1php6php1php php=php>php php php php0xbphp7php,php php0xphp0php1php5fphp php=php>php php php php0xbphp8php,
-php php php php php php php php php php php php php0xedphp php=php>php php php php0xbphp9php,php php0xphp2php5caphp php=php>php php php php0xbaphp,php php0xphp0php1php5php8php php=php>php php php php0xbbphp,php php0xphp0php1php2php2php php=php>php php php php0xbcphp,
-php php php php php php php php php php php php php0xfbphp php=php>php php php php0xbdphp,php php php php0xephp2php php=php>php php php php0xbephp,php php0xphp0php1php0php0php php=php>php php php php0xbfphp,php php0xphp0php1php5php9php php=php>php php php php0xcphp0php,
-php php php php php php php php php php php php php0xephp7php php=php>php php php php0xcphp1php,php php0xphp0php1php7bphp php=php>php php php php0xcphp2php,php php php php0xdephp php=php>php php php php0xcphp3php,php php0xphp0php1php4cphp php=php>php php php php0xcphp4php,
-php php php php php php php php php php php0xphp0php1php5php4php php=php>php php php php0xcphp5php,php php0xphp0php1php5aphp php=php>php php php php0xcphp6php,php php0xphp0php1php0fphp php=php>php php php php0xcphp7php,php php0xphp0php1php6aphp php=php>php php php php0xcphp8php,
-php php php php php php php php php php php0xphp0php1php6fphp php=php>php php php php0xcphp9php,php php php php0xbphp3php php=php>php php php php0xcaphp,php php php php0xdphp2php php=php>php php php php0xcbphp,php php php php0xcphp0php php=php>php php php php0xccphp,
-php php php php php php php php php php php0xphp0php1php0php2php php=php>php php php php0xcdphp,php php php php0xdphp7php php=php>php php php php0xcephp,php php php php0xfaphp php=php>php php php php0xcfphp,php php0xphp0php1php6php4php php=php>php php php php0xdphp0php,
-php php php php php php php php php php php0xphp2php2php0php2php php=php>php php php php0xdphp1php,php php php php0xffphp php=php>php php php php0xdphp2php,php php0xphp0php1php4php3php php=php>php php php php0xdphp3php,php php php php0xeephp php=php>php php php php0xdphp4php,
-php php php php php php php php php php php php php0xcaphp php=php>php php php php0xdphp5php,php php php php0xephp4php php=php>php php php php0xdphp6php,php php php php0xebphp php=php>php php php php0xdphp7php,php php0xphp0php1php0php7php php=php>php php php php0xdphp8php,
-php php php php php php php php php php php0xphp0php1php4php4php php=php>php php php php0xdphp9php,php php0xphp0php1php6bphp php=php>php php php php0xdaphp,php php0xphp0php1php4php7php php=php>php php php php0xdbphp,php php php php0xcdphp php=php>php php php php0xdcphp,
-php php php php php php php php php php php php php0xbphp1php php=php>php php php php0xddphp,php php php php0xaphp6php php=php>php php php php0xdephp,php php php php0xaephp php=php>php php php php0xdfphp,php php0xphp0php1php1ephp php=php>php php php php0xephp0php,
-php php php php php php php php php php php0xphp0php1php3php0php php=php>php php php php0xephp1php,php php0xphp2php2php1php1php php=php>php php php php0xephp2php,php php php php0xcphp8php php=php>php php php php0xephp3php,php php0xphp0php1php5php5php php=php>php php php php0xephp4php,
-php php php php php php php php php php php0xphp0php1php4dphp php=php>php php php php0xephp5php,php php0xphp0php1php7php9php php=php>php php php php0xephp6php,php php0xphp0php1php7dphp php=php>php php php php0xephp7php,php php0xphp2php2php6php5php php=php>php php php php0xephp8php,
-php php php php php php php php php php php php php0xdphp0php php=php>php php php php0xephp9php,php php php php0xcphp7php php=php>php php php php0xeaphp,php php0xphp0php1php3cphp php=php>php php php php0xebphp,php php0xphp0php1php6php5php php=php>php php php php0xecphp,
-php php php php php php php php php php php0xphp0php1php1php9php php=php>php php php php0xedphp,php php0xphp0php1php7php2php php=php>php php php php0xeephp,php php php php0xcphp1php php=php>php php php php0xefphp,php php php php0xcphp4php php=php>php php php php0xfphp0php,
-php php php php php php php php php php php php php0xephp8php php=php>php php php php0xfphp1php,php php0xphp0php1php7aphp php=php>php php php php0xfphp2php,php php0xphp0php1php2fphp php=php>php php php php0xfphp3php,php php php php0xdphp3php php=php>php php php php0xfphp4php,
-php php php php php php php php php php php php php0xfphp3php php=php>php php php php0xfphp5php,php php0xphp0php1php0php1php php=php>php php php php0xfphp6php,php php0xphp0php1php5bphp php=php>php php php php0xfphp7php,php php php php0xefphp php=php>php php php php0xfphp8php,
-php php php php php php php php php php php php php0xdphp4php php=php>php php php php0xfphp9php,php php php php0xdphp9php php=php>php php php php0xfaphp,php php0xphp2php2php0php6php php=php>php php php php0xfbphp,php php php php0xfephp php=php>php php php php0xfcphp,
-php php php php php php php php php php php php php0xbphp2php php=php>php php php php0xfdphp,php php php php0xdphp6php php=php>php php php php0xfephp,php php php php0xbphp5php php=php>php php php php0xffphp,php php php php0xecphp php=php>php php0xphp0php1php0php0php,
-php php php php php php php php php php php0xphp0php1php5php1php php=php>php php0xphp0php1php0php1php,php php0xphp0php1php1php8php php=php>php php0xphp0php1php0php2php,php php0xphp0php1php1php1php php=php>php php0xphp0php1php0php3php,php php php php0xbephp php=php>php php0xphp0php1php0php4php,
-php php php php php php php php php php php0xphp0php1php5ephp php=php>php php0xphp0php1php0php5php,php php0xphp0php1php3ephp php=php>php php0xphp0php1php0php6php,php php0xphp0php1php3php6php php=php>php php0xphp0php1php0php7php,php php0xphp0php1php3php9php php=php>php php0xphp0php1php0php8php,
-php php php php php php php php php php php0xphp2php1php2php2php php=php>php php0xphp0php1php0php9php,php php0xphp0php1php1php7php php=php>php php0xphp0php1php0aphp,php php php php0xccphp php=php>php php0xphp0php1php0bphp,php php0xphp0php1php2aphp php=php>php php0xphp0php1php0cphp,
-php php php php php php php php php php php0xphp0php1php3dphp php=php>php php0xphp0php1php0dphp,php php php php0xbdphp php=php>php php0xphp0php1php0ephp,php php0xphp2php2php6php4php php=php>php php0xphp0php1php0fphp,php php php php0xfphp4php php=php>php php0xphp0php1php1php0php,
-php php php php php php php php php php php php php0xfphp1php php=php>php php0xphp0php1php1php1php,php php0xphp0php1php7php0php php=php>php php0xphp0php1php1php2php,php php php php0xcphp9php php=php>php php0xphp0php1php1php3php,php php0xphp0php1php1php3php php=php>php php0xphp0php1php1php4php,
-php php php php php php php php php php php0xphp0php1php1fphp php=php>php php0xphp0php1php1php5php,php php php php0xbcphp php=php>php php0xphp0php1php1php6php,php php0xphp0php1php6php0php php=php>php php0xphp0php1php1php7php,php php0xphp0php2php1php8php php=php>php php0xphp0php1php1php8php,
-php php php php php php php php php php php0xphp0php1php5php0php php=php>php php0xphp0php1php1php9php,php php php php0xbphp0php php=php>php php0xphp0php1php1aphp,php php php php0xfphp2php php=php>php php0xphp0php1php1bphp,php php0xphp0php1php0cphp php=php>php php0xphp0php1php1cphp,
-php php php php php php php php php php php php php0xfphp9php php=php>php php0xphp0php1php1dphp,php php0xphp2php2php1aphp php=php>php php0xphp0php1php1ephp,php php0xphp0php1php0ephp php=php>php php0xphp0php1php1fphp,php php0xphp0php1php5php7php php=php>php php0xphp0php1php2php0php,
-php php php php php php php php php php php php php0xdphp1php php=php>php php0xphp0php1php2php1php,php php php php0xfphp5php php=php>php php0xphp0php1php2php2php,php php0xphp0php1php5php6php php=php>php php0xphp0php1php2php3php,php php0xphp0php1php3bphp php=php>php php0xphp0php1php2php4php,
-php php php php php php php php php php php php php0xcphp3php php=php>php php0xphp0php1php2php5php,php php0xphp0php1php0php4php php=php>php php0xphp0php1php2php6php,php php php php0xcphp5php php=php>php php0xphp0php1php2php7php,php php php php0xdphp5php php=php>php php0xphp0php1php2php8php,
-php php php php php php php php php php php0xphp0php1php7cphp php=php>php php0xphp0php1php2php9php,php php0xphp0php1php1aphp php=php>php php0xphp0php1php2aphp,php php0xphp0php1php2ephp php=php>php php0xphp0php1php2bphp,php php0xphp0php1php3php7php php=php>php php0xphp0php1php2cphp,
-php php php php php php php php php php php0xphp2php2php1php2php php=php>php php0xphp0php1php2dphp,php php php php0xcephp php=php>php php0xphp0php1php2ephp,php php0xphp0php1php4php8php php=php>php php0xphp0php1php2fphp,php php0xphp0php1php6php3php php=php>php php0xphp0php1php3php0php,
-php php php php php php php php php php php php php0xacphp php=php>php php0xphp0php1php3php1php,php php php php0xfphp6php php=php>php php0xphp0php1php3php2php,php php php php0xfcphp php=php>php php0xphp0php1php3php3php,php php0xphp2php2php6php0php php=php>php php0xphp0php1php3php4php,
-php php php php php php php php php php php0xphp0php1php2php3php php=php>php php0xphp0php1php3php5php,php php php php0xfphp0php php=php>php php0xphp0php1php3php6php,php php0xphp0php1php7ephp php=php>php php0xphp0php1php3php7php,php php0xphp0php1php4php6php php=php>php php0xphp0php1php3php8php,
-php php php php php php php php php php php php php0xbphp9php php=php>php php0xphp0php1php3php9php,php php0xphp0php1php2bphp php=php>php php0xphp0php1php3aphp,php php0xphp2php0acphp php=php>php php0xphp0php1php3bphp)php;
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Cmapphp.phpphp'php;
-php php php php php php php php php$thisphp-php>php_cmapphp php=php Zendphp_Pdfphp_Cmapphp:php:cmapWithTypeDataphp(
-php php php php php php php php php php php php Zendphp_Pdfphp_Cmapphp:php:TYPEphp_BYTEphp_ENCODINGphp_STATICphp,php php$cmapDataphp)php;
+    /**
+     * Object constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
 
 
-php php php php php php php php php/php*php Resourcephp dictionaryphp php*php/
+        /* Object properties */
 
-php php php php php php php php php/php*php Thephp resourcephp dictionaryphp forphp thephp standardphp fontsphp isphp sparsephp becausephp PDF
-php php php php php php php php php php*php viewersphp alreadyphp havephp allphp ofphp thephp metricsphp dataphp.php Wephp onlyphp needphp tophp provide
-php php php php php php php php php php*php thephp fontphp namephp andphp encodingphp methodphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$thisphp-php>php_resourcephp-php>BaseFontphp php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'Courierphp-Boldphp'php)php;
-php php php php php}
-php}
+        /* The font names are stored internally as Unicode UTF-16BE-encoded
+         * strings. Since this information is static, save unnecessary trips
+         * through iconv() and just use pre-encoded hexidecimal strings.
+         */
+        $this->_fontNames[Zend_Pdf_Font::NAME_COPYRIGHT]['en'] =
+          "\x00\x43\x00\x6f\x00\x70\x00\x79\x00\x72\x00\x69\x00\x67\x00\x68\x00"
+          . "\x74\x00\x20\x00\x28\x00\x63\x00\x29\x00\x20\x00\x31\x00\x39\x00"
+          . "\x38\x00\x39\x00\x2c\x00\x20\x00\x31\x00\x39\x00\x39\x00\x30\x00"
+          . "\x2c\x00\x20\x00\x31\x00\x39\x00\x39\x00\x31\x00\x2c\x00\x20\x00"
+          . "\x31\x00\x39\x00\x39\x00\x33\x00\x2c\x00\x20\x00\x31\x00\x39\x00"
+          . "\x39\x00\x37\x00\x20\x00\x41\x00\x64\x00\x6f\x00\x62\x00\x65\x00"
+          . "\x20\x00\x53\x00\x79\x00\x73\x00\x74\x00\x65\x00\x6d\x00\x73\x00"
+          . "\x20\x00\x49\x00\x6e\x00\x63\x00\x6f\x00\x72\x00\x70\x00\x6f\x00"
+          . "\x72\x00\x61\x00\x74\x00\x65\x00\x64\x00\x2e\x00\x20\x00\x20\x00"
+          . "\x41\x00\x6c\x00\x6c\x00\x20\x00\x52\x00\x69\x00\x67\x00\x68\x00"
+          . "\x74\x00\x73\x00\x20\x00\x52\x00\x65\x00\x73\x00\x65\x00\x72\x00"
+          . "\x76\x00\x65\x00\x64\x00\x2e";
+        $this->_fontNames[Zend_Pdf_Font::NAME_FAMILY]['en'] =
+          "\x00\x43\x00\x6f\x00\x75\x00\x72\x00\x69\x00\x65\x00\x72";
+        $this->_fontNames[Zend_Pdf_Font::NAME_STYLE]['en'] =
+          "\x00\x42\x00\x6f\x00\x6c\x00\x64";
+        $this->_fontNames[Zend_Pdf_Font::NAME_ID]['en'] =
+          "\x00\x34\x00\x33\x00\x30\x00\x34\x00\x38";
+        $this->_fontNames[Zend_Pdf_Font::NAME_FULL]['en'] =
+          "\x00\x43\x00\x6f\x00\x75\x00\x72\x00\x69\x00\x65\x00\x72\x00\x2d\x00"
+          . "\x42\x00\x6f\x00\x6c\x00\x64\x00\x20\x00\x42\x00\x6f\x00\x6c\x00"
+          . "\x64";
+        $this->_fontNames[Zend_Pdf_Font::NAME_VERSION]['en'] =
+          "\x00\x30\x00\x30\x00\x33\x00\x2e\x00\x30\x00\x30\x00\x30";
+        $this->_fontNames[Zend_Pdf_Font::NAME_POSTSCRIPT]['en'] =
+          "\x00\x43\x00\x6f\x00\x75\x00\x72\x00\x69\x00\x65\x00\x72\x00\x2d\x00"
+          . "\x42\x00\x6f\x00\x6c\x00\x64";
+
+        $this->_isBold = true;
+        $this->_isItalic = false;
+        $this->_isMonospaced = true;
+
+        $this->_underlinePosition = -100;
+        $this->_underlineThickness = 50;
+        $this->_strikePosition = 225;
+        $this->_strikeThickness = 50;
+
+        $this->_unitsPerEm = 1000;
+
+        $this->_ascent  = 629;
+        $this->_descent = -157;
+        $this->_lineGap = 414;
+
+        /* The glyph numbers assigned here are synthetic; they do not match the
+         * actual glyph numbers used by the font. This is not a big deal though
+         * since this data never makes it to the PDF file. It is only used
+         * internally for layout calculations.
+         */
+        $this->_glyphWidths = array(
+            0x00 => 0x01f4,   0x01 => 0x0258,   0x02 => 0x0258,   0x03 => 0x0258,
+            0x04 => 0x0258,   0x05 => 0x0258,   0x06 => 0x0258,   0x07 => 0x0258,
+            0x08 => 0x0258,   0x09 => 0x0258,   0x0a => 0x0258,   0x0b => 0x0258,
+            0x0c => 0x0258,   0x0d => 0x0258,   0x0e => 0x0258,   0x0f => 0x0258,
+            0x10 => 0x0258,   0x11 => 0x0258,   0x12 => 0x0258,   0x13 => 0x0258,
+            0x14 => 0x0258,   0x15 => 0x0258,   0x16 => 0x0258,   0x17 => 0x0258,
+            0x18 => 0x0258,   0x19 => 0x0258,   0x1a => 0x0258,   0x1b => 0x0258,
+            0x1c => 0x0258,   0x1d => 0x0258,   0x1e => 0x0258,   0x1f => 0x0258,
+            0x20 => 0x0258,   0x21 => 0x0258,   0x22 => 0x0258,   0x23 => 0x0258,
+            0x24 => 0x0258,   0x25 => 0x0258,   0x26 => 0x0258,   0x27 => 0x0258,
+            0x28 => 0x0258,   0x29 => 0x0258,   0x2a => 0x0258,   0x2b => 0x0258,
+            0x2c => 0x0258,   0x2d => 0x0258,   0x2e => 0x0258,   0x2f => 0x0258,
+            0x30 => 0x0258,   0x31 => 0x0258,   0x32 => 0x0258,   0x33 => 0x0258,
+            0x34 => 0x0258,   0x35 => 0x0258,   0x36 => 0x0258,   0x37 => 0x0258,
+            0x38 => 0x0258,   0x39 => 0x0258,   0x3a => 0x0258,   0x3b => 0x0258,
+            0x3c => 0x0258,   0x3d => 0x0258,   0x3e => 0x0258,   0x3f => 0x0258,
+            0x40 => 0x0258,   0x41 => 0x0258,   0x42 => 0x0258,   0x43 => 0x0258,
+            0x44 => 0x0258,   0x45 => 0x0258,   0x46 => 0x0258,   0x47 => 0x0258,
+            0x48 => 0x0258,   0x49 => 0x0258,   0x4a => 0x0258,   0x4b => 0x0258,
+            0x4c => 0x0258,   0x4d => 0x0258,   0x4e => 0x0258,   0x4f => 0x0258,
+            0x50 => 0x0258,   0x51 => 0x0258,   0x52 => 0x0258,   0x53 => 0x0258,
+            0x54 => 0x0258,   0x55 => 0x0258,   0x56 => 0x0258,   0x57 => 0x0258,
+            0x58 => 0x0258,   0x59 => 0x0258,   0x5a => 0x0258,   0x5b => 0x0258,
+            0x5c => 0x0258,   0x5d => 0x0258,   0x5e => 0x0258,   0x5f => 0x0258,
+            0x60 => 0x0258,   0x61 => 0x0258,   0x62 => 0x0258,   0x63 => 0x0258,
+            0x64 => 0x0258,   0x65 => 0x0258,   0x66 => 0x0258,   0x67 => 0x0258,
+            0x68 => 0x0258,   0x69 => 0x0258,   0x6a => 0x0258,   0x6b => 0x0258,
+            0x6c => 0x0258,   0x6d => 0x0258,   0x6e => 0x0258,   0x6f => 0x0258,
+            0x70 => 0x0258,   0x71 => 0x0258,   0x72 => 0x0258,   0x73 => 0x0258,
+            0x74 => 0x0258,   0x75 => 0x0258,   0x76 => 0x0258,   0x77 => 0x0258,
+            0x78 => 0x0258,   0x79 => 0x0258,   0x7a => 0x0258,   0x7b => 0x0258,
+            0x7c => 0x0258,   0x7d => 0x0258,   0x7e => 0x0258,   0x7f => 0x0258,
+            0x80 => 0x0258,   0x81 => 0x0258,   0x82 => 0x0258,   0x83 => 0x0258,
+            0x84 => 0x0258,   0x85 => 0x0258,   0x86 => 0x0258,   0x87 => 0x0258,
+            0x88 => 0x0258,   0x89 => 0x0258,   0x8a => 0x0258,   0x8b => 0x0258,
+            0x8c => 0x0258,   0x8d => 0x0258,   0x8e => 0x0258,   0x8f => 0x0258,
+            0x90 => 0x0258,   0x91 => 0x0258,   0x92 => 0x0258,   0x93 => 0x0258,
+            0x94 => 0x0258,   0x95 => 0x0258,   0x96 => 0x0258,   0x97 => 0x0258,
+            0x98 => 0x0258,   0x99 => 0x0258,   0x9a => 0x0258,   0x9b => 0x0258,
+            0x9c => 0x0258,   0x9d => 0x0258,   0x9e => 0x0258,   0x9f => 0x0258,
+            0xa0 => 0x0258,   0xa1 => 0x0258,   0xa2 => 0x0258,   0xa3 => 0x0258,
+            0xa4 => 0x0258,   0xa5 => 0x0258,   0xa6 => 0x0258,   0xa7 => 0x0258,
+            0xa8 => 0x0258,   0xa9 => 0x0258,   0xaa => 0x0258,   0xab => 0x0258,
+            0xac => 0x0258,   0xad => 0x0258,   0xae => 0x0258,   0xaf => 0x0258,
+            0xb0 => 0x0258,   0xb1 => 0x0258,   0xb2 => 0x0258,   0xb3 => 0x0258,
+            0xb4 => 0x0258,   0xb5 => 0x0258,   0xb6 => 0x0258,   0xb7 => 0x0258,
+            0xb8 => 0x0258,   0xb9 => 0x0258,   0xba => 0x0258,   0xbb => 0x0258,
+            0xbc => 0x0258,   0xbd => 0x0258,   0xbe => 0x0258,   0xbf => 0x0258,
+            0xc0 => 0x0258,   0xc1 => 0x0258,   0xc2 => 0x0258,   0xc3 => 0x0258,
+            0xc4 => 0x0258,   0xc5 => 0x0258,   0xc6 => 0x0258,   0xc7 => 0x0258,
+            0xc8 => 0x0258,   0xc9 => 0x0258,   0xca => 0x0258,   0xcb => 0x0258,
+            0xcc => 0x0258,   0xcd => 0x0258,   0xce => 0x0258,   0xcf => 0x0258,
+            0xd0 => 0x0258,   0xd1 => 0x0258,   0xd2 => 0x0258,   0xd3 => 0x0258,
+            0xd4 => 0x0258,   0xd5 => 0x0258,   0xd6 => 0x0258,   0xd7 => 0x0258,
+            0xd8 => 0x0258,   0xd9 => 0x0258,   0xda => 0x0258,   0xdb => 0x0258,
+            0xdc => 0x0258,   0xdd => 0x0258,   0xde => 0x0258,   0xdf => 0x0258,
+            0xe0 => 0x0258,   0xe1 => 0x0258,   0xe2 => 0x0258,   0xe3 => 0x0258,
+            0xe4 => 0x0258,   0xe5 => 0x0258,   0xe6 => 0x0258,   0xe7 => 0x0258,
+            0xe8 => 0x0258,   0xe9 => 0x0258,   0xea => 0x0258,   0xeb => 0x0258,
+            0xec => 0x0258,   0xed => 0x0258,   0xee => 0x0258,   0xef => 0x0258,
+            0xf0 => 0x0258,   0xf1 => 0x0258,   0xf2 => 0x0258,   0xf3 => 0x0258,
+            0xf4 => 0x0258,   0xf5 => 0x0258,   0xf6 => 0x0258,   0xf7 => 0x0258,
+            0xf8 => 0x0258,   0xf9 => 0x0258,   0xfa => 0x0258,   0xfb => 0x0258,
+            0xfc => 0x0258,   0xfd => 0x0258,   0xfe => 0x0258,   0xff => 0x0258,
+          0x0100 => 0x0258, 0x0101 => 0x0258, 0x0102 => 0x0258, 0x0103 => 0x0258,
+          0x0104 => 0x0258, 0x0105 => 0x0258, 0x0106 => 0x0258, 0x0107 => 0x0258,
+          0x0108 => 0x0258, 0x0109 => 0x0258, 0x010a => 0x0258, 0x010b => 0x0258,
+          0x010c => 0x0258, 0x010d => 0x0258, 0x010e => 0x0258, 0x010f => 0x0258,
+          0x0110 => 0x0258, 0x0111 => 0x0258, 0x0112 => 0x0258, 0x0113 => 0x0258,
+          0x0114 => 0x0258, 0x0115 => 0x0258, 0x0116 => 0x0258, 0x0117 => 0x0258,
+          0x0118 => 0x0258, 0x0119 => 0x0258, 0x011a => 0x0258, 0x011b => 0x0258,
+          0x011c => 0x0258, 0x011d => 0x0258, 0x011e => 0x0258, 0x011f => 0x0258,
+          0x0120 => 0x0258, 0x0121 => 0x0258, 0x0122 => 0x0258, 0x0123 => 0x0258,
+          0x0124 => 0x0258, 0x0125 => 0x0258, 0x0126 => 0x0258, 0x0127 => 0x0258,
+          0x0128 => 0x0258, 0x0129 => 0x0258, 0x012a => 0x0258, 0x012b => 0x0258,
+          0x012c => 0x0258, 0x012d => 0x0258, 0x012e => 0x0258, 0x012f => 0x0258,
+          0x0130 => 0x0258, 0x0131 => 0x0258, 0x0132 => 0x0258, 0x0133 => 0x0258,
+          0x0134 => 0x0258, 0x0135 => 0x0258, 0x0136 => 0x0258, 0x0137 => 0x0258,
+          0x0138 => 0x0258, 0x0139 => 0x0258, 0x013a => 0x0258, 0x013b => 0x0258,
+        );
+
+        /* The cmap table is similarly synthesized.
+         */
+        $cmapData = array(
+            0x20 =>   0x01,   0x21 =>   0x02,   0x22 =>   0x03,   0x23 =>   0x04,
+            0x24 =>   0x05,   0x25 =>   0x06,   0x26 =>   0x07, 0x2019 =>   0x08,
+            0x28 =>   0x09,   0x29 =>   0x0a,   0x2a =>   0x0b,   0x2b =>   0x0c,
+            0x2c =>   0x0d,   0x2d =>   0x0e,   0x2e =>   0x0f,   0x2f =>   0x10,
+            0x30 =>   0x11,   0x31 =>   0x12,   0x32 =>   0x13,   0x33 =>   0x14,
+            0x34 =>   0x15,   0x35 =>   0x16,   0x36 =>   0x17,   0x37 =>   0x18,
+            0x38 =>   0x19,   0x39 =>   0x1a,   0x3a =>   0x1b,   0x3b =>   0x1c,
+            0x3c =>   0x1d,   0x3d =>   0x1e,   0x3e =>   0x1f,   0x3f =>   0x20,
+            0x40 =>   0x21,   0x41 =>   0x22,   0x42 =>   0x23,   0x43 =>   0x24,
+            0x44 =>   0x25,   0x45 =>   0x26,   0x46 =>   0x27,   0x47 =>   0x28,
+            0x48 =>   0x29,   0x49 =>   0x2a,   0x4a =>   0x2b,   0x4b =>   0x2c,
+            0x4c =>   0x2d,   0x4d =>   0x2e,   0x4e =>   0x2f,   0x4f =>   0x30,
+            0x50 =>   0x31,   0x51 =>   0x32,   0x52 =>   0x33,   0x53 =>   0x34,
+            0x54 =>   0x35,   0x55 =>   0x36,   0x56 =>   0x37,   0x57 =>   0x38,
+            0x58 =>   0x39,   0x59 =>   0x3a,   0x5a =>   0x3b,   0x5b =>   0x3c,
+            0x5c =>   0x3d,   0x5d =>   0x3e,   0x5e =>   0x3f,   0x5f =>   0x40,
+          0x2018 =>   0x41,   0x61 =>   0x42,   0x62 =>   0x43,   0x63 =>   0x44,
+            0x64 =>   0x45,   0x65 =>   0x46,   0x66 =>   0x47,   0x67 =>   0x48,
+            0x68 =>   0x49,   0x69 =>   0x4a,   0x6a =>   0x4b,   0x6b =>   0x4c,
+            0x6c =>   0x4d,   0x6d =>   0x4e,   0x6e =>   0x4f,   0x6f =>   0x50,
+            0x70 =>   0x51,   0x71 =>   0x52,   0x72 =>   0x53,   0x73 =>   0x54,
+            0x74 =>   0x55,   0x75 =>   0x56,   0x76 =>   0x57,   0x77 =>   0x58,
+            0x78 =>   0x59,   0x79 =>   0x5a,   0x7a =>   0x5b,   0x7b =>   0x5c,
+            0x7c =>   0x5d,   0x7d =>   0x5e,   0x7e =>   0x5f,   0xa1 =>   0x60,
+            0xa2 =>   0x61,   0xa3 =>   0x62, 0x2044 =>   0x63,   0xa5 =>   0x64,
+          0x0192 =>   0x65,   0xa7 =>   0x66,   0xa4 =>   0x67,   0x27 =>   0x68,
+          0x201c =>   0x69,   0xab =>   0x6a, 0x2039 =>   0x6b, 0x203a =>   0x6c,
+          0xfb01 =>   0x6d, 0xfb02 =>   0x6e, 0x2013 =>   0x6f, 0x2020 =>   0x70,
+          0x2021 =>   0x71,   0xb7 =>   0x72,   0xb6 =>   0x73, 0x2022 =>   0x74,
+          0x201a =>   0x75, 0x201e =>   0x76, 0x201d =>   0x77,   0xbb =>   0x78,
+          0x2026 =>   0x79, 0x2030 =>   0x7a,   0xbf =>   0x7b,   0x60 =>   0x7c,
+            0xb4 =>   0x7d, 0x02c6 =>   0x7e, 0x02dc =>   0x7f,   0xaf =>   0x80,
+          0x02d8 =>   0x81, 0x02d9 =>   0x82,   0xa8 =>   0x83, 0x02da =>   0x84,
+            0xb8 =>   0x85, 0x02dd =>   0x86, 0x02db =>   0x87, 0x02c7 =>   0x88,
+          0x2014 =>   0x89,   0xc6 =>   0x8a,   0xaa =>   0x8b, 0x0141 =>   0x8c,
+            0xd8 =>   0x8d, 0x0152 =>   0x8e,   0xba =>   0x8f,   0xe6 =>   0x90,
+          0x0131 =>   0x91, 0x0142 =>   0x92,   0xf8 =>   0x93, 0x0153 =>   0x94,
+            0xdf =>   0x95,   0xcf =>   0x96,   0xe9 =>   0x97, 0x0103 =>   0x98,
+          0x0171 =>   0x99, 0x011b =>   0x9a, 0x0178 =>   0x9b,   0xf7 =>   0x9c,
+            0xdd =>   0x9d,   0xc2 =>   0x9e,   0xe1 =>   0x9f,   0xdb =>   0xa0,
+            0xfd =>   0xa1, 0x0219 =>   0xa2,   0xea =>   0xa3, 0x016e =>   0xa4,
+            0xdc =>   0xa5, 0x0105 =>   0xa6,   0xda =>   0xa7, 0x0173 =>   0xa8,
+            0xcb =>   0xa9, 0x0110 =>   0xaa, 0xf6c3 =>   0xab,   0xa9 =>   0xac,
+          0x0112 =>   0xad, 0x010d =>   0xae,   0xe5 =>   0xaf, 0x0145 =>   0xb0,
+          0x013a =>   0xb1,   0xe0 =>   0xb2, 0x0162 =>   0xb3, 0x0106 =>   0xb4,
+            0xe3 =>   0xb5, 0x0116 =>   0xb6, 0x0161 =>   0xb7, 0x015f =>   0xb8,
+            0xed =>   0xb9, 0x25ca =>   0xba, 0x0158 =>   0xbb, 0x0122 =>   0xbc,
+            0xfb =>   0xbd,   0xe2 =>   0xbe, 0x0100 =>   0xbf, 0x0159 =>   0xc0,
+            0xe7 =>   0xc1, 0x017b =>   0xc2,   0xde =>   0xc3, 0x014c =>   0xc4,
+          0x0154 =>   0xc5, 0x015a =>   0xc6, 0x010f =>   0xc7, 0x016a =>   0xc8,
+          0x016f =>   0xc9,   0xb3 =>   0xca,   0xd2 =>   0xcb,   0xc0 =>   0xcc,
+          0x0102 =>   0xcd,   0xd7 =>   0xce,   0xfa =>   0xcf, 0x0164 =>   0xd0,
+          0x2202 =>   0xd1,   0xff =>   0xd2, 0x0143 =>   0xd3,   0xee =>   0xd4,
+            0xca =>   0xd5,   0xe4 =>   0xd6,   0xeb =>   0xd7, 0x0107 =>   0xd8,
+          0x0144 =>   0xd9, 0x016b =>   0xda, 0x0147 =>   0xdb,   0xcd =>   0xdc,
+            0xb1 =>   0xdd,   0xa6 =>   0xde,   0xae =>   0xdf, 0x011e =>   0xe0,
+          0x0130 =>   0xe1, 0x2211 =>   0xe2,   0xc8 =>   0xe3, 0x0155 =>   0xe4,
+          0x014d =>   0xe5, 0x0179 =>   0xe6, 0x017d =>   0xe7, 0x2265 =>   0xe8,
+            0xd0 =>   0xe9,   0xc7 =>   0xea, 0x013c =>   0xeb, 0x0165 =>   0xec,
+          0x0119 =>   0xed, 0x0172 =>   0xee,   0xc1 =>   0xef,   0xc4 =>   0xf0,
+            0xe8 =>   0xf1, 0x017a =>   0xf2, 0x012f =>   0xf3,   0xd3 =>   0xf4,
+            0xf3 =>   0xf5, 0x0101 =>   0xf6, 0x015b =>   0xf7,   0xef =>   0xf8,
+            0xd4 =>   0xf9,   0xd9 =>   0xfa, 0x2206 =>   0xfb,   0xfe =>   0xfc,
+            0xb2 =>   0xfd,   0xd6 =>   0xfe,   0xb5 =>   0xff,   0xec => 0x0100,
+          0x0151 => 0x0101, 0x0118 => 0x0102, 0x0111 => 0x0103,   0xbe => 0x0104,
+          0x015e => 0x0105, 0x013e => 0x0106, 0x0136 => 0x0107, 0x0139 => 0x0108,
+          0x2122 => 0x0109, 0x0117 => 0x010a,   0xcc => 0x010b, 0x012a => 0x010c,
+          0x013d => 0x010d,   0xbd => 0x010e, 0x2264 => 0x010f,   0xf4 => 0x0110,
+            0xf1 => 0x0111, 0x0170 => 0x0112,   0xc9 => 0x0113, 0x0113 => 0x0114,
+          0x011f => 0x0115,   0xbc => 0x0116, 0x0160 => 0x0117, 0x0218 => 0x0118,
+          0x0150 => 0x0119,   0xb0 => 0x011a,   0xf2 => 0x011b, 0x010c => 0x011c,
+            0xf9 => 0x011d, 0x221a => 0x011e, 0x010e => 0x011f, 0x0157 => 0x0120,
+            0xd1 => 0x0121,   0xf5 => 0x0122, 0x0156 => 0x0123, 0x013b => 0x0124,
+            0xc3 => 0x0125, 0x0104 => 0x0126,   0xc5 => 0x0127,   0xd5 => 0x0128,
+          0x017c => 0x0129, 0x011a => 0x012a, 0x012e => 0x012b, 0x0137 => 0x012c,
+          0x2212 => 0x012d,   0xce => 0x012e, 0x0148 => 0x012f, 0x0163 => 0x0130,
+            0xac => 0x0131,   0xf6 => 0x0132,   0xfc => 0x0133, 0x2260 => 0x0134,
+          0x0123 => 0x0135,   0xf0 => 0x0136, 0x017e => 0x0137, 0x0146 => 0x0138,
+            0xb9 => 0x0139, 0x012b => 0x013a, 0x20ac => 0x013b);
+        require_once 'Zend/Pdf/Cmap.php';
+        $this->_cmap = Zend_Pdf_Cmap::cmapWithTypeData(
+            Zend_Pdf_Cmap::TYPE_BYTE_ENCODING_STATIC, $cmapData);
+
+
+        /* Resource dictionary */
+
+        /* The resource dictionary for the standard fonts is sparse because PDF
+         * viewers already have all of the metrics data. We only need to provide
+         * the font name and encoding method.
+         */
+        $this->_resource->BaseFont = new Zend_Pdf_Element_Name('Courier-Bold');
+    }
+}

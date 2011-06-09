@@ -1,440 +1,440 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Navigation
-php php*php php@subpackagephp Page
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Mvcphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Navigation
+ * @subpackage Page
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Mvc.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Navigationphp_Page
-php php*php/
-requirephp_oncephp php'Zendphp/Navigationphp/Pagephp.phpphp'php;
+/**
+ * @see Zend_Navigation_Page
+ */
+require_once 'Zend/Navigation/Page.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Actionphp_HelperBroker
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/HelperBrokerphp.phpphp'php;
+/**
+ * @see Zend_Controller_Action_HelperBroker
+ */
+require_once 'Zend/Controller/Action/HelperBroker.php';
 
-php/php*php*
-php php*php Usedphp tophp checkphp ifphp pagephp isphp active
-php php*
-php php*php php@seephp Zendphp_Controllerphp_Front
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Frontphp.phpphp'php;
+/**
+ * Used to check if page is active
+ *
+ * @see Zend_Controller_Front
+ */
+require_once 'Zend/Controller/Front.php';
 
-php/php*php*
-php php*php Representsphp aphp pagephp thatphp isphp definedphp usingphp modulephp,php controllerphp,php actionphp,php route
-php php*php namephp andphp routephp paramsphp tophp assemblephp thephp href
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Navigation
-php php*php php@subpackagephp Page
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Navigationphp_Pagephp_Mvcphp extendsphp Zendphp_Navigationphp_Page
-php{
-php php php php php/php*php*
-php php php php php php*php Actionphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_actionphp;
+/**
+ * Represents a page that is defined using module, controller, action, route
+ * name and route params to assemble the href
+ *
+ * @category   Zend
+ * @package    Zend_Navigation
+ * @subpackage Page
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Navigation_Page_Mvc extends Zend_Navigation_Page
+{
+    /**
+     * Action name to use when assembling URL
+     *
+     * @var string
+     */
+    protected $_action;
 
-php php php php php/php*php*
-php php php php php php*php Controllerphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_controllerphp;
+    /**
+     * Controller name to use when assembling URL
+     *
+     * @var string
+     */
+    protected $_controller;
 
-php php php php php/php*php*
-php php php php php php*php Modulephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_modulephp;
+    /**
+     * Module name to use when assembling URL
+     *
+     * @var string
+     */
+    protected $_module;
 
-php php php php php/php*php*
-php php php php php php*php Paramsphp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_paramsphp php=php arrayphp(php)php;
+    /**
+     * Params to use when assembling URL
+     *
+     * @see getHref()
+     * @var array
+     */
+    protected $_params = array();
 
-php php php php php/php*php*
-php php php php php php*php Routephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_routephp;
+    /**
+     * Route name to use when assembling URL
+     *
+     * @see getHref()
+     * @var string
+     */
+    protected $_route;
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp paramsphp shouldphp bephp resetphp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_resetParamsphp php=php truephp;
+    /**
+     * Whether params should be reset when assembling URL
+     *
+     * @see getHref()
+     * @var bool
+     */
+    protected $_resetParams = true;
 
-php php php php php/php*php*
-php php php php php php*php Cachedphp href
-php php php php php php*
-php php php php php php*php Thephp usephp ofphp thisphp variablephp minimizesphp executionphp timephp whenphp getHrefphp(php)php is
-php php php php php php*php calledphp morephp thanphp oncephp duringphp thephp lifetimephp ofphp aphp requestphp.php Ifphp aphp property
-php php php php php php*php isphp updatedphp,php thephp cachephp isphp invalidatedphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_hrefCachephp;
+    /**
+     * Cached href
+     *
+     * The use of this variable minimizes execution time when getHref() is
+     * called more than once during the lifetime of a request. If a property
+     * is updated, the cache is invalidated.
+     *
+     * @var string
+     */
+    protected $_hrefCache;
 
-php php php php php/php*php*
-php php php php php php*php Actionphp helperphp forphp assemblingphp URLs
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*php php@varphp Zendphp_Controllerphp_Actionphp_Helperphp_Url
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_urlHelperphp php=php nullphp;
+    /**
+     * Action helper for assembling URLs
+     *
+     * @see getHref()
+     * @var Zend_Controller_Action_Helper_Url
+     */
+    protected static $_urlHelper = null;
 
-php php php php php/php/php Accessorsphp:
+    // Accessors:
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp whetherphp pagephp shouldphp bephp consideredphp activephp orphp not
-php php php php php php*
-php php php php php php*php Thisphp methodphp willphp comparephp thephp pagephp propertiesphp againstphp thephp requestphp object
-php php php php php php*php thatphp isphp foundphp inphp thephp frontphp controllerphp.
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$recursivephp php php[optionalphp]php whetherphp pagephp shouldphp bephp considered
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php activephp ifphp anyphp childphp pagesphp arephp activephp.php Defaultphp is
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php falsephp.
-php php php php php php*php php@returnphp boolphp php php php php php php php php php php php php whetherphp pagephp shouldphp bephp consideredphp activephp orphp not
-php php php php php php*php/
-php php php php publicphp functionphp isActivephp(php$recursivephp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_activephp)php php{
-php php php php php php php php php php php php php$frontphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
-php php php php php php php php php php php php php$reqParamsphp php=php php$frontphp-php>getRequestphp(php)php-php>getParamsphp(php)php;
+    /**
+     * Returns whether page should be considered active or not
+     *
+     * This method will compare the page properties against the request object
+     * that is found in the front controller.
+     *
+     * @param  bool $recursive  [optional] whether page should be considered
+     *                          active if any child pages are active. Default is
+     *                          false.
+     * @return bool             whether page should be considered active or not
+     */
+    public function isActive($recursive = false)
+    {
+        if (!$this->_active) {
+            $front = Zend_Controller_Front::getInstance();
+            $reqParams = $front->getRequest()->getParams();
 
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'modulephp'php,php php$reqParamsphp)php)php php{
-php php php php php php php php php php php php php php php php php$reqParamsphp[php'modulephp'php]php php=php php$frontphp-php>getDefaultModulephp(php)php;
-php php php php php php php php php php php php php}
+            if (!array_key_exists('module', $reqParams)) {
+                $reqParams['module'] = $front->getDefaultModule();
+            }
 
-php php php php php php php php php php php php php$myParamsphp php=php php$thisphp-php>php_paramsphp;
+            $myParams = $this->_params;
 
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_modulephp)php php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'modulephp'php]php php=php php$thisphp-php>php_modulephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'modulephp'php]php php=php php$frontphp-php>getDefaultModulephp(php)php;
-php php php php php php php php php php php php php}
+            if (null !== $this->_module) {
+                $myParams['module'] = $this->_module;
+            } else {
+                $myParams['module'] = $front->getDefaultModule();
+            }
 
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_controllerphp)php php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'controllerphp'php]php php=php php$thisphp-php>php_controllerphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'controllerphp'php]php php=php php$frontphp-php>getDefaultControllerNamephp(php)php;
-php php php php php php php php php php php php php}
+            if (null !== $this->_controller) {
+                $myParams['controller'] = $this->_controller;
+            } else {
+                $myParams['controller'] = $front->getDefaultControllerName();
+            }
 
-php php php php php php php php php php php php ifphp php(nullphp php!php=php=php php$thisphp-php>php_actionphp)php php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'actionphp'php]php php=php php$thisphp-php>php_actionphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$myParamsphp[php'actionphp'php]php php=php php$frontphp-php>getDefaultActionphp(php)php;
-php php php php php php php php php php php php php}
+            if (null !== $this->_action) {
+                $myParams['action'] = $this->_action;
+            } else {
+                $myParams['action'] = $front->getDefaultAction();
+            }
 
-php php php php php php php php php php php php ifphp php(countphp(arrayphp_intersectphp_assocphp(php$reqParamsphp,php php$myParamsphp)php)php php=php=
-php php php php php php php php php php php php php php php php countphp(php$myParamsphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_activephp php=php truephp;
-php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if (count(array_intersect_assoc($reqParams, $myParams)) ==
+                count($myParams)) {
+                $this->_active = true;
+                return true;
+            }
+        }
 
-php php php php php php php php returnphp parentphp:php:isActivephp(php$recursivephp)php;
-php php php php php}
+        return parent::isActive($recursive);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp hrefphp forphp thisphp page
-php php php php php php*
-php php php php php php*php Thisphp methodphp usesphp php{php@linkphp Zendphp_Controllerphp_Actionphp_Helperphp_Urlphp}php tophp assemble
-php php php php php php*php thephp hrefphp basedphp onphp thephp pagephp'sphp propertiesphp.
-php php php php php php*
-php php php php php php*php php@returnphp stringphp php pagephp href
-php php php php php php*php/
-php php php php publicphp functionphp getHrefphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_hrefCachephp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_hrefCachephp;
-php php php php php php php php php}
+    /**
+     * Returns href for this page
+     *
+     * This method uses {@link Zend_Controller_Action_Helper_Url} to assemble
+     * the href based on the page's properties.
+     *
+     * @return string  page href
+     */
+    public function getHref()
+    {
+        if ($this->_hrefCache) {
+            return $this->_hrefCache;
+        }
 
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_urlHelperphp)php php{
-php php php php php php php php php php php php selfphp:php:php$php_urlHelperphp php=
-php php php php php php php php php php php php php php php php Zendphp_Controllerphp_Actionphp_HelperBrokerphp:php:getStaticHelperphp(php'Urlphp'php)php;
-php php php php php php php php php}
+        if (null === self::$_urlHelper) {
+            self::$_urlHelper =
+                Zend_Controller_Action_HelperBroker::getStaticHelper('Url');
+        }
 
-php php php php php php php php php$paramsphp php=php php$thisphp-php>getParamsphp(php)php;
+        $params = $this->getParams();
 
-php php php php php php php php ifphp php(php$paramphp php=php php$thisphp-php>getModulephp(php)php)php php{
-php php php php php php php php php php php php php$paramsphp[php'modulephp'php]php php=php php$paramphp;
-php php php php php php php php php}
+        if ($param = $this->getModule()) {
+            $params['module'] = $param;
+        }
 
-php php php php php php php php ifphp php(php$paramphp php=php php$thisphp-php>getControllerphp(php)php)php php{
-php php php php php php php php php php php php php$paramsphp[php'controllerphp'php]php php=php php$paramphp;
-php php php php php php php php php}
+        if ($param = $this->getController()) {
+            $params['controller'] = $param;
+        }
 
-php php php php php php php php ifphp php(php$paramphp php=php php$thisphp-php>getActionphp(php)php)php php{
-php php php php php php php php php php php php php$paramsphp[php'actionphp'php]php php=php php$paramphp;
-php php php php php php php php php}
+        if ($param = $this->getAction()) {
+            $params['action'] = $param;
+        }
 
-php php php php php php php php php$urlphp php=php selfphp:php:php$php_urlHelperphp-php>urlphp(php$paramsphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getRoutephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getResetParamsphp(php)php)php;
+        $url = self::$_urlHelper->url($params,
+                                      $this->getRoute(),
+                                      $this->getResetParams());
 
-php php php php php php php php returnphp php$thisphp-php>php_hrefCachephp php=php php$urlphp;
-php php php php php}
+        return $this->_hrefCache = $url;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp actionphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$actionphp php php php php php php php php php php php php actionphp name
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php php fluentphp interfacephp,php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp invalidphp php$actionphp isphp given
-php php php php php php*php/
-php php php php publicphp functionphp setActionphp(php$actionphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$actionphp php&php&php php!isphp_stringphp(php$actionphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$actionphp mustphp bephp aphp stringphp orphp nullphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets action name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  string $action             action name
+     * @return Zend_Navigation_Page_Mvc   fluent interface, returns self
+     * @throws Zend_Navigation_Exception  if invalid $action is given
+     */
+    public function setAction($action)
+    {
+        if (null !== $action && !is_string($action)) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $action must be a string or null');
+        }
 
-php php php php php php php php php$thisphp-php>php_actionphp php=php php$actionphp;
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_action = $action;
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp actionphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|nullphp php actionphp name
-php php php php php php*php/
-php php php php publicphp functionphp getActionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_actionphp;
-php php php php php}
+    /**
+     * Returns action name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return string|null  action name
+     */
+    public function getAction()
+    {
+        return $this->_action;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp controllerphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|nullphp php$controllerphp php php php controllerphp name
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php php fluentphp interfacephp,php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp invalidphp controllerphp namephp isphp given
-php php php php php php*php/
-php php php php publicphp functionphp setControllerphp(php$controllerphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$controllerphp php&php&php php!isphp_stringphp(php$controllerphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$controllerphp mustphp bephp aphp stringphp orphp nullphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets controller name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  string|null $controller    controller name
+     * @return Zend_Navigation_Page_Mvc   fluent interface, returns self
+     * @throws Zend_Navigation_Exception  if invalid controller name is given
+     */
+    public function setController($controller)
+    {
+        if (null !== $controller && !is_string($controller)) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $controller must be a string or null');
+        }
 
-php php php php php php php php php$thisphp-php>php_controllerphp php=php php$controllerphp;
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_controller = $controller;
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp controllerphp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|nullphp php controllerphp namephp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp getControllerphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_controllerphp;
-php php php php php}
+    /**
+     * Returns controller name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return string|null  controller name or null
+     */
+    public function getController()
+    {
+        return $this->_controller;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp modulephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|nullphp php$modulephp php php php php php php php modulephp name
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php php fluentphp interfacephp,php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp invalidphp modulephp namephp isphp given
-php php php php php php*php/
-php php php php publicphp functionphp setModulephp(php$modulephp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$modulephp php&php&php php!isphp_stringphp(php$modulephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$modulephp mustphp bephp aphp stringphp orphp nullphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets module name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  string|null $module        module name
+     * @return Zend_Navigation_Page_Mvc   fluent interface, returns self
+     * @throws Zend_Navigation_Exception  if invalid module name is given
+     */
+    public function setModule($module)
+    {
+        if (null !== $module && !is_string($module)) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                    'Invalid argument: $module must be a string or null');
+        }
 
-php php php php php php php php php$thisphp-php>php_modulephp php=php php$modulephp;
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_module = $module;
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp modulephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|nullphp php modulephp namephp orphp null
-php php php php php php*php/
-php php php php publicphp functionphp getModulephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_modulephp;
-php php php php php}
+    /**
+     * Returns module name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return string|null  module name or null
+     */
+    public function getModule()
+    {
+        return $this->_module;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp paramsphp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|nullphp php$paramsphp php php php php php php php php[optionalphp]php pagephp paramsphp.php Defaultphp isphp null
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php whichphp setsphp nophp paramsphp.
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php fluentphp interfacephp,php returnsphp self
-php php php php php php*php/
-php php php php publicphp functionphp setParamsphp(arrayphp php$paramsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$paramsphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_paramsphp php=php arrayphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php TODOphp:php dophp thisphp morephp intelligentlyphp?
-php php php php php php php php php php php php php$thisphp-php>php_paramsphp php=php php$paramsphp;
-php php php php php php php php php}
+    /**
+     * Sets params to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  array|null $params        [optional] page params. Default is null
+     *                                   which sets no params.
+     * @return Zend_Navigation_Page_Mvc  fluent interface, returns self
+     */
+    public function setParams(array $params = null)
+    {
+        if (null === $params) {
+            $this->_params = array();
+        } else {
+            // TODO: do this more intelligently?
+            $this->_params = $params;
+        }
 
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp paramsphp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp php pagephp params
-php php php php php php*php/
-php php php php publicphp functionphp getParamsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_paramsphp;
-php php php php php}
+    /**
+     * Returns params to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return array  page params
+     */
+    public function getParams()
+    {
+        return $this->_params;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp routephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$routephp php php php php php php php php php php php php php routephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php php fluentphp interfacephp,php returnsphp self
-php php php php php php*php php@throwsphp Zendphp_Navigationphp_Exceptionphp php ifphp invalidphp php$routephp isphp given
-php php php php php php*php/
-php php php php publicphp functionphp setRoutephp(php$routephp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$routephp php&php&php php(php!isphp_stringphp(php$routephp)php php|php|php strlenphp(php$routephp)php <php php1php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Navigationphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Navigationphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php'Invalidphp argumentphp:php php$routephp mustphp bephp aphp nonphp-emptyphp stringphp orphp nullphp'php)php;
-php php php php php php php php php}
+    /**
+     * Sets route name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  string $route              route name to use when assembling URL
+     * @return Zend_Navigation_Page_Mvc   fluent interface, returns self
+     * @throws Zend_Navigation_Exception  if invalid $route is given
+     */
+    public function setRoute($route)
+    {
+        if (null !== $route && (!is_string($route) || strlen($route) < 1)) {
+            require_once 'Zend/Navigation/Exception.php';
+            throw new Zend_Navigation_Exception(
+                 'Invalid argument: $route must be a non-empty string or null');
+        }
 
-php php php php php php php php php$thisphp-php>php_routephp php=php php$routephp;
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_route = $route;
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp routephp namephp tophp usephp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp stringphp php routephp name
-php php php php php php*php/
-php php php php publicphp functionphp getRoutephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_routephp;
-php php php php php}
+    /**
+     * Returns route name to use when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return string  route name
+     */
+    public function getRoute()
+    {
+        return $this->_route;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp whetherphp paramsphp shouldphp bephp resetphp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$resetParamsphp php php php php php php php php whetherphp paramsphp shouldphp bephp resetphp when
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php assemblingphp URL
-php php php php php php*php php@returnphp Zendphp_Navigationphp_Pagephp_Mvcphp php fluentphp interfacephp,php returnsphp self
-php php php php php php*php/
-php php php php publicphp functionphp setResetParamsphp(php$resetParamsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_resetParamsphp php=php php(boolphp)php php$resetParamsphp;
-php php php php php php php php php$thisphp-php>php_hrefCachephp php=php nullphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets whether params should be reset when assembling URL
+     *
+     * @see getHref()
+     *
+     * @param  bool $resetParams         whether params should be reset when
+     *                                   assembling URL
+     * @return Zend_Navigation_Page_Mvc  fluent interface, returns self
+     */
+    public function setResetParams($resetParams)
+    {
+        $this->_resetParams = (bool) $resetParams;
+        $this->_hrefCache = null;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp whetherphp paramsphp shouldphp bephp resetphp whenphp assemblingphp URL
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp paramsphp shouldphp bephp resetphp whenphp assemblingphp URL
-php php php php php php*php/
-php php php php publicphp functionphp getResetParamsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_resetParamsphp;
-php php php php php}
+    /**
+     * Returns whether params should be reset when assembling URL
+     *
+     * @see getHref()
+     *
+     * @return bool  whether params should be reset when assembling URL
+     */
+    public function getResetParams()
+    {
+        return $this->_resetParams;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp actionphp helperphp forphp assemblingphp URLs
-php php php php php php*
-php php php php php php*php php@seephp getHrefphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Controllerphp_Actionphp_Helperphp_Urlphp php$uhphp php URLphp helper
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setUrlHelperphp(Zendphp_Controllerphp_Actionphp_Helperphp_Urlphp php$uhphp)
-php php php php php{
-php php php php php php php php selfphp:php:php$php_urlHelperphp php=php php$uhphp;
-php php php php php}
+    /**
+     * Sets action helper for assembling URLs
+     *
+     * @see getHref()
+     *
+     * @param  Zend_Controller_Action_Helper_Url $uh  URL helper
+     * @return void
+     */
+    public static function setUrlHelper(Zend_Controller_Action_Helper_Url $uh)
+    {
+        self::$_urlHelper = $uh;
+    }
 
-php php php php php/php/php Publicphp methodsphp:
+    // Public methods:
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp representationphp ofphp thephp page
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp php associativephp arrayphp containingphp allphp pagephp properties
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp_mergephp(
-php php php php php php php php php php php php parentphp:php:toArrayphp(php)php,
-php php php php php php php php php php php php arrayphp(
-php php php php php php php php php php php php php php php php php'actionphp'php php php php php php php php=php>php php$thisphp-php>getActionphp(php)php,
-php php php php php php php php php php php php php php php php php'controllerphp'php php php php=php>php php$thisphp-php>getControllerphp(php)php,
-php php php php php php php php php php php php php php php php php'modulephp'php php php php php php php php=php>php php$thisphp-php>getModulephp(php)php,
-php php php php php php php php php php php php php php php php php'paramsphp'php php php php php php php php=php>php php$thisphp-php>getParamsphp(php)php,
-php php php php php php php php php php php php php php php php php'routephp'php php php php php php php php php=php>php php$thisphp-php>getRoutephp(php)php,
-php php php php php php php php php php php php php php php php php'resetphp_paramsphp'php php=php>php php$thisphp-php>getResetParamsphp(php)
-php php php php php php php php php php php php php)php)php;
-php php php php php}
-php}
+    /**
+     * Returns an array representation of the page
+     *
+     * @return array  associative array containing all page properties
+     */
+    public function toArray()
+    {
+        return array_merge(
+            parent::toArray(),
+            array(
+                'action'       => $this->getAction(),
+                'controller'   => $this->getController(),
+                'module'       => $this->getModule(),
+                'params'       => $this->getParams(),
+                'route'        => $this->getRoute(),
+                'reset_params' => $this->getResetParams()
+            ));
+    }
+}

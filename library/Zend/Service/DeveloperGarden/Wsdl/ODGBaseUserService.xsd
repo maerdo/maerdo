@@ -1,72 +1,72 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>php
-php
-php<xsdphp:schemaphp php
-php	xmlnsphp=php"httpphp:php/php/odgphp.tonlinephp.dephp/ODGBaseUserServicephp/php"php
-php	xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php php
-php	xmlnsphp:tnsphp=php"httpphp:php/php/odgphp.tonlinephp.dephp/ODGBaseUserServicephp/php"php
-php	targetNamespacephp=php"httpphp:php/php/odgphp.tonlinephp.dephp/ODGBaseUserServicephp/php"php
-php	elementFormDefaultphp=php"unqualifiedphp"php php
-php	attributeFormDefaultphp=php"unqualifiedphp"php versionphp=php"php1php.php1php"php>php
-php	php
-php	php
-php	php
-php	php
-php	php
-php	php<xsdphp:complexTypephp namephp=php"AccountBalancephp"php>php
-php	php	php<xsdphp:sequencephp>php
-php	php	php	php<xsdphp:elementphp namephp=php"Accountphp"php typephp=php"xsdphp:stringphp"php><php/xsdphp:elementphp>php
-php	php	php	php<xsdphp:elementphp namephp=php"Creditsphp"php typephp=php"xsdphp:intphp"php><php/xsdphp:elementphp>php
-php	php	<php/xsdphp:sequencephp>php
-php	<php/xsdphp:complexTypephp>php
-php	php<xsdphp:elementphp namephp=php"getAccountBalancephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"Accountphp"php typephp=php"xsdphp:stringphp"php maxOccursphp=php"unboundedphp"php minOccursphp=php"php0php"php><php/xsdphp:elementphp>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"getAccountBalanceResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"Accountphp"php typephp=php"tnsphp:AccountBalancephp"php maxOccursphp=php"unboundedphp"php minOccursphp=php"php1php"php><php/xsdphp:elementphp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"errorCodephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php php php php php php php php php php php php php php php php php<xsdphp:elementphp namephp=php"errorMessagephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"changeQuotaPoolphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"moduleIdphp"php typephp=php"xsdphp:stringphp"php><php/xsdphp:elementphp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"quotaMaxphp"php typephp=php"xsdphp:nonNegativeIntegerphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"changeQuotaPoolResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"errorCodephp"php typephp=php"xsdphp:stringphp"php><php/xsdphp:elementphp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"errorMessagephp"php typephp=php"xsdphp:stringphp"php><php/xsdphp:elementphp>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"getQuotaInformationphp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"moduleIdphp"php typephp=php"xsdphp:stringphp"php><php/xsdphp:elementphp>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-php	php<xsdphp:elementphp namephp=php"getQuotaInformationResponsephp"php>php
-php	php	php<xsdphp:complexTypephp>php
-php	php	php	php<xsdphp:sequencephp>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"errorCodephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"errorMessagephp"php typephp=php"xsdphp:stringphp"php php/php>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"maxQuotaphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"maxUserQuotaphp"php typephp=php"xsdphp:intphp"php	nillablephp=php"truephp"php minOccursphp=php"php0php"php maxOccursphp=php"php1php"php php/php>php
-php	php	php	php	php<xsdphp:elementphp namephp=php"quotaLevelphp"php typephp=php"xsdphp:intphp"php php/php>php
-php	php	php	<php/xsdphp:sequencephp>php
-php	php	<php/xsdphp:complexTypephp>php
-php	<php/xsdphp:elementphp>php
-<php/xsdphp:schemaphp>php
-php
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+	xmlns="http://odg.tonline.de/ODGBaseUserService/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://odg.tonline.de/ODGBaseUserService/"
+	targetNamespace="http://odg.tonline.de/ODGBaseUserService/"
+	elementFormDefault="unqualified" 
+	attributeFormDefault="unqualified" version="1.1">
+	
+	
+	
+	
+	
+	<xsd:complexType name="AccountBalance">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string"></xsd:element>
+			<xsd:element name="Credits" type="xsd:int"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="getAccountBalance">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Account" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getAccountBalanceResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Account" type="tns:AccountBalance" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+				<xsd:element name="errorCode" type="xsd:string" />
+                <xsd:element name="errorMessage" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="changeQuotaPool">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="moduleId" type="xsd:string"></xsd:element>
+				<xsd:element name="quotaMax" type="xsd:nonNegativeInteger" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="changeQuotaPoolResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="errorCode" type="xsd:string"></xsd:element>
+				<xsd:element name="errorMessage" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getQuotaInformation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="moduleId" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getQuotaInformationResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="errorCode" type="xsd:string" />
+				<xsd:element name="errorMessage" type="xsd:string" />
+				<xsd:element name="maxQuota" type="xsd:int" />
+				<xsd:element name="maxUserQuota" type="xsd:int"	nillable="true" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="quotaLevel" type="xsd:int" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
+

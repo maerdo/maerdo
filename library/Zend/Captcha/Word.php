@@ -1,418 +1,418 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php php@seephp Zendphp_Captchaphp_Basephp php*php/
-requirephp_oncephp php'Zendphp/Captchaphp/Basephp.phpphp'php;
+/** @see Zend_Captcha_Base */
+require_once 'Zend/Captcha/Base.php';
 
-php/php*php*
-php php*php Wordphp-basedphp captchaphp adapter
-php php*
-php php*php Generatesphp randomphp wordphp whichphp userphp shouldphp recognise
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Captcha
-php php*php php@subpackagephp Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Wordphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
-abstractphp classphp Zendphp_Captchaphp_Wordphp extendsphp Zendphp_Captchaphp_Base
-php{
-php php php php php/php*php*php#php@php+
-php php php php php php*php php@varphp arrayphp Characterphp sets
-php php php php php php*php/
-php php php php staticphp php$Vphp php php=php arrayphp(php"aphp"php,php php"ephp"php,php php"iphp"php,php php"ophp"php,php php"uphp"php,php php"yphp"php)php;
-php php php php staticphp php$VNphp php=php arrayphp(php"aphp"php,php php"ephp"php,php php"iphp"php,php php"ophp"php,php php"uphp"php,php php"yphp"php,php"php2php"php,php"php3php"php,php"php4php"php,php"php5php"php,php"php6php"php,php"php7php"php,php"php8php"php,php"php9php"php)php;
-php php php php staticphp php$Cphp php php=php arrayphp(php"bphp"php,php"cphp"php,php"dphp"php,php"fphp"php,php"gphp"php,php"hphp"php,php"jphp"php,php"kphp"php,php"mphp"php,php"nphp"php,php"pphp"php,php"qphp"php,php"rphp"php,php"sphp"php,php"tphp"php,php"uphp"php,php"vphp"php,php"wphp"php,php"xphp"php,php"zphp"php)php;
-php php php php staticphp php$CNphp php=php arrayphp(php"bphp"php,php"cphp"php,php"dphp"php,php"fphp"php,php"gphp"php,php"hphp"php,php"jphp"php,php"kphp"php,php"mphp"php,php"nphp"php,php"pphp"php,php"qphp"php,php"rphp"php,php"sphp"php,php"tphp"php,php"uphp"php,php"vphp"php,php"wphp"php,php"xphp"php,php"zphp"php,php"php2php"php,php"php3php"php,php"php4php"php,php"php5php"php,php"php6php"php,php"php7php"php,php"php8php"php,php"php9php"php)php;
-php php php php php/php*php*php#php@php-php*php/
+/**
+ * Word-based captcha adapter
+ *
+ * Generates random word which user should recognise
+ *
+ * @category   Zend
+ * @package    Zend_Captcha
+ * @subpackage Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Word.php 23584 2010-12-28 19:51:49Z matthew $
+ */
+abstract class Zend_Captcha_Word extends Zend_Captcha_Base
+{
+    /**#@+
+     * @var array Character sets
+     */
+    static $V  = array("a", "e", "i", "o", "u", "y");
+    static $VN = array("a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9");
+    static $C  = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z");
+    static $CN = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9");
+    /**#@-*/
 
-php php php php php/php*php*
-php php php php php php*php Randomphp sessionphp ID
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_idphp;
+    /**
+     * Random session ID
+     *
+     * @var string
+     */
+    protected $_id;
 
-php php php php php/php*php*
-php php php php php php*php Generatedphp word
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_wordphp;
+    /**
+     * Generated word
+     *
+     * @var string
+     */
+    protected $_word;
 
-php php php php php/php*php*
-php php php php php php*php Session
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Sessionphp_Namespace
-php php php php php php*php/
-php php php php protectedphp php$php_sessionphp;
+    /**
+     * Session
+     *
+     * @var Zend_Session_Namespace
+     */
+    protected $_session;
 
-php php php php php/php*php*
-php php php php php php*php Classphp namephp forphp sessions
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_sessionClassphp php=php php'Zendphp_Sessionphp_Namespacephp'php;
+    /**
+     * Class name for sessions
+     *
+     * @var string
+     */
+    protected $_sessionClass = 'Zend_Session_Namespace';
 
-php php php php php/php*php*
-php php php php php php*php Shouldphp thephp numbersphp bephp usedphp orphp onlyphp letters
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_useNumbersphp php=php truephp;
+    /**
+     * Should the numbers be used or only letters
+     *
+     * @var boolean
+     */
+    protected $_useNumbers = true;
 
-php php php php php/php*php*
-php php php php php php*php Shouldphp bothphp casesphp bephp usedphp orphp onlyphp lowercase
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php php/php/php protectedphp php$php_useCasephp php=php falsephp;
+    /**
+     * Should both cases be used or only lowercase
+     *
+     * @var boolean
+     */
+    // protected $_useCase = false;
 
-php php php php php/php*php*
-php php php php php php*php Sessionphp lifetimephp forphp thephp captchaphp data
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_timeoutphp php=php php3php0php0php;
+    /**
+     * Session lifetime for the captcha data
+     *
+     * @var integer
+     */
+    protected $_timeout = 300;
 
-php php php php php/php*php*
-php php php php php php*php Shouldphp generatephp(php)php keepphp sessionphp orphp createphp aphp newphp onephp?
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_keepSessionphp php=php falsephp;
+    /**
+     * Should generate() keep session or create a new one?
+     *
+     * @var boolean
+     */
+    protected $_keepSession = false;
 
-php php php php php/php*php*php#php@php+
-php php php php php php*php Errorphp codes
-php php php php php php*php/
-php php php php constphp MISSINGphp_VALUEphp php=php php'missingValuephp'php;
-php php php php constphp MISSINGphp_IDphp php php php php=php php'missingIDphp'php;
-php php php php constphp BADphp_CAPTCHAphp php php php=php php'badCaptchaphp'php;
-php php php php php/php*php*php#php@php-php*php/
+    /**#@+
+     * Error codes
+     */
+    const MISSING_VALUE = 'missingValue';
+    const MISSING_ID    = 'missingID';
+    const BAD_CAPTCHA   = 'badCaptcha';
+    /**#@-*/
 
-php php php php php/php*php*
-php php php php php php*php Errorphp messages
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
-php php php php php php php php selfphp:php:MISSINGphp_VALUEphp php=php>php php'Emptyphp captchaphp valuephp'php,
-php php php php php php php php selfphp:php:MISSINGphp_IDphp php php php php=php>php php'Captchaphp IDphp fieldphp isphp missingphp'php,
-php php php php php php php php selfphp:php:BADphp_CAPTCHAphp php php php=php>php php'Captchaphp valuephp isphp wrongphp'php,
-php php php php php)php;
+    /**
+     * Error messages
+     * @var array
+     */
+    protected $_messageTemplates = array(
+        self::MISSING_VALUE => 'Empty captcha value',
+        self::MISSING_ID    => 'Captcha ID field is missing',
+        self::BAD_CAPTCHA   => 'Captcha value is wrong',
+    );
 
-php php php php php/php*php*
-php php php php php php*php Lengthphp ofphp thephp wordphp tophp generate
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_wordlenphp php=php php8php;
+    /**
+     * Length of the word to generate
+     *
+     * @var integer
+     */
+    protected $_wordlen = 8;
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp sessionphp classphp tophp utilize
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSessionClassphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_sessionClassphp;
-php php php php php}
+    /**
+     * Retrieve session class to utilize
+     *
+     * @return string
+     */
+    public function getSessionClass()
+    {
+        return $this->_sessionClass;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp sessionphp classphp forphp persistence
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$php_sessionClass
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php publicphp functionphp setSessionClassphp(php$php_sessionClassphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sessionClassphp php=php php$php_sessionClassphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set session class for persistence
+     *
+     * @param  string $_sessionClass
+     * @return Zend_Captcha_Word
+     */
+    public function setSessionClass($_sessionClass)
+    {
+        $this->_sessionClass = $_sessionClass;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp wordphp lengthphp tophp usephp whenphp genratingphp captcha
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getWordlenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_wordlenphp;
-php php php php php}
+    /**
+     * Retrieve word length to use when genrating captcha
+     *
+     * @return integer
+     */
+    public function getWordlen()
+    {
+        return $this->_wordlen;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp wordphp lengthphp ofphp captcha
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$wordlen
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php publicphp functionphp setWordlenphp(php$wordlenphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_wordlenphp php=php php$wordlenphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set word length of captcha
+     *
+     * @param integer $wordlen
+     * @return Zend_Captcha_Word
+     */
+    public function setWordlen($wordlen)
+    {
+        $this->_wordlen = $wordlen;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp captchaphp ID
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp php(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_idphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_setIdphp(php$thisphp-php>php_generateRandomIdphp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_idphp;
-php php php php php}
+    /**
+     * Retrieve captcha ID
+     *
+     * @return string
+     */
+    public function getId ()
+    {
+        if (null === $this->_id) {
+            $this->_setId($this->_generateRandomId());
+        }
+        return $this->_id;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp identifier
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$id
-php php php php php php*php returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php protectedphp functionphp php_setIdphp php(php$idphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_idphp php=php php$idphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha identifier
+     *
+     * @param string $id
+     * return Zend_Captcha_Word
+     */
+    protected function _setId ($id)
+    {
+        $this->_id = $id;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp timeoutphp forphp sessionphp token
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$ttl
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php publicphp functionphp setTimeoutphp(php$ttlphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_timeoutphp php=php php(intphp)php php$ttlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set timeout for session token
+     *
+     * @param  int $ttl
+     * @return Zend_Captcha_Word
+     */
+    public function setTimeout($ttl)
+    {
+        $this->_timeout = (int) $ttl;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp sessionphp tokenphp timeout
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getTimeoutphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_timeoutphp;
-php php php php php}
+    /**
+     * Get session token timeout
+     *
+     * @return int
+     */
+    public function getTimeout()
+    {
+        return $this->_timeout;
+    }
 
-php	php/php*php*
-php	php php*php Setsphp ifphp sessionphp shouldphp bephp preservedphp onphp generatephp(php)
-php	php php*
-php	php php*php php@paramphp php$keepSessionphp Shouldphp sessionphp bephp keptphp onphp generatephp(php)php?
-php	php php*php php@returnphp Zendphp_Captchaphp_Word
-php	php php*php/
-php	publicphp functionphp setKeepSessionphp(php$keepSessionphp)
-php	php{
-php	php	php$thisphp-php>php_keepSessionphp php=php php$keepSessionphp;
-php	php	returnphp php$thisphp;
-php	php}
+	/**
+	 * Sets if session should be preserved on generate()
+	 *
+	 * @param $keepSession Should session be kept on generate()?
+	 * @return Zend_Captcha_Word
+	 */
+	public function setKeepSession($keepSession)
+	{
+		$this->_keepSession = $keepSession;
+		return $this;
+	}
 
-php php php php php/php*php*
-php php php php php php*php Numbersphp shouldphp bephp includedphp inphp thephp patternphp?
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp getUseNumbersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_useNumbersphp;
-php php php php php}
+    /**
+     * Numbers should be included in the pattern?
+     *
+     * @return bool
+     */
+    public function getUseNumbers()
+    {
+        return $this->_useNumbers;
+    }
 
-php	php/php*php*
-php	php php*php Setphp ifphp numbersphp shouldphp bephp includedphp inphp thephp pattern
-php	php php*
-php php php php php php*php php@paramphp php$php_useNumbersphp numbersphp shouldphp bephp includedphp inphp thephp patternphp?
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php publicphp functionphp setUseNumbersphp(php$php_useNumbersphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_useNumbersphp php=php php$php_useNumbersphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php php php php 
-php php php php php/php*php*
-php php php php php php*php Getphp sessionphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Sessionphp_Namespace
-php php php php php php*php/
-php php php php publicphp functionphp getSessionphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_sessionphp)php php|php|php php(nullphp php=php=php=php php$thisphp-php>php_sessionphp)php)php php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>getIdphp(php)php;
-php php php php php php php php php php php php ifphp php(php!classphp_existsphp(php$thisphp-php>php_sessionClassphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$thisphp-php>php_sessionClassphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_sessionphp php=php newphp php$thisphp-php>php_sessionClassphp(php'Zendphp_Formphp_Captchaphp_php'php php.php php$idphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_sessionphp-php>setExpirationHopsphp(php1php,php nullphp,php truephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_sessionphp-php>setExpirationSecondsphp(php$thisphp-php>getTimeoutphp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_sessionphp;
-php php php php php}
+	/**
+	 * Set if numbers should be included in the pattern
+	 *
+     * @param $_useNumbers numbers should be included in the pattern?
+     * @return Zend_Captcha_Word
+     */
+    public function setUseNumbers($_useNumbers)
+    {
+        $this->_useNumbers = $_useNumbers;
+        return $this;
+    }
+    
+    /**
+     * Get session object
+     *
+     * @return Zend_Session_Namespace
+     */
+    public function getSession()
+    {
+        if (!isset($this->_session) || (null === $this->_session)) {
+            $id = $this->getId();
+            if (!class_exists($this->_sessionClass)) {
+                require_once 'Zend/Loader.php';
+                Zend_Loader::loadClass($this->_sessionClass);
+            }
+            $this->_session = new $this->_sessionClass('Zend_Form_Captcha_' . $id);
+            $this->_session->setExpirationHops(1, null, true);
+            $this->_session->setExpirationSeconds($this->getTimeout());
+        }
+        return $this->_session;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp sessionphp namespacephp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Sessionphp_Namespacephp php$session
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php publicphp functionphp setSessionphp(Zendphp_Sessionphp_Namespacephp php$sessionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sessionphp php=php php$sessionphp;
-php php php php php php php php ifphp(php$sessionphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_keepSessionphp php=php truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set session namespace object
+     *
+     * @param  Zend_Session_Namespace $session
+     * @return Zend_Captcha_Word
+     */
+    public function setSession(Zend_Session_Namespace $session)
+    {
+        $this->_session = $session;
+        if($session) {
+            $this->_keepSession = true;
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp word
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getWordphp(php)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$thisphp-php>php_wordphp)php)php php{
-php php php php php php php php php php php php php$sessionphp php php php php php=php php$thisphp-php>getSessionphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_wordphp php=php php$sessionphp-php>wordphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_wordphp;
-php php php php php}
+    /**
+     * Get captcha word
+     *
+     * @return string
+     */
+    public function getWord()
+    {
+        if (empty($this->_word)) {
+            $session     = $this->getSession();
+            $this->_word = $session->word;
+        }
+        return $this->_word;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp word
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$word
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Word
-php php php php php php*php/
-php php php php protectedphp functionphp php_setWordphp(php$wordphp)
-php php php php php{
-php php php php php php php php php$sessionphp php php php php php php php=php php$thisphp-php>getSessionphp(php)php;
-php php php php php php php php php$sessionphp-php>wordphp php=php php$wordphp;
-php php php php php php php php php$thisphp-php>php_wordphp php php php=php php$wordphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set captcha word
+     *
+     * @param  string $word
+     * @return Zend_Captcha_Word
+     */
+    protected function _setWord($word)
+    {
+        $session       = $this->getSession();
+        $session->word = $word;
+        $this->_word   = $word;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp newphp randomphp word
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_generateWordphp(php)
-php php php php php{
-php php php php php php php php php$wordphp php php php php php php php=php php'php'php;
-php php php php php php php php php$wordLenphp php php php php=php php$thisphp-php>getWordLenphp(php)php;
-php php php php php php php php php$vowelsphp php php php php php=php php$thisphp-php>php_useNumbersphp php?php selfphp:php:php$VNphp php:php selfphp:php:php$Vphp;
-php php php php php php php php php$consonantsphp php=php php$thisphp-php>php_useNumbersphp php?php selfphp:php:php$CNphp php:php selfphp:php:php$Cphp;
+    /**
+     * Generate new random word
+     *
+     * @return string
+     */
+    protected function _generateWord()
+    {
+        $word       = '';
+        $wordLen    = $this->getWordLen();
+        $vowels     = $this->_useNumbers ? self::$VN : self::$V;
+        $consonants = $this->_useNumbers ? self::$CN : self::$C;
 
-php php php php php php php php forphp php(php$iphp=php0php;php php$iphp <php php$wordLenphp;php php$iphp php=php php$iphp php+php php2php)php php{
-php php php php php php php php php php php php php/php/php generatephp wordphp withphp mixphp ofphp vowelsphp andphp consonants
-php php php php php php php php php php php php php$consonantphp php=php php$consonantsphp[arrayphp_randphp(php$consonantsphp)php]php;
-php php php php php php php php php php php php php$vowelphp php php php php php=php php$vowelsphp[arrayphp_randphp(php$vowelsphp)php]php;
-php php php php php php php php php php php php php$wordphp php php php php php.php=php php$consonantphp php.php php$vowelphp;
-php php php php php php php php php}
+        for ($i=0; $i < $wordLen; $i = $i + 2) {
+            // generate word with mix of vowels and consonants
+            $consonant = $consonants[array_rand($consonants)];
+            $vowel     = $vowels[array_rand($vowels)];
+            $word     .= $consonant . $vowel;
+        }
 
-php php php php php php php php ifphp php(strlenphp(php$wordphp)php php>php php$wordLenphp)php php{
-php php php php php php php php php php php php php$wordphp php=php substrphp(php$wordphp,php php0php,php php$wordLenphp)php;
-php php php php php php php php php}
+        if (strlen($word) > $wordLen) {
+            $word = substr($word, 0, $wordLen);
+        }
 
-php php php php php php php php returnphp php$wordphp;
-php php php php php}
+        return $word;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp newphp sessionphp IDphp andphp newphp word
-php php php php php php*
-php php php php php php*php php@returnphp stringphp sessionphp ID
-php php php php php php*php/
-php php php php publicphp functionphp generatephp(php)
-php php php php php{
-php php php php php php php php ifphp(php!php$thisphp-php>php_keepSessionphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_sessionphp php=php nullphp;
-php php php php php php php php php}
-php php php php php php php php php$idphp php=php php$thisphp-php>php_generateRandomIdphp(php)php;
-php php php php php php php php php$thisphp-php>php_setIdphp(php$idphp)php;
-php php php php php php php php php$wordphp php=php php$thisphp-php>php_generateWordphp(php)php;
-php php php php php php php php php$thisphp-php>php_setWordphp(php$wordphp)php;
-php php php php php php php php returnphp php$idphp;
-php php php php php}
+    /**
+     * Generate new session ID and new word
+     *
+     * @return string session ID
+     */
+    public function generate()
+    {
+        if(!$this->_keepSession) {
+            $this->_session = null;
+        }
+        $id = $this->_generateRandomId();
+        $this->_setId($id);
+        $word = $this->_generateWord();
+        $this->_setWord($word);
+        return $id;
+    }
 
-php php php php protectedphp functionphp php_generateRandomIdphp(php)
-php php php php php{
-php php php php php php php php returnphp mdphp5php(mtphp_randphp(php0php,php php1php0php0php0php)php php.php microtimephp(truephp)php)php;
-php php php php php}
+    protected function _generateRandomId()
+    {
+        return md5(mt_rand(0, 1000) . microtime(true));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Validatephp thephp word
-php php php php php php*
-php php php php php php*php php@seephp php php php Zendphp_Validatephp_Interfacephp:php:isValidphp(php)
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp,php php$contextphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php php&php&php php!isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:MISSINGphp_VALUEphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$valuephp)php php&php&php isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php php$valuephp php=php php$contextphp;
-php php php php php php php php php}
+    /**
+     * Validate the word
+     *
+     * @see    Zend_Validate_Interface::isValid()
+     * @param  mixed $value
+     * @return boolean
+     */
+    public function isValid($value, $context = null)
+    {
+        if (!is_array($value) && !is_array($context)) {
+            $this->_error(self::MISSING_VALUE);
+            return false;
+        }
+        if (!is_array($value) && is_array($context)) {
+            $value = $context;
+        }
 
-php php php php php php php php php$namephp php=php php$thisphp-php>getNamephp(php)php;
+        $name = $this->getName();
 
-php php php php php php php php ifphp php(issetphp(php$valuephp[php$namephp]php)php)php php{
-php php php php php php php php php php php php php$valuephp php=php php$valuephp[php$namephp]php;
-php php php php php php php php php}
+        if (isset($value[$name])) {
+            $value = $value[$name];
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$valuephp[php'inputphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:MISSINGphp_VALUEphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php php$inputphp php=php strtolowerphp(php$valuephp[php'inputphp'php]php)php;
-php php php php php php php php php$thisphp-php>php_setValuephp(php$inputphp)php;
+        if (!isset($value['input'])) {
+            $this->_error(self::MISSING_VALUE);
+            return false;
+        }
+        $input = strtolower($value['input']);
+        $this->_setValue($input);
 
-php php php php php php php php ifphp php(php!issetphp(php$valuephp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:MISSINGphp_IDphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (!isset($value['id'])) {
+            $this->_error(self::MISSING_ID);
+            return false;
+        }
 
-php php php php php php php php php$thisphp-php>php_idphp php=php php$valuephp[php'idphp'php]php;
-php php php php php php php php ifphp php(php$inputphp php!php=php=php php$thisphp-php>getWordphp(php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:BADphp_CAPTCHAphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        $this->_id = $value['id'];
+        if ($input !== $this->getWord()) {
+            $this->_error(self::BAD_CAPTCHA);
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp decorator
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDecoratorphp(php)
-php php php php php{
-php php php php php php php php returnphp php"Captchaphp_Wordphp"php;
-php php php php php}
-php}
+    /**
+     * Get captcha decorator
+     *
+     * @return string
+     */
+    public function getDecorator()
+    {
+        return "Captcha_Word";
+    }
+}

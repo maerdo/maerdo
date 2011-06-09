@@ -1,536 +1,536 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php BuildLayerphp.phpphp php2php2php2php8php0php php2php0php1php0php-php0php5php-php2php4php php2php0php:php3php9php:php4php5Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: BuildLayer.php 22280 2010-05-24 20:39:45Z matthew $
+ */
 
-php/php*php*
-php php*php Dojophp modulephp layerphp andphp customphp buildphp profilephp generationphp support
-php php*
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dojophp_BuildLayer
-php{
-php php php php php/php*php*
-php php php php php php*php Flagphp:php whetherphp orphp notphp tophp consumephp JSphp aggregatedphp inphp thephp dojophp(php)php view
-php php php php php php*php helperphp whenphp generatephp thephp modulephp layerphp contents
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_consumeJavascriptphp php=php falsephp;
+/**
+ * Dojo module layer and custom build profile generation support
+ *
+ * @package    Zend_Dojo
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Dojo_BuildLayer
+{
+    /**
+     * Flag: whether or not to consume JS aggregated in the dojo() view
+     * helper when generate the module layer contents
+     * @var bool
+     */
+    protected $_consumeJavascript = false;
 
-php php php php php/php*php*
-php php php php php php*php Flagphp:php whetherphp orphp notphp tophp consumephp dojophp.addOnLoadphp eventsphp registered
-php php php php php php*php withphp thephp dojophp(php)php viewphp helperphp whenphp generatingphp thephp modulephp layerphp file
-php php php php php php*php contents
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_consumeOnLoadphp php=php falsephp;
+    /**
+     * Flag: whether or not to consume dojo.addOnLoad events registered
+     * with the dojo() view helper when generating the module layer file
+     * contents
+     * @var bool
+     */
+    protected $_consumeOnLoad = false;
 
-php php php php php/php*php*
-php php php php php php*php Dojophp viewphp helperphp reference
-php php php php php php*php php@varphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Container
-php php php php php php*php/
-php php php php protectedphp php$php_dojophp;
+    /**
+     * Dojo view helper reference
+     * @var Zend_Dojo_View_Helper_Dojo_Container
+     */
+    protected $_dojo;
 
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp customphp layerphp tophp generate
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_layerNamephp;
+    /**
+     * Name of the custom layer to generate
+     * @var string
+     */
+    protected $_layerName;
 
-php php php php php/php*php*
-php php php php php php*php Pathphp tophp thephp customphp layerphp scriptphp relativephp tophp dojophp.jsphp php(usedphp when
-php php php php php php*php creatingphp thephp buildphp profilephp)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_layerScriptPathphp;
+    /**
+     * Path to the custom layer script relative to dojo.js (used when
+     * creating the build profile)
+     * @var string
+     */
+    protected $_layerScriptPath;
 
-php php php php php/php*php*
-php php php php php php*php Buildphp profilephp options
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_profileOptionsphp php=php arrayphp(
-php php php php php php php php php'actionphp'php php php php php php php php php=php>php php'releasephp'php,
-php php php php php php php php php'optimizephp'php php php php php php php=php>php php'shrinksafephp'php,
-php php php php php php php php php'layerOptimizephp'php php=php>php php'shrinksafephp'php,
-php php php php php php php php php'copyTestsphp'php php php php php php=php>php falsephp,
-php php php php php php php php php'loaderphp'php php php php php php php php php=php>php php'defaultphp'php,
-php php php php php php php php php'cssOptimizephp'php php php php=php>php php'commentsphp'php,
-php php php php php)php;
+    /**
+     * Build profile options
+     * @var array
+     */
+    protected $_profileOptions = array(
+        'action'        => 'release',
+        'optimize'      => 'shrinksafe',
+        'layerOptimize' => 'shrinksafe',
+        'copyTests'     => false,
+        'loader'        => 'default',
+        'cssOptimize'   => 'comments',
+    );
 
-php php php php php/php*php*
-php php php php php php*php Associativephp arrayphp ofphp modulephp/pathphp pairsphp forphp thephp buildphp profile
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_profilePrefixesphp php=php arrayphp(php)php;
+    /**
+     * Associative array of module/path pairs for the build profile
+     * @var array
+     */
+    protected $_profilePrefixes = array();
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Viewphp reference
-php php php php php php*php php@varphp Zendphp_Viewphp_Interface
-php php php php php php*php/
-php php php php protectedphp php$php_viewphp;
+    /**
+     * Zend_View reference
+     * @var Zend_View_Interface
+     */
+    protected $_view;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Dojophp_Exceptionphp forphp invalidphp optionphp argument
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$optionsphp)php php{
-php php php php php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Invalidphp optionsphp providedphp tophp constructorphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array|Zend_Config $options
+     * @return void
+     * @throws Zend_Dojo_Exception for invalid option argument
+     */
+    public function __construct($options = null)
+    {
+        if (null !== $options) {
+            if ($options instanceof Zend_Config) {
+                $options = $options->toArray();
+            } elseif (!is_array($options)) {
+                require_once 'Zend/Dojo/Exception.php';
+                throw new Zend_Dojo_Exception('Invalid options provided to constructor');
+            }
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp options
-php php php php php php*
-php php php php php php*php Proxiesphp tophp anyphp setterphp thatphp matchesphp anphp optionphp keyphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php php$methodsphp php=php getphp_classphp_methodsphp(php$thisphp)php;
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php$methodphp php=php php'setphp'php php.php ucfirstphp(php$keyphp)php;
-php php php php php php php php php php php php ifphp php(inphp_arrayphp(php$methodphp,php php$methodsphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$methodphp(php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set options
+     *
+     * Proxies to any setter that matches an option key.
+     *
+     * @param  array $options
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setOptions(array $options)
+    {
+        $methods = get_class_methods($this);
+        foreach ($options as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (in_array($method, $methods)) {
+                $this->$method($value);
+            }
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp Viewphp object
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_viewphp php=php php$viewphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set View object
+     *
+     * @param  Zend_View_Interface $view
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setView(Zend_View_Interface $view)
+    {
+        $this->_view = $view;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp viewphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Viewphp_Interfacephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getViewphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_viewphp;
-php php php php php}
+    /**
+     * Retrieve view object
+     *
+     * @return Zend_View_Interface|null
+     */
+    public function getView()
+    {
+        return $this->_view;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp dojophp(php)php viewphp helperphp instance
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Containerphp php$helper
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setDojoHelperphp(Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Containerphp php$helperphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_dojophp php=php php$helperphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set dojo() view helper instance
+     *
+     * @param  Zend_Dojo_View_Helper_Dojo_Container $helper
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setDojoHelper(Zend_Dojo_View_Helper_Dojo_Container $helper)
+    {
+        $this->_dojo = $helper;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp dojophp(php)php viewphp helperphp instance
-php php php php php php*
-php php php php php php*php Willphp retrievephp itphp fromphp thephp viewphp objectphp ifphp notphp registeredphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Container
-php php php php php php*php php@throwsphp Zendphp_Dojophp_Exceptionphp ifphp notphp registeredphp andphp nophp viewphp objectphp found
-php php php php php php*php/
-php php php php publicphp functionphp getDojoHelperphp(php)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_dojophp)php php{
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php(php$viewphp php=php php$thisphp-php>getViewphp(php)php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Viewphp objectphp notphp registeredphp;php cannotphp retrievephp dojophp helperphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$helperphp php=php php$viewphp-php>getHelperphp(php'dojophp'php)php;
-php php php php php php php php php php php php php$thisphp-php>setDojoHelperphp(php$viewphp-php>dojophp(php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_dojophp;
-php php php php php}
+    /**
+     * Retrieve dojo() view helper instance
+     *
+     * Will retrieve it from the view object if not registered.
+     *
+     * @return Zend_Dojo_View_Helper_Dojo_Container
+     * @throws Zend_Dojo_Exception if not registered and no view object found
+     */
+    public function getDojoHelper()
+    {
+        if (null === $this->_dojo) {
+            if (null === ($view = $this->getView())) {
+                require_once 'Zend/Dojo/Exception.php';
+                throw new Zend_Dojo_Exception('View object not registered; cannot retrieve dojo helper');
+            }
+            $helper = $view->getHelper('dojo');
+            $this->setDojoHelper($view->dojo());
+        }
+        return $this->_dojo;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp customphp layerphp namephp;php ephp.gphp.php php"customphp.mainphp"
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setLayerNamephp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php[aphp-zphp]php[aphp-zphp0php-php9php_php]php*php(php\php.php[aphp-zphp]php[aphp-zphp0php-php9php_php]php*php)php+php$php/iphp'php,php php$namephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Dojophp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Dojophp_Exceptionphp(php'Invalidphp layerphp namephp providedphp;php mustphp bephp ofphp formphp[aphp-zphp]php[aphp-zphp0php-php9php_php]php(php\php.php[aphp-zphp]php[aphp-zphp0php-php9php_php]php)php+php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_layerNamephp php=php php$namephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set custom layer name; e.g. "custom.main"
+     *
+     * @param  string $name
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setLayerName($name)
+    {
+        if (!preg_match('/^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/i', $name)) {
+            require_once 'Zend/Dojo/Exception.php';
+            throw new Zend_Dojo_Exception('Invalid layer name provided; must be of form[a-z][a-z0-9_](\.[a-z][a-z0-9_])+');
+        }
+        $this->_layerName = $name;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp customphp layerphp name
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getLayerNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_layerNamephp;
-php php php php php}
+    /**
+     * Retrieve custom layer name
+     *
+     * @return string|null
+     */
+    public function getLayerName()
+    {
+        return $this->_layerName;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp pathphp tophp thephp customphp layerphp script
-php php php php php php*
-php php php php php php*php Shouldphp bephp aphp pathphp relativephp tophp dojophp.js
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setLayerScriptPathphp(php$pathphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_layerScriptPathphp php=php php(stringphp)php php$pathphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set the path to the custom layer script
+     *
+     * Should be a path relative to dojo.js
+     *
+     * @param  string $path
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setLayerScriptPath($path)
+    {
+        $this->_layerScriptPath = (string) $path;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp customphp layerphp scriptphp path
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getLayerScriptPathphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_layerScriptPathphp;
-php php php php php}
+    /**
+     * Get custom layer script path
+     *
+     * @return string|null
+     */
+    public function getLayerScriptPath()
+    {
+        return $this->_layerScriptPath;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp flagphp indicatingphp whetherphp orphp notphp tophp consumephp JSphp aggregatedphp inphp dojophp(php)
-php php php php php php*php viewphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setConsumeJavascriptphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_consumeJavascriptphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set flag indicating whether or not to consume JS aggregated in dojo()
+     * view helper
+     *
+     * @param  bool $flag
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setConsumeJavascript($flag)
+    {
+        $this->_consumeJavascript = (bool) $flag;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp flagphp indicatingphp whetherphp orphp notphp tophp consumephp JSphp aggregatedphp inphp dojophp(php)
-php php php php php php*php viewphp helper
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp consumeJavascriptphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_consumeJavascriptphp;
-php php php php php}
+    /**
+     * Get flag indicating whether or not to consume JS aggregated in dojo()
+     * view helper
+     *
+     * @return bool
+     */
+    public function consumeJavascript()
+    {
+        return $this->_consumeJavascript;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp flagphp indicatingphp whetherphp orphp notphp tophp consumephp dojophp.addOnLoadphp events
-php php php php php php*php aggregatedphp inphp dojophp(php)php viewphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setConsumeOnLoadphp(php$flagphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_consumeOnLoadphp php=php php(boolphp)php php$flagphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set flag indicating whether or not to consume dojo.addOnLoad events
+     * aggregated in dojo() view helper
+     *
+     * @param  bool $flag
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setConsumeOnLoad($flag)
+    {
+        $this->_consumeOnLoad = (bool) $flag;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp flagphp indicatingphp whetherphp orphp notphp tophp consumephp dojophp.addOnLoadphp eventsphp aggregatedphp inphp dojophp(php)php viewphp helper
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp consumeOnLoadphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_consumeOnLoadphp;
-php php php php php}
+    /**
+     * Get flag indicating whether or not to consume dojo.addOnLoad events aggregated in dojo() view helper
+     *
+     * @return bool
+     */
+    public function consumeOnLoad()
+    {
+        return $this->_consumeOnLoad;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp manyphp buildphp profilephp optionsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setProfileOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_profileOptionsphp php+php=php php$optionsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set many build profile options at once
+     *
+     * @param  array $options
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setProfileOptions(array $options)
+    {
+        $this->_profileOptions += $options;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp manyphp buildphp profilephp optionsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp addProfileOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_profileOptionsphp php=php php$thisphp-php>php_profileOptionsphp php+php php$optionsphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add many build profile options at once
+     *
+     * @param  array $options
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function addProfileOptions(array $options)
+    {
+        $this->_profileOptions = $this->_profileOptions + $options;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp singlephp buildphp profilephp option
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@paramphp php valuephp php$value
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp addProfileOptionphp(php$keyphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_profileOptionsphp[php(stringphp)php php$keyphp]php php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add a single build profile option
+     *
+     * @param  string $key
+     * @param  value $value
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function addProfileOption($key, $value)
+    {
+        $this->_profileOptions[(string) $key] = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp buildphp profilephp optionphp setphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasProfileOptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php returnphp arrayphp_keyphp_existsphp(php(stringphp)php php$keyphp,php php$thisphp-php>php_profileOptionsphp)php;
-php php php php php}
+    /**
+     * Is a given build profile option set?
+     *
+     * @param  string $key
+     * @return bool
+     */
+    public function hasProfileOption($key)
+    {
+        return array_key_exists((string) $key, $this->_profileOptions);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp aphp singlephp buildphp profilephp option
-php php php php php php*
-php php php php php php*php Returnsphp nullphp ifphp profilephp optionphp doesphp notphp existphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp getProfileOptionphp(php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasProfileOptionphp(php$keyphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_profileOptionsphp[php(stringphp)php php$keyphp]php;
-php php php php php php php php php}
-php php php php php php php php returnphp nullphp;
-php php php php php}
+    /**
+     * Retrieve a single build profile option
+     *
+     * Returns null if profile option does not exist.
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function getProfileOption($key)
+    {
+        if ($this->hasProfileOption($key)) {
+            return $this->_profileOptions[(string) $key];
+        }
+        return null;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp buildphp profilephp options
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getProfileOptionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_profileOptionsphp;
-php php php php php}
+    /**
+     * Get all build profile options
+     *
+     * @return array
+     */
+    public function getProfileOptions()
+    {
+        return $this->_profileOptions;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp buildphp profilephp option
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp removeProfileOptionphp(php$namephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasProfileOptionphp(php$namephp)php)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_profileOptionsphp[php(stringphp)php php$namephp]php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a build profile option
+     *
+     * @param  string $name
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function removeProfileOption($name)
+    {
+        if ($this->hasProfileOption($name)) {
+            unset($this->_profileOptions[(string) $name]);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp allphp buildphp profilephp options
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp clearProfileOptionsphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_profileOptionsphp php=php arrayphp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove all build profile options
+     *
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function clearProfileOptions()
+    {
+        $this->_profileOptions = array();
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp buildphp profilephp dependencyphp prefix
-php php php php php php*
-php php php php php php*php Ifphp justphp thephp prefixphp isphp passedphp,php setsphp pathphp tophp php"php.php.php/php$prefixphp"php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php nullphp|stringphp php$path
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp addProfilePrefixphp(php$prefixphp,php php$pathphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php=php=php=php php$pathphp)php php{
-php php php php php php php php php php php php php$pathphp php=php php'php.php.php/php'php php.php php$prefixphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_profilePrefixesphp[php$prefixphp]php php=php arrayphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add a build profile dependency prefix
+     *
+     * If just the prefix is passed, sets path to "../$prefix".
+     *
+     * @param  string $prefix
+     * @param  null|string $path
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function addProfilePrefix($prefix, $path = null)
+    {
+        if (null === $path) {
+            $path = '../' . $prefix;
+        }
+        $this->_profilePrefixes[$prefix] = array($prefix, $path);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp multiplephp dependencyphp prefixesphp forphp bulidphp profile
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$prefixes
-php php php php php php*php php@returnphp Zendphp_Dojophp_BuildLayer
-php php php php php php*php/
-php php php php publicphp functionphp setProfilePrefixesphp(arrayphp php$prefixesphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$prefixesphp asphp php$prefixphp php=php>php php$pathphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addProfilePrefixphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set multiple dependency prefixes for bulid profile
+     *
+     * @param  array $prefixes
+     * @return Zend_Dojo_BuildLayer
+     */
+    public function setProfilePrefixes(array $prefixes)
+    {
+        foreach ($prefixes as $prefix => $path) {
+            $this->addProfilePrefix($prefix, $path);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp buildphp profilephp dependencyphp prefixes
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getProfilePrefixesphp(php)
-php php php php php{
-php php php php php php php php php$layerNamephp php=php php$thisphp-php>getLayerNamephp(php)php;
-php php php php php php php php ifphp php(nullphp php!php=php=php php$layerNamephp)php php{
-php php php php php php php php php php php php php$prefixphp php php php php=php php$thisphp-php>php_getPrefixphp(php$layerNamephp)php;
-php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$prefixphp,php php$thisphp-php>php_profilePrefixesphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>addProfilePrefixphp(php$prefixphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$viewphp php=php php$thisphp-php>getViewphp(php)php;
-php php php php php php php php ifphp php(php!emptyphp(php$viewphp)php)php php{
-php php php php php php php php php php php php php$helperphp php=php php$thisphp-php>getDojoHelperphp(php)php;
-php php php php php php php php php php php php ifphp php(php$helperphp)php php{
-php php php php php php php php php php php php php php php php php$modulesphp php=php php$helperphp-php>getModulesphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$modulesphp asphp php$modulephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$prefixphp php=php php$thisphp-php>php_getPrefixphp(php$modulephp)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$prefixphp,php php$thisphp-php>php_profilePrefixesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>addProfilePrefixphp(php$prefixphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_profilePrefixesphp;
-php php php php php}
+    /**
+     * Get build profile dependency prefixes
+     *
+     * @return array
+     */
+    public function getProfilePrefixes()
+    {
+        $layerName = $this->getLayerName();
+        if (null !== $layerName) {
+            $prefix    = $this->_getPrefix($layerName);
+            if (!array_key_exists($prefix, $this->_profilePrefixes)) {
+                $this->addProfilePrefix($prefix);
+            }
+        }
+        $view = $this->getView();
+        if (!empty($view)) {
+            $helper = $this->getDojoHelper();
+            if ($helper) {
+                $modules = $helper->getModules();
+                foreach ($modules as $module) {
+                    $prefix = $this->_getPrefix($module);
+                    if (!array_key_exists($prefix, $this->_profilePrefixes)) {
+                        $this->addProfilePrefix($prefix);
+                    }
+                }
+            }
+        }
+        return $this->_profilePrefixes;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp modulephp layerphp script
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp generateLayerScriptphp(php)
-php php php php php{
-php php php php php php php php php$helperphp php php php php php php php php=php php$thisphp-php>getDojoHelperphp(php)php;
-php php php php php php php php php$layerNamephp php php php php php=php php$thisphp-php>getLayerNamephp(php)php;
-php php php php php php php php php$modulePathsphp php php php=php php$helperphp-php>getModulePathsphp(php)php;
-php php php php php php php php php$modulesphp php php php php php php php=php php$helperphp-php>getModulesphp(php)php;
-php php php php php php php php php$onLoadActionsphp php=php php$helperphp-php>getOnLoadActionsphp(php)php;
-php php php php php php php php php$javascriptphp php php php php=php php$helperphp-php>getJavascriptphp(php)php;
+    /**
+     * Generate module layer script
+     *
+     * @return string
+     */
+    public function generateLayerScript()
+    {
+        $helper        = $this->getDojoHelper();
+        $layerName     = $this->getLayerName();
+        $modulePaths   = $helper->getModulePaths();
+        $modules       = $helper->getModules();
+        $onLoadActions = $helper->getOnLoadActions();
+        $javascript    = $helper->getJavascript();
 
-php php php php php php php php php$contentphp php=php php'dojophp.providephp(php"php'php php.php php$layerNamephp php.php php'php"php)php;php'php php.php php"php\nphp\nphp(functionphp(php)php{php\nphp"php;
+        $content = 'dojo.provide("' . $layerName . '");' . "\n\n(function(){\n";
 
-php php php php php php php php foreachphp php(php$modulePathsphp asphp php$modulephp php=php>php php$pathphp)php php{
-php php php php php php php php php php php php php$contentphp php.php=php sprintfphp(php"dojophp.registerModulePathphp(php\php"php%sphp\php"php,php php\php"php%sphp\php"php)php;php\nphp"php,php php$modulephp,php php$pathphp)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$modulesphp asphp php$modulephp)php php{
-php php php php php php php php php php php php php$contentphp php.php=php sprintfphp(php"dojophp.requirephp(php\php"php%sphp\php"php)php;php\nphp"php,php php$modulephp)php;
-php php php php php php php php php}
+        foreach ($modulePaths as $module => $path) {
+            $content .= sprintf("dojo.registerModulePath(\"%s\", \"%s\");\n", $module, $path);
+        }
+        foreach ($modules as $module) {
+            $content .= sprintf("dojo.require(\"%s\");\n", $module);
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>consumeOnLoadphp(php)php)php php{
-php php php php php php php php php php php php foreachphp php(php$helperphp-php>getOnLoadActionsphp(php)php asphp php$callbackphp)php php{
-php php php php php php php php php php php php php php php php php$contentphp php.php=php sprintfphp(php"dojophp.addOnLoadphp(php%sphp)php;php\nphp"php,php php$callbackphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>consumeJavascriptphp(php)php)php php{
-php php php php php php php php php php php php php$javascriptphp php=php implodephp(php"php\nphp"php,php php$helperphp-php>getJavascriptphp(php)php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$javascriptphp)php)php php{
-php php php php php php php php php php php php php php php php php$contentphp php.php=php php"php\nphp"php php.php php$javascriptphp php.php php"php\nphp"php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($this->consumeOnLoad()) {
+            foreach ($helper->getOnLoadActions() as $callback) {
+                $content .= sprintf("dojo.addOnLoad(%s);\n", $callback);
+            }
+        }
+        if ($this->consumeJavascript()) {
+            $javascript = implode("\n", $helper->getJavascript());
+            if (!empty($javascript)) {
+                $content .= "\n" . $javascript . "\n";
+            }
+        }
 
-php php php php php php php php php$contentphp php.php=php php"php}php)php(php)php;php"php;
+        $content .= "})();";
 
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
+        return $content;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatephp buildphp profile
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp generateBuildProfilephp(php)
-php php php php php{
-php php php php php php php php php$profileOptionsphp php php=php php$thisphp-php>getProfileOptionsphp(php)php;
-php php php php php php php php php$layerNamephp php php php php php php php=php php$thisphp-php>getLayerNamephp(php)php;
-php php php php php php php php php$layerScriptPathphp php=php php$thisphp-php>getLayerScriptPathphp(php)php;
-php php php php php php php php php$profilePrefixesphp php=php php$thisphp-php>getProfilePrefixesphp(php)php;
+    /**
+     * Generate build profile
+     *
+     * @return string
+     */
+    public function generateBuildProfile()
+    {
+        $profileOptions  = $this->getProfileOptions();
+        $layerName       = $this->getLayerName();
+        $layerScriptPath = $this->getLayerScriptPath();
+        $profilePrefixes = $this->getProfilePrefixes();
 
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'releaseNamephp'php,php php$profileOptionsphp)php)php php{
-php php php php php php php php php php php php php$profileOptionsphp[php'releaseNamephp'php]php php=php substrphp(php$layerNamephp,php php0php,php strposphp(php$layerNamephp,php php'php.php'php)php)php;
-php php php php php php php php php}
+        if (!array_key_exists('releaseName', $profileOptions)) {
+            $profileOptions['releaseName'] = substr($layerName, 0, strpos($layerName, '.'));
+        }
 
-php php php php php php php php php$profilephp php=php php$profileOptionsphp;
-php php php php php php php php php$profilephp[php'layersphp'php]php php=php arrayphp(arrayphp(
-php php php php php php php php php php php php php'namephp'php php php php php php php php php php php php php php php=php>php php$layerScriptPathphp,
-php php php php php php php php php php php php php'layerDependenciesphp'php php=php>php arrayphp(php)php,
-php php php php php php php php php php php php php'dependenciesphp'php php php php php php php=php>php arrayphp(php$layerNamephp)php,
-php php php php php php php php php)php)php;
-php php php php php php php php php$profilephp[php'prefixesphp'php]php php=php arrayphp_valuesphp(php$profilePrefixesphp)php;
+        $profile = $profileOptions;
+        $profile['layers'] = array(array(
+            'name'              => $layerScriptPath,
+            'layerDependencies' => array(),
+            'dependencies'      => array($layerName),
+        ));
+        $profile['prefixes'] = array_values($profilePrefixes);
 
-php php php php php php php php returnphp php'dependenciesphp php=php php'php php.php php$thisphp-php>php_filterJsonProfileToJavascriptphp(php$profilephp)php php.php php'php;php'php;
-php php php php php}
+        return 'dependencies = ' . $this->_filterJsonProfileToJavascript($profile) . ';';
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp modulephp prefix
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$module
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_getPrefixphp(php$modulephp)
-php php php php php{
-php php php php php php php php php$segmentsphp php php=php explodephp(php'php.php'php,php php$modulephp,php php2php)php;
-php php php php php php php php returnphp php$segmentsphp[php0php]php;
-php php php php php}
+    /**
+     * Retrieve module prefix
+     *
+     * @param  string $module
+     * @return void
+     */
+    protected function _getPrefix($module)
+    {
+        $segments  = explode('.', $module, 2);
+        return $segments[0];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Filterphp aphp JSONphp buildphp profilephp tophp JavaScript
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$profile
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_filterJsonProfileToJavascriptphp(php$profilephp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php php$profilephp php=php Zendphp_Jsonphp:php:encodephp(php$profilephp)php;
-php php php php php php php php php$profilephp php=php trimphp(php$profilephp,php php'php"php'php)php;
-php php php php php php php php php$profilephp php=php pregphp_replacephp(php'php/php'php php.php pregphp_quotephp(php'php\php\php'php)php php.php php'php/php'php,php php'php'php,php php$profilephp)php;
-php php php php php php php php returnphp php$profilephp;
-php php php php php}
-php}
+    /**
+     * Filter a JSON build profile to JavaScript
+     *
+     * @param  string $profile
+     * @return string
+     */
+    protected function _filterJsonProfileToJavascript($profile)
+    {
+        require_once 'Zend/Json.php';
+        $profile = Zend_Json::encode($profile);
+        $profile = trim($profile, '"');
+        $profile = preg_replace('/' . preg_quote('\\') . '/', '', $profile);
+        return $profile;
+    }
+}

@@ -1,151 +1,151 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp View
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php ComboBoxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @subpackage View
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: ComboBox.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Zendphp_Dojophp_Viewphp_Helperphp_Dijitphp php*php/
-requirephp_oncephp php'Zendphp/Dojophp/Viewphp/Helperphp/Dijitphp.phpphp'php;
+/** Zend_Dojo_View_Helper_Dijit */
+require_once 'Zend/Dojo/View/Helper/Dijit.php';
 
-php/php*php*
-php php*php Dojophp ComboBoxphp dijit
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Dojophp_Viewphp_Helperphp_Dijit
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp View
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php php*php/
-classphp Zendphp_Dojophp_Viewphp_Helperphp_ComboBoxphp extendsphp Zendphp_Dojophp_Viewphp_Helperphp_Dijit
-php{
-php php php php php/php*php*
-php php php php php php*php Dijitphp beingphp used
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_dijitphp php php=php php'dijitphp.formphp.ComboBoxphp'php;
+/**
+ * Dojo ComboBox dijit
+ *
+ * @uses       Zend_Dojo_View_Helper_Dijit
+ * @package    Zend_Dojo
+ * @subpackage View
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+  */
+class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
+{
+    /**
+     * Dijit being used
+     * @var string
+     */
+    protected $_dijit  = 'dijit.form.ComboBox';
 
-php php php php php/php*php*
-php php php php php php*php HTMLphp elementphp type
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_elementTypephp php=php php'textphp'php;
+    /**
+     * HTML element type
+     * @var string
+     */
+    protected $_elementType = 'text';
 
-php php php php php/php*php*
-php php php php php php*php Dojophp modulephp tophp use
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_modulephp php=php php'dijitphp.formphp.ComboBoxphp'php;
+    /**
+     * Dojo module to use
+     * @var string
+     */
+    protected $_module = 'dijit.form.ComboBox';
 
-php php php php php/php*php*
-php php php php php php*php dijitphp.formphp.ComboBox
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$id
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@paramphp php arrayphp php$paramsphp php Parametersphp tophp usephp forphp dijitphp creation
-php php php php php php*php php@paramphp php arrayphp php$attribsphp HTMLphp attributes
-php php php php php php*php php@paramphp php arrayphp|nullphp php$optionsphp Selectphp options
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp comboBoxphp(php$idphp,php php$valuephp php=php nullphp,php arrayphp php$paramsphp php=php arrayphp(php)php,php arrayphp php$attribsphp php=php arrayphp(php)php,php arrayphp php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$htmlphp php=php php'php'php;
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'idphp'php,php php$attribsphp)php)php php{
-php php php php php php php php php php php php php$attribsphp[php'idphp'php]php php=php php$idphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'storephp'php,php php$paramsphp)php php&php&php isphp_arrayphp(php$paramsphp[php'storephp'php]php)php)php php{
-php php php php php php php php php php php php php/php/php usingphp dojophp.dataphp datastore
-php php php php php php php php php php php php ifphp php(falsephp php!php=php=php php(php$storephp php=php php$thisphp-php>php_renderStorephp(php$paramsphp[php'storephp'php]php,php php$idphp)php)php)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php'storephp'php]php php=php php$paramsphp[php'storephp'php]php[php'storephp'php]php;
-php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$storephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$htmlphp php.php=php php$storephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$htmlphp php.php=php php$thisphp-php>php_createFormElementphp(php$idphp,php php$valuephp,php php$paramsphp,php php$attribsphp)php;
-php php php php php php php php php php php php php php php php returnphp php$htmlphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$paramsphp[php'storephp'php]php)php;
-php php php php php php php php php}php elseifphp php(arrayphp_keyphp_existsphp(php'storephp'php,php php$paramsphp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'storeTypephp'php,php php$paramsphp)php)php php{
-php php php php php php php php php php php php php php php php php$storeParamsphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php php php php php'storephp'php php=php>php php$paramsphp[php'storephp'php]php,
-php php php php php php php php php php php php php php php php php php php php php'typephp'php php php=php>php php$paramsphp[php'storeTypephp'php]php,
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php'storeTypephp'php]php)php;
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'storeParamsphp'php,php php$paramsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$storeParamsphp[php'paramsphp'php]php php=php php$paramsphp[php'storeParamsphp'php]php;
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php'storeParamsphp'php]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(falsephp php!php=php=php php(php$storephp php=php php$thisphp-php>php_renderStorephp(php$storeParamsphp,php php$idphp)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(isphp_stringphp(php$storephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$htmlphp php.php=php php$storephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$htmlphp php.php=php php$thisphp-php>php_createFormElementphp(php$idphp,php php$valuephp,php php$paramsphp,php php$attribsphp)php;
-php php php php php php php php php php php php returnphp php$htmlphp;
-php php php php php php php php php}
+    /**
+     * dijit.form.ComboBox
+     *
+     * @param  int $id
+     * @param  mixed $value
+     * @param  array $params  Parameters to use for dijit creation
+     * @param  array $attribs HTML attributes
+     * @param  array|null $options Select options
+     * @return string
+     */
+    public function comboBox($id, $value = null, array $params = array(), array $attribs = array(), array $options = null)
+    {
+        $html = '';
+        if (!array_key_exists('id', $attribs)) {
+            $attribs['id'] = $id;
+        }
+        if (array_key_exists('store', $params) && is_array($params['store'])) {
+            // using dojo.data datastore
+            if (false !== ($store = $this->_renderStore($params['store'], $id))) {
+                $params['store'] = $params['store']['store'];
+                if (is_string($store)) {
+                    $html .= $store;
+                }
+                $html .= $this->_createFormElement($id, $value, $params, $attribs);
+                return $html;
+            }
+            unset($params['store']);
+        } elseif (array_key_exists('store', $params)) {
+            if (array_key_exists('storeType', $params)) {
+                $storeParams = array(
+                    'store' => $params['store'],
+                    'type'  => $params['storeType'],
+                );
+                unset($params['storeType']);
+                if (array_key_exists('storeParams', $params)) {
+                    $storeParams['params'] = $params['storeParams'];
+                    unset($params['storeParams']);
+                }
+                if (false !== ($store = $this->_renderStore($storeParams, $id))) {
+                    if (is_string($store)) {
+                        $html .= $store;
+                    }
+                }
+            }
+            $html .= $this->_createFormElement($id, $value, $params, $attribs);
+            return $html;
+        }
 
-php php php php php php php php php/php/php dophp asphp normalphp select
-php php php php php php php php php$attribsphp php=php php$thisphp-php>php_prepareDijitphp(php$attribsphp,php php$paramsphp,php php'elementphp'php)php;
-php php php php php php php php returnphp php$thisphp-php>viewphp-php>formSelectphp(php$idphp,php php$valuephp,php php$attribsphp,php php$optionsphp)php;
-php php php php php}
+        // do as normal select
+        $attribs = $this->_prepareDijit($attribs, $params, 'element');
+        return $this->view->formSelect($id, $value, $attribs, $options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp dataphp storephp element
-php php php php php php*
-php php php php php php*php Rendersphp tophp dojophp viewphp helper
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp stringphp|false
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderStorephp(arrayphp php$paramsphp,php php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'storephp'php,php php$paramsphp)php php|php|php php!arrayphp_keyphp_existsphp(php'typephp'php,php php$paramsphp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Render data store element
+     *
+     * Renders to dojo view helper
+     *
+     * @param  array $params
+     * @return string|false
+     */
+    protected function _renderStore(array $params, $id)
+    {
+        if (!array_key_exists('store', $params) || !array_key_exists('type', $params)) {
+            return false;
+        }
 
-php php php php php php php php php$thisphp-php>dojophp-php>requireModulephp(php$paramsphp[php'typephp'php]php)php;
+        $this->dojo->requireModule($params['type']);
 
-php php php php php php php php php$extraParamsphp php=php arrayphp(php)php;
-php php php php php php php php php$storeParamsphp php=php arrayphp(
-php php php php php php php php php php php php php'dojoTypephp'php php=php>php php$paramsphp[php'typephp'php]php,
-php php php php php php php php php php php php php'jsIdphp'php php php php php php=php>php php$paramsphp[php'storephp'php]php,
-php php php php php php php php php)php;
+        $extraParams = array();
+        $storeParams = array(
+            'dojoType' => $params['type'],
+            'jsId'     => $params['store'],
+        );
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'paramsphp'php,php php$paramsphp)php)php php{
-php php php php php php php php php php php php php$storeParamsphp php=php arrayphp_mergephp(php$storeParamsphp,php php$paramsphp[php'paramsphp'php]php)php;
-php php php php php php php php php php php php php$extraParamsphp php=php php$paramsphp[php'paramsphp'php]php;
-php php php php php php php php php}
+        if (array_key_exists('params', $params)) {
+            $storeParams = array_merge($storeParams, $params['params']);
+            $extraParams = $params['params'];
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_useProgrammaticphp(php)php)php php{
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_useProgrammaticNoScriptphp(php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$thisphp-php>dojophp-php>addJavascriptphp(php'varphp php'php php.php php$storeParamsphp[php'jsIdphp'php]php php.php php"php;php\nphp"php)php;
-php php php php php php php php php php php php php php php php php$jsphp php=php php$storeParamsphp[php'jsIdphp'php]php php.php php'php php=php php'
-php php php php php php php php php php php php php php php php php php php php php.php php'newphp php'php php.php php$storeParamsphp[php'dojoTypephp'php]php php.php php'php(php'
-php php php php php php php php php php php php php php php php php php php php php.php php php php php Zendphp_Jsonphp:php:encodephp(php$extraParamsphp)
-php php php php php php php php php php php php php php php php php php php php php.php php"php)php;php\nphp"php;
-php php php php php php php php php php php php php php php php php$jsphp php=php php"functionphp(php)php php{php\nphp$jsphp\nphp}php"php;
-php php php php php php php php php php php php php php php php php$thisphp-php>dojophp-php>php_addZendLoadphp(php$jsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+        if ($this->_useProgrammatic()) {
+            if (!$this->_useProgrammaticNoScript()) {
+                require_once 'Zend/Json.php';
+                $this->dojo->addJavascript('var ' . $storeParams['jsId'] . ";\n");
+                $js = $storeParams['jsId'] . ' = '
+                    . 'new ' . $storeParams['dojoType'] . '('
+                    .     Zend_Json::encode($extraParams)
+                    . ");\n";
+                $js = "function() {\n$js\n}";
+                $this->dojo->_addZendLoad($js);
+            }
+            return true;
+        }
 
-php php php php php php php php returnphp php'php<divphp'php php.php php$thisphp-php>php_htmlAttribsphp(php$storeParamsphp)php php.php php'php><php/divphp>php'php;
-php php php php php}
-php}
+        return '<div' . $this->_htmlAttribs($storeParams) . '></div>';
+    }
+}

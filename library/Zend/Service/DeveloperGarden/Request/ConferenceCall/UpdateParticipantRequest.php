@@ -1,138 +1,138 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php UpdateParticipantRequestphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: UpdateParticipantRequest.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Requestphp/RequestAbstractphp.phpphp'php;
+/**
+ * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
+ */
+require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_UpdateParticipantRequest
-php php php php extendsphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_RequestAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php thephp conferencephp id
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$conferenceIdphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Request_ConferenceCall_UpdateParticipantRequest
+    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+{
+    /**
+     * the conference id
+     *
+     * @var string
+     */
+    public $conferenceId = null;
 
-php php php php php/php*php*
-php php php php php php*php thephp participantphp id
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$participantIdphp php=php nullphp;
+    /**
+     * the participant id
+     *
+     * @var string
+     */
+    public $participantId = null;
 
-php php php php php/php*php*
-php php php php php php*php conferencephp participant
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ParticipantDetail
-php php php php php php*php/
-php php php php publicphp php$participantphp php=php nullphp;
+    /**
+     * conference participant
+     *
+     * @var Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
+     */
+    public $participant = null;
 
-php php php php php/php*php*
-php php php php php php*php possiblephp action
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php publicphp php$actionphp php=php nullphp;
+    /**
+     * possible action
+     *
+     * @var integer
+     */
+    public $action = null;
 
-php php php php php/php*php*
-php php php php php php*php constructor
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$environment
-php php php php php php*php php@paramphp stringphp php$conferenceId
-php php php php php php*php php@paramphp stringphp php$participantId
-php php php php php php*php php@paramphp integerphp php$action
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ParticipantDetailphp php$participant
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$environmentphp,php php$conferenceIdphp,php php$participantIdphp,
-php php php php php php php php php$actionphp php=php nullphp,
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ParticipantDetailphp php$participantphp php=php null
-php php php php php)php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$environmentphp)php;
-php php php php php php php php php$thisphp-php>setConferenceIdphp(php$conferenceIdphp)
-php php php php php php php php php php php php php php-php>setParticipantIdphp(php$participantIdphp)
-php php php php php php php php php php php php php php-php>setActionphp(php$actionphp)
-php php php php php php php php php php php php php php-php>setParticipantphp(php$participantphp)php;
-php php php php php}
+    /**
+     * constructor
+     *
+     * @param integer $environment
+     * @param string $conferenceId
+     * @param string $participantId
+     * @param integer $action
+     * @param Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail $participant
+     */
+    public function __construct($environment, $conferenceId, $participantId,
+        $action = null,
+        Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail $participant = null
+    ) {
+        parent::__construct($environment);
+        $this->setConferenceId($conferenceId)
+             ->setParticipantId($participantId)
+             ->setAction($action)
+             ->setParticipant($participant);
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp thephp conferencephp id
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$conferenceId
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_UpdateParticipantRequest
-php php php php php php*php/
-php php php php publicphp functionphp setConferenceIdphp(php$conferenceIdphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>conferenceIdphp php=php php$conferenceIdphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * set the conference id
+     *
+     * @param string $conferenceId
+     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_UpdateParticipantRequest
+     */
+    public function setConferenceId($conferenceId)
+    {
+        $this->conferenceId = $conferenceId;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp thephp participantphp id
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$participantId
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_UpdateParticipantRequest
-php php php php php php*php/
-php php php php publicphp functionphp setParticipantIdphp(php$participantIdphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>participantIdphp php=php php$participantIdphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * set the participant id
+     *
+     * @param string $participantId
+     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_UpdateParticipantRequest
+     */
+    public function setParticipantId($participantId)
+    {
+        $this->participantId = $participantId;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp action
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$action
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_UpdateParticipantRequest
-php php php php php php*php/
-php php php php publicphp functionphp setActionphp(php$actionphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$actionphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp:php:checkParticipantActionphp(php$actionphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>actionphp php=php php$actionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * sets new action
+     *
+     * @param integer $action
+     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_UpdateParticipantRequest
+     */
+    public function setAction($action = null)
+    {
+        if ($action !== null) {
+            Zend_Service_DeveloperGarden_ConferenceCall::checkParticipantAction($action);
+        }
+        $this->action = $action;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setsphp newphp participant
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ParticipantDetailphp php$participant
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Requestphp_ConferenceCallphp_UpdateParticipantRequest
-php php php php php php*php/
-php php php php publicphp functionphp setParticipantphp(
-php php php php php php php php Zendphp_Servicephp_DeveloperGardenphp_ConferenceCallphp_ParticipantDetailphp php$participantphp php=php null
-php php php php php)php php{
-php php php php php php php php php$thisphp-php>participantphp php=php php$participantphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php}
+    /**
+     * sets new participant
+     *
+     * @param Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail $participant
+     * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_UpdateParticipantRequest
+     */
+    public function setParticipant(
+        Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail $participant = null
+    ) {
+        $this->participant = $participant;
+        return $this;
+    }
+}

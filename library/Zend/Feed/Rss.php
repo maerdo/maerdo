@@ -1,529 +1,529 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Rssphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Abstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Entryphp_Rss
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Entryphp/Rssphp.phpphp'php;
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Rss.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php RSSphp channelphp class
-php php*
-php php*php Thephp Zendphp_Feedphp_Rssphp classphp isphp aphp concretephp subclassphp of
-php php*php Zendphp_Feedphp_Abstractphp meantphp forphp representingphp RSSphp channelsphp.php Itphp doesphp not
-php php*php addphp anyphp methodsphp tophp itsphp parentphp,php justphp providesphp aphp classnamephp tophp check
-php php*php againstphp withphp thephp instanceofphp operatorphp,php andphp expectsphp tophp bephp handling
-php php*php RSSphp-formattedphp dataphp insteadphp ofphp Atomphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feed
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Rssphp extendsphp Zendphp_Feedphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp classnamephp forphp individualphp channelphp elementsphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_entryClassNamephp php=php php'Zendphp_Feedphp_Entryphp_Rssphp'php;
+/**
+ * @see Zend_Feed_Abstract
+ */
+require_once 'Zend/Feed/Abstract.php';
 
-php php php php php/php*php*
-php php php php php php*php Thephp elementphp namephp forphp individualphp channelphp elementsphp php(RSSphp php<itemphp>sphp)php.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_entryElementNamephp php=php php'itemphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp defaultphp namespacephp forphp RSSphp channelsphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_defaultNamespacephp php=php php'rssphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Overridephp Zendphp_Feedphp_Abstractphp tophp setphp upphp thephp php$php_elementphp andphp php$php_entriesphp aliasesphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_wakeupphp(php)php;
-
-php php php php php php php php php/php/php Findphp thephp basephp channelphp elementphp andphp createphp anphp aliasphp tophp itphp.
-php php php php php php php php php$rdfTagsphp php=php php$thisphp-php>php_elementphp-php>getElementsByTagNameNSphp(php'httpphp:php/php/wwwphp.wphp3php.orgphp/php1php9php9php9php/php0php2php/php2php2php-rdfphp-syntaxphp-nsphp#php'php,php php'RDFphp'php)php;
-php php php php php php php php ifphp php(php$rdfTagsphp-php>lengthphp php!php=php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_elementphp php=php php$rdfTagsphp-php>itemphp(php0php)php;
-php php php php php php php php php}php elsephp php php{
-php php php php php php php php php php php php php$thisphp-php>php_elementphp php=php php$thisphp-php>php_elementphp-php>getElementsByTagNamephp(php'channelphp'php)php-php>itemphp(php0php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$thisphp-php>php_elementphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Nophp rootphp php<channelphp>php elementphp foundphp,php cannotphp parsephp channelphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Findphp thephp entriesphp andphp savephp aphp pointerphp tophp themphp forphp speedphp and
-php php php php php php php php php/php/php simplicityphp.
-php php php php php php php php php$thisphp-php>php_buildEntryCachephp(php)php;
-php php php php php}
+/**
+ * @see Zend_Feed_Entry_Rss
+ */
+require_once 'Zend/Feed/Entry/Rss.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Makephp accessingphp somephp individualphp elementsphp ofphp thephp channelphp easierphp.
-php php php php php php*
-php php php php php php*php Specialphp accessorsphp php'itemphp'php andphp php'itemsphp'php arephp providedphp sophp thatphp if
-php php php php php php*php youphp wishphp tophp iteratephp overphp anphp RSSphp channelphp'sphp itemsphp,php youphp canphp dophp so
-php php php php php php*php usingphp foreachphp php(php$channelphp-php>itemsphp asphp php$itemphp)php orphp foreach
-php php php php php php*php php(php$channelphp-php>itemphp asphp php$itemphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$varphp Thephp propertyphp tophp accessphp.
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$varphp)
-php php php php php{
-php php php php php php php php switchphp php(php$varphp)php php{
-php php php php php php php php php php php php casephp php'itemphp'php:
-php php php php php php php php php php php php php php php php php/php/php fallphp throughphp tophp thephp nextphp case
-php php php php php php php php php php php php casephp php'itemsphp'php:
-php php php php php php php php php php php php php php php php returnphp php$thisphp;
+/**
+ * RSS channel class
+ *
+ * The Zend_Feed_Rss class is a concrete subclass of
+ * Zend_Feed_Abstract meant for representing RSS channels. It does not
+ * add any methods to its parent, just provides a classname to check
+ * against with the instanceof operator, and expects to be handling
+ * RSS-formatted data instead of Atom.
+ *
+ * @category   Zend
+ * @package    Zend_Feed
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Rss extends Zend_Feed_Abstract
+{
+    /**
+     * The classname for individual channel elements.
+     *
+     * @var string
+     */
+    protected $_entryClassName = 'Zend_Feed_Entry_Rss';
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php returnphp parentphp:php:php_php_getphp(php$varphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * The element name for individual channel elements (RSS <item>s).
+     *
+     * @var string
+     */
+    protected $_entryElementName = 'item';
 
-php php php php php/php*php*
-php php php php php php*php Generatephp thephp headerphp ofphp thephp feedphp whenphp workingphp inphp writephp mode
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$arrayphp thephp dataphp tophp use
-php php php php php php*php php@returnphp DOMElementphp rootphp node
-php php php php php php*php/
-php php php php protectedphp functionphp php_mapFeedHeadersphp(php$arrayphp)
-php php php php php{
-php php php php php php php php php$channelphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'channelphp'php)php;
+    /**
+     * The default namespace for RSS channels.
+     *
+     * @var string
+     */
+    protected $_defaultNamespace = 'rss';
 
-php php php php php php php php php$titlephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'titlephp'php)php;
-php php php php php php php php php$titlephp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$arrayphp-php>titlephp)php)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$titlephp)php;
+    /**
+     * Override Zend_Feed_Abstract to set up the $_element and $_entries aliases.
+     *
+     * @return void
+     * @throws Zend_Feed_Exception
+     */
+    public function __wakeup()
+    {
+        parent::__wakeup();
 
-php php php php php php php php php$linkphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'linkphp'php,php php$arrayphp-php>linkphp)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$linkphp)php;
+        // Find the base channel element and create an alias to it.
+        $rdfTags = $this->_element->getElementsByTagNameNS('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'RDF');
+        if ($rdfTags->length != 0) {
+            $this->_element = $rdfTags->item(0);
+        } else  {
+            $this->_element = $this->_element->getElementsByTagName('channel')->item(0);
+        }
+        if (!$this->_element) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('No root <channel> element found, cannot parse channel.');
+        }
 
-php php php php php php php php php$descphp php=php issetphp(php$arrayphp-php>descriptionphp)php php?php php$arrayphp-php>descriptionphp php:php php'php'php;
-php php php php php php php php php$descriptionphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'descriptionphp'php)php;
-php php php php php php php php php$descriptionphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$descphp)php)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$descriptionphp)php;
-
-php php php php php php php php php$pubdatephp php=php issetphp(php$arrayphp-php>lastUpdatephp)php php?php php$arrayphp-php>lastUpdatephp php:php timephp(php)php;
-php php php php php php php php php$pubdatephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'pubDatephp'php,php datephp(DATEphp_RSSphp,php php$pubdatephp)php)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$pubdatephp)php;
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>publishedphp)php)php php{
-php php php php php php php php php php php php php$lastBuildDatephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'lastBuildDatephp'php,php datephp(DATEphp_RSSphp,php php$arrayphp-php>publishedphp)php)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$lastBuildDatephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$editorphp php=php php'php'php;
-php php php php php php php php ifphp php(php!emptyphp(php$arrayphp-php>emailphp)php)php php{
-php php php php php php php php php php php php php$editorphp php.php=php php$arrayphp-php>emailphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$arrayphp-php>authorphp)php)php php{
-php php php php php php php php php php php php php$editorphp php.php=php php'php php(php'php php.php php$arrayphp-php>authorphp php.php php'php)php'php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$editorphp)php)php php{
-php php php php php php php php php php php php php$authorphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'managingEditorphp'php,php ltrimphp(php$editorphp)php)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$authorphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>webmasterphp)php)php php{
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'webMasterphp'php,php php$arrayphp-php>webmasterphp)php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!emptyphp(php$arrayphp-php>copyrightphp)php)php php{
-php php php php php php php php php php php php php$copyrightphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'copyrightphp'php,php php$arrayphp-php>copyrightphp)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$copyrightphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>categoryphp)php)php php{
-php php php php php php php php php php php php php$categoryphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'categoryphp'php,php php$arrayphp-php>categoryphp)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$categoryphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!emptyphp(php$arrayphp-php>imagephp)php)php php{
-php php php php php php php php php php php php php$imagephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'imagephp'php)php;
-php php php php php php php php php php php php php$urlphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'urlphp'php,php php$arrayphp-php>imagephp)php;
-php php php php php php php php php php php php php$imagephp-php>appendChildphp(php$urlphp)php;
-php php php php php php php php php php php php php$imagetitlephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'titlephp'php)php;
-php php php php php php php php php php php php php$imagetitlephp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$arrayphp-php>titlephp)php)php;
-php php php php php php php php php php php php php$imagephp-php>appendChildphp(php$imagetitlephp)php;
-php php php php php php php php php php php php php$imagelinkphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'linkphp'php,php php$arrayphp-php>linkphp)php;
-php php php php php php php php php php php php php$imagephp-php>appendChildphp(php$imagelinkphp)php;
-
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$imagephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$generatorphp php=php php!emptyphp(php$arrayphp-php>generatorphp)php php?php php$arrayphp-php>generatorphp php:php php'Zendphp_Feedphp'php;
-php php php php php php php php php$generatorphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'generatorphp'php,php php$generatorphp)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$generatorphp)php;
-
-php php php php php php php php ifphp php(php!emptyphp(php$arrayphp-php>languagephp)php)php php{
-php php php php php php php php php php php php php$languagephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'languagephp'php,php php$arrayphp-php>languagephp)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$languagephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$docphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'docsphp'php,php php'httpphp:php/php/blogsphp.lawphp.harvardphp.eduphp/techphp/rssphp'php)php;
-php php php php php php php php php$channelphp-php>appendChildphp(php$docphp)php;
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>cloudphp)php)php php{
-php php php php php php php php php php php php php$cloudphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'cloudphp'php)php;
-php php php php php php php php php php php php php$cloudphp-php>setAttributephp(php'domainphp'php,php php$arrayphp-php>cloudphp[php'uriphp'php]php-php>getHostphp(php)php)php;
-php php php php php php php php php php php php php$cloudphp-php>setAttributephp(php'portphp'php,php php$arrayphp-php>cloudphp[php'uriphp'php]php-php>getPortphp(php)php)php;
-php php php php php php php php php php php php php$cloudphp-php>setAttributephp(php'pathphp'php,php php$arrayphp-php>cloudphp[php'uriphp'php]php-php>getPathphp(php)php)php;
-php php php php php php php php php php php php php$cloudphp-php>setAttributephp(php'registerProcedurephp'php,php php$arrayphp-php>cloudphp[php'procedurephp'php]php)php;
-php php php php php php php php php php php php php$cloudphp-php>setAttributephp(php'protocolphp'php,php php$arrayphp-php>cloudphp[php'protocolphp'php]php)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$cloudphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>ttlphp)php)php php{
-php php php php php php php php php php php php php$ttlphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'ttlphp'php,php php$arrayphp-php>ttlphp)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$ttlphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>ratingphp)php)php php{
-php php php php php php php php php php php php php$ratingphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'ratingphp'php,php php$arrayphp-php>ratingphp)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$ratingphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>textInputphp)php)php php{
-php php php php php php php php php php php php php$textinputphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'textInputphp'php)php;
-php php php php php php php php php php php php php$textinputphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'titlephp'php,php php$arrayphp-php>textInputphp[php'titlephp'php]php)php)php;
-php php php php php php php php php php php php php$textinputphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'descriptionphp'php,php php$arrayphp-php>textInputphp[php'descriptionphp'php]php)php)php;
-php php php php php php php php php php php php php$textinputphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'namephp'php,php php$arrayphp-php>textInputphp[php'namephp'php]php)php)php;
-php php php php php php php php php php php php php$textinputphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'linkphp'php,php php$arrayphp-php>textInputphp[php'linkphp'php]php)php)php;
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$textinputphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>skipHoursphp)php)php php{
-php php php php php php php php php php php php php$skipHoursphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'skipHoursphp'php)php;
-php php php php php php php php php php php php foreachphp php(php$arrayphp-php>skipHoursphp asphp php$hourphp)php php{
-php php php php php php php php php php php php php php php php php$skipHoursphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'hourphp'php,php php$hourphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$skipHoursphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>skipDaysphp)php)php php{
-php php php php php php php php php php php php php$skipDaysphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'skipDaysphp'php)php;
-php php php php php php php php php php php php foreachphp php(php$arrayphp-php>skipDaysphp asphp php$dayphp)php php{
-php php php php php php php php php php php php php php php php php$skipDaysphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createElementphp(php'dayphp'php,php php$dayphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$channelphp-php>appendChildphp(php$skipDaysphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_buildiTunesphp(php$channelphp,php php$arrayphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$channelphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp thephp iTunesphp extensionsphp tophp aphp rootphp node
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php$root
-php php php php php php*php php@paramphp php arrayphp php$array
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_buildiTunesphp(DOMElementphp php$rootphp,php php$arrayphp)
-php php php php php{
-php php php php php php php php php/php*php authorphp nodephp php*php/
-php php php php php php php php php$authorphp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>authorphp)php)php php{
-php php php php php php php php php php php php php$authorphp php=php php$arrayphp-php>itunesphp-php>authorphp;
-php php php php php php php php php}php elseifphp php(issetphp(php$arrayphp-php>authorphp)php)php php{
-php php php php php php php php php php php php php$authorphp php=php php$arrayphp-php>authorphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$authorphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:authorphp'php,php php$authorphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php*php ownerphp nodephp php*php/
-php php php php php php php php php$authorphp php=php php'php'php;
-php php php php php php php php php$emailphp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>ownerphp)php)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>ownerphp[php'namephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$authorphp php=php php$arrayphp-php>itunesphp-php>ownerphp[php'namephp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>ownerphp[php'emailphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$emailphp php=php php$arrayphp-php>itunesphp-php>ownerphp[php'emailphp'php]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$authorphp)php php&php&php issetphp(php$arrayphp-php>authorphp)php)php php{
-php php php php php php php php php php php php php$authorphp php=php php$arrayphp-php>authorphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(emptyphp(php$emailphp)php php&php&php issetphp(php$arrayphp-php>emailphp)php)php php{
-php php php php php php php php php php php php php$emailphp php=php php$arrayphp-php>emailphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$authorphp)php php|php|php php!emptyphp(php$emailphp)php)php php{
-php php php php php php php php php php php php php$ownerphp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:ownerphp'php)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$authorphp)php)php php{
-php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:namephp'php,php php$authorphp)php;
-php php php php php php php php php php php php php php php php php$ownerphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$emailphp)php)php php{
-php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:emailphp'php,php php$emailphp)php;
-php php php php php php php php php php php php php php php php php$ownerphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$ownerphp)php;
-php php php php php php php php php}
-php php php php php php php php php$imagephp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>imagephp)php)php php{
-php php php php php php php php php php php php php$imagephp php=php php$arrayphp-php>itunesphp-php>imagephp;
-php php php php php php php php php}php elseifphp php(issetphp(php$arrayphp-php>imagephp)php)php php{
-php php php php php php php php php php php php php$imagephp php=php php$arrayphp-php>imagephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$imagephp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:imagephp'php)php;
-php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'hrefphp'php,php php$imagephp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php php$subtitlephp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>subtitlephp)php)php php{
-php php php php php php php php php php php php php$subtitlephp php=php php$arrayphp-php>itunesphp-php>subtitlephp;
-php php php php php php php php php}php elseifphp php(issetphp(php$arrayphp-php>descriptionphp)php)php php{
-php php php php php php php php php php php php php$subtitlephp php=php php$arrayphp-php>descriptionphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$subtitlephp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:subtitlephp'php,php php$subtitlephp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php php$summaryphp php=php php'php'php;
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>summaryphp)php)php php{
-php php php php php php php php php php php php php$summaryphp php=php php$arrayphp-php>itunesphp-php>summaryphp;
-php php php php php php php php php}php elseifphp php(issetphp(php$arrayphp-php>descriptionphp)php)php php{
-php php php php php php php php php php php php php$summaryphp php=php php$arrayphp-php>descriptionphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$summaryphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:summaryphp'php,php php$summaryphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>blockphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:blockphp'php,php php$arrayphp-php>itunesphp-php>blockphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>explicitphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:explicitphp'php,php php$arrayphp-php>itunesphp-php>explicitphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>keywordsphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:keywordsphp'php,php php$arrayphp-php>itunesphp-php>keywordsphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>newphp_feedphp_urlphp)php)php php{
-php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:newphp-feedphp-urlphp'php,php php$arrayphp-php>itunesphp-php>newphp_feedphp_urlphp)php;
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$arrayphp-php>itunesphp-php>categoryphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$arrayphp-php>itunesphp-php>categoryphp asphp php$iphp php=php>php php$categoryphp)php php{
-php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'textphp'php,php php$categoryphp[php'mainphp'php]php)php;
-php php php php php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php$addphp_endphp_categoryphp php=php falsephp;
-php php php php php php php php php php php php php php php php ifphp php(php!emptyphp(php$categoryphp[php'subphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$addphp_endphp_categoryphp php=php truephp;
-php php php php php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'textphp'php,php php$categoryphp[php'subphp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$iphp php>php php0php php|php|php php$addphp_endphp_categoryphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wwwphp.itunesphp.comphp/DTDsphp/Podcastphp-php1php.php0php.dtdphp'php,php php'itunesphp:categoryphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Generatephp thephp entriesphp ofphp thephp feedphp whenphp workingphp inphp writephp mode
-php php php php php php*
-php php php php php php*php Thephp followingphp nodesphp arephp constructedphp forphp eachphp feedphp entry
-php php php php php php*php php<itemphp>
-php php php php php php*php php php php php<titlephp>entryphp title<php/titlephp>
-php php php php php php*php php php php php<linkphp>urlphp tophp feedphp entry<php/linkphp>
-php php php php php php*php php php php php<guidphp>urlphp tophp feedphp entry<php/guidphp>
-php php php php php php*php php php php php<descriptionphp>shortphp text<php/descriptionphp>
-php php php php php php*php php php php php<contentphp:encodedphp>longphp versionphp,php canphp containphp html<php/contentphp:encodedphp>
-php php php php php php*php <php/itemphp>
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php$rootphp thephp rootphp nodephp tophp use
-php php php php php php*php php@paramphp php arrayphp php$arrayphp thephp dataphp tophp use
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_mapFeedEntriesphp(DOMElementphp php$rootphp,php php$arrayphp)
-php php php php php{
-php php php php php php php php Zendphp_Feedphp:php:registerNamespacephp(php'contentphp'php,php php'httpphp:php/php/purlphp.orgphp/rssphp/php1php.php0php/modulesphp/contentphp/php'php)php;
-
-php php php php php php php php foreachphp php(php$arrayphp asphp php$dataentryphp)php php{
-php php php php php php php php php php php php php$itemphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'itemphp'php)php;
-
-php php php php php php php php php php php php php$titlephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'titlephp'php)php;
-php php php php php php php php php php php php php$titlephp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$dataentryphp-php>titlephp)php)php;
-php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$titlephp)php;
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>authorphp)php)php php{
-php php php php php php php php php php php php php php php php php$authorphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'authorphp'php,php php$dataentryphp-php>authorphp)php;
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$authorphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$linkphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'linkphp'php,php php$dataentryphp-php>linkphp)php;
-php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$linkphp)php;
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>guidphp)php)php php{
-php php php php php php php php php php php php php php php php php$guidphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'guidphp'php,php php$dataentryphp-php>guidphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$dataentryphp-php>guidphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$guidphp-php>setAttributephp(php'isPermaLinkphp'php,php php'falsephp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$guidphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$descriptionphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'descriptionphp'php)php;
-php php php php php php php php php php php php php$descriptionphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$dataentryphp-php>descriptionphp)php)php;
-php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$descriptionphp)php;
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>contentphp)php)php php{
-php php php php php php php php php php php php php php php php php$contentphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'contentphp:encodedphp'php)php;
-php php php php php php php php php php php php php php php php php$contentphp-php>appendChildphp(php$thisphp-php>php_elementphp-php>createCDATASectionphp(php$dataentryphp-php>contentphp)php)php;
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$contentphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$pubdatephp php=php issetphp(php$dataentryphp-php>lastUpdatephp)php php?php php$dataentryphp-php>lastUpdatephp php:php timephp(php)php;
-php php php php php php php php php php php php php$pubdatephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'pubDatephp'php,php datephp(DATEphp_RSSphp,php php$pubdatephp)php)php;
-php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$pubdatephp)php;
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>categoryphp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$dataentryphp-php>categoryphp asphp php$categoryphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'categoryphp'php,php php$categoryphp[php'termphp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$categoryphp[php'schemephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'domainphp'php,php php$categoryphp[php'schemephp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>sourcephp)php)php php{
-php php php php php php php php php php php php php php php php php$sourcephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'sourcephp'php,php php$dataentryphp-php>sourcephp[php'titlephp'php]php)php;
-php php php php php php php php php php php php php php php php php$sourcephp-php>setAttributephp(php'urlphp'php,php php$dataentryphp-php>sourcephp[php'urlphp'php]php)php;
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$sourcephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>commentsphp)php)php php{
-php php php php php php php php php php php php php php php php php$commentsphp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'commentsphp'php,php php$dataentryphp-php>commentsphp)php;
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$commentsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>commentRssphp)php)php php{
-php php php php php php php php php php php php php php php php php$commentsphp php=php php$thisphp-php>php_elementphp-php>createElementNSphp(php'httpphp:php/php/wellformedwebphp.orgphp/CommentAPIphp/php'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'wfwphp:commentRssphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$dataentryphp-php>commentRssphp)php;
-php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$commentsphp)php;
-php php php php php php php php php php php php php}
+        // Find the entries and save a pointer to them for speed and
+        // simplicity.
+        $this->_buildEntryCache();
+    }
 
 
-php php php php php php php php php php php php ifphp php(issetphp(php$dataentryphp-php>enclosurephp)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$dataentryphp-php>enclosurephp asphp php$enclosurephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$nodephp php=php php$thisphp-php>php_elementphp-php>createElementphp(php'enclosurephp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'urlphp'php,php php$enclosurephp[php'urlphp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$enclosurephp[php'typephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'typephp'php,php php$enclosurephp[php'typephp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$enclosurephp[php'lengthphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$nodephp-php>setAttributephp(php'lengthphp'php,php php$enclosurephp[php'lengthphp'php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$itemphp-php>appendChildphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+    /**
+     * Make accessing some individual elements of the channel easier.
+     *
+     * Special accessors 'item' and 'items' are provided so that if
+     * you wish to iterate over an RSS channel's items, you can do so
+     * using foreach ($channel->items as $item) or foreach
+     * ($channel->item as $item).
+     *
+     * @param  string $var The property to access.
+     * @return mixed
+     */
+    public function __get($var)
+    {
+        switch ($var) {
+            case 'item':
+                // fall through to the next case
+            case 'items':
+                return $this;
 
-php php php php php php php php php php php php php$rootphp-php>appendChildphp(php$itemphp)php;
-php php php php php php php php php}
-php php php php php}
+            default:
+                return parent::__get($var);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp Zendphp_Feedphp_Elementphp tophp includephp php<rssphp>php rootphp node
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp saveXmlphp(php)
-php php php php php{
-php php php php php php php php php/php/php Returnphp aphp completephp documentphp includingphp XMLphp prologuephp.
-php php php php php php php php php$docphp php=php newphp DOMDocumentphp(php$thisphp-php>php_elementphp-php>ownerDocumentphp-php>versionphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_elementphp-php>ownerDocumentphp-php>actualEncodingphp)php;
-php php php php php php php php php$rootphp php=php php$docphp-php>createElementphp(php'rssphp'php)php;
+    /**
+     * Generate the header of the feed when working in write mode
+     *
+     * @param  array $array the data to use
+     * @return DOMElement root node
+     */
+    protected function _mapFeedHeaders($array)
+    {
+        $channel = $this->_element->createElement('channel');
 
-php php php php php php php php php/php/php Usephp rssphp versionphp php2php.php0
-php php php php php php php php php$rootphp-php>setAttributephp(php'versionphp'php,php php'php2php.php0php'php)php;
+        $title = $this->_element->createElement('title');
+        $title->appendChild($this->_element->createCDATASection($array->title));
+        $channel->appendChild($title);
 
-php php php php php php php php php/php/php Contentphp namespace
-php php php php php php php php php$rootphp-php>setAttributeNSphp(php'httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php0php/xmlnsphp/php'php,php php'xmlnsphp:contentphp'php,php php'httpphp:php/php/purlphp.orgphp/rssphp/php1php.php0php/modulesphp/contentphp/php'php)php;
-php php php php php php php php php$rootphp-php>appendChildphp(php$docphp-php>importNodephp(php$thisphp-php>php_elementphp,php truephp)php)php;
+        $link = $this->_element->createElement('link', $array->link);
+        $channel->appendChild($link);
 
-php php php php php php php php php/php/php Appendphp rootphp node
-php php php php php php php php php$docphp-php>appendChildphp(php$rootphp)php;
+        $desc = isset($array->description) ? $array->description : '';
+        $description = $this->_element->createElement('description');
+        $description->appendChild($this->_element->createCDATASection($desc));
+        $channel->appendChild($description);
 
-php php php php php php php php php/php/php Formatphp output
-php php php php php php php php php$docphp-php>formatOutputphp php=php truephp;
+        $pubdate = isset($array->lastUpdate) ? $array->lastUpdate : time();
+        $pubdate = $this->_element->createElement('pubDate', date(DATE_RSS, $pubdate));
+        $channel->appendChild($pubdate);
 
-php php php php php php php php returnphp php$docphp-php>saveXMLphp(php)php;
-php php php php php}
+        if (isset($array->published)) {
+            $lastBuildDate = $this->_element->createElement('lastBuildDate', date(DATE_RSS, $array->published));
+            $channel->appendChild($lastBuildDate);
+        }
 
-php php php php php/php*php*
-php php php php php php*php Sendphp feedphp tophp aphp httpphp clientphp withphp thephp correctphp header
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Feedphp_Exceptionphp ifphp headersphp havephp alreadyphp beenphp sent
-php php php php php php*php/
-php php php php publicphp functionphp sendphp(php)
-php php php php php{
-php php php php php php php php ifphp php(headersphp_sentphp(php)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Feedphp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Feedphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Feedphp_Exceptionphp(php'Cannotphp sendphp RSSphp becausephp headersphp havephp alreadyphp beenphp sentphp.php'php)php;
-php php php php php php php php php}
+        $editor = '';
+        if (!empty($array->email)) {
+            $editor .= $array->email;
+        }
+        if (!empty($array->author)) {
+            $editor .= ' (' . $array->author . ')';
+        }
+        if (!empty($editor)) {
+            $author = $this->_element->createElement('managingEditor', ltrim($editor));
+            $channel->appendChild($author);
+        }
+        if (isset($array->webmaster)) {
+            $channel->appendChild($this->_element->createElement('webMaster', $array->webmaster));
+        }
 
-php php php php php php php php headerphp(php'Contentphp-Typephp:php applicationphp/rssphp+xmlphp;php charsetphp=php'php php.php php$thisphp-php>php_elementphp-php>ownerDocumentphp-php>actualEncodingphp)php;
+        if (!empty($array->copyright)) {
+            $copyright = $this->_element->createElement('copyright', $array->copyright);
+            $channel->appendChild($copyright);
+        }
 
-php php php php php php php php echophp php$thisphp-php>saveXmlphp(php)php;
-php php php php php}
+        if (isset($array->category)) {
+            $category = $this->_element->createElement('category', $array->category);
+            $channel->appendChild($category);
+        }
 
-php}
+        if (!empty($array->image)) {
+            $image = $this->_element->createElement('image');
+            $url = $this->_element->createElement('url', $array->image);
+            $image->appendChild($url);
+            $imagetitle = $this->_element->createElement('title');
+            $imagetitle->appendChild($this->_element->createCDATASection($array->title));
+            $image->appendChild($imagetitle);
+            $imagelink = $this->_element->createElement('link', $array->link);
+            $image->appendChild($imagelink);
+
+            $channel->appendChild($image);
+        }
+
+        $generator = !empty($array->generator) ? $array->generator : 'Zend_Feed';
+        $generator = $this->_element->createElement('generator', $generator);
+        $channel->appendChild($generator);
+
+        if (!empty($array->language)) {
+            $language = $this->_element->createElement('language', $array->language);
+            $channel->appendChild($language);
+        }
+
+        $doc = $this->_element->createElement('docs', 'http://blogs.law.harvard.edu/tech/rss');
+        $channel->appendChild($doc);
+
+        if (isset($array->cloud)) {
+            $cloud = $this->_element->createElement('cloud');
+            $cloud->setAttribute('domain', $array->cloud['uri']->getHost());
+            $cloud->setAttribute('port', $array->cloud['uri']->getPort());
+            $cloud->setAttribute('path', $array->cloud['uri']->getPath());
+            $cloud->setAttribute('registerProcedure', $array->cloud['procedure']);
+            $cloud->setAttribute('protocol', $array->cloud['protocol']);
+            $channel->appendChild($cloud);
+        }
+
+        if (isset($array->ttl)) {
+            $ttl = $this->_element->createElement('ttl', $array->ttl);
+            $channel->appendChild($ttl);
+        }
+
+        if (isset($array->rating)) {
+            $rating = $this->_element->createElement('rating', $array->rating);
+            $channel->appendChild($rating);
+        }
+
+        if (isset($array->textInput)) {
+            $textinput = $this->_element->createElement('textInput');
+            $textinput->appendChild($this->_element->createElement('title', $array->textInput['title']));
+            $textinput->appendChild($this->_element->createElement('description', $array->textInput['description']));
+            $textinput->appendChild($this->_element->createElement('name', $array->textInput['name']));
+            $textinput->appendChild($this->_element->createElement('link', $array->textInput['link']));
+            $channel->appendChild($textinput);
+        }
+
+        if (isset($array->skipHours)) {
+            $skipHours = $this->_element->createElement('skipHours');
+            foreach ($array->skipHours as $hour) {
+                $skipHours->appendChild($this->_element->createElement('hour', $hour));
+            }
+            $channel->appendChild($skipHours);
+        }
+
+        if (isset($array->skipDays)) {
+            $skipDays = $this->_element->createElement('skipDays');
+            foreach ($array->skipDays as $day) {
+                $skipDays->appendChild($this->_element->createElement('day', $day));
+            }
+            $channel->appendChild($skipDays);
+        }
+
+        if (isset($array->itunes)) {
+            $this->_buildiTunes($channel, $array);
+        }
+
+        return $channel;
+    }
+
+    /**
+     * Adds the iTunes extensions to a root node
+     *
+     * @param  DOMElement $root
+     * @param  array $array
+     * @return void
+     */
+    private function _buildiTunes(DOMElement $root, $array)
+    {
+        /* author node */
+        $author = '';
+        if (isset($array->itunes->author)) {
+            $author = $array->itunes->author;
+        } elseif (isset($array->author)) {
+            $author = $array->author;
+        }
+        if (!empty($author)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:author', $author);
+            $root->appendChild($node);
+        }
+
+        /* owner node */
+        $author = '';
+        $email = '';
+        if (isset($array->itunes->owner)) {
+            if (isset($array->itunes->owner['name'])) {
+                $author = $array->itunes->owner['name'];
+            }
+            if (isset($array->itunes->owner['email'])) {
+                $email = $array->itunes->owner['email'];
+            }
+        }
+        if (empty($author) && isset($array->author)) {
+            $author = $array->author;
+        }
+        if (empty($email) && isset($array->email)) {
+            $email = $array->email;
+        }
+        if (!empty($author) || !empty($email)) {
+            $owner = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:owner');
+            if (!empty($author)) {
+                $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:name', $author);
+                $owner->appendChild($node);
+            }
+            if (!empty($email)) {
+                $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:email', $email);
+                $owner->appendChild($node);
+            }
+            $root->appendChild($owner);
+        }
+        $image = '';
+        if (isset($array->itunes->image)) {
+            $image = $array->itunes->image;
+        } elseif (isset($array->image)) {
+            $image = $array->image;
+        }
+        if (!empty($image)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:image');
+            $node->setAttribute('href', $image);
+            $root->appendChild($node);
+        }
+        $subtitle = '';
+        if (isset($array->itunes->subtitle)) {
+            $subtitle = $array->itunes->subtitle;
+        } elseif (isset($array->description)) {
+            $subtitle = $array->description;
+        }
+        if (!empty($subtitle)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:subtitle', $subtitle);
+            $root->appendChild($node);
+        }
+        $summary = '';
+        if (isset($array->itunes->summary)) {
+            $summary = $array->itunes->summary;
+        } elseif (isset($array->description)) {
+            $summary = $array->description;
+        }
+        if (!empty($summary)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:summary', $summary);
+            $root->appendChild($node);
+        }
+        if (isset($array->itunes->block)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:block', $array->itunes->block);
+            $root->appendChild($node);
+        }
+        if (isset($array->itunes->explicit)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:explicit', $array->itunes->explicit);
+            $root->appendChild($node);
+        }
+        if (isset($array->itunes->keywords)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:keywords', $array->itunes->keywords);
+            $root->appendChild($node);
+        }
+        if (isset($array->itunes->new_feed_url)) {
+            $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:new-feed-url', $array->itunes->new_feed_url);
+            $root->appendChild($node);
+        }
+        if (isset($array->itunes->category)) {
+            foreach ($array->itunes->category as $i => $category) {
+                $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:category');
+                $node->setAttribute('text', $category['main']);
+                $root->appendChild($node);
+                $add_end_category = false;
+                if (!empty($category['sub'])) {
+                    $add_end_category = true;
+                    $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:category');
+                    $node->setAttribute('text', $category['sub']);
+                    $root->appendChild($node);
+                }
+                if ($i > 0 || $add_end_category) {
+                    $node = $this->_element->createElementNS('http://www.itunes.com/DTDs/Podcast-1.0.dtd', 'itunes:category');
+                    $root->appendChild($node);
+                }
+            }
+        }
+    }
+
+    /**
+     * Generate the entries of the feed when working in write mode
+     *
+     * The following nodes are constructed for each feed entry
+     * <item>
+     *    <title>entry title</title>
+     *    <link>url to feed entry</link>
+     *    <guid>url to feed entry</guid>
+     *    <description>short text</description>
+     *    <content:encoded>long version, can contain html</content:encoded>
+     * </item>
+     *
+     * @param  DOMElement $root the root node to use
+     * @param  array $array the data to use
+     * @return void
+     */
+    protected function _mapFeedEntries(DOMElement $root, $array)
+    {
+        Zend_Feed::registerNamespace('content', 'http://purl.org/rss/1.0/modules/content/');
+
+        foreach ($array as $dataentry) {
+            $item = $this->_element->createElement('item');
+
+            $title = $this->_element->createElement('title');
+            $title->appendChild($this->_element->createCDATASection($dataentry->title));
+            $item->appendChild($title);
+
+            if (isset($dataentry->author)) {
+                $author = $this->_element->createElement('author', $dataentry->author);
+                $item->appendChild($author);
+            }
+
+            $link = $this->_element->createElement('link', $dataentry->link);
+            $item->appendChild($link);
+
+            if (isset($dataentry->guid)) {
+                $guid = $this->_element->createElement('guid', $dataentry->guid);
+                if (!Zend_Uri::check($dataentry->guid)) {
+                    $guid->setAttribute('isPermaLink', 'false');
+                }
+                $item->appendChild($guid);
+            }
+
+            $description = $this->_element->createElement('description');
+            $description->appendChild($this->_element->createCDATASection($dataentry->description));
+            $item->appendChild($description);
+
+            if (isset($dataentry->content)) {
+                $content = $this->_element->createElement('content:encoded');
+                $content->appendChild($this->_element->createCDATASection($dataentry->content));
+                $item->appendChild($content);
+            }
+
+            $pubdate = isset($dataentry->lastUpdate) ? $dataentry->lastUpdate : time();
+            $pubdate = $this->_element->createElement('pubDate', date(DATE_RSS, $pubdate));
+            $item->appendChild($pubdate);
+
+            if (isset($dataentry->category)) {
+                foreach ($dataentry->category as $category) {
+                    $node = $this->_element->createElement('category', $category['term']);
+                    if (isset($category['scheme'])) {
+                        $node->setAttribute('domain', $category['scheme']);
+                    }
+                    $item->appendChild($node);
+                }
+            }
+
+            if (isset($dataentry->source)) {
+                $source = $this->_element->createElement('source', $dataentry->source['title']);
+                $source->setAttribute('url', $dataentry->source['url']);
+                $item->appendChild($source);
+            }
+
+            if (isset($dataentry->comments)) {
+                $comments = $this->_element->createElement('comments', $dataentry->comments);
+                $item->appendChild($comments);
+            }
+            if (isset($dataentry->commentRss)) {
+                $comments = $this->_element->createElementNS('http://wellformedweb.org/CommentAPI/',
+                                                             'wfw:commentRss',
+                                                             $dataentry->commentRss);
+                $item->appendChild($comments);
+            }
+
+
+            if (isset($dataentry->enclosure)) {
+                foreach ($dataentry->enclosure as $enclosure) {
+                    $node = $this->_element->createElement('enclosure');
+                    $node->setAttribute('url', $enclosure['url']);
+                    if (isset($enclosure['type'])) {
+                        $node->setAttribute('type', $enclosure['type']);
+                    }
+                    if (isset($enclosure['length'])) {
+                        $node->setAttribute('length', $enclosure['length']);
+                    }
+                    $item->appendChild($node);
+                }
+            }
+
+            $root->appendChild($item);
+        }
+    }
+
+    /**
+     * Override Zend_Feed_Element to include <rss> root node
+     *
+     * @return string
+     */
+    public function saveXml()
+    {
+        // Return a complete document including XML prologue.
+        $doc = new DOMDocument($this->_element->ownerDocument->version,
+                               $this->_element->ownerDocument->actualEncoding);
+        $root = $doc->createElement('rss');
+
+        // Use rss version 2.0
+        $root->setAttribute('version', '2.0');
+
+        // Content namespace
+        $root->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:content', 'http://purl.org/rss/1.0/modules/content/');
+        $root->appendChild($doc->importNode($this->_element, true));
+
+        // Append root node
+        $doc->appendChild($root);
+
+        // Format output
+        $doc->formatOutput = true;
+
+        return $doc->saveXML();
+    }
+
+    /**
+     * Send feed to a http client with the correct header
+     *
+     * @return void
+     * @throws Zend_Feed_Exception if headers have already been sent
+     */
+    public function send()
+    {
+        if (headers_sent()) {
+            /**
+             * @see Zend_Feed_Exception
+             */
+            require_once 'Zend/Feed/Exception.php';
+            throw new Zend_Feed_Exception('Cannot send RSS because headers have already been sent.');
+        }
+
+        header('Content-Type: application/rss+xml; charset=' . $this->_element->ownerDocument->actualEncoding);
+
+        echo $this->saveXml();
+    }
+
+}

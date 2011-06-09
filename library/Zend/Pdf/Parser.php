@@ -1,472 +1,472 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Parserphp.phpphp php2php3php3php9php5php php2php0php1php0php-php1php1php-php1php9php php1php5php:php3php0php:php4php7Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Parser.php 23395 2010-11-19 15:30:47Z alexander $
+ */
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
-
-
-php/php*php*php Zendphp_Pdfphp_StringParserphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/StringParserphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
 
 
-php/php*php*
-php php*php PDFphp filephp parser
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Parser
-php{
-php php php php php/php*php*
-php php php php php php*php Stringphp parser
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_StringParser
-php php php php php php*php/
-php php php php privatephp php$php_stringParserphp;
-
-php php php php php/php*php*
-php php php php php php*php Lastphp PDFphp filephp trailer
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_Trailerphp_Keeper
-php php php php php php*php/
-php php php php privatephp php$php_trailerphp;
-
-php php php php php/php*php*
-php php php php php php*php PDFphp versionphp specifiedphp inphp thephp filephp header
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php privatephp php$php_pdfVersionphp;
+/** Zend_Pdf_StringParser */
+require_once 'Zend/Pdf/StringParser.php';
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp lengthphp ofphp sourcephp PDF
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getPDFLengthphp(php)
-php php php php php{
-php php php php php php php php returnphp strlenphp(php$thisphp-php>php_stringParserphp-php>dataphp)php;
-php php php php php}
+/**
+ * PDF file parser
+ *
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Parser
+{
+    /**
+     * String parser
+     *
+     * @var Zend_Pdf_StringParser
+     */
+    private $_stringParser;
 
-php php php php php/php*php*
-php php php php php php*php Getphp PDFphp String
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPDFStringphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_stringParserphp-php>dataphp;
-php php php php php}
+    /**
+     * Last PDF file trailer
+     *
+     * @var Zend_Pdf_Trailer_Keeper
+     */
+    private $_trailer;
 
-php php php php php/php*php*
-php php php php php php*php PDFphp versionphp specifiedphp inphp thephp filephp header
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPDFVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pdfVersionphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp XReferencephp tablephp andphp referencedphp objects
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$offset
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Trailerphp_Keeper
-php php php php php php*php/
-php php php php privatephp functionphp php_loadXRefTablephp(php$offsetphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp php=php php$offsetphp;
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Referencephp/Tablephp.phpphp'php;
-php php php php php php php php php$refTablephp php=php newphp Zendphp_Pdfphp_Elementphp_Referencephp_Tablephp(php)php;
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Referencephp/Contextphp.phpphp'php;
-php php php php php php php php php$contextphp php php=php newphp Zendphp_Pdfphp_Elementphp_Referencephp_Contextphp(php$thisphp-php>php_stringParserphp,php php$refTablephp)php;
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>setContextphp(php$contextphp)php;
-
-php php php php php php php php php$nextLexemephp php=php php$thisphp-php>php_stringParserphp-php>readLexemephp(php)php;
-php php php php php php php php ifphp php(php$nextLexemephp php=php=php php'xrefphp'php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Commonphp crossphp-referencephp table
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>skipWhiteSpacephp(php)php;
-php php php php php php php php php php php php whilephp php(php php(php$nextLexemephp php=php php$thisphp-php>php_stringParserphp-php>readLexemephp(php)php)php php!php=php php'trailerphp'php php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!ctypephp_digitphp(php$nextLexemephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Crossphp-referencephp tablephp subheaderphp valuesphp mustphp containphp onlyphp digitsphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp-strlenphp(php$nextLexemephp)php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$objNumphp php=php php(intphp)php$nextLexemephp;
-
-php php php php php php php php php php php php php php php php php$refCountphp php=php php$thisphp-php>php_stringParserphp-php>readLexemephp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php!ctypephp_digitphp(php$refCountphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Crossphp-referencephp tablephp subheaderphp valuesphp mustphp containphp onlyphp digitsphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp-strlenphp(php$refCountphp)php)php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>skipWhiteSpacephp(php)php;
-php php php php php php php php php php php php php php php php whilephp php(php$refCountphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$objectOffsetphp php=php substrphp(php$thisphp-php>php_stringParserphp-php>dataphp,php php$thisphp-php>php_stringParserphp-php>offsetphp,php php1php0php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!ctypephp_digitphp(php$objectOffsetphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Offsetphp mustphp containphp onlyphp digitsphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php/php/php Forcephp php$objectOffsetphp tophp bephp treatedphp asphp decimalphp insteadphp ofphp octalphp number
-php php php php php php php php php php php php php php php php php php php php forphp php(php$numStartphp php=php php0php;php php$numStartphp <php strlenphp(php$objectOffsetphp)php-php1php;php php$numStartphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$objectOffsetphp[php$numStartphp]php php!php=php php'php0php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$objectOffsetphp php=php substrphp(php$objectOffsetphp,php php$numStartphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp php+php=php php1php0php;
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php"php\xphp0php0php\tphp\nphp\fphp\rphp php"php,php php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Valuephp separatorphp mustphp bephp whitephp spacephp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp+php+php;
-
-php php php php php php php php php php php php php php php php php php php php php$genNumberphp php=php substrphp(php$thisphp-php>php_stringParserphp-php>dataphp,php php$thisphp-php>php_stringParserphp-php>offsetphp,php php5php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!ctypephp_digitphp(php$objectOffsetphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Offsetphp mustphp containphp onlyphp digitsphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php/php/php Forcephp php$objectOffsetphp tophp bephp treatedphp asphp decimalphp insteadphp ofphp octalphp number
-php php php php php php php php php php php php php php php php php php php php forphp php(php$numStartphp php=php php0php;php php$numStartphp <php strlenphp(php$genNumberphp)php-php1php;php php$numStartphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$genNumberphp[php$numStartphp]php php!php=php php'php0php'php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$genNumberphp php=php substrphp(php$genNumberphp,php php$numStartphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp php+php=php php5php;
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(strposphp(php"php\xphp0php0php\tphp\nphp\fphp\rphp php"php,php php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Valuephp separatorphp mustphp bephp whitephp spacephp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp+php+php;
-
-php php php php php php php php php php php php php php php php php php php php php$inUseKeyphp php=php php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp+php+php;
-
-php php php php php php php php php php php php php php php php php php php php switchphp php(php$inUseKeyphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php'fphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php freephp entry
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php php$thisphp-php>php_refTablephp[php$objNumphp php.php php'php php'php php.php php$genNumberphp php.php php'php Rphp'php]php php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refTablephp-php>addReferencephp(php$objNumphp php.php php'php php'php php.php php$genNumberphp php.php php'php Rphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$objectOffsetphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php falsephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php'nphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php inphp-usephp entry
-
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refTablephp-php>addReferencephp(php$objNumphp php.php php'php php'php php.php php$genNumberphp php.php php'php Rphp'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$objectOffsetphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php truephp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php php!Zendphp_Pdfphp_StringParserphp:php:isWhiteSpacephp(ordphp(php php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php php)php)php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Valuephp separatorphp mustphp bephp whitephp spacephp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp+php+php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php php!Zendphp_Pdfphp_StringParserphp:php:isWhiteSpacephp(ordphp(php php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php php)php)php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp crossphp-referencephp tablephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Valuephp separatorphp mustphp bephp whitephp spacephp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp+php+php;
-
-php php php php php php php php php php php php php php php php php php php php php$refCountphp-php-php;
-php php php php php php php php php php php php php php php php php php php php php$objNumphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$trailerDictOffsetphp php=php php$thisphp-php>php_stringParserphp-php>offsetphp;
-php php php php php php php php php php php php php$trailerDictphp php=php php$thisphp-php>php_stringParserphp-php>readElementphp(php)php;
-php php php php php php php php php php php php ifphp php(php!php$trailerDictphp instanceofphp Zendphp_Pdfphp_Elementphp_Dictionaryphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php php Dictionaryphp expectedphp afterphp php\php'trailerphp\php'php keywordphp.php'php,php php$trailerDictOffsetphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$xrefStreamphp php=php php$thisphp-php>php_stringParserphp-php>getObjectphp(php$offsetphp,php php$contextphp)php;
-
-php php php php php php php php php php php php ifphp php(php!php$xrefStreamphp instanceofphp Zendphp_Pdfphp_Elementphp_Objectphp_Streamphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php php Crossphp-referencephp streamphp expectedphp.php'php,php php$offsetphp)php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$trailerDictphp php=php php$xrefStreamphp-php>dictionaryphp;
-php php php php php php php php php php php php ifphp php(php$trailerDictphp-php>Typephp-php>valuephp php!php=php php'XRefphp'php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php php Crossphp-referencephp streamphp objectphp mustphp havephp php/Typephp propertyphp assignedphp tophp php/XRefphp.php'php,php php$offsetphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$trailerDictphp-php>Wphp php=php=php=php nullphp php php|php|php php$trailerDictphp-php>Wphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_ARRAYphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Crossphp referencephp streamphp dictionaryphp doesnphp\php'tphp havephp Wphp entryphp orphp itphp\php'sphp notphp anphp arrayphp.php'php,php php$offsetphp)php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$entryFieldphp1Sizephp php=php php$trailerDictphp-php>Wphp-php>itemsphp[php0php]php-php>valuephp;
-php php php php php php php php php php php php php$entryFieldphp2Sizephp php=php php$trailerDictphp-php>Wphp-php>itemsphp[php1php]php-php>valuephp;
-php php php php php php php php php php php php php$entryFieldphp3Sizephp php=php php$trailerDictphp-php>Wphp-php>itemsphp[php2php]php-php>valuephp;
-
-php php php php php php php php php php php php ifphp php(php$entryFieldphp2Sizephp php=php=php php0php php|php|php php$entryFieldphp3Sizephp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Wrongphp Wphp dictionaryphp entryphp.php Onlyphp typephp fieldphp ofphp streamphp entriesphp hasphp defaultphp valuephp andphp couldphp bephp zerophp lengthphp.php'php,php php$offsetphp)php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$xrefStreamDataphp php=php php$xrefStreamphp-php>valuephp;
-
-php php php php php php php php php php php php ifphp php(php$trailerDictphp-php>Indexphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$trailerDictphp-php>Indexphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_ARRAYphp)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'PDFphp filephp syntaxphp errorphp.php Offsetphp php-php php0xphp%Xphp.php Crossphp referencephp streamphp dictionaryphp Indexphp entryphp mustphp bephp anphp arrayphp.php'php,php php$offsetphp)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$sectionsphp php=php countphp(php$trailerDictphp-php>Indexphp-php>itemsphp)php/php2php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$sectionsphp php=php php1php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$streamOffsetphp php=php php0php;
-
-php php php php php php php php php php php php php$sizephp php php php php=php php$entryFieldphp1Sizephp php+php php$entryFieldphp2Sizephp php+php php$entryFieldphp3Sizephp;
-php php php php php php php php php php php php php$entriesphp php=php strlenphp(php$xrefStreamDataphp)php/php$sizephp;
-
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$sectionsphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$trailerDictphp-php>Indexphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$objNumphp php php=php php$trailerDictphp-php>Indexphp-php>itemsphp[php$countphp*php2php php php php php]php-php>valuephp;
-php php php php php php php php php php php php php php php php php php php php php$entriesphp php=php php$trailerDictphp-php>Indexphp-php>itemsphp[php$countphp*php2php php+php php1php]php-php>valuephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$objNumphp php php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php$entriesphp php=php php$trailerDictphp-php>Sizephp-php>valuephp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp2php php=php php0php;php php$countphp2php <php php$entriesphp;php php$countphp2php+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$entryFieldphp1Sizephp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp ifphp php(php$entryFieldphp1Sizephp php=php=php php1php)php php{php php/php/php Optimyzephp onephp-bytephp fieldphp case
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php ordphp(php$xrefStreamDataphp[php$streamOffsetphp+php+php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php Zendphp_Pdfphp_StringParserphp:php:parseIntFromStreamphp(php$xrefStreamDataphp,php php$streamOffsetphp,php php$entryFieldphp1Sizephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$streamOffsetphp php+php=php php$entryFieldphp1Sizephp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$entryFieldphp2Sizephp php=php=php php1php)php php{php php/php/php Optimyzephp onephp-bytephp fieldphp case
-php php php php php php php php php php php php php php php php php php php php php php php php php$fieldphp2php php=php ordphp(php$xrefStreamDataphp[php$streamOffsetphp+php+php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$fieldphp2php php=php Zendphp_Pdfphp_StringParserphp:php:parseIntFromStreamphp(php$xrefStreamDataphp,php php$streamOffsetphp,php php$entryFieldphp2Sizephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$streamOffsetphp php+php=php php$entryFieldphp2Sizephp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$entryFieldphp3Sizephp php=php=php php1php)php php{php php/php/php Optimyzephp onephp-bytephp fieldphp case
-php php php php php php php php php php php php php php php php php php php php php php php php php$fieldphp3php php=php ordphp(php$xrefStreamDataphp[php$streamOffsetphp+php+php]php)php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$fieldphp3php php=php Zendphp_Pdfphp_StringParserphp:php:parseIntFromStreamphp(php$xrefStreamDataphp,php php$streamOffsetphp,php php$entryFieldphp3Sizephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$streamOffsetphp php+php=php php$entryFieldphp3Sizephp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php0php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Freephp object
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refTablephp-php>addReferencephp(php$objNumphp php.php php'php php'php php.php php$fieldphp3php php.php php'php Rphp'php,php php$fieldphp2php,php falsephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Debugphp outputphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php echophp php"Freephp objectphp php-php php$objNumphp php$fieldphp3php Rphp,php nextphp freephp php-php php$fieldphp2php\nphp"php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php1php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Inphp usephp object
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$refTablephp-php>addReferencephp(php$objNumphp php.php php'php php'php php.php php$fieldphp3php php.php php'php Rphp'php,php php$fieldphp2php,php truephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Debugphp outputphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php echophp php"Inphp-usephp objectphp php-php php$objNumphp php$fieldphp3php Rphp,php offsetphp php-php php$fieldphp2php\nphp"php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php php php php php php php php php php php php php casephp php2php:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Objectphp inphp anphp objectphp stream
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Debugphp outputphp:
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php echophp php"Compressedphp objectphp php-php php$objNumphp php0php Rphp,php objectphp streamphp php-php php$fieldphp2php php0php Rphp,php offsetphp php-php php$fieldphp3php\nphp"php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$objNumphp+php+php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php php$streamOffsetphp php.php php'php php'php php.php strlenphp(php$xrefStreamDataphp)php php.php php"php\nphp"php;
-php php php php php php php php php php php php php/php/php php"php$entriesphp\nphp"php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Crossphp-referencephp streamsphp arephp notphp supportedphp yetphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * PDF version specified in the file header
+     *
+     * @var string
+     */
+    private $_pdfVersion;
 
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Trailerphp/Keeperphp.phpphp'php;
-php php php php php php php php php$trailerObjphp php=php newphp Zendphp_Pdfphp_Trailerphp_Keeperphp(php$trailerDictphp,php php$contextphp)php;
-php php php php php php php php ifphp php(php$trailerDictphp-php>Prevphp instanceofphp Zendphp_Pdfphp_Elementphp_Numericphp php|php|
-php php php php php php php php php php php php php$trailerDictphp-php>Prevphp instanceofphp Zendphp_Pdfphp_Elementphp_Referencephp php)php php{
-php php php php php php php php php php php php php$trailerObjphp-php>setPrevphp(php$thisphp-php>php_loadXRefTablephp(php$trailerDictphp-php>Prevphp-php>valuephp)php)php;
-php php php php php php php php php php php php php$contextphp-php>getRefTablephp(php)php-php>setParentphp(php$trailerObjphp-php>getPrevphp(php)php-php>getRefTablephp(php)php)php;
-php php php php php php php php php}
+    /**
+     * Get length of source PDF
+     *
+     * @return integer
+     */
+    public function getPDFLength()
+    {
+        return strlen($this->_stringParser->data);
+    }
 
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Wephp setphp php'php/Prevphp'php dictionaryphp propertyphp tophp thephp currentphp crossphp-referencephp sectionphp offsetphp.
-php php php php php php php php php php*php Itphp doesnphp'tphp correspondphp tophp thephp actualphp dataphp,php butphp isphp truephp whenphp trailerphp willphp bephp used
-php php php php php php php php php php*php asphp aphp trailerphp forphp nextphp generatedphp PDFphp sectionphp.
-php php php php php php php php php php*php/
-php php php php php php php php php$trailerObjphp-php>Prevphp php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$offsetphp)php;
+    /**
+     * Get PDF String
+     *
+     * @return string
+     */
+    public function getPDFString()
+    {
+        return $this->_stringParser->data;
+    }
 
-php php php php php php php php returnphp php$trailerObjphp;
-php php php php php}
+    /**
+     * PDF version specified in the file header
+     *
+     * @return string
+     */
+    public function getPDFVersion()
+    {
+        return $this->_pdfVersion;
+    }
+
+    /**
+     * Load XReference table and referenced objects
+     *
+     * @param integer $offset
+     * @throws Zend_Pdf_Exception
+     * @return Zend_Pdf_Trailer_Keeper
+     */
+    private function _loadXRefTable($offset)
+    {
+        $this->_stringParser->offset = $offset;
+
+        require_once 'Zend/Pdf/Element/Reference/Table.php';
+        $refTable = new Zend_Pdf_Element_Reference_Table();
+        require_once 'Zend/Pdf/Element/Reference/Context.php';
+        $context  = new Zend_Pdf_Element_Reference_Context($this->_stringParser, $refTable);
+        $this->_stringParser->setContext($context);
+
+        $nextLexeme = $this->_stringParser->readLexeme();
+        if ($nextLexeme == 'xref') {
+            /**
+             * Common cross-reference table
+             */
+            $this->_stringParser->skipWhiteSpace();
+            while ( ($nextLexeme = $this->_stringParser->readLexeme()) != 'trailer' ) {
+                if (!ctype_digit($nextLexeme)) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Cross-reference table subheader values must contain only digits.', $this->_stringParser->offset-strlen($nextLexeme)));
+                }
+                $objNum = (int)$nextLexeme;
+
+                $refCount = $this->_stringParser->readLexeme();
+                if (!ctype_digit($refCount)) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Cross-reference table subheader values must contain only digits.', $this->_stringParser->offset-strlen($refCount)));
+                }
+
+                $this->_stringParser->skipWhiteSpace();
+                while ($refCount > 0) {
+                    $objectOffset = substr($this->_stringParser->data, $this->_stringParser->offset, 10);
+                    if (!ctype_digit($objectOffset)) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Offset must contain only digits.', $this->_stringParser->offset));
+                    }
+                    // Force $objectOffset to be treated as decimal instead of octal number
+                    for ($numStart = 0; $numStart < strlen($objectOffset)-1; $numStart++) {
+                        if ($objectOffset[$numStart] != '0') {
+                            break;
+                        }
+                    }
+                    $objectOffset = substr($objectOffset, $numStart);
+                    $this->_stringParser->offset += 10;
+
+                    if (strpos("\x00\t\n\f\r ", $this->_stringParser->data[$this->_stringParser->offset]) === false) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Value separator must be white space.', $this->_stringParser->offset));
+                    }
+                    $this->_stringParser->offset++;
+
+                    $genNumber = substr($this->_stringParser->data, $this->_stringParser->offset, 5);
+                    if (!ctype_digit($objectOffset)) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Offset must contain only digits.', $this->_stringParser->offset));
+                    }
+                    // Force $objectOffset to be treated as decimal instead of octal number
+                    for ($numStart = 0; $numStart < strlen($genNumber)-1; $numStart++) {
+                        if ($genNumber[$numStart] != '0') {
+                            break;
+                        }
+                    }
+                    $genNumber = substr($genNumber, $numStart);
+                    $this->_stringParser->offset += 5;
+
+                    if (strpos("\x00\t\n\f\r ", $this->_stringParser->data[$this->_stringParser->offset]) === false) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Value separator must be white space.', $this->_stringParser->offset));
+                    }
+                    $this->_stringParser->offset++;
+
+                    $inUseKey = $this->_stringParser->data[$this->_stringParser->offset];
+                    $this->_stringParser->offset++;
+
+                    switch ($inUseKey) {
+                        case 'f':
+                            // free entry
+                            unset( $this->_refTable[$objNum . ' ' . $genNumber . ' R'] );
+                            $refTable->addReference($objNum . ' ' . $genNumber . ' R',
+                                                    $objectOffset,
+                                                    false);
+                            break;
+
+                        case 'n':
+                            // in-use entry
+
+                            $refTable->addReference($objNum . ' ' . $genNumber . ' R',
+                                                    $objectOffset,
+                                                    true);
+                    }
+
+                    if ( !Zend_Pdf_StringParser::isWhiteSpace(ord( $this->_stringParser->data[$this->_stringParser->offset] )) ) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Value separator must be white space.', $this->_stringParser->offset));
+                    }
+                    $this->_stringParser->offset++;
+                    if ( !Zend_Pdf_StringParser::isWhiteSpace(ord( $this->_stringParser->data[$this->_stringParser->offset] )) ) {
+                        require_once 'Zend/Pdf/Exception.php';
+                        throw new Zend_Pdf_Exception(sprintf('PDF file cross-reference table syntax error. Offset - 0x%X. Value separator must be white space.', $this->_stringParser->offset));
+                    }
+                    $this->_stringParser->offset++;
+
+                    $refCount--;
+                    $objNum++;
+                }
+            }
+
+            $trailerDictOffset = $this->_stringParser->offset;
+            $trailerDict = $this->_stringParser->readElement();
+            if (!$trailerDict instanceof Zend_Pdf_Element_Dictionary) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X.  Dictionary expected after \'trailer\' keyword.', $trailerDictOffset));
+            }
+        } else {
+            $xrefStream = $this->_stringParser->getObject($offset, $context);
+
+            if (!$xrefStream instanceof Zend_Pdf_Element_Object_Stream) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X.  Cross-reference stream expected.', $offset));
+            }
+
+            $trailerDict = $xrefStream->dictionary;
+            if ($trailerDict->Type->value != 'XRef') {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X.  Cross-reference stream object must have /Type property assigned to /XRef.', $offset));
+            }
+            if ($trailerDict->W === null  || $trailerDict->W->getType() != Zend_Pdf_Element::TYPE_ARRAY) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Cross reference stream dictionary doesn\'t have W entry or it\'s not an array.', $offset));
+            }
+
+            $entryField1Size = $trailerDict->W->items[0]->value;
+            $entryField2Size = $trailerDict->W->items[1]->value;
+            $entryField3Size = $trailerDict->W->items[2]->value;
+
+            if ($entryField2Size == 0 || $entryField3Size == 0) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Wrong W dictionary entry. Only type field of stream entries has default value and could be zero length.', $offset));
+            }
+
+            $xrefStreamData = $xrefStream->value;
+
+            if ($trailerDict->Index !== null) {
+                if ($trailerDict->Index->getType() != Zend_Pdf_Element::TYPE_ARRAY) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Cross reference stream dictionary Index entry must be an array.', $offset));
+                }
+                $sections = count($trailerDict->Index->items)/2;
+            } else {
+                $sections = 1;
+            }
+
+            $streamOffset = 0;
+
+            $size    = $entryField1Size + $entryField2Size + $entryField3Size;
+            $entries = strlen($xrefStreamData)/$size;
+
+            for ($count = 0; $count < $sections; $count++) {
+                if ($trailerDict->Index !== null) {
+                    $objNum  = $trailerDict->Index->items[$count*2    ]->value;
+                    $entries = $trailerDict->Index->items[$count*2 + 1]->value;
+                } else {
+                    $objNum  = 0;
+                    $entries = $trailerDict->Size->value;
+                }
+
+                for ($count2 = 0; $count2 < $entries; $count2++) {
+                    if ($entryField1Size == 0) {
+                        $type = 1;
+                    } else if ($entryField1Size == 1) { // Optimyze one-byte field case
+                        $type = ord($xrefStreamData[$streamOffset++]);
+                    } else {
+                        $type = Zend_Pdf_StringParser::parseIntFromStream($xrefStreamData, $streamOffset, $entryField1Size);
+                        $streamOffset += $entryField1Size;
+                    }
+
+                    if ($entryField2Size == 1) { // Optimyze one-byte field case
+                        $field2 = ord($xrefStreamData[$streamOffset++]);
+                    } else {
+                        $field2 = Zend_Pdf_StringParser::parseIntFromStream($xrefStreamData, $streamOffset, $entryField2Size);
+                        $streamOffset += $entryField2Size;
+                    }
+
+                    if ($entryField3Size == 1) { // Optimyze one-byte field case
+                        $field3 = ord($xrefStreamData[$streamOffset++]);
+                    } else {
+                        $field3 = Zend_Pdf_StringParser::parseIntFromStream($xrefStreamData, $streamOffset, $entryField3Size);
+                        $streamOffset += $entryField3Size;
+                    }
+
+                    switch ($type) {
+                        case 0:
+                            // Free object
+                            $refTable->addReference($objNum . ' ' . $field3 . ' R', $field2, false);
+                            // Debug output:
+                            // echo "Free object - $objNum $field3 R, next free - $field2\n";
+                            break;
+
+                        case 1:
+                            // In use object
+                            $refTable->addReference($objNum . ' ' . $field3 . ' R', $field2, true);
+                            // Debug output:
+                            // echo "In-use object - $objNum $field3 R, offset - $field2\n";
+                            break;
+
+                        case 2:
+                            // Object in an object stream
+                            // Debug output:
+                            // echo "Compressed object - $objNum 0 R, object stream - $field2 0 R, offset - $field3\n";
+                            break;
+                    }
+
+                    $objNum++;
+                }
+            }
+
+            // $streamOffset . ' ' . strlen($xrefStreamData) . "\n";
+            // "$entries\n";
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Cross-reference streams are not supported yet.');
+        }
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp Trailerphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Trailerphp_Keeper
-php php php php php php*php/
-php php php php publicphp functionphp getTrailerphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_trailerphp;
-php php php php php}
+        require_once 'Zend/Pdf/Trailer/Keeper.php';
+        $trailerObj = new Zend_Pdf_Trailer_Keeper($trailerDict, $context);
+        if ($trailerDict->Prev instanceof Zend_Pdf_Element_Numeric ||
+            $trailerDict->Prev instanceof Zend_Pdf_Element_Reference ) {
+            $trailerObj->setPrev($this->_loadXRefTable($trailerDict->Prev->value));
+            $context->getRefTable()->setParent($trailerObj->getPrev()->getRefTable());
+        }
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php Notephp:php PHPphp duplicatesphp stringphp,php whichphp isphp sentphp byphp valuephp,php onlyphp ofphp itphp'sphp updatedphp.
-php php php php php php*php Thusphp wephp donphp'tphp needphp tophp carephp aboutphp overhead
-php php php php php php*
-php php php php php php*php php@paramphp mixedphp php$source
-php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factory
-php php php php php php*php php@paramphp booleanphp php$load
-php php php php php php*php php@throwsphp Zendphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$sourcephp,php Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp,php php$loadphp)
-php php php php php{
-php php php php php php php php ifphp php(php$loadphp)php php{
-php php php php php php php php php php php php ifphp php(php(php$pdfFilephp php=php php@fopenphp(php$sourcephp,php php'rbphp'php)php)php php=php=php=php falsephp php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Canphp notphp openphp php'php$sourcephp'php filephp forphp readingphp.php"php php)php;
-php php php php php php php php php php php php php}
+        /**
+         * We set '/Prev' dictionary property to the current cross-reference section offset.
+         * It doesn't correspond to the actual data, but is true when trailer will be used
+         * as a trailer for next generated PDF section.
+         */
+        $trailerObj->Prev = new Zend_Pdf_Element_Numeric($offset);
 
-php php php php php php php php php php php php php$dataphp php=php php'php'php;
-php php php php php php php php php php php php php$byteCountphp php=php filesizephp(php$sourcephp)php;
-php php php php php php php php php php php php whilephp php(php$byteCountphp php>php php0php php&php&php php!feofphp(php$pdfFilephp)php)php php{
-php php php php php php php php php php php php php php php php php$nextBlockphp php=php freadphp(php$pdfFilephp,php php$byteCountphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$nextBlockphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Errorphp occuredphp whilephp php'php$sourcephp'php filephp readingphp.php"php php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$dataphp php.php=php php$nextBlockphp;
-php php php php php php php php php php php php php php php php php$byteCountphp php-php=php strlenphp(php$nextBlockphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$byteCountphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php php"Errorphp occuredphp whilephp php'php$sourcephp'php filephp readingphp.php"php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php fclosephp(php$pdfFilephp)php;
-
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp php=php newphp Zendphp_Pdfphp_StringParserphp(php$dataphp,php php$factoryphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp php=php newphp Zendphp_Pdfphp_StringParserphp(php$sourcephp,php php$factoryphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$pdfVersionCommentphp php=php php$thisphp-php>php_stringParserphp-php>readCommentphp(php)php;
-php php php php php php php php ifphp php(substrphp(php$pdfVersionCommentphp,php php0php,php php5php)php php!php=php php'php%PDFphp-php'php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Filephp isphp notphp aphp PDFphp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$pdfVersionphp php=php substrphp(php$pdfVersionCommentphp,php php5php)php;
-php php php php php php php php ifphp php(versionphp_comparephp(php$pdfVersionphp,php php'php0php.php9php'php,php php php'<php'php)php php php|php|
-php php php php php php php php php php php php versionphp_comparephp(php$pdfVersionphp,php php'php1php.php6php1php'php,php php'php>php=php'php)
-php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@todo
-php php php php php php php php php php php php php php*php Tophp supportphp PDFphp versionsphp php1php.php5php php(Acrobatphp php6php)php andphp PDFphp versionphp php1php.php7php php(Acrobatphp php7php)
-php php php php php php php php php php php php php php*php Streamphp compressionphp filterphp mustphp bephp implementedphp php(forphp compressedphp objectphp streamsphp)php.
-php php php php php php php php php php php php php php*php Crossphp referencephp streamsphp mustphp bephp implemented
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'Unsupportedphp PDFphp versionphp.php Zendphp_Pdfphp supportsphp PDFphp php1php.php0php-php1php.php4php.php Currentphp versionphp php-php php\php'php%fphp\php'php'php,php php$pdfVersionphp)php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_pdfVersionphp php=php php$pdfVersionphp;
-
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp php=php strrposphp(php$thisphp-php>php_stringParserphp-php>dataphp,php php'php%php%EOFphp'php)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_stringParserphp-php>offsetphp php=php=php=php falsephp php|php|
-php php php php php php php php php php php php strlenphp(php$thisphp-php>php_stringParserphp-php>dataphp)php php-php php$thisphp-php>php_stringParserphp-php>offsetphp php>php php7php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Pdfphp filephp syntaxphp errorphp.php Endphp-ofphp-flephp markerphp expectedphp atphp thephp endphp ofphp filephp.php'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp-php-php;
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Gophp tophp endphp ofphp crossphp-referencephp tablephp offset
-php php php php php php php php php php*php/
-php php php php php php php php whilephp php(Zendphp_Pdfphp_StringParserphp:php:isWhiteSpacephp(php ordphp(php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php)php php)php&php&
-php php php php php php php php php php php php php php php php(php$thisphp-php>php_stringParserphp-php>offsetphp php>php php0php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp-php-php;
-php php php php php php php php php}
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Gophp tophp thephp startphp ofphp crossphp-referencephp tablephp offset
-php php php php php php php php php php*php/
-php php php php php php php php whilephp php(php php(php!Zendphp_Pdfphp_StringParserphp:php:isWhiteSpacephp(php ordphp(php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php)php php)php)php&php&
-php php php php php php php php php php php php php php php php(php$thisphp-php>php_stringParserphp-php>offsetphp php>php php0php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp-php-php;
-php php php php php php php php php}
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Gophp tophp thephp endphp ofphp php'startxrefphp'php keyword
-php php php php php php php php php php*php/
-php php php php php php php php whilephp php(Zendphp_Pdfphp_StringParserphp:php:isWhiteSpacephp(php ordphp(php$thisphp-php>php_stringParserphp-php>dataphp[php$thisphp-php>php_stringParserphp-php>offsetphp]php)php php)php&php&
-php php php php php php php php php php php php php php php php(php$thisphp-php>php_stringParserphp-php>offsetphp php>php php0php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp-php-php;
-php php php php php php php php php}
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php Gophp tophp thephp whitephp spacephp php(eolphp markerphp)php beforephp php'startxrefphp'php keyword
-php php php php php php php php php php*php/
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>offsetphp php-php=php php9php;
-
-php php php php php php php php php$nextLexemephp php=php php$thisphp-php>php_stringParserphp-php>readLexemephp(php)php;
-php php php php php php php php ifphp php(php$nextLexemephp php!php=php php'startxrefphp'php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'Pdfphp filephp syntaxphp errorphp.php php\php'startxrefphp\php'php keywordphp expectedphp.php Offsetphp php-php php0xphp%Xphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp-strlenphp(php$nextLexemephp)php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$startXrefphp php=php php$thisphp-php>php_stringParserphp-php>readLexemephp(php)php;
-php php php php php php php php ifphp php(php!ctypephp_digitphp(php$startXrefphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(sprintfphp(php'Pdfphp filephp syntaxphp errorphp.php Crossphp-referencephp tablephp offsetphp mustphp containphp onlyphp digitsphp.php Offsetphp php-php php0xphp%Xphp.php'php,php php$thisphp-php>php_stringParserphp-php>offsetphp-strlenphp(php$nextLexemephp)php)php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_trailerphp php=php php$thisphp-php>php_loadXRefTablephp(php$startXrefphp)php;
-php php php php php php php php php$factoryphp-php>setObjectCountphp(php$thisphp-php>php_trailerphp-php>Sizephp-php>valuephp)php;
-php php php php php}
+        return $trailerObj;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Objectphp destructor
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_stringParserphp-php>cleanUpphp(php)php;
-php php php php php}
-php}
+    /**
+     * Get Trailer object
+     *
+     * @return Zend_Pdf_Trailer_Keeper
+     */
+    public function getTrailer()
+    {
+        return $this->_trailer;
+    }
+
+    /**
+     * Object constructor
+     *
+     * Note: PHP duplicates string, which is sent by value, only of it's updated.
+     * Thus we don't need to care about overhead
+     *
+     * @param mixed $source
+     * @param Zend_Pdf_ElementFactory_Interface $factory
+     * @param boolean $load
+     * @throws Zend_Exception
+     */
+    public function __construct($source, Zend_Pdf_ElementFactory_Interface $factory, $load)
+    {
+        if ($load) {
+            if (($pdfFile = @fopen($source, 'rb')) === false ) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception( "Can not open '$source' file for reading." );
+            }
+
+            $data = '';
+            $byteCount = filesize($source);
+            while ($byteCount > 0 && !feof($pdfFile)) {
+                $nextBlock = fread($pdfFile, $byteCount);
+                if ($nextBlock === false) {
+                    require_once 'Zend/Pdf/Exception.php';
+                    throw new Zend_Pdf_Exception( "Error occured while '$source' file reading." );
+                }
+
+                $data .= $nextBlock;
+                $byteCount -= strlen($nextBlock);
+            }
+            if ($byteCount != 0) {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception( "Error occured while '$source' file reading." );
+            }
+            fclose($pdfFile);
+
+            $this->_stringParser = new Zend_Pdf_StringParser($data, $factory);
+        } else {
+            $this->_stringParser = new Zend_Pdf_StringParser($source, $factory);
+        }
+
+        $pdfVersionComment = $this->_stringParser->readComment();
+        if (substr($pdfVersionComment, 0, 5) != '%PDF-') {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('File is not a PDF.');
+        }
+
+        $pdfVersion = substr($pdfVersionComment, 5);
+        if (version_compare($pdfVersion, '0.9',  '<')  ||
+            version_compare($pdfVersion, '1.61', '>=')
+           ) {
+            /**
+             * @todo
+             * To support PDF versions 1.5 (Acrobat 6) and PDF version 1.7 (Acrobat 7)
+             * Stream compression filter must be implemented (for compressed object streams).
+             * Cross reference streams must be implemented
+             */
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception(sprintf('Unsupported PDF version. Zend_Pdf supports PDF 1.0-1.4. Current version - \'%f\'', $pdfVersion));
+        }
+        $this->_pdfVersion = $pdfVersion;
+
+        $this->_stringParser->offset = strrpos($this->_stringParser->data, '%%EOF');
+        if ($this->_stringParser->offset === false ||
+            strlen($this->_stringParser->data) - $this->_stringParser->offset > 7) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Pdf file syntax error. End-of-fle marker expected at the end of file.');
+        }
+
+        $this->_stringParser->offset--;
+        /**
+         * Go to end of cross-reference table offset
+         */
+        while (Zend_Pdf_StringParser::isWhiteSpace( ord($this->_stringParser->data[$this->_stringParser->offset]) )&&
+               ($this->_stringParser->offset > 0)) {
+            $this->_stringParser->offset--;
+        }
+        /**
+         * Go to the start of cross-reference table offset
+         */
+        while ( (!Zend_Pdf_StringParser::isWhiteSpace( ord($this->_stringParser->data[$this->_stringParser->offset]) ))&&
+               ($this->_stringParser->offset > 0)) {
+            $this->_stringParser->offset--;
+        }
+        /**
+         * Go to the end of 'startxref' keyword
+         */
+        while (Zend_Pdf_StringParser::isWhiteSpace( ord($this->_stringParser->data[$this->_stringParser->offset]) )&&
+               ($this->_stringParser->offset > 0)) {
+            $this->_stringParser->offset--;
+        }
+        /**
+         * Go to the white space (eol marker) before 'startxref' keyword
+         */
+        $this->_stringParser->offset -= 9;
+
+        $nextLexeme = $this->_stringParser->readLexeme();
+        if ($nextLexeme != 'startxref') {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception(sprintf('Pdf file syntax error. \'startxref\' keyword expected. Offset - 0x%X.', $this->_stringParser->offset-strlen($nextLexeme)));
+        }
+
+        $startXref = $this->_stringParser->readLexeme();
+        if (!ctype_digit($startXref)) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception(sprintf('Pdf file syntax error. Cross-reference table offset must contain only digits. Offset - 0x%X.', $this->_stringParser->offset-strlen($nextLexeme)));
+        }
+
+        $this->_trailer = $this->_loadXRefTable($startXref);
+        $factory->setObjectCount($this->_trailer->Size->value);
+    }
+
+
+    /**
+     * Object destructor
+     */
+    public function __destruct()
+    {
+        $this->_stringParser->cleanUp();
+    }
+}

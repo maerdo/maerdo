@@ -1,161 +1,161 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Profiler
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Firebugphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Profiler
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Firebug.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Zendphp_Dbphp_Profilerphp php*php/
-requirephp_oncephp php'Zendphp/Dbphp/Profilerphp.phpphp'php;
+/** Zend_Db_Profiler */
+require_once 'Zend/Db/Profiler.php';
 
-php/php*php*php Zendphp_Wildfirephp_Pluginphp_FirePhpphp php*php/
-requirephp_oncephp php'Zendphp/Wildfirephp/Pluginphp/FirePhpphp.phpphp'php;
+/** Zend_Wildfire_Plugin_FirePhp */
+require_once 'Zend/Wildfire/Plugin/FirePhp.php';
 
-php/php*php*php Zendphp_Wildfirephp_Pluginphp_FirePhpphp_TableMessagephp php*php/
-requirephp_oncephp php'Zendphp/Wildfirephp/Pluginphp/FirePhpphp/TableMessagephp.phpphp'php;
+/** Zend_Wildfire_Plugin_FirePhp_TableMessage */
+require_once 'Zend/Wildfire/Plugin/FirePhp/TableMessage.php';
 
-php/php*php*
-php php*php Writesphp DBphp eventsphp asphp logphp messagesphp tophp thephp Firebugphp Consolephp viaphp FirePHPphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Db
-php php*php php@subpackagephp Profiler
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dbphp_Profilerphp_Firebugphp extendsphp Zendphp_Dbphp_Profiler
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp originalphp labelphp forphp thisphp profilerphp.
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_labelphp php=php nullphp;
+/**
+ * Writes DB events as log messages to the Firebug Console via FirePHP.
+ *
+ * @category   Zend
+ * @package    Zend_Db
+ * @subpackage Profiler
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Db_Profiler_Firebug extends Zend_Db_Profiler
+{
+    /**
+     * The original label for this profiler.
+     * @var string
+     */
+    protected $_label = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp labelphp templatephp forphp thisphp profiler
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_labelphp_templatephp php=php php'php%labelphp%php php(php%totalCountphp%php php@php php%totalDurationphp%php secphp)php'php;
+    /**
+     * The label template for this profiler
+     * @var string
+     */
+    protected $_label_template = '%label% (%totalCount% @ %totalDuration% sec)';
 
-php php php php php/php*php*
-php php php php php php*php Thephp messagephp envelopephp holdingphp thephp profilingphp summary
-php php php php php php*php php@varphp Zendphp_Wildfirephp_Pluginphp_FirePhpphp_TableMessage
-php php php php php php*php/
-php php php php protectedphp php$php_messagephp php=php nullphp;
+    /**
+     * The message envelope holding the profiling summary
+     * @var Zend_Wildfire_Plugin_FirePhp_TableMessage
+     */
+    protected $_message = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp totalphp timephp takenphp forphp allphp profiledphp queriesphp.
-php php php php php php*php php@varphp float
-php php php php php php*php/
-php php php php protectedphp php$php_totalElapsedTimephp php=php php0php;
+    /**
+     * The total time taken for all profiled queries.
+     * @var float
+     */
+    protected $_totalElapsedTime = 0;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$labelphp OPTIONALphp Labelphp forphp thephp profilingphp infophp.
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$labelphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_labelphp php=php php$labelphp;
-php php php php php php php php ifphp(php!php$thisphp-php>php_labelphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_labelphp php=php php'Zendphp_Dbphp_Profilerphp_Firebugphp'php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param string $label OPTIONAL Label for the profiling info.
+     * @return void
+     */
+    public function __construct($label = null)
+    {
+        $this->_label = $label;
+        if(!$this->_label) {
+            $this->_label = 'Zend_Db_Profiler_Firebug';
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Enablephp orphp disablephp thephp profilerphp.php php Ifphp php$enablephp isphp falsephp,php thephp profiler
-php php php php php php*php isphp disabledphp andphp willphp notphp logphp anyphp queriesphp sentphp tophp itphp.
-php php php php php php*
-php php php php php php*php php@paramphp php booleanphp php$enable
-php php php php php php*php php@returnphp Zendphp_Dbphp_Profilerphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setEnabledphp(php$enablephp)
-php php php php php{
-php php php php php php php php parentphp:php:setEnabledphp(php$enablephp)php;
+    /**
+     * Enable or disable the profiler.  If $enable is false, the profiler
+     * is disabled and will not log any queries sent to it.
+     *
+     * @param  boolean $enable
+     * @return Zend_Db_Profiler Provides a fluent interface
+     */
+    public function setEnabled($enable)
+    {
+        parent::setEnabled($enable);
 
-php php php php php php php php ifphp php(php$thisphp-php>getEnabledphp(php)php)php php{
+        if ($this->getEnabled()) {
 
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_messagephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp php=php newphp Zendphp_Wildfirephp_Pluginphp_FirePhpphp_TableMessagephp(php$thisphp-php>php_labelphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp-php>setBufferedphp(truephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp-php>setHeaderphp(arrayphp(php'Timephp'php,php'Eventphp'php,php'Parametersphp'php)php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp-php>setDestroyphp(truephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp-php>setOptionphp(php'includeLineNumbersphp'php,php falsephp)php;
-php php php php php php php php php php php php php php php php Zendphp_Wildfirephp_Pluginphp_FirePhpphp:php:getInstancephp(php)php-php>sendphp(php$thisphp-php>php_messagephp)php;
-php php php php php php php php php php php php php}
+            if (!$this->_message) {
+                $this->_message = new Zend_Wildfire_Plugin_FirePhp_TableMessage($this->_label);
+                $this->_message->setBuffered(true);
+                $this->_message->setHeader(array('Time','Event','Parameters'));
+                $this->_message->setDestroy(true);
+                $this->_message->setOption('includeLineNumbers', false);
+                Zend_Wildfire_Plugin_FirePhp::getInstance()->send($this->_message);
+            }
 
-php php php php php php php php php}php elsephp php{
+        } else {
 
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_messagephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp-php>setDestroyphp(truephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_messagephp php=php nullphp;
-php php php php php php php php php php php php php}
+            if ($this->_message) {
+                $this->_message->setDestroy(true);
+                $this->_message = null;
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Interceptphp thephp queryphp endphp andphp logphp thephp profilingphp dataphp.
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$queryId
-php php php php php php*php php@throwsphp Zendphp_Dbphp_Profilerphp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp queryEndphp(php$queryIdphp)
-php php php php php{
-php php php php php php php php php$statephp php=php parentphp:php:queryEndphp(php$queryIdphp)php;
+    /**
+     * Intercept the query end and log the profiling data.
+     *
+     * @param  integer $queryId
+     * @throws Zend_Db_Profiler_Exception
+     * @return void
+     */
+    public function queryEnd($queryId)
+    {
+        $state = parent::queryEnd($queryId);
 
-php php php php php php php php ifphp php(php!php$thisphp-php>getEnabledphp(php)php php|php|php php$statephp php=php=php selfphp:php:IGNOREDphp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+        if (!$this->getEnabled() || $state == self::IGNORED) {
+            return;
+        }
 
-php php php php php php php php php$thisphp-php>php_messagephp-php>setDestroyphp(falsephp)php;
+        $this->_message->setDestroy(false);
 
-php php php php php php php php php$profilephp php=php php$thisphp-php>getQueryProfilephp(php$queryIdphp)php;
+        $profile = $this->getQueryProfile($queryId);
 
-php php php php php php php php php$thisphp-php>php_totalElapsedTimephp php+php=php php$profilephp-php>getElapsedSecsphp(php)php;
+        $this->_totalElapsedTime += $profile->getElapsedSecs();
 
-php php php php php php php php php$thisphp-php>php_messagephp-php>addRowphp(arrayphp(php(stringphp)roundphp(php$profilephp-php>getElapsedSecsphp(php)php,php5php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$profilephp-php>getQueryphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$paramsphp=php$profilephp-php>getQueryParamsphp(php)php)php?php$paramsphp:nullphp)php)php;
+        $this->_message->addRow(array((string)round($profile->getElapsedSecs(),5),
+                                      $profile->getQuery(),
+                                      ($params=$profile->getQueryParams())?$params:null));
 
-php php php php php php php php php$thisphp-php>updateMessageLabelphp(php)php;
-php php php php php}
+        $this->updateMessageLabel();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Updatephp thephp labelphp ofphp thephp messagephp holdingphp thephp profilephp infophp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp updateMessageLabelphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_messagephp)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_messagephp-php>setLabelphp(strphp_replacephp(arrayphp(php'php%labelphp%php'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php%totalCountphp%php'php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'php%totalDurationphp%php'php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php$thisphp-php>php_labelphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>getTotalNumQueriesphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(stringphp)roundphp(php$thisphp-php>php_totalElapsedTimephp,php5php)php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_labelphp_templatephp)php)php;
-php php php php php}
-php}
+    /**
+     * Update the label of the message holding the profile info.
+     *
+     * @return void
+     */
+    protected function updateMessageLabel()
+    {
+        if (!$this->_message) {
+            return;
+        }
+        $this->_message->setLabel(str_replace(array('%label%',
+                                                    '%totalCount%',
+                                                    '%totalDuration%'),
+                                              array($this->_label,
+                                                    $this->getTotalNumQueries(),
+                                                    (string)round($this->_totalElapsedTime,5)),
+                                              $this->_label_template));
+    }
+}

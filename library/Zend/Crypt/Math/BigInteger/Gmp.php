@@ -1,196 +1,196 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@subpackagephp Math
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Gmpphp.phpphp php2php3php4php3php9php php2php0php1php0php-php1php1php-php2php3php php2php1php:php1php0php:php1php4Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @subpackage Math
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Gmp.php 23439 2010-11-23 21:10:14Z alexander $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Cryptphp/Mathphp/BigIntegerphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Crypt_Math_BigInteger_Interface
+ */
+require_once 'Zend/Crypt/Math/BigInteger/Interface.php';
 
-php/php*php*
-php php*php Supportphp forphp arbitraryphp precisionphp mathematicsphp inphp PHPphp.
-php php*
-php php*php Zendphp_Cryptphp_Mathphp_BigIntegerphp_Gmpphp isphp aphp wrapperphp acrossphp thephp PHPphp BCMath
-php php*php extensionphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Gmpphp implementsphp Zendphp_Cryptphp_Mathphp_BigIntegerphp_Interface
-php{
+/**
+ * Support for arbitrary precision mathematics in PHP.
+ *
+ * Zend_Crypt_Math_BigInteger_Gmp is a wrapper across the PHP BCMath
+ * extension.
+ *
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Interface
+{
 
-php php php php php/php*php*
-php php php php php php*php Initialisephp aphp bigphp integerphp intophp anphp extensionphp specificphp typephp.
-php php php php php php*php php@paramphp stringphp php$operand
-php php php php php php*php php@paramphp intphp php$base
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp initphp(php$operandphp,php php$basephp php=php php1php0php)
-php php php php php{
-php php php php php php php php returnphp php$operandphp;
-php php php php php}
+    /**
+     * Initialise a big integer into an extension specific type.
+     * @param string $operand
+     * @param int $base
+     * @return string
+     */
+    public function init($operand, $base = 10)
+    {
+        return $operand;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp twophp arbitraryphp precisionphp numbers
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp addphp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_addphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * Adds two arbitrary precision numbers
+     *
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function add($left_operand, $right_operand)
+    {
+        $result = gmp_add($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp subtractphp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_subphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function subtract($left_operand, $right_operand)
+    {
+        $result = gmp_sub($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Comparephp twophp bigphp integersphp andphp returnsphp resultphp asphp anphp integerphp wherephp php0php means
-php php php php php php*php bothphp arephp identicalphp,php php1php thatphp leftphp_operandphp isphp largerphp,php orphp php-php1php that
-php php php php php php*php rightphp_operandphp isphp largerphp.
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp comparephp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_cmpphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * Compare two big integers and returns result as an integer where 0 means
+     * both are identical, 1 that left_operand is larger, or -1 that
+     * right_operand is larger.
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return int
+     */
+    public function compare($left_operand, $right_operand)
+    {
+        $result = gmp_cmp($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Dividephp twophp bigphp integersphp andphp returnphp resultphp orphp NULLphp ifphp thephp denominator
-php php php php php php*php isphp zerophp.
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp dividephp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_divphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * Divide two big integers and return result or NULL if the denominator
+     * is zero.
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string|null
+     */
+    public function divide($left_operand, $right_operand)
+    {
+        $result = gmp_div($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp modulusphp(php$leftphp_operandphp,php php$modulusphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_modphp(php$leftphp_operandphp,php php$modulusphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function modulus($left_operand, $modulus)
+    {
+        $result = gmp_mod($left_operand, $modulus);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp multiplyphp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_mulphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function multiply($left_operand, $right_operand)
+    {
+        $result = gmp_mul($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp powphp(php$leftphp_operandphp,php php$rightphp_operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_powphp(php$leftphp_operandphp,php php$rightphp_operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function pow($left_operand, $right_operand)
+    {
+        $result = gmp_pow($left_operand, $right_operand);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp powmodphp(php$leftphp_operandphp,php php$rightphp_operandphp,php php$modulusphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_powmphp(php$leftphp_operandphp,php php$rightphp_operandphp,php php$modulusphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function powmod($left_operand, $right_operand, $modulus)
+    {
+        $result = gmp_powm($left_operand, $right_operand, $modulus);
+        return gmp_strval($result);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php@paramphp stringphp php$leftphp_operand
-php php php php php php*php php@paramphp stringphp php$rightphp_operand
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp sqrtphp(php$operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php gmpphp_sqrtphp(php$operandphp)php;
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
-
-
-php php php php publicphp functionphp binaryToIntegerphp(php$operandphp)
-php php php php php{
-php php php php php php php php php$resultphp php=php php'php0php'php;
-php php php php php php php php whilephp php(strlenphp(php$operandphp)php)php php{
-php php php php php php php php php php php php php$ordphp php=php ordphp(substrphp(php$operandphp,php php0php,php php1php)php)php;
-php php php php php php php php php php php php php$resultphp php=php gmpphp_addphp(gmpphp_mulphp(php$resultphp,php php2php5php6php)php,php php$ordphp)php;
-php php php php php php php php php php php php php$operandphp php=php substrphp(php$operandphp,php php1php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp gmpphp_strvalphp(php$resultphp)php;
-php php php php php}
+    /**
+     * @param string $left_operand
+     * @param string $right_operand
+     * @return string
+     */
+    public function sqrt($operand)
+    {
+        $result = gmp_sqrt($operand);
+        return gmp_strval($result);
+    }
 
 
-php php php php publicphp functionphp integerToBinaryphp(php$operandphp)
-php php php php php{
-php php php php php php php php php$bigIntphp php=php gmpphp_strvalphp(php$operandphp,php php1php6php)php;
-php php php php php php php php ifphp php(strlenphp(php$bigIntphp)php php%php php2php php!php=php php0php)php php{
-php php php php php php php php php php php php php$bigIntphp php=php php'php0php'php php.php php$bigIntphp;
-php php php php php php php php php}php elsephp ifphp php(php$bigIntphp[php0php]php php>php php'php7php'php)php php{
-php php php php php php php php php php php php php$bigIntphp php=php php'php0php0php'php php.php php$bigIntphp;
-php php php php php php php php php}
-php php php php php php php php php$returnphp php=php packphp(php"Hphp*php"php,php php$bigIntphp)php;
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+    public function binaryToInteger($operand)
+    {
+        $result = '0';
+        while (strlen($operand)) {
+            $ord = ord(substr($operand, 0, 1));
+            $result = gmp_add(gmp_mul($result, 256), $ord);
+            $operand = substr($operand, 1);
+        }
+        return gmp_strval($result);
+    }
 
 
-php php php php publicphp functionphp hexToDecimalphp(php$operandphp)
-php php php php php{
-php php php php php php php php php$returnphp php=php php'php0php'php;
-php php php php php php php php whilephp(strlenphp(php$hexphp)php)php php{
-php php php php php php php php php php php php php$hexphp php=php hexdecphp(substrphp(php$operandphp,php php0php,php php4php)php)php;
-php php php php php php php php php php php php php$decphp php=php gmpphp_addphp(gmpphp_mulphp(php$returnphp,php php6php5php5php3php6php)php,php php$hexphp)php;
-php php php php php php php php php php php php php$operandphp php=php substrphp(php$operandphp,php php4php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+    public function integerToBinary($operand)
+    {
+        $bigInt = gmp_strval($operand, 16);
+        if (strlen($bigInt) % 2 != 0) {
+            $bigInt = '0' . $bigInt;
+        } else if ($bigInt[0] > '7') {
+            $bigInt = '00' . $bigInt;
+        }
+        $return = pack("H*", $bigInt);
+        return $return;
+    }
 
-php}
+
+    public function hexToDecimal($operand)
+    {
+        $return = '0';
+        while(strlen($hex)) {
+            $hex = hexdec(substr($operand, 0, 4));
+            $dec = gmp_add(gmp_mul($return, 65536), $hex);
+            $operand = substr($operand, 4);
+        }
+        return $return;
+    }
+
+}

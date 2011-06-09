@@ -1,186 +1,186 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Credentialphp.phpphp php2php0php1php6php6php php2php0php1php0php-php0php1php-php0php9php php1php9php:php0php0php:php1php7Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Credential.php 20166 2010-01-09 19:00:17Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp DeveloperGarden
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@authorphp php php php php Marcophp Kaiser
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php{
-php php php php php/php*php*
-php php php php php php*php Servicephp Authphp Username
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_usernamephp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage DeveloperGarden
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @author     Marco Kaiser
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_DeveloperGarden_Credential
+{
+    /**
+     * Service Auth Username
+     *
+     * @var string
+     */
+    protected $_username = null;
 
-php php php php php/php*php*
-php php php php php php*php Servicephp Password
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_passwordphp php=php nullphp;
+    /**
+     * Service Password
+     *
+     * @var string
+     */
+    protected $_password = null;
 
-php php php php php/php*php*
-php php php php php php*php Servicephp Realmphp php-php defaultphp tphp-onlinephp.de
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_realmphp php=php php'tphp-onlinephp.dephp'php;
+    /**
+     * Service Realm - default t-online.de
+     *
+     * @var string
+     */
+    protected $_realm = 't-online.de';
 
-php php php php php/php*php*
-php php php php php php*php constructorphp tophp initphp thephp internalphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$username
-php php php php php php*php php@paramphp stringphp php$password
-php php php php php php*php php@paramphp stringphp php$realm
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Credential
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$usernamephp php=php nullphp,php php$passwordphp php=php nullphp,php php$realmphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!emptyphp(php$usernamephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setUsernamephp(php$usernamephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$passwordphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setPasswordphp(php$passwordphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!emptyphp(php$realmphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setRealmphp(php$realmphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * constructor to init the internal data
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $realm
+     * @return Zend_Service_DeveloperGarden_Credential
+     */
+    public function __construct($username = null, $password = null, $realm = null)
+    {
+        if (!empty($username)) {
+            $this->setUsername($username);
+        }
+        if (!empty($password)) {
+            $this->setPassword($password);
+        }
+        if (!empty($realm)) {
+            $this->setRealm($realm);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php splitphp thephp passwordphp intophp anphp array
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$password
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setPasswordphp(php$passwordphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$passwordphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Emptyphp passwordphp notphp permittedphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * split the password into an array
+     *
+     * @param string $password
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setPassword($password = null)
+    {
+        if (empty($password)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty password not permitted.');
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$passwordphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Passwordphp mustphp bephp aphp stringphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($password)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Password must be a string.');
+        }
 
-php php php php php php php php php$thisphp-php>php_passwordphp php=php php$passwordphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_password = $password;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp currentphp configuredphp password
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPasswordphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_passwordphp;
-php php php php php}
+    /**
+     * returns the current configured password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->_password;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp thephp newphp login
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$username
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setUsernamephp(php$usernamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$usernamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Emptyphp usernamephp notphp permittedphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * set the new login
+     *
+     * @param string $username
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setUsername($username = null)
+    {
+        if (empty($username)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty username not permitted.');
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$usernamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Usernamephp mustphp bephp aphp stringphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($username)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Username must be a string.');
+        }
 
-php php php php php php php php php$thisphp-php>php_usernamephp php=php php$usernamephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_username = $username;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp username
-php php php php php php*
-php php php php php php*php ifphp php$withRealmphp php=php=php truephp wephp combinephp usernamephp andphp realmphp like
-php php php php php php*php usernamephp@realm
-php php php php php php*
-php php php php php php*php php@paramphp php$booleanphp withRealm
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getUsernamephp(php$withRealmphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$retValuephp php=php php$thisphp-php>php_usernamephp;
-php php php php php php php php ifphp php(php$withRealmphp)php php{
-php php php php php php php php php php php php php$retValuephp php=php sprintfphp(
-php php php php php php php php php php php php php php php php php'php%sphp@php%sphp'php,
-php php php php php php php php php php php php php php php php php$thisphp-php>php_usernamephp,
-php php php php php php php php php php php php php php php php php$thisphp-php>php_realm
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$retValuephp;
-php php php php php}
+    /**
+     * returns the username
+     *
+     * if $withRealm == true we combine username and realm like
+     * username@realm
+     *
+     * @param $boolean withRealm
+     * @return string|null
+     */
+    public function getUsername($withRealm = false)
+    {
+        $retValue = $this->_username;
+        if ($withRealm) {
+            $retValue = sprintf(
+                '%s@%s',
+                $this->_username,
+                $this->_realm
+            );
+        }
+        return $retValue;
+    }
 
-php php php php php/php*php*
-php php php php php php*php setphp thephp newphp realm
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$realm
-php php php php php php*php php@throwsphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exception
-php php php php php php*php php@returnphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_ClientAbstract
-php php php php php php*php/
-php php php php publicphp functionphp setRealmphp(php$realmphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(emptyphp(php$realmphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Emptyphp realmphp notphp permittedphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * set the new realm
+     *
+     * @param string $realm
+     * @throws Zend_Service_DeveloperGarden_Client_Exception
+     * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
+     */
+    public function setRealm($realm = null)
+    {
+        if (empty($realm)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty realm not permitted.');
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$realmphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/DeveloperGardenphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_DeveloperGardenphp_Clientphp_Exceptionphp(php'Realmphp mustphp bephp aphp stringphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($realm)) {
+            require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
+            throw new Zend_Service_DeveloperGarden_Client_Exception('Realm must be a string.');
+        }
 
-php php php php php php php php php$thisphp-php>php_realmphp php=php php$realmphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_realm = $realm;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnsphp thephp realm
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getRealmphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_realmphp;
-php php php php php}
-php}
+    /**
+     * returns the realm
+     *
+     * @return string|null
+     */
+    public function getRealm()
+    {
+        return $this->_realm;
+    }
+}
 

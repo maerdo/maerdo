@@ -1,280 +1,280 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Zendphp_Controllerphp_Action
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php PriorityStackphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Zend_Controller_Action
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: PriorityStack.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Controller
-php php*php php@subpackagephp Zendphp_Controllerphp_Action
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStackphp implementsphp IteratorAggregatephp,php ArrayAccessphp,php Countable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Controller
+ * @subpackage Zend_Controller_Action
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggregate, ArrayAccess, Countable
+{
 
-php php php php protectedphp php$php_helpersByPriorityphp php=php arrayphp(php)php;
-php php php php protectedphp php$php_helpersByNameRefphp php php=php arrayphp(php)php;
-php php php php protectedphp php$php_nextDefaultPriorityphp php=php php1php;
+    protected $_helpersByPriority = array();
+    protected $_helpersByNameRef  = array();
+    protected $_nextDefaultPriority = 1;
 
-php php php php php/php*php*
-php php php php php php*php Magicphp propertyphp overloadingphp forphp returningphp helperphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$helperNamephp php php php Thephp helperphp name
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$helperNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php$helperNamephp,php php$thisphp-php>php_helpersByNameRefphp)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Magic property overloading for returning helper by name
+     *
+     * @param string $helperName    The helper name
+     * @return Zend_Controller_Action_Helper_Abstract
+     */
+    public function __get($helperName)
+    {
+        if (!array_key_exists($helperName, $this->_helpersByNameRef)) {
+            return false;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_helpersByNameRefphp[php$helperNamephp]php;
-php php php php php}
+        return $this->_helpersByNameRef[$helperName];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Magicphp propertyphp overloadingphp forphp returningphp ifphp helperphp isphp setphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$helperNamephp php php php Thephp helperphp name
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp php_php_issetphp(php$helperNamephp)
-php php php php php{
-php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$helperNamephp,php php$thisphp-php>php_helpersByNameRefphp)php;
-php php php php php}
+    /**
+     * Magic property overloading for returning if helper is set by name
+     *
+     * @param string $helperName    The helper name
+     * @return Zend_Controller_Action_Helper_Abstract
+     */
+    public function __isset($helperName)
+    {
+        return array_key_exists($helperName, $this->_helpersByNameRef);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Magicphp propertyphp overloadingphp forphp unsettingphp ifphp helperphp isphp existsphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$helperNamephp php php php Thephp helperphp name
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstract
-php php php php php php*php/
-php php php php publicphp functionphp php_php_unsetphp(php$helperNamephp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>offsetUnsetphp(php$helperNamephp)php;
-php php php php php}
+    /**
+     * Magic property overloading for unsetting if helper is exists by name
+     *
+     * @param string $helperName    The helper name
+     * @return Zend_Controller_Action_Helper_Abstract
+     */
+    public function __unset($helperName)
+    {
+        return $this->offsetUnset($helperName);
+    }
 
-php php php php php/php*php*
-php php php php php php*php pushphp helperphp ontophp thephp stack
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstractphp php$helper
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStack
-php php php php php php*php/
-php php php php publicphp functionphp pushphp(Zendphp_Controllerphp_Actionphp_Helperphp_Abstractphp php$helperphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>offsetSetphp(php$thisphp-php>getNextFreeHigherPriorityphp(php)php,php php$helperphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * push helper onto the stack
+     *
+     * @param Zend_Controller_Action_Helper_Abstract $helper
+     * @return Zend_Controller_Action_HelperBroker_PriorityStack
+     */
+    public function push(Zend_Controller_Action_Helper_Abstract $helper)
+    {
+        $this->offsetSet($this->getNextFreeHigherPriority(), $helper);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp somethingphp iterable
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getIteratorphp(php)
-php php php php php{
-php php php php php php php php returnphp newphp ArrayObjectphp(php$thisphp-php>php_helpersByPriorityphp)php;
-php php php php php}
+    /**
+     * Return something iterable
+     *
+     * @return array
+     */
+    public function getIterator()
+    {
+        return new ArrayObject($this->_helpersByPriority);
+    }
 
-php php php php php/php*php*
-php php php php php php*php offsetExistsphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp intphp|stringphp php$priorityOrHelperName
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStack
-php php php php php php*php/
-php php php php publicphp functionphp offsetExistsphp(php$priorityOrHelperNamephp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$priorityOrHelperNamephp)php)php php{
-php php php php php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$priorityOrHelperNamephp,php php$thisphp-php>php_helpersByNameRefphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp arrayphp_keyphp_existsphp(php$priorityOrHelperNamephp,php php$thisphp-php>php_helpersByPriorityphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * offsetExists()
+     *
+     * @param int|string $priorityOrHelperName
+     * @return Zend_Controller_Action_HelperBroker_PriorityStack
+     */
+    public function offsetExists($priorityOrHelperName)
+    {
+        if (is_string($priorityOrHelperName)) {
+            return array_key_exists($priorityOrHelperName, $this->_helpersByNameRef);
+        } else {
+            return array_key_exists($priorityOrHelperName, $this->_helpersByPriority);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php offsetGetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp intphp|stringphp php$priorityOrHelperName
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStack
-php php php php php php*php/
-php php php php publicphp functionphp offsetGetphp(php$priorityOrHelperNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>offsetExistsphp(php$priorityOrHelperNamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'Aphp helperphp withphp priorityphp php'php php.php php$priorityOrHelperNamephp php.php php'php doesphp notphp existphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * offsetGet()
+     *
+     * @param int|string $priorityOrHelperName
+     * @return Zend_Controller_Action_HelperBroker_PriorityStack
+     */
+    public function offsetGet($priorityOrHelperName)
+    {
+        if (!$this->offsetExists($priorityOrHelperName)) {
+            require_once 'Zend/Controller/Action/Exception.php';
+            throw new Zend_Controller_Action_Exception('A helper with priority ' . $priorityOrHelperName . ' does not exist.');
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$priorityOrHelperNamephp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_helpersByNameRefphp[php$priorityOrHelperNamephp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_helpersByPriorityphp[php$priorityOrHelperNamephp]php;
-php php php php php php php php php}
-php php php php php}
+        if (is_string($priorityOrHelperName)) {
+            return $this->_helpersByNameRef[$priorityOrHelperName];
+        } else {
+            return $this->_helpersByPriority[$priorityOrHelperName];
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php offsetSetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$priority
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstractphp php$helper
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStack
-php php php php php php*php/
-php php php php publicphp functionphp offsetSetphp(php$priorityphp,php php$helperphp)
-php php php php php{
-php php php php php php php php php$priorityphp php=php php(intphp)php php$priorityphp;
+    /**
+     * offsetSet()
+     *
+     * @param int $priority
+     * @param Zend_Controller_Action_Helper_Abstract $helper
+     * @return Zend_Controller_Action_HelperBroker_PriorityStack
+     */
+    public function offsetSet($priority, $helper)
+    {
+        $priority = (int) $priority;
 
-php php php php php php php php ifphp php(php!php$helperphp instanceofphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstractphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'php$helperphp mustphp extendphp Zendphp_Controllerphp_Actionphp_Helperphp_Abstractphp.php'php)php;
-php php php php php php php php php}
+        if (!$helper instanceof Zend_Controller_Action_Helper_Abstract) {
+            require_once 'Zend/Controller/Action/Exception.php';
+            throw new Zend_Controller_Action_Exception('$helper must extend Zend_Controller_Action_Helper_Abstract.');
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$helperphp-php>getNamephp(php)php,php php$thisphp-php>php_helpersByNameRefphp)php)php php{
-php php php php php php php php php php php php php/php/php removephp anyphp objectphp withphp thephp samephp namephp tophp retainphp BCphp compailitbility
-php php php php php php php php php php php php php/php/php php@todophp Atphp ZFphp php2php.php0php timephp throwphp anphp exceptionphp herephp.
-php php php php php php php php php php php php php$thisphp-php>offsetUnsetphp(php$helperphp-php>getNamephp(php)php)php;
-php php php php php php php php php}
+        if (array_key_exists($helper->getName(), $this->_helpersByNameRef)) {
+            // remove any object with the same name to retain BC compailitbility
+            // @todo At ZF 2.0 time throw an exception here.
+            $this->offsetUnset($helper->getName());
+        }
 
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$priorityphp,php php$thisphp-php>php_helpersByPriorityphp)php)php php{
-php php php php php php php php php php php php php$priorityphp php=php php$thisphp-php>getNextFreeHigherPriorityphp(php$priorityphp)php;php php php/php/php ensuresphp LIFO
-php php php php php php php php php php php php triggerphp_errorphp(php"Aphp helperphp withphp thephp samephp priorityphp alreadyphp existsphp,php reassigningphp tophp php$priorityphp"php,php Ephp_USERphp_WARNINGphp)php;
-php php php php php php php php php}
+        if (array_key_exists($priority, $this->_helpersByPriority)) {
+            $priority = $this->getNextFreeHigherPriority($priority);  // ensures LIFO
+            trigger_error("A helper with the same priority already exists, reassigning to $priority", E_USER_WARNING);
+        }
 
-php php php php php php php php php$thisphp-php>php_helpersByPriorityphp[php$priorityphp]php php=php php$helperphp;
-php php php php php php php php php$thisphp-php>php_helpersByNameRefphp[php$helperphp-php>getNamephp(php)php]php php=php php$helperphp;
+        $this->_helpersByPriority[$priority] = $helper;
+        $this->_helpersByNameRef[$helper->getName()] = $helper;
 
-php php php php php php php php ifphp php(php$priorityphp php=php=php php(php$nextFreeDefaultphp php=php php$thisphp-php>getNextFreeHigherPriorityphp(php$thisphp-php>php_nextDefaultPriorityphp)php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_nextDefaultPriorityphp php=php php$nextFreeDefaultphp;
-php php php php php php php php php}
+        if ($priority == ($nextFreeDefault = $this->getNextFreeHigherPriority($this->_nextDefaultPriority))) {
+            $this->_nextDefaultPriority = $nextFreeDefault;
+        }
 
-php php php php php php php php krsortphp(php$thisphp-php>php_helpersByPriorityphp)php;php php php/php/php alwaysphp makephp surephp priorityphp andphp LIFOphp arephp bothphp enforced
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        krsort($this->_helpersByPriority);  // always make sure priority and LIFO are both enforced
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php offsetUnsetphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp intphp|stringphp php$priorityOrHelperNamephp Priorityphp integerphp orphp thephp helperphp name
-php php php php php php*php php@returnphp Zendphp_Controllerphp_Actionphp_HelperBrokerphp_PriorityStack
-php php php php php php*php/
-php php php php publicphp functionphp offsetUnsetphp(php$priorityOrHelperNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>offsetExistsphp(php$priorityOrHelperNamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Controllerphp/Actionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Controllerphp_Actionphp_Exceptionphp(php'Aphp helperphp withphp priorityphp orphp namephp php'php php.php php$priorityOrHelperNamephp php.php php'php doesphp notphp existphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * offsetUnset()
+     *
+     * @param int|string $priorityOrHelperName Priority integer or the helper name
+     * @return Zend_Controller_Action_HelperBroker_PriorityStack
+     */
+    public function offsetUnset($priorityOrHelperName)
+    {
+        if (!$this->offsetExists($priorityOrHelperName)) {
+            require_once 'Zend/Controller/Action/Exception.php';
+            throw new Zend_Controller_Action_Exception('A helper with priority or name ' . $priorityOrHelperName . ' does not exist.');
+        }
 
-php php php php php php php php ifphp php(isphp_stringphp(php$priorityOrHelperNamephp)php)php php{
-php php php php php php php php php php php php php$helperNamephp php=php php$priorityOrHelperNamephp;
-php php php php php php php php php php php php php$helperphp php=php php$thisphp-php>php_helpersByNameRefphp[php$helperNamephp]php;
-php php php php php php php php php php php php php$priorityphp php=php arrayphp_searchphp(php$helperphp,php php$thisphp-php>php_helpersByPriorityphp,php truephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$priorityphp php=php php$priorityOrHelperNamephp;
-php php php php php php php php php php php php php$helperNamephp php=php php$thisphp-php>php_helpersByPriorityphp[php$priorityOrHelperNamephp]php-php>getNamephp(php)php;
-php php php php php php php php php}
+        if (is_string($priorityOrHelperName)) {
+            $helperName = $priorityOrHelperName;
+            $helper = $this->_helpersByNameRef[$helperName];
+            $priority = array_search($helper, $this->_helpersByPriority, true);
+        } else {
+            $priority = $priorityOrHelperName;
+            $helperName = $this->_helpersByPriority[$priorityOrHelperName]->getName();
+        }
 
-php php php php php php php php unsetphp(php$thisphp-php>php_helpersByNameRefphp[php$helperNamephp]php)php;
-php php php php php php php php unsetphp(php$thisphp-php>php_helpersByPriorityphp[php$priorityphp]php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        unset($this->_helpersByNameRef[$helperName]);
+        unset($this->_helpersByPriority[$priority]);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnphp thephp countphp ofphp helpers
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_helpersByPriorityphp)php;
-php php php php php}
+    /**
+     * return the count of helpers
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_helpersByPriority);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findphp thephp nextphp freephp higherphp priorityphp.php php Ifphp anphp indexphp isphp givenphp,php itphp will
-php php php php php php*php findphp thephp nextphp freephp highestphp priorityphp afterphp itphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$indexPriorityphp OPTIONAL
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getNextFreeHigherPriorityphp(php$indexPriorityphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$indexPriorityphp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$indexPriorityphp php=php php$thisphp-php>php_nextDefaultPriorityphp;
-php php php php php php php php php}
+    /**
+     * Find the next free higher priority.  If an index is given, it will
+     * find the next free highest priority after it.
+     *
+     * @param int $indexPriority OPTIONAL
+     * @return int
+     */
+    public function getNextFreeHigherPriority($indexPriority = null)
+    {
+        if ($indexPriority == null) {
+            $indexPriority = $this->_nextDefaultPriority;
+        }
 
-php php php php php php php php php$prioritiesphp php=php arrayphp_keysphp(php$thisphp-php>php_helpersByPriorityphp)php;
+        $priorities = array_keys($this->_helpersByPriority);
 
-php php php php php php php php whilephp php(inphp_arrayphp(php$indexPriorityphp,php php$prioritiesphp)php)php php{
-php php php php php php php php php php php php php$indexPriorityphp+php+php;
-php php php php php php php php php}
+        while (in_array($indexPriority, $priorities)) {
+            $indexPriority++;
+        }
 
-php php php php php php php php returnphp php$indexPriorityphp;
-php php php php php}
+        return $indexPriority;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Findphp thephp nextphp freephp lowerphp priorityphp.php php Ifphp anphp indexphp isphp givenphp,php itphp will
-php php php php php php*php findphp thephp nextphp freephp lowerphp priorityphp beforephp itphp.
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$indexPriority
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getNextFreeLowerPriorityphp(php$indexPriorityphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$indexPriorityphp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$indexPriorityphp php=php php$thisphp-php>php_nextDefaultPriorityphp;
-php php php php php php php php php}
+    /**
+     * Find the next free lower priority.  If an index is given, it will
+     * find the next free lower priority before it.
+     *
+     * @param int $indexPriority
+     * @return int
+     */
+    public function getNextFreeLowerPriority($indexPriority = null)
+    {
+        if ($indexPriority == null) {
+            $indexPriority = $this->_nextDefaultPriority;
+        }
 
-php php php php php php php php php$prioritiesphp php=php arrayphp_keysphp(php$thisphp-php>php_helpersByPriorityphp)php;
+        $priorities = array_keys($this->_helpersByPriority);
 
-php php php php php php php php whilephp php(inphp_arrayphp(php$indexPriorityphp,php php$prioritiesphp)php)php php{
-php php php php php php php php php php php php php$indexPriorityphp-php-php;
-php php php php php php php php php}
+        while (in_array($indexPriority, $priorities)) {
+            $indexPriority--;
+        }
 
-php php php php php php php php returnphp php$indexPriorityphp;
-php php php php php}
+        return $indexPriority;
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnphp thephp highestphp priority
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getHighestPriorityphp(php)
-php php php php php{
-php php php php php php php php returnphp maxphp(arrayphp_keysphp(php$thisphp-php>php_helpersByPriorityphp)php)php;
-php php php php php}
+    /**
+     * return the highest priority
+     *
+     * @return int
+     */
+    public function getHighestPriority()
+    {
+        return max(array_keys($this->_helpersByPriority));
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnphp thephp lowestphp priority
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getLowestPriorityphp(php)
-php php php php php{
-php php php php php php php php returnphp minphp(arrayphp_keysphp(php$thisphp-php>php_helpersByPriorityphp)php)php;
-php php php php php}
+    /**
+     * return the lowest priority
+     *
+     * @return int
+     */
+    public function getLowestPriority()
+    {
+        return min(array_keys($this->_helpersByPriority));
+    }
 
-php php php php php/php*php*
-php php php php php php*php returnphp thephp helpersphp referencedphp byphp name
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getHelpersByNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_helpersByNameRefphp;
-php php php php php}
+    /**
+     * return the helpers referenced by name
+     *
+     * @return array
+     */
+    public function getHelpersByName()
+    {
+        return $this->_helpersByNameRef;
+    }
 
-php}
+}

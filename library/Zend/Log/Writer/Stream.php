@@ -1,138 +1,138 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Streamphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Stream.php 23584 2010-12-28 19:51:49Z matthew $
+ */
 
-php/php*php*php Zendphp_Logphp_Writerphp_Abstractphp php*php/
-requirephp_oncephp php'Zendphp/Logphp/Writerphp/Abstractphp.phpphp'php;
+/** Zend_Log_Writer_Abstract */
+require_once 'Zend/Log/Writer/Abstract.php';
 
-php/php*php*php Zendphp_Logphp_Formatterphp_Simplephp php*php/
-requirephp_oncephp php'Zendphp/Logphp/Formatterphp/Simplephp.phpphp'php;
+/** Zend_Log_Formatter_Simple */
+require_once 'Zend/Log/Formatter/Simple.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Log
-php php*php php@subpackagephp Writer
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Streamphp.phpphp php2php3php5php8php4php php2php0php1php0php-php1php2php-php2php8php php1php9php:php5php1php:php4php9Zphp matthewphp php$
-php php*php/
-classphp Zendphp_Logphp_Writerphp_Streamphp extendsphp Zendphp_Logphp_Writerphp_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Holdsphp thephp PHPphp streamphp tophp logphp tophp.
-php php php php php php*
-php php php php php php*php php@varphp nullphp|stream
-php php php php php php*php/
-php php php php protectedphp php$php_streamphp php=php nullphp;
+/**
+ * @category   Zend
+ * @package    Zend_Log
+ * @subpackage Writer
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Stream.php 23584 2010-12-28 19:51:49Z matthew $
+ */
+class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
+{
+    /**
+     * Holds the PHP stream to log to.
+     *
+     * @var null|stream
+     */
+    protected $_stream = null;
 
-php php php php php/php*php*
-php php php php php php*php Classphp Constructor
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp|stringphp|resourcephp php$streamOrUrlphp Streamphp orphp URLphp tophp openphp asphp aphp stream
-php php php php php php*php php@paramphp stringphp|nullphp php$modephp Modephp,php onlyphp applicablephp ifphp aphp URLphp isphp given
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$streamOrUrlphp,php php$modephp php=php nullphp)
-php php php php php{
-php php php php php php php php php/php/php Settingphp thephp default
-php php php php php php php php ifphp php(nullphp php=php=php=php php$modephp)php php{
-php php php php php php php php php php php php php$modephp php=php php'aphp'php;
-php php php php php php php php php}
+    /**
+     * Class Constructor
+     *
+     * @param array|string|resource $streamOrUrl Stream or URL to open as a stream
+     * @param string|null $mode Mode, only applicable if a URL is given
+     * @return void
+     * @throws Zend_Log_Exception
+     */
+    public function __construct($streamOrUrl, $mode = null)
+    {
+        // Setting the default
+        if (null === $mode) {
+            $mode = 'a';
+        }
 
-php php php php php php php php ifphp php(isphp_resourcephp(php$streamOrUrlphp)php)php php{
-php php php php php php php php php php php php ifphp php(getphp_resourcephp_typephp(php$streamOrUrlphp)php php!php=php php'streamphp'php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Resourcephp isphp notphp aphp streamphp'php)php;
-php php php php php php php php php php php php php}
+        if (is_resource($streamOrUrl)) {
+            if (get_resource_type($streamOrUrl) != 'stream') {
+                require_once 'Zend/Log/Exception.php';
+                throw new Zend_Log_Exception('Resource is not a stream');
+            }
 
-php php php php php php php php php php php php ifphp php(php$modephp php!php=php php'aphp'php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php'Modephp cannotphp bephp changedphp onphp existingphp streamsphp'php)php;
-php php php php php php php php php php php php php}
+            if ($mode != 'a') {
+                require_once 'Zend/Log/Exception.php';
+                throw new Zend_Log_Exception('Mode cannot be changed on existing streams');
+            }
 
-php php php php php php php php php php php php php$thisphp-php>php_streamphp php=php php$streamOrUrlphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$streamOrUrlphp)php php&php&php issetphp(php$streamOrUrlphp[php'streamphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$streamOrUrlphp php=php php$streamOrUrlphp[php'streamphp'php]php;
-php php php php php php php php php php php php php}
+            $this->_stream = $streamOrUrl;
+        } else {
+            if (is_array($streamOrUrl) && isset($streamOrUrl['stream'])) {
+                $streamOrUrl = $streamOrUrl['stream'];
+            }
 
-php php php php php php php php php php php php ifphp php(php!php php$thisphp-php>php_streamphp php=php php@fopenphp(php$streamOrUrlphp,php php$modephp,php falsephp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$msgphp php=php php"php\php"php$streamOrUrlphp\php"php cannotphp bephp openedphp withphp modephp php\php"php$modephp\php"php"php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php$msgphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if (! $this->_stream = @fopen($streamOrUrl, $mode, false)) {
+                require_once 'Zend/Log/Exception.php';
+                $msg = "\"$streamOrUrl\" cannot be opened with mode \"$mode\"";
+                throw new Zend_Log_Exception($msg);
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_formatterphp php=php newphp Zendphp_Logphp_Formatterphp_Simplephp(php)php;
-php php php php php}
+        $this->_formatter = new Zend_Log_Formatter_Simple();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp newphp instancephp ofphp Zendphp_Logphp_Writerphp_Stream
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$config
-php php php php php php*php php@returnphp Zendphp_Logphp_Writerphp_Stream
-php php php php php php*php/
-php php php php staticphp publicphp functionphp factoryphp(php$configphp)
-php php php php php{
-php php php php php php php php php$configphp php=php selfphp:php:php_parseConfigphp(php$configphp)php;
-php php php php php php php php php$configphp php=php arrayphp_mergephp(arrayphp(
-php php php php php php php php php php php php php'streamphp'php php=php>php nullphp,
-php php php php php php php php php php php php php'modephp'php php php php=php>php nullphp,
-php php php php php php php php php)php,php php$configphp)php;
+    /**
+     * Create a new instance of Zend_Log_Writer_Stream
+     *
+     * @param  array|Zend_Config $config
+     * @return Zend_Log_Writer_Stream
+     */
+    static public function factory($config)
+    {
+        $config = self::_parseConfig($config);
+        $config = array_merge(array(
+            'stream' => null,
+            'mode'   => null,
+        ), $config);
 
-php php php php php php php php php$streamOrUrlphp php=php issetphp(php$configphp[php'urlphp'php]php)php php?php php$configphp[php'urlphp'php]php php:php php$configphp[php'streamphp'php]php;
+        $streamOrUrl = isset($config['url']) ? $config['url'] : $config['stream'];
 
-php php php php php php php php returnphp newphp selfphp(
-php php php php php php php php php php php php php$streamOrUrlphp,
-php php php php php php php php php php php php php$configphp[php'modephp'php]
-php php php php php php php php php)php;
-php php php php php}
+        return new self(
+            $streamOrUrl,
+            $config['mode']
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closephp thephp streamphp resourcephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp shutdownphp(php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_resourcephp(php$thisphp-php>php_streamphp)php)php php{
-php php php php php php php php php php php php fclosephp(php$thisphp-php>php_streamphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Close the stream resource.
+     *
+     * @return void
+     */
+    public function shutdown()
+    {
+        if (is_resource($this->_stream)) {
+            fclose($this->_stream);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Writephp aphp messagephp tophp thephp logphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php$eventphp php eventphp data
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Logphp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_writephp(php$eventphp)
-php php php php php{
-php php php php php php php php php$linephp php=php php$thisphp-php>php_formatterphp-php>formatphp(php$eventphp)php;
+    /**
+     * Write a message to the log.
+     *
+     * @param  array  $event  event data
+     * @return void
+     * @throws Zend_Log_Exception
+     */
+    protected function _write($event)
+    {
+        $line = $this->_formatter->format($event);
 
-php php php php php php php php ifphp php(falsephp php=php=php=php php@fwritephp(php$thisphp-php>php_streamphp,php php$linephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Logphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Logphp_Exceptionphp(php"Unablephp tophp writephp tophp streamphp"php)php;
-php php php php php php php php php}
-php php php php php}
-php}
+        if (false === @fwrite($this->_stream, $line)) {
+            require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception("Unable to write to stream");
+        }
+    }
+}

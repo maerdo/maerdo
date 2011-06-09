@@ -1,402 +1,402 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Frontend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Pagephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Frontend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Page.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Cachephp_Core
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp/Corephp.phpphp'php;
+/**
+ * @see Zend_Cache_Core
+ */
+require_once 'Zend/Cache/Core.php';
 
 
-php/php*php*
-php php*php php@packagephp php php php Zendphp_Cache
-php php*php php@subpackagephp Zendphp_Cachephp_Frontend
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cachephp_Frontendphp_Pagephp extendsphp Zendphp_Cachephp_Core
-php{
-php php php php php/php*php*
-php php php php php php*php Thisphp frontendphp specificphp options
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(booleanphp)php httpphp_conditionalphp php:
-php php php php php php*php php-php ifphp truephp,php httpphp conditionalphp modephp isphp on
-php php php php php php*php WARNINGphp php:php httpphp_conditionalphp OPTIONphp ISphp NOTphp IMPLEMENTEDphp FORphp THEphp MOMENTphp php(TODOphp)
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(booleanphp)php debugphp_headerphp php:
-php php php php php php*php php-php ifphp truephp,php aphp debugphp textphp isphp addedphp beforephp eachphp cachedphp pages
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(booleanphp)php contentphp_typephp_memorizationphp php:
-php php php php php php*php php-php deprecatedphp php=php>php usephp memorizephp_headersphp instead
-php php php php php php*php php-php ifphp thephp Contentphp-Typephp headerphp isphp sentphp afterphp thephp cachephp wasphp startedphp,php the
-php php php php php php*php php php correspondingphp valuephp canphp bephp memorizedphp andphp replayedphp whenphp thephp cachephp isphp hit
-php php php php php php*php php php php(ifphp falsephp php(defaultphp)php,php thephp frontendphp doesnphp'tphp takephp carephp ofphp Contentphp-Typephp headerphp)
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(arrayphp)php memorizephp_headersphp php:
-php php php php php php*php php-php anphp arrayphp ofphp stringsphp correspondingphp tophp somephp HTTPphp headersphp namephp.php Listedphp headers
-php php php php php php*php php php willphp bephp storedphp withphp cachephp datasphp andphp php"replayedphp"php whenphp thephp cachephp isphp hit
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(arrayphp)php defaultphp_optionsphp php:
-php php php php php php*php php-php anphp associativephp arrayphp ofphp defaultphp optionsphp php:
-php php php php php php*php php php php php php-php php(booleanphp)php cachephp php:php cachephp isphp onphp byphp defaultphp ifphp true
-php php php php php php*php php php php php php-php php(booleanphp)php cacheWithXXXVariablesphp php php(XXXXphp php=php php'Getphp'php,php php'Postphp'php,php php'Sessionphp'php,php php'Filesphp'php orphp php'Cookiephp'php)php php:
-php php php php php php*php php php php php php php ifphp truephp,php php cachephp isphp stillphp onphp evenphp ifphp therephp arephp somephp variablesphp inphp thisphp superglobalphp array
-php php php php php php*php php php php php php php ifphp falsephp,php cachephp isphp offphp ifphp therephp arephp somephp variablesphp inphp thisphp superglobalphp array
-php php php php php php*php php php php php php-php php(booleanphp)php makeIdWithXXXVariablesphp php(XXXXphp php=php php'Getphp'php,php php'Postphp'php,php php'Sessionphp'php,php php'Filesphp'php orphp php'Cookiephp'php)php php:
-php php php php php php*php php php php php php php ifphp truephp,php wephp havephp tophp usephp thephp contentphp ofphp thisphp superglobalphp arrayphp tophp makephp aphp cachephp id
-php php php php php php*php php php php php php php ifphp falsephp,php thephp cachephp idphp wonphp'tphp bephp dependentphp ofphp thephp contentphp ofphp thisphp superglobalphp array
-php php php php php php*php php php php php php-php php(intphp)php specificphp_lifetimephp php:php cachephp specificphp lifetime
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(falsephp php=php>php globalphp lifetimephp isphp usedphp,php nullphp php=php>php infinitephp lifetimephp,
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php integerphp php=php>php thisphp lifetimephp isphp usedphp)php,php thisphp php"lifetimephp"php isphp probablyphp only
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php usefullphp whenphp usedphp withphp php"regexpsphp"php array
-php php php php php php*php php php php php php-php php(arrayphp)php tagsphp php:php arrayphp ofphp tagsphp php(stringsphp)
-php php php php php php*php php php php php php-php php(intphp)php priorityphp php:php integerphp betweenphp php0php php(veryphp lowphp priorityphp)php andphp php1php0php php(maximumphp priorityphp)php usedphp by
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php somephp particularphp backends
-php php php php php php*
-php php php php php php*php php=php=php=php=php>php php(arrayphp)php regexpsphp php:
-php php php php php php*php php-php anphp associativephp arrayphp tophp setphp optionsphp onlyphp forphp somephp REQUESTphp_URI
-php php php php php php*php php-php keysphp arephp php(pcrephp)php regexps
-php php php php php php*php php-php valuesphp arephp associativephp arrayphp withphp specificphp optionsphp tophp setphp ifphp thephp regexpphp matchsphp onphp php$php_SERVERphp[php'REQUESTphp_URIphp'php]
-php php php php php php*php php php php(seephp defaultphp_optionsphp forphp thephp listphp ofphp availablephp optionsphp)
-php php php php php php*php php-php ifphp severalphp regexpsphp matchphp thephp php$php_SERVERphp[php'REQUESTphp_URIphp'php]php,php onlyphp thephp lastphp onephp willphp bephp used
-php php php php php php*
-php php php php php php*php php@varphp arrayphp options
-php php php php php php*php/
-php php php php protectedphp php$php_specificOptionsphp php=php arrayphp(
-php php php php php php php php php'httpphp_conditionalphp'php php=php>php falsephp,
-php php php php php php php php php'debugphp_headerphp'php php=php>php falsephp,
-php php php php php php php php php'contentphp_typephp_memorizationphp'php php=php>php falsephp,
-php php php php php php php php php'memorizephp_headersphp'php php=php>php arrayphp(php)php,
-php php php php php php php php php'defaultphp_optionsphp'php php=php>php arrayphp(
-php php php php php php php php php php php php php'cachephp_withphp_getphp_variablesphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'cachephp_withphp_postphp_variablesphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'cachephp_withphp_sessionphp_variablesphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'cachephp_withphp_filesphp_variablesphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'cachephp_withphp_cookiephp_variablesphp'php php=php>php falsephp,
-php php php php php php php php php php php php php'makephp_idphp_withphp_getphp_variablesphp'php php=php>php truephp,
-php php php php php php php php php php php php php'makephp_idphp_withphp_postphp_variablesphp'php php=php>php truephp,
-php php php php php php php php php php php php php'makephp_idphp_withphp_sessionphp_variablesphp'php php=php>php truephp,
-php php php php php php php php php php php php php'makephp_idphp_withphp_filesphp_variablesphp'php php=php>php truephp,
-php php php php php php php php php php php php php'makephp_idphp_withphp_cookiephp_variablesphp'php php=php>php truephp,
-php php php php php php php php php php php php php'cachephp'php php=php>php truephp,
-php php php php php php php php php php php php php'specificphp_lifetimephp'php php=php>php falsephp,
-php php php php php php php php php php php php php'tagsphp'php php=php>php arrayphp(php)php,
-php php php php php php php php php php php php php'priorityphp'php php=php>php null
-php php php php php php php php php)php,
-php php php php php php php php php'regexpsphp'php php=php>php arrayphp(php)
-php php php php php)php;
+/**
+ * @package    Zend_Cache
+ * @subpackage Zend_Cache_Frontend
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cache_Frontend_Page extends Zend_Cache_Core
+{
+    /**
+     * This frontend specific options
+     *
+     * ====> (boolean) http_conditional :
+     * - if true, http conditional mode is on
+     * WARNING : http_conditional OPTION IS NOT IMPLEMENTED FOR THE MOMENT (TODO)
+     *
+     * ====> (boolean) debug_header :
+     * - if true, a debug text is added before each cached pages
+     *
+     * ====> (boolean) content_type_memorization :
+     * - deprecated => use memorize_headers instead
+     * - if the Content-Type header is sent after the cache was started, the
+     *   corresponding value can be memorized and replayed when the cache is hit
+     *   (if false (default), the frontend doesn't take care of Content-Type header)
+     *
+     * ====> (array) memorize_headers :
+     * - an array of strings corresponding to some HTTP headers name. Listed headers
+     *   will be stored with cache datas and "replayed" when the cache is hit
+     *
+     * ====> (array) default_options :
+     * - an associative array of default options :
+     *     - (boolean) cache : cache is on by default if true
+     *     - (boolean) cacheWithXXXVariables  (XXXX = 'Get', 'Post', 'Session', 'Files' or 'Cookie') :
+     *       if true,  cache is still on even if there are some variables in this superglobal array
+     *       if false, cache is off if there are some variables in this superglobal array
+     *     - (boolean) makeIdWithXXXVariables (XXXX = 'Get', 'Post', 'Session', 'Files' or 'Cookie') :
+     *       if true, we have to use the content of this superglobal array to make a cache id
+     *       if false, the cache id won't be dependent of the content of this superglobal array
+     *     - (int) specific_lifetime : cache specific lifetime
+     *                                (false => global lifetime is used, null => infinite lifetime,
+     *                                 integer => this lifetime is used), this "lifetime" is probably only
+     *                                usefull when used with "regexps" array
+     *     - (array) tags : array of tags (strings)
+     *     - (int) priority : integer between 0 (very low priority) and 10 (maximum priority) used by
+     *                        some particular backends
+     *
+     * ====> (array) regexps :
+     * - an associative array to set options only for some REQUEST_URI
+     * - keys are (pcre) regexps
+     * - values are associative array with specific options to set if the regexp matchs on $_SERVER['REQUEST_URI']
+     *   (see default_options for the list of available options)
+     * - if several regexps match the $_SERVER['REQUEST_URI'], only the last one will be used
+     *
+     * @var array options
+     */
+    protected $_specificOptions = array(
+        'http_conditional' => false,
+        'debug_header' => false,
+        'content_type_memorization' => false,
+        'memorize_headers' => array(),
+        'default_options' => array(
+            'cache_with_get_variables' => false,
+            'cache_with_post_variables' => false,
+            'cache_with_session_variables' => false,
+            'cache_with_files_variables' => false,
+            'cache_with_cookie_variables' => false,
+            'make_id_with_get_variables' => true,
+            'make_id_with_post_variables' => true,
+            'make_id_with_session_variables' => true,
+            'make_id_with_files_variables' => true,
+            'make_id_with_cookie_variables' => true,
+            'cache' => true,
+            'specific_lifetime' => false,
+            'tags' => array(),
+            'priority' => null
+        ),
+        'regexps' => array()
+    );
 
-php php php php php/php*php*
-php php php php php php*php Internalphp arrayphp tophp storephp somephp options
-php php php php php php*
-php php php php php php*php php@varphp arrayphp associativephp arrayphp ofphp options
-php php php php php php*php/
-php php php php protectedphp php$php_activeOptionsphp php=php arrayphp(php)php;
+    /**
+     * Internal array to store some options
+     *
+     * @var array associative array of options
+     */
+    protected $_activeOptions = array();
 
-php php php php php/php*php*
-php php php php php php*php Ifphp truephp,php thephp pagephp wonphp'tphp bephp cached
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_cancelphp php=php falsephp;
+    /**
+     * If true, the page won't be cached
+     *
+     * @var boolean
+     */
+    protected $_cancel = false;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php php php$optionsphp php php php php php php php php php php php php php php php Associativephp arrayphp ofphp options
-php php php php php php*php php@paramphp php booleanphp php$doNotTestCacheValidityphp Ifphp setphp tophp truephp,php thephp cachephp validityphp wonphp'tphp bephp tested
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php whilephp php(listphp(php$namephp,php php$valuephp)php php=php eachphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$namephp php=php strtolowerphp(php$namephp)php;
-php php php php php php php php php php php php switchphp php(php$namephp)php php{
-php php php php php php php php php php php php php php php php casephp php'regexpsphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setRegexpsphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'defaultphp_optionsphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setDefaultOptionsphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'contentphp_typephp_memorizationphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_setContentTypeMemorizationphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setOptionphp(php$namephp,php php$valuephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_specificOptionsphp[php'httpphp_conditionalphp'php]php)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_specificOptionsphp[php'httpphp_conditionalphp'php]php)php php{
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'httpphp_conditionalphp isphp notphp implementedphp forphp thephp momentphp php!php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setOptionphp(php'automaticphp_serializationphp'php,php truephp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array   $options                Associative array of options
+     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    public function __construct(array $options = array())
+    {
+        while (list($name, $value) = each($options)) {
+            $name = strtolower($name);
+            switch ($name) {
+                case 'regexps':
+                    $this->_setRegexps($value);
+                    break;
+                case 'default_options':
+                    $this->_setDefaultOptions($value);
+                    break;
+                case 'content_type_memorization':
+                    $this->_setContentTypeMemorization($value);
+                    break;
+                default:
+                    $this->setOption($name, $value);
+            }
+        }
+        if (isset($this->_specificOptions['http_conditional'])) {
+            if ($this->_specificOptions['http_conditional']) {
+                Zend_Cache::throwException('http_conditional is not implemented for the moment !');
+            }
+        }
+        $this->setOption('automatic_serialization', true);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Specificphp setterphp forphp thephp php'defaultphp_optionsphp'php optionphp php(withphp somephp additionalphp testsphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp array
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setDefaultOptionsphp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'defaultphp_optionsphp mustphp bephp anphp arrayphp php!php'php)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp=php>php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"invalidphp optionphp php[php$keyphp]php php!php"php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$keyphp php=php strtolowerphp(php$keyphp)php;
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_specificOptionsphp[php'defaultphp_optionsphp'php]php[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'defaultphp_optionsphp'php]php[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Specific setter for the 'default_options' option (with some additional tests)
+     *
+     * @param  array $options Associative array
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    protected function _setDefaultOptions($options)
+    {
+        if (!is_array($options)) {
+            Zend_Cache::throwException('default_options must be an array !');
+        }
+        foreach ($options as $key=>$value) {
+            if (!is_string($key)) {
+                Zend_Cache::throwException("invalid option [$key] !");
+            }
+            $key = strtolower($key);
+            if (isset($this->_specificOptions['default_options'][$key])) {
+                $this->_specificOptions['default_options'][$key] = $value;
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp deprecatedphp contentTypeMemorizationphp option
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$valuephp value
-php php php php php php*php php@returnphp void
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php protectedphp functionphp php_setContentTypeMemorizationphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$foundphp php=php nullphp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_specificOptionsphp[php'memorizephp_headersphp'php]php asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(strtolowerphp(php$valuephp)php php=php=php php'contentphp-typephp'php)php php{
-php php php php php php php php php php php php php php php php php$foundphp php=php php$keyphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php!php$foundphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_specificOptionsphp[php'memorizephp_headersphp'php]php[php]php php=php php'Contentphp-Typephp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$foundphp)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$thisphp-php>php_specificOptionsphp[php'memorizephp_headersphp'php]php[php$foundphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Set the deprecated contentTypeMemorization option
+     *
+     * @param boolean $value value
+     * @return void
+     * @deprecated
+     */
+    protected function _setContentTypeMemorization($value)
+    {
+        $found = null;
+        foreach ($this->_specificOptions['memorize_headers'] as $key => $value) {
+            if (strtolower($value) == 'content-type') {
+                $found = $key;
+            }
+        }
+        if ($value) {
+            if (!$found) {
+                $this->_specificOptions['memorize_headers'][] = 'Content-Type';
+            }
+        } else {
+            if ($found) {
+                unset($this->_specificOptions['memorize_headers'][$found]);
+            }
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Specificphp setterphp forphp thephp php'regexpsphp'php optionphp php(withphp somephp additionalphp testsphp)
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp Associativephp array
-php php php php php php*php php@throwsphp Zendphp_Cachephp_Exception
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_setRegexpsphp(php$regexpsphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$regexpsphp)php)php php{
-php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'regexpsphp optionphp mustphp bephp anphp arrayphp php!php'php)php;
-php php php php php php php php php}
-php php php php php php php php foreachphp php(php$regexpsphp asphp php$regexpphp=php>php$confphp)php php{
-php php php php php php php php php php php php ifphp php(php!isphp_arrayphp(php$confphp)php)php php{
-php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php'regexpsphp optionphp mustphp bephp anphp arrayphp ofphp arraysphp php!php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$validKeysphp php=php arrayphp_keysphp(php$thisphp-php>php_specificOptionsphp[php'defaultphp_optionsphp'php]php)php;
-php php php php php php php php php php php php foreachphp php(php$confphp asphp php$keyphp=php>php$valuephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!isphp_stringphp(php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php Zendphp_Cachephp:php:throwExceptionphp(php"unknownphp optionphp php[php$keyphp]php php!php"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$keyphp php=php strtolowerphp(php$keyphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$keyphp,php php$validKeysphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$regexpsphp[php$regexpphp]php[php$keyphp]php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>setOptionphp(php'regexpsphp'php,php php$regexpsphp)php;
-php php php php php}
+    /**
+     * Specific setter for the 'regexps' option (with some additional tests)
+     *
+     * @param  array $options Associative array
+     * @throws Zend_Cache_Exception
+     * @return void
+     */
+    protected function _setRegexps($regexps)
+    {
+        if (!is_array($regexps)) {
+            Zend_Cache::throwException('regexps option must be an array !');
+        }
+        foreach ($regexps as $regexp=>$conf) {
+            if (!is_array($conf)) {
+                Zend_Cache::throwException('regexps option must be an array of arrays !');
+            }
+            $validKeys = array_keys($this->_specificOptions['default_options']);
+            foreach ($conf as $key=>$value) {
+                if (!is_string($key)) {
+                    Zend_Cache::throwException("unknown option [$key] !");
+                }
+                $key = strtolower($key);
+                if (!in_array($key, $validKeys)) {
+                    unset($regexps[$regexp][$key]);
+                }
+            }
+        }
+        $this->setOption('regexps', $regexps);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Startphp thephp cache
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$idphp php php php php php php php(optionalphp)php Aphp cachephp idphp php(ifphp youphp setphp aphp valuephp herephp,php maybephp youphp havephp tophp usephp Outputphp frontendphp insteadphp)
-php php php php php php*php php@paramphp php booleanphp php$doNotDiephp Forphp unitphp testingphp onlyphp php!
-php php php php php php*php php@returnphp booleanphp Truephp ifphp thephp cachephp isphp hitphp php(falsephp elsephp)
-php php php php php php*php/
-php php php php publicphp functionphp startphp(php$idphp php=php falsephp,php php$doNotDiephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_cancelphp php=php falsephp;
-php php php php php php php php php$lastMatchingRegexpphp php=php nullphp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_specificOptionsphp[php'regexpsphp'php]php asphp php$regexpphp php=php>php php$confphp)php php{
-php php php php php php php php php php php php ifphp php(pregphp_matchphp(php"php`php$regexpphp`php"php,php php$php_SERVERphp[php'REQUESTphp_URIphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$lastMatchingRegexpphp php=php php$regexpphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_activeOptionsphp php=php php$thisphp-php>php_specificOptionsphp[php'defaultphp_optionsphp'php]php;
-php php php php php php php php ifphp php(php$lastMatchingRegexpphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$confphp php=php php$thisphp-php>php_specificOptionsphp[php'regexpsphp'php]php[php$lastMatchingRegexpphp]php;
-php php php php php php php php php php php php foreachphp php(php$confphp asphp php$keyphp=php>php$valuephp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_activeOptionsphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php(php$thisphp-php>php_activeOptionsphp[php'cachephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!php$idphp)php php{
-php php php php php php php php php php php php php$idphp php=php php$thisphp-php>php_makeIdphp(php)php;
-php php php php php php php php php php php php ifphp php(php!php$idphp)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$arrayphp php=php php$thisphp-php>loadphp(php$idphp)php;
-php php php php php php php php ifphp php(php$arrayphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php$dataphp php=php php$arrayphp[php'dataphp'php]php;
-php php php php php php php php php php php php php$headersphp php=php php$arrayphp[php'headersphp'php]php;
-php php php php php php php php php php php php ifphp php(php!headersphp_sentphp(php)php)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$headersphp asphp php$keyphp=php>php$headerCouplephp)php php{
-php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$headerCouplephp[php0php]php;
-php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php$headerCouplephp[php1php]php;
-php php php php php php php php php php php php php php php php php php php php headerphp(php"php$namephp:php php$valuephp"php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_specificOptionsphp[php'debugphp_headerphp'php]php)php php{
-php php php php php php php php php php php php php php php php echophp php'DEBUGphp HEADERphp php:php Thisphp isphp aphp cachedphp pagephp php!php'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php echophp php$dataphp;
-php php php php php php php php php php php php ifphp php(php$doNotDiephp)php php{
-php php php php php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php diephp(php)php;
-php php php php php php php php php}
-php php php php php php php php obphp_startphp(arrayphp(php$thisphp,php php'php_flushphp'php)php)php;
-php php php php php php php php obphp_implicitphp_flushphp(falsephp)php;
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Start the cache
+     *
+     * @param  string  $id       (optional) A cache id (if you set a value here, maybe you have to use Output frontend instead)
+     * @param  boolean $doNotDie For unit testing only !
+     * @return boolean True if the cache is hit (false else)
+     */
+    public function start($id = false, $doNotDie = false)
+    {
+        $this->_cancel = false;
+        $lastMatchingRegexp = null;
+        foreach ($this->_specificOptions['regexps'] as $regexp => $conf) {
+            if (preg_match("`$regexp`", $_SERVER['REQUEST_URI'])) {
+                $lastMatchingRegexp = $regexp;
+            }
+        }
+        $this->_activeOptions = $this->_specificOptions['default_options'];
+        if ($lastMatchingRegexp !== null) {
+            $conf = $this->_specificOptions['regexps'][$lastMatchingRegexp];
+            foreach ($conf as $key=>$value) {
+                $this->_activeOptions[$key] = $value;
+            }
+        }
+        if (!($this->_activeOptions['cache'])) {
+            return false;
+        }
+        if (!$id) {
+            $id = $this->_makeId();
+            if (!$id) {
+                return false;
+            }
+        }
+        $array = $this->load($id);
+        if ($array !== false) {
+            $data = $array['data'];
+            $headers = $array['headers'];
+            if (!headers_sent()) {
+                foreach ($headers as $key=>$headerCouple) {
+                    $name = $headerCouple[0];
+                    $value = $headerCouple[1];
+                    header("$name: $value");
+                }
+            }
+            if ($this->_specificOptions['debug_header']) {
+                echo 'DEBUG HEADER : This is a cached page !';
+            }
+            echo $data;
+            if ($doNotDie) {
+                return true;
+            }
+            die();
+        }
+        ob_start(array($this, '_flush'));
+        ob_implicit_flush(false);
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Cancelphp thephp currentphp cachingphp process
-php php php php php php*php/
-php php php php publicphp functionphp cancelphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_cancelphp php=php truephp;
-php php php php php}
+    /**
+     * Cancel the current caching process
+     */
+    public function cancel()
+    {
+        $this->_cancel = true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php callbackphp forphp outputphp buffering
-php php php php php php*php php(shouldnphp'tphp reallyphp bephp calledphp manuallyphp)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$dataphp Bufferedphp output
-php php php php php php*php php@returnphp stringphp Dataphp tophp sendphp tophp browser
-php php php php php php*php/
-php php php php publicphp functionphp php_flushphp(php$dataphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_cancelphp)php php{
-php php php php php php php php php php php php returnphp php$dataphp;
-php php php php php php php php php}
-php php php php php php php php php$contentTypephp php=php nullphp;
-php php php php php php php php php$storedHeadersphp php=php arrayphp(php)php;
-php php php php php php php php php$headersListphp php=php headersphp_listphp(php)php;
-php php php php php php php php foreachphp(php$thisphp-php>php_specificOptionsphp[php'memorizephp_headersphp'php]php asphp php$keyphp=php>php$headerNamephp)php php{
-php php php php php php php php php php php php foreachphp php(php$headersListphp asphp php$headerSentphp)php php{
-php php php php php php php php php php php php php php php php php$tmpphp php=php explodephp(php'php:php'php,php php$headerSentphp)php;
-php php php php php php php php php php php php php php php php php$headerSentNamephp php=php trimphp(arrayphp_shiftphp(php$tmpphp)php)php;
-php php php php php php php php php php php php php php php php ifphp php(strtolowerphp(php$headerNamephp)php php=php=php strtolowerphp(php$headerSentNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$headerSentValuephp php=php trimphp(implodephp(php'php:php'php,php php$tmpphp)php)php;
-php php php php php php php php php php php php php php php php php php php php php$storedHeadersphp[php]php php=php arrayphp(php$headerSentNamephp,php php$headerSentValuephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$arrayphp php=php arrayphp(
-php php php php php php php php php php php php php'dataphp'php php=php>php php$dataphp,
-php php php php php php php php php php php php php'headersphp'php php=php>php php$storedHeaders
-php php php php php php php php php)php;
-php php php php php php php php php$thisphp-php>savephp(php$arrayphp,php nullphp,php php$thisphp-php>php_activeOptionsphp[php'tagsphp'php]php,php php$thisphp-php>php_activeOptionsphp[php'specificphp_lifetimephp'php]php,php php$thisphp-php>php_activeOptionsphp[php'priorityphp'php]php)php;
-php php php php php php php php returnphp php$dataphp;
-php php php php php}
+    /**
+     * callback for output buffering
+     * (shouldn't really be called manually)
+     *
+     * @param  string $data Buffered output
+     * @return string Data to send to browser
+     */
+    public function _flush($data)
+    {
+        if ($this->_cancel) {
+            return $data;
+        }
+        $contentType = null;
+        $storedHeaders = array();
+        $headersList = headers_list();
+        foreach($this->_specificOptions['memorize_headers'] as $key=>$headerName) {
+            foreach ($headersList as $headerSent) {
+                $tmp = explode(':', $headerSent);
+                $headerSentName = trim(array_shift($tmp));
+                if (strtolower($headerName) == strtolower($headerSentName)) {
+                    $headerSentValue = trim(implode(':', $tmp));
+                    $storedHeaders[] = array($headerSentName, $headerSentValue);
+                }
+            }
+        }
+        $array = array(
+            'data' => $data,
+            'headers' => $storedHeaders
+        );
+        $this->save($array, null, $this->_activeOptions['tags'], $this->_activeOptions['specific_lifetime'], $this->_activeOptions['priority']);
+        return $data;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Makephp anphp idphp dependingphp onphp REQUESTphp_URIphp andphp superglobalphp arraysphp php(dependingphp onphp optionsphp)
-php php php php php php*
-php php php php php php*php php@returnphp mixedphp|falsephp aphp cachephp idphp php(stringphp)php,php falsephp ifphp thephp cachephp shouldphp havephp notphp tophp bephp used
-php php php php php php*php/
-php php php php protectedphp functionphp php_makeIdphp(php)
-php php php php php{
-php php php php php php php php php$tmpphp php=php php$php_SERVERphp[php'REQUESTphp_URIphp'php]php;
-php php php php php php php php php$arrayphp php=php explodephp(php'php?php'php,php php$tmpphp,php php2php)php;
-php php php php php php php php php php php$tmpphp php=php php$arrayphp[php0php]php;
-php php php php php php php php foreachphp php(arrayphp(php'Getphp'php,php php'Postphp'php,php php'Sessionphp'php,php php'Filesphp'php,php php'Cookiephp'php)php asphp php$arrayNamephp)php php{
-php php php php php php php php php php php php php$tmpphp2php php=php php$thisphp-php>php_makePartialIdphp(php$arrayNamephp,php php$thisphp-php>php_activeOptionsphp[php'cachephp_withphp_php'php php.php strtolowerphp(php$arrayNamephp)php php.php php'php_variablesphp'php]php,php php$thisphp-php>php_activeOptionsphp[php'makephp_idphp_withphp_php'php php.php strtolowerphp(php$arrayNamephp)php php.php php'php_variablesphp'php]php)php;
-php php php php php php php php php php php php ifphp php(php$tmpphp2php=php=php=falsephp)php php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$tmpphp php=php php$tmpphp php.php php$tmpphp2php;
-php php php php php php php php php}
-php php php php php php php php returnphp mdphp5php(php$tmpphp)php;
-php php php php php}
+    /**
+     * Make an id depending on REQUEST_URI and superglobal arrays (depending on options)
+     *
+     * @return mixed|false a cache id (string), false if the cache should have not to be used
+     */
+    protected function _makeId()
+    {
+        $tmp = $_SERVER['REQUEST_URI'];
+        $array = explode('?', $tmp, 2);
+          $tmp = $array[0];
+        foreach (array('Get', 'Post', 'Session', 'Files', 'Cookie') as $arrayName) {
+            $tmp2 = $this->_makePartialId($arrayName, $this->_activeOptions['cache_with_' . strtolower($arrayName) . '_variables'], $this->_activeOptions['make_id_with_' . strtolower($arrayName) . '_variables']);
+            if ($tmp2===false) {
+                return false;
+            }
+            $tmp = $tmp . $tmp2;
+        }
+        return md5($tmp);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Makephp aphp partialphp idphp dependingphp onphp options
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$arrayNamephp Superglobalphp arrayphp name
-php php php php php php*php php@paramphp php boolphp php php php$boolphp1php php php php php Ifphp truephp,php cachephp isphp stillphp onphp evenphp ifphp therephp arephp somephp variablesphp inphp thephp superglobalphp array
-php php php php php php*php php@paramphp php boolphp php php php$boolphp2php php php php php Ifphp truephp,php wephp havephp tophp usephp thephp contentphp ofphp thephp superglobalphp arrayphp tophp makephp aphp partialphp id
-php php php php php php*php php@returnphp mixedphp|falsephp Partialphp idphp php(stringphp)php orphp falsephp ifphp thephp cachephp shouldphp havephp notphp tophp bephp used
-php php php php php php*php/
-php php php php protectedphp functionphp php_makePartialIdphp(php$arrayNamephp,php php$boolphp1php,php php$boolphp2php)
-php php php php php{
-php php php php php php php php switchphp php(php$arrayNamephp)php php{
-php php php php php php php php casephp php'Getphp'php:
-php php php php php php php php php php php php php$varphp php=php php$php_GETphp;
-php php php php php php php php php php php php breakphp;
-php php php php php php php php casephp php'Postphp'php:
-php php php php php php php php php php php php php$varphp php=php php$php_POSTphp;
-php php php php php php php php php php php php breakphp;
-php php php php php php php php casephp php'Sessionphp'php:
-php php php php php php php php php php php php ifphp php(issetphp(php$php_SESSIONphp)php)php php{
-php php php php php php php php php php php php php php php php php$varphp php=php php$php_SESSIONphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$varphp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php breakphp;
-php php php php php php php php casephp php'Cookiephp'php:
-php php php php php php php php php php php php ifphp php(issetphp(php$php_COOKIEphp)php)php php{
-php php php php php php php php php php php php php php php php php$varphp php=php php$php_COOKIEphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$varphp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php breakphp;
-php php php php php php php php casephp php'Filesphp'php:
-php php php php php php php php php php php php php$varphp php=php php$php_FILESphp;
-php php php php php php php php php php php php breakphp;
-php php php php php php php php defaultphp:
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$boolphp1php)php php{
-php php php php php php php php php php php php ifphp php(php$boolphp2php)php php{
-php php php php php php php php php php php php php php php php returnphp serializephp(php$varphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(countphp(php$varphp)php php>php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php'php'php;
-php php php php php}
+    /**
+     * Make a partial id depending on options
+     *
+     * @param  string $arrayName Superglobal array name
+     * @param  bool   $bool1     If true, cache is still on even if there are some variables in the superglobal array
+     * @param  bool   $bool2     If true, we have to use the content of the superglobal array to make a partial id
+     * @return mixed|false Partial id (string) or false if the cache should have not to be used
+     */
+    protected function _makePartialId($arrayName, $bool1, $bool2)
+    {
+        switch ($arrayName) {
+        case 'Get':
+            $var = $_GET;
+            break;
+        case 'Post':
+            $var = $_POST;
+            break;
+        case 'Session':
+            if (isset($_SESSION)) {
+                $var = $_SESSION;
+            } else {
+                $var = null;
+            }
+            break;
+        case 'Cookie':
+            if (isset($_COOKIE)) {
+                $var = $_COOKIE;
+            } else {
+                $var = null;
+            }
+            break;
+        case 'Files':
+            $var = $_FILES;
+            break;
+        default:
+            return false;
+        }
+        if ($bool1) {
+            if ($bool2) {
+                return serialize($var);
+            }
+            return '';
+        }
+        if (count($var) > 0) {
+            return false;
+        }
+        return '';
+    }
 
-php}
+}

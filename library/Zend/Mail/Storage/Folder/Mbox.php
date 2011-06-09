@@ -1,264 +1,264 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Mboxphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Mbox.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Storagephp_Folder
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Folderphp.phpphp'php;
+/**
+ * @see Zend_Mail_Storage_Folder
+ */
+require_once 'Zend/Mail/Storage/Folder.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Storagephp_Folderphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Folderphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Mail_Storage_Folder_Interface
+ */
+require_once 'Zend/Mail/Storage/Folder/Interface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Mailphp_Storagephp_Mbox
-php php*php/
-requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Mboxphp.phpphp'php;
+/**
+ * @see Zend_Mail_Storage_Mbox
+ */
+require_once 'Zend/Mail/Storage/Mbox.php';
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Mailphp_Storagephp_Folderphp_Mboxphp extendsphp Zendphp_Mailphp_Storagephp_Mboxphp implementsphp Zendphp_Mailphp_Storagephp_Folderphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Zendphp_Mailphp_Storagephp_Folderphp rootphp folderphp forphp folderphp structure
-php php php php php php*php php@varphp Zendphp_Mailphp_Storagephp_Folder
-php php php php php php*php/
-php php php php protectedphp php$php_rootFolderphp;
+/**
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Zend_Mail_Storage_Folder_Interface
+{
+    /**
+     * Zend_Mail_Storage_Folder root folder for folder structure
+     * @var Zend_Mail_Storage_Folder
+     */
+    protected $_rootFolder;
 
-php php php php php/php*php*
-php php php php php php*php rootdirphp ofphp folderphp structure
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootdirphp;
+    /**
+     * rootdir of folder structure
+     * @var string
+     */
+    protected $_rootdir;
 
-php php php php php/php*php*
-php php php php php php*php namephp ofphp currentphp folder
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_currentFolderphp;
+    /**
+     * name of current folder
+     * @var string
+     */
+    protected $_currentFolder;
 
-php php php php php/php*php*
-php php php php php php*php Createphp instancephp withphp parameters
-php php php php php php*
-php php php php php php*php Disallowedphp parametersphp arephp:
-php php php php php php*php php php php-php filenamephp usephp Zendphp_Mailphp_Storagephp_Mboxphp forphp aphp singlephp file
-php php php php php php*php Supportedphp parametersphp arephp:
-php php php php php php*php php php php-php dirnamephp rootdirphp ofphp mboxphp structure
-php php php php php php*php php php php-php folderphp intialphp selectedphp folderphp,php defaultphp isphp php'INBOXphp'
-php php php php php php*
-php php php php php php*php php@paramphp php php$paramsphp arrayphp mailphp readerphp specificphp parameters
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$paramsphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$paramsphp)php)php php{
-php php php php php php php php php php php php php$paramsphp php=php php(objectphp)php$paramsphp;
-php php php php php php php php php}
+    /**
+     * Create instance with parameters
+     *
+     * Disallowed parameters are:
+     *   - filename use Zend_Mail_Storage_Mbox for a single file
+     * Supported parameters are:
+     *   - dirname rootdir of mbox structure
+     *   - folder intial selected folder, default is 'INBOX'
+     *
+     * @param  $params array mail reader specific parameters
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function __construct($params)
+    {
+        if (is_array($params)) {
+            $params = (object)$params;
+        }
 
-php php php php php php php php ifphp php(issetphp(php$paramsphp-php>filenamephp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'usephp Zendphp_Mailphp_Storagephp_Mboxphp forphp aphp singlephp filephp'php)php;
-php php php php php php php php php}
+        if (isset($params->filename)) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('use Zend_Mail_Storage_Mbox for a single file');
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$paramsphp-php>dirnamephp)php php|php|php php!isphp_dirphp(php$paramsphp-php>dirnamephp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'nophp validphp dirnamephp givenphp inphp paramsphp'php)php;
-php php php php php php php php php}
+        if (!isset($params->dirname) || !is_dir($params->dirname)) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('no valid dirname given in params');
+        }
 
-php php php php php php php php php$thisphp-php>php_rootdirphp php=php rtrimphp(php$paramsphp-php>dirnamephp,php DIRECTORYphp_SEPARATORphp)php php.php DIRECTORYphp_SEPARATORphp;
+        $this->_rootdir = rtrim($params->dirname, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-php php php php php php php php php$thisphp-php>php_buildFolderTreephp(php$thisphp-php>php_rootdirphp)php;
-php php php php php php php php php$thisphp-php>selectFolderphp(php!emptyphp(php$paramsphp-php>folderphp)php php?php php$paramsphp-php>folderphp php:php php'INBOXphp'php)php;
-php php php php php php php php php$thisphp-php>php_hasphp[php'topphp'php]php php php php php php php=php truephp;
-php php php php php php php php php$thisphp-php>php_hasphp[php'uniqueidphp'php]php php=php falsephp;
-php php php php php}
+        $this->_buildFolderTree($this->_rootdir);
+        $this->selectFolder(!empty($params->folder) ? $params->folder : 'INBOX');
+        $this->_has['top']      = true;
+        $this->_has['uniqueid'] = false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php findphp allphp subfoldersphp andphp mboxphp filesphp forphp folderphp structure
-php php php php php php*
-php php php php php php*php Resultphp isphp savephp inphp Zendphp_Mailphp_Storagephp_Folderphp instancesphp withphp thephp rootphp inphp php$thisphp-php>php_rootFolderphp.
-php php php php php php*php php$parentFolderphp andphp php$parentGlobalNamephp arephp onlyphp usedphp internallyphp forphp recursionphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$currentDirphp callphp withphp rootphp dirphp,php alsophp usedphp forphp recursionphp.
-php php php php php php*php php@paramphp Zendphp_Mailphp_Storagephp_Folderphp|nullphp php$parentFolderphp usedphp forphp recursion
-php php php php php php*php php@paramphp stringphp php$parentGlobalNamephp usedphp forphp rescursion
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php protectedphp functionphp php_buildFolderTreephp(php$currentDirphp,php php$parentFolderphp php=php nullphp,php php$parentGlobalNamephp php=php php'php'php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$parentFolderphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_rootFolderphp php=php newphp Zendphp_Mailphp_Storagephp_Folderphp(php'php/php'php,php php'php/php'php,php falsephp)php;
-php php php php php php php php php php php php php$parentFolderphp php=php php$thisphp-php>php_rootFolderphp;
-php php php php php php php php php}
+    /**
+     * find all subfolders and mbox files for folder structure
+     *
+     * Result is save in Zend_Mail_Storage_Folder instances with the root in $this->_rootFolder.
+     * $parentFolder and $parentGlobalName are only used internally for recursion.
+     *
+     * @param string $currentDir call with root dir, also used for recursion.
+     * @param Zend_Mail_Storage_Folder|null $parentFolder used for recursion
+     * @param string $parentGlobalName used for rescursion
+     * @return null
+     * @throws Zend_Mail_Storage_Exception
+     */
+    protected function _buildFolderTree($currentDir, $parentFolder = null, $parentGlobalName = '')
+    {
+        if (!$parentFolder) {
+            $this->_rootFolder = new Zend_Mail_Storage_Folder('/', '/', false);
+            $parentFolder = $this->_rootFolder;
+        }
 
-php php php php php php php php php$dhphp php=php php@opendirphp(php$currentDirphp)php;
-php php php php php php php php ifphp php(php!php$dhphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php"canphp'tphp readphp dirphp php$currentDirphp"php)php;
-php php php php php php php php php}
-php php php php php php php php whilephp php(php(php$entryphp php=php readdirphp(php$dhphp)php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php/php/php ignorephp hiddenphp filesphp forphp mbox
-php php php php php php php php php php php php ifphp php(php$entryphp[php0php]php php=php=php php'php.php'php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$absoluteEntryphp php=php php$currentDirphp php.php php$entryphp;
-php php php php php php php php php php php php php$globalNamephp php=php php$parentGlobalNamephp php.php DIRECTORYphp_SEPARATORphp php.php php$entryphp;
-php php php php php php php php php php php php ifphp php(isphp_filephp(php$absoluteEntryphp)php php&php&php php$thisphp-php>php_isMboxFilephp(php$absoluteEntryphp)php)php php{
-php php php php php php php php php php php php php php php php php$parentFolderphp-php>php$entryphp php=php newphp Zendphp_Mailphp_Storagephp_Folderphp(php$entryphp,php php$globalNamephp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php!isphp_dirphp(php$absoluteEntryphp)php php/php*php php|php|php php$entryphp php=php=php php'php.php'php php|php|php php$entryphp php=php=php php'php.php.php'php php*php/php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$folderphp php=php newphp Zendphp_Mailphp_Storagephp_Folderphp(php$entryphp,php php$globalNamephp,php falsephp)php;
-php php php php php php php php php php php php php$parentFolderphp-php>php$entryphp php=php php$folderphp;
-php php php php php php php php php php php php php$thisphp-php>php_buildFolderTreephp(php$absoluteEntryphp php.php DIRECTORYphp_SEPARATORphp,php php$folderphp,php php$globalNamephp)php;
-php php php php php php php php php}
+        $dh = @opendir($currentDir);
+        if (!$dh) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception("can't read dir $currentDir");
+        }
+        while (($entry = readdir($dh)) !== false) {
+            // ignore hidden files for mbox
+            if ($entry[0] == '.') {
+                continue;
+            }
+            $absoluteEntry = $currentDir . $entry;
+            $globalName = $parentGlobalName . DIRECTORY_SEPARATOR . $entry;
+            if (is_file($absoluteEntry) && $this->_isMboxFile($absoluteEntry)) {
+                $parentFolder->$entry = new Zend_Mail_Storage_Folder($entry, $globalName);
+                continue;
+            }
+            if (!is_dir($absoluteEntry) /* || $entry == '.' || $entry == '..' */) {
+                continue;
+            }
+            $folder = new Zend_Mail_Storage_Folder($entry, $globalName, false);
+            $parentFolder->$entry = $folder;
+            $this->_buildFolderTree($absoluteEntry . DIRECTORY_SEPARATOR, $folder, $globalName);
+        }
 
-php php php php php php php php closedirphp(php$dhphp)php;
-php php php php php}
+        closedir($dh);
+    }
 
-php php php php php/php*php*
-php php php php php php*php getphp rootphp folderphp orphp givenphp folder
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$rootFolderphp getphp folderphp structurephp forphp givenphp folderphp,php elsephp root
-php php php php php php*php php@returnphp Zendphp_Mailphp_Storagephp_Folderphp rootphp orphp wantedphp folder
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getFoldersphp(php$rootFolderphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$rootFolderphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_rootFolderphp;
-php php php php php php php php php}
+    /**
+     * get root folder or given folder
+     *
+     * @param string $rootFolder get folder structure for given folder, else root
+     * @return Zend_Mail_Storage_Folder root or wanted folder
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getFolders($rootFolder = null)
+    {
+        if (!$rootFolder) {
+            return $this->_rootFolder;
+        }
 
-php php php php php php php php php$currentFolderphp php=php php$thisphp-php>php_rootFolderphp;
-php php php php php php php php php$subnamephp php=php trimphp(php$rootFolderphp,php DIRECTORYphp_SEPARATORphp)php;
-php php php php php php php php whilephp php(php$currentFolderphp)php php{
-php php php php php php php php php php php php php@listphp(php$entryphp,php php$subnamephp)php php=php php@explodephp(DIRECTORYphp_SEPARATORphp,php php$subnamephp,php php2php)php;
-php php php php php php php php php php php php php$currentFolderphp php=php php$currentFolderphp-php>php$entryphp;
-php php php php php php php php php php php php ifphp php(php!php$subnamephp)php php{
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $currentFolder = $this->_rootFolder;
+        $subname = trim($rootFolder, DIRECTORY_SEPARATOR);
+        while ($currentFolder) {
+            @list($entry, $subname) = @explode(DIRECTORY_SEPARATOR, $subname, 2);
+            $currentFolder = $currentFolder->$entry;
+            if (!$subname) {
+                break;
+            }
+        }
 
-php php php php php php php php ifphp php(php$currentFolderphp-php>getGlobalNamephp(php)php php!php=php DIRECTORYphp_SEPARATORphp php.php trimphp(php$rootFolderphp,php DIRECTORYphp_SEPARATORphp)php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php"folderphp php$rootFolderphp notphp foundphp"php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$currentFolderphp;
-php php php php php}
+        if ($currentFolder->getGlobalName() != DIRECTORY_SEPARATOR . trim($rootFolder, DIRECTORY_SEPARATOR)) {
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception("folder $rootFolder not found");
+        }
+        return $currentFolder;
+    }
 
-php php php php php/php*php*
-php php php php php php*php selectphp givenphp folder
-php php php php php php*
-php php php php php php*php folderphp mustphp bephp selectablephp!
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Mailphp_Storagephp_Folderphp|stringphp php$globalNamephp globalphp namephp ofphp folderphp orphp instancephp forphp subfolder
-php php php php php php*php php@returnphp null
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp selectFolderphp(php$globalNamephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_currentFolderphp php=php php(stringphp)php$globalNamephp;
+    /**
+     * select given folder
+     *
+     * folder must be selectable!
+     *
+     * @param Zend_Mail_Storage_Folder|string $globalName global name of folder or instance for subfolder
+     * @return null
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function selectFolder($globalName)
+    {
+        $this->_currentFolder = (string)$globalName;
 
-php php php php php php php php php/php/php gettingphp folderphp fromphp folderphp treephp forphp validation
-php php php php php php php php php$folderphp php=php php$thisphp-php>getFoldersphp(php$thisphp-php>php_currentFolderphp)php;
+        // getting folder from folder tree for validation
+        $folder = $this->getFolders($this->_currentFolder);
 
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$thisphp-php>php_openMboxFilephp(php$thisphp-php>php_rootdirphp php.php php$folderphp-php>getGlobalNamephp(php)php)php;
-php php php php php php php php php}php catchphp(Zendphp_Mailphp_Storagephp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php/php/php checkphp whatphp wentphp wrong
-php php php php php php php php php php php php ifphp php(php!php$folderphp-php>isSelectablephp(php)php)php php{
-php php php php php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php"php{php$thisphp-php>php_currentFolderphp}php isphp notphp selectablephp"php,php php0php,php php$ephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php/php/php seemsphp likephp filephp hasphp vanishedphp;php rebuildingphp folderphp treephp php-php butphp itphp'sphp stillphp anphp exception
-php php php php php php php php php php php php php$thisphp-php>php_buildFolderTreephp(php$thisphp-php>php_rootdirphp)php;
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Mailphp/Storagephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Mailphp_Storagephp_Exceptionphp(php'seemsphp likephp thephp mboxphp filephp hasphp vanishedphp,php Iphp\php'vephp rebuildphp thephp php'php php.
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'folderphp treephp,php searchphp forphp anphp otherphp folderphp andphp tryphp againphp'php,php php0php,php php$ephp)php;
-php php php php php php php php php}
-php php php php php}
+        try {
+            $this->_openMboxFile($this->_rootdir . $folder->getGlobalName());
+        } catch(Zend_Mail_Storage_Exception $e) {
+            // check what went wrong
+            if (!$folder->isSelectable()) {
+                /**
+                 * @see Zend_Mail_Storage_Exception
+                 */
+                require_once 'Zend/Mail/Storage/Exception.php';
+                throw new Zend_Mail_Storage_Exception("{$this->_currentFolder} is not selectable", 0, $e);
+            }
+            // seems like file has vanished; rebuilding folder tree - but it's still an exception
+            $this->_buildFolderTree($this->_rootdir);
+            /**
+             * @see Zend_Mail_Storage_Exception
+             */
+            require_once 'Zend/Mail/Storage/Exception.php';
+            throw new Zend_Mail_Storage_Exception('seems like the mbox file has vanished, I\'ve rebuild the ' .
+                                                         'folder tree, search for an other folder and try again', 0, $e);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php getphp Zendphp_Mailphp_Storagephp_Folderphp instancephp forphp currentphp folder
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Mailphp_Storagephp_Folderphp instancephp ofphp currentphp folder
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Storagephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getCurrentFolderphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_currentFolderphp;
-php php php php php}
+    /**
+     * get Zend_Mail_Storage_Folder instance for current folder
+     *
+     * @return Zend_Mail_Storage_Folder instance of current folder
+     * @throws Zend_Mail_Storage_Exception
+     */
+    public function getCurrentFolder()
+    {
+        return $this->_currentFolder;
+    }
 
-php php php php php/php*php*
-php php php php php php*php magicphp methodphp forphp serializephp(php)
-php php php php php php*
-php php php php php php*php withphp thisphp methodphp youphp canphp cachephp thephp mboxphp class
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp namephp ofphp variables
-php php php php php php*php/
-php php php php publicphp functionphp php_php_sleepphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp_mergephp(parentphp:php:php_php_sleepphp(php)php,php arrayphp(php'php_currentFolderphp'php,php php'php_rootFolderphp'php,php php'php_rootdirphp'php)php)php;
-php php php php php}
+    /**
+     * magic method for serialize()
+     *
+     * with this method you can cache the mbox class
+     *
+     * @return array name of variables
+     */
+    public function __sleep()
+    {
+        return array_merge(parent::__sleep(), array('_currentFolder', '_rootFolder', '_rootdir'));
+    }
 
-php php php php php/php*php*
-php php php php php php*php magicphp methodphp forphp unserializephp(php)
-php php php php php php*
-php php php php php php*php withphp thisphp methodphp youphp canphp cachephp thephp mboxphp class
-php php php php php php*
-php php php php php php*php php@returnphp null
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php php/php/php ifphp cachephp isphp stallphp selectFolderphp(php)php rebuildsphp thephp treephp onphp error
-php php php php php php php php parentphp:php:php_php_wakeupphp(php)php;
-php php php php php}
-php}
+    /**
+     * magic method for unserialize()
+     *
+     * with this method you can cache the mbox class
+     *
+     * @return null
+     */
+    public function __wakeup()
+    {
+        // if cache is stall selectFolder() rebuilds the tree on error
+        parent::__wakeup();
+    }
+}

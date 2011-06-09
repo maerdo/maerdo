@@ -1,92 +1,92 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_XmlRpc
-php php*php php@subpackagephp Generator
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php XmlWriterphp.phpphp php2php0php7php8php5php php2php0php1php0php-php0php1php-php3php1php php0php9php:php4php3php:php0php3Zphp mikaelkaelphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_XmlRpc
+ * @subpackage Generator
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: XmlWriter.php 20785 2010-01-31 09:43:03Z mikaelkael $
+ */
 
-php/php*php*
-php php*php php@varphp Zendphp_XmlRpcphp_Generatorphp_GeneratorAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/XmlRpcphp/Generatorphp/GeneratorAbstractphp.phpphp'php;
+/**
+ * @var Zend_XmlRpc_Generator_GeneratorAbstract
+ */
+require_once 'Zend/XmlRpc/Generator/GeneratorAbstract.php';
 
-php/php*php*
-php php*php XMLphp generatorphp adapterphp basedphp onphp XMLWriter
-php php*php/
-classphp Zendphp_XmlRpcphp_Generatorphp_XmlWriterphp extendsphp Zendphp_XmlRpcphp_Generatorphp_GeneratorAbstract
-php{
-php php php php php/php*php*
-php php php php php php*php XMLWriterphp instance
-php php php php php php*
-php php php php php php*php php@varphp XMLWriter
-php php php php php php*php/
-php php php php protectedphp php$php_xmlWriterphp;
+/**
+ * XML generator adapter based on XMLWriter
+ */
+class Zend_XmlRpc_Generator_XmlWriter extends Zend_XmlRpc_Generator_GeneratorAbstract
+{
+    /**
+     * XMLWriter instance
+     *
+     * @var XMLWriter
+     */
+    protected $_xmlWriter;
 
-php php php php php/php*php*
-php php php php php php*php Initializedphp XMLWriterphp instance
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_initphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xmlWriterphp php=php newphp XMLWriterphp(php)php;
-php php php php php php php php php$thisphp-php>php_xmlWriterphp-php>openMemoryphp(php)php;
-php php php php php php php php php$thisphp-php>php_xmlWriterphp-php>startDocumentphp(php'php1php.php0php'php,php php$thisphp-php>php_encodingphp)php;
-php php php php php}
+    /**
+     * Initialized XMLWriter instance
+     *
+     * @return void
+     */
+    protected function _init()
+    {
+        $this->_xmlWriter = new XMLWriter();
+        $this->_xmlWriter->openMemory();
+        $this->_xmlWriter->startDocument('1.0', $this->_encoding);
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Openphp aphp newphp XMLphp element
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp XMLphp elementphp name
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_openElementphp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xmlWriterphp-php>startElementphp(php$namephp)php;
-php php php php php}
+    /**
+     * Open a new XML element
+     *
+     * @param string $name XML element name
+     * @return void
+     */
+    protected function _openElement($name)
+    {
+        $this->_xmlWriter->startElement($name);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Writephp XMLphp textphp dataphp intophp thephp currentlyphp openedphp XMLphp element
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$textphp XMLphp textphp data
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_writeTextDataphp(php$textphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xmlWriterphp-php>textphp(php$textphp)php;
-php php php php php}
+    /**
+     * Write XML text data into the currently opened XML element
+     *
+     * @param string $text XML text data
+     * @return void
+     */
+    protected function _writeTextData($text)
+    {
+        $this->_xmlWriter->text($text);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closephp anphp previouslyphp openedphp XMLphp element
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_closeElementphp(php$namephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_xmlWriterphp-php>endElementphp(php)php;
+    /**
+     * Close an previously opened XML element
+     *
+     * @param string $name
+     * @return void
+     */
+    protected function _closeElement($name)
+    {
+        $this->_xmlWriter->endElement();
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php publicphp functionphp saveXmlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_xmlWriterphp-php>flushphp(falsephp)php;
-php php php php php}
-php}
+    public function saveXml()
+    {
+        return $this->_xmlWriter->flush(false);
+    }
+}

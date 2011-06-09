@@ -1,150 +1,150 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Alphaphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Alpha.php 22668 2010-07-25 14:50:46Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Validate_Abstract
+ */
+require_once 'Zend/Validate/Abstract.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Validatephp_Alphaphp extendsphp Zendphp_Validatephp_Abstract
-php{
-php php php php constphp INVALIDphp php php php php php php=php php'alphaInvalidphp'php;
-php php php php constphp NOTphp_ALPHAphp php php php php=php php'notAlphaphp'php;
-php php php php constphp STRINGphp_EMPTYphp php=php php'alphaStringEmptyphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Validate_Alpha extends Zend_Validate_Abstract
+{
+    const INVALID      = 'alphaInvalid';
+    const NOT_ALPHA    = 'notAlpha';
+    const STRING_EMPTY = 'alphaStringEmpty';
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp tophp allowphp whitephp spacephp charactersphp;php offphp byphp default
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php php@deprecated
-php php php php php php*php/
-php php php php publicphp php$allowWhiteSpacephp;
+    /**
+     * Whether to allow white space characters; off by default
+     *
+     * @var boolean
+     * @deprecated
+     */
+    public $allowWhiteSpace;
 
-php php php php php/php*php*
-php php php php php php*php Alphabeticphp filterphp usedphp forphp validation
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Filterphp_Alpha
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_filterphp php=php nullphp;
+    /**
+     * Alphabetic filter used for validation
+     *
+     * @var Zend_Filter_Alpha
+     */
+    protected static $_filter = null;
 
-php php php php php/php*php*
-php php php php php php*php Validationphp failurephp messagephp templatephp definitions
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
-php php php php php php php php selfphp:php:INVALIDphp php php php php php php=php>php php"Invalidphp typephp givenphp.php Stringphp expectedphp"php,
-php php php php php php php php selfphp:php:NOTphp_ALPHAphp php php php php=php>php php"php'php%valuephp%php'php containsphp nonphp alphabeticphp charactersphp"php,
-php php php php php php php php selfphp:php:STRINGphp_EMPTYphp php=php>php php"php'php%valuephp%php'php isphp anphp emptyphp stringphp"
-php php php php php)php;
+    /**
+     * Validation failure message template definitions
+     *
+     * @var array
+     */
+    protected $_messageTemplates = array(
+        self::INVALID      => "Invalid type given. String expected",
+        self::NOT_ALPHA    => "'%value%' contains non alphabetic characters",
+        self::STRING_EMPTY => "'%value%' is an empty string"
+    );
 
-php php php php php/php*php*
-php php php php php php*php Setsphp defaultphp optionphp valuesphp forphp thisphp instance
-php php php php php php*
-php php php php php php*php php@paramphp php booleanphp|Zendphp_Configphp php$allowWhiteSpace
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$allowWhiteSpacephp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$allowWhiteSpacephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$allowWhiteSpacephp php=php php$allowWhiteSpacephp-php>toArrayphp(php)php;
-php php php php php php php php php}
+    /**
+     * Sets default option values for this instance
+     *
+     * @param  boolean|Zend_Config $allowWhiteSpace
+     * @return void
+     */
+    public function __construct($allowWhiteSpace = false)
+    {
+        if ($allowWhiteSpace instanceof Zend_Config) {
+            $allowWhiteSpace = $allowWhiteSpace->toArray();
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$allowWhiteSpacephp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'allowWhiteSpacephp'php,php php$allowWhiteSpacephp)php)php php{
-php php php php php php php php php php php php php php php php php$allowWhiteSpacephp php=php php$allowWhiteSpacephp[php'allowWhiteSpacephp'php]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$allowWhiteSpacephp php=php falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (is_array($allowWhiteSpace)) {
+            if (array_key_exists('allowWhiteSpace', $allowWhiteSpace)) {
+                $allowWhiteSpace = $allowWhiteSpace['allowWhiteSpace'];
+            } else {
+                $allowWhiteSpace = false;
+            }
+        }
 
-php php php php php php php php php$thisphp-php>allowWhiteSpacephp php=php php(booleanphp)php php$allowWhiteSpacephp;
-php php php php php}
+        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp allowWhiteSpacephp option
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp getAllowWhiteSpacephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>allowWhiteSpacephp;
-php php php php php}
+    /**
+     * Returns the allowWhiteSpace option
+     *
+     * @return boolean
+     */
+    public function getAllowWhiteSpace()
+    {
+        return $this->allowWhiteSpace;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp allowWhiteSpacephp option
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$allowWhiteSpace
-php php php php php php*php php@returnphp Zendphp_Filterphp_Alphaphp Providesphp aphp fluentphp interface
-php php php php php php*php/
-php php php php publicphp functionphp setAllowWhiteSpacephp(php$allowWhiteSpacephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>allowWhiteSpacephp php=php php(booleanphp)php php$allowWhiteSpacephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the allowWhiteSpace option
+     *
+     * @param boolean $allowWhiteSpace
+     * @return Zend_Filter_Alpha Provides a fluent interface
+     */
+    public function setAllowWhiteSpace($allowWhiteSpace)
+    {
+        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
-php php php php php php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp php$valuephp containsphp onlyphp alphabeticphp characters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Validate_Interface
+     *
+     * Returns true if and only if $value contains only alphabetic characters
+     *
+     * @param  string $value
+     * @return boolean
+     */
+    public function isValid($value)
+    {
+        if (!is_string($value)) {
+            $this->_error(self::INVALID);
+            return false;
+        }
 
-php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
+        $this->_setValue($value);
 
-php php php php php php php php ifphp php(php'php'php php=php=php=php php$valuephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:STRINGphp_EMPTYphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if ('' === $value) {
+            $this->_error(self::STRING_EMPTY);
+            return false;
+        }
 
-php php php php php php php php ifphp php(nullphp php=php=php=php selfphp:php:php$php_filterphp)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php php@seephp Zendphp_Filterphp_Alpha
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Alphaphp.phpphp'php;
-php php php php php php php php php php php php selfphp:php:php$php_filterphp php=php newphp Zendphp_Filterphp_Alphaphp(php)php;
-php php php php php php php php php}
+        if (null === self::$_filter) {
+            /**
+             * @see Zend_Filter_Alpha
+             */
+            require_once 'Zend/Filter/Alpha.php';
+            self::$_filter = new Zend_Filter_Alpha();
+        }
 
-php php php php php php php php selfphp:php:php$php_filterphp-php>allowWhiteSpacephp php=php php$thisphp-php>allowWhiteSpacephp;
+        self::$_filter->allowWhiteSpace = $this->allowWhiteSpace;
 
-php php php php php php php php ifphp php(php$valuephp php!php=php=php selfphp:php:php$php_filterphp-php>filterphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOTphp_ALPHAphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if ($value !== self::$_filter->filter($value)) {
+            $this->_error(self::NOT_ALPHA);
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php}
+}

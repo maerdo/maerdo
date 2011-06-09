@@ -1,247 +1,247 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Reflection
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Classphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Reflection
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Class.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Reflectionphp_Property
-php php*php/
-requirephp_oncephp php'Zendphp/Reflectionphp/Propertyphp.phpphp'php;
+/**
+ * @see Zend_Reflection_Property
+ */
+require_once 'Zend/Reflection/Property.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Reflectionphp_Method
-php php*php/
-requirephp_oncephp php'Zendphp/Reflectionphp/Methodphp.phpphp'php;
+/**
+ * @see Zend_Reflection_Method
+ */
+require_once 'Zend/Reflection/Method.php';
 
-php/php*php*
-php php*php Zendphp_Reflectionphp_Docblock
-php php*php/
-requirephp_oncephp php'Zendphp/Reflectionphp/Docblockphp.phpphp'php;
+/**
+ * Zend_Reflection_Docblock
+ */
+require_once 'Zend/Reflection/Docblock.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Reflection
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Reflectionphp_Classphp extendsphp ReflectionClass
-php{
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp reflectionphp filephp ofphp thephp declaringphp filephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Reflectionphp_File
-php php php php php php*php/
-php php php php publicphp functionphp getDeclaringFilephp(php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Filephp'php)
-php php php php php{
-php php php php php php php php php$instancephp php=php newphp php$reflectionClassphp(php$thisphp-php>getFileNamephp(php)php)php;
-php php php php php php php php ifphp php(php!php$instancephp instanceofphp Zendphp_Reflectionphp_Filephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Filephp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$instancephp;
-php php php php php}
+/**
+ * @category   Zend
+ * @package    Zend_Reflection
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Reflection_Class extends ReflectionClass
+{
+    /**
+     * Return the reflection file of the declaring file.
+     *
+     * @return Zend_Reflection_File
+     */
+    public function getDeclaringFile($reflectionClass = 'Zend_Reflection_File')
+    {
+        $instance = new $reflectionClass($this->getFileName());
+        if (!$instance instanceof Zend_Reflection_File) {
+            require_once 'Zend/Reflection/Exception.php';
+            throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_File');
+        }
+        return $instance;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp classesphp Docblockphp reflectionphp object
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Namephp ofphp reflectionphp classphp tophp use
-php php php php php php*php php@returnphp Zendphp_Reflectionphp_Docblock
-php php php php php php*php php@throwsphp Zendphp_Reflectionphp_Exceptionphp forphp missingphp docblockphp orphp invalidphp reflectionphp class
-php php php php php php*php/
-php php php php publicphp functionphp getDocblockphp(php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Docblockphp'php)
-php php php php php{
-php php php php php php php php ifphp php(php'php'php php=php=php php$thisphp-php>getDocCommentphp(php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php$thisphp-php>getNamephp(php)php php.php php'php doesphp notphp havephp aphp docblockphp'php)php;
-php php php php php php php php php}
+    /**
+     * Return the classes Docblock reflection object
+     *
+     * @param  string $reflectionClass Name of reflection class to use
+     * @return Zend_Reflection_Docblock
+     * @throws Zend_Reflection_Exception for missing docblock or invalid reflection class
+     */
+    public function getDocblock($reflectionClass = 'Zend_Reflection_Docblock')
+    {
+        if ('' == $this->getDocComment()) {
+            require_once 'Zend/Reflection/Exception.php';
+            throw new Zend_Reflection_Exception($this->getName() . ' does not have a docblock');
+        }
 
-php php php php php php php php php$instancephp php=php newphp php$reflectionClassphp(php$thisphp)php;
-php php php php php php php php ifphp php(php!php$instancephp instanceofphp Zendphp_Reflectionphp_Docblockphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Docblockphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$instancephp;
-php php php php php}
+        $instance = new $reflectionClass($this);
+        if (!$instance instanceof Zend_Reflection_Docblock) {
+            require_once 'Zend/Reflection/Exception.php';
+            throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Docblock');
+        }
+        return $instance;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp startphp linephp ofphp thephp class
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$includeDocComment
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getStartLinephp(php$includeDocCommentphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php$includeDocCommentphp)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>getDocCommentphp(php)php php!php=php php'php'php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>getDocblockphp(php)php-php>getStartLinephp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Return the start line of the class
+     *
+     * @param bool $includeDocComment
+     * @return int
+     */
+    public function getStartLine($includeDocComment = false)
+    {
+        if ($includeDocComment) {
+            if ($this->getDocComment() != '') {
+                return $this->getDocblock()->getStartLine();
+            }
+        }
 
-php php php php php php php php returnphp parentphp:php:getStartLinephp(php)php;
-php php php php php}
+        return parent::getStartLine();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp contentsphp ofphp thephp class
-php php php php php php*
-php php php php php php*php php@paramphp boolphp php$includeDocblock
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getContentsphp(php$includeDocblockphp php=php truephp)
-php php php php php{
-php php php php php php php php php$filenamephp php php=php php$thisphp-php>getFileNamephp(php)php;
-php php php php php php php php php$filelinesphp php=php filephp(php$filenamephp)php;
-php php php php php php php php php$startnumphp php php=php php$thisphp-php>getStartLinephp(php$includeDocblockphp)php;
-php php php php php php php php php$endnumphp php php php php=php php$thisphp-php>getEndLinephp(php)php php-php php$thisphp-php>getStartLinephp(php)php;
+    /**
+     * Return the contents of the class
+     *
+     * @param bool $includeDocblock
+     * @return string
+     */
+    public function getContents($includeDocblock = true)
+    {
+        $filename  = $this->getFileName();
+        $filelines = file($filename);
+        $startnum  = $this->getStartLine($includeDocblock);
+        $endnum    = $this->getEndLine() - $this->getStartLine();
 
-php php php php php php php php returnphp implodephp(php'php'php,php arrayphp_splicephp(php$filelinesphp,php php$startnumphp,php php$endnumphp,php truephp)php)php;
-php php php php php}
+        return implode('', array_splice($filelines, $startnum, $endnum, true));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp reflectionphp objectsphp ofphp implementedphp interfaces
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Namephp ofphp reflectionphp classphp tophp use
-php php php php php php*php php@returnphp arrayphp Arrayphp ofphp Zendphp_Reflectionphp_Class
-php php php php php php*php/
-php php php php publicphp functionphp getInterfacesphp(php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Classphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionsphp php php=php parentphp:php:getInterfacesphp(php)php;
-php php php php php php php php php$zendReflectionsphp php=php arrayphp(php)php;
-php php php php php php php php whilephp php(php$phpReflectionsphp php&php&php php(php$phpReflectionphp php=php arrayphp_shiftphp(php$phpReflectionsphp)php)php)php php{
-php php php php php php php php php php php php php$instancephp php=php newphp php$reflectionClassphp(php$phpReflectionphp-php>getNamephp(php)php)php;
-php php php php php php php php php php php php ifphp php(php!php$instancephp instanceofphp Zendphp_Reflectionphp_Classphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Classphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$zendReflectionsphp[php]php php=php php$instancephp;
-php php php php php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$phpReflectionsphp)php;
-php php php php php php php php returnphp php$zendReflectionsphp;
-php php php php php}
+    /**
+     * Get all reflection objects of implemented interfaces
+     *
+     * @param  string $reflectionClass Name of reflection class to use
+     * @return array Array of Zend_Reflection_Class
+     */
+    public function getInterfaces($reflectionClass = 'Zend_Reflection_Class')
+    {
+        $phpReflections  = parent::getInterfaces();
+        $zendReflections = array();
+        while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
+            $instance = new $reflectionClass($phpReflection->getName());
+            if (!$instance instanceof Zend_Reflection_Class) {
+                require_once 'Zend/Reflection/Exception.php';
+                throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Class');
+            }
+            $zendReflections[] = $instance;
+            unset($phpReflection);
+        }
+        unset($phpReflections);
+        return $zendReflections;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp methodphp reflectionphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Reflectionphp classphp tophp utilize
-php php php php php php*php php@returnphp Zendphp_Reflectionphp_Method
-php php php php php php*php/
-php php php php publicphp functionphp getMethodphp(php$namephp,php php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Methodphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionphp php php=php parentphp:php:getMethodphp(php$namephp)php;
-php php php php php php php php php$zendReflectionphp php=php newphp php$reflectionClassphp(php$thisphp-php>getNamephp(php)php,php php$phpReflectionphp-php>getNamephp(php)php)php;
+    /**
+     * Return method reflection by name
+     *
+     * @param  string $name
+     * @param  string $reflectionClass Reflection class to utilize
+     * @return Zend_Reflection_Method
+     */
+    public function getMethod($name, $reflectionClass = 'Zend_Reflection_Method')
+    {
+        $phpReflection  = parent::getMethod($name);
+        $zendReflection = new $reflectionClass($this->getName(), $phpReflection->getName());
 
-php php php php php php php php ifphp php(php!php$zendReflectionphp instanceofphp Zendphp_Reflectionphp_Methodphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Methodphp'php)php;
-php php php php php php php php php}
+        if (!$zendReflection instanceof Zend_Reflection_Method) {
+            require_once 'Zend/Reflection/Exception.php';
+            throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Method');
+        }
 
-php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php returnphp php$zendReflectionphp;
-php php php php php}
+        unset($phpReflection);
+        return $zendReflection;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp reflectionphp objectsphp ofphp allphp methods
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filter
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Reflectionphp classphp tophp usephp forphp methods
-php php php php php php*php php@returnphp arrayphp Arrayphp ofphp Zendphp_Reflectionphp_Methodphp objects
-php php php php php php*php/
-php php php php publicphp functionphp getMethodsphp(php$filterphp php=php php-php1php,php php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Methodphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionsphp php php=php parentphp:php:getMethodsphp(php$filterphp)php;
-php php php php php php php php php$zendReflectionsphp php=php arrayphp(php)php;
-php php php php php php php php whilephp php(php$phpReflectionsphp php&php&php php(php$phpReflectionphp php=php arrayphp_shiftphp(php$phpReflectionsphp)php)php)php php{
-php php php php php php php php php php php php php$instancephp php=php newphp php$reflectionClassphp(php$thisphp-php>getNamephp(php)php,php php$phpReflectionphp-php>getNamephp(php)php)php;
-php php php php php php php php php php php php ifphp php(php!php$instancephp instanceofphp Zendphp_Reflectionphp_Methodphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Methodphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$zendReflectionsphp[php]php php=php php$instancephp;
-php php php php php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$phpReflectionsphp)php;
-php php php php php php php php returnphp php$zendReflectionsphp;
-php php php php php}
+    /**
+     * Get reflection objects of all methods
+     *
+     * @param  string $filter
+     * @param  string $reflectionClass Reflection class to use for methods
+     * @return array Array of Zend_Reflection_Method objects
+     */
+    public function getMethods($filter = -1, $reflectionClass = 'Zend_Reflection_Method')
+    {
+        $phpReflections  = parent::getMethods($filter);
+        $zendReflections = array();
+        while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
+            $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
+            if (!$instance instanceof Zend_Reflection_Method) {
+                require_once 'Zend/Reflection/Exception.php';
+                throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Method');
+            }
+            $zendReflections[] = $instance;
+            unset($phpReflection);
+        }
+        unset($phpReflections);
+        return $zendReflections;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp parentphp reflectionphp classphp ofphp reflectedphp class
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Namephp ofphp Reflectionphp classphp tophp use
-php php php php php php*php php@returnphp Zendphp_Reflectionphp_Class
-php php php php php php*php/
-php php php php publicphp functionphp getParentClassphp(php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Classphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionphp php=php parentphp:php:getParentClassphp(php)php;
-php php php php php php php php ifphp php(php$phpReflectionphp)php php{
-php php php php php php php php php php php php php$zendReflectionphp php=php newphp php$reflectionClassphp(php$phpReflectionphp-php>getNamephp(php)php)php;
-php php php php php php php php php php php php ifphp php(php!php$zendReflectionphp instanceofphp Zendphp_Reflectionphp_Classphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Classphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php php php php php returnphp php$zendReflectionphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Get parent reflection class of reflected class
+     *
+     * @param  string $reflectionClass Name of Reflection class to use
+     * @return Zend_Reflection_Class
+     */
+    public function getParentClass($reflectionClass = 'Zend_Reflection_Class')
+    {
+        $phpReflection = parent::getParentClass();
+        if ($phpReflection) {
+            $zendReflection = new $reflectionClass($phpReflection->getName());
+            if (!$zendReflection instanceof Zend_Reflection_Class) {
+                require_once 'Zend/Reflection/Exception.php';
+                throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Class');
+            }
+            unset($phpReflection);
+            return $zendReflection;
+        } else {
+            return false;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp reflectionphp propertyphp ofphp thisphp classphp byphp name
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Namephp ofphp reflectionphp classphp tophp use
-php php php php php php*php php@returnphp Zendphp_Reflectionphp_Property
-php php php php php php*php/
-php php php php publicphp functionphp getPropertyphp(php$namephp,php php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Propertyphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionphp php php=php parentphp:php:getPropertyphp(php$namephp)php;
-php php php php php php php php php$zendReflectionphp php=php newphp php$reflectionClassphp(php$thisphp-php>getNamephp(php)php,php php$phpReflectionphp-php>getNamephp(php)php)php;
-php php php php php php php php ifphp php(php!php$zendReflectionphp instanceofphp Zendphp_Reflectionphp_Propertyphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Propertyphp'php)php;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php returnphp php$zendReflectionphp;
-php php php php php}
+    /**
+     * Return reflection property of this class by name
+     *
+     * @param  string $name
+     * @param  string $reflectionClass Name of reflection class to use
+     * @return Zend_Reflection_Property
+     */
+    public function getProperty($name, $reflectionClass = 'Zend_Reflection_Property')
+    {
+        $phpReflection  = parent::getProperty($name);
+        $zendReflection = new $reflectionClass($this->getName(), $phpReflection->getName());
+        if (!$zendReflection instanceof Zend_Reflection_Property) {
+            require_once 'Zend/Reflection/Exception.php';
+            throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Property');
+        }
+        unset($phpReflection);
+        return $zendReflection;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp reflectionphp propertiesphp ofphp thisphp class
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$filter
-php php php php php php*php php@paramphp php stringphp php$reflectionClassphp Namephp ofphp reflectionphp classphp tophp use
-php php php php php php*php php@returnphp arrayphp Arrayphp ofphp Zendphp_Reflectionphp_Property
-php php php php php php*php/
-php php php php publicphp functionphp getPropertiesphp(php$filterphp php=php php-php1php,php php$reflectionClassphp php=php php'Zendphp_Reflectionphp_Propertyphp'php)
-php php php php php{
-php php php php php php php php php$phpReflectionsphp php=php parentphp:php:getPropertiesphp(php$filterphp)php;
-php php php php php php php php php$zendReflectionsphp php=php arrayphp(php)php;
-php php php php php php php php whilephp php(php$phpReflectionsphp php&php&php php(php$phpReflectionphp php=php arrayphp_shiftphp(php$phpReflectionsphp)php)php)php php{
-php php php php php php php php php php php php php$instancephp php=php newphp php$reflectionClassphp(php$thisphp-php>getNamephp(php)php,php php$phpReflectionphp-php>getNamephp(php)php)php;
-php php php php php php php php php php php php ifphp php(php!php$instancephp instanceofphp Zendphp_Reflectionphp_Propertyphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Reflectionphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Reflectionphp_Exceptionphp(php'Invalidphp reflectionphp classphp specifiedphp;php mustphp extendphp Zendphp_Reflectionphp_Propertyphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$zendReflectionsphp[php]php php=php php$instancephp;
-php php php php php php php php php php php php unsetphp(php$phpReflectionphp)php;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$phpReflectionsphp)php;
-php php php php php php php php returnphp php$zendReflectionsphp;
-php php php php php}
-php}
+    /**
+     * Return reflection properties of this class
+     *
+     * @param  int $filter
+     * @param  string $reflectionClass Name of reflection class to use
+     * @return array Array of Zend_Reflection_Property
+     */
+    public function getProperties($filter = -1, $reflectionClass = 'Zend_Reflection_Property')
+    {
+        $phpReflections = parent::getProperties($filter);
+        $zendReflections = array();
+        while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
+            $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
+            if (!$instance instanceof Zend_Reflection_Property) {
+                require_once 'Zend/Reflection/Exception.php';
+                throw new Zend_Reflection_Exception('Invalid reflection class specified; must extend Zend_Reflection_Property');
+            }
+            $zendReflections[] = $instance;
+            unset($phpReflection);
+        }
+        unset($phpReflections);
+        return $zendReflections;
+    }
+}

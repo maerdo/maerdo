@@ -1,82 +1,82 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Authentication
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Authentication
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Authentication
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Servicephp_Amazonphp_Authentication
-php{
-php php php php protectedphp php$php_accessKeyphp;
-php php php php protectedphp php$php_secretKeyphp;
-php php php php protectedphp php$php_apiVersionphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Authentication
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Service_Amazon_Authentication
+{
+    protected $_accessKey;
+    protected $_secretKey;
+    protected $_apiVersion;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$accessKey
-php php php php php php*php php@paramphp php stringphp php$secretKey
-php php php php php php*php php@paramphp php stringphp php$apiVersion
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$accessKeyphp,php php$secretKeyphp,php php$apiVersionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setAccessKeyphp(php$accessKeyphp)php;
-php php php php php php php php php$thisphp-php>setSecretKeyphp(php$secretKeyphp)php;
-php php php php php php php php php$thisphp-php>setApiVersionphp(php$apiVersionphp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  string $accessKey
+     * @param  string $secretKey
+     * @param  string $apiVersion
+     * @return void
+     */
+    public function __construct($accessKey, $secretKey, $apiVersion)
+    {
+        $this->setAccessKey($accessKey);
+        $this->setSecretKey($secretKey);
+        $this->setApiVersion($apiVersion);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp accessphp key
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$accessKey
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setAccessKeyphp(php$accessKeyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_accessKeyphp php=php php$accessKeyphp;
-php php php php php}
+    /**
+     * Set access key
+     *
+     * @param  string $accessKey
+     * @return void
+     */
+    public function setAccessKey($accessKey)
+    {
+        $this->_accessKey = $accessKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp secretphp key
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$secretKey
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setSecretKeyphp(php$secretKeyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_secretKeyphp php=php php$secretKeyphp;
-php php php php php}
+    /**
+     * Set secret key
+     *
+     * @param  string $secretKey
+     * @return void
+     */
+    public function setSecretKey($secretKey)
+    {
+        $this->_secretKey = $secretKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp APIphp version
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$apiVersion
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setApiVersionphp(php$apiVersionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_apiVersionphp php=php php$apiVersionphp;
-php php php php php}
-php}
+    /**
+     * Set API version
+     *
+     * @param  string $apiVersion
+     * @return void
+     */
+    public function setApiVersion($apiVersion)
+    {
+        $this->_apiVersion = $apiVersion;
+    }
+}

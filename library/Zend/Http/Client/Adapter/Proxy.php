@@ -1,284 +1,284 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@versionphp php php php php$Idphp:php Proxyphp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @version    $Id: Proxy.php 23486 2010-12-10 04:05:30Z mjh_ca $
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Uriphp_Http
-php php*php/
-requirephp_oncephp php'Zendphp/Uriphp/Httpphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
-php/php*php*
-php php*php php@seephp Zendphp_Httpphp_Clientphp_Adapterphp_Socket
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Socketphp.phpphp'php;
+/**
+ * @see Zend_Uri_Http
+ */
+require_once 'Zend/Uri/Http.php';
+/**
+ * @see Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
+/**
+ * @see Zend_Http_Client_Adapter_Socket
+ */
+require_once 'Zend/Http/Client/Adapter/Socket.php';
 
-php/php*php*
-php php*php HTTPphp Proxyphp-supportingphp Zendphp_Httpphp_Clientphp adapterphp classphp,php basedphp onphp thephp default
-php php*php socketphp basedphp adapterphp.
-php php*
-php php*php Shouldphp bephp usedphp ifphp proxyphp HTTPphp accessphp isphp requiredphp.php Ifphp nophp proxyphp isphp setphp,php will
-php php*php fallphp backphp tophp Zendphp_Httpphp_Clientphp_Adapterphp_Socketphp behaviorphp.php Justphp likephp the
-php php*php defaultphp Socketphp adapterphp,php thisphp adapterphp doesphp notphp requirephp anyphp specialphp extensions
-php php*php installedphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Http
-php php*php php@subpackagephp Clientphp_Adapter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Httpphp_Clientphp_Adapterphp_Proxyphp extendsphp Zendphp_Httpphp_Clientphp_Adapterphp_Socket
-php{
-php php php php php/php*php*
-php php php php php php*php Parametersphp array
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$configphp php=php arrayphp(
-php php php php php php php php php'ssltransportphp'php php php=php>php php'sslphp'php,
-php php php php php php php php php'sslcertphp'php php php php php php php php=php>php nullphp,
-php php php php php php php php php'sslpassphrasephp'php php=php>php nullphp,
-php php php php php php php php php'sslusecontextphp'php php=php>php falsephp,
-php php php php php php php php php'proxyphp_hostphp'php php php php php=php>php php'php'php,
-php php php php php php php php php'proxyphp_portphp'php php php php php=php>php php8php0php8php0php,
-php php php php php php php php php'proxyphp_userphp'php php php php php=php>php php'php'php,
-php php php php php php php php php'proxyphp_passphp'php php php php php=php>php php'php'php,
-php php php php php php php php php'proxyphp_authphp'php php php php php=php>php Zendphp_Httpphp_Clientphp:php:AUTHphp_BASICphp,
-php php php php php php php php php'persistentphp'php php php php php=php>php false
-php php php php php)php;
+/**
+ * HTTP Proxy-supporting Zend_Http_Client adapter class, based on the default
+ * socket based adapter.
+ *
+ * Should be used if proxy HTTP access is required. If no proxy is set, will
+ * fall back to Zend_Http_Client_Adapter_Socket behavior. Just like the
+ * default Socket adapter, this adapter does not require any special extensions
+ * installed.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Client_Adapter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
+{
+    /**
+     * Parameters array
+     *
+     * @var array
+     */
+    protected $config = array(
+        'ssltransport'  => 'ssl',
+        'sslcert'       => null,
+        'sslpassphrase' => null,
+        'sslusecontext' => false,
+        'proxy_host'    => '',
+        'proxy_port'    => 8080,
+        'proxy_user'    => '',
+        'proxy_pass'    => '',
+        'proxy_auth'    => Zend_Http_Client::AUTH_BASIC,
+        'persistent'    => false
+    );
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp HTTPSphp CONNECTphp wasphp alreadyphp negotiatedphp withphp thephp proxyphp orphp not
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$negotiatedphp php=php falsephp;
+    /**
+     * Whether HTTPS CONNECT was already negotiated with the proxy or not
+     *
+     * @var boolean
+     */
+    protected $negotiated = false;
 
-php php php php php/php*php*
-php php php php php php*php Connectphp tophp thephp remotephp server
-php php php php php php*
-php php php php php php*php Willphp tryphp tophp connectphp tophp thephp proxyphp serverphp.php Ifphp nophp proxyphp wasphp setphp,php will
-php php php php php php*php fallphp backphp tophp thephp targetphp serverphp php(behavephp likephp regularphp Socketphp adapterphp)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$host
-php php php php php php*php php@paramphp intphp php php php php php$port
-php php php php php php*php php@paramphp booleanphp php$secure
-php php php php php php*php/
-php php php php publicphp functionphp connectphp(php$hostphp,php php$portphp php=php php8php0php,php php$securephp php=php falsephp)
-php php php php php{
-php php php php php php php php php/php/php Ifphp nophp proxyphp isphp setphp,php fallphp backphp tophp Socketphp adapter
-php php php php php php php php ifphp php(php!php php$thisphp-php>configphp[php'proxyphp_hostphp'php]php)php php{
-php php php php php php php php php php php php returnphp parentphp:php:connectphp(php$hostphp,php php$portphp,php php$securephp)php;
-php php php php php php php php php}
+    /**
+     * Connect to the remote server
+     *
+     * Will try to connect to the proxy server. If no proxy was set, will
+     * fall back to the target server (behave like regular Socket adapter)
+     *
+     * @param string  $host
+     * @param int     $port
+     * @param boolean $secure
+     */
+    public function connect($host, $port = 80, $secure = false)
+    {
+        // If no proxy is set, fall back to Socket adapter
+        if (! $this->config['proxy_host']) {
+            return parent::connect($host, $port, $secure);
+        }
 
-php php php php php php php php php/php*php Urlphp mightphp requirephp streamphp contextphp evenphp ifphp proxyphp connectionphp doesnphp'tphp php*php/
-php php php php php php php php ifphp php(php$securephp)php php{
-php php php php php php php php php php php php php$thisphp-php>configphp[php'sslusecontextphp'php]php php=php truephp;
-php php php php php php php php php}
+        /* Url might require stream context even if proxy connection doesn't */
+        if ($secure) {
+            $this->config['sslusecontext'] = true;
+        }
 
-php php php php php php php php php/php/php Connectphp php(aphp nonphp-securephp connectionphp)php tophp thephp proxyphp server
-php php php php php php php php returnphp parentphp:php:connectphp(
-php php php php php php php php php php php php php$thisphp-php>configphp[php'proxyphp_hostphp'php]php,
-php php php php php php php php php php php php php$thisphp-php>configphp[php'proxyphp_portphp'php]php,
-php php php php php php php php php php php php false
-php php php php php php php php php)php;
-php php php php php}
+        // Connect (a non-secure connection) to the proxy server
+        return parent::connect(
+            $this->config['proxy_host'],
+            $this->config['proxy_port'],
+            false
+        );
+    }
 
-php php php php php/php*php*
-php php php php php php*php Sendphp requestphp tophp thephp proxyphp server
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php php php php php php php$method
-php php php php php php*php php@paramphp Zendphp_Uriphp_Httpphp php$uri
-php php php php php php*php php@paramphp stringphp php php php php php php php php$httpphp_ver
-php php php php php php*php php@paramphp arrayphp php php php php php php php php php$headers
-php php php php php php*php php@paramphp stringphp php php php php php php php php$body
-php php php php php php*php php@returnphp stringphp Requestphp asphp string
-php php php php php php*php/
-php php php php publicphp functionphp writephp(php$methodphp,php php$uriphp,php php$httpphp_verphp php=php php'php1php.php1php'php,php php$headersphp php=php arrayphp(php)php,php php$bodyphp php=php php'php'php)
-php php php php php{
-php php php php php php php php php/php/php Ifphp nophp proxyphp isphp setphp,php fallphp backphp tophp defaultphp Socketphp adapter
-php php php php php php php php ifphp php(php!php php$thisphp-php>configphp[php'proxyphp_hostphp'php]php)php returnphp parentphp:php:writephp(php$methodphp,php php$uriphp,php php$httpphp_verphp,php php$headersphp,php php$bodyphp)php;
+    /**
+     * Send request to the proxy server
+     *
+     * @param string        $method
+     * @param Zend_Uri_Http $uri
+     * @param string        $http_ver
+     * @param array         $headers
+     * @param string        $body
+     * @return string Request as string
+     */
+    public function write($method, $uri, $http_ver = '1.1', $headers = array(), $body = '')
+    {
+        // If no proxy is set, fall back to default Socket adapter
+        if (! $this->config['proxy_host']) return parent::write($method, $uri, $http_ver, $headers, $body);
 
-php php php php php php php php php/php/php Makephp surephp wephp'rephp properlyphp connected
-php php php php php php php php ifphp php(php!php php$thisphp-php>socketphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Tryingphp tophp writephp butphp wephp arephp notphp connectedphp"php)php;
-php php php php php php php php php}
+        // Make sure we're properly connected
+        if (! $this->socket) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Trying to write but we are not connected");
+        }
 
-php php php php php php php php php$hostphp php=php php$thisphp-php>configphp[php'proxyphp_hostphp'php]php;
-php php php php php php php php php$portphp php=php php$thisphp-php>configphp[php'proxyphp_portphp'php]php;
+        $host = $this->config['proxy_host'];
+        $port = $this->config['proxy_port'];
 
-php php php php php php php php ifphp php(php$thisphp-php>connectedphp_tophp[php0php]php php!php=php php"tcpphp:php/php/php$hostphp"php php|php|php php$thisphp-php>connectedphp_tophp[php1php]php php!php=php php$portphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Tryingphp tophp writephp butphp wephp arephp connectedphp tophp thephp wrongphp proxyphp serverphp"php)php;
-php php php php php php php php php}
+        if ($this->connected_to[0] != "tcp://$host" || $this->connected_to[1] != $port) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Trying to write but we are connected to the wrong proxy server");
+        }
 
-php php php php php php php php php/php/php Addphp Proxyphp-Authorizationphp header
-php php php php php php php php ifphp php(php$thisphp-php>configphp[php'proxyphp_userphp'php]php php&php&php php!php issetphp(php$headersphp[php'proxyphp-authorizationphp'php]php)php)php php{
-php php php php php php php php php php php php php$headersphp[php'proxyphp-authorizationphp'php]php php=php Zendphp_Httpphp_Clientphp:php:encodeAuthHeaderphp(
-php php php php php php php php php php php php php php php php php$thisphp-php>configphp[php'proxyphp_userphp'php]php,php php$thisphp-php>configphp[php'proxyphp_passphp'php]php,php php$thisphp-php>configphp[php'proxyphp_authphp'php]
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        // Add Proxy-Authorization header
+        if ($this->config['proxy_user'] && ! isset($headers['proxy-authorization'])) {
+            $headers['proxy-authorization'] = Zend_Http_Client::encodeAuthHeader(
+                $this->config['proxy_user'], $this->config['proxy_pass'], $this->config['proxy_auth']
+            );
+        }
 
-php php php php php php php php php/php/php ifphp wephp arephp proxyingphp HTTPSphp,php preformphp CONNECTphp handshakephp withphp thephp proxy
-php php php php php php php php ifphp php(php$uriphp-php>getSchemephp(php)php php=php=php php'httpsphp'php php&php&php php(php!php php$thisphp-php>negotiatedphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>connectHandshakephp(php$uriphp-php>getHostphp(php)php,php php$uriphp-php>getPortphp(php)php,php php$httpphp_verphp,php php$headersphp)php;
-php php php php php php php php php php php php php$thisphp-php>negotiatedphp php=php truephp;
-php php php php php php php php php}
+        // if we are proxying HTTPS, preform CONNECT handshake with the proxy
+        if ($uri->getScheme() == 'https' && (! $this->negotiated)) {
+            $this->connectHandshake($uri->getHost(), $uri->getPort(), $http_ver, $headers);
+            $this->negotiated = true;
+        }
 
-php php php php php php php php php/php/php Savephp requestphp methodphp forphp later
-php php php php php php php php php$thisphp-php>methodphp php=php php$methodphp;
+        // Save request method for later
+        $this->method = $method;
 
-php php php php php php php php php/php/php Buildphp requestphp headers
-php php php php php php php php ifphp php(php$thisphp-php>negotiatedphp)php php{
-php php php php php php php php php php php php php$pathphp php=php php$uriphp-php>getPathphp(php)php;
-php php php php php php php php php php php php ifphp php(php$uriphp-php>getQueryphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$pathphp php.php=php php'php?php'php php.php php$uriphp-php>getQueryphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$requestphp php=php php"php$methodphp php$pathphp HTTPphp/php$httpphp_verphp\rphp\nphp"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$requestphp php=php php"php$methodphp php$uriphp HTTPphp/php$httpphp_verphp\rphp\nphp"php;
-php php php php php php php php php}
+        // Build request headers
+        if ($this->negotiated) {
+            $path = $uri->getPath();
+            if ($uri->getQuery()) {
+                $path .= '?' . $uri->getQuery();
+            }
+            $request = "$method $path HTTP/$http_ver\r\n";
+        } else {
+            $request = "$method $uri HTTP/$http_ver\r\n";
+        }
 
-php php php php php php php php php/php/php Addphp allphp headersphp tophp thephp requestphp string
-php php php php php php php php foreachphp php(php$headersphp asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php ifphp php(isphp_stringphp(php$kphp)php)php php$vphp php=php php"php$kphp:php php$vphp"php;
-php php php php php php php php php php php php php$requestphp php.php=php php"php$vphp\rphp\nphp"php;
-php php php php php php php php php}
+        // Add all headers to the request string
+        foreach ($headers as $k => $v) {
+            if (is_string($k)) $v = "$k: $v";
+            $request .= "$v\r\n";
+        }
 
-php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php php$requestphp php.php=php php"php\rphp\nphp"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Addphp thephp requestphp body
-php php php php php php php php php php php php php$requestphp php.php=php php"php\rphp\nphp"php php.php php$bodyphp;
-php php php php php php php php php}
+        if(is_resource($body)) {
+            $request .= "\r\n";
+        } else {
+            // Add the request body
+            $request .= "\r\n" . $body;
+        }
 
-php php php php php php php php php/php/php Sendphp thephp request
-php php php php php php php php ifphp php(php!php php@fwritephp(php$thisphp-php>socketphp,php php$requestphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Errorphp writingphp requestphp tophp proxyphp serverphp"php)php;
-php php php php php php php php php}
+        // Send the request
+        if (! @fwrite($this->socket, $request)) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Error writing request to proxy server");
+        }
 
-php php php php php php php php ifphp(isphp_resourcephp(php$bodyphp)php)php php{
-php php php php php php php php php php php php ifphp(streamphp_copyphp_tophp_streamphp(php$bodyphp,php php$thisphp-php>socketphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php'Errorphp writingphp requestphp tophp serverphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if(is_resource($body)) {
+            if(stream_copy_to_stream($body, $this->socket) == 0) {
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception('Error writing request to server');
+            }
+        }
 
-php php php php php php php php returnphp php$requestphp;
-php php php php php}
+        return $request;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Preformphp handshakingphp withphp HTTPSphp proxyphp usingphp CONNECTphp method
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$host
-php php php php php php*php php@paramphp integerphp php$port
-php php php php php php*php php@paramphp stringphp php php$httpphp_ver
-php php php php php php*php php@paramphp arrayphp php php php$headers
-php php php php php php*php/
-php php php php protectedphp functionphp connectHandshakephp(php$hostphp,php php$portphp php=php php4php4php3php,php php$httpphp_verphp php=php php'php1php.php1php'php,php arrayphp php&php$headersphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$requestphp php=php php"CONNECTphp php$hostphp:php$portphp HTTPphp/php$httpphp_verphp\rphp\nphp"php php.
-php php php php php php php php php php php php php php php php php php php php"Hostphp:php php"php php.php php$thisphp-php>configphp[php'proxyphp_hostphp'php]php php.php php"php\rphp\nphp"php;
+    /**
+     * Preform handshaking with HTTPS proxy using CONNECT method
+     *
+     * @param string  $host
+     * @param integer $port
+     * @param string  $http_ver
+     * @param array   $headers
+     */
+    protected function connectHandshake($host, $port = 443, $http_ver = '1.1', array &$headers = array())
+    {
+        $request = "CONNECT $host:$port HTTP/$http_ver\r\n" .
+                   "Host: " . $this->config['proxy_host'] . "\r\n";
 
-php php php php php php php php php/php/php Addphp thephp userphp-agentphp header
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>configphp[php'useragentphp'php]php)php)php php{
-php php php php php php php php php php php php php$requestphp php.php=php php"Userphp-agentphp:php php"php php.php php$thisphp-php>configphp[php'useragentphp'php]php php.php php"php\rphp\nphp"php;
-php php php php php php php php php}
+        // Add the user-agent header
+        if (isset($this->config['useragent'])) {
+            $request .= "User-agent: " . $this->config['useragent'] . "\r\n";
+        }
 
-php php php php php php php php php/php/php Ifphp thephp proxyphp-authorizationphp headerphp isphp setphp,php sendphp itphp tophp proxyphp butphp remove
-php php php php php php php php php/php/php itphp fromphp headersphp sentphp tophp targetphp host
-php php php php php php php php ifphp php(issetphp(php$headersphp[php'proxyphp-authorizationphp'php]php)php)php php{
-php php php php php php php php php php php php php$requestphp php.php=php php"Proxyphp-authorizationphp:php php"php php.php php$headersphp[php'proxyphp-authorizationphp'php]php php.php php"php\rphp\nphp"php;
-php php php php php php php php php php php php unsetphp(php$headersphp[php'proxyphp-authorizationphp'php]php)php;
-php php php php php php php php php}
+        // If the proxy-authorization header is set, send it to proxy but remove
+        // it from headers sent to target host
+        if (isset($headers['proxy-authorization'])) {
+            $request .= "Proxy-authorization: " . $headers['proxy-authorization'] . "\r\n";
+            unset($headers['proxy-authorization']);
+        }
 
-php php php php php php php php php$requestphp php.php=php php"php\rphp\nphp"php;
+        $request .= "\r\n";
 
-php php php php php php php php php/php/php Sendphp thephp request
-php php php php php php php php ifphp php(php!php php@fwritephp(php$thisphp-php>socketphp,php php$requestphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Errorphp writingphp requestphp tophp proxyphp serverphp"php)php;
-php php php php php php php php php}
+        // Send the request
+        if (! @fwrite($this->socket, $request)) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Error writing request to proxy server");
+        }
 
-php php php php php php php php php/php/php Readphp responsephp headersphp only
-php php php php php php php php php$responsephp php=php php'php'php;
-php php php php php php php php php$gotStatusphp php=php falsephp;
-php php php php php php php php whilephp php(php$linephp php=php php@fgetsphp(php$thisphp-php>socketphp)php)php php{
-php php php php php php php php php php php php php$gotStatusphp php=php php$gotStatusphp php|php|php php(strposphp(php$linephp,php php'HTTPphp'php)php php!php=php=php falsephp)php;
-php php php php php php php php php php php php ifphp php(php$gotStatusphp)php php{
-php php php php php php php php php php php php php php php php php$responsephp php.php=php php$linephp;
-php php php php php php php php php php php php php php php php ifphp php(php!chopphp(php$linephp)php)php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // Read response headers only
+        $response = '';
+        $gotStatus = false;
+        while ($line = @fgets($this->socket)) {
+            $gotStatus = $gotStatus || (strpos($line, 'HTTP') !== false);
+            if ($gotStatus) {
+                $response .= $line;
+                if (!chop($line)) break;
+            }
+        }
 
-php php php php php php php php php/php/php Checkphp thatphp thephp responsephp fromphp thephp proxyphp isphp php2php0php0
-php php php php php php php php ifphp php(Zendphp_Httpphp_Responsephp:php:extractCodephp(php$responsephp)php php!php=php php2php0php0php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Unablephp tophp connectphp tophp HTTPSphp proxyphp.php Serverphp responsephp:php php"php php.php php$responsephp)php;
-php php php php php php php php php}
+        // Check that the response from the proxy is 200
+        if (Zend_Http_Response::extractCode($response) != 200) {
+            require_once 'Zend/Http/Client/Adapter/Exception.php';
+            throw new Zend_Http_Client_Adapter_Exception("Unable to connect to HTTPS proxy. Server response: " . $response);
+        }
 
-php php php php php php php php php/php/php Ifphp allphp isphp goodphp,php switchphp socketphp tophp securephp modephp.php Wephp havephp tophp fallphp back
-php php php php php php php php php/php/php throughphp thephp differentphp modes
-php php php php php php php php php$modesphp php=php arrayphp(
-php php php php php php php php php php php php STREAMphp_CRYPTOphp_METHODphp_TLSphp_CLIENTphp,
-php php php php php php php php php php php php STREAMphp_CRYPTOphp_METHODphp_SSLvphp3php_CLIENTphp,
-php php php php php php php php php php php php STREAMphp_CRYPTOphp_METHODphp_SSLvphp2php3php_CLIENTphp,
-php php php php php php php php php php php php STREAMphp_CRYPTOphp_METHODphp_SSLvphp2php_CLIENT
-php php php php php php php php php)php;
+        // If all is good, switch socket to secure mode. We have to fall back
+        // through the different modes
+        $modes = array(
+            STREAM_CRYPTO_METHOD_TLS_CLIENT,
+            STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
+            STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+            STREAM_CRYPTO_METHOD_SSLv2_CLIENT
+        );
 
-php php php php php php php php php$successphp php=php falsephp;
-php php php php php php php php foreachphp(php$modesphp asphp php$modephp)php php{
-php php php php php php php php php php php php php$successphp php=php streamphp_socketphp_enablephp_cryptophp(php$thisphp-php>socketphp,php truephp,php php$modephp)php;
-php php php php php php php php php php php php ifphp php(php$successphp)php breakphp;
-php php php php php php php php php}
+        $success = false;
+        foreach($modes as $mode) {
+            $success = stream_socket_enable_crypto($this->socket, true, $mode);
+            if ($success) break;
+        }
 
-php php php php php php php php ifphp php(php!php php$successphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Adapterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Httpphp_Clientphp_Adapterphp_Exceptionphp(php"Unablephp tophp connectphp tophp"php php.
-php php php php php php php php php php php php php php php php php php php php php"php HTTPSphp serverphp throughphp proxyphp:php couldphp notphp negotiatephp securephp connectionphp.php"php)php;
-php php php php php php php php php}
-php php php php php}
+        if (! $success) {
+                require_once 'Zend/Http/Client/Adapter/Exception.php';
+                throw new Zend_Http_Client_Adapter_Exception("Unable to connect to" .
+                    " HTTPS server through proxy: could not negotiate secure connection.");
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Closephp thephp connectionphp tophp thephp server
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp closephp(php)
-php php php php php{
-php php php php php php php php parentphp:php:closephp(php)php;
-php php php php php php php php php$thisphp-php>negotiatedphp php=php falsephp;
-php php php php php}
+    /**
+     * Close the connection to the server
+     *
+     */
+    public function close()
+    {
+        parent::close();
+        $this->negotiated = false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Destructorphp:php makephp surephp thephp socketphp isphp disconnected
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp php_php_destructphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>socketphp)php php$thisphp-php>closephp(php)php;
-php php php php php}
-php}
+    /**
+     * Destructor: make sure the socket is disconnected
+     *
+     */
+    public function __destruct()
+    {
+        if ($this->socket) $this->close();
+    }
+}

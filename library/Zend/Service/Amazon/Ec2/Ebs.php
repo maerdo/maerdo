@@ -1,342 +1,342 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Ecphp2
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Ebsphp.phpphp php2php2php0php4php7php php2php0php1php0php-php0php4php-php2php8php php2php2php:php1php4php:php5php1Zphp shaharphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Ec2
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Ebs.php 22047 2010-04-28 22:14:51Z shahar $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/Ecphp2php/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Service_Amazon_Ec2_Abstract
+ */
+require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
 
-php/php*php*
-php php*php Anphp Amazonphp ECphp2php interfacephp tophp createphp,php describephp,php attachphp,php detachphp andphp deletephp Elasticphp Block
-php php*php Storagephp Volumesphp andphp Snaphsotsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Ecphp2
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Ebsphp extendsphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp newphp Amazonphp EBSphp volumephp thatphp youphp canphp mountphp fromphp anyphp Amazonphp ECphp2php instancephp.
-php php php php php php*
-php php php php php php*php Youphp mustphp specifyphp anphp availabilityphp zonephp whenphp creatingphp aphp volumephp.php Thephp volumephp and
-php php php php php php*php anyphp instancephp tophp whichphp itphp attachesphp mustphp bephp inphp thephp samephp availabilityphp zonephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$sizephp php php php php php php php php php php php php php php php php php Thephp sizephp ofphp thephp volumephp,php inphp GiBphp.
-php php php php php php*php php@paramphp stringphp php$availabilityZonephp php php php php php Thephp availabilityphp zonephp inphp whichphp tophp createphp thephp newphp volumephp.
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp createNewVolumephp(php$sizephp,php php$availabilityZonephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'CreateVolumephp'php;
-php php php php php php php php php$paramsphp[php'AvailabilityZonephp'php]php php=php php$availabilityZonephp;
-php php php php php php php php php$paramsphp[php'Sizephp'php]php php=php php$sizephp;
+/**
+ * An Amazon EC2 interface to create, describe, attach, detach and delete Elastic Block
+ * Storage Volumes and Snaphsots.
+ *
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Ec2
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Amazon_Ec2_Ebs extends Zend_Service_Amazon_Ec2_Abstract
+{
+    /**
+     * Creates a new Amazon EBS volume that you can mount from any Amazon EC2 instance.
+     *
+     * You must specify an availability zone when creating a volume. The volume and
+     * any instance to which it attaches must be in the same availability zone.
+     *
+     * @param string $size                  The size of the volume, in GiB.
+     * @param string $availabilityZone      The availability zone in which to create the new volume.
+     * @return array
+     */
+    public function createNewVolume($size, $availabilityZone)
+    {
+        $params = array();
+        $params['Action'] = 'CreateVolume';
+        $params['AvailabilityZone'] = $availabilityZone;
+        $params['Size'] = $size;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php$returnphp[php'volumeIdphp'php]php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:volumeIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'sizephp'php]php php php php php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:sizephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'statusphp'php]php php php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:statusphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'createTimephp'php]php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:createTimephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'availabilityZonephp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:availabilityZonephp/textphp(php)php)php'php)php;
+        $return = array();
+        $return['volumeId']             = $xpath->evaluate('string(//ec2:volumeId/text())');
+        $return['size']                 = $xpath->evaluate('string(//ec2:size/text())');
+        $return['status']               = $xpath->evaluate('string(//ec2:status/text())');
+        $return['createTime']           = $xpath->evaluate('string(//ec2:createTime/text())');
+        $return['availabilityZone']     = $xpath->evaluate('string(//ec2:availabilityZone/text())');
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp newphp Amazonphp EBSphp volumephp thatphp youphp canphp mountphp fromphp anyphp Amazonphp ECphp2php instancephp.
-php php php php php php*
-php php php php php php*php Youphp mustphp specifyphp anphp availabilityphp zonephp whenphp creatingphp aphp volumephp.php Thephp volumephp and
-php php php php php php*php anyphp instancephp tophp whichphp itphp attachesphp mustphp bephp inphp thephp samephp availabilityphp zonephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php php php php Thephp snapshotphp fromphp whichphp tophp createphp thephp newphp volumephp.
-php php php php php php*php php@paramphp stringphp php$availabilityZonephp php php php php php Thephp availabilityphp zonephp inphp whichphp tophp createphp thephp newphp volumephp.
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp createVolumeFromSnapshotphp(php$snapshotIdphp,php php$availabilityZonephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'CreateVolumephp'php;
-php php php php php php php php php$paramsphp[php'AvailabilityZonephp'php]php php=php php$availabilityZonephp;
-php php php php php php php php php$paramsphp[php'SnapshotIdphp'php]php php=php php$snapshotIdphp;
+    /**
+     * Creates a new Amazon EBS volume that you can mount from any Amazon EC2 instance.
+     *
+     * You must specify an availability zone when creating a volume. The volume and
+     * any instance to which it attaches must be in the same availability zone.
+     *
+     * @param string $snapshotId            The snapshot from which to create the new volume.
+     * @param string $availabilityZone      The availability zone in which to create the new volume.
+     * @return array
+     */
+    public function createVolumeFromSnapshot($snapshotId, $availabilityZone)
+    {
+        $params = array();
+        $params['Action'] = 'CreateVolume';
+        $params['AvailabilityZone'] = $availabilityZone;
+        $params['SnapshotId'] = $snapshotId;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php$returnphp[php'volumeIdphp'php]php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:volumeIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'sizephp'php]php php php php php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:sizephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'statusphp'php]php php php php php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:statusphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'createTimephp'php]php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:createTimephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'availabilityZonephp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:availabilityZonephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'snapshotIdphp'php]php php php php php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:snapshotIdphp/textphp(php)php)php'php)php;
+        $return = array();
+        $return['volumeId']             = $xpath->evaluate('string(//ec2:volumeId/text())');
+        $return['size']                 = $xpath->evaluate('string(//ec2:size/text())');
+        $return['status']               = $xpath->evaluate('string(//ec2:status/text())');
+        $return['createTime']           = $xpath->evaluate('string(//ec2:createTime/text())');
+        $return['availabilityZone']     = $xpath->evaluate('string(//ec2:availabilityZone/text())');
+        $return['snapshotId']           = $xpath->evaluate('string(//ec2:snapshotId/text())');
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Listsphp onephp orphp morephp Amazonphp EBSphp volumesphp thatphp youphp ownphp,php Ifphp youphp dophp not
-php php php php php php*php specifyphp anyphp volumesphp,php Amazonphp EBSphp returnsphp allphp volumesphp thatphp youphp ownphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$volumeIdphp php php php php php php php Thephp IDphp orphp arrayphp ofphp IDphp'sphp ofphp thephp volumephp(sphp)php tophp list
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp describeVolumephp(php$volumeIdphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DescribeVolumesphp'php;
+    /**
+     * Lists one or more Amazon EBS volumes that you own, If you do not
+     * specify any volumes, Amazon EBS returns all volumes that you own.
+     *
+     * @param string|array $volumeId        The ID or array of ID's of the volume(s) to list
+     * @return array
+     */
+    public function describeVolume($volumeId = null)
+    {
+        $params = array();
+        $params['Action'] = 'DescribeVolumes';
 
-php php php php php php php php ifphp(isphp_arrayphp(php$volumeIdphp)php php&php&php php!emptyphp(php$volumeIdphp)php)php php{
-php php php php php php php php php php php php foreachphp(php$volumeIdphp asphp php$kphp=php>php$namephp)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php'VolumeIdphp.php'php php.php php(php$kphp+php1php)php]php php=php php$namephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elseifphp(php$volumeIdphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'VolumeIdphp.php1php'php]php php=php php$volumeIdphp;
-php php php php php php php php php}
+        if(is_array($volumeId) && !empty($volumeId)) {
+            foreach($volumeId as $k=>$name) {
+                $params['VolumeId.' . ($k+1)] = $name;
+            }
+        } elseif($volumeId) {
+            $params['VolumeId.1'] = $volumeId;
+        }
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$nodesphp php=php php$xpathphp-php>queryphp(php'php/php/ecphp2php:volumeSetphp/ecphp2php:itemphp'php,php php$responsephp-php>getDocumentphp(php)php)php;
+        $xpath  = $response->getXPath();
+        $nodes = $xpath->query('//ec2:volumeSet/ec2:item', $response->getDocument());
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$nodesphp asphp php$nodephp)php php{
-php php php php php php php php php php php php php$itemphp php=php arrayphp(php)php;
+        $return = array();
+        foreach ($nodes as $node) {
+            $item = array();
 
-php php php php php php php php php php php php php$itemphp[php'volumeIdphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:volumeIdphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'sizephp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:sizephp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'statusphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:statusphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'createTimephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:createTimephp/textphp(php)php)php'php,php php$nodephp)php;
+            $item['volumeId']   = $xpath->evaluate('string(ec2:volumeId/text())', $node);
+            $item['size']       = $xpath->evaluate('string(ec2:size/text())', $node);
+            $item['status']     = $xpath->evaluate('string(ec2:status/text())', $node);
+            $item['createTime'] = $xpath->evaluate('string(ec2:createTime/text())', $node);
 
-php php php php php php php php php php php php php$attachmentSetphp php=php php$xpathphp-php>queryphp(php'ecphp2php:attachmentSetphp/ecphp2php:itemphp'php,php php$nodephp)php;
-php php php php php php php php php php php php ifphp(php$attachmentSetphp-php>lengthphp php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php$php_asphp php=php php$attachmentSetphp-php>itemphp(php0php)php;
-php php php php php php php php php php php php php php php php php$asphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php$asphp[php'volumeIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:volumeIdphp/textphp(php)php)php'php,php php$php_asphp)php;
-php php php php php php php php php php php php php php php php php$asphp[php'instanceIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:instanceIdphp/textphp(php)php)php'php,php php$php_asphp)php;
-php php php php php php php php php php php php php php php php php$asphp[php'devicephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:devicephp/textphp(php)php)php'php,php php$php_asphp)php;
-php php php php php php php php php php php php php php php php php$asphp[php'statusphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:statusphp/textphp(php)php)php'php,php php$php_asphp)php;
-php php php php php php php php php php php php php php php php php$asphp[php'attachTimephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:attachTimephp/textphp(php)php)php'php,php php$php_asphp)php;
-php php php php php php php php php php php php php php php php php$itemphp[php'attachmentSetphp'php]php php=php php$asphp;
-php php php php php php php php php php php php php}
+            $attachmentSet = $xpath->query('ec2:attachmentSet/ec2:item', $node);
+            if($attachmentSet->length == 1) {
+                $_as = $attachmentSet->item(0);
+                $as = array();
+                $as['volumeId'] = $xpath->evaluate('string(ec2:volumeId/text())', $_as);
+                $as['instanceId'] = $xpath->evaluate('string(ec2:instanceId/text())', $_as);
+                $as['device'] = $xpath->evaluate('string(ec2:device/text())', $_as);
+                $as['status'] = $xpath->evaluate('string(ec2:status/text())', $_as);
+                $as['attachTime'] = $xpath->evaluate('string(ec2:attachTime/text())', $_as);
+                $item['attachmentSet'] = $as;
+            }
 
-php php php php php php php php php php php php php$returnphp[php]php php=php php$itemphp;
-php php php php php php php php php php php php unsetphp(php$itemphp,php php$nodephp)php;
-php php php php php php php php php}
+            $return[] = $item;
+            unset($item, $node);
+        }
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php publicphp functionphp describeAttachedVolumesphp(php$instanceIdphp)
-php php php php php{
-php php php php php php php php php$volumesphp php=php php$thisphp-php>describeVolumephp(php)php;
+    public function describeAttachedVolumes($instanceId)
+    {
+        $volumes = $this->describeVolume();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp(php$volumesphp asphp php$volphp)php php{
-php php php php php php php php php php php php ifphp(issetphp(php$volphp[php'attachmentSetphp'php]php)php php&php&php php$volphp[php'attachmentSetphp'php]php[php'instanceIdphp'php]php php=php=php php$instanceIdphp)php php{
-php php php php php php php php php php php php php php php php php$returnphp[php]php php=php php$volphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $return = array();
+        foreach($volumes as $vol) {
+            if(isset($vol['attachmentSet']) && $vol['attachmentSet']['instanceId'] == $instanceId) {
+                $return[] = $vol;
+            }
+        }
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Attachesphp anphp Amazonphp EBSphp volumephp tophp anphp instance
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$volumeIdphp php php php php php php php php php php php php php Thephp IDphp ofphp thephp Amazonphp EBSphp volume
-php php php php php php*php php@paramphp stringphp php$instanceIdphp php php php php php php php php php php php Thephp IDphp ofphp thephp instancephp tophp whichphp thephp volumephp attaches
-php php php php php php*php php@paramphp stringphp php$devicephp php php php php php php php php php php php php php php php Specifiesphp howphp thephp devicephp isphp exposedphp tophp thephp instancephp php(ephp.gphp.php,php php/devphp/sdhphp)php.
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp attachVolumephp(php$volumeIdphp,php php$instanceIdphp,php php$devicephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php php php php php php php=php php'AttachVolumephp'php;
-php php php php php php php php php$paramsphp[php'VolumeIdphp'php]php php php php php php=php php$volumeIdphp;
-php php php php php php php php php$paramsphp[php'InstanceIdphp'php]php php php php=php php$instanceIdphp;
-php php php php php php php php php$paramsphp[php'Devicephp'php]php php php php php php php php=php php$devicephp;
+    /**
+     * Attaches an Amazon EBS volume to an instance
+     *
+     * @param string $volumeId              The ID of the Amazon EBS volume
+     * @param string $instanceId            The ID of the instance to which the volume attaches
+     * @param string $device                Specifies how the device is exposed to the instance (e.g., /dev/sdh).
+     * @return array
+     */
+    public function attachVolume($volumeId, $instanceId, $device)
+    {
+        $params = array();
+        $params['Action']       = 'AttachVolume';
+        $params['VolumeId']     = $volumeId;
+        $params['InstanceId']   = $instanceId;
+        $params['Device']       = $device;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php$returnphp[php'volumeIdphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:volumeIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'instanceIdphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:instanceIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'devicephp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:devicephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'statusphp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:statusphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'attachTimephp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:attachTimephp/textphp(php)php)php'php)php;
+        $return = array();
+        $return['volumeId']     = $xpath->evaluate('string(//ec2:volumeId/text())');
+        $return['instanceId']   = $xpath->evaluate('string(//ec2:instanceId/text())');
+        $return['device']       = $xpath->evaluate('string(//ec2:device/text())');
+        $return['status']       = $xpath->evaluate('string(//ec2:status/text())');
+        $return['attachTime']   = $xpath->evaluate('string(//ec2:attachTime/text())');
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Detachesphp anphp Amazonphp EBSphp volumephp fromphp anphp instance
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$volumeIdphp php php php php php php php php php php php php php Thephp IDphp ofphp thephp Amazonphp EBSphp volume
-php php php php php php*php php@paramphp stringphp php$instanceIdphp php php php php php php php php php php php Thephp IDphp ofphp thephp instancephp fromphp whichphp thephp volumephp willphp detach
-php php php php php php*php php@paramphp stringphp php$devicephp php php php php php php php php php php php php php php php Thephp devicephp name
-php php php php php php*php php@paramphp booleanphp php$forcephp php php php php php php php php php php php php php php php Forcesphp detachmentphp ifphp thephp previousphp detachmentphp attemptphp didphp notphp occurphp cleanly
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(loggingphp intophp anphp instancephp,php unmountingphp thephp volumephp,php andphp detachingphp normallyphp)php.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Thisphp optionphp canphp leadphp tophp dataphp lossphp orphp aphp corruptedphp filephp systemphp.php Usephp thisphp option
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php onlyphp asphp aphp lastphp resortphp tophp detachphp anphp instancephp fromphp aphp failedphp instancephp.php The
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php instancephp willphp notphp havephp anphp opportunityphp tophp flushphp filephp systemphp cachesphp nor
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php filephp systemphp metaphp dataphp.
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp detachVolumephp(php$volumeIdphp,php php$instanceIdphp php=php nullphp,php php$devicephp php=php nullphp,php php$forcephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php php php php php php php=php php'DetachVolumephp'php;
-php php php php php php php php php$paramsphp[php'VolumeIdphp'php]php php php php php php=php php$volumeIdphp;
-php php php php php php php php php$paramsphp[php'InstanceIdphp'php]php php php php=php strvalphp(php$instanceIdphp)php;
-php php php php php php php php php$paramsphp[php'Devicephp'php]php php php php php php php php=php strvalphp(php$devicephp)php;
-php php php php php php php php php$paramsphp[php'Forcephp'php]php php php php php php php php php=php strvalphp(php$forcephp)php;
+    /**
+     * Detaches an Amazon EBS volume from an instance
+     *
+     * @param string $volumeId              The ID of the Amazon EBS volume
+     * @param string $instanceId            The ID of the instance from which the volume will detach
+     * @param string $device                The device name
+     * @param boolean $force                Forces detachment if the previous detachment attempt did not occur cleanly
+     *                                      (logging into an instance, unmounting the volume, and detaching normally).
+     *                                      This option can lead to data loss or a corrupted file system. Use this option
+     *                                      only as a last resort to detach an instance from a failed instance. The
+     *                                      instance will not have an opportunity to flush file system caches nor
+     *                                      file system meta data.
+     * @return array
+     */
+    public function detachVolume($volumeId, $instanceId = null, $device = null, $force = false)
+    {
+        $params = array();
+        $params['Action']       = 'DetachVolume';
+        $params['VolumeId']     = $volumeId;
+        $params['InstanceId']   = strval($instanceId);
+        $params['Device']       = strval($device);
+        $params['Force']        = strval($force);
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php$returnphp[php'volumeIdphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:volumeIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'instanceIdphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:instanceIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'devicephp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:devicephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'statusphp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:statusphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'attachTimephp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:attachTimephp/textphp(php)php)php'php)php;
+        $return = array();
+        $return['volumeId']     = $xpath->evaluate('string(//ec2:volumeId/text())');
+        $return['instanceId']   = $xpath->evaluate('string(//ec2:instanceId/text())');
+        $return['device']       = $xpath->evaluate('string(//ec2:device/text())');
+        $return['status']       = $xpath->evaluate('string(//ec2:status/text())');
+        $return['attachTime']   = $xpath->evaluate('string(//ec2:attachTime/text())');
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletesphp anphp Amazonphp EBSphp volume
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$volumeIdphp php php php php php php php php php php php php php Thephp IDphp ofphp thephp volumephp tophp delete
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp deleteVolumephp(php$volumeIdphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php php php php php php php=php php'DeleteVolumephp'php;
-php php php php php php php php php$paramsphp[php'VolumeIdphp'php]php php php php php php=php php$volumeIdphp;
+    /**
+     * Deletes an Amazon EBS volume
+     *
+     * @param string $volumeId              The ID of the volume to delete
+     * @return boolean
+     */
+    public function deleteVolume($volumeId)
+    {
+        $params = array();
+        $params['Action']       = 'DeleteVolume';
+        $params['VolumeId']     = $volumeId;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
+        $return = $xpath->evaluate('string(//ec2:return/text())');
 
-php php php php php php php php returnphp php(php$returnphp php=php=php=php php"truephp"php)php;
-php php php php php}
+        return ($return === "true");
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp snapshotphp ofphp anphp Amazonphp EBSphp volumephp andphp storesphp itphp inphp Amazonphp Sphp3php.php Youphp canphp usephp snapshotsphp forphp backupsphp,
-php php php php php php*php tophp launchphp instancesphp fromphp identicalphp snapshotsphp,php andphp tophp savephp dataphp beforephp shuttingphp downphp anphp instance
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$volumeIdphp php php php php php php php php php php php php php Thephp IDphp ofphp thephp Amazonphp EBSphp volumephp tophp snapshot
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp createSnapshotphp(php$volumeIdphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php php php php php php php=php php'CreateSnapshotphp'php;
-php php php php php php php php php$paramsphp[php'VolumeIdphp'php]php php php php php php=php php$volumeIdphp;
+    /**
+     * Creates a snapshot of an Amazon EBS volume and stores it in Amazon S3. You can use snapshots for backups,
+     * to launch instances from identical snapshots, and to save data before shutting down an instance
+     *
+     * @param string $volumeId              The ID of the Amazon EBS volume to snapshot
+     * @return array
+     */
+    public function createSnapshot($volumeId)
+    {
+        $params = array();
+        $params['Action']       = 'CreateSnapshot';
+        $params['VolumeId']     = $volumeId;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php php$returnphp[php'snapshotIdphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:snapshotIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'volumeIdphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:volumeIdphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'statusphp'php]php php php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:statusphp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'startTimephp'php]php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:startTimephp/textphp(php)php)php'php)php;
-php php php php php php php php php$returnphp[php'progressphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:progressphp/textphp(php)php)php'php)php;
+        $return = array();
+        $return['snapshotId']   = $xpath->evaluate('string(//ec2:snapshotId/text())');
+        $return['volumeId']     = $xpath->evaluate('string(//ec2:volumeId/text())');
+        $return['status']       = $xpath->evaluate('string(//ec2:status/text())');
+        $return['startTime']    = $xpath->evaluate('string(//ec2:startTime/text())');
+        $return['progress']     = $xpath->evaluate('string(//ec2:progress/text())');
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Describesphp thephp statusphp ofphp Amazonphp EBSphp snapshots
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$snapshotIdphp php php php php php Thephp IDphp orphp arryphp ofphp IDphp'sphp ofphp thephp Amazonphp EBSphp snapshot
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp describeSnapshotphp(php$snapshotIdphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DescribeSnapshotsphp'php;
+    /**
+     * Describes the status of Amazon EBS snapshots
+     *
+     * @param string|array $snapshotId      The ID or arry of ID's of the Amazon EBS snapshot
+     * @return array
+     */
+    public function describeSnapshot($snapshotId = null)
+    {
+        $params = array();
+        $params['Action'] = 'DescribeSnapshots';
 
-php php php php php php php php ifphp(isphp_arrayphp(php$snapshotIdphp)php php&php&php php!emptyphp(php$snapshotIdphp)php)php php{
-php php php php php php php php php php php php foreachphp(php$snapshotIdphp asphp php$kphp=php>php$namephp)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php'SnapshotIdphp.php'php php.php php(php$kphp+php1php)php]php php=php php$namephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elseifphp(php$snapshotIdphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'SnapshotIdphp.php1php'php]php php=php php$snapshotIdphp;
-php php php php php php php php php}
+        if(is_array($snapshotId) && !empty($snapshotId)) {
+            foreach($snapshotId as $k=>$name) {
+                $params['SnapshotId.' . ($k+1)] = $name;
+            }
+        } elseif($snapshotId) {
+            $params['SnapshotId.1'] = $snapshotId;
+        }
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$nodesphp php=php php$xpathphp-php>queryphp(php'php/php/ecphp2php:snapshotSetphp/ecphp2php:itemphp'php,php php$responsephp-php>getDocumentphp(php)php)php;
+        $xpath  = $response->getXPath();
+        $nodes = $xpath->query('//ec2:snapshotSet/ec2:item', $response->getDocument());
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$nodesphp asphp php$nodephp)php php{
-php php php php php php php php php php php php php$itemphp php=php arrayphp(php)php;
+        $return = array();
+        foreach ($nodes as $node) {
+            $item = array();
 
-php php php php php php php php php php php php php$itemphp[php'snapshotIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:snapshotIdphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'volumeIdphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:volumeIdphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'statusphp'php]php php php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:statusphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'startTimephp'php]php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:startTimephp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'progressphp'php]php php php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:progressphp/textphp(php)php)php'php,php php$nodephp)php;
+            $item['snapshotId'] = $xpath->evaluate('string(ec2:snapshotId/text())', $node);
+            $item['volumeId']   = $xpath->evaluate('string(ec2:volumeId/text())', $node);
+            $item['status']     = $xpath->evaluate('string(ec2:status/text())', $node);
+            $item['startTime']  = $xpath->evaluate('string(ec2:startTime/text())', $node);
+            $item['progress']   = $xpath->evaluate('string(ec2:progress/text())', $node);
 
-php php php php php php php php php php php php php$returnphp[php]php php=php php$itemphp;
-php php php php php php php php php php php php unsetphp(php$itemphp,php php$nodephp)php;
-php php php php php php php php php}
+            $return[] = $item;
+            unset($item, $node);
+        }
 
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Deletesphp aphp snapshotphp ofphp anphp Amazonphp EBSphp php volumephp thatphp isphp storedphp inphp Amazonphp Sphp3
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$snapshotIdphp php php php php php php php php php php php Thephp IDphp ofphp thephp Amazonphp EBSphp snapshotphp tophp delete
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp deleteSnapshotphp(php$snapshotIdphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php php php php php php php=php php'DeleteSnapshotphp'php;
-php php php php php php php php php$paramsphp[php'SnapshotIdphp'php]php php php php=php php$snapshotIdphp;
+    /**
+     * Deletes a snapshot of an Amazon EBS  volume that is stored in Amazon S3
+     *
+     * @param string $snapshotId            The ID of the Amazon EBS snapshot to delete
+     * @return boolean
+     */
+    public function deleteSnapshot($snapshotId)
+    {
+        $params = array();
+        $params['Action']       = 'DeleteSnapshot';
+        $params['SnapshotId']   = $snapshotId;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
+        $response = $this->sendRequest($params);
 
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$returnphp php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
+        $xpath = $response->getXPath();
+        $return = $xpath->evaluate('string(//ec2:return/text())');
 
-php php php php php php php php returnphp php(php$returnphp php=php=php=php php"truephp"php)php;
-php php php php php}
-php}
+        return ($return === "true");
+    }
+}

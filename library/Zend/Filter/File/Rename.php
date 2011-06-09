@@ -1,304 +1,304 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Renamephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Rename.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Filterphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Filterphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Filter_Interface
+ */
+require_once 'Zend/Filter/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Filter
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Filterphp_Filephp_Renamephp implementsphp Zendphp_Filterphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php Internalphp arrayphp ofphp arrayphp(sourcephp,php targetphp,php overwritephp)
-php php php php php php*php/
-php php php php protectedphp php$php_filesphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Filter
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Filter_File_Rename implements Zend_Filter_Interface
+{
+    /**
+     * Internal array of array(source, target, overwrite)
+     */
+    protected $_files = array();
 
-php php php php php/php*php*
-php php php php php php*php Classphp constructor
-php php php php php php*
-php php php php php php*php Optionsphp argumentphp mayphp bephp eitherphp aphp stringphp,php aphp Zendphp_Configphp objectphp,php orphp anphp arrayphp.
-php php php php php php*php Ifphp anphp arrayphp orphp Zendphp_Configphp objectphp,php itphp acceptsphp thephp followingphp keysphp:
-php php php php php php*php php'sourcephp'php php php php php=php>php Sourcephp filenamephp orphp directoryphp whichphp willphp bephp renamed
-php php php php php php*php php'targetphp'php php php php php=php>php Targetphp filenamephp orphp directoryphp,php thephp newphp namephp ofphp thephp sourcefile
-php php php php php php*php php'overwritephp'php php=php>php Shallphp existingphp filesphp bephp overwrittenphp php?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Targetphp filephp orphp directoryphp tophp bephp renamed
-php php php php php php*php php@paramphp php stringphp php$targetphp Sourcephp filenamephp orphp directoryphp php(deprecatedphp)
-php php php php php php*php php@paramphp php boolphp php$overwritephp Shouldphp existingphp filesphp bephp overwrittenphp php(deprecatedphp)
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elseifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'targetphp'php php=php>php php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(php'Invalidphp optionsphp argumentphp providedphp tophp filterphp'php)php;
-php php php php php php php php php}
+    /**
+     * Class constructor
+     *
+     * Options argument may be either a string, a Zend_Config object, or an array.
+     * If an array or Zend_Config object, it accepts the following keys:
+     * 'source'    => Source filename or directory which will be renamed
+     * 'target'    => Target filename or directory, the new name of the sourcefile
+     * 'overwrite' => Shall existing files be overwritten ?
+     *
+     * @param  string|array $options Target file or directory to be renamed
+     * @param  string $target Source filename or directory (deprecated)
+     * @param  bool $overwrite Should existing files be overwritten (deprecated)
+     * @return void
+     */
+    public function __construct($options)
+    {
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } elseif (is_string($options)) {
+            $options = array('target' => $options);
+        } elseif (!is_array($options)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception('Invalid options argument provided to filter');
+        }
 
-php php php php php php php php ifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
-php php php php php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php$sourcephp php php php php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php$overwritephp php=php falsephp;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$argvphp)php)php php{
-php php php php php php php php php php php php php php php php php$overwritephp php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$optionsphp[php'sourcephp'php]php php php php php=php php$sourcephp;
-php php php php php php php php php php php php php$optionsphp[php'overwritephp'php]php php=php php$overwritephp;
-php php php php php php php php php}
+        if (1 < func_num_args()) {
+            $argv = func_get_args();
+            array_shift($argv);
+            $source    = array_shift($argv);
+            $overwrite = false;
+            if (!empty($argv)) {
+                $overwrite = array_shift($argv);
+            }
+            $options['source']    = $source;
+            $options['overwrite'] = $overwrite;
+        }
 
-php php php php php php php php php$thisphp-php>setFilephp(php$optionsphp)php;
-php php php php php}
+        $this->setFile($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp filesphp tophp renamephp andphp theirphp newphp namephp andphp location
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getFilephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_filesphp;
-php php php php php}
+    /**
+     * Returns the files to rename and their new name and location
+     *
+     * @return array
+     */
+    public function getFile()
+    {
+        return $this->_files;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp aphp newphp filephp orphp directoryphp asphp targetphp,php deletingphp existingphp ones
-php php php php php php*
-php php php php php php*php Arrayphp acceptsphp thephp followingphp keysphp:
-php php php php php php*php php'sourcephp'php php php php php=php>php Sourcephp filenamephp orphp directoryphp whichphp willphp bephp renamed
-php php php php php php*php php'targetphp'php php php php php=php>php Targetphp filenamephp orphp directoryphp,php thephp newphp namephp ofphp thephp sourcefile
-php php php php php php*php php'overwritephp'php php=php>php Shallphp existingphp filesphp bephp overwrittenphp php?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Oldphp filephp orphp directoryphp tophp bephp rewritten
-php php php php php php*php php@returnphp Zendphp_Filterphp_Filephp_Rename
-php php php php php php*php/
-php php php php publicphp functionphp setFilephp(php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_filesphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>addFilephp(php$optionsphp)php;
+    /**
+     * Sets a new file or directory as target, deleting existing ones
+     *
+     * Array accepts the following keys:
+     * 'source'    => Source filename or directory which will be renamed
+     * 'target'    => Target filename or directory, the new name of the sourcefile
+     * 'overwrite' => Shall existing files be overwritten ?
+     *
+     * @param  string|array $options Old file or directory to be rewritten
+     * @return Zend_Filter_File_Rename
+     */
+    public function setFile($options)
+    {
+        $this->_files = array();
+        $this->addFile($options);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp newphp filephp orphp directoryphp asphp targetphp tophp thephp existingphp ones
-php php php php php php*
-php php php php php php*php Arrayphp acceptsphp thephp followingphp keysphp:
-php php php php php php*php php'sourcephp'php php php php php=php>php Sourcephp filenamephp orphp directoryphp whichphp willphp bephp renamed
-php php php php php php*php php'targetphp'php php php php php=php>php Targetphp filenamephp orphp directoryphp,php thephp newphp namephp ofphp thephp sourcefile
-php php php php php php*php php'overwritephp'php php=php>php Shallphp existingphp filesphp bephp overwrittenphp php?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$optionsphp Oldphp filephp orphp directoryphp tophp bephp rewritten
-php php php php php php*php php@returnphp Zendphp_Filterphp_Filephp_Rename
-php php php php php php*php/
-php php php php publicphp functionphp addFilephp(php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'targetphp'php php=php>php php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp php(php'Invalidphp optionsphp tophp renamephp filterphp providedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Adds a new file or directory as target to the existing ones
+     *
+     * Array accepts the following keys:
+     * 'source'    => Source filename or directory which will be renamed
+     * 'target'    => Target filename or directory, the new name of the sourcefile
+     * 'overwrite' => Shall existing files be overwritten ?
+     *
+     * @param  string|array $options Old file or directory to be rewritten
+     * @return Zend_Filter_File_Rename
+     */
+    public function addFile($options)
+    {
+        if (is_string($options)) {
+            $options = array('target' => $options);
+        } elseif (!is_array($options)) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception ('Invalid options to rename filter provided');
+        }
 
-php php php php php php php php php$thisphp-php>php_convertOptionsphp(php$optionsphp)php;
+        $this->_convertOptions($options);
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp onlyphp thephp newphp filenamephp withoutphp movingphp it
-php php php php php php*php Butphp existingphp filesphp willphp bephp erasedphp whenphp thephp overwritephp optionphp isphp true
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php php$valuephp php Fullphp pathphp ofphp filephp tophp change
-php php php php php php*php php@paramphp php booleanphp php$sourcephp Returnphp internalphp informations
-php php php php php php*php php@returnphp stringphp Thephp newphp filenamephp whichphp hasphp beenphp set
-php php php php php php*php/
-php php php php publicphp functionphp getNewNamephp(php$valuephp,php php$sourcephp php=php falsephp)
-php php php php php{
-php php php php php php php php php$filephp php=php php$thisphp-php>php_getFileNamephp(php$valuephp)php;
-php php php php php php php php ifphp php(php$filephp[php'sourcephp'php]php php=php=php php$filephp[php'targetphp'php]php)php php{
-php php php php php php php php php php php php returnphp php$valuephp;
-php php php php php php php php php}
+    /**
+     * Returns only the new filename without moving it
+     * But existing files will be erased when the overwrite option is true
+     *
+     * @param  string  $value  Full path of file to change
+     * @param  boolean $source Return internal informations
+     * @return string The new filename which has been set
+     */
+    public function getNewName($value, $source = false)
+    {
+        $file = $this->_getFileName($value);
+        if ($file['source'] == $file['target']) {
+            return $value;
+        }
 
-php php php php php php php php ifphp php(php!filephp_existsphp(php$filephp[php'sourcephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$valuephp;
-php php php php php php php php php}
+        if (!file_exists($file['source'])) {
+            return $value;
+        }
 
-php php php php php php php php ifphp php(php(php$filephp[php'overwritephp'php]php php=php=php truephp)php php&php&php php(filephp_existsphp(php$filephp[php'targetphp'php]php)php)php)php php{
-php php php php php php php php php php php php unlinkphp(php$filephp[php'targetphp'php]php)php;
-php php php php php php php php php}
+        if (($file['overwrite'] == true) && (file_exists($file['target']))) {
+            unlink($file['target']);
+        }
 
-php php php php php php php php ifphp php(filephp_existsphp(php$filephp[php'targetphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(sprintfphp(php"Filephp php'php%sphp'php couldphp notphp bephp renamedphp.php Itphp alreadyphp existsphp.php"php,php php$valuephp)php)php;
-php php php php php php php php php}
+        if (file_exists($file['target'])) {
+            require_once 'Zend/Filter/Exception.php';
+            throw new Zend_Filter_Exception(sprintf("File '%s' could not be renamed. It already exists.", $value));
+        }
 
-php php php php php php php php ifphp php(php$sourcephp)php php{
-php php php php php php php php php php php php returnphp php$filephp;
-php php php php php php php php php}
+        if ($source) {
+            return $file;
+        }
 
-php php php php php php php php returnphp php$filephp[php'targetphp'php]php;
-php php php php php}
+        return $file['target'];
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Filterphp_Interface
-php php php php php php*
-php php php php php php*php Renamesphp thephp filephp php$valuephp tophp thephp newphp namephp setphp before
-php php php php php php*php Returnsphp thephp filephp php$valuephp,php removingphp allphp butphp digitphp characters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$valuephp Fullphp pathphp ofphp filephp tophp change
-php php php php php php*php php@throwsphp Zendphp_Filterphp_Exception
-php php php php php php*php php@returnphp stringphp Thephp newphp filenamephp whichphp hasphp beenphp setphp,php orphp falsephp whenphp therephp werephp errors
-php php php php php php*php/
-php php php php publicphp functionphp filterphp(php$valuephp)
-php php php php php{
-php php php php php php php php php$filephp php php php=php php$thisphp-php>getNewNamephp(php$valuephp,php truephp)php;
-php php php php php php php php ifphp php(isphp_stringphp(php$filephp)php)php php{
-php php php php php php php php php php php php returnphp php$filephp;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Filter_Interface
+     *
+     * Renames the file $value to the new name set before
+     * Returns the file $value, removing all but digit characters
+     *
+     * @param  string $value Full path of file to change
+     * @throws Zend_Filter_Exception
+     * @return string The new filename which has been set, or false when there were errors
+     */
+    public function filter($value)
+    {
+        $file   = $this->getNewName($value, true);
+        if (is_string($file)) {
+            return $file;
+        }
 
-php php php php php php php php php$resultphp php=php renamephp(php$filephp[php'sourcephp'php]php,php php$filephp[php'targetphp'php]php)php;
+        $result = rename($file['source'], $file['target']);
 
-php php php php php php php php ifphp php(php$resultphp php=php=php=php truephp)php php{
-php php php php php php php php php php php php returnphp php$filephp[php'targetphp'php]php;
-php php php php php php php php php}
+        if ($result === true) {
+            return $file['target'];
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Filterphp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Filterphp_Exceptionphp(sprintfphp(php"Filephp php'php%sphp'php couldphp notphp bephp renamedphp.php Anphp errorphp occuredphp whilephp processingphp thephp filephp.php"php,php php$valuephp)php)php;
-php php php php php}
+        require_once 'Zend/Filter/Exception.php';
+        throw new Zend_Filter_Exception(sprintf("File '%s' could not be renamed. An error occured while processing the file.", $value));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Internalphp methodphp forphp creatingphp thephp filephp array
-php php php php php php*php Supportsphp singlephp andphp nestedphp arrays
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_convertOptionsphp(php$optionsphp)php php{
-php php php php php php php php php$filesphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_convertOptionsphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+    /**
+     * Internal method for creating the file array
+     * Supports single and nested arrays
+     *
+     * @param  array $options
+     * @return array
+     */
+    protected function _convertOptions($options) {
+        $files = array();
+        foreach ($options as $key => $value) {
+            if (is_array($value)) {
+                $this->_convertOptions($value);
+                continue;
+            }
 
-php php php php php php php php php php php php switchphp php(php$keyphp)php php{
-php php php php php php php php php php php php php php php php casephp php"sourcephp"php:
-php php php php php php php php php php php php php php php php php php php php php$filesphp[php'sourcephp'php]php php=php php(stringphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+            switch ($key) {
+                case "source":
+                    $files['source'] = (string) $value;
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php'targetphp'php php:
-php php php php php php php php php php php php php php php php php php php php php$filesphp[php'targetphp'php]php php=php php(stringphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+                case 'target' :
+                    $files['target'] = (string) $value;
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php'overwritephp'php php:
-php php php php php php php php php php php php php php php php php php php php php$filesphp[php'overwritephp'php]php php=php php(booleanphp)php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+                case 'overwrite' :
+                    $files['overwrite'] = (boolean) $value;
+                    break;
 
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                default:
+                    break;
+            }
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$filesphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+        if (empty($files)) {
+            return $this;
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$filesphp[php'sourcephp'php]php)php)php php{
-php php php php php php php php php php php php php$filesphp[php'sourcephp'php]php php=php php'php*php'php;
-php php php php php php php php php}
+        if (empty($files['source'])) {
+            $files['source'] = '*';
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$filesphp[php'targetphp'php]php)php)php php{
-php php php php php php php php php php php php php$filesphp[php'targetphp'php]php php=php php'php*php'php;
-php php php php php php php php php}
+        if (empty($files['target'])) {
+            $files['target'] = '*';
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$filesphp[php'overwritephp'php]php)php)php php{
-php php php php php php php php php php php php php$filesphp[php'overwritephp'php]php php=php falsephp;
-php php php php php php php php php}
+        if (empty($files['overwrite'])) {
+            $files['overwrite'] = false;
+        }
 
-php php php php php php php php php$foundphp php=php falsephp;
-php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp[php'sourcephp'php]php php=php=php php$filesphp[php'sourcephp'php]php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_filesphp[php$keyphp]php php=php php$filesphp;
-php php php php php php php php php php php php php php php php php$foundphp php php php php php php php php php php php php php php=php truephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $found = false;
+        foreach ($this->_files as $key => $value) {
+            if ($value['source'] == $files['source']) {
+                $this->_files[$key] = $files;
+                $found              = true;
+            }
+        }
 
-php php php php php php php php ifphp php(php!php$foundphp)php php{
-php php php php php php php php php php php php php$countphp php php php php php php php php php php php php php php php php=php countphp(php$thisphp-php>php_filesphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_filesphp[php$countphp]php php=php php$filesphp;
-php php php php php php php php php}
+        if (!$found) {
+            $count                = count($this->_files);
+            $this->_files[$count] = $files;
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Internalphp methodphp tophp resolvephp thephp requestedphp source
-php php php php php php*php andphp returnphp allphp otherphp relatedphp parameters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$filephp Filenamephp tophp getphp thephp informationsphp for
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_getFileNamephp(php$filephp)
-php php php php php{
-php php php php php php php php php$renamephp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_filesphp asphp php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp[php'sourcephp'php]php php=php=php php'php*php'php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$renamephp[php'sourcephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$renamephp php php php php php php php php php php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php$renamephp[php'sourcephp'php]php php=php php$filephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+    /**
+     * Internal method to resolve the requested source
+     * and return all other related parameters
+     *
+     * @param  string $file Filename to get the informations for
+     * @return array
+     */
+    protected function _getFileName($file)
+    {
+        $rename = array();
+        foreach ($this->_files as $value) {
+            if ($value['source'] == '*') {
+                if (!isset($rename['source'])) {
+                    $rename           = $value;
+                    $rename['source'] = $file;
+                }
+            }
 
-php php php php php php php php php php php php ifphp php(php$valuephp[php'sourcephp'php]php php=php=php php$filephp)php php{
-php php php php php php php php php php php php php php php php php$renamephp php=php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            if ($value['source'] == $file) {
+                $rename = $value;
+            }
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$renamephp[php'sourcephp'php]php)php)php php{
-php php php php php php php php php php php php returnphp php$filephp;
-php php php php php php php php php}
+        if (!isset($rename['source'])) {
+            return $file;
+        }
 
-php php php php php php php php ifphp php(php!issetphp(php$renamephp[php'targetphp'php]php)php orphp php(php$renamephp[php'targetphp'php]php php=php=php php'php*php'php)php)php php{
-php php php php php php php php php php php php php$renamephp[php'targetphp'php]php php=php php$renamephp[php'sourcephp'php]php;
-php php php php php php php php php}
+        if (!isset($rename['target']) or ($rename['target'] == '*')) {
+            $rename['target'] = $rename['source'];
+        }
 
-php php php php php php php php ifphp php(isphp_dirphp(php$renamephp[php'targetphp'php]php)php)php php{
-php php php php php php php php php php php php php$namephp php=php basenamephp(php$renamephp[php'sourcephp'php]php)php;
-php php php php php php php php php php php php php$lastphp php=php php$renamephp[php'targetphp'php]php[strlenphp(php$renamephp[php'targetphp'php]php)php php-php php1php]php;
-php php php php php php php php php php php php ifphp php(php(php$lastphp php!php=php php'php/php'php)php andphp php(php$lastphp php!php=php php'php\php\php'php)php)php php{
-php php php php php php php php php php php php php php php php php$renamephp[php'targetphp'php]php php.php=php DIRECTORYphp_SEPARATORphp;
-php php php php php php php php php php php php php}
+        if (is_dir($rename['target'])) {
+            $name = basename($rename['source']);
+            $last = $rename['target'][strlen($rename['target']) - 1];
+            if (($last != '/') and ($last != '\\')) {
+                $rename['target'] .= DIRECTORY_SEPARATOR;
+            }
 
-php php php php php php php php php php php php php$renamephp[php'targetphp'php]php php.php=php php$namephp;
-php php php php php php php php php}
+            $rename['target'] .= $name;
+        }
 
-php php php php php php php php returnphp php$renamephp;
-php php php php php}
-php}
+        return $rename;
+    }
+}

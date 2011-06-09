@@ -1,164 +1,164 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php FilesSizephp.phpphp php2php0php4php5php4php php2php0php1php0php-php0php1php-php2php0php php2php2php:php5php0php:php5php9Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: FilesSize.php 20454 2010-01-20 22:50:59Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Filephp_Size
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Filephp/Sizephp.phpphp'php;
+/**
+ * @see Zend_Validate_File_Size
+ */
+require_once 'Zend/Validate/File/Size.php';
 
-php/php*php*
-php php*php Validatorphp forphp thephp sizephp ofphp allphp filesphp whichphp willphp bephp validatedphp inphp sum
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Validatephp_Filephp_FilesSizephp extendsphp Zendphp_Validatephp_Filephp_Size
-php{
-php php php php php/php*php*
-php php php php php php*php php@constphp stringphp Errorphp constants
-php php php php php php*php/
-php php php php constphp TOOphp_BIGphp php php php php php php=php php'fileFilesSizeTooBigphp'php;
-php php php php constphp TOOphp_SMALLphp php php php php=php php'fileFilesSizeTooSmallphp'php;
-php php php php constphp NOTphp_READABLEphp php=php php'fileFilesSizeNotReadablephp'php;
+/**
+ * Validator for the size of all files which will be validated in sum
+ *
+ * @category  Zend
+ * @package   Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Validate_File_FilesSize extends Zend_Validate_File_Size
+{
+    /**
+     * @const string Error constants
+     */
+    const TOO_BIG      = 'fileFilesSizeTooBig';
+    const TOO_SMALL    = 'fileFilesSizeTooSmall';
+    const NOT_READABLE = 'fileFilesSizeNotReadable';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp arrayphp Errorphp messagephp templates
-php php php php php php*php/
-php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
-php php php php php php php php selfphp:php:TOOphp_BIGphp php php php php php php=php>php php"Allphp filesphp inphp sumphp shouldphp havephp aphp maximumphp sizephp ofphp php'php%maxphp%php'php butphp php'php%sizephp%php'php werephp detectedphp"php,
-php php php php php php php php selfphp:php:TOOphp_SMALLphp php php php php=php>php php"Allphp filesphp inphp sumphp shouldphp havephp aphp minimumphp sizephp ofphp php'php%minphp%php'php butphp php'php%sizephp%php'php werephp detectedphp"php,
-php php php php php php php php selfphp:php:NOTphp_READABLEphp php=php>php php"Onephp orphp morephp filesphp canphp notphp bephp readphp"php,
-php php php php php)php;
+    /**
+     * @var array Error message templates
+     */
+    protected $_messageTemplates = array(
+        self::TOO_BIG      => "All files in sum should have a maximum size of '%max%' but '%size%' were detected",
+        self::TOO_SMALL    => "All files in sum should have a minimum size of '%min%' but '%size%' were detected",
+        self::NOT_READABLE => "One or more files can not be read",
+    );
 
-php php php php php/php*php*
-php php php php php php*php Internalphp filephp array
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_filesphp;
+    /**
+     * Internal file array
+     *
+     * @var array
+     */
+    protected $_files;
 
-php php php php php/php*php*
-php php php php php php*php Setsphp validatorphp options
-php php php php php php*
-php php php php php php*php Minphp limitsphp thephp usedphp diskspacephp forphp allphp filesphp,php whenphp usedphp withphp maxphp=nullphp itphp isphp thephp maximumphp filesize
-php php php php php php*php Itphp alsophp acceptsphp anphp arrayphp withphp thephp keysphp php'minphp'php andphp php'maxphp'
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp|arrayphp|Zendphp_Configphp php$optionsphp Optionsphp forphp thisphp validator
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_filesphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_setSizephp(php0php)php;
+    /**
+     * Sets validator options
+     *
+     * Min limits the used diskspace for all files, when used with max=null it is the maximum filesize
+     * It also accepts an array with the keys 'min' and 'max'
+     *
+     * @param  integer|array|Zend_Config $options Options for this validator
+     * @return void
+     */
+    public function __construct($options)
+    {
+        $this->_files = array();
+        $this->_setSize(0);
 
-php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php}php elseifphp php(isphp_scalarphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php$optionsphp php=php arrayphp(php'maxphp'php php=php>php php$optionsphp)php;
-php php php php php php php php php}php elseifphp php(php!isphp_arrayphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Validatephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Validatephp_Exceptionphp(php'Invalidphp optionsphp tophp validatorphp providedphp'php)php;
-php php php php php php php php php}
+        if ($options instanceof Zend_Config) {
+            $options = $options->toArray();
+        } elseif (is_scalar($options)) {
+            $options = array('max' => $options);
+        } elseif (!is_array($options)) {
+            require_once 'Zend/Validate/Exception.php';
+            throw new Zend_Validate_Exception('Invalid options to validator provided');
+        }
 
-php php php php php php php php ifphp php(php1php <php funcphp_numphp_argsphp(php)php)php php{
-php php php php php php php php php php php php php$argvphp php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php php php php php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php$optionsphp[php'maxphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php ifphp php(php!emptyphp(php$argvphp)php)php php{
-php php php php php php php php php php php php php php php php php$optionsphp[php'bytestringphp'php]php php=php arrayphp_shiftphp(php$argvphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (1 < func_num_args()) {
+            $argv = func_get_args();
+            array_shift($argv);
+            $options['max'] = array_shift($argv);
+            if (!empty($argv)) {
+                $options['bytestring'] = array_shift($argv);
+            }
+        }
 
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
-php php php php php}
+        parent::__construct($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
-php php php php php php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp thephp diskphp usagephp ofphp allphp filesphp isphp atphp leastphp minphp and
-php php php php php php*php notphp biggerphp thanphp maxphp php(whenphp maxphp isphp notphp nullphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$valuephp Realphp filephp tophp checkphp forphp size
-php php php php php php*php php@paramphp php arrayphp php php php php php php php php$filephp php Filephp dataphp fromphp Zendphp_Filephp_Transfer
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp,php php$filephp php=php nullphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php ifphp php(isphp_stringphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$valuephp php=php arrayphp(php$valuephp)php;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Validate_Interface
+     *
+     * Returns true if and only if the disk usage of all files is at least min and
+     * not bigger than max (when max is not null).
+     *
+     * @param  string|array $value Real file to check for size
+     * @param  array        $file  File data from Zend_File_Transfer
+     * @return boolean
+     */
+    public function isValid($value, $file = null)
+    {
+        require_once 'Zend/Loader.php';
+        if (is_string($value)) {
+            $value = array($value);
+        }
 
-php php php php php php php php php$minphp php php=php php$thisphp-php>getMinphp(truephp)php;
-php php php php php php php php php$maxphp php php=php php$thisphp-php>getMaxphp(truephp)php;
-php php php php php php php php php$sizephp php=php php$thisphp-php>php_getSizephp(php)php;
-php php php php php php php php foreachphp php(php$valuephp asphp php$filesphp)php php{
-php php php php php php php php php php php php php/php/php Isphp filephp readablephp php?
-php php php php php php php php php php php php ifphp php(php!Zendphp_Loaderphp:php:isReadablephp(php$filesphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:NOTphp_READABLEphp)php;
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+        $min  = $this->getMin(true);
+        $max  = $this->getMax(true);
+        $size = $this->_getSize();
+        foreach ($value as $files) {
+            // Is file readable ?
+            if (!Zend_Loader::isReadable($files)) {
+                $this->_throw($file, self::NOT_READABLE);
+                continue;
+            }
 
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_filesphp[php$filesphp]php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_filesphp[php$filesphp]php php=php php$filesphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php filephp alreadyphp countedphp.php.php.php dophp notphp countphp twice
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
+            if (!isset($this->_files[$files])) {
+                $this->_files[$files] = $files;
+            } else {
+                // file already counted... do not count twice
+                continue;
+            }
 
-php php php php php php php php php php php php php/php/php limitedphp tophp php2GBphp files
-php php php php php php php php php php php php php$sizephp php+php=php php@filesizephp(php$filesphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
-php php php php php php php php php php php php ifphp php(php(php$maxphp php!php=php=php nullphp)php php&php&php php(php$maxphp <php php$sizephp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>useByteStringphp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_maxphp php php=php php$thisphp-php>php_toByteStringphp(php$maxphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$thisphp-php>php_toByteStringphp(php$sizephp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_BIGphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_maxphp php php=php php$maxphp;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_BIGphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            // limited to 2GB files
+            $size += @filesize($files);
+            $this->_size = $size;
+            if (($max !== null) && ($max < $size)) {
+                if ($this->useByteString()) {
+                    $this->_max  = $this->_toByteString($max);
+                    $this->_size = $this->_toByteString($size);
+                    $this->_throw($file, self::TOO_BIG);
+                    $this->_max  = $max;
+                    $this->_size = $size;
+                } else {
+                    $this->_throw($file, self::TOO_BIG);
+                }
+            }
+        }
 
-php php php php php php php php php/php/php Checkphp thatphp aggregatephp filesphp arephp php>php=php minimumphp size
-php php php php php php php php ifphp php(php(php$minphp php!php=php=php nullphp)php php&php&php php(php$sizephp <php php$minphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>useByteStringphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_minphp php php=php php$thisphp-php>php_toByteStringphp(php$minphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$thisphp-php>php_toByteStringphp(php$sizephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_SMALLphp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_minphp php php=php php$minphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_sizephp php=php php$sizephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_throwphp(php$filephp,php selfphp:php:TOOphp_SMALLphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        // Check that aggregate files are >= minimum size
+        if (($min !== null) && ($size < $min)) {
+            if ($this->useByteString()) {
+                $this->_min  = $this->_toByteString($min);
+                $this->_size = $this->_toByteString($size);
+                $this->_throw($file, self::TOO_SMALL);
+                $this->_min  = $min;
+                $this->_size = $size;
+            } else {
+                $this->_throw($file, self::TOO_SMALL);
+            }
+        }
 
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_messagesphp)php php>php php0php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if (count($this->_messages) > 0) {
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
-php}
+        return true;
+    }
+}

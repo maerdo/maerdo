@@ -1,102 +1,102 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Flatephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Flate.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Zendphp_Pdfphp_Filterphp_Compressionphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Filterphp/Compressionphp.phpphp'php;
+/** Zend_Pdf_Filter_Compression */
+require_once 'Zend/Pdf/Filter/Compression.php';
 
-php/php*php*
-php php*php Flatephp streamphp filter
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Filterphp_Compressionphp_Flatephp extendsphp Zendphp_Pdfphp_Filterphp_Compression
-php{
-php php php php php/php*php*
-php php php php php php*php Encodephp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@paramphp arrayphp php$params
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp encodephp(php$dataphp,php php$paramsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$paramsphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php$dataphp php=php selfphp:php:php_applyEncodeParamsphp(php$dataphp,php php$paramsphp)php;
-php php php php php php php php php}
+/**
+ * Flate stream filter
+ *
+ * @package    Zend_Pdf
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Filter_Compression_Flate extends Zend_Pdf_Filter_Compression
+{
+    /**
+     * Encode data
+     *
+     * @param string $data
+     * @param array $params
+     * @return string
+     * @throws Zend_Pdf_Exception
+     */
+    public static function encode($data, $params = null)
+    {
+        if ($params != null) {
+            $data = self::_applyEncodeParams($data, $params);
+        }
 
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'zlibphp'php)php)php php{
-php php php php php php php php php php php php php$trackErrorsphp php=php iniphp_getphp(php php"trackphp_errorsphp"php)php;
-php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php'php1php'php)php;
+        if (extension_loaded('zlib')) {
+            $trackErrors = ini_get( "track_errors");
+            ini_set('track_errors', '1');
 
-php php php php php php php php php php php php ifphp php(php(php$outputphp php=php php@gzcompressphp(php$dataphp)php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php$phpphp_errormsgphp)php;
-php php php php php php php php php php php php php}
+            if (($output = @gzcompress($data)) === false) {
+                ini_set('track_errors', $trackErrors);
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception($php_errormsg);
+            }
 
-php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Notphp implementedphp yetphp.php Youphp havephp tophp usephp zlibphp extensionphp.php'php)php;
-php php php php php php php php php}
+            ini_set('track_errors', $trackErrors);
+        } else {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Not implemented yet. You have to use zlib extension.');
+        }
 
-php php php php php php php php returnphp php$outputphp;
-php php php php php}
+        return $output;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Decodephp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@paramphp arrayphp php$params
-php php php php php php*php php@returnphp string
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp decodephp(php$dataphp,php php$paramsphp php=php nullphp)
-php php php php php{
-php php php php php php php php globalphp php$phpphp_errormsgphp;
+    /**
+     * Decode data
+     *
+     * @param string $data
+     * @param array $params
+     * @return string
+     * @throws Zend_Pdf_Exception
+     */
+    public static function decode($data, $params = null)
+    {
+        global $php_errormsg;
 
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'zlibphp'php)php)php php{
-php php php php php php php php php php php php php$trackErrorsphp php=php iniphp_getphp(php php"trackphp_errorsphp"php)php;
-php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php'php1php'php)php;
+        if (extension_loaded('zlib')) {
+            $trackErrors = ini_get( "track_errors");
+            ini_set('track_errors', '1');
 
-php php php php php php php php php php php php ifphp php(php(php$outputphp php=php php@gzuncompressphp(php$dataphp)php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php$phpphp_errormsgphp)php;
-php php php php php php php php php php php php php}
+            if (($output = @gzuncompress($data)) === false) {
+                ini_set('track_errors', $trackErrors);
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception($php_errormsg);
+            }
 
-php php php php php php php php php php php php iniphp_setphp(php'trackphp_errorsphp'php,php php$trackErrorsphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Notphp implementedphp yetphp'php)php;
-php php php php php php php php php}
+            ini_set('track_errors', $trackErrors);
+        } else {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Not implemented yet');
+        }
 
-php php php php php php php php ifphp php(php$paramsphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp selfphp:php:php_applyDecodeParamsphp(php$outputphp,php php$paramsphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$outputphp;
-php php php php php php php php php}
-php php php php php}
-php}
+        if ($params !== null) {
+            return self::_applyDecodeParams($output, $params);
+        } else {
+            return $output;
+        }
+    }
+}

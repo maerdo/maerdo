@@ -2,7 +2,7 @@
 /**
  * Zend Framework
  *
- * LICENSE 
+ * LICENSE
  *
  * This source file is subject to the new BSD license that is bundled
  * with this package in the file LICENSE.txt.
@@ -541,7 +541,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Everything in REQUEST_URI before PATH_INFO
-     * <form action="<\?php echo$baseUrl?>/news/submit" method="POST"/>
+     * <form action="<?=$baseUrl?>/news/submit" method="POST"/>
      *
      * @return string
      */
@@ -590,7 +590,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Everything in REQUEST_URI before PATH_INFO not including the filename
-     * <img src="<\?php echo$basePath?>/images/zend.png"/>
+     * <img src="<?=$basePath?>/images/zend.png"/>
      *
      * @return string
      */

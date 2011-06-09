@@ -1,181 +1,181 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@subpackagephp Hmac
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Hmacphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @subpackage Hmac
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Hmac.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Crypt
-php php*php/
-requirephp_oncephp php'Zendphp/Cryptphp.phpphp'php;
+/**
+ * @see Zend_Crypt
+ */
+require_once 'Zend/Crypt.php';
 
-php/php*php*
-php php*php PHPphp implementationphp ofphp thephp RFCphp php2php1php0php4php Hashphp basedphp Messagephp Authenticationphp Code
-php php*php algorithmphp.
-php php*
-php php*php php@todophp php Patchphp forphp refactoringphp failedphp testsphp php(keyphp blockphp sizesphp php>php8php0php usingphp internalphp algophp)
-php php*php php@todophp php php php php php php Checkphp ifphp mhashphp(php)php isphp aphp requiredphp alternativephp php(willphp bephp PECLphp-onlyphp soonphp)
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Crypt
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cryptphp_Hmacphp extendsphp Zendphp_Crypt
-php{
+/**
+ * PHP implementation of the RFC 2104 Hash based Message Authentication Code
+ * algorithm.
+ *
+ * @todo  Patch for refactoring failed tests (key block sizes >80 using internal algo)
+ * @todo       Check if mhash() is a required alternative (will be PECL-only soon)
+ * @category   Zend
+ * @package    Zend_Crypt
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Crypt_Hmac extends Zend_Crypt
+{
 
-php php php php php/php*php*
-php php php php php php*php Thephp keyphp tophp usephp forphp thephp hash
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_keyphp php=php nullphp;
+    /**
+     * The key to use for the hash
+     *
+     * @var string
+     */
+    protected static $_key = null;
 
-php php php php php/php*php*
-php php php php php php*php packphp(php)php formatphp tophp bephp usedphp forphp currentphp hashingphp method
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_packFormatphp php=php nullphp;
+    /**
+     * pack() format to be used for current hashing method
+     *
+     * @var string
+     */
+    protected static $_packFormat = null;
 
-php php php php php/php*php*
-php php php php php php*php Hashingphp algorithmphp;php canphp bephp thephp mdphp5php/shaphp1php functionsphp orphp anyphp algorithmphp name
-php php php php php php*php listedphp inphp thephp outputphp ofphp PHPphp php5php.php1php.php2php+php hashphp_algosphp(php)php.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_hashAlgorithmphp php=php php'mdphp5php'php;
+    /**
+     * Hashing algorithm; can be the md5/sha1 functions or any algorithm name
+     * listed in the output of PHP 5.1.2+ hash_algos().
+     *
+     * @var string
+     */
+    protected static $_hashAlgorithm = 'md5';
 
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp algorithmsphp supportedphp myphp mhashphp(php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_supportedMhashAlgorithmsphp php=php arrayphp(php'adlerphp3php2php'php,php'php crcphp3php2php'php,php php'crcphp3php2bphp'php,php php'gostphp'php,
-php php php php php php php php php php php php php'havalphp1php2php8php'php,php php'havalphp1php6php0php'php,php php'havalphp1php9php2php'php,php php'havalphp2php5php6php'php,php php'mdphp4php'php,php php'mdphp5php'php,php php'ripemdphp1php6php0php'php,
-php php php php php php php php php php php php php'shaphp1php'php,php php'shaphp2php5php6php'php,php php'tigerphp'php,php php'tigerphp1php2php8php'php,php php'tigerphp1php6php0php'php)php;
+    /**
+     * List of algorithms supported my mhash()
+     *
+     * @var array
+     */
+    protected static $_supportedMhashAlgorithms = array('adler32',' crc32', 'crc32b', 'gost',
+            'haval128', 'haval160', 'haval192', 'haval256', 'md4', 'md5', 'ripemd160',
+            'sha1', 'sha256', 'tiger', 'tiger128', 'tiger160');
 
-php php php php php/php*php*
-php php php php php php*php Constantsphp representingphp thephp outputphp modephp ofphp thephp hashphp algorithm
-php php php php php php*php/
-php php php php constphp STRINGphp php=php php'stringphp'php;
-php php php php constphp BINARYphp php=php php'binaryphp'php;
+    /**
+     * Constants representing the output mode of the hash algorithm
+     */
+    const STRING = 'string';
+    const BINARY = 'binary';
 
-php php php php php/php*php*
-php php php php php php*php Performsphp aphp HMACphp computationphp givenphp relevantphp detailsphp suchphp asphp Keyphp,php Hashing
-php php php php php php*php algorithmphp,php thephp dataphp tophp computephp MACphp ofphp,php andphp anphp outputphp formatphp ofphp Stringphp,
-php php php php php php*php Binaryphp notationphp orphp BTWOCphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$key
-php php php php php php*php php@paramphp stringphp php$hash
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@paramphp stringphp php$output
-php php php php php php*php php@paramphp booleanphp php$internal
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp staticphp functionphp computephp(php$keyphp,php php$hashphp,php php$dataphp,php php$outputphp php=php selfphp:php:STRINGphp)
-php php php php php{
-php php php php php php php php php/php/php setphp thephp key
-php php php php php php php php ifphp php(php!issetphp(php$keyphp)php php|php|php emptyphp(php$keyphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Hmacphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Hmacphp_Exceptionphp(php'providedphp keyphp isphp nullphp orphp emptyphp'php)php;
-php php php php php php php php php}
-php php php php php php php php selfphp:php:php$php_keyphp php=php php$keyphp;
+    /**
+     * Performs a HMAC computation given relevant details such as Key, Hashing
+     * algorithm, the data to compute MAC of, and an output format of String,
+     * Binary notation or BTWOC.
+     *
+     * @param string $key
+     * @param string $hash
+     * @param string $data
+     * @param string $output
+     * @param boolean $internal
+     * @return string
+     */
+    public static function compute($key, $hash, $data, $output = self::STRING)
+    {
+        // set the key
+        if (!isset($key) || empty($key)) {
+            require_once 'Zend/Crypt/Hmac/Exception.php';
+            throw new Zend_Crypt_Hmac_Exception('provided key is null or empty');
+        }
+        self::$_key = $key;
 
-php php php php php php php php php/php/php setphp thephp hash
-php php php php php php php php selfphp:php:php_setHashAlgorithmphp(php$hashphp)php;
+        // set the hash
+        self::_setHashAlgorithm($hash);
 
-php php php php php php php php php/php/php performphp hashingphp andphp return
-php php php php php php php php returnphp selfphp:php:php_hashphp(php$dataphp,php php$outputphp)php;
-php php php php php}
+        // perform hashing and return
+        return self::_hash($data, $output);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setterphp forphp thephp hashphp methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$hash
-php php php php php php*php php@returnphp Zendphp_Cryptphp_Hmac
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_setHashAlgorithmphp(php$hashphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$hashphp)php php|php|php emptyphp(php$hashphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Hmacphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Hmacphp_Exceptionphp(php'providedphp hashphp stringphp isphp nullphp orphp emptyphp'php)php;
-php php php php php php php php php}
+    /**
+     * Setter for the hash method.
+     *
+     * @param string $hash
+     * @return Zend_Crypt_Hmac
+     */
+    protected static function _setHashAlgorithm($hash)
+    {
+        if (!isset($hash) || empty($hash)) {
+            require_once 'Zend/Crypt/Hmac/Exception.php';
+            throw new Zend_Crypt_Hmac_Exception('provided hash string is null or empty');
+        }
 
-php php php php php php php php php$hashphp php=php strtolowerphp(php$hashphp)php;
-php php php php php php php php php$hashSupportedphp php=php falsephp;
+        $hash = strtolower($hash);
+        $hashSupported = false;
 
-php php php php php php php php ifphp php(functionphp_existsphp(php'hashphp_algosphp'php)php php&php&php inphp_arrayphp(php$hashphp,php hashphp_algosphp(php)php)php)php php{
-php php php php php php php php php php php php php$hashSupportedphp php=php truephp;
-php php php php php php php php php}
+        if (function_exists('hash_algos') && in_array($hash, hash_algos())) {
+            $hashSupported = true;
+        }
 
-php php php php php php php php ifphp php(php$hashSupportedphp php=php=php=php falsephp php&php&php functionphp_existsphp(php'mhashphp'php)php php&php&php inphp_arrayphp(php$hashphp,php selfphp:php:php$php_supportedAlgosMhashphp)php)php php{
-php php php php php php php php php php php php php$hashSupportedphp php=php truephp;
-php php php php php php php php php}
+        if ($hashSupported === false && function_exists('mhash') && in_array($hash, self::$_supportedAlgosMhash)) {
+            $hashSupported = true;
+        }
 
-php php php php php php php php ifphp php(php$hashSupportedphp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cryptphp/Hmacphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cryptphp_Hmacphp_Exceptionphp(php'hashphp algorithmphp providedphp isphp notphp supportedphp onphp thisphp PHPphp installationphp;php pleasephp enablephp thephp hashphp orphp mhashphp extensionsphp'php)php;
-php php php php php php php php php}
-php php php php php php php php selfphp:php:php$php_hashAlgorithmphp php=php php$hashphp;
-php php php php php}
+        if ($hashSupported === false) {
+            require_once 'Zend/Crypt/Hmac/Exception.php';
+            throw new Zend_Crypt_Hmac_Exception('hash algorithm provided is not supported on this PHP installation; please enable the hash or mhash extensions');
+        }
+        self::$_hashAlgorithm = $hash;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Performphp HMACphp andphp returnphp thephp keyedphp data
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$data
-php php php php php php*php php@paramphp stringphp php$output
-php php php php php php*php php@paramphp boolphp php$internalphp Optionphp tophp notphp usephp hashphp(php)php functionsphp forphp testing
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_hashphp(php$dataphp,php php$outputphp php=php selfphp:php:STRINGphp,php php$internalphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(functionphp_existsphp(php'hashphp_hmacphp'php)php)php php{
-php php php php php php php php php php php php ifphp php(php$outputphp php=php=php selfphp:php:BINARYphp)php php{
-php php php php php php php php php php php php php php php php returnphp hashphp_hmacphp(selfphp:php:php$php_hashAlgorithmphp,php php$dataphp,php selfphp:php:php$php_keyphp,php php1php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp hashphp_hmacphp(selfphp:php:php$php_hashAlgorithmphp,php php$dataphp,php selfphp:php:php$php_keyphp)php;
-php php php php php php php php php}
+    /**
+     * Perform HMAC and return the keyed data
+     *
+     * @param string $data
+     * @param string $output
+     * @param bool $internal Option to not use hash() functions for testing
+     * @return string
+     */
+    protected static function _hash($data, $output = self::STRING, $internal = false)
+    {
+        if (function_exists('hash_hmac')) {
+            if ($output == self::BINARY) {
+                return hash_hmac(self::$_hashAlgorithm, $data, self::$_key, 1);
+            }
+            return hash_hmac(self::$_hashAlgorithm, $data, self::$_key);
+        }
 
-php php php php php php php php ifphp php(functionphp_existsphp(php'mhashphp'php)php)php php{
-php php php php php php php php php php php php ifphp php(php$outputphp php=php=php selfphp:php:BINARYphp)php php{
-php php php php php php php php php php php php php php php php returnphp mhashphp(selfphp:php:php_getMhashDefinitionphp(selfphp:php:php$php_hashAlgorithmphp)php,php php$dataphp,php selfphp:php:php$php_keyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$binphp php=php mhashphp(selfphp:php:php_getMhashDefinitionphp(selfphp:php:php$php_hashAlgorithmphp)php,php php$dataphp,php selfphp:php:php$php_keyphp)php;
-php php php php php php php php php php php php returnphp binphp2hexphp(php$binphp)php;
-php php php php php php php php php}
-php php php php php}
+        if (function_exists('mhash')) {
+            if ($output == self::BINARY) {
+                return mhash(self::_getMhashDefinition(self::$_hashAlgorithm), $data, self::$_key);
+            }
+            $bin = mhash(self::_getMhashDefinition(self::$_hashAlgorithm), $data, self::$_key);
+            return bin2hex($bin);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Sincephp MHASHphp acceptsphp anphp integerphp constantphp representingphp thephp hashphp algorithm
-php php php php php php*php wephp needphp tophp makephp aphp smallphp detourphp tophp getphp thephp correctphp integerphp matchingphp our
-php php php php php php*php algorithmphp'sphp namephp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$hashAlgorithm
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_getMhashDefinitionphp(php$hashAlgorithmphp)
-php php php php php{
-php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php=php mhashphp_countphp(php)php;php php$iphp+php+php)
-php php php php php php php php php{
-php php php php php php php php php php php php php$typesphp[mhashphp_getphp_hashphp_namephp(php$iphp)php]php php=php php$iphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$typesphp[strtoupperphp(php$hashAlgorithmphp)php]php;
-php php php php php}
+    /**
+     * Since MHASH accepts an integer constant representing the hash algorithm
+     * we need to make a small detour to get the correct integer matching our
+     * algorithm's name.
+     *
+     * @param string $hashAlgorithm
+     * @return integer
+     */
+    protected static function _getMhashDefinition($hashAlgorithm)
+    {
+        for ($i = 0; $i <= mhash_count(); $i++)
+        {
+            $types[mhash_get_hash_name($i)] = $i;
+        }
+        return $types[strtoupper($hashAlgorithm)];
+    }
 
-php}
+}

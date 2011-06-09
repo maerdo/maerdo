@@ -1,171 +1,171 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Destination
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php FitRectanglephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Destination
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: FitRectangle.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Namephp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Numericphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element/Array.php';
+require_once 'Zend/Pdf/Element/Name.php';
+require_once 'Zend/Pdf/Element/Numeric.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Destinationphp_Explicitphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Destinationphp/Explicitphp.phpphp'php;
+/** Zend_Pdf_Destination_Explicit */
+require_once 'Zend/Pdf/Destination/Explicit.php';
 
-php/php*php*
-php php*php Zendphp_Pdfphp_Destinationphp_FitRectanglephp explicitphp detination
-php php*
-php php*php Destinationphp arrayphp:php php[pagephp php/FitRphp leftphp bottomphp rightphp topphp]
-php php*
-php php*php Displayphp thephp pagephp designatedphp byphp pagephp,php withphp itsphp contentsphp magnifiedphp justphp enough
-php php*php tophp fitphp thephp rectanglephp specifiedphp byphp thephp coordinatesphp leftphp,php bottomphp,php rightphp,php andphp top
-php php*php entirelyphp withinphp thephp windowphp bothphp horizontallyphp andphp verticallyphp.php Ifphp thephp required
-php php*php horizontalphp andphp verticalphp magnificationphp factorsphp arephp differentphp,php usephp thephp smallerphp of
-php php*php thephp twophp,php centeringphp thephp rectanglephp withinphp thephp windowphp inphp thephp otherphp dimensionphp.
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Destination
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Pdfphp_Destinationphp_FitRectanglephp extendsphp Zendphp_Pdfphp_Destinationphp_Explicit
-php{
-php php php php php/php*php*
-php php php php php php*php Createphp destinationphp object
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Pagephp|integerphp php$pagephp php Pagephp objectphp orphp pagephp number
-php php php php php php*php php@paramphp floatphp php$leftphp php php php Leftphp edgephp ofphp displayedphp page
-php php php php php php*php php@paramphp floatphp php$bottomphp php Bottomphp edgephp ofphp displayedphp page
-php php php php php php*php php@paramphp floatphp php$rightphp php php Rightphp edgephp ofphp displayedphp page
-php php php php php php*php php@paramphp floatphp php$topphp php php php php Topphp edgephp ofphp displayedphp page
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Destinationphp_FitRectangle
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createphp(php$pagephp,php php$leftphp,php php$bottomphp,php php$rightphp,php php$topphp)
-php php php php php{
-php php php php php php php php php$destinationArrayphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
+/**
+ * Zend_Pdf_Destination_FitRectangle explicit detination
+ *
+ * Destination array: [page /FitR left bottom right top]
+ *
+ * Display the page designated by page, with its contents magnified just enough
+ * to fit the rectangle specified by the coordinates left, bottom, right, and top
+ * entirely within the window both horizontally and vertically. If the required
+ * horizontal and vertical magnification factors are different, use the smaller of
+ * the two, centering the rectangle within the window in the other dimension.
+ *
+ * @package    Zend_Pdf
+ * @subpackage Destination
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Pdf_Destination_FitRectangle extends Zend_Pdf_Destination_Explicit
+{
+    /**
+     * Create destination object
+     *
+     * @param Zend_Pdf_Page|integer $page  Page object or page number
+     * @param float $left    Left edge of displayed page
+     * @param float $bottom  Bottom edge of displayed page
+     * @param float $right   Right edge of displayed page
+     * @param float $top     Top edge of displayed page
+     * @return Zend_Pdf_Destination_FitRectangle
+     * @throws Zend_Pdf_Exception
+     */
+    public static function create($page, $left, $bottom, $right, $top)
+    {
+        $destinationArray = new Zend_Pdf_Element_Array();
 
-php php php php php php php php ifphp php(php$pagephp instanceofphp Zendphp_Pdfphp_Pagephp)php php{
-php php php php php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php php$pagephp-php>getPageDictionaryphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(isphp_integerphp(php$pagephp)php)php php{
-php php php php php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$pagephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Pagephp entryphp mustphp bephp aphp Zendphp_Pdfphp_Pagephp objectphp orphp aphp pagephp numberphp.php'php)php;
-php php php php php php php php php}
+        if ($page instanceof Zend_Pdf_Page) {
+            $destinationArray->items[] = $page->getPageDictionary();
+        } else if (is_integer($page)) {
+            $destinationArray->items[] = new Zend_Pdf_Element_Numeric($page);
+        } else {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Page entry must be a Zend_Pdf_Page object or a page number.');
+        }
 
-php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Namephp(php'FitRphp'php)php;
-php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$leftphp)php;
-php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bottomphp)php;
-php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$rightphp)php;
-php php php php php php php php php$destinationArrayphp-php>itemsphp[php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$topphp)php;
+        $destinationArray->items[] = new Zend_Pdf_Element_Name('FitR');
+        $destinationArray->items[] = new Zend_Pdf_Element_Numeric($left);
+        $destinationArray->items[] = new Zend_Pdf_Element_Numeric($bottom);
+        $destinationArray->items[] = new Zend_Pdf_Element_Numeric($right);
+        $destinationArray->items[] = new Zend_Pdf_Element_Numeric($top);
 
-php php php php php php php php returnphp newphp Zendphp_Pdfphp_Destinationphp_FitRectanglephp(php$destinationArrayphp)php;
-php php php php php}
+        return new Zend_Pdf_Destination_FitRectangle($destinationArray);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp leftphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp getLeftEdgephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_destinationArrayphp-php>itemsphp[php2php]php-php>valuephp;
-php php php php php}
+    /**
+     * Get left edge of the displayed page
+     *
+     * @return float
+     */
+    public function getLeftEdge()
+    {
+        return $this->_destinationArray->items[2]->value;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp leftphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$left
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_FitRectangle
-php php php php php php*php/
-php php php php publicphp functionphp setLeftEdgephp(php$leftphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_destinationArrayphp-php>itemsphp[php2php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$leftphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set left edge of the displayed page
+     *
+     * @param float $left
+     * @return Zend_Pdf_Action_FitRectangle
+     */
+    public function setLeftEdge($left)
+    {
+        $this->_destinationArray->items[2] = new Zend_Pdf_Element_Numeric($left);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp bottomphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp getBottomEdgephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_destinationArrayphp-php>itemsphp[php3php]php-php>valuephp;
-php php php php php}
+    /**
+     * Get bottom edge of the displayed page
+     *
+     * @return float
+     */
+    public function getBottomEdge()
+    {
+        return $this->_destinationArray->items[3]->value;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp bottomphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$bottom
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_FitRectangle
-php php php php php php*php/
-php php php php publicphp functionphp setBottomEdgephp(php$bottomphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_destinationArrayphp-php>itemsphp[php3php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$bottomphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set bottom edge of the displayed page
+     *
+     * @param float $bottom
+     * @return Zend_Pdf_Action_FitRectangle
+     */
+    public function setBottomEdge($bottom)
+    {
+        $this->_destinationArray->items[3] = new Zend_Pdf_Element_Numeric($bottom);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp rightphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp getRightEdgephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_destinationArrayphp-php>itemsphp[php4php]php-php>valuephp;
-php php php php php}
+    /**
+     * Get right edge of the displayed page
+     *
+     * @return float
+     */
+    public function getRightEdge()
+    {
+        return $this->_destinationArray->items[4]->value;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp rightphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$right
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_FitRectangle
-php php php php php php*php/
-php php php php publicphp functionphp setRightEdgephp(php$rightphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_destinationArrayphp-php>itemsphp[php4php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$rightphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set right edge of the displayed page
+     *
+     * @param float $right
+     * @return Zend_Pdf_Action_FitRectangle
+     */
+    public function setRightEdge($right)
+    {
+        $this->_destinationArray->items[4] = new Zend_Pdf_Element_Numeric($right);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp topphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp getTopEdgephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_destinationArrayphp-php>itemsphp[php5php]php-php>valuephp;
-php php php php php}
+    /**
+     * Get top edge of the displayed page
+     *
+     * @return float
+     */
+    public function getTopEdge()
+    {
+        return $this->_destinationArray->items[5]->value;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp topphp edgephp ofphp thephp displayedphp page
-php php php php php php*
-php php php php php php*php php@paramphp floatphp php$top
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp_FitRectangle
-php php php php php php*php/
-php php php php publicphp functionphp setTopEdgephp(php$topphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_destinationArrayphp-php>itemsphp[php5php]php php=php newphp Zendphp_Pdfphp_Elementphp_Numericphp(php$topphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-php}
+    /**
+     * Set top edge of the displayed page
+     *
+     * @param float $top
+     * @return Zend_Pdf_Action_FitRectangle
+     */
+    public function setTopEdge($top)
+    {
+        $this->_destinationArray->items[5] = new Zend_Pdf_Element_Numeric($top);
+        return $this;
+    }
+}

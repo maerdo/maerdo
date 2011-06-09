@@ -1,134 +1,134 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Floatphp.phpphp php2php2php6php6php8php php2php0php1php0php-php0php7php-php2php5php php1php4php:php5php0php:php4php6Zphp thomasphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Float.php 22668 2010-07-25 14:50:46Z thomas $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Validatephp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Validatephp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Validate_Abstract
+ */
+require_once 'Zend/Validate/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Localephp_Format
-php php*php/
-requirephp_oncephp php'Zendphp/Localephp/Formatphp.phpphp'php;
+/**
+ * @see Zend_Locale_Format
+ */
+require_once 'Zend/Locale/Format.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Validate
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Validatephp_Floatphp extendsphp Zendphp_Validatephp_Abstract
-php{
-php php php php constphp INVALIDphp php php php=php php'floatInvalidphp'php;
-php php php php constphp NOTphp_FLOATphp php=php php'notFloatphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_Validate
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Validate_Float extends Zend_Validate_Abstract
+{
+    const INVALID   = 'floatInvalid';
+    const NOT_FLOAT = 'notFloat';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_messageTemplatesphp php=php arrayphp(
-php php php php php php php php selfphp:php:INVALIDphp php php php=php>php php"Invalidphp typephp givenphp.php Stringphp,php integerphp orphp floatphp expectedphp"php,
-php php php php php php php php selfphp:php:NOTphp_FLOATphp php=php>php php"php'php%valuephp%php'php doesphp notphp appearphp tophp bephp aphp floatphp"php,
-php php php php php)php;
+    /**
+     * @var array
+     */
+    protected $_messageTemplates = array(
+        self::INVALID   => "Invalid type given. String, integer or float expected",
+        self::NOT_FLOAT => "'%value%' does not appear to be a float",
+    );
 
-php php php php protectedphp php$php_localephp;
+    protected $_locale;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp forphp thephp floatphp validator
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Configphp|Zendphp_Localephp php$locale
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$localephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$localephp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php$localephp php=php php$localephp-php>toArrayphp(php)php;
-php php php php php php php php php}
+    /**
+     * Constructor for the float validator
+     *
+     * @param string|Zend_Config|Zend_Locale $locale
+     */
+    public function __construct($locale = null)
+    {
+        if ($locale instanceof Zend_Config) {
+            $locale = $locale->toArray();
+        }
 
-php php php php php php php php ifphp php(isphp_arrayphp(php$localephp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'localephp'php,php php$localephp)php)php php{
-php php php php php php php php php php php php php php php php php$localephp php=php php$localephp[php'localephp'php]php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$localephp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (is_array($locale)) {
+            if (array_key_exists('locale', $locale)) {
+                $locale = $locale['locale'];
+            } else {
+                $locale = null;
+            }
+        }
 
-php php php php php php php php ifphp php(emptyphp(php$localephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Registryphp.phpphp'php;
-php php php php php php php php php php php php ifphp php(Zendphp_Registryphp:php:isRegisteredphp(php'Zendphp_Localephp'php)php)php php{
-php php php php php php php php php php php php php php php php php$localephp php=php Zendphp_Registryphp:php:getphp(php'Zendphp_Localephp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if (empty($locale)) {
+            require_once 'Zend/Registry.php';
+            if (Zend_Registry::isRegistered('Zend_Locale')) {
+                $locale = Zend_Registry::get('Zend_Locale');
+            }
+        }
 
-php php php php php php php php php$thisphp-php>setLocalephp(php$localephp)php;
-php php php php php}
+        $this->setLocale($locale);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp setphp locale
-php php php php php php*php/
-php php php php publicphp functionphp getLocalephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_localephp;
-php php php php php}
+    /**
+     * Returns the set locale
+     */
+    public function getLocale()
+    {
+        return $this->_locale;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp localephp tophp use
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|Zendphp_Localephp php$locale
-php php php php php php*php/
-php php php php publicphp functionphp setLocalephp(php$localephp php=php nullphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
-php php php php php php php php php$thisphp-php>php_localephp php=php Zendphp_Localephp:php:findLocalephp(php$localephp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Sets the locale to use
+     *
+     * @param string|Zend_Locale $locale
+     */
+    public function setLocale($locale = null)
+    {
+        require_once 'Zend/Locale.php';
+        $this->_locale = Zend_Locale::findLocale($locale);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Definedphp byphp Zendphp_Validatephp_Interface
-php php php php php php*
-php php php php php php*php Returnsphp truephp ifphp andphp onlyphp ifphp php$valuephp isphp aphp floatingphp-pointphp value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$valuephp)php php&php&php php!isphp_intphp(php$valuephp)php php&php&php php!isphp_floatphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:INVALIDphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Defined by Zend_Validate_Interface
+     *
+     * Returns true if and only if $value is a floating-point value
+     *
+     * @param  string $value
+     * @return boolean
+     */
+    public function isValid($value)
+    {
+        if (!is_string($value) && !is_int($value) && !is_float($value)) {
+            $this->_error(self::INVALID);
+            return false;
+        }
 
-php php php php php php php php ifphp php(isphp_floatphp(php$valuephp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
+        if (is_float($value)) {
+            return true;
+        }
 
-php php php php php php php php php$thisphp-php>php_setValuephp(php$valuephp)php;
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php ifphp php(php!Zendphp_Localephp_Formatphp:php:isFloatphp(php$valuephp,php arrayphp(php'localephp'php php=php>php php$thisphp-php>php_localephp)php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOTphp_FLOATphp)php;
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php catchphp php(Zendphp_Localephp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_errorphp(selfphp:php:NOTphp_FLOATphp)php;
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        $this->_setValue($value);
+        try {
+            if (!Zend_Locale_Format::isFloat($value, array('locale' => $this->_locale))) {
+                $this->_error(self::NOT_FLOAT);
+                return false;
+            }
+        } catch (Zend_Locale_Exception $e) {
+            $this->_error(self::NOT_FLOAT);
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
-php}
+        return true;
+    }
+}

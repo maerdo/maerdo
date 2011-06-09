@@ -1,304 +1,304 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_TimeSync
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@versionphp php php php php$Idphp:php TimeSyncphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_TimeSync
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: TimeSync.php 20096 2010-01-06 02:05:09Z bkarwin $
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php Zendphp_Date
-php php*php/
-requirephp_oncephp php'Zendphp/Datephp.phpphp'php;
+/**
+ * Zend_Date
+ */
+require_once 'Zend/Date.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_TimeSync
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_TimeSyncphp implementsphp IteratorAggregate
-php{
-php php php php php/php*php*
-php php php php php php*php Setphp thephp defaultphp timeserverphp protocolphp tophp php"Ntpphp"php.php Thisphp willphp bephp called
-php php php php php php*php whenphp nophp protocolphp isphp specified
-php php php php php php*php/
-php php php php constphp DEFAULTphp_PROTOCOLphp php=php php'Ntpphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_TimeSync
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_TimeSync implements IteratorAggregate
+{
+    /**
+     * Set the default timeserver protocol to "Ntp". This will be called
+     * when no protocol is specified
+     */
+    const DEFAULT_PROTOCOL = 'Ntp';
 
-php php php php php/php*php*
-php php php php php php*php Containsphp arrayphp ofphp timeserverphp objects
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_timeserversphp php=php arrayphp(php)php;
+    /**
+     * Contains array of timeserver objects
+     *
+     * @var array
+     */
+    protected $_timeservers = array();
 
-php php php php php/php*php*
-php php php php php php*php Holdsphp aphp referencephp tophp thephp timeserverphp thatphp isphp currentlyphp beingphp used
-php php php php php php*
-php php php php php php*php php@varphp object
-php php php php php php*php/
-php php php php protectedphp php$php_currentphp;
+    /**
+     * Holds a reference to the timeserver that is currently being used
+     *
+     * @var object
+     */
+    protected $_current;
 
-php php php php php/php*php*
-php php php php php php*php Allowedphp timeserverphp schemes
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_allowedSchemesphp php=php arrayphp(
-php php php php php php php php php'Ntpphp'php,
-php php php php php php php php php'Sntpphp'
-php php php php php)php;
+    /**
+     * Allowed timeserver schemes
+     *
+     * @var array
+     */
+    protected $_allowedSchemes = array(
+        'Ntp',
+        'Sntp'
+    );
 
-php php php php php/php*php*
-php php php php php php*php Configurationphp arrayphp,php setphp usingphp thephp constructorphp orphp using
-php php php php php php*php php:php:setOptionsphp(php)php orphp php:php:setOptionphp(php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php publicphp staticphp php$optionsphp php=php arrayphp(
-php php php php php php php php php'timeoutphp'php php=php>php php1
-php php php php php)php;
+    /**
+     * Configuration array, set using the constructor or using
+     * ::setOptions() or ::setOption()
+     *
+     * @var array
+     */
+    public static $options = array(
+        'timeout' => 1
+    );
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_TimeSyncphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$targetphp php-php OPTIONALphp singlephp timeserverphp,php orphp anphp arrayphp ofphp timeserversphp.
-php php php php php php*php php@paramphp php stringphp php php php php php php php$aliasphp php php-php OPTIONALphp anphp aliasphp forphp thisphp timeserver
-php php php php php php*php php@returnphp php object
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$targetphp php=php nullphp,php php$aliasphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$targetphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addServerphp(php$targetphp,php php$aliasphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Zend_TimeSync constructor
+     *
+     * @param  string|array $target - OPTIONAL single timeserver, or an array of timeservers.
+     * @param  string       $alias  - OPTIONAL an alias for this timeserver
+     * @return  object
+     */
+    public function __construct($target = null, $alias = null)
+    {
+        if ($target !== null) {
+            $this->addServer($target, $alias);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php getIteratorphp(php)php php-php returnphp anphp iteratablephp objectphp forphp usephp inphp foreachphp andphp thephp likephp,
-php php php php php php*php thisphp completesphp thephp IteratorAggregatephp interface
-php php php php php php*
-php php php php php php*php php@returnphp ArrayObject
-php php php php php php*php/
-php php php php publicphp functionphp getIteratorphp(php)
-php php php php php{
-php php php php php php php php returnphp newphp ArrayObjectphp(php$thisphp-php>php_timeserversphp)php;
-php php php php php}
+    /**
+     * getIterator() - return an iteratable object for use in foreach and the like,
+     * this completes the IteratorAggregate interface
+     *
+     * @return ArrayObject
+     */
+    public function getIterator()
+    {
+        return new ArrayObject($this->_timeservers);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp timeserverphp orphp multiplephp timeservers
-php php php php php php*
-php php php php php php*php Serverphp shouldphp bephp aphp singlephp stringphp representationphp ofphp aphp timeserverphp,
-php php php php php php*php orphp aphp structuredphp arrayphp listingphp multiplephp timeserversphp.
-php php php php php php*
-php php php php php php*php Ifphp youphp providephp anphp arrayphp ofphp timeserversphp inphp thephp php$targetphp variablephp,
-php php php php php php*php php$aliasphp willphp bephp ignoredphp.php youphp canphp enterphp thesephp asphp thephp arrayphp key
-php php php php php php*php inphp thephp providedphp arrayphp,php whichphp shouldphp bephp structuredphp asphp followsphp:
-php php php php php php*
-php php php php php php*php php<codephp>
-php php php php php php*php php$examplephp php=php arrayphp(
-php php php php php php*php php php php'serverphp_aphp'php php=php>php php'ntpphp:php/php/php1php2php7php.php0php.php0php.php1php'php,
-php php php php php php*php php php php'serverphp_bphp'php php=php>php php'ntpphp:php/php/php1php2php7php.php0php.php0php.php1php:php1php2php3php'php,
-php php php php php php*php php php php'serverphp_cphp'php php=php>php php'ntpphp:php/php/php[php2php0php0php0php:php3php6php4php:php2php3php4php:php:php2php.php5php]php'php,
-php php php php php php*php php php php'serverphp_dphp'php php=php>php php'ntpphp:php/php/php[php2php0php0php0php:php3php6php4php:php2php3php4php:php:php2php.php5php]php:php1php2php3php'
-php php php php php php*php php)php;
-php php php php php php*php <php/codephp>
-php php php php php php*
-php php php php php php*php Ifphp nophp portphp numberphp hasphp beenphp supliedphp,php thephp defaultphp matchingphp port
-php php php php php php*php numberphp willphp bephp usedphp.
-php php php php php php*
-php php php php php php*php Supportedphp protocolsphp arephp:
-php php php php php php*php php-php ntp
-php php php php php php*php php-php sntp
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$targetphp php-php Singlephp timeserverphp,php orphp anphp arrayphp ofphp timeserversphp.
-php php php php php php*php php@paramphp php stringphp php php php php php php php$aliasphp php php-php OPTIONALphp anphp aliasphp forphp thisphp timeserver
-php php php php php php*php php@throwsphp Zendphp_TimeSyncphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp addServerphp(php$targetphp,php php$aliasphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_arrayphp(php$targetphp)php)php php{
-php php php php php php php php php php php php foreachphp php(php$targetphp asphp php$keyphp php=php>php php$serverphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_addServerphp(php$serverphp,php php$keyphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_addServerphp(php$targetphp,php php$aliasphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Add a timeserver or multiple timeservers
+     *
+     * Server should be a single string representation of a timeserver,
+     * or a structured array listing multiple timeservers.
+     *
+     * If you provide an array of timeservers in the $target variable,
+     * $alias will be ignored. you can enter these as the array key
+     * in the provided array, which should be structured as follows:
+     *
+     * <code>
+     * $example = array(
+     *   'server_a' => 'ntp://127.0.0.1',
+     *   'server_b' => 'ntp://127.0.0.1:123',
+     *   'server_c' => 'ntp://[2000:364:234::2.5]',
+     *   'server_d' => 'ntp://[2000:364:234::2.5]:123'
+     * );
+     * </code>
+     *
+     * If no port number has been suplied, the default matching port
+     * number will be used.
+     *
+     * Supported protocols are:
+     * - ntp
+     * - sntp
+     *
+     * @param  string|array $target - Single timeserver, or an array of timeservers.
+     * @param  string       $alias  - OPTIONAL an alias for this timeserver
+     * @throws Zend_TimeSync_Exception
+     */
+    public function addServer($target, $alias = null)
+    {
+        if (is_array($target)) {
+            foreach ($target as $key => $server) {
+                $this->_addServer($server, $key);
+            }
+        } else {
+            $this->_addServer($target, $alias);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp valuephp forphp thephp givenphp options
-php php php php php php*
-php php php php php php*php Thisphp willphp replacephp anyphp currentlyphp definedphp optionsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php php arrayphp php$optionsphp php-php Anphp arrayphp ofphp optionsphp tophp bephp set
-php php php php php php*php/
-php php php php publicphp staticphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php Zendphp_TimeSyncphp:php:php$optionsphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Sets the value for the given options
+     *
+     * This will replace any currently defined options.
+     *
+     * @param   array $options - An array of options to be set
+     */
+    public static function setOptions(array $options)
+    {
+        foreach ($options as $key => $value) {
+            Zend_TimeSync::$options[$key] = $value;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Marksphp aphp nameserverphp asphp current
-php php php php php php*
-php php php php php php*php php@paramphp php php stringphp|integerphp php$aliasphp php-php Thephp aliasphp fromphp thephp timeserverphp tophp setphp asphp current
-php php php php php php*php php@throwsphp php Zendphp_TimeSyncphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setServerphp(php$aliasphp)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_timeserversphp[php$aliasphp]php)php php=php=php=php truephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$thisphp-php>php_timeserversphp[php$aliasphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php"php'php$aliasphp'php doesphp notphp pointphp tophp validphp timeserverphp"php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Marks a nameserver as current
+     *
+     * @param   string|integer $alias - The alias from the timeserver to set as current
+     * @throws  Zend_TimeSync_Exception
+     */
+    public function setServer($alias)
+    {
+        if (isset($this->_timeservers[$alias]) === true) {
+            $this->_current = $this->_timeservers[$alias];
+        } else {
+            require_once 'Zend/TimeSync/Exception.php';
+            throw new Zend_TimeSync_Exception("'$alias' does not point to valid timeserver");
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp valuephp tophp thephp option
-php php php php php php*
-php php php php php php*php php@paramphp php php stringphp php$keyphp php-php Thephp optionphp'sphp identifier
-php php php php php php*php php@returnphp php mixed
-php php php php php php*php php@throwsphp php Zendphp_TimeSyncphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getOptionsphp(php$keyphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$keyphp php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp Zendphp_TimeSyncphp:php:php$optionsphp;
-php php php php php php php php php}
+    /**
+     * Returns the value to the option
+     *
+     * @param   string $key - The option's identifier
+     * @return  mixed
+     * @throws  Zend_TimeSync_Exception
+     */
+    public static function getOptions($key = null)
+    {
+        if ($key == null) {
+            return Zend_TimeSync::$options;
+        }
 
-php php php php php php php php ifphp php(issetphp(Zendphp_TimeSyncphp:php:php$optionsphp[php$keyphp]php)php php=php=php=php truephp)php php{
-php php php php php php php php php php php php returnphp Zendphp_TimeSyncphp:php:php$optionsphp[php$keyphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php"php'php$keyphp'php doesphp notphp pointphp tophp validphp optionphp"php)php;
-php php php php php php php php php}
-php php php php php}
+        if (isset(Zend_TimeSync::$options[$key]) === true) {
+            return Zend_TimeSync::$options[$key];
+        } else {
+            require_once 'Zend/TimeSync/Exception.php';
+            throw new Zend_TimeSync_Exception("'$key' does not point to valid option");
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp aphp specifiedphp timeserverphp byphp alias
-php php php php php php*php Ifphp nophp aliasphp isphp givenphp itphp willphp returnphp thephp currentphp timeserver
-php php php php php php*
-php php php php php php*php php@paramphp php php stringphp|integerphp php$aliasphp php-php Thephp aliasphp fromphp thephp timeserverphp tophp return
-php php php php php php*php php@returnphp php object
-php php php php php php*php php@throwsphp php Zendphp_TimeSyncphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getServerphp(php$aliasphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$aliasphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_currentphp)php php&php&php php$thisphp-php>php_currentphp php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_currentphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php'therephp isphp nophp timeserverphp setphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_timeserversphp[php$aliasphp]php)php php=php=php=php truephp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_timeserversphp[php$aliasphp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php"php'php$aliasphp'php doesphp notphp pointphp tophp validphp timeserverphp"php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Return a specified timeserver by alias
+     * If no alias is given it will return the current timeserver
+     *
+     * @param   string|integer $alias - The alias from the timeserver to return
+     * @return  object
+     * @throws  Zend_TimeSync_Exception
+     */
+    public function getServer($alias = null)
+    {
+        if ($alias === null) {
+            if (isset($this->_current) && $this->_current !== false) {
+                return $this->_current;
+            } else {
+                require_once 'Zend/TimeSync/Exception.php';
+                throw new Zend_TimeSync_Exception('there is no timeserver set');
+            }
+        }
+        if (isset($this->_timeservers[$alias]) === true) {
+            return $this->_timeservers[$alias];
+        } else {
+            require_once 'Zend/TimeSync/Exception.php';
+            throw new Zend_TimeSync_Exception("'$alias' does not point to valid timeserver");
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp informationphp sentphp/returnedphp fromphp thephp currentphp timeserver
-php php php php php php*
-php php php php php php*php php@returnphp php array
-php php php php php php*php/
-php php php php publicphp functionphp getInfophp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getServerphp(php)php-php>getInfophp(php)php;
-php php php php php}
+    /**
+     * Returns information sent/returned from the current timeserver
+     *
+     * @return  array
+     */
+    public function getInfo()
+    {
+        return $this->getServer()->getInfo();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Queryphp thephp timeserverphp listphp usingphp thephp fallbackphp mechanism
-php php php php php php*
-php php php php php php*php Ifphp therephp arephp multiplephp serversphp listedphp,php thisphp methodphp willphp actphp asphp a
-php php php php php php*php facadephp andphp willphp tryphp tophp returnphp thephp datephp fromphp thephp firstphp serverphp that
-php php php php php php*php returnsphp aphp validphp resultphp.
-php php php php php php*
-php php php php php php*php php@paramphp php php php$localephp php-php OPTIONALphp locale
-php php php php php php*php php@returnphp php object
-php php php php php php*php php@throwsphp php Zendphp_TimeSyncphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getDatephp(php$localephp php=php nullphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_timeserversphp asphp php$aliasphp php=php>php php$serverphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_currentphp php=php php$serverphp;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php returnphp php$serverphp-php>getDatephp(php$localephp)php;
-php php php php php php php php php php php php php}php catchphp php(Zendphp_TimeSyncphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!issetphp(php$masterExceptionphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$masterExceptionphp php=php newphp Zendphp_TimeSyncphp_Exceptionphp(php'allphp timeserversphp arephp bogusphp'php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$masterExceptionphp-php>addExceptionphp(php$ephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Query the timeserver list using the fallback mechanism
+     *
+     * If there are multiple servers listed, this method will act as a
+     * facade and will try to return the date from the first server that
+     * returns a valid result.
+     *
+     * @param   $locale - OPTIONAL locale
+     * @return  object
+     * @throws  Zend_TimeSync_Exception
+     */
+    public function getDate($locale = null)
+    {
+        require_once 'Zend/TimeSync/Exception.php';
+        foreach ($this->_timeservers as $alias => $server) {
+            $this->_current = $server;
+            try {
+                return $server->getDate($locale);
+            } catch (Zend_TimeSync_Exception $e) {
+                if (!isset($masterException)) {
+                    $masterException = new Zend_TimeSync_Exception('all timeservers are bogus');
+                }
+                $masterException->addException($e);
+            }
+        }
 
-php php php php php php php php throwphp php$masterExceptionphp;
-php php php php php}
+        throw $masterException;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addsphp aphp timeserverphp objectphp tophp thephp timeserverphp list
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp php$targetphp php php php-php Singlephp timeserverphp,php orphp anphp arrayphp ofphp timeserversphp.
-php php php php php php*php php@paramphp php stringphp php php php php php php php$aliasphp php php php php-php Anphp aliasphp forphp thisphp timeserver
-php php php php php php*php/
-php php php php protectedphp functionphp php_addServerphp(php$targetphp,php php$aliasphp)
-php php php php php{
-php php php php php php php php ifphp php(php$posphp php=php strposphp(php$targetphp,php php'php:php/php/php'php)php)php php{
-php php php php php php php php php php php php php$protocolphp php=php substrphp(php$targetphp,php php0php,php php$posphp)php;
-php php php php php php php php php php php php php$adressphp php=php substrphp(php$targetphp,php php$posphp php+php php3php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$adressphp php=php php$targetphp;
-php php php php php php php php php php php php php$protocolphp php=php selfphp:php:DEFAULTphp_PROTOCOLphp;
-php php php php php php php php php}
+    /**
+     * Adds a timeserver object to the timeserver list
+     *
+     * @param  string|array $target   - Single timeserver, or an array of timeservers.
+     * @param  string       $alias    - An alias for this timeserver
+     */
+    protected function _addServer($target, $alias)
+    {
+        if ($pos = strpos($target, '://')) {
+            $protocol = substr($target, 0, $pos);
+            $adress = substr($target, $pos + 3);
+        } else {
+            $adress = $target;
+            $protocol = self::DEFAULT_PROTOCOL;
+        }
 
-php php php php php php php php ifphp php(php$posphp php=php strrposphp(php$adressphp,php php'php:php'php)php)php php{
-php php php php php php php php php php php php php$posbrphp php=php strposphp(php$adressphp,php php'php]php'php)php;
-php php php php php php php php php php php php ifphp php(php$posbrphp andphp php(php$posphp php>php php$posbrphp)php)php php{
-php php php php php php php php php php php php php php php php php$portphp php=php substrphp(php$adressphp,php php$posphp php+php php1php)php;
-php php php php php php php php php php php php php php php php php$adressphp php=php substrphp(php$adressphp,php php0php,php php$posphp)php;
-php php php php php php php php php php php php php}php elsephp ifphp php(php!php$posbrphp andphp php$posphp)php php{
-php php php php php php php php php php php php php php php php php$portphp php=php substrphp(php$adressphp,php php$posphp php+php php1php)php;
-php php php php php php php php php php php php php php php php php$adressphp php=php substrphp(php$adressphp,php php0php,php php$posphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$portphp php=php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$portphp php=php nullphp;
-php php php php php php php php php}
+        if ($pos = strrpos($adress, ':')) {
+            $posbr = strpos($adress, ']');
+            if ($posbr and ($pos > $posbr)) {
+                $port = substr($adress, $pos + 1);
+                $adress = substr($adress, 0, $pos);
+            } else if (!$posbr and $pos) {
+                $port = substr($adress, $pos + 1);
+                $adress = substr($adress, 0, $pos);
+            } else {
+                $port = null;
+            }
+        } else {
+            $port = null;
+        }
 
-php php php php php php php php php$protocolphp php=php ucfirstphp(strtolowerphp(php$protocolphp)php)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$protocolphp,php php$thisphp-php>php_allowedSchemesphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/TimeSyncphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_TimeSyncphp_Exceptionphp(php"php'php$protocolphp'php isphp notphp aphp supportedphp protocolphp"php)php;
-php php php php php php php php php}
+        $protocol = ucfirst(strtolower($protocol));
+        if (!in_array($protocol, $this->_allowedSchemes)) {
+            require_once 'Zend/TimeSync/Exception.php';
+            throw new Zend_TimeSync_Exception("'$protocol' is not a supported protocol");
+        }
 
-php php php php php php php php php$classNamephp php=php php'Zendphp_TimeSyncphp_php'php php.php php$protocolphp;
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classNamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classNamephp)php;
-php php php php php php php php php}
-php php php php php php php php php$timeServerObjphp php=php newphp php$classNamephp(php$adressphp,php php$portphp)php;
+        $className = 'Zend_TimeSync_' . $protocol;
+        if (!class_exists($className)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($className);
+        }
+        $timeServerObj = new $className($adress, $port);
 
-php php php php php php php php php$thisphp-php>php_timeserversphp[php$aliasphp]php php=php php$timeServerObjphp;
-php php php php php}
-php}
+        $this->_timeservers[$alias] = $timeServerObj;
+    }
+}

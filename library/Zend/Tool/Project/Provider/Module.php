@@ -1,177 +1,177 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Modulephp.phpphp php2php3php4php1php9php php2php0php1php0php-php1php1php-php2php0php php2php1php:php3php7php:php4php6Zphp ramonphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Module.php 23419 2010-11-20 21:37:46Z ramon $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Provider_Abstract
+ */
+require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendable
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Pretendablephp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Provider_Pretendable
+ */
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_ContextFilter
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Iteratorphp/ContextFilterphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_Iterator_ContextFilter
+ */
+require_once 'Zend/Tool/Project/Profile/Iterator/ContextFilter.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_EnabledResourceFilter
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Profilephp/Iteratorphp/EnabledResourceFilterphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Profile_Iterator_EnabledResourceFilter
+ */
+require_once 'Zend/Tool/Project/Profile/Iterator/EnabledResourceFilter.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Providerphp_Module
-php php php php extendsphp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Provider_Module
+    extends Zend_Tool_Project_Provider_Abstract
+    implements Zend_Tool_Framework_Provider_Pretendable
+{
 
-php php php php publicphp staticphp functionphp createResourcesphp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$moduleNamephp,php Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp php$targetModuleResourcephp php=php nullphp)
-php php php php php{
+    public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, Zend_Tool_Project_Profile_Resource $targetModuleResource = null)
+    {
 
-php php php php php php php php php/php/php findphp thephp applictionphp directoryphp,php itphp willphp servephp asphp ourphp modulephp skeleton
-php php php php php php php php ifphp php(php$targetModuleResourcephp php=php=php nullphp)php php{
-php php php php php php php php php php php php php$targetModuleResourcephp php=php php$profilephp-php>searchphp(php'applicationDirectoryphp'php)php;
-php php php php php php php php php php php php php$targetModuleEnabledResourcesphp php=php arrayphp(
-php php php php php php php php php php php php php php php php php'ControllersDirectoryphp'php,php php'ModelsDirectoryphp'php,php php'ViewsDirectoryphp'php,
-php php php php php php php php php php php php php php php php php'ViewScriptsDirectoryphp'php,php php'ViewHelpersDirectoryphp'php,php php'ViewFiltersDirectoryphp'
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        // find the appliction directory, it will serve as our module skeleton
+        if ($targetModuleResource == null) {
+            $targetModuleResource = $profile->search('applicationDirectory');
+            $targetModuleEnabledResources = array(
+                'ControllersDirectory', 'ModelsDirectory', 'ViewsDirectory',
+                'ViewScriptsDirectory', 'ViewHelpersDirectory', 'ViewFiltersDirectory'
+                );
+        }
 
-php php php php php php php php php/php/php findphp thephp actualphp modulesphp directoryphp wephp willphp usephp tophp housephp ourphp module
-php php php php php php php php php$modulesDirectoryphp php=php php$profilephp-php>searchphp(php'modulesDirectoryphp'php)php;
+        // find the actual modules directory we will use to house our module
+        $modulesDirectory = $profile->search('modulesDirectory');
 
-php php php php php php php php php/php/php ifphp therephp isphp aphp modulephp directoryphp alreadyphp,php except
-php php php php php php php php ifphp php(php$modulesDirectoryphp-php>searchphp(arrayphp(php'moduleDirectoryphp'php php=php>php arrayphp(php'moduleNamephp'php php=php>php php$moduleNamephp)php)php)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Aphp modulephp namedphp php"php'php php.php php$moduleNamephp php.php php'php"php alreadyphp existsphp.php'php)php;
-php php php php php php php php php}
+        // if there is a module directory already, except
+        if ($modulesDirectory->search(array('moduleDirectory' => array('moduleName' => $moduleName)))) {
+            throw new Zend_Tool_Project_Provider_Exception('A module named "' . $moduleName . '" already exists.');
+        }
 
-php php php php php php php php php/php/php createphp thephp modulephp directory
-php php php php php php php php php$moduleDirectoryphp php=php php$modulesDirectoryphp-php>createResourcephp(php'moduleDirectoryphp'php,php arrayphp(php'moduleNamephp'php php=php>php php$moduleNamephp)php)php;
+        // create the module directory
+        $moduleDirectory = $modulesDirectory->createResource('moduleDirectory', array('moduleName' => $moduleName));
 
-php php php php php php php php php/php/php createphp aphp contextphp filterphp sophp thatphp wephp canphp pullphp outphp onlyphp whatphp wephp needphp fromphp thephp modulephp skeleton
-php php php php php php php php php$moduleContextFilterIteratorphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_ContextFilterphp(
-php php php php php php php php php php php php php$targetModuleResourcephp,
-php php php php php php php php php php php php arrayphp(
-php php php php php php php php php php php php php php php php php'denyNamesphp'php php=php>php arrayphp(php'ModulesDirectoryphp'php,php php'ViewControllerScriptsDirectoryphp'php)php,
-php php php php php php php php php php php php php php php php php'denyTypephp'php php php=php>php php'Zendphp_Toolphp_Projectphp_Contextphp_Filesystemphp_Filephp'
-php php php php php php php php php php php php php php php php php)
-php php php php php php php php php php php php php)php;
+        // create a context filter so that we can pull out only what we need from the module skeleton
+        $moduleContextFilterIterator = new Zend_Tool_Project_Profile_Iterator_ContextFilter(
+            $targetModuleResource,
+            array(
+                'denyNames' => array('ModulesDirectory', 'ViewControllerScriptsDirectory'),
+                'denyType'  => 'Zend_Tool_Project_Context_Filesystem_File'
+                )
+            );
 
-php php php php php php php php php/php/php thephp iteratorphp forphp thephp modulephp skeleton
-php php php php php php php php php$targetIteratorphp php=php newphp RecursiveIteratorIteratorphp(php$moduleContextFilterIteratorphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php;
+        // the iterator for the module skeleton
+        $targetIterator = new RecursiveIteratorIterator($moduleContextFilterIterator, RecursiveIteratorIterator::SELF_FIRST);
 
-php php php php php php php php php/php/php initializephp somephp loopphp statephp information
-php php php php php php php php php$currentDepthphp php=php php0php;
-php php php php php php php php php$parentResourcesphp php=php arrayphp(php)php;
-php php php php php php php php php$currentResourcephp php=php php$moduleDirectoryphp;
+        // initialize some loop state information
+        $currentDepth = 0;
+        $parentResources = array();
+        $currentResource = $moduleDirectory;
 
-php php php php php php php php php/php/php loopphp throughphp thephp targetphp modulephp skeleton
-php php php php php php php php foreachphp php(php$targetIteratorphp asphp php$targetSubResourcephp)php php{
+        // loop through the target module skeleton
+        foreach ($targetIterator as $targetSubResource) {
 
-php php php php php php php php php php php php php$depthDifferencephp php=php php$targetIteratorphp-php>getDepthphp(php)php php-php php$currentDepthphp;
-php php php php php php php php php php php php php$currentDepthphp php=php php$targetIteratorphp-php>getDepthphp(php)php;
+            $depthDifference = $targetIterator->getDepth() - $currentDepth;
+            $currentDepth = $targetIterator->getDepth();
 
-php php php php php php php php php php php php ifphp php(php$depthDifferencephp php=php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php/php/php ifphp wephp wentphp downphp intophp aphp childphp,php makephp note
-php php php php php php php php php php php php php php php php arrayphp_pushphp(php$parentResourcesphp,php php$currentResourcephp)php;
-php php php php php php php php php php php php php php php php php/php/php thisphp willphp havephp alwaysphp beenphp setphp previouslyphp byphp anotherphp loop
-php php php php php php php php php php php php php php php php php$currentResourcephp php=php php$currentChildResourcephp;
-php php php php php php php php php php php php php}php elseifphp php(php$depthDifferencephp <php php0php)php php{
-php php php php php php php php php php php php php php php php php/php/php ifphp wephp wentphp upphp tophp aphp parentphp,php makephp note
-php php php php php php php php php php php php php php php php php$iphp php=php php$depthDifferencephp;
-php php php php php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php ifphp wephp wentphp outphp morephp thanphp php1php parentphp,php getphp tophp thephp correctphp parent
-php php php php php php php php php php php php php php php php php php php php php$currentResourcephp php=php arrayphp_popphp(php$parentResourcesphp)php;
-php php php php php php php php php php php php php php php php php}php whilephp php(php$iphp-php-php php>php php0php)php;
-php php php php php php php php php php php php php}
+            if ($depthDifference === 1) {
+                // if we went down into a child, make note
+                array_push($parentResources, $currentResource);
+                // this will have always been set previously by another loop
+                $currentResource = $currentChildResource;
+            } elseif ($depthDifference < 0) {
+                // if we went up to a parent, make note
+                $i = $depthDifference;
+                do {
+                    // if we went out more than 1 parent, get to the correct parent
+                    $currentResource = array_pop($parentResources);
+                } while ($i-- > 0);
+            }
 
-php php php php php php php php php php php php php/php/php getphp parametersphp forphp thephp newlyphp createdphp modulephp resource
-php php php php php php php php php php php php php$paramsphp php=php php$targetSubResourcephp-php>getAttributesphp(php)php;
-php php php php php php php php php php php php php$currentChildResourcephp php=php php$currentResourcephp-php>createResourcephp(php$targetSubResourcephp-php>getNamephp(php)php,php php$paramsphp)php;
+            // get parameters for the newly created module resource
+            $params = $targetSubResource->getAttributes();
+            $currentChildResource = $currentResource->createResource($targetSubResource->getName(), $params);
 
-php php php php php php php php php php php php php/php/php basedphp ofphp thephp providedphp listphp php(Currentlyphp upphp topphp)php,php enablephp specificphp resources
-php php php php php php php php php php php php ifphp php(issetphp(php$targetModuleEnabledResourcesphp)php)php php{
-php php php php php php php php php php php php php php php php php$currentChildResourcephp-php>setEnabledphp(inphp_arrayphp(php$targetSubResourcephp-php>getNamephp(php)php,php php$targetModuleEnabledResourcesphp)php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$currentChildResourcephp-php>setEnabledphp(php$targetSubResourcephp-php>isEnabledphp(php)php)php;
-php php php php php php php php php php php php php}
+            // based of the provided list (Currently up top), enable specific resources
+            if (isset($targetModuleEnabledResources)) {
+                $currentChildResource->setEnabled(in_array($targetSubResource->getName(), $targetModuleEnabledResources));
+            } else {
+                $currentChildResource->setEnabled($targetSubResource->isEnabled());
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php php php php returnphp php$moduleDirectoryphp;
-php php php php php}
+        return $moduleDirectory;
+    }
 
-php php php php php/php*php*
-php php php php php php*php createphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$name
-php php php php php php*php/
-php php php php publicphp functionphp createphp(php$namephp)php php/php/php,php php$moduleProfilephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_loadProfilephp(selfphp:php:NOphp_PROFILEphp_THROWphp_EXCEPTIONphp)php;
+    /**
+     * create()
+     *
+     * @param string $name
+     */
+    public function create($name) //, $moduleProfile = null)
+    {
+        $this->_loadProfile(self::NO_PROFILE_THROW_EXCEPTION);
 
-php php php php php php php php php$resourcesphp php=php selfphp:php:createResourcesphp(php$thisphp-php>php_loadedProfilephp,php php$namephp)php;
+        $resources = self::createResources($this->_loadedProfile, $name);
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>php_registryphp-php>getResponsephp(php)php;
+        $response = $this->_registry->getResponse();
 
-php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>isPretendphp(php)php)php php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(php'Iphp wouldphp createphp thephp followingphp modulephp andphp artifactsphp:php'php)php;
-php php php php php php php php php php php php foreachphp php(newphp RecursiveIteratorIteratorphp(php$resourcesphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php asphp php$resourcephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(isphp_callablephp(arrayphp(php$resourcephp-php>getContextphp(php)php,php php'getPathphp'php)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$responsephp-php>appendContentphp(php$resourcephp-php>getContextphp(php)php-php>getPathphp(php)php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(php'Creatingphp thephp followingphp modulephp andphp artifactsphp:php'php)php;
-php php php php php php php php php php php php php$enabledFilterphp php=php newphp Zendphp_Toolphp_Projectphp_Profilephp_Iteratorphp_EnabledResourceFilterphp(php$resourcesphp)php;
-php php php php php php php php php php php php foreachphp php(newphp RecursiveIteratorIteratorphp(php$enabledFilterphp,php RecursiveIteratorIteratorphp:php:SELFphp_FIRSTphp)php asphp php$resourcephp)php php{
-php php php php php php php php php php php php php php php php php$responsephp-php>appendContentphp(php$resourcephp-php>getContextphp(php)php-php>getPathphp(php)php)php;
-php php php php php php php php php php php php php php php php php$resourcephp-php>createphp(php)php;
-php php php php php php php php php php php php php}
+        if ($this->_registry->getRequest()->isPretend()) {
+            $response->appendContent('I would create the following module and artifacts:');
+            foreach (new RecursiveIteratorIterator($resources, RecursiveIteratorIterator::SELF_FIRST) as $resource) {
+                if (is_callable(array($resource->getContext(), 'getPath'))) {
+                    $response->appendContent($resource->getContext()->getPath());
+                }
+            }
+        } else {
+            $response->appendContent('Creating the following module and artifacts:');
+            $enabledFilter = new Zend_Tool_Project_Profile_Iterator_EnabledResourceFilter($resources);
+            foreach (new RecursiveIteratorIterator($enabledFilter, RecursiveIteratorIterator::SELF_FIRST) as $resource) {
+                $response->appendContent($resource->getContext()->getPath());
+                $resource->create();
+            }
 
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(php'Addedphp aphp keyphp forphp pathphp modulephp directoryphp tophp thephp applicationphp.iniphp filephp'php)php;
-php php php php php php php php php php php php php$appConfigFilephp php=php php$thisphp-php>php_loadedProfilephp-php>searchphp(php'ApplicationConfigFilephp'php)php;
-php php php php php php php php php php php php php$appConfigFilephp-php>removeStringItemphp(php'resourcesphp.frontControllerphp.moduleDirectoryphp'php,php php'productionphp'php)php;
-php php php php php php php php php php php php php$appConfigFilephp-php>addStringItemphp(php'resourcesphp.frontControllerphp.moduleDirectoryphp'php,php php'APPLICATIONphp_PATHphp php"php/modulesphp"php'php,php php'productionphp'php,php falsephp)php;
+            $response->appendContent('Added a key for path module directory to the application.ini file');
+            $appConfigFile = $this->_loadedProfile->search('ApplicationConfigFile');
+            $appConfigFile->removeStringItem('resources.frontController.moduleDirectory', 'production');
+            $appConfigFile->addStringItem('resources.frontController.moduleDirectory', 'APPLICATION_PATH "/modules"', 'production', false);
 
-php php php php php php php php php php php php ifphp php(strtolowerphp(php$namephp)php php=php=php php'defaultphp'php)php php{
-php php php php php php php php php php php php php php php php php$responsephp-php>appendContentphp(php'Addedphp aphp keyphp forphp thephp defaultphp modulephp tophp thephp applicationphp.iniphp filephp'php)php;
-php php php php php php php php php php php php php php php php php$appConfigFilephp-php>addStringItemphp(php'resourcesphp.frontControllerphp.paramsphp.prefixDefaultModulephp'php,php php'php1php'php,php php'productionphp'php)php;
-php php php php php php php php php php php php php}
+            if (strtolower($name) == 'default') {
+                $response->appendContent('Added a key for the default module to the application.ini file');
+                $appConfigFile->addStringItem('resources.frontController.params.prefixDefaultModule', '1', 'production');
+            }
 
-php php php php php php php php php php php php php$appConfigFilephp-php>createphp(php)php;
+            $appConfigFile->create();
 
-php php php php php php php php php php php php php/php/php storephp changesphp tophp thephp profile
-php php php php php php php php php php php php php$thisphp-php>php_storeProfilephp(php)php;
-php php php php php php php php php}
+            // store changes to the profile
+            $this->_storeProfile();
+        }
 
-php php php php php}
+    }
 
-php}
+}
 

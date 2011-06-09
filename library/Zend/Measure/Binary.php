@@ -1,122 +1,122 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Measure
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Binaryphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Measure
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Binary.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Implementphp neededphp classes
-php php*php/
-requirephp_oncephp php'Zendphp/Measurephp/Abstractphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Localephp.phpphp'php;
+/**
+ * Implement needed classes
+ */
+require_once 'Zend/Measure/Abstract.php';
+require_once 'Zend/Locale.php';
 
-php/php*php*
-php php*php Classphp forphp handlingphp binaryphp conversions
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Measure
-php php*php php@subpackagephp Zendphp_Measurephp_Binary
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Measurephp_Binaryphp extendsphp Zendphp_Measurephp_Abstract
-php{
-php php php php constphp STANDARDphp php=php php'BYTEphp'php;
+/**
+ * Class for handling binary conversions
+ *
+ * @category   Zend
+ * @package    Zend_Measure
+ * @subpackage Zend_Measure_Binary
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Measure_Binary extends Zend_Measure_Abstract
+{
+    const STANDARD = 'BYTE';
 
-php php php php constphp BITphp php php php php php php php php php php php php php php php=php php'BITphp'php;
-php php php php constphp CRUMBphp php php php php php php php php php php php php php=php php'CRUMBphp'php;
-php php php php constphp NIBBLEphp php php php php php php php php php php php php=php php'NIBBLEphp'php;
-php php php php constphp BYTEphp php php php php php php php php php php php php php php=php php'BYTEphp'php;
-php php php php constphp KILOBYTEphp php php php php php php php php php php=php php'KILOBYTEphp'php;
-php php php php constphp KIBIBYTEphp php php php php php php php php php php=php php'KIBIBYTEphp'php;
-php php php php constphp KILOphp_BINARYphp_BYTEphp php php=php php'KILOphp_BINARYphp_BYTEphp'php;
-php php php php constphp KILOBYTEphp_SIphp php php php php php php php=php php'KILOBYTEphp_SIphp'php;
-php php php php constphp MEGABYTEphp php php php php php php php php php php=php php'MEGABYTEphp'php;
-php php php php constphp MEBIBYTEphp php php php php php php php php php php=php php'MEBIBYTEphp'php;
-php php php php constphp MEGAphp_BINARYphp_BYTEphp php php=php php'MEGAphp_BINARYphp_BYTEphp'php;
-php php php php constphp MEGABYTEphp_SIphp php php php php php php php=php php'MEGABYTEphp_SIphp'php;
-php php php php constphp GIGABYTEphp php php php php php php php php php php=php php'GIGABYTEphp'php;
-php php php php constphp GIBIBYTEphp php php php php php php php php php php=php php'GIBIBYTEphp'php;
-php php php php constphp GIGAphp_BINARYphp_BYTEphp php php=php php'GIGAphp_BINARYphp_BYTEphp'php;
-php php php php constphp GIGABYTEphp_SIphp php php php php php php php=php php'GIGABYTEphp_SIphp'php;
-php php php php constphp TERABYTEphp php php php php php php php php php php=php php'TERABYTEphp'php;
-php php php php constphp TEBIBYTEphp php php php php php php php php php php=php php'TEBIBYTEphp'php;
-php php php php constphp TERAphp_BINARYphp_BYTEphp php php=php php'TERAphp_BINARYphp_BYTEphp'php;
-php php php php constphp TERABYTEphp_SIphp php php php php php php php=php php'TERABYTEphp_SIphp'php;
-php php php php constphp PETABYTEphp php php php php php php php php php php=php php'PETABYTEphp'php;
-php php php php constphp PEBIBYTEphp php php php php php php php php php php=php php'PEBIBYTEphp'php;
-php php php php constphp PETAphp_BINARYphp_BYTEphp php php=php php'PETAphp_BINARYphp_BYTEphp'php;
-php php php php constphp PETABYTEphp_SIphp php php php php php php php=php php'PETABYTEphp_SIphp'php;
-php php php php constphp EXABYTEphp php php php php php php php php php php php=php php'EXABYTEphp'php;
-php php php php constphp EXBIBYTEphp php php php php php php php php php php=php php'EXBIBYTEphp'php;
-php php php php constphp EXAphp_BINARYphp_BYTEphp php php php=php php'EXAphp_BINARYphp_BYTEphp'php;
-php php php php constphp EXABYTEphp_SIphp php php php php php php php php=php php'EXABYTEphp_SIphp'php;
-php php php php constphp ZETTABYTEphp php php php php php php php php php=php php'ZETTABYTEphp'php;
-php php php php constphp ZEBIBYTEphp php php php php php php php php php php=php php'ZEBIBYTEphp'php;
-php php php php constphp ZETTAphp_BINARYphp_BYTEphp php=php php'ZETTAphp_BINARYphp_BYTEphp'php;
-php php php php constphp ZETTABYTEphp_SIphp php php php php php php=php php'ZETTABYTEphp_SIphp'php;
-php php php php constphp YOTTABYTEphp php php php php php php php php php=php php'YOTTABYTEphp'php;
-php php php php constphp YOBIBYTEphp php php php php php php php php php php=php php'YOBIBYTEphp'php;
-php php php php constphp YOTTAphp_BINARYphp_BYTEphp php=php php'YOTTAphp_BINARYphp_BYTEphp'php;
-php php php php constphp YOTTABYTEphp_SIphp php php php php php php=php php'YOTTABYTEphp_SIphp'php;
+    const BIT               = 'BIT';
+    const CRUMB             = 'CRUMB';
+    const NIBBLE            = 'NIBBLE';
+    const BYTE              = 'BYTE';
+    const KILOBYTE          = 'KILOBYTE';
+    const KIBIBYTE          = 'KIBIBYTE';
+    const KILO_BINARY_BYTE  = 'KILO_BINARY_BYTE';
+    const KILOBYTE_SI       = 'KILOBYTE_SI';
+    const MEGABYTE          = 'MEGABYTE';
+    const MEBIBYTE          = 'MEBIBYTE';
+    const MEGA_BINARY_BYTE  = 'MEGA_BINARY_BYTE';
+    const MEGABYTE_SI       = 'MEGABYTE_SI';
+    const GIGABYTE          = 'GIGABYTE';
+    const GIBIBYTE          = 'GIBIBYTE';
+    const GIGA_BINARY_BYTE  = 'GIGA_BINARY_BYTE';
+    const GIGABYTE_SI       = 'GIGABYTE_SI';
+    const TERABYTE          = 'TERABYTE';
+    const TEBIBYTE          = 'TEBIBYTE';
+    const TERA_BINARY_BYTE  = 'TERA_BINARY_BYTE';
+    const TERABYTE_SI       = 'TERABYTE_SI';
+    const PETABYTE          = 'PETABYTE';
+    const PEBIBYTE          = 'PEBIBYTE';
+    const PETA_BINARY_BYTE  = 'PETA_BINARY_BYTE';
+    const PETABYTE_SI       = 'PETABYTE_SI';
+    const EXABYTE           = 'EXABYTE';
+    const EXBIBYTE          = 'EXBIBYTE';
+    const EXA_BINARY_BYTE   = 'EXA_BINARY_BYTE';
+    const EXABYTE_SI        = 'EXABYTE_SI';
+    const ZETTABYTE         = 'ZETTABYTE';
+    const ZEBIBYTE          = 'ZEBIBYTE';
+    const ZETTA_BINARY_BYTE = 'ZETTA_BINARY_BYTE';
+    const ZETTABYTE_SI      = 'ZETTABYTE_SI';
+    const YOTTABYTE         = 'YOTTABYTE';
+    const YOBIBYTE          = 'YOBIBYTE';
+    const YOTTA_BINARY_BYTE = 'YOTTA_BINARY_BYTE';
+    const YOTTABYTE_SI      = 'YOTTABYTE_SI';
 
-php php php php php/php*php*
-php php php php php php*php Calculationsphp forphp allphp binaryphp units
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_unitsphp php=php arrayphp(
-php php php php php php php php php'BITphp'php php php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php1php2php5php'php,php php php php php php php php php php php php php php php php php php php php php php'bphp'php)php,
-php php php php php php php php php'CRUMBphp'php php php php php php php php php php php php php=php>php arrayphp(php'php0php.php2php5php'php,php php php php php php php php php php php php php php php php php php php php php php php'crumbphp'php)php,
-php php php php php php php php php'NIBBLEphp'php php php php php php php php php php php php=php>php arrayphp(php'php0php.php5php'php,php php php php php php php php php php php php php php php php php php php php php php php php'nibblephp'php)php,
-php php php php php php php php php'BYTEphp'php php php php php php php php php php php php php php=php>php arrayphp(php'php1php'php,php php php php php php php php php php php php php php php php php php php php php php php php php php'Bphp'php)php,
-php php php php php php php php php'KILOBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php2php4php'php,php php php php php php php php php php php php php php php php php php php php php php php'kBphp'php)php,
-php php php php php php php php php'KIBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php2php4php'php,php php php php php php php php php php php php php php php php php php php php php php php'KiBphp'php)php,
-php php php php php php php php php'KILOphp_BINARYphp_BYTEphp'php php=php>php arrayphp(php'php1php0php2php4php'php,php php php php php php php php php php php php php php php php php php php php php php php'KiBphp'php)php,
-php php php php php php php php php'KILOBYTEphp_SIphp'php php php php php php php=php>php arrayphp(php'php1php0php0php0php'php,php php php php php php php php php php php php php php php php php php php php php php php'kBphp.php'php)php,
-php php php php php php php php php'MEGABYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php4php8php5php7php6php'php,php php php php php php php php php php php php php php php php php php php php'MBphp'php)php,
-php php php php php php php php php'MEBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php4php8php5php7php6php'php,php php php php php php php php php php php php php php php php php php php php'MiBphp'php)php,
-php php php php php php php php php'MEGAphp_BINARYphp_BYTEphp'php php=php>php arrayphp(php'php1php0php4php8php5php7php6php'php,php php php php php php php php php php php php php php php php php php php php'MiBphp'php)php,
-php php php php php php php php php'MEGABYTEphp_SIphp'php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php'php,php php php php php php php php php php php php php php php php php php php php'MBphp.php'php)php,
-php php php php php php php php php'GIGABYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php7php3php7php4php1php8php2php4php'php,php php php php php php php php php php php php php php php php php'GBphp'php)php,
-php php php php php php php php php'GIBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php7php3php7php4php1php8php2php4php'php,php php php php php php php php php php php php php php php php php'GiBphp'php)php,
-php php php php php php php php php'GIGAphp_BINARYphp_BYTEphp'php php=php>php arrayphp(php'php1php0php7php3php7php4php1php8php2php4php'php,php php php php php php php php php php php php php php php php php'GiBphp'php)php,
-php php php php php php php php php'GIGABYTEphp_SIphp'php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php'php,php php php php php php php php php php php php php php php php php'GBphp.php'php)php,
-php php php php php php php php php'TERABYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php9php9php5php1php1php6php2php7php7php7php6php'php,php php php php php php php php php php php php php php'TBphp'php)php,
-php php php php php php php php php'TEBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php0php9php9php5php1php1php6php2php7php7php7php6php'php,php php php php php php php php php php php php php php'TiBphp'php)php,
-php php php php php php php php php'TERAphp_BINARYphp_BYTEphp'php php=php>php arrayphp(php'php1php0php9php9php5php1php1php6php2php7php7php7php6php'php,php php php php php php php php php php php php php php'TiBphp'php)php,
-php php php php php php php php php'TERABYTEphp_SIphp'php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php0php0php0php'php,php php php php php php php php php php php php php php'TBphp.php'php)php,
-php php php php php php php php php'PETABYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php1php2php5php8php9php9php9php0php6php8php4php2php6php2php4php'php,php php php php php php php php php php php'PBphp'php)php,
-php php php php php php php php php'PEBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php1php2php5php8php9php9php9php0php6php8php4php2php6php2php4php'php,php php php php php php php php php php php'PiBphp'php)php,
-php php php php php php php php php'PETAphp_BINARYphp_BYTEphp'php php=php>php arrayphp(php'php1php1php2php5php8php9php9php9php0php6php8php4php2php6php2php4php'php,php php php php php php php php php php php'PiBphp'php)php,
-php php php php php php php php php'PETABYTEphp_SIphp'php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php'php,php php php php php php php php php php php'PBphp.php'php)php,
-php php php php php php php php php'EXABYTEphp'php php php php php php php php php php php=php>php arrayphp(php'php1php1php5php2php9php2php1php5php0php4php6php0php6php8php4php6php9php7php6php'php,php php php php php php php php'EBphp'php)php,
-php php php php php php php php php'EXBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php1php5php2php9php2php1php5php0php4php6php0php6php8php4php6php9php7php6php'php,php php php php php php php php'EiBphp'php)php,
-php php php php php php php php php'EXAphp_BINARYphp_BYTEphp'php php php=php>php arrayphp(php'php1php1php5php2php9php2php1php5php0php4php6php0php6php8php4php6php9php7php6php'php,php php php php php php php php'EiBphp'php)php,
-php php php php php php php php php'EXABYTEphp_SIphp'php php php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php'php,php php php php php php php php'EBphp.php'php)php,
-php php php php php php php php php'ZETTABYTEphp'php php php php php php php php php=php>php arrayphp(php'php1php1php8php0php5php9php1php6php2php0php7php1php7php4php1php1php3php0php3php4php2php4php'php,php php php php php'ZBphp'php)php,
-php php php php php php php php php'ZEBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php1php8php0php5php9php1php6php2php0php7php1php7php4php1php1php3php0php3php4php2php4php'php,php php php php php'ZiBphp'php)php,
-php php php php php php php php php'ZETTAphp_BINARYphp_BYTEphp'php=php>php arrayphp(php'php1php1php8php0php5php9php1php6php2php0php7php1php7php4php1php1php3php0php3php4php2php4php'php,php php php php php'ZiBphp'php)php,
-php php php php php php php php php'ZETTABYTEphp_SIphp'php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php'php,php php php php php'ZBphp.php'php)php,
-php php php php php php php php php'YOTTABYTEphp'php php php php php php php php php=php>php arrayphp(php'php1php2php0php8php9php2php5php8php1php9php6php1php4php6php2php9php1php7php4php7php0php6php1php7php6php'php,php php'YBphp'php)php,
-php php php php php php php php php'YOBIBYTEphp'php php php php php php php php php php=php>php arrayphp(php'php1php2php0php8php9php2php5php8php1php9php6php1php4php6php2php9php1php7php4php7php0php6php1php7php6php'php,php php'YiBphp'php)php,
-php php php php php php php php php'YOTTAphp_BINARYphp_BYTEphp'php=php>php arrayphp(php'php1php2php0php8php9php2php5php8php1php9php6php1php4php6php2php9php1php7php4php7php0php6php1php7php6php'php,php php'YiBphp'php)php,
-php php php php php php php php php'YOTTABYTEphp_SIphp'php php php php php php=php>php arrayphp(php'php1php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php0php'php,php php'YBphp.php'php)php,
-php php php php php php php php php'STANDARDphp'php php php php php php php php php php=php>php php'BYTEphp'
-php php php php php)php;
-php}
+    /**
+     * Calculations for all binary units
+     *
+     * @var array
+     */
+    protected $_units = array(
+        'BIT'              => array('0.125',                     'b'),
+        'CRUMB'            => array('0.25',                      'crumb'),
+        'NIBBLE'           => array('0.5',                       'nibble'),
+        'BYTE'             => array('1',                         'B'),
+        'KILOBYTE'         => array('1024',                      'kB'),
+        'KIBIBYTE'         => array('1024',                      'KiB'),
+        'KILO_BINARY_BYTE' => array('1024',                      'KiB'),
+        'KILOBYTE_SI'      => array('1000',                      'kB.'),
+        'MEGABYTE'         => array('1048576',                   'MB'),
+        'MEBIBYTE'         => array('1048576',                   'MiB'),
+        'MEGA_BINARY_BYTE' => array('1048576',                   'MiB'),
+        'MEGABYTE_SI'      => array('1000000',                   'MB.'),
+        'GIGABYTE'         => array('1073741824',                'GB'),
+        'GIBIBYTE'         => array('1073741824',                'GiB'),
+        'GIGA_BINARY_BYTE' => array('1073741824',                'GiB'),
+        'GIGABYTE_SI'      => array('1000000000',                'GB.'),
+        'TERABYTE'         => array('1099511627776',             'TB'),
+        'TEBIBYTE'         => array('1099511627776',             'TiB'),
+        'TERA_BINARY_BYTE' => array('1099511627776',             'TiB'),
+        'TERABYTE_SI'      => array('1000000000000',             'TB.'),
+        'PETABYTE'         => array('1125899906842624',          'PB'),
+        'PEBIBYTE'         => array('1125899906842624',          'PiB'),
+        'PETA_BINARY_BYTE' => array('1125899906842624',          'PiB'),
+        'PETABYTE_SI'      => array('1000000000000000',          'PB.'),
+        'EXABYTE'          => array('1152921504606846976',       'EB'),
+        'EXBIBYTE'         => array('1152921504606846976',       'EiB'),
+        'EXA_BINARY_BYTE'  => array('1152921504606846976',       'EiB'),
+        'EXABYTE_SI'       => array('1000000000000000000',       'EB.'),
+        'ZETTABYTE'        => array('1180591620717411303424',    'ZB'),
+        'ZEBIBYTE'         => array('1180591620717411303424',    'ZiB'),
+        'ZETTA_BINARY_BYTE'=> array('1180591620717411303424',    'ZiB'),
+        'ZETTABYTE_SI'     => array('1000000000000000000000',    'ZB.'),
+        'YOTTABYTE'        => array('1208925819614629174706176', 'YB'),
+        'YOBIBYTE'         => array('1208925819614629174706176', 'YiB'),
+        'YOTTA_BINARY_BYTE'=> array('1208925819614629174706176', 'YiB'),
+        'YOTTABYTE_SI'     => array('1000000000000000000000000', 'YB.'),
+        'STANDARD'         => 'BYTE'
+    );
+}

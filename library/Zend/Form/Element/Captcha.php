@@ -1,306 +1,306 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Captchaphp.phpphp php2php2php3php2php8php php2php0php1php0php-php0php5php-php3php0php php1php5php:php0php9php:php0php6Zphp bittarmanphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Captcha.php 22328 2010-05-30 15:09:06Z bittarman $
+ */
 
-php/php*php*php php@seephp Zendphp_Formphp_Elementphp_Xhtmlphp php*php/
-requirephp_oncephp php'Zendphp/Formphp/Elementphp/Xhtmlphp.phpphp'php;
+/** @see Zend_Form_Element_Xhtml */
+require_once 'Zend/Form/Element/Xhtml.php';
 
-php/php*php*php php@seephp Zendphp_Captchaphp_Adapterphp php*php/
-requirephp_oncephp php'Zendphp/Captchaphp/Adapterphp.phpphp'php;
+/** @see Zend_Captcha_Adapter */
+require_once 'Zend/Captcha/Adapter.php';
 
-php/php*php*
-php php*php Genericphp captchaphp element
-php php*
-php php*php Thisphp elementphp allowsphp tophp insertphp CAPTCHAphp intophp thephp formphp inphp order
-php php*php tophp validatephp thatphp humanphp isphp submittingphp thephp formphp.php Thephp actual
-php php*php logicphp isphp containedphp inphp thephp captchaphp adapterphp.
-php php*
-php php*php php@seephp httpphp:php/php/enphp.wikipediaphp.orgphp/wikiphp/Captcha
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Form
-php php*php php@subpackagephp Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Formphp_Elementphp_Captchaphp extendsphp Zendphp_Formphp_Elementphp_Xhtml
-php{
-php php php php php/php*php*
-php php php php php php*php Captchaphp pluginphp typephp constant
-php php php php php php*php/
-php php php php constphp CAPTCHAphp php=php php'CAPTCHAphp'php;
+/**
+ * Generic captcha element
+ *
+ * This element allows to insert CAPTCHA into the form in order
+ * to validate that human is submitting the form. The actual
+ * logic is contained in the captcha adapter.
+ *
+ * @see http://en.wikipedia.org/wiki/Captcha
+ *
+ * @category   Zend
+ * @package    Zend_Form
+ * @subpackage Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
+{
+    /**
+     * Captcha plugin type constant
+     */
+    const CAPTCHA = 'CAPTCHA';
 
-php php php php php/php*php*
-php php php php php php*php Captchaphp adapter
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Captchaphp_Adapter
-php php php php php php*php/
-php php php php protectedphp php$php_captchaphp;
+    /**
+     * Captcha adapter
+     *
+     * @var Zend_Captcha_Adapter
+     */
+    protected $_captcha;
 
-php php php php php/php*php*
-php php php php php php*php Getphp captchaphp adapter
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Captchaphp_Adapter
-php php php php php php*php/
-php php php php publicphp functionphp getCaptchaphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_captchaphp;
-php php php php php}
+    /**
+     * Get captcha adapter
+     *
+     * @return Zend_Captcha_Adapter
+     */
+    public function getCaptcha()
+    {
+        return $this->_captcha;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp captchaphp adapter
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp|Zendphp_Captchaphp_Adapterphp php$captcha
-php php php php php php*php php@paramphp arrayphp php$options
-php php php php php php*php/
-php php php php publicphp functionphp setCaptchaphp(php$captchaphp,php php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php$captchaphp instanceofphp Zendphp_Captchaphp_Adapterphp)php php{
-php php php php php php php php php php php php php$instancephp php=php php$captchaphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$captchaphp)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'captchaphp'php,php php$captchaphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$namephp php=php php$captchaphp[php'captchaphp'php]php;
-php php php php php php php php php php php php php php php php php php php php unsetphp(php$captchaphp[php'captchaphp'php]php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$namephp php=php arrayphp_shiftphp(php$captchaphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$optionsphp php=php arrayphp_mergephp(php$optionsphp,php php$captchaphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$namephp php=php php$captchaphp;
-php php php php php php php php php php php php php}
+    /**
+     * Set captcha adapter
+     *
+     * @param string|array|Zend_Captcha_Adapter $captcha
+     * @param array $options
+     */
+    public function setCaptcha($captcha, $options = array())
+    {
+        if ($captcha instanceof Zend_Captcha_Adapter) {
+            $instance = $captcha;
+        } else {
+            if (is_array($captcha)) {
+                if (array_key_exists('captcha', $captcha)) {
+                    $name = $captcha['captcha'];
+                    unset($captcha['captcha']);
+                } else {
+                    $name = array_shift($captcha);
+                }
+                $options = array_merge($options, $captcha);
+            } else {
+                $name = $captcha;
+            }
 
-php php php php php php php php php php php php php$namephp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:CAPTCHAphp)php-php>loadphp(php$namephp)php;
-php php php php php php php php php php php php ifphp php(emptyphp(php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$instancephp php=php newphp php$namephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$rphp php=php newphp ReflectionClassphp(php$namephp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$rphp-php>hasMethodphp(php'php_php_constructphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstanceArgsphp(arrayphp(php$optionsphp)php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$instancephp php=php php$rphp-php>newInstancephp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+            $name = $this->getPluginLoader(self::CAPTCHA)->load($name);
+            if (empty($options)) {
+                $instance = new $name;
+            } else {
+                $r = new ReflectionClass($name);
+                if ($r->hasMethod('__construct')) {
+                    $instance = $r->newInstanceArgs(array($options));
+                } else {
+                    $instance = $r->newInstance();
+                }
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_captchaphp php=php php$instancephp;
-php php php php php php php php php$thisphp-php>php_captchaphp-php>setNamephp(php$thisphp-php>getNamephp(php)php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_captcha = $instance;
+        $this->_captcha->setName($this->getName());
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php$specphp mayphp bephp:
-php php php php php php*php php-php stringphp:php namephp ofphp element
-php php php php php php*php php-php arrayphp:php optionsphp withphp whichphp tophp configurephp element
-php php php php php php*php php-php Zendphp_Configphp:php Zendphp_Configphp withphp optionsphp forphp configuringphp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|arrayphp|Zendphp_Configphp php$spec
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$specphp,php php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$specphp,php php$optionsphp)php;
-php php php php php php php php php$thisphp-php>setAllowEmptyphp(truephp)
-php php php php php php php php php php php php php php-php>setRequiredphp(truephp)
-php php php php php php php php php php php php php php-php>setAutoInsertNotEmptyValidatorphp(falsephp)
-php php php php php php php php php php php php php php-php>addValidatorphp(php$thisphp-php>getCaptchaphp(php)php,php truephp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * $spec may be:
+     * - string: name of element
+     * - array: options with which to configure element
+     * - Zend_Config: Zend_Config with options for configuring element
+     *
+     * @param  string|array|Zend_Config $spec
+     * @return void
+     */
+    public function __construct($spec, $options = null)
+    {
+        parent::__construct($spec, $options);
+        $this->setAllowEmpty(true)
+             ->setRequired(true)
+             ->setAutoInsertNotEmptyValidator(false)
+             ->addValidator($this->getCaptcha(), true);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp allphp attributes
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAttribsphp(php)
-php php php php php{
-php php php php php php php php php$attribsphp php=php getphp_objectphp_varsphp(php$thisphp)php;
-php php php php php php php php unsetphp(php$attribsphp[php'helperphp'php]php)php;
-php php php php php php php php foreachphp php(php$attribsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php'php_php'php php=php=php substrphp(php$keyphp,php php0php,php php1php)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$attribsphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Return all attributes
+     *
+     * @return array
+     */
+    public function getAttribs()
+    {
+        $attribs = get_object_vars($this);
+        unset($attribs['helper']);
+        foreach ($attribs as $key => $value) {
+            if ('_' == substr($key, 0, 1)) {
+                unset($attribs[$key]);
+            }
+        }
 
-php php php php php php php php returnphp php$attribsphp;
-php php php php php}
+        return $attribs;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp options
-php php php php php php*
-php php php php php php*php Overridesphp tophp allowphp passingphp captchaphp options
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp Zendphp_Formphp_Elementphp_Captcha
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'captchaphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'captchaOptionsphp'php,php php$optionsphp)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setCaptchaphp(php$optionsphp[php'captchaphp'php]php,php php$optionsphp[php'captchaOptionsphp'php]php)php;
-php php php php php php php php php php php php php php php php unsetphp(php$optionsphp[php'captchaOptionsphp'php]php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setCaptchaphp(php$optionsphp[php'captchaphp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php unsetphp(php$optionsphp[php'captchaphp'php]php)php;
-php php php php php php php php php}
-php php php php php php php php parentphp:php:setOptionsphp(php$optionsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set options
+     *
+     * Overrides to allow passing captcha options
+     *
+     * @param  array $options
+     * @return Zend_Form_Element_Captcha
+     */
+    public function setOptions(array $options)
+    {
+        if (array_key_exists('captcha', $options)) {
+            if (array_key_exists('captchaOptions', $options)) {
+                $this->setCaptcha($options['captcha'], $options['captchaOptions']);
+                unset($options['captchaOptions']);
+            } else {
+                $this->setCaptcha($options['captcha']);
+            }
+            unset($options['captcha']);
+        }
+        parent::setOptions($options);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp formphp element
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$captchaphp php php php php=php php$thisphp-php>getCaptchaphp(php)php;
-php php php php php php php php php$captchaphp-php>setNamephp(php$thisphp-php>getFullyQualifiedNamephp(php)php)php;
+    /**
+     * Render form element
+     *
+     * @param  Zend_View_Interface $view
+     * @return string
+     */
+    public function render(Zend_View_Interface $view = null)
+    {
+        $captcha    = $this->getCaptcha();
+        $captcha->setName($this->getFullyQualifiedName());
 
-php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
+        $decorators = $this->getDecorators();
 
-php php php php php php php php php$decoratorphp php php=php php$captchaphp-php>getDecoratorphp(php)php;
-php php php php php php php php ifphp php(php!emptyphp(php$decoratorphp)php)php php{
-php php php php php php php php php php php php arrayphp_unshiftphp(php$decoratorsphp,php php$decoratorphp)php;
-php php php php php php php php php}
+        $decorator  = $captcha->getDecorator();
+        if (!empty($decorator)) {
+            array_unshift($decorators, $decorator);
+        }
 
-php php php php php php php php php$decoratorphp php=php arrayphp(php'Captchaphp'php,php arrayphp(php'captchaphp'php php=php>php php$captchaphp)php)php;
-php php php php php php php php arrayphp_unshiftphp(php$decoratorsphp,php php$decoratorphp)php;
+        $decorator = array('Captcha', array('captcha' => $captcha));
+        array_unshift($decorators, $decorator);
 
-php php php php php php php php php$thisphp-php>setDecoratorsphp(php$decoratorsphp)php;
+        $this->setDecorators($decorators);
 
-php php php php php php php php php$thisphp-php>setValuephp(php$thisphp-php>getCaptchaphp(php)php-php>generatephp(php)php)php;
+        $this->setValue($this->getCaptcha()->generate());
 
-php php php php php php php php returnphp parentphp:php:renderphp(php$viewphp)php;
-php php php php php}
+        return parent::render($view);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp pluginphp loaderphp forphp validatorphp orphp filterphp chain
-php php php php php php*
-php php php php php php*php Supportphp forphp pluginphp loaderphp forphp Captchaphp adapters
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Loaderphp_PluginLoader
-php php php php php php*php php@throwsphp Zendphp_Loaderphp_Exceptionphp onphp invalidphp typephp.
-php php php php php php*php/
-php php php php publicphp functionphp getPluginLoaderphp(php$typephp)
-php php php php php{
-php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
-php php php php php php php php ifphp php(php$typephp php=php=php selfphp:php:CAPTCHAphp)php php{
-php php php php php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_loadersphp[php$typephp]php)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp/PluginLoaderphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_loadersphp[php$typephp]php php=php newphp Zendphp_Loaderphp_PluginLoaderphp(
-php php php php php php php php php php php php php php php php php php php php arrayphp(php'Zendphp_Captchaphp'php php=php>php php'Zendphp/Captchaphp/php'php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadersphp[php$typephp]php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp parentphp:php:getPluginLoaderphp(php$typephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Retrieve plugin loader for validator or filter chain
+     *
+     * Support for plugin loader for Captcha adapters
+     *
+     * @param  string $type
+     * @return Zend_Loader_PluginLoader
+     * @throws Zend_Loader_Exception on invalid type.
+     */
+    public function getPluginLoader($type)
+    {
+        $type = strtoupper($type);
+        if ($type == self::CAPTCHA) {
+            if (!isset($this->_loaders[$type])) {
+                require_once 'Zend/Loader/PluginLoader.php';
+                $this->_loaders[$type] = new Zend_Loader_PluginLoader(
+                    array('Zend_Captcha' => 'Zend/Captcha/')
+                );
+            }
+            return $this->_loaders[$type];
+        } else {
+            return parent::getPluginLoader($type);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp prefixphp pathphp forphp pluginphp loaderphp forphp captchaphp adapters
-php php php php php php*
-php php php php php php*php Thisphp methodphp handlesphp thephp captchaphp typephp,php thephp restphp isphp handledphp by
-php php php php php php*php thephp parent
-php php php php php php*php php@paramphp php stringphp php$prefix
-php php php php php php*php php@paramphp php stringphp php$path
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp Zendphp_Formphp_Element
-php php php php php php*php php@seephp Zendphp_Formphp_Elementphp:php:addPrefixPath
-php php php php php php*php/
-php php php php publicphp functionphp addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$typephp php=php strtoupperphp(php$typephp)php;
-php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php casephp nullphp:
-php php php php php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(selfphp:php:CAPTCHAphp)php;
-php php php php php php php php php php php php php php php php php$cPrefixphp php=php rtrimphp(php$prefixphp,php php'php_php'php)php php.php php'php_Captchaphp'php;
-php php php php php php php php php php php php php php php php php$cPathphp php php php=php rtrimphp(php$pathphp,php php'php/php\php\php'php)php php.php php'php/Captchaphp'php;
-php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$cPrefixphp,php php$cPathphp)php;
-php php php php php php php php php php php php php php php php returnphp parentphp:php:addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php php php php casephp selfphp:php:CAPTCHAphp:
-php php php php php php php php php php php php php php php php php$loaderphp php=php php$thisphp-php>getPluginLoaderphp(php$typephp)php;
-php php php php php php php php php php php php php php php php php$loaderphp-php>addPrefixPathphp(php$prefixphp,php php$pathphp)php;
-php php php php php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php returnphp parentphp:php:addPrefixPathphp(php$prefixphp,php php$pathphp,php php$typephp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Add prefix path for plugin loader for captcha adapters
+     *
+     * This method handles the captcha type, the rest is handled by
+     * the parent
+     * @param  string $prefix
+     * @param  string $path
+     * @param  string $type
+     * @return Zend_Form_Element
+     * @see Zend_Form_Element::addPrefixPath
+     */
+    public function addPrefixPath($prefix, $path, $type = null)
+    {
+        $type = strtoupper($type);
+        switch ($type) {
+            case null:
+                $loader = $this->getPluginLoader(self::CAPTCHA);
+                $cPrefix = rtrim($prefix, '_') . '_Captcha';
+                $cPath   = rtrim($path, '/\\') . '/Captcha';
+                $loader->addPrefixPath($cPrefix, $cPath);
+                return parent::addPrefixPath($prefix, $path);
+            case self::CAPTCHA:
+                $loader = $this->getPluginLoader($type);
+                $loader->addPrefixPath($prefix, $path);
+                return $this;
+            default:
+                return parent::addPrefixPath($prefix, $path, $type);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp defaultphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp loadDefaultDecoratorsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>loadDefaultDecoratorsIsDisabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+    /**
+     * Load default decorators
+     *
+     * @return void
+     */
+    public function loadDefaultDecorators()
+    {
+        if ($this->loadDefaultDecoratorsIsDisabled()) {
+            return $this;
+        }
 
-php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$decoratorsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php'Errorsphp'php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Descriptionphp'php,php arrayphp(php'tagphp'php php=php>php php'pphp'php,php php'classphp'php php=php>php php'descriptionphp'php)php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'HtmlTagphp'php,php arrayphp(php'tagphp'php php=php>php php'ddphp'php,php php'idphp'php php=php>php php$thisphp-php>getNamephp(php)php php.php php'php-elementphp'php)php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'Labelphp'php,php arrayphp(php'tagphp'php php=php>php php'dtphp'php)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $decorators = $this->getDecorators();
+        if (empty($decorators)) {
+            $this->addDecorator('Errors')
+                 ->addDecorator('Description', array('tag' => 'p', 'class' => 'description'))
+                 ->addDecorator('HtmlTag', array('tag' => 'dd', 'id' => $this->getName() . '-element'))
+                 ->addDecorator('Label', array('tag' => 'dt'));
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp thephp captchaphp validphp?
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@paramphp php mixedphp php$context
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isValidphp(php$valuephp,php php$contextphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>getCaptchaphp(php)php-php>setNamephp(php$thisphp-php>getNamephp(php)php)php;
-php php php php php php php php php$belongsTophp php=php php$thisphp-php>getBelongsTophp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$belongsTophp)php php|php|php php!isphp_arrayphp(php$contextphp)php)php php{
-php php php php php php php php php php php php returnphp parentphp:php:isValidphp(php$valuephp,php php$contextphp)php;
-php php php php php php php php php}
+    /**
+     * Is the captcha valid?
+     *
+     * @param  mixed $value
+     * @param  mixed $context
+     * @return boolean
+     */
+    public function isValid($value, $context = null)
+    {
+        $this->getCaptcha()->setName($this->getName());
+        $belongsTo = $this->getBelongsTo();
+        if (empty($belongsTo) || !is_array($context)) {
+            return parent::isValid($value, $context);
+        }
 
-php php php php php php php php php$namephp php php php php php=php php$thisphp-php>getFullyQualifiedNamephp(php)php;
-php php php php php php php php php$rootphp php php php php php=php substrphp(php$namephp,php php0php,php strposphp(php$namephp,php php'php[php'php)php)php;
-php php php php php php php php php$segmentsphp php=php substrphp(php$namephp,php strposphp(php$namephp,php php'php[php'php)php)php;
-php php php php php php php php php$segmentsphp php=php ltrimphp(php$segmentsphp,php php'php[php'php)php;
-php php php php php php php php php$segmentsphp php=php rtrimphp(php$segmentsphp,php php'php]php'php)php;
-php php php php php php php php php$segmentsphp php=php explodephp(php'php]php[php'php,php php$segmentsphp)php;
-php php php php php php php php arrayphp_unshiftphp(php$segmentsphp,php php$rootphp)php;
-php php php php php php php php arrayphp_popphp(php$segmentsphp)php;
-php php php php php php php php php$newContextphp php=php php$contextphp;
-php php php php php php php php foreachphp php(php$segmentsphp asphp php$segmentphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$segmentphp,php php$newContextphp)php)php php{
-php php php php php php php php php php php php php php php php php$newContextphp php=php php$newContextphp[php$segmentphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $name     = $this->getFullyQualifiedName();
+        $root     = substr($name, 0, strpos($name, '['));
+        $segments = substr($name, strpos($name, '['));
+        $segments = ltrim($segments, '[');
+        $segments = rtrim($segments, ']');
+        $segments = explode('][', $segments);
+        array_unshift($segments, $root);
+        array_pop($segments);
+        $newContext = $context;
+        foreach ($segments as $segment) {
+            if (array_key_exists($segment, $newContext)) {
+                $newContext = $newContext[$segment];
+            }
+        }
 
-php php php php php php php php returnphp parentphp:php:isValidphp(php$valuephp,php php$newContextphp)php;
-php php php php php}
-php}
+        return parent::isValid($value, $newContext);
+    }
+}

@@ -1,404 +1,404 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Actionphp.phpphp php2php2php4php3php7php php2php0php1php0php-php0php6php-php1php5php php1php6php:php1php3php:php4php6Zphp alexanderphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Action.php 22437 2010-06-15 16:13:46Z alexander $
+ */
 
 
-php/php*php*php Internallyphp usedphp classesphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
+/** Internally used classes */
+require_once 'Zend/Pdf/Element.php';
+require_once 'Zend/Pdf/Element/Array.php';
 
 
-php/php*php*php Zendphp_Pdfphp_Targetphp php*php/
-requirephp_oncephp php'Zendphp/Pdfphp/Targetphp.phpphp'php;
+/** Zend_Pdf_Target */
+require_once 'Zend/Pdf/Target.php';
 
 
-php/php*php*
-php php*php Abstractphp PDFphp actionphp representationphp class
-php php*
-php php*php php@packagephp php php php Zendphp_Pdf
-php php*php php@subpackagephp Actions
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-abstractphp classphp Zendphp_Pdfphp_Actionphp extendsphp Zendphp_Pdfphp_Targetphp implementsphp RecursiveIteratorphp,php Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Actionphp dictionary
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Pdfphp_Elementphp_Dictionaryphp|Zendphp_Pdfphp_Elementphp_Objectphp|Zendphp_Pdfphp_Elementphp_Reference
-php php php php php php*php/
-php php php php protectedphp php$php_actionDictionaryphp;
+/**
+ * Abstract PDF action representation class
+ *
+ * @package    Zend_Pdf
+ * @subpackage Actions
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveIterator, Countable
+{
+    /**
+     * Action dictionary
+     *
+     * @var Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference
+     */
+    protected $_actionDictionary;
 
 
-php php php php php/php*php*
-php php php php php php*php Anphp originalphp listphp ofphp chainedphp actions
-php php php php php php*
-php php php php php php*php php@varphp arrayphp php Arrayphp ofphp Zendphp_Pdfphp_Actionphp objects
-php php php php php php*php/
-php php php php protectedphp php$php_originalNextListphp;
+    /**
+     * An original list of chained actions
+     *
+     * @var array  Array of Zend_Pdf_Action objects
+     */
+    protected $_originalNextList;
 
-php php php php php/php*php*
-php php php php php php*php Aphp listphp ofphp nextphp actionsphp inphp actionsphp treephp php(usedphp forphp actionsphp chainingphp)
-php php php php php php*
-php php php php php php*php php@varphp arrayphp php Arrayphp ofphp Zendphp_Pdfphp_Actionphp objects
-php php php php php php*php/
-php php php php publicphp php$nextphp php=php arrayphp(php)php;
+    /**
+     * A list of next actions in actions tree (used for actions chaining)
+     *
+     * @var array  Array of Zend_Pdf_Action objects
+     */
+    public $next = array();
 
-php php php php php/php*php*
-php php php php php php*php Objectphp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp_Dictionaryphp php$dictionary
-php php php php php php*php php@paramphp SplObjectStoragephp php php php php php php php php php php php php$processedActionsphp php listphp ofphp alreadyphp processedphp actionphp dictionariesphp,php usedphp tophp avoidphp cyclicphp references
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Pdfphp_Elementphp php$dictionaryphp,php SplObjectStoragephp php$processedActionsphp)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-php php php php php php php php ifphp php(php$dictionaryphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'php$dictionaryphp mastphp bephp aphp directphp orphp anphp indirectphp dictionaryphp objectphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * Object constructor
+     *
+     * @param Zend_Pdf_Element_Dictionary $dictionary
+     * @param SplObjectStorage            $processedActions  list of already processed action dictionaries, used to avoid cyclic references
+     * @throws Zend_Pdf_Exception
+     */
+    public function __construct(Zend_Pdf_Element $dictionary, SplObjectStorage $processedActions)
+    {
+        require_once 'Zend/Pdf/Element.php';
+        if ($dictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('$dictionary mast be a direct or an indirect dictionary object.');
+        }
 
-php php php php php php php php php$thisphp-php>php_actionDictionaryphp php=php php$dictionaryphp;
+        $this->_actionDictionary = $dictionary;
 
-php php php php php php php php ifphp php(php$dictionaryphp-php>Nextphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php$dictionaryphp-php>Nextphp instanceofphp Zendphp_Pdfphp_Elementphp_Dictionaryphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp dictionaryphp objectphp isphp notphp alreadyphp processed
-php php php php php php php php php php php php php php php php ifphp php(php!php$processedActionsphp-php>containsphp(php$dictionaryphp-php>Nextphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$processedActionsphp-php>attachphp(php$dictionaryphp-php>Nextphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>nextphp[php]php php=php Zendphp_Pdfphp_Actionphp:php:loadphp(php$dictionaryphp-php>Nextphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp ifphp php(php$dictionaryphp-php>Nextphp instanceofphp Zendphp_Pdfphp_Elementphp_Arrayphp)php php{
-php php php php php php php php php php php php php php php php foreachphp php(php$dictionaryphp-php>Nextphp-php>itemsphp asphp php$chainedActionDictionaryphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp dictionaryphp objectphp isphp notphp alreadyphp processed
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$processedActionsphp-php>containsphp(php$chainedActionDictionaryphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$processedActionsphp-php>attachphp(php$chainedActionDictionaryphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>nextphp[php]php php=php Zendphp_Pdfphp_Actionphp:php:loadphp(php$chainedActionDictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'PDFphp Actionphp dictionaryphp Nextphp entryphp mustphp bephp aphp dictionaryphp orphp anphp arrayphp.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if ($dictionary->Next !== null) {
+            if ($dictionary->Next instanceof Zend_Pdf_Element_Dictionary) {
+                // Check if dictionary object is not already processed
+                if (!$processedActions->contains($dictionary->Next)) {
+                    $processedActions->attach($dictionary->Next);
+                    $this->next[] = Zend_Pdf_Action::load($dictionary->Next, $processedActions);
+                }
+            } else if ($dictionary->Next instanceof Zend_Pdf_Element_Array) {
+                foreach ($dictionary->Next->items as $chainedActionDictionary) {
+                    // Check if dictionary object is not already processed
+                    if (!$processedActions->contains($chainedActionDictionary)) {
+                        $processedActions->attach($chainedActionDictionary);
+                        $this->next[] = Zend_Pdf_Action::load($chainedActionDictionary, $processedActions);
+                    }
+                }
+            } else {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception('PDF Action dictionary Next entry must be a dictionary or an array.');
+            }
+        }
 
-php php php php php php php php php$thisphp-php>php_originalNextListphp php=php php$thisphp-php>nextphp;
-php php php php php}
+        $this->_originalNextList = $this->next;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp PDFphp actionphp objectphp usingphp specifiedphp dictionary
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@paramphp Zendphp_Pdfphp_Elementphp php$dictionaryphp php(Itphp'sphp actuallyphp Dictionaryphp orphp Dictionaryphp Objectphp orphp Referencephp tophp aphp Dictionaryphp Objectphp)
-php php php php php php*php php@paramphp SplObjectStoragephp php$processedActionsphp php listphp ofphp alreadyphp processedphp actionphp dictionariesphp,php usedphp tophp avoidphp cyclicphp references
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Action
-php php php php php php*php php@throwsphp Zendphp_Pdfphp_Exception
-php php php php php php*php/
-php php php php publicphp staticphp functionphp loadphp(Zendphp_Pdfphp_Elementphp php$dictionaryphp,php SplObjectStoragephp php$processedActionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$processedActionsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$processedActionsphp php=php newphp SplObjectStoragephp(php)php;
-php php php php php php php php php}
+    /**
+     * Load PDF action object using specified dictionary
+     *
+     * @internal
+     * @param Zend_Pdf_Element $dictionary (It's actually Dictionary or Dictionary Object or Reference to a Dictionary Object)
+     * @param SplObjectStorage $processedActions  list of already processed action dictionaries, used to avoid cyclic references
+     * @return Zend_Pdf_Action
+     * @throws Zend_Pdf_Exception
+     */
+    public static function load(Zend_Pdf_Element $dictionary, SplObjectStorage $processedActions = null)
+    {
+        if ($processedActions === null) {
+            $processedActions = new SplObjectStorage();
+        }
 
-php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp.phpphp'php;
-php php php php php php php php ifphp php(php$dictionaryphp-php>getTypephp(php)php php!php=php Zendphp_Pdfphp_Elementphp:php:TYPEphp_DICTIONARYphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'php$dictionaryphp mastphp bephp aphp directphp orphp anphp indirectphp dictionaryphp objectphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$dictionaryphp-php>Typephp)php php php&php&php php php$dictionaryphp-php>Typephp-php>valuephp php!php=php php'Actionphp'php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Actionphp dictionaryphp Typephp entryphp mustphp bephp setphp tophp php\php'Actionphp\php'php.php'php)php;
-php php php php php php php php php}
+        require_once 'Zend/Pdf/Element.php';
+        if ($dictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('$dictionary mast be a direct or an indirect dictionary object.');
+        }
+        if (isset($dictionary->Type)  &&  $dictionary->Type->value != 'Action') {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Action dictionary Type entry must be set to \'Action\'.');
+        }
 
-php php php php php php php php ifphp php(php$dictionaryphp-php>Sphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Actionphp dictionaryphp mustphp containphp Sphp entryphp'php)php;
-php php php php php php php php php}
+        if ($dictionary->S === null) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Action dictionary must contain S entry');
+        }
 
-php php php php php php php php switchphp php(php$dictionaryphp-php>Sphp-php>valuephp)php php{
-php php php php php php php php php php php php casephp php'GoTophp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/GoTophp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_GoTophp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+        switch ($dictionary->S->value) {
+            case 'GoTo':
+                require_once 'Zend/Pdf/Action/GoTo.php';
+                return new Zend_Pdf_Action_GoTo($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'GoToRphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/GoToRphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_GoToRphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'GoToR':
+                require_once 'Zend/Pdf/Action/GoToR.php';
+                return new Zend_Pdf_Action_GoToR($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'GoToEphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/GoToEphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_GoToEphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'GoToE':
+                require_once 'Zend/Pdf/Action/GoToE.php';
+                return new Zend_Pdf_Action_GoToE($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Launchphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Launchphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Launchphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Launch':
+                require_once 'Zend/Pdf/Action/Launch.php';
+                return new Zend_Pdf_Action_Launch($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Threadphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Threadphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Threadphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Thread':
+                require_once 'Zend/Pdf/Action/Thread.php';
+                return new Zend_Pdf_Action_Thread($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'URIphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/URIphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_URIphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'URI':
+                require_once 'Zend/Pdf/Action/URI.php';
+                return new Zend_Pdf_Action_URI($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Soundphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Soundphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Soundphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Sound':
+                require_once 'Zend/Pdf/Action/Sound.php';
+                return new Zend_Pdf_Action_Sound($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Moviephp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Moviephp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Moviephp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Movie':
+                require_once 'Zend/Pdf/Action/Movie.php';
+                return new Zend_Pdf_Action_Movie($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Hidephp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Hidephp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Hidephp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Hide':
+                require_once 'Zend/Pdf/Action/Hide.php';
+                return new Zend_Pdf_Action_Hide($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Namedphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Namedphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Namedphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Named':
+                require_once 'Zend/Pdf/Action/Named.php';
+                return new Zend_Pdf_Action_Named($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'SubmitFormphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/SubmitFormphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_SubmitFormphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'SubmitForm':
+                require_once 'Zend/Pdf/Action/SubmitForm.php';
+                return new Zend_Pdf_Action_SubmitForm($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'ResetFormphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/ResetFormphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_ResetFormphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'ResetForm':
+                require_once 'Zend/Pdf/Action/ResetForm.php';
+                return new Zend_Pdf_Action_ResetForm($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'ImportDataphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/ImportDataphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_ImportDataphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'ImportData':
+                require_once 'Zend/Pdf/Action/ImportData.php';
+                return new Zend_Pdf_Action_ImportData($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'JavaScriptphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/JavaScriptphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_JavaScriptphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'JavaScript':
+                require_once 'Zend/Pdf/Action/JavaScript.php';
+                return new Zend_Pdf_Action_JavaScript($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'SetOCGStatephp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/SetOCGStatephp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_SetOCGStatephp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'SetOCGState':
+                require_once 'Zend/Pdf/Action/SetOCGState.php';
+                return new Zend_Pdf_Action_SetOCGState($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Renditionphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Renditionphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Renditionphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Rendition':
+                require_once 'Zend/Pdf/Action/Rendition.php';
+                return new Zend_Pdf_Action_Rendition($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'Transphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Transphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Transphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'Trans':
+                require_once 'Zend/Pdf/Action/Trans.php';
+                return new Zend_Pdf_Action_Trans($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php casephp php'GoTophp3DViewphp'php:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/GoTophp3DViewphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_GoTophp3DViewphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
+            case 'GoTo3DView':
+                require_once 'Zend/Pdf/Action/GoTo3DView.php';
+                return new Zend_Pdf_Action_GoTo3DView($dictionary, $processedActions);
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Actionphp/Unknownphp.phpphp'php;
-php php php php php php php php php php php php php php php php returnphp newphp Zendphp_Pdfphp_Actionphp_Unknownphp(php$dictionaryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php}
+            default:
+                require_once 'Zend/Pdf/Action/Unknown.php';
+                return new Zend_Pdf_Action_Unknown($dictionary, $processedActions);
+                break;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp resource
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Element
-php php php php php php*php/
-php php php php publicphp functionphp getResourcephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_actionDictionaryphp;
-php php php php php}
+    /**
+     * Get resource
+     *
+     * @internal
+     * @return Zend_Pdf_Element
+     */
+    public function getResource()
+    {
+        return $this->_actionDictionary;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Dumpphp Actionphp andphp itsphp childphp actionsphp intophp PDFphp structures
-php php php php php php*
-php php php php php php*php Returnsphp dictionaryphp indirectphp objectphp orphp reference
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@paramphp Zendphp_Pdfphp_ElementFactoryphp php$factoryphp php php Objectphp factoryphp forphp newlyphp createdphp indirectphp objects
-php php php php php php*php php@paramphp SplObjectStoragephp php$processedActionsphp php listphp ofphp alreadyphp processedphp actionsphp php(usedphp tophp preventphp infinityphp loopphp causedphp byphp cyclicphp referencesphp)
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Elementphp_Objectphp|Zendphp_Pdfphp_Elementphp_Referencephp php php Dictionaryphp indirectphp object
-php php php php php php*php/
-php php php php publicphp functionphp dumpActionphp(Zendphp_Pdfphp_ElementFactoryphp_Interfacephp php$factoryphp,php SplObjectStoragephp php$processedActionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$processedActionsphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$processedActionsphp php=php newphp SplObjectStoragephp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$processedActionsphp-php>containsphp(php$thisphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Pdfphp_Exceptionphp(php'Actionphp chainphp cyclycphp referencephp isphp detectedphp.php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$processedActionsphp-php>attachphp(php$thisphp)php;
+    /**
+     * Dump Action and its child actions into PDF structures
+     *
+     * Returns dictionary indirect object or reference
+     *
+     * @internal
+     * @param Zend_Pdf_ElementFactory $factory   Object factory for newly created indirect objects
+     * @param SplObjectStorage $processedActions  list of already processed actions (used to prevent infinity loop caused by cyclic references)
+     * @return Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference   Dictionary indirect object
+     */
+    public function dumpAction(Zend_Pdf_ElementFactory_Interface $factory, SplObjectStorage $processedActions = null)
+    {
+        if ($processedActions === null) {
+            $processedActions = new SplObjectStorage();
+        }
+        if ($processedActions->contains($this)) {
+            require_once 'Zend/Pdf/Exception.php';
+            throw new Zend_Pdf_Exception('Action chain cyclyc reference is detected.');
+        }
+        $processedActions->attach($this);
 
-php php php php php php php php php$childListUpdatedphp php=php falsephp;
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_originalNextListphp)php php!php=php countphp(php$thisphp-php>nextphp)php)php php{
-php php php php php php php php php php php php php/php/php Ifphp originalphp andphp currentphp childrenphp arraysphp havephp differentphp sizephp thenphp childrenphp listphp wasphp updated
-php php php php php php php php php php php php php$childListUpdatedphp php=php truephp;
-php php php php php php php php php}php elsephp ifphp php(php php!php(arrayphp_keysphp(php$thisphp-php>php_originalNextListphp)php php=php=php=php arrayphp_keysphp(php$thisphp-php>nextphp)php)php php)php php{
-php php php php php php php php php php php php php/php/php Ifphp originalphp andphp currentphp childrenphp arraysphp havephp differentphp keysphp php(withphp aphp glancephp tophp anphp orderphp)php thenphp childrenphp listphp wasphp updated
-php php php php php php php php php php php php php$childListUpdatedphp php=php truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>nextphp asphp php$keyphp php=php>php php$childActionphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_originalNextListphp[php$keyphp]php php!php=php=php php$childActionphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$childListUpdatedphp php=php truephp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        $childListUpdated = false;
+        if (count($this->_originalNextList) != count($this->next)) {
+            // If original and current children arrays have different size then children list was updated
+            $childListUpdated = true;
+        } else if ( !(array_keys($this->_originalNextList) === array_keys($this->next)) ) {
+            // If original and current children arrays have different keys (with a glance to an order) then children list was updated
+            $childListUpdated = true;
+        } else {
+            foreach ($this->next as $key => $childAction) {
+                if ($this->_originalNextList[$key] !== $childAction) {
+                    $childListUpdated = true;
+                    break;
+                }
+            }
+        }
 
-php php php php php php php php ifphp php(php$childListUpdatedphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>touchphp(php)php;
-php php php php php php php php php php php php switchphp php(countphp(php$thisphp-php>nextphp)php)php php{
-php php php php php php php php php php php php php php php php casephp php0php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>Nextphp php=php nullphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+        if ($childListUpdated) {
+            $this->_actionDictionary->touch();
+            switch (count($this->next)) {
+                case 0:
+                    $this->_actionDictionary->Next = null;
+                    break;
 
-php php php php php php php php php php php php php php php php casephp php1php:
-php php php php php php php php php php php php php php php php php php php php php$childphp php=php resetphp(php$thisphp-php>nextphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>Nextphp php=php php$childphp-php>dumpActionphp(php$factoryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
+                case 1:
+                    $child = reset($this->next);
+                    $this->_actionDictionary->Next = $child->dumpAction($factory, $processedActions);
+                    break;
 
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Pdfphp/Elementphp/Arrayphp.phpphp'php;
-php php php php php php php php php php php php php php php php php php php php php$pdfChildArrayphp php=php newphp Zendphp_Pdfphp_Elementphp_Arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$thisphp-php>nextphp asphp php$childphp)php php{
+                default:
+                    require_once 'Zend/Pdf/Element/Array.php';
+                    $pdfChildArray = new Zend_Pdf_Element_Array();
+                    foreach ($this->next as $child) {
 
-php php php php php php php php php php php php php php php php php php php php php php php php php$pdfChildArrayphp-php>itemsphp[php]php php=php php$childphp-php>dumpActionphp(php$factoryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_actionDictionaryphp-php>Nextphp php=php php$pdfChildArrayphp;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>nextphp asphp php$childphp)php php{
-php php php php php php php php php php php php php php php php php$childphp-php>dumpActionphp(php$factoryphp,php php$processedActionsphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                        $pdfChildArray->items[] = $child->dumpAction($factory, $processedActions);
+                    }
+                    $this->_actionDictionary->Next = $pdfChildArray;
+                    break;
+            }
+        } else {
+            foreach ($this->next as $child) {
+                $child->dumpAction($factory, $processedActions);
+            }
+        }
 
-php php php php php php php php ifphp php(php$thisphp-php>php_actionDictionaryphp instanceofphp Zendphp_Pdfphp_Elementphp_Dictionaryphp)php php{
-php php php php php php php php php php php php php/php/php Itphp'sphp aphp newlyphp createdphp actionphp.php Registerphp itphp withinphp objectphp factoryphp andphp returnphp indirectphp object
-php php php php php php php php php php php php returnphp php$factoryphp-php>newObjectphp(php$thisphp-php>php_actionDictionaryphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Itphp'sphp aphp loadedphp object
-php php php php php php php php php php php php returnphp php$thisphp-php>php_actionDictionaryphp;
-php php php php php php php php php}
-php php php php php}
-
-
-php php php php php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/
-php php php php php/php/php php RecursiveIteratorphp interfacephp methods
-php php php php php/php/php/php/php/php/php/php/php/php/php/php/php/php/
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp currentphp childphp actionphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Action
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php returnphp currentphp(php$thisphp-php>nextphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp currentphp iteratorphp key
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp keyphp(php$thisphp-php>nextphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Gophp tophp nextphp child
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php returnphp nextphp(php$thisphp-php>nextphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Rewindphp children
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php returnphp resetphp(php$thisphp-php>nextphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp currentphp positionphp isphp valid
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp currentphp(php$thisphp-php>nextphp)php php!php=php=php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp childphp actionphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Pdfphp_Actionphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getChildrenphp(php)
-php php php php php{
-php php php php php php php php returnphp currentphp(php$thisphp-php>nextphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Implementsphp RecursiveIteratorphp interfacephp.
-php php php php php php*
-php php php php php php*php php@returnphp boolphp php whetherphp containerphp hasphp anyphp pages
-php php php php php php*php/
-php php php php publicphp functionphp hasChildrenphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>nextphp)php php>php php0php;
-php php php php php}
+        if ($this->_actionDictionary instanceof Zend_Pdf_Element_Dictionary) {
+            // It's a newly created action. Register it within object factory and return indirect object
+            return $factory->newObject($this->_actionDictionary);
+        } else {
+            // It's a loaded object
+            return $this->_actionDictionary;
+        }
+    }
 
 
-php php php php php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/php/
-php php php php php/php/php php Countablephp interfacephp methods
-php php php php php/php/php/php/php/php/php/php/php/php/php/php/php/php/
+    ////////////////////////////////////////////////////////////////////////
+    //  RecursiveIterator interface methods
+    //////////////
 
-php php php php php/php*php*
-php php php php php php*php countphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>childOutlinesphp)php;
-php php php php php}
-php}
+    /**
+     * Returns current child action.
+     *
+     * @return Zend_Pdf_Action
+     */
+    public function current()
+    {
+        return current($this->next);
+    }
+
+    /**
+     * Returns current iterator key
+     *
+     * @return integer
+     */
+    public function key()
+    {
+        return key($this->next);
+    }
+
+    /**
+     * Go to next child
+     */
+    public function next()
+    {
+        return next($this->next);
+    }
+
+    /**
+     * Rewind children
+     */
+    public function rewind()
+    {
+        return reset($this->next);
+    }
+
+    /**
+     * Check if current position is valid
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        return current($this->next) !== false;
+    }
+
+    /**
+     * Returns the child action.
+     *
+     * @return Zend_Pdf_Action|null
+     */
+    public function getChildren()
+    {
+        return current($this->next);
+    }
+
+    /**
+     * Implements RecursiveIterator interface.
+     *
+     * @return bool  whether container has any pages
+     */
+    public function hasChildren()
+    {
+        return count($this->next) > 0;
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////
+    //  Countable interface methods
+    //////////////
+
+    /**
+     * count()
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->childOutlines);
+    }
+}

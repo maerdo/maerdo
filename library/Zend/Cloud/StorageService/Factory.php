@@ -1,70 +1,70 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp StorageService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage StorageService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-requirephp_oncephp php'Zendphp/Cloudphp/AbstractFactoryphp.phpphp'php;
+require_once 'Zend/Cloud/AbstractFactory.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp StorageService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Cloudphp_StorageServicephp_Factoryphp extendsphp Zendphp_Cloudphp_AbstractFactory
-php{
-php php php php constphp STORAGEphp_ADAPTERphp_KEYphp php=php php'storagephp_adapterphp'php;
+/**
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage StorageService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Cloud_StorageService_Factory extends Zend_Cloud_AbstractFactory
+{
+    const STORAGE_ADAPTER_KEY = 'storage_adapter';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp stringphp Interfacephp whichphp adapterphp mustphp implementphp tophp bephp consideredphp valid
-php php php php php php*php/
-php php php php protectedphp staticphp php$php_adapterInterfacephp php=php php'Zendphp_Cloudphp_StorageServicephp_Adapterphp'php;
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php privatephp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php php/php/php privatephp ctorphp php-php shouldphp notphp bephp used
-php php php php php}
+    /**
+     * @var string Interface which adapter must implement to be considered valid
+     */
+    protected static $_adapterInterface = 'Zend_Cloud_StorageService_Adapter';
+    /**
+     * Constructor
+     *
+     * @return void
+     */
+    private function __construct()
+    {
+        // private ctor - should not be used
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp StorageServicephp adapter
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getAdapterphp(php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php php$adapterphp php=php parentphp:php:php_getAdapterphp(selfphp:php:STORAGEphp_ADAPTERphp_KEYphp,php php$optionsphp)php;
-php php php php php php php php ifphp php(php!php$adapterphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(php'Classphp mustphp bephp specifiedphp usingphp thephp php\php'php'php php.
-php php php php php php php php php php php php selfphp:php:STORAGEphp_ADAPTERphp_KEYphp php.php php'php\php'php keyphp'php)php;
-php php php php php php php php php}php elseifphp php(php!php$adapterphp instanceofphp selfphp:php:php$php_adapterInterfacephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Cloudphp/StorageServicephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Cloudphp_StorageServicephp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Adapterphp mustphp implementphp php\php'php'php php.php selfphp:php:php$php_adapterInterfacephp php.php php'php\php'php'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$adapterphp;
-php php php php php}
-php}
+    /**
+     * Retrieve StorageService adapter
+     *
+     * @param  array $options
+     * @return void
+     */
+    public static function getAdapter($options = array())
+    {
+        $adapter = parent::_getAdapter(self::STORAGE_ADAPTER_KEY, $options);
+        if (!$adapter) {
+            require_once 'Zend/Cloud/StorageService/Exception.php';
+            throw new Zend_Cloud_StorageService_Exception('Class must be specified using the \'' .
+            self::STORAGE_ADAPTER_KEY . '\' key');
+        } elseif (!$adapter instanceof self::$_adapterInterface) {
+            require_once 'Zend/Cloud/StorageService/Exception.php';
+            throw new Zend_Cloud_StorageService_Exception(
+                'Adapter must implement \'' . self::$_adapterInterface . '\''
+            );
+        }
+        return $adapter;
+    }
+}

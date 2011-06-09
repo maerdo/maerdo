@@ -1,2132 +1,2132 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Index
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php SegmentInfophp.phpphp php2php2php9php8php7php php2php0php1php0php-php0php9php-php2php1php php1php0php:php3php9php:php5php3Zphp alexanderphp php$
-php php*php/
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_TermsStreamphp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/TermsStreamphp/Interfacephp.phpphp'php;
-
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Searchphp/Similarityphp.phpphp'php;
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_FieldInfophp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/FieldInfophp.phpphp'php;
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/Termphp.phpphp'php;
-
-php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp php*php/
-requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/TermInfophp.phpphp'php;
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Searchphp_Lucene
-php php*php php@subpackagephp Index
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp implementsphp Zendphp_Searchphp_Lucenephp_Indexphp_TermsStreamphp_Interface
-php{
-php php php php php/php*php*
-php php php php php php*php php"Fullphp scanphp vsphp fetchphp"php boundaryphp.
-php php php php php php*
-php php php php php php*php Ifphp filterphp selectivityphp isphp lessphp thanphp thisphp valuephp,php thenphp fullphp scanphp isphp performed
-php php php php php php*php php(sincephp termphp entriesphp fetchingphp hasphp somephp additionalphp overheadphp)php.
-php php php php php php*php/
-php php php php constphp FULLphp_SCANphp_VSphp_FETCHphp_BOUNDARYphp php=php php5php;
-
-php php php php php/php*php*
-php php php php php php*php Numberphp ofphp docsphp inphp aphp segment
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_docCountphp;
-
-php php php php php/php*php*
-php php php php php php*php Segmentphp name
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php privatephp php$php_namephp;
-
-php php php php php/php*php*
-php php php php php php*php Termphp Dictionaryphp Index
-php php php php php php*
-php php php php php php*php Arrayphp ofphp arraysphp php(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp objectsphp arephp representedphp asphp arraysphp because
-php php php php php php*php ofphp performancephp considerationsphp)
-php php php php php php*php php[php0php]php php-php>php php$termValue
-php php php php php php*php php[php1php]php php-php>php php$termFieldNum
-php php php php php php*
-php php php php php php*php Correspondingphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp objectphp storedphp inphp thephp php$php_termDictionaryInfos
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termDictionaryphp;
-
-php php php php php/php*php*
-php php php php php php*php Termphp Dictionaryphp Indexphp TermInfos
-php php php php php php*
-php php php php php php*php Arrayphp ofphp arraysphp php(Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp objectsphp arephp representedphp asphp arraysphp because
-php php php php php php*php ofphp performancephp considerationsphp)
-php php php php php php*php php[php0php]php php-php>php php$docFreq
-php php php php php php*php php[php1php]php php-php>php php$freqPointer
-php php php php php php*php php[php2php]php php-php>php php$proxPointer
-php php php php php php*php php[php3php]php php-php>php php$skipOffset
-php php php php php php*php php[php4php]php php-php>php php$indexPointer
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termDictionaryInfosphp;
-
-php php php php php/php*php*
-php php php php php php*php Segmentphp fieldsphp.php Arrayphp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_FieldInfophp objectsphp forphp thisphp segment
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_fieldsphp;
-
-php php php php php/php*php*
-php php php php php php*php Fieldphp positionsphp inphp aphp dictionaryphp.
-php php php php php php*php php(Termphp dictionaryphp containsphp fileldsphp orderedphp byphp namesphp)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_fieldsDicPositionsphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Associativephp arrayphp wherephp thephp keyphp isphp thephp filephp namephp andphp thephp valuephp isphp dataphp offset
-php php php php php php*php inphp aphp compoundphp segmentphp filephp php(php.csfphp)php.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_segFilesphp;
-
-php php php php php/php*php*
-php php php php php php*php Associativephp arrayphp wherephp thephp keyphp isphp thephp filephp namephp andphp thephp valuephp isphp filephp sizephp php(php.csfphp)php.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_segFileSizesphp;
-
-php php php php php/php*php*
-php php php php php php*php Deletephp filephp generationphp number
-php php php php php php*
-php php php php php php*php php-php2php meansphp autodetectphp latestphp deletephp generation
-php php php php php php*php php-php1php meansphp php'therephp isphp nophp deletephp filephp'
-php php php php php php*php php php0php meansphp prephp-php2php.php1php formatphp deletephp file
-php php php php php php*php php Xphp specifiesphp usedphp deletephp file
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_delGenphp;
-
-php php php php php/php*php*
-php php php php php php*php Segmentphp hasphp singlephp normsphp file
-php php php php php php*
-php php php php php php*php Ifphp truephp thenphp onephp php.nrmphp filephp isphp usedphp forphp allphp fields
-php php php php php php*php Otherwisephp php.fNphp filesphp arephp used
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp php$php_hasSingleNormFilephp;
-
-php php php php php/php*php*
-php php php php php php*php Usephp compoundphp segmentphp filephp php(php*php.cfsphp)php tophp collectphp allphp otherphp segmentphp files
-php php php php php php*php php(excludingphp php.delphp filesphp)
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp php$php_isCompoundphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Filephp systemphp adapterphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp_Filesystem
-php php php php php php*php/
-php php php php privatephp php$php_directoryphp;
-
-php php php php php/php*php*
-php php php php php php*php Normalizationphp factorsphp.
-php php php php php php*php Anphp arrayphp fieldNamephp php=php>php normVector
-php php php php php php*php normVectorphp isphp aphp binaryphp stringphp.
-php php php php php php*php Eachphp bytephp correspondsphp tophp anphp indexedphp documentphp inphp aphp segmentphp and
-php php php php php php*php encodesphp normalizationphp factorphp php(floatphp valuephp,php encodedphp by
-php php php php php php*php Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp:php:encodeNormphp(php)php)
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_normsphp php=php arrayphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Listphp ofphp deletedphp documentsphp.
-php php php php php php*php bitsetphp ifphp bitsetphp extensionphp isphp loadedphp orphp arrayphp otherwisephp.
-php php php php php php*
-php php php php php php*php php@varphp mixed
-php php php php php php*php/
-php php php php privatephp php$php_deletedphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php php$thisphp-php>php_deletedphp updatephp flag
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp php$php_deletedDirtyphp php=php falsephp;
-
-php php php php php/php*php*
-php php php php php php*php Truephp ifphp segmentphp usesphp sharedphp docphp store
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php privatephp php$php_usesSharedDocStorephp;
-
-php php php php php/php*
-php php php php php php*php Sharedphp docphp storephp optionsphp.
-php php php php php php*php Itphp'sphp anphp assotiativephp arrayphp withphp thephp followingphp itemsphp:
-php php php php php php*php php-php php'offsetphp'php php php php php php=php>php php$docStoreOffsetphp php php php php php php php php php php Thephp startingphp documentphp inphp thephp sharedphp docphp storephp filesphp wherephp thisphp segmentphp'sphp documentsphp begin
-php php php php php php*php php-php php'segmentphp'php php php php php=php>php php$docStoreSegmentphp php php php php php php php php php Thephp namephp ofphp thephp segmentphp thatphp hasphp thephp sharedphp docphp storephp filesphp.
-php php php php php php*php php-php php'isCompoundphp'php php=php>php php$docStoreIsCompoundFilephp php php Truephp,php ifphp compoundphp filephp formatphp isphp usedphp forphp thephp sharedphp docphp storephp filesphp php(php.cfxphp filephp)php.
-php php php php php php*php/
-php php php php privatephp php$php_sharedDocStoreOptionsphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Zendphp_Searchphp_Lucenephp_Indexphp_SegmentInfophp constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$directory
-php php php php php php*php php@paramphp stringphp php php php php php$name
-php php php php php php*php php@paramphp integerphp php php php php$docCount
-php php php php php php*php php@paramphp integerphp php php php php$delGen
-php php php php php php*php php@paramphp arrayphp|nullphp php$docStoreOptions
-php php php php php php*php php@paramphp booleanphp php php php php$hasSingleNormFile
-php php php php php php*php php@paramphp booleanphp php php php php$isCompound
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Searchphp_Lucenephp_Storagephp_Directoryphp php$directoryphp,php php$namephp,php php$docCountphp,php php$delGenphp php=php php0php,php php$docStoreOptionsphp php=php nullphp,php php$hasSingleNormFilephp php=php falsephp,php php$isCompoundphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_directoryphp php=php php$directoryphp;
-php php php php php php php php php$thisphp-php>php_namephp php php php php php php=php php$namephp;
-php php php php php php php php php$thisphp-php>php_docCountphp php php=php php$docCountphp;
-
-php php php php php php php php ifphp php(php$docStoreOptionsphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_usesSharedDocStorephp php php php php=php truephp;
-php php php php php php php php php php php php php$thisphp-php>php_sharedDocStoreOptionsphp php=php php$docStoreOptionsphp;
-
-php php php php php php php php php php php php ifphp php(php$docStoreOptionsphp[php'isCompoundphp'php]php)php php{
-php php php php php php php php php php php php php php php php php$cfxFilephp php php php php php php php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$docStoreOptionsphp[php'segmentphp'php]php php.php php'php.cfxphp'php)php;
-php php php php php php php php php php php php php php php php php$cfxFilesCountphp php=php php$cfxFilephp-php>readVIntphp(php)php;
-
-php php php php php php php php php php php php php php php php php$cfxFilesphp php php php php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php$cfxFileSizesphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$cfxFilesCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$dataOffsetphp php=php php$cfxFilephp-php>readLongphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$countphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$cfxFileSizesphp[php$fileNamephp]php php=php php$dataOffsetphp php-php endphp(php$cfxFilesphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$fileNamephp php php php php php php php php php php php php=php php$cfxFilephp-php>readStringphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$cfxFilesphp[php$fileNamephp]php php=php php$dataOffsetphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php$countphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$cfxFileSizesphp[php$fileNamephp]php php=php php$thisphp-php>php_directoryphp-php>fileLengthphp(php$docStoreOptionsphp[php'segmentphp'php]php php.php php'php.cfxphp'php)php php-php php$dataOffsetphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_sharedDocStoreOptionsphp[php'filesphp'php]php php php php php php=php php$cfxFilesphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_sharedDocStoreOptionsphp[php'fileSizesphp'php]php php=php php$cfxFileSizesphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_hasSingleNormFilephp php=php php$hasSingleNormFilephp;
-php php php php php php php php php$thisphp-php>php_delGenphp php php php php php php php php php php php php=php php$delGenphp;
-php php php php php php php php php$thisphp-php>php_termDictionaryphp php php php php=php nullphp;
-
-
-php php php php php php php php ifphp php(php$isCompoundphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_isCompoundphp php php php php=php php$isCompoundphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Itphp'sphp aphp prephp-php2php.php1php segmentphp orphp isCompoundphp isphp setphp tophp php'unknownphp'
-php php php php php php php php php php php php php/php/php Detectphp ifphp segmentphp usesphp compoundphp file
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php/php/php Tryphp tophp openphp compoundphp file
-php php php php php php php php php php php php php php php php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$namephp php.php php'php.cfsphp'php)php;
-
-php php php php php php php php php php php php php php php php php/php/php Compoundphp filephp isphp found
-php php php php php php php php php php php php php php php php php$thisphp-php>php_isCompoundphp php=php truephp;
-php php php php php php php php php php php php php}php catchphp php(Zendphp_Searchphp_Lucenephp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(strposphp(php$ephp-php>getMessagephp(php)php,php php'isphp notphp readablephp'php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Compoundphp filephp isphp notphp foundphp orphp isphp notphp readable
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_isCompoundphp php=php falsephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_segFilesphp php=php arrayphp(php)php;
-php php php php php php php php ifphp php(php$thisphp-php>php_isCompoundphp)php php{
-php php php php php php php php php php php php php$cfsFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$namephp php.php php'php.cfsphp'php)php;
-php php php php php php php php php php php php php$segFilesCountphp php=php php$cfsFilephp-php>readVIntphp(php)php;
-
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$segFilesCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$dataOffsetphp php=php php$cfsFilephp-php>readLongphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$countphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_segFileSizesphp[php$fileNamephp]php php=php php$dataOffsetphp php-php endphp(php$thisphp-php>php_segFilesphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$fileNamephp php=php php$cfsFilephp-php>readStringphp(php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_segFilesphp[php$fileNamephp]php php=php php$dataOffsetphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp php(php$countphp php!php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_segFileSizesphp[php$fileNamephp]php php=php php$thisphp-php>php_directoryphp-php>fileLengthphp(php$namephp php.php php'php.cfsphp'php)php php-php php$dataOffsetphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$fnmFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.fnmphp'php)php;
-php php php php php php php php php$fieldsCountphp php=php php$fnmFilephp-php>readVIntphp(php)php;
-php php php php php php php php php$fieldNamesphp php=php arrayphp(php)php;
-php php php php php php php php php$fieldNumsphp php php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>php_fieldsphp php=php arrayphp(php)php;
-
-php php php php php php php php forphp php(php$countphp=php0php;php php$countphp <php php$fieldsCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php$fieldNamephp php=php php$fnmFilephp-php>readStringphp(php)php;
-php php php php php php php php php php php php php$fieldBitsphp php=php php$fnmFilephp-php>readBytephp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_fieldsphp[php$countphp]php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_FieldInfophp(php$fieldNamephp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldBitsphp php&php php0xphp0php1php php/php*php fieldphp isphp indexedphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$countphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldBitsphp php&php php0xphp0php2php php/php*php termvectorsphp arephp storedphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldBitsphp php&php php0xphp1php0php php/php*php normsphp arephp omittedphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$fieldBitsphp php&php php0xphp2php0php php/php*php payloadsphp arephp storedphp php*php/php)php;
-php php php php php php php php php php php php ifphp php(php$fieldBitsphp php&php php0xphp1php0php)php php{
-php php php php php php php php php php php php php php php php php/php/php normsphp arephp omittedphp forphp thephp indexedphp field
-php php php php php php php php php php php php php php php php php$thisphp-php>php_normsphp[php$countphp]php php=php strphp_repeatphp(chrphp(Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp:php:encodeNormphp(php1php.php0php)php)php,php php$docCountphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$fieldNumsphp[php$countphp]php php php=php php$countphp;
-php php php php php php php php php php php php php$fieldNamesphp[php$countphp]php php=php php$fieldNamephp;
-php php php php php php php php php}
-php php php php php php php php arrayphp_multisortphp(php$fieldNamesphp,php SORTphp_ASCphp,php SORTphp_REGULARphp,php php$fieldNumsphp)php;
-php php php php php php php php php$thisphp-php>php_fieldsDicPositionsphp php=php arrayphp_flipphp(php$fieldNumsphp)php;
-
-php php php php php php php php ifphp php(php$thisphp-php>php_delGenphp php=php=php php-php2php)php php{
-php php php php php php php php php php php php php/php/php SegmentInfophp constructorphp isphp invokedphp fromphp indexphp writer
-php php php php php php php php php php php php php/php/php Autodetectphp currentphp deletephp filephp generationphp number
-php php php php php php php php php php php php php$thisphp-php>php_delGenphp php=php php$thisphp-php>php_detectLatestDelGenphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Loadphp deletions
-php php php php php php php php php$thisphp-php>php_deletedphp php=php php$thisphp-php>php_loadDelFilephp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp detetionsphp file
-php php php php php php*
-php php php php php php*php Returnsphp bitsetphp orphp anphp arrayphp dependingphp onphp bitsetphp extensionphp availability
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_loadDelFilephp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_delGenphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php php/php/php Therephp isphp nophp deletephp filephp forphp thisphp segment
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}php elsephp ifphp php(php$thisphp-php>php_delGenphp php=php=php php0php)php php{
-php php php php php php php php php php php php php/php/php Itphp'sphp aphp segmentphp withphp prephp-php2php.php1php formatphp deletephp file
-php php php php php php php php php php php php php/php/php Tryphp tophp loadphp deletionsphp file
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadPrephp2php1DelFilephp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Itphp'sphp php2php.php1php+php formatphp deleteionsphp file
-php php php php php php php php php php php php returnphp php$thisphp-php>php_loadphp2php1DelFilephp(php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp prephp-php2php.php1php detetionsphp file
-php php php php php php*
-php php php php php php*php Returnsphp bitsetphp orphp anphp arrayphp dependingphp onphp bitsetphp extensionphp availability
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_loadPrephp2php1DelFilephp(php)
-php php php php php{
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php/php/php php'php.delphp'php filesphp alwaysphp storedphp inphp aphp separatephp file
-php php php php php php php php php php php php php/php/php Segmentphp compoundphp isphp notphp used
-php php php php php php php php php php php php php$delFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$thisphp-php>php_namephp php.php php'php.delphp'php)php;
-
-php php php php php php php php php php php php php$byteCountphp php=php php$delFilephp-php>readIntphp(php)php;
-php php php php php php php php php php php php php$byteCountphp php=php ceilphp(php$byteCountphp/php8php)php;
-php php php php php php php php php php php php php$bitCountphp php php=php php$delFilephp-php>readIntphp(php)php;
-
-php php php php php php php php php php php php ifphp php(php$bitCountphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$delBytesphp php=php php'php'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$delBytesphp php=php php$delFilephp-php>readBytesphp(php$byteCountphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$delBytesphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$deletionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$byteCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$bytephp php=php ordphp(php$delBytesphp[php$countphp]php)php;
-php php php php php php php php php php php php php php php php php php php php forphp php(php$bitphp php=php php0php;php php$bitphp <php php8php;php php$bitphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$bytephp php&php php(php1<php<php$bitphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$deletionsphp[php$countphp*php8php php+php php$bitphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php returnphp php$deletionsphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php catchphp(Zendphp_Searchphp_Lucenephp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php ifphp php(strposphp(php$ephp-php>getMessagephp(php)php,php php'isphp notphp readablephp'php)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php$ephp-php>getMessagephp(php)php,php php$ephp-php>getCodephp(php)php,php php$ephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php/php/php Therephp isphp nophp deletionphp file
-php php php php php php php php php php php php php$thisphp-php>php_delGenphp php=php php-php1php;
-
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp php2php.php1php+php formatphp detetionsphp file
-php php php php php php*
-php php php php php php*php Returnsphp bitsetphp orphp anphp arrayphp dependingphp onphp bitsetphp extensionphp availability
-php php php php php php*
-php php php php php php*php php@returnphp mixed
-php php php php php php*php/
-php php php php privatephp functionphp php_loadphp2php1DelFilephp(php)
-php php php php php{
-php php php php php php php php php$delFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$thisphp-php>php_namephp php.php php'php_php'php php.php basephp_convertphp(php$thisphp-php>php_delGenphp,php php1php0php,php php3php6php)php php.php php'php.delphp'php)php;
-
-php php php php php php php php php$formatphp php=php php$delFilephp-php>readIntphp(php)php;
-
-php php php php php php php php ifphp php(php$formatphp php=php=php php(intphp)php0xFFFFFFFFphp)php php{
-php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$deletionsphp php=php bitsetphp_emptyphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$deletionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$byteCountphp php=php php$delFilephp-php>readIntphp(php)php;
-php php php php php php php php php php php php php$bitCountphp php php=php php$delFilephp-php>readIntphp(php)php;
-
-php php php php php php php php php php php php php$delFileSizephp php=php php$thisphp-php>php_directoryphp-php>fileLengthphp(php$thisphp-php>php_namephp php.php php'php_php'php php.php basephp_convertphp(php$thisphp-php>php_delGenphp,php php1php0php,php php3php6php)php php.php php'php.delphp'php)php;
-php php php php php php php php php php php php php$byteNumphp php=php php0php;
-
-php php php php php php php php php php php php dophp php{
-php php php php php php php php php php php php php php php php php$dgapphp php=php php$delFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php$nonZeroBytephp php=php php$delFilephp-php>readBytephp(php)php;
-
-php php php php php php php php php php php php php php php php php$byteNumphp php+php=php php$dgapphp;
-
-
-php php php php php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php forphp php(php$bitphp php=php php0php;php php$bitphp <php php8php;php php$bitphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$nonZeroBytephp php&php php(php1<php<php$bitphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php bitsetphp_inclphp(php$deletionsphp,php php$byteNumphp*php8php php+php php$bitphp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php returnphp php$deletionsphp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php forphp php(php$bitphp php=php php0php;php php$bitphp <php php8php;php php$bitphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$nonZeroBytephp php&php php(php1<php<php$bitphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$deletionsphp[php$byteNumphp*php8php php+php php$bitphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php returnphp php(countphp(php$deletionsphp)php php>php php0php)php php?php php$deletionsphp php:php nullphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php}php whilephp php(php$delFilephp-php>tellphp(php)php <php php$delFileSizephp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php php$formatphp isphp actuallyphp bytephp count
-php php php php php php php php php php php php php$byteCountphp php=php ceilphp(php$formatphp/php8php)php;
-php php php php php php php php php php php php php$bitCountphp php php=php php$delFilephp-php>readIntphp(php)php;
-
-php php php php php php php php php php php php ifphp php(php$bitCountphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$delBytesphp php=php php'php'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$delBytesphp php=php php$delFilephp-php>readBytesphp(php$byteCountphp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php php php php returnphp php$delBytesphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$deletionsphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$byteCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$bytephp php=php ordphp(php$delBytesphp[php$countphp]php)php;
-php php php php php php php php php php php php php php php php php php php php forphp php(php$bitphp php=php php0php;php php$bitphp <php php8php;php php$bitphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$bytephp php&php php(php1<php<php$bitphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$deletionsphp[php$countphp*php8php php+php php$bitphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php returnphp php(countphp(php$deletionsphp)php php>php php0php)php php?php php$deletionsphp php:php nullphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Opensphp indexphp filephp stotedphp withinphp compoundphp indexphp file
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$extension
-php php php php php php*php php@paramphp booleanphp php$shareHandler
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Storagephp_File
-php php php php php php*php/
-php php php php publicphp functionphp openCompoundFilephp(php$extensionphp,php php$shareHandlerphp php=php truephp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$extensionphp php=php=php php'php.fdxphp'php php php|php|php php$extensionphp php=php=php php'php.fdtphp'php)php php php&php&php php php$thisphp-php>php_usesSharedDocStorephp)php php{
-php php php php php php php php php php php php php$fdxFNamephp php=php php$thisphp-php>php_sharedDocStoreOptionsphp[php'segmentphp'php]php php.php php'php.fdxphp'php;
-php php php php php php php php php php php php php$fdtFNamephp php=php php$thisphp-php>php_sharedDocStoreOptionsphp[php'segmentphp'php]php php.php php'php.fdtphp'php;
-
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_sharedDocStoreOptionsphp[php'isCompoundphp'php]php)php php{
-php php php php php php php php php php php php php php php php php$fdxFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$fdxFNamephp,php php$shareHandlerphp)php;
-php php php php php php php php php php php php php php php php php$fdxFilephp-php>seekphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'offsetphp'php]php*php8php,php SEEKphp_CURphp)php;
-
-php php php php php php php php php php php php php php php php ifphp php(php$extensionphp php=php=php php'php.fdxphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php php'php.fdxphp'php filephp isphp requested
-php php php php php php php php php php php php php php php php php php php php returnphp php$fdxFilephp;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php php'php.fdtphp'php filephp isphp requested
-php php php php php php php php php php php php php php php php php php php php php$fdtStartOffsetphp php=php php$fdxFilephp-php>readLongphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php php$fdtFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$fdtFNamephp,php php$shareHandlerphp)php;
-php php php php php php php php php php php php php php php php php php php php php$fdtFilephp-php>seekphp(php$fdtStartOffsetphp,php SEEKphp_CURphp)php;
-
-php php php php php php php php php php php php php php php php php php php php returnphp php$fdtFilephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp(php php!issetphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'filesphp'php]php[php$fdxFNamephp]php)php php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Sharedphp docphp storagephp segmentphp compoundphp filephp doesnphp\php'tphp containphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$fdxFNamephp php.php php'php filephp.php'php php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php ifphp(php php!issetphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'filesphp'php]php[php$fdtFNamephp]php)php php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Sharedphp docphp storagephp segmentphp compoundphp filephp doesnphp\php'tphp containphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$fdtFNamephp php.php php'php filephp.php'php php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php/php/php Openphp sharedphp docstorephp segmentphp file
-php php php php php php php php php php php php php$cfxFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'segmentphp'php]php php.php php'php.cfxphp'php,php php$shareHandlerphp)php;
-php php php php php php php php php php php php php/php/php Seekphp tophp thephp startphp ofphp php'php.fdxphp'php filephp withinphp compoundphp file
-php php php php php php php php php php php php php$cfxFilephp-php>seekphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'filesphp'php]php[php$fdxFNamephp]php)php;
-php php php php php php php php php php php php php/php/php Seekphp tophp thephp startphp ofphp currentphp segmentphp documentsphp section
-php php php php php php php php php php php php php$cfxFilephp-php>seekphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'offsetphp'php]php*php8php,php SEEKphp_CURphp)php;
-
-php php php php php php php php php php php php ifphp php(php$extensionphp php=php=php php'php.fdxphp'php)php php{
-php php php php php php php php php php php php php php php php php/php/php php'php.fdxphp'php filephp isphp requested
-php php php php php php php php php php php php php php php php returnphp php$cfxFilephp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php php'php.fdtphp'php filephp isphp requested
-php php php php php php php php php php php php php php php php php$fdtStartOffsetphp php=php php$cfxFilephp-php>readLongphp(php)php;
-
-php php php php php php php php php php php php php php php php php/php/php Seekphp tophp thephp startphp ofphp php'php.fdtphp'php filephp withinphp compoundphp file
-php php php php php php php php php php php php php php php php php$cfxFilephp-php>seekphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'filesphp'php]php[php$fdtFNamephp]php)php;
-php php php php php php php php php php php php php php php php php/php/php Seekphp tophp thephp startphp ofphp currentphp segmentphp documentsphp section
-php php php php php php php php php php php php php php php php php$cfxFilephp-php>seekphp(php$fdtStartOffsetphp,php SEEKphp_CURphp)php;
-
-php php php php php php php php php php php php php php php php returnphp php$fdtFilephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$filenamephp php=php php$thisphp-php>php_namephp php.php php$extensionphp;
-
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isCompoundphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$filenamephp,php php$shareHandlerphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php php!issetphp(php$thisphp-php>php_segFilesphp[php$filenamephp]php)php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Segmentphp compoundphp filephp doesnphp\php'tphp containphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$filenamephp php.php php'php filephp.php'php php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$filephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$thisphp-php>php_namephp php.php php'php.cfsphp'php,php php$shareHandlerphp)php;
-php php php php php php php php php$filephp-php>seekphp(php$thisphp-php>php_segFilesphp[php$filenamephp]php)php;
-php php php php php php php php returnphp php$filephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp compoundphp filephp length
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$extension
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp compoundFileLengthphp(php$extensionphp)
-php php php php php{
-php php php php php php php php ifphp php(php(php$extensionphp php=php=php php'php.fdxphp'php php php|php|php php$extensionphp php=php=php php'php.fdtphp'php)php php php&php&php php php$thisphp-php>php_usesSharedDocStorephp)php php{
-php php php php php php php php php php php php php$filenamephp php=php php$thisphp-php>php_sharedDocStoreOptionsphp[php'segmentphp'php]php php.php php$extensionphp;
-
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_sharedDocStoreOptionsphp[php'isCompoundphp'php]php)php php{
-php php php php php php php php php php php php php php php php returnphp php$thisphp-php>php_directoryphp-php>fileLengthphp(php$filenamephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp(php php!issetphp(php$thisphp-php>php_sharedDocStoreOptionsphp[php'fileSizesphp'php]php[php$filenamephp]php)php php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Sharedphp docphp storephp compoundphp filephp doesnphp\php'tphp containphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$filenamephp php.php php'php filephp.php'php php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp php$thisphp-php>php_sharedDocStoreOptionsphp[php'fileSizesphp'php]php[php$filenamephp]php;
-php php php php php php php php php}
-
-
-php php php php php php php php php$filenamephp php=php php$thisphp-php>php_namephp php.php php$extensionphp;
-
-php php php php php php php php php/php/php Tryphp tophp getphp commonphp filephp first
-php php php php php php php php ifphp php(php$thisphp-php>php_directoryphp-php>fileExistsphp(php$filenamephp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_directoryphp-php>fileLengthphp(php$filenamephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php php!issetphp(php$thisphp-php>php_segFileSizesphp[php$filenamephp]php)php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Indexphp compoundphp filephp doesnphp\php'tphp containphp php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php$filenamephp php.php php'php filephp.php'php php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_segFileSizesphp[php$filenamephp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp fieldphp indexphp orphp php-php1php ifphp fieldphp isphp notphp found
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$fieldName
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getFieldNumphp(php$fieldNamephp)
-php php php php php{
-php php php php php php php php foreachphp(php php$thisphp-php>php_fieldsphp asphp php$fieldphp php)php php{
-php php php php php php php php php php php php ifphp(php php$fieldphp-php>namephp php=php=php php$fieldNamephp php)php php{
-php php php php php php php php php php php php php php php php returnphp php$fieldphp-php>numberphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php-php1php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp fieldphp infophp forphp specifiedphp field
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$fieldNum
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_FieldInfo
-php php php php php php*php/
-php php php php publicphp functionphp getFieldphp(php$fieldNumphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_fieldsphp[php$fieldNumphp]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp arrayphp ofphp fieldsphp.
-php php php php php php*php ifphp php$indexedphp parameterphp isphp truephp,php thenphp returnsphp onlyphp indexedphp fieldsphp.
-php php php php php php*
-php php php php php php*php php@paramphp booleanphp php$indexed
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getFieldsphp(php$indexedphp php=php falsephp)
-php php php php php{
-php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp(php php$thisphp-php>php_fieldsphp asphp php$fieldphp php)php php{
-php php php php php php php php php php php php ifphp(php php(php!php$indexedphp)php php|php|php php$fieldphp-php>isIndexedphp php)php php{
-php php php php php php php php php php php php php php php php php$resultphp[php php$fieldphp-php>namephp php]php php=php php$fieldphp-php>namephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp arrayphp ofphp FieldInfophp objectsphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getFieldInfosphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_fieldsphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp actualphp deletionsphp filephp generationphp numberphp.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getDelGenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_delGenphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp totalphp numberphp ofphp documentsphp inphp thisphp segmentphp php(includingphp deletedphp documentsphp)php.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_docCountphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp numberphp ofphp deletedphp documentsphp.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php privatephp functionphp php_deletedCountphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_deletedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php0php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php returnphp countphp(bitsetphp_tophp_arrayphp(php$thisphp-php>php_deletedphp)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp countphp(php$thisphp-php>php_deletedphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp totalphp numberphp ofphp nonphp-deletedphp documentsphp inphp thisphp segmentphp.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp numDocsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasDeletionsphp(php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_docCountphp php-php php$thisphp-php>php_deletedCountphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_docCountphp;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp fieldphp positionphp inphp aphp fieldsphp dictionary
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$fieldNum
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php privatephp functionphp php_getFieldPositionphp(php$fieldNumphp)php php{
-php php php php php php php php php/php/php Treatphp valuesphp whichphp arephp notphp inphp aphp translationphp tablephp asphp aphp php'directphp valuephp'
-php php php php php php php php returnphp issetphp(php$thisphp-php>php_fieldsDicPositionsphp[php$fieldNumphp]php)php php?
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_fieldsDicPositionsphp[php$fieldNumphp]php php:php php$fieldNumphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnphp segmentphp name
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_namephp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php TermInfophp cache
-php php php php php php*
-php php php php php php*php Sizephp isphp php1php0php2php4php.
-php php php php php php*php Numbersphp arephp usedphp insteadphp ofphp classphp constantsphp becausephp ofphp performancephp considerations
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php privatephp php$php_termInfoCachephp php=php arrayphp(php)php;
-
-php php php php privatephp functionphp php_cleanUpTermInfoCachephp(php)
-php php php php php{
-php php php php php php php php php/php/php Cleanphp php2php5php6php termphp infos
-php php php php php php php php foreachphp php(php$thisphp-php>php_termInfoCachephp asphp php$keyphp php=php>php php$termInfophp)php php{
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_termInfoCachephp[php$keyphp]php)php;
-
-php php php php php php php php php php php php php/php/php leavephp php7php6php8php lastphp usedphp termphp infos
-php php php php php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termInfoCachephp)php php=php=php php7php6php8php)php php{
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp termsphp dictionaryphp index
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_loadDictionaryIndexphp(php)
-php php php php php{
-php php php php php php php php php/php/php Checkphp,php ifphp indexphp isphp alreadyphp serialized
-php php php php php php php php ifphp php(php$thisphp-php>php_directoryphp-php>fileExistsphp(php$thisphp-php>php_namephp php.php php'php.stiphp'php)php)php php{
-php php php php php php php php php php php php php/php/php Loadphp serializedphp dictionaryphp indexphp data
-php php php php php php php php php php php php php$stiFilephp php=php php$thisphp-php>php_directoryphp-php>getFileObjectphp(php$thisphp-php>php_namephp php.php php'php.stiphp'php)php;
-php php php php php php php php php php php php php$stiFileDataphp php=php php$stiFilephp-php>readBytesphp(php$thisphp-php>php_directoryphp-php>fileLengthphp(php$thisphp-php>php_namephp php.php php'php.stiphp'php)php)php;
-
-php php php php php php php php php php php php php/php/php Loadphp dictionaryphp indexphp data
-php php php php php php php php php php php php ifphp php(php(php$unserializedDataphp php=php php@unserializephp(php$stiFileDataphp)php)php php!php=php=php falsephp)php php{
-php php php php php php php php php php php php php php php php listphp(php$thisphp-php>php_termDictionaryphp,php php$thisphp-php>php_termDictionaryInfosphp)php php=php php$unserializedDataphp;
-php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Loadphp dataphp fromphp php.tiiphp filephp andphp generatephp php.stiphp file
-
-php php php php php php php php php/php/php Prefetchphp dictionaryphp indexphp data
-php php php php php php php php php$tiiFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.tiiphp'php)php;
-php php php php php php php php php$tiiFileDataphp php=php php$tiiFilephp-php>readBytesphp(php$thisphp-php>compoundFileLengthphp(php'php.tiiphp'php)php)php;
-
-php php php php php php php php php/php*php*php Zendphp_Searchphp_Lucenephp_Indexphp_DictionaryLoaderphp php*php/
-php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Indexphp/DictionaryLoaderphp.phpphp'php;
-
-php php php php php php php php php/php/php Loadphp dictionaryphp indexphp data
-php php php php php php php php listphp(php$thisphp-php>php_termDictionaryphp,php php$thisphp-php>php_termDictionaryInfosphp)php php=
-php php php php php php php php php php php php php php php php php php php php Zendphp_Searchphp_Lucenephp_Indexphp_DictionaryLoaderphp:php:loadphp(php$tiiFileDataphp)php;
-
-php php php php php php php php php$stiFileDataphp php=php serializephp(arrayphp(php$thisphp-php>php_termDictionaryphp,php php$thisphp-php>php_termDictionaryInfosphp)php)php;
-php php php php php php php php php$stiFilephp php=php php$thisphp-php>php_directoryphp-php>createFilephp(php$thisphp-php>php_namephp php.php php'php.stiphp'php)php;
-php php php php php php php php php$stiFilephp-php>writeBytesphp(php$stiFileDataphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Scansphp termsphp dictionaryphp andphp returnsphp termphp info
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfo
-php php php php php php*php/
-php php php php publicphp functionphp getTermInfophp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp)
-php php php php php{
-php php php php php php php php php$termKeyphp php=php php$termphp-php>keyphp(php)php;
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php)php)php php{
-php php php php php php php php php php php php php$termInfophp php=php php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php;
-
-php php php php php php php php php php php php php/php/php Movephp termInfophp tophp thephp endphp ofphp cache
-php php php php php php php php php php php php unsetphp(php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php)php;
-php php php php php php php php php php php php php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php php=php php$termInfophp;
-
-php php php php php php php php php php php php returnphp php$termInfophp;
-php php php php php php php php php}
-
-
-php php php php php php php php ifphp php(php$thisphp-php>php_termDictionaryphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadDictionaryIndexphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$searchFieldphp php=php php$thisphp-php>getFieldNumphp(php$termphp-php>fieldphp)php;
-
-php php php php php php php php ifphp php(php$searchFieldphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-php php php php php php php php php$searchDicFieldphp php=php php$thisphp-php>php_getFieldPositionphp(php$searchFieldphp)php;
-
-php php php php php php php php php/php/php searchphp forphp appropriatephp valuephp inphp dictionary
-php php php php php php php php php$lowIndexphp php=php php0php;
-php php php php php php php php php$highIndexphp php=php countphp(php$thisphp-php>php_termDictionaryphp)php-php1php;
-php php php php php php php php whilephp php(php$highIndexphp php>php=php php$lowIndexphp)php php{
-php php php php php php php php php php php php php/php/php php$midphp php=php php(php$highIndexphp php-php php$lowIndexphp)php/php2php;
-php php php php php php php php php php php php php$midphp php=php php(php$highIndexphp php+php php$lowIndexphp)php php>php>php php1php;
-php php php php php php php php php php php php php$midTermphp php=php php$thisphp-php>php_termDictionaryphp[php$midphp]php;
-
-php php php php php php php php php php php php php$fieldNumphp php=php php$thisphp-php>php_getFieldPositionphp(php$midTermphp[php0php]php php/php*php fieldphp php*php/php)php;
-php php php php php php php php php php php php php$deltaphp php=php php$searchDicFieldphp php-php php$fieldNumphp;
-php php php php php php php php php php php php ifphp php(php$deltaphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$deltaphp php=php strcmpphp(php$termphp-php>textphp,php php$midTermphp[php1php]php php/php*php textphp php*php/php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$deltaphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$highIndexphp php=php php$midphp-php1php;
-php php php php php php php php php php php php php}php elseifphp php(php$deltaphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php$lowIndexphp php php=php php$midphp+php1php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php returnphp php$thisphp-php>php_termDictionaryInfosphp[php$midphp]php;php php/php/php Wephp gotphp itphp!
-php php php php php php php php php php php php php php php php php$aphp php=php php$thisphp-php>php_termDictionaryInfosphp[php$midphp]php;
-php php php php php php php php php php php php php php php php php$termInfophp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp(php$aphp[php0php]php,php php$aphp[php1php]php,php php$aphp[php2php]php,php php$aphp[php3php]php,php php$aphp[php4php]php)php;
-
-php php php php php php php php php php php php php php php php php/php/php Putphp loadedphp termInfophp intophp cache
-php php php php php php php php php php php php php php php php php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php php=php php$termInfophp;
-
-php php php php php php php php php php php php php php php php returnphp php$termInfophp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$highIndexphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php php/php/php Termphp isphp outphp ofphp thephp dictionaryphp range
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php php$prevPositionphp php=php php$highIndexphp;
-php php php php php php php php php$prevTermphp php=php php$thisphp-php>php_termDictionaryphp[php$prevPositionphp]php;
-php php php php php php php php php$prevTermInfophp php=php php$thisphp-php>php_termDictionaryInfosphp[php$prevPositionphp]php;
-
-php php php php php php php php php$tisFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.tisphp'php)php;
-php php php php php php php php php$tiVersionphp php=php php$tisFilephp-php>readIntphp(php)php;
-php php php php php php php php ifphp php(php$tiVersionphp php!php=php php(intphp)php0xFFFFFFFEphp php/php*php prephp-php2php.php1php formatphp php*php/php php php&php&
-php php php php php php php php php php php php php$tiVersionphp php!php=php php(intphp)php0xFFFFFFFDphp php/php*php php2php.php1php+php formatphp php php php php*php/php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp TermInfoFilephp filephp formatphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$termCountphp php php php php php=php php$tisFilephp-php>readLongphp(php)php;
-php php php php php php php php php$indexIntervalphp php=php php$tisFilephp-php>readIntphp(php)php;
-php php php php php php php php php$skipIntervalphp php php=php php$tisFilephp-php>readIntphp(php)php;
-php php php php php php php php ifphp php(php$tiVersionphp php=php=php php(intphp)php0xFFFFFFFDphp php/php*php php2php.php1php+php formatphp php*php/php)php php{
-php php php php php php php php php php php php php$maxSkipLevelsphp php=php php$tisFilephp-php>readIntphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$tisFilephp-php>seekphp(php$prevTermInfophp[php4php]php php/php*php indexPointerphp php*php/php php-php php(php(php$tiVersionphp php=php=php php(intphp)php0xFFFFFFFDphp)php?php php2php4php php:php php2php0php)php php/php*php headerphp sizephp*php/php,php SEEKphp_CURphp)php;
-
-php php php php php php php php php$termValuephp php php php php=php php$prevTermphp[php1php]php php/php*php textphp php*php/php;
-php php php php php php php php php$termFieldNumphp php=php php$prevTermphp[php0php]php php/php*php fieldphp php*php/php;
-php php php php php php php php php$freqPointerphp php=php php$prevTermInfophp[php1php]php php/php*php freqPointerphp php*php/php;
-php php php php php php php php php$proxPointerphp php=php php$prevTermInfophp[php2php]php php/php*php proxPointerphp php*php/php;
-php php php php php php php php forphp php(php$countphp php=php php$prevPositionphp*php$indexIntervalphp php+php php1php;
-php php php php php php php php php php php php php php$countphp <php=php php$termCountphp php&php&
-php php php php php php php php php php php php php php(php php$thisphp-php>php_getFieldPositionphp(php$termFieldNumphp)php <php php$searchDicFieldphp php|php|
-php php php php php php php php php php php php php php php(php$thisphp-php>php_getFieldPositionphp(php$termFieldNumphp)php php=php=php php$searchDicFieldphp php&php&
-php php php php php php php php php php php php php php php strcmpphp(php$termValuephp,php php$termphp-php>textphp)php <php php0php)php php)php;
-php php php php php php php php php php php php php php$countphp+php+php)php php{
-php php php php php php php php php php php php php$termPrefixLengthphp php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php$termSuffixphp php php php php php php php=php php$tisFilephp-php>readStringphp(php)php;
-php php php php php php php php php php php php php$termFieldNumphp php php php php php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php$termValuephp php php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getPrefixphp(php$termValuephp,php php$termPrefixLengthphp)php php.php php$termSuffixphp;
-
-php php php php php php php php php php php php php$docFreqphp php php php php php php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php$freqPointerphp php+php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php$proxPointerphp php+php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php ifphp(php php$docFreqphp php>php=php php$skipIntervalphp php)php php{
-php php php php php php php php php php php php php php php php php$skipOffsetphp php=php php$tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$skipOffsetphp php=php php0php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$termFieldNumphp php=php=php php$searchFieldphp php&php&php php$termValuephp php=php=php php$termphp-php>textphp)php php{
-php php php php php php php php php php php php php$termInfophp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp(php$docFreqphp,php php$freqPointerphp,php php$proxPointerphp,php php$skipOffsetphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$termInfophp php=php nullphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Putphp loadedphp termInfophp intophp cache
-php php php php php php php php php$thisphp-php>php_termInfoCachephp[php$termKeyphp]php php=php php$termInfophp;
-
-php php php php php php php php ifphp php(countphp(php$thisphp-php>php_termInfoCachephp)php php=php=php php1php0php2php4php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_cleanUpTermInfoCachephp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$termInfophp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp IDsphp ofphp allphp thephp documentsphp containingphp termphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp integerphp php$shift
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp termDocsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$shiftphp php=php php0php,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$termInfophp php=php php$thisphp-php>getTermInfophp(php$termphp)php;
-
-php php php php php php php php ifphp php(php!php$termInfophp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp)php php{
-php php php php php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp php php&php&php php php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$frqFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.frqphp'php)php;
-php php php php php php php php php$frqFilephp-php>seekphp(php$termInfophp-php>freqPointerphp,SEEKphp_CURphp)php;
-php php php php php php php php php$docIdphp php php=php php0php;
-php php php php php php php php php$resultphp php=php arrayphp(php)php;
-
-php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Documentsphp filterphp mustphp bephp anphp instancephp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp orphp nullphp.php'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp alreadyphp hasphp somephp dataphp forphp thephp currentphp segment
-
-php php php php php php php php php php php php php php php php php/php/php Makephp shortphp namephp forphp thephp filterphp php(whichphp doesnphp'tphp needphp additionalphp dereferencingphp)
-php php php php php php php php php php php php php php php php php$filterphp php=php php&php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php;
-
-php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp filterphp isphp notphp empty
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$filterphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_docCountphp/countphp(php$filterphp)php <php selfphp:php:FULLphp_SCANphp_VSphp_FETCHphp_BOUNDARYphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fetching
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp(php php$countphp=php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php readphp freq
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php]php php=php php$shiftphp php+php php$docIdphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fullphp scan
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp(php php$countphp=php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php readphp freq
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php]php php=php php$shiftphp php+php php$docIdphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp isphp presentphp,php butphp doesnphp'tphp hasphp dataphp forphp thephp currentphp segmentphp yet
-php php php php php php php php php php php php php php php php php$filterDataphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php forphp(php php$countphp=php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php readphp freq
-php php php php php php php php php php php php php php php php php php php php php php php php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$resultphp[php]php php=php php$shiftphp php+php php$docIdphp;
-php php php php php php php php php php php php php php php php php php php php php$filterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$filterDataphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php forphp(php php$countphp=php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php/php/php readphp freq
-php php php php php php php php php php php php php php php php php php php php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$resultphp[php]php php=php php$shiftphp php+php php$docIdphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp termphp freqsphp arrayphp.
-php php php php php php*php Resultphp arrayphp structurephp:php arrayphp(docIdphp php=php>php freqphp,php php.php.php.php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp integerphp php$shift
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfo
-php php php php php php*php/
-php php php php publicphp functionphp termFreqsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$shiftphp php=php php0php,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$termInfophp php=php php$thisphp-php>getTermInfophp(php$termphp)php;
-
-php php php php php php php php ifphp php(php!php$termInfophp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp)php php{
-php php php php php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp php php&php&php php php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$frqFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.frqphp'php)php;
-php php php php php php php php php$frqFilephp-php>seekphp(php$termInfophp-php>freqPointerphp,SEEKphp_CURphp)php;
-php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php php$docIdphp php=php php0php;
-
-php php php php php php php php php$resultphp php=php arrayphp(php)php;
-
-php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Documentsphp filterphp mustphp bephp anphp instancephp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp orphp nullphp.php'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp alreadyphp hasphp somephp dataphp forphp thephp currentphp segment
-
-php php php php php php php php php php php php php php php php php/php/php Makephp shortphp namephp forphp thephp filterphp php(whichphp doesnphp'tphp needphp additionalphp dereferencingphp)
-php php php php php php php php php php php php php php php php php$filterphp php=php php&php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php;
-
-php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp filterphp isphp notphp empty
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$filterphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php php php php php php php php php}
-
-
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_docCountphp/countphp(php$filterphp)php <php selfphp:php:FULLphp_SCANphp_VSphp_FETCHphp_BOUNDARYphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fetching
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$freqphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fullphp scan
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$freqphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp doesnphp'tphp hasphp dataphp forphp currentphp segment
-php php php php php php php php php php php php php php php php php$filterDataphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$filterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$filterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$filterDataphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp termphp positionsphp arrayphp.
-php php php php php php*php Resultphp arrayphp structurephp:php arrayphp(docIdphp php=php>php arrayphp(posphp1php,php posphp2php,php php.php.php.php)php,php php.php.php.php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$term
-php php php php php php*php php@paramphp integerphp php$shift
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp|nullphp php$docsFilter
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfo
-php php php php php php*php/
-php php php php publicphp functionphp termPositionsphp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$termphp,php php$shiftphp php=php php0php,php php$docsFilterphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$termInfophp php=php php$thisphp-php>getTermInfophp(php$termphp)php;
-
-php php php php php php php php ifphp php(php!php$termInfophp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp)php php{
-php php php php php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp php php&php&php php php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$frqFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.frqphp'php)php;
-php php php php php php php php php$frqFilephp-php>seekphp(php$termInfophp-php>freqPointerphp,SEEKphp_CURphp)php;
-
-php php php php php php php php php$docIdphp php=php php0php;
-php php php php php php php php php$freqsphp php=php arrayphp(php)php;
-
-
-php php php php php php php php ifphp php(php$docsFilterphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$docsFilterphp instanceofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Documentsphp filterphp mustphp bephp anphp instancephp ofphp Zendphp_Searchphp_Lucenephp_Indexphp_DocsFilterphp orphp nullphp.php'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(issetphp(php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp alreadyphp hasphp somephp dataphp forphp thephp currentphp segment
-
-php php php php php php php php php php php php php php php php php/php/php Makephp shortphp namephp forphp thephp filterphp php(whichphp doesnphp'tphp needphp additionalphp dereferencingphp)
-php php php php php php php php php php php php php php php php php$filterphp php=php php&php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php;
-
-php php php php php php php php php php php php php php php php php/php/php Checkphp ifphp filterphp isphp notphp empty
-php php php php php php php php php php php php php php php php ifphp php(countphp(php$filterphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_docCountphp/countphp(php$filterphp)php <php selfphp:php:FULLphp_SCANphp_VSphp_FETCHphp_BOUNDARYphp)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fetching
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$prxFilephp-php>seekphp(php$termInfophp-php>proxPointerphp,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php wephp havephp tophp readphp php.prxphp filephp tophp getphp rightphp positionphp forphp nextphp doc
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php evenphp filterphp doesnphp'tphp matchphp currentphp document
-php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Includephp intophp updatedphp filterphp andphp intophp resultphp onlyphp ifphp docphp isphp matchedphp byphp filter
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$positionsphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php/php/php php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-php-
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Performphp fullphp scan
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php$prxFilephp-php>seekphp(php$termInfophp-php>proxPointerphp,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php wephp havephp tophp readphp php.prxphp filephp tophp getphp rightphp positionphp forphp nextphp doc
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php evenphp filterphp doesnphp'tphp matchphp currentphp document
-php php php php php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php php php php php/php/php Includephp intophp updatedphp filterphp andphp intophp resultphp onlyphp ifphp docphp isphp matchedphp byphp filter
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$filterphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$updatedFilterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$positionsphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$updatedFilterDataphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Filterphp doesnphp'tphp hasphp dataphp forphp currentphp segment
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$filterDataphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php$prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php)php;
-php php php php php php php php php php php php php php php php php$prxFilephp-php>seekphp(php$termInfophp-php>proxPointerphp,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$filterDataphp[php$docIdphp]php php=php php1php;php php/php/php php1php isphp justphp aphp somephp constantphp valuephp,php sophp wephp donphp'tphp needphp additionalphp varphp dereferencephp here
-
-php php php php php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;
-php php php php php php php php php php php php php php php php php php php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$positionsphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$docsFilterphp-php>segmentFiltersphp[php$thisphp-php>php_namephp]php php=php php$filterDataphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$termInfophp-php>docFreqphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php ifphp php(php$docDeltaphp php%php php2php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php1php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php$freqsphp[php$docIdphp]php php=php php$frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$resultphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php$prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php)php;
-php php php php php php php php php php php php php$prxFilephp-php>seekphp(php$termInfophp-php>proxPointerphp,php SEEKphp_CURphp)php;
-php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;
-php php php php php php php php php php php php php php php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$resultphp[php$shiftphp php+php php$docIdphp]php php=php php$positionsphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Loadphp normalizatinphp factorsphp fromphp anphp indexphp file
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$fieldNum
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php privatephp functionphp php_loadNormphp(php$fieldNumphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_hasSingleNormFilephp)php php{
-php php php php php php php php php php php php php$normfFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.nrmphp'php)php;
-
-php php php php php php php php php php php php php$headerphp php php php php php php php php php php php php php php=php php$normfFilephp-php>readBytesphp(php3php)php;
-php php php php php php php php php php php php php$headerFormatVersionphp php=php php$normfFilephp-php>readBytephp(php)php;
-
-php php php php php php php php php php php php ifphp php(php$headerphp php!php=php php'NRMphp'php php php|php|php php php$headerFormatVersionphp php!php=php php(intphp)php0xFFphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp php Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp normsphp filephp formatphp.php'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php foreachphp php(php$thisphp-php>php_fieldsphp asphp php$fNumphp php=php>php php$fieldInfophp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$fieldInfophp-php>isIndexedphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_normsphp[php$fNumphp]php php=php php$normfFilephp-php>readBytesphp(php$thisphp-php>php_docCountphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$fFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.fphp'php php.php php$fieldNumphp)php;
-php php php php php php php php php php php php php$thisphp-php>php_normsphp[php$fieldNumphp]php php=php php$fFilephp-php>readBytesphp(php$thisphp-php>php_docCountphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp normalizationphp factorphp forphp specifiedphp documents
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$id
-php php php php php php*php php@paramphp stringphp php$fieldName
-php php php php php php*php php@returnphp float
-php php php php php php*php/
-php php php php publicphp functionphp normphp(php$idphp,php php$fieldNamephp)
-php php php php php{
-php php php php php php php php php$fieldNumphp php=php php$thisphp-php>getFieldNumphp(php$fieldNamephp)php;
-
-php php php php php php php php ifphp php(php php!php(php$thisphp-php>php_fieldsphp[php$fieldNumphp]php-php>isIndexedphp)php php)php php{
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_normsphp[php$fieldNumphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadNormphp(php$fieldNumphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp:php:decodeNormphp(php ordphp(php$thisphp-php>php_normsphp[php$fieldNumphp]php[php$idphp]php)php php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp normphp vectorphp,php encodedphp inphp aphp bytephp string
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$fieldName
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp normVectorphp(php$fieldNamephp)
-php php php php php{
-php php php php php php php php php$fieldNumphp php=php php$thisphp-php>getFieldNumphp(php$fieldNamephp)php;
-
-php php php php php php php php ifphp php(php$fieldNumphp php=php=php php-php1php php php|php|php php php!php(php$thisphp-php>php_fieldsphp[php$fieldNumphp]php-php>isIndexedphp)php)php php{
-php php php php php php php php php php php php php$similarityphp php=php Zendphp_Searchphp_Lucenephp_Searchphp_Similarityphp:php:getDefaultphp(php)php;
-
-php php php php php php php php php php php php returnphp strphp_repeatphp(chrphp(php$similarityphp-php>encodeNormphp(php php$similarityphp-php>lengthNormphp(php$fieldNamephp,php php0php)php php)php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_docCountphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php!issetphp(php$thisphp-php>php_normsphp[php$fieldNumphp]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadNormphp(php$fieldNumphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_normsphp[php$fieldNumphp]php;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp anyphp documentsphp havephp beenphp deletedphp fromphp thisphp indexphp segmentphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp hasDeletionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_deletedphp php!php=php=php nullphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp segmentphp hasphp singlephp normsphp filephp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp hasSingleNormFilephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_hasSingleNormFilephp php?php truephp php:php falsephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp truephp ifphp segmentphp isphp storedphp usingphp compoundphp segmentphp filephp.
-php php php php php php*
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isCompoundphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_isCompoundphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Deletesphp aphp documentphp fromphp thephp indexphp segmentphp.
-php php php php php php*php php$idphp isphp anphp internalphp documentphp id
-php php php php php php*
-php php php php php php*php php@paramphp integer
-php php php php php php*php/
-php php php php publicphp functionphp deletephp(php$idphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_deletedDirtyphp php=php truephp;
-
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_deletedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_deletedphp php=php bitsetphp_emptyphp(php$idphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php bitsetphp_inclphp(php$thisphp-php>php_deletedphp,php php$idphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_deletedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_deletedphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_deletedphp[php$idphp]php php=php php1php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Checksphp,php thatphp documentphp isphp deleted
-php php php php php php*
-php php php php php php*php php@paramphp integer
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp isDeletedphp(php$idphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_deletedphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php returnphp bitsetphp_inphp(php$thisphp-php>php_deletedphp,php php$idphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp issetphp(php$thisphp-php>php_deletedphp[php$idphp]php)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Detectphp latestphp deletephp generation
-php php php php php php*
-php php php php php php*php Isphp actualyphp usedphp fromphp writeChangesphp(php)php methodphp orphp fromphp thephp constructorphp ifphp itphp'sphp invokedphp from
-php php php php php php*php Indexphp writerphp.php Inphp bothphp casesphp indexphp writephp lockphp isphp alreadyphp obtainedphp,php sophp wephp shouldnphp'tphp care
-php php php php php php*php aboutphp it
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php privatephp functionphp php_detectLatestDelGenphp(php)
-php php php php php{
-php php php php php php php php php$delFileListphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_directoryphp-php>fileListphp(php)php asphp php$filephp)php php{
-php php php php php php php php php php php php ifphp php(php$filephp php=php=php php$thisphp-php>php_namephp php.php php'php.delphp'php)php php{
-php php php php php php php php php php php php php php php php php/php/php Matchesphp php<segmentphp_namephp>php.delphp filephp name
-php php php php php php php php php php php php php php php php php$delFileListphp[php]php php=php php0php;
-php php php php php php php php php php php php php}php elsephp ifphp php(pregphp_matchphp(php'php/php^php'php php.php php$thisphp-php>php_namephp php.php php'php_php(php[aphp-zAphp-Zphp0php-php9php]php+php)php\php.delphp$php/iphp'php,php php$filephp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php php php php php/php/php Matchesphp php<segmentphp_namephp>php_NNNphp.delphp filephp names
-php php php php php php php php php php php php php php php php php$delFileListphp[php]php php=php php(intphp)basephp_convertphp(php$matchesphp[php1php]php,php php3php6php,php php1php0php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(countphp(php$delFileListphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php/php/php Therephp isphp nophp deletionsphp filephp forphp currentphp segmentphp inphp thephp directory
-php php php php php php php php php php php php php/php/php Setphp deletionsphp filephp generationphp numberphp tophp php1
-php php php php php php php php php php php php returnphp php-php1php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Therephp arephp somephp deletionsphp filesphp forphp currentphp segmentphp inphp thephp directory
-php php php php php php php php php php php php php/php/php Setphp deletionsphp filephp generationphp numberphp tophp thephp highestphp nuber
-php php php php php php php php php php php php returnphp maxphp(php$delFileListphp)php;
-php php php php php php php php php}
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Writephp changesphp ifphp itphp'sphp necessaryphp.
-php php php php php php*
-php php php php php php*php Thisphp methodphp mustphp bephp invokedphp onlyphp fromphp thephp Writerphp php_updateSegmentsphp(php)php methodphp,
-php php php php php php*php sophp indexphp Writephp lockphp hasphp tophp bephp alreadyphp obtainedphp.
-php php php php php php*
-php php php php php php*php php@internal
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exceptions
-php php php php php php*php/
-php php php php publicphp functionphp writeChangesphp(php)
-php php php php php{
-php php php php php php php php php/php/php Getphp newphp generationphp number
-php php php php php php php php php$latestDelGenphp php=php php$thisphp-php>php_detectLatestDelGenphp(php)php;
-
-php php php php php php php php ifphp php(php!php$thisphp-php>php_deletedDirtyphp)php php{
-php php php php php php php php php php php php php/php/php Therephp wasphp nophp deletionsphp byphp currentphp process
-
-php php php php php php php php php php php php ifphp php(php$latestDelGenphp php=php=php php$thisphp-php>php_delGenphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Deletephp filephp hasnphp'tphp beenphp updatedphp byphp anyphp concurrentphp process
-php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php}php elsephp ifphp php(php$latestDelGenphp php>php php$thisphp-php>php_delGenphp)php php{
-php php php php php php php php php php php php php php php php php/php/php Deletephp filephp hasphp beenphp updatedphp byphp somephp concurrentphp process
-php php php php php php php php php php php php php php php php php/php/php Reloadphp deletionsphp file
-php php php php php php php php php php php php php php php php php$thisphp-php>php_delGenphp php php=php php$latestDelGenphp;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_deletedphp php=php php$thisphp-php>php_loadDelFilephp(php)php;
-
-php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Deletephp filephp processingphp workflowphp isphp corruptedphp forphp thephp segmentphp php\php'php'php php.php php$thisphp-php>php_namephp php.php php'php\php'php.php'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$latestDelGenphp php>php php$thisphp-php>php_delGenphp)php php{
-php php php php php php php php php php php php php/php/php Mergephp currentphp deletionsphp withphp latestphp deletionsphp file
-php php php php php php php php php php php php php$thisphp-php>php_delGenphp php=php php$latestDelGenphp;
-
-php php php php php php php php php php php php php$latestDeletephp php=php php$thisphp-php>php_loadDelFilephp(php)php;
-
-php php php php php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_deletedphp php=php bitsetphp_unionphp(php$thisphp-php>php_deletedphp,php php$latestDeletephp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_deletedphp php+php=php php$latestDeletephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(extensionphp_loadedphp(php'bitsetphp'php)php)php php{
-php php php php php php php php php php php php php$delBytesphp php=php php$thisphp-php>php_deletedphp;
-php php php php php php php php php php php php php$bitCountphp php=php countphp(bitsetphp_tophp_arrayphp(php$delBytesphp)php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$byteCountphp php=php floorphp(php$thisphp-php>php_docCountphp/php8php)php+php1php;
-php php php php php php php php php php php php php$delBytesphp php=php strphp_repeatphp(chrphp(php0php)php,php php$byteCountphp)php;
-php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$byteCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php$bytephp php=php php0php;
-php php php php php php php php php php php php php php php php forphp php(php$bitphp php=php php0php;php php$bitphp <php php8php;php php$bitphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_deletedphp[php$countphp*php8php php+php php$bitphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$bytephp php|php=php php(php1<php<php$bitphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$delBytesphp[php$countphp]php php=php chrphp(php$bytephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$bitCountphp php=php countphp(php$thisphp-php>php_deletedphp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_delGenphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php php/php/php Setphp deletephp filephp generationphp numberphp tophp php1
-php php php php php php php php php php php php php$thisphp-php>php_delGenphp php=php php1php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php/php/php Increasephp deletephp filephp generationphp numberphp byphp php1
-php php php php php php php php php php php php php$thisphp-php>php_delGenphp+php+php;
-php php php php php php php php php}
-
-php php php php php php php php php$delFilephp php=php php$thisphp-php>php_directoryphp-php>createFilephp(php$thisphp-php>php_namephp php.php php'php_php'php php.php basephp_convertphp(php$thisphp-php>php_delGenphp,php php1php0php,php php3php6php)php php.php php'php.delphp'php)php;
-php php php php php php php php php$delFilephp-php>writeIntphp(php$thisphp-php>php_docCountphp)php;
-php php php php php php php php php$delFilephp-php>writeIntphp(php$bitCountphp)php;
-php php php php php php php php php$delFilephp-php>writeBytesphp(php$delBytesphp)php;
-
-php php php php php php php php php$thisphp-php>php_deletedDirtyphp php=php falsephp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Termphp Dictionaryphp Filephp objectphp forphp streamphp likephp termsphp reading
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Storagephp_File
-php php php php php php*php/
-php php php php privatephp php$php_tisFilephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Actualphp offsetphp ofphp thephp php.tisphp filephp data
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_tisFileOffsetphp;
-
-php php php php php/php*php*
-php php php php php php*php Frequenciesphp Filephp objectphp forphp streamphp likephp termsphp reading
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Storagephp_File
-php php php php php php*php/
-php php php php privatephp php$php_frqFilephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Actualphp offsetphp ofphp thephp php.frqphp filephp data
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_frqFileOffsetphp;
-
-php php php php php/php*php*
-php php php php php php*php Positionsphp Filephp objectphp forphp streamphp likephp termsphp reading
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Storagephp_File
-php php php php php php*php/
-php php php php privatephp php$php_prxFilephp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Actualphp offsetphp ofphp thephp php.prxphp filephp inphp thephp compoundphp file
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_prxFileOffsetphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Actualphp numberphp ofphp termsphp inphp termphp stream
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_termCountphp php=php php0php;
-
-php php php php php/php*php*
-php php php php php php*php Overallphp numberphp ofphp termsphp inphp termphp stream
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_termNumphp php=php php0php;
-
-php php php php php/php*php*
-php php php php php php*php Segmentphp indexphp interval
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_indexIntervalphp;
-
-php php php php php/php*php*
-php php php php php php*php Segmentphp skipphp interval
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_skipIntervalphp;
-
-php php php php php/php*php*
-php php php php php php*php Lastphp TermInfophp inphp aphp termsphp stream
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfo
-php php php php php php*php/
-php php php php privatephp php$php_lastTermInfophp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Lastphp Termphp inphp aphp termsphp stream
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Searchphp_Lucenephp_Indexphp_Term
-php php php php php php*php/
-php php php php privatephp php$php_lastTermphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Mapphp ofphp thephp documentphp IDs
-php php php php php php*php Usedphp tophp getphp newphp docIDphp afterphp removingphp deletedphp documentsphp.
-php php php php php php*php Itphp'sphp notphp veryphp effectivephp fromphp memoryphp usagephp pointphp ofphp viewphp,
-php php php php php php*php butphp muchphp morephp fasterphp,php thenphp otherphp methods
-php php php php php php*
-php php php php php php*php php@varphp arrayphp|null
-php php php php php php*php/
-php php php php privatephp php$php_docMapphp php=php nullphp;
-
-php php php php php/php*php*
-php php php php php php*php Anphp arrayphp ofphp allphp termphp positionsphp inphp thephp documentsphp.
-php php php php php php*php Arrayphp structurephp:php arrayphp(php docIdphp php=php>php arrayphp(php posphp1php,php posphp2php,php php.php.php.php)php,php php.php.php.php)
-php php php php php php*
-php php php php php php*php Isphp setphp tophp nullphp ifphp termphp positionsphp loadingphp hasphp tophp bephp skipped
-php php php php php php*
-php php php php php php*php php@varphp arrayphp|null
-php php php php php php*php/
-php php php php privatephp php$php_lastTermPositionsphp;
-
-
-php php php php php/php*php*
-php php php php php php*php Termsphp scanphp mode
-php php php php php php*
-php php php php php php*php Valuesphp:
-php php php php php php*
-php php php php php php*php selfphp:php:SMphp_TERMSphp_ONLYphp php-php termsphp arephp scannedphp,php nophp additionalphp infophp isphp retrieved
-php php php php php php*php selfphp:php:SMphp_FULLphp_INFOphp php php-php termsphp arephp scannedphp,php frequencyphp andphp positionphp infophp isphp retrieved
-php php php php php php*php selfphp:php:SMphp_MERGEphp_INFOphp php-php termsphp arephp scannedphp,php frequencyphp andphp positionphp infophp isphp retrieved
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php documentphp numbersphp arephp compactedphp php(shiftedphp ifphp segmentphp hasphp deletedphp documentsphp)
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php privatephp php$php_termsScanModephp;
-
-php php php php php/php*php*php Scanphp modesphp php*php/
-php php php php constphp SMphp_TERMSphp_ONLYphp php=php php0php;php php php php php/php/php termsphp arephp scannedphp,php nophp additionalphp infophp isphp retrieved
-php php php php constphp SMphp_FULLphp_INFOphp php php=php php1php;php php php php php/php/php termsphp arephp scannedphp,php frequencyphp andphp positionphp infophp isphp retrieved
-php php php php constphp SMphp_MERGEphp_INFOphp php=php php2php;php php php php php/php/php termsphp arephp scannedphp,php frequencyphp andphp positionphp infophp isphp retrieved
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php/php/php documentphp numbersphp arephp compactedphp php(shiftedphp ifphp segmentphp containsphp deletedphp documentsphp)
-
-php php php php php/php*php*
-php php php php php php*php Resetphp termsphp stream
-php php php php php php*
-php php php php php php*php php$startIdphp php-php idphp forphp thephp fistphp document
-php php php php php php*php php$compactphp php-php removephp deletedphp documents
-php php php php php php*
-php php php php php php*php Returnsphp startphp documentphp idphp forphp thephp nextphp segment
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$startId
-php php php php php php*php php@paramphp integerphp php$mode
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp resetTermsStreamphp(php/php*php*php php$startIdphp php=php php0php,php php$modephp php=php selfphp:php:SMphp_TERMSphp_ONLYphp php*php/php)
-php php php php php{
-php php php php php php php php php/php*php*
-php php php php php php php php php php*php SegmentInfophp-php>resetTermsStreamphp(php)php methodphp actuallyphp takesphp twophp optionalphp parametersphp:
-php php php php php php php php php php*php php php php$startIdphp php(defaultphp valuephp isphp php0php)
-php php php php php php php php php php*php php php php$modephp php(defaultphp valuephp isphp selfphp:php:SMphp_TERMSphp_ONLYphp)
-php php php php php php php php php php*php/
-php php php php php php php php php$argListphp php=php funcphp_getphp_argsphp(php)php;
-php php php php php php php php ifphp php(countphp(php$argListphp)php php>php php2php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp numberphp ofphp argumentsphp'php)php;
-php php php php php php php php php}php elsephp ifphp php(countphp(php$argListphp)php php=php=php php2php)php php{
-php php php php php php php php php php php php php$startIdphp php=php php$argListphp[php0php]php;
-php php php php php php php php php php php php php$modephp php php php php=php php$argListphp[php1php]php;
-php php php php php php php php php}php elsephp ifphp php(countphp(php$argListphp)php php=php=php php1php)php php{
-php php php php php php php php php php php php php$startIdphp php=php php$argListphp[php0php]php;
-php php php php php php php php php php php php php$modephp php php php php=php selfphp:php:SMphp_TERMSphp_ONLYphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$startIdphp php=php php0php;
-php php php php php php php php php php php php php$modephp php php php php=php selfphp:php:SMphp_TERMSphp_ONLYphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_tisFilephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_tisFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.tisphp'php,php falsephp)php;
-php php php php php php php php php$thisphp-php>php_tisFileOffsetphp php=php php$thisphp-php>php_tisFilephp-php>tellphp(php)php;
-
-php php php php php php php php php$tiVersionphp php=php php$thisphp-php>php_tisFilephp-php>readIntphp(php)php;
-php php php php php php php php ifphp php(php$tiVersionphp php!php=php php(intphp)php0xFFFFFFFEphp php/php*php prephp-php2php.php1php formatphp php*php/php php php&php&
-php php php php php php php php php php php php php$tiVersionphp php!php=php php(intphp)php0xFFFFFFFDphp php/php*php php2php.php1php+php formatphp php php php php*php/php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp TermInfoFilephp filephp formatphp'php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_termCountphp php php php php php=
-php php php php php php php php php php php php php php php$thisphp-php>php_termNumphp php=php php$thisphp-php>php_tisFilephp-php>readLongphp(php)php;php php/php/php Readphp termsphp count
-php php php php php php php php php$thisphp-php>php_indexIntervalphp php=php php$thisphp-php>php_tisFilephp-php>readIntphp(php)php;php php php/php/php Readphp Indexphp interval
-php php php php php php php php php$thisphp-php>php_skipIntervalphp php php=php php$thisphp-php>php_tisFilephp-php>readIntphp(php)php;php php php/php/php Readphp skipphp interval
-php php php php php php php php ifphp php(php$tiVersionphp php=php=php php(intphp)php0xFFFFFFFDphp php/php*php php2php.php1php+php formatphp php*php/php)php php{
-php php php php php php php php php php php php php$maxSkipLevelsphp php=php php$thisphp-php>php_tisFilephp-php>readIntphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$thisphp-php>php_frqFilephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_prxFilephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_docMapphp php=php arrayphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php php php php php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php'php'php,php php-php1php)php;
-php php php php php php php php php$thisphp-php>php_lastTermInfophp php php php php php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp(php0php,php php0php,php php0php,php php0php)php;
-php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php nullphp;
-
-php php php php php php php php php$thisphp-php>php_termsScanModephp php=php php$modephp;
-
-php php php php php php php php switchphp php(php$modephp)php php{
-php php php php php php php php php php php php casephp selfphp:php:SMphp_TERMSphp_ONLYphp:
-php php php php php php php php php php php php php php php php php/php/php Dophp nothing
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php casephp selfphp:php:SMphp_FULLphp_INFOphp:
-php php php php php php php php php php php php php php php php php/php/php breakphp intentionallyphp omitted
-php php php php php php php php php php php php casephp selfphp:php:SMphp_MERGEphp_INFOphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.frqphp'php,php falsephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_frqFileOffsetphp php=php php$thisphp-php>php_frqFilephp-php>tellphp(php)php;
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php,php falsephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prxFileOffsetphp php=php php$thisphp-php>php_prxFilephp-php>tellphp(php)php;
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$thisphp-php>php_docCountphp;php php$countphp+php+php)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(php!php$thisphp-php>isDeletedphp(php$countphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_docMapphp[php$countphp]php php=php php$startIdphp php+php php(php(php$modephp php=php=php selfphp:php:SMphp_MERGEphp_INFOphp)php php?php countphp(php$thisphp-php>php_docMapphp)php php:php php$countphp)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Searchphp/Lucenephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Searchphp_Lucenephp_Exceptionphp(php'Wrongphp termsphp scaningphp modephp specifiedphp.php'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Calculatephp nextphp segmentphp startphp idphp php(sincephp php$thisphp-php>php_docMapphp structurephp mayphp bephp cleanedphp byphp php$thisphp-php>nextTermphp(php)php callphp)
-php php php php php php php php php$nextSegmentStartIdphp php=php php$startIdphp php+php php(php(php$modephp php=php=php selfphp:php:SMphp_MERGEphp_INFOphp)php php?php countphp(php$thisphp-php>php_docMapphp)php php:php php$thisphp-php>php_docCountphp)php;
-php php php php php php php php php$thisphp-php>nextTermphp(php)php;
-
-php php php php php php php php returnphp php$nextSegmentStartIdphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Skipphp termsphp streamphp upphp tophp thephp specifiedphp termphp preffixphp.
-php php php php php php*
-php php php php php php*php Prefixphp containsphp fullyphp specifiedphp fieldphp infophp andphp portionphp ofphp searchedphp term
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$prefix
-php php php php php php*php php@throwsphp Zendphp_Searchphp_Lucenephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp skipTophp(Zendphp_Searchphp_Lucenephp_Indexphp_Termphp php$prefixphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_termDictionaryphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_loadDictionaryIndexphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$searchFieldphp php=php php$thisphp-php>getFieldNumphp(php$prefixphp-php>fieldphp)php;
-
-php php php php php php php php ifphp php(php$searchFieldphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php php/php*php*
-php php php php php php php php php php php php php php*php Fieldphp isphp notphp presentedphp inphp thisphp segment
-php php php php php php php php php php php php php php*php Gophp tophp thephp endphp ofphp dictionary
-php php php php php php php php php php php php php php*php/
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-
-php php php php php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermInfophp php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php nullphp;
-
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$searchDicFieldphp php=php php$thisphp-php>php_getFieldPositionphp(php$searchFieldphp)php;
-
-php php php php php php php php php/php/php searchphp forphp appropriatephp valuephp inphp dictionary
-php php php php php php php php php$lowIndexphp php=php php0php;
-php php php php php php php php php$highIndexphp php=php countphp(php$thisphp-php>php_termDictionaryphp)php-php1php;
-php php php php php php php php whilephp php(php$highIndexphp php>php=php php$lowIndexphp)php php{
-php php php php php php php php php php php php php/php/php php$midphp php=php php(php$highIndexphp php-php php$lowIndexphp)php/php2php;
-php php php php php php php php php php php php php$midphp php=php php(php$highIndexphp php+php php$lowIndexphp)php php>php>php php1php;
-php php php php php php php php php php php php php$midTermphp php=php php$thisphp-php>php_termDictionaryphp[php$midphp]php;
-
-php php php php php php php php php php php php php$fieldNumphp php=php php$thisphp-php>php_getFieldPositionphp(php$midTermphp[php0php]php php/php*php fieldphp php*php/php)php;
-php php php php php php php php php php php php php$deltaphp php=php php$searchDicFieldphp php-php php$fieldNumphp;
-php php php php php php php php php php php php ifphp php(php$deltaphp php=php=php php0php)php php{
-php php php php php php php php php php php php php php php php php$deltaphp php=php strcmpphp(php$prefixphp-php>textphp,php php$midTermphp[php1php]php php/php*php textphp php*php/php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp php(php$deltaphp <php php0php)php php{
-php php php php php php php php php php php php php php php php php$highIndexphp php=php php$midphp-php1php;
-php php php php php php php php php php php php php}php elseifphp php(php$deltaphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php$lowIndexphp php php=php php$midphp+php1php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php/php/php Wephp havephp reachedphp termphp wephp arephp lookingphp for
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(php$highIndexphp php=php=php php-php1php)php php{
-php php php php php php php php php php php php php/php/php Termphp isphp outphp ofphp thephp dictionaryphp range
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-
-php php php php php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermInfophp php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php nullphp;
-
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php$prevPositionphp php=php php$highIndexphp;
-php php php php php php php php php$prevTermphp php=php php$thisphp-php>php_termDictionaryphp[php$prevPositionphp]php;
-php php php php php php php php php$prevTermInfophp php=php php$thisphp-php>php_termDictionaryInfosphp[php$prevPositionphp]php;
-
-php php php php php php php php ifphp php(php$thisphp-php>php_tisFilephp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php/php/php Thephp endphp ofphp termsphp streamphp isphp reachedphp andphp termsphp dictionaryphp filephp isphp closed
-php php php php php php php php php php php php php/php/php Performphp miniphp-resetphp operation
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.tisphp'php,php falsephp)php;
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_FULLphp_INFOphp php php|php|php php php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_MERGEphp_INFOphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.frqphp'php,php falsephp)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php php$thisphp-php>openCompoundFilephp(php'php.prxphp'php,php falsephp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_tisFilephp-php>seekphp(php$thisphp-php>php_tisFileOffsetphp php+php php$prevTermInfophp[php4php]php,php SEEKphp_SETphp)php;
-
-php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$prevTermphp[php1php]php php/php*php textphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php(php$prevTermphp[php0php]php php=php=php php-php1php)php php?php php'php'php php:php php$thisphp-php>php_fieldsphp[php$prevTermphp[php0php]php php/php*php fieldphp php*php/php]php-php>namephp)php;
-php php php php php php php php php$thisphp-php>php_lastTermInfophp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp(php$prevTermInfophp[php0php]php php/php*php docFreqphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$prevTermInfophp[php1php]php php/php*php freqPointerphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$prevTermInfophp[php2php]php php/php*php proxPointerphp php*php/php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$prevTermInfophp[php3php]php php/php*php skipOffsetphp php*php/php)php;
-php php php php php php php php php$thisphp-php>php_termCountphp php php=php php php$thisphp-php>php_termNumphp php-php php$prevPositionphp*php$thisphp-php>php_indexIntervalphp;
-
-php php php php php php php php ifphp php(php$highIndexphp php=php=php php0php)php php{
-php php php php php php php php php php php php php/php/php skipphp startphp entry
-php php php php php php php php php php php php php$thisphp-php>nextTermphp(php)php;
-php php php php php php php php php}php elsephp ifphp php(php$prefixphp-php>fieldphp php=php=php php$thisphp-php>php_lastTermphp-php>fieldphp php php&php&php php php$prefixphp-php>textphp php php=php=php php$thisphp-php>php_lastTermphp-php>textphp)php php{
-php php php php php php php php php php php php php/php/php Wephp gotphp exactphp matchphp inphp thephp dictionaryphp index
-
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_FULLphp_INFOphp php php|php|php php php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_MERGEphp_INFOphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_frqFilephp-php>seekphp(php$thisphp-php>php_lastTermInfophp-php>freqPointerphp php+php php$thisphp-php>php_frqFileOffsetphp,php SEEKphp_SETphp)php;
-php php php php php php php php php php php php php php php php php$freqsphp php=php arrayphp(php)php;php php php php$docIdphp php=php php0php;
-php php php php php php php php php php php php php php php php forphp(php php$countphp php=php php0php;php php$countphp <php php$thisphp-php>php_lastTermInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$thisphp-php>php_frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php php$docIdphp php]php php=php php1php;
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$freqsphp[php php$docIdphp php]php php=php php$thisphp-php>php_frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php$thisphp-php>php_prxFilephp-php>seekphp(php$thisphp-php>php_lastTermInfophp-php>proxPointerphp php+php php$thisphp-php>php_prxFileOffsetphp,php SEEKphp_SETphp)php;
-php php php php php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$thisphp-php>php_prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_docMapphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp[php$thisphp-php>php_docMapphp[php$docIdphp]php]php php=php php$positionsphp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-
-php php php php php php php php php/php/php Searchphp termphp matchingphp specifiedphp prefix
-php php php php php php php php whilephp php(php$thisphp-php>php_lastTermphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php strcmpphp(php$thisphp-php>php_lastTermphp-php>fieldphp,php php$prefixphp-php>fieldphp)php php>php php0php php php|php|
-php php php php php php php php php php php php php php php php php php(php$prefixphp-php>fieldphp php=php=php php$thisphp-php>php_lastTermphp-php>fieldphp php php&php&php php strcmpphp(php$thisphp-php>php_lastTermphp-php>textphp,php php$prefixphp-php>textphp)php php>php=php php0php)php php)php php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Currentphp termphp matchesphp orphp greatephp thanphp thephp pattern
-php php php php php php php php php php php php php php php php php php php php returnphp;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>nextTermphp(php)php;
-php php php php php php php php php}
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Scansphp termsphp dictionaryphp andphp returnsphp nextphp term
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp|null
-php php php php php php*php/
-php php php php publicphp functionphp nextTermphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_tisFilephp php=php=php=php nullphp php php|php|php php php$thisphp-php>php_termCountphp php=php=php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermInfophp php php php php php php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_docMapphp php php php php php php php php php php php php=php nullphp;
-
-php php php php php php php php php php php php php/php/php mayphp bephp necessaryphp forphp php"emptyphp"php segment
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-
-php php php php php php php php php php php php returnphp nullphp;
-php php php php php php php php php}
-
-php php php php php php php php php$termPrefixLengthphp php=php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php$termSuffixphp php php php php php php php=php php$thisphp-php>php_tisFilephp-php>readStringphp(php)php;
-php php php php php php php php php$termFieldNumphp php php php php php=php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php$termValuephp php php php php php php php php=php Zendphp_Searchphp_Lucenephp_Indexphp_Termphp:php:getPrefixphp(php$thisphp-php>php_lastTermphp-php>textphp,php php$termPrefixLengthphp)php php.php php$termSuffixphp;
-
-php php php php php php php php php$thisphp-php>php_lastTermphp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp(php$termValuephp,php php$thisphp-php>php_fieldsphp[php$termFieldNumphp]php-php>namephp)php;
-
-php php php php php php php php php$docFreqphp php php php php php=php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php$freqPointerphp php=php php$thisphp-php>php_lastTermInfophp-php>freqPointerphp php+php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php$proxPointerphp php=php php$thisphp-php>php_lastTermInfophp-php>proxPointerphp php+php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php ifphp php(php$docFreqphp php>php=php php$thisphp-php>php_skipIntervalphp)php php{
-php php php php php php php php php php php php php$skipOffsetphp php=php php$thisphp-php>php_tisFilephp-php>readVIntphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$skipOffsetphp php=php php0php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_lastTermInfophp php=php newphp Zendphp_Searchphp_Lucenephp_Indexphp_TermInfophp(php$docFreqphp,php php$freqPointerphp,php php$proxPointerphp,php php$skipOffsetphp)php;
-
-
-php php php php php php php php ifphp php(php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_FULLphp_INFOphp php php|php|php php php$thisphp-php>php_termsScanModephp php=php=php selfphp:php:SMphp_MERGEphp_INFOphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp-php>seekphp(php$thisphp-php>php_lastTermInfophp-php>freqPointerphp php+php php$thisphp-php>php_frqFileOffsetphp,php SEEKphp_SETphp)php;
-php php php php php php php php php php php php php$freqsphp php=php arrayphp(php)php;php php php php$docIdphp php=php php0php;
-php php php php php php php php php php php php forphp(php php$countphp php=php php0php;php php$countphp <php php$thisphp-php>php_lastTermInfophp-php>docFreqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php$docDeltaphp php=php php$thisphp-php>php_frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php ifphp(php php$docDeltaphp php%php php2php php=php=php php1php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php(php$docDeltaphp-php1php)php/php2php;
-php php php php php php php php php php php php php php php php php php php php php$freqsphp[php php$docIdphp php]php php=php php1php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$docIdphp php+php=php php$docDeltaphp/php2php;
-php php php php php php php php php php php php php php php php php php php php php$freqsphp[php php$docIdphp php]php php=php php$thisphp-php>php_frqFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp-php>seekphp(php$thisphp-php>php_lastTermInfophp-php>proxPointerphp php+php php$thisphp-php>php_prxFileOffsetphp,php SEEKphp_SETphp)php;
-php php php php php php php php php php php php foreachphp php(php$freqsphp asphp php$docIdphp php=php>php php$freqphp)php php{
-php php php php php php php php php php php php php php php php php$termPositionphp php=php php0php;php php php$positionsphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php php php php php forphp php(php$countphp php=php php0php;php php$countphp <php php$freqphp;php php$countphp+php+php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$termPositionphp php+php=php php$thisphp-php>php_prxFilephp-php>readVIntphp(php)php;
-php php php php php php php php php php php php php php php php php php php php php$positionsphp[php]php php=php php$termPositionphp;
-php php php php php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_docMapphp[php$docIdphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_lastTermPositionsphp[php$thisphp-php>php_docMapphp[php$docIdphp]php]php php=php php$positionsphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_termCountphp-php-php;
-php php php php php php php php ifphp php(php$thisphp-php>php_termCountphp php=php=php php0php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_lastTermphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Closephp termsphp stream
-php php php php php php*
-php php php php php php*php Shouldphp bephp usedphp forphp resourcesphp cleanphp upphp ifphp streamphp isphp notphp readphp upphp tophp thephp end
-php php php php php php*php/
-php php php php publicphp functionphp closeTermsStreamphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tisFilephp php=php nullphp;
-php php php php php php php php php$thisphp-php>php_frqFilephp php=php nullphp;
-php php php php php php php php php$thisphp-php>php_prxFilephp php=php nullphp;
-
-php php php php php php php php php$thisphp-php>php_lastTermphp php php php php php php php php php php=php nullphp;
-php php php php php php php php php$thisphp-php>php_lastTermInfophp php php php php php php=php nullphp;
-php php php php php php php php php$thisphp-php>php_lastTermPositionsphp php=php nullphp;
-
-php php php php php php php php php$thisphp-php>php_docMapphp php php php php php php php php php php php php=php nullphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp termphp inphp currentphp position
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Searchphp_Lucenephp_Indexphp_Termphp|null
-php php php php php php*php/
-php php php php publicphp functionphp currentTermphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lastTermphp;
-php php php php php}
-
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp anphp arrayphp ofphp allphp termphp positionsphp inphp thephp documentsphp.
-php php php php php php*php Returnphp arrayphp structurephp:php arrayphp(php docIdphp php=php>php arrayphp(php posphp1php,php posphp2php,php php.php.php.php)php,php php.php.php.php)
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp currentTermPositionsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_lastTermPositionsphp;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Index
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: SegmentInfo.php 22987 2010-09-21 10:39:53Z alexander $
+ */
+
+/** Zend_Search_Lucene_Index_TermsStream_Interface */
+require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';
+
+
+/** Zend_Search_Lucene_Search_Similarity */
+require_once 'Zend/Search/Lucene/Search/Similarity.php';
+
+/** Zend_Search_Lucene_Index_FieldInfo */
+require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
+
+/** Zend_Search_Lucene_Index_Term */
+require_once 'Zend/Search/Lucene/Index/Term.php';
+
+/** Zend_Search_Lucene_Index_TermInfo */
+require_once 'Zend/Search/Lucene/Index/TermInfo.php';
+
+/**
+ * @category   Zend
+ * @package    Zend_Search_Lucene
+ * @subpackage Index
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_TermsStream_Interface
+{
+    /**
+     * "Full scan vs fetch" boundary.
+     *
+     * If filter selectivity is less than this value, then full scan is performed
+     * (since term entries fetching has some additional overhead).
+     */
+    const FULL_SCAN_VS_FETCH_BOUNDARY = 5;
+
+    /**
+     * Number of docs in a segment
+     *
+     * @var integer
+     */
+    private $_docCount;
+
+    /**
+     * Segment name
+     *
+     * @var string
+     */
+    private $_name;
+
+    /**
+     * Term Dictionary Index
+     *
+     * Array of arrays (Zend_Search_Lucene_Index_Term objects are represented as arrays because
+     * of performance considerations)
+     * [0] -> $termValue
+     * [1] -> $termFieldNum
+     *
+     * Corresponding Zend_Search_Lucene_Index_TermInfo object stored in the $_termDictionaryInfos
+     *
+     * @var array
+     */
+    private $_termDictionary;
+
+    /**
+     * Term Dictionary Index TermInfos
+     *
+     * Array of arrays (Zend_Search_Lucene_Index_TermInfo objects are represented as arrays because
+     * of performance considerations)
+     * [0] -> $docFreq
+     * [1] -> $freqPointer
+     * [2] -> $proxPointer
+     * [3] -> $skipOffset
+     * [4] -> $indexPointer
+     *
+     * @var array
+     */
+    private $_termDictionaryInfos;
+
+    /**
+     * Segment fields. Array of Zend_Search_Lucene_Index_FieldInfo objects for this segment
+     *
+     * @var array
+     */
+    private $_fields;
+
+    /**
+     * Field positions in a dictionary.
+     * (Term dictionary contains filelds ordered by names)
+     *
+     * @var array
+     */
+    private $_fieldsDicPositions;
+
+
+    /**
+     * Associative array where the key is the file name and the value is data offset
+     * in a compound segment file (.csf).
+     *
+     * @var array
+     */
+    private $_segFiles;
+
+    /**
+     * Associative array where the key is the file name and the value is file size (.csf).
+     *
+     * @var array
+     */
+    private $_segFileSizes;
+
+    /**
+     * Delete file generation number
+     *
+     * -2 means autodetect latest delete generation
+     * -1 means 'there is no delete file'
+     *  0 means pre-2.1 format delete file
+     *  X specifies used delete file
+     *
+     * @var integer
+     */
+    private $_delGen;
+
+    /**
+     * Segment has single norms file
+     *
+     * If true then one .nrm file is used for all fields
+     * Otherwise .fN files are used
+     *
+     * @var boolean
+     */
+    private $_hasSingleNormFile;
+
+    /**
+     * Use compound segment file (*.cfs) to collect all other segment files
+     * (excluding .del files)
+     *
+     * @var boolean
+     */
+    private $_isCompound;
+
+
+    /**
+     * File system adapter.
+     *
+     * @var Zend_Search_Lucene_Storage_Directory_Filesystem
+     */
+    private $_directory;
+
+    /**
+     * Normalization factors.
+     * An array fieldName => normVector
+     * normVector is a binary string.
+     * Each byte corresponds to an indexed document in a segment and
+     * encodes normalization factor (float value, encoded by
+     * Zend_Search_Lucene_Search_Similarity::encodeNorm())
+     *
+     * @var array
+     */
+    private $_norms = array();
+
+    /**
+     * List of deleted documents.
+     * bitset if bitset extension is loaded or array otherwise.
+     *
+     * @var mixed
+     */
+    private $_deleted = null;
+
+    /**
+     * $this->_deleted update flag
+     *
+     * @var boolean
+     */
+    private $_deletedDirty = false;
+
+    /**
+     * True if segment uses shared doc store
+     *
+     * @var boolean
+     */
+    private $_usesSharedDocStore;
+
+    /*
+     * Shared doc store options.
+     * It's an assotiative array with the following items:
+     * - 'offset'     => $docStoreOffset           The starting document in the shared doc store files where this segment's documents begin
+     * - 'segment'    => $docStoreSegment          The name of the segment that has the shared doc store files.
+     * - 'isCompound' => $docStoreIsCompoundFile   True, if compound file format is used for the shared doc store files (.cfx file).
+     */
+    private $_sharedDocStoreOptions;
+
+
+    /**
+     * Zend_Search_Lucene_Index_SegmentInfo constructor
+     *
+     * @param Zend_Search_Lucene_Storage_Directory $directory
+     * @param string     $name
+     * @param integer    $docCount
+     * @param integer    $delGen
+     * @param array|null $docStoreOptions
+     * @param boolean    $hasSingleNormFile
+     * @param boolean    $isCompound
+     */
+    public function __construct(Zend_Search_Lucene_Storage_Directory $directory, $name, $docCount, $delGen = 0, $docStoreOptions = null, $hasSingleNormFile = false, $isCompound = null)
+    {
+        $this->_directory = $directory;
+        $this->_name      = $name;
+        $this->_docCount  = $docCount;
+
+        if ($docStoreOptions !== null) {
+            $this->_usesSharedDocStore    = true;
+            $this->_sharedDocStoreOptions = $docStoreOptions;
+
+            if ($docStoreOptions['isCompound']) {
+                $cfxFile       = $this->_directory->getFileObject($docStoreOptions['segment'] . '.cfx');
+                $cfxFilesCount = $cfxFile->readVInt();
+
+                $cfxFiles     = array();
+                $cfxFileSizes = array();
+
+                for ($count = 0; $count < $cfxFilesCount; $count++) {
+                    $dataOffset = $cfxFile->readLong();
+                    if ($count != 0) {
+                        $cfxFileSizes[$fileName] = $dataOffset - end($cfxFiles);
+                    }
+                    $fileName            = $cfxFile->readString();
+                    $cfxFiles[$fileName] = $dataOffset;
+                }
+                if ($count != 0) {
+                    $cfxFileSizes[$fileName] = $this->_directory->fileLength($docStoreOptions['segment'] . '.cfx') - $dataOffset;
+                }
+
+                $this->_sharedDocStoreOptions['files']     = $cfxFiles;
+                $this->_sharedDocStoreOptions['fileSizes'] = $cfxFileSizes;
+            }
+        }
+
+        $this->_hasSingleNormFile = $hasSingleNormFile;
+        $this->_delGen            = $delGen;
+        $this->_termDictionary    = null;
+
+
+        if ($isCompound !== null) {
+            $this->_isCompound    = $isCompound;
+        } else {
+            // It's a pre-2.1 segment or isCompound is set to 'unknown'
+            // Detect if segment uses compound file
+            require_once 'Zend/Search/Lucene/Exception.php';
+            try {
+                // Try to open compound file
+                $this->_directory->getFileObject($name . '.cfs');
+
+                // Compound file is found
+                $this->_isCompound = true;
+            } catch (Zend_Search_Lucene_Exception $e) {
+                if (strpos($e->getMessage(), 'is not readable') !== false) {
+                    // Compound file is not found or is not readable
+                    $this->_isCompound = false;
+                } else {
+                    throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
+                }
+            }
+        }
+
+        $this->_segFiles = array();
+        if ($this->_isCompound) {
+            $cfsFile = $this->_directory->getFileObject($name . '.cfs');
+            $segFilesCount = $cfsFile->readVInt();
+
+            for ($count = 0; $count < $segFilesCount; $count++) {
+                $dataOffset = $cfsFile->readLong();
+                if ($count != 0) {
+                    $this->_segFileSizes[$fileName] = $dataOffset - end($this->_segFiles);
+                }
+                $fileName = $cfsFile->readString();
+                $this->_segFiles[$fileName] = $dataOffset;
+            }
+            if ($count != 0) {
+                $this->_segFileSizes[$fileName] = $this->_directory->fileLength($name . '.cfs') - $dataOffset;
+            }
+        }
+
+        $fnmFile = $this->openCompoundFile('.fnm');
+        $fieldsCount = $fnmFile->readVInt();
+        $fieldNames = array();
+        $fieldNums  = array();
+        $this->_fields = array();
+
+        for ($count=0; $count < $fieldsCount; $count++) {
+            $fieldName = $fnmFile->readString();
+            $fieldBits = $fnmFile->readByte();
+            $this->_fields[$count] = new Zend_Search_Lucene_Index_FieldInfo($fieldName,
+                                                                            $fieldBits & 0x01 /* field is indexed */,
+                                                                            $count,
+                                                                            $fieldBits & 0x02 /* termvectors are stored */,
+                                                                            $fieldBits & 0x10 /* norms are omitted */,
+                                                                            $fieldBits & 0x20 /* payloads are stored */);
+            if ($fieldBits & 0x10) {
+                // norms are omitted for the indexed field
+                $this->_norms[$count] = str_repeat(chr(Zend_Search_Lucene_Search_Similarity::encodeNorm(1.0)), $docCount);
+            }
+
+            $fieldNums[$count]  = $count;
+            $fieldNames[$count] = $fieldName;
+        }
+        array_multisort($fieldNames, SORT_ASC, SORT_REGULAR, $fieldNums);
+        $this->_fieldsDicPositions = array_flip($fieldNums);
+
+        if ($this->_delGen == -2) {
+            // SegmentInfo constructor is invoked from index writer
+            // Autodetect current delete file generation number
+            $this->_delGen = $this->_detectLatestDelGen();
+        }
+
+        // Load deletions
+        $this->_deleted = $this->_loadDelFile();
+    }
+
+    /**
+     * Load detetions file
+     *
+     * Returns bitset or an array depending on bitset extension availability
+     *
+     * @return mixed
+     * @throws Zend_Search_Lucene_Exception
+     */
+    private function _loadDelFile()
+    {
+        if ($this->_delGen == -1) {
+            // There is no delete file for this segment
+            return null;
+        } else if ($this->_delGen == 0) {
+            // It's a segment with pre-2.1 format delete file
+            // Try to load deletions file
+            return $this->_loadPre21DelFile();
+        } else {
+            // It's 2.1+ format deleteions file
+            return $this->_load21DelFile();
+        }
+    }
+
+    /**
+     * Load pre-2.1 detetions file
+     *
+     * Returns bitset or an array depending on bitset extension availability
+     *
+     * @return mixed
+     * @throws Zend_Search_Lucene_Exception
+     */
+    private function _loadPre21DelFile()
+    {
+        require_once 'Zend/Search/Lucene/Exception.php';
+        try {
+            // '.del' files always stored in a separate file
+            // Segment compound is not used
+            $delFile = $this->_directory->getFileObject($this->_name . '.del');
+
+            $byteCount = $delFile->readInt();
+            $byteCount = ceil($byteCount/8);
+            $bitCount  = $delFile->readInt();
+
+            if ($bitCount == 0) {
+                $delBytes = '';
+            } else {
+                $delBytes = $delFile->readBytes($byteCount);
+            }
+
+            if (extension_loaded('bitset')) {
+                return $delBytes;
+            } else {
+                $deletions = array();
+                for ($count = 0; $count < $byteCount; $count++) {
+                    $byte = ord($delBytes[$count]);
+                    for ($bit = 0; $bit < 8; $bit++) {
+                        if ($byte & (1<<$bit)) {
+                            $deletions[$count*8 + $bit] = 1;
+                        }
+                    }
+                }
+
+                return $deletions;
+            }
+        } catch(Zend_Search_Lucene_Exception $e) {
+            if (strpos($e->getMessage(), 'is not readable') === false) {
+                throw new Zend_Search_Lucene_Exception($e->getMessage(), $e->getCode(), $e);
+            }
+            // There is no deletion file
+            $this->_delGen = -1;
+
+            return null;
+        }
+    }
+
+    /**
+     * Load 2.1+ format detetions file
+     *
+     * Returns bitset or an array depending on bitset extension availability
+     *
+     * @return mixed
+     */
+    private function _load21DelFile()
+    {
+        $delFile = $this->_directory->getFileObject($this->_name . '_' . base_convert($this->_delGen, 10, 36) . '.del');
+
+        $format = $delFile->readInt();
+
+        if ($format == (int)0xFFFFFFFF) {
+            if (extension_loaded('bitset')) {
+                $deletions = bitset_empty();
+            } else {
+                $deletions = array();
+            }
+
+            $byteCount = $delFile->readInt();
+            $bitCount  = $delFile->readInt();
+
+            $delFileSize = $this->_directory->fileLength($this->_name . '_' . base_convert($this->_delGen, 10, 36) . '.del');
+            $byteNum = 0;
+
+            do {
+                $dgap = $delFile->readVInt();
+                $nonZeroByte = $delFile->readByte();
+
+                $byteNum += $dgap;
+
+
+                if (extension_loaded('bitset')) {
+                    for ($bit = 0; $bit < 8; $bit++) {
+                        if ($nonZeroByte & (1<<$bit)) {
+                            bitset_incl($deletions, $byteNum*8 + $bit);
+                        }
+                    }
+                    return $deletions;
+                } else {
+                    for ($bit = 0; $bit < 8; $bit++) {
+                        if ($nonZeroByte & (1<<$bit)) {
+                            $deletions[$byteNum*8 + $bit] = 1;
+                        }
+                    }
+                    return (count($deletions) > 0) ? $deletions : null;
+                }
+
+            } while ($delFile->tell() < $delFileSize);
+        } else {
+            // $format is actually byte count
+            $byteCount = ceil($format/8);
+            $bitCount  = $delFile->readInt();
+
+            if ($bitCount == 0) {
+                $delBytes = '';
+            } else {
+                $delBytes = $delFile->readBytes($byteCount);
+            }
+
+            if (extension_loaded('bitset')) {
+                return $delBytes;
+            } else {
+                $deletions = array();
+                for ($count = 0; $count < $byteCount; $count++) {
+                    $byte = ord($delBytes[$count]);
+                    for ($bit = 0; $bit < 8; $bit++) {
+                        if ($byte & (1<<$bit)) {
+                            $deletions[$count*8 + $bit] = 1;
+                        }
+                    }
+                }
+
+                return (count($deletions) > 0) ? $deletions : null;
+            }
+        }
+    }
+
+    /**
+     * Opens index file stoted within compound index file
+     *
+     * @param string $extension
+     * @param boolean $shareHandler
+     * @throws Zend_Search_Lucene_Exception
+     * @return Zend_Search_Lucene_Storage_File
+     */
+    public function openCompoundFile($extension, $shareHandler = true)
+    {
+        if (($extension == '.fdx'  || $extension == '.fdt')  &&  $this->_usesSharedDocStore) {
+            $fdxFName = $this->_sharedDocStoreOptions['segment'] . '.fdx';
+            $fdtFName = $this->_sharedDocStoreOptions['segment'] . '.fdt';
+
+            if (!$this->_sharedDocStoreOptions['isCompound']) {
+                $fdxFile = $this->_directory->getFileObject($fdxFName, $shareHandler);
+                $fdxFile->seek($this->_sharedDocStoreOptions['offset']*8, SEEK_CUR);
+
+                if ($extension == '.fdx') {
+                    // '.fdx' file is requested
+                    return $fdxFile;
+                } else {
+                    // '.fdt' file is requested
+                    $fdtStartOffset = $fdxFile->readLong();
+
+                    $fdtFile = $this->_directory->getFileObject($fdtFName, $shareHandler);
+                    $fdtFile->seek($fdtStartOffset, SEEK_CUR);
+
+                    return $fdtFile;
+                }
+            }
+
+            if( !isset($this->_sharedDocStoreOptions['files'][$fdxFName]) ) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Shared doc storage segment compound file doesn\'t contain '
+                                       . $fdxFName . ' file.' );
+            }
+            if( !isset($this->_sharedDocStoreOptions['files'][$fdtFName]) ) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Shared doc storage segment compound file doesn\'t contain '
+                                       . $fdtFName . ' file.' );
+            }
+
+            // Open shared docstore segment file
+            $cfxFile = $this->_directory->getFileObject($this->_sharedDocStoreOptions['segment'] . '.cfx', $shareHandler);
+            // Seek to the start of '.fdx' file within compound file
+            $cfxFile->seek($this->_sharedDocStoreOptions['files'][$fdxFName]);
+            // Seek to the start of current segment documents section
+            $cfxFile->seek($this->_sharedDocStoreOptions['offset']*8, SEEK_CUR);
+
+            if ($extension == '.fdx') {
+                // '.fdx' file is requested
+                return $cfxFile;
+            } else {
+                // '.fdt' file is requested
+                $fdtStartOffset = $cfxFile->readLong();
+
+                // Seek to the start of '.fdt' file within compound file
+                $cfxFile->seek($this->_sharedDocStoreOptions['files'][$fdtFName]);
+                // Seek to the start of current segment documents section
+                $cfxFile->seek($fdtStartOffset, SEEK_CUR);
+
+                return $fdtFile;
+            }
+        }
+
+        $filename = $this->_name . $extension;
+
+        if (!$this->_isCompound) {
+            return $this->_directory->getFileObject($filename, $shareHandler);
+        }
+
+        if( !isset($this->_segFiles[$filename]) ) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Segment compound file doesn\'t contain '
+                                       . $filename . ' file.' );
+        }
+
+        $file = $this->_directory->getFileObject($this->_name . '.cfs', $shareHandler);
+        $file->seek($this->_segFiles[$filename]);
+        return $file;
+    }
+
+    /**
+     * Get compound file length
+     *
+     * @param string $extension
+     * @return integer
+     */
+    public function compoundFileLength($extension)
+    {
+        if (($extension == '.fdx'  || $extension == '.fdt')  &&  $this->_usesSharedDocStore) {
+            $filename = $this->_sharedDocStoreOptions['segment'] . $extension;
+
+            if (!$this->_sharedDocStoreOptions['isCompound']) {
+                return $this->_directory->fileLength($filename);
+            }
+
+            if( !isset($this->_sharedDocStoreOptions['fileSizes'][$filename]) ) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Shared doc store compound file doesn\'t contain '
+                                           . $filename . ' file.' );
+            }
+
+            return $this->_sharedDocStoreOptions['fileSizes'][$filename];
+        }
+
+
+        $filename = $this->_name . $extension;
+
+        // Try to get common file first
+        if ($this->_directory->fileExists($filename)) {
+            return $this->_directory->fileLength($filename);
+        }
+
+        if( !isset($this->_segFileSizes[$filename]) ) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Index compound file doesn\'t contain '
+                                       . $filename . ' file.' );
+        }
+
+        return $this->_segFileSizes[$filename];
+    }
+
+    /**
+     * Returns field index or -1 if field is not found
+     *
+     * @param string $fieldName
+     * @return integer
+     */
+    public function getFieldNum($fieldName)
+    {
+        foreach( $this->_fields as $field ) {
+            if( $field->name == $fieldName ) {
+                return $field->number;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * Returns field info for specified field
+     *
+     * @param integer $fieldNum
+     * @return Zend_Search_Lucene_Index_FieldInfo
+     */
+    public function getField($fieldNum)
+    {
+        return $this->_fields[$fieldNum];
+    }
+
+    /**
+     * Returns array of fields.
+     * if $indexed parameter is true, then returns only indexed fields.
+     *
+     * @param boolean $indexed
+     * @return array
+     */
+    public function getFields($indexed = false)
+    {
+        $result = array();
+        foreach( $this->_fields as $field ) {
+            if( (!$indexed) || $field->isIndexed ) {
+                $result[ $field->name ] = $field->name;
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Returns array of FieldInfo objects.
+     *
+     * @return array
+     */
+    public function getFieldInfos()
+    {
+        return $this->_fields;
+    }
+
+    /**
+     * Returns actual deletions file generation number.
+     *
+     * @return integer
+     */
+    public function getDelGen()
+    {
+        return $this->_delGen;
+    }
+
+    /**
+     * Returns the total number of documents in this segment (including deleted documents).
+     *
+     * @return integer
+     */
+    public function count()
+    {
+        return $this->_docCount;
+    }
+
+    /**
+     * Returns number of deleted documents.
+     *
+     * @return integer
+     */
+    private function _deletedCount()
+    {
+        if ($this->_deleted === null) {
+            return 0;
+        }
+
+        if (extension_loaded('bitset')) {
+            return count(bitset_to_array($this->_deleted));
+        } else {
+            return count($this->_deleted);
+        }
+    }
+
+    /**
+     * Returns the total number of non-deleted documents in this segment.
+     *
+     * @return integer
+     */
+    public function numDocs()
+    {
+        if ($this->hasDeletions()) {
+            return $this->_docCount - $this->_deletedCount();
+        } else {
+            return $this->_docCount;
+        }
+    }
+
+    /**
+     * Get field position in a fields dictionary
+     *
+     * @param integer $fieldNum
+     * @return integer
+     */
+    private function _getFieldPosition($fieldNum) {
+        // Treat values which are not in a translation table as a 'direct value'
+        return isset($this->_fieldsDicPositions[$fieldNum]) ?
+                           $this->_fieldsDicPositions[$fieldNum] : $fieldNum;
+    }
+
+    /**
+     * Return segment name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_name;
+    }
+
+
+    /**
+     * TermInfo cache
+     *
+     * Size is 1024.
+     * Numbers are used instead of class constants because of performance considerations
+     *
+     * @var array
+     */
+    private $_termInfoCache = array();
+
+    private function _cleanUpTermInfoCache()
+    {
+        // Clean 256 term infos
+        foreach ($this->_termInfoCache as $key => $termInfo) {
+            unset($this->_termInfoCache[$key]);
+
+            // leave 768 last used term infos
+            if (count($this->_termInfoCache) == 768) {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Load terms dictionary index
+     *
+     * @throws Zend_Search_Lucene_Exception
+     */
+    private function _loadDictionaryIndex()
+    {
+        // Check, if index is already serialized
+        if ($this->_directory->fileExists($this->_name . '.sti')) {
+            // Load serialized dictionary index data
+            $stiFile = $this->_directory->getFileObject($this->_name . '.sti');
+            $stiFileData = $stiFile->readBytes($this->_directory->fileLength($this->_name . '.sti'));
+
+            // Load dictionary index data
+            if (($unserializedData = @unserialize($stiFileData)) !== false) {
+                list($this->_termDictionary, $this->_termDictionaryInfos) = $unserializedData;
+                return;
+            }
+        }
+
+        // Load data from .tii file and generate .sti file
+
+        // Prefetch dictionary index data
+        $tiiFile = $this->openCompoundFile('.tii');
+        $tiiFileData = $tiiFile->readBytes($this->compoundFileLength('.tii'));
+
+        /** Zend_Search_Lucene_Index_DictionaryLoader */
+        require_once 'Zend/Search/Lucene/Index/DictionaryLoader.php';
+
+        // Load dictionary index data
+        list($this->_termDictionary, $this->_termDictionaryInfos) =
+                    Zend_Search_Lucene_Index_DictionaryLoader::load($tiiFileData);
+
+        $stiFileData = serialize(array($this->_termDictionary, $this->_termDictionaryInfos));
+        $stiFile = $this->_directory->createFile($this->_name . '.sti');
+        $stiFile->writeBytes($stiFileData);
+    }
+
+    /**
+     * Scans terms dictionary and returns term info
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @return Zend_Search_Lucene_Index_TermInfo
+     */
+    public function getTermInfo(Zend_Search_Lucene_Index_Term $term)
+    {
+        $termKey = $term->key();
+        if (isset($this->_termInfoCache[$termKey])) {
+            $termInfo = $this->_termInfoCache[$termKey];
+
+            // Move termInfo to the end of cache
+            unset($this->_termInfoCache[$termKey]);
+            $this->_termInfoCache[$termKey] = $termInfo;
+
+            return $termInfo;
+        }
+
+
+        if ($this->_termDictionary === null) {
+            $this->_loadDictionaryIndex();
+        }
+
+        $searchField = $this->getFieldNum($term->field);
+
+        if ($searchField == -1) {
+            return null;
+        }
+        $searchDicField = $this->_getFieldPosition($searchField);
+
+        // search for appropriate value in dictionary
+        $lowIndex = 0;
+        $highIndex = count($this->_termDictionary)-1;
+        while ($highIndex >= $lowIndex) {
+            // $mid = ($highIndex - $lowIndex)/2;
+            $mid = ($highIndex + $lowIndex) >> 1;
+            $midTerm = $this->_termDictionary[$mid];
+
+            $fieldNum = $this->_getFieldPosition($midTerm[0] /* field */);
+            $delta = $searchDicField - $fieldNum;
+            if ($delta == 0) {
+                $delta = strcmp($term->text, $midTerm[1] /* text */);
+            }
+
+            if ($delta < 0) {
+                $highIndex = $mid-1;
+            } elseif ($delta > 0) {
+                $lowIndex  = $mid+1;
+            } else {
+                // return $this->_termDictionaryInfos[$mid]; // We got it!
+                $a = $this->_termDictionaryInfos[$mid];
+                $termInfo = new Zend_Search_Lucene_Index_TermInfo($a[0], $a[1], $a[2], $a[3], $a[4]);
+
+                // Put loaded termInfo into cache
+                $this->_termInfoCache[$termKey] = $termInfo;
+
+                return $termInfo;
+            }
+        }
+
+        if ($highIndex == -1) {
+            // Term is out of the dictionary range
+            return null;
+        }
+
+        $prevPosition = $highIndex;
+        $prevTerm = $this->_termDictionary[$prevPosition];
+        $prevTermInfo = $this->_termDictionaryInfos[$prevPosition];
+
+        $tisFile = $this->openCompoundFile('.tis');
+        $tiVersion = $tisFile->readInt();
+        if ($tiVersion != (int)0xFFFFFFFE /* pre-2.1 format */  &&
+            $tiVersion != (int)0xFFFFFFFD /* 2.1+ format    */) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Wrong TermInfoFile file format');
+        }
+
+        $termCount     = $tisFile->readLong();
+        $indexInterval = $tisFile->readInt();
+        $skipInterval  = $tisFile->readInt();
+        if ($tiVersion == (int)0xFFFFFFFD /* 2.1+ format */) {
+            $maxSkipLevels = $tisFile->readInt();
+        }
+
+        $tisFile->seek($prevTermInfo[4] /* indexPointer */ - (($tiVersion == (int)0xFFFFFFFD)? 24 : 20) /* header size*/, SEEK_CUR);
+
+        $termValue    = $prevTerm[1] /* text */;
+        $termFieldNum = $prevTerm[0] /* field */;
+        $freqPointer = $prevTermInfo[1] /* freqPointer */;
+        $proxPointer = $prevTermInfo[2] /* proxPointer */;
+        for ($count = $prevPosition*$indexInterval + 1;
+             $count <= $termCount &&
+             ( $this->_getFieldPosition($termFieldNum) < $searchDicField ||
+              ($this->_getFieldPosition($termFieldNum) == $searchDicField &&
+               strcmp($termValue, $term->text) < 0) );
+             $count++) {
+            $termPrefixLength = $tisFile->readVInt();
+            $termSuffix       = $tisFile->readString();
+            $termFieldNum     = $tisFile->readVInt();
+            $termValue        = Zend_Search_Lucene_Index_Term::getPrefix($termValue, $termPrefixLength) . $termSuffix;
+
+            $docFreq      = $tisFile->readVInt();
+            $freqPointer += $tisFile->readVInt();
+            $proxPointer += $tisFile->readVInt();
+            if( $docFreq >= $skipInterval ) {
+                $skipOffset = $tisFile->readVInt();
+            } else {
+                $skipOffset = 0;
+            }
+        }
+
+        if ($termFieldNum == $searchField && $termValue == $term->text) {
+            $termInfo = new Zend_Search_Lucene_Index_TermInfo($docFreq, $freqPointer, $proxPointer, $skipOffset);
+        } else {
+            $termInfo = null;
+        }
+
+        // Put loaded termInfo into cache
+        $this->_termInfoCache[$termKey] = $termInfo;
+
+        if (count($this->_termInfoCache) == 1024) {
+            $this->_cleanUpTermInfoCache();
+        }
+
+        return $termInfo;
+    }
+
+    /**
+     * Returns IDs of all the documents containing term.
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @param integer $shift
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @return array
+     */
+    public function termDocs(Zend_Search_Lucene_Index_Term $term, $shift = 0, $docsFilter = null)
+    {
+        $termInfo = $this->getTermInfo($term);
+
+        if (!$termInfo instanceof Zend_Search_Lucene_Index_TermInfo) {
+            if ($docsFilter !== null  &&  $docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                $docsFilter->segmentFilters[$this->_name] = array();
+            }
+            return array();
+        }
+
+        $frqFile = $this->openCompoundFile('.frq');
+        $frqFile->seek($termInfo->freqPointer,SEEK_CUR);
+        $docId  = 0;
+        $result = array();
+
+        if ($docsFilter !== null) {
+            if (!$docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Documents filter must be an instance of Zend_Search_Lucene_Index_DocsFilter or null.');
+            }
+
+            if (isset($docsFilter->segmentFilters[$this->_name])) {
+                // Filter already has some data for the current segment
+
+                // Make short name for the filter (which doesn't need additional dereferencing)
+                $filter = &$docsFilter->segmentFilters[$this->_name];
+
+                // Check if filter is not empty
+                if (count($filter) == 0) {
+                    return array();
+                }
+
+                if ($this->_docCount/count($filter) < self::FULL_SCAN_VS_FETCH_BOUNDARY) {
+                    // Perform fetching
+// ---------------------------------------------------------------
+                    $updatedFilterData = array();
+
+                    for( $count=0; $count < $termInfo->docFreq; $count++ ) {
+                        $docDelta = $frqFile->readVInt();
+                        if( $docDelta % 2 == 1 ) {
+                            $docId += ($docDelta-1)/2;
+                        } else {
+                            $docId += $docDelta/2;
+                            // read freq
+                            $frqFile->readVInt();
+                        }
+
+                        if (isset($filter[$docId])) {
+                           $result[] = $shift + $docId;
+                           $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                        }
+                    }
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+// ---------------------------------------------------------------
+                } else {
+                    // Perform full scan
+                    $updatedFilterData = array();
+
+                    for( $count=0; $count < $termInfo->docFreq; $count++ ) {
+                        $docDelta = $frqFile->readVInt();
+                        if( $docDelta % 2 == 1 ) {
+                            $docId += ($docDelta-1)/2;
+                        } else {
+                            $docId += $docDelta/2;
+                            // read freq
+                            $frqFile->readVInt();
+                        }
+
+                        if (isset($filter[$docId])) {
+                           $result[] = $shift + $docId;
+                           $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                        }
+                    }
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+                }
+            } else {
+                // Filter is present, but doesn't has data for the current segment yet
+                $filterData = array();
+                for( $count=0; $count < $termInfo->docFreq; $count++ ) {
+                    $docDelta = $frqFile->readVInt();
+                    if( $docDelta % 2 == 1 ) {
+                        $docId += ($docDelta-1)/2;
+                    } else {
+                        $docId += $docDelta/2;
+                        // read freq
+                        $frqFile->readVInt();
+                    }
+
+                    $result[] = $shift + $docId;
+                    $filterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                }
+                $docsFilter->segmentFilters[$this->_name] = $filterData;
+            }
+        } else {
+            for( $count=0; $count < $termInfo->docFreq; $count++ ) {
+                $docDelta = $frqFile->readVInt();
+                if( $docDelta % 2 == 1 ) {
+                    $docId += ($docDelta-1)/2;
+                } else {
+                    $docId += $docDelta/2;
+                    // read freq
+                    $frqFile->readVInt();
+                }
+
+                $result[] = $shift + $docId;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Returns term freqs array.
+     * Result array structure: array(docId => freq, ...)
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @param integer $shift
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @return Zend_Search_Lucene_Index_TermInfo
+     */
+    public function termFreqs(Zend_Search_Lucene_Index_Term $term, $shift = 0, $docsFilter = null)
+    {
+        $termInfo = $this->getTermInfo($term);
+
+        if (!$termInfo instanceof Zend_Search_Lucene_Index_TermInfo) {
+            if ($docsFilter !== null  &&  $docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                $docsFilter->segmentFilters[$this->_name] = array();
+            }
+            return array();
+        }
+
+        $frqFile = $this->openCompoundFile('.frq');
+        $frqFile->seek($termInfo->freqPointer,SEEK_CUR);
+        $result = array();
+        $docId = 0;
+
+        $result = array();
+
+        if ($docsFilter !== null) {
+            if (!$docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Documents filter must be an instance of Zend_Search_Lucene_Index_DocsFilter or null.');
+            }
+
+            if (isset($docsFilter->segmentFilters[$this->_name])) {
+                // Filter already has some data for the current segment
+
+                // Make short name for the filter (which doesn't need additional dereferencing)
+                $filter = &$docsFilter->segmentFilters[$this->_name];
+
+                // Check if filter is not empty
+                if (count($filter) == 0) {
+                    return array();
+                }
+
+
+                if ($this->_docCount/count($filter) < self::FULL_SCAN_VS_FETCH_BOUNDARY) {
+                    // Perform fetching
+// ---------------------------------------------------------------
+                    $updatedFilterData = array();
+
+                    for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                        $docDelta = $frqFile->readVInt();
+                        if ($docDelta % 2 == 1) {
+                            $docId += ($docDelta-1)/2;
+                            if (isset($filter[$docId])) {
+                                $result[$shift + $docId] = 1;
+                                $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                            }
+                        } else {
+                            $docId += $docDelta/2;
+                            $freq = $frqFile->readVInt();
+                            if (isset($filter[$docId])) {
+                                $result[$shift + $docId] = $freq;
+                                $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                            }
+                        }
+                    }
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+// ---------------------------------------------------------------
+                } else {
+                    // Perform full scan
+                    $updatedFilterData = array();
+
+                    for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                        $docDelta = $frqFile->readVInt();
+                        if ($docDelta % 2 == 1) {
+                            $docId += ($docDelta-1)/2;
+                            if (isset($filter[$docId])) {
+                                $result[$shift + $docId] = 1;
+                                $updatedFilterData[$docId] = 1; // 1 is just some constant value, so we don't need additional var dereference here
+                            }
+                        } else {
+                            $docId += $docDelta/2;
+                            $freq = $frqFile->readVInt();
+                            if (isset($filter[$docId])) {
+                                $result[$shift + $docId] = $freq;
+                                $updatedFilterData[$docId] = 1; // 1 is just some constant value, so we don't need additional var dereference here
+                            }
+                        }
+                    }
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+                }
+            } else {
+                // Filter doesn't has data for current segment
+                $filterData = array();
+
+                for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                    $docDelta = $frqFile->readVInt();
+                    if ($docDelta % 2 == 1) {
+                        $docId += ($docDelta-1)/2;
+                        $result[$shift + $docId] = 1;
+                        $filterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                    } else {
+                        $docId += $docDelta/2;
+                        $result[$shift + $docId] = $frqFile->readVInt();
+                        $filterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                    }
+                }
+
+                $docsFilter->segmentFilters[$this->_name] = $filterData;
+            }
+        } else {
+            for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                $docDelta = $frqFile->readVInt();
+                if ($docDelta % 2 == 1) {
+                    $docId += ($docDelta-1)/2;
+                    $result[$shift + $docId] = 1;
+                } else {
+                    $docId += $docDelta/2;
+                    $result[$shift + $docId] = $frqFile->readVInt();
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Returns term positions array.
+     * Result array structure: array(docId => array(pos1, pos2, ...), ...)
+     *
+     * @param Zend_Search_Lucene_Index_Term $term
+     * @param integer $shift
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @return Zend_Search_Lucene_Index_TermInfo
+     */
+    public function termPositions(Zend_Search_Lucene_Index_Term $term, $shift = 0, $docsFilter = null)
+    {
+        $termInfo = $this->getTermInfo($term);
+
+        if (!$termInfo instanceof Zend_Search_Lucene_Index_TermInfo) {
+            if ($docsFilter !== null  &&  $docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                $docsFilter->segmentFilters[$this->_name] = array();
+            }
+            return array();
+        }
+
+        $frqFile = $this->openCompoundFile('.frq');
+        $frqFile->seek($termInfo->freqPointer,SEEK_CUR);
+
+        $docId = 0;
+        $freqs = array();
+
+
+        if ($docsFilter !== null) {
+            if (!$docsFilter instanceof Zend_Search_Lucene_Index_DocsFilter) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Documents filter must be an instance of Zend_Search_Lucene_Index_DocsFilter or null.');
+            }
+
+            if (isset($docsFilter->segmentFilters[$this->_name])) {
+                // Filter already has some data for the current segment
+
+                // Make short name for the filter (which doesn't need additional dereferencing)
+                $filter = &$docsFilter->segmentFilters[$this->_name];
+
+                // Check if filter is not empty
+                if (count($filter) == 0) {
+                    return array();
+                }
+
+                if ($this->_docCount/count($filter) < self::FULL_SCAN_VS_FETCH_BOUNDARY) {
+                    // Perform fetching
+// ---------------------------------------------------------------
+                    for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                        $docDelta = $frqFile->readVInt();
+                        if ($docDelta % 2 == 1) {
+                            $docId += ($docDelta-1)/2;
+                            $freqs[$docId] = 1;
+                        } else {
+                            $docId += $docDelta/2;
+                            $freqs[$docId] = $frqFile->readVInt();
+                        }
+                    }
+
+                    $updatedFilterData = array();
+                    $result = array();
+                    $prxFile = $this->openCompoundFile('.prx');
+                    $prxFile->seek($termInfo->proxPointer, SEEK_CUR);
+                    foreach ($freqs as $docId => $freq) {
+                        $termPosition = 0;
+                        $positions = array();
+
+                        // we have to read .prx file to get right position for next doc
+                        // even filter doesn't match current document
+                        for ($count = 0; $count < $freq; $count++ ) {
+                            $termPosition += $prxFile->readVInt();
+                            $positions[] = $termPosition;
+                        }
+
+                        // Include into updated filter and into result only if doc is matched by filter
+                        if (isset($filter[$docId])) {
+                            $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                            $result[$shift + $docId] = $positions;
+                        }
+                    }
+
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+// ---------------------------------------------------------------
+                } else {
+                    // Perform full scan
+                    for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                        $docDelta = $frqFile->readVInt();
+                        if ($docDelta % 2 == 1) {
+                            $docId += ($docDelta-1)/2;
+                            $freqs[$docId] = 1;
+                        } else {
+                            $docId += $docDelta/2;
+                            $freqs[$docId] = $frqFile->readVInt();
+                        }
+                    }
+
+                    $updatedFilterData = array();
+                    $result = array();
+                    $prxFile = $this->openCompoundFile('.prx');
+                    $prxFile->seek($termInfo->proxPointer, SEEK_CUR);
+                    foreach ($freqs as $docId => $freq) {
+                        $termPosition = 0;
+                        $positions = array();
+
+                        // we have to read .prx file to get right position for next doc
+                        // even filter doesn't match current document
+                        for ($count = 0; $count < $freq; $count++ ) {
+                            $termPosition += $prxFile->readVInt();
+                            $positions[] = $termPosition;
+                        }
+
+                        // Include into updated filter and into result only if doc is matched by filter
+                        if (isset($filter[$docId])) {
+                            $updatedFilterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+                            $result[$shift + $docId] = $positions;
+                        }
+                    }
+
+                    $docsFilter->segmentFilters[$this->_name] = $updatedFilterData;
+                }
+            } else {
+                // Filter doesn't has data for current segment
+                for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                    $docDelta = $frqFile->readVInt();
+                    if ($docDelta % 2 == 1) {
+                        $docId += ($docDelta-1)/2;
+                        $freqs[$docId] = 1;
+                    } else {
+                        $docId += $docDelta/2;
+                        $freqs[$docId] = $frqFile->readVInt();
+                    }
+                }
+
+                $filterData = array();
+                $result = array();
+                $prxFile = $this->openCompoundFile('.prx');
+                $prxFile->seek($termInfo->proxPointer, SEEK_CUR);
+                foreach ($freqs as $docId => $freq) {
+                    $filterData[$docId] = 1; // 1 is just a some constant value, so we don't need additional var dereference here
+
+                    $termPosition = 0;
+                    $positions = array();
+
+                    for ($count = 0; $count < $freq; $count++ ) {
+                        $termPosition += $prxFile->readVInt();
+                        $positions[] = $termPosition;
+                    }
+
+                    $result[$shift + $docId] = $positions;
+                }
+
+                $docsFilter->segmentFilters[$this->_name] = $filterData;
+            }
+        } else {
+            for ($count = 0; $count < $termInfo->docFreq; $count++) {
+                $docDelta = $frqFile->readVInt();
+                if ($docDelta % 2 == 1) {
+                    $docId += ($docDelta-1)/2;
+                    $freqs[$docId] = 1;
+                } else {
+                    $docId += $docDelta/2;
+                    $freqs[$docId] = $frqFile->readVInt();
+                }
+            }
+
+            $result = array();
+            $prxFile = $this->openCompoundFile('.prx');
+            $prxFile->seek($termInfo->proxPointer, SEEK_CUR);
+            foreach ($freqs as $docId => $freq) {
+                $termPosition = 0;
+                $positions = array();
+
+                for ($count = 0; $count < $freq; $count++ ) {
+                    $termPosition += $prxFile->readVInt();
+                    $positions[] = $termPosition;
+                }
+
+                $result[$shift + $docId] = $positions;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Load normalizatin factors from an index file
+     *
+     * @param integer $fieldNum
+     * @throws Zend_Search_Lucene_Exception
+     */
+    private function _loadNorm($fieldNum)
+    {
+        if ($this->_hasSingleNormFile) {
+            $normfFile = $this->openCompoundFile('.nrm');
+
+            $header              = $normfFile->readBytes(3);
+            $headerFormatVersion = $normfFile->readByte();
+
+            if ($header != 'NRM'  ||  $headerFormatVersion != (int)0xFF) {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new  Zend_Search_Lucene_Exception('Wrong norms file format.');
+            }
+
+            foreach ($this->_fields as $fNum => $fieldInfo) {
+                if ($fieldInfo->isIndexed) {
+                    $this->_norms[$fNum] = $normfFile->readBytes($this->_docCount);
+                }
+            }
+        } else {
+            $fFile = $this->openCompoundFile('.f' . $fieldNum);
+            $this->_norms[$fieldNum] = $fFile->readBytes($this->_docCount);
+        }
+    }
+
+    /**
+     * Returns normalization factor for specified documents
+     *
+     * @param integer $id
+     * @param string $fieldName
+     * @return float
+     */
+    public function norm($id, $fieldName)
+    {
+        $fieldNum = $this->getFieldNum($fieldName);
+
+        if ( !($this->_fields[$fieldNum]->isIndexed) ) {
+            return null;
+        }
+
+        if (!isset($this->_norms[$fieldNum])) {
+            $this->_loadNorm($fieldNum);
+        }
+
+        return Zend_Search_Lucene_Search_Similarity::decodeNorm( ord($this->_norms[$fieldNum][$id]) );
+    }
+
+    /**
+     * Returns norm vector, encoded in a byte string
+     *
+     * @param string $fieldName
+     * @return string
+     */
+    public function normVector($fieldName)
+    {
+        $fieldNum = $this->getFieldNum($fieldName);
+
+        if ($fieldNum == -1  ||  !($this->_fields[$fieldNum]->isIndexed)) {
+            $similarity = Zend_Search_Lucene_Search_Similarity::getDefault();
+
+            return str_repeat(chr($similarity->encodeNorm( $similarity->lengthNorm($fieldName, 0) )),
+                              $this->_docCount);
+        }
+
+        if (!isset($this->_norms[$fieldNum])) {
+            $this->_loadNorm($fieldNum);
+        }
+
+        return $this->_norms[$fieldNum];
+    }
+
+
+    /**
+     * Returns true if any documents have been deleted from this index segment.
+     *
+     * @return boolean
+     */
+    public function hasDeletions()
+    {
+        return $this->_deleted !== null;
+    }
+
+
+    /**
+     * Returns true if segment has single norms file.
+     *
+     * @return boolean
+     */
+    public function hasSingleNormFile()
+    {
+        return $this->_hasSingleNormFile ? true : false;
+    }
+
+    /**
+     * Returns true if segment is stored using compound segment file.
+     *
+     * @return boolean
+     */
+    public function isCompound()
+    {
+        return $this->_isCompound;
+    }
+
+    /**
+     * Deletes a document from the index segment.
+     * $id is an internal document id
+     *
+     * @param integer
+     */
+    public function delete($id)
+    {
+        $this->_deletedDirty = true;
+
+        if (extension_loaded('bitset')) {
+            if ($this->_deleted === null) {
+                $this->_deleted = bitset_empty($id);
+            }
+            bitset_incl($this->_deleted, $id);
+        } else {
+            if ($this->_deleted === null) {
+                $this->_deleted = array();
+            }
+
+            $this->_deleted[$id] = 1;
+        }
+    }
+
+    /**
+     * Checks, that document is deleted
+     *
+     * @param integer
+     * @return boolean
+     */
+    public function isDeleted($id)
+    {
+        if ($this->_deleted === null) {
+            return false;
+        }
+
+        if (extension_loaded('bitset')) {
+            return bitset_in($this->_deleted, $id);
+        } else {
+            return isset($this->_deleted[$id]);
+        }
+    }
+
+    /**
+     * Detect latest delete generation
+     *
+     * Is actualy used from writeChanges() method or from the constructor if it's invoked from
+     * Index writer. In both cases index write lock is already obtained, so we shouldn't care
+     * about it
+     *
+     * @return integer
+     */
+    private function _detectLatestDelGen()
+    {
+        $delFileList = array();
+        foreach ($this->_directory->fileList() as $file) {
+            if ($file == $this->_name . '.del') {
+                // Matches <segment_name>.del file name
+                $delFileList[] = 0;
+            } else if (preg_match('/^' . $this->_name . '_([a-zA-Z0-9]+)\.del$/i', $file, $matches)) {
+                // Matches <segment_name>_NNN.del file names
+                $delFileList[] = (int)base_convert($matches[1], 36, 10);
+            }
+        }
+
+        if (count($delFileList) == 0) {
+            // There is no deletions file for current segment in the directory
+            // Set deletions file generation number to 1
+            return -1;
+        } else {
+            // There are some deletions files for current segment in the directory
+            // Set deletions file generation number to the highest nuber
+            return max($delFileList);
+        }
+    }
+
+    /**
+     * Write changes if it's necessary.
+     *
+     * This method must be invoked only from the Writer _updateSegments() method,
+     * so index Write lock has to be already obtained.
+     *
+     * @internal
+     * @throws Zend_Search_Lucene_Exceptions
+     */
+    public function writeChanges()
+    {
+        // Get new generation number
+        $latestDelGen = $this->_detectLatestDelGen();
+
+        if (!$this->_deletedDirty) {
+            // There was no deletions by current process
+
+            if ($latestDelGen == $this->_delGen) {
+                // Delete file hasn't been updated by any concurrent process
+                return;
+            } else if ($latestDelGen > $this->_delGen) {
+                // Delete file has been updated by some concurrent process
+                // Reload deletions file
+                $this->_delGen  = $latestDelGen;
+                $this->_deleted = $this->_loadDelFile();
+
+                return;
+            } else {
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Delete file processing workflow is corrupted for the segment \'' . $this->_name . '\'.');
+            }
+        }
+
+        if ($latestDelGen > $this->_delGen) {
+            // Merge current deletions with latest deletions file
+            $this->_delGen = $latestDelGen;
+
+            $latestDelete = $this->_loadDelFile();
+
+            if (extension_loaded('bitset')) {
+                $this->_deleted = bitset_union($this->_deleted, $latestDelete);
+            } else {
+                $this->_deleted += $latestDelete;
+            }
+        }
+
+        if (extension_loaded('bitset')) {
+            $delBytes = $this->_deleted;
+            $bitCount = count(bitset_to_array($delBytes));
+        } else {
+            $byteCount = floor($this->_docCount/8)+1;
+            $delBytes = str_repeat(chr(0), $byteCount);
+            for ($count = 0; $count < $byteCount; $count++) {
+                $byte = 0;
+                for ($bit = 0; $bit < 8; $bit++) {
+                    if (isset($this->_deleted[$count*8 + $bit])) {
+                        $byte |= (1<<$bit);
+                    }
+                }
+                $delBytes[$count] = chr($byte);
+            }
+            $bitCount = count($this->_deleted);
+        }
+
+        if ($this->_delGen == -1) {
+            // Set delete file generation number to 1
+            $this->_delGen = 1;
+        } else {
+            // Increase delete file generation number by 1
+            $this->_delGen++;
+        }
+
+        $delFile = $this->_directory->createFile($this->_name . '_' . base_convert($this->_delGen, 10, 36) . '.del');
+        $delFile->writeInt($this->_docCount);
+        $delFile->writeInt($bitCount);
+        $delFile->writeBytes($delBytes);
+
+        $this->_deletedDirty = false;
+    }
+
+
+    /**
+     * Term Dictionary File object for stream like terms reading
+     *
+     * @var Zend_Search_Lucene_Storage_File
+     */
+    private $_tisFile = null;
+
+    /**
+     * Actual offset of the .tis file data
+     *
+     * @var integer
+     */
+    private $_tisFileOffset;
+
+    /**
+     * Frequencies File object for stream like terms reading
+     *
+     * @var Zend_Search_Lucene_Storage_File
+     */
+    private $_frqFile = null;
+
+    /**
+     * Actual offset of the .frq file data
+     *
+     * @var integer
+     */
+    private $_frqFileOffset;
+
+    /**
+     * Positions File object for stream like terms reading
+     *
+     * @var Zend_Search_Lucene_Storage_File
+     */
+    private $_prxFile = null;
+
+    /**
+     * Actual offset of the .prx file in the compound file
+     *
+     * @var integer
+     */
+    private $_prxFileOffset;
+
+
+    /**
+     * Actual number of terms in term stream
+     *
+     * @var integer
+     */
+    private $_termCount = 0;
+
+    /**
+     * Overall number of terms in term stream
+     *
+     * @var integer
+     */
+    private $_termNum = 0;
+
+    /**
+     * Segment index interval
+     *
+     * @var integer
+     */
+    private $_indexInterval;
+
+    /**
+     * Segment skip interval
+     *
+     * @var integer
+     */
+    private $_skipInterval;
+
+    /**
+     * Last TermInfo in a terms stream
+     *
+     * @var Zend_Search_Lucene_Index_TermInfo
+     */
+    private $_lastTermInfo = null;
+
+    /**
+     * Last Term in a terms stream
+     *
+     * @var Zend_Search_Lucene_Index_Term
+     */
+    private $_lastTerm = null;
+
+    /**
+     * Map of the document IDs
+     * Used to get new docID after removing deleted documents.
+     * It's not very effective from memory usage point of view,
+     * but much more faster, then other methods
+     *
+     * @var array|null
+     */
+    private $_docMap = null;
+
+    /**
+     * An array of all term positions in the documents.
+     * Array structure: array( docId => array( pos1, pos2, ...), ...)
+     *
+     * Is set to null if term positions loading has to be skipped
+     *
+     * @var array|null
+     */
+    private $_lastTermPositions;
+
+
+    /**
+     * Terms scan mode
+     *
+     * Values:
+     *
+     * self::SM_TERMS_ONLY - terms are scanned, no additional info is retrieved
+     * self::SM_FULL_INFO  - terms are scanned, frequency and position info is retrieved
+     * self::SM_MERGE_INFO - terms are scanned, frequency and position info is retrieved
+     *                       document numbers are compacted (shifted if segment has deleted documents)
+     *
+     * @var integer
+     */
+    private $_termsScanMode;
+
+    /** Scan modes */
+    const SM_TERMS_ONLY = 0;    // terms are scanned, no additional info is retrieved
+    const SM_FULL_INFO  = 1;    // terms are scanned, frequency and position info is retrieved
+    const SM_MERGE_INFO = 2;    // terms are scanned, frequency and position info is retrieved
+                                // document numbers are compacted (shifted if segment contains deleted documents)
+
+    /**
+     * Reset terms stream
+     *
+     * $startId - id for the fist document
+     * $compact - remove deleted documents
+     *
+     * Returns start document id for the next segment
+     *
+     * @param integer $startId
+     * @param integer $mode
+     * @throws Zend_Search_Lucene_Exception
+     * @return integer
+     */
+    public function resetTermsStream(/** $startId = 0, $mode = self::SM_TERMS_ONLY */)
+    {
+        /**
+         * SegmentInfo->resetTermsStream() method actually takes two optional parameters:
+         *   $startId (default value is 0)
+         *   $mode (default value is self::SM_TERMS_ONLY)
+         */
+        $argList = func_get_args();
+        if (count($argList) > 2) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Wrong number of arguments');
+        } else if (count($argList) == 2) {
+            $startId = $argList[0];
+            $mode    = $argList[1];
+        } else if (count($argList) == 1) {
+            $startId = $argList[0];
+            $mode    = self::SM_TERMS_ONLY;
+        } else {
+            $startId = 0;
+            $mode    = self::SM_TERMS_ONLY;
+        }
+
+        if ($this->_tisFile !== null) {
+            $this->_tisFile = null;
+        }
+
+        $this->_tisFile = $this->openCompoundFile('.tis', false);
+        $this->_tisFileOffset = $this->_tisFile->tell();
+
+        $tiVersion = $this->_tisFile->readInt();
+        if ($tiVersion != (int)0xFFFFFFFE /* pre-2.1 format */  &&
+            $tiVersion != (int)0xFFFFFFFD /* 2.1+ format    */) {
+            require_once 'Zend/Search/Lucene/Exception.php';
+            throw new Zend_Search_Lucene_Exception('Wrong TermInfoFile file format');
+        }
+
+        $this->_termCount     =
+              $this->_termNum = $this->_tisFile->readLong(); // Read terms count
+        $this->_indexInterval = $this->_tisFile->readInt();  // Read Index interval
+        $this->_skipInterval  = $this->_tisFile->readInt();  // Read skip interval
+        if ($tiVersion == (int)0xFFFFFFFD /* 2.1+ format */) {
+            $maxSkipLevels = $this->_tisFile->readInt();
+        }
+
+        if ($this->_frqFile !== null) {
+            $this->_frqFile = null;
+        }
+        if ($this->_prxFile !== null) {
+            $this->_prxFile = null;
+        }
+        $this->_docMap = array();
+
+        $this->_lastTerm          = new Zend_Search_Lucene_Index_Term('', -1);
+        $this->_lastTermInfo      = new Zend_Search_Lucene_Index_TermInfo(0, 0, 0, 0);
+        $this->_lastTermPositions = null;
+
+        $this->_termsScanMode = $mode;
+
+        switch ($mode) {
+            case self::SM_TERMS_ONLY:
+                // Do nothing
+                break;
+
+            case self::SM_FULL_INFO:
+                // break intentionally omitted
+            case self::SM_MERGE_INFO:
+                $this->_frqFile = $this->openCompoundFile('.frq', false);
+                $this->_frqFileOffset = $this->_frqFile->tell();
+
+                $this->_prxFile = $this->openCompoundFile('.prx', false);
+                $this->_prxFileOffset = $this->_prxFile->tell();
+
+                for ($count = 0; $count < $this->_docCount; $count++) {
+                    if (!$this->isDeleted($count)) {
+                        $this->_docMap[$count] = $startId + (($mode == self::SM_MERGE_INFO) ? count($this->_docMap) : $count);
+                    }
+                }
+                break;
+
+            default:
+                require_once 'Zend/Search/Lucene/Exception.php';
+                throw new Zend_Search_Lucene_Exception('Wrong terms scaning mode specified.');
+                break;
+        }
+
+        // Calculate next segment start id (since $this->_docMap structure may be cleaned by $this->nextTerm() call)
+        $nextSegmentStartId = $startId + (($mode == self::SM_MERGE_INFO) ? count($this->_docMap) : $this->_docCount);
+        $this->nextTerm();
+
+        return $nextSegmentStartId;
+    }
+
+
+    /**
+     * Skip terms stream up to the specified term preffix.
+     *
+     * Prefix contains fully specified field info and portion of searched term
+     *
+     * @param Zend_Search_Lucene_Index_Term $prefix
+     * @throws Zend_Search_Lucene_Exception
+     */
+    public function skipTo(Zend_Search_Lucene_Index_Term $prefix)
+    {
+        if ($this->_termDictionary === null) {
+            $this->_loadDictionaryIndex();
+        }
+
+        $searchField = $this->getFieldNum($prefix->field);
+
+        if ($searchField == -1) {
+            /**
+             * Field is not presented in this segment
+             * Go to the end of dictionary
+             */
+            $this->_tisFile = null;
+            $this->_frqFile = null;
+            $this->_prxFile = null;
+
+            $this->_lastTerm          = null;
+            $this->_lastTermInfo      = null;
+            $this->_lastTermPositions = null;
+
+            return;
+        }
+        $searchDicField = $this->_getFieldPosition($searchField);
+
+        // search for appropriate value in dictionary
+        $lowIndex = 0;
+        $highIndex = count($this->_termDictionary)-1;
+        while ($highIndex >= $lowIndex) {
+            // $mid = ($highIndex - $lowIndex)/2;
+            $mid = ($highIndex + $lowIndex) >> 1;
+            $midTerm = $this->_termDictionary[$mid];
+
+            $fieldNum = $this->_getFieldPosition($midTerm[0] /* field */);
+            $delta = $searchDicField - $fieldNum;
+            if ($delta == 0) {
+                $delta = strcmp($prefix->text, $midTerm[1] /* text */);
+            }
+
+            if ($delta < 0) {
+                $highIndex = $mid-1;
+            } elseif ($delta > 0) {
+                $lowIndex  = $mid+1;
+            } else {
+                // We have reached term we are looking for
+                break;
+            }
+        }
+
+        if ($highIndex == -1) {
+            // Term is out of the dictionary range
+            $this->_tisFile = null;
+            $this->_frqFile = null;
+            $this->_prxFile = null;
+
+            $this->_lastTerm          = null;
+            $this->_lastTermInfo      = null;
+            $this->_lastTermPositions = null;
+
+            return;
+        }
+
+        $prevPosition = $highIndex;
+        $prevTerm = $this->_termDictionary[$prevPosition];
+        $prevTermInfo = $this->_termDictionaryInfos[$prevPosition];
+
+        if ($this->_tisFile === null) {
+            // The end of terms stream is reached and terms dictionary file is closed
+            // Perform mini-reset operation
+            $this->_tisFile = $this->openCompoundFile('.tis', false);
+
+            if ($this->_termsScanMode == self::SM_FULL_INFO  ||  $this->_termsScanMode == self::SM_MERGE_INFO) {
+                $this->_frqFile = $this->openCompoundFile('.frq', false);
+                $this->_prxFile = $this->openCompoundFile('.prx', false);
+            }
+        }
+        $this->_tisFile->seek($this->_tisFileOffset + $prevTermInfo[4], SEEK_SET);
+
+        $this->_lastTerm     = new Zend_Search_Lucene_Index_Term($prevTerm[1] /* text */,
+                                                                 ($prevTerm[0] == -1) ? '' : $this->_fields[$prevTerm[0] /* field */]->name);
+        $this->_lastTermInfo = new Zend_Search_Lucene_Index_TermInfo($prevTermInfo[0] /* docFreq */,
+                                                                     $prevTermInfo[1] /* freqPointer */,
+                                                                     $prevTermInfo[2] /* proxPointer */,
+                                                                     $prevTermInfo[3] /* skipOffset */);
+        $this->_termCount  =  $this->_termNum - $prevPosition*$this->_indexInterval;
+
+        if ($highIndex == 0) {
+            // skip start entry
+            $this->nextTerm();
+        } else if ($prefix->field == $this->_lastTerm->field  &&  $prefix->text  == $this->_lastTerm->text) {
+            // We got exact match in the dictionary index
+
+            if ($this->_termsScanMode == self::SM_FULL_INFO  ||  $this->_termsScanMode == self::SM_MERGE_INFO) {
+                $this->_lastTermPositions = array();
+
+                $this->_frqFile->seek($this->_lastTermInfo->freqPointer + $this->_frqFileOffset, SEEK_SET);
+                $freqs = array();   $docId = 0;
+                for( $count = 0; $count < $this->_lastTermInfo->docFreq; $count++ ) {
+                    $docDelta = $this->_frqFile->readVInt();
+                    if( $docDelta % 2 == 1 ) {
+                        $docId += ($docDelta-1)/2;
+                        $freqs[ $docId ] = 1;
+                    } else {
+                        $docId += $docDelta/2;
+                        $freqs[ $docId ] = $this->_frqFile->readVInt();
+                    }
+                }
+
+                $this->_prxFile->seek($this->_lastTermInfo->proxPointer + $this->_prxFileOffset, SEEK_SET);
+                foreach ($freqs as $docId => $freq) {
+                    $termPosition = 0;  $positions = array();
+
+                    for ($count = 0; $count < $freq; $count++ ) {
+                        $termPosition += $this->_prxFile->readVInt();
+                        $positions[] = $termPosition;
+                    }
+
+                    if (isset($this->_docMap[$docId])) {
+                        $this->_lastTermPositions[$this->_docMap[$docId]] = $positions;
+                    }
+                }
+            }
+
+            return;
+        }
+
+        // Search term matching specified prefix
+        while ($this->_lastTerm !== null) {
+            if ( strcmp($this->_lastTerm->field, $prefix->field) > 0  ||
+                 ($prefix->field == $this->_lastTerm->field  &&  strcmp($this->_lastTerm->text, $prefix->text) >= 0) ) {
+                    // Current term matches or greate than the pattern
+                    return;
+            }
+
+            $this->nextTerm();
+        }
+    }
+
+
+    /**
+     * Scans terms dictionary and returns next term
+     *
+     * @return Zend_Search_Lucene_Index_Term|null
+     */
+    public function nextTerm()
+    {
+        if ($this->_tisFile === null  ||  $this->_termCount == 0) {
+            $this->_lastTerm          = null;
+            $this->_lastTermInfo      = null;
+            $this->_lastTermPositions = null;
+            $this->_docMap            = null;
+
+            // may be necessary for "empty" segment
+            $this->_tisFile = null;
+            $this->_frqFile = null;
+            $this->_prxFile = null;
+
+            return null;
+        }
+
+        $termPrefixLength = $this->_tisFile->readVInt();
+        $termSuffix       = $this->_tisFile->readString();
+        $termFieldNum     = $this->_tisFile->readVInt();
+        $termValue        = Zend_Search_Lucene_Index_Term::getPrefix($this->_lastTerm->text, $termPrefixLength) . $termSuffix;
+
+        $this->_lastTerm = new Zend_Search_Lucene_Index_Term($termValue, $this->_fields[$termFieldNum]->name);
+
+        $docFreq     = $this->_tisFile->readVInt();
+        $freqPointer = $this->_lastTermInfo->freqPointer + $this->_tisFile->readVInt();
+        $proxPointer = $this->_lastTermInfo->proxPointer + $this->_tisFile->readVInt();
+        if ($docFreq >= $this->_skipInterval) {
+            $skipOffset = $this->_tisFile->readVInt();
+        } else {
+            $skipOffset = 0;
+        }
+
+        $this->_lastTermInfo = new Zend_Search_Lucene_Index_TermInfo($docFreq, $freqPointer, $proxPointer, $skipOffset);
+
+
+        if ($this->_termsScanMode == self::SM_FULL_INFO  ||  $this->_termsScanMode == self::SM_MERGE_INFO) {
+            $this->_lastTermPositions = array();
+
+            $this->_frqFile->seek($this->_lastTermInfo->freqPointer + $this->_frqFileOffset, SEEK_SET);
+            $freqs = array();   $docId = 0;
+            for( $count = 0; $count < $this->_lastTermInfo->docFreq; $count++ ) {
+                $docDelta = $this->_frqFile->readVInt();
+                if( $docDelta % 2 == 1 ) {
+                    $docId += ($docDelta-1)/2;
+                    $freqs[ $docId ] = 1;
+                } else {
+                    $docId += $docDelta/2;
+                    $freqs[ $docId ] = $this->_frqFile->readVInt();
+                }
+            }
+
+            $this->_prxFile->seek($this->_lastTermInfo->proxPointer + $this->_prxFileOffset, SEEK_SET);
+            foreach ($freqs as $docId => $freq) {
+                $termPosition = 0;  $positions = array();
+
+                for ($count = 0; $count < $freq; $count++ ) {
+                    $termPosition += $this->_prxFile->readVInt();
+                    $positions[] = $termPosition;
+                }
+
+                if (isset($this->_docMap[$docId])) {
+                    $this->_lastTermPositions[$this->_docMap[$docId]] = $positions;
+                }
+            }
+        }
+
+        $this->_termCount--;
+        if ($this->_termCount == 0) {
+            $this->_tisFile = null;
+            $this->_frqFile = null;
+            $this->_prxFile = null;
+        }
+
+        return $this->_lastTerm;
+    }
+
+    /**
+     * Close terms stream
+     *
+     * Should be used for resources clean up if stream is not read up to the end
+     */
+    public function closeTermsStream()
+    {
+        $this->_tisFile = null;
+        $this->_frqFile = null;
+        $this->_prxFile = null;
+
+        $this->_lastTerm          = null;
+        $this->_lastTermInfo      = null;
+        $this->_lastTermPositions = null;
+
+        $this->_docMap            = null;
+    }
+
+
+    /**
+     * Returns term in current position
+     *
+     * @return Zend_Search_Lucene_Index_Term|null
+     */
+    public function currentTerm()
+    {
+        return $this->_lastTerm;
+    }
+
+
+    /**
+     * Returns an array of all term positions in the documents.
+     * Return array structure: array( docId => array( pos1, pos2, ...), ...)
+     *
+     * @return array
+     */
+    public function currentTermPositions()
+    {
+        return $this->_lastTermPositions;
+    }
+}
 

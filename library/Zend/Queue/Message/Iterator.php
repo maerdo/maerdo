@@ -1,285 +1,285 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Queue
-php php*php php@subpackagephp Message
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Iteratorphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Queue
+ * @subpackage Message
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Iterator.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Queue
-php php*php php@subpackagephp Message
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Queuephp_Messagephp_Iteratorphp implementsphp Iteratorphp,php Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp dataphp forphp thephp queuephp message
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_dataphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Queue
+ * @subpackage Message
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Queue_Message_Iterator implements Iterator, Countable
+{
+    /**
+     * The data for the queue message
+     *
+     * @var array
+     */
+    protected $_data = array();
 
-php php php php php php/php*php*
-php php php php php php*php Connectedphp isphp truephp ifphp wephp havephp aphp referencephp tophp aphp live
-php php php php php php*php Zendphp_Queuephp_Adapterphp_AdapterInterfacephp objectphp.
-php php php php php php*php Thisphp isphp falsephp afterphp thephp Messagephp hasphp beenphp deserializedphp.
-php php php php php php*
-php php php php php php*php php@varphp boolean
-php php php php php php*php/
-php php php php protectedphp php$php_connectedphp php=php truephp;
+     /**
+     * Connected is true if we have a reference to a live
+     * Zend_Queue_Adapter_AdapterInterface object.
+     * This is false after the Message has been deserialized.
+     *
+     * @var boolean
+     */
+    protected $_connected = true;
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Queuephp_Adapterphp_AdapterInterfacephp parentphp classphp orphp instance
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Queuephp_Adapterphp_AdapterInterface
-php php php php php php*php/
-php php php php protectedphp php$php_queuephp php=php nullphp;
+    /**
+     * Zend_Queue_Adapter_AdapterInterface parent class or instance
+     *
+     * @var Zend_Queue_Adapter_AdapterInterface
+     */
+    protected $_queue = null;
 
-php php php php php/php*php*
-php php php php php php*php Namephp ofphp thephp classphp ofphp thephp Zendphp_Queuephp_Adapterphp_AdapterInterfacephp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_queueClassphp php=php nullphp;
+    /**
+     * Name of the class of the Zend_Queue_Adapter_AdapterInterface object.
+     *
+     * @var string
+     */
+    protected $_queueClass = null;
 
-php php php php php/php*php*
-php php php php php php*php Zendphp_Queuephp_Messagephp classphp name
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_messageClassphp php=php php'Zendphp_Queuephp_Messagephp'php;
+    /**
+     * Zend_Queue_Message class name
+     *
+     * @var string
+     */
+    protected $_messageClass = 'Zend_Queue_Message';
 
-php php php php php php/php*php*
-php php php php php php*php Iteratorphp pointerphp.
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_pointerphp php=php php0php;
+     /**
+     * Iterator pointer.
+     *
+     * @var integer
+     */
+    protected $_pointer = 0;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$optionsphp php(php'queuephp'php,php php'messageClassphp'php,php php'dataphp'php=php>arrayphp(php)php)php;
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(arrayphp php$optionsphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'queuephp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_queuephp php php php php php php=php php$optionsphp[php'queuephp'php]php;
-php php php php php php php php php php php php php$thisphp-php>php_queueClassphp php=php getphp_classphp(php$thisphp-php>php_queuephp)php;
-php php php php php php php php php php php php php$thisphp-php>php_connectedphp php php=php truephp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_connectedphp php=php falsephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'messageClassphp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_messageClassphp php=php php$optionsphp[php'messageClassphp'php]php;
-php php php php php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  array $options ('queue', 'messageClass', 'data'=>array());
+     * @return void
+     */
+    public function __construct(array $options = array())
+    {
+        if (isset($options['queue'])) {
+            $this->_queue      = $options['queue'];
+            $this->_queueClass = get_class($this->_queue);
+            $this->_connected  = true;
+        } else {
+            $this->_connected = false;
+        }
+        if (isset($options['messageClass'])) {
+            $this->_messageClass = $options['messageClass'];
+        }
 
-php php php php php php php php ifphp php(php!isphp_arrayphp(php$optionsphp[php'dataphp'php]php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Queuephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Queuephp_Exceptionphp(php'arrayphp optionsurationphp mustphp havephp php$optionsphp[php\php'dataphp\php'php]php php=php arrayphp'php)php;
-php php php php php php php php php}
+        if (!is_array($options['data'])) {
+            require_once 'Zend/Queue/Exception.php';
+            throw new Zend_Queue_Exception('array optionsuration must have $options[\'data\'] = array');
+        }
 
-php php php php php php php php php/php/php loadphp thephp messagephp class
-php php php php php php php php php$classnamephp php=php php$thisphp-php>php_messageClassphp;
-php php php php php php php php ifphp php(php!classphp_existsphp(php$classnamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Loaderphp.phpphp'php;
-php php php php php php php php php php php php Zendphp_Loaderphp:php:loadClassphp(php$classnamephp)php;
-php php php php php php php php php}
+        // load the message class
+        $classname = $this->_messageClass;
+        if (!class_exists($classname)) {
+            require_once 'Zend/Loader.php';
+            Zend_Loader::loadClass($classname);
+        }
 
-php php php php php php php php php/php/php forphp eachphp ofphp thephp messages
-php php php php php php php php foreachphp php(php$optionsphp[php'dataphp'php]php asphp php$dataphp)php php{
-php php php php php php php php php php php php php/php/php constructphp thephp messagephp parameters
-php php php php php php php php php php php php php$messagephp php=php arrayphp(php'dataphp'php php=php>php php$dataphp)php;
+        // for each of the messages
+        foreach ($options['data'] as $data) {
+            // construct the message parameters
+            $message = array('data' => $data);
 
-php php php php php php php php php php php php php/php/php Ifphp queuephp hasphp notphp beenphp setphp,php thenphp usephp thephp defaultphp.
-php php php php php php php php php php php php ifphp php(emptyphp(php$messagephp[php'queuephp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$messagephp[php'queuephp'php]php php=php php$thisphp-php>php_queuephp;
-php php php php php php php php php php php php php}
+            // If queue has not been set, then use the default.
+            if (empty($message['queue'])) {
+                $message['queue'] = $this->_queue;
+            }
 
-php php php php php php php php php php php php php/php/php constructphp thephp messagephp andphp addphp itphp tophp php_dataphp[php]php;
-php php php php php php php php php php php php php$thisphp-php>php_dataphp[php]php php=php newphp php$classnamephp(php$messagephp)php;
-php php php php php php php php php}
-php php php php php}
+            // construct the message and add it to _data[];
+            $this->_data[] = new $classname($message);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Storephp queuephp andphp dataphp inphp serializedphp object
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp php_php_sleepphp(php)
-php php php php php{
-php php php php php php php php returnphp arrayphp(php'php_dataphp'php,php php'php_queueClassphp'php,php php'php_messageClassphp'php,php php'php_pointerphp'php)php;
-php php php php php}
+    /**
+     * Store queue and data in serialized object
+     *
+     * @return array
+     */
+    public function __sleep()
+    {
+        return array('_data', '_queueClass', '_messageClass', '_pointer');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setupphp tophp dophp onphp wakeupphp.
-php php php php php php*php Aphp dephp-serializedphp Messagephp shouldphp notphp bephp assumedphp tophp havephp accessphp tophp aphp live
-php php php php php php*php queuephp connectionphp,php sophp setphp php_connectedphp php=php falsephp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_wakeupphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_connectedphp php=php falsephp;
-php php php php php}
+    /**
+     * Setup to do on wakeup.
+     * A de-serialized Message should not be assumed to have access to a live
+     * queue connection, so set _connected = false.
+     *
+     * @return void
+     */
+    public function __wakeup()
+    {
+        $this->_connected = false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp allphp dataphp asphp anphp arrayphp.
-php php php php php php*
-php php php php php php*php Usedphp forphp debuggingphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp toArrayphp(php)
-php php php php php{
-php php php php php php php php php/php/php php@todophp Thisphp worksphp onlyphp ifphp wephp havephp iteratedphp through
-php php php php php php php php php/php/php thephp resultphp setphp oncephp tophp instantiatephp thephp messagesphp.
-php php php php php php php php foreachphp php(php$thisphp-php>php_dataphp asphp php$iphp php=php>php php$messagephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_dataphp[php$iphp]php php=php php$messagephp-php>toArrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_dataphp;
-php php php php php}
+    /**
+     * Returns all data as an array.
+     *
+     * Used for debugging.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        // @todo This works only if we have iterated through
+        // the result set once to instantiate the messages.
+        foreach ($this->_data as $i => $message) {
+            $this->_data[$i] = $message->toArray();
+        }
+        return $this->_data;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp queuephp objectphp,php orphp nullphp ifphp thisphp isphp disconnectedphp messagephp set
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Queuephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getQueuephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_queuephp;
-php php php php php}
+    /**
+     * Returns the queue object, or null if this is disconnected message set
+     *
+     * @return Zend_Queue|null
+     */
+    public function getQueue()
+    {
+        return $this->_queue;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp queuephp objectphp,php tophp rephp-establishphp aphp livephp connection
-php php php php php php*php tophp thephp queuephp forphp aphp Messagephp thatphp hasphp beenphp dephp-serializedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Queuephp_Adapterphp_AdapterInterfacephp php$queue
-php php php php php php*php php@returnphp boolean
-php php php php php php*php php@throwsphp Zendphp_Queuephp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp setQueuephp(Zendphp_Queuephp php$queuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_queuephp php php php php php=php php$queuephp;
-php php php php php php php php php$thisphp-php>php_connectedphp php=php falsephp;
+    /**
+     * Set the queue object, to re-establish a live connection
+     * to the queue for a Message that has been de-serialized.
+     *
+     * @param  Zend_Queue_Adapter_AdapterInterface $queue
+     * @return boolean
+     * @throws Zend_Queue_Exception
+     */
+    public function setQueue(Zend_Queue $queue)
+    {
+        $this->_queue     = $queue;
+        $this->_connected = false;
 
-php php php php php php php php php/php/php php@todophp Thisphp worksphp onlyphp ifphp wephp havephp iteratedphp through
-php php php php php php php php php/php/php thephp resultphp setphp oncephp tophp instantiatephp thephp rowsphp.
-php php php php php php php php foreachphp php(php$thisphp-php>php_dataphp asphp php$iphp php=php>php php$messagephp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_connectedphp php=php php$thisphp-php>php_connectedphp php|php|php php$messagephp-php>setQueuephp(php$queuephp)php;
-php php php php php php php php php}
+        // @todo This works only if we have iterated through
+        // the result set once to instantiate the rows.
+        foreach ($this->_data as $i => $message) {
+            $this->_connected = $this->_connected || $message->setQueue($queue);
+        }
 
-php php php php php php php php returnphp php$thisphp-php>php_connectedphp;
-php php php php php}
+        return $this->_connected;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Queryphp thephp classphp namephp ofphp thephp Queuephp objectphp forphp whichphp this
-php php php php php php*php Messagephp wasphp createdphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getQueueClassphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_queueClassphp;
-php php php php php}
+    /**
+     * Query the class name of the Queue object for which this
+     * Message was created.
+     *
+     * @return string
+     */
+    public function getQueueClass()
+    {
+        return $this->_queueClass;
+    }
 
-php php php php php/php*
-php php php php php php*php Iteratorphp implementation
-php php php php php php*php/
+    /*
+     * Iterator implementation
+     */
 
-php php php php php/php*php*
-php php php php php php*php Rewindphp thephp Iteratorphp tophp thephp firstphp elementphp.
-php php php php php php*php Similarphp tophp thephp resetphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp rewindphp(php)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_pointerphp php=php php0php;
-php php php php php}
+    /**
+     * Rewind the Iterator to the first element.
+     * Similar to the reset() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        $this->_pointer = 0;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp currentphp elementphp.
-php php php php php php*php Similarphp tophp thephp currentphp(php)php functionphp forphp arraysphp inphp PHP
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Queuephp_Messagephp currentphp elementphp fromphp thephp collection
-php php php php php php*php/
-php php php php publicphp functionphp currentphp(php)
-php php php php php{
-php php php php php php php php returnphp php(php(php$thisphp-php>validphp(php)php php=php=php=php falsephp)
-php php php php php php php php php php php php php?php null
-php php php php php php php php php php php php php:php php$thisphp-php>php_dataphp[php$thisphp-php>php_pointerphp]php)php;php php/php/php returnphp thephp messagesphp object
-php php php php php}
+    /**
+     * Return the current element.
+     * Similar to the current() function for arrays in PHP
+     * Required by interface Iterator.
+     *
+     * @return Zend_Queue_Message current element from the collection
+     */
+    public function current()
+    {
+        return (($this->valid() === false)
+            ? null
+            : $this->_data[$this->_pointer]); // return the messages object
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp identifyingphp keyphp ofphp thephp currentphp elementphp.
-php php php php php php*php Similarphp tophp thephp keyphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp keyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pointerphp;
-php php php php php}
+    /**
+     * Return the identifying key of the current element.
+     * Similar to the key() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return integer
+     */
+    public function key()
+    {
+        return $this->_pointer;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Movephp forwardphp tophp nextphp elementphp.
-php php php php php php*php Similarphp tophp thephp nextphp(php)php functionphp forphp arraysphp inphp PHPphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp nextphp(php)
-php php php php php{
-php php php php php php php php php+php+php$thisphp-php>php_pointerphp;
-php php php php php}
+    /**
+     * Move forward to next element.
+     * Similar to the next() function for arrays in PHP.
+     * Required by interface Iterator.
+     *
+     * @return void
+     */
+    public function next()
+    {
+        ++$this->_pointer;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp therephp isphp aphp currentphp elementphp afterphp callsphp tophp rewindphp(php)php orphp nextphp(php)php.
-php php php php php php*php Usedphp tophp checkphp ifphp wephp'vephp iteratedphp tophp thephp endphp ofphp thephp collectionphp.
-php php php php php php*php Requiredphp byphp interfacephp Iteratorphp.
-php php php php php php*
-php php php php php php*php php@returnphp boolphp Falsephp ifphp therephp'sphp nothingphp morephp tophp iteratephp over
-php php php php php php*php/
-php php php php publicphp functionphp validphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_pointerphp <php countphp(php$thisphp)php;
-php php php php php}
+    /**
+     * Check if there is a current element after calls to rewind() or next().
+     * Used to check if we've iterated to the end of the collection.
+     * Required by interface Iterator.
+     *
+     * @return bool False if there's nothing more to iterate over
+     */
+    public function valid()
+    {
+        return $this->_pointer < count($this);
+    }
 
-php php php php php/php*
-php php php php php php*php Countablephp Implementation
-php php php php php php*php/
+    /*
+     * Countable Implementation
+     */
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp numberphp ofphp elementsphp inphp thephp collectionphp.
-php php php php php php*
-php php php php php php*php Implementsphp Countablephp:php:countphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp countphp(php)
-php php php php php{
-php php php php php php php php returnphp countphp(php$thisphp-php>php_dataphp)php;
-php php php php php}
-php}
+    /**
+     * Returns the number of elements in the collection.
+     *
+     * Implements Countable::count()
+     *
+     * @return integer
+     */
+    public function count()
+    {
+        return count($this->_data);
+    }
+}

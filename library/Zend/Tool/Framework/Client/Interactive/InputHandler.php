@@ -1,74 +1,74 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php InputHandlerphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: InputHandler.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputHandler
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Framework_Client_Interactive_InputHandler
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterface
-php php php php php php*php/
-php php php php protectedphp php$php_clientphp php=php nullphp;
+    /**
+     * @var Zend_Tool_Framework_Client_Interactive_InputInterface
+     */
+    protected $_client = null;
 
-php php php php protectedphp php$php_inputRequestphp php=php nullphp;
+    protected $_inputRequest = null;
 
-php php php php publicphp functionphp setClientphp(Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputInterfacephp php$clientphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_clientphp php=php php$clientphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    public function setClient(Zend_Tool_Framework_Client_Interactive_InputInterface $client)
+    {
+        $this->_client = $client;
+        return $this;
+    }
 
-php php php php publicphp functionphp setInputRequestphp(php$inputRequestphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$inputRequestphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Interactivephp/InputRequestphp.phpphp'php;
-php php php php php php php php php php php php php$inputRequestphp php=php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputRequestphp(php$inputRequestphp)php;
-php php php php php php php php php}php elseifphp php(php!php$inputRequestphp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputRequestphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'promptInteractivephp(php)php requiresphp eitherphp aphp stringphp orphp anphp instancephp ofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputRequestphp.php'php)php;
-php php php php php php php php php}
+    public function setInputRequest($inputRequest)
+    {
+        if (is_string($inputRequest)) {
+            require_once 'Zend/Tool/Framework/Client/Interactive/InputRequest.php';
+            $inputRequest = new Zend_Tool_Framework_Client_Interactive_InputRequest($inputRequest);
+        } elseif (!$inputRequest instanceof Zend_Tool_Framework_Client_Interactive_InputRequest) {
+            require_once 'Zend/Tool/Framework/Client/Exception.php';
+            throw new Zend_Tool_Framework_Client_Exception('promptInteractive() requires either a string or an instance of Zend_Tool_Framework_Client_Interactive_InputRequest.');
+        }
 
-php php php php php php php php php$thisphp-php>php_inputRequestphp php=php php$inputRequestphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $this->_inputRequest = $inputRequest;
+        return $this;
+    }
 
-php php php php publicphp functionphp handlephp(php)
-php php php php php{
-php php php php php php php php php$inputResponsephp php=php php$thisphp-php>php_clientphp-php>handleInteractiveInputRequestphp(php$thisphp-php>php_inputRequestphp)php;
+    public function handle()
+    {
+        $inputResponse = $this->_client->handleInteractiveInputRequest($this->_inputRequest);
 
-php php php php php php php php ifphp php(isphp_stringphp(php$inputResponsephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Interactivephp/InputResponsephp.phpphp'php;
-php php php php php php php php php php php php php$inputResponsephp php=php newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputResponsephp(php$inputResponsephp)php;
-php php php php php php php php php}php elseifphp php(php!php$inputResponsephp instanceofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputResponsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Frameworkphp_Clientphp_Exceptionphp(php'Thephp registeredphp php$php_interactiveCallbackphp forphp thephp clientphp mustphp eitherphp returnphp aphp stringphp orphp anphp instancephp ofphp Zendphp_Toolphp_Frameworkphp_Clientphp_Interactivephp_InputResponsephp.php'php)php;
-php php php php php php php php php}
+        if (is_string($inputResponse)) {
+            require_once 'Zend/Tool/Framework/Client/Interactive/InputResponse.php';
+            $inputResponse = new Zend_Tool_Framework_Client_Interactive_InputResponse($inputResponse);
+        } elseif (!$inputResponse instanceof Zend_Tool_Framework_Client_Interactive_InputResponse) {
+            require_once 'Zend/Tool/Framework/Client/Exception.php';
+            throw new Zend_Tool_Framework_Client_Exception('The registered $_interactiveCallback for the client must either return a string or an instance of Zend_Tool_Framework_Client_Interactive_InputResponse.');
+        }
 
-php php php php php php php php returnphp php$inputResponsephp;
-php php php php php}
+        return $inputResponse;
+    }
 
 
-php}
+}

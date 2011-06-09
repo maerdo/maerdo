@@ -1,120 +1,120 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_InfoCard
-php php*php php@subpackagephp Zendphp_InfoCardphp_Cipher
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Rsaphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_InfoCard
+ * @subpackage Zend_InfoCard_Cipher
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Rsa.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php Zendphp_InfoCardphp_Cipherphp_Pkiphp_Adapterphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Pkiphp/Adapterphp/Abstractphp.phpphp'php;
+/**
+ * Zend_InfoCard_Cipher_Pki_Adapter_Abstract
+ */
+require_once 'Zend/InfoCard/Cipher/Pki/Adapter/Abstract.php';
 
-php/php*php*
-php php*php Zendphp_InfoCardphp_Cipherphp_Pkiphp_Rsaphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Pkiphp/Rsaphp/Interfacephp.phpphp'php;
+/**
+ * Zend_InfoCard_Cipher_Pki_Rsa_Interface
+ */
+require_once 'Zend/InfoCard/Cipher/Pki/Rsa/Interface.php';
 
-php/php*php*
-php php*php RSAphp Publicphp Keyphp Encryptionphp Cipherphp Objectphp forphp thephp InfoCardphp componentphp.php Reliesphp onphp OpenSSL
-php php*php tophp implementphp thephp RSAphp algorithm
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_InfoCard
-php php*php php@subpackagephp Zendphp_InfoCardphp_Cipher
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_InfoCardphp_Cipherphp_Pkiphp_Adapterphp_Rsa
-php php php php extendsphp Zendphp_InfoCardphp_Cipherphp_Pkiphp_Adapterphp_Abstract
-php php php php implementsphp Zendphp_InfoCardphp_Cipherphp_Pkiphp_Rsaphp_Interface
-php{
+/**
+ * RSA Public Key Encryption Cipher Object for the InfoCard component. Relies on OpenSSL
+ * to implement the RSA algorithm
+ *
+ * @category   Zend
+ * @package    Zend_InfoCard
+ * @subpackage Zend_InfoCard_Cipher
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_InfoCard_Cipher_Pki_Adapter_Rsa
+    extends Zend_InfoCard_Cipher_Pki_Adapter_Abstract
+    implements Zend_InfoCard_Cipher_Pki_Rsa_Interface
+{
 
-php php php php php/php*php*
-php php php php php php*php Objectphp Constructor
-php php php php php php*
-php php php php php php*php php@paramphp integerphp php$paddingphp Thephp typephp ofphp Paddingphp tophp use
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$paddingphp php=php Zendphp_InfoCardphp_Cipherphp_Pkiphp_Adapterphp_Abstractphp:php:NOphp_PADDINGphp)
-php php php php php{
-php php php php php php php php php/php/php Canphp'tphp testphp thisphp.php.
-php php php php php php php php php/php/php php@codeCoverageIgnoreStart
-php php php php php php php php ifphp(php!extensionphp_loadedphp(php'opensslphp'php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Cipherphp_Exceptionphp(php"Usephp ofphp thisphp PKIphp RSAphp Adapterphp requiresphp thephp opensslphp extensionphp loadedphp"php)php;
-php php php php php php php php php}
-php php php php php php php php php/php/php php@codeCoverageIgnoreEnd
+    /**
+     * Object Constructor
+     *
+     * @param integer $padding The type of Padding to use
+     */
+    public function __construct($padding = Zend_InfoCard_Cipher_Pki_Adapter_Abstract::NO_PADDING)
+    {
+        // Can't test this..
+        // @codeCoverageIgnoreStart
+        if(!extension_loaded('openssl')) {
+            require_once 'Zend/InfoCard/Cipher/Exception.php';
+            throw new Zend_InfoCard_Cipher_Exception("Use of this PKI RSA Adapter requires the openssl extension loaded");
+        }
+        // @codeCoverageIgnoreEnd
 
-php php php php php php php php php$thisphp-php>setPaddingphp(php$paddingphp)php;
-php php php php php}
+        $this->setPadding($padding);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Decryptsphp RSAphp encryptedphp dataphp usingphp thephp givenphp privatephp key
-php php php php php php*
-php php php php php php*php php@throwsphp Zendphp_InfoCardphp_Cipherphp_Exception
-php php php php php php*php php@paramphp stringphp php$encryptedDataphp Thephp encryptedphp dataphp inphp binaryphp format
-php php php php php php*php php@paramphp stringphp php$privateKeyphp Thephp privatephp keyphp inphp binaryphp format
-php php php php php php*php php@paramphp stringphp php$passwordphp Thephp privatephp keyphp passphrase
-php php php php php php*php php@paramphp integerphp php$paddingphp Thephp paddingphp tophp usephp duringphp decryptionphp php(ofphp notphp providedphp objectphp valuephp willphp bephp usedphp)
-php php php php php php*php php@returnphp stringphp Thephp decryptedphp data
-php php php php php php*php/
-php php php php publicphp functionphp decryptphp(php$encryptedDataphp,php php$privateKeyphp,php php$passwordphp php=php nullphp,php php$paddingphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$privatephp_keyphp php=php opensslphp_pkeyphp_getphp_privatephp(arrayphp(php$privateKeyphp,php php$passwordphp)php)php;
+    /**
+     * Decrypts RSA encrypted data using the given private key
+     *
+     * @throws Zend_InfoCard_Cipher_Exception
+     * @param string $encryptedData The encrypted data in binary format
+     * @param string $privateKey The private key in binary format
+     * @param string $password The private key passphrase
+     * @param integer $padding The padding to use during decryption (of not provided object value will be used)
+     * @return string The decrypted data
+     */
+    public function decrypt($encryptedData, $privateKey, $password = null, $padding = null)
+    {
+        $private_key = openssl_pkey_get_private(array($privateKey, $password));
 
-php php php php php php php php ifphp(php!php$privatephp_keyphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Cipherphp_Exceptionphp(php"Failedphp tophp loadphp privatephp keyphp"php)php;
-php php php php php php php php php}
+        if(!$private_key) {
+            require_once 'Zend/InfoCard/Cipher/Exception.php';
+            throw new Zend_InfoCard_Cipher_Exception("Failed to load private key");
+        }
 
-php php php php php php php php ifphp(php$paddingphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>setPaddingphp(php$paddingphp)php;
-php php php php php php php php php php php php php}php catchphp(Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php opensslphp_freephp_keyphp(php$privatephp_keyphp)php;
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        if($padding !== null) {
+            try {
+                $this->setPadding($padding);
+            } catch(Exception $e) {
+                openssl_free_key($private_key);
+                throw $e;
+            }
+        }
 
-php php php php php php php php switchphp(php$thisphp-php>getPaddingphp(php)php)php php{
-php php php php php php php php php php php php casephp selfphp:php:NOphp_PADDINGphp:
-php php php php php php php php php php php php php php php php php$opensslphp_paddingphp php=php OPENSSLphp_NOphp_PADDINGphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp selfphp:php:OAEPphp_PADDINGphp:
-php php php php php php php php php php php php php php php php php$opensslphp_paddingphp php=php OPENSSLphp_PKCSphp1php_OAEPphp_PADDINGphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
+        switch($this->getPadding()) {
+            case self::NO_PADDING:
+                $openssl_padding = OPENSSL_NO_PADDING;
+                break;
+            case self::OAEP_PADDING:
+                $openssl_padding = OPENSSL_PKCS1_OAEP_PADDING;
+                break;
+        }
 
-php php php php php php php php php$resultphp php=php opensslphp_privatephp_decryptphp(php$encryptedDataphp,php php$decryptedDataphp,php php$privatephp_keyphp,php php$opensslphp_paddingphp)php;
+        $result = openssl_private_decrypt($encryptedData, $decryptedData, $private_key, $openssl_padding);
 
-php php php php php php php php opensslphp_freephp_keyphp(php$privatephp_keyphp)php;
+        openssl_free_key($private_key);
 
-php php php php php php php php ifphp(php!php$resultphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/InfoCardphp/Cipherphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_InfoCardphp_Cipherphp_Exceptionphp(php"Unablephp tophp Decryptphp Valuephp usingphp providedphp privatephp keyphp"php)php;
-php php php php php php php php php}
+        if(!$result) {
+            require_once 'Zend/InfoCard/Cipher/Exception.php';
+            throw new Zend_InfoCard_Cipher_Exception("Unable to Decrypt Value using provided private key");
+        }
 
-php php php php php php php php ifphp(php$thisphp-php>getPaddingphp(php)php php=php=php selfphp:php:NOphp_PADDINGphp)php php{
-php php php php php php php php php php php php php$decryptedDataphp php=php substrphp(php$decryptedDataphp,php php2php)php;
-php php php php php php php php php php php php php$startphp php=php strposphp(php$decryptedDataphp,php php0php)php php+php php1php;
-php php php php php php php php php php php php php$decryptedDataphp php=php substrphp(php$decryptedDataphp,php php$startphp)php;
-php php php php php php php php php}
+        if($this->getPadding() == self::NO_PADDING) {
+            $decryptedData = substr($decryptedData, 2);
+            $start = strpos($decryptedData, 0) + 1;
+            $decryptedData = substr($decryptedData, $start);
+        }
 
-php php php php php php php php returnphp php$decryptedDataphp;
-php php php php php}
-php}
+        return $decryptedData;
+    }
+}

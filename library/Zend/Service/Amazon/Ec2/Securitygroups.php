@@ -1,301 +1,301 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Ecphp2
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Securitygroupsphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Ec2
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Securitygroups.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/Amazonphp/Ecphp2php/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Service_Amazon_Ec2_Abstract
+ */
+require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
 
-php/php*php*
-php php*php Anphp Amazonphp ECphp2php interfacephp tophp createphp,php deletephp,php describephp,php grandphp andphp revokephp sercurityphp permissionsphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Servicephp_Amazon
-php php*php php@subpackagephp Ecphp2
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Securitygroupsphp extendsphp Zendphp_Servicephp_Amazonphp_Ecphp2php_Abstract
-php{
-php php php php php/php*php*
-php php php php php php*php Createsphp aphp newphp securityphp groupphp.
-php php php php php php*
-php php php php php php*php Everyphp instancephp isphp launchedphp inphp aphp securityphp groupphp.php Ifphp nophp securityphp groupphp isphp specified
-php php php php php php*php duringphp launchphp,php thephp instancesphp arephp launchedphp inphp thephp defaultphp securityphp groupphp.php Instances
-php php php php php php*php withinphp thephp samephp securityphp groupphp havephp unrestrictedphp networkphp accessphp tophp eachphp otherphp.
-php php php php php php*php Instancesphp willphp rejectphp networkphp accessphp attemptsphp fromphp otherphp instancesphp inphp aphp different
-php php php php php php*php securityphp groupphp.php Asphp thephp ownerphp ofphp instancesphp youphp canphp grantphp orphp revokephp specificphp permissions
-php php php php php php*php usingphp thephp php{php@linkphp authorizeIpphp}php,php php{php@linkphp authorizeGroupphp}php,php php{php@linkphp revokeGroupphp}php and
-php php php php php php*php php{php$linkphp revokeIpphp}php operationsphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php Namephp ofphp thephp newphp securityphp groupphp.
-php php php php php php*php php@paramphp stringphp php$descriptionphp php php Descriptionphp ofphp thephp newphp securityphp groupphp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp createphp(php$namephp,php php$descriptionphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'CreateSecurityGroupphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-php php php php php php php php php$paramsphp[php'GroupDescriptionphp'php]php php=php php$descriptionphp;
+/**
+ * An Amazon EC2 interface to create, delete, describe, grand and revoke sercurity permissions.
+ *
+ * @category   Zend
+ * @package    Zend_Service_Amazon
+ * @subpackage Ec2
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abstract
+{
+    /**
+     * Creates a new security group.
+     *
+     * Every instance is launched in a security group. If no security group is specified
+     * during launch, the instances are launched in the default security group. Instances
+     * within the same security group have unrestricted network access to each other.
+     * Instances will reject network access attempts from other instances in a different
+     * security group. As the owner of instances you can grant or revoke specific permissions
+     * using the {@link authorizeIp}, {@link authorizeGroup}, {@link revokeGroup} and
+     * {$link revokeIp} operations.
+     *
+     * @param string $name          Name of the new security group.
+     * @param string $description   Description of the new security group.
+     * @return boolean
+     */
+    public function create($name, $description)
+    {
+        $params = array();
+        $params['Action'] = 'CreateSecurityGroup';
+        $params['GroupName'] = $name;
+        $params['GroupDescription'] = $description;
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
 
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-php php php php php}
+        return ($success === "true");
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnsphp informationphp aboutphp securityphp groupsphp thatphp youphp ownphp.
-php php php php php php*
-php php php php php php*php Ifphp youphp specifyphp securityphp groupphp namesphp,php informationphp aboutphp thosephp securityphp groupphp isphp returnedphp.
-php php php php php php*php Otherwisephp,php informationphp forphp allphp securityphp groupphp isphp returnedphp.php Ifphp youphp specifyphp aphp group
-php php php php php php*php thatphp doesphp notphp existphp,php aphp faultphp isphp returnedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp|arrayphp php$namephp php php php Listphp ofphp securityphp groupsphp tophp describe
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp describephp(php$namephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DescribeSecurityGroupsphp'php;
-php php php php php php php php ifphp(isphp_arrayphp(php$namephp)php php&php&php php!emptyphp(php$namephp)php)php php{
-php php php php php php php php php php php php foreachphp(php$namephp asphp php$kphp=php>php$namephp)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php'GroupNamephp.php'php php.php php(php$kphp+php1php)php]php php=php php$namephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elseifphp(php$namephp)php php{
-php php php php php php php php php php php php php$paramsphp[php'GroupNamephp.php1php'php]php php=php php$namephp;
-php php php php php php php php php}
+    /**
+     * Returns information about security groups that you own.
+     *
+     * If you specify security group names, information about those security group is returned.
+     * Otherwise, information for all security group is returned. If you specify a group
+     * that does not exist, a fault is returned.
+     *
+     * @param string|array $name    List of security groups to describe
+     * @return array
+     */
+    public function describe($name = null)
+    {
+        $params = array();
+        $params['Action'] = 'DescribeSecurityGroups';
+        if(is_array($name) && !empty($name)) {
+            foreach($name as $k=>$name) {
+                $params['GroupName.' . ($k+1)] = $name;
+            }
+        } elseif($name) {
+            $params['GroupName.1'] = $name;
+        }
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
 
-php php php php php php php php php$returnphp php=php arrayphp(php)php;
+        $return = array();
 
-php php php php php php php php php$nodesphp php=php php$xpathphp-php>queryphp(php'php/php/ecphp2php:securityGroupInfophp/ecphp2php:itemphp'php)php;
+        $nodes = $xpath->query('//ec2:securityGroupInfo/ec2:item');
 
-php php php php php php php php foreachphp(php$nodesphp asphp php$nodephp)php php{
-php php php php php php php php php php php php php$itemphp php=php arrayphp(php)php;
+        foreach($nodes as $node) {
+            $item = array();
 
-php php php php php php php php php php php php php$itemphp[php'ownerIdphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:ownerIdphp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'groupNamephp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:groupNamephp/textphp(php)php)php'php,php php$nodephp)php;
-php php php php php php php php php php php php php$itemphp[php'groupDescriptionphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:groupDescriptionphp/textphp(php)php)php'php,php php$nodephp)php;
+            $item['ownerId'] = $xpath->evaluate('string(ec2:ownerId/text())', $node);
+            $item['groupName'] = $xpath->evaluate('string(ec2:groupName/text())', $node);
+            $item['groupDescription'] = $xpath->evaluate('string(ec2:groupDescription/text())', $node);
 
-php php php php php php php php php php php php php$ipphp_nodesphp php=php php$xpathphp-php>queryphp(php'ecphp2php:ipPermissionsphp/ecphp2php:itemphp'php,php php$nodephp)php;
+            $ip_nodes = $xpath->query('ec2:ipPermissions/ec2:item', $node);
 
-php php php php php php php php php php php php foreachphp(php$ipphp_nodesphp asphp php$ipphp_nodephp)php php{
-php php php php php php php php php php php php php php php php php$sItemphp php=php arrayphp(php)php;
+            foreach($ip_nodes as $ip_node) {
+                $sItem = array();
 
-php php php php php php php php php php php php php php php php php$sItemphp[php'ipProtocolphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:ipProtocolphp/textphp(php)php)php'php,php php$ipphp_nodephp)php;
-php php php php php php php php php php php php php php php php php$sItemphp[php'fromPortphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:fromPortphp/textphp(php)php)php'php,php php$ipphp_nodephp)php;
-php php php php php php php php php php php php php php php php php$sItemphp[php'toPortphp'php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:toPortphp/textphp(php)php)php'php,php php$ipphp_nodephp)php;
+                $sItem['ipProtocol'] = $xpath->evaluate('string(ec2:ipProtocol/text())', $ip_node);
+                $sItem['fromPort'] = $xpath->evaluate('string(ec2:fromPort/text())', $ip_node);
+                $sItem['toPort'] = $xpath->evaluate('string(ec2:toPort/text())', $ip_node);
 
-php php php php php php php php php php php php php php php php php$ipsphp php=php php$xpathphp-php>queryphp(php'ecphp2php:ipRangesphp/ecphp2php:itemphp'php,php php$ipphp_nodephp)php;
+                $ips = $xpath->query('ec2:ipRanges/ec2:item', $ip_node);
 
-php php php php php php php php php php php php php php php php php$sItemphp[php'ipRangesphp'php]php php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php foreachphp(php$ipsphp asphp php$ipphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$sItemphp[php'ipRangesphp'php]php[php]php php=php php$xpathphp-php>evaluatephp(php'stringphp(ecphp2php:cidrIpphp/textphp(php)php)php'php,php php$ipphp)php;
-php php php php php php php php php php php php php php php php php}
+                $sItem['ipRanges'] = array();
+                foreach($ips as $ip) {
+                    $sItem['ipRanges'][] = $xpath->evaluate('string(ec2:cidrIp/text())', $ip);
+                }
 
-php php php php php php php php php php php php php php php php ifphp(countphp(php$sItemphp[php'ipRangesphp'php]php)php php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php php php php php$sItemphp[php'ipRangesphp'php]php php=php php$sItemphp[php'ipRangesphp'php]php[php0php]php;
-php php php php php php php php php php php php php php php php php}
+                if(count($sItem['ipRanges']) == 1) {
+                    $sItem['ipRanges'] = $sItem['ipRanges'][0];
+                }
 
-php php php php php php php php php php php php php php php php php$itemphp[php'ipPermissionsphp'php]php[php]php php=php php$sItemphp;
-php php php php php php php php php php php php php php php php unsetphp(php$ipphp_nodephp,php php$sItemphp)php;
-php php php php php php php php php php php php php}
+                $item['ipPermissions'][] = $sItem;
+                unset($ip_node, $sItem);
+            }
 
-php php php php php php php php php php php php php$returnphp[php]php php=php php$itemphp;
+            $return[] = $item;
 
-php php php php php php php php php php php php unsetphp(php$itemphp,php php$nodephp)php;
-php php php php php php php php php}
-
-
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Deletesphp aphp securityphp groupphp.
-php php php php php php*
-php php php php php php*php Ifphp youphp attemptphp tophp deletephp aphp securityphp groupphp thatphp containsphp instancesphp,php aphp faultphp isphp returnedphp.
-php php php php php php*php Ifphp youphp attemptphp tophp deletephp aphp securityphp groupphp thatphp isphp referencedphp byphp anotherphp securityphp groupphp,
-php php php php php php*php aphp faultphp isphp returnedphp.php Forphp examplephp,php ifphp securityphp groupphp Bphp hasphp aphp rulephp thatphp allowsphp access
-php php php php php php*php fromphp securityphp groupphp Aphp,php securityphp groupphp Aphp cannotphp bephp deletedphp untilphp thephp allowphp rulephp isphp removedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php Namephp ofphp thephp securityphp groupphp tophp deletephp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp deletephp(php$namephp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'DeleteSecurityGroupphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
-
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp permissionsphp tophp aphp securityphp group
-php php php php php php*
-php php php php php php*php Permissionsphp arephp specifiedphp byphp thephp IPphp protocolphp php(TCPphp,php UDPphp orphp ICMPphp)php,php thephp sourcephp ofphp thephp request
-php php php php php php*php php(byphp IPphp rangephp orphp anphp Amazonphp ECphp2php userphp-groupphp pairphp)php,php thephp sourcephp andphp destinationphp portphp ranges
-php php php php php php*php php(forphp TCPphp andphp UDPphp)php,php andphp thephp ICMPphp codesphp andphp typesphp php(forphp ICMPphp)php.php Whenphp authorizingphp ICMPphp,php php-php1
-php php php php php php*php canphp bephp usedphp asphp aphp wildcardphp inphp thephp typephp andphp codephp fieldsphp.
-php php php php php php*
-php php php php php php*php Permissionphp changesphp arephp propagatedphp tophp instancesphp withinphp thephp securityphp groupphp asphp quicklyphp as
-php php php php php php*php possiblephp.php Howeverphp,php dependingphp onphp thephp numberphp ofphp instancesphp,php aphp smallphp delayphp mightphp occurphp.
-php php php php php php*
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php php php php php php php php php Namephp ofphp thephp groupphp tophp modifyphp.
-php php php php php php*php php@paramphp stringphp php$ipProtocolphp php php php php php php php php php php php IPphp protocolphp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php@paramphp integerphp php$fromPortphp php php php php php php php php php php php php Bottomphp ofphp portphp rangephp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Thisphp containsphp thephp ICMPphp typephp ifphp ICMPphp isphp beingphp authorizedphp.
-php php php php php php*php php@paramphp integerphp php$toPortphp php php php php php php php php php php php php php php Topphp ofphp portphp rangephp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Thisphp containsphp thephp ICMPphp codephp ifphp ICMPphp isphp beingphp authorizedphp.
-php php php php php php*php php@paramphp stringphp php$cidrIpphp php php php php php php php php php php php php php php php CIDRphp IPphp rangephp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp authorizeIpphp(php$namephp,php php$ipProtocolphp,php php$fromPortphp,php php$toPortphp,php php$cidrIpphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'AuthorizeSecurityGroupIngressphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-php php php php php php php php php$paramsphp[php'IpProtocolphp'php]php php=php php$ipProtocolphp;
-php php php php php php php php php$paramsphp[php'FromPortphp'php]php php=php php$fromPortphp;
-php php php php php php php php php$paramsphp[php'ToPortphp'php]php php=php php$toPortphp;
-php php php php php php php php php$paramsphp[php'CidrIpphp'php]php php=php php$cidrIpphp;
-
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
-
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Addsphp permissionsphp tophp aphp securityphp group
-php php php php php php*
-php php php php php php*php Whenphp authorizingphp aphp userphp/groupphp pairphp permissionphp,php GroupNamephp,php SourceSecurityGroupNamephp and
-php php php php php php*php SourceSecurityGroupOwnerIdphp mustphp bephp specifiedphp.
-php php php php php php*
-php php php php php php*php Permissionphp changesphp arephp propagatedphp tophp instancesphp withinphp thephp securityphp groupphp asphp quicklyphp as
-php php php php php php*php possiblephp.php Howeverphp,php dependingphp onphp thephp numberphp ofphp instancesphp,php aphp smallphp delayphp mightphp occurphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php php php php php php php php php Namephp ofphp thephp groupphp tophp modifyphp.
-php php php php php php*php php@paramphp stringphp php$groupNamephp php php php php php php php php php php php php Namephp ofphp securityphp groupphp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp userphp/groupphp pairphp.
-php php php php php php*php php@paramphp stringphp php$ownerIdphp php php php php php php php php php php php php php php Ownerphp ofphp securityphp groupphp tophp authorizephp accessphp tophp whenphp operatingphp onphp aphp userphp/groupphp pairphp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp authorizeGroupphp(php$namephp,php php$groupNamephp,php php$ownerIdphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'AuthorizeSecurityGroupIngressphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-php php php php php php php php php$paramsphp[php'SourceSecurityGroupNamephp'php]php php=php php$groupNamephp;
-php php php php php php php php php$paramsphp[php'SourceSecurityGroupOwnerIdphp'php]php php=php php$ownerIdphp;
+            unset($item, $node);
+        }
 
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
+        return $return;
+    }
+
+    /**
+     * Deletes a security group.
+     *
+     * If you attempt to delete a security group that contains instances, a fault is returned.
+     * If you attempt to delete a security group that is referenced by another security group,
+     * a fault is returned. For example, if security group B has a rule that allows access
+     * from security group A, security group A cannot be deleted until the allow rule is removed.
+     *
+     * @param string $name          Name of the security group to delete.
+     * @return boolean
+     */
+    public function delete($name)
+    {
+        $params = array();
+        $params['Action'] = 'DeleteSecurityGroup';
+        $params['GroupName'] = $name;
+
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
+
+        return ($success === "true");
+    }
+
+    /**
+     * Adds permissions to a security group
+     *
+     * Permissions are specified by the IP protocol (TCP, UDP or ICMP), the source of the request
+     * (by IP range or an Amazon EC2 user-group pair), the source and destination port ranges
+     * (for TCP and UDP), and the ICMP codes and types (for ICMP). When authorizing ICMP, -1
+     * can be used as a wildcard in the type and code fields.
+     *
+     * Permission changes are propagated to instances within the security group as quickly as
+     * possible. However, depending on the number of instances, a small delay might occur.
+     *
+     *
+     * @param string $name                  Name of the group to modify.
+     * @param string $ipProtocol            IP protocol to authorize access to when operating on a CIDR IP.
+     * @param integer $fromPort             Bottom of port range to authorize access to when operating on a CIDR IP.
+     *                                      This contains the ICMP type if ICMP is being authorized.
+     * @param integer $toPort               Top of port range to authorize access to when operating on a CIDR IP.
+     *                                      This contains the ICMP code if ICMP is being authorized.
+     * @param string $cidrIp                CIDR IP range to authorize access to when operating on a CIDR IP.
+     * @return boolean
+     */
+    public function authorizeIp($name, $ipProtocol, $fromPort, $toPort, $cidrIp)
+    {
+        $params = array();
+        $params['Action'] = 'AuthorizeSecurityGroupIngress';
+        $params['GroupName'] = $name;
+        $params['IpProtocol'] = $ipProtocol;
+        $params['FromPort'] = $fromPort;
+        $params['ToPort'] = $toPort;
+        $params['CidrIp'] = $cidrIp;
+
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
+
+        return ($success === "true");
+
+    }
+
+    /**
+     * Adds permissions to a security group
+     *
+     * When authorizing a user/group pair permission, GroupName, SourceSecurityGroupName and
+     * SourceSecurityGroupOwnerId must be specified.
+     *
+     * Permission changes are propagated to instances within the security group as quickly as
+     * possible. However, depending on the number of instances, a small delay might occur.
+     *
+     * @param string $name                  Name of the group to modify.
+     * @param string $groupName             Name of security group to authorize access to when operating on a user/group pair.
+     * @param string $ownerId               Owner of security group to authorize access to when operating on a user/group pair.
+     * @return boolean
+     */
+    public function authorizeGroup($name, $groupName, $ownerId)
+    {
+        $params = array();
+        $params['Action'] = 'AuthorizeSecurityGroupIngress';
+        $params['GroupName'] = $name;
+        $params['SourceSecurityGroupName'] = $groupName;
+        $params['SourceSecurityGroupOwnerId'] = $ownerId;
 
 
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Revokesphp permissionsphp fromphp aphp securityphp groupphp.php Thephp permissionsphp usedphp tophp revokephp mustphp bephp specified
-php php php php php php*php usingphp thephp samephp valuesphp usedphp tophp grantphp thephp permissionsphp.
-php php php php php php*
-php php php php php php*php Permissionsphp arephp specifiedphp byphp thephp IPphp protocolphp php(TCPphp,php UDPphp orphp ICMPphp)php,php thephp sourcephp ofphp thephp request
-php php php php php php*php php(byphp IPphp rangephp orphp anphp Amazonphp ECphp2php userphp-groupphp pairphp)php,php thephp sourcephp andphp destinationphp portphp ranges
-php php php php php php*php php(forphp TCPphp andphp UDPphp)php,php andphp thephp ICMPphp codesphp andphp typesphp php(forphp ICMPphp)php.php Whenphp authorizingphp ICMPphp,php php-php1
-php php php php php php*php canphp bephp usedphp asphp aphp wildcardphp inphp thephp typephp andphp codephp fieldsphp.
-php php php php php php*
-php php php php php php*php Permissionphp changesphp arephp propagatedphp tophp instancesphp withinphp thephp securityphp groupphp asphp quicklyphp as
-php php php php php php*php possiblephp.php Howeverphp,php dependingphp onphp thephp numberphp ofphp instancesphp,php aphp smallphp delayphp mightphp occurphp.
-php php php php php php*
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php php php php php php php php php Namephp ofphp thephp groupphp tophp modifyphp.
-php php php php php php*php php@paramphp stringphp php$ipProtocolphp php php php php php php php php php php php IPphp protocolphp tophp revokephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php@paramphp integerphp php$fromPortphp php php php php php php php php php php php php Bottomphp ofphp portphp rangephp tophp revokephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Thisphp containsphp thephp ICMPphp typephp ifphp ICMPphp isphp beingphp revokedphp.
-php php php php php php*php php@paramphp integerphp php$toPortphp php php php php php php php php php php php php php php Topphp ofphp portphp rangephp tophp revokedphp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php Thisphp containsphp thephp ICMPphp codephp ifphp ICMPphp isphp beingphp revokedphp.
-php php php php php php*php php@paramphp stringphp php$cidrIpphp php php php php php php php php php php php php php php php CIDRphp IPphp rangephp tophp revokephp accessphp tophp whenphp operatingphp onphp aphp CIDRphp IPphp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp revokeIpphp(php$namephp,php php$ipProtocolphp,php php$fromPortphp,php php$toPortphp,php php$cidrIpphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'RevokeSecurityGroupIngressphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-php php php php php php php php php$paramsphp[php'IpProtocolphp'php]php php=php php$ipProtocolphp;
-php php php php php php php php php$paramsphp[php'FromPortphp'php]php php=php php$fromPortphp;
-php php php php php php php php php$paramsphp[php'ToPortphp'php]php php=php php$toPortphp;
-php php php php php php php php php$paramsphp[php'CidrIpphp'php]php php=php php$cidrIpphp;
-
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
-
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Revokesphp permissionsphp fromphp aphp securityphp groupphp.php Thephp permissionsphp usedphp tophp revokephp mustphp bephp specified
-php php php php php php*php usingphp thephp samephp valuesphp usedphp tophp grantphp thephp permissionsphp.
-php php php php php php*
-php php php php php php*php Permissionphp changesphp arephp propagatedphp tophp instancesphp withinphp thephp securityphp groupphp asphp quicklyphp as
-php php php php php php*php possiblephp.php Howeverphp,php dependingphp onphp thephp numberphp ofphp instancesphp,php aphp smallphp delayphp mightphp occurphp.
-php php php php php php*
-php php php php php php*php Whenphp revokingphp aphp userphp/groupphp pairphp permissionphp,php GroupNamephp,php SourceSecurityGroupNamephp and
-php php php php php php*php SourceSecurityGroupOwnerIdphp mustphp bephp specifiedphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php php php php php php php php php Namephp ofphp thephp groupphp tophp modifyphp.
-php php php php php php*php php@paramphp stringphp php$groupNamephp php php php php php php php php php php php php Namephp ofphp securityphp groupphp tophp revokephp accessphp tophp whenphp operatingphp onphp aphp userphp/groupphp pairphp.
-php php php php php php*php php@paramphp stringphp php$ownerIdphp php php php php php php php php php php php php php php Ownerphp ofphp securityphp groupphp tophp revokephp accessphp tophp whenphp operatingphp onphp aphp userphp/groupphp pairphp.
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php publicphp functionphp revokeGroupphp(php$namephp,php php$groupNamephp,php php$ownerIdphp)
-php php php php php{
-php php php php php php php php php$paramsphp php=php arrayphp(php)php;
-php php php php php php php php php$paramsphp[php'Actionphp'php]php php=php php'RevokeSecurityGroupIngressphp'php;
-php php php php php php php php php$paramsphp[php'GroupNamephp'php]php php=php php$namephp;
-php php php php php php php php php$paramsphp[php'SourceSecurityGroupNamephp'php]php php=php php$groupNamephp;
-php php php php php php php php php$paramsphp[php'SourceSecurityGroupOwnerIdphp'php]php php=php php$ownerIdphp;
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
 
 
-php php php php php php php php php$responsephp php=php php$thisphp-php>sendRequestphp(php$paramsphp)php;
-php php php php php php php php php$xpathphp php=php php$responsephp-php>getXPathphp(php)php;
-php php php php php php php php php$successphp php php=php php$xpathphp-php>evaluatephp(php'stringphp(php/php/ecphp2php:returnphp/textphp(php)php)php'php)php;
+        return ($success === "true");
+    }
+
+    /**
+     * Revokes permissions from a security group. The permissions used to revoke must be specified
+     * using the same values used to grant the permissions.
+     *
+     * Permissions are specified by the IP protocol (TCP, UDP or ICMP), the source of the request
+     * (by IP range or an Amazon EC2 user-group pair), the source and destination port ranges
+     * (for TCP and UDP), and the ICMP codes and types (for ICMP). When authorizing ICMP, -1
+     * can be used as a wildcard in the type and code fields.
+     *
+     * Permission changes are propagated to instances within the security group as quickly as
+     * possible. However, depending on the number of instances, a small delay might occur.
+     *
+     *
+     * @param string $name                  Name of the group to modify.
+     * @param string $ipProtocol            IP protocol to revoke access to when operating on a CIDR IP.
+     * @param integer $fromPort             Bottom of port range to revoke access to when operating on a CIDR IP.
+     *                                      This contains the ICMP type if ICMP is being revoked.
+     * @param integer $toPort               Top of port range to revoked access to when operating on a CIDR IP.
+     *                                      This contains the ICMP code if ICMP is being revoked.
+     * @param string $cidrIp                CIDR IP range to revoke access to when operating on a CIDR IP.
+     * @return boolean
+     */
+    public function revokeIp($name, $ipProtocol, $fromPort, $toPort, $cidrIp)
+    {
+        $params = array();
+        $params['Action'] = 'RevokeSecurityGroupIngress';
+        $params['GroupName'] = $name;
+        $params['IpProtocol'] = $ipProtocol;
+        $params['FromPort'] = $fromPort;
+        $params['ToPort'] = $toPort;
+        $params['CidrIp'] = $cidrIp;
+
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
+
+        return ($success === "true");
+    }
+
+    /**
+     * Revokes permissions from a security group. The permissions used to revoke must be specified
+     * using the same values used to grant the permissions.
+     *
+     * Permission changes are propagated to instances within the security group as quickly as
+     * possible. However, depending on the number of instances, a small delay might occur.
+     *
+     * When revoking a user/group pair permission, GroupName, SourceSecurityGroupName and
+     * SourceSecurityGroupOwnerId must be specified.
+     *
+     * @param string $name                  Name of the group to modify.
+     * @param string $groupName             Name of security group to revoke access to when operating on a user/group pair.
+     * @param string $ownerId               Owner of security group to revoke access to when operating on a user/group pair.
+     * @return boolean
+     */
+    public function revokeGroup($name, $groupName, $ownerId)
+    {
+        $params = array();
+        $params['Action'] = 'RevokeSecurityGroupIngress';
+        $params['GroupName'] = $name;
+        $params['SourceSecurityGroupName'] = $groupName;
+        $params['SourceSecurityGroupOwnerId'] = $ownerId;
 
 
-php php php php php php php php returnphp php(php$successphp php=php=php=php php"truephp"php)php;
-php php php php php}
-php}
+        $response = $this->sendRequest($params);
+        $xpath = $response->getXPath();
+        $success  = $xpath->evaluate('string(//ec2:return/text())');
+
+
+        return ($success === "true");
+    }
+}

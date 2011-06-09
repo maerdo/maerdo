@@ -1,195 +1,195 @@
-<php?php
+<?php
 
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Flickr
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Resultphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Flickr
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Result.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp Flickr
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_Flickrphp_Result
-php{
-php php php php php/php*php*
-php php php php php php*php Thephp photophp'sphp Flickrphp IDphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$idphp;
+/**
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage Flickr
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_Flickr_Result
+{
+    /**
+     * The photo's Flickr ID.
+     *
+     * @var string
+     */
+    public $id;
 
-php php php php php/php*php*
-php php php php php php*php Thephp photophp ownerphp'sphp NSIDphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$ownerphp;
+    /**
+     * The photo owner's NSID.
+     *
+     * @var string
+     */
+    public $owner;
 
-php php php php php/php*php*
-php php php php php php*php Aphp keyphp usedphp inphp URIphp constructionphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$secretphp;
+    /**
+     * A key used in URI construction.
+     *
+     * @var string
+     */
+    public $secret;
 
-php php php php php/php*php*
-php php php php php php*php Thephp servernamephp tophp usephp forphp URIphp constructionphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$serverphp;
+    /**
+     * The servername to use for URI construction.
+     *
+     * @var string
+     */
+    public $server;
 
-php php php php php/php*php*
-php php php php php php*php Thephp photophp'sphp titlephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$titlephp;
+    /**
+     * The photo's title.
+     *
+     * @var string
+     */
+    public $title;
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp thephp photophp isphp publicphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$ispublicphp;
+    /**
+     * Whether the photo is public.
+     *
+     * @var string
+     */
+    public $ispublic;
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp thephp photophp isphp visiblephp tophp youphp becausephp youphp arephp aphp friendphp ofphp thephp ownerphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$isfriendphp;
+    /**
+     * Whether the photo is visible to you because you are a friend of the owner.
+     *
+     * @var string
+     */
+    public $isfriend;
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp thephp photophp isphp visiblephp tophp youphp becausephp youphp arephp familyphp ofphp thephp ownerphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$isfamilyphp;
+    /**
+     * Whether the photo is visible to you because you are family of the owner.
+     *
+     * @var string
+     */
+    public $isfamily;
 
-php php php php php/php*php*
-php php php php php php*php Thephp licensephp thephp photophp isphp availablephp underphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$licensephp;
+    /**
+     * The license the photo is available under.
+     *
+     * @var string
+     */
+    public $license;
 
-php php php php php/php*php*
-php php php php php php*php Thephp datephp thephp photophp wasphp uploadedphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$dateuploadphp;
+    /**
+     * The date the photo was uploaded.
+     *
+     * @var string
+     */
+    public $dateupload;
 
-php php php php php/php*php*
-php php php php php php*php Thephp datephp thephp photophp wasphp takenphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$datetakenphp;
+    /**
+     * The date the photo was taken.
+     *
+     * @var string
+     */
+    public $datetaken;
 
-php php php php php/php*php*
-php php php php php php*php Thephp screennamephp ofphp thephp ownerphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$ownernamephp;
+    /**
+     * The screenname of the owner.
+     *
+     * @var string
+     */
+    public $ownername;
 
-php php php php php/php*php*
-php php php php php php*php Thephp serverphp usedphp inphp assemblingphp iconphp URLsphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php publicphp php$iconserverphp;
+    /**
+     * The server used in assembling icon URLs.
+     *
+     * @var string
+     */
+    public $iconserver;
 
-php php php php php/php*php*
-php php php php php php*php Aphp php7php5xphp7php5php pixelphp squarephp thumbnailphp ofphp thephp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Squarephp;
+    /**
+     * A 75x75 pixel square thumbnail of the image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Square;
 
-php php php php php/php*php*
-php php php php php php*php Aphp php1php0php0php pixelphp thumbnailphp ofphp thephp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Thumbnailphp;
+    /**
+     * A 100 pixel thumbnail of the image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Thumbnail;
 
-php php php php php/php*php*
-php php php php php php*php Aphp php2php4php0php pixelphp versionphp ofphp thephp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Smallphp;
+    /**
+     * A 240 pixel version of the image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Small;
 
-php php php php php/php*php*
-php php php php php php*php Aphp php5php0php0php pixelphp versionphp ofphp thephp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Mediumphp;
+    /**
+     * A 500 pixel version of the image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Medium;
 
-php php php php php/php*php*
-php php php php php php*php Aphp php6php4php0php pixelphp versionphp ofphp thephp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Largephp;
+    /**
+     * A 640 pixel version of the image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Large;
 
-php php php php php/php*php*
-php php php php php php*php Thephp originalphp imagephp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickrphp_Image
-php php php php php php*php/
-php php php php publicphp php$Originalphp;
+    /**
+     * The original image.
+     *
+     * @var Zend_Service_Flickr_Image
+     */
+    public $Original;
 
-php php php php php/php*php*
-php php php php php php*php Originalphp Zendphp_Servicephp_Flickrphp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Servicephp_Flickr
-php php php php php php*php/
-php php php php protectedphp php$php_flickrphp;
+    /**
+     * Original Zend_Service_Flickr object.
+     *
+     * @var Zend_Service_Flickr
+     */
+    protected $_flickr;
 
-php php php php php/php*php*
-php php php php php php*php Parsephp thephp Flickrphp Result
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php php php php php php php php php php$image
-php php php php php php*php php@paramphp php Zendphp_Servicephp_Flickrphp php$flickrphp Originalphp Zendphp_Servicephp_Flickrphp objectphp withphp whichphp thephp requestphp wasphp made
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$imagephp,php Zendphp_Servicephp_Flickrphp php$flickrphp)
-php php php php php{
-php php php php php php php php php$xpathphp php=php newphp DOMXPathphp(php$imagephp-php>ownerDocumentphp)php;
+    /**
+     * Parse the Flickr Result
+     *
+     * @param  DOMElement          $image
+     * @param  Zend_Service_Flickr $flickr Original Zend_Service_Flickr object with which the request was made
+     * @return void
+     */
+    public function __construct(DOMElement $image, Zend_Service_Flickr $flickr)
+    {
+        $xpath = new DOMXPath($image->ownerDocument);
 
-php php php php php php php php foreachphp php(php$xpathphp-php>queryphp(php'php.php/php@php*php'php,php php$imagephp)php asphp php$propertyphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php{php$propertyphp-php>namephp}php php=php php(stringphp)php php$propertyphp-php>valuephp;
-php php php php php php php php php}
+        foreach ($xpath->query('./@*', $image) as $property) {
+            $this->{$property->name} = (string) $property->value;
+        }
 
-php php php php php php php php php$thisphp-php>php_flickrphp php=php php$flickrphp;
+        $this->_flickr = $flickr;
 
-php php php php php php php php foreachphp php(php$thisphp-php>php_flickrphp-php>getImageDetailsphp(php$thisphp-php>idphp)php asphp php$kphp php=php>php php$vphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php$kphp php=php php$vphp;
-php php php php php php php php php}
-php php php php php}
-php}
+        foreach ($this->_flickr->getImageDetails($this->id) as $k => $v) {
+            $this->$k = $v;
+        }
+    }
+}

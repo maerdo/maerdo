@@ -1,1501 +1,1501 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php7php8php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php1php7php:php1php2php:php2php6php php$php"php/php>
-php	php	php<languagephp typephp=php"gaphp"php/php>
-php	<php/identityphp>
-php	php<fallbackphp>enphp_IE<php/fallbackphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"aaphp"php>aa<php/languagephp>
-php	php	php	php<languagephp typephp=php"abphp"php>Abcáisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"aephp"php>Aivéistis<php/languagephp>
-php	php	php	php<languagephp typephp=php"afphp"php>Afracáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>Amarais<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>Araibis<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>Asaimis<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>Asarbaiseáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"baphp"php>Baiscíris<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>Bealarúisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>Bulgáiris<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>Bihairis<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>Beangáilis<php/languagephp>
-php	php	php	php<languagephp typephp=php"bophp"php>Tibéadais<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>Briotáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>Boisnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>Catalóinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"cephp"php>Sisinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"cophp"php>Corsaicis<php/languagephp>
-php	php	php	php<languagephp typephp=php"crphp"php>Craíais<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>Seicis<php/languagephp>
-php	php	php	php<languagephp typephp=php"cuphp"php>Slavaisphp naphp hEaglaise<php/languagephp>
-php	php	php	php<languagephp typephp=php"cvphp"php>Suvaisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>Breatnais<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>Danmhairgis<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>Gearmáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>Gréigis<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>Béarla<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>Esperanto<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>Spáinnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>Eastóinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>Bascais<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>Peirsis<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>Fionlainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>fil<php/languagephp>
-php	php	php	php<languagephp typephp=php"fjphp"php>Fidsis<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>Faróis<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>Fraincis<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>Freaslainnisphp Iartharach<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>Gaeilge<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>Gaeilgephp naphp hAlban<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>Gailísis<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>Guaráinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>Gúisearáitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"gvphp"php>Mannainis<php/languagephp>
-php	php	php	php<languagephp typephp=php"hawphp"php>Haváíais<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>Eabhrais<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>Hiondúis<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>Cróitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>Ungáiris<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>Airméinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>Interlingua<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>Indinéisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>Interlingue<php/languagephp>
-php	php	php	php<languagephp typephp=php"ikphp"php>Inupiaq<php/languagephp>
-php	php	php	php<languagephp typephp=php"iophp"php>Ido<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>Íoslainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>Iodáilis<php/languagephp>
-php	php	php	php<languagephp typephp=php"iuphp"php>Ionúitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>Seapáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>Iávais<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>Seoirsis<php/languagephp>
-php	php	php	php<languagephp typephp=php"kkphp"php>Casachais<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>Cambóidis<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>Cannadais<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>Cóiréis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ksphp"php>Caismíris<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>Coirdis<php/languagephp>
-php	php	php	php<languagephp typephp=php"kwphp"php>Cornais<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>Cirgeasais<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>Laidin<php/languagephp>
-php	php	php	php<languagephp typephp=php"lbphp"php>Leitseabuirgis<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>ln<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>Laosais<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>Liotuáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>Laitvis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mgphp"php>Malagásais<php/languagephp>
-php	php	php	php<languagephp typephp=php"miphp"php>Maorais<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>Macadóinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>Mailéalaimis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>Mongóilis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mophp"php>Moldáivis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>Maraitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>Malaeis<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>Maltais<php/languagephp>
-php	php	php	php<languagephp typephp=php"myphp"php>Burmais<php/languagephp>
-php	php	php	php<languagephp typephp=php"naphp"php>Nárúis<php/languagephp>
-php	php	php	php<languagephp typephp=php"nbphp"php>Ioruaisphp Bokmål<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>Neipealais<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>Ollainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>Ioruaisphp Nynorsk<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>Ioruais<php/languagephp>
-php	php	php	php<languagephp typephp=php"nvphp"php>Navachóis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>Ocatáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>Oraisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"osphp"php>Óiséitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>Puinseáibis<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>Polainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>Paistis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>Portaingéilis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>Portaingéilisphp Bhrasaíleach<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Portaingéilisphp Ibéireach<php/languagephp>
-php	php	php	php<languagephp typephp=php"quphp"php>Ceatsuais<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>Rómáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>Rúisis<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>Sanscrait<php/languagephp>
-php	php	php	php<languagephp typephp=php"scphp"php>Sairdínis<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>Sindis<php/languagephp>
-php	php	php	php<languagephp typephp=php"sephp"php>Sáimisphp Thuaidh<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>Seirbeaphp-Chróitis<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>Siolóinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>Slóvaicis<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>Slóivéinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"smphp"php>Samóis<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>Somáilis<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>Albáinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>Seirbis<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>Sótaisphp Dheisceartach<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>Sundais<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>Sualainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>Svahaílis<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>Tamailis<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>Teileagúis<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>Téalainnis<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>Tigrinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>Tuircméinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlphp"php>Tagálaigis<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>Klingon<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>Tuircis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ttphp"php>Tatarais<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>Tvís<php/languagephp>
-php	php	php	php<languagephp typephp=php"typhp"php>Taihítis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>ug<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>Úcráinis<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>Teangaphp Anaithnidphp nóphp Neamhbhailí<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>Urdais<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>Úisbéicis<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>Vítneamais<php/languagephp>
-php	php	php	php<languagephp typephp=php"waphp"php>Vallúnais<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>Cósais<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>Giúdais<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>Sínis<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>Sínisphp Shimplithe<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>Sínisphp Thraidisiúnta<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>Súlúis<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>Arabach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Armnphp"php>Airméanach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Bengphp"php>Beangálach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Braiphp"php>Braille<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>Coireallach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Devaphp"php>Déiveanágrach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Ethiphp"php>Aetópach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Gothphp"php>Gotach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Grekphp"php>Gréagach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Gujrphp"php>Gúisearátach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Guruphp"php>Gurmúcach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hangphp"php>Hangalach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Haniphp"php>Han<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hansphp"php>Hanphp Símplithe<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hantphp"php>Hanphp Traidisiúnta<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hebrphp"php>Eabhrach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hiraphp"php>Híreagánach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hrktphp"php>Catacánachphp nóphp Híreagánach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Jpanphp"php>Seapánach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Kanaphp"php>Catacánach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Kndaphp"php>Cannadach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Korephp"php>Cóiréach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latgphp"php>Clóphp Gaelach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>Laidineach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Mlymphp"php>Mailéalamach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Mongphp"php>Mongólach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Ogamphp"php>Ogham<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Oryaphp"php>Oiríseach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Runrphp"php>Rúnach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Tamlphp"php>Tamalach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Teluphp"php>Teileagúch<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Thaiphp"php>Téallanach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Tibtphp"php>Tibéadach<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>Ganphp Scríobh<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>Scriptphp Anaithnidphp nóphp Neamhbhailí<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php0php1php"php>Anphp Domhan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php2php"php>Anphp Afraic<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php9php"php>Anphp Aigéine<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php3php"php>Meiriceáphp Láir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php7php"php>Anphp Afraicphp Láir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php9php"php>Naphp Meiriceánna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php3php"php>Anphp Astráilphp agusphp anphp Nuaphp-Shéalainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php4php"php>Anphp Mheilinéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php7php"php>Anphp Réigiúnphp Micrinéiseach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php1php"php>Anphp Pholainéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php2php"php>Anphp Áise<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php3php"php>Anphp Áisephp Láir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php0php"php>Anphp Eoraip<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php7php2php"php>Comhlathasphp naphp Státphp Neamhspleácha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php4php1php9php"php>Meiriceáphp Laidineachphp agusphp anphp Mhuirphp Chairib<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>Andóra<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>Aontasphp naphp nÉimíríochtaíphp Arabacha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Anphp Afganastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Aintígephp agusphp Barbúda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>Anphp Albáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>Anphp Airméin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ANphp"php>Antillíphp naphp hÍsiltíre<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angóla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>Anphp Antartaice<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>Anphp Airgintín<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>Samóphp Meiriceánach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>Anphp Ostair<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>Anphp Astráil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AWphp"php>Arúba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AXphp"php>Oileáinphp Alaind<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>Anphp Asarbaiseáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Anphp Bhoisniaphp agusphp Heirseagóvéin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>Barbadós<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Anphp Bhanglaidéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Anphp Bheilg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>Buircínephp Fasó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>Anphp Bhulgáir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>Bairéin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>Anphp Bhurúin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>Beinin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BMphp"php>Beirmiúda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BNphp"php>Brúiné<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>Anphp Bholaiv<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Anphp Bhrasaíl<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>Naphp Bahámaí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>Anphp Bhútáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>Oileánphp Bouvet<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Anphp Bhotsuáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>Anphp Bhealarúis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>Anphp Bheilís<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Ceanada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CCphp"php>Oileáinphp naphp gCócónna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>Poblachtphp Dhaonlathachphp anphp Chongó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>Poblachtphp naphp hAfraicephp Láir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>Anphp Congó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Anphp Eilvéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CIphp"php>Anphp Cóstaphp Eabhair<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>Oileáinphp Cook<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>Anphp tSile<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Camarún<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Anphp tSín<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>Anphp Cholóim<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CRphp"php>Cóstaphp Ríce<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CSphp"php>Anphp tSeirbiaphp agusphp Montainéagró<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>Cúba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CVphp"php>Anphp Rinnphp Ghlas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CXphp"php>Oileánphp naphp Nollag<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>Anphp Chipir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Poblachtphp naphp Seice<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Anphp Ghearmáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Djibouti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>Anphp Danmhairg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>Doiminice<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DOphp"php>Anphp Phoblachtphp Dhoiminiceach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>Anphp Ailgéir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>Eacuadór<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>Anphp Eastóin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Anphp Éigipt<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>Anphp Saháraphp Thiar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>Anphp Eiritré<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Anphp Spáinn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Anphp Aetóip<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Anphp Fhionlainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>Fidsí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FKphp"php>Oileáinphp Fháclainne<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>Anphp Mhicrinéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FOphp"php>Oileáinphp Fharó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Anphp Fhrainc<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>Anphp Ghabúin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Anphp Ríochtphp Aontaithe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Grenada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>Anphp tSeoirsia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>Anphp Ghuáinphp Fhrancach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GGphp"php>Geansaí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Gána<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Giobráltar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GLphp"php>Anphp Ghraonlainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Anphp Ghaimbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Anphp Ghuine<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GPphp"php>Guadalúip<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>Anphp Ghuinephp Mheánchriosach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Anphp Ghréig<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>Anphp tSeoirsiaphp Theasphp agusphp Oileáinphp Sandwichphp Theas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GTphp"php>Guatamala<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GUphp"php>Guam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>Anphp Ghuinephp-Bhissau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>Anphp Ghuáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>Rphp.Rphp.Sphp.php naphp Sínephp Hongphp Cong<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>Oileánphp Heardphp agusphp Oileáinphp McDonald<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>Hondúras<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Anphp Chróit<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>Háití<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Anphp Ungáir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Anphp Indinéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Éire<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>Iosrael<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IMphp"php>Oileánphp Mhanann<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>Anphp India<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>Críochaphp Briotanachaphp anphp Aigéinphp Indiagh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>Anphp Iaráic<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>Anphp Iaráin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Anphp Íoslainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Anphp Iodáil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JEphp"php>Geirsí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>Iamáice<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Anphp Iordáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Anphp tSeapáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Anphp Chéinia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>Anphp Chirgeastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>Anphp Chambóid<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>Ciribeas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>Oileáinphp Chomóra<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KNphp"php>Saintphp Kittsphp agusphp Nevis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Anphp Chóiréphp Thuaidh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Anphp Chóiréphp Theas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>Cuáit<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KYphp"php>Oileáinphp naphp gCadhman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Anphp Chasacstáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>Laos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Anphp Liobáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LCphp"php>Sanphp Lúisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>Lichtinstéin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Sríphp Lanca<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Anphp Libéir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Leosóta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>Anphp Liotuáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Lucsamburg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Anphp Laitvia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Anphp Libia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>Maracó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>Monacó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>Anphp Mholdóiv<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MEphp"php>Montainéagró<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>Madagascar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>Oileáinphp Marshall<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Anphp Mhacadóin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Mailí<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>Maenmar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>Anphp Mhongóil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>Rphp.Rphp.Sphp.php naphp Sínephp Macáó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>Oileáinphp Marianaphp Thuaidh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MQphp"php>Martainíc<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>Anphp Mharatáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>Montsarat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Málta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>Oileánphp Mhuirís<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Naphp Maildiví<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Anphp Mhaláiv<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Meicsiceo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>Anphp Mhalaeisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Mósaimbíc<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Anphp Namaib<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>Anphp Nuaphp-Chaladóin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>Anphp Nígir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>Oileánphp Norfolk<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Anphp Nigéir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>Nicearagua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Anphp Ísiltír<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Anphp Iorua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>Neipeal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NRphp"php>Nárú<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>Nívé<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Anphp Nuaphp-Shéalainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>Óman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>Panama<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>Peiriú<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>Anphp Pholainéisphp Fhrancach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>Nuaphp-Ghuinephp Phapua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>Naphp hOileáinphp Fhilipíneacha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Anphp Phacastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Anphp Pholainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PMphp"php>Saintphp Pierrephp agusphp Miquelon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PNphp"php>Pitcairn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PRphp"php>Portóphp Ríce<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PSphp"php>Naphp Críochaphp Pailistíneacha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Anphp Phortaingéil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>Paragua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>Catar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QOphp"php>Anphp Aigéinephp Imeallach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QUphp"php>Anphp tAontasphp Eorpach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"REphp"php>Réunion<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Anphp Rómáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RSphp"php>Anphp tSeirbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Cónaidhmphp naphp Rúise<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Ruanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>Anphp Araibphp Shádach<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>Oileáinphp Sholaimh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>Naphp Séiséil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Anphp tSúdáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Anphp tSualainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>Singeapór<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>Sanphp Héilin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>Anphp tSlóvéin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SJphp"php>Svalbardphp agusphp Janphp Mayen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>Anphp tSlóvaic<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>Siarraphp Leon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>Sanphp Mairíne<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>Anphp tSeineagáil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Anphp tSomáil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>Suranam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"STphp"php>Saophp Tomephp agusphp Principe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SVphp"php>Anphp tSalvadóir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Anphp tSiria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>Anphp tSuasalainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TCphp"php>Oileáinphp Turksphp agusphp Caicos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>Sead<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>Críochaphp Deisceartachaphp naphp Fraince<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Tóga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>Anphp Téalainn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>Anphp Táidsíceastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>Tócalá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>Tíomórphp Thoir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>Anphp Tuircméanastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Anphp Túinéis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Anphp Tuirc<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Oileáinphp naphp Tríonóidephp agusphp Tobága<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>Túválú<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>Anphp Téaváin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>Anphp Tansáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>Anphp Úcráin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>Úganda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UMphp"php>Mionphp-Oileáinphp Imeallachaphp Sphp.Aphp.Mphp.<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Stáitphp Aontaithephp Mheiriceá<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>Urugua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>Úisbéiceastáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Anphp Vatacáin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VCphp"php>Saintphp Vincentphp agusphp naphp Grenadines<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>Veiniséala<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>Oileáinphp Bhriotanachaphp naphp Maighdean<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>Oileáinphp naphp Maighdeanphp Sphp.Aphp.Mphp.<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Vítphp Neam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatú<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>Oileáinphp Vailísphp agusphp Futúna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>Samó<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Éimin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YTphp"php>Mayotte<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Anphp Afraicphp Theas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Anphp tSaimbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Anphp tSiombáib<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Réigiúnphp Anaithnidphp nóphp Neamhbhailí<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>Féilire<php/keyphp>
-php	php	php	php<keyphp typephp=php"collationphp"php>Comhordú<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>Airgeadra<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp Síneachphp traidisiúntaphp php-php Bigphp5<php/typephp>
-php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>Féilirephp Búdaíoch<php/typephp>
-php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>Féilirephp Síneach<php/typephp>
-php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp díreach<php/typephp>
-php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp Síneachphp simplithephp php-php GBphp php2php3php1php2<php/typephp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>Féilirephp Greagórach<php/typephp>
-php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>Féilirephp Eabhrach<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>Féilirephp Ioslamach<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>Féilirephp Ioslamachphp Sibhialta<php/typephp>
-php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>Féilirephp Seapánach<php/typephp>
-php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp anphp eolairephp teileafóin<php/typephp>
-php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp pinyin<php/typephp>
-php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>Ordphp sórtálaphp stríce<php/typephp>
-php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>Ordphp sórtálaphp traidisiúnta<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Méadrach<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>Meiriceánach<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp bphp-ephp éphp fphp-iphp íphp jphp-ophp óphp pphp-uphp úphp vphp-zphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[ḃphp ċphp ḋphp ḟphp ġphp ṁphp ṗphp ṡphp ṫphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"buddhistphp"php>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp dphp MMMMphp yphp G<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Ean<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Feabh<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Márta<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Aib<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Beal<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Meith<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Iúil<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Lún<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>MFómh<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>DFómh<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Samh<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Noll<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Eanáir<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Feabhra<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Márta<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Aibreán<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Bealtaine<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Meitheamh<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Iúil<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Lúnasa<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Meánphp Fómhair<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Deireadhphp Fómhair<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Samhain<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Nollaig<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>E<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>F<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>A<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>B<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>I<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>L<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>D<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>N<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Domh<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Luan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Máirt<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Céad<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Déar<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Aoine<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Sath<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Déphp Domhnaigh<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Déphp Luain<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Déphp Máirt<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Déphp Céadaoin<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Déardaoin<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Déphp hAoine<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Déphp Sathairn<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>D<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>L<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>M<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>C<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>D<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>A<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>S<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Rphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Rphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Rphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Rphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1úphp ráithe<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2úphp ráithe<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3úphp ráithe<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4úphp ráithe<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>aphp.mphp.<php/amphp>
-php	php	php	php	php<pmphp>pphp.mphp.<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>Roimhphp Chríost<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>Annophp Domini<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>RC<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>AD<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp/MMphp/yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"HHmmphp"php>HHphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"HHmmssphp"php>HHphp:mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>dphp/M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMddphp"php>ddphp/MM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"mmssphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMphp"php>MMphp/yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMMphp"php>MMMphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMphp"php>MMphp/yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>Ré<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>Bliain<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>Mí<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>Seachtain<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Lá<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>Arúphp inné<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>Inné<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>Inniu<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>Amárach<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>Arúphp amárach<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Láphp naphp seachtaine<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>aphp.mphp.php/pphp.mphp.<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>Uair<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>Nóiméad<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>Soicind<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>Crios<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>MAGphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Anaithnid<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Londonphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<daylightphp>Amphp Samhraidhphp naphp Breataine<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<daylightphp>ASB<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	php	php<exemplarCityphp>Londain<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Dublinphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<daylightphp>Amphp Samhraidhphp naphp hÉireann<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<daylightphp>ASÉ<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	php	php<exemplarCityphp>Bailephp Áthaphp Cliath<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<metazonephp typephp=php"GMTphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>Meánphp-Amphp Greenwich<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>MAG<php/standardphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	<php/symbolsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"ADPphp"php>
-php	php	php	php	php<displayNamephp>Pesetaphp Andóra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AEDphp"php>
-php	php	php	php	php<displayNamephp>Dirhamphp Aontasphp naphp nÉimíríochtaíphp Arabacha<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AFAphp"php>
-php	php	php	php	php<displayNamephp>Afgainíphp php(php1php9php2php7php-php2php0php0php2php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AFNphp"php>
-php	php	php	php	php<displayNamephp>Afgainí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ALLphp"php>
-php	php	php	php	php<displayNamephp>Lekphp Albánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AMDphp"php>
-php	php	php	php	php<displayNamephp>Dramphp Airméanach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ANGphp"php>
-php	php	php	php	php<displayNamephp>Guilderphp naphp nAntillíphp Ísiltíreach<php/displayNamephp>
-php	php	php	php	php<symbolphp>AÍphp fphp.<php/symbolphp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AOAphp"php>
-php	php	php	php	php<displayNamephp>Kwanzaphp Angólach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AOKphp"php>
-php	php	php	php	php<displayNamephp>Kwanzaphp Angólachphp php(php1php9php7php7php-php1php9php9php0php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AONphp"php>
-php	php	php	php	php<displayNamephp>Kwanzaphp Nuaphp Angólachphp php(php1php9php9php0php-php2php0php0php0php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AORphp"php>
-php	php	php	php	php<displayNamephp>Kwanzaphp Reajustadophp Angólachphp php(php1php9php9php5php-php1php9php9php9php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARAphp"php>
-php	php	php	php	php<displayNamephp>Australphp Airgintíneach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp naphp Airgintínephp php(php1php9php8php3php-php1php9php8php5php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARSphp"php>
-php	php	php	php	php<displayNamephp>Pesophp naphp Airgintíne<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ATSphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp Ostarach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AUDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Astrálach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AWGphp"php>
-php	php	php	php	php<displayNamephp>Guilderphp Aruba<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AZMphp"php>
-php	php	php	php	php<displayNamephp>Manatphp Asarbaiseánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BADphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Bhoisniaphp-Heirseagaivéin<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BAMphp"php>
-php	php	php	php	php<displayNamephp>Marcphp Inathraithephp Bhoisniaphp-Heirseagaivéin<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BBDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Bharbadóis<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BDTphp"php>
-php	php	php	php	php<displayNamephp>Takaphp Bhanglaidéiseach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BECphp"php>
-php	php	php	php	php<displayNamephp>Francphp Beilgeachphp php(inathraithephp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BEFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Beilgeach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BELphp"php>
-php	php	php	php	php<displayNamephp>Francphp Beilgeachphp php(airgeadúilphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BGLphp"php>
-php	php	php	php	php<displayNamephp>Levphp Bulgárachphp Crua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BGNphp"php>
-php	php	php	php	php<displayNamephp>Levphp Nuaphp Bulgárach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BHDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp naphp Bairéine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BIFphp"php>
-php	php	php	php	php<displayNamephp>Francphp naphp Burúine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BMDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Bheirmiúda<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BNDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Bhrúiné<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOBphp"php>
-php	php	php	php	php<displayNamephp>Boliviano<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp naphp Bolaive<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOVphp"php>
-php	php	php	php	php<displayNamephp>Mvdolphp Bolavach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRBphp"php>
-php	php	php	php	php<displayNamephp>Cruzeirophp Novophp Brasaíleachphp php(php1php9php6php7php-php1php9php8php6php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRCphp"php>
-php	php	php	php	php<displayNamephp>Cruzadophp Brasaíleach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BREphp"php>
-php	php	php	php	php<displayNamephp>Cruzeirophp Brasaíleachphp php(php1php9php9php0php-php1php9php9php3php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRLphp"php>
-php	php	php	php	php<displayNamephp>Realphp Brasaíleach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRNphp"php>
-php	php	php	php	php<displayNamephp>Cruzadophp Novophp Brasaíleach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRRphp"php>
-php	php	php	php	php<displayNamephp>Cruzeirophp Brasaíleach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BSDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp mBahámaí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BTNphp"php>
-php	php	php	php	php<displayNamephp>Ngultrumphp Bútánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BUKphp"php>
-php	php	php	php	php<displayNamephp>Kyatphp Burmach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BWPphp"php>
-php	php	php	php	php<displayNamephp>Pulaphp Botsuánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BYBphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Nuaphp Béalarúiseachphp php(php1php9php9php4php-php1php9php9php9php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BYRphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Béalarúiseach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BZDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp Beilíse<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CADphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Ceanada<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CDFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Congolaisphp anphp Chongó<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CHFphp"php>
-php	php	php	php	php<displayNamephp>Francphp naphp hEilvéise<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CLFphp"php>
-php	php	php	php	php<displayNamephp>Unidadesphp dephp Fomentophp naphp Sile<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CLPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp naphp Sile<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CNYphp"php>
-php	php	php	php	php<displayNamephp>Yuanphp Renminbiphp Síneach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"COPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp naphp Colóime<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CRCphp"php>
-php	php	php	php	php<displayNamephp>Colonphp Chóstaphp Ríce<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CSKphp"php>
-php	php	php	php	php<displayNamephp>Korunaphp Cruaphp naphp Seicslóvaice<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CUPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Cúba<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CVEphp"php>
-php	php	php	php	php<displayNamephp>Escudophp naphp Rinnephp Verde<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CYPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp naphp Cipire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CZKphp"php>
-php	php	php	php	php<displayNamephp>Korunaphp Phoblachtphp naphp Seice<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DDMphp"php>
-php	php	php	php	php<displayNamephp>Ostmarkphp naphp hOirGhearmáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DEMphp"php>
-php	php	php	php	php<displayNamephp>Deutschephp Mark<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DJFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Djibouti<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DKKphp"php>
-php	php	php	php	php<displayNamephp>Kronephp Danmhargach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DOPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Doimineacach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DZDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp naphp hAilgéire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ECSphp"php>
-php	php	php	php	php<displayNamephp>Sucrephp Eacuadóir<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ECVphp"php>
-php	php	php	php	php<displayNamephp>Unidadphp dephp Valorphp Constantephp php(UVCphp)php Eacuadóir<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EEKphp"php>
-php	php	php	php	php<displayNamephp>Kroonphp naphp hEastóine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EGPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp naphp hÉigipte<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ESPphp"php>
-php	php	php	php	php<displayNamephp>Pesetaphp Spáinneach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ETBphp"php>
-php	php	php	php	php<displayNamephp>Birrphp naphp hAetóipe<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>Euro<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FIMphp"php>
-php	php	php	php	php<displayNamephp>Markkaphp Fionnlannach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FJDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Fhidsí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FKPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Oileáinphp Fháclainne<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FRFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Francach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GBPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Steirling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GEKphp"php>
-php	php	php	php	php<displayNamephp>Kuponphp Laritphp naphp Grúise<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GELphp"php>
-php	php	php	php	php<displayNamephp>Lariphp naphp Grúise<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GHCphp"php>
-php	php	php	php	php<displayNamephp>Cediphp Ghána<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GIPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Ghiobráltair<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GMDphp"php>
-php	php	php	php	php<displayNamephp>Dalasiphp Gaimbia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GNFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Guine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GNSphp"php>
-php	php	php	php	php<displayNamephp>Syliphp Guine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GQEphp"php>
-php	php	php	php	php<displayNamephp>Ekwelephp Guineanaphp naphp Guinephp Meánchriosaí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GRDphp"php>
-php	php	php	php	php<displayNamephp>Drachmaphp Gréagach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GTQphp"php>
-php	php	php	php	php<displayNamephp>Quetzalphp Guatamala<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GWEphp"php>
-php	php	php	php	php<displayNamephp>Escudophp naphp Guinephp Portaingéalaí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GWPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Guinephp-Bhissau<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GYDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp Guáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HKDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Hongphp Cong<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HNLphp"php>
-php	php	php	php	php<displayNamephp>Lempiraphp Hondúrais<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HRDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp naphp Cróite<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HRKphp"php>
-php	php	php	php	php<displayNamephp>Kunaphp Crótach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HTGphp"php>
-php	php	php	php	php<displayNamephp>Gourdephp Háití<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HUFphp"php>
-php	php	php	php	php<displayNamephp>Forintphp Ungárach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IDRphp"php>
-php	php	php	php	php<displayNamephp>Rupiahphp Indinéiseach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IEPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Éireannach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ILPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Iosraelach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ILSphp"php>
-php	php	php	php	php<displayNamephp>Sheqelphp Nuaphp Iosraelach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp India<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IQDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Irácach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IRRphp"php>
-php	php	php	php	php<displayNamephp>Rialphp Iaránach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ISKphp"php>
-php	php	php	php	php<displayNamephp>Kronaphp Íoslannach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ITLphp"php>
-php	php	php	php	php<displayNamephp>Liraphp Iodálach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JMDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Iamácach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JODphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Iordánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JPYphp"php>
-php	php	php	php	php<displayNamephp>Yenphp Seapánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KESphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp Céiniach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KGSphp"php>
-php	php	php	php	php<displayNamephp>Somphp naphp Cirgeastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KHRphp"php>
-php	php	php	php	php<displayNamephp>Rielphp naphp Cambóide<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KMFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Chomóra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KPWphp"php>
-php	php	php	php	php<displayNamephp>Wonphp naphp Cóiréphp Thuaidh<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KRWphp"php>
-php	php	php	php	php<displayNamephp>Wonphp naphp Cóiréphp Theas<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KWDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Cuátach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KYDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Oileáinphp Cayman<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KZTphp"php>
-php	php	php	php	php<displayNamephp>Tengephp Casacstánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LAKphp"php>
-php	php	php	php	php<displayNamephp>Kipphp Laosach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LBPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp naphp Liobáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LKRphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp Sríphp Lanca<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LRDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp Libéire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LSLphp"php>
-php	php	php	php	php<displayNamephp>Lotiphp Leosóta<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LTLphp"php>
-php	php	php	php	php<displayNamephp>Litaphp Liotuánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LTTphp"php>
-php	php	php	php	php<displayNamephp>Talonasphp Liotuánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LUFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Lucsamburg<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LVLphp"php>
-php	php	php	php	php<displayNamephp>Latsphp Laitviach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LVRphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Laitviach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LYDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Libia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MADphp"php>
-php	php	php	php	php<displayNamephp>Dirhamphp Mharacó<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MAFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Mharacó<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MDLphp"php>
-php	php	php	php	php<displayNamephp>Leuphp Moldóvach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MGAphp"php>
-php	php	php	php	php<displayNamephp>Ariaryphp Madagascar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MGFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Madagascar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MKDphp"php>
-php	php	php	php	php<displayNamephp>Denarphp naphp Macadóine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MLFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Mhailí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MMKphp"php>
-php	php	php	php	php<displayNamephp>Kyatphp Mhaenmar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MNTphp"php>
-php	php	php	php	php<displayNamephp>Tugrikphp Mongólach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MOPphp"php>
-php	php	php	php	php<displayNamephp>Patacaphp Macao<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MROphp"php>
-php	php	php	php	php<displayNamephp>Ouguiyaphp naphp Maratáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MTLphp"php>
-php	php	php	php	php<displayNamephp>Liraphp Maltach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MTPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Maltach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MURphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp Oileánphp Mhuirís<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MVRphp"php>
-php	php	php	php	php<displayNamephp>Maldivephp Islandsphp Rufiyaa<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MWKphp"php>
-php	php	php	php	php<displayNamephp>Kwachaphp naphp Maláive<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXNphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Meicsiceo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Airgidphp Meicsiceophp php(php1php8php6php1php-php1php9php9php2php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXVphp"php>
-php	php	php	php	php<displayNamephp>Unidadphp dephp Inversionphp php(UDIphp)php Meicsiceo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MYRphp"php>
-php	php	php	php	php<displayNamephp>Ringgitphp Malaeisia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MZEphp"php>
-php	php	php	php	php<displayNamephp>Escudophp Mósaimbíce<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MZMphp"php>
-php	php	php	php	php<displayNamephp>Meticalphp Mósaimbíce<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NADphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp Namaibe<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NGNphp"php>
-php	php	php	php	php<displayNamephp>Nairaphp Nígéarach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NICphp"php>
-php	php	php	php	php<displayNamephp>Cordobaphp Nicearagua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NIOphp"php>
-php	php	php	php	php<displayNamephp>Cordobaphp Orophp Nicearagua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NLGphp"php>
-php	php	php	php	php<displayNamephp>Guilderphp Ísiltíreach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NOKphp"php>
-php	php	php	php	php<displayNamephp>Kronephp Ioruach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NPRphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp Neipeáil<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NZDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp naphp Nuaphp-Shéalainne<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"OMRphp"php>
-php	php	php	php	php<displayNamephp>Rialphp Omain<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PABphp"php>
-php	php	php	php	php<displayNamephp>Balboaphp Panamach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PEIphp"php>
-php	php	php	php	php<displayNamephp>Intiphp Pheiriú<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PENphp"php>
-php	php	php	php	php<displayNamephp>Solphp Nuevophp Pheiriú<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PESphp"php>
-php	php	php	php	php<displayNamephp>Solphp Pheiriú<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PGKphp"php>
-php	php	php	php	php<displayNamephp>Kinaphp Nuaphp-Ghuinephp Phapua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PHPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Filipíneach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PKRphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp naphp Pacastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PLNphp"php>
-php	php	php	php	php<displayNamephp>Zlotyphp Polannach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PLZphp"php>
-php	php	php	php	php<displayNamephp>Zlotyphp Polannachphp php(php1php9php5php0php-php1php9php9php5php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PTEphp"php>
-php	php	php	php	php<displayNamephp>Escudophp Portaingélach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PYGphp"php>
-php	php	php	php	php<displayNamephp>Guaraniphp Pharagua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"QARphp"php>
-php	php	php	php	php<displayNamephp>Rialphp Catarach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ROLphp"php>
-php	php	php	php	php<displayNamephp>Leuphp Rómánach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RUBphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Rúiseach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RURphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Rúiseachphp php(php1php9php9php1php-php1php9php9php8php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RWFphp"php>
-php	php	php	php	php<displayNamephp>Francphp Ruanda<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SARphp"php>
-php	php	php	php	php<displayNamephp>Riyalphp Sádach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SBDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Oileáinphp Solomon<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SCRphp"php>
-php	php	php	php	php<displayNamephp>Rúipíphp naphp Séiséil<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SDDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp naphp Súdáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SDPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp naphp Súdáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SEKphp"php>
-php	php	php	php	php<displayNamephp>Kronaphp Sualannach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SGDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Singeapóir<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SHPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Sanphp Héilin<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SITphp"php>
-php	php	php	php	php<displayNamephp>Tolarphp Slóvénach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SKKphp"php>
-php	php	php	php	php<displayNamephp>Korunaphp naphp Slóvaice<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SLLphp"php>
-php	php	php	php	php<displayNamephp>Leonephp Shiarraphp Leon<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SOSphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp naphp Sómáile<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SRGphp"php>
-php	php	php	php	php<displayNamephp>Guilderphp Shuranaim<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"STDphp"php>
-php	php	php	php	php<displayNamephp>Dobraphp Saophp Tomephp agusphp Principe<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SURphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp Sóvéadach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SVCphp"php>
-php	php	php	php	php<displayNamephp>Colonphp naphp Salvadóire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SYPphp"php>
-php	php	php	php	php<displayNamephp>Puntphp Siria<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SZLphp"php>
-php	php	php	php	php<displayNamephp>Lilangeniphp naphp Suasalainne<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"THBphp"php>
-php	php	php	php	php<displayNamephp>Bahtphp naphp Téalainne<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TJRphp"php>
-php	php	php	php	php<displayNamephp>Rúbalphp naphp Táidsíceastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TJSphp"php>
-php	php	php	php	php<displayNamephp>Somoniphp naphp Táidsíceastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TMMphp"php>
-php	php	php	php	php<displayNamephp>Manatphp naphp Anphp Tuircméanastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TNDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp naphp Túinéise<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TOPphp"php>
-php	php	php	php	php<displayNamephp>Paphpʻangaphp Tonga<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TPEphp"php>
-php	php	php	php	php<displayNamephp>Escudophp Tíomóir<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TRLphp"php>
-php	php	php	php	php<displayNamephp>Liraphp Turcach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TTDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Oileáinphp naphp Tríonóidephp agusphp Tobága<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TWDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Nuaphp naphp Téaváine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TZSphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp naphp Tansáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UAHphp"php>
-php	php	php	php	php<displayNamephp>Hryvniaphp Úcránach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UAKphp"php>
-php	php	php	php	php<displayNamephp>Karbovanetzphp Úcránach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UGSphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp Ugandaphp php(php1php9php6php6php-php1php9php8php7php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UGXphp"php>
-php	php	php	php	php<displayNamephp>Scillingphp Uganda<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Sphp.Aphp.Mphp.<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USNphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Sphp.Aphp.Mphp.php php(anphp chéadphp láphp eilephp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USSphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Sphp.Aphp.Mphp.php php(anphp laphp céannaphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UYPphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Uraguaphp php(php1php9php7php5php-php1php9php9php3php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UYUphp"php>
-php	php	php	php	php<displayNamephp>Pesophp Uruguayophp Uragua<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UZSphp"php>
-php	php	php	php	php<displayNamephp>Sumphp naphp hÚisbéiceastáine<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VEBphp"php>
-php	php	php	php	php<displayNamephp>Bolivarphp Veiniséala<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VNDphp"php>
-php	php	php	php	php<displayNamephp>Dongphp Vítneamach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VUVphp"php>
-php	php	php	php	php<displayNamephp>Vatuphp Vanuatú<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"WSTphp"php>
-php	php	php	php	php<displayNamephp>Talaphp Samóphp Thiar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAFphp"php>
-php	php	php	php	php<displayNamephp>CFAphp Francphp BEAC<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAUphp"php>
-php	php	php	php	php<displayNamephp>Ór<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XBAphp"php>
-php	php	php	php	php<displayNamephp>Aonadphp Ilchodachphp Eorpach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XBBphp"php>
-php	php	php	php	php<displayNamephp>Aonadphp Airgeadaíochtaphp Eorpach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XBCphp"php>
-php	php	php	php	php<displayNamephp>Aonadphp Cuntaisphp Eorpachphp php(XBCphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XBDphp"php>
-php	php	php	php	php<displayNamephp>Aonadphp Cuntaisphp Eorpachphp php(XBDphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XCDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Oirthearphp naphp Cairibe<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XDRphp"php>
-php	php	php	php	php<displayNamephp>Ceartaphp Speisialtaphp Tarraingthe<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XEUphp"php>
-php	php	php	php	php<displayNamephp>Aonadphp Airgeadraphp Eorpach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XFOphp"php>
-php	php	php	php	php<displayNamephp>Francphp Órphp Francach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XFUphp"php>
-php	php	php	php	php<displayNamephp>UICphp-Francphp Francach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XOFphp"php>
-php	php	php	php	php<displayNamephp>CFAphp Francphp BCEAO<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XPFphp"php>
-php	php	php	php	php<displayNamephp>CFPphp Franc<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XXXphp"php>
-php	php	php	php	php<displayNamephp>Airgeadraphp Anaithnidphp nóphp Neamhbhailí<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YDDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Éimin<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YERphp"php>
-php	php	php	php	php<displayNamephp>Rialphp Éimin<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUDphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Cruaphp Iúgslavach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUMphp"php>
-php	php	php	php	php<displayNamephp>Noviyphp Dinarphp Iúgslavach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUNphp"php>
-php	php	php	php	php<displayNamephp>Dínearphp Inathraithephp Iúgslavach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZALphp"php>
-php	php	php	php	php<displayNamephp>Randphp naphp hAfraicephp Theasphp php(airgeadúilphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZARphp"php>
-php	php	php	php	php<displayNamephp>Randphp naphp hAfraicephp Theas<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZMKphp"php>
-php	php	php	php	php<displayNamephp>Kwachaphp Saimbiach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZRNphp"php>
-php	php	php	php	php<displayNamephp>Zairephp Nuaphp Sáíreach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZRZphp"php>
-php	php	php	php	php<displayNamephp>Zairephp Sáíreach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZWDphp"php>
-php	php	php	php	php<displayNamephp>Dollarphp Siombábach<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>táphp:t<php/yesstrphp>
-php	php	php	php<nostrphp>nílphp:n<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.78 $"/>
+		<generation date="$Date: 2009/06/15 17:12:26 $"/>
+		<language type="ga"/>
+	</identity>
+	<fallback>en_IE</fallback>
+	<localeDisplayNames>
+		<languages>
+			<language type="aa">aa</language>
+			<language type="ab">Abcáisis</language>
+			<language type="ae">Aivéistis</language>
+			<language type="af">Afracáinis</language>
+			<language type="am">Amarais</language>
+			<language type="ar">Araibis</language>
+			<language type="as">Asaimis</language>
+			<language type="az">Asarbaiseáinis</language>
+			<language type="ba">Baiscíris</language>
+			<language type="be">Bealarúisis</language>
+			<language type="bg">Bulgáiris</language>
+			<language type="bh">Bihairis</language>
+			<language type="bn">Beangáilis</language>
+			<language type="bo">Tibéadais</language>
+			<language type="br">Briotáinis</language>
+			<language type="bs">Boisnis</language>
+			<language type="ca">Catalóinis</language>
+			<language type="ce">Sisinis</language>
+			<language type="co">Corsaicis</language>
+			<language type="cr">Craíais</language>
+			<language type="cs">Seicis</language>
+			<language type="cu">Slavais na hEaglaise</language>
+			<language type="cv">Suvaisis</language>
+			<language type="cy">Breatnais</language>
+			<language type="da">Danmhairgis</language>
+			<language type="de">Gearmáinis</language>
+			<language type="el">Gréigis</language>
+			<language type="en">Béarla</language>
+			<language type="eo">Esperanto</language>
+			<language type="es">Spáinnis</language>
+			<language type="et">Eastóinis</language>
+			<language type="eu">Bascais</language>
+			<language type="fa">Peirsis</language>
+			<language type="fi">Fionlainnis</language>
+			<language type="fil">fil</language>
+			<language type="fj">Fidsis</language>
+			<language type="fo">Faróis</language>
+			<language type="fr">Fraincis</language>
+			<language type="fy">Freaslainnis Iartharach</language>
+			<language type="ga">Gaeilge</language>
+			<language type="gd">Gaeilge na hAlban</language>
+			<language type="gl">Gailísis</language>
+			<language type="gn">Guaráinis</language>
+			<language type="gu">Gúisearáitis</language>
+			<language type="gv">Mannainis</language>
+			<language type="haw">Haváíais</language>
+			<language type="he">Eabhrais</language>
+			<language type="hi">Hiondúis</language>
+			<language type="hr">Cróitis</language>
+			<language type="hu">Ungáiris</language>
+			<language type="hy">Airméinis</language>
+			<language type="ia">Interlingua</language>
+			<language type="id">Indinéisis</language>
+			<language type="ie">Interlingue</language>
+			<language type="ik">Inupiaq</language>
+			<language type="io">Ido</language>
+			<language type="is">Íoslainnis</language>
+			<language type="it">Iodáilis</language>
+			<language type="iu">Ionúitis</language>
+			<language type="ja">Seapáinis</language>
+			<language type="jv">Iávais</language>
+			<language type="ka">Seoirsis</language>
+			<language type="kk">Casachais</language>
+			<language type="km">Cambóidis</language>
+			<language type="kn">Cannadais</language>
+			<language type="ko">Cóiréis</language>
+			<language type="ks">Caismíris</language>
+			<language type="ku">Coirdis</language>
+			<language type="kw">Cornais</language>
+			<language type="ky">Cirgeasais</language>
+			<language type="la">Laidin</language>
+			<language type="lb">Leitseabuirgis</language>
+			<language type="ln">ln</language>
+			<language type="lo">Laosais</language>
+			<language type="lt">Liotuáinis</language>
+			<language type="lv">Laitvis</language>
+			<language type="mg">Malagásais</language>
+			<language type="mi">Maorais</language>
+			<language type="mk">Macadóinis</language>
+			<language type="ml">Mailéalaimis</language>
+			<language type="mn">Mongóilis</language>
+			<language type="mo">Moldáivis</language>
+			<language type="mr">Maraitis</language>
+			<language type="ms">Malaeis</language>
+			<language type="mt">Maltais</language>
+			<language type="my">Burmais</language>
+			<language type="na">Nárúis</language>
+			<language type="nb">Ioruais Bokmål</language>
+			<language type="ne">Neipealais</language>
+			<language type="nl">Ollainnis</language>
+			<language type="nn">Ioruais Nynorsk</language>
+			<language type="no">Ioruais</language>
+			<language type="nv">Navachóis</language>
+			<language type="oc">Ocatáinis</language>
+			<language type="or">Oraisis</language>
+			<language type="os">Óiséitis</language>
+			<language type="pa">Puinseáibis</language>
+			<language type="pl">Polainnis</language>
+			<language type="ps">Paistis</language>
+			<language type="pt">Portaingéilis</language>
+			<language type="pt_BR">Portaingéilis Bhrasaíleach</language>
+			<language type="pt_PT">Portaingéilis Ibéireach</language>
+			<language type="qu">Ceatsuais</language>
+			<language type="ro">Rómáinis</language>
+			<language type="ru">Rúisis</language>
+			<language type="sa">Sanscrait</language>
+			<language type="sc">Sairdínis</language>
+			<language type="sd">Sindis</language>
+			<language type="se">Sáimis Thuaidh</language>
+			<language type="sh">Seirbea-Chróitis</language>
+			<language type="si">Siolóinis</language>
+			<language type="sk">Slóvaicis</language>
+			<language type="sl">Slóivéinis</language>
+			<language type="sm">Samóis</language>
+			<language type="so">Somáilis</language>
+			<language type="sq">Albáinis</language>
+			<language type="sr">Seirbis</language>
+			<language type="st">Sótais Dheisceartach</language>
+			<language type="su">Sundais</language>
+			<language type="sv">Sualainnis</language>
+			<language type="sw">Svahaílis</language>
+			<language type="ta">Tamailis</language>
+			<language type="te">Teileagúis</language>
+			<language type="th">Téalainnis</language>
+			<language type="ti">Tigrinis</language>
+			<language type="tk">Tuircméinis</language>
+			<language type="tl">Tagálaigis</language>
+			<language type="tlh">Klingon</language>
+			<language type="tr">Tuircis</language>
+			<language type="tt">Tatarais</language>
+			<language type="tw">Tvís</language>
+			<language type="ty">Taihítis</language>
+			<language type="ug">ug</language>
+			<language type="uk">Úcráinis</language>
+			<language type="und">Teanga Anaithnid nó Neamhbhailí</language>
+			<language type="ur">Urdais</language>
+			<language type="uz">Úisbéicis</language>
+			<language type="vi">Vítneamais</language>
+			<language type="wa">Vallúnais</language>
+			<language type="xh">Cósais</language>
+			<language type="yi">Giúdais</language>
+			<language type="zh">Sínis</language>
+			<language type="zh_Hans">Sínis Shimplithe</language>
+			<language type="zh_Hant">Sínis Thraidisiúnta</language>
+			<language type="zu">Súlúis</language>
+		</languages>
+		<scripts>
+			<script type="Arab">Arabach</script>
+			<script type="Armn">Airméanach</script>
+			<script type="Beng">Beangálach</script>
+			<script type="Brai">Braille</script>
+			<script type="Cyrl">Coireallach</script>
+			<script type="Deva">Déiveanágrach</script>
+			<script type="Ethi">Aetópach</script>
+			<script type="Goth">Gotach</script>
+			<script type="Grek">Gréagach</script>
+			<script type="Gujr">Gúisearátach</script>
+			<script type="Guru">Gurmúcach</script>
+			<script type="Hang">Hangalach</script>
+			<script type="Hani">Han</script>
+			<script type="Hans">Han Símplithe</script>
+			<script type="Hant">Han Traidisiúnta</script>
+			<script type="Hebr">Eabhrach</script>
+			<script type="Hira">Híreagánach</script>
+			<script type="Hrkt">Catacánach nó Híreagánach</script>
+			<script type="Jpan">Seapánach</script>
+			<script type="Kana">Catacánach</script>
+			<script type="Knda">Cannadach</script>
+			<script type="Kore">Cóiréach</script>
+			<script type="Latg">Cló Gaelach</script>
+			<script type="Latn">Laidineach</script>
+			<script type="Mlym">Mailéalamach</script>
+			<script type="Mong">Mongólach</script>
+			<script type="Ogam">Ogham</script>
+			<script type="Orya">Oiríseach</script>
+			<script type="Runr">Rúnach</script>
+			<script type="Taml">Tamalach</script>
+			<script type="Telu">Teileagúch</script>
+			<script type="Thai">Téallanach</script>
+			<script type="Tibt">Tibéadach</script>
+			<script type="Zxxx">Gan Scríobh</script>
+			<script type="Zzzz">Script Anaithnid nó Neamhbhailí</script>
+		</scripts>
+		<territories>
+			<territory type="001">An Domhan</territory>
+			<territory type="002">An Afraic</territory>
+			<territory type="009">An Aigéine</territory>
+			<territory type="013">Meiriceá Láir</territory>
+			<territory type="017">An Afraic Láir</territory>
+			<territory type="019">Na Meiriceánna</territory>
+			<territory type="053">An Astráil agus an Nua-Shéalainn</territory>
+			<territory type="054">An Mheilinéis</territory>
+			<territory type="057">An Réigiún Micrinéiseach</territory>
+			<territory type="061">An Pholainéis</territory>
+			<territory type="142">An Áise</territory>
+			<territory type="143">An Áise Láir</territory>
+			<territory type="150">An Eoraip</territory>
+			<territory type="172">Comhlathas na Stát Neamhspleácha</territory>
+			<territory type="419">Meiriceá Laidineach agus an Mhuir Chairib</territory>
+			<territory type="AD">Andóra</territory>
+			<territory type="AE">Aontas na nÉimíríochtaí Arabacha</territory>
+			<territory type="AF">An Afganastáin</territory>
+			<territory type="AG">Aintíge agus Barbúda</territory>
+			<territory type="AI">Anguilla</territory>
+			<territory type="AL">An Albáin</territory>
+			<territory type="AM">An Airméin</territory>
+			<territory type="AN">Antillí na hÍsiltíre</territory>
+			<territory type="AO">Angóla</territory>
+			<territory type="AQ">An Antartaice</territory>
+			<territory type="AR">An Airgintín</territory>
+			<territory type="AS">Samó Meiriceánach</territory>
+			<territory type="AT">An Ostair</territory>
+			<territory type="AU">An Astráil</territory>
+			<territory type="AW">Arúba</territory>
+			<territory type="AX">Oileáin Alaind</territory>
+			<territory type="AZ">An Asarbaiseáin</territory>
+			<territory type="BA">An Bhoisnia agus Heirseagóvéin</territory>
+			<territory type="BB">Barbadós</territory>
+			<territory type="BD">An Bhanglaidéis</territory>
+			<territory type="BE">An Bheilg</territory>
+			<territory type="BF">Buircíne Fasó</territory>
+			<territory type="BG">An Bhulgáir</territory>
+			<territory type="BH">Bairéin</territory>
+			<territory type="BI">An Bhurúin</territory>
+			<territory type="BJ">Beinin</territory>
+			<territory type="BM">Beirmiúda</territory>
+			<territory type="BN">Brúiné</territory>
+			<territory type="BO">An Bholaiv</territory>
+			<territory type="BR">An Bhrasaíl</territory>
+			<territory type="BS">Na Bahámaí</territory>
+			<territory type="BT">An Bhútáin</territory>
+			<territory type="BV">Oileán Bouvet</territory>
+			<territory type="BW">An Bhotsuáin</territory>
+			<territory type="BY">An Bhealarúis</territory>
+			<territory type="BZ">An Bheilís</territory>
+			<territory type="CA">Ceanada</territory>
+			<territory type="CC">Oileáin na gCócónna</territory>
+			<territory type="CD">Poblacht Dhaonlathach an Chongó</territory>
+			<territory type="CF">Poblacht na hAfraice Láir</territory>
+			<territory type="CG">An Congó</territory>
+			<territory type="CH">An Eilvéis</territory>
+			<territory type="CI">An Cósta Eabhair</territory>
+			<territory type="CK">Oileáin Cook</territory>
+			<territory type="CL">An tSile</territory>
+			<territory type="CM">Camarún</territory>
+			<territory type="CN">An tSín</territory>
+			<territory type="CO">An Cholóim</territory>
+			<territory type="CR">Cósta Ríce</territory>
+			<territory type="CS">An tSeirbia agus Montainéagró</territory>
+			<territory type="CU">Cúba</territory>
+			<territory type="CV">An Rinn Ghlas</territory>
+			<territory type="CX">Oileán na Nollag</territory>
+			<territory type="CY">An Chipir</territory>
+			<territory type="CZ">Poblacht na Seice</territory>
+			<territory type="DE">An Ghearmáin</territory>
+			<territory type="DJ">Djibouti</territory>
+			<territory type="DK">An Danmhairg</territory>
+			<territory type="DM">Doiminice</territory>
+			<territory type="DO">An Phoblacht Dhoiminiceach</territory>
+			<territory type="DZ">An Ailgéir</territory>
+			<territory type="EC">Eacuadór</territory>
+			<territory type="EE">An Eastóin</territory>
+			<territory type="EG">An Éigipt</territory>
+			<territory type="EH">An Sahára Thiar</territory>
+			<territory type="ER">An Eiritré</territory>
+			<territory type="ES">An Spáinn</territory>
+			<territory type="ET">An Aetóip</territory>
+			<territory type="FI">An Fhionlainn</territory>
+			<territory type="FJ">Fidsí</territory>
+			<territory type="FK">Oileáin Fháclainne</territory>
+			<territory type="FM">An Mhicrinéis</territory>
+			<territory type="FO">Oileáin Fharó</territory>
+			<territory type="FR">An Fhrainc</territory>
+			<territory type="GA">An Ghabúin</territory>
+			<territory type="GB">An Ríocht Aontaithe</territory>
+			<territory type="GD">Grenada</territory>
+			<territory type="GE">An tSeoirsia</territory>
+			<territory type="GF">An Ghuáin Fhrancach</territory>
+			<territory type="GG">Geansaí</territory>
+			<territory type="GH">Gána</territory>
+			<territory type="GI">Giobráltar</territory>
+			<territory type="GL">An Ghraonlainn</territory>
+			<territory type="GM">An Ghaimbia</territory>
+			<territory type="GN">An Ghuine</territory>
+			<territory type="GP">Guadalúip</territory>
+			<territory type="GQ">An Ghuine Mheánchriosach</territory>
+			<territory type="GR">An Ghréig</territory>
+			<territory type="GS">An tSeoirsia Theas agus Oileáin Sandwich Theas</territory>
+			<territory type="GT">Guatamala</territory>
+			<territory type="GU">Guam</territory>
+			<territory type="GW">An Ghuine-Bhissau</territory>
+			<territory type="GY">An Ghuáin</territory>
+			<territory type="HK">R.R.S. na Síne Hong Cong</territory>
+			<territory type="HM">Oileán Heard agus Oileáin McDonald</territory>
+			<territory type="HN">Hondúras</territory>
+			<territory type="HR">An Chróit</territory>
+			<territory type="HT">Háití</territory>
+			<territory type="HU">An Ungáir</territory>
+			<territory type="ID">An Indinéis</territory>
+			<territory type="IE">Éire</territory>
+			<territory type="IL">Iosrael</territory>
+			<territory type="IM">Oileán Mhanann</territory>
+			<territory type="IN">An India</territory>
+			<territory type="IO">Críocha Briotanacha an Aigéin Indiagh</territory>
+			<territory type="IQ">An Iaráic</territory>
+			<territory type="IR">An Iaráin</territory>
+			<territory type="IS">An Íoslainn</territory>
+			<territory type="IT">An Iodáil</territory>
+			<territory type="JE">Geirsí</territory>
+			<territory type="JM">Iamáice</territory>
+			<territory type="JO">An Iordáin</territory>
+			<territory type="JP">An tSeapáin</territory>
+			<territory type="KE">An Chéinia</territory>
+			<territory type="KG">An Chirgeastáin</territory>
+			<territory type="KH">An Chambóid</territory>
+			<territory type="KI">Ciribeas</territory>
+			<territory type="KM">Oileáin Chomóra</territory>
+			<territory type="KN">Saint Kitts agus Nevis</territory>
+			<territory type="KP">An Chóiré Thuaidh</territory>
+			<territory type="KR">An Chóiré Theas</territory>
+			<territory type="KW">Cuáit</territory>
+			<territory type="KY">Oileáin na gCadhman</territory>
+			<territory type="KZ">An Chasacstáin</territory>
+			<territory type="LA">Laos</territory>
+			<territory type="LB">An Liobáin</territory>
+			<territory type="LC">San Lúisia</territory>
+			<territory type="LI">Lichtinstéin</territory>
+			<territory type="LK">Srí Lanca</territory>
+			<territory type="LR">An Libéir</territory>
+			<territory type="LS">Leosóta</territory>
+			<territory type="LT">An Liotuáin</territory>
+			<territory type="LU">Lucsamburg</territory>
+			<territory type="LV">An Laitvia</territory>
+			<territory type="LY">An Libia</territory>
+			<territory type="MA">Maracó</territory>
+			<territory type="MC">Monacó</territory>
+			<territory type="MD">An Mholdóiv</territory>
+			<territory type="ME">Montainéagró</territory>
+			<territory type="MG">Madagascar</territory>
+			<territory type="MH">Oileáin Marshall</territory>
+			<territory type="MK">An Mhacadóin</territory>
+			<territory type="ML">Mailí</territory>
+			<territory type="MM">Maenmar</territory>
+			<territory type="MN">An Mhongóil</territory>
+			<territory type="MO">R.R.S. na Síne Macáó</territory>
+			<territory type="MP">Oileáin Mariana Thuaidh</territory>
+			<territory type="MQ">Martainíc</territory>
+			<territory type="MR">An Mharatáin</territory>
+			<territory type="MS">Montsarat</territory>
+			<territory type="MT">Málta</territory>
+			<territory type="MU">Oileán Mhuirís</territory>
+			<territory type="MV">Na Maildiví</territory>
+			<territory type="MW">An Mhaláiv</territory>
+			<territory type="MX">Meicsiceo</territory>
+			<territory type="MY">An Mhalaeisia</territory>
+			<territory type="MZ">Mósaimbíc</territory>
+			<territory type="NA">An Namaib</territory>
+			<territory type="NC">An Nua-Chaladóin</territory>
+			<territory type="NE">An Nígir</territory>
+			<territory type="NF">Oileán Norfolk</territory>
+			<territory type="NG">An Nigéir</territory>
+			<territory type="NI">Nicearagua</territory>
+			<territory type="NL">An Ísiltír</territory>
+			<territory type="NO">An Iorua</territory>
+			<territory type="NP">Neipeal</territory>
+			<territory type="NR">Nárú</territory>
+			<territory type="NU">Nívé</territory>
+			<territory type="NZ">An Nua-Shéalainn</territory>
+			<territory type="OM">Óman</territory>
+			<territory type="PA">Panama</territory>
+			<territory type="PE">Peiriú</territory>
+			<territory type="PF">An Pholainéis Fhrancach</territory>
+			<territory type="PG">Nua-Ghuine Phapua</territory>
+			<territory type="PH">Na hOileáin Fhilipíneacha</territory>
+			<territory type="PK">An Phacastáin</territory>
+			<territory type="PL">An Pholainn</territory>
+			<territory type="PM">Saint Pierre agus Miquelon</territory>
+			<territory type="PN">Pitcairn</territory>
+			<territory type="PR">Portó Ríce</territory>
+			<territory type="PS">Na Críocha Pailistíneacha</territory>
+			<territory type="PT">An Phortaingéil</territory>
+			<territory type="PW">Palau</territory>
+			<territory type="PY">Paragua</territory>
+			<territory type="QA">Catar</territory>
+			<territory type="QO">An Aigéine Imeallach</territory>
+			<territory type="QU">An tAontas Eorpach</territory>
+			<territory type="RE">Réunion</territory>
+			<territory type="RO">An Rómáin</territory>
+			<territory type="RS">An tSeirbia</territory>
+			<territory type="RU">Cónaidhm na Rúise</territory>
+			<territory type="RW">Ruanda</territory>
+			<territory type="SA">An Araib Shádach</territory>
+			<territory type="SB">Oileáin Sholaimh</territory>
+			<territory type="SC">Na Séiséil</territory>
+			<territory type="SD">An tSúdáin</territory>
+			<territory type="SE">An tSualainn</territory>
+			<territory type="SG">Singeapór</territory>
+			<territory type="SH">San Héilin</territory>
+			<territory type="SI">An tSlóvéin</territory>
+			<territory type="SJ">Svalbard agus Jan Mayen</territory>
+			<territory type="SK">An tSlóvaic</territory>
+			<territory type="SL">Siarra Leon</territory>
+			<territory type="SM">San Mairíne</territory>
+			<territory type="SN">An tSeineagáil</territory>
+			<territory type="SO">An tSomáil</territory>
+			<territory type="SR">Suranam</territory>
+			<territory type="ST">Sao Tome agus Principe</territory>
+			<territory type="SV">An tSalvadóir</territory>
+			<territory type="SY">An tSiria</territory>
+			<territory type="SZ">An tSuasalainn</territory>
+			<territory type="TC">Oileáin Turks agus Caicos</territory>
+			<territory type="TD">Sead</territory>
+			<territory type="TF">Críocha Deisceartacha na Fraince</territory>
+			<territory type="TG">Tóga</territory>
+			<territory type="TH">An Téalainn</territory>
+			<territory type="TJ">An Táidsíceastáin</territory>
+			<territory type="TK">Tócalá</territory>
+			<territory type="TL">Tíomór Thoir</territory>
+			<territory type="TM">An Tuircméanastáin</territory>
+			<territory type="TN">An Túinéis</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">An Tuirc</territory>
+			<territory type="TT">Oileáin na Tríonóide agus Tobága</territory>
+			<territory type="TV">Túválú</territory>
+			<territory type="TW">An Téaváin</territory>
+			<territory type="TZ">An Tansáin</territory>
+			<territory type="UA">An Úcráin</territory>
+			<territory type="UG">Úganda</territory>
+			<territory type="UM">Mion-Oileáin Imeallacha S.A.M.</territory>
+			<territory type="US">Stáit Aontaithe Mheiriceá</territory>
+			<territory type="UY">Urugua</territory>
+			<territory type="UZ">Úisbéiceastáin</territory>
+			<territory type="VA">An Vatacáin</territory>
+			<territory type="VC">Saint Vincent agus na Grenadines</territory>
+			<territory type="VE">Veiniséala</territory>
+			<territory type="VG">Oileáin Bhriotanacha na Maighdean</territory>
+			<territory type="VI">Oileáin na Maighdean S.A.M.</territory>
+			<territory type="VN">Vít Neam</territory>
+			<territory type="VU">Vanuatú</territory>
+			<territory type="WF">Oileáin Vailís agus Futúna</territory>
+			<territory type="WS">Samó</territory>
+			<territory type="YE">Éimin</territory>
+			<territory type="YT">Mayotte</territory>
+			<territory type="ZA">An Afraic Theas</territory>
+			<territory type="ZM">An tSaimbia</territory>
+			<territory type="ZW">An tSiombáib</territory>
+			<territory type="ZZ">Réigiún Anaithnid nó Neamhbhailí</territory>
+		</territories>
+		<keys>
+			<key type="calendar">Féilire</key>
+			<key type="collation">Comhordú</key>
+			<key type="currency">Airgeadra</key>
+		</keys>
+		<types>
+			<type type="big5han" key="collation">Ord sórtála Síneach traidisiúnta - Big5</type>
+			<type type="buddhist" key="calendar">Féilire Búdaíoch</type>
+			<type type="chinese" key="calendar">Féilire Síneach</type>
+			<type type="direct" key="collation">Ord sórtála díreach</type>
+			<type type="gb2312han" key="collation">Ord sórtála Síneach simplithe - GB 2312</type>
+			<type type="gregorian" key="calendar">Féilire Greagórach</type>
+			<type type="hebrew" key="calendar">Féilire Eabhrach</type>
+			<type type="islamic" key="calendar">Féilire Ioslamach</type>
+			<type type="islamic-civil" key="calendar">Féilire Ioslamach Sibhialta</type>
+			<type type="japanese" key="calendar">Féilire Seapánach</type>
+			<type type="phonebook" key="collation">Ord sórtála an eolaire teileafóin</type>
+			<type type="pinyin" key="collation">Ord sórtála pinyin</type>
+			<type type="stroke" key="collation">Ord sórtála stríce</type>
+			<type type="traditional" key="collation">Ord sórtála traidisiúnta</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">Méadrach</measurementSystemName>
+			<measurementSystemName type="US">Meiriceánach</measurementSystemName>
+		</measurementSystemNames>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a á b-e é f-i í j-o ó p-u ú v-z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ḃ ċ ḋ ḟ ġ ṁ ṗ ṡ ṫ]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="buddhist">
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE d MMMM y G</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+			</calendar>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Ean</month>
+							<month type="2">Feabh</month>
+							<month type="3">Márta</month>
+							<month type="4">Aib</month>
+							<month type="5">Beal</month>
+							<month type="6">Meith</month>
+							<month type="7">Iúil</month>
+							<month type="8">Lún</month>
+							<month type="9">MFómh</month>
+							<month type="10">DFómh</month>
+							<month type="11">Samh</month>
+							<month type="12">Noll</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Eanáir</month>
+							<month type="2">Feabhra</month>
+							<month type="3">Márta</month>
+							<month type="4">Aibreán</month>
+							<month type="5">Bealtaine</month>
+							<month type="6">Meitheamh</month>
+							<month type="7">Iúil</month>
+							<month type="8">Lúnasa</month>
+							<month type="9">Meán Fómhair</month>
+							<month type="10">Deireadh Fómhair</month>
+							<month type="11">Samhain</month>
+							<month type="12">Nollaig</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">E</month>
+							<month type="2">F</month>
+							<month type="3">M</month>
+							<month type="4">A</month>
+							<month type="5">B</month>
+							<month type="6">M</month>
+							<month type="7">I</month>
+							<month type="8">L</month>
+							<month type="9">M</month>
+							<month type="10">D</month>
+							<month type="11">S</month>
+							<month type="12">N</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Domh</day>
+							<day type="mon">Luan</day>
+							<day type="tue">Máirt</day>
+							<day type="wed">Céad</day>
+							<day type="thu">Déar</day>
+							<day type="fri">Aoine</day>
+							<day type="sat">Sath</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Dé Domhnaigh</day>
+							<day type="mon">Dé Luain</day>
+							<day type="tue">Dé Máirt</day>
+							<day type="wed">Dé Céadaoin</day>
+							<day type="thu">Déardaoin</day>
+							<day type="fri">Dé hAoine</day>
+							<day type="sat">Dé Sathairn</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">D</day>
+							<day type="mon">L</day>
+							<day type="tue">M</day>
+							<day type="wed">C</day>
+							<day type="thu">D</day>
+							<day type="fri">A</day>
+							<day type="sat">S</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">R1</quarter>
+							<quarter type="2">R2</quarter>
+							<quarter type="3">R3</quarter>
+							<quarter type="4">R4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">1ú ráithe</quarter>
+							<quarter type="2">2ú ráithe</quarter>
+							<quarter type="3">3ú ráithe</quarter>
+							<quarter type="4">4ú ráithe</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>a.m.</am>
+				<pm>p.m.</pm>
+				<eras>
+					<eraNames>
+						<era type="0">Roimh Chríost</era>
+						<era type="1">Anno Domini</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">RC</era>
+						<era type="1">AD</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>dd/MM/yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>HH:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="HHmm">HH:mm</dateFormatItem>
+						<dateFormatItem id="HHmmss">HH:mm:ss</dateFormatItem>
+						<dateFormatItem id="Md">d/M</dateFormatItem>
+						<dateFormatItem id="MMdd">dd/MM</dateFormatItem>
+						<dateFormatItem id="MMMMd">d MMMM</dateFormatItem>
+						<dateFormatItem id="mmss">mm:ss</dateFormatItem>
+						<dateFormatItem id="yyMM">MM/yy</dateFormatItem>
+						<dateFormatItem id="yyMMM">MMM yy</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+						<dateFormatItem id="yyyyMM">MM/yyyy</dateFormatItem>
+						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>Ré</displayName>
+					</field>
+					<field type="year">
+						<displayName>Bliain</displayName>
+					</field>
+					<field type="month">
+						<displayName>Mí</displayName>
+					</field>
+					<field type="week">
+						<displayName>Seachtain</displayName>
+					</field>
+					<field type="day">
+						<displayName>Lá</displayName>
+						<relative type="-2">Arú inné</relative>
+						<relative type="-1">Inné</relative>
+						<relative type="0">Inniu</relative>
+						<relative type="1">Amárach</relative>
+						<relative type="2">Arú amárach</relative>
+					</field>
+					<field type="weekday">
+						<displayName>Lá na seachtaine</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>a.m./p.m.</displayName>
+					</field>
+					<field type="hour">
+						<displayName>Uair</displayName>
+					</field>
+					<field type="minute">
+						<displayName>Nóiméad</displayName>
+					</field>
+					<field type="second">
+						<displayName>Soicind</displayName>
+					</field>
+					<field type="zone">
+						<displayName>Crios</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>MAG{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Anaithnid</exemplarCity>
+			</zone>
+			<zone type="Europe/London">
+				<long>
+					<daylight>Am Samhraidh na Breataine</daylight>
+				</long>
+				<short>
+					<daylight>ASB</daylight>
+				</short>
+				<exemplarCity>Londain</exemplarCity>
+			</zone>
+			<zone type="Europe/Dublin">
+				<long>
+					<daylight>Am Samhraidh na hÉireann</daylight>
+				</long>
+				<short>
+					<daylight>ASÉ</daylight>
+				</short>
+				<exemplarCity>Baile Átha Cliath</exemplarCity>
+			</zone>
+			<metazone type="GMT">
+				<long>
+					<standard>Meán-Am Greenwich</standard>
+				</long>
+				<short>
+					<standard>MAG</standard>
+				</short>
+			</metazone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+		</symbols>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="ADP">
+				<displayName>Peseta Andóra</displayName>
+			</currency>
+			<currency type="AED">
+				<displayName>Dirham Aontas na nÉimíríochtaí Arabacha</displayName>
+			</currency>
+			<currency type="AFA">
+				<displayName>Afgainí (1927-2002)</displayName>
+			</currency>
+			<currency type="AFN">
+				<displayName>Afgainí</displayName>
+			</currency>
+			<currency type="ALL">
+				<displayName>Lek Albánach</displayName>
+			</currency>
+			<currency type="AMD">
+				<displayName>Dram Airméanach</displayName>
+			</currency>
+			<currency type="ANG">
+				<displayName>Guilder na nAntillí Ísiltíreach</displayName>
+				<symbol>AÍ f.</symbol>
+			</currency>
+			<currency type="AOA">
+				<displayName>Kwanza Angólach</displayName>
+			</currency>
+			<currency type="AOK">
+				<displayName>Kwanza Angólach (1977-1990)</displayName>
+			</currency>
+			<currency type="AON">
+				<displayName>Kwanza Nua Angólach (1990-2000)</displayName>
+			</currency>
+			<currency type="AOR">
+				<displayName>Kwanza Reajustado Angólach (1995-1999)</displayName>
+			</currency>
+			<currency type="ARA">
+				<displayName>Austral Airgintíneach</displayName>
+			</currency>
+			<currency type="ARP">
+				<displayName>Peso na Airgintíne (1983-1985)</displayName>
+			</currency>
+			<currency type="ARS">
+				<displayName>Peso na Airgintíne</displayName>
+			</currency>
+			<currency type="ATS">
+				<displayName>Scilling Ostarach</displayName>
+			</currency>
+			<currency type="AUD">
+				<displayName>Dollar Astrálach</displayName>
+			</currency>
+			<currency type="AWG">
+				<displayName>Guilder Aruba</displayName>
+			</currency>
+			<currency type="AZM">
+				<displayName>Manat Asarbaiseánach</displayName>
+			</currency>
+			<currency type="BAD">
+				<displayName>Dínear Bhoisnia-Heirseagaivéin</displayName>
+			</currency>
+			<currency type="BAM">
+				<displayName>Marc Inathraithe Bhoisnia-Heirseagaivéin</displayName>
+			</currency>
+			<currency type="BBD">
+				<displayName>Dollar Bharbadóis</displayName>
+			</currency>
+			<currency type="BDT">
+				<displayName>Taka Bhanglaidéiseach</displayName>
+			</currency>
+			<currency type="BEC">
+				<displayName>Franc Beilgeach (inathraithe)</displayName>
+			</currency>
+			<currency type="BEF">
+				<displayName>Franc Beilgeach</displayName>
+			</currency>
+			<currency type="BEL">
+				<displayName>Franc Beilgeach (airgeadúil)</displayName>
+			</currency>
+			<currency type="BGL">
+				<displayName>Lev Bulgárach Crua</displayName>
+			</currency>
+			<currency type="BGN">
+				<displayName>Lev Nua Bulgárach</displayName>
+			</currency>
+			<currency type="BHD">
+				<displayName>Dínear na Bairéine</displayName>
+			</currency>
+			<currency type="BIF">
+				<displayName>Franc na Burúine</displayName>
+			</currency>
+			<currency type="BMD">
+				<displayName>Dollar Bheirmiúda</displayName>
+			</currency>
+			<currency type="BND">
+				<displayName>Dollar Bhrúiné</displayName>
+			</currency>
+			<currency type="BOB">
+				<displayName>Boliviano</displayName>
+			</currency>
+			<currency type="BOP">
+				<displayName>Peso na Bolaive</displayName>
+			</currency>
+			<currency type="BOV">
+				<displayName>Mvdol Bolavach</displayName>
+			</currency>
+			<currency type="BRB">
+				<displayName>Cruzeiro Novo Brasaíleach (1967-1986)</displayName>
+			</currency>
+			<currency type="BRC">
+				<displayName>Cruzado Brasaíleach</displayName>
+			</currency>
+			<currency type="BRE">
+				<displayName>Cruzeiro Brasaíleach (1990-1993)</displayName>
+			</currency>
+			<currency type="BRL">
+				<displayName>Real Brasaíleach</displayName>
+			</currency>
+			<currency type="BRN">
+				<displayName>Cruzado Novo Brasaíleach</displayName>
+			</currency>
+			<currency type="BRR">
+				<displayName>Cruzeiro Brasaíleach</displayName>
+			</currency>
+			<currency type="BSD">
+				<displayName>Dollar na mBahámaí</displayName>
+			</currency>
+			<currency type="BTN">
+				<displayName>Ngultrum Bútánach</displayName>
+			</currency>
+			<currency type="BUK">
+				<displayName>Kyat Burmach</displayName>
+			</currency>
+			<currency type="BWP">
+				<displayName>Pula Botsuánach</displayName>
+			</currency>
+			<currency type="BYB">
+				<displayName>Rúbal Nua Béalarúiseach (1994-1999)</displayName>
+			</currency>
+			<currency type="BYR">
+				<displayName>Rúbal Béalarúiseach</displayName>
+			</currency>
+			<currency type="BZD">
+				<displayName>Dollar na Beilíse</displayName>
+			</currency>
+			<currency type="CAD">
+				<displayName>Dollar Ceanada</displayName>
+			</currency>
+			<currency type="CDF">
+				<displayName>Franc Congolais an Chongó</displayName>
+			</currency>
+			<currency type="CHF">
+				<displayName>Franc na hEilvéise</displayName>
+			</currency>
+			<currency type="CLF">
+				<displayName>Unidades de Fomento na Sile</displayName>
+			</currency>
+			<currency type="CLP">
+				<displayName>Peso na Sile</displayName>
+			</currency>
+			<currency type="CNY">
+				<displayName>Yuan Renminbi Síneach</displayName>
+			</currency>
+			<currency type="COP">
+				<displayName>Peso na Colóime</displayName>
+			</currency>
+			<currency type="CRC">
+				<displayName>Colon Chósta Ríce</displayName>
+			</currency>
+			<currency type="CSK">
+				<displayName>Koruna Crua na Seicslóvaice</displayName>
+			</currency>
+			<currency type="CUP">
+				<displayName>Peso Cúba</displayName>
+			</currency>
+			<currency type="CVE">
+				<displayName>Escudo na Rinne Verde</displayName>
+			</currency>
+			<currency type="CYP">
+				<displayName>Punt na Cipire</displayName>
+			</currency>
+			<currency type="CZK">
+				<displayName>Koruna Phoblacht na Seice</displayName>
+			</currency>
+			<currency type="DDM">
+				<displayName>Ostmark na hOirGhearmáine</displayName>
+			</currency>
+			<currency type="DEM">
+				<displayName>Deutsche Mark</displayName>
+			</currency>
+			<currency type="DJF">
+				<displayName>Franc Djibouti</displayName>
+			</currency>
+			<currency type="DKK">
+				<displayName>Krone Danmhargach</displayName>
+			</currency>
+			<currency type="DOP">
+				<displayName>Peso Doimineacach</displayName>
+			</currency>
+			<currency type="DZD">
+				<displayName>Dínear na hAilgéire</displayName>
+			</currency>
+			<currency type="ECS">
+				<displayName>Sucre Eacuadóir</displayName>
+			</currency>
+			<currency type="ECV">
+				<displayName>Unidad de Valor Constante (UVC) Eacuadóir</displayName>
+			</currency>
+			<currency type="EEK">
+				<displayName>Kroon na hEastóine</displayName>
+			</currency>
+			<currency type="EGP">
+				<displayName>Punt na hÉigipte</displayName>
+			</currency>
+			<currency type="ESP">
+				<displayName>Peseta Spáinneach</displayName>
+			</currency>
+			<currency type="ETB">
+				<displayName>Birr na hAetóipe</displayName>
+			</currency>
+			<currency type="EUR">
+				<displayName>Euro</displayName>
+			</currency>
+			<currency type="FIM">
+				<displayName>Markka Fionnlannach</displayName>
+			</currency>
+			<currency type="FJD">
+				<displayName>Dollar Fhidsí</displayName>
+			</currency>
+			<currency type="FKP">
+				<displayName>Punt Oileáin Fháclainne</displayName>
+			</currency>
+			<currency type="FRF">
+				<displayName>Franc Francach</displayName>
+			</currency>
+			<currency type="GBP">
+				<displayName>Punt Steirling</displayName>
+			</currency>
+			<currency type="GEK">
+				<displayName>Kupon Larit na Grúise</displayName>
+			</currency>
+			<currency type="GEL">
+				<displayName>Lari na Grúise</displayName>
+			</currency>
+			<currency type="GHC">
+				<displayName>Cedi Ghána</displayName>
+			</currency>
+			<currency type="GIP">
+				<displayName>Punt Ghiobráltair</displayName>
+			</currency>
+			<currency type="GMD">
+				<displayName>Dalasi Gaimbia</displayName>
+			</currency>
+			<currency type="GNF">
+				<displayName>Franc Guine</displayName>
+			</currency>
+			<currency type="GNS">
+				<displayName>Syli Guine</displayName>
+			</currency>
+			<currency type="GQE">
+				<displayName>Ekwele Guineana na Guine Meánchriosaí</displayName>
+			</currency>
+			<currency type="GRD">
+				<displayName>Drachma Gréagach</displayName>
+			</currency>
+			<currency type="GTQ">
+				<displayName>Quetzal Guatamala</displayName>
+			</currency>
+			<currency type="GWE">
+				<displayName>Escudo na Guine Portaingéalaí</displayName>
+			</currency>
+			<currency type="GWP">
+				<displayName>Peso Guine-Bhissau</displayName>
+			</currency>
+			<currency type="GYD">
+				<displayName>Dollar na Guáine</displayName>
+			</currency>
+			<currency type="HKD">
+				<displayName>Dollar Hong Cong</displayName>
+			</currency>
+			<currency type="HNL">
+				<displayName>Lempira Hondúrais</displayName>
+			</currency>
+			<currency type="HRD">
+				<displayName>Dínear na Cróite</displayName>
+			</currency>
+			<currency type="HRK">
+				<displayName>Kuna Crótach</displayName>
+			</currency>
+			<currency type="HTG">
+				<displayName>Gourde Háití</displayName>
+			</currency>
+			<currency type="HUF">
+				<displayName>Forint Ungárach</displayName>
+			</currency>
+			<currency type="IDR">
+				<displayName>Rupiah Indinéiseach</displayName>
+			</currency>
+			<currency type="IEP">
+				<displayName>Punt Éireannach</displayName>
+			</currency>
+			<currency type="ILP">
+				<displayName>Punt Iosraelach</displayName>
+			</currency>
+			<currency type="ILS">
+				<displayName>Sheqel Nua Iosraelach</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>Rúipí India</displayName>
+			</currency>
+			<currency type="IQD">
+				<displayName>Dínear Irácach</displayName>
+			</currency>
+			<currency type="IRR">
+				<displayName>Rial Iaránach</displayName>
+			</currency>
+			<currency type="ISK">
+				<displayName>Krona Íoslannach</displayName>
+			</currency>
+			<currency type="ITL">
+				<displayName>Lira Iodálach</displayName>
+			</currency>
+			<currency type="JMD">
+				<displayName>Dollar Iamácach</displayName>
+			</currency>
+			<currency type="JOD">
+				<displayName>Dínear Iordánach</displayName>
+			</currency>
+			<currency type="JPY">
+				<displayName>Yen Seapánach</displayName>
+			</currency>
+			<currency type="KES">
+				<displayName>Scilling Céiniach</displayName>
+			</currency>
+			<currency type="KGS">
+				<displayName>Som na Cirgeastáine</displayName>
+			</currency>
+			<currency type="KHR">
+				<displayName>Riel na Cambóide</displayName>
+			</currency>
+			<currency type="KMF">
+				<displayName>Franc Chomóra</displayName>
+			</currency>
+			<currency type="KPW">
+				<displayName>Won na Cóiré Thuaidh</displayName>
+			</currency>
+			<currency type="KRW">
+				<displayName>Won na Cóiré Theas</displayName>
+			</currency>
+			<currency type="KWD">
+				<displayName>Dínear Cuátach</displayName>
+			</currency>
+			<currency type="KYD">
+				<displayName>Dollar Oileáin Cayman</displayName>
+			</currency>
+			<currency type="KZT">
+				<displayName>Tenge Casacstánach</displayName>
+			</currency>
+			<currency type="LAK">
+				<displayName>Kip Laosach</displayName>
+			</currency>
+			<currency type="LBP">
+				<displayName>Punt na Liobáine</displayName>
+			</currency>
+			<currency type="LKR">
+				<displayName>Rúipí Srí Lanca</displayName>
+			</currency>
+			<currency type="LRD">
+				<displayName>Dollar na Libéire</displayName>
+			</currency>
+			<currency type="LSL">
+				<displayName>Loti Leosóta</displayName>
+			</currency>
+			<currency type="LTL">
+				<displayName>Lita Liotuánach</displayName>
+			</currency>
+			<currency type="LTT">
+				<displayName>Talonas Liotuánach</displayName>
+			</currency>
+			<currency type="LUF">
+				<displayName>Franc Lucsamburg</displayName>
+			</currency>
+			<currency type="LVL">
+				<displayName>Lats Laitviach</displayName>
+			</currency>
+			<currency type="LVR">
+				<displayName>Rúbal Laitviach</displayName>
+			</currency>
+			<currency type="LYD">
+				<displayName>Dínear Libia</displayName>
+			</currency>
+			<currency type="MAD">
+				<displayName>Dirham Mharacó</displayName>
+			</currency>
+			<currency type="MAF">
+				<displayName>Franc Mharacó</displayName>
+			</currency>
+			<currency type="MDL">
+				<displayName>Leu Moldóvach</displayName>
+			</currency>
+			<currency type="MGA">
+				<displayName>Ariary Madagascar</displayName>
+			</currency>
+			<currency type="MGF">
+				<displayName>Franc Madagascar</displayName>
+			</currency>
+			<currency type="MKD">
+				<displayName>Denar na Macadóine</displayName>
+			</currency>
+			<currency type="MLF">
+				<displayName>Franc Mhailí</displayName>
+			</currency>
+			<currency type="MMK">
+				<displayName>Kyat Mhaenmar</displayName>
+			</currency>
+			<currency type="MNT">
+				<displayName>Tugrik Mongólach</displayName>
+			</currency>
+			<currency type="MOP">
+				<displayName>Pataca Macao</displayName>
+			</currency>
+			<currency type="MRO">
+				<displayName>Ouguiya na Maratáine</displayName>
+			</currency>
+			<currency type="MTL">
+				<displayName>Lira Maltach</displayName>
+			</currency>
+			<currency type="MTP">
+				<displayName>Punt Maltach</displayName>
+			</currency>
+			<currency type="MUR">
+				<displayName>Rúipí Oileán Mhuirís</displayName>
+			</currency>
+			<currency type="MVR">
+				<displayName>Maldive Islands Rufiyaa</displayName>
+			</currency>
+			<currency type="MWK">
+				<displayName>Kwacha na Maláive</displayName>
+			</currency>
+			<currency type="MXN">
+				<displayName>Peso Meicsiceo</displayName>
+			</currency>
+			<currency type="MXP">
+				<displayName>Peso Airgid Meicsiceo (1861-1992)</displayName>
+			</currency>
+			<currency type="MXV">
+				<displayName>Unidad de Inversion (UDI) Meicsiceo</displayName>
+			</currency>
+			<currency type="MYR">
+				<displayName>Ringgit Malaeisia</displayName>
+			</currency>
+			<currency type="MZE">
+				<displayName>Escudo Mósaimbíce</displayName>
+			</currency>
+			<currency type="MZM">
+				<displayName>Metical Mósaimbíce</displayName>
+			</currency>
+			<currency type="NAD">
+				<displayName>Dollar na Namaibe</displayName>
+			</currency>
+			<currency type="NGN">
+				<displayName>Naira Nígéarach</displayName>
+			</currency>
+			<currency type="NIC">
+				<displayName>Cordoba Nicearagua</displayName>
+			</currency>
+			<currency type="NIO">
+				<displayName>Cordoba Oro Nicearagua</displayName>
+			</currency>
+			<currency type="NLG">
+				<displayName>Guilder Ísiltíreach</displayName>
+			</currency>
+			<currency type="NOK">
+				<displayName>Krone Ioruach</displayName>
+			</currency>
+			<currency type="NPR">
+				<displayName>Rúipí Neipeáil</displayName>
+			</currency>
+			<currency type="NZD">
+				<displayName>Dollar na Nua-Shéalainne</displayName>
+			</currency>
+			<currency type="OMR">
+				<displayName>Rial Omain</displayName>
+			</currency>
+			<currency type="PAB">
+				<displayName>Balboa Panamach</displayName>
+			</currency>
+			<currency type="PEI">
+				<displayName>Inti Pheiriú</displayName>
+			</currency>
+			<currency type="PEN">
+				<displayName>Sol Nuevo Pheiriú</displayName>
+			</currency>
+			<currency type="PES">
+				<displayName>Sol Pheiriú</displayName>
+			</currency>
+			<currency type="PGK">
+				<displayName>Kina Nua-Ghuine Phapua</displayName>
+			</currency>
+			<currency type="PHP">
+				<displayName>Peso Filipíneach</displayName>
+			</currency>
+			<currency type="PKR">
+				<displayName>Rúipí na Pacastáine</displayName>
+			</currency>
+			<currency type="PLN">
+				<displayName>Zloty Polannach</displayName>
+			</currency>
+			<currency type="PLZ">
+				<displayName>Zloty Polannach (1950-1995)</displayName>
+			</currency>
+			<currency type="PTE">
+				<displayName>Escudo Portaingélach</displayName>
+			</currency>
+			<currency type="PYG">
+				<displayName>Guarani Pharagua</displayName>
+			</currency>
+			<currency type="QAR">
+				<displayName>Rial Catarach</displayName>
+			</currency>
+			<currency type="ROL">
+				<displayName>Leu Rómánach</displayName>
+			</currency>
+			<currency type="RUB">
+				<displayName>Rúbal Rúiseach</displayName>
+			</currency>
+			<currency type="RUR">
+				<displayName>Rúbal Rúiseach (1991-1998)</displayName>
+			</currency>
+			<currency type="RWF">
+				<displayName>Franc Ruanda</displayName>
+			</currency>
+			<currency type="SAR">
+				<displayName>Riyal Sádach</displayName>
+			</currency>
+			<currency type="SBD">
+				<displayName>Dollar Oileáin Solomon</displayName>
+			</currency>
+			<currency type="SCR">
+				<displayName>Rúipí na Séiséil</displayName>
+			</currency>
+			<currency type="SDD">
+				<displayName>Dínear na Súdáine</displayName>
+			</currency>
+			<currency type="SDP">
+				<displayName>Punt na Súdáine</displayName>
+			</currency>
+			<currency type="SEK">
+				<displayName>Krona Sualannach</displayName>
+			</currency>
+			<currency type="SGD">
+				<displayName>Dollar Singeapóir</displayName>
+			</currency>
+			<currency type="SHP">
+				<displayName>Punt San Héilin</displayName>
+			</currency>
+			<currency type="SIT">
+				<displayName>Tolar Slóvénach</displayName>
+			</currency>
+			<currency type="SKK">
+				<displayName>Koruna na Slóvaice</displayName>
+			</currency>
+			<currency type="SLL">
+				<displayName>Leone Shiarra Leon</displayName>
+			</currency>
+			<currency type="SOS">
+				<displayName>Scilling na Sómáile</displayName>
+			</currency>
+			<currency type="SRG">
+				<displayName>Guilder Shuranaim</displayName>
+			</currency>
+			<currency type="STD">
+				<displayName>Dobra Sao Tome agus Principe</displayName>
+			</currency>
+			<currency type="SUR">
+				<displayName>Rúbal Sóvéadach</displayName>
+			</currency>
+			<currency type="SVC">
+				<displayName>Colon na Salvadóire</displayName>
+			</currency>
+			<currency type="SYP">
+				<displayName>Punt Siria</displayName>
+			</currency>
+			<currency type="SZL">
+				<displayName>Lilangeni na Suasalainne</displayName>
+			</currency>
+			<currency type="THB">
+				<displayName>Baht na Téalainne</displayName>
+			</currency>
+			<currency type="TJR">
+				<displayName>Rúbal na Táidsíceastáine</displayName>
+			</currency>
+			<currency type="TJS">
+				<displayName>Somoni na Táidsíceastáine</displayName>
+			</currency>
+			<currency type="TMM">
+				<displayName>Manat na An Tuircméanastáine</displayName>
+			</currency>
+			<currency type="TND">
+				<displayName>Dínear na Túinéise</displayName>
+			</currency>
+			<currency type="TOP">
+				<displayName>Paʻanga Tonga</displayName>
+			</currency>
+			<currency type="TPE">
+				<displayName>Escudo Tíomóir</displayName>
+			</currency>
+			<currency type="TRL">
+				<displayName>Lira Turcach</displayName>
+			</currency>
+			<currency type="TTD">
+				<displayName>Dollar Oileáin na Tríonóide agus Tobága</displayName>
+			</currency>
+			<currency type="TWD">
+				<displayName>Dollar Nua na Téaváine</displayName>
+			</currency>
+			<currency type="TZS">
+				<displayName>Scilling na Tansáine</displayName>
+			</currency>
+			<currency type="UAH">
+				<displayName>Hryvnia Úcránach</displayName>
+			</currency>
+			<currency type="UAK">
+				<displayName>Karbovanetz Úcránach</displayName>
+			</currency>
+			<currency type="UGS">
+				<displayName>Scilling Uganda (1966-1987)</displayName>
+			</currency>
+			<currency type="UGX">
+				<displayName>Scilling Uganda</displayName>
+			</currency>
+			<currency type="USD">
+				<displayName>Dollar S.A.M.</displayName>
+			</currency>
+			<currency type="USN">
+				<displayName>Dollar S.A.M. (an chéad lá eile)</displayName>
+			</currency>
+			<currency type="USS">
+				<displayName>Dollar S.A.M. (an la céanna)</displayName>
+			</currency>
+			<currency type="UYP">
+				<displayName>Peso Uragua (1975-1993)</displayName>
+			</currency>
+			<currency type="UYU">
+				<displayName>Peso Uruguayo Uragua</displayName>
+			</currency>
+			<currency type="UZS">
+				<displayName>Sum na hÚisbéiceastáine</displayName>
+			</currency>
+			<currency type="VEB">
+				<displayName>Bolivar Veiniséala</displayName>
+			</currency>
+			<currency type="VND">
+				<displayName>Dong Vítneamach</displayName>
+			</currency>
+			<currency type="VUV">
+				<displayName>Vatu Vanuatú</displayName>
+			</currency>
+			<currency type="WST">
+				<displayName>Tala Samó Thiar</displayName>
+			</currency>
+			<currency type="XAF">
+				<displayName>CFA Franc BEAC</displayName>
+			</currency>
+			<currency type="XAU">
+				<displayName>Ór</displayName>
+			</currency>
+			<currency type="XBA">
+				<displayName>Aonad Ilchodach Eorpach</displayName>
+			</currency>
+			<currency type="XBB">
+				<displayName>Aonad Airgeadaíochta Eorpach</displayName>
+			</currency>
+			<currency type="XBC">
+				<displayName>Aonad Cuntais Eorpach (XBC)</displayName>
+			</currency>
+			<currency type="XBD">
+				<displayName>Aonad Cuntais Eorpach (XBD)</displayName>
+			</currency>
+			<currency type="XCD">
+				<displayName>Dollar Oirthear na Cairibe</displayName>
+			</currency>
+			<currency type="XDR">
+				<displayName>Cearta Speisialta Tarraingthe</displayName>
+			</currency>
+			<currency type="XEU">
+				<displayName>Aonad Airgeadra Eorpach</displayName>
+			</currency>
+			<currency type="XFO">
+				<displayName>Franc Ór Francach</displayName>
+			</currency>
+			<currency type="XFU">
+				<displayName>UIC-Franc Francach</displayName>
+			</currency>
+			<currency type="XOF">
+				<displayName>CFA Franc BCEAO</displayName>
+			</currency>
+			<currency type="XPF">
+				<displayName>CFP Franc</displayName>
+			</currency>
+			<currency type="XXX">
+				<displayName>Airgeadra Anaithnid nó Neamhbhailí</displayName>
+			</currency>
+			<currency type="YDD">
+				<displayName>Dínear Éimin</displayName>
+			</currency>
+			<currency type="YER">
+				<displayName>Rial Éimin</displayName>
+			</currency>
+			<currency type="YUD">
+				<displayName>Dínear Crua Iúgslavach</displayName>
+			</currency>
+			<currency type="YUM">
+				<displayName>Noviy Dinar Iúgslavach</displayName>
+			</currency>
+			<currency type="YUN">
+				<displayName>Dínear Inathraithe Iúgslavach</displayName>
+			</currency>
+			<currency type="ZAL">
+				<displayName>Rand na hAfraice Theas (airgeadúil)</displayName>
+			</currency>
+			<currency type="ZAR">
+				<displayName>Rand na hAfraice Theas</displayName>
+			</currency>
+			<currency type="ZMK">
+				<displayName>Kwacha Saimbiach</displayName>
+			</currency>
+			<currency type="ZRN">
+				<displayName>Zaire Nua Sáíreach</displayName>
+			</currency>
+			<currency type="ZRZ">
+				<displayName>Zaire Sáíreach</displayName>
+			</currency>
+			<currency type="ZWD">
+				<displayName>Dollar Siombábach</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>tá:t</yesstr>
+			<nostr>níl:n</nostr>
+		</messages>
+	</posix>
+</ldml>
 

@@ -1,1899 +1,1899 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php0php1php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php2php0php:php3php4php:php5php0php php$php"php/php>
-php	php	php<languagephp typephp=php"skphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"aaphp"php>afarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"abphp"php>abcházština<php/languagephp>
-php	php	php	php<languagephp typephp=php"achphp"php>ačoli<php/languagephp>
-php	php	php	php<languagephp typephp=php"adaphp"php>adangme<php/languagephp>
-php	php	php	php<languagephp typephp=php"adyphp"php>adygčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"aephp"php>avestčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"afphp"php>afrikánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"afaphp"php>afroázijsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"afhphp"php>afrihili<php/languagephp>
-php	php	php	php<languagephp typephp=php"ainphp"php>ainčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"akphp"php>akančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"akkphp"php>akkadčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"alephp"php>aleutčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"algphp"php>algonkinsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>amharčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"anphp"php>aragónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"anpphp"php>angika<php/languagephp>
-php	php	php	php<languagephp typephp=php"apaphp"php>apačsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>arabčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"arnphp"php>araukánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"arpphp"php>arapaho<php/languagephp>
-php	php	php	php<languagephp typephp=php"artphp"php>umelýphp jazyk<php/languagephp>
-php	php	php	php<languagephp typephp=php"arwphp"php>arawačtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>ásámčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"astphp"php>astúrčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"athphp"php>athabasképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"ausphp"php>austrálskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"avphp"php>avarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"awaphp"php>avadhčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ayphp"php>aymarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>azerbajdphpžančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"baphp"php>baskirčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"baiphp"php>bamileke<php/languagephp>
-php	php	php	php<languagephp typephp=php"balphp"php>balúčtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"banphp"php>balijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"basphp"php>basa<php/languagephp>
-php	php	php	php<languagephp typephp=php"batphp"php>baltsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>bieloruština<php/languagephp>
-php	php	php	php<languagephp typephp=php"bejphp"php>bedphpža<php/languagephp>
-php	php	php	php<languagephp typephp=php"bemphp"php>bemba<php/languagephp>
-php	php	php	php<languagephp typephp=php"berphp"php>berbersképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>bulharčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>bihárskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhophp"php>bhódphpžpurčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"biphp"php>bislama<php/languagephp>
-php	php	php	php<languagephp typephp=php"bikphp"php>bikol<php/languagephp>
-php	php	php	php<languagephp typephp=php"binphp"php>bini<php/languagephp>
-php	php	php	php<languagephp typephp=php"bmphp"php>bambarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>bengálčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"bntphp"php>bantusképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"bophp"php>tibetčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>bretónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"braphp"php>bradphpžčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>bosniačtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"btkphp"php>batacképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"buaphp"php>buriatčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"bugphp"php>bugiština<php/languagephp>
-php	php	php	php<languagephp typephp=php"bynphp"php>blin<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>katalánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"caiphp"php>jazykphp stredoamerickýchphp indiánov<php/languagephp>
-php	php	php	php<languagephp typephp=php"carphp"php>karibský<php/languagephp>
-php	php	php	php<languagephp typephp=php"cauphp"php>kaukazsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"cephp"php>čečenčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"cebphp"php>cebuánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"celphp"php>keltsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"chphp"php>čamorčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"chbphp"php>čibča<php/languagephp>
-php	php	php	php<languagephp typephp=php"chgphp"php>čagatajčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"chnphp"php>činuckýphp phpžargón<php/languagephp>
-php	php	php	php<languagephp typephp=php"chophp"php>čoktavčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"chpphp"php>čipevajčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"chrphp"php>čerokí<php/languagephp>
-php	php	php	php<languagephp typephp=php"chyphp"php>čejenčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"cmcphp"php>čamasképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"cophp"php>korzičtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"crphp"php>krí<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>čeština<php/languagephp>
-php	php	php	php<languagephp typephp=php"cuphp"php>cirkevnáphp slovančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"cvphp"php>čuvaština<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>waleština<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>dánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"dakphp"php>dakotčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"darphp"php>darginčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>nemčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"delphp"php>delawarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"denphp"php>slovančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"dgrphp"php>dogribčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"dinphp"php>dinka<php/languagephp>
-php	php	php	php<languagephp typephp=php"doiphp"php>dógrí<php/languagephp>
-php	php	php	php<languagephp typephp=php"draphp"php>drávidsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"duaphp"php>duala<php/languagephp>
-php	php	php	php<languagephp typephp=php"dvphp"php>divehi<php/languagephp>
-php	php	php	php<languagephp typephp=php"dyuphp"php>ďula<php/languagephp>
-php	php	php	php<languagephp typephp=php"dzphp"php>dzongkä<php/languagephp>
-php	php	php	php<languagephp typephp=php"eephp"php>eweština<php/languagephp>
-php	php	php	php<languagephp typephp=php"efiphp"php>efik<php/languagephp>
-php	php	php	php<languagephp typephp=php"egyphp"php>staroegyptský<php/languagephp>
-php	php	php	php<languagephp typephp=php"ekaphp"php>ekadphpžuk<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>gréčtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"elxphp"php>elamčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>angličtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_AUphp"php>austrálskaphp angličtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_GBphp"php>britskáphp angličtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp_USphp"php>americkáphp angličtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>esperanto<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>španielčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>estónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>baskičtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ewophp"php>ewondo<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>perzština<php/languagephp>
-php	php	php	php<languagephp typephp=php"fanphp"php>fangčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fatphp"php>fanti<php/languagephp>
-php	php	php	php<languagephp typephp=php"ffphp"php>fulbčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>fínčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>filipínčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiuphp"php>ugrofínskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"fjphp"php>fidphpžijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>faerčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fonphp"php>fončina<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>francúzština<php/languagephp>
-php	php	php	php<languagephp typephp=php"frsphp"php>východnáphp frízština<php/languagephp>
-php	php	php	php<languagephp typephp=php"furphp"php>friulčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>západnáphp frízština<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>írčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaaphp"php>ga<php/languagephp>
-php	php	php	php<languagephp typephp=php"gayphp"php>gayo<php/languagephp>
-php	php	php	php<languagephp typephp=php"gbaphp"php>gbaja<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>škótčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"gemphp"php>germánskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>galícijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>guaraní<php/languagephp>
-php	php	php	php<languagephp typephp=php"gotphp"php>gótčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"grcphp"php>starogréčtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"gswphp"php>švajčiarskaphp nemčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>gudphpžarátčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"gvphp"php>mančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"haphp"php>hauština<php/languagephp>
-php	php	php	php<languagephp typephp=php"hawphp"php>havajčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>hebrejčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>hindčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"hophp"php>hiriphp motu<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>chorvátčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"htphp"php>haitský<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>maďarčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>arménčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"hzphp"php>herero<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>interlingua<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>indonézština<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>interlingue<php/languagephp>
-php	php	php	php<languagephp typephp=php"igphp"php>igboština<php/languagephp>
-php	php	php	php<languagephp typephp=php"inephp"php>indoeurópskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"iraphp"php>iránskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>islandčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>taliančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>japončina<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>jávčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>gruzínčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kgphp"php>konphpžština<php/languagephp>
-php	php	php	php<languagephp typephp=php"kjphp"php>kuaňama<php/languagephp>
-php	php	php	php<languagephp typephp=php"kkphp"php>kazaština<php/languagephp>
-php	php	php	php<languagephp typephp=php"klphp"php>grónskaphp eskimáčtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>kambodphpžskáphp khmérčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>kannadčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>kórejčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"krphp"php>kanurijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ksphp"php>kašmírčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>kurdčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kvphp"php>komijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kwphp"php>kornčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>kirgizština<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>latinčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"lbphp"php>luxemburčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"lgphp"php>gandčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>lingalčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>laoština<php/languagephp>
-php	php	php	php<languagephp typephp=php"lolphp"php>mongo<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>litovčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"luphp"php>lubaphp-katanga<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>lotyština<php/languagephp>
-php	php	php	php<languagephp typephp=php"mapphp"php>austronézskephp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"mgphp"php>malgaština<php/languagephp>
-php	php	php	php<languagephp typephp=php"mhphp"php>kajinphp-majol<php/languagephp>
-php	php	php	php<languagephp typephp=php"miphp"php>maorijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>macedónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>malajálamčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>mongolčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mophp"php>moldavčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>maráthčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>malajčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>maltčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"myphp"php>barmčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mynphp"php>maysképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"myvphp"php>erzjančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"naphp"php>nauru<php/languagephp>
-php	php	php	php<languagephp typephp=php"naiphp"php>jazykphp severoamerickýchphp indiánov<php/languagephp>
-php	php	php	php<languagephp typephp=php"nbphp"php>bokmål<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>nepálčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ngphp"php>ndonga<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>holandčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>nórskyphp nynorsk<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>nórčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"nvphp"php>navajo<php/languagephp>
-php	php	php	php<languagephp typephp=php"nyphp"php>čewa<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>okcitánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ojphp"php>odphpžibva<php/languagephp>
-php	php	php	php<languagephp typephp=php"omphp"php>oromčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>uríjčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"osphp"php>osetčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>pandphpžábčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"paaphp"php>papuánsky<php/languagephp>
-php	php	php	php<languagephp typephp=php"piphp"php>pálí<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>poľština<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>paštúnčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>portugalčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>brazílskaphp portugalčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"quphp"php>kečuánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"rmphp"php>rétorománčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"rnphp"php>rundčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>rumunčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>ruština<php/languagephp>
-php	php	php	php<languagephp typephp=php"rwphp"php>rwandčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>sanskrit<php/languagephp>
-php	php	php	php<languagephp typephp=php"saiphp"php>jazykphp juhoamerickýchphp indiánov<php/languagephp>
-php	php	php	php<languagephp typephp=php"scphp"php>sardínčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"scnphp"php>sicílčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>sindhčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"sgphp"php>sango<php/languagephp>
-php	php	php	php<languagephp typephp=php"sgnphp"php>znakováphp reč<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>srbochorvátčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>sinhalčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>slovenčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>slovinčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"slaphp"php>slovenskýphp jazyk<php/languagephp>
-php	php	php	php<languagephp typephp=php"smphp"php>samojčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"snphp"php>šončina<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>somálčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>albánčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>srbčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ssphp"php>svazijčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>juphpžnáphp sothčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>sundčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"suxphp"php>sumerčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>švédčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>swahilčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"syrphp"php>sýrčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>tamilčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>telugčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tgphp"php>tadphpžičtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>thajčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>tigrejčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>turkménčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlphp"php>tagalčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>klingónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tnphp"php>tswančina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tophp"php>tonphpžtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>turečtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tsphp"php>tsonga<php/languagephp>
-php	php	php	php<languagephp typephp=php"ttphp"php>tatárčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"tutphp"php>altajsképhp jazyky<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>twi<php/languagephp>
-php	php	php	php<languagephp typephp=php"typhp"php>tahitčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>ujgurčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>ukrajinčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>neznámyphp alebophp neplatnýphp jazyk<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>urdčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>uzbečtina<php/languagephp>
-php	php	php	php<languagephp typephp=php"vephp"php>vendčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>vietnamčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"vophp"php>volapük<php/languagephp>
-php	php	php	php<languagephp typephp=php"waphp"php>valónčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"wophp"php>wolof<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>xhosa<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>jidiš<php/languagephp>
-php	php	php	php<languagephp typephp=php"yophp"php>jorubčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"zaphp"php>čuangčina<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>čínština<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>zjednodušenáphp čínština<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>tradičnáphp čínština<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>zuluština<php/languagephp>
-php	php	php	php<languagephp typephp=php"zxxphp"php>bezphp jazykovéhophp obsahu<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>Arabský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Armnphp"php>Arménsky<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Baliphp"php>balijský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Bengphp"php>bengálsky<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Braiphp"php>Braillovophp písmo<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>Cyrilika<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Egypphp"php>egyptsképhp hieroglyfy<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Ethiphp"php>etiópsky<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Glagphp"php>hlaholika<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Gothphp"php>gotický<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Grekphp"php>Grécky<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hebrphp"php>hebrejský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Jpanphp"php>japonský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Khmrphp"php>kmérsky<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Korephp"php>kórejský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>latinka<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Linaphp"php>lineárnaphp A<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Linbphp"php>lineárnaphp B<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Mayaphp"php>maysképhp hieroglyfy<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Mongphp"php>mongolský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Osmaphp"php>osmanský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Runrphp"php>Runovéphp písmo<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Tibtphp"php>tibetský<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zyyyphp"php>Obecný<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php0php1php"php>Svet<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php2php"php>Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php3php"php>Severnáphp Amerikaphp php(php0php0php3php)<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php5php"php>Juphpžnáphp Amerika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php9php"php>Oceánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php1php"php>Západnáphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php3php"php>Strednáphp Amerika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php4php"php>Východnáphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php5php"php>Severnáphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php7php"php>Strednáphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php8php"php>Juphpžnáphp Afrikaphp php[php0php1php8php]<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php9php"php>Americkýphp kontinent<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php1php"php>Severnáphp Amerika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php9php"php>Karibik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php0php"php>Východnáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php4php"php>Juphpžnáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php5php"php>Juhovýchodnáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php9php"php>Juphpžnáphp Európa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php3php"php>Austráliaphp aphp Novýphp Zéland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php4php"php>Melanézia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php7php"php>Mikronésia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php1php"php>Polynézia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php2php"php>Strednáphp aphp juphpžnáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php2php"php>Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php3php"php>Strednáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php5php"php>Západnáphp Ázia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php0php"php>Európa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php1php"php>Východnáphp Európa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php4php"php>Severnáphp Európa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php5php"php>Západnáphp Európa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php7php2php"php>Spoločenstvophp nezávislýchphp štátov<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php2php0php0php"php>Československo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php4php1php9php"php>Latinskáphp Amerikaphp aphp Karibik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php8php3php0php"php>Kanálphp Laphp Manche<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>Andorra<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>Spojenéphp arabsképhp emiráty<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Afganistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Antiguaphp aphp Barbados<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>Albánsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>Arménsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ANphp"php>Holandsképhp Antily<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>Antarctica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>Argentína<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>Americkáphp Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>Rakúsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>Austrália<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AWphp"php>Aruba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AXphp"php>Alandsképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>Azerbajdphpžan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Bosnaphp aphp Hercegovina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>Barbados<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Bangladéš<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Belgicko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp Faso<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>Bulharsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>Bahrajn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>Burundi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>Benin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BLphp"php>Svätýphp Bartolomej<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BMphp"php>Bermudy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BNphp"php>Brunej<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>Bolívia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Brazília<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>Bahamy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>Bután<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>Bouvetovphp ostrov<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>Bielorusko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>Belize<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kanada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CCphp"php>Kokosovéphp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>Konphpžskáphp demokratickáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>Stredoafrickáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>Kongo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Švajčiarsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CIphp"php>Pobrephpžiephp Slonoviny<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>Cookovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>Čile<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Kamerun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Čína<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>Kolumbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CRphp"php>Kostarika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CSphp"php>Srbskophp aphp Čiernaphp Hora<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>Kuba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CVphp"php>Kapverdy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CXphp"php>Vianočnýphp ostrov<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>Cyprus<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Českáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Nemecko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Dphpžibuti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>Dánsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>Dominika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DOphp"php>Dominikánskaphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>Alphpžírsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>Ekvádor<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>Estónsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Egypt<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>Západnáphp Sahara<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>Eritrea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Španielsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Etiópia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Fínsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>Fidphpži<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FKphp"php>Falklandsképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>Mikronézia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FOphp"php>Faersképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Francúzsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>Gabon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Spojenéphp kráľovstvo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Grenada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>Gruzínsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>Francúzskaphp Guayana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GGphp"php>Guernsey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Ghana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Gibraltár<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GLphp"php>Grónsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Gambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GPphp"php>Guadeloupe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>Rovníkováphp Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Grécko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>Juphpžnáphp Georgiaphp aphp Juphpžnéphp Sandwichovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GTphp"php>Guatemala<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GUphp"php>Guam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>Guineaphp-Bissau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>Guayana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>Hongphp Kongphp Sphp.Aphp.Rphp.php Číny<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>Heardovephp ostrovyphp aphp McDonaldovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>Honduras<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Chorvátsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>Haiti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Maďarsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Indonézia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Írsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>Izrael<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IMphp"php>Ostrovphp Man<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>India<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>Britsképhp územiephp vphp Indickomphp oceáne<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>Irak<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>Irán<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Island<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Taliansko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JEphp"php>Jersey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>Jamajka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Jordánsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Japonsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Keňa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>Kirgizsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>Kambodphpža<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>Kiribati<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>Komory<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KNphp"php>Saintphp Kittsphp aphp Nevis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Kórejskáphp ľudovodemokratickáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Kórejskáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>Kuvajt<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KYphp"php>Kajmansképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Kazachstan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>Laoskáphp ľudovodemokratickáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Libanon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LCphp"php>Svätáphp Lucia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>Lichtenštajnsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Sríphp Lanka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Libéria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Lesotho<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>Litva<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Luxembursko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Lotyšsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Lýbijskáphp arabskáphp dphpžamahírija<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>Maroko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>Monako<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>Moldavsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MEphp"php>Čiernaphp Hora<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MFphp"php>Svätýphp Martin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>Madagaskar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>Marshallovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Macedónsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Mali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>Mjanmarsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>Mongolsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>Makaophp Sphp.Aphp.Rphp.php Číny<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>Severnéphp Mariány<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MQphp"php>Martinik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>Mauritánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>Montserrat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Malta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>Maurícius<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Maldivy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Malawi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Mexiko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>Malajzia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Mozambik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namíbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>Nováphp Kaledónia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>Niger<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>Norfolkovphp ostrov<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Nigéria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>Nikaragua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Holandsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Nórsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>Nepál<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NRphp"php>Nauru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>Niue<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Novýphp Zéland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>Omán<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>Panama<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>Peru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>Francúzskaphp Polynézia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaphp Nováphp Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>Filipíny<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Pakistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Poľsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PMphp"php>Saintphp Pierrephp aphp Miquelon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PNphp"php>Pitcairnovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PRphp"php>Portoriko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PSphp"php>Palestínskephp územie<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Portugalsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>Paraguaj<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>Katar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QOphp"php>Tichomoriephp php-php ostatné<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QUphp"php>Európskaphp únia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"REphp"php>Reunion<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Rumunsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RSphp"php>Srbsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Ruskáphp federácia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Rwanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>Saudskáphp Arábia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>Šalamúnovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>Seychelsképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Sudán<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Švédsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>Singapur<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>Svätáphp Helena<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>Slovinsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SJphp"php>Špicbergyphp aphp Janphp Mayen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>Slovenskáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>Sierraphp Leone<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>Sanphp Maríno<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>Senegal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Somálsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>Surinam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"STphp"php>Svätýphp Tomášphp aphp Princovephp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SVphp"php>Salvador<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Sýrskaphp arabskáphp republika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>Svazijsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TCphp"php>Turksphp aphp Caicos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>Čad<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>Francúzskephp juphpžnéphp územia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Togo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>Thajsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>Tadphpžikistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>Tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>Východnýphp Timor<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>Turkménsko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Tunisko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Turecko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Trinidadphp aphp Tobago<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>Tuvalu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>Tajwan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>Tanzánia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>Ukrajina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>Uganda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UMphp"php>Menšiephp odľahléphp ostrovyphp USA<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Spojenéphp štáty<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>Uruguaj<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>Uzbekistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Vatikán<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VCphp"php>Svätýphp Vincentphp aphp Grenadíny<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>Venezuela<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>Britsképhp panensképhp ostrovy<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>Panensképhp ostrovyphp php-php USA<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Vietnam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>Wallisphp aphp Futuna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Jemen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YTphp"php>Mayotte<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Juphpžnáphp Afrika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Zambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Zimbabwe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Neznámyphp alebophp neplatnýphp región<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>Kalendár<php/keyphp>
-php	php	php	php<keyphp typephp=php"collationphp"php>Triedenie<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>Mena<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"bigphp5hanphp"php keyphp=php"collationphp"php>Tradičnýphp čínskyphp Bigphp5<php/typephp>
-php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>Buddhistickýphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>Čínskyphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>Priamephp triedenie<php/typephp>
-php	php	php	php<typephp typephp=php"gbphp2php3php1php2hanphp"php keyphp=php"collationphp"php>Zjednodušenýphp čínskyphp GBphp2php3php1php2<php/typephp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>Gregoriánskyphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>phpŽidovskýphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"indianphp"php keyphp=php"calendarphp"php>Indickýphp národnýphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>Islamskýphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>Islamskýphp občianskyphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>Japonskýphp kalendár<php/typephp>
-php	php	php	php<typephp typephp=php"phonebookphp"php keyphp=php"collationphp"php>Lexikograficképhp triedenie<php/typephp>
-php	php	php	php<typephp typephp=php"pinyinphp"php keyphp=php"collationphp"php>Triedeniephp pinyin<php/typephp>
-php	php	php	php<typephp typephp=php"rocphp"php keyphp=php"calendarphp"php>Kalendárphp Čínskejphp republiky<php/typephp>
-php	php	php	php<typephp typephp=php"strokephp"php keyphp=php"collationphp"php>Tiedeniephp podľaphp ťahov<php/typephp>
-php	php	php	php<typephp typephp=php"traditionalphp"php keyphp=php"collationphp"php>Tradičné<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Metrický<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>Americký<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	php	php<codePatternsphp>
-php	php	php	php<codePatternphp typephp=php"languagephp"php>Jazykphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"scriptphp"php>Skriptphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"territoryphp"php>Regiónphp:php php{php0php}<php/codePatternphp>
-php	php	<php/codePatternsphp>
-php	<php/localeDisplayNamesphp>
-php	php<layoutphp>
-php	php	php<inListphp>titlecasephp-firstword<php/inListphp>
-php	<php/layoutphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp äphp bphp cphp čphp dphp ďphp ephp éphp fphp-hphp php{chphp}php iphp íphp jphp-lphp ĺphp ľphp mphp nphp ňphp ophp óphp ôphp pphp-rphp ŕphp sphp šphp tphp ťphp uphp úphp vphp-yphp ýphp zphp phpžphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[àphp ăphp âphp åphp āphp æphp çphp èphp ĕphp êphp ëphp ēphp ìphp ĭphp îphp ïphp īphp ñphp òphp ŏphp öphp øphp ōphp œphp ßphp ùphp ŭphp ûphp üphp ūphp ÿphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php‚<php/quotationStartphp>
-php	php	php<quotationEndphp>php‘<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php„<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php“<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>jan<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>feb<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>mar<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>apr<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>máj<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>jún<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>júl<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>aug<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>sep<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>okt<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>nov<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>dec<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>januára<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>februára<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>marca<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>apríla<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>mája<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>júna<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>júla<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>augusta<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>septembra<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>októbra<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>novembra<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>decembra<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>j<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>f<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>m<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>a<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>m<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>j<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>j<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>a<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>s<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>o<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>n<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>d<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>január<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>február<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>marec<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>apríl<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>máj<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>jún<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>júl<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>august<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>september<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>október<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>november<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>december<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>ne<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>po<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>ut<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>st<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>št<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>pi<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>so<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>nedeľa<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>pondelok<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>utorok<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>streda<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>štvrtok<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>piatok<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>sobota<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>N<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>P<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>U<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>S<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Š<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>P<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>S<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Qphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Qphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Qphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Qphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1php.php štvrťrok<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2php.php štvrťrok<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3php.php štvrťrok<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4php.php štvrťrok<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>dopoludnia<php/amphp>
-php	php	php	php	php<pmphp>popoludní<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>predphp nphp.lphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>nphp.lphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php dphp.php MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp.php MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp.Mphp.yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp.Mphp.yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>Hphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"dphp"php>dphp.<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"EEEdphp"php>EEEphp,php dphp.<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmphp"php>HHphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>dphp.Mphp.<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MEdphp"php>Ephp,php dphp.Mphp.<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMdphp"php>dphp.php MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMEdphp"php>Ephp,php dphp.php MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp.php MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMEdphp"php>Ephp,php dphp.php MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"mmssphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"msphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMEdphp"php>EEEphp,php dphp.Mphp.yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMphp"php>MMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMEdphp"php>EEEphp,php dphp.php MMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQphp"php>Qphp yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQQQphp"php>QQQphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQQQQphp"php>QQQQphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMphp"php>Mphp.yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	php	php<intervalFormatsphp>
-php	php	php	php	php	php	php<intervalFormatFallbackphp>php{php0php}php php-php php{php1php}<php/intervalFormatFallbackphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"dphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp.php php-php dphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>HHphp-HH<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>Hphp-H<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>HHphp:mmphp php-php HHphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp:mmphp php-php HHphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>HHphp:mmphp php-php HHphp:mm<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hmvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>HHphp:mmphp php-php HHphp:mmphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>HHphp:mmphp php-php HHphp:mmphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"mphp"php>HHphp:mmphp php-php HHphp:mmphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"hvphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"aphp"php>HHphp-HHphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"hphp"php>Hphp-Hphp v<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp.php-Mphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"Mdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp.Mphp.php php-php dphp.Mphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp.Mphp.php php-php dphp.Mphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php dphp.Mphp.php php-php Ephp,php dphp.Mphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php dphp.Mphp.php php-php Ephp,php dphp.Mphp.<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp-MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp.php php-php dphp.php MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp.php MMMphp php-php dphp.php MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php dphp.php php-php Ephp,php dphp.php MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php dphp.php MMMphp php-php Ephp,php dphp.php MMM<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"MMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>LLLLphp-LLLL<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>yphp php-php y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Mphp.yyyyphp php-php Mphp.yyyy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Mphp.yyyyphp php-php Mphp.yyyy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp.Mphp.yyphp php-php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp.Mphp.yyphp php-php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>dphp.Mphp.yyphp php-php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php dphp.Mphp.yyphp php-php Ephp,php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php dphp.Mphp.yyphp php-php Ephp,php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php dphp.Mphp.yyphp php-php Ephp,php dphp.Mphp.yy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>MMMphp php-php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMMphp yphp php-php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>dphp.php php-php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>dphp.php MMMphp php-php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>dphp.php MMMphp yphp php-php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMEdphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"dphp"php>Ephp,php dphp.php php-php Ephp,php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"Mphp"php>Ephp,php dphp.php MMMphp php-php Ephp,php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>Ephp,php dphp.php MMMphp yphp php-php Ephp,php dphp.php MMMphp y<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	php	php<intervalFormatItemphp idphp=php"yMMMMphp"php>
-php	php	php	php	php	php	php	php<greatestDifferencephp idphp=php"yphp"php>MMphp-yyyyphp php–php MMphp-yyyy<php/greatestDifferencephp>
-php	php	php	php	php	php	<php/intervalFormatItemphp>
-php	php	php	php	php	<php/intervalFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>Éra<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>Rok<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>Mesiac<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>Týphpždeň<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Deň<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php3php"php>Predphp tromiphp dňami<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>Predvčerom<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>Včera<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>Dnes<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>Zajtra<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>Pozajtra<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php3php"php>Ophp triphp dni<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Deňphp vphp týphpždni<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>Časťphp dňa<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>Hodina<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>Minúta<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>Sekunda<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>Pásmo<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHmmphp;php-HHmm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Neznámephp časovéphp pásmo<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Antarcticaphp/Southphp_Polephp"php>
-php	php	php	php	php<exemplarCityphp>Juphpžnýphp pól<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Antarcticaphp/DumontDUrvillephp"php>
-php	php	php	php	php<exemplarCityphp>Dumontphp Dphp'Urville<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Bermudaphp"php>
-php	php	php	php	php<exemplarCityphp>Bermudy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Easterphp"php>
-php	php	php	php	php<exemplarCityphp>Veľkonočnéphp ostrovy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Shanghaiphp"php>
-php	php	php	php	php<exemplarCityphp>Šanghaj<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Costaphp_Ricaphp"php>
-php	php	php	php	php<exemplarCityphp>Kostarika<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Capephp_Verdephp"php>
-php	php	php	php	php<exemplarCityphp>Kapverdy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Africaphp/Djiboutiphp"php>
-php	php	php	php	php<exemplarCityphp>Dphpžibutsko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Dominicaphp"php>
-php	php	php	php	php<exemplarCityphp>Dominika<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Galapagosphp"php>
-php	php	php	php	php<exemplarCityphp>Galapágy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Canaryphp"php>
-php	php	php	php	php<exemplarCityphp>Kanárskephp ostrovy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Fijiphp"php>
-php	php	php	php	php<exemplarCityphp>Fidphpži<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Londonphp"php>
-php	php	php	php	php<exemplarCityphp>Londýn<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Gibraltarphp"php>
-php	php	php	php	php<exemplarCityphp>Gibraltár<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Hongphp_Kongphp"php>
-php	php	php	php	php<exemplarCityphp>Hongkong<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Jamaicaphp"php>
-php	php	php	php	php<exemplarCityphp>Jamajka<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Stphp_Kittsphp"php>
-php	php	php	php	php<exemplarCityphp>Stphp.php Kitts<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Kuwaitphp"php>
-php	php	php	php	php<exemplarCityphp>Kuvajt<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Stphp_Luciaphp"php>
-php	php	php	php	php<exemplarCityphp>Stphp.php Lucia<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Luxembourgphp"php>
-php	php	php	php	php<exemplarCityphp>Luxembursko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Monacophp"php>
-php	php	php	php	php<exemplarCityphp>Monako<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Ulaanbaatarphp"php>
-php	php	php	php	php<exemplarCityphp>Ulanbátar<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Macauphp"php>
-php	php	php	php	php<exemplarCityphp>Macao<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Martiniquephp"php>
-php	php	php	php	php<exemplarCityphp>Martinik<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Mauritiusphp"php>
-php	php	php	php	php<exemplarCityphp>Maurícius<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Indianphp/Maldivesphp"php>
-php	php	php	php	php<exemplarCityphp>Maledivy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Pitcairnphp"php>
-php	php	php	php	php<exemplarCityphp>Pitcairnovephp ostrovy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Puertophp_Ricophp"php>
-php	php	php	php	php<exemplarCityphp>Portoriko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Atlanticphp/Azoresphp"php>
-php	php	php	php	php<exemplarCityphp>Azorsképhp ostrovy<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Lisbonphp"php>
-php	php	php	php	php<exemplarCityphp>Lisabon<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Qatarphp"php>
-php	php	php	php	php<exemplarCityphp>Katar<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Moscowphp"php>
-php	php	php	php	php<exemplarCityphp>Moskva<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Yekaterinburgphp"php>
-php	php	php	php	php<exemplarCityphp>Jekaterinburg<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Krasnoyarskphp"php>
-php	php	php	php	php<exemplarCityphp>Krasnojarsko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Irkutskphp"php>
-php	php	php	php	php<exemplarCityphp>Irkutsko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Yakutskphp"php>
-php	php	php	php	php<exemplarCityphp>Jakutsko<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Sakhalinphp"php>
-php	php	php	php	php<exemplarCityphp>Sachalin<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Kamchatkaphp"php>
-php	php	php	php	php<exemplarCityphp>Kamčatka<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Singaporephp"php>
-php	php	php	php	php<exemplarCityphp>Singapur<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Elphp_Salvadorphp"php>
-php	php	php	php	php<exemplarCityphp>Salvádor<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Uzhgorodphp"php>
-php	php	php	php	php<exemplarCityphp>Uphpžhorod<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Kievphp"php>
-php	php	php	php	php<exemplarCityphp>Kyjev<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Europephp/Zaporozhyephp"php>
-php	php	php	php	php<exemplarCityphp>Záporophpžie<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Anchoragephp"php>
-php	php	php	php	php<exemplarCityphp>Aljaška<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Northphp_Dakotaphp/Newphp_Salemphp"php>
-php	php	php	php	php<exemplarCityphp>Newphp Salemphp,php Severnáphp Dakota<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Asiaphp/Tashkentphp"php>
-php	php	php	php	php<exemplarCityphp>Taškent<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Stphp_Vincentphp"php>
-php	php	php	php	php<exemplarCityphp>Stphp.php Vincent<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Stphp_Thomasphp"php>
-php	php	php	php	php<exemplarCityphp>Stphp.php Thomas<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php,<php/decimalphp>
-php	php	php	php<groupphp>php <php/groupphp>
-php	php	<php/symbolsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php0php0php php¤<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"ADPphp"php>
-php	php	php	php	php<displayNamephp>Andorskáphp peseta<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AEDphp"php>
-php	php	php	php	php<displayNamephp>UAEphp dirham<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ALLphp"php>
-php	php	php	php	php<displayNamephp>Albánskyphp lek<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AMDphp"php>
-php	php	php	php	php<displayNamephp>Armenskýphp dram<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ANGphp"php>
-php	php	php	php	php<displayNamephp>Nizozemskýphp Antilskýphp guilder<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AOAphp"php>
-php	php	php	php	php<displayNamephp>Angolskáphp kwanza<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AOKphp"php>
-php	php	php	php	php<displayNamephp>Angolskáphp kwanzaphp php(php1php9php7php7php-php1php9php9php0php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AONphp"php>
-php	php	php	php	php<displayNamephp>Angolskáphp nováphp kwanzaphp php(php1php9php9php0php-php2php0php0php0php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AORphp"php>
-php	php	php	php	php<displayNamephp>Angolskáphp kwanzaphp Reajustadophp php(php1php9php9php5php-php1php9php9php9php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARAphp"php>
-php	php	php	php	php<displayNamephp>Argentinskýphp austral<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARPphp"php>
-php	php	php	php	php<displayNamephp>Argentinsképhp pesophp php(php1php9php8php3php-php1php9php8php5php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ARSphp"php>
-php	php	php	php	php<displayNamephp>Argentinsképhp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ATSphp"php>
-php	php	php	php	php<displayNamephp>Rakúskyphp šiling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AUDphp"php>
-php	php	php	php	php<displayNamephp>Austrálskyphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AWGphp"php>
-php	php	php	php	php<displayNamephp>Arubskýphp guilder<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"AZMphp"php>
-php	php	php	php	php<displayNamephp>Azerbaidphpžanskýphp manat<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BADphp"php>
-php	php	php	php	php<displayNamephp>Bosnianskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BAMphp"php>
-php	php	php	php	php<displayNamephp>Bosnianskýphp konvertibilnáphp marka<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BBDphp"php>
-php	php	php	php	php<displayNamephp>Barbadoskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BDTphp"php>
-php	php	php	php	php<displayNamephp>Bangladéšskaphp taka<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BECphp"php>
-php	php	php	php	php<displayNamephp>Belgickýphp frankphp php(konvertibilnýphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BEFphp"php>
-php	php	php	php	php<displayNamephp>Belgickýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BELphp"php>
-php	php	php	php	php<displayNamephp>Belgickýphp frankphp php(finančnýphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BGLphp"php>
-php	php	php	php	php<displayNamephp>Bulharskýphp leva<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BGNphp"php>
-php	php	php	php	php<displayNamephp>Bulharskýphp levaphp nový<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BHDphp"php>
-php	php	php	php	php<displayNamephp>Bahraiskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BIFphp"php>
-php	php	php	php	php<displayNamephp>Burundskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BMDphp"php>
-php	php	php	php	php<displayNamephp>Bermudskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BNDphp"php>
-php	php	php	php	php<displayNamephp>Bruneiskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOBphp"php>
-php	php	php	php	php<displayNamephp>Bolívijsképhp Boliviano<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOPphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskephp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BOVphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskephp mvdol<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRBphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskephp Cruzeirophp Novophp php(php1php9php6php7php-php1php9php8php6php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRCphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskephp cruzado<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BREphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskephp cruzeirophp php(php1php9php9php0php-php1php9php9php3php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRLphp"php>
-php	php	php	php	php<displayNamephp>Bolivíjskyphp real<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRNphp"php>
-php	php	php	php	php<displayNamephp>Brazílskephp Cruzadophp Novo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRRphp"php>
-php	php	php	php	php<displayNamephp>Brazílskephp cruzeiro<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BSDphp"php>
-php	php	php	php	php<displayNamephp>Bahamskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BTNphp"php>
-php	php	php	php	php<displayNamephp>Bhutanskyphp ngultrum<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BUKphp"php>
-php	php	php	php	php<displayNamephp>Burmesephp Kyat<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BWPphp"php>
-php	php	php	php	php<displayNamephp>Botswananphp Pula<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BYBphp"php>
-php	php	php	php	php<displayNamephp>Belarussianphp novýphp rubeľphp php(php1php9php9php4php-php1php9php9php9php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BYRphp"php>
-php	php	php	php	php<displayNamephp>Belarussianphp rubeľ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BZDphp"php>
-php	php	php	php	php<displayNamephp>Belizephp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CADphp"php>
-php	php	php	php	php<displayNamephp>Kanadskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CDFphp"php>
-php	php	php	php	php<displayNamephp>Konphpžskýphp frankphp Congolais<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CHFphp"php>
-php	php	php	php	php<displayNamephp>Švajčiarskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CLFphp"php>
-php	php	php	php	php<displayNamephp>Čílskephp Unidadesphp dephp Fomento<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CLPphp"php>
-php	php	php	php	php<displayNamephp>Čílskephp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CNYphp"php>
-php	php	php	php	php<displayNamephp>Čínskyphp Yuanphp Renminbi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"COPphp"php>
-php	php	php	php	php<displayNamephp>Colombijsképhp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CRCphp"php>
-php	php	php	php	php<displayNamephp>Kostarikskýphp colon<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CSKphp"php>
-php	php	php	php	php<displayNamephp>Československáphp koruna<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CUPphp"php>
-php	php	php	php	php<displayNamephp>Kubánskephp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CVEphp"php>
-php	php	php	php	php<displayNamephp>Capephp Verdephp eskudo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CYPphp"php>
-php	php	php	php	php<displayNamephp>Cypruskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CZKphp"php>
-php	php	php	php	php<displayNamephp>Českáphp koruna<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DDMphp"php>
-php	php	php	php	php<displayNamephp>Východonemeckáphp marka<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DEMphp"php>
-php	php	php	php	php<displayNamephp>Nemeckáphp marka<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DJFphp"php>
-php	php	php	php	php<displayNamephp>Dphpžibutskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DKKphp"php>
-php	php	php	php	php<displayNamephp>Dánskaphp krone<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DOPphp"php>
-php	php	php	php	php<displayNamephp>Dominikánskephp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"DZDphp"php>
-php	php	php	php	php<displayNamephp>Alphpžírskyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ECSphp"php>
-php	php	php	php	php<displayNamephp>Ekuadorskýphp sucre<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ECVphp"php>
-php	php	php	php	php<displayNamephp>Ekuadorskýphp Unidadphp dephp Valorphp Constantephp php(UVCphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EEKphp"php>
-php	php	php	php	php<displayNamephp>Estónskaphp kroon<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EGPphp"php>
-php	php	php	php	php<displayNamephp>Egyptskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ERNphp"php>
-php	php	php	php	php<displayNamephp>Eritrejskáphp nakfa<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ESPphp"php>
-php	php	php	php	php<displayNamephp>Španielskáphp peseta<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ETBphp"php>
-php	php	php	php	php<displayNamephp>Ethiopskýphp birr<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>Euro<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FIMphp"php>
-php	php	php	php	php<displayNamephp>Finskáphp marka<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FJDphp"php>
-php	php	php	php	php<displayNamephp>Fijiphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FKPphp"php>
-php	php	php	php	php<displayNamephp>Falklandskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"FRFphp"php>
-php	php	php	php	php<displayNamephp>Francúzskyphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GBPphp"php>
-php	php	php	php	php<displayNamephp>Britskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GEKphp"php>
-php	php	php	php	php<displayNamephp>Gruzínskyphp Kuponphp Larit<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GELphp"php>
-php	php	php	php	php<displayNamephp>Gruzínskyphp lari<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GHCphp"php>
-php	php	php	php	php<displayNamephp>Ghanskýphp cedi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GIPphp"php>
-php	php	php	php	php<displayNamephp>Gibraltarskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GMDphp"php>
-php	php	php	php	php<displayNamephp>Gambskýphp dalasi<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GNFphp"php>
-php	php	php	php	php<displayNamephp>Guinejskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GNSphp"php>
-php	php	php	php	php<displayNamephp>Guinejskýphp syli<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GQEphp"php>
-php	php	php	php	php<displayNamephp>Rovníkováphp Guineaphp Ekwelephp Guineana<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GRDphp"php>
-php	php	php	php	php<displayNamephp>Gréckaphp drachma<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GTQphp"php>
-php	php	php	php	php<displayNamephp>Guatemalskýphp quetzal<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GWEphp"php>
-php	php	php	php	php<displayNamephp>Portugalskáphp Guineaphp eskudo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GWPphp"php>
-php	php	php	php	php<displayNamephp>Guineaphp-Bissauphp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GYDphp"php>
-php	php	php	php	php<displayNamephp>Guyanskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HKDphp"php>
-php	php	php	php	php<displayNamephp>Hongphp Kongskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HNLphp"php>
-php	php	php	php	php<displayNamephp>Hoduraskáphp lempira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HRDphp"php>
-php	php	php	php	php<displayNamephp>Chorvátskyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HRKphp"php>
-php	php	php	php	php<displayNamephp>Chorvátskaphp kuna<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HTGphp"php>
-php	php	php	php	php<displayNamephp>Haitsképhp gourde<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HUFphp"php>
-php	php	php	php	php<displayNamephp>Maďarskýphp forint<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IDRphp"php>
-php	php	php	php	php<displayNamephp>Indonézskaphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IEPphp"php>
-php	php	php	php	php<displayNamephp>Írskaphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ILPphp"php>
-php	php	php	php	php<displayNamephp>Izraelskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ILSphp"php>
-php	php	php	php	php<displayNamephp>Izraelskýphp šekel<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>Indijskáphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IQDphp"php>
-php	php	php	php	php<displayNamephp>Irackýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"IRRphp"php>
-php	php	php	php	php<displayNamephp>Iránskyphp rial<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ISKphp"php>
-php	php	php	php	php<displayNamephp>Islandskáphp krona<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ITLphp"php>
-php	php	php	php	php<displayNamephp>Talianskáphp lira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JMDphp"php>
-php	php	php	php	php<displayNamephp>Jamajskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JODphp"php>
-php	php	php	php	php<displayNamephp>Jordánskyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JPYphp"php>
-php	php	php	php	php<displayNamephp>Japonskýphp yen<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KESphp"php>
-php	php	php	php	php<displayNamephp>Keňskýphp šiling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KGSphp"php>
-php	php	php	php	php<displayNamephp>Kyrgyskýphp som<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KHRphp"php>
-php	php	php	php	php<displayNamephp>Kambodphpžskýphp riel<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KMFphp"php>
-php	php	php	php	php<displayNamephp>Comorophp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KPWphp"php>
-php	php	php	php	php<displayNamephp>Severokórejskýphp won<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KRWphp"php>
-php	php	php	php	php<displayNamephp>Juhokórejskýphp won<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KWDphp"php>
-php	php	php	php	php<displayNamephp>Kuvaitskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KYDphp"php>
-php	php	php	php	php<displayNamephp>Kajmanskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"KZTphp"php>
-php	php	php	php	php<displayNamephp>Kazaphpžskýphp tenge<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LAKphp"php>
-php	php	php	php	php<displayNamephp>Laoskýphp kip<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LBPphp"php>
-php	php	php	php	php<displayNamephp>Libanonskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LKRphp"php>
-php	php	php	php	php<displayNamephp>Šrilanskáphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LRDphp"php>
-php	php	php	php	php<displayNamephp>Libérskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LSLphp"php>
-php	php	php	php	php<displayNamephp>Lesothskýphp loti<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LTLphp"php>
-php	php	php	php	php<displayNamephp>Litevskáphp lita<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LTTphp"php>
-php	php	php	php	php<displayNamephp>Litevskýphp talonas<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LUFphp"php>
-php	php	php	php	php<displayNamephp>Luxemburskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LVLphp"php>
-php	php	php	php	php<displayNamephp>Lotyšskýphp lats<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LVRphp"php>
-php	php	php	php	php<displayNamephp>Lotyšskýphp rubeľ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"LYDphp"php>
-php	php	php	php	php<displayNamephp>Libyjskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MADphp"php>
-php	php	php	php	php<displayNamephp>Marockýphp dirham<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MAFphp"php>
-php	php	php	php	php<displayNamephp>Marockýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MDLphp"php>
-php	php	php	php	php<displayNamephp>Moldavskýphp leu<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MGAphp"php>
-php	php	php	php	php<displayNamephp>Madagaskarskýphp ariary<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MGFphp"php>
-php	php	php	php	php<displayNamephp>Madagaskarskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MKDphp"php>
-php	php	php	php	php<displayNamephp>Macedónskyphp denár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MLFphp"php>
-php	php	php	php	php<displayNamephp>Malskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MMKphp"php>
-php	php	php	php	php<displayNamephp>Myanmarskýphp kyat<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MNTphp"php>
-php	php	php	php	php<displayNamephp>Mongolskýphp tugrik<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MOPphp"php>
-php	php	php	php	php<displayNamephp>Macaophp Pataca<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MROphp"php>
-php	php	php	php	php<displayNamephp>Mauritaniaphp Ouguiya<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MTLphp"php>
-php	php	php	php	php<displayNamephp>Maltskáphp lira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MTPphp"php>
-php	php	php	php	php<displayNamephp>Maltskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MURphp"php>
-php	php	php	php	php<displayNamephp>Mauritskáphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MVRphp"php>
-php	php	php	php	php<displayNamephp>Maldivskáphp rufiyaa<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MWKphp"php>
-php	php	php	php	php<displayNamephp>Malavskáphp kwacha<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXNphp"php>
-php	php	php	php	php<displayNamephp>Mexicképhp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXPphp"php>
-php	php	php	php	php<displayNamephp>Mexicképhp stribornéphp pesophp php(php1php8php6php1php-php1php9php9php2php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MXVphp"php>
-php	php	php	php	php<displayNamephp>Mexicképhp Unidadphp dephp Inversionphp php(UDIphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MYRphp"php>
-php	php	php	php	php<displayNamephp>Malajskýphp ringgit<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MZEphp"php>
-php	php	php	php	php<displayNamephp>Mozambijsképhp eskudo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MZMphp"php>
-php	php	php	php	php<displayNamephp>Mozambijsképhp metical<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NADphp"php>
-php	php	php	php	php<displayNamephp>Namibskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NGNphp"php>
-php	php	php	php	php<displayNamephp>Nigerskáphp naira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NICphp"php>
-php	php	php	php	php<displayNamephp>Nikaragujskáphp cordoba<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NIOphp"php>
-php	php	php	php	php<displayNamephp>Nikaragujskáphp Cordobaphp Oro<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NLGphp"php>
-php	php	php	php	php<displayNamephp>Nizozemskýphp guilder<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NOKphp"php>
-php	php	php	php	php<displayNamephp>Nórksyphp krone<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NPRphp"php>
-php	php	php	php	php<displayNamephp>Nepálskaphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NZDphp"php>
-php	php	php	php	php<displayNamephp>Novozélandskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"OMRphp"php>
-php	php	php	php	php<displayNamephp>Ománskýphp rial<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PABphp"php>
-php	php	php	php	php<displayNamephp>Panamskáphp balboa<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PEIphp"php>
-php	php	php	php	php<displayNamephp>Peruvskýphp inti<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PENphp"php>
-php	php	php	php	php<displayNamephp>Peruvskýphp solphp Nuevo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PESphp"php>
-php	php	php	php	php<displayNamephp>Peruvskýphp sol<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PGKphp"php>
-php	php	php	php	php<displayNamephp>Papuaphp Nováphp Guineaphp kina<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PHPphp"php>
-php	php	php	php	php<displayNamephp>Filipínskephp peso<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PKRphp"php>
-php	php	php	php	php<displayNamephp>Pakistanskáphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PLNphp"php>
-php	php	php	php	php<displayNamephp>Polskýphp zloty<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PLZphp"php>
-php	php	php	php	php<displayNamephp>Polskýphp zlotyphp php(php1php9php5php0php-php1php9php9php5php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PTEphp"php>
-php	php	php	php	php<displayNamephp>Portugalsképhp eskudo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"PYGphp"php>
-php	php	php	php	php<displayNamephp>Paraguaysképhp guarani<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"QARphp"php>
-php	php	php	php	php<displayNamephp>Qatarskýphp rial<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ROLphp"php>
-php	php	php	php	php<displayNamephp>Rumunskýphp leu<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RONphp"php>
-php	php	php	php	php<displayNamephp>Rumunskýphp Lei<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RSDphp"php>
-php	php	php	php	php<displayNamephp>Srbskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RUBphp"php>
-php	php	php	php	php<displayNamephp>Ruskýphp rubeľ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RURphp"php>
-php	php	php	php	php<displayNamephp>Ruskýphp rubeľphp php(php1php9php9php1php-php1php9php9php8php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RWFphp"php>
-php	php	php	php	php<displayNamephp>Rwandskýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SARphp"php>
-php	php	php	php	php<displayNamephp>Saudskýphp riyal<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SBDphp"php>
-php	php	php	php	php<displayNamephp>Solomonphp Islandsphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SCRphp"php>
-php	php	php	php	php<displayNamephp>Sejšelskáphp rupia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SDDphp"php>
-php	php	php	php	php<displayNamephp>Sudánskyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SDPphp"php>
-php	php	php	php	php<displayNamephp>Sudánskaphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SEKphp"php>
-php	php	php	php	php<displayNamephp>Švédskaphp krona<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SGDphp"php>
-php	php	php	php	php<displayNamephp>Singapúrskyphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SHPphp"php>
-php	php	php	php	php<displayNamephp>Libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SITphp"php>
-php	php	php	php	php<displayNamephp>Slovinskýphp Tolar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SKKphp"php>
-php	php	php	php	php<displayNamephp>Slovenskáphp koruna<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SLLphp"php>
-php	php	php	php	php<displayNamephp>Sierraphp Leonephp Leone<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SOSphp"php>
-php	php	php	php	php<displayNamephp>Somálskyphp šiling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SRGphp"php>
-php	php	php	php	php<displayNamephp>Surinamskýphp guilder<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"STDphp"php>
-php	php	php	php	php<displayNamephp>Saophp Tomephp aphp Principephp dobra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SURphp"php>
-php	php	php	php	php<displayNamephp>Sovietskýphp rubeľ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SVCphp"php>
-php	php	php	php	php<displayNamephp>Elphp Salvadorskýphp colon<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SYPphp"php>
-php	php	php	php	php<displayNamephp>Syrskáphp libra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"SZLphp"php>
-php	php	php	php	php<displayNamephp>Swazilandphp lilangeni<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"THBphp"php>
-php	php	php	php	php<displayNamephp>Thajskýphp bát<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TJRphp"php>
-php	php	php	php	php<displayNamephp>Tadphpžikistanskýphp rubeľ<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TJSphp"php>
-php	php	php	php	php<displayNamephp>Tadphpžikistanskýphp somoni<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TMMphp"php>
-php	php	php	php	php<displayNamephp>Turkménskyphp manat<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TNDphp"php>
-php	php	php	php	php<displayNamephp>Tuniskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TOPphp"php>
-php	php	php	php	php<displayNamephp>Tongaphp Paphpʻanga<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TPEphp"php>
-php	php	php	php	php<displayNamephp>Timorsképhp eskudo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TRLphp"php>
-php	php	php	php	php<displayNamephp>Tureckáphp lira<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TRYphp"php>
-php	php	php	php	php<displayNamephp>Nováphp tureckáphp líra<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TTDphp"php>
-php	php	php	php	php<displayNamephp>Trinidadphp aphp Tobagophp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TWDphp"php>
-php	php	php	php	php<displayNamephp>Taiwanskýphp novýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TZSphp"php>
-php	php	php	php	php<displayNamephp>Tanzanskýphp šiling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UAHphp"php>
-php	php	php	php	php<displayNamephp>Ukrainskáphp hrivna<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UAKphp"php>
-php	php	php	php	php<displayNamephp>Ukrainskýphp karbovanetz<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UGSphp"php>
-php	php	php	php	php<displayNamephp>Ugandanphp šilingphp php(php1php9php6php6php-php1php9php8php7php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UGXphp"php>
-php	php	php	php	php<displayNamephp>Ugandskýphp šiling<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USDphp"php>
-php	php	php	php	php<displayNamephp>USphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USNphp"php>
-php	php	php	php	php<displayNamephp>USphp dolárphp php(Nextphp dayphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USSphp"php>
-php	php	php	php	php<displayNamephp>USphp dolárphp php(Samephp dayphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UYPphp"php>
-php	php	php	php	php<displayNamephp>Uruguajsképhp pesophp php(php1php9php7php5php-php1php9php9php3php)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UYUphp"php>
-php	php	php	php	php<displayNamephp>Uruguajsképhp pesophp Uruguayo<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"UZSphp"php>
-php	php	php	php	php<displayNamephp>Uzbekistanskýphp sum<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VEBphp"php>
-php	php	php	php	php<displayNamephp>Venezuelskýphp bolivar<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VNDphp"php>
-php	php	php	php	php<displayNamephp>Vietnamskýphp dong<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"VUVphp"php>
-php	php	php	php	php<displayNamephp>Vanuatuphp vatu<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"WSTphp"php>
-php	php	php	php	php<displayNamephp>Západnáphp Samoaphp tala<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAFphp"php>
-php	php	php	php	php<displayNamephp>CFAphp frankphp BEAC<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XAUphp"php>
-php	php	php	php	php<displayNamephp>Zlato<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XCDphp"php>
-php	php	php	php	php<displayNamephp>Eastphp Caribbeanphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XDRphp"php>
-php	php	php	php	php<displayNamephp>Špeciálnephp právaphp čerpania<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XFOphp"php>
-php	php	php	php	php<displayNamephp>Francúzskyphp zlatýphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XFUphp"php>
-php	php	php	php	php<displayNamephp>Francúzskyphp UICphp-frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XOFphp"php>
-php	php	php	php	php<displayNamephp>CFAphp frankphp BCEAO<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XPFphp"php>
-php	php	php	php	php<displayNamephp>CFPphp frank<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YDDphp"php>
-php	php	php	php	php<displayNamephp>Jemenskýphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YERphp"php>
-php	php	php	php	php<displayNamephp>Jemenskýphp rial<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUDphp"php>
-php	php	php	php	php<displayNamephp>Juhoslávskyphp dinárphp php[YUDphp]<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUMphp"php>
-php	php	php	php	php<displayNamephp>Juhoslávskyphp Noviyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"YUNphp"php>
-php	php	php	php	php<displayNamephp>Juhoslávskyphp dinár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZALphp"php>
-php	php	php	php	php<displayNamephp>Juhoafrickýphp randphp php(financialphp)<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZARphp"php>
-php	php	php	php	php<displayNamephp>Juhoafrickýphp rand<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZMKphp"php>
-php	php	php	php	php<displayNamephp>Zambskáphp kwacha<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZRNphp"php>
-php	php	php	php	php<displayNamephp>Zairskýphp novýphp zaire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZRZphp"php>
-php	php	php	php	php<displayNamephp>Zairskýphp Zaire<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"ZWDphp"php>
-php	php	php	php	php<displayNamephp>Zimbabskýphp dolár<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<unitsphp>
-php	php	php<unitphp typephp=php"dayphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php dni<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php deň<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php dní<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"hourphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php hodiny<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php hodina<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php hodín<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"minutephp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php minúty<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php minúta<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php minút<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"monthphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php mesiace<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php mesiac<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php mesiacov<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"secondphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php sekundy<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php sekunda<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php sekúnd<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"weekphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php týphpždne<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php týphpždeň<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php týphpždňov<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"yearphp"php>
-php	php	php	php<unitPatternphp countphp=php"fewphp"php>php{php0php}php roky<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"onephp"php>php{php0php}php rok<php/unitPatternphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php rokov<php/unitPatternphp>
-php	php	<php/unitphp>
-php	<php/unitsphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>anophp:a<php/yesstrphp>
-php	php	php	php<nostrphp>niephp:n<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.101 $"/>
+		<generation date="$Date: 2009/06/15 20:34:50 $"/>
+		<language type="sk"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="aa">afarčina</language>
+			<language type="ab">abcházština</language>
+			<language type="ach">ačoli</language>
+			<language type="ada">adangme</language>
+			<language type="ady">adygčina</language>
+			<language type="ae">avestčina</language>
+			<language type="af">afrikánčina</language>
+			<language type="afa">afroázijské jazyky</language>
+			<language type="afh">afrihili</language>
+			<language type="ain">ainčina</language>
+			<language type="ak">akančina</language>
+			<language type="akk">akkadčina</language>
+			<language type="ale">aleutčina</language>
+			<language type="alg">algonkinské jazyky</language>
+			<language type="am">amharčina</language>
+			<language type="an">aragónčina</language>
+			<language type="anp">angika</language>
+			<language type="apa">apačské jazyky</language>
+			<language type="ar">arabčina</language>
+			<language type="arn">araukánčina</language>
+			<language type="arp">arapaho</language>
+			<language type="art">umelý jazyk</language>
+			<language type="arw">arawačtina</language>
+			<language type="as">ásámčina</language>
+			<language type="ast">astúrčina</language>
+			<language type="ath">athabaské jazyky</language>
+			<language type="aus">austrálske jazyky</language>
+			<language type="av">avarčina</language>
+			<language type="awa">avadhčina</language>
+			<language type="ay">aymarčina</language>
+			<language type="az">azerbajdžančina</language>
+			<language type="ba">baskirčina</language>
+			<language type="bai">bamileke</language>
+			<language type="bal">balúčtina</language>
+			<language type="ban">balijčina</language>
+			<language type="bas">basa</language>
+			<language type="bat">baltské jazyky</language>
+			<language type="be">bieloruština</language>
+			<language type="bej">bedža</language>
+			<language type="bem">bemba</language>
+			<language type="ber">berberské jazyky</language>
+			<language type="bg">bulharčina</language>
+			<language type="bh">bihárske jazyky</language>
+			<language type="bho">bhódžpurčina</language>
+			<language type="bi">bislama</language>
+			<language type="bik">bikol</language>
+			<language type="bin">bini</language>
+			<language type="bm">bambarčina</language>
+			<language type="bn">bengálčina</language>
+			<language type="bnt">bantuské jazyky</language>
+			<language type="bo">tibetčina</language>
+			<language type="br">bretónčina</language>
+			<language type="bra">bradžčina</language>
+			<language type="bs">bosniačtina</language>
+			<language type="btk">batacké jazyky</language>
+			<language type="bua">buriatčina</language>
+			<language type="bug">bugiština</language>
+			<language type="byn">blin</language>
+			<language type="ca">katalánčina</language>
+			<language type="cai">jazyk stredoamerických indiánov</language>
+			<language type="car">karibský</language>
+			<language type="cau">kaukazské jazyky</language>
+			<language type="ce">čečenčina</language>
+			<language type="ceb">cebuánčina</language>
+			<language type="cel">keltské jazyky</language>
+			<language type="ch">čamorčina</language>
+			<language type="chb">čibča</language>
+			<language type="chg">čagatajčina</language>
+			<language type="chn">činucký žargón</language>
+			<language type="cho">čoktavčina</language>
+			<language type="chp">čipevajčina</language>
+			<language type="chr">čerokí</language>
+			<language type="chy">čejenčina</language>
+			<language type="cmc">čamaské jazyky</language>
+			<language type="co">korzičtina</language>
+			<language type="cr">krí</language>
+			<language type="cs">čeština</language>
+			<language type="cu">cirkevná slovančina</language>
+			<language type="cv">čuvaština</language>
+			<language type="cy">waleština</language>
+			<language type="da">dánčina</language>
+			<language type="dak">dakotčina</language>
+			<language type="dar">darginčina</language>
+			<language type="de">nemčina</language>
+			<language type="del">delawarčina</language>
+			<language type="den">slovančina</language>
+			<language type="dgr">dogribčina</language>
+			<language type="din">dinka</language>
+			<language type="doi">dógrí</language>
+			<language type="dra">drávidské jazyky</language>
+			<language type="dua">duala</language>
+			<language type="dv">divehi</language>
+			<language type="dyu">ďula</language>
+			<language type="dz">dzongkä</language>
+			<language type="ee">eweština</language>
+			<language type="efi">efik</language>
+			<language type="egy">staroegyptský</language>
+			<language type="eka">ekadžuk</language>
+			<language type="el">gréčtina</language>
+			<language type="elx">elamčina</language>
+			<language type="en">angličtina</language>
+			<language type="en_AU">austrálska angličtina</language>
+			<language type="en_GB">britská angličtina</language>
+			<language type="en_US">americká angličtina</language>
+			<language type="eo">esperanto</language>
+			<language type="es">španielčina</language>
+			<language type="et">estónčina</language>
+			<language type="eu">baskičtina</language>
+			<language type="ewo">ewondo</language>
+			<language type="fa">perzština</language>
+			<language type="fan">fangčina</language>
+			<language type="fat">fanti</language>
+			<language type="ff">fulbčina</language>
+			<language type="fi">fínčina</language>
+			<language type="fil">filipínčina</language>
+			<language type="fiu">ugrofínske jazyky</language>
+			<language type="fj">fidžijčina</language>
+			<language type="fo">faerčina</language>
+			<language type="fon">fončina</language>
+			<language type="fr">francúzština</language>
+			<language type="frs">východná frízština</language>
+			<language type="fur">friulčina</language>
+			<language type="fy">západná frízština</language>
+			<language type="ga">írčina</language>
+			<language type="gaa">ga</language>
+			<language type="gay">gayo</language>
+			<language type="gba">gbaja</language>
+			<language type="gd">škótčina</language>
+			<language type="gem">germánske jazyky</language>
+			<language type="gl">galícijčina</language>
+			<language type="gn">guaraní</language>
+			<language type="got">gótčina</language>
+			<language type="grc">starogréčtina</language>
+			<language type="gsw">švajčiarska nemčina</language>
+			<language type="gu">gudžarátčina</language>
+			<language type="gv">mančina</language>
+			<language type="ha">hauština</language>
+			<language type="haw">havajčina</language>
+			<language type="he">hebrejčina</language>
+			<language type="hi">hindčina</language>
+			<language type="ho">hiri motu</language>
+			<language type="hr">chorvátčina</language>
+			<language type="ht">haitský</language>
+			<language type="hu">maďarčina</language>
+			<language type="hy">arménčina</language>
+			<language type="hz">herero</language>
+			<language type="ia">interlingua</language>
+			<language type="id">indonézština</language>
+			<language type="ie">interlingue</language>
+			<language type="ig">igboština</language>
+			<language type="ine">indoeurópske jazyky</language>
+			<language type="ira">iránske jazyky</language>
+			<language type="is">islandčina</language>
+			<language type="it">taliančina</language>
+			<language type="ja">japončina</language>
+			<language type="jv">jávčina</language>
+			<language type="ka">gruzínčina</language>
+			<language type="kg">konžština</language>
+			<language type="kj">kuaňama</language>
+			<language type="kk">kazaština</language>
+			<language type="kl">grónska eskimáčtina</language>
+			<language type="km">kambodžská khmérčina</language>
+			<language type="kn">kannadčina</language>
+			<language type="ko">kórejčina</language>
+			<language type="kr">kanurijčina</language>
+			<language type="ks">kašmírčina</language>
+			<language type="ku">kurdčina</language>
+			<language type="kv">komijčina</language>
+			<language type="kw">kornčina</language>
+			<language type="ky">kirgizština</language>
+			<language type="la">latinčina</language>
+			<language type="lb">luxemburčina</language>
+			<language type="lg">gandčina</language>
+			<language type="ln">lingalčina</language>
+			<language type="lo">laoština</language>
+			<language type="lol">mongo</language>
+			<language type="lt">litovčina</language>
+			<language type="lu">luba-katanga</language>
+			<language type="lv">lotyština</language>
+			<language type="map">austronézske jazyky</language>
+			<language type="mg">malgaština</language>
+			<language type="mh">kajin-majol</language>
+			<language type="mi">maorijčina</language>
+			<language type="mk">macedónčina</language>
+			<language type="ml">malajálamčina</language>
+			<language type="mn">mongolčina</language>
+			<language type="mo">moldavčina</language>
+			<language type="mr">maráthčina</language>
+			<language type="ms">malajčina</language>
+			<language type="mt">maltčina</language>
+			<language type="my">barmčina</language>
+			<language type="myn">mayské jazyky</language>
+			<language type="myv">erzjančina</language>
+			<language type="na">nauru</language>
+			<language type="nai">jazyk severoamerických indiánov</language>
+			<language type="nb">bokmål</language>
+			<language type="ne">nepálčina</language>
+			<language type="ng">ndonga</language>
+			<language type="nl">holandčina</language>
+			<language type="nn">nórsky nynorsk</language>
+			<language type="no">nórčina</language>
+			<language type="nv">navajo</language>
+			<language type="ny">čewa</language>
+			<language type="oc">okcitánčina</language>
+			<language type="oj">odžibva</language>
+			<language type="om">oromčina</language>
+			<language type="or">uríjčina</language>
+			<language type="os">osetčina</language>
+			<language type="pa">pandžábčina</language>
+			<language type="paa">papuánsky</language>
+			<language type="pi">pálí</language>
+			<language type="pl">poľština</language>
+			<language type="ps">paštúnčina</language>
+			<language type="pt">portugalčina</language>
+			<language type="pt_BR">brazílska portugalčina</language>
+			<language type="qu">kečuánčina</language>
+			<language type="rm">rétorománčina</language>
+			<language type="rn">rundčina</language>
+			<language type="ro">rumunčina</language>
+			<language type="ru">ruština</language>
+			<language type="rw">rwandčina</language>
+			<language type="sa">sanskrit</language>
+			<language type="sai">jazyk juhoamerických indiánov</language>
+			<language type="sc">sardínčina</language>
+			<language type="scn">sicílčina</language>
+			<language type="sd">sindhčina</language>
+			<language type="sg">sango</language>
+			<language type="sgn">znaková reč</language>
+			<language type="sh">srbochorvátčina</language>
+			<language type="si">sinhalčina</language>
+			<language type="sk">slovenčina</language>
+			<language type="sl">slovinčina</language>
+			<language type="sla">slovenský jazyk</language>
+			<language type="sm">samojčina</language>
+			<language type="sn">šončina</language>
+			<language type="so">somálčina</language>
+			<language type="sq">albánčina</language>
+			<language type="sr">srbčina</language>
+			<language type="ss">svazijčina</language>
+			<language type="st">južná sothčina</language>
+			<language type="su">sundčina</language>
+			<language type="sux">sumerčina</language>
+			<language type="sv">švédčina</language>
+			<language type="sw">swahilčina</language>
+			<language type="syr">sýrčina</language>
+			<language type="ta">tamilčina</language>
+			<language type="te">telugčina</language>
+			<language type="tg">tadžičtina</language>
+			<language type="th">thajčina</language>
+			<language type="ti">tigrejčina</language>
+			<language type="tk">turkménčina</language>
+			<language type="tl">tagalčina</language>
+			<language type="tlh">klingónčina</language>
+			<language type="tn">tswančina</language>
+			<language type="to">tonžtina</language>
+			<language type="tr">turečtina</language>
+			<language type="ts">tsonga</language>
+			<language type="tt">tatárčina</language>
+			<language type="tut">altajské jazyky</language>
+			<language type="tw">twi</language>
+			<language type="ty">tahitčina</language>
+			<language type="ug">ujgurčina</language>
+			<language type="uk">ukrajinčina</language>
+			<language type="und">neznámy alebo neplatný jazyk</language>
+			<language type="ur">urdčina</language>
+			<language type="uz">uzbečtina</language>
+			<language type="ve">vendčina</language>
+			<language type="vi">vietnamčina</language>
+			<language type="vo">volapük</language>
+			<language type="wa">valónčina</language>
+			<language type="wo">wolof</language>
+			<language type="xh">xhosa</language>
+			<language type="yi">jidiš</language>
+			<language type="yo">jorubčina</language>
+			<language type="za">čuangčina</language>
+			<language type="zh">čínština</language>
+			<language type="zh_Hans">zjednodušená čínština</language>
+			<language type="zh_Hant">tradičná čínština</language>
+			<language type="zu">zuluština</language>
+			<language type="zxx">bez jazykového obsahu</language>
+		</languages>
+		<scripts>
+			<script type="Arab">Arabský</script>
+			<script type="Armn">Arménsky</script>
+			<script type="Bali">balijský</script>
+			<script type="Beng">bengálsky</script>
+			<script type="Brai">Braillovo písmo</script>
+			<script type="Cyrl">Cyrilika</script>
+			<script type="Egyp">egyptské hieroglyfy</script>
+			<script type="Ethi">etiópsky</script>
+			<script type="Glag">hlaholika</script>
+			<script type="Goth">gotický</script>
+			<script type="Grek">Grécky</script>
+			<script type="Hebr">hebrejský</script>
+			<script type="Jpan">japonský</script>
+			<script type="Khmr">kmérsky</script>
+			<script type="Kore">kórejský</script>
+			<script type="Latn">latinka</script>
+			<script type="Lina">lineárna A</script>
+			<script type="Linb">lineárna B</script>
+			<script type="Maya">mayské hieroglyfy</script>
+			<script type="Mong">mongolský</script>
+			<script type="Osma">osmanský</script>
+			<script type="Runr">Runové písmo</script>
+			<script type="Tibt">tibetský</script>
+			<script type="Zyyy">Obecný</script>
+		</scripts>
+		<territories>
+			<territory type="001">Svet</territory>
+			<territory type="002">Afrika</territory>
+			<territory type="003">Severná Amerika (003)</territory>
+			<territory type="005">Južná Amerika</territory>
+			<territory type="009">Oceánia</territory>
+			<territory type="011">Západná Afrika</territory>
+			<territory type="013">Stredná Amerika</territory>
+			<territory type="014">Východná Afrika</territory>
+			<territory type="015">Severná Afrika</territory>
+			<territory type="017">Stredná Afrika</territory>
+			<territory type="018">Južná Afrika [018]</territory>
+			<territory type="019">Americký kontinent</territory>
+			<territory type="021">Severná Amerika</territory>
+			<territory type="029">Karibik</territory>
+			<territory type="030">Východná Ázia</territory>
+			<territory type="034">Južná Ázia</territory>
+			<territory type="035">Juhovýchodná Ázia</territory>
+			<territory type="039">Južná Európa</territory>
+			<territory type="053">Austrália a Nový Zéland</territory>
+			<territory type="054">Melanézia</territory>
+			<territory type="057">Mikronésia</territory>
+			<territory type="061">Polynézia</territory>
+			<territory type="062">Stredná a južná Ázia</territory>
+			<territory type="142">Ázia</territory>
+			<territory type="143">Stredná Ázia</territory>
+			<territory type="145">Západná Ázia</territory>
+			<territory type="150">Európa</territory>
+			<territory type="151">Východná Európa</territory>
+			<territory type="154">Severná Európa</territory>
+			<territory type="155">Západná Európa</territory>
+			<territory type="172">Spoločenstvo nezávislých štátov</territory>
+			<territory type="200">Československo</territory>
+			<territory type="419">Latinská Amerika a Karibik</territory>
+			<territory type="830">Kanál La Manche</territory>
+			<territory type="AD">Andorra</territory>
+			<territory type="AE">Spojené arabské emiráty</territory>
+			<territory type="AF">Afganistan</territory>
+			<territory type="AG">Antigua a Barbados</territory>
+			<territory type="AI">Anguilla</territory>
+			<territory type="AL">Albánsko</territory>
+			<territory type="AM">Arménsko</territory>
+			<territory type="AN">Holandské Antily</territory>
+			<territory type="AO">Angola</territory>
+			<territory type="AQ">Antarctica</territory>
+			<territory type="AR">Argentína</territory>
+			<territory type="AS">Americká Samoa</territory>
+			<territory type="AT">Rakúsko</territory>
+			<territory type="AU">Austrália</territory>
+			<territory type="AW">Aruba</territory>
+			<territory type="AX">Alandské ostrovy</territory>
+			<territory type="AZ">Azerbajdžan</territory>
+			<territory type="BA">Bosna a Hercegovina</territory>
+			<territory type="BB">Barbados</territory>
+			<territory type="BD">Bangladéš</territory>
+			<territory type="BE">Belgicko</territory>
+			<territory type="BF">Burkina Faso</territory>
+			<territory type="BG">Bulharsko</territory>
+			<territory type="BH">Bahrajn</territory>
+			<territory type="BI">Burundi</territory>
+			<territory type="BJ">Benin</territory>
+			<territory type="BL">Svätý Bartolomej</territory>
+			<territory type="BM">Bermudy</territory>
+			<territory type="BN">Brunej</territory>
+			<territory type="BO">Bolívia</territory>
+			<territory type="BR">Brazília</territory>
+			<territory type="BS">Bahamy</territory>
+			<territory type="BT">Bután</territory>
+			<territory type="BV">Bouvetov ostrov</territory>
+			<territory type="BW">Botswana</territory>
+			<territory type="BY">Bielorusko</territory>
+			<territory type="BZ">Belize</territory>
+			<territory type="CA">Kanada</territory>
+			<territory type="CC">Kokosové ostrovy</territory>
+			<territory type="CD">Konžská demokratická republika</territory>
+			<territory type="CF">Stredoafrická republika</territory>
+			<territory type="CG">Kongo</territory>
+			<territory type="CH">Švajčiarsko</territory>
+			<territory type="CI">Pobrežie Slonoviny</territory>
+			<territory type="CK">Cookove ostrovy</territory>
+			<territory type="CL">Čile</territory>
+			<territory type="CM">Kamerun</territory>
+			<territory type="CN">Čína</territory>
+			<territory type="CO">Kolumbia</territory>
+			<territory type="CR">Kostarika</territory>
+			<territory type="CS">Srbsko a Čierna Hora</territory>
+			<territory type="CU">Kuba</territory>
+			<territory type="CV">Kapverdy</territory>
+			<territory type="CX">Vianočný ostrov</territory>
+			<territory type="CY">Cyprus</territory>
+			<territory type="CZ">Česká republika</territory>
+			<territory type="DE">Nemecko</territory>
+			<territory type="DJ">Džibuti</territory>
+			<territory type="DK">Dánsko</territory>
+			<territory type="DM">Dominika</territory>
+			<territory type="DO">Dominikánska republika</territory>
+			<territory type="DZ">Alžírsko</territory>
+			<territory type="EC">Ekvádor</territory>
+			<territory type="EE">Estónsko</territory>
+			<territory type="EG">Egypt</territory>
+			<territory type="EH">Západná Sahara</territory>
+			<territory type="ER">Eritrea</territory>
+			<territory type="ES">Španielsko</territory>
+			<territory type="ET">Etiópia</territory>
+			<territory type="FI">Fínsko</territory>
+			<territory type="FJ">Fidži</territory>
+			<territory type="FK">Falklandské ostrovy</territory>
+			<territory type="FM">Mikronézia</territory>
+			<territory type="FO">Faerské ostrovy</territory>
+			<territory type="FR">Francúzsko</territory>
+			<territory type="GA">Gabon</territory>
+			<territory type="GB">Spojené kráľovstvo</territory>
+			<territory type="GD">Grenada</territory>
+			<territory type="GE">Gruzínsko</territory>
+			<territory type="GF">Francúzska Guayana</territory>
+			<territory type="GG">Guernsey</territory>
+			<territory type="GH">Ghana</territory>
+			<territory type="GI">Gibraltár</territory>
+			<territory type="GL">Grónsko</territory>
+			<territory type="GM">Gambia</territory>
+			<territory type="GN">Guinea</territory>
+			<territory type="GP">Guadeloupe</territory>
+			<territory type="GQ">Rovníková Guinea</territory>
+			<territory type="GR">Grécko</territory>
+			<territory type="GS">Južná Georgia a Južné Sandwichove ostrovy</territory>
+			<territory type="GT">Guatemala</territory>
+			<territory type="GU">Guam</territory>
+			<territory type="GW">Guinea-Bissau</territory>
+			<territory type="GY">Guayana</territory>
+			<territory type="HK">Hong Kong S.A.R. Číny</territory>
+			<territory type="HM">Heardove ostrovy a McDonaldove ostrovy</territory>
+			<territory type="HN">Honduras</territory>
+			<territory type="HR">Chorvátsko</territory>
+			<territory type="HT">Haiti</territory>
+			<territory type="HU">Maďarsko</territory>
+			<territory type="ID">Indonézia</territory>
+			<territory type="IE">Írsko</territory>
+			<territory type="IL">Izrael</territory>
+			<territory type="IM">Ostrov Man</territory>
+			<territory type="IN">India</territory>
+			<territory type="IO">Britské územie v Indickom oceáne</territory>
+			<territory type="IQ">Irak</territory>
+			<territory type="IR">Irán</territory>
+			<territory type="IS">Island</territory>
+			<territory type="IT">Taliansko</territory>
+			<territory type="JE">Jersey</territory>
+			<territory type="JM">Jamajka</territory>
+			<territory type="JO">Jordánsko</territory>
+			<territory type="JP">Japonsko</territory>
+			<territory type="KE">Keňa</territory>
+			<territory type="KG">Kirgizsko</territory>
+			<territory type="KH">Kambodža</territory>
+			<territory type="KI">Kiribati</territory>
+			<territory type="KM">Komory</territory>
+			<territory type="KN">Saint Kitts a Nevis</territory>
+			<territory type="KP">Kórejská ľudovodemokratická republika</territory>
+			<territory type="KR">Kórejská republika</territory>
+			<territory type="KW">Kuvajt</territory>
+			<territory type="KY">Kajmanské ostrovy</territory>
+			<territory type="KZ">Kazachstan</territory>
+			<territory type="LA">Laoská ľudovodemokratická republika</territory>
+			<territory type="LB">Libanon</territory>
+			<territory type="LC">Svätá Lucia</territory>
+			<territory type="LI">Lichtenštajnsko</territory>
+			<territory type="LK">Srí Lanka</territory>
+			<territory type="LR">Libéria</territory>
+			<territory type="LS">Lesotho</territory>
+			<territory type="LT">Litva</territory>
+			<territory type="LU">Luxembursko</territory>
+			<territory type="LV">Lotyšsko</territory>
+			<territory type="LY">Lýbijská arabská džamahírija</territory>
+			<territory type="MA">Maroko</territory>
+			<territory type="MC">Monako</territory>
+			<territory type="MD">Moldavsko</territory>
+			<territory type="ME">Čierna Hora</territory>
+			<territory type="MF">Svätý Martin</territory>
+			<territory type="MG">Madagaskar</territory>
+			<territory type="MH">Marshallove ostrovy</territory>
+			<territory type="MK">Macedónsko</territory>
+			<territory type="ML">Mali</territory>
+			<territory type="MM">Mjanmarsko</territory>
+			<territory type="MN">Mongolsko</territory>
+			<territory type="MO">Makao S.A.R. Číny</territory>
+			<territory type="MP">Severné Mariány</territory>
+			<territory type="MQ">Martinik</territory>
+			<territory type="MR">Mauritánia</territory>
+			<territory type="MS">Montserrat</territory>
+			<territory type="MT">Malta</territory>
+			<territory type="MU">Maurícius</territory>
+			<territory type="MV">Maldivy</territory>
+			<territory type="MW">Malawi</territory>
+			<territory type="MX">Mexiko</territory>
+			<territory type="MY">Malajzia</territory>
+			<territory type="MZ">Mozambik</territory>
+			<territory type="NA">Namíbia</territory>
+			<territory type="NC">Nová Kaledónia</territory>
+			<territory type="NE">Niger</territory>
+			<territory type="NF">Norfolkov ostrov</territory>
+			<territory type="NG">Nigéria</territory>
+			<territory type="NI">Nikaragua</territory>
+			<territory type="NL">Holandsko</territory>
+			<territory type="NO">Nórsko</territory>
+			<territory type="NP">Nepál</territory>
+			<territory type="NR">Nauru</territory>
+			<territory type="NU">Niue</territory>
+			<territory type="NZ">Nový Zéland</territory>
+			<territory type="OM">Omán</territory>
+			<territory type="PA">Panama</territory>
+			<territory type="PE">Peru</territory>
+			<territory type="PF">Francúzska Polynézia</territory>
+			<territory type="PG">Papua Nová Guinea</territory>
+			<territory type="PH">Filipíny</territory>
+			<territory type="PK">Pakistan</territory>
+			<territory type="PL">Poľsko</territory>
+			<territory type="PM">Saint Pierre a Miquelon</territory>
+			<territory type="PN">Pitcairnove ostrovy</territory>
+			<territory type="PR">Portoriko</territory>
+			<territory type="PS">Palestínske územie</territory>
+			<territory type="PT">Portugalsko</territory>
+			<territory type="PW">Palau</territory>
+			<territory type="PY">Paraguaj</territory>
+			<territory type="QA">Katar</territory>
+			<territory type="QO">Tichomorie - ostatné</territory>
+			<territory type="QU">Európska únia</territory>
+			<territory type="RE">Reunion</territory>
+			<territory type="RO">Rumunsko</territory>
+			<territory type="RS">Srbsko</territory>
+			<territory type="RU">Ruská federácia</territory>
+			<territory type="RW">Rwanda</territory>
+			<territory type="SA">Saudská Arábia</territory>
+			<territory type="SB">Šalamúnove ostrovy</territory>
+			<territory type="SC">Seychelské ostrovy</territory>
+			<territory type="SD">Sudán</territory>
+			<territory type="SE">Švédsko</territory>
+			<territory type="SG">Singapur</territory>
+			<territory type="SH">Svätá Helena</territory>
+			<territory type="SI">Slovinsko</territory>
+			<territory type="SJ">Špicbergy a Jan Mayen</territory>
+			<territory type="SK">Slovenská republika</territory>
+			<territory type="SL">Sierra Leone</territory>
+			<territory type="SM">San Maríno</territory>
+			<territory type="SN">Senegal</territory>
+			<territory type="SO">Somálsko</territory>
+			<territory type="SR">Surinam</territory>
+			<territory type="ST">Svätý Tomáš a Princove ostrovy</territory>
+			<territory type="SV">Salvador</territory>
+			<territory type="SY">Sýrska arabská republika</territory>
+			<territory type="SZ">Svazijsko</territory>
+			<territory type="TC">Turks a Caicos</territory>
+			<territory type="TD">Čad</territory>
+			<territory type="TF">Francúzske južné územia</territory>
+			<territory type="TG">Togo</territory>
+			<territory type="TH">Thajsko</territory>
+			<territory type="TJ">Tadžikistan</territory>
+			<territory type="TK">Tokelau</territory>
+			<territory type="TL">Východný Timor</territory>
+			<territory type="TM">Turkménsko</territory>
+			<territory type="TN">Tunisko</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">Turecko</territory>
+			<territory type="TT">Trinidad a Tobago</territory>
+			<territory type="TV">Tuvalu</territory>
+			<territory type="TW">Tajwan</territory>
+			<territory type="TZ">Tanzánia</territory>
+			<territory type="UA">Ukrajina</territory>
+			<territory type="UG">Uganda</territory>
+			<territory type="UM">Menšie odľahlé ostrovy USA</territory>
+			<territory type="US">Spojené štáty</territory>
+			<territory type="UY">Uruguaj</territory>
+			<territory type="UZ">Uzbekistan</territory>
+			<territory type="VA">Vatikán</territory>
+			<territory type="VC">Svätý Vincent a Grenadíny</territory>
+			<territory type="VE">Venezuela</territory>
+			<territory type="VG">Britské panenské ostrovy</territory>
+			<territory type="VI">Panenské ostrovy - USA</territory>
+			<territory type="VN">Vietnam</territory>
+			<territory type="VU">Vanuatu</territory>
+			<territory type="WF">Wallis a Futuna</territory>
+			<territory type="WS">Samoa</territory>
+			<territory type="YE">Jemen</territory>
+			<territory type="YT">Mayotte</territory>
+			<territory type="ZA">Južná Afrika</territory>
+			<territory type="ZM">Zambia</territory>
+			<territory type="ZW">Zimbabwe</territory>
+			<territory type="ZZ">Neznámy alebo neplatný región</territory>
+		</territories>
+		<keys>
+			<key type="calendar">Kalendár</key>
+			<key type="collation">Triedenie</key>
+			<key type="currency">Mena</key>
+		</keys>
+		<types>
+			<type type="big5han" key="collation">Tradičný čínsky Big5</type>
+			<type type="buddhist" key="calendar">Buddhistický kalendár</type>
+			<type type="chinese" key="calendar">Čínsky kalendár</type>
+			<type type="direct" key="collation">Priame triedenie</type>
+			<type type="gb2312han" key="collation">Zjednodušený čínsky GB2312</type>
+			<type type="gregorian" key="calendar">Gregoriánsky kalendár</type>
+			<type type="hebrew" key="calendar">Židovský kalendár</type>
+			<type type="indian" key="calendar">Indický národný kalendár</type>
+			<type type="islamic" key="calendar">Islamský kalendár</type>
+			<type type="islamic-civil" key="calendar">Islamský občiansky kalendár</type>
+			<type type="japanese" key="calendar">Japonský kalendár</type>
+			<type type="phonebook" key="collation">Lexikografické triedenie</type>
+			<type type="pinyin" key="collation">Triedenie pinyin</type>
+			<type type="roc" key="calendar">Kalendár Čínskej republiky</type>
+			<type type="stroke" key="collation">Tiedenie podľa ťahov</type>
+			<type type="traditional" key="collation">Tradičné</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">Metrický</measurementSystemName>
+			<measurementSystemName type="US">Americký</measurementSystemName>
+		</measurementSystemNames>
+		<codePatterns>
+			<codePattern type="language">Jazyk: {0}</codePattern>
+			<codePattern type="script">Skript: {0}</codePattern>
+			<codePattern type="territory">Región: {0}</codePattern>
+		</codePatterns>
+	</localeDisplayNames>
+	<layout>
+		<inList>titlecase-firstword</inList>
+	</layout>
+	<characters>
+		<exemplarCharacters>[a á ä b c č d ď e é f-h {ch} i í j-l ĺ ľ m n ň o ó ô p-r ŕ s š t ť u ú v-y ý z ž]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à ă â å ā æ ç è ĕ ê ë ē ì ĭ î ï ī ñ ò ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>‚</quotationStart>
+		<quotationEnd>‘</quotationEnd>
+		<alternateQuotationStart>„</alternateQuotationStart>
+		<alternateQuotationEnd>“</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">jan</month>
+							<month type="2">feb</month>
+							<month type="3">mar</month>
+							<month type="4">apr</month>
+							<month type="5">máj</month>
+							<month type="6">jún</month>
+							<month type="7">júl</month>
+							<month type="8">aug</month>
+							<month type="9">sep</month>
+							<month type="10">okt</month>
+							<month type="11">nov</month>
+							<month type="12">dec</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">januára</month>
+							<month type="2">februára</month>
+							<month type="3">marca</month>
+							<month type="4">apríla</month>
+							<month type="5">mája</month>
+							<month type="6">júna</month>
+							<month type="7">júla</month>
+							<month type="8">augusta</month>
+							<month type="9">septembra</month>
+							<month type="10">októbra</month>
+							<month type="11">novembra</month>
+							<month type="12">decembra</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">j</month>
+							<month type="2">f</month>
+							<month type="3">m</month>
+							<month type="4">a</month>
+							<month type="5">m</month>
+							<month type="6">j</month>
+							<month type="7">j</month>
+							<month type="8">a</month>
+							<month type="9">s</month>
+							<month type="10">o</month>
+							<month type="11">n</month>
+							<month type="12">d</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">január</month>
+							<month type="2">február</month>
+							<month type="3">marec</month>
+							<month type="4">apríl</month>
+							<month type="5">máj</month>
+							<month type="6">jún</month>
+							<month type="7">júl</month>
+							<month type="8">august</month>
+							<month type="9">september</month>
+							<month type="10">október</month>
+							<month type="11">november</month>
+							<month type="12">december</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">ne</day>
+							<day type="mon">po</day>
+							<day type="tue">ut</day>
+							<day type="wed">st</day>
+							<day type="thu">št</day>
+							<day type="fri">pi</day>
+							<day type="sat">so</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">nedeľa</day>
+							<day type="mon">pondelok</day>
+							<day type="tue">utorok</day>
+							<day type="wed">streda</day>
+							<day type="thu">štvrtok</day>
+							<day type="fri">piatok</day>
+							<day type="sat">sobota</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">N</day>
+							<day type="mon">P</day>
+							<day type="tue">U</day>
+							<day type="wed">S</day>
+							<day type="thu">Š</day>
+							<day type="fri">P</day>
+							<day type="sat">S</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">Q1</quarter>
+							<quarter type="2">Q2</quarter>
+							<quarter type="3">Q3</quarter>
+							<quarter type="4">Q4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">1. štvrťrok</quarter>
+							<quarter type="2">2. štvrťrok</quarter>
+							<quarter type="3">3. štvrťrok</quarter>
+							<quarter type="4">4. štvrťrok</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>dopoludnia</am>
+				<pm>popoludní</pm>
+				<eras>
+					<eraAbbr>
+						<era type="0">pred n.l.</era>
+						<era type="1">n.l.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, d. MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d. MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d.M.yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>d.M.yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>H:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>H:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>H:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>H:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="d">d.</dateFormatItem>
+						<dateFormatItem id="EEEd">EEE, d.</dateFormatItem>
+						<dateFormatItem id="Hm">HH:mm</dateFormatItem>
+						<dateFormatItem id="Md">d.M.</dateFormatItem>
+						<dateFormatItem id="MEd">E, d.M.</dateFormatItem>
+						<dateFormatItem id="MMMd">d. MMM</dateFormatItem>
+						<dateFormatItem id="MMMEd">E, d. MMM</dateFormatItem>
+						<dateFormatItem id="MMMMd">d. MMMM</dateFormatItem>
+						<dateFormatItem id="MMMMEd">E, d. MMMM</dateFormatItem>
+						<dateFormatItem id="mmss">mm:ss</dateFormatItem>
+						<dateFormatItem id="ms">mm:ss</dateFormatItem>
+						<dateFormatItem id="yMEd">EEE, d.M.yyyy</dateFormatItem>
+						<dateFormatItem id="yMMM">MMM y</dateFormatItem>
+						<dateFormatItem id="yMMMEd">EEE, d. MMM y</dateFormatItem>
+						<dateFormatItem id="yMMMM">MMMM y</dateFormatItem>
+						<dateFormatItem id="yQ">Q yyyy</dateFormatItem>
+						<dateFormatItem id="yQQQ">QQQ y</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+						<dateFormatItem id="yyQQQQ">QQQQ yy</dateFormatItem>
+						<dateFormatItem id="yyyyM">M.yyyy</dateFormatItem>
+						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
+					</availableFormats>
+					<intervalFormats>
+						<intervalFormatFallback>{0} - {1}</intervalFormatFallback>
+						<intervalFormatItem id="d">
+							<greatestDifference id="d">d. - d.</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="h">
+							<greatestDifference id="a">HH-HH</greatestDifference>
+							<greatestDifference id="h">H-H</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hm">
+							<greatestDifference id="a">HH:mm - HH:mm</greatestDifference>
+							<greatestDifference id="h">HH:mm - HH:mm</greatestDifference>
+							<greatestDifference id="m">HH:mm - HH:mm</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hmv">
+							<greatestDifference id="a">HH:mm - HH:mm v</greatestDifference>
+							<greatestDifference id="h">HH:mm - HH:mm v</greatestDifference>
+							<greatestDifference id="m">HH:mm - HH:mm v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="hv">
+							<greatestDifference id="a">HH-HH v</greatestDifference>
+							<greatestDifference id="h">H-H v</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="M">
+							<greatestDifference id="M">M.-M.</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="Md">
+							<greatestDifference id="d">d.M. - d.M.</greatestDifference>
+							<greatestDifference id="M">d.M. - d.M.</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MEd">
+							<greatestDifference id="d">E, d.M. - E, d.M.</greatestDifference>
+							<greatestDifference id="M">E, d.M. - E, d.M.</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMM">
+							<greatestDifference id="M">MMM-MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMd">
+							<greatestDifference id="d">d. - d. MMM</greatestDifference>
+							<greatestDifference id="M">d. MMM - d. MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMEd">
+							<greatestDifference id="d">E, d. - E, d. MMM</greatestDifference>
+							<greatestDifference id="M">E, d. MMM - E, d. MMM</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="MMMM">
+							<greatestDifference id="M">LLLL-LLLL</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="y">
+							<greatestDifference id="y">y - y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yM">
+							<greatestDifference id="M">M.yyyy - M.yyyy</greatestDifference>
+							<greatestDifference id="y">M.yyyy - M.yyyy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMd">
+							<greatestDifference id="d">d.M.yy - d.M.yy</greatestDifference>
+							<greatestDifference id="M">d.M.yy - d.M.yy</greatestDifference>
+							<greatestDifference id="y">d.M.yy - d.M.yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMEd">
+							<greatestDifference id="d">E, d.M.yy - E, d.M.yy</greatestDifference>
+							<greatestDifference id="M">E, d.M.yy - E, d.M.yy</greatestDifference>
+							<greatestDifference id="y">E, d.M.yy - E, d.M.yy</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMM">
+							<greatestDifference id="M">MMM - MMM y</greatestDifference>
+							<greatestDifference id="y">MMM y - MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMd">
+							<greatestDifference id="d">d. - d. MMM y</greatestDifference>
+							<greatestDifference id="M">d. MMM - d. MMM y</greatestDifference>
+							<greatestDifference id="y">d. MMM y - d. MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMEd">
+							<greatestDifference id="d">E, d. - E, d. MMM y</greatestDifference>
+							<greatestDifference id="M">E, d. MMM - E, d. MMM y</greatestDifference>
+							<greatestDifference id="y">E, d. MMM y - E, d. MMM y</greatestDifference>
+						</intervalFormatItem>
+						<intervalFormatItem id="yMMMM">
+							<greatestDifference id="y">MM-yyyy – MM-yyyy</greatestDifference>
+						</intervalFormatItem>
+					</intervalFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>Éra</displayName>
+					</field>
+					<field type="year">
+						<displayName>Rok</displayName>
+					</field>
+					<field type="month">
+						<displayName>Mesiac</displayName>
+					</field>
+					<field type="week">
+						<displayName>Týždeň</displayName>
+					</field>
+					<field type="day">
+						<displayName>Deň</displayName>
+						<relative type="-3">Pred tromi dňami</relative>
+						<relative type="-2">Predvčerom</relative>
+						<relative type="-1">Včera</relative>
+						<relative type="0">Dnes</relative>
+						<relative type="1">Zajtra</relative>
+						<relative type="2">Pozajtra</relative>
+						<relative type="3">O tri dni</relative>
+					</field>
+					<field type="weekday">
+						<displayName>Deň v týždni</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>Časť dňa</displayName>
+					</field>
+					<field type="hour">
+						<displayName>Hodina</displayName>
+					</field>
+					<field type="minute">
+						<displayName>Minúta</displayName>
+					</field>
+					<field type="second">
+						<displayName>Sekunda</displayName>
+					</field>
+					<field type="zone">
+						<displayName>Pásmo</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HHmm;-HHmm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Neznáme časové pásmo</exemplarCity>
+			</zone>
+			<zone type="Antarctica/South_Pole">
+				<exemplarCity>Južný pól</exemplarCity>
+			</zone>
+			<zone type="Antarctica/DumontDUrville">
+				<exemplarCity>Dumont D'Urville</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Bermuda">
+				<exemplarCity>Bermudy</exemplarCity>
+			</zone>
+			<zone type="Pacific/Easter">
+				<exemplarCity>Veľkonočné ostrovy</exemplarCity>
+			</zone>
+			<zone type="Asia/Shanghai">
+				<exemplarCity>Šanghaj</exemplarCity>
+			</zone>
+			<zone type="America/Costa_Rica">
+				<exemplarCity>Kostarika</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Cape_Verde">
+				<exemplarCity>Kapverdy</exemplarCity>
+			</zone>
+			<zone type="Africa/Djibouti">
+				<exemplarCity>Džibutsko</exemplarCity>
+			</zone>
+			<zone type="America/Dominica">
+				<exemplarCity>Dominika</exemplarCity>
+			</zone>
+			<zone type="Pacific/Galapagos">
+				<exemplarCity>Galapágy</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Canary">
+				<exemplarCity>Kanárske ostrovy</exemplarCity>
+			</zone>
+			<zone type="Pacific/Fiji">
+				<exemplarCity>Fidži</exemplarCity>
+			</zone>
+			<zone type="Europe/London">
+				<exemplarCity>Londýn</exemplarCity>
+			</zone>
+			<zone type="Europe/Gibraltar">
+				<exemplarCity>Gibraltár</exemplarCity>
+			</zone>
+			<zone type="Asia/Hong_Kong">
+				<exemplarCity>Hongkong</exemplarCity>
+			</zone>
+			<zone type="America/Jamaica">
+				<exemplarCity>Jamajka</exemplarCity>
+			</zone>
+			<zone type="America/St_Kitts">
+				<exemplarCity>St. Kitts</exemplarCity>
+			</zone>
+			<zone type="Asia/Kuwait">
+				<exemplarCity>Kuvajt</exemplarCity>
+			</zone>
+			<zone type="America/St_Lucia">
+				<exemplarCity>St. Lucia</exemplarCity>
+			</zone>
+			<zone type="Europe/Luxembourg">
+				<exemplarCity>Luxembursko</exemplarCity>
+			</zone>
+			<zone type="Europe/Monaco">
+				<exemplarCity>Monako</exemplarCity>
+			</zone>
+			<zone type="Asia/Ulaanbaatar">
+				<exemplarCity>Ulanbátar</exemplarCity>
+			</zone>
+			<zone type="Asia/Macau">
+				<exemplarCity>Macao</exemplarCity>
+			</zone>
+			<zone type="America/Martinique">
+				<exemplarCity>Martinik</exemplarCity>
+			</zone>
+			<zone type="Indian/Mauritius">
+				<exemplarCity>Maurícius</exemplarCity>
+			</zone>
+			<zone type="Indian/Maldives">
+				<exemplarCity>Maledivy</exemplarCity>
+			</zone>
+			<zone type="Pacific/Pitcairn">
+				<exemplarCity>Pitcairnove ostrovy</exemplarCity>
+			</zone>
+			<zone type="America/Puerto_Rico">
+				<exemplarCity>Portoriko</exemplarCity>
+			</zone>
+			<zone type="Atlantic/Azores">
+				<exemplarCity>Azorské ostrovy</exemplarCity>
+			</zone>
+			<zone type="Europe/Lisbon">
+				<exemplarCity>Lisabon</exemplarCity>
+			</zone>
+			<zone type="Asia/Qatar">
+				<exemplarCity>Katar</exemplarCity>
+			</zone>
+			<zone type="Europe/Moscow">
+				<exemplarCity>Moskva</exemplarCity>
+			</zone>
+			<zone type="Asia/Yekaterinburg">
+				<exemplarCity>Jekaterinburg</exemplarCity>
+			</zone>
+			<zone type="Asia/Krasnoyarsk">
+				<exemplarCity>Krasnojarsko</exemplarCity>
+			</zone>
+			<zone type="Asia/Irkutsk">
+				<exemplarCity>Irkutsko</exemplarCity>
+			</zone>
+			<zone type="Asia/Yakutsk">
+				<exemplarCity>Jakutsko</exemplarCity>
+			</zone>
+			<zone type="Asia/Sakhalin">
+				<exemplarCity>Sachalin</exemplarCity>
+			</zone>
+			<zone type="Asia/Kamchatka">
+				<exemplarCity>Kamčatka</exemplarCity>
+			</zone>
+			<zone type="Asia/Singapore">
+				<exemplarCity>Singapur</exemplarCity>
+			</zone>
+			<zone type="America/El_Salvador">
+				<exemplarCity>Salvádor</exemplarCity>
+			</zone>
+			<zone type="Europe/Uzhgorod">
+				<exemplarCity>Užhorod</exemplarCity>
+			</zone>
+			<zone type="Europe/Kiev">
+				<exemplarCity>Kyjev</exemplarCity>
+			</zone>
+			<zone type="Europe/Zaporozhye">
+				<exemplarCity>Záporožie</exemplarCity>
+			</zone>
+			<zone type="America/Anchorage">
+				<exemplarCity>Aljaška</exemplarCity>
+			</zone>
+			<zone type="America/North_Dakota/New_Salem">
+				<exemplarCity>New Salem, Severná Dakota</exemplarCity>
+			</zone>
+			<zone type="Asia/Tashkent">
+				<exemplarCity>Taškent</exemplarCity>
+			</zone>
+			<zone type="America/St_Vincent">
+				<exemplarCity>St. Vincent</exemplarCity>
+			</zone>
+			<zone type="America/St_Thomas">
+				<exemplarCity>St. Thomas</exemplarCity>
+			</zone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>,</decimal>
+			<group> </group>
+		</symbols>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>#,##0.00 ¤</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="ADP">
+				<displayName>Andorská peseta</displayName>
+			</currency>
+			<currency type="AED">
+				<displayName>UAE dirham</displayName>
+			</currency>
+			<currency type="ALL">
+				<displayName>Albánsky lek</displayName>
+			</currency>
+			<currency type="AMD">
+				<displayName>Armenský dram</displayName>
+			</currency>
+			<currency type="ANG">
+				<displayName>Nizozemský Antilský guilder</displayName>
+			</currency>
+			<currency type="AOA">
+				<displayName>Angolská kwanza</displayName>
+			</currency>
+			<currency type="AOK">
+				<displayName>Angolská kwanza (1977-1990)</displayName>
+			</currency>
+			<currency type="AON">
+				<displayName>Angolská nová kwanza (1990-2000)</displayName>
+			</currency>
+			<currency type="AOR">
+				<displayName>Angolská kwanza Reajustado (1995-1999)</displayName>
+			</currency>
+			<currency type="ARA">
+				<displayName>Argentinský austral</displayName>
+			</currency>
+			<currency type="ARP">
+				<displayName>Argentinské peso (1983-1985)</displayName>
+			</currency>
+			<currency type="ARS">
+				<displayName>Argentinské peso</displayName>
+			</currency>
+			<currency type="ATS">
+				<displayName>Rakúsky šiling</displayName>
+			</currency>
+			<currency type="AUD">
+				<displayName>Austrálsky dolár</displayName>
+			</currency>
+			<currency type="AWG">
+				<displayName>Arubský guilder</displayName>
+			</currency>
+			<currency type="AZM">
+				<displayName>Azerbaidžanský manat</displayName>
+			</currency>
+			<currency type="BAD">
+				<displayName>Bosnianský dinár</displayName>
+			</currency>
+			<currency type="BAM">
+				<displayName>Bosnianský konvertibilná marka</displayName>
+			</currency>
+			<currency type="BBD">
+				<displayName>Barbadoský dolár</displayName>
+			</currency>
+			<currency type="BDT">
+				<displayName>Bangladéšska taka</displayName>
+			</currency>
+			<currency type="BEC">
+				<displayName>Belgický frank (konvertibilný)</displayName>
+			</currency>
+			<currency type="BEF">
+				<displayName>Belgický frank</displayName>
+			</currency>
+			<currency type="BEL">
+				<displayName>Belgický frank (finančný)</displayName>
+			</currency>
+			<currency type="BGL">
+				<displayName>Bulharský leva</displayName>
+			</currency>
+			<currency type="BGN">
+				<displayName>Bulharský leva nový</displayName>
+			</currency>
+			<currency type="BHD">
+				<displayName>Bahraiský dinár</displayName>
+			</currency>
+			<currency type="BIF">
+				<displayName>Burundský frank</displayName>
+			</currency>
+			<currency type="BMD">
+				<displayName>Bermudský dolár</displayName>
+			</currency>
+			<currency type="BND">
+				<displayName>Bruneiský dolár</displayName>
+			</currency>
+			<currency type="BOB">
+				<displayName>Bolívijské Boliviano</displayName>
+			</currency>
+			<currency type="BOP">
+				<displayName>Bolivíjske peso</displayName>
+			</currency>
+			<currency type="BOV">
+				<displayName>Bolivíjske mvdol</displayName>
+			</currency>
+			<currency type="BRB">
+				<displayName>Bolivíjske Cruzeiro Novo (1967-1986)</displayName>
+			</currency>
+			<currency type="BRC">
+				<displayName>Bolivíjske cruzado</displayName>
+			</currency>
+			<currency type="BRE">
+				<displayName>Bolivíjske cruzeiro (1990-1993)</displayName>
+			</currency>
+			<currency type="BRL">
+				<displayName>Bolivíjsky real</displayName>
+			</currency>
+			<currency type="BRN">
+				<displayName>Brazílske Cruzado Novo</displayName>
+			</currency>
+			<currency type="BRR">
+				<displayName>Brazílske cruzeiro</displayName>
+			</currency>
+			<currency type="BSD">
+				<displayName>Bahamský dolár</displayName>
+			</currency>
+			<currency type="BTN">
+				<displayName>Bhutansky ngultrum</displayName>
+			</currency>
+			<currency type="BUK">
+				<displayName>Burmese Kyat</displayName>
+			</currency>
+			<currency type="BWP">
+				<displayName>Botswanan Pula</displayName>
+			</currency>
+			<currency type="BYB">
+				<displayName>Belarussian nový rubeľ (1994-1999)</displayName>
+			</currency>
+			<currency type="BYR">
+				<displayName>Belarussian rubeľ</displayName>
+			</currency>
+			<currency type="BZD">
+				<displayName>Belize dolár</displayName>
+			</currency>
+			<currency type="CAD">
+				<displayName>Kanadský dolár</displayName>
+			</currency>
+			<currency type="CDF">
+				<displayName>Konžský frank Congolais</displayName>
+			</currency>
+			<currency type="CHF">
+				<displayName>Švajčiarský frank</displayName>
+			</currency>
+			<currency type="CLF">
+				<displayName>Čílske Unidades de Fomento</displayName>
+			</currency>
+			<currency type="CLP">
+				<displayName>Čílske peso</displayName>
+			</currency>
+			<currency type="CNY">
+				<displayName>Čínsky Yuan Renminbi</displayName>
+			</currency>
+			<currency type="COP">
+				<displayName>Colombijské peso</displayName>
+			</currency>
+			<currency type="CRC">
+				<displayName>Kostarikský colon</displayName>
+			</currency>
+			<currency type="CSK">
+				<displayName>Československá koruna</displayName>
+			</currency>
+			<currency type="CUP">
+				<displayName>Kubánske peso</displayName>
+			</currency>
+			<currency type="CVE">
+				<displayName>Cape Verde eskudo</displayName>
+			</currency>
+			<currency type="CYP">
+				<displayName>Cypruská libra</displayName>
+			</currency>
+			<currency type="CZK">
+				<displayName>Česká koruna</displayName>
+			</currency>
+			<currency type="DDM">
+				<displayName>Východonemecká marka</displayName>
+			</currency>
+			<currency type="DEM">
+				<displayName>Nemecká marka</displayName>
+			</currency>
+			<currency type="DJF">
+				<displayName>Džibutský frank</displayName>
+			</currency>
+			<currency type="DKK">
+				<displayName>Dánska krone</displayName>
+			</currency>
+			<currency type="DOP">
+				<displayName>Dominikánske peso</displayName>
+			</currency>
+			<currency type="DZD">
+				<displayName>Alžírsky dinár</displayName>
+			</currency>
+			<currency type="ECS">
+				<displayName>Ekuadorský sucre</displayName>
+			</currency>
+			<currency type="ECV">
+				<displayName>Ekuadorský Unidad de Valor Constante (UVC)</displayName>
+			</currency>
+			<currency type="EEK">
+				<displayName>Estónska kroon</displayName>
+			</currency>
+			<currency type="EGP">
+				<displayName>Egyptská libra</displayName>
+			</currency>
+			<currency type="ERN">
+				<displayName>Eritrejská nakfa</displayName>
+			</currency>
+			<currency type="ESP">
+				<displayName>Španielská peseta</displayName>
+			</currency>
+			<currency type="ETB">
+				<displayName>Ethiopský birr</displayName>
+			</currency>
+			<currency type="EUR">
+				<displayName>Euro</displayName>
+			</currency>
+			<currency type="FIM">
+				<displayName>Finská marka</displayName>
+			</currency>
+			<currency type="FJD">
+				<displayName>Fiji dolár</displayName>
+			</currency>
+			<currency type="FKP">
+				<displayName>Falklandská libra</displayName>
+			</currency>
+			<currency type="FRF">
+				<displayName>Francúzsky frank</displayName>
+			</currency>
+			<currency type="GBP">
+				<displayName>Britská libra</displayName>
+			</currency>
+			<currency type="GEK">
+				<displayName>Gruzínsky Kupon Larit</displayName>
+			</currency>
+			<currency type="GEL">
+				<displayName>Gruzínsky lari</displayName>
+			</currency>
+			<currency type="GHC">
+				<displayName>Ghanský cedi</displayName>
+			</currency>
+			<currency type="GIP">
+				<displayName>Gibraltarská libra</displayName>
+			</currency>
+			<currency type="GMD">
+				<displayName>Gambský dalasi</displayName>
+			</currency>
+			<currency type="GNF">
+				<displayName>Guinejský frank</displayName>
+			</currency>
+			<currency type="GNS">
+				<displayName>Guinejský syli</displayName>
+			</currency>
+			<currency type="GQE">
+				<displayName>Rovníková Guinea Ekwele Guineana</displayName>
+			</currency>
+			<currency type="GRD">
+				<displayName>Grécka drachma</displayName>
+			</currency>
+			<currency type="GTQ">
+				<displayName>Guatemalský quetzal</displayName>
+			</currency>
+			<currency type="GWE">
+				<displayName>Portugalská Guinea eskudo</displayName>
+			</currency>
+			<currency type="GWP">
+				<displayName>Guinea-Bissau peso</displayName>
+			</currency>
+			<currency type="GYD">
+				<displayName>Guyanský dolár</displayName>
+			</currency>
+			<currency type="HKD">
+				<displayName>Hong Kongský dolár</displayName>
+			</currency>
+			<currency type="HNL">
+				<displayName>Hoduraská lempira</displayName>
+			</currency>
+			<currency type="HRD">
+				<displayName>Chorvátsky dinár</displayName>
+			</currency>
+			<currency type="HRK">
+				<displayName>Chorvátska kuna</displayName>
+			</currency>
+			<currency type="HTG">
+				<displayName>Haitské gourde</displayName>
+			</currency>
+			<currency type="HUF">
+				<displayName>Maďarský forint</displayName>
+			</currency>
+			<currency type="IDR">
+				<displayName>Indonézska rupia</displayName>
+			</currency>
+			<currency type="IEP">
+				<displayName>Írska libra</displayName>
+			</currency>
+			<currency type="ILP">
+				<displayName>Izraelská libra</displayName>
+			</currency>
+			<currency type="ILS">
+				<displayName>Izraelský šekel</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>Indijská rupia</displayName>
+			</currency>
+			<currency type="IQD">
+				<displayName>Iracký dinár</displayName>
+			</currency>
+			<currency type="IRR">
+				<displayName>Iránsky rial</displayName>
+			</currency>
+			<currency type="ISK">
+				<displayName>Islandská krona</displayName>
+			</currency>
+			<currency type="ITL">
+				<displayName>Talianská lira</displayName>
+			</currency>
+			<currency type="JMD">
+				<displayName>Jamajský dolár</displayName>
+			</currency>
+			<currency type="JOD">
+				<displayName>Jordánsky dinár</displayName>
+			</currency>
+			<currency type="JPY">
+				<displayName>Japonský yen</displayName>
+			</currency>
+			<currency type="KES">
+				<displayName>Keňský šiling</displayName>
+			</currency>
+			<currency type="KGS">
+				<displayName>Kyrgyský som</displayName>
+			</currency>
+			<currency type="KHR">
+				<displayName>Kambodžský riel</displayName>
+			</currency>
+			<currency type="KMF">
+				<displayName>Comoro frank</displayName>
+			</currency>
+			<currency type="KPW">
+				<displayName>Severokórejský won</displayName>
+			</currency>
+			<currency type="KRW">
+				<displayName>Juhokórejský won</displayName>
+			</currency>
+			<currency type="KWD">
+				<displayName>Kuvaitský dinár</displayName>
+			</currency>
+			<currency type="KYD">
+				<displayName>Kajmanský dolár</displayName>
+			</currency>
+			<currency type="KZT">
+				<displayName>Kazažský tenge</displayName>
+			</currency>
+			<currency type="LAK">
+				<displayName>Laoský kip</displayName>
+			</currency>
+			<currency type="LBP">
+				<displayName>Libanonská libra</displayName>
+			</currency>
+			<currency type="LKR">
+				<displayName>Šrilanská rupia</displayName>
+			</currency>
+			<currency type="LRD">
+				<displayName>Libérský dolár</displayName>
+			</currency>
+			<currency type="LSL">
+				<displayName>Lesothský loti</displayName>
+			</currency>
+			<currency type="LTL">
+				<displayName>Litevská lita</displayName>
+			</currency>
+			<currency type="LTT">
+				<displayName>Litevský talonas</displayName>
+			</currency>
+			<currency type="LUF">
+				<displayName>Luxemburský frank</displayName>
+			</currency>
+			<currency type="LVL">
+				<displayName>Lotyšský lats</displayName>
+			</currency>
+			<currency type="LVR">
+				<displayName>Lotyšský rubeľ</displayName>
+			</currency>
+			<currency type="LYD">
+				<displayName>Libyjský dinár</displayName>
+			</currency>
+			<currency type="MAD">
+				<displayName>Marocký dirham</displayName>
+			</currency>
+			<currency type="MAF">
+				<displayName>Marocký frank</displayName>
+			</currency>
+			<currency type="MDL">
+				<displayName>Moldavský leu</displayName>
+			</currency>
+			<currency type="MGA">
+				<displayName>Madagaskarský ariary</displayName>
+			</currency>
+			<currency type="MGF">
+				<displayName>Madagaskarský frank</displayName>
+			</currency>
+			<currency type="MKD">
+				<displayName>Macedónsky denár</displayName>
+			</currency>
+			<currency type="MLF">
+				<displayName>Malský frank</displayName>
+			</currency>
+			<currency type="MMK">
+				<displayName>Myanmarský kyat</displayName>
+			</currency>
+			<currency type="MNT">
+				<displayName>Mongolský tugrik</displayName>
+			</currency>
+			<currency type="MOP">
+				<displayName>Macao Pataca</displayName>
+			</currency>
+			<currency type="MRO">
+				<displayName>Mauritania Ouguiya</displayName>
+			</currency>
+			<currency type="MTL">
+				<displayName>Maltská lira</displayName>
+			</currency>
+			<currency type="MTP">
+				<displayName>Maltská libra</displayName>
+			</currency>
+			<currency type="MUR">
+				<displayName>Mauritská rupia</displayName>
+			</currency>
+			<currency type="MVR">
+				<displayName>Maldivská rufiyaa</displayName>
+			</currency>
+			<currency type="MWK">
+				<displayName>Malavská kwacha</displayName>
+			</currency>
+			<currency type="MXN">
+				<displayName>Mexické peso</displayName>
+			</currency>
+			<currency type="MXP">
+				<displayName>Mexické striborné peso (1861-1992)</displayName>
+			</currency>
+			<currency type="MXV">
+				<displayName>Mexické Unidad de Inversion (UDI)</displayName>
+			</currency>
+			<currency type="MYR">
+				<displayName>Malajský ringgit</displayName>
+			</currency>
+			<currency type="MZE">
+				<displayName>Mozambijské eskudo</displayName>
+			</currency>
+			<currency type="MZM">
+				<displayName>Mozambijské metical</displayName>
+			</currency>
+			<currency type="NAD">
+				<displayName>Namibský dolár</displayName>
+			</currency>
+			<currency type="NGN">
+				<displayName>Nigerská naira</displayName>
+			</currency>
+			<currency type="NIC">
+				<displayName>Nikaragujská cordoba</displayName>
+			</currency>
+			<currency type="NIO">
+				<displayName>Nikaragujská Cordoba Oro</displayName>
+			</currency>
+			<currency type="NLG">
+				<displayName>Nizozemský guilder</displayName>
+			</currency>
+			<currency type="NOK">
+				<displayName>Nórksy krone</displayName>
+			</currency>
+			<currency type="NPR">
+				<displayName>Nepálska rupia</displayName>
+			</currency>
+			<currency type="NZD">
+				<displayName>Novozélandský dolár</displayName>
+			</currency>
+			<currency type="OMR">
+				<displayName>Ománský rial</displayName>
+			</currency>
+			<currency type="PAB">
+				<displayName>Panamská balboa</displayName>
+			</currency>
+			<currency type="PEI">
+				<displayName>Peruvský inti</displayName>
+			</currency>
+			<currency type="PEN">
+				<displayName>Peruvský sol Nuevo</displayName>
+			</currency>
+			<currency type="PES">
+				<displayName>Peruvský sol</displayName>
+			</currency>
+			<currency type="PGK">
+				<displayName>Papua Nová Guinea kina</displayName>
+			</currency>
+			<currency type="PHP">
+				<displayName>Filipínske peso</displayName>
+			</currency>
+			<currency type="PKR">
+				<displayName>Pakistanská rupia</displayName>
+			</currency>
+			<currency type="PLN">
+				<displayName>Polský zloty</displayName>
+			</currency>
+			<currency type="PLZ">
+				<displayName>Polský zloty (1950-1995)</displayName>
+			</currency>
+			<currency type="PTE">
+				<displayName>Portugalské eskudo</displayName>
+			</currency>
+			<currency type="PYG">
+				<displayName>Paraguayské guarani</displayName>
+			</currency>
+			<currency type="QAR">
+				<displayName>Qatarský rial</displayName>
+			</currency>
+			<currency type="ROL">
+				<displayName>Rumunský leu</displayName>
+			</currency>
+			<currency type="RON">
+				<displayName>Rumunský Lei</displayName>
+			</currency>
+			<currency type="RSD">
+				<displayName>Srbský dinár</displayName>
+			</currency>
+			<currency type="RUB">
+				<displayName>Ruský rubeľ</displayName>
+			</currency>
+			<currency type="RUR">
+				<displayName>Ruský rubeľ (1991-1998)</displayName>
+			</currency>
+			<currency type="RWF">
+				<displayName>Rwandský frank</displayName>
+			</currency>
+			<currency type="SAR">
+				<displayName>Saudský riyal</displayName>
+			</currency>
+			<currency type="SBD">
+				<displayName>Solomon Islands dolár</displayName>
+			</currency>
+			<currency type="SCR">
+				<displayName>Sejšelská rupia</displayName>
+			</currency>
+			<currency type="SDD">
+				<displayName>Sudánsky dinár</displayName>
+			</currency>
+			<currency type="SDP">
+				<displayName>Sudánska libra</displayName>
+			</currency>
+			<currency type="SEK">
+				<displayName>Švédska krona</displayName>
+			</currency>
+			<currency type="SGD">
+				<displayName>Singapúrsky dolár</displayName>
+			</currency>
+			<currency type="SHP">
+				<displayName>Libra</displayName>
+			</currency>
+			<currency type="SIT">
+				<displayName>Slovinský Tolar</displayName>
+			</currency>
+			<currency type="SKK">
+				<displayName>Slovenská koruna</displayName>
+			</currency>
+			<currency type="SLL">
+				<displayName>Sierra Leone Leone</displayName>
+			</currency>
+			<currency type="SOS">
+				<displayName>Somálsky šiling</displayName>
+			</currency>
+			<currency type="SRG">
+				<displayName>Surinamský guilder</displayName>
+			</currency>
+			<currency type="STD">
+				<displayName>Sao Tome a Principe dobra</displayName>
+			</currency>
+			<currency type="SUR">
+				<displayName>Sovietský rubeľ</displayName>
+			</currency>
+			<currency type="SVC">
+				<displayName>El Salvadorský colon</displayName>
+			</currency>
+			<currency type="SYP">
+				<displayName>Syrská libra</displayName>
+			</currency>
+			<currency type="SZL">
+				<displayName>Swaziland lilangeni</displayName>
+			</currency>
+			<currency type="THB">
+				<displayName>Thajský bát</displayName>
+			</currency>
+			<currency type="TJR">
+				<displayName>Tadžikistanský rubeľ</displayName>
+			</currency>
+			<currency type="TJS">
+				<displayName>Tadžikistanský somoni</displayName>
+			</currency>
+			<currency type="TMM">
+				<displayName>Turkménsky manat</displayName>
+			</currency>
+			<currency type="TND">
+				<displayName>Tuniský dinár</displayName>
+			</currency>
+			<currency type="TOP">
+				<displayName>Tonga Paʻanga</displayName>
+			</currency>
+			<currency type="TPE">
+				<displayName>Timorské eskudo</displayName>
+			</currency>
+			<currency type="TRL">
+				<displayName>Turecká lira</displayName>
+			</currency>
+			<currency type="TRY">
+				<displayName>Nová turecká líra</displayName>
+			</currency>
+			<currency type="TTD">
+				<displayName>Trinidad a Tobago dolár</displayName>
+			</currency>
+			<currency type="TWD">
+				<displayName>Taiwanský nový dolár</displayName>
+			</currency>
+			<currency type="TZS">
+				<displayName>Tanzanský šiling</displayName>
+			</currency>
+			<currency type="UAH">
+				<displayName>Ukrainská hrivna</displayName>
+			</currency>
+			<currency type="UAK">
+				<displayName>Ukrainský karbovanetz</displayName>
+			</currency>
+			<currency type="UGS">
+				<displayName>Ugandan šiling (1966-1987)</displayName>
+			</currency>
+			<currency type="UGX">
+				<displayName>Ugandský šiling</displayName>
+			</currency>
+			<currency type="USD">
+				<displayName>US dolár</displayName>
+			</currency>
+			<currency type="USN">
+				<displayName>US dolár (Next day)</displayName>
+			</currency>
+			<currency type="USS">
+				<displayName>US dolár (Same day)</displayName>
+			</currency>
+			<currency type="UYP">
+				<displayName>Uruguajské peso (1975-1993)</displayName>
+			</currency>
+			<currency type="UYU">
+				<displayName>Uruguajské peso Uruguayo</displayName>
+			</currency>
+			<currency type="UZS">
+				<displayName>Uzbekistanský sum</displayName>
+			</currency>
+			<currency type="VEB">
+				<displayName>Venezuelský bolivar</displayName>
+			</currency>
+			<currency type="VND">
+				<displayName>Vietnamský dong</displayName>
+			</currency>
+			<currency type="VUV">
+				<displayName>Vanuatu vatu</displayName>
+			</currency>
+			<currency type="WST">
+				<displayName>Západná Samoa tala</displayName>
+			</currency>
+			<currency type="XAF">
+				<displayName>CFA frank BEAC</displayName>
+			</currency>
+			<currency type="XAU">
+				<displayName>Zlato</displayName>
+			</currency>
+			<currency type="XCD">
+				<displayName>East Caribbean dolár</displayName>
+			</currency>
+			<currency type="XDR">
+				<displayName>Špeciálne práva čerpania</displayName>
+			</currency>
+			<currency type="XFO">
+				<displayName>Francúzsky zlatý frank</displayName>
+			</currency>
+			<currency type="XFU">
+				<displayName>Francúzsky UIC-frank</displayName>
+			</currency>
+			<currency type="XOF">
+				<displayName>CFA frank BCEAO</displayName>
+			</currency>
+			<currency type="XPF">
+				<displayName>CFP frank</displayName>
+			</currency>
+			<currency type="YDD">
+				<displayName>Jemenský dinár</displayName>
+			</currency>
+			<currency type="YER">
+				<displayName>Jemenský rial</displayName>
+			</currency>
+			<currency type="YUD">
+				<displayName>Juhoslávsky dinár [YUD]</displayName>
+			</currency>
+			<currency type="YUM">
+				<displayName>Juhoslávsky Noviy dinár</displayName>
+			</currency>
+			<currency type="YUN">
+				<displayName>Juhoslávsky dinár</displayName>
+			</currency>
+			<currency type="ZAL">
+				<displayName>Juhoafrický rand (financial)</displayName>
+			</currency>
+			<currency type="ZAR">
+				<displayName>Juhoafrický rand</displayName>
+			</currency>
+			<currency type="ZMK">
+				<displayName>Zambská kwacha</displayName>
+			</currency>
+			<currency type="ZRN">
+				<displayName>Zairský nový zaire</displayName>
+			</currency>
+			<currency type="ZRZ">
+				<displayName>Zairský Zaire</displayName>
+			</currency>
+			<currency type="ZWD">
+				<displayName>Zimbabský dolár</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<units>
+		<unit type="day">
+			<unitPattern count="few">{0} dni</unitPattern>
+			<unitPattern count="one">{0} deň</unitPattern>
+			<unitPattern count="other">{0} dní</unitPattern>
+		</unit>
+		<unit type="hour">
+			<unitPattern count="few">{0} hodiny</unitPattern>
+			<unitPattern count="one">{0} hodina</unitPattern>
+			<unitPattern count="other">{0} hodín</unitPattern>
+		</unit>
+		<unit type="minute">
+			<unitPattern count="few">{0} minúty</unitPattern>
+			<unitPattern count="one">{0} minúta</unitPattern>
+			<unitPattern count="other">{0} minút</unitPattern>
+		</unit>
+		<unit type="month">
+			<unitPattern count="few">{0} mesiace</unitPattern>
+			<unitPattern count="one">{0} mesiac</unitPattern>
+			<unitPattern count="other">{0} mesiacov</unitPattern>
+		</unit>
+		<unit type="second">
+			<unitPattern count="few">{0} sekundy</unitPattern>
+			<unitPattern count="one">{0} sekunda</unitPattern>
+			<unitPattern count="other">{0} sekúnd</unitPattern>
+		</unit>
+		<unit type="week">
+			<unitPattern count="few">{0} týždne</unitPattern>
+			<unitPattern count="one">{0} týždeň</unitPattern>
+			<unitPattern count="other">{0} týždňov</unitPattern>
+		</unit>
+		<unit type="year">
+			<unitPattern count="few">{0} roky</unitPattern>
+			<unitPattern count="one">{0} rok</unitPattern>
+			<unitPattern count="other">{0} rokov</unitPattern>
+		</unit>
+	</units>
+	<posix>
+		<messages>
+			<yesstr>ano:a</yesstr>
+			<nostr>nie:n</nostr>
+		</messages>
+	</posix>
+</ldml>
 

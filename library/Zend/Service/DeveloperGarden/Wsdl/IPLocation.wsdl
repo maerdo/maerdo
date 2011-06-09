@@ -1,84 +1,84 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>
-php<wsdlphp:definitionsphp xmlnsphp:schemaphp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/schemaphp/php"php xmlnsphp:soapphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp/php"php xmlnsphp:spphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp"php xmlnsphp:tnsphp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/wsdlphp/php"php xmlnsphp:wsdlphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/php"php xmlnsphp:wspphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php4php/php0php9php/policyphp"php xmlnsphp:wsuphp=php"httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-wssecurityphp-utilityphp-php1php.php0php.xsdphp"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php namephp=php"iplocationphp"php targetNamespacephp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/wsdlphp/php"php>
-php	php<wsdlphp:documentationphp>
-IPphp Locationphp <php/wsdlphp:documentationphp>
-php	php<wsdlphp:typesphp>
-php	php	php<xsdphp:schemaphp targetNamespacephp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/wsdlphp/php"php>
-php	php	php	php<xsdphp:importphp namespacephp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/schemaphp/php"php schemaLocationphp=php"IPLocationphp.xsdphp"php/php>
-php	php	<php/xsdphp:schemaphp>
-php	<php/wsdlphp:typesphp>
-php	php<wsdlphp:messagephp namephp=php"locateIPRequestphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:LocateIPRequestphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"locateIPResponsephp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:LocateIPResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:portTypephp namephp=php"IPLocationPortTypephp"php>
-php	php	php<wsdlphp:operationphp namephp=php"locateIPphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:locateIPRequestphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:locateIPResponsephp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:portTypephp>
-php	php<wsdlphp:bindingphp namephp=php"IPLocationHttpBindingphp"php typephp=php"tnsphp:IPLocationPortTypephp"php>
-php	php	php<soapphp:bindingphp stylephp=php"documentphp"php transportphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/httpphp"php/php>
-php	php	php<wspphp:PolicyReferencephp URIphp=php"php#TransportBindingPolicyphp"php/php>
-php	php	php<wsdlphp:operationphp namephp=php"locateIPphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/iplocationphp.developerphp.telekomphp.comphp/locateIPphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:bindingphp>
-php	php<wsdlphp:servicephp namephp=php"IPLocationphp"php>
-php	php	php<wsdlphp:portphp namephp=php"IPLocationphp"php bindingphp=php"tnsphp:IPLocationHttpBindingphp"php>
-php	php	php	php<soapphp:addressphp locationphp=php"httpsphp:php/php/gatewayphp.developerphp.telekomphp.comphp/pphp3gwphp-modphp-odgphp-iplocationphp/servicesphp/IPLocationphp"php/php>
-php	php	<php/wsdlphp:portphp>
-php	<php/wsdlphp:servicephp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"TransportBindingPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<wsawsphp:UsingAddressingphp xmlnsphp:wsawsphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php6php/php0php5php/addressingphp/wsdlphp"php/php>
-php	php	php	php	php<spphp:TransportBindingphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:TransportTokenphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:HttpsTokenphp RequireClientCertificatephp=php"falsephp"php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:TransportTokenphp>
-php	php	php	php	php	php	php<spphp:Layoutphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Strictphp/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:Layoutphp>
-php	php	php	php	php	php	php<spphp:IncludeTimestampphp/php>
-php	php	php	php	php	php	php<spphp:AlgorithmSuitephp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Basicphp2php5php6php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:AlgorithmSuitephp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:TransportBindingphp>
-php	php	php	php	php<spphp:Wssphp1php1php/php>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"STSTokenPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<spphp:SupportingTokensphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:SamlTokenphp spphp:IncludeTokenphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp/IncludeTokenphp/AlwaysToRecipientphp"php>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:WssSamlVphp2php0Tokenphp1php1php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:SamlTokenphp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:SupportingTokensphp>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-<php/wsdlphp:definitionsphp>
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:schema="http://iplocation.developer.telekom.com/schema/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:tns="http://iplocation.developer.telekom.com/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="iplocation" targetNamespace="http://iplocation.developer.telekom.com/wsdl/">
+	<wsdl:documentation>
+IP Location </wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://iplocation.developer.telekom.com/wsdl/">
+			<xsd:import namespace="http://iplocation.developer.telekom.com/schema/" schemaLocation="IPLocation.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="locateIPRequest">
+		<wsdl:part name="parameters" element="schema:LocateIPRequest"/>
+	</wsdl:message>
+	<wsdl:message name="locateIPResponse">
+		<wsdl:part name="parameters" element="schema:LocateIPResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="IPLocationPortType">
+		<wsdl:operation name="locateIP">
+			<wsdl:input message="tns:locateIPRequest"/>
+			<wsdl:output message="tns:locateIPResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="IPLocationHttpBinding" type="tns:IPLocationPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsp:PolicyReference URI="#TransportBindingPolicy"/>
+		<wsdl:operation name="locateIP">
+			<soap:operation soapAction="http://iplocation.developer.telekom.com/locateIP"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="IPLocation">
+		<wsdl:port name="IPLocation" binding="tns:IPLocationHttpBinding">
+			<soap:address location="https://gateway.developer.telekom.com/p3gw-mod-odg-iplocation/services/IPLocation"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsp:Policy wsu:Id="TransportBindingPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsaws:UsingAddressing xmlns:wsaws="http://www.w3.org/2006/05/addressing/wsdl"/>
+				<sp:TransportBinding>
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken RequireClientCertificate="false"/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+						<sp:IncludeTimestamp/>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<sp:Wss11/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsp:Policy wsu:Id="STSTokenPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:SupportingTokens>
+					<wsp:Policy>
+						<sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssSamlV20Token11/>
+							</wsp:Policy>
+						</sp:SamlToken>
+					</wsp:Policy>
+				</sp:SupportingTokens>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+</wsdl:definitions>

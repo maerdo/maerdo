@@ -1,4 +1,4 @@
-<?php
+<?
 class Maerdo_ToolsController extends Zend_Controller_Action {
 
     public function init() {    		

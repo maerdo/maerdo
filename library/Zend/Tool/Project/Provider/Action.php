@@ -1,214 +1,214 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Actionphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Action.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Providerphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Provider_Abstract
+ */
+require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendable
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Providerphp/Pretendablephp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Provider_Pretendable
+ */
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Providerphp_Action
-php php php php extendsphp Zendphp_Toolphp_Projectphp_Providerphp_Abstract
-php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Providerphp_Pretendable
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Provider_Action
+    extends Zend_Tool_Project_Provider_Abstract
+    implements Zend_Tool_Framework_Provider_Pretendable
+{
 
-php php php php php/php*php*
-php php php php php php*php createResourcephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp php$profile
-php php php php php php*php php@paramphp stringphp php$actionName
-php php php php php php*php php@paramphp stringphp php$controllerName
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp staticphp functionphp createResourcephp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$actionNamephp,php php$controllerNamephp,php php$moduleNamephp php=php nullphp)
-php php php php php{
+    /**
+     * createResource()
+     *
+     * @param Zend_Tool_Project_Profile $profile
+     * @param string $actionName
+     * @param string $controllerName
+     * @param string $moduleName
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public static function createResource(Zend_Tool_Project_Profile $profile, $actionName, $controllerName, $moduleName = null)
+    {
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$actionNamephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Zendphp_Toolphp_Projectphp_Providerphp_Actionphp:php:createResourcephp(php)php expectsphp php\php"actionNamephp\php"php isphp thephp namephp ofphp aphp actionphp resourcephp tophp createphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($actionName)) {
+            throw new Zend_Tool_Project_Provider_Exception('Zend_Tool_Project_Provider_Action::createResource() expects \"actionName\" is the name of a action resource to create.');
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$controllerNamephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Zendphp_Toolphp_Projectphp_Providerphp_Actionphp:php:createResourcephp(php)php expectsphp php\php"controllerNamephp\php"php isphp thephp namephp ofphp aphp controllerphp resourcephp tophp createphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($controllerName)) {
+            throw new Zend_Tool_Project_Provider_Exception('Zend_Tool_Project_Provider_Action::createResource() expects \"controllerName\" is the name of a controller resource to create.');
+        }
 
-php php php php php php php php php$controllerFilephp php=php selfphp:php:php_getControllerFileResourcephp(php$profilephp,php php$controllerNamephp,php php$moduleNamephp)php;
+        $controllerFile = self::_getControllerFileResource($profile, $controllerName, $moduleName);
 
-php php php php php php php php php$actionMethodphp php=php php$controllerFilephp-php>createResourcephp(php'ActionMethodphp'php,php arrayphp(php'actionNamephp'php php=php>php php$actionNamephp)php)php;
+        $actionMethod = $controllerFile->createResource('ActionMethod', array('actionName' => $actionName));
 
-php php php php php php php php returnphp php$actionMethodphp;
-php php php php php}
+        return $actionMethod;
+    }
 
-php php php php php/php*php*
-php php php php php php*php hasResourcephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp php$profile
-php php php php php php*php php@paramphp stringphp php$actionName
-php php php php php php*php php@paramphp stringphp php$controllerName
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php publicphp staticphp functionphp hasResourcephp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$actionNamephp,php php$controllerNamephp,php php$moduleNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_stringphp(php$actionNamephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Zendphp_Toolphp_Projectphp_Providerphp_Actionphp:php:createResourcephp(php)php expectsphp php\php"actionNamephp\php"php isphp thephp namephp ofphp aphp actionphp resourcephp tophp createphp.php'php)php;
-php php php php php php php php php}
+    /**
+     * hasResource()
+     *
+     * @param Zend_Tool_Project_Profile $profile
+     * @param string $actionName
+     * @param string $controllerName
+     * @param string $moduleName
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    public static function hasResource(Zend_Tool_Project_Profile $profile, $actionName, $controllerName, $moduleName = null)
+    {
+        if (!is_string($actionName)) {
+            throw new Zend_Tool_Project_Provider_Exception('Zend_Tool_Project_Provider_Action::createResource() expects \"actionName\" is the name of a action resource to create.');
+        }
 
-php php php php php php php php ifphp php(php!isphp_stringphp(php$controllerNamephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Zendphp_Toolphp_Projectphp_Providerphp_Actionphp:php:createResourcephp(php)php expectsphp php\php"controllerNamephp\php"php isphp thephp namephp ofphp aphp controllerphp resourcephp tophp createphp.php'php)php;
-php php php php php php php php php}
+        if (!is_string($controllerName)) {
+            throw new Zend_Tool_Project_Provider_Exception('Zend_Tool_Project_Provider_Action::createResource() expects \"controllerName\" is the name of a controller resource to create.');
+        }
 
-php php php php php php php php php$controllerFilephp php=php selfphp:php:php_getControllerFileResourcephp(php$profilephp,php php$controllerNamephp,php php$moduleNamephp)php;
+        $controllerFile = self::_getControllerFileResource($profile, $controllerName, $moduleName);
 
-php php php php php php php php ifphp php(php$controllerFilephp php=php=php nullphp)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Controllerphp php'php php.php php$controllerNamephp php.php php'php wasphp notphp foundphp.php'php)php;
-php php php php php php php php php}
+        if ($controllerFile == null) {
+            throw new Zend_Tool_Project_Provider_Exception('Controller ' . $controllerName . ' was not found.');
+        }
 
-php php php php php php php php returnphp php(php(php$controllerFilephp-php>searchphp(arrayphp(php'actionMethodphp'php php=php>php arrayphp(php'actionNamephp'php php=php>php php$actionNamephp)php)php)php)php instanceofphp Zendphp_Toolphp_Projectphp_Profilephp_Resourcephp)php;
-php php php php php}
+        return (($controllerFile->search(array('actionMethod' => array('actionName' => $actionName)))) instanceof Zend_Tool_Project_Profile_Resource);
+    }
 
-php php php php php/php*php*
-php php php php php php*php php_getControllerFileResourcephp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Profilephp php$profile
-php php php php php php*php php@paramphp stringphp php$controllerName
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@returnphp Zendphp_Toolphp_Projectphp_Profilephp_Resource
-php php php php php php*php/
-php php php php protectedphp staticphp functionphp php_getControllerFileResourcephp(Zendphp_Toolphp_Projectphp_Profilephp php$profilephp,php php$controllerNamephp,php php$moduleNamephp php=php nullphp)
-php php php php php{
-php php php php php php php php php$profileSearchParamsphp php=php arrayphp(php)php;
+    /**
+     * _getControllerFileResource()
+     *
+     * @param Zend_Tool_Project_Profile $profile
+     * @param string $controllerName
+     * @param string $moduleName
+     * @return Zend_Tool_Project_Profile_Resource
+     */
+    protected static function _getControllerFileResource(Zend_Tool_Project_Profile $profile, $controllerName, $moduleName = null)
+    {
+        $profileSearchParams = array();
 
-php php php php php php php php ifphp php(php$moduleNamephp php!php=php nullphp php&php&php isphp_stringphp(php$moduleNamephp)php)php php{
-php php php php php php php php php php php php php$profileSearchParamsphp php=php arrayphp(php'modulesDirectoryphp'php,php php'moduleDirectoryphp'php php=php>php arrayphp(php'moduleNamephp'php php=php>php php$moduleNamephp)php)php;
-php php php php php php php php php}
+        if ($moduleName != null && is_string($moduleName)) {
+            $profileSearchParams = array('modulesDirectory', 'moduleDirectory' => array('moduleName' => $moduleName));
+        }
 
-php php php php php php php php php$profileSearchParamsphp[php]php php=php php'controllersDirectoryphp'php;
-php php php php php php php php php$profileSearchParamsphp[php'controllerFilephp'php]php php=php arrayphp(php'controllerNamephp'php php=php>php php$controllerNamephp)php;
+        $profileSearchParams[] = 'controllersDirectory';
+        $profileSearchParams['controllerFile'] = array('controllerName' => $controllerName);
 
-php php php php php php php php returnphp php$profilephp-php>searchphp(php$profileSearchParamsphp)php;
-php php php php php}
+        return $profile->search($profileSearchParams);
+    }
 
-php php php php php/php*php*
-php php php php php php*php createphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$namephp php php php php php php php php php php Actionphp namephp forphp controllerphp,php inphp camelCasephp formatphp.
-php php php php php php*php php@paramphp stringphp php$controllerNamephp Controllerphp namephp actionphp shouldphp bephp appliedphp tophp.
-php php php php php php*php php@paramphp boolphp php$viewIncludedphp php php php php Whetherphp thephp viewphp shouldphp thephp viewphp bephp includedphp.
-php php php php php php*php php@paramphp stringphp php$modulephp php php php php php php php php Modulephp namephp actionphp shouldphp bephp appliedphp tophp.
-php php php php php php*php/
-php php php php publicphp functionphp createphp(php$namephp,php php$controllerNamephp php=php php'Indexphp'php,php php$viewIncludedphp php=php truephp,php php$modulephp php=php nullphp)
-php php php php php{
+    /**
+     * create()
+     *
+     * @param string $name           Action name for controller, in camelCase format.
+     * @param string $controllerName Controller name action should be applied to.
+     * @param bool $viewIncluded     Whether the view should the view be included.
+     * @param string $module         Module name action should be applied to.
+     */
+    public function create($name, $controllerName = 'Index', $viewIncluded = true, $module = null)
+    {
 
-php php php php php php php php php$thisphp-php>php_loadProfilephp(php)php;
+        $this->_loadProfile();
 
-php php php php php php php php php/php/php Checkphp thatphp therephp isphp notphp aphp dashphp orphp underscorephp,php returnphp ifphp doesntphp matchphp regex
-php php php php php php php php ifphp php(pregphp_matchphp(php'php#php[php_php-php]php#php'php,php php$namephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Actionphp namesphp shouldphp bephp camelphp casedphp.php'php)php;
-php php php php php php php php php}
+        // Check that there is not a dash or underscore, return if doesnt match regex
+        if (preg_match('#[_-]#', $name)) {
+            throw new Zend_Tool_Project_Provider_Exception('Action names should be camel cased.');
+        }
 
-php php php php php php php php php$originalNamephp php=php php$namephp;
-php php php php php php php php php$originalControllerNamephp php=php php$controllerNamephp;
+        $originalName = $name;
+        $originalControllerName = $controllerName;
 
-php php php php php php php php php/php/php ensurephp itphp isphp camelCasephp php(lowerphp firstphp letterphp)
-php php php php php php php php php$namephp php=php strtolowerphp(substrphp(php$namephp,php php0php,php php1php)php)php php.php substrphp(php$namephp,php php1php)php;
+        // ensure it is camelCase (lower first letter)
+        $name = strtolower(substr($name, 0, 1)) . substr($name, 1);
 
-php php php php php php php php php/php/php ensurephp controllerphp isphp MixedCase
-php php php php php php php php php$controllerNamephp php=php ucfirstphp(php$controllerNamephp)php;
+        // ensure controller is MixedCase
+        $controllerName = ucfirst($controllerName);
 
-php php php php php php php php ifphp php(selfphp:php:hasResourcephp(php$thisphp-php>php_loadedProfilephp,php php$namephp,php php$controllerNamephp,php php$modulephp)php)php php{
-php php php php php php php php php php php php throwphp newphp Zendphp_Toolphp_Projectphp_Providerphp_Exceptionphp(php'Thisphp controllerphp php(php'php php.php php$controllerNamephp php.php php'php)php alreadyphp hasphp anphp actionphp namedphp php(php'php php.php php$namephp php.php php'php)php'php)php;
-php php php php php php php php php}
+        if (self::hasResource($this->_loadedProfile, $name, $controllerName, $module)) {
+            throw new Zend_Tool_Project_Provider_Exception('This controller (' . $controllerName . ') already has an action named (' . $name . ')');
+        }
 
-php php php php php php php php php$actionMethodphp php=php selfphp:php:createResourcephp(php$thisphp-php>php_loadedProfilephp,php php$namephp,php php$controllerNamephp,php php$modulephp)php;
+        $actionMethod = self::createResource($this->_loadedProfile, $name, $controllerName, $module);
 
-php php php php php php php php php/php/php getphp requestphp/responsephp object
-php php php php php php php php php$requestphp php=php php$thisphp-php>php_registryphp-php>getRequestphp(php)php;
-php php php php php php php php php$responsephp php=php php$thisphp-php>php_registryphp-php>getResponsephp(php)php;
+        // get request/response object
+        $request = $this->_registry->getRequest();
+        $response = $this->_registry->getResponse();
 
-php php php php php php php php php/php/php alertphp thephp userphp aboutphp inlinephp convertedphp names
-php php php php php php php php php$tensephp php=php php(php(php$requestphp-php>isPretendphp(php)php)php php?php php'wouldphp bephp'php php:php php'isphp'php)php;
+        // alert the user about inline converted names
+        $tense = (($request->isPretend()) ? 'would be' : 'is');
 
-php php php php php php php php ifphp php(php$namephp php!php=php=php php$originalNamephp)php php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php'Notephp:php Thephp canonicalphp actionphp namephp thatphp php'php php.php php$tense
-php php php php php php php php php php php php php php php php php php php php php.php php'php usedphp withphp otherphp providersphp isphp php"php'php php.php php$namephp php.php php'php"php;php'
-php php php php php php php php php php php php php php php php php php php php php.php php'php notphp php"php'php php.php php$originalNamephp php.php php'php"php asphp suppliedphp'php,
-php php php php php php php php php php php php php php php php arrayphp(php'colorphp'php php=php>php arrayphp(php'yellowphp'php)php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        if ($name !== $originalName) {
+            $response->appendContent(
+                'Note: The canonical action name that ' . $tense
+                    . ' used with other providers is "' . $name . '";'
+                    . ' not "' . $originalName . '" as supplied',
+                array('color' => array('yellow'))
+                );
+        }
 
-php php php php php php php php ifphp php(php$controllerNamephp php!php=php=php php$originalControllerNamephp)php php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php'Notephp:php Thephp canonicalphp controllerphp namephp thatphp php'php php.php php$tense
-php php php php php php php php php php php php php php php php php php php php php.php php'php usedphp withphp otherphp providersphp isphp php"php'php php.php php$controllerNamephp php.php php'php"php;php'
-php php php php php php php php php php php php php php php php php php php php php.php php'php notphp php"php'php php.php php$originalControllerNamephp php.php php'php"php asphp suppliedphp'php,
-php php php php php php php php php php php php php php php php arrayphp(php'colorphp'php php=php>php arrayphp(php'yellowphp'php)php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}
+        if ($controllerName !== $originalControllerName) {
+            $response->appendContent(
+                'Note: The canonical controller name that ' . $tense
+                    . ' used with other providers is "' . $controllerName . '";'
+                    . ' not "' . $originalControllerName . '" as supplied',
+                array('color' => array('yellow'))
+                );
+        }
 
-php php php php php php php php unsetphp(php$tensephp)php;
+        unset($tense);
 
-php php php php php php php php ifphp php(php$requestphp-php>isPretendphp(php)php)php php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php'Wouldphp createphp anphp actionphp namedphp php'php php.php php$namephp php.
-php php php php php php php php php php php php php php php php php'php insidephp controllerphp atphp php'php php.php php$actionMethodphp-php>getParentResourcephp(php)php-php>getContextphp(php)php-php>getPathphp(php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php'Creatingphp anphp actionphp namedphp php'php php.php php$namephp php.
-php php php php php php php php php php php php php php php php php'php insidephp controllerphp atphp php'php php.php php$actionMethodphp-php>getParentResourcephp(php)php-php>getContextphp(php)php-php>getPathphp(php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php$actionMethodphp-php>createphp(php)php;
-php php php php php php php php php php php php php$thisphp-php>php_storeProfilephp(php)php;
-php php php php php php php php php}
+        if ($request->isPretend()) {
+            $response->appendContent(
+                'Would create an action named ' . $name .
+                ' inside controller at ' . $actionMethod->getParentResource()->getContext()->getPath()
+                );
+        } else {
+            $response->appendContent(
+                'Creating an action named ' . $name .
+                ' inside controller at ' . $actionMethod->getParentResource()->getContext()->getPath()
+                );
+            $actionMethod->create();
+            $this->_storeProfile();
+        }
 
-php php php php php php php php ifphp php(php$viewIncludedphp)php php{
-php php php php php php php php php php php php php$viewResourcephp php=php Zendphp_Toolphp_Projectphp_Providerphp_Viewphp:php:createResourcephp(php$thisphp-php>php_loadedProfilephp,php php$namephp,php php$controllerNamephp,php php$modulephp)php;
+        if ($viewIncluded) {
+            $viewResource = Zend_Tool_Project_Provider_View::createResource($this->_loadedProfile, $name, $controllerName, $module);
 
-php php php php php php php php php php php php ifphp php(php$thisphp-php>php_registryphp-php>getRequestphp(php)php-php>isPretendphp(php)php)php php{
-php php php php php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php php php php php'Wouldphp createphp aphp viewphp scriptphp forphp thephp php'php php.php php$namephp php.php php'php actionphp methodphp atphp php'php php.php php$viewResourcephp-php>getContextphp(php)php-php>getPathphp(php)
-php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$responsephp-php>appendContentphp(
-php php php php php php php php php php php php php php php php php php php php php'Creatingphp aphp viewphp scriptphp forphp thephp php'php php.php php$namephp php.php php'php actionphp methodphp atphp php'php php.php php$viewResourcephp-php>getContextphp(php)php-php>getPathphp(php)
-php php php php php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php php php php php php php php php$viewResourcephp-php>createphp(php)php;
-php php php php php php php php php php php php php php php php php$thisphp-php>php_storeProfilephp(php)php;
-php php php php php php php php php php php php php}
+            if ($this->_registry->getRequest()->isPretend()) {
+                $response->appendContent(
+                    'Would create a view script for the ' . $name . ' action method at ' . $viewResource->getContext()->getPath()
+                    );
+            } else {
+                $response->appendContent(
+                    'Creating a view script for the ' . $name . ' action method at ' . $viewResource->getContext()->getPath()
+                    );
+                $viewResource->create();
+                $this->_storeProfile();
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php}
+    }
 
-php}
+}

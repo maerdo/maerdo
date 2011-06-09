@@ -1,136 +1,136 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Interfacephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Interface.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Mail
-php php*php php@subpackagephp Storage
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+/**
+ * @category   Zend
+ * @package    Zend_Mail
+ * @subpackage Storage
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-interfacephp Zendphp_Mailphp_Partphp_Interfacephp extendsphp RecursiveIterator
-php{
-php php php php php/php*php*
-php php php php php php*php Checkphp ifphp partphp isphp aphp multipartphp message
-php php php php php php*
-php php php php php php*php php@returnphp boolphp ifphp partphp isphp multipart
-php php php php php php*php/
-php php php php publicphp functionphp isMultipartphp(php)php;
-
-
-php php php php php/php*php*
-php php php php php php*php Bodyphp ofphp part
-php php php php php php*
-php php php php php php*php Ifphp partphp isphp multipartphp thephp rawphp contentphp ofphp thisphp partphp withphp allphp subphp partsphp isphp returned
-php php php php php php*
-php php php php php php*php php@returnphp stringphp body
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getContentphp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Returnphp sizephp ofphp part
-php php php php php php*
-php php php php php php*php php@returnphp intphp size
-php php php php php php*php/
-php php php php publicphp functionphp getSizephp(php)php;
-
-php php php php php/php*php*
-php php php php php php*php Getphp partphp ofphp multipartphp message
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$numphp numberphp ofphp partphp startingphp withphp php1php forphp firstphp part
-php php php php php php*php php@returnphp Zendphp_Mailphp_Partphp wantedphp part
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getPartphp(php$numphp)php;
-
-php php php php php/php*php*
-php php php php php php*php Countphp partsphp ofphp aphp multipartphp part
-php php php php php php*
-php php php php php php*php php@returnphp intphp numberphp ofphp subphp-parts
-php php php php php php*php/
-php php php php publicphp functionphp countPartsphp(php)php;
+interface Zend_Mail_Part_Interface extends RecursiveIterator
+{
+    /**
+     * Check if part is a multipart message
+     *
+     * @return bool if part is multipart
+     */
+    public function isMultipart();
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp headers
-php php php php php php*
-php php php php php php*php Thephp returnedphp headersphp arephp asphp savedphp internallyphp.php Allphp namesphp arephp lowercasedphp.php Thephp valuephp isphp aphp stringphp orphp anphp array
-php php php php php php*php ifphp aphp headerphp withphp thephp samephp namephp occursphp morephp thanphp oncephp.
-php php php php php php*
-php php php php php php*php php@returnphp arrayphp headersphp asphp arrayphp(namephp php=php>php valuephp)
-php php php php php php*php/
-php php php php publicphp functionphp getHeadersphp(php)php;
+    /**
+     * Body of part
+     *
+     * If part is multipart the raw content of this part with all sub parts is returned
+     *
+     * @return string body
+     * @throws Zend_Mail_Exception
+     */
+    public function getContent();
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp headerphp inphp specificedphp format
-php php php php php php*
-php php php php php php*php Internallyphp headersphp thatphp occurphp morephp thanphp oncephp arephp savedphp asphp arrayphp,php allphp otherphp asphp stringphp.php Ifphp php$format
-php php php php php php*php isphp setphp tophp stringphp implodephp isphp usedphp tophp concatphp thephp valuesphp php(withphp Zendphp_Mimephp:php:LINEENDphp asphp delimphp)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp php php namephp ofphp headerphp,php matchesphp casephp-insensitivephp,php butphp camelphp-casephp isphp replacedphp withphp dashes
-php php php php php php*php php@paramphp php stringphp php$formatphp changephp typephp ofphp returnphp valuephp tophp php'stringphp'php orphp php'arrayphp'
-php php php php php php*php php@returnphp stringphp|arrayphp valuephp ofphp headerphp inphp wantedphp orphp internalphp format
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getHeaderphp(php$namephp,php php$formatphp php=php nullphp)php;
+    /**
+     * Return size of part
+     *
+     * @return int size
+     */
+    public function getSize();
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp specificphp fieldphp fromphp aphp headerphp likephp contentphp typephp orphp allphp fieldsphp asphp array
-php php php php php php*
-php php php php php php*php Ifphp thephp headerphp occursphp morephp thanphp oncephp,php onlyphp thephp valuephp fromphp thephp firstphp header
-php php php php php php*php isphp returnedphp.
-php php php php php php*
-php php php php php php*php Throwsphp aphp Zendphp_Mailphp_Exceptionphp ifphp thephp requestedphp headerphp doesphp notphp existphp.php If
-php php php php php php*php thephp specificphp headerphp fieldphp doesphp notphp existphp,php returnsphp nullphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp php php php php php php namephp ofphp headerphp,php likephp inphp getHeaderphp(php)
-php php php php php php*php php@paramphp php stringphp php$wantedPartphp thephp wantedphp partphp,php defaultphp isphp firstphp,php ifphp nullphp anphp arrayphp withphp allphp partsphp isphp returned
-php php php php php php*php php@paramphp php stringphp php$firstNamephp php keyphp namephp forphp thephp firstphp part
-php php php php php php*php php@returnphp stringphp|arrayphp wantedphp partphp orphp allphp partsphp asphp arrayphp(php$firstNamephp php=php>php firstPartphp,php partnamephp php=php>php valuephp)
-php php php php php php*php php@throwsphp Zendphp_Exceptionphp,php Zendphp_Mailphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp getHeaderFieldphp(php$namephp,php php$wantedPartphp php=php php0php,php php$firstNamephp php=php php0php)php;
+    /**
+     * Get part of multipart message
+     *
+     * @param  int $num number of part starting with 1 for first part
+     * @return Zend_Mail_Part wanted part
+     * @throws Zend_Mail_Exception
+     */
+    public function getPart($num);
+
+    /**
+     * Count parts of a multipart part
+     *
+     * @return int number of sub-parts
+     */
+    public function countParts();
 
 
-php php php php php/php*php*
-php php php php php php*php Getterphp forphp mailphp headersphp php-php namephp isphp matchedphp inphp lowercase
-php php php php php php*
-php php php php php php*php Thisphp getterphp isphp shortphp forphp Zendphp_Mailphp_Partphp:php:getHeaderphp(php$namephp,php php'stringphp'php)
-php php php php php php*
-php php php php php php*php php@seephp Zendphp_Mailphp_Partphp:php:getHeaderphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$namephp headerphp name
-php php php php php php*php php@returnphp stringphp valuephp ofphp header
-php php php php php php*php php@throwsphp Zendphp_Mailphp_Exception
-php php php php php php*php/
-php php php php publicphp functionphp php_php_getphp(php$namephp)php;
+    /**
+     * Get all headers
+     *
+     * The returned headers are as saved internally. All names are lowercased. The value is a string or an array
+     * if a header with the same name occurs more than once.
+     *
+     * @return array headers as array(name => value)
+     */
+    public function getHeaders();
 
-php php php php php/php*php*
-php php php php php php*php magicphp methodphp tophp getphp contentphp ofphp part
-php php php php php php*
-php php php php php php*php php@returnphp stringphp content
-php php php php php php*php/
-php php php php publicphp functionphp php_php_toStringphp(php)php;
-php}
+    /**
+     * Get a header in specificed format
+     *
+     * Internally headers that occur more than once are saved as array, all other as string. If $format
+     * is set to string implode is used to concat the values (with Zend_Mime::LINEEND as delim).
+     *
+     * @param  string $name   name of header, matches case-insensitive, but camel-case is replaced with dashes
+     * @param  string $format change type of return value to 'string' or 'array'
+     * @return string|array value of header in wanted or internal format
+     * @throws Zend_Mail_Exception
+     */
+    public function getHeader($name, $format = null);
+
+    /**
+     * Get a specific field from a header like content type or all fields as array
+     *
+     * If the header occurs more than once, only the value from the first header
+     * is returned.
+     *
+     * Throws a Zend_Mail_Exception if the requested header does not exist. If
+     * the specific header field does not exist, returns null.
+     *
+     * @param  string $name       name of header, like in getHeader()
+     * @param  string $wantedPart the wanted part, default is first, if null an array with all parts is returned
+     * @param  string $firstName  key name for the first part
+     * @return string|array wanted part or all parts as array($firstName => firstPart, partname => value)
+     * @throws Zend_Exception, Zend_Mail_Exception
+     */
+    public function getHeaderField($name, $wantedPart = 0, $firstName = 0);
+
+
+    /**
+     * Getter for mail headers - name is matched in lowercase
+     *
+     * This getter is short for Zend_Mail_Part::getHeader($name, 'string')
+     *
+     * @see Zend_Mail_Part::getHeader()
+     *
+     * @param  string $name header name
+     * @return string value of header
+     * @throws Zend_Mail_Exception
+     */
+    public function __get($name);
+
+    /**
+     * magic method to get content of part
+     *
+     * @return string content
+     */
+    public function __toString();
+}

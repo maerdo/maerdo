@@ -1,557 +1,557 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php6php9php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"msphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"afphp"php>Afrikaans<php/languagephp>
-php	php	php	php<languagephp typephp=php"amphp"php>Amharic<php/languagephp>
-php	php	php	php<languagephp typephp=php"arphp"php>Arab<php/languagephp>
-php	php	php	php<languagephp typephp=php"asphp"php>Assam<php/languagephp>
-php	php	php	php<languagephp typephp=php"azphp"php>Azerbaijan<php/languagephp>
-php	php	php	php<languagephp typephp=php"bephp"php>Belarus<php/languagephp>
-php	php	php	php<languagephp typephp=php"bgphp"php>Bulgaria<php/languagephp>
-php	php	php	php<languagephp typephp=php"bhphp"php>Bihari<php/languagephp>
-php	php	php	php<languagephp typephp=php"bnphp"php>Benggala<php/languagephp>
-php	php	php	php<languagephp typephp=php"brphp"php>Brittany<php/languagephp>
-php	php	php	php<languagephp typephp=php"bsphp"php>Bosnia<php/languagephp>
-php	php	php	php<languagephp typephp=php"caphp"php>Catalonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"csphp"php>Czech<php/languagephp>
-php	php	php	php<languagephp typephp=php"cyphp"php>Wales<php/languagephp>
-php	php	php	php<languagephp typephp=php"daphp"php>Denmark<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>Jerman<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>Greek<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>Inggeris<php/languagephp>
-php	php	php	php<languagephp typephp=php"eophp"php>Esperanto<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>Sepanyol<php/languagephp>
-php	php	php	php<languagephp typephp=php"etphp"php>Estonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"euphp"php>Basque<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>Parsi<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>Finland<php/languagephp>
-php	php	php	php<languagephp typephp=php"filphp"php>Tagalog<php/languagephp>
-php	php	php	php<languagephp typephp=php"fophp"php>Faroese<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>Perancis<php/languagephp>
-php	php	php	php<languagephp typephp=php"fyphp"php>Frisian<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>Ireland<php/languagephp>
-php	php	php	php<languagephp typephp=php"gdphp"php>Scotsphp Gaelic<php/languagephp>
-php	php	php	php<languagephp typephp=php"glphp"php>Galicia<php/languagephp>
-php	php	php	php<languagephp typephp=php"gnphp"php>Guarani<php/languagephp>
-php	php	php	php<languagephp typephp=php"guphp"php>Gujerat<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>Ibrani<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>Hindi<php/languagephp>
-php	php	php	php<languagephp typephp=php"hrphp"php>Croat<php/languagephp>
-php	php	php	php<languagephp typephp=php"huphp"php>Hungary<php/languagephp>
-php	php	php	php<languagephp typephp=php"hyphp"php>Armenia<php/languagephp>
-php	php	php	php<languagephp typephp=php"iaphp"php>Interlingua<php/languagephp>
-php	php	php	php<languagephp typephp=php"idphp"php>Indonesia<php/languagephp>
-php	php	php	php<languagephp typephp=php"iephp"php>Interlingue<php/languagephp>
-php	php	php	php<languagephp typephp=php"isphp"php>Iceland<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>Itali<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>Jepun<php/languagephp>
-php	php	php	php<languagephp typephp=php"jvphp"php>Jawa<php/languagephp>
-php	php	php	php<languagephp typephp=php"kaphp"php>Georgia<php/languagephp>
-php	php	php	php<languagephp typephp=php"kmphp"php>Khmer<php/languagephp>
-php	php	php	php<languagephp typephp=php"knphp"php>Kannada<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>Korea<php/languagephp>
-php	php	php	php<languagephp typephp=php"kuphp"php>Kurdish<php/languagephp>
-php	php	php	php<languagephp typephp=php"kyphp"php>Kyrgyz<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>Latin<php/languagephp>
-php	php	php	php<languagephp typephp=php"lnphp"php>Lingala<php/languagephp>
-php	php	php	php<languagephp typephp=php"lophp"php>Laos<php/languagephp>
-php	php	php	php<languagephp typephp=php"ltphp"php>Lithuania<php/languagephp>
-php	php	php	php<languagephp typephp=php"lvphp"php>Latvia<php/languagephp>
-php	php	php	php<languagephp typephp=php"mkphp"php>Macedonia<php/languagephp>
-php	php	php	php<languagephp typephp=php"mlphp"php>Malayalam<php/languagephp>
-php	php	php	php<languagephp typephp=php"mnphp"php>Mongolia<php/languagephp>
-php	php	php	php<languagephp typephp=php"mrphp"php>Marathi<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>Bahasaphp Melayu<php/languagephp>
-php	php	php	php<languagephp typephp=php"mtphp"php>Malta<php/languagephp>
-php	php	php	php<languagephp typephp=php"nephp"php>Nepal<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>Belanda<php/languagephp>
-php	php	php	php<languagephp typephp=php"nnphp"php>Nynorskphp Norway<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>Norway<php/languagephp>
-php	php	php	php<languagephp typephp=php"ocphp"php>Occitan<php/languagephp>
-php	php	php	php<languagephp typephp=php"orphp"php>Oriya<php/languagephp>
-php	php	php	php<languagephp typephp=php"paphp"php>Punjabi<php/languagephp>
-php	php	php	php<languagephp typephp=php"plphp"php>Poland<php/languagephp>
-php	php	php	php<languagephp typephp=php"psphp"php>Pashto<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>Portugis<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_PTphp"php>Portugisphp Iberia<php/languagephp>
-php	php	php	php<languagephp typephp=php"rophp"php>Romania<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>Rusia<php/languagephp>
-php	php	php	php<languagephp typephp=php"saphp"php>Sanskrit<php/languagephp>
-php	php	php	php<languagephp typephp=php"sdphp"php>Sindhi<php/languagephp>
-php	php	php	php<languagephp typephp=php"shphp"php>SerboCroatia<php/languagephp>
-php	php	php	php<languagephp typephp=php"siphp"php>Sinhala<php/languagephp>
-php	php	php	php<languagephp typephp=php"skphp"php>Slovak<php/languagephp>
-php	php	php	php<languagephp typephp=php"slphp"php>Slovenia<php/languagephp>
-php	php	php	php<languagephp typephp=php"sophp"php>Somali<php/languagephp>
-php	php	php	php<languagephp typephp=php"sqphp"php>Albania<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>Serbia<php/languagephp>
-php	php	php	php<languagephp typephp=php"stphp"php>Sesoto<php/languagephp>
-php	php	php	php<languagephp typephp=php"suphp"php>Sunda<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>Sweden<php/languagephp>
-php	php	php	php<languagephp typephp=php"swphp"php>Swahili<php/languagephp>
-php	php	php	php<languagephp typephp=php"taphp"php>Tamil<php/languagephp>
-php	php	php	php<languagephp typephp=php"tephp"php>Telugu<php/languagephp>
-php	php	php	php<languagephp typephp=php"thphp"php>Thai<php/languagephp>
-php	php	php	php<languagephp typephp=php"tiphp"php>Tigrinya<php/languagephp>
-php	php	php	php<languagephp typephp=php"tkphp"php>Turkmen<php/languagephp>
-php	php	php	php<languagephp typephp=php"tlhphp"php>Klingon<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>Turki<php/languagephp>
-php	php	php	php<languagephp typephp=php"twphp"php>Twi<php/languagephp>
-php	php	php	php<languagephp typephp=php"ugphp"php>Uighur<php/languagephp>
-php	php	php	php<languagephp typephp=php"ukphp"php>Ukraine<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>Urdu<php/languagephp>
-php	php	php	php<languagephp typephp=php"uzphp"php>Uzbek<php/languagephp>
-php	php	php	php<languagephp typephp=php"viphp"php>Vietnam<php/languagephp>
-php	php	php	php<languagephp typephp=php"xhphp"php>Xhosa<php/languagephp>
-php	php	php	php<languagephp typephp=php"yiphp"php>Yahudi<php/languagephp>
-php	php	php	php<languagephp typephp=php"zuphp"php>Zulu<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"ADphp"php>Andorra<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AEphp"php>Emiriahphp Arabphp Bersatu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AFphp"php>Afghanistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Antiguaphp danphp Barbuda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>Anguilla<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ALphp"php>Albania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AMphp"php>Armenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ANphp"php>Netherlandsphp Antilles<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AOphp"php>Angola<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>Antarctica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ARphp"php>Argentina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>Americanphp Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ATphp"php>Austria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>Australia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AWphp"php>Aruba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AZphp"php>Azerbaijan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>Bosniaphp danphp Herzegovina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BBphp"php>Barbados<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BDphp"php>Bangladesh<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Belgium<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BFphp"php>Burkinaphp Faso<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BGphp"php>Bulgaria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BHphp"php>Bahrain<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BIphp"php>Burundi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BJphp"php>Benin<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BMphp"php>Bermuda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BNphp"php>Brunei<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BOphp"php>Bolivia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Brazil<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>Bahamas<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BTphp"php>Bhutan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>Bouvetphp Island<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Botswana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BYphp"php>Belarus<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>Belize<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kanada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CCphp"php>Cocosphp php(Keelingphp)php Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CDphp"php>Democraticphp Republicphp ofphp thephp Congo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CFphp"php>Republikphp Afrikaphp Tengah<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CGphp"php>Congo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Switzerland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CIphp"php>Pantaiphp Gading<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>Cookphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CLphp"php>Cile<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CMphp"php>Kamerun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Cina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"COphp"php>Colombia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CRphp"php>Kostaphp Rika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CSphp"php>Serbiaphp danphp Montenegro<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CUphp"php>Cuba<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CVphp"php>Capephp Verde<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CXphp"php>Christmasphp Island<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CYphp"php>Kibris<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CZphp"php>Republikphp Czech<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Jerman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DJphp"php>Jibouti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DKphp"php>Denmark<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>Dominica<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DOphp"php>Republikphp Dominican<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DZphp"php>Aljazair<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ECphp"php>Ecuador<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EEphp"php>Estonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>Mesir<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EHphp"php>Saharaphp Barat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ERphp"php>Eritrea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Sepanyol<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ETphp"php>Ethiopia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Finland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>Fiji<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FKphp"php>Falklandphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>Micronesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FOphp"php>Faroephp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Perancis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GAphp"php>Gabon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Unitedphp Kingdom<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Grenada<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GEphp"php>Georgia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GFphp"php>Frenchphp Guiana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Ghana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Gibraltar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GLphp"php>Greenland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Gambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GNphp"php>Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GPphp"php>Guadeloupe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GQphp"php>Equatorialphp Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Yunani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>Southphp Georgiaphp andphp thephp Southphp Sandwichphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GTphp"php>Guatemala<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GUphp"php>Guam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GWphp"php>Guineaphp Bissau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>Guyana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>Hongphp Kongphp Sphp.Aphp.Rphp.php,php China<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>Heardphp Islandphp andphp McDonaldphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>Honduras<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>Croatia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HTphp"php>Haiti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HUphp"php>Hungari<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IDphp"php>Indonesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>Ireland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>Israel<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>Hindia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>Britishphp Indianphp Oceanphp Territory<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IQphp"php>Iraq<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IRphp"php>Iran<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ISphp"php>Iceland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>Itali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JMphp"php>Jamaika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JOphp"php>Jordan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Jepun<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Kenya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KGphp"php>Kyrgyzstan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KHphp"php>Kemboja<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>Kiribati<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KMphp"php>Comoros<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KNphp"php>Saintphp Kittsphp danphp Nevis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Utaraphp Korea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Selatanphp Korea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KWphp"php>Kuwait<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KYphp"php>Caymanphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KZphp"php>Kazakhstan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LAphp"php>Laos<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LBphp"php>Lubnan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LCphp"php>Saintphp Lucia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LIphp"php>Liechtenstein<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Sriphp Lanka<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Liberia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Lesotho<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LTphp"php>Lithuania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LUphp"php>Luksembourg<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LVphp"php>Latvia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LYphp"php>Libya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MAphp"php>Maghribi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MCphp"php>Monaco<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MDphp"php>Moldova<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MGphp"php>Madagaskar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>Kepulauanphp Marshall<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MKphp"php>Macedonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MLphp"php>Mali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MMphp"php>Myanmar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MNphp"php>Mongolia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MOphp"php>Macaophp Sphp.Aphp.Rphp.php,php China<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>Northernphp Marianaphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MQphp"php>Martinique<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MRphp"php>Mauritania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>Montserrat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Malta<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>Mauritius<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MVphp"php>Maldiv<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Malawi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Meksiko<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MYphp"php>Malaysia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MZphp"php>Mozambik<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namibia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>Newphp Caledonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NEphp"php>Niger<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>Norfolkphp Island<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Nigeria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NIphp"php>Nicaragua<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Belanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Norway<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NPphp"php>Nepal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NRphp"php>Nauru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>Niue<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Newphp Zealand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"OMphp"php>Oman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>Panama<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PEphp"php>Peru<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>Frenchphp Polynesia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaphp Newphp Guinea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PHphp"php>Filipina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Pakistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PLphp"php>Poland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PMphp"php>Saintphp Pierrephp andphp Miquelon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PNphp"php>Pitcairn<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PRphp"php>Puertophp Rico<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PSphp"php>Palestinianphp Territory<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Feringgi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PYphp"php>Paraguay<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QAphp"php>Qatar<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"REphp"php>Réunion<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ROphp"php>Romania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Russia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Rwanda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SAphp"php>Arabphp Saudi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>Kepulauanphp Solomon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>Seychelles<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SDphp"php>Sudan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Sweden<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>Singapura<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SHphp"php>Saintphp Helena<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SIphp"php>Slovenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SJphp"php>Svalbardphp andphp Janphp Mayen<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SKphp"php>Slovakia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SLphp"php>Sieraphp Leon<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>Sanphp Marino<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SNphp"php>Senegal<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SOphp"php>Somalia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SRphp"php>Surinam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"STphp"php>Saophp Tomephp danphp Principe<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SVphp"php>Elphp Salvador<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SYphp"php>Syria<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SZphp"php>Swaziland<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TCphp"php>Turksphp andphp Caicosphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TDphp"php>Cad<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>Frenchphp Southernphp Territories<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TGphp"php>Togo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"THphp"php>Thailand<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TJphp"php>Tadjikistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>Tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TLphp"php>Timorphp-Leste<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TMphp"php>Turkmenistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TNphp"php>Tunisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Turki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Trinidadphp danphp Tobago<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>Tuvalu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TWphp"php>Taiwan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TZphp"php>Tanzania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UAphp"php>Ukraine<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UGphp"php>Uganda<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UMphp"php>Unitedphp Statesphp Minorphp Outlyingphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Amerikaphp Syarikat<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UYphp"php>Uruguay<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UZphp"php>Uzbekistan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Vatican<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VCphp"php>Saintphp Vincentphp danphp Grenadines<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VEphp"php>Venezuela<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>Britishphp Virginphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>Uphp.Sphp.php Virginphp Islands<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VNphp"php>Vietnam<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>Wallisphp andphp Futuna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>Samoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YEphp"php>Yaman<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"YTphp"php>Mayotte<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>Afrikaphp Selatan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZMphp"php>Zambia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Zimbabwe<php/territoryphp>
-php	php	<php/territoriesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp php{aiphp}php php{auphp}php bphp-dphp php{dzphp}php ephp-kphp php{khphp}php lphp-nphp php{ngphp}php php{nggphp}php php{nyphp}php ophp-sphp php{syphp}php tphp php{tsphp}php uphp php{uaphp}php vphp-zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php‘<php/quotationStartphp>
-php	php	php<quotationEndphp>php’<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php“<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php”<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Jan<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Feb<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mac<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Apr<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mei<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jun<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Jul<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Ogos<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sep<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Okt<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Nov<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Dis<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Januari<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Februari<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Mac<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>April<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mei<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Jun<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Julai<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Ogos<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>September<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Oktober<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>November<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Disember<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>php2<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>php3<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>php4<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>php5<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>php6<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>php7<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>php8<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>php9<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>php1php0<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>php1php1<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>php1php2<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Ahd<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Isn<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Sel<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Rab<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Kha<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jum<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Sab<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Ahad<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Isnin<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Selasa<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Rabu<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Khamis<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Jumaat<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Sabtu<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>php1<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>php2<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>php3<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>php4<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>php5<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>php6<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>php7<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Sphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Sphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Sphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Sphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>sukuphp pertama<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>sukuphp kedua<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>sukuphp ketiga<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>sukuphp keempat<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>AM<php/amphp>
-php	php	php	php	php<pmphp>PM<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>Sphp.Mphp.<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>Tphp.Mphp.<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp ddphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp/MMphp/yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp aphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mmphp:ssphp a<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>hphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmmphp"php>Hphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMddphp"php>ddphp/MM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMddphp"php>ddphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMphp"php>MMphp/yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyyyMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>php{php0php}<php/regionFormatphp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php#php,php#php#php0php.php0php0php;php(php¤php#php,php#php#php0php.php0php0php)<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"MYRphp"php>
-php	php	php	php	php<displayNamephp>Ringgitphp Malaysia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>yaphp:y<php/yesstrphp>
-php	php	php	php<nostrphp>tidakphp:t<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.69 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="ms"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="af">Afrikaans</language>
+			<language type="am">Amharic</language>
+			<language type="ar">Arab</language>
+			<language type="as">Assam</language>
+			<language type="az">Azerbaijan</language>
+			<language type="be">Belarus</language>
+			<language type="bg">Bulgaria</language>
+			<language type="bh">Bihari</language>
+			<language type="bn">Benggala</language>
+			<language type="br">Brittany</language>
+			<language type="bs">Bosnia</language>
+			<language type="ca">Catalonia</language>
+			<language type="cs">Czech</language>
+			<language type="cy">Wales</language>
+			<language type="da">Denmark</language>
+			<language type="de">Jerman</language>
+			<language type="el">Greek</language>
+			<language type="en">Inggeris</language>
+			<language type="eo">Esperanto</language>
+			<language type="es">Sepanyol</language>
+			<language type="et">Estonia</language>
+			<language type="eu">Basque</language>
+			<language type="fa">Parsi</language>
+			<language type="fi">Finland</language>
+			<language type="fil">Tagalog</language>
+			<language type="fo">Faroese</language>
+			<language type="fr">Perancis</language>
+			<language type="fy">Frisian</language>
+			<language type="ga">Ireland</language>
+			<language type="gd">Scots Gaelic</language>
+			<language type="gl">Galicia</language>
+			<language type="gn">Guarani</language>
+			<language type="gu">Gujerat</language>
+			<language type="he">Ibrani</language>
+			<language type="hi">Hindi</language>
+			<language type="hr">Croat</language>
+			<language type="hu">Hungary</language>
+			<language type="hy">Armenia</language>
+			<language type="ia">Interlingua</language>
+			<language type="id">Indonesia</language>
+			<language type="ie">Interlingue</language>
+			<language type="is">Iceland</language>
+			<language type="it">Itali</language>
+			<language type="ja">Jepun</language>
+			<language type="jv">Jawa</language>
+			<language type="ka">Georgia</language>
+			<language type="km">Khmer</language>
+			<language type="kn">Kannada</language>
+			<language type="ko">Korea</language>
+			<language type="ku">Kurdish</language>
+			<language type="ky">Kyrgyz</language>
+			<language type="la">Latin</language>
+			<language type="ln">Lingala</language>
+			<language type="lo">Laos</language>
+			<language type="lt">Lithuania</language>
+			<language type="lv">Latvia</language>
+			<language type="mk">Macedonia</language>
+			<language type="ml">Malayalam</language>
+			<language type="mn">Mongolia</language>
+			<language type="mr">Marathi</language>
+			<language type="ms">Bahasa Melayu</language>
+			<language type="mt">Malta</language>
+			<language type="ne">Nepal</language>
+			<language type="nl">Belanda</language>
+			<language type="nn">Nynorsk Norway</language>
+			<language type="no">Norway</language>
+			<language type="oc">Occitan</language>
+			<language type="or">Oriya</language>
+			<language type="pa">Punjabi</language>
+			<language type="pl">Poland</language>
+			<language type="ps">Pashto</language>
+			<language type="pt">Portugis</language>
+			<language type="pt_PT">Portugis Iberia</language>
+			<language type="ro">Romania</language>
+			<language type="ru">Rusia</language>
+			<language type="sa">Sanskrit</language>
+			<language type="sd">Sindhi</language>
+			<language type="sh">SerboCroatia</language>
+			<language type="si">Sinhala</language>
+			<language type="sk">Slovak</language>
+			<language type="sl">Slovenia</language>
+			<language type="so">Somali</language>
+			<language type="sq">Albania</language>
+			<language type="sr">Serbia</language>
+			<language type="st">Sesoto</language>
+			<language type="su">Sunda</language>
+			<language type="sv">Sweden</language>
+			<language type="sw">Swahili</language>
+			<language type="ta">Tamil</language>
+			<language type="te">Telugu</language>
+			<language type="th">Thai</language>
+			<language type="ti">Tigrinya</language>
+			<language type="tk">Turkmen</language>
+			<language type="tlh">Klingon</language>
+			<language type="tr">Turki</language>
+			<language type="tw">Twi</language>
+			<language type="ug">Uighur</language>
+			<language type="uk">Ukraine</language>
+			<language type="ur">Urdu</language>
+			<language type="uz">Uzbek</language>
+			<language type="vi">Vietnam</language>
+			<language type="xh">Xhosa</language>
+			<language type="yi">Yahudi</language>
+			<language type="zu">Zulu</language>
+		</languages>
+		<territories>
+			<territory type="AD">Andorra</territory>
+			<territory type="AE">Emiriah Arab Bersatu</territory>
+			<territory type="AF">Afghanistan</territory>
+			<territory type="AG">Antigua dan Barbuda</territory>
+			<territory type="AI">Anguilla</territory>
+			<territory type="AL">Albania</territory>
+			<territory type="AM">Armenia</territory>
+			<territory type="AN">Netherlands Antilles</territory>
+			<territory type="AO">Angola</territory>
+			<territory type="AQ">Antarctica</territory>
+			<territory type="AR">Argentina</territory>
+			<territory type="AS">American Samoa</territory>
+			<territory type="AT">Austria</territory>
+			<territory type="AU">Australia</territory>
+			<territory type="AW">Aruba</territory>
+			<territory type="AZ">Azerbaijan</territory>
+			<territory type="BA">Bosnia dan Herzegovina</territory>
+			<territory type="BB">Barbados</territory>
+			<territory type="BD">Bangladesh</territory>
+			<territory type="BE">Belgium</territory>
+			<territory type="BF">Burkina Faso</territory>
+			<territory type="BG">Bulgaria</territory>
+			<territory type="BH">Bahrain</territory>
+			<territory type="BI">Burundi</territory>
+			<territory type="BJ">Benin</territory>
+			<territory type="BM">Bermuda</territory>
+			<territory type="BN">Brunei</territory>
+			<territory type="BO">Bolivia</territory>
+			<territory type="BR">Brazil</territory>
+			<territory type="BS">Bahamas</territory>
+			<territory type="BT">Bhutan</territory>
+			<territory type="BV">Bouvet Island</territory>
+			<territory type="BW">Botswana</territory>
+			<territory type="BY">Belarus</territory>
+			<territory type="BZ">Belize</territory>
+			<territory type="CA">Kanada</territory>
+			<territory type="CC">Cocos (Keeling) Islands</territory>
+			<territory type="CD">Democratic Republic of the Congo</territory>
+			<territory type="CF">Republik Afrika Tengah</territory>
+			<territory type="CG">Congo</territory>
+			<territory type="CH">Switzerland</territory>
+			<territory type="CI">Pantai Gading</territory>
+			<territory type="CK">Cook Islands</territory>
+			<territory type="CL">Cile</territory>
+			<territory type="CM">Kamerun</territory>
+			<territory type="CN">Cina</territory>
+			<territory type="CO">Colombia</territory>
+			<territory type="CR">Kosta Rika</territory>
+			<territory type="CS">Serbia dan Montenegro</territory>
+			<territory type="CU">Cuba</territory>
+			<territory type="CV">Cape Verde</territory>
+			<territory type="CX">Christmas Island</territory>
+			<territory type="CY">Kibris</territory>
+			<territory type="CZ">Republik Czech</territory>
+			<territory type="DE">Jerman</territory>
+			<territory type="DJ">Jibouti</territory>
+			<territory type="DK">Denmark</territory>
+			<territory type="DM">Dominica</territory>
+			<territory type="DO">Republik Dominican</territory>
+			<territory type="DZ">Aljazair</territory>
+			<territory type="EC">Ecuador</territory>
+			<territory type="EE">Estonia</territory>
+			<territory type="EG">Mesir</territory>
+			<territory type="EH">Sahara Barat</territory>
+			<territory type="ER">Eritrea</territory>
+			<territory type="ES">Sepanyol</territory>
+			<territory type="ET">Ethiopia</territory>
+			<territory type="FI">Finland</territory>
+			<territory type="FJ">Fiji</territory>
+			<territory type="FK">Falkland Islands</territory>
+			<territory type="FM">Micronesia</territory>
+			<territory type="FO">Faroe Islands</territory>
+			<territory type="FR">Perancis</territory>
+			<territory type="GA">Gabon</territory>
+			<territory type="GB">United Kingdom</territory>
+			<territory type="GD">Grenada</territory>
+			<territory type="GE">Georgia</territory>
+			<territory type="GF">French Guiana</territory>
+			<territory type="GH">Ghana</territory>
+			<territory type="GI">Gibraltar</territory>
+			<territory type="GL">Greenland</territory>
+			<territory type="GM">Gambia</territory>
+			<territory type="GN">Guinea</territory>
+			<territory type="GP">Guadeloupe</territory>
+			<territory type="GQ">Equatorial Guinea</territory>
+			<territory type="GR">Yunani</territory>
+			<territory type="GS">South Georgia and the South Sandwich Islands</territory>
+			<territory type="GT">Guatemala</territory>
+			<territory type="GU">Guam</territory>
+			<territory type="GW">Guinea Bissau</territory>
+			<territory type="GY">Guyana</territory>
+			<territory type="HK">Hong Kong S.A.R., China</territory>
+			<territory type="HM">Heard Island and McDonald Islands</territory>
+			<territory type="HN">Honduras</territory>
+			<territory type="HR">Croatia</territory>
+			<territory type="HT">Haiti</territory>
+			<territory type="HU">Hungari</territory>
+			<territory type="ID">Indonesia</territory>
+			<territory type="IE">Ireland</territory>
+			<territory type="IL">Israel</territory>
+			<territory type="IN">Hindia</territory>
+			<territory type="IO">British Indian Ocean Territory</territory>
+			<territory type="IQ">Iraq</territory>
+			<territory type="IR">Iran</territory>
+			<territory type="IS">Iceland</territory>
+			<territory type="IT">Itali</territory>
+			<territory type="JM">Jamaika</territory>
+			<territory type="JO">Jordan</territory>
+			<territory type="JP">Jepun</territory>
+			<territory type="KE">Kenya</territory>
+			<territory type="KG">Kyrgyzstan</territory>
+			<territory type="KH">Kemboja</territory>
+			<territory type="KI">Kiribati</territory>
+			<territory type="KM">Comoros</territory>
+			<territory type="KN">Saint Kitts dan Nevis</territory>
+			<territory type="KP">Utara Korea</territory>
+			<territory type="KR">Selatan Korea</territory>
+			<territory type="KW">Kuwait</territory>
+			<territory type="KY">Cayman Islands</territory>
+			<territory type="KZ">Kazakhstan</territory>
+			<territory type="LA">Laos</territory>
+			<territory type="LB">Lubnan</territory>
+			<territory type="LC">Saint Lucia</territory>
+			<territory type="LI">Liechtenstein</territory>
+			<territory type="LK">Sri Lanka</territory>
+			<territory type="LR">Liberia</territory>
+			<territory type="LS">Lesotho</territory>
+			<territory type="LT">Lithuania</territory>
+			<territory type="LU">Luksembourg</territory>
+			<territory type="LV">Latvia</territory>
+			<territory type="LY">Libya</territory>
+			<territory type="MA">Maghribi</territory>
+			<territory type="MC">Monaco</territory>
+			<territory type="MD">Moldova</territory>
+			<territory type="MG">Madagaskar</territory>
+			<territory type="MH">Kepulauan Marshall</territory>
+			<territory type="MK">Macedonia</territory>
+			<territory type="ML">Mali</territory>
+			<territory type="MM">Myanmar</territory>
+			<territory type="MN">Mongolia</territory>
+			<territory type="MO">Macao S.A.R., China</territory>
+			<territory type="MP">Northern Mariana Islands</territory>
+			<territory type="MQ">Martinique</territory>
+			<territory type="MR">Mauritania</territory>
+			<territory type="MS">Montserrat</territory>
+			<territory type="MT">Malta</territory>
+			<territory type="MU">Mauritius</territory>
+			<territory type="MV">Maldiv</territory>
+			<territory type="MW">Malawi</territory>
+			<territory type="MX">Meksiko</territory>
+			<territory type="MY">Malaysia</territory>
+			<territory type="MZ">Mozambik</territory>
+			<territory type="NA">Namibia</territory>
+			<territory type="NC">New Caledonia</territory>
+			<territory type="NE">Niger</territory>
+			<territory type="NF">Norfolk Island</territory>
+			<territory type="NG">Nigeria</territory>
+			<territory type="NI">Nicaragua</territory>
+			<territory type="NL">Belanda</territory>
+			<territory type="NO">Norway</territory>
+			<territory type="NP">Nepal</territory>
+			<territory type="NR">Nauru</territory>
+			<territory type="NU">Niue</territory>
+			<territory type="NZ">New Zealand</territory>
+			<territory type="OM">Oman</territory>
+			<territory type="PA">Panama</territory>
+			<territory type="PE">Peru</territory>
+			<territory type="PF">French Polynesia</territory>
+			<territory type="PG">Papua New Guinea</territory>
+			<territory type="PH">Filipina</territory>
+			<territory type="PK">Pakistan</territory>
+			<territory type="PL">Poland</territory>
+			<territory type="PM">Saint Pierre and Miquelon</territory>
+			<territory type="PN">Pitcairn</territory>
+			<territory type="PR">Puerto Rico</territory>
+			<territory type="PS">Palestinian Territory</territory>
+			<territory type="PT">Feringgi</territory>
+			<territory type="PW">Palau</territory>
+			<territory type="PY">Paraguay</territory>
+			<territory type="QA">Qatar</territory>
+			<territory type="RE">Réunion</territory>
+			<territory type="RO">Romania</territory>
+			<territory type="RU">Russia</territory>
+			<territory type="RW">Rwanda</territory>
+			<territory type="SA">Arab Saudi</territory>
+			<territory type="SB">Kepulauan Solomon</territory>
+			<territory type="SC">Seychelles</territory>
+			<territory type="SD">Sudan</territory>
+			<territory type="SE">Sweden</territory>
+			<territory type="SG">Singapura</territory>
+			<territory type="SH">Saint Helena</territory>
+			<territory type="SI">Slovenia</territory>
+			<territory type="SJ">Svalbard and Jan Mayen</territory>
+			<territory type="SK">Slovakia</territory>
+			<territory type="SL">Siera Leon</territory>
+			<territory type="SM">San Marino</territory>
+			<territory type="SN">Senegal</territory>
+			<territory type="SO">Somalia</territory>
+			<territory type="SR">Surinam</territory>
+			<territory type="ST">Sao Tome dan Principe</territory>
+			<territory type="SV">El Salvador</territory>
+			<territory type="SY">Syria</territory>
+			<territory type="SZ">Swaziland</territory>
+			<territory type="TC">Turks and Caicos Islands</territory>
+			<territory type="TD">Cad</territory>
+			<territory type="TF">French Southern Territories</territory>
+			<territory type="TG">Togo</territory>
+			<territory type="TH">Thailand</territory>
+			<territory type="TJ">Tadjikistan</territory>
+			<territory type="TK">Tokelau</territory>
+			<territory type="TL">Timor-Leste</territory>
+			<territory type="TM">Turkmenistan</territory>
+			<territory type="TN">Tunisia</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">Turki</territory>
+			<territory type="TT">Trinidad dan Tobago</territory>
+			<territory type="TV">Tuvalu</territory>
+			<territory type="TW">Taiwan</territory>
+			<territory type="TZ">Tanzania</territory>
+			<territory type="UA">Ukraine</territory>
+			<territory type="UG">Uganda</territory>
+			<territory type="UM">United States Minor Outlying Islands</territory>
+			<territory type="US">Amerika Syarikat</territory>
+			<territory type="UY">Uruguay</territory>
+			<territory type="UZ">Uzbekistan</territory>
+			<territory type="VA">Vatican</territory>
+			<territory type="VC">Saint Vincent dan Grenadines</territory>
+			<territory type="VE">Venezuela</territory>
+			<territory type="VG">British Virgin Islands</territory>
+			<territory type="VI">U.S. Virgin Islands</territory>
+			<territory type="VN">Vietnam</territory>
+			<territory type="VU">Vanuatu</territory>
+			<territory type="WF">Wallis and Futuna</territory>
+			<territory type="WS">Samoa</territory>
+			<territory type="YE">Yaman</territory>
+			<territory type="YT">Mayotte</territory>
+			<territory type="ZA">Afrika Selatan</territory>
+			<territory type="ZM">Zambia</territory>
+			<territory type="ZW">Zimbabwe</territory>
+		</territories>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a {ai} {au} b-d {dz} e-k {kh} l-n {ng} {ngg} {ny} o-s {sy} t {ts} u {ua} v-z]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>‘</quotationStart>
+		<quotationEnd>’</quotationEnd>
+		<alternateQuotationStart>“</alternateQuotationStart>
+		<alternateQuotationEnd>”</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Jan</month>
+							<month type="2">Feb</month>
+							<month type="3">Mac</month>
+							<month type="4">Apr</month>
+							<month type="5">Mei</month>
+							<month type="6">Jun</month>
+							<month type="7">Jul</month>
+							<month type="8">Ogos</month>
+							<month type="9">Sep</month>
+							<month type="10">Okt</month>
+							<month type="11">Nov</month>
+							<month type="12">Dis</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Januari</month>
+							<month type="2">Februari</month>
+							<month type="3">Mac</month>
+							<month type="4">April</month>
+							<month type="5">Mei</month>
+							<month type="6">Jun</month>
+							<month type="7">Julai</month>
+							<month type="8">Ogos</month>
+							<month type="9">September</month>
+							<month type="10">Oktober</month>
+							<month type="11">November</month>
+							<month type="12">Disember</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">1</month>
+							<month type="2">2</month>
+							<month type="3">3</month>
+							<month type="4">4</month>
+							<month type="5">5</month>
+							<month type="6">6</month>
+							<month type="7">7</month>
+							<month type="8">8</month>
+							<month type="9">9</month>
+							<month type="10">10</month>
+							<month type="11">11</month>
+							<month type="12">12</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Ahd</day>
+							<day type="mon">Isn</day>
+							<day type="tue">Sel</day>
+							<day type="wed">Rab</day>
+							<day type="thu">Kha</day>
+							<day type="fri">Jum</day>
+							<day type="sat">Sab</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Ahad</day>
+							<day type="mon">Isnin</day>
+							<day type="tue">Selasa</day>
+							<day type="wed">Rabu</day>
+							<day type="thu">Khamis</day>
+							<day type="fri">Jumaat</day>
+							<day type="sat">Sabtu</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">1</day>
+							<day type="mon">2</day>
+							<day type="tue">3</day>
+							<day type="wed">4</day>
+							<day type="thu">5</day>
+							<day type="fri">6</day>
+							<day type="sat">7</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">S1</quarter>
+							<quarter type="2">S2</quarter>
+							<quarter type="3">S3</quarter>
+							<quarter type="4">S4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">suku pertama</quarter>
+							<quarter type="2">suku kedua</quarter>
+							<quarter type="3">suku ketiga</quarter>
+							<quarter type="4">suku keempat</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>AM</am>
+				<pm>PM</pm>
+				<eras>
+					<eraAbbr>
+						<era type="0">S.M.</era>
+						<era type="1">T.M.</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE dd MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>dd MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>dd MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>dd/MM/yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>h:mm:ss a zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>h:mm:ss a z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>h:mm:ss a</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>h:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="Hmm">H:mm</dateFormatItem>
+						<dateFormatItem id="MMdd">dd/MM</dateFormatItem>
+						<dateFormatItem id="MMMMdd">dd MMMM</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+						<dateFormatItem id="yyyyMM">MM/yyyy</dateFormatItem>
+						<dateFormatItem id="yyyyMMMM">MMMM y</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>{0}</regionFormat>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤#,##0.00;(¤#,##0.00)</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="MYR">
+				<displayName>Ringgit Malaysia</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<posix>
+		<messages>
+			<yesstr>ya:y</yesstr>
+			<nostr>tidak:t</nostr>
+		</messages>
+	</posix>
+</ldml>
 

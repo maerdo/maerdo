@@ -1,413 +1,413 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Rest
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Routephp.phpphp php2php3php4php8php6php php2php0php1php0php-php1php2php-php1php0php php0php4php:php0php5php:php3php0Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Rest
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Route.php 23486 2010-12-10 04:05:30Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Routerphp_Routephp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Controller_Router_Route_Interface
+ */
+require_once 'Zend/Controller/Router/Route/Interface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Routerphp_Routephp_Module
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Routerphp/Routephp/Modulephp.phpphp'php;
+/**
+ * @see Zend_Controller_Router_Route_Module
+ */
+require_once 'Zend/Controller/Router/Route/Module.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Dispatcherphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Dispatcherphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Controller_Dispatcher_Interface
+ */
+require_once 'Zend/Controller/Dispatcher/Interface.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Controllerphp_Requestphp_Abstract
-php php*php/
-requirephp_oncephp php'Zendphp/Controllerphp/Requestphp/Abstractphp.phpphp'php;
+/**
+ * @see Zend_Controller_Request_Abstract
+ */
+require_once 'Zend/Controller/Request/Abstract.php';
 
-php/php*php*
-php php*php Restphp Route
-php php*
-php php*php Requestphp-awarephp routephp forphp RESTfulphp modularphp routing
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Rest
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Restphp_Routephp extendsphp Zendphp_Controllerphp_Routerphp_Routephp_Module
-php{
-php php php php php/php*php*
-php php php php php php*php Specificphp Modulesphp tophp receivephp RESTfulphp routes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_restfulModulesphp php=php nullphp;
+/**
+ * Rest Route
+ *
+ * Request-aware route for RESTful modular routing
+ *
+ * @category   Zend
+ * @package    Zend_Rest
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
+{
+    /**
+     * Specific Modules to receive RESTful routes
+     * @var array
+     */
+    protected $_restfulModules = null;
 
-php php php php php/php*php*
-php php php php php php*php Specificphp Modulesphp=php>Controllersphp tophp receivephp RESTfulphp routes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_restfulControllersphp php=php nullphp;
+    /**
+     * Specific Modules=>Controllers to receive RESTful routes
+     * @var array
+     */
+    protected $_restfulControllers = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Controllerphp_Front
-php php php php php php*php/
-php php php php protectedphp php$php_frontphp;
+    /**
+     * @var Zend_Controller_Front
+     */
+    protected $_front;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Frontphp php$frontphp Frontphp Controllerphp object
-php php php php php php*php php@paramphp arrayphp php$defaultsphp Defaultsphp forphp mapphp variablesphp withphp keysphp asphp variablephp names
-php php php php php php*php php@paramphp arrayphp php$respondersphp Modulesphp orphp controllersphp tophp receivephp RESTfulphp routes
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Controllerphp_Frontphp php$frontphp,
-php php php php php php php php arrayphp php$defaultsphp php=php arrayphp(php)php,
-php php php php php php php php arrayphp php$respondersphp php=php arrayphp(php)
-php php php php php)php php{
-php php php php php php php php php$thisphp-php>php_defaultsphp php=php php$defaultsphp;
+    /**
+     * Constructor
+     *
+     * @param Zend_Controller_Front $front Front Controller object
+     * @param array $defaults Defaults for map variables with keys as variable names
+     * @param array $responders Modules or controllers to receive RESTful routes
+     */
+    public function __construct(Zend_Controller_Front $front,
+        array $defaults = array(),
+        array $responders = array()
+    ) {
+        $this->_defaults = $defaults;
 
-php php php php php php php php ifphp php(php$respondersphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_parseRespondersphp(php$respondersphp)php;
-php php php php php php php php php}
+        if ($responders) {
+            $this->_parseResponders($responders);
+        }
 
-php php php php php php php php php$thisphp-php>php_frontphp php php php php php php=php php$frontphp;
-php php php php php php php php php$thisphp-php>php_dispatcherphp php=php php$frontphp-php>getDispatcherphp(php)php;
-php php php php php}
+        $this->_front      = $front;
+        $this->_dispatcher = $front->getDispatcher();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Instantiatesphp routephp basedphp onphp passedphp Zendphp_Configphp structure
-php php php php php php*php/
-php php php php publicphp staticphp functionphp getInstancephp(Zendphp_Configphp php$configphp)
-php php php php php{
-php php php php php php php php php$frontControllerphp php=php Zendphp_Controllerphp_Frontphp:php:getInstancephp(php)php;
-php php php php php php php php php$defaultsArrayphp php=php arrayphp(php)php;
-php php php php php php php php php$restfulConfigArrayphp php=php arrayphp(php)php;
-php php php php php php php php foreachphp php(php$configphp asphp php$keyphp php=php>php php$valuesphp)php php{
-php php php php php php php php php php php php ifphp php(php$keyphp php=php=php php'typephp'php)php php{
-php php php php php php php php php php php php php php php php php/php/php dophp nothing
-php php php php php php php php php php php php php}php elseifphp php(php$keyphp php=php=php php'defaultsphp'php)php php{
-php php php php php php php php php php php php php php php php php$defaultsArrayphp php=php php$valuesphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$restfulConfigArrayphp[php$keyphp]php php=php explodephp(php'php,php'php,php php$valuesphp)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php php$instancephp php=php newphp selfphp(php$frontControllerphp,php php$defaultsArrayphp,php php$restfulConfigArrayphp)php;
-php php php php php php php php returnphp php$instancephp;
-php php php php php}
+    /**
+     * Instantiates route based on passed Zend_Config structure
+     */
+    public static function getInstance(Zend_Config $config)
+    {
+        $frontController = Zend_Controller_Front::getInstance();
+        $defaultsArray = array();
+        $restfulConfigArray = array();
+        foreach ($config as $key => $values) {
+            if ($key == 'type') {
+                // do nothing
+            } elseif ($key == 'defaults') {
+                $defaultsArray = $values->toArray();
+            } else {
+                $restfulConfigArray[$key] = explode(',', $values);
+            }
+        }
+        $instance = new self($frontController, $defaultsArray, $restfulConfigArray);
+        return $instance;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Matchesphp aphp userphp submittedphp requestphp.php Assignsphp andphp returnsphp anphp arrayphp ofphp variables
-php php php php php php*php onphp aphp successfulphp matchphp.
-php php php php php php*
-php php php php php php*php Ifphp aphp requestphp objectphp isphp registeredphp,php itphp usesphp itsphp setModuleNamephp(php)php,
-php php php php php php*php setControllerNamephp(php)php,php andphp setActionNamephp(php)php accessorsphp tophp setphp thosephp valuesphp.
-php php php php php php*php Alwaysphp returnsphp thephp valuesphp asphp anphp arrayphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Controllerphp_Requestphp_Httpphp php$requestphp Requestphp usedphp tophp matchphp againstphp thisphp routingphp ruleset
-php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp assignedphp valuesphp orphp aphp falsephp onphp aphp mismatch
-php php php php php php*php/
-php php php php publicphp functionphp matchphp(php$requestphp,php php$partialphp php=php falsephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$requestphp instanceofphp Zendphp_Controllerphp_Requestphp_Httpphp)php php{
-php php php php php php php php php php php php php$requestphp php=php php$thisphp-php>php_frontphp-php>getRequestphp(php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_requestphp php=php php$requestphp;
-php php php php php php php php php$thisphp-php>php_setRequestKeysphp(php)php;
+    /**
+     * Matches a user submitted request. Assigns and returns an array of variables
+     * on a successful match.
+     *
+     * If a request object is registered, it uses its setModuleName(),
+     * setControllerName(), and setActionName() accessors to set those values.
+     * Always returns the values as an array.
+     *
+     * @param Zend_Controller_Request_Http $request Request used to match against this routing ruleset
+     * @return array An array of assigned values or a false on a mismatch
+     */
+    public function match($request, $partial = false)
+    {
+        if (!$request instanceof Zend_Controller_Request_Http) {
+            $request = $this->_front->getRequest();
+        }
+        $this->_request = $request;
+        $this->_setRequestKeys();
 
-php php php php php php php php php$pathphp php php php=php php$requestphp-php>getPathInfophp(php)php;
-php php php php php php php php php$paramsphp php=php php$requestphp-php>getParamsphp(php)php;
-php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php php$pathphp php php php=php trimphp(php$pathphp,php selfphp:php:URIphp_DELIMITERphp)php;
+        $path   = $request->getPathInfo();
+        $params = $request->getParams();
+        $values = array();
+        $path   = trim($path, self::URI_DELIMITER);
 
-php php php php php php php php ifphp php(php$pathphp php!php=php php'php'php)php php{
+        if ($path != '') {
 
-php php php php php php php php php php php php php$pathphp php=php explodephp(selfphp:php:URIphp_DELIMITERphp,php php$pathphp)php;
-php php php php php php php php php php php php php/php/php Determinephp Module
-php php php php php php php php php php php php php$moduleNamephp php=php php$thisphp-php>php_defaultsphp[php$thisphp-php>php_moduleKeyphp]php;
-php php php php php php php php php php php php php$dispatcherphp php=php php$thisphp-php>php_frontphp-php>getDispatcherphp(php)php;
-php php php php php php php php php php php php ifphp php(php$dispatcherphp php&php&php php$dispatcherphp-php>isValidModulephp(php$pathphp[php0php]php)php)php php{
-php php php php php php php php php php php php php php php php php$moduleNamephp php=php php$pathphp[php0php]php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_checkRestfulModulephp(php$moduleNamephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_moduleKeyphp]php php=php arrayphp_shiftphp(php$pathphp)php;
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>php_moduleValidphp php=php truephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+            $path = explode(self::URI_DELIMITER, $path);
+            // Determine Module
+            $moduleName = $this->_defaults[$this->_moduleKey];
+            $dispatcher = $this->_front->getDispatcher();
+            if ($dispatcher && $dispatcher->isValidModule($path[0])) {
+                $moduleName = $path[0];
+                if ($this->_checkRestfulModule($moduleName)) {
+                    $values[$this->_moduleKey] = array_shift($path);
+                    $this->_moduleValid = true;
+                }
+            }
 
-php php php php php php php php php php php php php/php/php Determinephp Controller
-php php php php php php php php php php php php php$controllerNamephp php=php php$thisphp-php>php_defaultsphp[php$thisphp-php>php_controllerKeyphp]php;
-php php php php php php php php php php php php ifphp php(countphp(php$pathphp)php php&php&php php!emptyphp(php$pathphp[php0php]php)php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_checkRestfulControllerphp(php$moduleNamephp,php php$pathphp[php0php]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$controllerNamephp php=php php$pathphp[php0php]php;
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_controllerKeyphp]php php=php arrayphp_shiftphp(php$pathphp)php;
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php'getphp'php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php/php/php Ifphp Controllerphp inphp URIphp isphp notphp foundphp tophp bephp aphp RESTful
-php php php php php php php php php php php php php php php php php php php php php/php/php Controllerphp,php returnphp falsephp tophp fallphp backphp tophp otherphp routes
-php php php php php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}php elseifphp php(php$thisphp-php>php_checkRestfulControllerphp(php$moduleNamephp,php php$controllerNamephp)php)php php{
-php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_controllerKeyphp]php php=php php$controllerNamephp;
-php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php'getphp'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php php php php php}
+            // Determine Controller
+            $controllerName = $this->_defaults[$this->_controllerKey];
+            if (count($path) && !empty($path[0])) {
+                if ($this->_checkRestfulController($moduleName, $path[0])) {
+                    $controllerName = $path[0];
+                    $values[$this->_controllerKey] = array_shift($path);
+                    $values[$this->_actionKey] = 'get';
+                } else {
+                    // If Controller in URI is not found to be a RESTful
+                    // Controller, return false to fall back to other routes
+                    return false;
+                }
+            } elseif ($this->_checkRestfulController($moduleName, $controllerName)) {
+                $values[$this->_controllerKey] = $controllerName;
+                $values[$this->_actionKey] = 'get';
+            } else {
+                return false;
+            }
 
-php php php php php php php php php php php php php/php/Storephp pathphp countphp forphp methodphp mapping
-php php php php php php php php php php php php php$pathElementCountphp php=php countphp(php$pathphp)php;
+            //Store path count for method mapping
+            $pathElementCount = count($path);
 
-php php php php php php php php php php php php php/php/php Checkphp forphp php"specialphp getphp"php URIphp's
-php php php php php php php php php php php php php$specialGetTargetphp php=php falsephp;
-php php php php php php php php php php php php ifphp php(php$pathElementCountphp php&php&php arrayphp_searchphp(php$pathphp[php0php]php,php arrayphp(php'indexphp'php,php php'newphp'php)php)php php>php php-php1php)php php{
-php php php php php php php php php php php php php php php php php$specialGetTargetphp php=php arrayphp_shiftphp(php$pathphp)php;
-php php php php php php php php php php php php php}php elseifphp php(php$pathElementCountphp php&php&php php$pathphp[php$pathElementCountphp-php1php]php php=php=php php'editphp'php)php php{
-php php php php php php php php php php php php php php php php php$specialGetTargetphp php=php php'editphp'php;
-php php php php php php php php php php php php php php php php php$paramsphp[php'idphp'php]php php=php php$pathphp[php$pathElementCountphp-php2php]php;
-php php php php php php php php php php php php php}php elseifphp php(php$pathElementCountphp php=php=php php1php)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php'idphp'php]php php=php urldecodephp(arrayphp_shiftphp(php$pathphp)php)php;
-php php php php php php php php php php php php php}php elseifphp php(php$pathElementCountphp php=php=php php0php php&php&php php!issetphp(php$paramsphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$specialGetTargetphp php=php php'indexphp'php;
-php php php php php php php php php php php php php}
+            // Check for "special get" URI's
+            $specialGetTarget = false;
+            if ($pathElementCount && array_search($path[0], array('index', 'new')) > -1) {
+                $specialGetTarget = array_shift($path);
+            } elseif ($pathElementCount && $path[$pathElementCount-1] == 'edit') {
+                $specialGetTarget = 'edit';
+                $params['id'] = $path[$pathElementCount-2];
+            } elseif ($pathElementCount == 1) {
+                $params['id'] = urldecode(array_shift($path));
+            } elseif ($pathElementCount == 0 && !isset($params['id'])) {
+                $specialGetTarget = 'index';
+            }
 
-php php php php php php php php php php php php php/php/php Digestphp URIphp params
-php php php php php php php php php php php php ifphp php(php$numSegsphp php=php countphp(php$pathphp)php)php php{
-php php php php php php php php php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$numSegsphp;php php$iphp php=php php$iphp php+php php2php)php php{
-php php php php php php php php php php php php php php php php php php php php php$keyphp php=php urldecodephp(php$pathphp[php$iphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php$valphp php=php issetphp(php$pathphp[php$iphp php+php php1php]php)php php?php urldecodephp(php$pathphp[php$iphp php+php php1php]php)php php:php nullphp;
-php php php php php php php php php php php php php php php php php php php php php$paramsphp[php$keyphp]php php=php php$valphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+            // Digest URI params
+            if ($numSegs = count($path)) {
+                for ($i = 0; $i < $numSegs; $i = $i + 2) {
+                    $key = urldecode($path[$i]);
+                    $val = isset($path[$i + 1]) ? urldecode($path[$i + 1]) : null;
+                    $params[$key] = $val;
+                }
+            }
 
-php php php php php php php php php php php php php/php/php Determinephp Action
-php php php php php php php php php php php php php$requestMethodphp php=php strtolowerphp(php$requestphp-php>getMethodphp(php)php)php;
-php php php php php php php php php php php php ifphp php(php$requestMethodphp php!php=php php'getphp'php)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$requestphp-php>getParamphp(php'php_methodphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php strtolowerphp(php$requestphp-php>getParamphp(php'php_methodphp'php)php)php;
-php php php php php php php php php php php php php php php php php}php elseifphp php(php php$requestphp-php>getHeaderphp(php'Xphp-HTTPphp-Methodphp-Overridephp'php)php php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php strtolowerphp(php$requestphp-php>getHeaderphp(php'Xphp-HTTPphp-Methodphp-Overridephp'php)php)php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php$requestMethodphp;
-php php php php php php php php php php php php php php php php php}
+            // Determine Action
+            $requestMethod = strtolower($request->getMethod());
+            if ($requestMethod != 'get') {
+                if ($request->getParam('_method')) {
+                    $values[$this->_actionKey] = strtolower($request->getParam('_method'));
+                } elseif ( $request->getHeader('X-HTTP-Method-Override') ) {
+                    $values[$this->_actionKey] = strtolower($request->getHeader('X-HTTP-Method-Override'));
+                } else {
+                    $values[$this->_actionKey] = $requestMethod;
+                }
 
-php php php php php php php php php php php php php php php php php/php/php Mapphp PUTphp andphp POSTphp tophp actualphp createphp/updatephp actions
-php php php php php php php php php php php php php php php php php/php/php basedphp onphp parameterphp countphp php(postingphp tophp resourcephp orphp collectionphp)
-php php php php php php php php php php php php php php php php switchphp(php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php)php{
-php php php php php php php php php php php php php php php php php php php php casephp php'postphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$pathElementCountphp php>php php0php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php'putphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php'postphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'putphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php'putphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
+                // Map PUT and POST to actual create/update actions
+                // based on parameter count (posting to resource or collection)
+                switch( $values[$this->_actionKey] ){
+                    case 'post':
+                        if ($pathElementCount > 0) {
+                            $values[$this->_actionKey] = 'put';
+                        } else {
+                            $values[$this->_actionKey] = 'post';
+                        }
+                        break;
+                    case 'put':
+                        $values[$this->_actionKey] = 'put';
+                        break;
+                }
 
-php php php php php php php php php php php php php}php elseifphp php(php$specialGetTargetphp)php php{
-php php php php php php php php php php php php php php php php php$valuesphp[php$thisphp-php>php_actionKeyphp]php php=php php$specialGetTargetphp;
-php php php php php php php php php php php php php}
+            } elseif ($specialGetTarget) {
+                $values[$this->_actionKey] = $specialGetTarget;
+            }
 
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_valuesphp php=php php$valuesphp php+php php$paramsphp;
+        }
+        $this->_values = $values + $params;
 
-php php php php php php php php php$resultphp php=php php$thisphp-php>php_valuesphp php+php php$thisphp-php>php_defaultsphp;
+        $result = $this->_values + $this->_defaults;
 
-php php php php php php php php ifphp php(php$partialphp php&php&php php$resultphp)
-php php php php php php php php php php php php php$thisphp-php>setMatchedPathphp(php$requestphp-php>getPathInfophp(php)php)php;
+        if ($partial && $result)
+            $this->setMatchedPath($request->getPathInfo());
 
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
+        return $result;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Assemblesphp userphp submittedphp parametersphp formingphp aphp URLphp pathphp definedphp byphp thisphp route
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$dataphp Anphp arrayphp ofphp variablephp andphp valuephp pairsphp usedphp asphp parameters
-php php php php php php*php php@paramphp boolphp php$resetphp Weitherphp tophp resetphp thephp currentphp params
-php php php php php php*php php@paramphp boolphp php$encodephp Weitherphp tophp returnphp urlencodedphp string
-php php php php php php*php php@returnphp stringphp Routephp pathphp withphp userphp submittedphp parameters
-php php php php php php*php/
-php php php php publicphp functionphp assemblephp(php$dataphp php=php arrayphp(php)php,php php$resetphp php=php falsephp,php php$encodephp php=php truephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_keysSetphp)php php{
-php php php php php php php php php php php php ifphp php(nullphp php=php=php=php php$thisphp-php>php_requestphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php_requestphp php=php php$thisphp-php>php_frontphp-php>getRequestphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php_setRequestKeysphp(php)php;
-php php php php php php php php php}
+    /**
+     * Assembles user submitted parameters forming a URL path defined by this route
+     *
+     * @param array $data An array of variable and value pairs used as parameters
+     * @param bool $reset Weither to reset the current params
+     * @param bool $encode Weither to return urlencoded string
+     * @return string Route path with user submitted parameters
+     */
+    public function assemble($data = array(), $reset = false, $encode = true)
+    {
+        if (!$this->_keysSet) {
+            if (null === $this->_request) {
+                $this->_request = $this->_front->getRequest();
+            }
+            $this->_setRequestKeys();
+        }
 
-php php php php php php php php php$paramsphp php=php php(php!php$resetphp)php php?php php$thisphp-php>php_valuesphp php:php arrayphp(php)php;
+        $params = (!$reset) ? $this->_values : array();
 
-php php php php php php php php foreachphp php(php$dataphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php$valuephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php$paramsphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php}php elseifphp php(issetphp(php$paramsphp[php$keyphp]php)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php$keyphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($data as $key => $value) {
+            if ($value !== null) {
+                $params[$key] = $value;
+            } elseif (isset($params[$key])) {
+                unset($params[$key]);
+            }
+        }
 
-php php php php php php php php php$paramsphp php+php=php php$thisphp-php>php_defaultsphp;
+        $params += $this->_defaults;
 
-php php php php php php php php php$urlphp php=php php'php'php;
+        $url = '';
 
-php php php php php php php php ifphp php(php$thisphp-php>php_moduleValidphp php|php|php arrayphp_keyphp_existsphp(php$thisphp-php>php_moduleKeyphp,php php$dataphp)php)php php{
-php php php php php php php php php php php php ifphp php(php$paramsphp[php$thisphp-php>php_moduleKeyphp]php php!php=php php$thisphp-php>php_defaultsphp[php$thisphp-php>php_moduleKeyphp]php)php php{
-php php php php php php php php php php php php php php php php php$modulephp php=php php$paramsphp[php$thisphp-php>php_moduleKeyphp]php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$paramsphp[php$thisphp-php>php_moduleKeyphp]php)php;
+        if ($this->_moduleValid || array_key_exists($this->_moduleKey, $data)) {
+            if ($params[$this->_moduleKey] != $this->_defaults[$this->_moduleKey]) {
+                $module = $params[$this->_moduleKey];
+            }
+        }
+        unset($params[$this->_moduleKey]);
 
-php php php php php php php php php$controllerphp php=php php$paramsphp[php$thisphp-php>php_controllerKeyphp]php;
-php php php php php php php php unsetphp(php$paramsphp[php$thisphp-php>php_controllerKeyphp]php)php;
+        $controller = $params[$this->_controllerKey];
+        unset($params[$this->_controllerKey]);
 
-php php php php php php php php php/php/php setphp php$actionphp ifphp valuephp givenphp isphp php'newphp'php orphp php'editphp'
-php php php php php php php php ifphp php(inphp_arrayphp(php$paramsphp[php$thisphp-php>php_actionKeyphp]php,php arrayphp(php'newphp'php,php php'editphp'php)php)php)php php{
-php php php php php php php php php php php php php$actionphp php=php php$paramsphp[php$thisphp-php>php_actionKeyphp]php;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$paramsphp[php$thisphp-php>php_actionKeyphp]php)php;
+        // set $action if value given is 'new' or 'edit'
+        if (in_array($params[$this->_actionKey], array('new', 'edit'))) {
+            $action = $params[$this->_actionKey];
+        }
+        unset($params[$this->_actionKey]);
 
-php php php php php php php php ifphp php(issetphp(php$paramsphp[php'indexphp'php]php)php php&php&php php$paramsphp[php'indexphp'php]php)php php{
-php php php php php php php php php php php php unsetphp(php$paramsphp[php'indexphp'php]php)php;
-php php php php php php php php php php php php php$urlphp php.php=php php'php/indexphp'php;
-php php php php php php php php php php php php ifphp php(issetphp(php$paramsphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$urlphp php.php=php php'php/php'php.php$paramsphp[php'idphp'php]php;
-php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php'idphp'php]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php$encodephp)php php$valuephp php=php urlencodephp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php$urlphp php.php=php php'php/php'php php.php php$keyphp php.php php'php/php'php php.php php$valuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}php elseifphp php(php!php emptyphp(php$actionphp)php php&php&php issetphp(php$paramsphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php php$urlphp php.php=php sprintfphp(php'php/php%sphp/php%sphp'php,php php$paramsphp[php'idphp'php]php,php php$actionphp)php;
-php php php php php php php php php}php elseifphp php(php!php emptyphp(php$actionphp)php)php php{
-php php php php php php php php php php php php php$urlphp php.php=php sprintfphp(php'php/php%sphp'php,php php$actionphp)php;
-php php php php php php php php php}php elseifphp php(issetphp(php$paramsphp[php'idphp'php]php)php)php php{
-php php php php php php php php php php php php php$urlphp php.php=php php'php/php'php php.php php$paramsphp[php'idphp'php]php;
-php php php php php php php php php}
+        if (isset($params['index']) && $params['index']) {
+            unset($params['index']);
+            $url .= '/index';
+            if (isset($params['id'])) {
+                $url .= '/'.$params['id'];
+                unset($params['id']);
+            }
+            foreach ($params as $key => $value) {
+                if ($encode) $value = urlencode($value);
+                $url .= '/' . $key . '/' . $value;
+            }
+        } elseif (! empty($action) && isset($params['id'])) {
+            $url .= sprintf('/%s/%s', $params['id'], $action);
+        } elseif (! empty($action)) {
+            $url .= sprintf('/%s', $action);
+        } elseif (isset($params['id'])) {
+            $url .= '/' . $params['id'];
+        }
 
-php php php php php php php php ifphp php(php!emptyphp(php$urlphp)php php|php|php php$controllerphp php!php=php=php php$thisphp-php>php_defaultsphp[php$thisphp-php>php_controllerKeyphp]php)php php{
-php php php php php php php php php php php php php$urlphp php=php php'php/php'php php.php php$controllerphp php.php php$urlphp;
-php php php php php php php php php}
+        if (!empty($url) || $controller !== $this->_defaults[$this->_controllerKey]) {
+            $url = '/' . $controller . $url;
+        }
 
-php php php php php php php php ifphp php(issetphp(php$modulephp)php)php php{
-php php php php php php php php php php php php php$urlphp php=php php'php/php'php php.php php$modulephp php.php php$urlphp;
-php php php php php php php php php}
+        if (isset($module)) {
+            $url = '/' . $module . $url;
+        }
 
-php php php php php php php php returnphp ltrimphp(php$urlphp,php selfphp:php:URIphp_DELIMITERphp)php;
-php php php php php}
+        return ltrim($url, self::URI_DELIMITER);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Tellsphp Rewritephp Routerphp whichphp versionphp thisphp Routephp is
-php php php php php php*
-php php php php php php*php php@returnphp intphp Routephp php"versionphp"
-php php php php php php*php/
-php php php php publicphp functionphp getVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp php2php;
-php php php php php}
+    /**
+     * Tells Rewrite Router which version this Route is
+     *
+     * @return int Route "version"
+     */
+    public function getVersion()
+    {
+        return 2;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsesphp thephp respondersphp arrayphp sentphp tophp constructorphp tophp know
-php php php php php php*php whichphp modulesphp andphp/orphp controllersphp arephp RESTful
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$responders
-php php php php php php*php/
-php php php php protectedphp functionphp php_parseRespondersphp(php$respondersphp)
-php php php php php{
-php php php php php php php php php$modulesOnlyphp php=php truephp;
-php php php php php php php php foreachphp php(php$respondersphp asphp php$responderphp)php php{
-php php php php php php php php php php php php ifphp(isphp_arrayphp(php$responderphp)php)php php{
-php php php php php php php php php php php php php php php php php$modulesOnlyphp php=php falsephp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$modulesOnlyphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_restfulModulesphp php=php php$respondersphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_restfulControllersphp php=php php$respondersphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Parses the responders array sent to constructor to know
+     * which modules and/or controllers are RESTful
+     *
+     * @param array $responders
+     */
+    protected function _parseResponders($responders)
+    {
+        $modulesOnly = true;
+        foreach ($responders as $responder) {
+            if(is_array($responder)) {
+                $modulesOnly = false;
+                break;
+            }
+        }
+        if ($modulesOnly) {
+            $this->_restfulModules = $responders;
+        } else {
+            $this->_restfulControllers = $responders;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinephp ifphp aphp specifiedphp modulephp supportsphp RESTfulphp routing
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkRestfulModulephp(php$moduleNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_allRestfulphp(php)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_fullRestfulModulephp(php$moduleNamephp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_restfulControllersphp php&php&php arrayphp_keyphp_existsphp(php$moduleNamephp,php php$thisphp-php>php_restfulControllersphp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Determine if a specified module supports RESTful routing
+     *
+     * @param string $moduleName
+     * @return bool
+     */
+    protected function _checkRestfulModule($moduleName)
+    {
+        if ($this->_allRestful()) {
+            return true;
+        }
+        if ($this->_fullRestfulModule($moduleName)) {
+            return true;
+        }
+        if ($this->_restfulControllers && array_key_exists($moduleName, $this->_restfulControllers)) {
+            return true;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinephp ifphp aphp specifiedphp modulephp php+php controllerphp combinationphp supports
-php php php php php php*php RESTfulphp routing
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@paramphp stringphp php$controllerName
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_checkRestfulControllerphp(php$moduleNamephp,php php$controllerNamephp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_allRestfulphp(php)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_fullRestfulModulephp(php$moduleNamephp)php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$thisphp-php>php_checkRestfulModulephp(php$moduleNamephp)
-php php php php php php php php php php php php php&php&php php$thisphp-php>php_restfulControllers
-php php php php php php php php php php php php php&php&php php(falsephp php!php=php=php arrayphp_searchphp(php$controllerNamephp,php php$thisphp-php>php_restfulControllersphp[php$moduleNamephp]php)php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php returnphp truephp;
-php php php php php php php php php}
-php php php php php php php php returnphp falsephp;
-php php php php php}
+    /**
+     * Determine if a specified module + controller combination supports
+     * RESTful routing
+     *
+     * @param string $moduleName
+     * @param string $controllerName
+     * @return bool
+     */
+    protected function _checkRestfulController($moduleName, $controllerName)
+    {
+        if ($this->_allRestful()) {
+            return true;
+        }
+        if ($this->_fullRestfulModule($moduleName)) {
+            return true;
+        }
+        if ($this->_checkRestfulModule($moduleName)
+            && $this->_restfulControllers
+            && (false !== array_search($controllerName, $this->_restfulControllers[$moduleName]))
+        ) {
+            return true;
+        }
+        return false;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinesphp ifphp RESTfulphp routingphp appliesphp tophp thephp entirephp app
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_allRestfulphp(php)
-php php php php php{
-php php php php php php php php returnphp php(php!php$thisphp-php>php_restfulModulesphp php&php&php php!php$thisphp-php>php_restfulControllersphp)php;
-php php php php php}
+    /**
+     * Determines if RESTful routing applies to the entire app
+     *
+     * @return bool
+     */
+    protected function _allRestful()
+    {
+        return (!$this->_restfulModules && !$this->_restfulControllers);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinesphp ifphp RESTfulphp routingphp appliesphp tophp anphp entirephp module
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$moduleName
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_fullRestfulModulephp(php$moduleNamephp)
-php php php php php{
-php php php php php php php php returnphp php(
-php php php php php php php php php php php php php$thisphp-php>php_restfulModules
-php php php php php php php php php php php php php&php&php php(falsephp php!php=php=arrayphp_searchphp(php$moduleNamephp,php php$thisphp-php>php_restfulModulesphp)php)
-php php php php php php php php php)php;
-php php php php php}
-php}
+    /**
+     * Determines if RESTful routing applies to an entire module
+     *
+     * @param string $moduleName
+     * @return bool
+     */
+    protected function _fullRestfulModule($moduleName)
+    {
+        return (
+            $this->_restfulModules
+            && (false !==array_search($moduleName, $this->_restfulModules))
+        );
+    }
+}

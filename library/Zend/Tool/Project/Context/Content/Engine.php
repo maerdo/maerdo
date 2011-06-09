@@ -1,106 +1,106 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Enginephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Engine.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp_CodeGenerator
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Contentphp/Enginephp/CodeGeneratorphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Context_Content_Engine_CodeGenerator
+ */
+require_once 'Zend/Tool/Project/Context/Content/Engine/CodeGenerator.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp_Phtml
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Projectphp/Contextphp/Contentphp/Enginephp/Phtmlphp.phpphp'php;
+/**
+ * @see Zend_Tool_Project_Context_Content_Engine_Phtml
+ */
+require_once 'Zend/Tool/Project/Context/Content/Engine/Phtml.php';
 
-php/php*php*
-php php*php Thisphp classphp isphp thephp frontphp mostphp classphp forphp utilizingphp Zendphp_Toolphp_Project
-php php*
-php php*php Aphp profilephp isphp aphp hierarchicalphp setphp ofphp resourcesphp thatphp keepphp trackphp of
-php php*php itemsphp withinphp aphp specificphp projectphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Engine
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storage
-php php php php php php*php/
-php php php php protectedphp php$php_storagephp php=php nullphp;
+/**
+ * This class is the front most class for utilizing Zend_Tool_Project
+ *
+ * A profile is a hierarchical set of resources that keep track of
+ * items within a specific project.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Project_Context_Content_Engine
+{
+    /**
+     * @var Zend_Tool_Framework_Client_Storage
+     */
+    protected $_storage = null;
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_keyInStoragephp php=php php'projectphp/contentphp'php;
+    /**
+     * @var string
+     */
+    protected $_keyInStorage = 'project/content';
 
-php php php php php/php*php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_enginesphp php=php arrayphp(php)php;
+    /**
+     * @var array
+     */
+    protected $_engines = array();
 
-php php php php php/php*php*
-php php php php php php*php php_php_constructphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp php$storage
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(Zendphp_Toolphp_Frameworkphp_Clientphp_Storagephp php$storagephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_storagephp php=php php$storagephp;
-php php php php php php php php php$thisphp-php>php_enginesphp php=php arrayphp(
-php php php php php php php php php php php php newphp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp_CodeGeneratorphp(php$storagephp,php php$thisphp-php>php_keyInStoragephp)php,
-php php php php php php php php php php php php newphp Zendphp_Toolphp_Projectphp_Contextphp_Contentphp_Enginephp_Phtmlphp(php$storagephp,php php$thisphp-php>php_keyInStoragephp)php,
-php php php php php php php php php php php php php)php;
-php php php php php}
+    /**
+     * __construct()
+     *
+     * @param Zend_Tool_Framework_Client_Storage $storage
+     */
+    public function __construct(Zend_Tool_Framework_Client_Storage $storage)
+    {
+        $this->_storage = $storage;
+        $this->_engines = array(
+            new Zend_Tool_Project_Context_Content_Engine_CodeGenerator($storage, $this->_keyInStorage),
+            new Zend_Tool_Project_Context_Content_Engine_Phtml($storage, $this->_keyInStorage),
+            );
+    }
 
-php php php php php/php*php*
-php php php php php php*php getContentphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Toolphp_Projectphp_Contextphp_Interfacephp php$context
-php php php php php php*php php@paramphp stringphp php$methodName
-php php php php php php*php php@paramphp mixedphp php$parameters
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getContentphp(Zendphp_Toolphp_Projectphp_Contextphp_Interfacephp php$contextphp,php php$methodNamephp,php php$parametersphp)
-php php php php php{
-php php php php php php php php php$contentphp php=php nullphp;
+    /**
+     * getContent()
+     *
+     * @param Zend_Tool_Project_Context_Interface $context
+     * @param string $methodName
+     * @param mixed $parameters
+     * @return string
+     */
+    public function getContent(Zend_Tool_Project_Context_Interface $context, $methodName, $parameters)
+    {
+        $content = null;
 
-php php php php php php php php foreachphp php(php$thisphp-php>php_enginesphp asphp php$enginephp)php php{
-php php php php php php php php php php php php ifphp php(php$enginephp-php>hasContentphp(php$contextphp,php php$methodNamephp,php php$parametersphp)php)php php{
-php php php php php php php php php php php php php php php php php$contentphp php=php php$enginephp-php>getContentphp(php$contextphp,php php$methodNamephp,php php$parametersphp)php;
+        foreach ($this->_engines as $engine) {
+            if ($engine->hasContent($context, $methodName, $parameters)) {
+                $content = $engine->getContent($context, $methodName, $parameters);
 
-php php php php php php php php php php php php php php php php ifphp php(php$contentphp php!php=php nullphp)php php{
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
+                if ($content != null) {
+                    break;
+                }
 
-php php php php php php php php php php php php php}
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php php php php ifphp php(php$contentphp php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+        if ($content == null) {
+            return false;
+        }
 
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
+        return $content;
+    }
 
-php}
+}

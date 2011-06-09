@@ -1,146 +1,146 @@
-<php?php
-php/php*php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp QueueService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage QueueService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*
-php php*php Commonphp interfacephp forphp queuephp servicesphp inphp thephp cloudphp.php Thisphp interfacephp supports
-php php*php mostphp queuephp servicesphp andphp providesphp somephp flexibilityphp forphp vendorphp-specific
-php php*php featuresphp andphp requirementsphp viaphp anphp optionalphp php$optionsphp arrayphp inphp eachphp method
-php php*php signaturephp.php Classesphp implementingphp thisphp interfacephp shouldphp implementphp URI
-php php*php constructionphp forphp queuesphp fromphp thephp parametersphp givenphp inphp eachphp methodphp andphp the
-php php*php accountphp dataphp passedphp inphp tophp thephp constructorphp.php Classesphp implementingphp this
-php php*php interfacephp arephp alsophp responsiblephp forphp securityphp;php accessphp controlphp isnphp'tphp currently
-php php*php supportedphp inphp thisphp interfacephp,php althoughphp wephp arephp consideringphp accessphp control
-php php*php supportphp inphp futurephp versionsphp ofphp thephp interfacephp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Cloud
-php php*php php@subpackagephp QueueService
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Cloudphp_QueueServicephp_Adapter
-php{
-php php php php php/php*php*php Ctorphp HTTPphp adapterphp optionphp php*php/
-php php php php constphp HTTPphp_ADAPTERphp php=php php'httpphp_adapterphp'php;
+/**
+ * Common interface for queue services in the cloud. This interface supports
+ * most queue services and provides some flexibility for vendor-specific
+ * features and requirements via an optional $options array in each method
+ * signature. Classes implementing this interface should implement URI
+ * construction for queues from the parameters given in each method and the
+ * account data passed in to the constructor. Classes implementing this
+ * interface are also responsible for security; access control isn't currently
+ * supported in this interface, although we are considering access control
+ * support in future versions of the interface.
+ *
+ * @category   Zend
+ * @package    Zend_Cloud
+ * @subpackage QueueService
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Cloud_QueueService_Adapter
+{
+    /** Ctor HTTP adapter option */
+    const HTTP_ADAPTER = 'http_adapter';
 
-php php php php php/php*php*php Messagephp visibilityphp timeoutphp optionphp php*php/
-php php php php constphp VISIBILITYphp_TIMEOUTphp php=php php'visibilityphp_timeoutphp'php;
+    /** Message visibility timeout option */
+    const VISIBILITY_TIMEOUT = 'visibility_timeout';
 
-php php php php php/php*php*php Defaultphp visibilityphp timeoutphp php*php/
-php php php php constphp DEFAULTphp_TIMEOUTphp php=php php3php0php;
+    /** Default visibility timeout */
+    const DEFAULT_TIMEOUT = 30;
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp queuephp.php Returnsphp thephp IDphp ofphp thephp createdphp queuephp php(typicallyphp thephp URLphp)php.
-php php php php php php*php Itphp mayphp takephp somephp timephp tophp createphp thephp queuephp.php Checkphp yourphp vendorphp's
-php php php php php php*php documentationphp forphp detailsphp.
-php php php php php php*
-php php php php php php*php Namephp constraintsphp:php Maximumphp php8php0php characters
-php php php php php php*php php php php php php php php php php php php php php php php php php php php php php Onlyphp alphanumericphp charactersphp,php hyphensphp php(php-php)php,php andphp underscoresphp php(php_php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$name
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp stringphp Queuephp IDphp php(typicallyphp URLphp)
-php php php php php php*php/
-php php php php publicphp functionphp createQueuephp(php$namephp,php php$optionsphp php=php nullphp)php;
+    /**
+     * Create a queue. Returns the ID of the created queue (typically the URL).
+     * It may take some time to create the queue. Check your vendor's
+     * documentation for details.
+     *
+     * Name constraints: Maximum 80 characters
+     *                      Only alphanumeric characters, hyphens (-), and underscores (_)
+     *
+     * @param  string $name
+     * @param  array  $options
+     * @return string Queue ID (typically URL)
+     */
+    public function createQueue($name, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Deletephp aphp queuephp.php Allphp messagesphp inphp thephp queuephp willphp alsophp bephp deletedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp booleanphp truephp ifphp successfulphp,php falsephp otherwise
-php php php php php php*php/
-php php php php publicphp functionphp deleteQueuephp(php$queueIdphp,php php$optionsphp php=php nullphp)php;
+    /**
+     * Delete a queue. All messages in the queue will also be deleted.
+     *
+     * @param  string $queueId
+     * @param  array  $options
+     * @return boolean true if successful, false otherwise
+     */
+    public function deleteQueue($queueId, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Listphp allphp queuesphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$options
-php php php php php php*php php@returnphp arrayphp Queuephp IDs
-php php php php php php*php/
-php php php php publicphp functionphp listQueuesphp(php$optionsphp php=php nullphp)php;
+    /**
+     * List all queues.
+     *
+     * @param  array $options
+     * @return array Queue IDs
+     */
+    public function listQueues($options = null);
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp givenphp queuephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp fetchQueueMetadataphp(php$queueIdphp,php php$optionsphp php=php nullphp)php;
+    /**
+     * Get a key/value array of metadata for the given queue.
+     *
+     * @param  string $queueId
+     * @param  array  $options
+     * @return array
+     */
+    public function fetchQueueMetadata($queueId, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Storephp aphp keyphp/valuephp arrayphp ofphp metadataphp forphp thephp specifiedphp queuephp.
-php php php php php php*php WARNINGphp:php Thisphp operationphp overwritesphp anyphp metadataphp thatphp isphp locatedphp at
-php php php php php php*php php$destinationPathphp.php Somephp adaptersphp mayphp notphp supportphp thisphp methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php arrayphp php php$metadata
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp storeQueueMetadataphp(php$queueIdphp,php php$metadataphp,php php php$optionsphp php=php nullphp)php;
+    /**
+     * Store a key/value array of metadata for the specified queue.
+     * WARNING: This operation overwrites any metadata that is located at
+     * $destinationPath. Some adapters may not support this method.
+     *
+     * @param  string $queueId
+     * @param  array  $metadata
+     * @param  array  $options
+     * @return void
+     */
+    public function storeQueueMetadata($queueId, $metadata,  $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Sendphp aphp messagephp tophp thephp specifiedphp queuephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php stringphp php$message
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp stringphp Messagephp ID
-php php php php php php*php/
-php php php php publicphp functionphp sendMessagephp(php$queueIdphp,php php$messagephp,php php php$optionsphp php=php nullphp)php;
+    /**
+     * Send a message to the specified queue.
+     *
+     * @param  string $queueId
+     * @param  string $message
+     * @param  array  $options
+     * @return string Message ID
+     */
+    public function sendMessage($queueId, $message,  $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Recievephp atphp mostphp php$maxphp messagesphp fromphp thephp specifiedphp queuephp andphp returnphp the
-php php php php php php*php messagephp IDsphp forphp messagesphp recievedphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php intphp php php php php$max
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp arrayphp[Zendphp_Cloudphp_QueueServicephp_Messagephp]php php Arrayphp ofphp messages
-php php php php php php*php/
-php php php php publicphp functionphp receiveMessagesphp(php$queueIdphp,php php$maxphp php=php php1php,php php$optionsphp php=php nullphp)php;
+    /**
+     * Recieve at most $max messages from the specified queue and return the
+     * message IDs for messages recieved.
+     *
+     * @param  string $queueId
+     * @param  int    $max
+     * @param  array  $options
+     * @return array[Zend_Cloud_QueueService_Message]  Array of messages
+     */
+    public function receiveMessages($queueId, $max = 1, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Peekphp atphp thephp messagesphp fromphp thephp specifiedphp queuephp withoutphp removingphp themphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php intphp php$numphp Howphp manyphp messages
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp arrayphp[Zendphp_Cloudphp_QueueServicephp_Messagephp]
-php php php php php php*php/
-php php php php publicphp functionphp peekMessagesphp(php$queueIdphp,php php$numphp php=php php1php,php php$optionsphp php=php nullphp)php;
+    /**
+     * Peek at the messages from the specified queue without removing them.
+     *
+     * @param  string $queueId
+     * @param  int $num How many messages
+     * @param  array  $options
+     * @return array[Zend_Cloud_QueueService_Message]
+     */
+    public function peekMessages($queueId, $num = 1, $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Deletephp thephp specifiedphp messagephp fromphp thephp specifiedphp queuephp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$queueId
-php php php php php php*php php@paramphp php Zendphp_Cloudphp_QueueServicephp_Messagephp php$messagephp Messagephp tophp delete
-php php php php php php*php php@paramphp php arrayphp php php$options
-php php php php php php*php php@returnphp void
-php php php php php php*
-php php php php php php*php/
-php php php php publicphp functionphp deleteMessagephp(php$queueIdphp,php php$messagephp,php php php$optionsphp php=php nullphp)php;
+    /**
+     * Delete the specified message from the specified queue.
+     *
+     * @param  string $queueId
+     * @param  Zend_Cloud_QueueService_Message $message Message to delete
+     * @param  array  $options
+     * @return void
+     *
+     */
+    public function deleteMessage($queueId, $message,  $options = null);
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp concretephp adapterphp.
-php php php php php php*php/
-php php php php publicphp functionphp getClientphp(php)php;
-php}
+    /**
+     * Get the concrete adapter.
+     */
+    public function getClient();
+}

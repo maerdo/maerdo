@@ -1,400 +1,400 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Atomphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Reader
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_EntryInterface
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/EntryInterfacephp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_EntryAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/EntryAbstractphp.phpphp'php;
-
-php/php*php*
-php php*php php@seephp Zendphp_Feedphp_Readerphp_Extensionphp_Atomphp_Entry
-php php*php/
-requirephp_oncephp php'Zendphp/Feedphp/Readerphp/Extensionphp/Atomphp/Entryphp.phpphp'php;
-
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Feedphp_Readerphp_Entryphp_Atomphp extendsphp Zendphp_Feedphp_Readerphp_EntryAbstractphp implementsphp Zendphp_Feedphp_Readerphp_EntryInterface
-php{
-php php php php php/php*php*
-php php php php php php*php XPathphp query
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_xpathQueryphp php=php php'php'php;
-
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php DOMElementphp php$entry
-php php php php php php*php php@paramphp php intphp php$entryKey
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(DOMElementphp php$entryphp,php php$entryKeyphp,php php$typephp php=php nullphp)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php$entryphp,php php$entryKeyphp,php php$typephp)php;
-
-php php php php php php php php php/php/php Everyonephp byphp nowphp shouldphp knowphp XPathphp indicesphp startphp fromphp php1php notphp php0
-php php php php php php php php php$thisphp-php>php_xpathQueryphp php=php php'php/php/atomphp:entryphp[php'php php.php php(php$thisphp-php>php_entryKeyphp php+php php1php)php php.php php'php]php'php;
-
-php php php php php php php php php$atomClassphp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php'Atomphp_Entryphp'php)php;
-php php php php php php php php php$thisphp-php>php_extensionsphp[php'Atomphp_Entryphp'php]php php=php newphp php$atomClassphp(php$entryphp,php php$entryKeyphp,php php$typephp)php;
-
-php php php php php php php php php$threadClassphp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php'Threadphp_Entryphp'php)php;
-php php php php php php php php php$thisphp-php>php_extensionsphp[php'Threadphp_Entryphp'php]php php=php newphp php$threadClassphp(php$entryphp,php php$entryKeyphp,php php$typephp)php;
-
-php php php php php php php php php$threadClassphp php=php Zendphp_Feedphp_Readerphp:php:getPluginLoaderphp(php)php-php>getClassNamephp(php'DublinCorephp_Entryphp'php)php;
-php php php php php php php php php$thisphp-php>php_extensionsphp[php'DublinCorephp_Entryphp'php]php php=php newphp php$threadClassphp(php$entryphp,php php$entryKeyphp,php php$typephp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp specifiedphp author
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$index
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getAuthorphp(php$indexphp php=php php0php)
-php php php php php{
-php php php php php php php php php$authorsphp php=php php$thisphp-php>getAuthorsphp(php)php;
-
-php php php php php php php php ifphp php(issetphp(php$authorsphp[php$indexphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$authorsphp[php$indexphp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp anphp arrayphp withphp feedphp authors
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAuthorsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'authorsphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorsphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$peoplephp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getAuthorsphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'authorsphp'php]php php=php php$peoplephp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'authorsphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp content
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getContentphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'contentphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'contentphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$contentphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getContentphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'contentphp'php]php php=php php$contentphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'contentphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp creationphp date
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDateCreatedphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'datecreatedphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datecreatedphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$dateCreatedphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getDateCreatedphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'datecreatedphp'php]php php=php php$dateCreatedphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datecreatedphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp modificationphp date
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDateModifiedphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'datemodifiedphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$dateModifiedphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getDateModifiedphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php php=php php$dateModifiedphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'datemodifiedphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp description
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'descriptionphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'descriptionphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$descriptionphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getDescriptionphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'descriptionphp'php]php php=php php$descriptionphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'descriptionphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp enclosure
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getEnclosurephp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'enclosurephp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'enclosurephp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$enclosurephp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getEnclosurephp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'enclosurephp'php]php php=php php$enclosurephp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'enclosurephp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp ID
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'idphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'idphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$idphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getIdphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'idphp'php]php php=php php$idphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'idphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp aphp specificphp link
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$index
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getLinkphp(php$indexphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'linksphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>getLinksphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp php(issetphp(php$thisphp-php>php_dataphp[php'linksphp'php]php[php$indexphp]php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'linksphp'php]php[php$indexphp]php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp nullphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp allphp links
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getLinksphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'linksphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'linksphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$linksphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getLinksphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'linksphp'php]php php=php php$linksphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'linksphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp aphp permalinkphp tophp thephp entry
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getPermalinkphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getLinkphp(php0php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp entryphp title
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getTitlephp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'titlephp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'titlephp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$titlephp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getTitlephp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'titlephp'php]php php=php php$titlephp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'titlephp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp thephp numberphp ofphp commentsphp/repliesphp forphp currentphp entry
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getCommentCountphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'commentcountphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentcountphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$commentcountphp php=php php$thisphp-php>getExtensionphp(php'Threadphp'php)php-php>getCommentCountphp(php)php;
-
-php php php php php php php php ifphp php(php!php$commentcountphp)php php{
-php php php php php php php php php php php php php$commentcountphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getCommentCountphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'commentcountphp'php]php php=php php$commentcountphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentcountphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp URIphp pointingphp tophp thephp HTMLphp pagephp wherephp commentsphp canphp bephp madephp onphp thisphp entry
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getCommentLinkphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'commentlinkphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentlinkphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$commentlinkphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getCommentLinkphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'commentlinkphp'php]php php=php php$commentlinkphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentlinkphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp aphp URIphp pointingphp tophp aphp feedphp ofphp allphp commentsphp forphp thisphp entry
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getCommentFeedLinkphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'commentfeedlinkphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentfeedlinkphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$commentfeedlinkphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getCommentFeedLinkphp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'commentfeedlinkphp'php]php php=php php$commentfeedlinkphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'commentfeedlinkphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp categoryphp dataphp asphp aphp Zendphp_Feedphp_Readerphp_Collectionphp_Categoryphp object
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Collectionphp_Category
-php php php php php php*php/
-php php php php publicphp functionphp getCategoriesphp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'categoriesphp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'categoriesphp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$categoryCollectionphp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getCategoriesphp(php)php;
-
-php php php php php php php php ifphp php(countphp(php$categoryCollectionphp)php php=php=php php0php)php php{
-php php php php php php php php php php php php php$categoryCollectionphp php=php php$thisphp-php>getExtensionphp(php'DublinCorephp'php)php-php>getCategoriesphp(php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'categoriesphp'php]php php=php php$categoryCollectionphp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'categoriesphp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getphp sourcephp feedphp metadataphp fromphp thephp entry
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Feedphp_Atomphp_Sourcephp|null
-php php php php php php*php/
-php php php php publicphp functionphp getSourcephp(php)
-php php php php php{
-php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php'sourcephp'php,php php$thisphp-php>php_dataphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'sourcephp'php]php;
-php php php php php php php php php}
-
-php php php php php php php php php$sourcephp php=php php$thisphp-php>getExtensionphp(php'Atomphp'php)php-php>getSourcephp(php)php;
-
-php php php php php php php php php$thisphp-php>php_dataphp[php'sourcephp'php]php php=php php$sourcephp;
-
-php php php php php php php php returnphp php$thisphp-php>php_dataphp[php'sourcephp'php]php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setphp thephp XPathphp queryphp php(inclphp.php onphp allphp Extensionsphp)
-php php php php php php*
-php php php php php php*php php@paramphp DOMXPathphp php$xpath
-php php php php php php*php/
-php php php php publicphp functionphp setXpathphp(DOMXPathphp php$xpathphp)
-php php php php php{
-php php php php php php php php parentphp:php:setXpathphp(php$xpathphp)php;
-php php php php php php php php foreachphp php(php$thisphp-php>php_extensionsphp asphp php$extensionphp)php php{
-php php php php php php php php php php php php php$extensionphp-php>setXpathphp(php$thisphp-php>php_xpathphp)php;
-php php php php php php php php php}
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Atom.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
+
+/**
+ * @see Zend_Feed_Reader
+ */
+require_once 'Zend/Feed/Reader.php';
+
+/**
+ * @see Zend_Feed_Reader_EntryInterface
+ */
+require_once 'Zend/Feed/Reader/EntryInterface.php';
+
+/**
+ * @see Zend_Feed_Reader_EntryAbstract
+ */
+require_once 'Zend/Feed/Reader/EntryAbstract.php';
+
+/**
+ * @see Zend_Feed_Reader_Extension_Atom_Entry
+ */
+require_once 'Zend/Feed/Reader/Extension/Atom/Entry.php';
+
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Feed_Reader_Entry_Atom extends Zend_Feed_Reader_EntryAbstract implements Zend_Feed_Reader_EntryInterface
+{
+    /**
+     * XPath query
+     *
+     * @var string
+     */
+    protected $_xpathQuery = '';
+
+    /**
+     * Constructor
+     *
+     * @param  DOMElement $entry
+     * @param  int $entryKey
+     * @param  string $type
+     * @return void
+     */
+    public function __construct(DOMElement $entry, $entryKey, $type = null)
+    {
+        parent::__construct($entry, $entryKey, $type);
+
+        // Everyone by now should know XPath indices start from 1 not 0
+        $this->_xpathQuery = '//atom:entry[' . ($this->_entryKey + 1) . ']';
+
+        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('Atom_Entry');
+        $this->_extensions['Atom_Entry'] = new $atomClass($entry, $entryKey, $type);
+
+        $threadClass = Zend_Feed_Reader::getPluginLoader()->getClassName('Thread_Entry');
+        $this->_extensions['Thread_Entry'] = new $threadClass($entry, $entryKey, $type);
+
+        $threadClass = Zend_Feed_Reader::getPluginLoader()->getClassName('DublinCore_Entry');
+        $this->_extensions['DublinCore_Entry'] = new $threadClass($entry, $entryKey, $type);
+    }
+
+    /**
+     * Get the specified author
+     *
+     * @param  int $index
+     * @return string|null
+     */
+    public function getAuthor($index = 0)
+    {
+        $authors = $this->getAuthors();
+
+        if (isset($authors[$index])) {
+            return $authors[$index];
+        }
+
+        return null;
+    }
+
+    /**
+     * Get an array with feed authors
+     *
+     * @return array
+     */
+    public function getAuthors()
+    {
+        if (array_key_exists('authors', $this->_data)) {
+            return $this->_data['authors'];
+        }
+
+        $people = $this->getExtension('Atom')->getAuthors();
+
+        $this->_data['authors'] = $people;
+
+        return $this->_data['authors'];
+    }
+
+    /**
+     * Get the entry content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        if (array_key_exists('content', $this->_data)) {
+            return $this->_data['content'];
+        }
+
+        $content = $this->getExtension('Atom')->getContent();
+
+        $this->_data['content'] = $content;
+
+        return $this->_data['content'];
+    }
+
+    /**
+     * Get the entry creation date
+     *
+     * @return string
+     */
+    public function getDateCreated()
+    {
+        if (array_key_exists('datecreated', $this->_data)) {
+            return $this->_data['datecreated'];
+        }
+
+        $dateCreated = $this->getExtension('Atom')->getDateCreated();
+
+        $this->_data['datecreated'] = $dateCreated;
+
+        return $this->_data['datecreated'];
+    }
+
+    /**
+     * Get the entry modification date
+     *
+     * @return string
+     */
+    public function getDateModified()
+    {
+        if (array_key_exists('datemodified', $this->_data)) {
+            return $this->_data['datemodified'];
+        }
+
+        $dateModified = $this->getExtension('Atom')->getDateModified();
+
+        $this->_data['datemodified'] = $dateModified;
+
+        return $this->_data['datemodified'];
+    }
+
+    /**
+     * Get the entry description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        if (array_key_exists('description', $this->_data)) {
+            return $this->_data['description'];
+        }
+
+        $description = $this->getExtension('Atom')->getDescription();
+
+        $this->_data['description'] = $description;
+
+        return $this->_data['description'];
+    }
+
+    /**
+     * Get the entry enclosure
+     *
+     * @return string
+     */
+    public function getEnclosure()
+    {
+        if (array_key_exists('enclosure', $this->_data)) {
+            return $this->_data['enclosure'];
+        }
+
+        $enclosure = $this->getExtension('Atom')->getEnclosure();
+
+        $this->_data['enclosure'] = $enclosure;
+
+        return $this->_data['enclosure'];
+    }
+
+    /**
+     * Get the entry ID
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        if (array_key_exists('id', $this->_data)) {
+            return $this->_data['id'];
+        }
+
+        $id = $this->getExtension('Atom')->getId();
+
+        $this->_data['id'] = $id;
+
+        return $this->_data['id'];
+    }
+
+    /**
+     * Get a specific link
+     *
+     * @param  int $index
+     * @return string
+     */
+    public function getLink($index = 0)
+    {
+        if (!array_key_exists('links', $this->_data)) {
+            $this->getLinks();
+        }
+
+        if (isset($this->_data['links'][$index])) {
+            return $this->_data['links'][$index];
+        }
+
+        return null;
+    }
+
+    /**
+     * Get all links
+     *
+     * @return array
+     */
+    public function getLinks()
+    {
+        if (array_key_exists('links', $this->_data)) {
+            return $this->_data['links'];
+        }
+
+        $links = $this->getExtension('Atom')->getLinks();
+
+        $this->_data['links'] = $links;
+
+        return $this->_data['links'];
+    }
+
+    /**
+     * Get a permalink to the entry
+     *
+     * @return string
+     */
+    public function getPermalink()
+    {
+        return $this->getLink(0);
+    }
+
+    /**
+     * Get the entry title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        if (array_key_exists('title', $this->_data)) {
+            return $this->_data['title'];
+        }
+
+        $title = $this->getExtension('Atom')->getTitle();
+
+        $this->_data['title'] = $title;
+
+        return $this->_data['title'];
+    }
+
+    /**
+     * Get the number of comments/replies for current entry
+     *
+     * @return integer
+     */
+    public function getCommentCount()
+    {
+        if (array_key_exists('commentcount', $this->_data)) {
+            return $this->_data['commentcount'];
+        }
+
+        $commentcount = $this->getExtension('Thread')->getCommentCount();
+
+        if (!$commentcount) {
+            $commentcount = $this->getExtension('Atom')->getCommentCount();
+        }
+
+        $this->_data['commentcount'] = $commentcount;
+
+        return $this->_data['commentcount'];
+    }
+
+    /**
+     * Returns a URI pointing to the HTML page where comments can be made on this entry
+     *
+     * @return string
+     */
+    public function getCommentLink()
+    {
+        if (array_key_exists('commentlink', $this->_data)) {
+            return $this->_data['commentlink'];
+        }
+
+        $commentlink = $this->getExtension('Atom')->getCommentLink();
+
+        $this->_data['commentlink'] = $commentlink;
+
+        return $this->_data['commentlink'];
+    }
+
+    /**
+     * Returns a URI pointing to a feed of all comments for this entry
+     *
+     * @return string
+     */
+    public function getCommentFeedLink()
+    {
+        if (array_key_exists('commentfeedlink', $this->_data)) {
+            return $this->_data['commentfeedlink'];
+        }
+
+        $commentfeedlink = $this->getExtension('Atom')->getCommentFeedLink();
+
+        $this->_data['commentfeedlink'] = $commentfeedlink;
+
+        return $this->_data['commentfeedlink'];
+    }
+
+    /**
+     * Get category data as a Zend_Feed_Reader_Collection_Category object
+     *
+     * @return Zend_Feed_Reader_Collection_Category
+     */
+    public function getCategories()
+    {
+        if (array_key_exists('categories', $this->_data)) {
+            return $this->_data['categories'];
+        }
+
+        $categoryCollection = $this->getExtension('Atom')->getCategories();
+
+        if (count($categoryCollection) == 0) {
+            $categoryCollection = $this->getExtension('DublinCore')->getCategories();
+        }
+
+        $this->_data['categories'] = $categoryCollection;
+
+        return $this->_data['categories'];
+    }
+
+    /**
+     * Get source feed metadata from the entry
+     *
+     * @return Zend_Feed_Reader_Feed_Atom_Source|null
+     */
+    public function getSource()
+    {
+        if (array_key_exists('source', $this->_data)) {
+            return $this->_data['source'];
+        }
+
+        $source = $this->getExtension('Atom')->getSource();
+
+        $this->_data['source'] = $source;
+
+        return $this->_data['source'];
+    }
+
+    /**
+     * Set the XPath query (incl. on all Extensions)
+     *
+     * @param DOMXPath $xpath
+     */
+    public function setXpath(DOMXPath $xpath)
+    {
+        parent::setXpath($xpath);
+        foreach ($this->_extensions as $extension) {
+            $extension->setXpath($this->_xpath);
+        }
+    }
+}

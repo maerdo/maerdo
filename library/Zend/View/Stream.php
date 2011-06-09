@@ -10,7 +10,7 @@
  * http://framework.zend.com/license/new-bsd
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately. 
+ * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
  * @package    Zend_View
@@ -79,7 +79,7 @@ class Zend_View_Stream
         }
 
         /**
-         * Convert <\?php echo ?> to long-form <?php echo ?> and <? ?> to <?php ?>
+         * Convert <?= ?> to long-form <?php echo ?> and <? ?> to <?php ?>
          *
          */
         $this->_data = preg_replace('/\<\?\=/',          "<?php echo ",  $this->_data);

@@ -1,658 +1,658 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Configphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Config.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*php Zendphp_Oauthphp php*php/
-requirephp_oncephp php'Zendphp/Oauthphp.phpphp'php;
+/** Zend_Oauth */
+require_once 'Zend/Oauth.php';
 
-php/php*php*php Zendphp_Uriphp php*php/
-requirephp_oncephp php'Zendphp/Uriphp.phpphp'php;
+/** Zend_Uri */
+require_once 'Zend/Uri.php';
 
-php/php*php*php Zendphp_Oauthphp_Configphp_Interfacephp php*php/
-requirephp_oncephp php'Zendphp/Oauthphp/Configphp/ConfigInterfacephp.phpphp'php;
+/** Zend_Oauth_Config_Interface */
+require_once 'Zend/Oauth/Config/ConfigInterface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Oauthphp_Configphp implementsphp Zendphp_Oauthphp_Configphp_ConfigInterface
-php{
-php php php php php/php*php*
-php php php php php php*php Signaturephp methodphp usedphp whenphp signingphp allphp parametersphp forphp anphp HTTPphp request
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_signatureMethodphp php=php php'HMACphp-SHAphp1php'php;
+/**
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Oauth_Config implements Zend_Oauth_Config_ConfigInterface
+{
+    /**
+     * Signature method used when signing all parameters for an HTTP request
+     *
+     * @var string
+     */
+    protected $_signatureMethod = 'HMAC-SHA1';
 
-php php php php php/php*php*
-php php php php php php*php Threephp requestphp schemesphp arephp definedphp byphp OAuthphp,php ofphp whichphp passing
-php php php php php php*php allphp OAuthphp parametersphp byphp Headerphp isphp preferredphp.php Thephp otherphp twophp are
-php php php php php php*php POSTphp Bodyphp andphp Queryphp Stringphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_requestSchemephp php=php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_HEADERphp;
+    /**
+     * Three request schemes are defined by OAuth, of which passing
+     * all OAuth parameters by Header is preferred. The other two are
+     * POST Body and Query String.
+     *
+     * @var string
+     */
+    protected $_requestScheme = Zend_Oauth::REQUEST_SCHEME_HEADER;
 
-php php php php php/php*php*
-php php php php php php*php Preferredphp requestphp Methodphp php-php onephp ofphp GETphp orphp POSTphp php-php whichphp Zendphp_Oauth
-php php php php php php*php willphp enforcephp asphp standardphp throughoutphp thephp libraryphp.php Generallyphp aphp default
-php php php php php php*php ofphp POSTphp worksphp finephp unlessphp aphp Providerphp specificallyphp requiresphp otherwisephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_requestMethodphp php=php Zendphp_Oauthphp:php:POSTphp;
+    /**
+     * Preferred request Method - one of GET or POST - which Zend_Oauth
+     * will enforce as standard throughout the library. Generally a default
+     * of POST works fine unless a Provider specifically requires otherwise.
+     *
+     * @var string
+     */
+    protected $_requestMethod = Zend_Oauth::POST;
 
-php php php php php/php*php*
-php php php php php php*php OAuthphp Versionphp;php Thisphp defaultsphp tophp php1php.php0php php-php Mustphp notphp bephp changedphp!
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_versionphp php=php php'php1php.php0php'php;
+    /**
+     * OAuth Version; This defaults to 1.0 - Must not be changed!
+     *
+     * @var string
+     */
+    protected $_version = '1.0';
 
-php php php php php/php*php*
-php php php php php php*php Thisphp optionalphp valuephp isphp usedphp tophp definephp wherephp thephp userphp isphp redirectedphp to
-php php php php php php*php afterphp authorizingphp aphp Requestphp Tokenphp fromphp anphp OAuthphp Providersphp websitephp.
-php php php php php php*php Itphp'sphp optionalphp sincephp aphp Providerphp mayphp askphp forphp thisphp tophp bephp definedphp inphp advance
-php php php php php php*php whenphp registeringphp aphp newphp applicationphp forphp aphp Consumerphp Keyphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_callbackUrlphp php=php nullphp;
+    /**
+     * This optional value is used to define where the user is redirected to
+     * after authorizing a Request Token from an OAuth Providers website.
+     * It's optional since a Provider may ask for this to be defined in advance
+     * when registering a new application for a Consumer Key.
+     *
+     * @var string
+     */
+    protected $_callbackUrl = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp rootphp tophp appendphp defaultphp OAuthphp endpointphp pathsphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_siteUrlphp php=php nullphp;
+    /**
+     * The URL root to append default OAuth endpoint paths.
+     *
+     * @var string
+     */
+    protected $_siteUrl = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp tophp whichphp requestsphp forphp aphp Requestphp Tokenphp shouldphp bephp directedphp.
-php php php php php php*php Whenphp absentphp,php assumedphp siteUrlphp+php'php/requestphp_tokenphp'
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_requestTokenUrlphp php=php nullphp;
+    /**
+     * The URL to which requests for a Request Token should be directed.
+     * When absent, assumed siteUrl+'/request_token'
+     *
+     * @var string
+     */
+    protected $_requestTokenUrl = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp tophp whichphp requestsphp forphp anphp Accessphp Tokenphp shouldphp bephp directedphp.
-php php php php php php*php Whenphp absentphp,php assumedphp siteUrlphp+php'php/accessphp_tokenphp'
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_accessTokenUrlphp php=php nullphp;
+    /**
+     * The URL to which requests for an Access Token should be directed.
+     * When absent, assumed siteUrl+'/access_token'
+     *
+     * @var string
+     */
+    protected $_accessTokenUrl = null;
 
-php php php php php/php*php*
-php php php php php php*php Thephp URLphp tophp whichphp usersphp shouldphp bephp redirectedphp tophp authorizephp aphp Requestphp Tokenphp.
-php php php php php php*php Whenphp absentphp,php assumedphp siteUrlphp+php'php/authorizephp'
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_authorizeUrlphp php=php nullphp;
+    /**
+     * The URL to which users should be redirected to authorize a Request Token.
+     * When absent, assumed siteUrl+'/authorize'
+     *
+     * @var string
+     */
+    protected $_authorizeUrl = null;
 
-php php php php php/php*php*
-php php php php php php*php Anphp OAuthphp applicationphp'sphp Consumerphp Keyphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_consumerKeyphp php=php nullphp;
+    /**
+     * An OAuth application's Consumer Key.
+     *
+     * @var string
+     */
+    protected $_consumerKey = null;
 
-php php php php php/php*php*
-php php php php php php*php Everyphp Consumerphp Keyphp hasphp aphp Consumerphp Secretphp unlessphp youphp'rephp inphp RSAphp-landphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_consumerSecretphp php=php nullphp;
+    /**
+     * Every Consumer Key has a Consumer Secret unless you're in RSA-land.
+     *
+     * @var string
+     */
+    protected $_consumerSecret = null;
 
-php php php php php/php*php*
-php php php php php php*php Ifphp relevantphp,php aphp PEMphp encodedphp RSAphp privatephp keyphp encapsulatedphp asphp a
-php php php php php php*php Zendphp_Cryptphp_Rsaphp Key
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cryptphp_Rsaphp_Keyphp_Private
-php php php php php php*php/
-php php php php protectedphp php$php_rsaPrivateKeyphp php=php nullphp;
+    /**
+     * If relevant, a PEM encoded RSA private key encapsulated as a
+     * Zend_Crypt_Rsa Key
+     *
+     * @var Zend_Crypt_Rsa_Key_Private
+     */
+    protected $_rsaPrivateKey = null;
 
-php php php php php/php*php*
-php php php php php php*php Ifphp relevantphp,php aphp PEMphp encodedphp RSAphp publicphp keyphp encapsulatedphp asphp a
-php php php php php php*php Zendphp_Cryptphp_Rsaphp Key
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cryptphp_Rsaphp_Keyphp_Public
-php php php php php php*php/
-php php php php protectedphp php$php_rsaPublicKeyphp php=php nullphp;
+    /**
+     * If relevant, a PEM encoded RSA public key encapsulated as a
+     * Zend_Crypt_Rsa Key
+     *
+     * @var Zend_Crypt_Rsa_Key_Public
+     */
+    protected $_rsaPublicKey = null;
 
-php php php php php/php*php*
-php php php php php php*php Generallyphp thisphp willphp nearlyphp alwaysphp bephp anphp Accessphp Tokenphp representedphp asphp a
-php php php php php php*php Zendphp_Oauthphp_Tokenphp_Accessphp objectphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php protectedphp php$php_tokenphp php=php nullphp;
+    /**
+     * Generally this will nearly always be an Access Token represented as a
+     * Zend_Oauth_Token_Access object.
+     *
+     * @var Zend_Oauth_Token
+     */
+    protected $_token = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructorphp;php createphp aphp newphp objectphp withphp anphp optionalphp arrayphp|Zendphp_Config
-php php php php php php*php instancephp containingphp initialisingphp optionsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$optionsphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php ifphp php(php$optionsphp instanceofphp Zendphp_Configphp)php php{
-php php php php php php php php php php php php php php php php php$optionsphp php=php php$optionsphp-php>toArrayphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>setOptionsphp(php$optionsphp)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor; create a new object with an optional array|Zend_Config
+     * instance containing initialising options.
+     *
+     * @param  array|Zend_Config $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        if ($options !== null) {
+            if ($options instanceof Zend_Config) {
+                $options = $options->toArray();
+            }
+            $this->setOptions($options);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Parsephp optionphp arrayphp orphp Zendphp_Configphp instancephp andphp setupphp optionsphp usingphp their
-php php php php php php*php relevantphp mutatorsphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp php$options
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setOptionsphp(arrayphp php$optionsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$optionsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php switchphp php(php$keyphp)php php{
-php php php php php php php php php php php php php php php php casephp php'consumerKeyphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setConsumerKeyphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'consumerSecretphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setConsumerSecretphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'signatureMethodphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setSignatureMethodphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'versionphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setVersionphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'callbackUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setCallbackUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'siteUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setSiteUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'requestTokenUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRequestTokenUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'accessTokenUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setAccessTokenUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'userAuthorizationUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setUserAuthorizationUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'authorizeUrlphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setAuthorizeUrlphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'requestMethodphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRequestMethodphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'rsaPrivateKeyphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRsaPrivateKeyphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'rsaPublicKeyphp'php:
-php php php php php php php php php php php php php php php php php php php php php$thisphp-php>setRsaPublicKeyphp(php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php ifphp php(issetphp(php$optionsphp[php'requestSchemephp'php]php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setRequestSchemephp(php$optionsphp[php'requestSchemephp'php]php)php;
-php php php php php php php php php}
+    /**
+     * Parse option array or Zend_Config instance and setup options using their
+     * relevant mutators.
+     *
+     * @param  array|Zend_Config $options
+     * @return Zend_Oauth_Config
+     */
+    public function setOptions(array $options)
+    {
+        foreach ($options as $key => $value) {
+            switch ($key) {
+                case 'consumerKey':
+                    $this->setConsumerKey($value);
+                    break;
+                case 'consumerSecret':
+                    $this->setConsumerSecret($value);
+                    break;
+                case 'signatureMethod':
+                    $this->setSignatureMethod($value);
+                    break;
+                case 'version':
+                    $this->setVersion($value);
+                    break;
+                case 'callbackUrl':
+                    $this->setCallbackUrl($value);
+                    break;
+                case 'siteUrl':
+                    $this->setSiteUrl($value);
+                    break;
+                case 'requestTokenUrl':
+                    $this->setRequestTokenUrl($value);
+                    break;
+                case 'accessTokenUrl':
+                    $this->setAccessTokenUrl($value);
+                    break;
+                case 'userAuthorizationUrl':
+                    $this->setUserAuthorizationUrl($value);
+                    break;
+                case 'authorizeUrl':
+                    $this->setAuthorizeUrl($value);
+                    break;
+                case 'requestMethod':
+                    $this->setRequestMethod($value);
+                    break;
+                case 'rsaPrivateKey':
+                    $this->setRsaPrivateKey($value);
+                    break;
+                case 'rsaPublicKey':
+                    $this->setRsaPublicKey($value);
+                    break;
+            }
+        }
+        if (isset($options['requestScheme'])) {
+            $this->setRequestScheme($options['requestScheme']);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp consumerphp key
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setConsumerKeyphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_consumerKeyphp php=php php$keyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set consumer key
+     *
+     * @param  string $key
+     * @return Zend_Oauth_Config
+     */
+    public function setConsumerKey($key)
+    {
+        $this->_consumerKey = $key;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp consumerphp key
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getConsumerKeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_consumerKeyphp;
-php php php php php}
+    /**
+     * Get consumer key
+     *
+     * @return string
+     */
+    public function getConsumerKey()
+    {
+        return $this->_consumerKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp consumerphp secret
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$secret
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setConsumerSecretphp(php$secretphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_consumerSecretphp php=php php$secretphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set consumer secret
+     *
+     * @param  string $secret
+     * @return Zend_Oauth_Config
+     */
+    public function setConsumerSecret($secret)
+    {
+        $this->_consumerSecret = $secret;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp consumerphp secret
-php php php php php php*
-php php php php php php*php Returnsphp RSAphp privatephp keyphp ifphp setphp;php otherwisephp,php returnsphp anyphp previouslyphp set
-php php php php php php*php consumerphp secretphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getConsumerSecretphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_rsaPrivateKeyphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_rsaPrivateKeyphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_consumerSecretphp;
-php php php php php}
+    /**
+     * Get consumer secret
+     *
+     * Returns RSA private key if set; otherwise, returns any previously set
+     * consumer secret.
+     *
+     * @return string
+     */
+    public function getConsumerSecret()
+    {
+        if ($this->_rsaPrivateKey !== null) {
+            return $this->_rsaPrivateKey;
+        }
+        return $this->_consumerSecret;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp signaturephp method
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp ifphp unsupportedphp signaturephp methodphp specified
-php php php php php php*php/
-php php php php publicphp functionphp setSignatureMethodphp(php$methodphp)
-php php php php php{
-php php php php php php php php php$methodphp php=php strtoupperphp(php$methodphp)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$methodphp,php arrayphp(
-php php php php php php php php php php php php php php php php php'HMACphp-SHAphp1php'php,php php'HMACphp-SHAphp2php5php6php'php,php php'RSAphp-SHAphp1php'php,php php'PLAINTEXTphp'
-php php php php php php php php php php php php php)php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(php'Unsupportedphp signaturephp methodphp:php php'
-php php php php php php php php php php php php php php php php php.php php$method
-php php php php php php php php php php php php php php php php php.php php'php.php Supportedphp arephp HMACphp-SHAphp1php,php RSAphp-SHAphp1php,php PLAINTEXTphp andphp HMACphp-SHAphp2php5php6php'php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_signatureMethodphp php=php php$methodphp;php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set signature method
+     *
+     * @param  string $method
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception if unsupported signature method specified
+     */
+    public function setSignatureMethod($method)
+    {
+        $method = strtoupper($method);
+        if (!in_array($method, array(
+                'HMAC-SHA1', 'HMAC-SHA256', 'RSA-SHA1', 'PLAINTEXT'
+            ))
+        ) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception('Unsupported signature method: '
+                . $method
+                . '. Supported are HMAC-SHA1, RSA-SHA1, PLAINTEXT and HMAC-SHA256');
+        }
+        $this->_signatureMethod = $method;;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp signaturephp method
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSignatureMethodphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_signatureMethodphp;
-php php php php php}
+    /**
+     * Get signature method
+     *
+     * @return string
+     */
+    public function getSignatureMethod()
+    {
+        return $this->_signatureMethod;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp requestphp scheme
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$scheme
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp ifphp invalidphp schemephp specifiedphp,php orphp ifphp POSTBODYphp setphp whenphp requestphp methodphp ofphp GETphp isphp specified
-php php php php php php*php/
-php php php php publicphp functionphp setRequestSchemephp(php$schemephp)
-php php php php php{
-php php php php php php php php php$schemephp php=php strtolowerphp(php$schemephp)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$schemephp,php arrayphp(
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_HEADERphp,
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_POSTBODYphp,
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_QUERYSTRINGphp,
-php php php php php php php php php php php php php)php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$schemephp php.php php'php\php'php isphp anphp unsupportedphp requestphp schemephp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$schemephp php=php=php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_POSTBODY
-php php php php php php php php php php php php php&php&php php$thisphp-php>getRequestMethodphp(php)php php=php=php Zendphp_Oauthphp:php:GET
-php php php php php php php php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'Cannotphp setphp POSTBODYphp requestphp methodphp ifphp HTTPphp methodphp setphp tophp GETphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_requestSchemephp php=php php$schemephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set request scheme
+     *
+     * @param  string $scheme
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception if invalid scheme specified, or if POSTBODY set when request method of GET is specified
+     */
+    public function setRequestScheme($scheme)
+    {
+        $scheme = strtolower($scheme);
+        if (!in_array($scheme, array(
+                Zend_Oauth::REQUEST_SCHEME_HEADER,
+                Zend_Oauth::REQUEST_SCHEME_POSTBODY,
+                Zend_Oauth::REQUEST_SCHEME_QUERYSTRING,
+            ))
+        ) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $scheme . '\' is an unsupported request scheme'
+            );
+        }
+        if ($scheme == Zend_Oauth::REQUEST_SCHEME_POSTBODY
+            && $this->getRequestMethod() == Zend_Oauth::GET
+        ) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                'Cannot set POSTBODY request method if HTTP method set to GET'
+            );
+        }
+        $this->_requestScheme = $scheme;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp requestphp scheme
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getRequestSchemephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_requestSchemephp;
-php php php php php}
+    /**
+     * Get request scheme
+     *
+     * @return string
+     */
+    public function getRequestScheme()
+    {
+        return $this->_requestScheme;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp version
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$version
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setVersionphp(php$versionphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_versionphp php=php php$versionphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set version
+     *
+     * @param  string $version
+     * @return Zend_Oauth_Config
+     */
+    public function setVersion($version)
+    {
+        $this->_version = $version;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp version
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getVersionphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_versionphp;
-php php php php php}
+    /**
+     * Get version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_version;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp callbackphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setCallbackUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$urlphp php.php php'php\php'php isphp notphp aphp validphp URIphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_callbackUrlphp php=php php$urlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set callback URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setCallbackUrl($url)
+    {
+        if (!Zend_Uri::check($url)) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $url . '\' is not a valid URI'
+            );
+        }
+        $this->_callbackUrl = $url;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp callbackphp URL
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getCallbackUrlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_callbackUrlphp;
-php php php php php}
+    /**
+     * Get callback URL
+     *
+     * @return string
+     */
+    public function getCallbackUrl()
+    {
+        return $this->_callbackUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp sitephp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setSiteUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$urlphp php.php php'php\php'php isphp notphp aphp validphp URIphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_siteUrlphp php=php php$urlphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set site URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setSiteUrl($url)
+    {
+        if (!Zend_Uri::check($url)) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $url . '\' is not a valid URI'
+            );
+        }
+        $this->_siteUrl = $url;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp sitephp URL
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSiteUrlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_siteUrlphp;
-php php php php php}
+    /**
+     * Get site URL
+     *
+     * @return string
+     */
+    public function getSiteUrl()
+    {
+        return $this->_siteUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp requestphp tokenphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setRequestTokenUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$urlphp php.php php'php\php'php isphp notphp aphp validphp URIphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_requestTokenUrlphp php=php rtrimphp(php$urlphp,php php'php/php'php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set request token URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setRequestTokenUrl($url)
+    {
+        if (!Zend_Uri::check($url)) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $url . '\' is not a valid URI'
+            );
+        }
+        $this->_requestTokenUrl = rtrim($url, '/');
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp requestphp tokenphp URL
-php php php php php php*
-php php php php php php*php Ifphp nophp requestphp tokenphp URLphp hasphp beenphp setphp,php butphp aphp sitephp URLphp hasphp,php returnsphp the
-php php php php php php*php sitephp URLphp withphp thephp stringphp php"php/requestphp_tokenphp"php appendedphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getRequestTokenUrlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_requestTokenUrlphp php&php&php php$thisphp-php>php_siteUrlphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_siteUrlphp php.php php'php/requestphp_tokenphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_requestTokenUrlphp;
-php php php php php}
+    /**
+     * Get request token URL
+     *
+     * If no request token URL has been set, but a site URL has, returns the
+     * site URL with the string "/request_token" appended.
+     *
+     * @return string
+     */
+    public function getRequestTokenUrl()
+    {
+        if (!$this->_requestTokenUrl && $this->_siteUrl) {
+            return $this->_siteUrl . '/request_token';
+        }
+        return $this->_requestTokenUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp accessphp tokenphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setAccessTokenUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$urlphp php.php php'php\php'php isphp notphp aphp validphp URIphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_accessTokenUrlphp php=php rtrimphp(php$urlphp,php php'php/php'php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set access token URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setAccessTokenUrl($url)
+    {
+        if (!Zend_Uri::check($url)) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $url . '\' is not a valid URI'
+            );
+        }
+        $this->_accessTokenUrl = rtrim($url, '/');
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp accessphp tokenphp URL
-php php php php php php*
-php php php php php php*php Ifphp nophp accessphp tokenphp URLphp hasphp beenphp setphp,php butphp aphp sitephp URLphp hasphp,php returnsphp the
-php php php php php php*php sitephp URLphp withphp thephp stringphp php"php/accessphp_tokenphp"php appendedphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getAccessTokenUrlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_accessTokenUrlphp php&php&php php$thisphp-php>php_siteUrlphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_siteUrlphp php.php php'php/accessphp_tokenphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_accessTokenUrlphp;
-php php php php php}
+    /**
+     * Get access token URL
+     *
+     * If no access token URL has been set, but a site URL has, returns the
+     * site URL with the string "/access_token" appended.
+     *
+     * @return string
+     */
+    public function getAccessTokenUrl()
+    {
+        if (!$this->_accessTokenUrl && $this->_siteUrl) {
+            return $this->_siteUrl . '/access_token';
+        }
+        return $this->_accessTokenUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp userphp authorizationphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setUserAuthorizationUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setAuthorizeUrlphp(php$urlphp)php;
-php php php php php}
+    /**
+     * Set user authorization URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setUserAuthorizationUrl($url)
+    {
+        return $this->setAuthorizeUrl($url);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp authorizationphp URL
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp URLs
-php php php php php php*php/
-php php php php publicphp functionphp setAuthorizeUrlphp(php$urlphp)
-php php php php php{
-php php php php php php php php ifphp php(php!Zendphp_Uriphp:php:checkphp(php$urlphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php'php\php'php'php php.php php$urlphp php.php php'php\php'php isphp notphp aphp validphp URIphp'
-php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_authorizeUrlphp php=php rtrimphp(php$urlphp,php php'php/php'php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set authorization URL
+     *
+     * @param  string $url
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid URLs
+     */
+    public function setAuthorizeUrl($url)
+    {
+        if (!Zend_Uri::check($url)) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception(
+                '\'' . $url . '\' is not a valid URI'
+            );
+        }
+        $this->_authorizeUrl = rtrim($url, '/');
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp userphp authorizationphp URL
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getUserAuthorizationUrlphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>getAuthorizeUrlphp(php)php;
-php php php php php}
+    /**
+     * Get user authorization URL
+     *
+     * @return string
+     */
+    public function getUserAuthorizationUrl()
+    {
+        return $this->getAuthorizeUrl();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp authorizationphp URL
-php php php php php php*
-php php php php php php*php Ifphp nophp authorizationphp URLphp hasphp beenphp setphp,php butphp aphp sitephp URLphp hasphp,php returnsphp the
-php php php php php php*php sitephp URLphp withphp thephp stringphp php"php/authorizephp"php appendedphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getAuthorizeUrlphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_authorizeUrlphp php&php&php php$thisphp-php>php_siteUrlphp)php php{
-php php php php php php php php php php php php returnphp php$thisphp-php>php_siteUrlphp php.php php'php/authorizephp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>php_authorizeUrlphp;
-php php php php php}
+    /**
+     * Get authorization URL
+     *
+     * If no authorization URL has been set, but a site URL has, returns the
+     * site URL with the string "/authorize" appended.
+     *
+     * @return string
+     */
+    public function getAuthorizeUrl()
+    {
+        if (!$this->_authorizeUrl && $this->_siteUrl) {
+            return $this->_siteUrl . '/authorize';
+        }
+        return $this->_authorizeUrl;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp requestphp method
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp forphp invalidphp requestphp methods
-php php php php php php*php/
-php php php php publicphp functionphp setRequestMethodphp(php$methodphp)
-php php php php php{
-php php php php php php php php php$methodphp php=php strtoupperphp(php$methodphp)php;
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$methodphp,php arrayphp(
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:GETphp,
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:POSTphp,
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:PUTphp,
-php php php php php php php php php php php php php php php php Zendphp_Oauthphp:php:DELETEphp,
-php php php php php php php php php php php php php)php)
-php php php php php php php php php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(php'Invalidphp methodphp:php php'php php.php php$methodphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_requestMethodphp php=php php$methodphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set request method
+     *
+     * @param  string $method
+     * @return Zend_Oauth_Config
+     * @throws Zend_Oauth_Exception for invalid request methods
+     */
+    public function setRequestMethod($method)
+    {
+        $method = strtoupper($method);
+        if (!in_array($method, array(
+                Zend_Oauth::GET,
+                Zend_Oauth::POST,
+                Zend_Oauth::PUT,
+                Zend_Oauth::DELETE,
+            ))
+        ) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception('Invalid method: ' . $method);
+        }
+        $this->_requestMethod = $method;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp requestphp method
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getRequestMethodphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_requestMethodphp;
-php php php php php}
+    /**
+     * Get request method
+     *
+     * @return string
+     */
+    public function getRequestMethod()
+    {
+        return $this->_requestMethod;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp RSAphp publicphp key
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp php$key
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setRsaPublicKeyphp(Zendphp_Cryptphp_Rsaphp_Keyphp_Publicphp php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_rsaPublicKeyphp php=php php$keyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set RSA public key
+     *
+     * @param  Zend_Crypt_Rsa_Key_Public $key
+     * @return Zend_Oauth_Config
+     */
+    public function setRsaPublicKey(Zend_Crypt_Rsa_Key_Public $key)
+    {
+        $this->_rsaPublicKey = $key;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp RSAphp publicphp key
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cryptphp_Rsaphp_Keyphp_Public
-php php php php php php*php/
-php php php php publicphp functionphp getRsaPublicKeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_rsaPublicKeyphp;
-php php php php php}
+    /**
+     * Get RSA public key
+     *
+     * @return Zend_Crypt_Rsa_Key_Public
+     */
+    public function getRsaPublicKey()
+    {
+        return $this->_rsaPublicKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp RSAphp privatephp key
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp php$key
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setRsaPrivateKeyphp(Zendphp_Cryptphp_Rsaphp_Keyphp_Privatephp php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_rsaPrivateKeyphp php=php php$keyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set RSA private key
+     *
+     * @param  Zend_Crypt_Rsa_Key_Private $key
+     * @return Zend_Oauth_Config
+     */
+    public function setRsaPrivateKey(Zend_Crypt_Rsa_Key_Private $key)
+    {
+        $this->_rsaPrivateKey = $key;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp RSAphp privatephp key
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cryptphp_Rsaphp_Keyphp_Private
-php php php php php php*php/
-php php php php publicphp functionphp getRsaPrivateKeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_rsaPrivateKeyphp;
-php php php php php}
+    /**
+     * Get RSA private key
+     *
+     * @return Zend_Crypt_Rsa_Key_Private
+     */
+    public function getRsaPrivateKey()
+    {
+        return $this->_rsaPrivateKey;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp OAuthphp token
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Oauthphp_Tokenphp php$token
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Config
-php php php php php php*php/
-php php php php publicphp functionphp setTokenphp(Zendphp_Oauthphp_Tokenphp php$tokenphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_tokenphp php=php php$tokenphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set OAuth token
+     *
+     * @param  Zend_Oauth_Token $token
+     * @return Zend_Oauth_Config
+     */
+    public function setToken(Zend_Oauth_Token $token)
+    {
+        $this->_token = $token;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp OAuthphp token
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Token
-php php php php php php*php/
-php php php php publicphp functionphp getTokenphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_tokenphp;
-php php php php php}
-php}
+    /**
+     * Get OAuth token
+     *
+     * @return Zend_Oauth_Token
+     */
+    public function getToken()
+    {
+        return $this->_token;
+    }
+}

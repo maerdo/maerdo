@@ -1,344 +1,344 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp View
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Dijitphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @subpackage View
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Dijit.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Zendphp_Viewphp_Helperphp_HtmlElementphp php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/HtmlElementphp.phpphp'php;
+/** Zend_View_Helper_HtmlElement */
+require_once 'Zend/View/Helper/HtmlElement.php';
 
-php/php*php*
-php php*php Dojophp dijitphp basephp class
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Viewphp_Helperphp_Abstract
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp View
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php php*php/
-abstractphp classphp Zendphp_Dojophp_Viewphp_Helperphp_Dijitphp extendsphp Zendphp_Viewphp_Helperphp_HtmlElement
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp_Container
-php php php php php php*php/
-php php php php publicphp php$dojophp;
+/**
+ * Dojo dijit base class
+ *
+ * @uses       Zend_View_Helper_Abstract
+ * @package    Zend_Dojo
+ * @subpackage View
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+  */
+abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
+{
+    /**
+     * @var Zend_Dojo_View_Helper_Dojo_Container
+     */
+    public $dojo;
 
-php php php php php/php*php*
-php php php php php php*php Dijitphp beingphp used
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_dijitphp;
+    /**
+     * Dijit being used
+     * @var string
+     */
+    protected $_dijit;
 
-php php php php php/php*php*
-php php php php php php*php Elementphp type
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_elementTypephp;
+    /**
+     * Element type
+     * @var string
+     */
+    protected $_elementType;
 
-php php php php php/php*php*
-php php php php php php*php Parametersphp thatphp shouldphp bephp JSONphp encoded
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_jsonParamsphp php=php arrayphp(php'constraintsphp'php)php;
+    /**
+     * Parameters that should be JSON encoded
+     * @var array
+     */
+    protected $_jsonParams = array('constraints');
 
-php php php php php/php*php*
-php php php php php php*php Dojophp modulephp tophp use
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_modulephp;
+    /**
+     * Dojo module to use
+     * @var string
+     */
+    protected $_module;
 
-php php php php php/php*php*
-php php php php php php*php Rootphp nodephp elementphp typephp forphp layoutphp elements
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_rootNodephp php=php php'divphp'php;
+    /**
+     * Root node element type for layout elements
+     * @var string
+     */
+    protected $_rootNode = 'div';
 
-php php php php php/php*php*
-php php php php php php*php Setphp view
-php php php php php php*
-php php php php php php*php Setphp viewphp andphp enablephp dojo
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dijit
-php php php php php php*php/
-php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp)
-php php php php php{
-php php php php php php php php parentphp:php:setViewphp(php$viewphp)php;
-php php php php php php php php php$thisphp-php>dojophp php=php php$thisphp-php>viewphp-php>dojophp(php)php;
-php php php php php php php php php$thisphp-php>dojophp-php>enablephp(php)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set view
+     *
+     * Set view and enable dojo
+     *
+     * @param  Zend_View_Interface $view
+     * @return Zend_Dojo_View_Helper_Dijit
+     */
+    public function setView(Zend_View_Interface $view)
+    {
+        parent::setView($view);
+        $this->dojo = $this->view->dojo();
+        $this->dojo->enable();
+        return $this;
+    }
 
 
-php php php php php/php*php*
-php php php php php php*php Getphp rootphp nodephp type
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getRootNodephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_rootNodephp;
-php php php php php}
+    /**
+     * Get root node type
+     *
+     * @return string
+     */
+    public function getRootNode()
+    {
+        return $this->_rootNode;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp rootphp nodephp type
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dijit
-php php php php php php*php/
-php php php php publicphp functionphp setRootNodephp(php$valuephp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_rootNodephp php=php php$valuephp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set root node type
+     *
+     * @param  string $value
+     * @return Zend_Dojo_View_Helper_Dijit
+     */
+    public function setRootNode($value)
+    {
+        $this->_rootNode = $value;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp tophp usephp declarativephp dijitphp creation
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_useDeclarativephp(php)
-php php php php php{
-php php php php php php php php returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp:php:useDeclarativephp(php)php;
-php php php php php}
+    /**
+     * Whether or not to use declarative dijit creation
+     *
+     * @return bool
+     */
+    protected function _useDeclarative()
+    {
+        return Zend_Dojo_View_Helper_Dojo::useDeclarative();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp tophp usephp programmaticphp dijitphp creation
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_useProgrammaticphp(php)
-php php php php php{
-php php php php php php php php returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp:php:useProgrammaticphp(php)php;
-php php php php php}
+    /**
+     * Whether or not to use programmatic dijit creation
+     *
+     * @return bool
+     */
+    protected function _useProgrammatic()
+    {
+        return Zend_Dojo_View_Helper_Dojo::useProgrammatic();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp tophp usephp programmaticphp dijitphp creationphp wphp/ophp scriptphp creation
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php protectedphp functionphp php_useProgrammaticNoScriptphp(php)
-php php php php php{
-php php php php php php php php returnphp Zendphp_Dojophp_Viewphp_Helperphp_Dojophp:php:useProgrammaticNoScriptphp(php)php;
-php php php php php}
+    /**
+     * Whether or not to use programmatic dijit creation w/o script creation
+     *
+     * @return bool
+     */
+    protected function _useProgrammaticNoScript()
+    {
+        return Zend_Dojo_View_Helper_Dojo::useProgrammaticNoScript();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp layoutphp container
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$id
-php php php php php php*php php@paramphp php stringphp php$content
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@paramphp php arrayphp php$attribs
-php php php php php php*php php@paramphp php stringphp|nullphp php$dijit
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_createLayoutContainerphp(php$idphp,php php$contentphp,php arrayphp php$paramsphp,php arrayphp php$attribsphp,php php$dijitphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$attribsphp[php'idphp'php]php php=php php$idphp;
-php php php php php php php php php$attribsphp php=php php$thisphp-php>php_prepareDijitphp(php$attribsphp,php php$paramsphp,php php'layoutphp'php,php php$dijitphp)php;
+    /**
+     * Create a layout container
+     *
+     * @param  int $id
+     * @param  string $content
+     * @param  array $params
+     * @param  array $attribs
+     * @param  string|null $dijit
+     * @return string
+     */
+    protected function _createLayoutContainer($id, $content, array $params, array $attribs, $dijit = null)
+    {
+        $attribs['id'] = $id;
+        $attribs = $this->_prepareDijit($attribs, $params, 'layout', $dijit);
 
-php php php php php php php php php$nodeTypephp php=php php$thisphp-php>getRootNodephp(php)php;
-php php php php php php php php php$htmlphp php=php php'<php'php php.php php$nodeTypephp php.php php$thisphp-php>php_htmlAttribsphp(php$attribsphp)php php.php php'php>php'
-php php php php php php php php php php php php php php php.php php$content
-php php php php php php php php php php php php php php php.php php"<php/php$nodeTypephp>php\nphp"php;
+        $nodeType = $this->getRootNode();
+        $html = '<' . $nodeType . $this->_htmlAttribs($attribs) . '>'
+              . $content
+              . "</$nodeType>\n";
 
-php php php php php php php php returnphp php$htmlphp;
-php php php php php}
+        return $html;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp HTMLphp representationphp ofphp aphp dijitphp formphp element
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$id
-php php php php php php*php php@paramphp php stringphp php$value
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@paramphp php arrayphp php$attribs
-php php php php php php*php php@paramphp php stringphp|nullphp php$dijit
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp php_createFormElementphp(php$idphp,php php$valuephp,php arrayphp php$paramsphp,php arrayphp php$attribsphp,php php$dijitphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php!arrayphp_keyphp_existsphp(php'idphp'php,php php$attribsphp)php)php php{
-php php php php php php php php php php php php php$attribsphp[php'idphp'php]php php=php php$idphp;
-php php php php php php php php php}
-php php php php php php php php php$attribsphp[php'namephp'php]php php php=php php$idphp;
-php php php php php php php php php$attribsphp[php'valuephp'php]php php=php php(stringphp)php php$valuephp;
-php php php php php php php php php$attribsphp[php'typephp'php]php php php=php php$thisphp-php>php_elementTypephp;
+    /**
+     * Create HTML representation of a dijit form element
+     *
+     * @param  string $id
+     * @param  string $value
+     * @param  array $params
+     * @param  array $attribs
+     * @param  string|null $dijit
+     * @return string
+     */
+    public function _createFormElement($id, $value, array $params, array $attribs, $dijit = null)
+    {
+        if (!array_key_exists('id', $attribs)) {
+            $attribs['id'] = $id;
+        }
+        $attribs['name']  = $id;
+        $attribs['value'] = (string) $value;
+        $attribs['type']  = $this->_elementType;
 
-php php php php php php php php php$attribsphp php=php php$thisphp-php>php_prepareDijitphp(php$attribsphp,php php$paramsphp,php php'elementphp'php,php php$dijitphp)php;
+        $attribs = $this->_prepareDijit($attribs, $params, 'element', $dijit);
 
-php php php php php php php php php$htmlphp php=php php'php<inputphp'
-php php php php php php php php php php php php php php php.php php$thisphp-php>php_htmlAttribsphp(php$attribsphp)
-php php php php php php php php php php php php php php php.php php$thisphp-php>getClosingBracketphp(php)php;
-php php php php php php php php returnphp php$htmlphp;
-php php php php php}
+        $html = '<input'
+              . $this->_htmlAttribs($attribs)
+              . $this->getClosingBracket();
+        return $html;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mergephp attributesphp andphp parameters
-php php php php php php*
-php php php php php php*php Alsophp setsphp upphp requires
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$attribs
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@paramphp php stringphp php$type
-php php php php php php*php php@paramphp php stringphp php$dijitphp Dijitphp typephp tophp usephp php(otherwisephp,php pullphp fromphp php$php_dijitphp)
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php protectedphp functionphp php_prepareDijitphp(arrayphp php$attribsphp,php arrayphp php$paramsphp,php php$typephp,php php$dijitphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>dojophp-php>requireModulephp(php$thisphp-php>php_modulephp)php;
+    /**
+     * Merge attributes and parameters
+     *
+     * Also sets up requires
+     *
+     * @param  array $attribs
+     * @param  array $params
+     * @param  string $type
+     * @param  string $dijit Dijit type to use (otherwise, pull from $_dijit)
+     * @return array
+     */
+    protected function _prepareDijit(array $attribs, array $params, $type, $dijit = null)
+    {
+        $this->dojo->requireModule($this->_module);
 
-php php php php php php php php switchphp php(php$typephp)php php{
-php php php php php php php php php php php php casephp php'layoutphp'php:
-php php php php php php php php php php php php php php php php php$stripParamsphp php=php arrayphp(php'idphp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'elementphp'php:
-php php php php php php php php php php php php php php php php php$stripParamsphp php=php arrayphp(php'idphp'php,php php'namephp'php,php php'valuephp'php,php php'typephp'php)php;
-php php php php php php php php php php php php php php php php foreachphp php(arrayphp(php'checkedphp'php,php php'disabledphp'php,php php'readonlyphp'php)php asphp php$attribphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$attribphp,php php$attribsphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php$attribsphp[php$attribphp]php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$attribsphp[php$attribphp]php php=php php$attribphp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php unsetphp(php$attribsphp[php$attribphp]php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'textareaphp'php:
-php php php php php php php php php php php php php php php php php$stripParamsphp php=php arrayphp(php'idphp'php,php php'namephp'php,php php'typephp'php,php php'degradephp'php)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php}
+        switch ($type) {
+            case 'layout':
+                $stripParams = array('id');
+                break;
+            case 'element':
+                $stripParams = array('id', 'name', 'value', 'type');
+                foreach (array('checked', 'disabled', 'readonly') as $attrib) {
+                    if (array_key_exists($attrib, $attribs)) {
+                        if ($attribs[$attrib]) {
+                            $attribs[$attrib] = $attrib;
+                        } else {
+                            unset($attribs[$attrib]);
+                        }
+                    }
+                }
+                break;
+            case 'textarea':
+                $stripParams = array('id', 'name', 'type', 'degrade');
+                break;
+            default:
+        }
 
-php php php php php php php php foreachphp php(php$stripParamsphp asphp php$paramphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$paramphp,php php$paramsphp)php)php php{
-php php php php php php php php php php php php php php php php unsetphp(php$paramsphp[php$paramphp]php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+        foreach ($stripParams as $param) {
+            if (array_key_exists($param, $params)) {
+                unset($params[$param]);
+            }
+        }
 
-php php php php php php php php php/php/php Normalizephp constraintsphp,php ifphp present
-php php php php php php php php foreachphp php(php$thisphp-php>php_jsonParamsphp asphp php$paramphp)php php{
-php php php php php php php php php php php php ifphp php(arrayphp_keyphp_existsphp(php$paramphp,php php$paramsphp)php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Jsonphp.phpphp'php;
+        // Normalize constraints, if present
+        foreach ($this->_jsonParams as $param) {
+            if (array_key_exists($param, $params)) {
+                require_once 'Zend/Json.php';
 
-php php php php php php php php php php php php php php php php ifphp php(isphp_arrayphp(php$paramsphp[php$paramphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php php php php foreachphp php(php$paramsphp[php$paramphp]php asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!isphp_scalarphp(php$valuephp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuesphp[php$keyphp]php php=php php$valuephp;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}php elseifphp php(isphp_stringphp(php$paramsphp[php$paramphp]php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp php=php php(arrayphp)php php$paramsphp[php$paramphp]php;
-php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp php=php arrayphp(php)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$valuesphp php=php Zendphp_Jsonphp:php:encodephp(php$valuesphp)php;
-php php php php php php php php php php php php php php php php ifphp php(php$thisphp-php>php_useDeclarativephp(php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$valuesphp php=php strphp_replacephp(php'php"php'php,php php"php'php"php,php php$valuesphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$paramsphp[php$paramphp]php php=php php$valuesphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                if (is_array($params[$param])) {
+                    $values = array();
+                    foreach ($params[$param] as $key => $value) {
+                        if (!is_scalar($value)) {
+                            continue;
+                        }
+                        $values[$key] = $value;
+                    }
+                } elseif (is_string($params[$param])) {
+                    $values = (array) $params[$param];
+                } else {
+                    $values = array();
+                }
+                $values = Zend_Json::encode($values);
+                if ($this->_useDeclarative()) {
+                    $values = str_replace('"', "'", $values);
+                }
+                $params[$param] = $values;
+            }
+        }
 
-php php php php php php php php php$dijitphp php=php php(nullphp php=php=php=php php$dijitphp)php php?php php$thisphp-php>php_dijitphp php:php php$dijitphp;
-php php php php php php php php ifphp php(php$thisphp-php>php_useDeclarativephp(php)php)php php{
-php php php php php php php php php php php php php$attribsphp php=php arrayphp_mergephp(php$attribsphp,php php$paramsphp)php;
-php php php php php php php php php php php php ifphp php(issetphp(php$attribsphp[php'requiredphp'php]php)php)php php{
-php php php php php php php php php php php php php php php php php$attribsphp[php'requiredphp'php]php php=php php(php$attribsphp[php'requiredphp'php]php)php php?php php'truephp'php php:php php'falsephp'php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$attribsphp[php'dojoTypephp'php]php php=php php$dijitphp;
-php php php php php php php php php}php elseifphp php(php!php$thisphp-php>php_useProgrammaticNoScriptphp(php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_createDijitphp(php$dijitphp,php php$attribsphp[php'idphp'php]php,php php$paramsphp)php;
-php php php php php php php php php}
+        $dijit = (null === $dijit) ? $this->_dijit : $dijit;
+        if ($this->_useDeclarative()) {
+            $attribs = array_merge($attribs, $params);
+            if (isset($attribs['required'])) {
+                $attribs['required'] = ($attribs['required']) ? 'true' : 'false';
+            }
+            $attribs['dojoType'] = $dijit;
+        } elseif (!$this->_useProgrammaticNoScript()) {
+            $this->_createDijit($dijit, $attribs['id'], $params);
+        }
 
-php php php php php php php php returnphp php$attribsphp;
-php php php php php}
+        return $attribs;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp dijitphp programmatically
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$dijit
-php php php php php php*php php@paramphp php stringphp php$id
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_createDijitphp(php$dijitphp,php php$idphp,php arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php php$paramsphp[php'dojoTypephp'php]php php=php php$dijitphp;
+    /**
+     * Create a dijit programmatically
+     *
+     * @param  string $dijit
+     * @param  string $id
+     * @param  array $params
+     * @return void
+     */
+    protected function _createDijit($dijit, $id, array $params)
+    {
+        $params['dojoType'] = $dijit;
 
-php php php php php php php php arrayphp_walkphp_recursivephp(php$paramsphp,php arrayphp(php$thisphp,php php'php_castBoolToStringphp'php)php)php;
+        array_walk_recursive($params, array($this, '_castBoolToString'));
 
-php php php php php php php php php$thisphp-php>dojophp-php>setDijitphp(php$idphp,php php$paramsphp)php;
-php php php php php}
+        $this->dojo->setDijit($id, $params);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Castphp aphp booleanphp tophp aphp stringphp value
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$item
-php php php php php php*php php@paramphp php stringphp php$key
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_castBoolToStringphp(php&php$itemphp,php php$keyphp)
-php php php php php{
-php php php php php php php php ifphp php(php!isphp_boolphp(php$itemphp)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
-php php php php php php php php php$itemphp php=php php(php$itemphp)php php?php php"truephp"php php:php php"falsephp"php;
-php php php php php}
+    /**
+     * Cast a boolean to a string value
+     *
+     * @param  mixed $item
+     * @param  string $key
+     * @return void
+     */
+    protected function _castBoolToString(&$item, $key)
+    {
+        if (!is_bool($item)) {
+            return;
+        }
+        $item = ($item) ? "true" : "false";
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp aphp hiddenphp elementphp tophp holdphp aphp value
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$id
-php php php php php php*php php@paramphp php stringphp|intphp|floatphp php$value
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_renderHiddenElementphp(php$idphp,php php$valuephp)
-php php php php php{
-php php php php php php php php php$hiddenAttribsphp php=php arrayphp(
-php php php php php php php php php php php php php'namephp'php php php=php>php php$idphp,
-php php php php php php php php php php php php php'valuephp'php php=php>php php(stringphp)php php$valuephp,
-php php php php php php php php php php php php php'typephp'php php php=php>php php'hiddenphp'php,
-php php php php php php php php php)php;
-php php php php php php php php returnphp php'php<inputphp'php php.php php$thisphp-php>php_htmlAttribsphp(php$hiddenAttribsphp)php php.php php$thisphp-php>getClosingBracketphp(php)php;
-php php php php php}
+    /**
+     * Render a hidden element to hold a value
+     *
+     * @param  string $id
+     * @param  string|int|float $value
+     * @return string
+     */
+    protected function _renderHiddenElement($id, $value)
+    {
+        $hiddenAttribs = array(
+            'name'  => $id,
+            'value' => (string) $value,
+            'type'  => 'hidden',
+        );
+        return '<input' . $this->_htmlAttribs($hiddenAttribs) . $this->getClosingBracket();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp JSphp functionphp forphp retrievingphp parentphp form
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php protectedphp functionphp php_createGetParentFormFunctionphp(php)
-php php php php php{
-php php php php php php php php php$functionphp php=<php<php<EOJ
-ifphp php(zendphp php=php=php undefinedphp)php php{
-php php php php varphp zendphp php=php php{php}php;
-php}
-zendphp.findParentFormphp php=php functionphp(elementNodephp)php php{
-php php php php whilephp php(elementNodephp.nodeNamephp.toLowerCasephp(php)php php!php=php php'formphp'php)php php{
-php php php php php php php php elementNodephp php=php elementNodephp.parentNodephp;
-php php php php php}
-php php php php returnphp elementNodephp;
-php}php;
-EOJphp;
+    /**
+     * Create JS function for retrieving parent form
+     *
+     * @return void
+     */
+    protected function _createGetParentFormFunction()
+    {
+        $function =<<<EOJ
+if (zend == undefined) {
+    var zend = {};
+}
+zend.findParentForm = function(elementNode) {
+    while (elementNode.nodeName.toLowerCase() != 'form') {
+        elementNode = elementNode.parentNode;
+    }
+    return elementNode;
+};
+EOJ;
 
-php php php php php php php php php$thisphp-php>dojophp-php>addJavascriptphp(php$functionphp)php;
-php php php php php}
-php}
+        $this->dojo->addJavascript($function);
+    }
+}

@@ -1,89 +1,89 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp Form
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @subpackage Form
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Formphp php*php/
-requirephp_oncephp php'Zendphp/Formphp.phpphp'php;
+/** Zend_Form */
+require_once 'Zend/Form.php';
 
-php/php*php*
-php php*php Dijitphp-enabledphp Form
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Form
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp Form
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Formphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-classphp Zendphp_Dojophp_Formphp extendsphp Zendphp_Form
-php{
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp|Zendphp_Configphp|nullphp php$options
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$optionsphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>addPrefixPathphp(php'Zendphp_Dojophp_Formphp_Decoratorphp'php,php php'Zendphp/Dojophp/Formphp/Decoratorphp'php,php php'decoratorphp'php)
-php php php php php php php php php php php php php php-php>addPrefixPathphp(php'Zendphp_Dojophp_Formphp_Elementphp'php,php php'Zendphp/Dojophp/Formphp/Elementphp'php,php php'elementphp'php)
-php php php php php php php php php php php php php php-php>addElementPrefixPathphp(php'Zendphp_Dojophp_Formphp_Decoratorphp'php,php php'Zendphp/Dojophp/Formphp/Decoratorphp'php,php php'decoratorphp'php)
-php php php php php php php php php php php php php php-php>addDisplayGroupPrefixPathphp(php'Zendphp_Dojophp_Formphp_Decoratorphp'php,php php'Zendphp/Dojophp/Formphp/Decoratorphp'php)
-php php php php php php php php php php php php php php-php>setDefaultDisplayGroupClassphp(php'Zendphp_Dojophp_Formphp_DisplayGroupphp'php)php;
-php php php php php php php php parentphp:php:php_php_constructphp(php$optionsphp)php;
-php php php php php}
+/**
+ * Dijit-enabled Form
+ *
+ * @uses       Zend_Form
+ * @package    Zend_Dojo
+ * @subpackage Form
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Form.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+class Zend_Dojo_Form extends Zend_Form
+{
+    /**
+     * Constructor
+     *
+     * @param  array|Zend_Config|null $options
+     * @return void
+     */
+    public function __construct($options = null)
+    {
+        $this->addPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator', 'decorator')
+             ->addPrefixPath('Zend_Dojo_Form_Element', 'Zend/Dojo/Form/Element', 'element')
+             ->addElementPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator', 'decorator')
+             ->addDisplayGroupPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator')
+             ->setDefaultDisplayGroupClass('Zend_Dojo_Form_DisplayGroup');
+        parent::__construct($options);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Loadphp thephp defaultphp decorators
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp loadDefaultDecoratorsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>loadDefaultDecoratorsIsDisabledphp(php)php)php php{
-php php php php php php php php php php php php returnphp;
-php php php php php php php php php}
+    /**
+     * Load the default decorators
+     *
+     * @return void
+     */
+    public function loadDefaultDecorators()
+    {
+        if ($this->loadDefaultDecoratorsIsDisabled()) {
+            return;
+        }
 
-php php php php php php php php php$decoratorsphp php=php php$thisphp-php>getDecoratorsphp(php)php;
-php php php php php php php php ifphp php(emptyphp(php$decoratorsphp)php)php php{
-php php php php php php php php php php php php php$thisphp-php>addDecoratorphp(php'FormElementsphp'php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'HtmlTagphp'php,php arrayphp(php'tagphp'php php=php>php php'dlphp'php,php php'classphp'php php=php>php php'zendphp_formphp_dojophp'php)php)
-php php php php php php php php php php php php php php php php php php-php>addDecoratorphp(php'DijitFormphp'php)php;
-php php php php php php php php php}
-php php php php php}
+        $decorators = $this->getDecorators();
+        if (empty($decorators)) {
+            $this->addDecorator('FormElements')
+                 ->addDecorator('HtmlTag', array('tag' => 'dl', 'class' => 'zend_form_dojo'))
+                 ->addDecorator('DijitForm');
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp viewphp object
-php php php php php php*
-php php php php php php*php Ensuresphp thatphp thephp viewphp objectphp hasphp thephp dojophp viewphp helperphp pathphp setphp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Viewphp_Interfacephp php$view
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Dijit
-php php php php php php*php/
-php php php php publicphp functionphp setViewphp(Zendphp_Viewphp_Interfacephp php$viewphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(nullphp php!php=php=php php$viewphp)php php{
-php php php php php php php php php php php php ifphp php(falsephp php=php=php=php php$viewphp-php>getPluginLoaderphp(php'helperphp'php)php-php>getPathsphp(php'Zendphp_Dojophp_Viewphp_Helperphp'php)php)php php{
-php php php php php php php php php php php php php php php php php$viewphp-php>addHelperPathphp(php'Zendphp/Dojophp/Viewphp/Helperphp'php,php php'Zendphp_Dojophp_Viewphp_Helperphp'php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
-php php php php php php php php returnphp parentphp:php:setViewphp(php$viewphp)php;
-php php php php php}
-php}
+    /**
+     * Set the view object
+     *
+     * Ensures that the view object has the dojo view helper path set.
+     *
+     * @param  Zend_View_Interface $view
+     * @return Zend_Dojo_Form_Element_Dijit
+     */
+    public function setView(Zend_View_Interface $view = null)
+    {
+        if (null !== $view) {
+            if (false === $view->getPluginLoader('helper')->getPaths('Zend_Dojo_View_Helper')) {
+                $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
+            }
+        }
+        return parent::setView($view);
+    }
+}

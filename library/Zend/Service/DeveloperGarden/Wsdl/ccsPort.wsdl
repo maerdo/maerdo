@@ -1,463 +1,463 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php?php>
-php<wsdlphp:definitionsphp xmlnsphp:nsphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/encodingphp/php"php xmlnsphp:schemaphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/schemaphp/php"php xmlnsphp:soapphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/soapphp/php"php xmlnsphp:spphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp"php xmlnsphp:tnsphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/wsdlphp/php"php xmlnsphp:wsdlphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsdlphp/php"php xmlnsphp:wspphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php4php/php0php9php/policyphp"php xmlnsphp:wsuphp=php"httpphp:php/php/docsphp.oasisphp-openphp.orgphp/wssphp/php2php0php0php4php/php0php1php/oasisphp-php2php0php0php4php0php1php-wssphp-wssecurityphp-utilityphp-php1php.php0php.xsdphp"php xmlnsphp:xsdphp=php"httpphp:php/php/wwwphp.wphp3php.orgphp/php2php0php0php1php/XMLSchemaphp"php namephp=php"ccsphp"php targetNamespacephp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/wsdlphp/php"php>
-php	php<wsdlphp:documentationphp>
-CCSphp <php/wsdlphp:documentationphp>
-php	php<wsdlphp:typesphp>
-php	php	php<xsdphp:schemaphp targetNamespacephp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/wsdlphp/php"php>
-php	php	php	php<xsdphp:importphp namespacephp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/schemaphp/php"php schemaLocationphp=php"ccsPortphp.xsdphp"php/php>
-php	php	<php/xsdphp:schemaphp>
-php	<php/wsdlphp:typesphp>
-php	php<wsdlphp:messagephp namephp=php"createConferenceInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:createConferencephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"createConferenceOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:createConferenceResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"commitConferenceInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:commitConferencephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"commitConferenceOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:commitConferenceResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceStatusInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceStatusphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceStatusOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceStatusResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getRunningConferenceInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getRunningConferencephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getRunningConferenceOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getRunningConferenceResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferencephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferenceResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceListInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceListphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceListOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceListResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferencephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferenceResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"newParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:newParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"newParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:newParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getParticipantStatusInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getParticipantStatusphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getParticipantStatusOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getParticipantStatusResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"createConferenceTemplateInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:createConferenceTemplatephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"createConferenceTemplateOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:createConferenceTemplateResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplatephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplateResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceTemplateInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferenceTemplatephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceTemplateOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferenceTemplateResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceTemplateInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferenceTemplatephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceTemplateOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferenceTemplateResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateListInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplateListphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateListOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplateListResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"addConferenceTemplateParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:addConferenceTemplateParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"addConferenceTemplateParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:addConferenceTemplateParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplateParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"getConferenceTemplateParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:getConferenceTemplateParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceTemplateParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferenceTemplateParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"updateConferenceTemplateParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:updateConferenceTemplateParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceTemplateParticipantInphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferenceTemplateParticipantphp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:messagephp namephp=php"removeConferenceTemplateParticipantOutphp"php>
-php	php	php<wsdlphp:partphp namephp=php"parametersphp"php elementphp=php"schemaphp:removeConferenceTemplateParticipantResponsephp"php/php>
-php	<php/wsdlphp:messagephp>
-php	php<wsdlphp:portTypephp namephp=php"ccsPortTypephp"php>
-php	php	php<wsdlphp:operationphp namephp=php"createConferencephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:createConferenceInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:createConferenceOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"commitConferencephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:commitConferenceInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:commitConferenceOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferencephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:updateConferenceInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:updateConferenceOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceStatusphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getConferenceStatusInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getConferenceStatusOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getRunningConferencephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getRunningConferenceInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getRunningConferenceOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getParticipantStatusphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getParticipantStatusInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getParticipantStatusOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"newParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:newParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:newParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:removeParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:removeParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:updateParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:updateParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferencephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:removeConferenceInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:removeConferenceOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceListphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getConferenceListInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getConferenceListOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"createConferenceTemplatephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:createConferenceTemplateInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:createConferenceTemplateOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplatephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getConferenceTemplateInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getConferenceTemplateOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferenceTemplatephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:updateConferenceTemplateInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:updateConferenceTemplateOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferenceTemplatephp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:removeConferenceTemplateInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:removeConferenceTemplateOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplateListphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getConferenceTemplateListInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getConferenceTemplateListOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"addConferenceTemplateParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:addConferenceTemplateParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:addConferenceTemplateParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplateParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:getConferenceTemplateParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:getConferenceTemplateParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferenceTemplateParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:updateConferenceTemplateParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:updateConferenceTemplateParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferenceTemplateParticipantphp"php>
-php	php	php	php<wsdlphp:inputphp messagephp=php"tnsphp:removeConferenceTemplateParticipantInphp"php/php>
-php	php	php	php<wsdlphp:outputphp messagephp=php"tnsphp:removeConferenceTemplateParticipantOutphp"php/php>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:portTypephp>
-php	php<wsdlphp:bindingphp namephp=php"ccsHttpBindingphp"php typephp=php"tnsphp:ccsPortTypephp"php>
-php	php	php<soapphp:bindingphp stylephp=php"documentphp"php transportphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/soapphp/httpphp"php/php>
-php	php	php<wspphp:PolicyReferencephp URIphp=php"php#TransportBindingPolicyphp"php/php>
-php	php	php<wsdlphp:operationphp namephp=php"createConferencephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/createConferencephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"commitConferencephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/commitConferencephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceStatusphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getConferenceStatusphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getRunningConferencephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getRunningConferencephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferencephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/updateConferencephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getParticipantStatusphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getParticipantStatusphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"newParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/newParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/removeParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/updateParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferencephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/removeConferencephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceListphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getConferenceListphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"createConferenceTemplatephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/createConferenceTemplatephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplatephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getConferenceTemplatephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferenceTemplatephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/updateConferenceTemplatephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferenceTemplatephp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/removeConferenceTemplatephp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplateListphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getConferenceTemplateListphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"addConferenceTemplateParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/addConferenceTemplateParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"getConferenceTemplateParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/getConferenceTemplateParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"updateConferenceTemplateParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/updateConferenceTemplateParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	php	php<wsdlphp:operationphp namephp=php"removeConferenceTemplateParticipantphp"php>
-php	php	php	php<soapphp:operationphp soapActionphp=php"httpphp:php/php/ccsphp.developerphp.telekomphp.comphp/removeConferenceTemplateParticipantphp"php/php>
-php	php	php	php<wsdlphp:inputphp>
-php	php	php	php	php<wspphp:PolicyReferencephp URIphp=php"php#STSTokenPolicyphp"php/php>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:inputphp>
-php	php	php	php<wsdlphp:outputphp>
-php	php	php	php	php<soapphp:bodyphp usephp=php"literalphp"php/php>
-php	php	php	<php/wsdlphp:outputphp>
-php	php	<php/wsdlphp:operationphp>
-php	<php/wsdlphp:bindingphp>
-php	php<wsdlphp:servicephp namephp=php"ccsphp"php>
-php	php	php<wsdlphp:portphp namephp=php"ccsPortphp"php bindingphp=php"tnsphp:ccsHttpBindingphp"php>
-php	php	php	php<soapphp:addressphp locationphp=php"httpsphp:php/php/gatewayphp.developerphp.telekomphp.comphp/pphp3gwphp-modphp-odgphp-ccsphp/servicesphp/ccsPortphp"php/php>
-php	php	<php/wsdlphp:portphp>
-php	<php/wsdlphp:servicephp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"TransportBindingPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<spphp:TransportBindingphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:TransportTokenphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:HttpsTokenphp RequireClientCertificatephp=php"falsephp"php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:TransportTokenphp>
-php	php	php	php	php	php	php<spphp:Layoutphp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Strictphp/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:Layoutphp>
-php	php	php	php	php	php	php<spphp:IncludeTimestampphp/php>
-php	php	php	php	php	php	php<spphp:AlgorithmSuitephp>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:Basicphp2php5php6php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:AlgorithmSuitephp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:TransportBindingphp>
-php	php	php	php	php<spphp:Wssphp1php1php/php>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-php	php<wspphp:Policyphp wsuphp:Idphp=php"STSTokenPolicyphp"php>
-php	php	php<wspphp:ExactlyOnephp>
-php	php	php	php<wspphp:Allphp>
-php	php	php	php	php<spphp:SupportingTokensphp>
-php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php<spphp:SamlTokenphp spphp:IncludeTokenphp=php"httpphp:php/php/schemasphp.xmlsoapphp.orgphp/wsphp/php2php0php0php5php/php0php7php/securitypolicyphp/IncludeTokenphp/AlwaysToRecipientphp"php>
-php	php	php	php	php	php	php	php<wspphp:Policyphp>
-php	php	php	php	php	php	php	php	php<spphp:WssSamlVphp2php0Tokenphp1php1php/php>
-php	php	php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	php	php	<php/spphp:SamlTokenphp>
-php	php	php	php	php	<php/wspphp:Policyphp>
-php	php	php	php	<php/spphp:SupportingTokensphp>
-php	php	php	<php/wspphp:Allphp>
-php	php	<php/wspphp:ExactlyOnephp>
-php	<php/wspphp:Policyphp>
-<php/wsdlphp:definitionsphp>
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/" xmlns:schema="http://ccs.developer.telekom.com/schema/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:tns="http://ccs.developer.telekom.com/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ccs" targetNamespace="http://ccs.developer.telekom.com/wsdl/">
+	<wsdl:documentation>
+CCS </wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://ccs.developer.telekom.com/wsdl/">
+			<xsd:import namespace="http://ccs.developer.telekom.com/schema/" schemaLocation="ccsPort.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="createConferenceIn">
+		<wsdl:part name="parameters" element="schema:createConference"/>
+	</wsdl:message>
+	<wsdl:message name="createConferenceOut">
+		<wsdl:part name="parameters" element="schema:createConferenceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="commitConferenceIn">
+		<wsdl:part name="parameters" element="schema:commitConference"/>
+	</wsdl:message>
+	<wsdl:message name="commitConferenceOut">
+		<wsdl:part name="parameters" element="schema:commitConferenceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceStatusIn">
+		<wsdl:part name="parameters" element="schema:getConferenceStatus"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceStatusOut">
+		<wsdl:part name="parameters" element="schema:getConferenceStatusResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getRunningConferenceIn">
+		<wsdl:part name="parameters" element="schema:getRunningConference"/>
+	</wsdl:message>
+	<wsdl:message name="getRunningConferenceOut">
+		<wsdl:part name="parameters" element="schema:getRunningConferenceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceIn">
+		<wsdl:part name="parameters" element="schema:removeConference"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceOut">
+		<wsdl:part name="parameters" element="schema:removeConferenceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceListIn">
+		<wsdl:part name="parameters" element="schema:getConferenceList"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceListOut">
+		<wsdl:part name="parameters" element="schema:getConferenceListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceIn">
+		<wsdl:part name="parameters" element="schema:updateConference"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceOut">
+		<wsdl:part name="parameters" element="schema:updateConferenceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="newParticipantIn">
+		<wsdl:part name="parameters" element="schema:newParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="newParticipantOut">
+		<wsdl:part name="parameters" element="schema:newParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="removeParticipantIn">
+		<wsdl:part name="parameters" element="schema:removeParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="removeParticipantOut">
+		<wsdl:part name="parameters" element="schema:removeParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="updateParticipantIn">
+		<wsdl:part name="parameters" element="schema:updateParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="updateParticipantOut">
+		<wsdl:part name="parameters" element="schema:updateParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getParticipantStatusIn">
+		<wsdl:part name="parameters" element="schema:getParticipantStatus"/>
+	</wsdl:message>
+	<wsdl:message name="getParticipantStatusOut">
+		<wsdl:part name="parameters" element="schema:getParticipantStatusResponse"/>
+	</wsdl:message>
+	<wsdl:message name="createConferenceTemplateIn">
+		<wsdl:part name="parameters" element="schema:createConferenceTemplate"/>
+	</wsdl:message>
+	<wsdl:message name="createConferenceTemplateOut">
+		<wsdl:part name="parameters" element="schema:createConferenceTemplateResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateIn">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplate"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateOut">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplateResponse"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceTemplateIn">
+		<wsdl:part name="parameters" element="schema:updateConferenceTemplate"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceTemplateOut">
+		<wsdl:part name="parameters" element="schema:updateConferenceTemplateResponse"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceTemplateIn">
+		<wsdl:part name="parameters" element="schema:removeConferenceTemplate"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceTemplateOut">
+		<wsdl:part name="parameters" element="schema:removeConferenceTemplateResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateListIn">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplateList"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateListOut">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplateListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="addConferenceTemplateParticipantIn">
+		<wsdl:part name="parameters" element="schema:addConferenceTemplateParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="addConferenceTemplateParticipantOut">
+		<wsdl:part name="parameters" element="schema:addConferenceTemplateParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateParticipantIn">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplateParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="getConferenceTemplateParticipantOut">
+		<wsdl:part name="parameters" element="schema:getConferenceTemplateParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceTemplateParticipantIn">
+		<wsdl:part name="parameters" element="schema:updateConferenceTemplateParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="updateConferenceTemplateParticipantOut">
+		<wsdl:part name="parameters" element="schema:updateConferenceTemplateParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceTemplateParticipantIn">
+		<wsdl:part name="parameters" element="schema:removeConferenceTemplateParticipant"/>
+	</wsdl:message>
+	<wsdl:message name="removeConferenceTemplateParticipantOut">
+		<wsdl:part name="parameters" element="schema:removeConferenceTemplateParticipantResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="ccsPortType">
+		<wsdl:operation name="createConference">
+			<wsdl:input message="tns:createConferenceIn"/>
+			<wsdl:output message="tns:createConferenceOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="commitConference">
+			<wsdl:input message="tns:commitConferenceIn"/>
+			<wsdl:output message="tns:commitConferenceOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateConference">
+			<wsdl:input message="tns:updateConferenceIn"/>
+			<wsdl:output message="tns:updateConferenceOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceStatus">
+			<wsdl:input message="tns:getConferenceStatusIn"/>
+			<wsdl:output message="tns:getConferenceStatusOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getRunningConference">
+			<wsdl:input message="tns:getRunningConferenceIn"/>
+			<wsdl:output message="tns:getRunningConferenceOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getParticipantStatus">
+			<wsdl:input message="tns:getParticipantStatusIn"/>
+			<wsdl:output message="tns:getParticipantStatusOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="newParticipant">
+			<wsdl:input message="tns:newParticipantIn"/>
+			<wsdl:output message="tns:newParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="removeParticipant">
+			<wsdl:input message="tns:removeParticipantIn"/>
+			<wsdl:output message="tns:removeParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateParticipant">
+			<wsdl:input message="tns:updateParticipantIn"/>
+			<wsdl:output message="tns:updateParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="removeConference">
+			<wsdl:input message="tns:removeConferenceIn"/>
+			<wsdl:output message="tns:removeConferenceOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceList">
+			<wsdl:input message="tns:getConferenceListIn"/>
+			<wsdl:output message="tns:getConferenceListOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="createConferenceTemplate">
+			<wsdl:input message="tns:createConferenceTemplateIn"/>
+			<wsdl:output message="tns:createConferenceTemplateOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplate">
+			<wsdl:input message="tns:getConferenceTemplateIn"/>
+			<wsdl:output message="tns:getConferenceTemplateOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateConferenceTemplate">
+			<wsdl:input message="tns:updateConferenceTemplateIn"/>
+			<wsdl:output message="tns:updateConferenceTemplateOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="removeConferenceTemplate">
+			<wsdl:input message="tns:removeConferenceTemplateIn"/>
+			<wsdl:output message="tns:removeConferenceTemplateOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplateList">
+			<wsdl:input message="tns:getConferenceTemplateListIn"/>
+			<wsdl:output message="tns:getConferenceTemplateListOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="addConferenceTemplateParticipant">
+			<wsdl:input message="tns:addConferenceTemplateParticipantIn"/>
+			<wsdl:output message="tns:addConferenceTemplateParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplateParticipant">
+			<wsdl:input message="tns:getConferenceTemplateParticipantIn"/>
+			<wsdl:output message="tns:getConferenceTemplateParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="updateConferenceTemplateParticipant">
+			<wsdl:input message="tns:updateConferenceTemplateParticipantIn"/>
+			<wsdl:output message="tns:updateConferenceTemplateParticipantOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="removeConferenceTemplateParticipant">
+			<wsdl:input message="tns:removeConferenceTemplateParticipantIn"/>
+			<wsdl:output message="tns:removeConferenceTemplateParticipantOut"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ccsHttpBinding" type="tns:ccsPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsp:PolicyReference URI="#TransportBindingPolicy"/>
+		<wsdl:operation name="createConference">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/createConference"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="commitConference">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/commitConference"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceStatus">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getConferenceStatus"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getRunningConference">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getRunningConference"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateConference">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/updateConference"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getParticipantStatus">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getParticipantStatus"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="newParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/newParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/removeParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/updateParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeConference">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/removeConference"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceList">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getConferenceList"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="createConferenceTemplate">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/createConferenceTemplate"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplate">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getConferenceTemplate"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateConferenceTemplate">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/updateConferenceTemplate"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeConferenceTemplate">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/removeConferenceTemplate"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplateList">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getConferenceTemplateList"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addConferenceTemplateParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/addConferenceTemplateParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getConferenceTemplateParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/getConferenceTemplateParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateConferenceTemplateParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/updateConferenceTemplateParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeConferenceTemplateParticipant">
+			<soap:operation soapAction="http://ccs.developer.telekom.com/removeConferenceTemplateParticipant"/>
+			<wsdl:input>
+				<wsp:PolicyReference URI="#STSTokenPolicy"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ccs">
+		<wsdl:port name="ccsPort" binding="tns:ccsHttpBinding">
+			<soap:address location="https://gateway.developer.telekom.com/p3gw-mod-odg-ccs/services/ccsPort"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsp:Policy wsu:Id="TransportBindingPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:TransportBinding>
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken RequireClientCertificate="false"/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+						<sp:IncludeTimestamp/>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<sp:Wss11/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsp:Policy wsu:Id="STSTokenPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:SupportingTokens>
+					<wsp:Policy>
+						<sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssSamlV20Token11/>
+							</wsp:Policy>
+						</sp:SamlToken>
+					</wsp:Policy>
+				</sp:SupportingTokens>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+</wsdl:definitions>

@@ -1,599 +1,599 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp Formphp_Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Editorphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @subpackage Form_Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Editor.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*php Zendphp_Dojophp_Formphp_Elementphp_Dijitphp php*php/
-requirephp_oncephp php'Zendphp/Dojophp/Formphp/Elementphp/Dijitphp.phpphp'php;
+/** Zend_Dojo_Form_Element_Dijit */
+require_once 'Zend/Dojo/Form/Element/Dijit.php';
 
-php/php*php*
-php php*php Editorphp dijit
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Dojophp_Formphp_Elementphp_Dijit
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Dojo
-php php*php php@subpackagephp Formphp_Element
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Dojophp_Formphp_Elementphp_Editorphp extendsphp Zendphp_Dojophp_Formphp_Elementphp_Dijit
-php{
-php php php php php/php*php*
-php php php php php php*php php@varphp stringphp Viewphp helper
-php php php php php php*php/
-php php php php publicphp php$helperphp php=php php'Editorphp'php;
+/**
+ * Editor dijit
+ *
+ * @uses       Zend_Dojo_Form_Element_Dijit
+ * @category   Zend
+ * @package    Zend_Dojo
+ * @subpackage Form_Element
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
+{
+    /**
+     * @var string View helper
+     */
+    public $helper = 'Editor';
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp singlephp eventphp tophp connectphp tophp thephp editingphp area
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addCaptureEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$eventphp php=php php(stringphp)php php$eventphp;
-php php php php php php php php php$captureEventsphp php=php php$thisphp-php>getCaptureEventsphp(php)php;
-php php php php php php php php ifphp php(inphp_arrayphp(php$eventphp,php php$captureEventsphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+    /**
+     * Add a single event to connect to the editing area
+     *
+     * @param  string $event
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addCaptureEvent($event)
+    {
+        $event = (string) $event;
+        $captureEvents = $this->getCaptureEvents();
+        if (in_array($event, $captureEvents)) {
+            return $this;
+        }
 
-php php php php php php php php php$captureEventsphp[php]php php=php php(stringphp)php php$eventphp;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'captureEventsphp'php,php php$captureEventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $captureEvents[] = (string) $event;
+        $this->setDijitParam('captureEvents', $captureEvents);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp capturephp events
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$events
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addCaptureEventsphp(arrayphp php$eventsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$eventsphp asphp php$eventphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addCaptureEventphp(php$eventphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add multiple capture events
+     *
+     * @param  array $events
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addCaptureEvents(array $events)
+    {
+        foreach ($events as $event) {
+            $this->addCaptureEvent($event);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overwritephp manyphp capturephp eventsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$events
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setCaptureEventsphp(arrayphp php$eventsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearCaptureEventsphp(php)php;
-php php php php php php php php php$thisphp-php>addCaptureEventsphp(php$eventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Overwrite many capture events at once
+     *
+     * @param  array $events
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setCaptureEvents(array $events)
+    {
+        $this->clearCaptureEvents();
+        $this->addCaptureEvents($events);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp capturephp events
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getCaptureEventsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'captureEventsphp'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'captureEventsphp'php)php;
-php php php php php}
+    /**
+     * Get all capture events
+     *
+     * @return array
+     */
+    public function getCaptureEvents()
+    {
+        if (!$this->hasDijitParam('captureEvents')) {
+            return array();
+        }
+        return $this->getDijitParam('captureEvents');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp capturephp eventphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasCaptureEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$captureEventsphp php=php php$thisphp-php>getCaptureEventsphp(php)php;
-php php php php php php php php returnphp inphp_arrayphp(php(stringphp)php php$eventphp,php php$captureEventsphp)php;
-php php php php php}
+    /**
+     * Is a given capture event registered?
+     *
+     * @param  string $event
+     * @return bool
+     */
+    public function hasCaptureEvent($event)
+    {
+        $captureEvents = $this->getCaptureEvents();
+        return in_array((string) $event, $captureEvents);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp givenphp capturephp event
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp removeCaptureEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$eventphp php=php php(stringphp)php php$eventphp;
-php php php php php php php php php$captureEventsphp php=php php$thisphp-php>getCaptureEventsphp(php)php;
-php php php php php php php php ifphp php(falsephp php=php=php=php php(php$indexphp php=php arrayphp_searchphp(php$eventphp,php php$captureEventsphp)php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$captureEventsphp[php$indexphp]php)php;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'captureEventsphp'php,php php$captureEventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a given capture event
+     *
+     * @param  string $event
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function removeCaptureEvent($event)
+    {
+        $event = (string) $event;
+        $captureEvents = $this->getCaptureEvents();
+        if (false === ($index = array_search($event, $captureEvents))) {
+            return $this;
+        }
+        unset($captureEvents[$index]);
+        $this->setDijitParam('captureEvents', $captureEvents);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp capturephp events
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp clearCaptureEventsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>removeDijitParamphp(php'captureEventsphp'php)php;
-php php php php php}
+    /**
+     * Clear all capture events
+     *
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function clearCaptureEvents()
+    {
+        return $this->removeDijitParam('captureEvents');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp singlephp eventphp tophp thephp dijit
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$eventphp php=php php(stringphp)php php$eventphp;
-php php php php php php php php php$eventsphp php=php php$thisphp-php>getEventsphp(php)php;
-php php php php php php php php ifphp php(inphp_arrayphp(php$eventphp,php php$eventsphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+    /**
+     * Add a single event to the dijit
+     *
+     * @param  string $event
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addEvent($event)
+    {
+        $event = (string) $event;
+        $events = $this->getEvents();
+        if (in_array($event, $events)) {
+            return $this;
+        }
 
-php php php php php php php php php$eventsphp[php]php php=php php(stringphp)php php$eventphp;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'eventsphp'php,php php$eventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $events[] = (string) $event;
+        $this->setDijitParam('events', $events);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp events
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$events
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addEventsphp(arrayphp php$eventsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$eventsphp asphp php$eventphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addEventphp(php$eventphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add multiple events
+     *
+     * @param  array $events
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addEvents(array $events)
+    {
+        foreach ($events as $event) {
+            $this->addEvent($event);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overwritephp manyphp eventsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$events
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setEventsphp(arrayphp php$eventsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearEventsphp(php)php;
-php php php php php php php php php$thisphp-php>addEventsphp(php$eventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Overwrite many events at once
+     *
+     * @param  array $events
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setEvents(array $events)
+    {
+        $this->clearEvents();
+        $this->addEvents($events);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp events
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getEventsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'eventsphp'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'eventsphp'php)php;
-php php php php php}
+    /**
+     * Get all events
+     *
+     * @return array
+     */
+    public function getEvents()
+    {
+        if (!$this->hasDijitParam('events')) {
+            return array();
+        }
+        return $this->getDijitParam('events');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp eventphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$eventsphp php=php php$thisphp-php>getEventsphp(php)php;
-php php php php php php php php returnphp inphp_arrayphp(php(stringphp)php php$eventphp,php php$eventsphp)php;
-php php php php php}
+    /**
+     * Is a given event registered?
+     *
+     * @param  string $event
+     * @return bool
+     */
+    public function hasEvent($event)
+    {
+        $events = $this->getEvents();
+        return in_array((string) $event, $events);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp givenphp event
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$event
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp removeEventphp(php$eventphp)
-php php php php php{
-php php php php php php php php php$eventsphp php=php php$thisphp-php>getEventsphp(php)php;
-php php php php php php php php ifphp php(falsephp php=php=php=php php(php$indexphp php=php arrayphp_searchphp(php$eventphp,php php$eventsphp)php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$eventsphp[php$indexphp]php)php;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'eventsphp'php,php php$eventsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a given event
+     *
+     * @param  string $event
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function removeEvent($event)
+    {
+        $events = $this->getEvents();
+        if (false === ($index = array_search($event, $events))) {
+            return $this;
+        }
+        unset($events[$index]);
+        $this->setDijitParam('events', $events);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp events
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp clearEventsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>removeDijitParamphp(php'eventsphp'php)php;
-php php php php php}
+    /**
+     * Clear all events
+     *
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function clearEvents()
+    {
+        return $this->removeDijitParam('events');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp singlephp editorphp plugin
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$plugin
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addPluginphp(php$pluginphp)
-php php php php php{
-php php php php php php php php php$pluginphp php=php php(stringphp)php php$pluginphp;
-php php php php php php php php php$pluginsphp php=php php$thisphp-php>getPluginsphp(php)php;
-php php php php php php php php ifphp php(inphp_arrayphp(php$pluginphp,php php$pluginsphp)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+    /**
+     * Add a single editor plugin
+     *
+     * @param  string $plugin
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addPlugin($plugin)
+    {
+        $plugin = (string) $plugin;
+        $plugins = $this->getPlugins();
+        if (in_array($plugin, $plugins)) {
+            return $this;
+        }
 
-php php php php php php php php php$pluginsphp[php]php php=php php(stringphp)php php$pluginphp;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'pluginsphp'php,php php$pluginsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        $plugins[] = (string) $plugin;
+        $this->setDijitParam('plugins', $plugins);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp plugins
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$plugins
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addPluginsphp(arrayphp php$pluginsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$pluginsphp asphp php$pluginphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addPluginphp(php$pluginphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add multiple plugins
+     *
+     * @param  array $plugins
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addPlugins(array $plugins)
+    {
+        foreach ($plugins as $plugin) {
+            $this->addPlugin($plugin);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overwritephp manyphp pluginsphp atphp once
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$plugins
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setPluginsphp(arrayphp php$pluginsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearPluginsphp(php)php;
-php php php php php php php php php$thisphp-php>addPluginsphp(php$pluginsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Overwrite many plugins at once
+     *
+     * @param  array $plugins
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setPlugins(array $plugins)
+    {
+        $this->clearPlugins();
+        $this->addPlugins($plugins);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp plugins
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getPluginsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'pluginsphp'php)php)php php{
-php php php php php php php php php php php php returnphp arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'pluginsphp'php)php;
-php php php php php}
+    /**
+     * Get all plugins
+     *
+     * @return array
+     */
+    public function getPlugins()
+    {
+        if (!$this->hasDijitParam('plugins')) {
+            return array();
+        }
+        return $this->getDijitParam('plugins');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp pluginphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$plugin
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasPluginphp(php$pluginphp)
-php php php php php{
-php php php php php php php php php$pluginsphp php=php php$thisphp-php>getPluginsphp(php)php;
-php php php php php php php php returnphp inphp_arrayphp(php(stringphp)php php$pluginphp,php php$pluginsphp)php;
-php php php php php}
+    /**
+     * Is a given plugin registered?
+     *
+     * @param  string $plugin
+     * @return bool
+     */
+    public function hasPlugin($plugin)
+    {
+        $plugins = $this->getPlugins();
+        return in_array((string) $plugin, $plugins);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp givenphp plugin
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$plugin
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp removePluginphp(php$pluginphp)
-php php php php php{
-php php php php php php php php php$pluginsphp php=php php$thisphp-php>getPluginsphp(php)php;
-php php php php php php php php ifphp php(falsephp php=php=php=php php(php$indexphp php=php arrayphp_searchphp(php$pluginphp,php php$pluginsphp)php)php)php php{
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
-php php php php php php php php unsetphp(php$pluginsphp[php$indexphp]php)php;
-php php php php php php php php php$thisphp-php>setDijitParamphp(php'pluginsphp'php,php php$pluginsphp)php;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a given plugin
+     *
+     * @param  string $plugin
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function removePlugin($plugin)
+    {
+        $plugins = $this->getPlugins();
+        if (false === ($index = array_search($plugin, $plugins))) {
+            return $this;
+        }
+        unset($plugins[$index]);
+        $this->setDijitParam('plugins', $plugins);
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp plugins
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp clearPluginsphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>removeDijitParamphp(php'pluginsphp'php)php;
-php php php php php}
+    /**
+     * Clear all plugins
+     *
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function clearPlugins()
+    {
+        return $this->removeDijitParam('plugins');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp editphp actionphp interval
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$interval
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setEditActionIntervalphp(php$intervalphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'editActionIntervalphp'php,php php(intphp)php php$intervalphp)php;
-php php php php php}
+    /**
+     * Set edit action interval
+     *
+     * @param  int $interval
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setEditActionInterval($interval)
+    {
+        return $this->setDijitParam('editActionInterval', (int) $interval);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp editphp actionphp intervalphp;php defaultsphp tophp php3
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getEditActionIntervalphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'editActionIntervalphp'php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>setEditActionIntervalphp(php3php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'editActionIntervalphp'php)php;
-php php php php php}
+    /**
+     * Get edit action interval; defaults to 3
+     *
+     * @return int
+     */
+    public function getEditActionInterval()
+    {
+        if (!$this->hasDijitParam('editActionInterval')) {
+            $this->setEditActionInterval(3);
+        }
+        return $this->getDijitParam('editActionInterval');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp focusphp onphp loadphp flag
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setFocusOnLoadphp(php$flagphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'focusOnLoadphp'php,php php(boolphp)php php$flagphp)php;
-php php php php php}
+    /**
+     * Set focus on load flag
+     *
+     * @param  bool $flag
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setFocusOnLoad($flag)
+    {
+        return $this->setDijitParam('focusOnLoad', (bool) $flag);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp focusphp onphp loadphp flag
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp getFocusOnLoadphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'focusOnLoadphp'php)php)php php{
-php php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'focusOnLoadphp'php)php;
-php php php php php}
+    /**
+     * Retrieve focus on load flag
+     *
+     * @return bool
+     */
+    public function getFocusOnLoad()
+    {
+        if (!$this->hasDijitParam('focusOnLoad')) {
+             return false;
+        }
+        return $this->getDijitParam('focusOnLoad');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp editorphp height
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$height
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setHeightphp(php$heightphp)
-php php php php php{
-php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php\dphp+php(emphp|pxphp|php%php)php?php$php/iphp'php,php php$heightphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(php'Invalidphp heightphp providedphp;php mustphp bephp integerphp orphp CSSphp measurementphp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php(emphp|pxphp|php%php)php$php/php'php,php php$heightphp)php)php php{
-php php php php php php php php php php php php php$heightphp php.php=php php'pxphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'heightphp'php,php php$heightphp)php;
-php php php php php}
+    /**
+     * Set editor height
+     *
+     * @param  string|int $height
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setHeight($height)
+    {
+        if (!preg_match('/^\d+(em|px|%)?$/i', $height)) {
+            require_once 'Zend/Form/Element/Exception.php';
+            throw new Zend_Form_Element_Exception('Invalid height provided; must be integer or CSS measurement');
+        }
+        if (!preg_match('/(em|px|%)$/', $height)) {
+            $height .= 'px';
+        }
+        return $this->setDijitParam('height', $height);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Retrievephp height
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getHeightphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'heightphp'php)php)php php{
-php php php php php php php php php php php php returnphp php'php3php0php0pxphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'heightphp'php)php;
-php php php php php}
+    /**
+     * Retrieve height
+     *
+     * @return string
+     */
+    public function getHeight()
+    {
+        if (!$this->hasDijitParam('height')) {
+            return '300px';
+        }
+        return $this->getDijitParam('height');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp whetherphp orphp notphp tophp inheritphp parentphp'sphp width
-php php php php php php*
-php php php php php php*php php@paramphp php boolphp php$flag
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setInheritWidthphp(php$flagphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'inheritWidthphp'php,php php(boolphp)php php$flagphp)php;
-php php php php php}
+    /**
+     * Set whether or not to inherit parent's width
+     *
+     * @param  bool $flag
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setInheritWidth($flag)
+    {
+        return $this->setDijitParam('inheritWidth', (bool) $flag);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Whetherphp orphp notphp tophp inheritphp thephp parentphp'sphp width
-php php php php php php*
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp getInheritWidthphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'inheritWidthphp'php)php)php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'inheritWidthphp'php)php;
-php php php php php}
+    /**
+     * Whether or not to inherit the parent's width
+     *
+     * @return bool
+     */
+    public function getInheritWidth()
+    {
+        if (!$this->hasDijitParam('inheritWidth')) {
+            return false;
+        }
+        return $this->getDijitParam('inheritWidth');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp minimumphp heightphp ofphp editor
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$minHeight
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setMinHeightphp(php$minHeightphp)
-php php php php php{
-php php php php php php php php ifphp php(php!pregphp_matchphp(php'php/php^php\dphp+php(emphp)php?php$php/iphp'php,php php$minHeightphp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Formphp/Elementphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Formphp_Elementphp_Exceptionphp(php'Invalidphp minHeightphp providedphp;php mustphp bephp integerphp orphp CSSphp measurementphp'php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php'emphp'php php!php=php substrphp(php$minHeightphp,php php-php2php)php)php php{
-php php php php php php php php php php php php php$minHeightphp php.php=php php'emphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'minHeightphp'php,php php$minHeightphp)php;
-php php php php php}
+    /**
+     * Set minimum height of editor
+     *
+     * @param  string|int $minHeight
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setMinHeight($minHeight)
+    {
+        if (!preg_match('/^\d+(em)?$/i', $minHeight)) {
+            require_once 'Zend/Form/Element/Exception.php';
+            throw new Zend_Form_Element_Exception('Invalid minHeight provided; must be integer or CSS measurement');
+        }
+        if ('em' != substr($minHeight, -2)) {
+            $minHeight .= 'em';
+        }
+        return $this->setDijitParam('minHeight', $minHeight);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp minimumphp heightphp ofphp editor
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getMinHeightphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'minHeightphp'php)php)php php{
-php php php php php php php php php php php php returnphp php'php1emphp'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'minHeightphp'php)php;
-php php php php php}
+    /**
+     * Get minimum height of editor
+     *
+     * @return string
+     */
+    public function getMinHeight()
+    {
+        if (!$this->hasDijitParam('minHeight')) {
+            return '1em';
+        }
+        return $this->getDijitParam('minHeight');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp aphp customphp stylesheet
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$styleSheet
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addStyleSheetphp(php$styleSheetphp)
-php php php php php{
-php php php php php php php php php$stylesheetsphp php=php php$thisphp-php>getStyleSheetsphp(php)php;
-php php php php php php php php ifphp php(strstrphp(php$stylesheetsphp,php php'php;php'php)php)php php{
-php php php php php php php php php php php php php$stylesheetsphp php=php explodephp(php'php;php'php,php php$stylesheetsphp)php;
-php php php php php php php php php}php elseifphp php(php!emptyphp(php$stylesheetsphp)php)php php{
-php php php php php php php php php php php php php$stylesheetsphp php=php php(arrayphp)php php$stylesheetsphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$stylesheetsphp php=php arrayphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$styleSheetphp,php php$stylesheetsphp)php)php php{
-php php php php php php php php php php php php php$stylesheetsphp[php]php php=php php(stringphp)php php$styleSheetphp;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'styleSheetsphp'php,php implodephp(php'php;php'php,php php$stylesheetsphp)php)php;
-php php php php php}
+    /**
+     * Add a custom stylesheet
+     *
+     * @param  string $styleSheet
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addStyleSheet($styleSheet)
+    {
+        $stylesheets = $this->getStyleSheets();
+        if (strstr($stylesheets, ';')) {
+            $stylesheets = explode(';', $stylesheets);
+        } elseif (!empty($stylesheets)) {
+            $stylesheets = (array) $stylesheets;
+        } else {
+            $stylesheets = array();
+        }
+        if (!in_array($styleSheet, $stylesheets)) {
+            $stylesheets[] = (string) $styleSheet;
+        }
+        return $this->setDijitParam('styleSheets', implode(';', $stylesheets));
+    }
 
-php php php php php/php*php*
-php php php php php php*php Addphp multiplephp customphp stylesheets
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$styleSheets
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp addStyleSheetsphp(arrayphp php$styleSheetsphp)
-php php php php php{
-php php php php php php php php foreachphp php(php$styleSheetsphp asphp php$styleSheetphp)php php{
-php php php php php php php php php php php php php$thisphp-php>addStyleSheetphp(php$styleSheetphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Add multiple custom stylesheets
+     *
+     * @param  array $styleSheets
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function addStyleSheets(array $styleSheets)
+    {
+        foreach ($styleSheets as $styleSheet) {
+            $this->addStyleSheet($styleSheet);
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overwritephp allphp stylesheets
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$styleSheets
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setStyleSheetsphp(arrayphp php$styleSheetsphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>clearStyleSheetsphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>addStyleSheetsphp(php$styleSheetsphp)php;
-php php php php php}
+    /**
+     * Overwrite all stylesheets
+     *
+     * @param  array $styleSheets
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setStyleSheets(array $styleSheets)
+    {
+        $this->clearStyleSheets();
+        return $this->addStyleSheets($styleSheets);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp stylesheets
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getStyleSheetsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'styleSheetsphp'php)php)php php{
-php php php php php php php php php php php php returnphp php'php'php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'styleSheetsphp'php)php;
-php php php php php}
+    /**
+     * Get all stylesheets
+     *
+     * @return string
+     */
+    public function getStyleSheets()
+    {
+        if (!$this->hasDijitParam('styleSheets')) {
+            return '';
+        }
+        return $this->getDijitParam('styleSheets');
+    }
 
-php php php php php/php*php*
-php php php php php php*php Isphp aphp givenphp stylesheetphp registeredphp?
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$styleSheet
-php php php php php php*php php@returnphp bool
-php php php php php php*php/
-php php php php publicphp functionphp hasStyleSheetphp(php$styleSheetphp)
-php php php php php{
-php php php php php php php php php$styleSheetsphp php=php php$thisphp-php>getStyleSheetsphp(php)php;
-php php php php php php php php php$styleSheetsphp php=php explodephp(php'php;php'php,php php$styleSheetsphp)php;
-php php php php php php php php returnphp inphp_arrayphp(php$styleSheetphp,php php$styleSheetsphp)php;
-php php php php php}
+    /**
+     * Is a given stylesheet registered?
+     *
+     * @param  string $styleSheet
+     * @return bool
+     */
+    public function hasStyleSheet($styleSheet)
+    {
+        $styleSheets = $this->getStyleSheets();
+        $styleSheets = explode(';', $styleSheets);
+        return in_array($styleSheet, $styleSheets);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Removephp aphp singlephp stylesheet
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$styleSheet
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp removeStyleSheetphp(php$styleSheetphp)
-php php php php php{
-php php php php php php php php php$styleSheetsphp php=php php$thisphp-php>getStyleSheetsphp(php)php;
-php php php php php php php php php$styleSheetsphp php=php explodephp(php'php;php'php,php php$styleSheetsphp)php;
-php php php php php php php php ifphp php(falsephp php!php=php=php php(php$indexphp php=php arrayphp_searchphp(php$styleSheetphp,php php$styleSheetsphp)php)php)php php{
-php php php php php php php php php php php php unsetphp(php$styleSheetsphp[php$indexphp]php)php;
-php php php php php php php php php php php php php$thisphp-php>setDijitParamphp(php'styleSheetsphp'php,php implodephp(php'php;php'php,php php$styleSheetsphp)php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Remove a single stylesheet
+     *
+     * @param  string $styleSheet
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function removeStyleSheet($styleSheet)
+    {
+        $styleSheets = $this->getStyleSheets();
+        $styleSheets = explode(';', $styleSheets);
+        if (false !== ($index = array_search($styleSheet, $styleSheets))) {
+            unset($styleSheets[$index]);
+            $this->setDijitParam('styleSheets', implode(';', $styleSheets));
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Clearphp allphp stylesheets
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp clearStyleSheetsphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>hasDijitParamphp(php'styleSheetsphp'php)php)php php{
-php php php php php php php php php php php php php$thisphp-php>removeDijitParamphp(php'styleSheetsphp'php)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Clear all stylesheets
+     *
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function clearStyleSheets()
+    {
+        if ($this->hasDijitParam('styleSheets')) {
+            $this->removeDijitParam('styleSheets');
+        }
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp updatephp interval
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$interval
-php php php php php php*php php@returnphp Zendphp_Dojophp_Formphp_Elementphp_Editor
-php php php php php php*php/
-php php php php publicphp functionphp setUpdateIntervalphp(php$intervalphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>setDijitParamphp(php'updateIntervalphp'php,php php(intphp)php php$intervalphp)php;
-php php php php php}
+    /**
+     * Set update interval
+     *
+     * @param  int $interval
+     * @return Zend_Dojo_Form_Element_Editor
+     */
+    public function setUpdateInterval($interval)
+    {
+        return $this->setDijitParam('updateInterval', (int) $interval);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp updatephp interval
-php php php php php php*
-php php php php php php*php php@returnphp int
-php php php php php php*php/
-php php php php publicphp functionphp getUpdateIntervalphp(php)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>hasDijitParamphp(php'updateIntervalphp'php)php)php php{
-php php php php php php php php php php php php php returnphp php2php0php0php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$thisphp-php>getDijitParamphp(php'updateIntervalphp'php)php;
-php php php php php}
-php}
+    /**
+     * Get update interval
+     *
+     * @return int
+     */
+    public function getUpdateInterval()
+    {
+        if (!$this->hasDijitParam('updateInterval')) {
+             return 200;
+        }
+        return $this->getDijitParam('updateInterval');
+    }
+}

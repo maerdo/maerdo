@@ -1,243 +1,243 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Textphp_Table
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php$Idphp:php Columnphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category  Zend
+ * @package   Zend_Text_Table
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @version   $Id: Column.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Textphp_Table
-php php*php/
-requirephp_oncephp php'Zendphp/Textphp/Tablephp.phpphp'php;
+/**
+ * @see Zend_Text_Table
+ */
+require_once 'Zend/Text/Table.php';
 
-php/php*php*
-php php*php php@seephp Zendphp_Textphp_MultiByte
-php php*php/
-requirephp_oncephp php'Zendphp/Textphp/MultiBytephp.phpphp'php;
+/**
+ * @see Zend_Text_MultiByte
+ */
+require_once 'Zend/Text/MultiByte.php';
 
-php/php*php*
-php php*php Columnphp classphp forphp Zendphp_Textphp_Tablephp_Row
-php php*
-php php*php php@categoryphp php Zend
-php php*php php@packagephp php php Zendphp_Textphp_Table
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Textphp_Tablephp_Column
-php{
-php php php php php/php*php*
-php php php php php php*php Alignsphp forphp columns
-php php php php php php*php/
-php php php php constphp ALIGNphp_LEFTphp php php php=php php'leftphp'php;
-php php php php constphp ALIGNphp_CENTERphp php=php php'centerphp'php;
-php php php php constphp ALIGNphp_RIGHTphp php php=php php'rightphp'php;
+/**
+ * Column class for Zend_Text_Table_Row
+ *
+ * @category  Zend
+ * @package   Zend_Text_Table
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Text_Table_Column
+{
+    /**
+     * Aligns for columns
+     */
+    const ALIGN_LEFT   = 'left';
+    const ALIGN_CENTER = 'center';
+    const ALIGN_RIGHT  = 'right';
 
-php php php php php/php*php*
-php php php php php php*php Contentphp ofphp thephp column
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_contentphp php=php php'php'php;
+    /**
+     * Content of the column
+     *
+     * @var string
+     */
+    protected $_content = '';
 
-php php php php php/php*php*
-php php php php php php*php Alignphp ofphp thephp column
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_alignphp php=php selfphp:php:ALIGNphp_LEFTphp;
+    /**
+     * Align of the column
+     *
+     * @var string
+     */
+    protected $_align = self::ALIGN_LEFT;
 
-php php php php php/php*php*
-php php php php php php*php Colspanphp ofphp thephp column
-php php php php php php*
-php php php php php php*php php@varphp integer
-php php php php php php*php/
-php php php php protectedphp php$php_colSpanphp php=php php1php;
+    /**
+     * Colspan of the column
+     *
+     * @var integer
+     */
+    protected $_colSpan = 1;
 
-php php php php php/php*php*
-php php php php php php*php Allowedphp alignphp parameters
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_allowedAlignsphp php=php arrayphp(selfphp:php:ALIGNphp_LEFTphp,php selfphp:php:ALIGNphp_CENTERphp,php selfphp:php:ALIGNphp_RIGHTphp)php;
+    /**
+     * Allowed align parameters
+     *
+     * @var array
+     */
+    protected $_allowedAligns = array(self::ALIGN_LEFT, self::ALIGN_CENTER, self::ALIGN_RIGHT);
 
-php php php php php/php*php*
-php php php php php php*php Createphp aphp columnphp forphp aphp Zendphp_Textphp_Tablephp_Rowphp objectphp.
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php php$contentphp php Thephp contentphp ofphp thephp column
-php php php php php php*php php@paramphp stringphp php php$alignphp php php php Thephp alignphp ofphp thephp content
-php php php php php php*php php@paramphp integerphp php$colSpanphp php Thephp colspanphp ofphp thephp column
-php php php php php php*php php@paramphp stringphp php php$charsetphp php Thephp encodingphp ofphp thephp content
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$contentphp php=php nullphp,php php$alignphp php=php nullphp,php php$colSpanphp php=php nullphp,php php$charsetphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$contentphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setContentphp(php$contentphp,php php$charsetphp)php;
-php php php php php php php php php}
+    /**
+     * Create a column for a Zend_Text_Table_Row object.
+     *
+     * @param string  $content  The content of the column
+     * @param string  $align    The align of the content
+     * @param integer $colSpan  The colspan of the column
+     * @param string  $charset  The encoding of the content
+     */
+    public function __construct($content = null, $align = null, $colSpan = null, $charset = null)
+    {
+        if ($content !== null) {
+            $this->setContent($content, $charset);
+        }
 
-php php php php php php php php ifphp php(php$alignphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setAlignphp(php$alignphp)php;
-php php php php php php php php php}
+        if ($align !== null) {
+            $this->setAlign($align);
+        }
 
-php php php php php php php php ifphp php(php$colSpanphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setColSpanphp(php$colSpanphp)php;
-php php php php php php php php php}
-php php php php php}
+        if ($colSpan !== null) {
+            $this->setColSpan($colSpan);
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp contentphp.
-php php php php php php*
-php php php php php php*php Ifphp php$charsetphp isphp notphp definedphp,php itphp isphp assumedphp thatphp php$contentphp isphp encodedphp in
-php php php php php php*php thephp charsetphp definedphp viaphp Zendphp_Textphp_Tablephp:php:setInputCharsetphp(php)php php(defaults
-php php php php php php*php tophp utfphp-php8php)php.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$contentphp php Contentphp ofphp thephp column
-php php php php php php*php php@paramphp php stringphp php$charsetphp php Thephp charsetphp ofphp thephp content
-php php php php php php*php php@throwsphp Zendphp_Textphp_Tablephp_Exceptionphp Whenphp php$contentphp isphp notphp aphp string
-php php php php php php*php php@returnphp Zendphp_Textphp_Tablephp_Column
-php php php php php php*php/
-php php php php publicphp functionphp setContentphp(php$contentphp,php php$charsetphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_stringphp(php$contentphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Textphp/Tablephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Textphp_Tablephp_Exceptionphp(php'php$contentphp mustphp bephp aphp stringphp'php)php;
-php php php php php php php php php}
+    /**
+     * Set the content.
+     *
+     * If $charset is not defined, it is assumed that $content is encoded in
+     * the charset defined via Zend_Text_Table::setInputCharset() (defaults
+     * to utf-8).
+     *
+     * @param  string $content  Content of the column
+     * @param  string $charset  The charset of the content
+     * @throws Zend_Text_Table_Exception When $content is not a string
+     * @return Zend_Text_Table_Column
+     */
+    public function setContent($content, $charset = null)
+    {
+        if (is_string($content) === false) {
+            require_once 'Zend/Text/Table/Exception.php';
+            throw new Zend_Text_Table_Exception('$content must be a string');
+        }
 
-php php php php php php php php ifphp php(php$charsetphp php=php=php=php nullphp)php php{
-php php php php php php php php php php php php php$inputCharsetphp php=php Zendphp_Textphp_Tablephp:php:getInputCharsetphp(php)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$inputCharsetphp php=php strtolowerphp(php$charsetphp)php;
-php php php php php php php php php}
+        if ($charset === null) {
+            $inputCharset = Zend_Text_Table::getInputCharset();
+        } else {
+            $inputCharset = strtolower($charset);
+        }
 
-php php php php php php php php php$outputCharsetphp php=php Zendphp_Textphp_Tablephp:php:getOutputCharsetphp(php)php;
+        $outputCharset = Zend_Text_Table::getOutputCharset();
 
-php php php php php php php php ifphp php(php$inputCharsetphp php!php=php=php php$outputCharsetphp)php php{
-php php php php php php php php php php php php ifphp php(PHPphp_OSphp php!php=php=php php'AIXphp'php)php php{
-php php php php php php php php php php php php php php php php php/php/php AIXphp doesphp notphp understandphp thesephp characterphp sets
-php php php php php php php php php php php php php php php php php$contentphp php=php iconvphp(php$inputCharsetphp,php php$outputCharsetphp,php php$contentphp)php;
-php php php php php php php php php php php php php}
+        if ($inputCharset !== $outputCharset) {
+            if (PHP_OS !== 'AIX') {
+                // AIX does not understand these character sets
+                $content = iconv($inputCharset, $outputCharset, $content);
+            }
 
-php php php php php php php php php}
+        }
 
-php php php php php php php php php$thisphp-php>php_contentphp php=php php$contentphp;
+        $this->_content = $content;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp align
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$alignphp Alignphp ofphp thephp column
-php php php php php php*php php@throwsphp Zendphp_Textphp_Tablephp_Exceptionphp Whenphp suppliedphp alignphp isphp invalid
-php php php php php php*php php@returnphp Zendphp_Textphp_Tablephp_Column
-php php php php php php*php/
-php php php php publicphp functionphp setAlignphp(php$alignphp)
-php php php php php{
-php php php php php php php php ifphp php(inphp_arrayphp(php$alignphp,php php$thisphp-php>php_allowedAlignsphp)php php=php=php=php falsephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Textphp/Tablephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Textphp_Tablephp_Exceptionphp(php'Invalidphp alignphp suppliedphp'php)php;
-php php php php php php php php php}
+    /**
+     * Set the align
+     *
+     * @param  string $align Align of the column
+     * @throws Zend_Text_Table_Exception When supplied align is invalid
+     * @return Zend_Text_Table_Column
+     */
+    public function setAlign($align)
+    {
+        if (in_array($align, $this->_allowedAligns) === false) {
+            require_once 'Zend/Text/Table/Exception.php';
+            throw new Zend_Text_Table_Exception('Invalid align supplied');
+        }
 
-php php php php php php php php php$thisphp-php>php_alignphp php=php php$alignphp;
+        $this->_align = $align;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp thephp colspan
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$colSpan
-php php php php php php*php php@throwsphp Zendphp_Textphp_Tablephp_Exceptionphp Whenphp php$colSpanphp isphp smallerphp thanphp php1
-php php php php php php*php php@returnphp Zendphp_Textphp_Tablephp_Column
-php php php php php php*php/
-php php php php publicphp functionphp setColSpanphp(php$colSpanphp)
-php php php php php{
-php php php php php php php php ifphp php(isphp_intphp(php$colSpanphp)php php=php=php=php falsephp orphp php$colSpanphp <php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Textphp/Tablephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Textphp_Tablephp_Exceptionphp(php'php$colSpanphp mustphp bephp anphp integerphp andphp greaterphp thanphp php0php'php)php;
-php php php php php php php php php}
+    /**
+     * Set the colspan
+     *
+     * @param  int $colSpan
+     * @throws Zend_Text_Table_Exception When $colSpan is smaller than 1
+     * @return Zend_Text_Table_Column
+     */
+    public function setColSpan($colSpan)
+    {
+        if (is_int($colSpan) === false or $colSpan < 1) {
+            require_once 'Zend/Text/Table/Exception.php';
+            throw new Zend_Text_Table_Exception('$colSpan must be an integer and greater than 0');
+        }
 
-php php php php php php php php php$thisphp-php>php_colSpanphp php=php php$colSpanphp;
+        $this->_colSpan = $colSpan;
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp colspan
-php php php php php php*
-php php php php php php*php php@returnphp integer
-php php php php php php*php/
-php php php php publicphp functionphp getColSpanphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_colSpanphp;
-php php php php php}
+    /**
+     * Get the colspan
+     *
+     * @return integer
+     */
+    public function getColSpan()
+    {
+        return $this->_colSpan;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Renderphp thephp columnphp widthphp thephp givenphp columnphp width
-php php php php php php*
-php php php php php php*php php@paramphp php integerphp php$columnWidthphp Thephp widthphp ofphp thephp column
-php php php php php php*php php@paramphp php integerphp php$paddingphp php php php php Thephp paddingphp forphp thephp column
-php php php php php php*php php@throwsphp Zendphp_Textphp_Tablephp_Exceptionphp Whenphp php$columnWidthphp isphp lowerphp thanphp php1
-php php php php php php*php php@throwsphp Zendphp_Textphp_Tablephp_Exceptionphp Whenphp paddingphp isphp greaterphp thanphp columnWidth
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp renderphp(php$columnWidthphp,php php$paddingphp php=php php0php)
-php php php php php{
-php php php php php php php php ifphp php(isphp_intphp(php$columnWidthphp)php php=php=php=php falsephp orphp php$columnWidthphp <php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Textphp/Tablephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Textphp_Tablephp_Exceptionphp(php'php$columnWidthphp mustphp bephp anphp integerphp andphp greaterphp thanphp php0php'php)php;
-php php php php php php php php php}
+    /**
+     * Render the column width the given column width
+     *
+     * @param  integer $columnWidth The width of the column
+     * @param  integer $padding     The padding for the column
+     * @throws Zend_Text_Table_Exception When $columnWidth is lower than 1
+     * @throws Zend_Text_Table_Exception When padding is greater than columnWidth
+     * @return string
+     */
+    public function render($columnWidth, $padding = 0)
+    {
+        if (is_int($columnWidth) === false or $columnWidth < 1) {
+            require_once 'Zend/Text/Table/Exception.php';
+            throw new Zend_Text_Table_Exception('$columnWidth must be an integer and greater than 0');
+        }
 
-php php php php php php php php php$columnWidthphp php-php=php php(php$paddingphp php*php php2php)php;
+        $columnWidth -= ($padding * 2);
 
-php php php php php php php php ifphp php(php$columnWidthphp <php php1php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Textphp/Tablephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Textphp_Tablephp_Exceptionphp(php'Paddingphp php(php'php php.php php$paddingphp php.php php'php)php isphp greaterphp thanphp columnphp widthphp'php)php;
-php php php php php php php php php}
+        if ($columnWidth < 1) {
+            require_once 'Zend/Text/Table/Exception.php';
+            throw new Zend_Text_Table_Exception('Padding (' . $padding . ') is greater than column width');
+        }
 
-php php php php php php php php switchphp php(php$thisphp-php>php_alignphp)php php{
-php php php php php php php php php php php php casephp selfphp:php:ALIGNphp_LEFTphp:
-php php php php php php php php php php php php php php php php php$padModephp php=php STRphp_PADphp_RIGHTphp;
-php php php php php php php php php php php php php php php php breakphp;
+        switch ($this->_align) {
+            case self::ALIGN_LEFT:
+                $padMode = STR_PAD_RIGHT;
+                break;
 
-php php php php php php php php php php php php casephp selfphp:php:ALIGNphp_CENTERphp:
-php php php php php php php php php php php php php php php php php$padModephp php=php STRphp_PADphp_BOTHphp;
-php php php php php php php php php php php php php php php php breakphp;
+            case self::ALIGN_CENTER:
+                $padMode = STR_PAD_BOTH;
+                break;
 
-php php php php php php php php php php php php casephp selfphp:php:ALIGNphp_RIGHTphp:
-php php php php php php php php php php php php php php php php php$padModephp php=php STRphp_PADphp_LEFTphp;
-php php php php php php php php php php php php php php php php breakphp;
+            case self::ALIGN_RIGHT:
+                $padMode = STR_PAD_LEFT;
+                break;
 
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php/php/php Thisphp canphp neverphp happenphp,php butphp thephp CSphp tellsphp Iphp havephp tophp havephp itphp php.php.php.
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
+            default:
+                // This can never happen, but the CS tells I have to have it ...
+                break;
+        }
 
-php php php php php php php php php$outputCharsetphp php=php Zendphp_Textphp_Tablephp:php:getOutputCharsetphp(php)php;
-php php php php php php php php php$linesphp php php php php php php php php php=php explodephp(php"php\nphp"php,php Zendphp_Textphp_MultiBytephp:php:wordWrapphp(php$thisphp-php>php_contentphp,php php$columnWidthphp,php php"php\nphp"php,php truephp,php php$outputCharsetphp)php)php;
-php php php php php php php php php$paddedLinesphp php php php=php arrayphp(php)php;
+        $outputCharset = Zend_Text_Table::getOutputCharset();
+        $lines         = explode("\n", Zend_Text_MultiByte::wordWrap($this->_content, $columnWidth, "\n", true, $outputCharset));
+        $paddedLines   = array();
 
-php php php php php php php php foreachphp php(php$linesphp ASphp php$linephp)php php{
-php php php php php php php php php php php php php$paddedLinesphp[php]php php=php strphp_repeatphp(php'php php'php,php php$paddingphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php Zendphp_Textphp_MultiBytephp:php:strPadphp(php$linephp,php php$columnWidthphp,php php'php php'php,php php$padModephp,php php$outputCharsetphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php strphp_repeatphp(php'php php'php,php php$paddingphp)php;
-php php php php php php php php php}
+        foreach ($lines AS $line) {
+            $paddedLines[] = str_repeat(' ', $padding)
+                           . Zend_Text_MultiByte::strPad($line, $columnWidth, ' ', $padMode, $outputCharset)
+                           . str_repeat(' ', $padding);
+        }
 
-php php php php php php php php php$resultphp php=php implodephp(php"php\nphp"php,php php$paddedLinesphp)php;
+        $result = implode("\n", $paddedLines);
 
-php php php php php php php php returnphp php$resultphp;
-php php php php php}
-php}
+        return $result;
+    }
+}

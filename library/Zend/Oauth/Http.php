@@ -1,266 +1,266 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Httpphp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Http.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*php Zendphp_Oauthphp_Httpphp_Utilityphp php*php/
-requirephp_oncephp php'Zendphp/Oauthphp/Httpphp/Utilityphp.phpphp'php;
+/** Zend_Oauth_Http_Utility */
+require_once 'Zend/Oauth/Http/Utility.php';
 
-php/php*php*php Zendphp_Uriphp_Httpphp php*php/
-requirephp_oncephp php'Zendphp/Uriphp/Httpphp.phpphp'php;
+/** Zend_Uri_Http */
+require_once 'Zend/Uri/Http.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Oauth
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Oauthphp_Http
-php{
-php php php php php/php*php*
-php php php php php php*php Arrayphp ofphp allphp customphp servicephp parametersphp tophp bephp sentphp inphp thephp HTTPphp request
-php php php php php php*php inphp additionphp tophp thephp usualphp OAuthphp parametersphp.
-php php php php php php*
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_parametersphp php=php arrayphp(php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Oauth
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Oauth_Http
+{
+    /**
+     * Array of all custom service parameters to be sent in the HTTP request
+     * in addition to the usual OAuth parameters.
+     *
+     * @var array
+     */
+    protected $_parameters = array();
 
-php php php php php/php*php*
-php php php php php php*php Referencephp tophp thephp Zendphp_Oauthphp_Consumerphp instancephp inphp usephp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_consumerphp php=php nullphp;
+    /**
+     * Reference to the Zend_Oauth_Consumer instance in use.
+     *
+     * @var string
+     */
+    protected $_consumer = null;
 
-php php php php php/php*php*
-php php php php php php*php OAuthphp specifiesphp threephp requestphp methodsphp,php thisphp holdsphp thephp currentphp preferred
-php php php php php php*php onephp whichphp byphp defaultphp usesphp thephp Authorizationphp Headerphp approachphp forphp passing
-php php php php php php*php OAuthphp parametersphp,php andphp aphp POSTphp bodyphp forphp nonphp-OAuthphp customphp parametersphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_preferredRequestSchemephp php=php nullphp;
+    /**
+     * OAuth specifies three request methods, this holds the current preferred
+     * one which by default uses the Authorization Header approach for passing
+     * OAuth parameters, and a POST body for non-OAuth custom parameters.
+     *
+     * @var string
+     */
+    protected $_preferredRequestScheme = null;
 
-php php php php php/php*php*
-php php php php php php*php Requestphp Methodphp forphp thephp HTTPphp Requestphp.
-php php php php php php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_preferredRequestMethodphp php=php Zendphp_Oauthphp:php:POSTphp;
+    /**
+     * Request Method for the HTTP Request.
+     *
+     * @var string
+     */
+    protected $_preferredRequestMethod = Zend_Oauth::POST;
 
-php php php php php/php*php*
-php php php php php php*php Instancephp ofphp thephp generalphp Zendphp_Oauthphp_Httpphp_Utilityphp classphp.
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Oauthphp_Httpphp_Utility
-php php php php php php*php/
-php php php php protectedphp php$php_httpUtilityphp php=php nullphp;
+    /**
+     * Instance of the general Zend_Oauth_Http_Utility class.
+     *
+     * @var Zend_Oauth_Http_Utility
+     */
+    protected $_httpUtility = null;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Oauthphp_Consumerphp php$consumer
-php php php php php php*php php@paramphp php nullphp|arrayphp php$parameters
-php php php php php php*php php@paramphp php nullphp|Zendphp_Oauthphp_Httpphp_Utilityphp php$utility
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(
-php php php php php php php php Zendphp_Oauthphp_Consumerphp php$consumerphp,
-php php php php php php php php arrayphp php$parametersphp php=php nullphp,
-php php php php php php php php Zendphp_Oauthphp_Httpphp_Utilityphp php$utilityphp php=php null
-php php php php php)php php{
-php php php php php php php php php$thisphp-php>php_consumerphp php=php php$consumerphp;
-php php php php php php php php php$thisphp-php>php_preferredRequestSchemephp php=php php$thisphp-php>php_consumerphp-php>getRequestSchemephp(php)php;
-php php php php php php php php ifphp php(php$parametersphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>setParametersphp(php$parametersphp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$utilityphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp php=php php$utilityphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp php=php newphp Zendphp_Oauthphp_Httpphp_Utilityphp;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Constructor
+     *
+     * @param  Zend_Oauth_Consumer $consumer
+     * @param  null|array $parameters
+     * @param  null|Zend_Oauth_Http_Utility $utility
+     * @return void
+     */
+    public function __construct(
+        Zend_Oauth_Consumer $consumer,
+        array $parameters = null,
+        Zend_Oauth_Http_Utility $utility = null
+    ) {
+        $this->_consumer = $consumer;
+        $this->_preferredRequestScheme = $this->_consumer->getRequestScheme();
+        if ($parameters !== null) {
+            $this->setParameters($parameters);
+        }
+        if ($utility !== null) {
+            $this->_httpUtility = $utility;
+        } else {
+            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Setphp aphp preferredphp HTTPphp requestphp methodphp.
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Http
-php php php php php php*php/
-php php php php publicphp functionphp setMethodphp(php$methodphp)
-php php php php php{
-php php php php php php php php ifphp php(php!inphp_arrayphp(php$methodphp,php arrayphp(Zendphp_Oauthphp:php:POSTphp,php Zendphp_Oauthphp:php:GETphp)php)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(php'invalidphp HTTPphp methodphp:php php'php php.php php$methodphp)php;
-php php php php php php php php php}
-php php php php php php php php php$thisphp-php>php_preferredRequestMethodphp php=php php$methodphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Set a preferred HTTP request method.
+     *
+     * @param  string $method
+     * @return Zend_Oauth_Http
+     */
+    public function setMethod($method)
+    {
+        if (!in_array($method, array(Zend_Oauth::POST, Zend_Oauth::GET))) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception('invalid HTTP method: ' . $method);
+        }
+        $this->_preferredRequestMethod = $method;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Preferredphp HTTPphp requestphp methodphp accessorphp.
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getMethodphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_preferredRequestMethodphp;
-php php php php php}
+    /**
+     * Preferred HTTP request method accessor.
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->_preferredRequestMethod;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Mutatorphp tophp setphp anphp arrayphp ofphp customphp parametersphp forphp thephp HTTPphp requestphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$customServiceParameters
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Http
-php php php php php php*php/
-php php php php publicphp functionphp setParametersphp(arrayphp php$customServiceParametersphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_parametersphp php=php php$customServiceParametersphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * Mutator to set an array of custom parameters for the HTTP request.
+     *
+     * @param  array $customServiceParameters
+     * @return Zend_Oauth_Http
+     */
+    public function setParameters(array $customServiceParameters)
+    {
+        $this->_parameters = $customServiceParameters;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Accessorphp forphp anphp arrayphp ofphp customphp parametersphp.
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getParametersphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_parametersphp;
-php php php php php}
+    /**
+     * Accessor for an array of custom parameters.
+     *
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->_parameters;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp thephp Consumerphp instancephp inphp usephp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Oauthphp_Consumer
-php php php php php php*php/
-php php php php publicphp functionphp getConsumerphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_consumerphp;
-php php php php php}
+    /**
+     * Return the Consumer instance in use.
+     *
+     * @return Zend_Oauth_Consumer
+     */
+    public function getConsumer()
+    {
+        return $this->_consumer;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Commencephp aphp requestphp cyclephp wherephp thephp currentphp HTTPphp methodphp andphp OAuth
-php php php php php php*php requestphp schemephp setphp anphp upperphp preferredphp HTTPphp requestphp stylephp andphp where
-php php php php php php*php failuresphp generatephp aphp newphp HTTPphp requestphp stylephp furtherphp downphp thephp OAuth
-php php php php php php*php preferencephp listphp forphp OAuthphp Requestphp Schemesphp.
-php php php php php php*php Onphp successphp,php returnphp thephp Requestphp objectphp thatphp resultsphp forphp processingphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@returnphp Zendphp_Httpphp_Response
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp onphp HTTPphp requestphp errors
-php php php php php php*php php@todophp php php Removephp cyclingphp?php;php Replacephp withphp upfrontphp dophp-orphp-diephp configuration
-php php php php php php*php/
-php php php php publicphp functionphp startRequestCyclephp(arrayphp php$paramsphp)
-php php php php php{
-php php php php php php php php php$responsephp php=php nullphp;
-php php php php php php php php php$bodyphp php php php php php=php nullphp;
-php php php php php php php php php$statusphp php php php=php nullphp;
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>php_attemptRequestphp(php$paramsphp)php;
-php php php php php php php php php}php catchphp php(Zendphp_Httpphp_Clientphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(php'Errorphp inphp HTTPphp requestphp'php,php nullphp,php php$ephp)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$responsephp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$bodyphp php php php=php php$responsephp-php>getBodyphp(php)php;
-php php php php php php php php php php php php php$statusphp php=php php$responsephp-php>getStatusphp(php)php;
-php php php php php php php php php}
-php php php php php php php php ifphp php(php$responsephp php=php=php=php nullphp php/php/php Requestphp failurephp/exception
-php php php php php php php php php php php php php|php|php php$statusphp php=php=php php5php0php0php php php/php/php Internalphp Serverphp Error
-php php php php php php php php php php php php php|php|php php$statusphp php=php=php php4php0php0php php php/php/php Badphp Request
-php php php php php php php php php php php php php|php|php php$statusphp php=php=php php4php0php1php php php/php/php Unauthorized
-php php php php php php php php php php php php php|php|php emptyphp(php$bodyphp)php php php php php/php/php Missingphp token
-php php php php php php php php php)php php{
-php php php php php php php php php php php php php$thisphp-php>php_assessRequestAttemptphp(php$responsephp)php;
-php php php php php php php php php php php php php$responsephp php=php php$thisphp-php>startRequestCyclephp(php$paramsphp)php;
-php php php php php php php php php}
-php php php php php php php php returnphp php$responsephp;
-php php php php php}
+    /**
+     * Commence a request cycle where the current HTTP method and OAuth
+     * request scheme set an upper preferred HTTP request style and where
+     * failures generate a new HTTP request style further down the OAuth
+     * preference list for OAuth Request Schemes.
+     * On success, return the Request object that results for processing.
+     *
+     * @param  array $params
+     * @return Zend_Http_Response
+     * @throws Zend_Oauth_Exception on HTTP request errors
+     * @todo   Remove cycling?; Replace with upfront do-or-die configuration
+     */
+    public function startRequestCycle(array $params)
+    {
+        $response = null;
+        $body     = null;
+        $status   = null;
+        try {
+            $response = $this->_attemptRequest($params);
+        } catch (Zend_Http_Client_Exception $e) {
+            require_once 'Zend/Oauth/Exception.php';
+            throw new Zend_Oauth_Exception('Error in HTTP request', null, $e);
+        }
+        if ($response !== null) {
+            $body   = $response->getBody();
+            $status = $response->getStatus();
+        }
+        if ($response === null // Request failure/exception
+            || $status == 500  // Internal Server Error
+            || $status == 400  // Bad Request
+            || $status == 401  // Unauthorized
+            || empty($body)    // Missing token
+        ) {
+            $this->_assessRequestAttempt($response);
+            $response = $this->startRequestCycle($params);
+        }
+        return $response;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp anphp instancephp ofphp Zendphp_Httpphp_Clientphp configuredphp tophp usephp thephp Query
-php php php php php php*php Stringphp schemephp forphp anphp OAuthphp drivenphp HTTPphp requestphp.
-php php php php php php*
-php php php php php php*php php@paramphp arrayphp php$params
-php php php php php php*php php@paramphp stringphp php$url
-php php php php php php*php php@returnphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php publicphp functionphp getRequestSchemeQueryStringClientphp(arrayphp php$paramsphp,php php$urlphp)
-php php php php php{
-php php php php php php php php php$clientphp php=php Zendphp_Oauthphp:php:getHttpClientphp(php)php;
-php php php php php php php php php$clientphp-php>setUriphp(php$urlphp)php;
-php php php php php php php php php$clientphp-php>getUriphp(php)php-php>setQueryphp(
-php php php php php php php php php php php php php$thisphp-php>php_httpUtilityphp-php>toEncodedQueryStringphp(php$paramsphp)
-php php php php php php php php php)php;
-php php php php php php php php php$clientphp-php>setMethodphp(php$thisphp-php>php_preferredRequestMethodphp)php;
-php php php php php php php php returnphp php$clientphp;
-php php php php php}
+    /**
+     * Return an instance of Zend_Http_Client configured to use the Query
+     * String scheme for an OAuth driven HTTP request.
+     *
+     * @param array $params
+     * @param string $url
+     * @return Zend_Http_Client
+     */
+    public function getRequestSchemeQueryStringClient(array $params, $url)
+    {
+        $client = Zend_Oauth::getHttpClient();
+        $client->setUri($url);
+        $client->getUri()->setQuery(
+            $this->_httpUtility->toEncodedQueryString($params)
+        );
+        $client->setMethod($this->_preferredRequestMethod);
+        return $client;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Managesphp thephp switchphp fromphp OAuthphp requestphp schemephp tophp anotherphp lowerphp preference
-php php php php php php*php schemephp duringphp aphp requestphp cyclephp.
-php php php php php php*
-php php php php php php*php php@paramphp php Zendphp_Httpphp_Response
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Oauthphp_Exceptionphp ifphp unablephp tophp retrievephp validphp tokenphp response
-php php php php php php*php/
-php php php php protectedphp functionphp php_assessRequestAttemptphp(Zendphp_Httpphp_Responsephp php$responsephp php=php nullphp)
-php php php php php{
-php php php php php php php php switchphp php(php$thisphp-php>php_preferredRequestSchemephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_HEADERphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_preferredRequestSchemephp php=php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_POSTBODYphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_POSTBODYphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>php_preferredRequestSchemephp php=php Zendphp_Oauthphp:php:REQUESTphp_SCHEMEphp_QUERYSTRINGphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Oauthphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Oauthphp_Exceptionphp(
-php php php php php php php php php php php php php php php php php php php php php'Couldphp notphp retrievephp aphp validphp Tokenphp responsephp fromphp Tokenphp URLphp:php'
-php php php php php php php php php php php php php php php php php php php php php.php php(php$responsephp php!php=php=php null
-php php php php php php php php php php php php php php php php php php php php php php php php php?php PHPphp_EOLphp php.php php$responsephp-php>getBodyphp(php)
-php php php php php php php php php php php php php php php php php php php php php php php php php:php php'php Nophp bodyphp php-php checkphp forphp headersphp'php)
-php php php php php php php php php php php php php php php php php)php;
-php php php php php php php php php}
-php php php php php}
+    /**
+     * Manages the switch from OAuth request scheme to another lower preference
+     * scheme during a request cycle.
+     *
+     * @param  Zend_Http_Response
+     * @return void
+     * @throws Zend_Oauth_Exception if unable to retrieve valid token response
+     */
+    protected function _assessRequestAttempt(Zend_Http_Response $response = null)
+    {
+        switch ($this->_preferredRequestScheme) {
+            case Zend_Oauth::REQUEST_SCHEME_HEADER:
+                $this->_preferredRequestScheme = Zend_Oauth::REQUEST_SCHEME_POSTBODY;
+                break;
+            case Zend_Oauth::REQUEST_SCHEME_POSTBODY:
+                $this->_preferredRequestScheme = Zend_Oauth::REQUEST_SCHEME_QUERYSTRING;
+                break;
+            default:
+                require_once 'Zend/Oauth/Exception.php';
+                throw new Zend_Oauth_Exception(
+                    'Could not retrieve a valid Token response from Token URL:'
+                    . ($response !== null
+                        ? PHP_EOL . $response->getBody()
+                        : ' No body - check for headers')
+                );
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Generatesphp aphp validphp OAuthphp Authorizationphp headerphp basedphp onphp thephp provided
-php php php php php php*php parametersphp andphp realmphp.
-php php php php php php*
-php php php php php php*php php@paramphp php arrayphp php$params
-php php php php php php*php php@paramphp php stringphp php$realm
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php protectedphp functionphp php_toAuthorizationHeaderphp(arrayphp php$paramsphp,php php$realmphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$headerValuephp php=php arrayphp(php)php;
-php php php php php php php php php$headerValuephp[php]php php=php php'OAuthphp realmphp=php"php'php php.php php$realmphp php.php php'php"php'php;
-php php php php php php php php foreachphp php(php$paramsphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php ifphp php(php!pregphp_matchphp(php"php/php^oauthphp_php/php"php,php php$keyphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$headerValuephp[php]php php=php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(php$keyphp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php=php"php'
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php Zendphp_Oauthphp_Httpphp_Utilityphp:php:urlEncodephp(php$valuephp)
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php.php php'php"php'php;
-php php php php php php php php php}
-php php php php php php php php returnphp implodephp(php"php,php"php,php php$headerValuephp)php;
-php php php php php}
-php}
+    /**
+     * Generates a valid OAuth Authorization header based on the provided
+     * parameters and realm.
+     *
+     * @param  array $params
+     * @param  string $realm
+     * @return string
+     */
+    protected function _toAuthorizationHeader(array $params, $realm = null)
+    {
+        $headerValue = array();
+        $headerValue[] = 'OAuth realm="' . $realm . '"';
+        foreach ($params as $key => $value) {
+            if (!preg_match("/^oauth_/", $key)) {
+                continue;
+            }
+            $headerValue[] = Zend_Oauth_Http_Utility::urlEncode($key)
+                           . '="'
+                           . Zend_Oauth_Http_Utility::urlEncode($value)
+                           . '"';
+        }
+        return implode(",", $headerValue);
+    }
+}

@@ -1,419 +1,419 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@versionphp php php php php$Idphp:php HeadStylephp.phpphp php2php0php1php0php4php php2php0php1php0php-php0php1php-php0php6php php2php1php:php2php6php:php0php1Zphp matthewphp php$
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: HeadStyle.php 20104 2010-01-06 21:26:01Z matthew $
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
 
-php/php*php*php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalonephp php*php/
-requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Containerphp/Standalonephp.phpphp'php;
+/** Zend_View_Helper_Placeholder_Container_Standalone */
+require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
 
-php/php*php*
-php php*php Helperphp forphp settingphp andphp retrievingphp stylesheets
-php php*
-php php*php php@usesphp php php php php php php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalone
-php php*php php@packagephp php php php Zendphp_View
-php php*php php@subpackagephp Helper
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Viewphp_Helperphp_HeadStylephp extendsphp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Standalone
-php{
-php php php php php/php*php*
-php php php php php php*php Registryphp keyphp forphp placeholder
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_regKeyphp php=php php'Zendphp_Viewphp_Helperphp_HeadStylephp'php;
+/**
+ * Helper for setting and retrieving stylesheets
+ *
+ * @uses       Zend_View_Helper_Placeholder_Container_Standalone
+ * @package    Zend_View
+ * @subpackage Helper
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_Standalone
+{
+    /**
+     * Registry key for placeholder
+     * @var string
+     */
+    protected $_regKey = 'Zend_View_Helper_HeadStyle';
 
-php php php php php/php*php*
-php php php php php php*php Allowedphp optionalphp attributes
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_optionalAttributesphp php=php arrayphp(php'langphp'php,php php'titlephp'php,php php'mediaphp'php,php php'dirphp'php)php;
+    /**
+     * Allowed optional attributes
+     * @var array
+     */
+    protected $_optionalAttributes = array('lang', 'title', 'media', 'dir');
 
-php php php php php/php*php*
-php php php php php php*php Allowedphp mediaphp types
-php php php php php php*php php@varphp array
-php php php php php php*php/
-php php php php protectedphp php$php_mediaTypesphp php=php arrayphp(
-php php php php php php php php php'allphp'php,php php'auralphp'php,php php'braillephp'php,php php'handheldphp'php,php php'printphp'php,
-php php php php php php php php php'projectionphp'php,php php'screenphp'php,php php'ttyphp'php,php php'tvphp'
-php php php php php)php;
+    /**
+     * Allowed media types
+     * @var array
+     */
+    protected $_mediaTypes = array(
+        'all', 'aural', 'braille', 'handheld', 'print',
+        'projection', 'screen', 'tty', 'tv'
+    );
 
-php php php php php/php*php*
-php php php php php php*php Capturephp typephp andphp/orphp attributesphp php(usedphp forphp hintingphp duringphp capturephp)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_captureAttrsphp php=php nullphp;
+    /**
+     * Capture type and/or attributes (used for hinting during capture)
+     * @var string
+     */
+    protected $_captureAttrs = null;
 
-php php php php php/php*php*
-php php php php php php*php Capturephp lock
-php php php php php php*php php@varphp bool
-php php php php php php*php/
-php php php php protectedphp php$php_captureLockphp;
+    /**
+     * Capture lock
+     * @var bool
+     */
+    protected $_captureLock;
 
-php php php php php/php*php*
-php php php php php php*php Capturephp typephp php(appendphp,php prependphp,php setphp)
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_captureTypephp;
+    /**
+     * Capture type (append, prepend, set)
+     * @var string
+     */
+    protected $_captureType;
 
-php php php php php/php*php*
-php php php php php php*php Constructor
-php php php php php php*
-php php php php php php*php Setphp separatorphp tophp PHPphp_EOLphp.
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php)
-php php php php php{
-php php php php php php php php parentphp:php:php_php_constructphp(php)php;
-php php php php php php php php php$thisphp-php>setSeparatorphp(PHPphp_EOLphp)php;
-php php php php php}
+    /**
+     * Constructor
+     *
+     * Set separator to PHP_EOL.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setSeparator(PHP_EOL);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Returnphp headStylephp object
-php php php php php php*
-php php php php php php*php Returnsphp headStylephp helperphp objectphp;php optionallyphp,php allowsphp specifying
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$contentphp Stylesheetphp contents
-php php php php php php*php php@paramphp php stringphp php$placementphp Appendphp,php prependphp,php orphp set
-php php php php php php*php php@paramphp php stringphp|arrayphp php$attributesphp Optionalphp attributesphp tophp utilize
-php php php php php php*php php@returnphp Zendphp_Viewphp_Helperphp_HeadStyle
-php php php php php php*php/
-php php php php publicphp functionphp headStylephp(php$contentphp php=php nullphp,php php$placementphp php=php php'APPENDphp'php,php php$attributesphp php=php arrayphp(php)php)
-php php php php php{
-php php php php php php php php ifphp php(php(nullphp php!php=php=php php$contentphp)php php&php&php isphp_stringphp(php$contentphp)php)php php{
-php php php php php php php php php php php php switchphp php(strtoupperphp(php$placementphp)php)php php{
-php php php php php php php php php php php php php php php php casephp php'SETphp'php:
-php php php php php php php php php php php php php php php php php php php php php$actionphp php=php php'setStylephp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'PREPENDphp'php:
-php php php php php php php php php php php php php php php php php php php php php$actionphp php=php php'prependStylephp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php casephp php'APPENDphp'php:
-php php php php php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php php php php php$actionphp php=php php'appendStylephp'php;
-php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$thisphp-php>php$actionphp(php$contentphp,php php$attributesphp)php;
-php php php php php php php php php}
+    /**
+     * Return headStyle object
+     *
+     * Returns headStyle helper object; optionally, allows specifying
+     *
+     * @param  string $content Stylesheet contents
+     * @param  string $placement Append, prepend, or set
+     * @param  string|array $attributes Optional attributes to utilize
+     * @return Zend_View_Helper_HeadStyle
+     */
+    public function headStyle($content = null, $placement = 'APPEND', $attributes = array())
+    {
+        if ((null !== $content) && is_string($content)) {
+            switch (strtoupper($placement)) {
+                case 'SET':
+                    $action = 'setStyle';
+                    break;
+                case 'PREPEND':
+                    $action = 'prependStyle';
+                    break;
+                case 'APPEND':
+                default:
+                    $action = 'appendStyle';
+                    break;
+            }
+            $this->$action($content, $attributes);
+        }
 
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overloadphp methodphp calls
-php php php php php php*
-php php php php php php*php Allowsphp thephp followingphp methodphp callsphp:
-php php php php php php*php php-php appendStylephp(php$contentphp,php php$attributesphp php=php arrayphp(php)php)
-php php php php php php*php php-php offsetSetStylephp(php$indexphp,php php$contentphp,php php$attributesphp php=php arrayphp(php)php)
-php php php php php php*php php-php prependStylephp(php$contentphp,php php$attributesphp php=php arrayphp(php)php)
-php php php php php php*php php-php setStylephp(php$contentphp,php php$attributesphp php=php arrayphp(php)php)
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@paramphp php arrayphp php$args
-php php php php php php*php php@returnphp void
-php php php php php php*php php@throwsphp Zendphp_Viewphp_Exceptionphp Whenphp nophp php$contentphp providedphp orphp invalidphp method
-php php php php php php*php/
-php php php php publicphp functionphp php_php_callphp(php$methodphp,php php$argsphp)
-php php php php php{
-php php php php php php php php ifphp php(pregphp_matchphp(php'php/php^php(php?Pphp<actionphp>setphp|php(apphp|prephp)pendphp|offsetSetphp)php(Stylephp)php$php/php'php,php php$methodphp,php php$matchesphp)php)php php{
-php php php php php php php php php php php php php$indexphp php php=php nullphp;
-php php php php php php php php php php php php php$argcphp php php php=php countphp(php$argsphp)php;
-php php php php php php php php php php php php php$actionphp php=php php$matchesphp[php'actionphp'php]php;
+    /**
+     * Overload method calls
+     *
+     * Allows the following method calls:
+     * - appendStyle($content, $attributes = array())
+     * - offsetSetStyle($index, $content, $attributes = array())
+     * - prependStyle($content, $attributes = array())
+     * - setStyle($content, $attributes = array())
+     *
+     * @param  string $method
+     * @param  array $args
+     * @return void
+     * @throws Zend_View_Exception When no $content provided or invalid method
+     */
+    public function __call($method, $args)
+    {
+        if (preg_match('/^(?P<action>set|(ap|pre)pend|offsetSet)(Style)$/', $method, $matches)) {
+            $index  = null;
+            $argc   = count($args);
+            $action = $matches['action'];
 
-php php php php php php php php php php php php ifphp php(php'offsetSetphp'php php=php=php php$actionphp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php0php <php php$argcphp)php php{
-php php php php php php php php php php php php php php php php php php php php php$indexphp php=php arrayphp_shiftphp(php$argsphp)php;
-php php php php php php php php php php php php php php php php php php php php php-php-php$argcphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
+            if ('offsetSet' == $action) {
+                if (0 < $argc) {
+                    $index = array_shift($args);
+                    --$argc;
+                }
+            }
 
-php php php php php php php php php php php php ifphp php(php1php php>php php$argcphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(sprintfphp(php'Methodphp php"php%sphp"php requiresphp minimallyphp contentphp forphp thephp stylesheetphp'php,php php$methodphp)php)php;
-php php php php php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php php php php php}
+            if (1 > $argc) {
+                require_once 'Zend/View/Exception.php';
+                $e = new Zend_View_Exception(sprintf('Method "%s" requires minimally content for the stylesheet', $method));
+                $e->setView($this->view);
+                throw $e;
+            }
 
-php php php php php php php php php php php php php$contentphp php=php php$argsphp[php0php]php;
-php php php php php php php php php php php php php$attrsphp php php php=php arrayphp(php)php;
-php php php php php php php php php php php php ifphp php(issetphp(php$argsphp[php1php]php)php)php php{
-php php php php php php php php php php php php php php php php php$attrsphp php=php php(arrayphp)php php$argsphp[php1php]php;
-php php php php php php php php php php php php php}
+            $content = $args[0];
+            $attrs   = array();
+            if (isset($args[1])) {
+                $attrs = (array) $args[1];
+            }
 
-php php php php php php php php php php php php php$itemphp php=php php$thisphp-php>createDataphp(php$contentphp,php php$attrsphp)php;
+            $item = $this->createData($content, $attrs);
 
-php php php php php php php php php php php php ifphp php(php'offsetSetphp'php php=php=php php$actionphp)php php{
-php php php php php php php php php php php php php php php php php$thisphp-php>offsetSetphp(php$indexphp,php php$itemphp)php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php$thisphp-php>php$actionphp(php$itemphp)php;
-php php php php php php php php php php php php php}
+            if ('offsetSet' == $action) {
+                $this->offsetSet($index, $item);
+            } else {
+                $this->$action($item);
+            }
 
-php php php php php php php php php php php php returnphp php$thisphp;
-php php php php php php php php php}
+            return $this;
+        }
 
-php php php php php php php php returnphp parentphp:php:php_php_callphp(php$methodphp,php php$argsphp)php;
-php php php php php}
+        return parent::__call($method, $args);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Determinephp ifphp aphp valuephp isphp aphp validphp stylephp tag
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@paramphp php stringphp php$method
-php php php php php php*php php@returnphp boolean
-php php php php php php*php/
-php php php php protectedphp functionphp php_isValidphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php(php!php$valuephp instanceofphp stdClassphp)
-php php php php php php php php php php php php php|php|php php!issetphp(php$valuephp-php>contentphp)
-php php php php php php php php php php php php php|php|php php!issetphp(php$valuephp-php>attributesphp)php)
-php php php php php php php php php{
-php php php php php php php php php php php php returnphp falsephp;
-php php php php php php php php php}
+    /**
+     * Determine if a value is a valid style tag
+     *
+     * @param  mixed $value
+     * @param  string $method
+     * @return boolean
+     */
+    protected function _isValid($value)
+    {
+        if ((!$value instanceof stdClass)
+            || !isset($value->content)
+            || !isset($value->attributes))
+        {
+            return false;
+        }
 
-php php php php php php php php returnphp truephp;
-php php php php php}
+        return true;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp appendphp tophp enforcephp stylephp creation
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp appendphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isValidphp(php$valuephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp valuephp passedphp tophp appendphp;php pleasephp usephp appendStylephp(php)php'php)php;
-php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+    /**
+     * Override append to enforce style creation
+     *
+     * @param  mixed $value
+     * @return void
+     */
+    public function append($value)
+    {
+        if (!$this->_isValid($value)) {
+            require_once 'Zend/View/Exception.php';
+            $e = new Zend_View_Exception('Invalid value passed to append; please use appendStyle()');
+            $e->setView($this->view);
+            throw $e;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>getContainerphp(php)php-php>appendphp(php$valuephp)php;
-php php php php php}
+        return $this->getContainer()->append($value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp offsetSetphp tophp enforcephp stylephp creation
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$index
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp offsetSetphp(php$indexphp,php php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isValidphp(php$valuephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp valuephp passedphp tophp offsetSetphp;php pleasephp usephp offsetSetStylephp(php)php'php)php;
-php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+    /**
+     * Override offsetSet to enforce style creation
+     *
+     * @param  string|int $index
+     * @param  mixed $value
+     * @return void
+     */
+    public function offsetSet($index, $value)
+    {
+        if (!$this->_isValid($value)) {
+            require_once 'Zend/View/Exception.php';
+            $e = new Zend_View_Exception('Invalid value passed to offsetSet; please use offsetSetStyle()');
+            $e->setView($this->view);
+            throw $e;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>getContainerphp(php)php-php>offsetSetphp(php$indexphp,php php$valuephp)php;
-php php php php php}
+        return $this->getContainer()->offsetSet($index, $value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp prependphp tophp enforcephp stylephp creation
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp prependphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isValidphp(php$valuephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp valuephp passedphp tophp prependphp;php pleasephp usephp prependStylephp(php)php'php)php;
-php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+    /**
+     * Override prepend to enforce style creation
+     *
+     * @param  mixed $value
+     * @return void
+     */
+    public function prepend($value)
+    {
+        if (!$this->_isValid($value)) {
+            require_once 'Zend/View/Exception.php';
+            $e = new Zend_View_Exception('Invalid value passed to prepend; please use prependStyle()');
+            $e->setView($this->view);
+            throw $e;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>getContainerphp(php)php-php>prependphp(php$valuephp)php;
-php php php php php}
+        return $this->getContainer()->prepend($value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Overridephp setphp tophp enforcephp stylephp creation
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$value
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp setphp(php$valuephp)
-php php php php php{
-php php php php php php php php ifphp php(php!php$thisphp-php>php_isValidphp(php$valuephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Exceptionphp(php'Invalidphp valuephp passedphp tophp setphp;php pleasephp usephp setStylephp(php)php'php)php;
-php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+    /**
+     * Override set to enforce style creation
+     *
+     * @param  mixed $value
+     * @return void
+     */
+    public function set($value)
+    {
+        if (!$this->_isValid($value)) {
+            require_once 'Zend/View/Exception.php';
+            $e = new Zend_View_Exception('Invalid value passed to set; please use setStyle()');
+            $e->setView($this->view);
+            throw $e;
+        }
 
-php php php php php php php php returnphp php$thisphp-php>getContainerphp(php)php-php>setphp(php$valuephp)php;
-php php php php php}
+        return $this->getContainer()->set($value);
+    }
 
-php php php php php/php*php*
-php php php php php php*php Startphp capturephp action
-php php php php php php*
-php php php php php php*php php@paramphp php mixedphp php$captureType
-php php php php php php*php php@paramphp php stringphp php$typeOrAttrs
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp captureStartphp(php$typephp php=php Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:APPENDphp,php php$attrsphp php=php nullphp)
-php php php php php{
-php php php php php php php php ifphp php(php$thisphp-php>php_captureLockphp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Viewphp/Helperphp/Placeholderphp/Containerphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php$ephp php=php newphp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Exceptionphp(php'Cannotphp nestphp headStylephp capturesphp'php)php;
-php php php php php php php php php php php php php$ephp-php>setViewphp(php$thisphp-php>viewphp)php;
-php php php php php php php php php php php php throwphp php$ephp;
-php php php php php php php php php}
+    /**
+     * Start capture action
+     *
+     * @param  mixed $captureType
+     * @param  string $typeOrAttrs
+     * @return void
+     */
+    public function captureStart($type = Zend_View_Helper_Placeholder_Container_Abstract::APPEND, $attrs = null)
+    {
+        if ($this->_captureLock) {
+            require_once 'Zend/View/Helper/Placeholder/Container/Exception.php';
+            $e = new Zend_View_Helper_Placeholder_Container_Exception('Cannot nest headStyle captures');
+            $e->setView($this->view);
+            throw $e;
+        }
 
-php php php php php php php php php$thisphp-php>php_captureLockphp php php php php php php php php=php truephp;
-php php php php php php php php php$thisphp-php>php_captureAttrsphp php php php php php php php=php php$attrsphp;
-php php php php php php php php php$thisphp-php>php_captureTypephp php php php php php php php php=php php$typephp;
-php php php php php php php php obphp_startphp(php)php;
-php php php php php}
+        $this->_captureLock        = true;
+        $this->_captureAttrs       = $attrs;
+        $this->_captureType        = $type;
+        ob_start();
+    }
 
-php php php php php/php*php*
-php php php php php php*php Endphp capturephp actionphp andphp store
-php php php php php php*
-php php php php php php*php php@returnphp void
-php php php php php php*php/
-php php php php publicphp functionphp captureEndphp(php)
-php php php php php{
-php php php php php php php php php$contentphp php php php php php php php php php php php php php=php obphp_getphp_cleanphp(php)php;
-php php php php php php php php php$attrsphp php php php php php php php php php php php php php php php=php php$thisphp-php>php_captureAttrsphp;
-php php php php php php php php php$thisphp-php>php_captureAttrsphp php=php nullphp;
-php php php php php php php php php$thisphp-php>php_captureLockphp php php=php falsephp;
+    /**
+     * End capture action and store
+     *
+     * @return void
+     */
+    public function captureEnd()
+    {
+        $content             = ob_get_clean();
+        $attrs               = $this->_captureAttrs;
+        $this->_captureAttrs = null;
+        $this->_captureLock  = false;
 
-php php php php php php php php switchphp php(php$thisphp-php>php_captureTypephp)php php{
-php php php php php php php php php php php php casephp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:SETphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>setStylephp(php$contentphp,php php$attrsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:PREPENDphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>prependStylephp(php$contentphp,php php$attrsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp Zendphp_Viewphp_Helperphp_Placeholderphp_Containerphp_Abstractphp:php:APPENDphp:
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php php$thisphp-php>appendStylephp(php$contentphp,php php$attrsphp)php;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php}
-php php php php php}
+        switch ($this->_captureType) {
+            case Zend_View_Helper_Placeholder_Container_Abstract::SET:
+                $this->setStyle($content, $attrs);
+                break;
+            case Zend_View_Helper_Placeholder_Container_Abstract::PREPEND:
+                $this->prependStyle($content, $attrs);
+                break;
+            case Zend_View_Helper_Placeholder_Container_Abstract::APPEND:
+            default:
+                $this->appendStyle($content, $attrs);
+                break;
+        }
+    }
 
-php php php php php/php*php*
-php php php php php php*php Convertphp contentphp andphp attributesphp intophp validphp stylephp tag
-php php php php php php*
-php php php php php php*php php@paramphp php stdClassphp php$itemphp Itemphp tophp render
-php php php php php php*php php@paramphp php stringphp php$indentphp Indentationphp tophp use
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp itemToStringphp(stdClassphp php$itemphp,php php$indentphp)
-php php php php php{
-php php php php php php php php php$attrStringphp php=php php'php'php;
-php php php php php php php php ifphp php(php!emptyphp(php$itemphp-php>attributesphp)php)php php{
-php php php php php php php php php php php php php$encphp php=php php'UTFphp-php8php'php;
-php php php php php php php php php php php php ifphp php(php$thisphp-php>viewphp instanceofphp Zendphp_Viewphp_Interface
-php php php php php php php php php php php php php php php php php&php&php methodphp_existsphp(php$thisphp-php>viewphp,php php'getEncodingphp'php)
-php php php php php php php php php php php php php)php php{
-php php php php php php php php php php php php php php php php php$encphp php=php php$thisphp-php>viewphp-php>getEncodingphp(php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php foreachphp php(php$itemphp-php>attributesphp asphp php$keyphp php=php>php php$valuephp)php php{
-php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$keyphp,php php$thisphp-php>php_optionalAttributesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php ifphp php(php'mediaphp'php php=php=php php$keyphp)php php{
-php php php php php php php php php php php php php php php php php php php php ifphp(falsephp php=php=php=php strposphp(php$valuephp,php php'php,php'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$valuephp,php php$thisphp-php>php_mediaTypesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php php php php php php php php php php$mediaphp_typesphp php=php explodephp(php'php,php'php,php php$valuephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php php'php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php foreachphp(php$mediaphp_typesphp asphp php$typephp)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php trimphp(php$typephp)php;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php ifphp php(php!inphp_arrayphp(php$typephp,php php$thisphp-php>php_mediaTypesphp)php)php php{
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php.php=php php$typephp php.php'php,php'php;
-php php php php php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php php php php php php php php php$valuephp php=php substrphp(php$valuephp,php php0php,php php-php1php)php;
-php php php php php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php php php php php$attrStringphp php.php=php sprintfphp(php'php php%sphp=php"php%sphp"php'php,php php$keyphp,php htmlspecialcharsphp(php$valuephp,php ENTphp_COMPATphp,php php$encphp)php)php;
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+    /**
+     * Convert content and attributes into valid style tag
+     *
+     * @param  stdClass $item Item to render
+     * @param  string $indent Indentation to use
+     * @return string
+     */
+    public function itemToString(stdClass $item, $indent)
+    {
+        $attrString = '';
+        if (!empty($item->attributes)) {
+            $enc = 'UTF-8';
+            if ($this->view instanceof Zend_View_Interface
+                && method_exists($this->view, 'getEncoding')
+            ) {
+                $enc = $this->view->getEncoding();
+            }
+            foreach ($item->attributes as $key => $value) {
+                if (!in_array($key, $this->_optionalAttributes)) {
+                    continue;
+                }
+                if ('media' == $key) {
+                    if(false === strpos($value, ',')) {
+                        if (!in_array($value, $this->_mediaTypes)) {
+                            continue;
+                        }
+                    } else {
+                        $media_types = explode(',', $value);
+                        $value = '';
+                        foreach($media_types as $type) {
+                            $type = trim($type);
+                            if (!in_array($type, $this->_mediaTypes)) {
+                                continue;
+                            }
+                            $value .= $type .',';
+                        }
+                        $value = substr($value, 0, -1);
+                    }
+                }
+                $attrString .= sprintf(' %s="%s"', $key, htmlspecialchars($value, ENT_COMPAT, $enc));
+            }
+        }
 
-php php php php php php php php php$htmlphp php=php php'php<stylephp typephp=php"textphp/cssphp"php'php php.php php$attrStringphp php.php php'php>php'php php.php PHPphp_EOL
-php php php php php php php php php php php php php php php.php php$indentphp php.php php'<php!php-php-php'php php.php PHPphp_EOLphp php.php php$indentphp php.php php$itemphp-php>contentphp php.php PHPphp_EOLphp php.php php$indentphp php.php php'php-php-php>php'php php.php PHPphp_EOL
-php php php php php php php php php php php php php php php.php php'<php/stylephp>php'php;
+        $html = '<style type="text/css"' . $attrString . '>' . PHP_EOL
+              . $indent . '<!--' . PHP_EOL . $indent . $item->content . PHP_EOL . $indent . '-->' . PHP_EOL
+              . '</style>';
 
-php php php php php php php php ifphp php(issetphp(php$itemphp-php>attributesphp[php'conditionalphp'php]php)
-php php php php php php php php php php php php php&php&php php!emptyphp(php$itemphp-php>attributesphp[php'conditionalphp'php]php)
-php php php php php php php php php php php php php&php&php isphp_stringphp(php$itemphp-php>attributesphp[php'conditionalphp'php]php)php)
-php php php php php php php php php{
-php php php php php php php php php php php php php$htmlphp php=php php'<php!php-php-php[ifphp php'php php.php php$itemphp-php>attributesphp[php'conditionalphp'php]php php.php php'php]php>php php'php php.php php$htmlphp php.php php'<php!php[endifphp]php-php-php>php'php;
-php php php php php php php php php}
+        if (isset($item->attributes['conditional'])
+            && !empty($item->attributes['conditional'])
+            && is_string($item->attributes['conditional']))
+        {
+            $html = '<!--[if ' . $item->attributes['conditional'] . ']> ' . $html . '<![endif]-->';
+        }
 
-php php php php php php php php returnphp php$htmlphp;
-php php php php php}
+        return $html;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp stringphp representationphp ofphp placeholder
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp|intphp php$indent
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp toStringphp(php$indentphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$indentphp php=php php(nullphp php!php=php=php php$indentphp)
-php php php php php php php php php php php php php php php php php?php php$thisphp-php>getWhitespacephp(php$indentphp)
-php php php php php php php php php php php php php php php php php:php php$thisphp-php>getIndentphp(php)php;
+    /**
+     * Create string representation of placeholder
+     *
+     * @param  string|int $indent
+     * @return string
+     */
+    public function toString($indent = null)
+    {
+        $indent = (null !== $indent)
+                ? $this->getWhitespace($indent)
+                : $this->getIndent();
 
-php php php php php php php php php$itemsphp php=php arrayphp(php)php;
-php php php php php php php php php$thisphp-php>getContainerphp(php)php-php>ksortphp(php)php;
-php php php php php php php php foreachphp php(php$thisphp asphp php$itemphp)php php{
-php php php php php php php php php php php php ifphp php(php!php$thisphp-php>php_isValidphp(php$itemphp)php)php php{
-php php php php php php php php php php php php php php php php continuephp;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$itemsphp[php]php php=php php$thisphp-php>itemToStringphp(php$itemphp,php php$indentphp)php;
-php php php php php php php php php}
+        $items = array();
+        $this->getContainer()->ksort();
+        foreach ($this as $item) {
+            if (!$this->_isValid($item)) {
+                continue;
+            }
+            $items[] = $this->itemToString($item, $indent);
+        }
 
-php php php php php php php php php$returnphp php=php php$indentphp php.php implodephp(php$thisphp-php>getSeparatorphp(php)php php.php php$indentphp,php php$itemsphp)php;
-php php php php php php php php php$returnphp php=php pregphp_replacephp(php"php/php(php\rphp\nphp?php|php\nphp)php/php"php,php php'php$php1php'php php.php php$indentphp,php php$returnphp)php;
-php php php php php php php php returnphp php$returnphp;
-php php php php php}
+        $return = $indent . implode($this->getSeparator() . $indent, $items);
+        $return = preg_replace("/(\r\n?|\n)/", '$1' . $indent, $return);
+        return $return;
+    }
 
-php php php php php/php*php*
-php php php php php php*php Createphp dataphp itemphp forphp usephp inphp stack
-php php php php php php*
-php php php php php php*php php@paramphp php stringphp php$content
-php php php php php php*php php@paramphp php arrayphp php$attributes
-php php php php php php*php php@returnphp stdClass
-php php php php php php*php/
-php php php php publicphp functionphp createDataphp(php$contentphp,php arrayphp php$attributesphp)
-php php php php php{
-php php php php php php php php ifphp php(php!issetphp(php$attributesphp[php'mediaphp'php]php)php)php php{
-php php php php php php php php php php php php php$attributesphp[php'mediaphp'php]php php=php php'screenphp'php;
-php php php php php php php php php}php elsephp ifphp(isphp_arrayphp(php$attributesphp[php'mediaphp'php]php)php)php php{
-php php php php php php php php php php php php php$attributesphp[php'mediaphp'php]php php=php implodephp(php'php,php'php,php php$attributesphp[php'mediaphp'php]php)php;
-php php php php php php php php php}
+    /**
+     * Create data item for use in stack
+     *
+     * @param  string $content
+     * @param  array $attributes
+     * @return stdClass
+     */
+    public function createData($content, array $attributes)
+    {
+        if (!isset($attributes['media'])) {
+            $attributes['media'] = 'screen';
+        } else if(is_array($attributes['media'])) {
+            $attributes['media'] = implode(',', $attributes['media']);
+        }
 
-php php php php php php php php php$dataphp php=php newphp stdClassphp(php)php;
-php php php php php php php php php$dataphp-php>contentphp php php php php=php php$contentphp;
-php php php php php php php php php$dataphp-php>attributesphp php=php php$attributesphp;
+        $data = new stdClass();
+        $data->content    = $content;
+        $data->attributes = $attributes;
 
-php php php php php php php php returnphp php$dataphp;
-php php php php php}
-php}
+        return $data;
+    }
+}

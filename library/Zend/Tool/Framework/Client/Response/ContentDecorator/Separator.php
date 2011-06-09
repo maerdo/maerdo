@@ -1,93 +1,93 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@subpackagephp Framework
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Separatorphp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Tool
+ * @subpackage Framework
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Separator.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Interface
-php php*php/
-requirephp_oncephp php'Zendphp/Toolphp/Frameworkphp/Clientphp/Responsephp/ContentDecoratorphp/Interfacephp.phpphp'php;
+/**
+ * @see Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+ */
+require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Interface.php';
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Tool
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Separator
-php php php php implementsphp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Interface
-php{
+/**
+ * @category   Zend
+ * @package    Zend_Tool
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
+    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+{
 
-php php php php php/php*php*
-php php php php php php*php php@varphp string
-php php php php php php*php/
-php php php php protectedphp php$php_separatorphp php=php PHPphp_EOLphp;
+    /**
+     * @var string
+     */
+    protected $_separator = PHP_EOL;
 
-php php php php php/php*php*
-php php php php php php*php getNamephp(php)php php-php namephp ofphp thephp decorator
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php'separatorphp'php;
-php php php php php}
+    /**
+     * getName() - name of the decorator
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'separator';
+    }
 
-php php php php php/php*php*
-php php php php php php*php setSeparatorphp(php)
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$separator
-php php php php php php*php php@returnphp Zendphp_Toolphp_Frameworkphp_Clientphp_Responsephp_ContentDecoratorphp_Separator
-php php php php php php*php/
-php php php php publicphp functionphp setSeparatorphp(php$separatorphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_separatorphp php=php php$separatorphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
+    /**
+     * setSeparator()
+     *
+     * @param string $separator
+     * @return Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
+     */
+    public function setSeparator($separator)
+    {
+        $this->_separator = $separator;
+        return $this;
+    }
 
-php php php php php/php*php*
-php php php php php php*php getSeparatorphp(php)
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp getSeparatorphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_separatorphp;
-php php php php php}
+    /**
+     * getSeparator()
+     *
+     * @return string
+     */
+    public function getSeparator()
+    {
+        return $this->_separator;
+    }
 
-php php php php publicphp functionphp decoratephp(php$contentphp,php php$decoratorValuephp)
-php php php php php{
-php php php php php php php php php$runphp php=php php1php;
-php php php php php php php php ifphp php(isphp_boolphp(php$decoratorValuephp)php php&php&php php$decoratorValuephp php=php=php=php falsephp)php php{
-php php php php php php php php php php php php returnphp php$contentphp;
-php php php php php php php php php}
+    public function decorate($content, $decoratorValue)
+    {
+        $run = 1;
+        if (is_bool($decoratorValue) && $decoratorValue === false) {
+            return $content;
+        }
 
-php php php php php php php php ifphp php(isphp_intphp(php$decoratorValuephp)php)php php{
-php php php php php php php php php php php php php$runphp php=php php$decoratorValuephp;
-php php php php php php php php php}
+        if (is_int($decoratorValue)) {
+            $run = $decoratorValue;
+        }
 
-php php php php php php php php forphp php(php$iphp php=php php0php;php php$iphp <php php$runphp;php php$iphp+php+php)php php{
-php php php php php php php php php php php php php$contentphp php.php=php php$thisphp-php>php_separatorphp;
-php php php php php php php php php}
+        for ($i = 0; $i < $run; $i++) {
+            $content .= $this->_separator;
+        }
 
-php php php php php php php php returnphp php$contentphp;
-php php php php php}
+        return $content;
+    }
 
-php}
+}

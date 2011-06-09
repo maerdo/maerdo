@@ -1,122 +1,122 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php FeedInterfacephp.phpphp php2php3php4php8php4php php2php0php1php0php-php1php2php-php1php0php php0php3php:php5php7php:php5php9Zphp mjhphp_caphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: FeedInterface.php 23484 2010-12-10 03:57:59Z mjh_ca $
+ */
 
-php/php*php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Feedphp_Reader
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-interfacephp Zendphp_Feedphp_Readerphp_FeedInterfacephp extendsphp Iteratorphp,php Countable
-php{
-php php php php php/php*php*
-php php php php php php*php Getphp aphp singlephp author
-php php php php php php*
-php php php php php php*php php@paramphp php intphp php$index
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getAuthorphp(php$indexphp php=php php0php)php;
+/**
+ * @category   Zend
+ * @package    Zend_Feed_Reader
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+interface Zend_Feed_Reader_FeedInterface extends Iterator, Countable
+{
+    /**
+     * Get a single author
+     *
+     * @param  int $index
+     * @return string|null
+     */
+    public function getAuthor($index = 0);
 
-php php php php php/php*php*
-php php php php php php*php Getphp anphp arrayphp withphp feedphp authors
-php php php php php php*
-php php php php php php*php php@returnphp array
-php php php php php php*php/
-php php php php publicphp functionphp getAuthorsphp(php)php;
+    /**
+     * Get an array with feed authors
+     *
+     * @return array
+     */
+    public function getAuthors();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp copyrightphp entry
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getCopyrightphp(php)php;
+    /**
+     * Get the copyright entry
+     *
+     * @return string|null
+     */
+    public function getCopyright();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp creationphp date
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getDateCreatedphp(php)php;
+    /**
+     * Get the feed creation date
+     *
+     * @return string|null
+     */
+    public function getDateCreated();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp modificationphp date
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getDateModifiedphp(php)php;
+    /**
+     * Get the feed modification date
+     *
+     * @return string|null
+     */
+    public function getDateModified();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp description
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getDescriptionphp(php)php;
+    /**
+     * Get the feed description
+     *
+     * @return string|null
+     */
+    public function getDescription();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp generatorphp entry
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getGeneratorphp(php)php;
+    /**
+     * Get the feed generator entry
+     *
+     * @return string|null
+     */
+    public function getGenerator();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp ID
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getIdphp(php)php;
+    /**
+     * Get the feed ID
+     *
+     * @return string|null
+     */
+    public function getId();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp language
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getLanguagephp(php)php;
+    /**
+     * Get the feed language
+     *
+     * @return string|null
+     */
+    public function getLanguage();
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp linkphp tophp thephp HTMLphp source
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getLinkphp(php)php;
+    /**
+     * Get a link to the HTML source
+     *
+     * @return string|null
+     */
+    public function getLink();
 
-php php php php php/php*php*
-php php php php php php*php Getphp aphp linkphp tophp thephp XMLphp feed
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getFeedLinkphp(php)php;
+    /**
+     * Get a link to the XML feed
+     *
+     * @return string|null
+     */
+    public function getFeedLink();
 
-php php php php php/php*php*
-php php php php php php*php Getphp thephp feedphp title
-php php php php php php*
-php php php php php php*php php@returnphp stringphp|null
-php php php php php php*php/
-php php php php publicphp functionphp getTitlephp(php)php;
+    /**
+     * Get the feed title
+     *
+     * @return string|null
+     */
+    public function getTitle();
 
-php php php php php/php*php*
-php php php php php php*php Getphp allphp categories
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Feedphp_Readerphp_Collectionphp_Category
-php php php php php php*php/
-php php php php publicphp functionphp getCategoriesphp(php)php;
+    /**
+     * Get all categories
+     *
+     * @return Zend_Feed_Reader_Collection_Category
+     */
+    public function getCategories();
 
-php}
+}

@@ -1,561 +1,561 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php2php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"trvphp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"bnphp"php>patasphp Monchiara<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>patasphp Towjih<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>patasphp Ingrisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>patasphp Espanniu<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>patasphp Bosey<php/languagephp>
-php	php	php	php<languagephp typephp=php"hiphp"php>patasphp Heyti<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>patasphp Itariya<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>patasphp Nihong<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>patasphp Bowdu<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>patasphp Pajey<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>patasphp Ruski<php/languagephp>
-php	php	php	php<languagephp typephp=php"srphp"php>patasphp Srpian<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>Iniphp klaynaphp patasphp ni<php/languagephp>
-php	php	php	php<languagephp typephp=php"urphp"php>patasphp Yurtu<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>patasphp Ipaw<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>Qantanphp Ipawphp patas<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>Badayphp Ipawphp patas<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>tasanphp Arapit<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>tasanphp Sirorik<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hansphp"php>Qantanphp tasanphp Ipaw<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hantphp"php>Badayphp tasanphp Ipaw<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>tasanphp Ratin<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>Unatphp tasan<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>iniphp klayiphp tasanphp ni<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>alangphp Nanci<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BAphp"php>alangphp Posniya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>alangphp Pajey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>alangphp Puwei<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>alangphp Switjrrant<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>alangphp Ipaw<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>alangphp Towjih<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>alangphp Posey<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>alangphp Inglis<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>alangphp Nanjiouyaphp niphp Nansanminji<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>alangphp Hteephp niphp Mayktan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HRphp"php>alangphp Krowtia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>alangphp Intu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>alangphp Inglisphp niqphp Intu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>alangphp Itariya<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>alangphp Nihong<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MEphp"php>alangphp Mondineygrw<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RSphp"php>alangphp Srbia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>alangphp Ruski<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SMphp"php>alangphp Snmarinow<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>alangphp Poseyphp niqphp Nan<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>alangphp Amarika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>iniphp klayiphp naphp alangphp ni<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>Jiyaxphp Yisuphp Thulang<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>Snamrika<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>Snyunaydi<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	php	php<codePatternsphp>
-php	php	php	php<codePatternphp typephp=php"languagephp"php>Kariphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"scriptphp"php>Patasphp:php php{php0php}<php/codePatternphp>
-php	php	php	php<codePatternphp typephp=php"territoryphp"php>Alangphp:php php{php0php}<php/codePatternphp>
-php	php	<php/codePatternsphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp-ephp gphp-nphp php{ngphp}php ophp-uphp wphp-yphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[ḏphp fphp phpɨphp ḻphp ṟphp ṯphp phpʉphp vphp zphp phpʼphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp-zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php“<php/quotationStartphp>
-php	php	php<quotationEndphp>php”<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php‘<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php’<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Kii<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Dhi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Tri<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Spi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Rii<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Mti<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Emi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Mai<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Mni<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Mxi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Mxk<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Mxd<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Kingalphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Dhaphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Truphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>Spatphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Rimaphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Mataruphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Empituphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>Maspatphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Mngariphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>Maxalphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Maxalphp kingalphp idas<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Maxalphp dhaphp idas<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>K<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>D<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>T<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>R<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>E<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>P<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>A<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>K<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>D<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Emp<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Kin<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Dha<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Tru<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Spa<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Rim<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Mat<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Jiyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>tgKingalphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>tgDhaphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>tgTruphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>tgSpacphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>tgRimaphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>tgMataruphp jiyaxphp iyaxphp sngayan<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>E<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>K<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>D<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>T<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>S<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>R<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>M<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>mnphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>mnphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>mnphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>mnphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>mnprxan<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>mndha<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>mntru<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>mnspat<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>Braxphp kndaax<php/amphp>
-php	php	php	php	php<pmphp>Baubauphp kndaax<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>Brahphp jikanphp Yisuphp Thulang<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>Bukuyphp jikanphp Yisuphp Thulang<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>BRY<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>BUY<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp,php yphp MMMMphp dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yphp MMMphp d<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>yyyyphp-MMphp-dd<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"dphp"php>d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmphp"php>Hphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mphp"php>L<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>Mphp-d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MEdphp"php>Ephp,php Mphp-d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMphp"php>LLL<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMdphp"php>MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMEdphp"php>Ephp MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>MMMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMEdphp"php>Ephp MMMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"msphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yphp"php>y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMphp"php>yyyyphp-M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMEdphp"php>EEEphp,php yyyyphp-Mphp-d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMphp"php>yphp MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMEdphp"php>EEEphp,php yphp MMMphp d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMMphp"php>yphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQphp"php>yyyyphp Q<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQQQphp"php>yphp QQQ<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>Hngkawas<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>hngkawas<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>Idas<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>Jiyaxphp iyaxphp sngayan<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Jiyax<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>Shiga<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>Jiyaxphp sayang<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>Saman<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>Jiyaxphp quriphp jiyaxphp iyaxphp sngayan<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>Jikan<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>Tuki<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>Spngan<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>Seykn<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>Alang<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>JQGphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>Jikanphp php{php0php}<php/regionFormatphp>
-php	php	php	php<zonephp typephp=php"Etcphp/Unknownphp"php>
-php	php	php	php	php<exemplarCityphp>Iniphp klayiphp kaphp Jikanphp hini<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Riophp_Brancophp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Purank<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Campophp_Grandephp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Grad<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Saophp_Paulophp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Snpaurow<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Pacificphp/Honoluluphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Honoruru<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Anchoragephp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Ankriji<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Losphp_Angelesphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Rosanci<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Phoenixphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Bonhuan<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Denverphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Tanbo<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Chicagophp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Jiciak<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Indianapolisphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Intiannaporis<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<zonephp typephp=php"Americaphp/Newphp_Yorkphp"php>
-php	php	php	php	php<exemplarCityphp>Jikanphp alangphp Niuyue<php/exemplarCityphp>
-php	php	php	<php/zonephp>
-php	php	php	php<metazonephp typephp=php"Americaphp_Centralphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>Jikanphp Conphp-Amarika<php/genericphp>
-php	php	php	php	php	php<standardphp>Snegunphp Jikanphp Conphp-Amarika<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Conphp-Amarikaphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<genericphp>JCA<php/genericphp>
-php	php	php	php	php	php<standardphp>SJCA<php/standardphp>
-php	php	php	php	php	php<daylightphp>JCAKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Americaphp_Easternphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>Jikanphp Tonphp-Amarika<php/genericphp>
-php	php	php	php	php	php<standardphp>Snegunphp Jikanphp Tonphp-Amarika<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Tonphp-Amarikaphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<genericphp>JTA<php/genericphp>
-php	php	php	php	php	php<standardphp>SJTA<php/standardphp>
-php	php	php	php	php	php<daylightphp>JTAKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Americaphp_Mountainphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>Jikanphp Yamaphp-Amarika<php/genericphp>
-php	php	php	php	php	php<standardphp>Snegunphp Jikanphp Yamaphp-Amarika<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Hidawphp niqphp Yamaphp-Amarika<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<genericphp>JYA<php/genericphp>
-php	php	php	php	php	php<standardphp>SJYA<php/standardphp>
-php	php	php	php	php	php<daylightphp>JHYA<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Americaphp_Pacificphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>Jikanphp Daybinyan<php/genericphp>
-php	php	php	php	php	php<standardphp>Snegunphp Jikanphp Amarikaphp-Daybinyan<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Amarikaphp-Daybinyanphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<genericphp>JD<php/genericphp>
-php	php	php	php	php	php<standardphp>SJAD<php/standardphp>
-php	php	php	php	php	php<daylightphp>JADKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Atlanticphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>Jikanphp Yayunphp Tasiyan<php/genericphp>
-php	php	php	php	php	php<standardphp>Snegunphp Jikanphp Yayunphp Tasiyan<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Yayunphp Tasiyanphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<genericphp>JYT<php/genericphp>
-php	php	php	php	php	php<standardphp>SJYT<php/standardphp>
-php	php	php	php	php	php<daylightphp>JYTKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Centralphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>Jikanphp Conow<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Conowphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>JC<php/standardphp>
-php	php	php	php	php	php<daylightphp>JCKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Easternphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>Jikanphp Tonow<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Tonowphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>JT<php/standardphp>
-php	php	php	php	php	php<daylightphp>JTKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Europephp_Westernphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>Jikanphp Siow<php/standardphp>
-php	php	php	php	php	php<daylightphp>Jikanphp Siowphp ophp Karatphp Rbagan<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>JS<php/standardphp>
-php	php	php	php	php	php<daylightphp>JSKR<php/daylightphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"GMTphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>Jikanphp Quriphp Grinweyji<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	php	php<shortphp>
-php	php	php	php	php	php<standardphp>JQG<php/standardphp>
-php	php	php	php	<php/shortphp>
-php	php	php	<php/metazonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	<php/symbolsphp>
-php	php	php<decimalFormatsphp>
-php	php	php	php<decimalFormatLengthphp>
-php	php	php	php	php<decimalFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
-php	php	php	php	<php/decimalFormatphp>
-php	php	php	<php/decimalFormatLengthphp>
-php	php	<php/decimalFormatsphp>
-php	php	php<scientificFormatsphp>
-php	php	php	php<scientificFormatLengthphp>
-php	php	php	php	php<scientificFormatphp>
-php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
-php	php	php	php	<php/scientificFormatphp>
-php	php	php	<php/scientificFormatLengthphp>
-php	php	<php/scientificFormatsphp>
-php	php	php<percentFormatsphp>
-php	php	php	php<percentFormatLengthphp>
-php	php	php	php	php<percentFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php%<php/patternphp>
-php	php	php	php	<php/percentFormatphp>
-php	php	php	<php/percentFormatLengthphp>
-php	php	<php/percentFormatsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	<php/currencyFormatsphp>
-php	php	php<currenciesphp>
-php	php	php	php<currencyphp typephp=php"AUDphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Autaria<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"BRLphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Pajey<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"CNYphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Ipaw<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"EURphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Irow<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"GBPphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Inglis<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"HKDphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Hongphp Kong<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"INRphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Intia<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"JPYphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Nihong<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"MOPphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Macao<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"NOKphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Nowey<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"RUBphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Ruski<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"TWDphp"php>
-php	php	php	php	php<displayNamephp>pilaphp Taiwan<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"USDphp"php>
-php	php	php	php	php<displayNamephp>pilaphp America<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	php	php<currencyphp typephp=php"XXXphp"php>
-php	php	php	php	php<displayNamephp>iniphp klayiphp pilaphp ni<php/displayNamephp>
-php	php	php	<php/currencyphp>
-php	php	<php/currenciesphp>
-php	<php/numbersphp>
-php	php<unitsphp>
-php	php	php<unitphp typephp=php"dayphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Jiyax<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"hourphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Tuki<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"minutephp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php spngan<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"monthphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Idas<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"secondphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Seykn<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"weekphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Jiyaxphp iyaxphp sngayan<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"yearphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php Hnkawas<php/unitPatternphp>
-php	php	<php/unitphp>
-php	<php/unitsphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>yiruphp:y<php/yesstrphp>
-php	php	php	php<nostrphp>mnanphp:m<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.12 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="trv"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="bn">patas Monchiara</language>
+			<language type="de">patas Towjih</language>
+			<language type="en">patas Ingrisi</language>
+			<language type="es">patas Espanniu</language>
+			<language type="fr">patas Bosey</language>
+			<language type="hi">patas Heyti</language>
+			<language type="it">patas Itariya</language>
+			<language type="ja">patas Nihong</language>
+			<language type="pt">patas Bowdu</language>
+			<language type="pt_BR">patas Pajey</language>
+			<language type="ru">patas Ruski</language>
+			<language type="sr">patas Srpian</language>
+			<language type="und">Ini klayna patas ni</language>
+			<language type="ur">patas Yurtu</language>
+			<language type="zh">patas Ipaw</language>
+			<language type="zh_Hans">Qantan Ipaw patas</language>
+			<language type="zh_Hant">Baday Ipaw patas</language>
+		</languages>
+		<scripts>
+			<script type="Arab">tasan Arapit</script>
+			<script type="Cyrl">tasan Sirorik</script>
+			<script type="Hans">Qantan tasan Ipaw</script>
+			<script type="Hant">Baday tasan Ipaw</script>
+			<script type="Latn">tasan Ratin</script>
+			<script type="Zxxx">Unat tasan</script>
+			<script type="Zzzz">ini klayi tasan ni</script>
+		</scripts>
+		<territories>
+			<territory type="AQ">alang Nanci</territory>
+			<territory type="BA">alang Posniya</territory>
+			<territory type="BR">alang Pajey</territory>
+			<territory type="BV">alang Puwei</territory>
+			<territory type="CH">alang Switjrrant</territory>
+			<territory type="CN">alang Ipaw</territory>
+			<territory type="DE">alang Towjih</territory>
+			<territory type="FR">alang Posey</territory>
+			<territory type="GB">alang Inglis</territory>
+			<territory type="GS">alang Nanjiouya ni Nansanminji</territory>
+			<territory type="HM">alang Htee ni Mayktan</territory>
+			<territory type="HR">alang Krowtia</territory>
+			<territory type="IN">alang Intu</territory>
+			<territory type="IO">alang Inglis niq Intu</territory>
+			<territory type="IT">alang Itariya</territory>
+			<territory type="JP">alang Nihong</territory>
+			<territory type="ME">alang Mondineygrw</territory>
+			<territory type="RS">alang Srbia</territory>
+			<territory type="RU">alang Ruski</territory>
+			<territory type="SM">alang Snmarinow</territory>
+			<territory type="TF">alang Posey niq Nan</territory>
+			<territory type="US">alang Amarika</territory>
+			<territory type="ZZ">ini klayi na alang ni</territory>
+		</territories>
+		<types>
+			<type type="gregorian" key="calendar">Jiyax Yisu Thulang</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">Snamrika</measurementSystemName>
+			<measurementSystemName type="US">Snyunaydi</measurementSystemName>
+		</measurementSystemNames>
+		<codePatterns>
+			<codePattern type="language">Kari: {0}</codePattern>
+			<codePattern type="script">Patas: {0}</codePattern>
+			<codePattern type="territory">Alang: {0}</codePattern>
+		</codePatterns>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a-e g-n {ng} o-u w-y]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ḏ f ɨ ḻ ṟ ṯ ʉ v z ʼ]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>“</quotationStart>
+		<quotationEnd>”</quotationEnd>
+		<alternateQuotationStart>‘</alternateQuotationStart>
+		<alternateQuotationEnd>’</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Kii</month>
+							<month type="2">Dhi</month>
+							<month type="3">Tri</month>
+							<month type="4">Spi</month>
+							<month type="5">Rii</month>
+							<month type="6">Mti</month>
+							<month type="7">Emi</month>
+							<month type="8">Mai</month>
+							<month type="9">Mni</month>
+							<month type="10">Mxi</month>
+							<month type="11">Mxk</month>
+							<month type="12">Mxd</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Kingal idas</month>
+							<month type="2">Dha idas</month>
+							<month type="3">Tru idas</month>
+							<month type="4">Spat idas</month>
+							<month type="5">Rima idas</month>
+							<month type="6">Mataru idas</month>
+							<month type="7">Empitu idas</month>
+							<month type="8">Maspat idas</month>
+							<month type="9">Mngari idas</month>
+							<month type="10">Maxal idas</month>
+							<month type="11">Maxal kingal idas</month>
+							<month type="12">Maxal dha idas</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">K</month>
+							<month type="2">D</month>
+							<month type="3">T</month>
+							<month type="4">S</month>
+							<month type="5">R</month>
+							<month type="6">M</month>
+							<month type="7">E</month>
+							<month type="8">P</month>
+							<month type="9">A</month>
+							<month type="10">M</month>
+							<month type="11">K</month>
+							<month type="12">D</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Emp</day>
+							<day type="mon">Kin</day>
+							<day type="tue">Dha</day>
+							<day type="wed">Tru</day>
+							<day type="thu">Spa</day>
+							<day type="fri">Rim</day>
+							<day type="sat">Mat</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Jiyax sngayan</day>
+							<day type="mon">tgKingal jiyax iyax sngayan</day>
+							<day type="tue">tgDha jiyax iyax sngayan</day>
+							<day type="wed">tgTru jiyax iyax sngayan</day>
+							<day type="thu">tgSpac jiyax iyax sngayan</day>
+							<day type="fri">tgRima jiyax iyax sngayan</day>
+							<day type="sat">tgMataru jiyax iyax sngayan</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">E</day>
+							<day type="mon">K</day>
+							<day type="tue">D</day>
+							<day type="wed">T</day>
+							<day type="thu">S</day>
+							<day type="fri">R</day>
+							<day type="sat">M</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">mn1</quarter>
+							<quarter type="2">mn2</quarter>
+							<quarter type="3">mn3</quarter>
+							<quarter type="4">mn4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">mnprxan</quarter>
+							<quarter type="2">mndha</quarter>
+							<quarter type="3">mntru</quarter>
+							<quarter type="4">mnspat</quarter>
+						</quarterWidth>
+					</quarterContext>
+					<quarterContext type="stand-alone">
+						<quarterWidth type="narrow">
+							<quarter type="1">1</quarter>
+							<quarter type="2">2</quarter>
+							<quarter type="3">3</quarter>
+							<quarter type="4">4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>Brax kndaax</am>
+				<pm>Baubau kndaax</pm>
+				<eras>
+					<eraNames>
+						<era type="0">Brah jikan Yisu Thulang</era>
+						<era type="1">Bukuy jikan Yisu Thulang</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">BRY</era>
+						<era type="1">BUY</era>
+					</eraAbbr>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE, y MMMM dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>y MMMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>y MMM d</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>yyyy-MM-dd</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>HH:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="d">d</dateFormatItem>
+						<dateFormatItem id="Hm">H:mm</dateFormatItem>
+						<dateFormatItem id="M">L</dateFormatItem>
+						<dateFormatItem id="Md">M-d</dateFormatItem>
+						<dateFormatItem id="MEd">E, M-d</dateFormatItem>
+						<dateFormatItem id="MMM">LLL</dateFormatItem>
+						<dateFormatItem id="MMMd">MMM d</dateFormatItem>
+						<dateFormatItem id="MMMEd">E MMM d</dateFormatItem>
+						<dateFormatItem id="MMMMd">MMMM d</dateFormatItem>
+						<dateFormatItem id="MMMMEd">E MMMM d</dateFormatItem>
+						<dateFormatItem id="ms">mm:ss</dateFormatItem>
+						<dateFormatItem id="y">y</dateFormatItem>
+						<dateFormatItem id="yM">yyyy-M</dateFormatItem>
+						<dateFormatItem id="yMEd">EEE, yyyy-M-d</dateFormatItem>
+						<dateFormatItem id="yMMM">y MMM</dateFormatItem>
+						<dateFormatItem id="yMMMEd">EEE, y MMM d</dateFormatItem>
+						<dateFormatItem id="yMMMM">y MMMM</dateFormatItem>
+						<dateFormatItem id="yQ">yyyy Q</dateFormatItem>
+						<dateFormatItem id="yQQQ">y QQQ</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>Hngkawas</displayName>
+					</field>
+					<field type="year">
+						<displayName>hngkawas</displayName>
+					</field>
+					<field type="month">
+						<displayName>Idas</displayName>
+					</field>
+					<field type="week">
+						<displayName>Jiyax iyax sngayan</displayName>
+					</field>
+					<field type="day">
+						<displayName>Jiyax</displayName>
+						<relative type="-1">Shiga</relative>
+						<relative type="0">Jiyax sayang</relative>
+						<relative type="1">Saman</relative>
+					</field>
+					<field type="weekday">
+						<displayName>Jiyax quri jiyax iyax sngayan</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>Jikan</displayName>
+					</field>
+					<field type="hour">
+						<displayName>Tuki</displayName>
+					</field>
+					<field type="minute">
+						<displayName>Spngan</displayName>
+					</field>
+					<field type="second">
+						<displayName>Seykn</displayName>
+					</field>
+					<field type="zone">
+						<displayName>Alang</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>JQG{0}</gmtFormat>
+			<regionFormat>Jikan {0}</regionFormat>
+			<zone type="Etc/Unknown">
+				<exemplarCity>Ini klayi ka Jikan hini</exemplarCity>
+			</zone>
+			<zone type="America/Rio_Branco">
+				<exemplarCity>Jikan alang Purank</exemplarCity>
+			</zone>
+			<zone type="America/Campo_Grande">
+				<exemplarCity>Jikan alang Grad</exemplarCity>
+			</zone>
+			<zone type="America/Sao_Paulo">
+				<exemplarCity>Jikan alang Snpaurow</exemplarCity>
+			</zone>
+			<zone type="Pacific/Honolulu">
+				<exemplarCity>Jikan alang Honoruru</exemplarCity>
+			</zone>
+			<zone type="America/Anchorage">
+				<exemplarCity>Jikan alang Ankriji</exemplarCity>
+			</zone>
+			<zone type="America/Los_Angeles">
+				<exemplarCity>Jikan alang Rosanci</exemplarCity>
+			</zone>
+			<zone type="America/Phoenix">
+				<exemplarCity>Jikan alang Bonhuan</exemplarCity>
+			</zone>
+			<zone type="America/Denver">
+				<exemplarCity>Jikan alang Tanbo</exemplarCity>
+			</zone>
+			<zone type="America/Chicago">
+				<exemplarCity>Jikan alang Jiciak</exemplarCity>
+			</zone>
+			<zone type="America/Indianapolis">
+				<exemplarCity>Jikan alang Intiannaporis</exemplarCity>
+			</zone>
+			<zone type="America/New_York">
+				<exemplarCity>Jikan alang Niuyue</exemplarCity>
+			</zone>
+			<metazone type="America_Central">
+				<long>
+					<generic>Jikan Con-Amarika</generic>
+					<standard>Snegun Jikan Con-Amarika</standard>
+					<daylight>Jikan Con-Amarika o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<generic>JCA</generic>
+					<standard>SJCA</standard>
+					<daylight>JCAKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="America_Eastern">
+				<long>
+					<generic>Jikan Ton-Amarika</generic>
+					<standard>Snegun Jikan Ton-Amarika</standard>
+					<daylight>Jikan Ton-Amarika o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<generic>JTA</generic>
+					<standard>SJTA</standard>
+					<daylight>JTAKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="America_Mountain">
+				<long>
+					<generic>Jikan Yama-Amarika</generic>
+					<standard>Snegun Jikan Yama-Amarika</standard>
+					<daylight>Jikan Hidaw niq Yama-Amarika</daylight>
+				</long>
+				<short>
+					<generic>JYA</generic>
+					<standard>SJYA</standard>
+					<daylight>JHYA</daylight>
+				</short>
+			</metazone>
+			<metazone type="America_Pacific">
+				<long>
+					<generic>Jikan Daybinyan</generic>
+					<standard>Snegun Jikan Amarika-Daybinyan</standard>
+					<daylight>Jikan Amarika-Daybinyan o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<generic>JD</generic>
+					<standard>SJAD</standard>
+					<daylight>JADKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="Atlantic">
+				<long>
+					<generic>Jikan Yayun Tasiyan</generic>
+					<standard>Snegun Jikan Yayun Tasiyan</standard>
+					<daylight>Jikan Yayun Tasiyan o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<generic>JYT</generic>
+					<standard>SJYT</standard>
+					<daylight>JYTKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="Europe_Central">
+				<long>
+					<standard>Jikan Conow</standard>
+					<daylight>Jikan Conow o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<standard>JC</standard>
+					<daylight>JCKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="Europe_Eastern">
+				<long>
+					<standard>Jikan Tonow</standard>
+					<daylight>Jikan Tonow o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<standard>JT</standard>
+					<daylight>JTKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="Europe_Western">
+				<long>
+					<standard>Jikan Siow</standard>
+					<daylight>Jikan Siow o Karat Rbagan</daylight>
+				</long>
+				<short>
+					<standard>JS</standard>
+					<daylight>JSKR</daylight>
+				</short>
+			</metazone>
+			<metazone type="GMT">
+				<long>
+					<standard>Jikan Quri Grinweyji</standard>
+				</long>
+				<short>
+					<standard>JQG</standard>
+				</short>
+			</metazone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+		</symbols>
+		<decimalFormats>
+			<decimalFormatLength>
+				<decimalFormat>
+					<pattern>#,##0.###</pattern>
+				</decimalFormat>
+			</decimalFormatLength>
+		</decimalFormats>
+		<scientificFormats>
+			<scientificFormatLength>
+				<scientificFormat>
+					<pattern>#E0</pattern>
+				</scientificFormat>
+			</scientificFormatLength>
+		</scientificFormats>
+		<percentFormats>
+			<percentFormatLength>
+				<percentFormat>
+					<pattern>#,##0%</pattern>
+				</percentFormat>
+			</percentFormatLength>
+		</percentFormats>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤ #,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+		</currencyFormats>
+		<currencies>
+			<currency type="AUD">
+				<displayName>pila Autaria</displayName>
+			</currency>
+			<currency type="BRL">
+				<displayName>pila Pajey</displayName>
+			</currency>
+			<currency type="CNY">
+				<displayName>pila Ipaw</displayName>
+			</currency>
+			<currency type="EUR">
+				<displayName>pila Irow</displayName>
+			</currency>
+			<currency type="GBP">
+				<displayName>pila Inglis</displayName>
+			</currency>
+			<currency type="HKD">
+				<displayName>pila Hong Kong</displayName>
+			</currency>
+			<currency type="INR">
+				<displayName>pila Intia</displayName>
+			</currency>
+			<currency type="JPY">
+				<displayName>pila Nihong</displayName>
+			</currency>
+			<currency type="MOP">
+				<displayName>pila Macao</displayName>
+			</currency>
+			<currency type="NOK">
+				<displayName>pila Nowey</displayName>
+			</currency>
+			<currency type="RUB">
+				<displayName>pila Ruski</displayName>
+			</currency>
+			<currency type="TWD">
+				<displayName>pila Taiwan</displayName>
+			</currency>
+			<currency type="USD">
+				<displayName>pila America</displayName>
+			</currency>
+			<currency type="XXX">
+				<displayName>ini klayi pila ni</displayName>
+			</currency>
+		</currencies>
+	</numbers>
+	<units>
+		<unit type="day">
+			<unitPattern count="other">{0} Jiyax</unitPattern>
+		</unit>
+		<unit type="hour">
+			<unitPattern count="other">{0} Tuki</unitPattern>
+		</unit>
+		<unit type="minute">
+			<unitPattern count="other">{0} spngan</unitPattern>
+		</unit>
+		<unit type="month">
+			<unitPattern count="other">{0} Idas</unitPattern>
+		</unit>
+		<unit type="second">
+			<unitPattern count="other">{0} Seykn</unitPattern>
+		</unit>
+		<unit type="week">
+			<unitPattern count="other">{0} Jiyax iyax sngayan</unitPattern>
+		</unit>
+		<unit type="year">
+			<unitPattern count="other">{0} Hnkawas</unitPattern>
+		</unit>
+	</units>
+	<posix>
+		<messages>
+			<yesstr>yiru:y</yesstr>
+			<nostr>mnan:m</nostr>
+		</messages>
+	</posix>
+</ldml>
 

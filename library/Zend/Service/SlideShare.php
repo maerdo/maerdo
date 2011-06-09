@@ -1,619 +1,619 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp SlideShare
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php SlideSharephp.phpphp php2php0php0php9php6php php2php0php1php0php-php0php1php-php0php6php php0php2php:php0php5php:php0php9Zphp bkarwinphp php$
-php php*php/
-
-php/php*php*
-php php*php Zendphp_Httpphp_Client
-php php*php/
-requirephp_oncephp php'Zendphp/Httpphp/Clientphp.phpphp'php;
-
-php/php*php*
-php php*php Zendphp_Cache
-php php*php/
-requirephp_oncephp php'Zendphp/Cachephp.phpphp'php;
-
-php/php*php*
-php php*php Zendphp_Servicephp_SlideSharephp_SlideShow
-php php*php/
-requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/SlideShowphp.phpphp'php;
-
-php/php*php*
-php php*php Thephp Zendphp_Servicephp_SlideSharephp componentphp isphp usedphp tophp interfacephp withphp the
-php php*php slidesharephp.netphp webphp serverphp tophp retrievephp slidephp showsphp hostedphp onphp thephp webphp sitephp for
-php php*php displayphp orphp otherphp processingphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Service
-php php*php php@subpackagephp SlideShare
-php php*php php@throwsphp php php php php Zendphp_Servicephp_SlideSharephp_Exception
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Servicephp_SlideShare
-php{
-
-php php php php php/php*php*
-php php php php php php*php Webphp servicephp resultphp codephp mapping
-php php php php php php*php/
-php php php php constphp SERVICEphp_ERRORphp_BADphp_APIKEYphp php php php php php php php=php php1php;
-php php php php constphp SERVICEphp_ERRORphp_BADphp_AUTHphp php php php php php php php php php=php php2php;
-php php php php constphp SERVICEphp_ERRORphp_MISSINGphp_TITLEphp php php php php=php php3php;
-php php php php constphp SERVICEphp_ERRORphp_MISSINGphp_FILEphp php php php php php=php php4php;
-php php php php constphp SERVICEphp_ERRORphp_EMPTYphp_TITLEphp php php php php php php=php php5php;
-php php php php constphp SERVICEphp_ERRORphp_NOTphp_SOURCEOBJphp php php php php=php php6php;
-php php php php constphp SERVICEphp_ERRORphp_INVALIDphp_EXTphp php php php php php php=php php7php;
-php php php php constphp SERVICEphp_ERRORphp_FILEphp_TOOphp_BIGphp php php php php php=php php8php;
-php php php php constphp SERVICEphp_ERRORphp_SHOWphp_NOTphp_FOUNDphp php php php=php php9php;
-php php php php constphp SERVICEphp_ERRORphp_USERphp_NOTphp_FOUNDphp php php php=php php1php0php;
-php php php php constphp SERVICEphp_ERRORphp_GROUPphp_NOTphp_FOUNDphp php php=php php1php1php;
-php php php php constphp SERVICEphp_ERRORphp_MISSINGphp_TAGphp php php php php php php=php php1php2php;
-php php php php constphp SERVICEphp_ERRORphp_DAILYphp_LIMITphp php php php php php php=php php9php9php;
-php php php php constphp SERVICEphp_ERRORphp_ACCOUNTphp_BLOCKEDphp php php=php php1php0php0php;
-
-php php php php php/php*php*
-php php php php php php*php Slidephp sharephp Webphp servicephp communicationphp URIs
-php php php php php php*php/
-php php php php constphp SERVICEphp_UPLOADphp_URIphp php php php php php php php php php php php php php php php php php php=php php'httpphp:php/php/wwwphp.slidesharephp.netphp/apiphp/php1php/uploadphp_slideshowphp'php;
-php php php php constphp SERVICEphp_GETphp_SHOWphp_URIphp php php php php php php php php php php php php php php php php=php php'httpphp:php/php/wwwphp.slidesharephp.netphp/apiphp/php1php/getphp_slideshowphp'php;
-php php php php constphp SERVICEphp_GETphp_SHOWphp_BYphp_USERphp_URIphp php php php php php php php php=php php'httpphp:php/php/wwwphp.slidesharephp.netphp/apiphp/php1php/getphp_slideshowphp_byphp_userphp'php;
-php php php php constphp SERVICEphp_GETphp_SHOWphp_BYphp_TAGphp_URIphp php php php php php php php php php=php php'httpphp:php/php/wwwphp.slidesharephp.netphp/apiphp/php1php/getphp_slideshowphp_byphp_tagphp'php;
-php php php php constphp SERVICEphp_GETphp_SHOWphp_BYphp_GROUPphp_URIphp php php php php php php php=php php'httpphp:php/php/wwwphp.slidesharephp.netphp/apiphp/php1php/getphp_slideshowsphp_fromphp_groupphp'php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp MIMEphp typephp ofphp Slideshowphp files
-php php php php php php*
-php php php php php php*php/
-php php php php constphp POWERPOINTphp_MIMEphp_TYPEphp php php php php=php php"applicationphp/vndphp.msphp-powerpointphp"php;
-
-php php php php php/php*php*
-php php php php php php*php Thephp APIphp keyphp tophp usephp inphp requests
-php php php php php php*
-php php php php php php*php php@varphp stringphp Thephp APIphp key
-php php php php php php*php/
-php php php php protectedphp php$php_apiKeyphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp sharedphp secretphp tophp usephp inphp requests
-php php php php php php*
-php php php php php php*php php@varphp stringphp thephp Sharedphp secret
-php php php php php php*php/
-php php php php protectedphp php$php_sharedSecretphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp usernamephp tophp usephp inphp requests
-php php php php php php*
-php php php php php php*php php@varphp stringphp thephp username
-php php php php php php*php/
-php php php php protectedphp php$php_usernamephp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp passwordphp tophp usephp inphp requests
-php php php php php php*
-php php php php php php*php php@varphp stringphp thephp password
-php php php php php php*php/
-php php php php protectedphp php$php_passwordphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp HTTPphp Clientphp objectphp tophp usephp tophp performphp requests
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Httpphp_Client
-php php php php php php*php/
-php php php php protectedphp php$php_httpclientphp;
-
-php php php php php/php*php*
-php php php php php php*php Thephp Cachephp objectphp tophp usephp tophp performphp caching
-php php php php php php*
-php php php php php php*php php@varphp Zendphp_Cachephp_Core
-php php php php php php*php/
-php php php php protectedphp php$php_cacheobjectphp;
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp Zendphp_Httpphp_Clientphp objectphp tophp usephp inphp requestsphp.php Ifphp notphp providedphp aphp defaultphp will
-php php php php php php*php bephp usedphp.
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Httpphp_Clientphp php$clientphp Thephp HTTPphp clientphp instancephp tophp use
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setHttpClientphp(Zendphp_Httpphp_Clientphp php$clientphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_httpclientphp php=php php$clientphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp instancephp ofphp thephp Zendphp_Httpphp_Clientphp whichphp willphp bephp usedphp.php Createsphp anphp instance
-php php php php php php*php ofphp Zendphp_Httpphp_Clientphp ifphp nophp previousphp clientphp wasphp setphp.
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Httpphp_Clientphp Thephp HTTPphp clientphp whichphp willphp bephp used
-php php php php php php*php/
-php php php php publicphp functionphp getHttpClientphp(php)
-php php php php php{
-
-php php php php php php php php ifphp(php!php(php$thisphp-php>php_httpclientphp instanceofphp Zendphp_Httpphp_Clientphp)php)php php{
-php php php php php php php php php php php php php$clientphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
-php php php php php php php php php php php php php$clientphp-php>setConfigphp(arrayphp(php'maxredirectsphp'php php=php>php php2php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'timeoutphp'php php=php>php php5php)php)php;
-
-php php php php php php php php php php php php php$thisphp-php>setHttpClientphp(php$clientphp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$thisphp-php>php_httpclientphp-php>resetParametersphp(php)php;
-php php php php php php php php returnphp php$thisphp-php>php_httpclientphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp Zendphp_Cachephp objectphp tophp usephp tophp cachephp thephp resultsphp ofphp APIphp queries
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Cachephp_Corephp php$cacheobjectphp Thephp Zendphp_Cachephp objectphp used
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setCacheObjectphp(Zendphp_Cachephp_Corephp php$cacheobjectphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_cacheobjectphp php=php php$cacheobjectphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp Zendphp_Cachephp objectphp whichphp willphp bephp usedphp tophp cachephp APIphp queriesphp.php Ifphp nophp cachephp object
-php php php php php php*php wasphp previouslyphp setphp thephp thephp defaultphp willphp bephp usedphp php(Filesystemphp cachingphp inphp php/tmpphp withphp aphp life
-php php php php php php*php timephp ofphp php4php3php2php0php0php secondsphp)
-php php php php php php*
-php php php php php php*php php@returnphp Zendphp_Cachephp_Corephp Thephp objectphp usedphp inphp caching
-php php php php php php*php/
-php php php php publicphp functionphp getCacheObjectphp(php)
-php php php php php{
-
-php php php php php php php php ifphp(php!php(php$thisphp-php>php_cacheobjectphp instanceofphp Zendphp_Cachephp_Corephp)php)php php{
-php php php php php php php php php php php php php$cachephp php=php Zendphp_Cachephp:php:factoryphp(php'Corephp'php,php php'Filephp'php,php arrayphp(php'lifetimephp'php php=php>php php4php3php2php0php0php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php'automaticphp_serializationphp'php php=php>php truephp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php php arrayphp(php'cachephp_dirphp'php php=php>php php'php/tmpphp'php)php)php;
-
-php php php php php php php php php php php php php$thisphp-php>setCacheObjectphp(php$cachephp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_cacheobjectphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Returnsphp thephp userphp namephp usedphp forphp APIphp calls
-php php php php php php*
-php php php php php php*php php@returnphp stringphp Thephp username
-php php php php php php*php/
-php php php php publicphp functionphp getUserNamephp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_usernamephp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp userphp namephp tophp usephp forphp APIphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$unphp Thephp usernamephp tophp use
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setUserNamephp(php$unphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_usernamephp php=php php$unphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp passwordphp tophp usephp inphp APIphp calls
-php php php php php php*
-php php php php php php*php php@returnphp stringphp thephp passwordphp tophp usephp inphp APIphp calls
-php php php php php php*php/
-php php php php publicphp functionphp getPasswordphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_passwordphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp passwordphp tophp usephp inphp APIphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$pwphp Thephp passwordphp tophp use
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setPasswordphp(php$pwphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_passwordphp php=php php(stringphp)php$pwphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp APIphp keyphp tophp bephp usedphp inphp makingphp APIphp calls
-php php php php php php*
-php php php php php php*php php@returnphp stringphp thephp APIphp Key
-php php php php php php*php/
-php php php php publicphp functionphp getApiKeyphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_apiKeyphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp APIphp keyphp tophp bephp usedphp inphp makingphp APIphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$keyphp Thephp APIphp keyphp tophp use
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setApiKeyphp(php$keyphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_apiKeyphp php=php php(stringphp)php$keyphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Getsphp thephp sharedphp secretphp usedphp inphp makingphp APIphp calls
-php php php php php php*
-php php php php php php*php php@returnphp stringphp thephp Sharedphp secret
-php php php php php php*php/
-php php php php publicphp functionphp getSharedSecretphp(php)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_sharedSecretphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Setsphp thephp sharedphp secretphp usedphp inphp makingphp APIphp calls
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$secretphp thephp sharedphp secret
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideShare
-php php php php php php*php/
-php php php php publicphp functionphp setSharedSecretphp(php$secretphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>php_sharedSecretphp php=php php(stringphp)php$secretphp;
-php php php php php php php php returnphp php$thisphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Thephp Constructor
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$apikeyphp Thephp APIphp key
-php php php php php php*php php@paramphp stringphp php$sharedSecretphp Thephp sharedphp secret
-php php php php php php*php php@paramphp stringphp php$usernamephp Thephp username
-php php php php php php*php php@paramphp stringphp php$passwordphp Thephp password
-php php php php php php*php/
-php php php php publicphp functionphp php_php_constructphp(php$apikeyphp,php php$sharedSecretphp,php php$usernamephp php=php nullphp,php php$passwordphp php=php nullphp)
-php php php php php{
-php php php php php php php php php$thisphp-php>setApiKeyphp(php$apikeyphp)
-php php php php php php php php php php php php php php-php>setSharedSecretphp(php$sharedSecretphp)
-php php php php php php php php php php php php php php-php>setUserNamephp(php$usernamephp)
-php php php php php php php php php php php php php php-php>setPasswordphp(php$passwordphp)php;
-
-php php php php php php php php php$thisphp-php>php_httpclientphp php=php newphp Zendphp_Httpphp_Clientphp(php)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Uploadsphp thephp specifiedphp Slidephp showphp thephp thephp server
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Servicephp_SlideSharephp_SlideShowphp php$ssphp Thephp slidephp showphp objectphp representingphp thephp slidephp showphp tophp upload
-php php php php php php*php php@paramphp booleanphp php$makephp_srcphp_publicphp Determinesphp ifphp thephp thephp slidephp showphp'sphp sourcephp filephp isphp publicphp orphp notphp uponphp upload
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideSharephp_SlideShowphp Thephp passedphp Slidephp showphp objectphp,php withphp thephp newphp assignedphp IDphp provided
-php php php php php php*php/
-php php php php publicphp functionphp uploadSlideShowphp(Zendphp_Servicephp_SlideSharephp_SlideShowphp php$ssphp,php php$makephp_srcphp_publicphp php=php truephp)
-php php php php php{
-
-php php php php php php php php php$timestampphp php=php timephp(php)php;
-
-php php php php php php php php php$paramsphp php=php arrayphp(php'apiphp_keyphp'php php=php>php php$thisphp-php>getApiKeyphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'tsphp'php php=php>php php$timestampphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php'hashphp'php php=php>php shaphp1php(php$thisphp-php>getSharedSecretphp(php)php.php$timestampphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'usernamephp'php php=php>php php$thisphp-php>getUserNamephp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'passwordphp'php php=php>php php$thisphp-php>getPasswordphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'slideshowphp_titlephp'php php=php>php php$ssphp-php>getTitlephp(php)php)php;
-
-php php php php php php php php php$descriptionphp php=php php$ssphp-php>getDescriptionphp(php)php;
-php php php php php php php php php$tagsphp php=php php$ssphp-php>getTagsphp(php)php;
-
-php php php php php php php php php$filenamephp php=php php$ssphp-php>getFilenamephp(php)php;
-
-php php php php php php php php ifphp(php!filephp_existsphp(php$filenamephp)php php|php|php php!isphp_readablephp(php$filenamephp)php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Specifiedphp Slideshowphp forphp uploadphp notphp foundphp orphp unreadablephp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php!emptyphp(php$descriptionphp)php)php php{
-php php php php php php php php php php php php php$paramsphp[php'slideshowphp_descriptionphp'php]php php=php php$descriptionphp;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$paramsphp[php'slideshowphp_descriptionphp'php]php php=php php"php"php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php!emptyphp(php$tagsphp)php)php php{
-php php php php php php php php php php php php php$tmpphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp(php$tagsphp asphp php$tagphp)php php{
-php php php php php php php php php php php php php php php php php$tmpphp[php]php php=php php"php\php"php$tagphp\php"php"php;
-php php php php php php php php php php php php php}
-php php php php php php php php php php php php php$paramsphp[php'slideshowphp_tagsphp'php]php php=php implodephp(php'php php'php,php php$tmpphp)php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php$paramsphp[php'slideshowphp_tagsphp'php]php php=php php"php"php;
-php php php php php php php php php}
-
-
-php php php php php php php php php$clientphp php=php php$thisphp-php>getHttpClientphp(php)php;
-php php php php php php php php php$clientphp-php>setUriphp(selfphp:php:SERVICEphp_UPLOADphp_URIphp)php;
-php php php php php php php php php$clientphp-php>setParameterPostphp(php$paramsphp)php;
-php php php php php php php php php$clientphp-php>setFileUploadphp(php$filenamephp,php php"slideshowphp_srcfilephp"php)php;
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php tryphp php{
-php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-php php php php php php php php php}php catchphp(Zendphp_Httpphp_Clientphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Servicephp Requestphp Failedphp:php php{php$ephp-php>getMessagephp(php)php}php"php,php php0php,php php$ephp)php;
-php php php php php php php php php}
-
-php php php php php php php php php$sxephp php=php simplexmlphp_loadphp_stringphp(php$responsephp-php>getBodyphp(php)php)php;
-
-php php php php php php php php ifphp(php$sxephp-php>getNamephp(php)php php=php=php php"SlideShareServiceErrorphp"php)php php{
-php php php php php php php php php php php php php$messagephp php=php php(stringphp)php$sxephp-php>Messagephp[php0php]php;
-php php php php php php php php php php php php listphp(php$codephp,php php$errorphp_strphp)php php=php explodephp(php'php:php'php,php php$messagephp)php;
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(trimphp(php$errorphp_strphp)php,php php$codephp)php;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php!php$sxephp-php>getNamephp(php)php php=php=php php"SlideShowUploadedphp"php)php php{
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Unknownphp XMLphp Responsphp Receivedphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$ssphp-php>setIdphp(php(intphp)php(stringphp)php$sxephp-php>SlideShowIDphp)php;
-
-php php php php php php php php returnphp php$ssphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievesphp aphp slidephp showphp'sphp informationphp basedphp onphp slidephp showphp ID
-php php php php php php*
-php php php php php php*php php@paramphp intphp php$ssphp_idphp Thephp slidephp showphp ID
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideSharephp_SlideShowphp thephp Slideshowphp object
-php php php php php php*php/
-php php php php publicphp functionphp getSlideShowphp(php$ssphp_idphp)
-php php php php php{
-php php php php php php php php php$timestampphp php=php timephp(php)php;
-
-php php php php php php php php php$paramsphp php=php arrayphp(php'apiphp_keyphp'php php=php>php php$thisphp-php>getApiKeyphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'tsphp'php php=php>php php$timestampphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php'hashphp'php php=php>php shaphp1php(php$thisphp-php>getSharedSecretphp(php)php.php$timestampphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'slideshowphp_idphp'php php=php>php php$ssphp_idphp)php;
-
-php php php php php php php php php$cachephp php=php php$thisphp-php>getCacheObjectphp(php)php;
-
-php php php php php php php php php$cachephp_keyphp php=php mdphp5php(php"php_php_zendslidesharephp_cachephp_php$ssphp_idphp"php)php;
-
-php php php php php php php php ifphp(php!php$retvalphp php=php php$cachephp-php>loadphp(php$cachephp_keyphp)php)php php{
-php php php php php php php php php php php php php$clientphp php=php php$thisphp-php>getHttpClientphp(php)php;
-
-php php php php php php php php php php php php php$clientphp-php>setUriphp(selfphp:php:SERVICEphp_GETphp_SHOWphp_URIphp)php;
-php php php php php php php php php php php php php$clientphp-php>setParameterPostphp(php$paramsphp)php;
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-php php php php php php php php php php php php php}php catchphp(Zendphp_Httpphp_Clientphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Servicephp Requestphp Failedphp:php php{php$ephp-php>getMessagephp(php)php}php"php,php php0php,php php$ephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$sxephp php=php simplexmlphp_loadphp_stringphp(php$responsephp-php>getBodyphp(php)php)php;
-
-php php php php php php php php php php php php ifphp(php$sxephp-php>getNamephp(php)php php=php=php php"SlideShareServiceErrorphp"php)php php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php(stringphp)php$sxephp-php>Messagephp[php0php]php;
-php php php php php php php php php php php php php php php php listphp(php$codephp,php php$errorphp_strphp)php php=php explodephp(php'php:php'php,php php$messagephp)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(trimphp(php$errorphp_strphp)php,php php$codephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp(php!php$sxephp-php>getNamephp(php)php php=php=php php'Slideshowsphp'php)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php'Unknownphp XMLphp Repsonsephp Receivedphp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$retvalphp php=php php$thisphp-php>php_slideShowNodeToObjectphp(clonephp php$sxephp-php>Slideshowphp[php0php]php)php;
-
-php php php php php php php php php php php php php$cachephp-php>savephp(php$retvalphp,php php$cachephp_keyphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retvalphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievesphp anphp arrayphp ofphp slidephp showsphp forphp aphp givenphp username
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$usernamephp Thephp usernamephp tophp retrievephp slidephp showsphp from
-php php php php php php*php php@paramphp intphp php$offsetphp Thephp offsetphp ofphp thephp listphp tophp startphp retrievingphp from
-php php php php php php*php php@paramphp intphp php$limitphp Thephp maximumphp numberphp ofphp slidephp showsphp tophp retrieve
-php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp Zendphp_Servicephp_SlideSharephp_SlideShowphp objects
-php php php php php php*php/
-php php php php publicphp functionphp getSlideShowsByUsernamephp(php$usernamephp,php php$offsetphp php=php nullphp,php php$limitphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_getSlideShowsByTypephp(php'usernamephp_forphp'php,php php$usernamephp,php php$offsetphp,php php$limitphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievesphp anphp arrayphp ofphp slidephp showsphp basedphp onphp tag
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$tagphp Thephp tagphp tophp retrievephp slidephp showsphp with
-php php php php php php*php php@paramphp intphp php$offsetphp Thephp offsetphp ofphp thephp listphp tophp startphp retrievingphp from
-php php php php php php*php php@paramphp intphp php$limitphp Thephp maximumphp numberphp ofphp slidephp showsphp tophp retrieve
-php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp Zendphp_Servicephp_SlideSharephp_SlideShowphp objects
-php php php php php php*php/
-php php php php publicphp functionphp getSlideShowsByTagphp(php$tagphp,php php$offsetphp php=php nullphp,php php$limitphp php=php nullphp)
-php php php php php{
-
-php php php php php php php php ifphp(isphp_arrayphp(php$tagphp)php)php php{
-php php php php php php php php php php php php php$tmpphp php=php arrayphp(php)php;
-php php php php php php php php php php php php foreachphp(php$tagphp asphp php$tphp)php php{
-php php php php php php php php php php php php php php php php php$tmpphp[php]php php=php php"php\php"php$tphp\php"php"php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$tagphp php=php implodephp(php"php php"php,php php$tmpphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$thisphp-php>php_getSlideShowsByTypephp(php'tagphp'php,php php$tagphp,php php$offsetphp,php php$limitphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievesphp anphp arrayphp ofphp slidephp showsphp basedphp onphp groupphp name
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$groupphp Thephp groupphp namephp tophp retrievephp slidephp showsphp for
-php php php php php php*php php@paramphp intphp php$offsetphp Thephp offsetphp ofphp thephp listphp tophp startphp retrievingphp from
-php php php php php php*php php@paramphp intphp php$limitphp Thephp maximumphp numberphp ofphp slidephp showsphp tophp retrieve
-php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp Zendphp_Servicephp_SlideSharephp_SlideShowphp objects
-php php php php php php*php/
-php php php php publicphp functionphp getSlideShowsByGroupphp(php$groupphp,php php$offsetphp php=php nullphp,php php$limitphp php=php nullphp)
-php php php php php{
-php php php php php php php php returnphp php$thisphp-php>php_getSlideShowsByTypephp(php'groupphp_namephp'php,php php$groupphp,php php$offsetphp,php php$limitphp)php;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Retrievesphp Zendphp_Servicephp_SlideSharephp_SlideShowphp objectphp arraysphp basedphp onphp thephp typephp of
-php php php php php php*php listphp desired
-php php php php php php*
-php php php php php php*php php@paramphp stringphp php$keyphp Thephp typephp ofphp slidephp showphp objectphp tophp retrieve
-php php php php php php*php php@paramphp stringphp php$valuephp Thephp specificphp searchphp queryphp forphp thephp slidephp showphp typephp tophp lookphp up
-php php php php php php*php php@paramphp intphp php$offsetphp Thephp offsetphp ofphp thephp listphp tophp startphp retrievingphp from
-php php php php php php*php php@paramphp intphp php$limitphp Thephp maximumphp numberphp ofphp slidephp showsphp tophp retrieve
-php php php php php php*php php@returnphp arrayphp Anphp arrayphp ofphp Zendphp_Servicephp_SlideSharephp_SlideShowphp objects
-php php php php php php*php/
-php php php php protectedphp functionphp php_getSlideShowsByTypephp(php$keyphp,php php$valuephp,php php$offsetphp php=php nullphp,php php$limitphp php=php nullphp)
-php php php php php{
-
-php php php php php php php php php$keyphp php=php strtolowerphp(php$keyphp)php;
-
-php php php php php php php php switchphp(php$keyphp)php php{
-php php php php php php php php php php php php casephp php'usernamephp_forphp'php:
-php php php php php php php php php php php php php php php php php$responseTagphp php=php php'Userphp'php;
-php php php php php php php php php php php php php php php php php$queryUriphp php=php selfphp:php:SERVICEphp_GETphp_SHOWphp_BYphp_USERphp_URIphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'groupphp_namephp'php:
-php php php php php php php php php php php php php php php php php$responseTagphp php=php php'Groupphp'php;
-php php php php php php php php php php php php php php php php php$queryUriphp php=php selfphp:php:SERVICEphp_GETphp_SHOWphp_BYphp_GROUPphp_URIphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php casephp php'tagphp'php:
-php php php php php php php php php php php php php php php php php$responseTagphp php=php php'Tagphp'php;
-php php php php php php php php php php php php php php php php php$queryUriphp php=php selfphp:php:SERVICEphp_GETphp_SHOWphp_BYphp_TAGphp_URIphp;
-php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php defaultphp:
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Invalidphp SlideSharephp Queryphp"php)php;
-php php php php php php php php php}
-
-php php php php php php php php php$timestampphp php=php timephp(php)php;
-
-php php php php php php php php php$paramsphp php=php arrayphp(php'apiphp_keyphp'php php=php>php php$thisphp-php>getApiKeyphp(php)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php'tsphp'php php=php>php php$timestampphp,
-php php php php php php php php php php php php php php php php php php php php php php php php php'hashphp'php php=php>php shaphp1php(php$thisphp-php>getSharedSecretphp(php)php.php$timestampphp)php,
-php php php php php php php php php php php php php php php php php php php php php php php php php$keyphp php=php>php php$valuephp)php;
-
-php php php php php php php php ifphp(php$offsetphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'offsetphp'php]php php=php php(intphp)php$offsetphp;
-php php php php php php php php php}
-
-php php php php php php php php ifphp(php$limitphp php!php=php=php nullphp)php php{
-php php php php php php php php php php php php php$paramsphp[php'limitphp'php]php php=php php(intphp)php$limitphp;
-php php php php php php php php php}
-
-php php php php php php php php php$cachephp php=php php$thisphp-php>getCacheObjectphp(php)php;
-
-php php php php php php php php php$cachephp_keyphp php=php mdphp5php(php$keyphp.php$valuephp.php$offsetphp.php$limitphp)php;
-
-php php php php php php php php ifphp(php!php$retvalphp php=php php$cachephp-php>loadphp(php$cachephp_keyphp)php)php php{
-
-php php php php php php php php php php php php php$clientphp php=php php$thisphp-php>getHttpClientphp(php)php;
-
-php php php php php php php php php php php php php$clientphp-php>setUriphp(php$queryUriphp)php;
-php php php php php php php php php php php php php$clientphp-php>setParameterPostphp(php$paramsphp)php;
-
-php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Httpphp/Clientphp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php tryphp php{
-php php php php php php php php php php php php php php php php php$responsephp php=php php$clientphp-php>requestphp(php'POSTphp'php)php;
-php php php php php php php php php php php php php}php catchphp(Zendphp_Httpphp_Clientphp_Exceptionphp php$ephp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Servicephp Requestphp Failedphp:php php{php$ephp-php>getMessagephp(php)php}php"php,php php0php,php php$ephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$sxephp php=php simplexmlphp_loadphp_stringphp(php$responsephp-php>getBodyphp(php)php)php;
-
-php php php php php php php php php php php php ifphp(php$sxephp-php>getNamephp(php)php php=php=php php"SlideShareServiceErrorphp"php)php php{
-php php php php php php php php php php php php php php php php php$messagephp php=php php(stringphp)php$sxephp-php>Messagephp[php0php]php;
-php php php php php php php php php php php php php php php php listphp(php$codephp,php php$errorphp_strphp)php php=php explodephp(php'php:php'php,php php$messagephp)php;
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(trimphp(php$errorphp_strphp)php,php php$codephp)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php ifphp(php!php$sxephp-php>getNamephp(php)php php=php=php php$responseTagphp)php php{
-php php php php php php php php php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php'Unknownphp orphp Invalidphp XMLphp Repsonsephp Receivedphp'php)php;
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$retvalphp php=php arrayphp(php)php;
-
-php php php php php php php php php php php php foreachphp(php$sxephp-php>childrenphp(php)php asphp php$nodephp)php php{
-php php php php php php php php php php php php php php php php ifphp(php$nodephp-php>getNamephp(php)php php=php=php php'Slideshowphp'php)php php{
-php php php php php php php php php php php php php php php php php php php php php$retvalphp[php]php php=php php$thisphp-php>php_slideShowNodeToObjectphp(php$nodephp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$cachephp-php>savephp(php$retvalphp,php php$cachephp_keyphp)php;
-php php php php php php php php php}
-
-php php php php php php php php returnphp php$retvalphp;
-php php php php php}
-
-php php php php php/php*php*
-php php php php php php*php Convertsphp aphp SimpleXMLElementphp objectphp representingphp aphp responsephp fromphp thephp service
-php php php php php php*php intophp aphp Zendphp_Servicephp_SlideSharephp_SlideShowphp object
-php php php php php php*
-php php php php php php*php php@paramphp SimpleXMLElementphp php$nodephp Thephp inputphp XMLphp fromphp thephp slidesharephp.netphp service
-php php php php php php*php php@returnphp Zendphp_Servicephp_SlideSharephp_SlideShowphp Thephp resultingphp object
-php php php php php php*php/
-php php php php protectedphp functionphp php_slideShowNodeToObjectphp(SimpleXMLElementphp php$nodephp)
-php php php php php{
-
-php php php php php php php php ifphp(php$nodephp-php>getNamephp(php)php php=php=php php'Slideshowphp'php)php php{
-
-php php php php php php php php php php php php php$ssphp php=php newphp Zendphp_Servicephp_SlideSharephp_SlideShowphp(php)php;
-
-php php php php php php php php php php php php php$ssphp-php>setIdphp(php(stringphp)php$nodephp-php>IDphp)php;
-php php php php php php php php php php php php php$ssphp-php>setDescriptionphp(php(stringphp)php$nodephp-php>Descriptionphp)php;
-php php php php php php php php php php php php php$ssphp-php>setEmbedCodephp(php(stringphp)php$nodephp-php>EmbedCodephp)php;
-php php php php php php php php php php php php php$ssphp-php>setNumViewsphp(php(stringphp)php$nodephp-php>Viewsphp)php;
-php php php php php php php php php php php php php$ssphp-php>setPermaLinkphp(php(stringphp)php$nodephp-php>Permalinkphp)php;
-php php php php php php php php php php php php php$ssphp-php>setStatusphp(php(stringphp)php$nodephp-php>Statusphp)php;
-php php php php php php php php php php php php php$ssphp-php>setStatusDescriptionphp(php(stringphp)php$nodephp-php>StatusDescriptionphp)php;
-
-php php php php php php php php php php php php foreachphp(explodephp(php"php,php"php,php php(stringphp)php$nodephp-php>Tagsphp)php asphp php$tagphp)php php{
-
-php php php php php php php php php php php php php php php php ifphp(php!inphp_arrayphp(php$tagphp,php php$ssphp-php>getTagsphp(php)php)php)php php{
-php php php php php php php php php php php php php php php php php php php php php$ssphp-php>addTagphp(php$tagphp)php;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-
-php php php php php php php php php php php php php$ssphp-php>setThumbnailUrlphp(php(stringphp)php$nodephp-php>Thumbnailphp)php;
-php php php php php php php php php php php php php$ssphp-php>setTitlephp(php(stringphp)php$nodephp-php>Titlephp)php;
-php php php php php php php php php php php php php$ssphp-php>setLocationphp(php(stringphp)php$nodephp-php>Locationphp)php;
-php php php php php php php php php php php php php$ssphp-php>setTranscriptphp(php(stringphp)php$nodephp-php>Transcriptphp)php;
-
-php php php php php php php php php php php php returnphp php$ssphp;
-
-php php php php php php php php php}
-
-php php php php php php php php requirephp_oncephp php'Zendphp/Servicephp/SlideSharephp/Exceptionphp.phpphp'php;
-php php php php php php php php throwphp newphp Zendphp_Servicephp_SlideSharephp_Exceptionphp(php"Wasphp notphp providedphp thephp expectedphp XMLphp Nodephp forphp processingphp"php)php;
-php php php php php}
-php}
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage SlideShare
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: SlideShare.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+
+/**
+ * Zend_Http_Client
+ */
+require_once 'Zend/Http/Client.php';
+
+/**
+ * Zend_Cache
+ */
+require_once 'Zend/Cache.php';
+
+/**
+ * Zend_Service_SlideShare_SlideShow
+ */
+require_once 'Zend/Service/SlideShare/SlideShow.php';
+
+/**
+ * The Zend_Service_SlideShare component is used to interface with the
+ * slideshare.net web server to retrieve slide shows hosted on the web site for
+ * display or other processing.
+ *
+ * @category   Zend
+ * @package    Zend_Service
+ * @subpackage SlideShare
+ * @throws     Zend_Service_SlideShare_Exception
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Service_SlideShare
+{
+
+    /**
+     * Web service result code mapping
+     */
+    const SERVICE_ERROR_BAD_APIKEY       = 1;
+    const SERVICE_ERROR_BAD_AUTH         = 2;
+    const SERVICE_ERROR_MISSING_TITLE    = 3;
+    const SERVICE_ERROR_MISSING_FILE     = 4;
+    const SERVICE_ERROR_EMPTY_TITLE      = 5;
+    const SERVICE_ERROR_NOT_SOURCEOBJ    = 6;
+    const SERVICE_ERROR_INVALID_EXT      = 7;
+    const SERVICE_ERROR_FILE_TOO_BIG     = 8;
+    const SERVICE_ERROR_SHOW_NOT_FOUND   = 9;
+    const SERVICE_ERROR_USER_NOT_FOUND   = 10;
+    const SERVICE_ERROR_GROUP_NOT_FOUND  = 11;
+    const SERVICE_ERROR_MISSING_TAG      = 12;
+    const SERVICE_ERROR_DAILY_LIMIT      = 99;
+    const SERVICE_ERROR_ACCOUNT_BLOCKED  = 100;
+
+    /**
+     * Slide share Web service communication URIs
+     */
+    const SERVICE_UPLOAD_URI                  = 'http://www.slideshare.net/api/1/upload_slideshow';
+    const SERVICE_GET_SHOW_URI                = 'http://www.slideshare.net/api/1/get_slideshow';
+    const SERVICE_GET_SHOW_BY_USER_URI        = 'http://www.slideshare.net/api/1/get_slideshow_by_user';
+    const SERVICE_GET_SHOW_BY_TAG_URI         = 'http://www.slideshare.net/api/1/get_slideshow_by_tag';
+    const SERVICE_GET_SHOW_BY_GROUP_URI       = 'http://www.slideshare.net/api/1/get_slideshows_from_group';
+
+    /**
+     * The MIME type of Slideshow files
+     *
+     */
+    const POWERPOINT_MIME_TYPE    = "application/vnd.ms-powerpoint";
+
+    /**
+     * The API key to use in requests
+     *
+     * @var string The API key
+     */
+    protected $_apiKey;
+
+    /**
+     * The shared secret to use in requests
+     *
+     * @var string the Shared secret
+     */
+    protected $_sharedSecret;
+
+    /**
+     * The username to use in requests
+     *
+     * @var string the username
+     */
+    protected $_username;
+
+    /**
+     * The password to use in requests
+     *
+     * @var string the password
+     */
+    protected $_password;
+
+    /**
+     * The HTTP Client object to use to perform requests
+     *
+     * @var Zend_Http_Client
+     */
+    protected $_httpclient;
+
+    /**
+     * The Cache object to use to perform caching
+     *
+     * @var Zend_Cache_Core
+     */
+    protected $_cacheobject;
+
+    /**
+     * Sets the Zend_Http_Client object to use in requests. If not provided a default will
+     * be used.
+     *
+     * @param Zend_Http_Client $client The HTTP client instance to use
+     * @return Zend_Service_SlideShare
+     */
+    public function setHttpClient(Zend_Http_Client $client)
+    {
+        $this->_httpclient = $client;
+        return $this;
+    }
+
+    /**
+     * Returns the instance of the Zend_Http_Client which will be used. Creates an instance
+     * of Zend_Http_Client if no previous client was set.
+     *
+     * @return Zend_Http_Client The HTTP client which will be used
+     */
+    public function getHttpClient()
+    {
+
+        if(!($this->_httpclient instanceof Zend_Http_Client)) {
+            $client = new Zend_Http_Client();
+            $client->setConfig(array('maxredirects' => 2,
+                                     'timeout' => 5));
+
+            $this->setHttpClient($client);
+        }
+
+        $this->_httpclient->resetParameters();
+        return $this->_httpclient;
+    }
+
+    /**
+     * Sets the Zend_Cache object to use to cache the results of API queries
+     *
+     * @param Zend_Cache_Core $cacheobject The Zend_Cache object used
+     * @return Zend_Service_SlideShare
+     */
+    public function setCacheObject(Zend_Cache_Core $cacheobject)
+    {
+        $this->_cacheobject = $cacheobject;
+        return $this;
+    }
+
+    /**
+     * Gets the Zend_Cache object which will be used to cache API queries. If no cache object
+     * was previously set the the default will be used (Filesystem caching in /tmp with a life
+     * time of 43200 seconds)
+     *
+     * @return Zend_Cache_Core The object used in caching
+     */
+    public function getCacheObject()
+    {
+
+        if(!($this->_cacheobject instanceof Zend_Cache_Core)) {
+            $cache = Zend_Cache::factory('Core', 'File', array('lifetime' => 43200,
+                                                               'automatic_serialization' => true),
+                                                         array('cache_dir' => '/tmp'));
+
+            $this->setCacheObject($cache);
+        }
+
+        return $this->_cacheobject;
+    }
+
+    /**
+     * Returns the user name used for API calls
+     *
+     * @return string The username
+     */
+    public function getUserName()
+    {
+        return $this->_username;
+    }
+
+    /**
+     * Sets the user name to use for API calls
+     *
+     * @param string $un The username to use
+     * @return Zend_Service_SlideShare
+     */
+    public function setUserName($un)
+    {
+        $this->_username = $un;
+        return $this;
+    }
+
+    /**
+     * Gets the password to use in API calls
+     *
+     * @return string the password to use in API calls
+     */
+    public function getPassword()
+    {
+        return $this->_password;
+    }
+
+    /**
+     * Sets the password to use in API calls
+     *
+     * @param string $pw The password to use
+     * @return Zend_Service_SlideShare
+     */
+    public function setPassword($pw)
+    {
+        $this->_password = (string)$pw;
+        return $this;
+    }
+
+    /**
+     * Gets the API key to be used in making API calls
+     *
+     * @return string the API Key
+     */
+    public function getApiKey()
+    {
+        return $this->_apiKey;
+    }
+
+    /**
+     * Sets the API key to be used in making API calls
+     *
+     * @param string $key The API key to use
+     * @return Zend_Service_SlideShare
+     */
+    public function setApiKey($key)
+    {
+        $this->_apiKey = (string)$key;
+        return $this;
+    }
+
+    /**
+     * Gets the shared secret used in making API calls
+     *
+     * @return string the Shared secret
+     */
+    public function getSharedSecret()
+    {
+        return $this->_sharedSecret;
+    }
+
+    /**
+     * Sets the shared secret used in making API calls
+     *
+     * @param string $secret the shared secret
+     * @return Zend_Service_SlideShare
+     */
+    public function setSharedSecret($secret)
+    {
+        $this->_sharedSecret = (string)$secret;
+        return $this;
+    }
+
+    /**
+     * The Constructor
+     *
+     * @param string $apikey The API key
+     * @param string $sharedSecret The shared secret
+     * @param string $username The username
+     * @param string $password The password
+     */
+    public function __construct($apikey, $sharedSecret, $username = null, $password = null)
+    {
+        $this->setApiKey($apikey)
+             ->setSharedSecret($sharedSecret)
+             ->setUserName($username)
+             ->setPassword($password);
+
+        $this->_httpclient = new Zend_Http_Client();
+    }
+
+    /**
+     * Uploads the specified Slide show the the server
+     *
+     * @param Zend_Service_SlideShare_SlideShow $ss The slide show object representing the slide show to upload
+     * @param boolean $make_src_public Determines if the the slide show's source file is public or not upon upload
+     * @return Zend_Service_SlideShare_SlideShow The passed Slide show object, with the new assigned ID provided
+     */
+    public function uploadSlideShow(Zend_Service_SlideShare_SlideShow $ss, $make_src_public = true)
+    {
+
+        $timestamp = time();
+
+        $params = array('api_key' => $this->getApiKey(),
+                        'ts' => $timestamp,
+                        'hash' => sha1($this->getSharedSecret().$timestamp),
+                        'username' => $this->getUserName(),
+                        'password' => $this->getPassword(),
+                        'slideshow_title' => $ss->getTitle());
+
+        $description = $ss->getDescription();
+        $tags = $ss->getTags();
+
+        $filename = $ss->getFilename();
+
+        if(!file_exists($filename) || !is_readable($filename)) {
+            require_once 'Zend/Service/SlideShare/Exception.php';
+            throw new Zend_Service_SlideShare_Exception("Specified Slideshow for upload not found or unreadable");
+        }
+
+        if(!empty($description)) {
+            $params['slideshow_description'] = $description;
+        } else {
+            $params['slideshow_description'] = "";
+        }
+
+        if(!empty($tags)) {
+            $tmp = array();
+            foreach($tags as $tag) {
+                $tmp[] = "\"$tag\"";
+            }
+            $params['slideshow_tags'] = implode(' ', $tmp);
+        } else {
+            $params['slideshow_tags'] = "";
+        }
+
+
+        $client = $this->getHttpClient();
+        $client->setUri(self::SERVICE_UPLOAD_URI);
+        $client->setParameterPost($params);
+        $client->setFileUpload($filename, "slideshow_srcfile");
+
+        require_once 'Zend/Http/Client/Exception.php';
+        try {
+            $response = $client->request('POST');
+        } catch(Zend_Http_Client_Exception $e) {
+            require_once 'Zend/Service/SlideShare/Exception.php';
+            throw new Zend_Service_SlideShare_Exception("Service Request Failed: {$e->getMessage()}", 0, $e);
+        }
+
+        $sxe = simplexml_load_string($response->getBody());
+
+        if($sxe->getName() == "SlideShareServiceError") {
+            $message = (string)$sxe->Message[0];
+            list($code, $error_str) = explode(':', $message);
+            require_once 'Zend/Service/SlideShare/Exception.php';
+            throw new Zend_Service_SlideShare_Exception(trim($error_str), $code);
+        }
+
+        if(!$sxe->getName() == "SlideShowUploaded") {
+            require_once 'Zend/Service/SlideShare/Exception.php';
+            throw new Zend_Service_SlideShare_Exception("Unknown XML Respons Received");
+        }
+
+        $ss->setId((int)(string)$sxe->SlideShowID);
+
+        return $ss;
+    }
+
+    /**
+     * Retrieves a slide show's information based on slide show ID
+     *
+     * @param int $ss_id The slide show ID
+     * @return Zend_Service_SlideShare_SlideShow the Slideshow object
+     */
+    public function getSlideShow($ss_id)
+    {
+        $timestamp = time();
+
+        $params = array('api_key' => $this->getApiKey(),
+                        'ts' => $timestamp,
+                        'hash' => sha1($this->getSharedSecret().$timestamp),
+                        'slideshow_id' => $ss_id);
+
+        $cache = $this->getCacheObject();
+
+        $cache_key = md5("__zendslideshare_cache_$ss_id");
+
+        if(!$retval = $cache->load($cache_key)) {
+            $client = $this->getHttpClient();
+
+            $client->setUri(self::SERVICE_GET_SHOW_URI);
+            $client->setParameterPost($params);
+
+            require_once 'Zend/Http/Client/Exception.php';
+            try {
+                $response = $client->request('POST');
+            } catch(Zend_Http_Client_Exception $e) {
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception("Service Request Failed: {$e->getMessage()}", 0, $e);
+            }
+
+            $sxe = simplexml_load_string($response->getBody());
+
+            if($sxe->getName() == "SlideShareServiceError") {
+                $message = (string)$sxe->Message[0];
+                list($code, $error_str) = explode(':', $message);
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception(trim($error_str), $code);
+            }
+
+            if(!$sxe->getName() == 'Slideshows') {
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception('Unknown XML Repsonse Received');
+            }
+
+            $retval = $this->_slideShowNodeToObject(clone $sxe->Slideshow[0]);
+
+            $cache->save($retval, $cache_key);
+        }
+
+        return $retval;
+    }
+
+    /**
+     * Retrieves an array of slide shows for a given username
+     *
+     * @param string $username The username to retrieve slide shows from
+     * @param int $offset The offset of the list to start retrieving from
+     * @param int $limit The maximum number of slide shows to retrieve
+     * @return array An array of Zend_Service_SlideShare_SlideShow objects
+     */
+    public function getSlideShowsByUsername($username, $offset = null, $limit = null)
+    {
+        return $this->_getSlideShowsByType('username_for', $username, $offset, $limit);
+    }
+
+    /**
+     * Retrieves an array of slide shows based on tag
+     *
+     * @param string $tag The tag to retrieve slide shows with
+     * @param int $offset The offset of the list to start retrieving from
+     * @param int $limit The maximum number of slide shows to retrieve
+     * @return array An array of Zend_Service_SlideShare_SlideShow objects
+     */
+    public function getSlideShowsByTag($tag, $offset = null, $limit = null)
+    {
+
+        if(is_array($tag)) {
+            $tmp = array();
+            foreach($tag as $t) {
+                $tmp[] = "\"$t\"";
+            }
+
+            $tag = implode(" ", $tmp);
+        }
+
+        return $this->_getSlideShowsByType('tag', $tag, $offset, $limit);
+    }
+
+    /**
+     * Retrieves an array of slide shows based on group name
+     *
+     * @param string $group The group name to retrieve slide shows for
+     * @param int $offset The offset of the list to start retrieving from
+     * @param int $limit The maximum number of slide shows to retrieve
+     * @return array An array of Zend_Service_SlideShare_SlideShow objects
+     */
+    public function getSlideShowsByGroup($group, $offset = null, $limit = null)
+    {
+        return $this->_getSlideShowsByType('group_name', $group, $offset, $limit);
+    }
+
+    /**
+     * Retrieves Zend_Service_SlideShare_SlideShow object arrays based on the type of
+     * list desired
+     *
+     * @param string $key The type of slide show object to retrieve
+     * @param string $value The specific search query for the slide show type to look up
+     * @param int $offset The offset of the list to start retrieving from
+     * @param int $limit The maximum number of slide shows to retrieve
+     * @return array An array of Zend_Service_SlideShare_SlideShow objects
+     */
+    protected function _getSlideShowsByType($key, $value, $offset = null, $limit = null)
+    {
+
+        $key = strtolower($key);
+
+        switch($key) {
+            case 'username_for':
+                $responseTag = 'User';
+                $queryUri = self::SERVICE_GET_SHOW_BY_USER_URI;
+                break;
+            case 'group_name':
+                $responseTag = 'Group';
+                $queryUri = self::SERVICE_GET_SHOW_BY_GROUP_URI;
+                break;
+            case 'tag':
+                $responseTag = 'Tag';
+                $queryUri = self::SERVICE_GET_SHOW_BY_TAG_URI;
+                break;
+            default:
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception("Invalid SlideShare Query");
+        }
+
+        $timestamp = time();
+
+        $params = array('api_key' => $this->getApiKey(),
+                        'ts' => $timestamp,
+                        'hash' => sha1($this->getSharedSecret().$timestamp),
+                        $key => $value);
+
+        if($offset !== null) {
+            $params['offset'] = (int)$offset;
+        }
+
+        if($limit !== null) {
+            $params['limit'] = (int)$limit;
+        }
+
+        $cache = $this->getCacheObject();
+
+        $cache_key = md5($key.$value.$offset.$limit);
+
+        if(!$retval = $cache->load($cache_key)) {
+
+            $client = $this->getHttpClient();
+
+            $client->setUri($queryUri);
+            $client->setParameterPost($params);
+
+            require_once 'Zend/Http/Client/Exception.php';
+            try {
+                $response = $client->request('POST');
+            } catch(Zend_Http_Client_Exception $e) {
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception("Service Request Failed: {$e->getMessage()}", 0, $e);
+            }
+
+            $sxe = simplexml_load_string($response->getBody());
+
+            if($sxe->getName() == "SlideShareServiceError") {
+                $message = (string)$sxe->Message[0];
+                list($code, $error_str) = explode(':', $message);
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception(trim($error_str), $code);
+            }
+
+            if(!$sxe->getName() == $responseTag) {
+                require_once 'Zend/Service/SlideShare/Exception.php';
+                throw new Zend_Service_SlideShare_Exception('Unknown or Invalid XML Repsonse Received');
+            }
+
+            $retval = array();
+
+            foreach($sxe->children() as $node) {
+                if($node->getName() == 'Slideshow') {
+                    $retval[] = $this->_slideShowNodeToObject($node);
+                }
+            }
+
+            $cache->save($retval, $cache_key);
+        }
+
+        return $retval;
+    }
+
+    /**
+     * Converts a SimpleXMLElement object representing a response from the service
+     * into a Zend_Service_SlideShare_SlideShow object
+     *
+     * @param SimpleXMLElement $node The input XML from the slideshare.net service
+     * @return Zend_Service_SlideShare_SlideShow The resulting object
+     */
+    protected function _slideShowNodeToObject(SimpleXMLElement $node)
+    {
+
+        if($node->getName() == 'Slideshow') {
+
+            $ss = new Zend_Service_SlideShare_SlideShow();
+
+            $ss->setId((string)$node->ID);
+            $ss->setDescription((string)$node->Description);
+            $ss->setEmbedCode((string)$node->EmbedCode);
+            $ss->setNumViews((string)$node->Views);
+            $ss->setPermaLink((string)$node->Permalink);
+            $ss->setStatus((string)$node->Status);
+            $ss->setStatusDescription((string)$node->StatusDescription);
+
+            foreach(explode(",", (string)$node->Tags) as $tag) {
+
+                if(!in_array($tag, $ss->getTags())) {
+                    $ss->addTag($tag);
+                }
+            }
+
+            $ss->setThumbnailUrl((string)$node->Thumbnail);
+            $ss->setTitle((string)$node->Title);
+            $ss->setLocation((string)$node->Location);
+            $ss->setTranscript((string)$node->Transcript);
+
+            return $ss;
+
+        }
+
+        require_once 'Zend/Service/SlideShare/Exception.php';
+        throw new Zend_Service_SlideShare_Exception("Was not provided the expected XML Node for processing");
+    }
+}

@@ -1,103 +1,103 @@
-<php?php
-php/php*php*
-php php*php Zendphp Framework
-php php*
-php php*php LICENSE
-php php*
-php php*php Thisphp sourcephp filephp isphp subjectphp tophp thephp newphp BSDphp licensephp thatphp isphp bundled
-php php*php withphp thisphp packagephp inphp thephp filephp LICENSEphp.txtphp.
-php php*php Itphp isphp alsophp availablephp throughphp thephp worldphp-widephp-webphp atphp thisphp URLphp:
-php php*php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsd
-php php*php Ifphp youphp didphp notphp receivephp aphp copyphp ofphp thephp licensephp andphp arephp unablephp to
-php php*php obtainphp itphp throughphp thephp worldphp-widephp-webphp,php pleasephp sendphp anphp email
-php php*php tophp licensephp@zendphp.comphp sophp wephp canphp sendphp youphp aphp copyphp immediatelyphp.
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Markup
-php php*php php@subpackagephp Rendererphp_Html
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php php@versionphp php php php php$Idphp:php Listphp.phpphp php2php0php2php7php0php php2php0php1php0php-php0php1php-php1php3php php2php2php:php3php7php:php4php1Zphp kokxphp php$
-php php*php/
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Markup
+ * @subpackage Renderer_Html
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: List.php 20270 2010-01-13 22:37:41Z kokx $
+ */
 
-php/php*php*
-php php*php php@seephp Zendphp_Markupphp_Rendererphp_Htmlphp_HtmlAbstract
-php php*php/
-requirephp_oncephp php'Zendphp/Markupphp/Rendererphp/Htmlphp/HtmlAbstractphp.phpphp'php;
+/**
+ * @see Zend_Markup_Renderer_Html_HtmlAbstract
+ */
+require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
 
-php/php*php*
-php php*php Tagphp interface
-php php*
-php php*php php@categoryphp php php Zend
-php php*php php@packagephp php php php Zendphp_Markup
-php php*php php@subpackagephp Rendererphp_Html
-php php*php php@copyrightphp php Copyrightphp php(cphp)php php2php0php0php5php-php2php0php1php0php Zendphp Technologiesphp USAphp Incphp.php php(httpphp:php/php/wwwphp.zendphp.comphp)
-php php*php php@licensephp php php php httpphp:php/php/frameworkphp.zendphp.comphp/licensephp/newphp-bsdphp php php php php Newphp BSDphp License
-php php*php/
-classphp Zendphp_Markupphp_Rendererphp_Htmlphp_Listphp extendsphp Zendphp_Markupphp_Rendererphp_Htmlphp_HtmlAbstract
-php{
+/**
+ * Tag interface
+ *
+ * @category   Zend
+ * @package    Zend_Markup
+ * @subpackage Renderer_Html
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Markup_Renderer_Html_List extends Zend_Markup_Renderer_Html_HtmlAbstract
+{
 
-php php php php php/php*php*
-php php php php php php*php Convertphp thephp token
-php php php php php php*
-php php php php php php*php php@paramphp Zendphp_Markupphp_Tokenphp php$token
-php php php php php php*php php@paramphp stringphp php$text
-php php php php php php*
-php php php php php php*php php@returnphp string
-php php php php php php*php/
-php php php php publicphp functionphp convertphp(Zendphp_Markupphp_Tokenphp php$tokenphp,php php$textphp)
-php php php php php{
-php php php php php php php php php$typephp php=php nullphp;
-php php php php php php php php ifphp php(php$tokenphp-php>hasAttributephp(php'listphp'php)php)php php{
-php php php php php php php php php php php php php/php/php becausephp php'php0php1php'php php=php=php php'php1php'
-php php php php php php php php php php php php ifphp php(php$tokenphp-php>getAttributephp(php'listphp'php)php php=php=php=php php'php0php1php'php)php php{
-php php php php php php php php php php php php php php php php php$typephp php=php php'decimalphp-leadingphp-zerophp'php;
-php php php php php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php php php php php switchphp php(php$tokenphp-php>getAttributephp(php'listphp'php)php)php php{
-php php php php php php php php php php php php php php php php php php php php casephp php'php1php'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'decimalphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'iphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'lowerphp-romanphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'Iphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'upperphp-romanphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'aphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'lowerphp-alphaphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php php php php casephp php'Aphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'upperphp-alphaphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+    /**
+     * Convert the token
+     *
+     * @param Zend_Markup_Token $token
+     * @param string $text
+     *
+     * @return string
+     */
+    public function convert(Zend_Markup_Token $token, $text)
+    {
+        $type = null;
+        if ($token->hasAttribute('list')) {
+            // because '01' == '1'
+            if ($token->getAttribute('list') === '01') {
+                $type = 'decimal-leading-zero';
+            } else {
+                switch ($token->getAttribute('list')) {
+                    case '1':
+                        $type = 'decimal';
+                        break;
+                    case 'i':
+                        $type = 'lower-roman';
+                        break;
+                    case 'I':
+                        $type = 'upper-roman';
+                        break;
+                    case 'a':
+                        $type = 'lower-alpha';
+                        break;
+                    case 'A':
+                        $type = 'upper-alpha';
+                        break;
 
-php php php php php php php php php php php php php php php php php php php php php/php/php thephp followingphp typephp isphp unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'alphaphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php'lowerphp-greekphp'php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
+                    // the following type is unsupported by IE (including IE8)
+                    case 'alpha':
+                        $type = 'lower-greek';
+                        break;
 
-php php php php php php php php php php php php php php php php php php php php php/php/php thephp CSSphp namesphp itself
-php php php php php php php php php php php php php php php php php php php php casephp php'armenianphp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'decimalphp'php:
-php php php php php php php php php php php php php php php php php php php php casephp php'decimalphp-leadingphp-zerophp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'georgianphp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'lowerphp-alphaphp'php:
-php php php php php php php php php php php php php php php php php php php php casephp php'lowerphp-greekphp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'lowerphp-latinphp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'lowerphp-romanphp'php:
-php php php php php php php php php php php php php php php php php php php php casephp php'upperphp-alphaphp'php:
-php php php php php php php php php php php php php php php php php php php php casephp php'upperphp-latinphp'php:php php/php/php unsupportedphp byphp IEphp php(includingphp IEphp8php)
-php php php php php php php php php php php php php php php php php php php php casephp php'upperphp-romanphp'php:
-php php php php php php php php php php php php php php php php php php php php php php php php php$typephp php=php php$tokenphp-php>getAttributephp(php'listphp'php)php;
-php php php php php php php php php php php php php php php php php php php php php php php php breakphp;
-php php php php php php php php php php php php php php php php php}
-php php php php php php php php php php php php php}
-php php php php php php php php php}
+                    // the CSS names itself
+                    case 'armenian': // unsupported by IE (including IE8)
+                    case 'decimal':
+                    case 'decimal-leading-zero': // unsupported by IE (including IE8)
+                    case 'georgian': // unsupported by IE (including IE8)
+                    case 'lower-alpha':
+                    case 'lower-greek': // unsupported by IE (including IE8)
+                    case 'lower-latin': // unsupported by IE (including IE8)
+                    case 'lower-roman':
+                    case 'upper-alpha':
+                    case 'upper-latin': // unsupported by IE (including IE8)
+                    case 'upper-roman':
+                        $type = $token->getAttribute('list');
+                        break;
+                }
+            }
+        }
 
-php php php php php php php php ifphp php(nullphp php!php=php=php php$typephp)php php{
-php php php php php php php php php php php php returnphp php"php<olphp stylephp=php\php"listphp-stylephp-typephp:php php{php$typephp}php\php"php>php{php$textphp}<php/olphp>php"php;
-php php php php php php php php php}php elsephp php{
-php php php php php php php php php php php php returnphp php"php<ulphp>php{php$textphp}<php/ulphp>php"php;
-php php php php php php php php php}
-php php php php php}
+        if (null !== $type) {
+            return "<ol style=\"list-style-type: {$type}\">{$text}</ol>";
+        } else {
+            return "<ul>{$text}</ul>";
+        }
+    }
 
-php}
+}

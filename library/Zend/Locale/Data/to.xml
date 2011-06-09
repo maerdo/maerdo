@@ -1,611 +1,611 @@
-<php?xmlphp versionphp=php"php1php.php0php"php encodingphp=php"UTFphp-php8php"php php?php>
-php<ldmlphp>
-php	php<identityphp>
-php	php	php<versionphp numberphp=php"php$Revisionphp:php php1php.php1php9php php$php"php/php>
-php	php	php<generationphp datephp=php"php$Datephp:php php2php0php0php9php/php0php6php/php1php5php php0php3php:php4php6php:php2php5php php$php"php/php>
-php	php	php<languagephp typephp=php"tophp"php/php>
-php	<php/identityphp>
-php	php<localeDisplayNamesphp>
-php	php	php<localeDisplayPatternphp>
-php	php	php	php<localePatternphp>php{php0php}php php(php{php1php}php)<php/localePatternphp>
-php	php	php	php<localeSeparatorphp>php,php <php/localeSeparatorphp>
-php	php	<php/localeDisplayPatternphp>
-php	php	php<languagesphp>
-php	php	php	php<languagephp typephp=php"arphp"php>leaphp fakaphpʻalepea<php/languagephp>
-php	php	php	php<languagephp typephp=php"artphp"php>leaphp faphpʻuphp pēphp kehe<php/languagephp>
-php	php	php	php<languagephp typephp=php"dephp"php>leaphp fakasiamane<php/languagephp>
-php	php	php	php<languagephp typephp=php"elphp"php>leaphp fakakalisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"enphp"php>leaphp fakapilitānia<php/languagephp>
-php	php	php	php<languagephp typephp=php"esphp"php>leaphp fakasepeni<php/languagephp>
-php	php	php	php<languagephp typephp=php"faphp"php>leaphp fakapēsia<php/languagephp>
-php	php	php	php<languagephp typephp=php"fiphp"php>leaphp fakafinilani<php/languagephp>
-php	php	php	php<languagephp typephp=php"fjphp"php>leaphp fakafisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"frphp"php>leaphp fakafalanisē<php/languagephp>
-php	php	php	php<languagephp typephp=php"gaphp"php>leaphp fakaphpʻaealani<php/languagephp>
-php	php	php	php<languagephp typephp=php"gilphp"php>leaphp fakakilipasi<php/languagephp>
-php	php	php	php<languagephp typephp=php"grcphp"php>leaphp fakakalisimuphpʻa<php/languagephp>
-php	php	php	php<languagephp typephp=php"hawphp"php>leaphp fakahauaiphpʻi<php/languagephp>
-php	php	php	php<languagephp typephp=php"hephp"php>leaphp fakahepelū<php/languagephp>
-php	php	php	php<languagephp typephp=php"itphp"php>leaphp fakaphpʻītali<php/languagephp>
-php	php	php	php<languagephp typephp=php"japhp"php>leaphp fakasiapani<php/languagephp>
-php	php	php	php<languagephp typephp=php"kophp"php>leaphp fakakōlea<php/languagephp>
-php	php	php	php<languagephp typephp=php"laphp"php>leaphp fakalatina<php/languagephp>
-php	php	php	php<languagephp typephp=php"mhphp"php>leaphp fakamāsolo<php/languagephp>
-php	php	php	php<languagephp typephp=php"miphp"php>leaphp fakamauli<php/languagephp>
-php	php	php	php<languagephp typephp=php"misphp"php>leaphp kehekehe<php/languagephp>
-php	php	php	php<languagephp typephp=php"msphp"php>leaphp fakamalei<php/languagephp>
-php	php	php	php<languagephp typephp=php"myphp"php>leaphp fakapema<php/languagephp>
-php	php	php	php<languagephp typephp=php"naphp"php>leaphp fakanaulu<php/languagephp>
-php	php	php	php<languagephp typephp=php"niuphp"php>leaphp fakaniuē<php/languagephp>
-php	php	php	php<languagephp typephp=php"nlphp"php>leaphp fakaholani<php/languagephp>
-php	php	php	php<languagephp typephp=php"nophp"php>leaphp fakanoauē<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp"php>leaphp fakapotukali<php/languagephp>
-php	php	php	php<languagephp typephp=php"ptphp_BRphp"php>leaphp fakapotukaliphp-palāsili<php/languagephp>
-php	php	php	php<languagephp typephp=php"rapphp"php>leaphp fakalapanui<php/languagephp>
-php	php	php	php<languagephp typephp=php"rarphp"php>leaphp fakalalotonga<php/languagephp>
-php	php	php	php<languagephp typephp=php"ruphp"php>leaphp fakalusia<php/languagephp>
-php	php	php	php<languagephp typephp=php"scophp"php>leaphp fakasikotilani<php/languagephp>
-php	php	php	php<languagephp typephp=php"sgnphp"php>leaphp fakaphpʻilonga<php/languagephp>
-php	php	php	php<languagephp typephp=php"smphp"php>leaphp fakahaphpʻamoa<php/languagephp>
-php	php	php	php<languagephp typephp=php"svphp"php>leaphp fakasueteni<php/languagephp>
-php	php	php	php<languagephp typephp=php"tklphp"php>leaphp fakatokelau<php/languagephp>
-php	php	php	php<languagephp typephp=php"tophp"php>leaphp fakatonga<php/languagephp>
-php	php	php	php<languagephp typephp=php"trphp"php>leaphp fakatoake<php/languagephp>
-php	php	php	php<languagephp typephp=php"tvlphp"php>leaphp fakatūvalu<php/languagephp>
-php	php	php	php<languagephp typephp=php"typhp"php>leaphp fakatahisi<php/languagephp>
-php	php	php	php<languagephp typephp=php"undphp"php>leaphp taphpʻephpʻiloa<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp"php>leaphp fakasiaina<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hansphp"php>leaphp fakasiainaphp fakangofua<php/languagephp>
-php	php	php	php<languagephp typephp=php"zhphp_Hantphp"php>leaphp fakasiainaphp tukufakaholo<php/languagephp>
-php	php	php	php<languagephp typephp=php"zxxphp"php>phpʻikaiphp haphp lea<php/languagephp>
-php	php	<php/languagesphp>
-php	php	php<scriptsphp>
-php	php	php	php<scriptphp typephp=php"Arabphp"php>tohinimaphp fakaphpʻalepea<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Braiphp"php>tohinimaphp maphpʻaphp ephp kakaiphp kui<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Cyrlphp"php>tohinimaphp fakalūsia<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Grekphp"php>tohinimaphp fakakalisi<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Haniphp"php>tohinimaphp fakasiaina<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hansphp"php>tohinimaphp fakasiainaphp fakafaingofua<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hantphp"php>tohinimaphp fakasiainaphp fakatukutala<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Hebrphp"php>tohinimaphp fakahepelū<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Jpanphp"php>tohinimaphp fakasiapani<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Korephp"php>tohinimaphp fakakolea<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Latnphp"php>tohinimaphp fakalatina<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zxxxphp"php>tohinimaphp taphpʻetohitohiphpʻi<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zyyyphp"php>tohinimaphp mephpʻataha<php/scriptphp>
-php	php	php	php<scriptphp typephp=php"Zzzzphp"php>tohinimaphp taphpʻephpʻiloa<php/scriptphp>
-php	php	<php/scriptsphp>
-php	php	php<territoriesphp>
-php	php	php	php<territoryphp typephp=php"php0php0php1php"php>Māmani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php2php"php>phpʻAfelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php3php"php>phpʻAmelikaphp tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php5php"php>phpʻAmelikaphp tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php0php9php"php>phpʻOseania<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php1php"php>phpʻAfelikaphp hihifo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php3php"php>phpʻAmelikaphp lotoloto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php4php"php>phpʻAfelikaphp hahake<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php5php"php>phpʻAfelikaphp tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php7php"php>phpʻAfelikaphp lotoloto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php8php"php>phpʻAfelikaphp fakatonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php1php9php"php>Ongophp phpʻAmelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php1php"php>phpʻAmelikaphp tongaphp ange<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php2php9php"php>Kalipea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php0php"php>phpʻĒsiaphp hahake<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php4php"php>phpʻĒsiaphp tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php5php"php>phpʻĒsiaphp tongahahake<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php3php9php"php>phpʻEulopephp tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php3php"php>phpʻAositelēliaphp mophp Nuphpʻusila<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php4php"php>Melanisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php5php7php"php>Potuphp fonuaphp Mikolonisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php1php"php>Polinisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php0php6php2php"php>phpʻĒsiaphp tongalotoloto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php2php"php>phpʻĒsia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php3php"php>phpʻĒsiaphp lotoloto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php4php5php"php>phpʻĒsiaphp hihifo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php0php"php>phpʻEulope<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php1php"php>phpʻEulopephp hahake<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php4php"php>phpʻEulopephp tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php5php5php"php>phpʻEulopephp hihifo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php1php7php2php"php>Komoniueli<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"php4php1php9php"php>phpʻAmelikaphp fakalatinaphp mophp Kalipea<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AGphp"php>Anitikuaphp mophp Palaputa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AIphp"php>Anikuila<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AQphp"php>phpʻAnetātika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ASphp"php>Haphpʻamoaphp fakaphpʻamelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"AUphp"php>phpʻAositelēlia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BEphp"php>Pelesiume<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BRphp"php>Palāsili<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BSphp"php>Pahama<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BVphp"php>Motuphp Puveti<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BWphp"php>Potisiuana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"BZphp"php>Pelise<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CAphp"php>Kānata<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CHphp"php>Suisilani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CKphp"php>phpʻOtumotuphp Kuki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CNphp"php>Siaina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"CXphp"php>Motuphp Kilisimasi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DEphp"php>Siamane<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"DMphp"php>Tominika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"EGphp"php>phpʻIsipite<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ESphp"php>Sepeni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FIphp"php>Finilani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FJphp"php>Fisi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FMphp"php>Mikolonisia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"FRphp"php>Falanisē<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GBphp"php>Pilitānia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GDphp"php>Kelenatā<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GGphp"php>Kuenisī<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GHphp"php>Kana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GIphp"php>Sipalālitā<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GMphp"php>Kamipia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GRphp"php>Kalisi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GSphp"php>phpʻOtumotuphp Siosiaphp-tongaphp mophp Saniuisiphp-tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GUphp"php>Kuami<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"GYphp"php>Kuiana<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HKphp"php>Hongiphp Kongiphp SARphp Siaina<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HMphp"php>phpʻOtumotuphp Heatiphp mophp Makitonali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"HNphp"php>Honitulasi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IEphp"php>phpʻAealani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ILphp"php>phpʻIsileli<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IMphp"php>Motuphp Mani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"INphp"php>phpʻInitia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"IOphp"php>Potuphp fonuaphp moanaphp phpʻInitiaphp fakapilitānia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ITphp"php>phpʻĪtali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JEphp"php>Selusī<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"JPphp"php>Siapani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KEphp"php>Kenia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KIphp"php>Kilipasi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KPphp"php>Kōloaphp tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"KRphp"php>Kōleaphp tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LKphp"php>Sīloni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LRphp"php>Laipelia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"LSphp"php>Lesoto<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MHphp"php>phpʻOtumotuphp Māsolo<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MPphp"php>phpʻOtumotuphp Malianaphp tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MSphp"php>Mophpʻungaselati<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MTphp"php>Malita<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MUphp"php>Maulitiusi<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MWphp"php>Malaui<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"MXphp"php>Mekesikō<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NAphp"php>Namipia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NCphp"php>Niuphp Kaletonia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NFphp"php>Motuphp Nōfoliki<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NGphp"php>Naisilia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NLphp"php>Holani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NOphp"php>Noauē<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NRphp"php>Naulu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NUphp"php>Niuē<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"NZphp"php>Nuphpʻusila<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PAphp"php>Panamā<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PFphp"php>Polinisiaphp fakafalanisē<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PGphp"php>Papuaniukini<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PKphp"php>Pakisitani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PNphp"php>Pitikeni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PTphp"php>Potukali<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"PWphp"php>Palau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"QUphp"php>phpʻEulopephp fakataha<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RUphp"php>Lūsia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"RWphp"php>Luanitā<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SBphp"php>phpʻOtumotuphp Solomone<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SCphp"php>phpʻOtumotuphp Seiseli<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SEphp"php>Suēteni<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"SGphp"php>Singapula<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TFphp"php>Potuphp fonuaphp tongaphp fakafalanisē<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TKphp"php>Tokelau<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TOphp"php>Tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TRphp"php>Toake<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TTphp"php>Tilinitatiphp mophp Topako<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"TVphp"php>Tūvalu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"UMphp"php>phpʻOtumotuphp siphpʻiphp phpʻophp phpʻAmelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"USphp"php>Pulephpʻangaphp fakatahaphp phpʻAmelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VAphp"php>Vatikani<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VGphp"php>phpʻOtumotuphp Vilikiniphp fakapilitānia<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VIphp"php>phpʻOtumotuphp Vilikiniphp fakaphpʻamelika<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"VUphp"php>Vanuatu<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WFphp"php>phpʻUveaphp mophp Futuna<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"WSphp"php>Haphpʻamoa<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZAphp"php>phpʻAfelikaphp tonga<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZWphp"php>Simipapue<php/territoryphp>
-php	php	php	php<territoryphp typephp=php"ZZphp"php>Potuphp fonuaphp taphpʻephpʻiloaphp pephp hala<php/territoryphp>
-php	php	<php/territoriesphp>
-php	php	php<keysphp>
-php	php	php	php<keyphp typephp=php"calendarphp"php>tohiphp māhina<php/keyphp>
-php	php	php	php<keyphp typephp=php"collationphp"php>tohiphp hokohoko<php/keyphp>
-php	php	php	php<keyphp typephp=php"currencyphp"php>paphpʻanga<php/keyphp>
-php	php	<php/keysphp>
-php	php	php<typesphp>
-php	php	php	php<typephp typephp=php"buddhistphp"php keyphp=php"calendarphp"php>fakaputa<php/typephp>
-php	php	php	php<typephp typephp=php"chinesephp"php keyphp=php"calendarphp"php>fakasiaina<php/typephp>
-php	php	php	php<typephp typephp=php"directphp"php keyphp=php"collationphp"php>hangatonu<php/typephp>
-php	php	php	php<typephp typephp=php"gregorianphp"php keyphp=php"calendarphp"php>fakakelekolia<php/typephp>
-php	php	php	php<typephp typephp=php"hebrewphp"php keyphp=php"calendarphp"php>fakahepelū<php/typephp>
-php	php	php	php<typephp typephp=php"indianphp"php keyphp=php"calendarphp"php>fakaphpʻinitia<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp"php keyphp=php"calendarphp"php>fakamohameti<php/typephp>
-php	php	php	php<typephp typephp=php"islamicphp-civilphp"php keyphp=php"calendarphp"php>fakamohametiphp-sivile<php/typephp>
-php	php	php	php<typephp typephp=php"japanesephp"php keyphp=php"calendarphp"php>fakasiapani<php/typephp>
-php	php	<php/typesphp>
-php	php	php<measurementSystemNamesphp>
-php	php	php	php<measurementSystemNamephp typephp=php"metricphp"php>fakamita<php/measurementSystemNamephp>
-php	php	php	php<measurementSystemNamephp typephp=php"USphp"php>fakaphpʻamelika<php/measurementSystemNamephp>
-php	php	<php/measurementSystemNamesphp>
-php	<php/localeDisplayNamesphp>
-php	php<charactersphp>
-php	php	php<exemplarCharactersphp>php[aphp áphp āphp ephp éphp ēphp fphp hphp phpʻphp iphp íphp īphp kphp-nphp php{ngphp}php ophp óphp ōphp pphp sphp-uphp úphp ūphp vphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"auxiliaryphp"php>php[àphp ăphp âphp åphp äphp æphp bphp cphp çphp dphp èphp ĕphp êphp ëphp gphp ìphp ĭphp îphp ïphp jphp ñphp òphp ŏphp ôphp öphp øphp œphp qphp rphp ßphp ùphp ŭphp ûphp üphp wphp-yphp ÿphp zphp]<php/exemplarCharactersphp>
-php	php	php<exemplarCharactersphp typephp=php"currencySymbolphp"php>php[aphp-zphp]<php/exemplarCharactersphp>
-php	<php/charactersphp>
-php	php<delimitersphp>
-php	php	php<quotationStartphp>php“<php/quotationStartphp>
-php	php	php<quotationEndphp>php”<php/quotationEndphp>
-php	php	php<alternateQuotationStartphp>php«<php/alternateQuotationStartphp>
-php	php	php<alternateQuotationEndphp>php»<php/alternateQuotationEndphp>
-php	<php/delimitersphp>
-php	php<datesphp>
-php	php	php<calendarsphp>
-php	php	php	php<calendarphp typephp=php"gregorianphp"php>
-php	php	php	php	php<monthsphp>
-php	php	php	php	php	php<monthContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Sān<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Fēp<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Maphpʻa<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpʻEpe<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mē<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Sun<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Siu<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpʻAok<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sēp<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpʻOka<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Nōv<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Tis<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>Sānuali<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>Fēpueli<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>Maphpʻasi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>phpʻEpeleli<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>Mē<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>Sune<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>Siulai<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>phpʻAokosi<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>Sēpitema<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>phpʻOkatopa<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>Nōvema<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>Tisema<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	php	php<monthContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<monthWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php2php"php>F<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php3php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php4php"php>E<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php5php"php>M<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php6php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php7php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php8php"php>A<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php9php"php>S<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php0php"php>O<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php1php"php>N<php/monthphp>
-php	php	php	php	php	php	php	php<monthphp typephp=php"php1php2php"php>T<php/monthphp>
-php	php	php	php	php	php	<php/monthWidthphp>
-php	php	php	php	php	<php/monthContextphp>
-php	php	php	php	<php/monthsphp>
-php	php	php	php	php<daysphp>
-php	php	php	php	php	php<dayContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Sāp<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Mōn<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Tus<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Pul<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Tuphpʻa<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Fal<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Tok<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>Sāpate<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>Mōnite<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>Tusite<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>Pulelulu<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>Tuphpʻapulelulu<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>Falaite<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>Tokonaki<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	php	php<dayContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<dayWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<dayphp typephp=php"sunphp"php>S<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"monphp"php>M<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"tuephp"php>T<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"wedphp"php>P<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"thuphp"php>T<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"friphp"php>F<php/dayphp>
-php	php	php	php	php	php	php	php<dayphp typephp=php"satphp"php>T<php/dayphp>
-php	php	php	php	php	php	<php/dayWidthphp>
-php	php	php	php	php	<php/dayContextphp>
-php	php	php	php	<php/daysphp>
-php	php	php	php	php<quartersphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"formatphp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"abbreviatedphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>Kphp1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>Kphp2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>Kphp3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>Kphp4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>kuataphp phpʻuluaki<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>kuataphp ua<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>kuataphp tolu<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>kuataphp fā<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	php	php<quarterContextphp typephp=php"standphp-alonephp"php>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"narrowphp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>php1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>php2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>php3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>php4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	php	php<quarterWidthphp typephp=php"widephp"php>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php1php"php>kuataphp php1<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php2php"php>kuataphp php2<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php3php"php>kuataphp php3<php/quarterphp>
-php	php	php	php	php	php	php	php<quarterphp typephp=php"php4php"php>kuataphp php4<php/quarterphp>
-php	php	php	php	php	php	<php/quarterWidthphp>
-php	php	php	php	php	<php/quarterContextphp>
-php	php	php	php	<php/quartersphp>
-php	php	php	php	php<amphp>HH<php/amphp>
-php	php	php	php	php<pmphp>EA<php/pmphp>
-php	php	php	php	php<erasphp>
-php	php	php	php	php	php<eraNamesphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>kiphp muphpʻa<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>taphpʻuphp phpʻophp Sīsū<php/eraphp>
-php	php	php	php	php	<php/eraNamesphp>
-php	php	php	php	php	php<eraAbbrphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>KM<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>TS<php/eraphp>
-php	php	php	php	php	<php/eraAbbrphp>
-php	php	php	php	php	php<eraNarrowphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php0php"php>KāMā<php/eraphp>
-php	php	php	php	php	php	php<eraphp typephp=php"php1php"php>TāSā<php/eraphp>
-php	php	php	php	php	<php/eraNarrowphp>
-php	php	php	php	<php/erasphp>
-php	php	php	php	php<dateFormatsphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>EEEEphp dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>dphp MMMphp y<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	php	php<dateFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<dateFormatphp>
-php	php	php	php	php	php	php	php<patternphp>ddphp-MMphp-yyyy<php/patternphp>
-php	php	php	php	php	php	<php/dateFormatphp>
-php	php	php	php	php	<php/dateFormatLengthphp>
-php	php	php	php	<php/dateFormatsphp>
-php	php	php	php	php<timeFormatsphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"fullphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp zzzz<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"longphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ssphp z<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"mediumphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mmphp:ss<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	php	php<timeFormatLengthphp typephp=php"shortphp"php>
-php	php	php	php	php	php	php<timeFormatphp>
-php	php	php	php	php	php	php	php<patternphp>HHphp:mm<php/patternphp>
-php	php	php	php	php	php	<php/timeFormatphp>
-php	php	php	php	php	<php/timeFormatLengthphp>
-php	php	php	php	<php/timeFormatsphp>
-php	php	php	php	php<dateTimeFormatsphp>
-php	php	php	php	php	php<availableFormatsphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"dphp"php>d<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Hmphp"php>Hphp:mm<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mphp"php>L<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"Mdphp"php>dphp-M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MEdphp"php>Ephp dphp-M<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMphp"php>LLL<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMdphp"php>dphp MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMEdphp"php>Ephp dphp MMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMdphp"php>dphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"MMMMEdphp"php>Ephp dphp MMMM<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"msphp"php>mmphp:ss<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yphp"php>y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMphp"php>Mphp-yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMEdphp"php>EEEphp dphp-Mphp-yyyy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMphp"php>MMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMEdphp"php>EEEphp dphp MMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yMMMMphp"php>MMMMphp y<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQphp"php>yyyyphp Q<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yQQQphp"php>yphp QQQ<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMphp"php>MMphp-yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyMMMphp"php>MMMphp yy<php/dateFormatItemphp>
-php	php	php	php	php	php	php<dateFormatItemphp idphp=php"yyQphp"php>Qphp yy<php/dateFormatItemphp>
-php	php	php	php	php	<php/availableFormatsphp>
-php	php	php	php	<php/dateTimeFormatsphp>
-php	php	php	php	php<fieldsphp>
-php	php	php	php	php	php<fieldphp typephp=php"eraphp"php>
-php	php	php	php	php	php	php<displayNamephp>kuonga<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"yearphp"php>
-php	php	php	php	php	php	php<displayNamephp>taphpʻu<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"monthphp"php>
-php	php	php	php	php	php	php<displayNamephp>māhina<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekphp"php>
-php	php	php	php	php	php	php<displayNamephp>uike<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpʻaho<php/displayNamephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php2php"php>phpʻaneheafi<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php-php1php"php>phpʻaneafi<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php0php"php>phpʻahóphp ni<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php1php"php>phpʻapongipongi<php/relativephp>
-php	php	php	php	php	php	php<relativephp typephp=php"php2php"php>phpʻahepongipongi<php/relativephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"weekdayphp"php>
-php	php	php	php	php	php	php<displayNamephp>phpʻahophp phpʻophp ephp uike<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"dayperiodphp"php>
-php	php	php	php	php	php	php<displayNamephp>HHphp/EA<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"hourphp"php>
-php	php	php	php	php	php	php<displayNamephp>houa<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"minutephp"php>
-php	php	php	php	php	php	php<displayNamephp>miniti<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"secondphp"php>
-php	php	php	php	php	php	php<displayNamephp>sekoni<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	php	php<fieldphp typephp=php"zonephp"php>
-php	php	php	php	php	php	php<displayNamephp>vahetaimi<php/displayNamephp>
-php	php	php	php	php	<php/fieldphp>
-php	php	php	php	<php/fieldsphp>
-php	php	php	<php/calendarphp>
-php	php	<php/calendarsphp>
-php	php	php<timeZoneNamesphp>
-php	php	php	php<hourFormatphp>php+HHphp:mmphp;php-HHphp:mm<php/hourFormatphp>
-php	php	php	php<gmtFormatphp>GMTphp{php0php}<php/gmtFormatphp>
-php	php	php	php<regionFormatphp>Houaphp php{php0php}<php/regionFormatphp>
-php	php	php	php<metazonephp typephp=php"Fijiphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakafisi<php/standardphp>
-php	php	php	php	php	php<daylightphp>houaphp fakafisiphp fakamaama<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Hawaiiphp_Aleutianphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakahauaphpʻi<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Newphp_Zealandphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<genericphp>houaphp fakanuphpʻusila<php/genericphp>
-php	php	php	php	php	php<standardphp>houaphp fakanuphpʻusilaphp fakasīpinga<php/standardphp>
-php	php	php	php	php	php<daylightphp>houaphp fakanuphpʻusilaphp fakamaama<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Niuephp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakaniuē<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Samoaphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakahaphpʻamoa<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Tahitiphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakatahisi<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Tokelauphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakatokelau<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Tongaphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakatonga<php/standardphp>
-php	php	php	php	php	php<daylightphp>houaphp fakatongaphp lotohē<php/daylightphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Tuvaluphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakatūvalu<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	php	php<metazonephp typephp=php"Wallisphp"php>
-php	php	php	php	php<longphp>
-php	php	php	php	php	php<standardphp>houaphp fakaphpʻuveaphp mophp futuna<php/standardphp>
-php	php	php	php	<php/longphp>
-php	php	php	<php/metazonephp>
-php	php	<php/timeZoneNamesphp>
-php	<php/datesphp>
-php	php<numbersphp>
-php	php	php<symbolsphp>
-php	php	php	php<decimalphp>php.<php/decimalphp>
-php	php	php	php<groupphp>php,<php/groupphp>
-php	php	php	php<listphp>php;<php/listphp>
-php	php	php	php<percentSignphp>php%<php/percentSignphp>
-php	php	php	php<nativeZeroDigitphp>php0<php/nativeZeroDigitphp>
-php	php	php	php<patternDigitphp>php#<php/patternDigitphp>
-php	php	php	php<plusSignphp>php+<php/plusSignphp>
-php	php	php	php<minusSignphp>php-<php/minusSignphp>
-php	php	php	php<exponentialphp>E<php/exponentialphp>
-php	php	php	php<perMillephp>php‰<php/perMillephp>
-php	php	php	php<infinityphp>php∞<php/infinityphp>
-php	php	php	php<nanphp>NaN<php/nanphp>
-php	php	<php/symbolsphp>
-php	php	php<decimalFormatsphp>
-php	php	php	php<decimalFormatLengthphp>
-php	php	php	php	php<decimalFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php.php#php#php#<php/patternphp>
-php	php	php	php	<php/decimalFormatphp>
-php	php	php	<php/decimalFormatLengthphp>
-php	php	<php/decimalFormatsphp>
-php	php	php<scientificFormatsphp>
-php	php	php	php<scientificFormatLengthphp>
-php	php	php	php	php<scientificFormatphp>
-php	php	php	php	php	php<patternphp>php#Ephp0<php/patternphp>
-php	php	php	php	<php/scientificFormatphp>
-php	php	php	<php/scientificFormatLengthphp>
-php	php	<php/scientificFormatsphp>
-php	php	php<percentFormatsphp>
-php	php	php	php<percentFormatLengthphp>
-php	php	php	php	php<percentFormatphp>
-php	php	php	php	php	php<patternphp>php#php,php#php#php0php%<php/patternphp>
-php	php	php	php	<php/percentFormatphp>
-php	php	php	<php/percentFormatLengthphp>
-php	php	<php/percentFormatsphp>
-php	php	php<currencyFormatsphp>
-php	php	php	php<currencyFormatLengthphp>
-php	php	php	php	php<currencyFormatphp>
-php	php	php	php	php	php<patternphp>php¤php php#php,php#php#php0php.php0php0<php/patternphp>
-php	php	php	php	<php/currencyFormatphp>
-php	php	php	<php/currencyFormatLengthphp>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php php{php1php}<php/unitPatternphp>
-php	php	<php/currencyFormatsphp>
-php	<php/numbersphp>
-php	php<unitsphp>
-php	php	php<unitphp typephp=php"dayphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php phpʻa<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"minutephp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php m<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"weekphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php u<php/unitPatternphp>
-php	php	<php/unitphp>
-php	php	php<unitphp typephp=php"yearphp"php>
-php	php	php	php<unitPatternphp countphp=php"otherphp"php>php{php0php}php t<php/unitPatternphp>
-php	php	<php/unitphp>
-php	<php/unitsphp>
-php	php<posixphp>
-php	php	php<messagesphp>
-php	php	php	php<yesstrphp>phpʻio<php/yesstrphp>
-php	php	php	php<nostrphp>phpʻikai<php/nostrphp>
-php	php	<php/messagesphp>
-php	<php/posixphp>
-<php/ldmlphp>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ldml>
+	<identity>
+		<version number="$Revision: 1.19 $"/>
+		<generation date="$Date: 2009/06/15 03:46:25 $"/>
+		<language type="to"/>
+	</identity>
+	<localeDisplayNames>
+		<localeDisplayPattern>
+			<localePattern>{0} ({1})</localePattern>
+			<localeSeparator>, </localeSeparator>
+		</localeDisplayPattern>
+		<languages>
+			<language type="ar">lea fakaʻalepea</language>
+			<language type="art">lea faʻu pē kehe</language>
+			<language type="de">lea fakasiamane</language>
+			<language type="el">lea fakakalisi</language>
+			<language type="en">lea fakapilitānia</language>
+			<language type="es">lea fakasepeni</language>
+			<language type="fa">lea fakapēsia</language>
+			<language type="fi">lea fakafinilani</language>
+			<language type="fj">lea fakafisi</language>
+			<language type="fr">lea fakafalanisē</language>
+			<language type="ga">lea fakaʻaealani</language>
+			<language type="gil">lea fakakilipasi</language>
+			<language type="grc">lea fakakalisimuʻa</language>
+			<language type="haw">lea fakahauaiʻi</language>
+			<language type="he">lea fakahepelū</language>
+			<language type="it">lea fakaʻītali</language>
+			<language type="ja">lea fakasiapani</language>
+			<language type="ko">lea fakakōlea</language>
+			<language type="la">lea fakalatina</language>
+			<language type="mh">lea fakamāsolo</language>
+			<language type="mi">lea fakamauli</language>
+			<language type="mis">lea kehekehe</language>
+			<language type="ms">lea fakamalei</language>
+			<language type="my">lea fakapema</language>
+			<language type="na">lea fakanaulu</language>
+			<language type="niu">lea fakaniuē</language>
+			<language type="nl">lea fakaholani</language>
+			<language type="no">lea fakanoauē</language>
+			<language type="pt">lea fakapotukali</language>
+			<language type="pt_BR">lea fakapotukali-palāsili</language>
+			<language type="rap">lea fakalapanui</language>
+			<language type="rar">lea fakalalotonga</language>
+			<language type="ru">lea fakalusia</language>
+			<language type="sco">lea fakasikotilani</language>
+			<language type="sgn">lea fakaʻilonga</language>
+			<language type="sm">lea fakahaʻamoa</language>
+			<language type="sv">lea fakasueteni</language>
+			<language type="tkl">lea fakatokelau</language>
+			<language type="to">lea fakatonga</language>
+			<language type="tr">lea fakatoake</language>
+			<language type="tvl">lea fakatūvalu</language>
+			<language type="ty">lea fakatahisi</language>
+			<language type="und">lea taʻeʻiloa</language>
+			<language type="zh">lea fakasiaina</language>
+			<language type="zh_Hans">lea fakasiaina fakangofua</language>
+			<language type="zh_Hant">lea fakasiaina tukufakaholo</language>
+			<language type="zxx">ʻikai ha lea</language>
+		</languages>
+		<scripts>
+			<script type="Arab">tohinima fakaʻalepea</script>
+			<script type="Brai">tohinima maʻa e kakai kui</script>
+			<script type="Cyrl">tohinima fakalūsia</script>
+			<script type="Grek">tohinima fakakalisi</script>
+			<script type="Hani">tohinima fakasiaina</script>
+			<script type="Hans">tohinima fakasiaina fakafaingofua</script>
+			<script type="Hant">tohinima fakasiaina fakatukutala</script>
+			<script type="Hebr">tohinima fakahepelū</script>
+			<script type="Jpan">tohinima fakasiapani</script>
+			<script type="Kore">tohinima fakakolea</script>
+			<script type="Latn">tohinima fakalatina</script>
+			<script type="Zxxx">tohinima taʻetohitohiʻi</script>
+			<script type="Zyyy">tohinima meʻataha</script>
+			<script type="Zzzz">tohinima taʻeʻiloa</script>
+		</scripts>
+		<territories>
+			<territory type="001">Māmani</territory>
+			<territory type="002">ʻAfelika</territory>
+			<territory type="003">ʻAmelika tokelau</territory>
+			<territory type="005">ʻAmelika tonga</territory>
+			<territory type="009">ʻOseania</territory>
+			<territory type="011">ʻAfelika hihifo</territory>
+			<territory type="013">ʻAmelika lotoloto</territory>
+			<territory type="014">ʻAfelika hahake</territory>
+			<territory type="015">ʻAfelika tokelau</territory>
+			<territory type="017">ʻAfelika lotoloto</territory>
+			<territory type="018">ʻAfelika fakatonga</territory>
+			<territory type="019">Ongo ʻAmelika</territory>
+			<territory type="021">ʻAmelika tonga ange</territory>
+			<territory type="029">Kalipea</territory>
+			<territory type="030">ʻĒsia hahake</territory>
+			<territory type="034">ʻĒsia tonga</territory>
+			<territory type="035">ʻĒsia tongahahake</territory>
+			<territory type="039">ʻEulope tonga</territory>
+			<territory type="053">ʻAositelēlia mo Nuʻusila</territory>
+			<territory type="054">Melanisia</territory>
+			<territory type="057">Potu fonua Mikolonisia</territory>
+			<territory type="061">Polinisia</territory>
+			<territory type="062">ʻĒsia tongalotoloto</territory>
+			<territory type="142">ʻĒsia</territory>
+			<territory type="143">ʻĒsia lotoloto</territory>
+			<territory type="145">ʻĒsia hihifo</territory>
+			<territory type="150">ʻEulope</territory>
+			<territory type="151">ʻEulope hahake</territory>
+			<territory type="154">ʻEulope tokelau</territory>
+			<territory type="155">ʻEulope hihifo</territory>
+			<territory type="172">Komoniueli</territory>
+			<territory type="419">ʻAmelika fakalatina mo Kalipea</territory>
+			<territory type="AG">Anitikua mo Palaputa</territory>
+			<territory type="AI">Anikuila</territory>
+			<territory type="AQ">ʻAnetātika</territory>
+			<territory type="AS">Haʻamoa fakaʻamelika</territory>
+			<territory type="AU">ʻAositelēlia</territory>
+			<territory type="BE">Pelesiume</territory>
+			<territory type="BR">Palāsili</territory>
+			<territory type="BS">Pahama</territory>
+			<territory type="BV">Motu Puveti</territory>
+			<territory type="BW">Potisiuana</territory>
+			<territory type="BZ">Pelise</territory>
+			<territory type="CA">Kānata</territory>
+			<territory type="CH">Suisilani</territory>
+			<territory type="CK">ʻOtumotu Kuki</territory>
+			<territory type="CN">Siaina</territory>
+			<territory type="CX">Motu Kilisimasi</territory>
+			<territory type="DE">Siamane</territory>
+			<territory type="DM">Tominika</territory>
+			<territory type="EG">ʻIsipite</territory>
+			<territory type="ES">Sepeni</territory>
+			<territory type="FI">Finilani</territory>
+			<territory type="FJ">Fisi</territory>
+			<territory type="FM">Mikolonisia</territory>
+			<territory type="FR">Falanisē</territory>
+			<territory type="GB">Pilitānia</territory>
+			<territory type="GD">Kelenatā</territory>
+			<territory type="GG">Kuenisī</territory>
+			<territory type="GH">Kana</territory>
+			<territory type="GI">Sipalālitā</territory>
+			<territory type="GM">Kamipia</territory>
+			<territory type="GR">Kalisi</territory>
+			<territory type="GS">ʻOtumotu Siosia-tonga mo Saniuisi-tonga</territory>
+			<territory type="GU">Kuami</territory>
+			<territory type="GY">Kuiana</territory>
+			<territory type="HK">Hongi Kongi SAR Siaina</territory>
+			<territory type="HM">ʻOtumotu Heati mo Makitonali</territory>
+			<territory type="HN">Honitulasi</territory>
+			<territory type="IE">ʻAealani</territory>
+			<territory type="IL">ʻIsileli</territory>
+			<territory type="IM">Motu Mani</territory>
+			<territory type="IN">ʻInitia</territory>
+			<territory type="IO">Potu fonua moana ʻInitia fakapilitānia</territory>
+			<territory type="IT">ʻĪtali</territory>
+			<territory type="JE">Selusī</territory>
+			<territory type="JP">Siapani</territory>
+			<territory type="KE">Kenia</territory>
+			<territory type="KI">Kilipasi</territory>
+			<territory type="KP">Kōloa tokelau</territory>
+			<territory type="KR">Kōlea tonga</territory>
+			<territory type="LK">Sīloni</territory>
+			<territory type="LR">Laipelia</territory>
+			<territory type="LS">Lesoto</territory>
+			<territory type="MH">ʻOtumotu Māsolo</territory>
+			<territory type="MP">ʻOtumotu Maliana tokelau</territory>
+			<territory type="MS">Moʻungaselati</territory>
+			<territory type="MT">Malita</territory>
+			<territory type="MU">Maulitiusi</territory>
+			<territory type="MW">Malaui</territory>
+			<territory type="MX">Mekesikō</territory>
+			<territory type="NA">Namipia</territory>
+			<territory type="NC">Niu Kaletonia</territory>
+			<territory type="NF">Motu Nōfoliki</territory>
+			<territory type="NG">Naisilia</territory>
+			<territory type="NL">Holani</territory>
+			<territory type="NO">Noauē</territory>
+			<territory type="NR">Naulu</territory>
+			<territory type="NU">Niuē</territory>
+			<territory type="NZ">Nuʻusila</territory>
+			<territory type="PA">Panamā</territory>
+			<territory type="PF">Polinisia fakafalanisē</territory>
+			<territory type="PG">Papuaniukini</territory>
+			<territory type="PK">Pakisitani</territory>
+			<territory type="PN">Pitikeni</territory>
+			<territory type="PT">Potukali</territory>
+			<territory type="PW">Palau</territory>
+			<territory type="QU">ʻEulope fakataha</territory>
+			<territory type="RU">Lūsia</territory>
+			<territory type="RW">Luanitā</territory>
+			<territory type="SB">ʻOtumotu Solomone</territory>
+			<territory type="SC">ʻOtumotu Seiseli</territory>
+			<territory type="SE">Suēteni</territory>
+			<territory type="SG">Singapula</territory>
+			<territory type="TF">Potu fonua tonga fakafalanisē</territory>
+			<territory type="TK">Tokelau</territory>
+			<territory type="TO">Tonga</territory>
+			<territory type="TR">Toake</territory>
+			<territory type="TT">Tilinitati mo Topako</territory>
+			<territory type="TV">Tūvalu</territory>
+			<territory type="UM">ʻOtumotu siʻi ʻo ʻAmelika</territory>
+			<territory type="US">Puleʻanga fakataha ʻAmelika</territory>
+			<territory type="VA">Vatikani</territory>
+			<territory type="VG">ʻOtumotu Vilikini fakapilitānia</territory>
+			<territory type="VI">ʻOtumotu Vilikini fakaʻamelika</territory>
+			<territory type="VU">Vanuatu</territory>
+			<territory type="WF">ʻUvea mo Futuna</territory>
+			<territory type="WS">Haʻamoa</territory>
+			<territory type="ZA">ʻAfelika tonga</territory>
+			<territory type="ZW">Simipapue</territory>
+			<territory type="ZZ">Potu fonua taʻeʻiloa pe hala</territory>
+		</territories>
+		<keys>
+			<key type="calendar">tohi māhina</key>
+			<key type="collation">tohi hokohoko</key>
+			<key type="currency">paʻanga</key>
+		</keys>
+		<types>
+			<type type="buddhist" key="calendar">fakaputa</type>
+			<type type="chinese" key="calendar">fakasiaina</type>
+			<type type="direct" key="collation">hangatonu</type>
+			<type type="gregorian" key="calendar">fakakelekolia</type>
+			<type type="hebrew" key="calendar">fakahepelū</type>
+			<type type="indian" key="calendar">fakaʻinitia</type>
+			<type type="islamic" key="calendar">fakamohameti</type>
+			<type type="islamic-civil" key="calendar">fakamohameti-sivile</type>
+			<type type="japanese" key="calendar">fakasiapani</type>
+		</types>
+		<measurementSystemNames>
+			<measurementSystemName type="metric">fakamita</measurementSystemName>
+			<measurementSystemName type="US">fakaʻamelika</measurementSystemName>
+		</measurementSystemNames>
+	</localeDisplayNames>
+	<characters>
+		<exemplarCharacters>[a á ā e é ē f h ʻ i í ī k-n {ng} o ó ō p s-u ú ū v]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à ă â å ä æ b c ç d è ĕ ê ë g ì ĭ î ï j ñ ò ŏ ô ö ø œ q r ß ù ŭ û ü w-y ÿ z]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
+	</characters>
+	<delimiters>
+		<quotationStart>“</quotationStart>
+		<quotationEnd>”</quotationEnd>
+		<alternateQuotationStart>«</alternateQuotationStart>
+		<alternateQuotationEnd>»</alternateQuotationEnd>
+	</delimiters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<months>
+					<monthContext type="format">
+						<monthWidth type="abbreviated">
+							<month type="1">Sān</month>
+							<month type="2">Fēp</month>
+							<month type="3">Maʻa</month>
+							<month type="4">ʻEpe</month>
+							<month type="5">Mē</month>
+							<month type="6">Sun</month>
+							<month type="7">Siu</month>
+							<month type="8">ʻAok</month>
+							<month type="9">Sēp</month>
+							<month type="10">ʻOka</month>
+							<month type="11">Nōv</month>
+							<month type="12">Tis</month>
+						</monthWidth>
+						<monthWidth type="wide">
+							<month type="1">Sānuali</month>
+							<month type="2">Fēpueli</month>
+							<month type="3">Maʻasi</month>
+							<month type="4">ʻEpeleli</month>
+							<month type="5">Mē</month>
+							<month type="6">Sune</month>
+							<month type="7">Siulai</month>
+							<month type="8">ʻAokosi</month>
+							<month type="9">Sēpitema</month>
+							<month type="10">ʻOkatopa</month>
+							<month type="11">Nōvema</month>
+							<month type="12">Tisema</month>
+						</monthWidth>
+					</monthContext>
+					<monthContext type="stand-alone">
+						<monthWidth type="narrow">
+							<month type="1">S</month>
+							<month type="2">F</month>
+							<month type="3">M</month>
+							<month type="4">E</month>
+							<month type="5">M</month>
+							<month type="6">S</month>
+							<month type="7">S</month>
+							<month type="8">A</month>
+							<month type="9">S</month>
+							<month type="10">O</month>
+							<month type="11">N</month>
+							<month type="12">T</month>
+						</monthWidth>
+					</monthContext>
+				</months>
+				<days>
+					<dayContext type="format">
+						<dayWidth type="abbreviated">
+							<day type="sun">Sāp</day>
+							<day type="mon">Mōn</day>
+							<day type="tue">Tus</day>
+							<day type="wed">Pul</day>
+							<day type="thu">Tuʻa</day>
+							<day type="fri">Fal</day>
+							<day type="sat">Tok</day>
+						</dayWidth>
+						<dayWidth type="wide">
+							<day type="sun">Sāpate</day>
+							<day type="mon">Mōnite</day>
+							<day type="tue">Tusite</day>
+							<day type="wed">Pulelulu</day>
+							<day type="thu">Tuʻapulelulu</day>
+							<day type="fri">Falaite</day>
+							<day type="sat">Tokonaki</day>
+						</dayWidth>
+					</dayContext>
+					<dayContext type="stand-alone">
+						<dayWidth type="narrow">
+							<day type="sun">S</day>
+							<day type="mon">M</day>
+							<day type="tue">T</day>
+							<day type="wed">P</day>
+							<day type="thu">T</day>
+							<day type="fri">F</day>
+							<day type="sat">T</day>
+						</dayWidth>
+					</dayContext>
+				</days>
+				<quarters>
+					<quarterContext type="format">
+						<quarterWidth type="abbreviated">
+							<quarter type="1">K1</quarter>
+							<quarter type="2">K2</quarter>
+							<quarter type="3">K3</quarter>
+							<quarter type="4">K4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">kuata ʻuluaki</quarter>
+							<quarter type="2">kuata ua</quarter>
+							<quarter type="3">kuata tolu</quarter>
+							<quarter type="4">kuata fā</quarter>
+						</quarterWidth>
+					</quarterContext>
+					<quarterContext type="stand-alone">
+						<quarterWidth type="narrow">
+							<quarter type="1">1</quarter>
+							<quarter type="2">2</quarter>
+							<quarter type="3">3</quarter>
+							<quarter type="4">4</quarter>
+						</quarterWidth>
+						<quarterWidth type="wide">
+							<quarter type="1">kuata 1</quarter>
+							<quarter type="2">kuata 2</quarter>
+							<quarter type="3">kuata 3</quarter>
+							<quarter type="4">kuata 4</quarter>
+						</quarterWidth>
+					</quarterContext>
+				</quarters>
+				<am>HH</am>
+				<pm>EA</pm>
+				<eras>
+					<eraNames>
+						<era type="0">ki muʻa</era>
+						<era type="1">taʻu ʻo Sīsū</era>
+					</eraNames>
+					<eraAbbr>
+						<era type="0">KM</era>
+						<era type="1">TS</era>
+					</eraAbbr>
+					<eraNarrow>
+						<era type="0">KāMā</era>
+						<era type="1">TāSā</era>
+					</eraNarrow>
+				</eras>
+				<dateFormats>
+					<dateFormatLength type="full">
+						<dateFormat>
+							<pattern>EEEE d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="long">
+						<dateFormat>
+							<pattern>d MMMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="medium">
+						<dateFormat>
+							<pattern>d MMM y</pattern>
+						</dateFormat>
+					</dateFormatLength>
+					<dateFormatLength type="short">
+						<dateFormat>
+							<pattern>dd-MM-yyyy</pattern>
+						</dateFormat>
+					</dateFormatLength>
+				</dateFormats>
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>HH:mm</pattern>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+				<dateTimeFormats>
+					<availableFormats>
+						<dateFormatItem id="d">d</dateFormatItem>
+						<dateFormatItem id="Hm">H:mm</dateFormatItem>
+						<dateFormatItem id="M">L</dateFormatItem>
+						<dateFormatItem id="Md">d-M</dateFormatItem>
+						<dateFormatItem id="MEd">E d-M</dateFormatItem>
+						<dateFormatItem id="MMM">LLL</dateFormatItem>
+						<dateFormatItem id="MMMd">d MMM</dateFormatItem>
+						<dateFormatItem id="MMMEd">E d MMM</dateFormatItem>
+						<dateFormatItem id="MMMMd">d MMMM</dateFormatItem>
+						<dateFormatItem id="MMMMEd">E d MMMM</dateFormatItem>
+						<dateFormatItem id="ms">mm:ss</dateFormatItem>
+						<dateFormatItem id="y">y</dateFormatItem>
+						<dateFormatItem id="yM">M-yyyy</dateFormatItem>
+						<dateFormatItem id="yMEd">EEE d-M-yyyy</dateFormatItem>
+						<dateFormatItem id="yMMM">MMM y</dateFormatItem>
+						<dateFormatItem id="yMMMEd">EEE d MMM y</dateFormatItem>
+						<dateFormatItem id="yMMMM">MMMM y</dateFormatItem>
+						<dateFormatItem id="yQ">yyyy Q</dateFormatItem>
+						<dateFormatItem id="yQQQ">y QQQ</dateFormatItem>
+						<dateFormatItem id="yyMM">MM-yy</dateFormatItem>
+						<dateFormatItem id="yyMMM">MMM yy</dateFormatItem>
+						<dateFormatItem id="yyQ">Q yy</dateFormatItem>
+					</availableFormats>
+				</dateTimeFormats>
+				<fields>
+					<field type="era">
+						<displayName>kuonga</displayName>
+					</field>
+					<field type="year">
+						<displayName>taʻu</displayName>
+					</field>
+					<field type="month">
+						<displayName>māhina</displayName>
+					</field>
+					<field type="week">
+						<displayName>uike</displayName>
+					</field>
+					<field type="day">
+						<displayName>ʻaho</displayName>
+						<relative type="-2">ʻaneheafi</relative>
+						<relative type="-1">ʻaneafi</relative>
+						<relative type="0">ʻahó ni</relative>
+						<relative type="1">ʻapongipongi</relative>
+						<relative type="2">ʻahepongipongi</relative>
+					</field>
+					<field type="weekday">
+						<displayName>ʻaho ʻo e uike</displayName>
+					</field>
+					<field type="dayperiod">
+						<displayName>HH/EA</displayName>
+					</field>
+					<field type="hour">
+						<displayName>houa</displayName>
+					</field>
+					<field type="minute">
+						<displayName>miniti</displayName>
+					</field>
+					<field type="second">
+						<displayName>sekoni</displayName>
+					</field>
+					<field type="zone">
+						<displayName>vahetaimi</displayName>
+					</field>
+				</fields>
+			</calendar>
+		</calendars>
+		<timeZoneNames>
+			<hourFormat>+HH:mm;-HH:mm</hourFormat>
+			<gmtFormat>GMT{0}</gmtFormat>
+			<regionFormat>Houa {0}</regionFormat>
+			<metazone type="Fiji">
+				<long>
+					<standard>houa fakafisi</standard>
+					<daylight>houa fakafisi fakamaama</daylight>
+				</long>
+			</metazone>
+			<metazone type="Hawaii_Aleutian">
+				<long>
+					<standard>houa fakahauaʻi</standard>
+				</long>
+			</metazone>
+			<metazone type="New_Zealand">
+				<long>
+					<generic>houa fakanuʻusila</generic>
+					<standard>houa fakanuʻusila fakasīpinga</standard>
+					<daylight>houa fakanuʻusila fakamaama</daylight>
+				</long>
+			</metazone>
+			<metazone type="Niue">
+				<long>
+					<standard>houa fakaniuē</standard>
+				</long>
+			</metazone>
+			<metazone type="Samoa">
+				<long>
+					<standard>houa fakahaʻamoa</standard>
+				</long>
+			</metazone>
+			<metazone type="Tahiti">
+				<long>
+					<standard>houa fakatahisi</standard>
+				</long>
+			</metazone>
+			<metazone type="Tokelau">
+				<long>
+					<standard>houa fakatokelau</standard>
+				</long>
+			</metazone>
+			<metazone type="Tonga">
+				<long>
+					<standard>houa fakatonga</standard>
+					<daylight>houa fakatonga lotohē</daylight>
+				</long>
+			</metazone>
+			<metazone type="Tuvalu">
+				<long>
+					<standard>houa fakatūvalu</standard>
+				</long>
+			</metazone>
+			<metazone type="Wallis">
+				<long>
+					<standard>houa fakaʻuvea mo futuna</standard>
+				</long>
+			</metazone>
+		</timeZoneNames>
+	</dates>
+	<numbers>
+		<symbols>
+			<decimal>.</decimal>
+			<group>,</group>
+			<list>;</list>
+			<percentSign>%</percentSign>
+			<nativeZeroDigit>0</nativeZeroDigit>
+			<patternDigit>#</patternDigit>
+			<plusSign>+</plusSign>
+			<minusSign>-</minusSign>
+			<exponential>E</exponential>
+			<perMille>‰</perMille>
+			<infinity>∞</infinity>
+			<nan>NaN</nan>
+		</symbols>
+		<decimalFormats>
+			<decimalFormatLength>
+				<decimalFormat>
+					<pattern>#,##0.###</pattern>
+				</decimalFormat>
+			</decimalFormatLength>
+		</decimalFormats>
+		<scientificFormats>
+			<scientificFormatLength>
+				<scientificFormat>
+					<pattern>#E0</pattern>
+				</scientificFormat>
+			</scientificFormatLength>
+		</scientificFormats>
+		<percentFormats>
+			<percentFormatLength>
+				<percentFormat>
+					<pattern>#,##0%</pattern>
+				</percentFormat>
+			</percentFormatLength>
+		</percentFormats>
+		<currencyFormats>
+			<currencyFormatLength>
+				<currencyFormat>
+					<pattern>¤ #,##0.00</pattern>
+				</currencyFormat>
+			</currencyFormatLength>
+			<unitPattern count="other">{0} {1}</unitPattern>
+		</currencyFormats>
+	</numbers>
+	<units>
+		<unit type="day">
+			<unitPattern count="other">{0} ʻa</unitPattern>
+		</unit>
+		<unit type="minute">
+			<unitPattern count="other">{0} m</unitPattern>
+		</unit>
+		<unit type="week">
+			<unitPattern count="other">{0} u</unitPattern>
+		</unit>
+		<unit type="year">
+			<unitPattern count="other">{0} t</unitPattern>
+		</unit>
+	</units>
+	<posix>
+		<messages>
+			<yesstr>ʻio</yesstr>
+			<nostr>ʻikai</nostr>
+		</messages>
+	</posix>
+</ldml>
 
